@@ -1,0 +1,77 @@
+\hypertarget{_file_task_iterator_8hpp_source}{}\doxysection{File\+Task\+Iterator.\+hpp}
+\label{_file_task_iterator_8hpp_source}\index{Base/FileTaskIterator.hpp@{Base/FileTaskIterator.hpp}}
+\mbox{\hyperlink{_file_task_iterator_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#ifndef CAP\_\_FileTaskIterator}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#define CAP\_\_FileTaskIterator}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_timer_8hpp}{Timer.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00019}\mbox{\hyperlink{class_file_task_iterator}{00019}} \textcolor{keyword}{class }\mbox{\hyperlink{class_file_task_iterator}{FileTaskIterator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00020}00020 \{}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00021}00021 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00022}00022   }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00030}00030   \mbox{\hyperlink{class_file_task_iterator_a7267dcc67d9572a1a5b47ae8db312e9f}{FileTaskIterator}}(\textcolor{keyword}{const} TString            \& \_name,}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00031}00031                    \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}}      \& \_configuration,}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00032}00032                    \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}}  \_reportLevel);}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00034}00034   }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00038}\mbox{\hyperlink{class_file_task_iterator_acbaa14a5b524307401320cdd07ed484c}{00038}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_file_task_iterator_acbaa14a5b524307401320cdd07ed484c}{\string~FileTaskIterator}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00043}00043   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_file_task_iterator_a276d31f925e7bdad3e91e7b1c5528ea8}{initializeTasks}}();}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00048}\mbox{\hyperlink{class_file_task_iterator_ae8c7b50f678f1cc685b72f6ee0e9a540}{00048}}   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_file_task_iterator_ae8c7b50f678f1cc685b72f6ee0e9a540}{execute}}()\{\}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00053}00053   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_file_task_iterator_ac219f99c1e94002e00ff1c1ebc520326}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00054}00054   }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00058}00058   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_file_task_iterator_aa413681230c253b7287f5bc3e9bb647b}{run}}();}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00063}\mbox{\hyperlink{class_file_task_iterator_a7eb1651923d8331ebd500a1224cf0ebc}{00063}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_file_task_iterator_a7eb1651923d8331ebd500a1224cf0ebc}{getNselectedFileNames}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00064}00064 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00065}00065   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_file_task_iterator_a84a5642419b78fe124f3c63c7912a72d}{selectedFileNames}}.size();}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00066}00066   \}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00071}\mbox{\hyperlink{class_file_task_iterator_aceb7d50a6f4e98037f09b708a11be48b}{00071}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_file_task_iterator_aceb7d50a6f4e98037f09b708a11be48b}{addFileNames}}(\textcolor{keyword}{const} TString name);}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00076}00076   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_file_task_iterator_aceb7d50a6f4e98037f09b708a11be48b}{addFileNames}}(vector<TString> names);}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00081}00081   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_file_task_iterator_aceb7d50a6f4e98037f09b708a11be48b}{addFileNames}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} n, TString** names);}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00089}00089   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_file_task_iterator_aceb7d50a6f4e98037f09b708a11be48b}{addFileNames}}(\textcolor{keyword}{const} TString pathName,}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00090}00090                             vector<TString> includePatterns,}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00091}00091                             vector<TString> excludePatterns);}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00096}\mbox{\hyperlink{class_file_task_iterator_a9233dfd9ad3dbab639ca1b6943f75192}{00096}}   \textcolor{keyword}{inline} \textcolor{keyword}{const} TString \mbox{\hyperlink{class_file_task_iterator_a9233dfd9ad3dbab639ca1b6943f75192}{getCurrentFileIndex}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00097}00097 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00098}00098   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_file_task_iterator_a2fa84b5a117d1d2672bfb2a0fa84a9ac}{currentFileIndex}};}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00099}00099   \}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00104}\mbox{\hyperlink{class_file_task_iterator_a09d1e18abc144df3f02a56cac7c6b1f7}{00104}}   \textcolor{keyword}{inline} \textcolor{keyword}{const} vector<TString> \& \mbox{\hyperlink{class_file_task_iterator_a09d1e18abc144df3f02a56cac7c6b1f7}{getSelectedFileNames}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00105}00105 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00106}00106   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_file_task_iterator_a84a5642419b78fe124f3c63c7912a72d}{selectedFileNames}};}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00107}00107   \}}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00109}00109 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00114}\mbox{\hyperlink{class_file_task_iterator_a84a5642419b78fe124f3c63c7912a72d}{00114}}   vector<TString> \mbox{\hyperlink{class_file_task_iterator_a84a5642419b78fe124f3c63c7912a72d}{selectedFileNames}};}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00119}\mbox{\hyperlink{class_file_task_iterator_ae01b2c002c25a79954c6d5f02ce4d92c}{00119}}   TString \mbox{\hyperlink{class_file_task_iterator_ae01b2c002c25a79954c6d5f02ce4d92c}{appendedString}};}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00120}00120   }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00124}\mbox{\hyperlink{class_file_task_iterator_a2fa84b5a117d1d2672bfb2a0fa84a9ac}{00124}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_file_task_iterator_a2fa84b5a117d1d2672bfb2a0fa84a9ac}{currentFileIndex}};}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00126}00126   ClassDef(\mbox{\hyperlink{class_file_task_iterator}{FileTaskIterator}},0)}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00127}00127 \};}
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00128}00128 }
+\DoxyCodeLine{\Hypertarget{_file_task_iterator_8hpp_source_l00129}00129 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_FileTaskIterator */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

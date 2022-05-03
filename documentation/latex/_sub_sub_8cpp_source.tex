@@ -1,0 +1,124 @@
+\hypertarget{_sub_sub_8cpp_source}{}\doxysection{Sub\+Sub.\+cpp}
+\label{_sub_sub_8cpp_source}\index{Base/SubSub.cpp@{Base/SubSub.cpp}}
+\mbox{\hyperlink{_sub_sub_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_sub_sample_stat_calculator_8hpp}{SubSampleStatCalculator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}TParameter.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00020}\mbox{\hyperlink{_sub_sub_8cpp_ac3abe99639de69ddf78379724947ff9f}{00020}} \mbox{\hyperlink{_sub_sub_8cpp_ac3abe99639de69ddf78379724947ff9f}{ClassImp}}(\mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}});}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00023}00023 \mbox{\hyperlink{class_sub_sample_stat_calculator_a4e1076befe17140aacfe443720ffdacd}{SubSampleStatCalculator::SubSampleStatCalculator}}(\mbox{\hyperlink{class_configuration}{Configuration}} * configuration,}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00024}00024                                                  \textcolor{keywordtype}{int} \_nStore,}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00025}00025                                                  \mbox{\hyperlink{class_histograms}{Histograms}} ** \_store,}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00026}00026                                                  \textcolor{keyword}{const} TString \& \_inputPath,}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00027}00027                                                  \textcolor{keywordtype}{int} \_nFiles,}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00028}00028                                                  TString ** \_fileNames,}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00029}00029                                                  \textcolor{keyword}{const} TString \& \_outputPath,}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00030}00030                                                  \textcolor{keyword}{const} TString \& \_outputFileName,}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00031}00031                                                  \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}} debugLevel)}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00032}00032 : \mbox{\hyperlink{class_task}{Task}}(\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},configuration,nullptr,debugLevel),}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00033}00033 store(\_store),}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00034}00034 reader(\_reader),}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00035}00035 \mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}}(\_inputPath),}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00036}00036 nFiles(\_nFiles),}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00037}00037 fileNames(\_fileNames),}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00038}00038 \mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}}(\_outputPath),}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00039}00039 \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}}(\_outputFileName),}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00040}00040 weight(0),}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00041}00041 sumWeights(0)}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00042}00042 \{}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00043}00043   \textcolor{keywordflow}{if} (reportDebug(\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},getName(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}No ops."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00044}00044 \}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00046}00046 \mbox{\hyperlink{class_sub_sample_stat_calculator_a3a45063422f57eaadf0efdd91aa6d6ac}{SubSampleStatCalculator::\string~SubSampleStatCalculator}}()}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00047}00047 \{}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00048}00048   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}No ops."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00049}00049 \}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00052}00052 \textcolor{comment}{// Execute task}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00054}00054 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{class_sub_sample_stat_calculator_a6f6ca62a93799a4299b972da90879b3a}{SubSampleStatCalculator::execute}}()}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00055}00055 \{}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00056}00056   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}}))}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00057}00057     \{}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00058}00058     cout << \textcolor{stringliteral}{"{}Starting subsample analysis of nFiles:"{}} << \mbox{\hyperlink{class_sub_sample_stat_calculator_afc6445ba312cd790a1e419deed13ae28}{nFiles}} << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00059}00059     cout << \textcolor{stringliteral}{"{}    Input path: "{}} << \mbox{\hyperlink{class_sub_sample_stat_calculator_aa978298c82e076e07554245e6134b1cb}{inputPath}} << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00060}00060     cout << \textcolor{stringliteral}{"{}    Sit down, relax, this may take a while..."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00061}00061     \}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00063}00063   \textcolor{comment}{// store-\/>createHistograms();}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00065}00065   TString inputFileName;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00066}00066   TFile * inputFile;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00067}00067   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_sub_sample_stat_calculator_a815df658bc06f361fa960fff568124f4}{sumWeights}} = 0.0;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00068}00068   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_sub_sample_stat_calculator_af9b7451e2564de5a7d69de6d474be82d}{weight}} = 0.0;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00069}00069   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iFile=0; iFile<\mbox{\hyperlink{class_sub_sample_stat_calculator_afc6445ba312cd790a1e419deed13ae28}{nFiles}}; iFile++)}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00070}00070   \{}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00071}00071   inputFileName = \mbox{\hyperlink{class_sub_sample_stat_calculator_aa978298c82e076e07554245e6134b1cb}{inputPath}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00072}00072   inputFileName += \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00073}00073   inputFileName += *\mbox{\hyperlink{class_sub_sample_stat_calculator_ada3afe70db18eac43116ab9016d01d61}{fileNames}}[iFile];}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00074}00074   inputFileName += \textcolor{stringliteral}{"{}.root"{}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00075}00075   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}} (\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}Opening file: "{}} << inputFileName << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00076}00076   inputFile = \textcolor{keyword}{new} TFile(inputFileName,\textcolor{stringliteral}{"{}READ"{}});}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00077}00077   \textcolor{keywordflow}{if} (!inputFile)}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00078}00078     \{}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00079}00079     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}file: "{}} << inputFileName << \textcolor{stringliteral}{"{} not found."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00080}00080     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00081}00081     \}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00082}00082   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00083}00083     \{}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00084}00084     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}} (\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}file successfully opened."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00085}00085     \}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00086}00086   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}} (\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}Reading EventAccepted."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00087}00087   TParameter<Long64\_t> *par = (TParameter<Long64\_t> *) inputFile-\/>Get(\textcolor{stringliteral}{"{}EventAccepted"{}});}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00088}00088   \textcolor{keywordflow}{if} (!par)}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00089}00089     \{}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00090}00090     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}EventAccepted not found."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00091}00091     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00092}00092     \}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00093}00093   \mbox{\hyperlink{class_sub_sample_stat_calculator_af9b7451e2564de5a7d69de6d474be82d}{weight}} = par-\/>GetVal();}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00094}00094   \textcolor{keyword}{delete} par;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00095}00095   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}} (\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}EventAccepted : "{}} << \mbox{\hyperlink{class_sub_sample_stat_calculator_af9b7451e2564de5a7d69de6d474be82d}{weight}} << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00096}00096   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}} (\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}Loading histograms"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00098}00098   \mbox{\hyperlink{class_histogram_collection}{HistogramCollection}} * collection = \textcolor{keyword}{new} \mbox{\hyperlink{class_histogram_collection}{HistogramCollection}}(\textcolor{stringliteral}{"{}temp"{}},400);}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00099}00099   collection-\/>\mbox{\hyperlink{class_histogram_collection_a8ccc1d4548991696fa9c004056f01989}{loadHistosInList}}(inputFile, \mbox{\hyperlink{class_sub_sample_stat_calculator_a748d743e24135da7ab88c3e8e2b82cd2}{store}});}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00100}00100   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}} (\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}Load completed."{}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00101}00101   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}} (\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}Compute square differences..."{}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00102}00102   \mbox{\hyperlink{class_sub_sample_stat_calculator_a748d743e24135da7ab88c3e8e2b82cd2}{store}}-\/>\mbox{\hyperlink{class_histogram_collection_a9164c0d68cbfdf4d7144cc24927323e0}{squareDifferenceCollection}}(*collection, \mbox{\hyperlink{class_sub_sample_stat_calculator_a815df658bc06f361fa960fff568124f4}{sumWeights}}, \mbox{\hyperlink{class_sub_sample_stat_calculator_af9b7451e2564de5a7d69de6d474be82d}{weight}}, (iFile==(\mbox{\hyperlink{class_sub_sample_stat_calculator_afc6445ba312cd790a1e419deed13ae28}{nFiles}}-\/1)) ? \mbox{\hyperlink{class_sub_sample_stat_calculator_afc6445ba312cd790a1e419deed13ae28}{nFiles}} : 0);}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00103}00103   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}} (\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}Computation completed. Delete collection."{}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00104}00104   \textcolor{keyword}{delete} collection;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00105}00105   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}} (\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}Computation completed. Delete input file object."{}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00106}00106   \textcolor{keyword}{delete} inputFile;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00107}00107   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}} (\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}Next clear."{}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00108}00108   \textcolor{comment}{//reader-\/>clear();}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00109}00109   \mbox{\hyperlink{class_sub_sample_stat_calculator_a815df658bc06f361fa960fff568124f4}{sumWeights}} += \mbox{\hyperlink{class_sub_sample_stat_calculator_af9b7451e2564de5a7d69de6d474be82d}{weight}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00110}00110   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}} (\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}sumWeights : "{}} <<  \mbox{\hyperlink{class_sub_sample_stat_calculator_a815df658bc06f361fa960fff568124f4}{sumWeights}} << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00111}00111   \}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00113}00113   TString fileName = \mbox{\hyperlink{class_sub_sample_stat_calculator_a56379269b1b72a27a3f4c538e872e2f1}{outputPath}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00114}00114   fileName += \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00115}00115   fileName += \mbox{\hyperlink{class_sub_sample_stat_calculator_a93a978509696490374c4f843fe868b41}{outputFileName}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00116}00116   fileName += \textcolor{stringliteral}{"{}.root"{}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00117}00117   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}} (\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}Opening output file: "{}} << fileName << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00118}00118   TFile * outputFile = \textcolor{keyword}{new} TFile(fileName,\textcolor{stringliteral}{"{}RECREATE"{}});}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00119}00119   \textcolor{keywordflow}{if} (!outputFile)}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00120}00120     \{}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00121}00121     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}} (\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}Could not open output file: "{}} << fileName << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00122}00122     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00123}00123     \}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00124}00124   \mbox{\hyperlink{class_sub_sample_stat_calculator_a748d743e24135da7ab88c3e8e2b82cd2}{store}}-\/>\mbox{\hyperlink{class_histogram_collection_aafb8f5520ea580ef5735f8356e236c3f}{saveHistograms}}(outputFile);}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00125}00125   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}} (\textcolor{stringliteral}{"{}SubSampleStatCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}Subsample analysis completed/saved to  file: "{}} << fileName << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00126}00126 \}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8cpp_source_l00127}00127 }
+
+\end{DoxyCode}

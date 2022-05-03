@@ -1,0 +1,809 @@
+\hypertarget{class_collision_geometry_histograms}{}\doxysection{Collision\+Geometry\+Histograms Class Reference}
+\label{class_collision_geometry_histograms}\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+
+
+{\ttfamily \#include $<$Collision\+Geometry\+Histograms.\+hpp$>$}
+
+
+
+Inheritance diagram for Collision\+Geometry\+Histograms\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{class_collision_geometry_histograms__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Collision\+Geometry\+Histograms\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{class_collision_geometry_histograms__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_collision_geometry_histograms_a6c0164a23ffc720507752d7d13f6d60e}{Collision\+Geometry\+Histograms}} (const TString \&\mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}}, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\mbox{\hyperlink{class_histograms_a045df45b0d1e815891b73274958e8cb4}{configuration}}, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} debug\+Level)
+\item 
+virtual \mbox{\hyperlink{class_collision_geometry_histograms_a8b0ebd51b03448630eb6366512438bfc}{$\sim$\+Collision\+Geometry\+Histograms}} ()
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_histograms_a9d506bb5f49bd39c1af50290915fc387}{create\+Histograms}} ()
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_histograms_a4cf150823a16ffe111febe345503d35d}{load\+Histograms}} (TFile $\ast$input\+File)
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_histograms_a7b8ce92452ad0a2797b32dbe2158abeb}{fill}} (\mbox{\hyperlink{class_event}{Event}} \&event, double weight)
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_histograms_a570bd070304504de509a633f08877fa0}{no\+Fill}} (\mbox{\hyperlink{class_event}{Event}} \&event, double weight)
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_histograms_ac8c8a892aca1cd637f6fca24c6c0c20c}{create\+Derived\+Histograms}} ()
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_histograms_a54717c10c15f6762c80c7cc6653c4e9a}{calculate\+Rms}} (TProfile $\ast$h1, TProfile $\ast$h1\+Sq, TH1 $\ast$h1\+Rms, TH1 $\ast$h1\+Omega, TH1 $\ast$h1\+R2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_abb9952d46d0ac853e7ad5f55aa244aba}{h\+\_\+n\+Processed\+VsB}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a6af90be00383b77032d191b89b987079}{h\+\_\+n\+Accepted\+VsB}}
+\item 
+TH2 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a87d3bba245f43f924702e2a6e6c6dde2}{h\+\_\+n\+Part\+VsB}}
+\item 
+TH2 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a31ee79bda12130958e0cc38955f36366}{h\+\_\+n\+Binary\+VsB}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a56edb6d9dcf6d15145d62b1c156be816}{h\+\_\+n\+Part\+Vs\+B\+\_\+\+Prof}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_aeed6931b4445f7d2473357337410ff81}{h\+\_\+n\+Part\+Sq\+Vs\+B\+\_\+\+Prof}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_ac11c578b56ad10f16c6b853cae553567}{h\+\_\+n\+Binary\+Vs\+B\+\_\+\+Prof}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_adb0c5d7bd8140faa0c2318838a7837d3}{h\+\_\+n\+Binary\+Sq\+Vs\+B\+\_\+\+Prof}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a63baf48c38de02211621739853de7f43}{h\+\_\+n\+Part}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a408f5a255eaea6c274cd99f1308f75c3}{h\+\_\+n\+Binary\+Vs\+NPart\+\_\+\+Prof}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a052fb011572917b9b44e4bdc2f7f541c}{h\+\_\+n\+Binary\+Sq\+Vs\+NPart\+\_\+\+Prof}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_ad6d701fa419eadf2d3d71081a1c18911}{h\+\_\+b\+Vs\+NPart\+\_\+\+Prof}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_ac151562598a31c267c67c0ad3659305f}{h\+\_\+b\+Sq\+Vs\+NPart\+\_\+\+Prof}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a259ce063c17facb4a4adef06ec79aa13}{h\+\_\+n\+Binary}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_ad0b42a208252eefe713dd33e591341f6}{h\+\_\+n\+Part\+Vs\+NBinary\+\_\+\+Prof}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a98895fadd879fd45201fed913eb13a0b}{h\+\_\+n\+Part\+Sq\+Vs\+NBinary\+\_\+\+Prof}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a1e7660d46ffe80abc4e080f4941d4efa}{h\+\_\+b\+Vs\+NBinary\+\_\+\+Prof}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a43b433bf9e2d8ccac0ca79e3a1d8c39c}{h\+\_\+b\+Sq\+Vs\+NBinary\+\_\+\+Prof}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_abc9aad7c5e1db02884bd9f3e4f8217ab}{h\+\_\+cross\+Section}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_acccbf98c93f6d35a41c3652444f64a2c}{h\+\_\+n\+Part\+Vs\+Xsect\+\_\+\+Prof}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a915b42acd2ce49a79678d017bdb95d84}{h\+\_\+n\+Part\+Sq\+Vs\+Xsect\+\_\+\+Prof}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_aa1f59fb5c25900ef76dd5e402fea5fe4}{h\+\_\+n\+Binary\+Vs\+Xsect\+\_\+\+Prof}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_afcabb1ae864555c3f39624d7ba2a7157}{h\+\_\+n\+Binary\+Sq\+Vs\+Xsect\+\_\+\+Prof}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a8ce605152945c5b01eadf92c542c0f00}{h\+\_\+b\+Vs\+Xsect\+\_\+\+Prof}}
+\item 
+TProfile $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a5b2c18352f8cc61a460fef557c83a7fa}{h\+\_\+b\+Sq\+Vs\+Xsect\+\_\+\+Prof}}
+\item 
+TH2 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a45428f2b9585237c3c3e215818879b5e}{h\+\_\+xy\+Dist\+Interactions}}
+\item 
+TH2 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_ae01162b32b349039e7755b860f4ec35b}{h\+\_\+xy\+Dist\+Nucleons}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_ac6c93026c1e73a350f8cc9169f05dc44}{h\+\_\+n\+Part\+Rms\+VsB}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_af386cdc2f24428e491c529c009da78b1}{h\+\_\+n\+Part\+Omega\+VsB}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a929ee70099d3c0511e95f38196b65446}{h\+\_\+n\+Part\+R2\+VsB}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a223b82cd9a34e00a5519ddf5f7e9e20b}{h\+\_\+n\+Binary\+Rms\+VsB}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_aa911061397870b091e2f868ccd9e2bfc}{h\+\_\+n\+Binary\+Omega\+VsB}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a2765ae27b8b3bbd31496b7c0e2154464}{h\+\_\+n\+Binary\+R2\+VsB}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a78e32f0c8e3113b82524cb521e77e0c5}{h\+\_\+n\+Binary\+Rms\+Vs\+NPart}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_aeadf5a6fecfe91797efde4f23f5c56fb}{h\+\_\+n\+Binary\+Omega\+Vs\+NPart}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a219b410f70c52ce714f6488b43642244}{h\+\_\+n\+Binary\+R2\+Vs\+NPart}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_ac9df10cd6b1f294478e91fb8ce51126e}{h\+\_\+b\+Rms\+Vs\+NPart}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a2d27336e60cd349a8a6029f8867098e5}{h\+\_\+b\+Omega\+Vs\+NPart}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_abc26c26049a78a46d0d6ba3fc9151879}{h\+\_\+b\+R2\+Vs\+NPart}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_ae05ae6e15b0355eefc6b1171d8f66c7f}{h\+\_\+n\+Part\+Rms\+Vs\+NBinary}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a2e79c34681ac87accc4ab34925e39285}{h\+\_\+n\+Part\+Omega\+Vs\+NBinary}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a4ca9c9af74d979bf52d4bf8548645c08}{h\+\_\+n\+Part\+R2\+Vs\+NBinary}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a00338077fa64dd5efe4e202279eed47e}{h\+\_\+b\+Rms\+Vs\+NBinary}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a7dc0bd03d7f9350d6359badd0946090e}{h\+\_\+b\+Omega\+Vs\+NBinary}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a7ac1c39cce8a13dbad3c812a0625853d}{h\+\_\+b\+R2\+Vs\+NBinary}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_ace1fb77f41044a2b60dfd3aab512a349}{h\+\_\+n\+Part\+Rms\+Vs\+Xsect}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a60f44b6be16295ce9da0d7f40959cd6d}{h\+\_\+n\+Part\+Omega\+Vs\+Xsect}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_ad01527c68f12444acccf7eafeaadab6a}{h\+\_\+n\+Part\+R2\+Vs\+Xsect}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a0d358dbb5c55e5f31d8388a77aee7c64}{h\+\_\+n\+Binary\+Rms\+Vs\+Xsect}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_af80a9bb8e5a81710405eefa89298fec8}{h\+\_\+n\+Binary\+Omega\+Vs\+Xsect}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a463da46eedeee773d2b14a625cd3c386}{h\+\_\+n\+Binary\+R2\+Vs\+Xsect}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_ac174a48536c29ebe931f1cc6de7d6828}{h\+\_\+b\+Rms\+Vs\+Xsect}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_aa12e658d19b1677ae567b93bae3bf158}{h\+\_\+b\+Omega\+Vs\+Xsect}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_collision_geometry_histograms_a5135a28c216f0ebd70491bedabc9e5e9}{h\+\_\+b\+R2\+Vs\+Xsect}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00016}{16}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_collision_geometry_histograms_a6c0164a23ffc720507752d7d13f6d60e}\label{class_collision_geometry_histograms_a6c0164a23ffc720507752d7d13f6d60e}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{CollisionGeometryHistograms()}{CollisionGeometryHistograms()}}
+{\footnotesize\ttfamily Collision\+Geometry\+Histograms\+::\+Collision\+Geometry\+Histograms (\begin{DoxyParamCaption}\item[{const TString \&}]{name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{configuration,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{debug\+Level }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{_collision_geometry_histograms_8cpp_source}{Collision\+Geometry\+Histograms.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a8b0ebd51b03448630eb6366512438bfc}\label{class_collision_geometry_histograms_a8b0ebd51b03448630eb6366512438bfc}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!````~CollisionGeometryHistograms@{$\sim$CollisionGeometryHistograms}}
+\index{````~CollisionGeometryHistograms@{$\sim$CollisionGeometryHistograms}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{$\sim$CollisionGeometryHistograms()}{~CollisionGeometryHistograms()}}
+{\footnotesize\ttfamily virtual Collision\+Geometry\+Histograms\+::$\sim$\+Collision\+Geometry\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_collision_geometry_histograms_a54717c10c15f6762c80c7cc6653c4e9a}\label{class_collision_geometry_histograms_a54717c10c15f6762c80c7cc6653c4e9a}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!calculateRms@{calculateRms}}
+\index{calculateRms@{calculateRms}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{calculateRms()}{calculateRms()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Histograms\+::calculate\+Rms (\begin{DoxyParamCaption}\item[{TProfile $\ast$}]{h1,  }\item[{TProfile $\ast$}]{h1\+Sq,  }\item[{TH1 $\ast$}]{h1\+Rms,  }\item[{TH1 $\ast$}]{h1\+Omega,  }\item[{TH1 $\ast$}]{h1\+R2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8cpp_source_l00300}{300}} of file \mbox{\hyperlink{_collision_geometry_histograms_8cpp_source}{Collision\+Geometry\+Histograms.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_ac8c8a892aca1cd637f6fca24c6c0c20c}\label{class_collision_geometry_histograms_ac8c8a892aca1cd637f6fca24c6c0c20c}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!createDerivedHistograms@{createDerivedHistograms}}
+\index{createDerivedHistograms@{createDerivedHistograms}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{createDerivedHistograms()}{createDerivedHistograms()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Histograms\+::create\+Derived\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overload this class to calculated derived histograms based on members of primary histogram of this class. 
+
+Reimplemented from \mbox{\hyperlink{class_histograms_a600ac58287dd3f3b794be38a1da3727a}{Histograms}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8cpp_source_l00257}{257}} of file \mbox{\hyperlink{_collision_geometry_histograms_8cpp_source}{Collision\+Geometry\+Histograms.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a9d506bb5f49bd39c1af50290915fc387}\label{class_collision_geometry_histograms_a9d506bb5f49bd39c1af50290915fc387}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!createHistograms@{createHistograms}}
+\index{createHistograms@{createHistograms}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{createHistograms()}{createHistograms()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Histograms\+::create\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overload this class to create histograms. 
+
+Reimplemented from \mbox{\hyperlink{class_histograms_ae6197b40e3cb970716aa4fc8a8eaffb2}{Histograms}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{_collision_geometry_histograms_8cpp_source}{Collision\+Geometry\+Histograms.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a7b8ce92452ad0a2797b32dbe2158abeb}\label{class_collision_geometry_histograms_a7b8ce92452ad0a2797b32dbe2158abeb}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!fill@{fill}}
+\index{fill@{fill}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{fill()}{fill()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Histograms\+::fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_event}{Event}} \&}]{event,  }\item[{double}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8cpp_source_l00165}{165}} of file \mbox{\hyperlink{_collision_geometry_histograms_8cpp_source}{Collision\+Geometry\+Histograms.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a4cf150823a16ffe111febe345503d35d}\label{class_collision_geometry_histograms_a4cf150823a16ffe111febe345503d35d}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!loadHistograms@{loadHistograms}}
+\index{loadHistograms@{loadHistograms}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{loadHistograms()}{loadHistograms()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Histograms\+::load\+Histograms (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{input\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overload this class to load histograms. 
+
+Reimplemented from \mbox{\hyperlink{class_histograms_a20ca1f616c8af6d3261e6ca3127ecd9d}{Histograms}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8cpp_source_l00149}{149}} of file \mbox{\hyperlink{_collision_geometry_histograms_8cpp_source}{Collision\+Geometry\+Histograms.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a570bd070304504de509a633f08877fa0}\label{class_collision_geometry_histograms_a570bd070304504de509a633f08877fa0}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!noFill@{noFill}}
+\index{noFill@{noFill}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{noFill()}{noFill()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Histograms\+::no\+Fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_event}{Event}} \&}]{event,  }\item[{double}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8cpp_source_l00236}{236}} of file \mbox{\hyperlink{_collision_geometry_histograms_8cpp_source}{Collision\+Geometry\+Histograms.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_collision_geometry_histograms_a7dc0bd03d7f9350d6359badd0946090e}\label{class_collision_geometry_histograms_a7dc0bd03d7f9350d6359badd0946090e}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_bOmegaVsNBinary@{h\_bOmegaVsNBinary}}
+\index{h\_bOmegaVsNBinary@{h\_bOmegaVsNBinary}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_bOmegaVsNBinary}{h\_bOmegaVsNBinary}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+b\+Omega\+Vs\+NBinary\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a2d27336e60cd349a8a6029f8867098e5}\label{class_collision_geometry_histograms_a2d27336e60cd349a8a6029f8867098e5}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_bOmegaVsNPart@{h\_bOmegaVsNPart}}
+\index{h\_bOmegaVsNPart@{h\_bOmegaVsNPart}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_bOmegaVsNPart}{h\_bOmegaVsNPart}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+b\+Omega\+Vs\+NPart\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_aa12e658d19b1677ae567b93bae3bf158}\label{class_collision_geometry_histograms_aa12e658d19b1677ae567b93bae3bf158}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_bOmegaVsXsect@{h\_bOmegaVsXsect}}
+\index{h\_bOmegaVsXsect@{h\_bOmegaVsXsect}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_bOmegaVsXsect}{h\_bOmegaVsXsect}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+b\+Omega\+Vs\+Xsect\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00095}{95}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a7ac1c39cce8a13dbad3c812a0625853d}\label{class_collision_geometry_histograms_a7ac1c39cce8a13dbad3c812a0625853d}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_bR2VsNBinary@{h\_bR2VsNBinary}}
+\index{h\_bR2VsNBinary@{h\_bR2VsNBinary}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_bR2VsNBinary}{h\_bR2VsNBinary}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+b\+R2\+Vs\+NBinary\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_abc26c26049a78a46d0d6ba3fc9151879}\label{class_collision_geometry_histograms_abc26c26049a78a46d0d6ba3fc9151879}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_bR2VsNPart@{h\_bR2VsNPart}}
+\index{h\_bR2VsNPart@{h\_bR2VsNPart}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_bR2VsNPart}{h\_bR2VsNPart}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+b\+R2\+Vs\+NPart\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a5135a28c216f0ebd70491bedabc9e5e9}\label{class_collision_geometry_histograms_a5135a28c216f0ebd70491bedabc9e5e9}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_bR2VsXsect@{h\_bR2VsXsect}}
+\index{h\_bR2VsXsect@{h\_bR2VsXsect}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_bR2VsXsect}{h\_bR2VsXsect}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+b\+R2\+Vs\+Xsect\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00096}{96}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a00338077fa64dd5efe4e202279eed47e}\label{class_collision_geometry_histograms_a00338077fa64dd5efe4e202279eed47e}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_bRmsVsNBinary@{h\_bRmsVsNBinary}}
+\index{h\_bRmsVsNBinary@{h\_bRmsVsNBinary}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_bRmsVsNBinary}{h\_bRmsVsNBinary}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+b\+Rms\+Vs\+NBinary\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00083}{83}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_ac9df10cd6b1f294478e91fb8ce51126e}\label{class_collision_geometry_histograms_ac9df10cd6b1f294478e91fb8ce51126e}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_bRmsVsNPart@{h\_bRmsVsNPart}}
+\index{h\_bRmsVsNPart@{h\_bRmsVsNPart}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_bRmsVsNPart}{h\_bRmsVsNPart}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+b\+Rms\+Vs\+NPart\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_ac174a48536c29ebe931f1cc6de7d6828}\label{class_collision_geometry_histograms_ac174a48536c29ebe931f1cc6de7d6828}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_bRmsVsXsect@{h\_bRmsVsXsect}}
+\index{h\_bRmsVsXsect@{h\_bRmsVsXsect}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_bRmsVsXsect}{h\_bRmsVsXsect}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+b\+Rms\+Vs\+Xsect\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00094}{94}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a43b433bf9e2d8ccac0ca79e3a1d8c39c}\label{class_collision_geometry_histograms_a43b433bf9e2d8ccac0ca79e3a1d8c39c}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_bSqVsNBinary\_Prof@{h\_bSqVsNBinary\_Prof}}
+\index{h\_bSqVsNBinary\_Prof@{h\_bSqVsNBinary\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_bSqVsNBinary\_Prof}{h\_bSqVsNBinary\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+b\+Sq\+Vs\+NBinary\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00053}{53}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_ac151562598a31c267c67c0ad3659305f}\label{class_collision_geometry_histograms_ac151562598a31c267c67c0ad3659305f}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_bSqVsNPart\_Prof@{h\_bSqVsNPart\_Prof}}
+\index{h\_bSqVsNPart\_Prof@{h\_bSqVsNPart\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_bSqVsNPart\_Prof}{h\_bSqVsNPart\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+b\+Sq\+Vs\+NPart\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a5b2c18352f8cc61a460fef557c83a7fa}\label{class_collision_geometry_histograms_a5b2c18352f8cc61a460fef557c83a7fa}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_bSqVsXsect\_Prof@{h\_bSqVsXsect\_Prof}}
+\index{h\_bSqVsXsect\_Prof@{h\_bSqVsXsect\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_bSqVsXsect\_Prof}{h\_bSqVsXsect\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+b\+Sq\+Vs\+Xsect\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00061}{61}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a1e7660d46ffe80abc4e080f4941d4efa}\label{class_collision_geometry_histograms_a1e7660d46ffe80abc4e080f4941d4efa}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_bVsNBinary\_Prof@{h\_bVsNBinary\_Prof}}
+\index{h\_bVsNBinary\_Prof@{h\_bVsNBinary\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_bVsNBinary\_Prof}{h\_bVsNBinary\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+b\+Vs\+NBinary\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_ad6d701fa419eadf2d3d71081a1c18911}\label{class_collision_geometry_histograms_ad6d701fa419eadf2d3d71081a1c18911}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_bVsNPart\_Prof@{h\_bVsNPart\_Prof}}
+\index{h\_bVsNPart\_Prof@{h\_bVsNPart\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_bVsNPart\_Prof}{h\_bVsNPart\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+b\+Vs\+NPart\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a8ce605152945c5b01eadf92c542c0f00}\label{class_collision_geometry_histograms_a8ce605152945c5b01eadf92c542c0f00}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_bVsXsect\_Prof@{h\_bVsXsect\_Prof}}
+\index{h\_bVsXsect\_Prof@{h\_bVsXsect\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_bVsXsect\_Prof}{h\_bVsXsect\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+b\+Vs\+Xsect\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_abc9aad7c5e1db02884bd9f3e4f8217ab}\label{class_collision_geometry_histograms_abc9aad7c5e1db02884bd9f3e4f8217ab}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_crossSection@{h\_crossSection}}
+\index{h\_crossSection@{h\_crossSection}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_crossSection}{h\_crossSection}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+cross\+Section\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00055}{55}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a6af90be00383b77032d191b89b987079}\label{class_collision_geometry_histograms_a6af90be00383b77032d191b89b987079}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nAcceptedVsB@{h\_nAcceptedVsB}}
+\index{h\_nAcceptedVsB@{h\_nAcceptedVsB}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nAcceptedVsB}{h\_nAcceptedVsB}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Accepted\+VsB\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a259ce063c17facb4a4adef06ec79aa13}\label{class_collision_geometry_histograms_a259ce063c17facb4a4adef06ec79aa13}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinary@{h\_nBinary}}
+\index{h\_nBinary@{h\_nBinary}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinary}{h\_nBinary}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00049}{49}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_aa911061397870b091e2f868ccd9e2bfc}\label{class_collision_geometry_histograms_aa911061397870b091e2f868ccd9e2bfc}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinaryOmegaVsB@{h\_nBinaryOmegaVsB}}
+\index{h\_nBinaryOmegaVsB@{h\_nBinaryOmegaVsB}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinaryOmegaVsB}{h\_nBinaryOmegaVsB}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\+Omega\+VsB\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_aeadf5a6fecfe91797efde4f23f5c56fb}\label{class_collision_geometry_histograms_aeadf5a6fecfe91797efde4f23f5c56fb}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinaryOmegaVsNPart@{h\_nBinaryOmegaVsNPart}}
+\index{h\_nBinaryOmegaVsNPart@{h\_nBinaryOmegaVsNPart}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinaryOmegaVsNPart}{h\_nBinaryOmegaVsNPart}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\+Omega\+Vs\+NPart\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00074}{74}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_af80a9bb8e5a81710405eefa89298fec8}\label{class_collision_geometry_histograms_af80a9bb8e5a81710405eefa89298fec8}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinaryOmegaVsXsect@{h\_nBinaryOmegaVsXsect}}
+\index{h\_nBinaryOmegaVsXsect@{h\_nBinaryOmegaVsXsect}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinaryOmegaVsXsect}{h\_nBinaryOmegaVsXsect}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\+Omega\+Vs\+Xsect\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00092}{92}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a2765ae27b8b3bbd31496b7c0e2154464}\label{class_collision_geometry_histograms_a2765ae27b8b3bbd31496b7c0e2154464}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinaryR2VsB@{h\_nBinaryR2VsB}}
+\index{h\_nBinaryR2VsB@{h\_nBinaryR2VsB}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinaryR2VsB}{h\_nBinaryR2VsB}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\+R2\+VsB\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a219b410f70c52ce714f6488b43642244}\label{class_collision_geometry_histograms_a219b410f70c52ce714f6488b43642244}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinaryR2VsNPart@{h\_nBinaryR2VsNPart}}
+\index{h\_nBinaryR2VsNPart@{h\_nBinaryR2VsNPart}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinaryR2VsNPart}{h\_nBinaryR2VsNPart}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\+R2\+Vs\+NPart\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00075}{75}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a463da46eedeee773d2b14a625cd3c386}\label{class_collision_geometry_histograms_a463da46eedeee773d2b14a625cd3c386}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinaryR2VsXsect@{h\_nBinaryR2VsXsect}}
+\index{h\_nBinaryR2VsXsect@{h\_nBinaryR2VsXsect}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinaryR2VsXsect}{h\_nBinaryR2VsXsect}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\+R2\+Vs\+Xsect\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00093}{93}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a223b82cd9a34e00a5519ddf5f7e9e20b}\label{class_collision_geometry_histograms_a223b82cd9a34e00a5519ddf5f7e9e20b}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinaryRmsVsB@{h\_nBinaryRmsVsB}}
+\index{h\_nBinaryRmsVsB@{h\_nBinaryRmsVsB}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinaryRmsVsB}{h\_nBinaryRmsVsB}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\+Rms\+VsB\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a78e32f0c8e3113b82524cb521e77e0c5}\label{class_collision_geometry_histograms_a78e32f0c8e3113b82524cb521e77e0c5}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinaryRmsVsNPart@{h\_nBinaryRmsVsNPart}}
+\index{h\_nBinaryRmsVsNPart@{h\_nBinaryRmsVsNPart}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinaryRmsVsNPart}{h\_nBinaryRmsVsNPart}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\+Rms\+Vs\+NPart\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a0d358dbb5c55e5f31d8388a77aee7c64}\label{class_collision_geometry_histograms_a0d358dbb5c55e5f31d8388a77aee7c64}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinaryRmsVsXsect@{h\_nBinaryRmsVsXsect}}
+\index{h\_nBinaryRmsVsXsect@{h\_nBinaryRmsVsXsect}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinaryRmsVsXsect}{h\_nBinaryRmsVsXsect}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\+Rms\+Vs\+Xsect\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00091}{91}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_adb0c5d7bd8140faa0c2318838a7837d3}\label{class_collision_geometry_histograms_adb0c5d7bd8140faa0c2318838a7837d3}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinarySqVsB\_Prof@{h\_nBinarySqVsB\_Prof}}
+\index{h\_nBinarySqVsB\_Prof@{h\_nBinarySqVsB\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinarySqVsB\_Prof}{h\_nBinarySqVsB\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\+Sq\+Vs\+B\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a052fb011572917b9b44e4bdc2f7f541c}\label{class_collision_geometry_histograms_a052fb011572917b9b44e4bdc2f7f541c}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinarySqVsNPart\_Prof@{h\_nBinarySqVsNPart\_Prof}}
+\index{h\_nBinarySqVsNPart\_Prof@{h\_nBinarySqVsNPart\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinarySqVsNPart\_Prof}{h\_nBinarySqVsNPart\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\+Sq\+Vs\+NPart\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_afcabb1ae864555c3f39624d7ba2a7157}\label{class_collision_geometry_histograms_afcabb1ae864555c3f39624d7ba2a7157}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinarySqVsXsect\_Prof@{h\_nBinarySqVsXsect\_Prof}}
+\index{h\_nBinarySqVsXsect\_Prof@{h\_nBinarySqVsXsect\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinarySqVsXsect\_Prof}{h\_nBinarySqVsXsect\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\+Sq\+Vs\+Xsect\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a31ee79bda12130958e0cc38955f36366}\label{class_collision_geometry_histograms_a31ee79bda12130958e0cc38955f36366}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinaryVsB@{h\_nBinaryVsB}}
+\index{h\_nBinaryVsB@{h\_nBinaryVsB}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinaryVsB}{h\_nBinaryVsB}}
+{\footnotesize\ttfamily TH2$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\+VsB\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00037}{37}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_ac11c578b56ad10f16c6b853cae553567}\label{class_collision_geometry_histograms_ac11c578b56ad10f16c6b853cae553567}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinaryVsB\_Prof@{h\_nBinaryVsB\_Prof}}
+\index{h\_nBinaryVsB\_Prof@{h\_nBinaryVsB\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinaryVsB\_Prof}{h\_nBinaryVsB\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\+Vs\+B\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00040}{40}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a408f5a255eaea6c274cd99f1308f75c3}\label{class_collision_geometry_histograms_a408f5a255eaea6c274cd99f1308f75c3}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinaryVsNPart\_Prof@{h\_nBinaryVsNPart\_Prof}}
+\index{h\_nBinaryVsNPart\_Prof@{h\_nBinaryVsNPart\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinaryVsNPart\_Prof}{h\_nBinaryVsNPart\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\+Vs\+NPart\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00044}{44}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_aa1f59fb5c25900ef76dd5e402fea5fe4}\label{class_collision_geometry_histograms_aa1f59fb5c25900ef76dd5e402fea5fe4}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nBinaryVsXsect\_Prof@{h\_nBinaryVsXsect\_Prof}}
+\index{h\_nBinaryVsXsect\_Prof@{h\_nBinaryVsXsect\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nBinaryVsXsect\_Prof}{h\_nBinaryVsXsect\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Binary\+Vs\+Xsect\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00058}{58}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a63baf48c38de02211621739853de7f43}\label{class_collision_geometry_histograms_a63baf48c38de02211621739853de7f43}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPart@{h\_nPart}}
+\index{h\_nPart@{h\_nPart}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPart}{h\_nPart}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_af386cdc2f24428e491c529c009da78b1}\label{class_collision_geometry_histograms_af386cdc2f24428e491c529c009da78b1}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPartOmegaVsB@{h\_nPartOmegaVsB}}
+\index{h\_nPartOmegaVsB@{h\_nPartOmegaVsB}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPartOmegaVsB}{h\_nPartOmegaVsB}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\+Omega\+VsB\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a2e79c34681ac87accc4ab34925e39285}\label{class_collision_geometry_histograms_a2e79c34681ac87accc4ab34925e39285}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPartOmegaVsNBinary@{h\_nPartOmegaVsNBinary}}
+\index{h\_nPartOmegaVsNBinary@{h\_nPartOmegaVsNBinary}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPartOmegaVsNBinary}{h\_nPartOmegaVsNBinary}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\+Omega\+Vs\+NBinary\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a60f44b6be16295ce9da0d7f40959cd6d}\label{class_collision_geometry_histograms_a60f44b6be16295ce9da0d7f40959cd6d}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPartOmegaVsXsect@{h\_nPartOmegaVsXsect}}
+\index{h\_nPartOmegaVsXsect@{h\_nPartOmegaVsXsect}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPartOmegaVsXsect}{h\_nPartOmegaVsXsect}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\+Omega\+Vs\+Xsect\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a929ee70099d3c0511e95f38196b65446}\label{class_collision_geometry_histograms_a929ee70099d3c0511e95f38196b65446}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPartR2VsB@{h\_nPartR2VsB}}
+\index{h\_nPartR2VsB@{h\_nPartR2VsB}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPartR2VsB}{h\_nPartR2VsB}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\+R2\+VsB\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00069}{69}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a4ca9c9af74d979bf52d4bf8548645c08}\label{class_collision_geometry_histograms_a4ca9c9af74d979bf52d4bf8548645c08}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPartR2VsNBinary@{h\_nPartR2VsNBinary}}
+\index{h\_nPartR2VsNBinary@{h\_nPartR2VsNBinary}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPartR2VsNBinary}{h\_nPartR2VsNBinary}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\+R2\+Vs\+NBinary\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00082}{82}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_ad01527c68f12444acccf7eafeaadab6a}\label{class_collision_geometry_histograms_ad01527c68f12444acccf7eafeaadab6a}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPartR2VsXsect@{h\_nPartR2VsXsect}}
+\index{h\_nPartR2VsXsect@{h\_nPartR2VsXsect}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPartR2VsXsect}{h\_nPartR2VsXsect}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\+R2\+Vs\+Xsect\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00089}{89}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_ac6c93026c1e73a350f8cc9169f05dc44}\label{class_collision_geometry_histograms_ac6c93026c1e73a350f8cc9169f05dc44}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPartRmsVsB@{h\_nPartRmsVsB}}
+\index{h\_nPartRmsVsB@{h\_nPartRmsVsB}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPartRmsVsB}{h\_nPartRmsVsB}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\+Rms\+VsB\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_ae05ae6e15b0355eefc6b1171d8f66c7f}\label{class_collision_geometry_histograms_ae05ae6e15b0355eefc6b1171d8f66c7f}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPartRmsVsNBinary@{h\_nPartRmsVsNBinary}}
+\index{h\_nPartRmsVsNBinary@{h\_nPartRmsVsNBinary}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPartRmsVsNBinary}{h\_nPartRmsVsNBinary}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\+Rms\+Vs\+NBinary\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00080}{80}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_ace1fb77f41044a2b60dfd3aab512a349}\label{class_collision_geometry_histograms_ace1fb77f41044a2b60dfd3aab512a349}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPartRmsVsXsect@{h\_nPartRmsVsXsect}}
+\index{h\_nPartRmsVsXsect@{h\_nPartRmsVsXsect}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPartRmsVsXsect}{h\_nPartRmsVsXsect}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\+Rms\+Vs\+Xsect\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_aeed6931b4445f7d2473357337410ff81}\label{class_collision_geometry_histograms_aeed6931b4445f7d2473357337410ff81}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPartSqVsB\_Prof@{h\_nPartSqVsB\_Prof}}
+\index{h\_nPartSqVsB\_Prof@{h\_nPartSqVsB\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPartSqVsB\_Prof}{h\_nPartSqVsB\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\+Sq\+Vs\+B\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00039}{39}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a98895fadd879fd45201fed913eb13a0b}\label{class_collision_geometry_histograms_a98895fadd879fd45201fed913eb13a0b}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPartSqVsNBinary\_Prof@{h\_nPartSqVsNBinary\_Prof}}
+\index{h\_nPartSqVsNBinary\_Prof@{h\_nPartSqVsNBinary\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPartSqVsNBinary\_Prof}{h\_nPartSqVsNBinary\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\+Sq\+Vs\+NBinary\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a915b42acd2ce49a79678d017bdb95d84}\label{class_collision_geometry_histograms_a915b42acd2ce49a79678d017bdb95d84}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPartSqVsXsect\_Prof@{h\_nPartSqVsXsect\_Prof}}
+\index{h\_nPartSqVsXsect\_Prof@{h\_nPartSqVsXsect\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPartSqVsXsect\_Prof}{h\_nPartSqVsXsect\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\+Sq\+Vs\+Xsect\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a87d3bba245f43f924702e2a6e6c6dde2}\label{class_collision_geometry_histograms_a87d3bba245f43f924702e2a6e6c6dde2}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPartVsB@{h\_nPartVsB}}
+\index{h\_nPartVsB@{h\_nPartVsB}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPartVsB}{h\_nPartVsB}}
+{\footnotesize\ttfamily TH2$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\+VsB\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a56edb6d9dcf6d15145d62b1c156be816}\label{class_collision_geometry_histograms_a56edb6d9dcf6d15145d62b1c156be816}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPartVsB\_Prof@{h\_nPartVsB\_Prof}}
+\index{h\_nPartVsB\_Prof@{h\_nPartVsB\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPartVsB\_Prof}{h\_nPartVsB\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\+Vs\+B\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00038}{38}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_ad0b42a208252eefe713dd33e591341f6}\label{class_collision_geometry_histograms_ad0b42a208252eefe713dd33e591341f6}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPartVsNBinary\_Prof@{h\_nPartVsNBinary\_Prof}}
+\index{h\_nPartVsNBinary\_Prof@{h\_nPartVsNBinary\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPartVsNBinary\_Prof}{h\_nPartVsNBinary\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\+Vs\+NBinary\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00050}{50}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_acccbf98c93f6d35a41c3652444f64a2c}\label{class_collision_geometry_histograms_acccbf98c93f6d35a41c3652444f64a2c}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nPartVsXsect\_Prof@{h\_nPartVsXsect\_Prof}}
+\index{h\_nPartVsXsect\_Prof@{h\_nPartVsXsect\_Prof}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nPartVsXsect\_Prof}{h\_nPartVsXsect\_Prof}}
+{\footnotesize\ttfamily TProfile$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Part\+Vs\+Xsect\+\_\+\+Prof\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00056}{56}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_abb9952d46d0ac853e7ad5f55aa244aba}\label{class_collision_geometry_histograms_abb9952d46d0ac853e7ad5f55aa244aba}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_nProcessedVsB@{h\_nProcessedVsB}}
+\index{h\_nProcessedVsB@{h\_nProcessedVsB}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_nProcessedVsB}{h\_nProcessedVsB}}
+{\footnotesize\ttfamily TH1$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+n\+Processed\+VsB\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_a45428f2b9585237c3c3e215818879b5e}\label{class_collision_geometry_histograms_a45428f2b9585237c3c3e215818879b5e}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_xyDistInteractions@{h\_xyDistInteractions}}
+\index{h\_xyDistInteractions@{h\_xyDistInteractions}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_xyDistInteractions}{h\_xyDistInteractions}}
+{\footnotesize\ttfamily TH2$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+xy\+Dist\+Interactions\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_histograms_ae01162b32b349039e7755b860f4ec35b}\label{class_collision_geometry_histograms_ae01162b32b349039e7755b860f4ec35b}} 
+\index{CollisionGeometryHistograms@{CollisionGeometryHistograms}!h\_xyDistNucleons@{h\_xyDistNucleons}}
+\index{h\_xyDistNucleons@{h\_xyDistNucleons}!CollisionGeometryHistograms@{CollisionGeometryHistograms}}
+\doxysubsubsection{\texorpdfstring{h\_xyDistNucleons}{h\_xyDistNucleons}}
+{\footnotesize\ttfamily TH2$\ast$ Collision\+Geometry\+Histograms\+::h\+\_\+xy\+Dist\+Nucleons\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source_l00064}{64}} of file \mbox{\hyperlink{_collision_geometry_histograms_8hpp_source}{Collision\+Geometry\+Histograms.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_collision_geometry_histograms_8hpp}{Collision\+Geometry\+Histograms.\+hpp}}\item 
+Base/\mbox{\hyperlink{_collision_geometry_histograms_8cpp}{Collision\+Geometry\+Histograms.\+cpp}}\end{DoxyCompactItemize}

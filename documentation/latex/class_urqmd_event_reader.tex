@@ -1,0 +1,299 @@
+\hypertarget{class_urqmd_event_reader}{}\doxysection{Urqmd\+Event\+Reader Class Reference}
+\label{class_urqmd_event_reader}\index{UrqmdEventReader@{UrqmdEventReader}}
+
+
+{\ttfamily \#include $<$Urqmd\+Event\+Reader.\+hpp$>$}
+
+
+
+Inheritance diagram for Urqmd\+Event\+Reader\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{class_urqmd_event_reader__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Urqmd\+Event\+Reader\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{class_urqmd_event_reader__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_urqmd_event_reader_a57f6ab80b6c3cd715acf0964813b3a0d}{Urqmd\+Event\+Reader}} (\mbox{\hyperlink{class_event}{Event}} $\ast$event, Generator\+Configuration $\ast$configuration, TRandom $\ast$random\+Generator, bool debug\+Level)
+\item 
+virtual \mbox{\hyperlink{class_urqmd_event_reader_a148b25aaccd343d378fce5fd06bd17f8}{$\sim$\+Urqmd\+Event\+Reader}} ()
+\item 
+virtual void \mbox{\hyperlink{class_urqmd_event_reader_a6dbdbe7827b32437e4e227693e6b34df}{initialize}} ()
+\item 
+virtual void \mbox{\hyperlink{class_urqmd_event_reader_adf496d7409a380effa05ee3018c3b30d}{reset}} ()
+\item 
+bool \mbox{\hyperlink{class_urqmd_event_reader_abab56018f0e5c4949f98eee6210ece67}{accept\+PID}} (\mbox{\hyperlink{class_particle}{Particle}} p)
+\item 
+\mbox{\hyperlink{class_event}{Event}} $\ast$ \mbox{\hyperlink{class_urqmd_event_reader_a712b79102bfacbe97a1bc55664bc2785}{generate}} ()
+\item 
+Int\+\_\+t \mbox{\hyperlink{class_urqmd_event_reader_a60c035d195a6b7db974dbfefafc885db}{Get\+Entry}} (Long64\+\_\+t entry)
+\item 
+Long64\+\_\+t \mbox{\hyperlink{class_urqmd_event_reader_a89f46f8dd2a7e5a4c54c0d7a2b2e6337}{Load\+Tree}} (Long64\+\_\+t entry)
+\item 
+void \mbox{\hyperlink{class_urqmd_event_reader_a02102bbe491643300b6c37491aaf5094}{Init}} (TTree $\ast$tree)
+\item 
+Bool\+\_\+t \mbox{\hyperlink{class_urqmd_event_reader_a5f205ed721675b0567443c6336bb7c1d}{Notify}} ()
+\item 
+void \mbox{\hyperlink{class_urqmd_event_reader_a5ed0b86a11b6e9c0718108db48bfa642}{Show}} (Long64\+\_\+t entry)
+\item 
+Int\+\_\+t \mbox{\hyperlink{class_urqmd_event_reader_a7ef6414da3035a6fcc077c748d5a0350}{Cut}} (Long64\+\_\+t entry)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TTree $\ast$ \mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{f\+Chain}}
+\item 
+Int\+\_\+t \mbox{\hyperlink{class_urqmd_event_reader_a9c6bbaa825cfad94e8847d458534cae4}{f\+Current}}
+\begin{DoxyCompactList}\small\item\em pointer to the analyzed TTree or TChain \end{DoxyCompactList}\item 
+Long64\+\_\+t \mbox{\hyperlink{class_urqmd_event_reader_a3342ecb5ebbaafaa9d91f6bd4d3d6dda}{nentries}}
+\begin{DoxyCompactList}\small\item\em current Tree number in a TChain \end{DoxyCompactList}\item 
+Long64\+\_\+t \mbox{\hyperlink{class_urqmd_event_reader_a91d787d265e7feb9142158203a9d480b}{nbytes}}
+\item 
+Long64\+\_\+t \mbox{\hyperlink{class_urqmd_event_reader_adce2c971e9582c250e2ad48ac810bcfc}{nb}}
+\item 
+long \mbox{\hyperlink{class_urqmd_event_reader_aa6f52208496934cc231d6aa02f2a1646}{jentry}}
+\item 
+\mbox{\hyperlink{class_ur_q_m_d_event}{Ur\+QMDEvent}} $\ast$ \mbox{\hyperlink{class_urqmd_event_reader_ac1b94928caa2918488c17e19b73bcabc}{an\+Event}}
+\item 
+long \mbox{\hyperlink{class_urqmd_event_reader_a7acc8b751169beed359db3127610601d}{nleptons}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00022}{22}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_urqmd_event_reader_a57f6ab80b6c3cd715acf0964813b3a0d}\label{class_urqmd_event_reader_a57f6ab80b6c3cd715acf0964813b3a0d}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!UrqmdEventReader@{UrqmdEventReader}}
+\index{UrqmdEventReader@{UrqmdEventReader}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{UrqmdEventReader()}{UrqmdEventReader()}}
+{\footnotesize\ttfamily Urqmd\+Event\+Reader\+::\+Urqmd\+Event\+Reader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_event}{Event}} $\ast$}]{event,  }\item[{Generator\+Configuration $\ast$}]{configuration,  }\item[{TRandom $\ast$}]{random\+Generator,  }\item[{bool}]{debug\+Level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00030}{30}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_a148b25aaccd343d378fce5fd06bd17f8}\label{class_urqmd_event_reader_a148b25aaccd343d378fce5fd06bd17f8}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!````~UrqmdEventReader@{$\sim$UrqmdEventReader}}
+\index{````~UrqmdEventReader@{$\sim$UrqmdEventReader}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{$\sim$UrqmdEventReader()}{~UrqmdEventReader()}}
+{\footnotesize\ttfamily virtual Urqmd\+Event\+Reader\+::$\sim$\+Urqmd\+Event\+Reader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_urqmd_event_reader_abab56018f0e5c4949f98eee6210ece67}\label{class_urqmd_event_reader_abab56018f0e5c4949f98eee6210ece67}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!acceptPID@{acceptPID}}
+\index{acceptPID@{acceptPID}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{acceptPID()}{acceptPID()}}
+{\footnotesize\ttfamily bool Urqmd\+Event\+Reader\+::accept\+PID (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}}}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00102}{102}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_a7ef6414da3035a6fcc077c748d5a0350}\label{class_urqmd_event_reader_a7ef6414da3035a6fcc077c748d5a0350}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!Cut@{Cut}}
+\index{Cut@{Cut}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{Cut()}{Cut()}}
+{\footnotesize\ttfamily Int\+\_\+t Urqmd\+Event\+Reader\+::\+Cut (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00257}{257}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_a712b79102bfacbe97a1bc55664bc2785}\label{class_urqmd_event_reader_a712b79102bfacbe97a1bc55664bc2785}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!generate@{generate}}
+\index{generate@{generate}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{generate()}{generate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_event}{Event}} $\ast$ Urqmd\+Event\+Reader\+::generate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00117}{117}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_a60c035d195a6b7db974dbfefafc885db}\label{class_urqmd_event_reader_a60c035d195a6b7db974dbfefafc885db}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!GetEntry@{GetEntry}}
+\index{GetEntry@{GetEntry}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{GetEntry()}{GetEntry()}}
+{\footnotesize\ttfamily Int\+\_\+t Urqmd\+Event\+Reader\+::\+Get\+Entry (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00207}{207}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_a02102bbe491643300b6c37491aaf5094}\label{class_urqmd_event_reader_a02102bbe491643300b6c37491aaf5094}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!Init@{Init}}
+\index{Init@{Init}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Urqmd\+Event\+Reader\+::\+Init (\begin{DoxyParamCaption}\item[{TTree $\ast$}]{tree }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00227}{227}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_a6dbdbe7827b32437e4e227693e6b34df}\label{class_urqmd_event_reader_a6dbdbe7827b32437e4e227693e6b34df}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!initialize@{initialize}}
+\index{initialize@{initialize}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily virtual void Urqmd\+Event\+Reader\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_a89f46f8dd2a7e5a4c54c0d7a2b2e6337}\label{class_urqmd_event_reader_a89f46f8dd2a7e5a4c54c0d7a2b2e6337}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!LoadTree@{LoadTree}}
+\index{LoadTree@{LoadTree}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{LoadTree()}{LoadTree()}}
+{\footnotesize\ttfamily Long64\+\_\+t Urqmd\+Event\+Reader\+::\+Load\+Tree (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00214}{214}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_a5f205ed721675b0567443c6336bb7c1d}\label{class_urqmd_event_reader_a5f205ed721675b0567443c6336bb7c1d}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!Notify@{Notify}}
+\index{Notify@{Notify}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{Notify()}{Notify()}}
+{\footnotesize\ttfamily Bool\+\_\+t Urqmd\+Event\+Reader\+::\+Notify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00244}{244}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_adf496d7409a380effa05ee3018c3b30d}\label{class_urqmd_event_reader_adf496d7409a380effa05ee3018c3b30d}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!reset@{reset}}
+\index{reset@{reset}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily virtual void Urqmd\+Event\+Reader\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00093}{93}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_a5ed0b86a11b6e9c0718108db48bfa642}\label{class_urqmd_event_reader_a5ed0b86a11b6e9c0718108db48bfa642}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!Show@{Show}}
+\index{Show@{Show}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{Show()}{Show()}}
+{\footnotesize\ttfamily void Urqmd\+Event\+Reader\+::\+Show (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00251}{251}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_urqmd_event_reader_ac1b94928caa2918488c17e19b73bcabc}\label{class_urqmd_event_reader_ac1b94928caa2918488c17e19b73bcabc}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!anEvent@{anEvent}}
+\index{anEvent@{anEvent}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{anEvent}{anEvent}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ur_q_m_d_event}{Ur\+QMDEvent}}$\ast$ Urqmd\+Event\+Reader\+::an\+Event}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00278}{278}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}\label{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!fChain@{fChain}}
+\index{fChain@{fChain}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{fChain}{fChain}}
+{\footnotesize\ttfamily TTree$\ast$ Urqmd\+Event\+Reader\+::f\+Chain}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00268}{268}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_a9c6bbaa825cfad94e8847d458534cae4}\label{class_urqmd_event_reader_a9c6bbaa825cfad94e8847d458534cae4}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!fCurrent@{fCurrent}}
+\index{fCurrent@{fCurrent}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{fCurrent}{fCurrent}}
+{\footnotesize\ttfamily Int\+\_\+t Urqmd\+Event\+Reader\+::f\+Current}
+
+
+
+pointer to the analyzed TTree or TChain 
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00269}{269}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_aa6f52208496934cc231d6aa02f2a1646}\label{class_urqmd_event_reader_aa6f52208496934cc231d6aa02f2a1646}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!jentry@{jentry}}
+\index{jentry@{jentry}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{jentry}{jentry}}
+{\footnotesize\ttfamily long Urqmd\+Event\+Reader\+::jentry}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00275}{275}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_adce2c971e9582c250e2ad48ac810bcfc}\label{class_urqmd_event_reader_adce2c971e9582c250e2ad48ac810bcfc}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!nb@{nb}}
+\index{nb@{nb}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{nb}{nb}}
+{\footnotesize\ttfamily Long64\+\_\+t Urqmd\+Event\+Reader\+::nb}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00273}{273}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_a91d787d265e7feb9142158203a9d480b}\label{class_urqmd_event_reader_a91d787d265e7feb9142158203a9d480b}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!nbytes@{nbytes}}
+\index{nbytes@{nbytes}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{nbytes}{nbytes}}
+{\footnotesize\ttfamily Long64\+\_\+t Urqmd\+Event\+Reader\+::nbytes}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00272}{272}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_a3342ecb5ebbaafaa9d91f6bd4d3d6dda}\label{class_urqmd_event_reader_a3342ecb5ebbaafaa9d91f6bd4d3d6dda}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!nentries@{nentries}}
+\index{nentries@{nentries}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{nentries}{nentries}}
+{\footnotesize\ttfamily Long64\+\_\+t Urqmd\+Event\+Reader\+::nentries}
+
+
+
+current Tree number in a TChain 
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00271}{271}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_urqmd_event_reader_a7acc8b751169beed359db3127610601d}\label{class_urqmd_event_reader_a7acc8b751169beed359db3127610601d}} 
+\index{UrqmdEventReader@{UrqmdEventReader}!nleptons@{nleptons}}
+\index{nleptons@{nleptons}!UrqmdEventReader@{UrqmdEventReader}}
+\doxysubsubsection{\texorpdfstring{nleptons}{nleptons}}
+{\footnotesize\ttfamily long Urqmd\+Event\+Reader\+::nleptons}
+
+
+
+Definition at line \mbox{\hyperlink{_urqmd_event_reader_8hpp_source_l00280}{280}} of file \mbox{\hyperlink{_urqmd_event_reader_8hpp_source}{Urqmd\+Event\+Reader.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Urqmd/\mbox{\hyperlink{_urqmd_event_reader_8hpp}{Urqmd\+Event\+Reader.\+hpp}}\end{DoxyCompactItemize}

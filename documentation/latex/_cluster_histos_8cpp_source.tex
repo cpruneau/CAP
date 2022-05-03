@@ -1,0 +1,125 @@
+\hypertarget{_cluster_histos_8cpp_source}{}\doxysection{Cluster\+Histos.\+cpp}
+\label{_cluster_histos_8cpp_source}\index{Cluster/ClusterHistos.cpp@{Cluster/ClusterHistos.cpp}}
+\mbox{\hyperlink{_cluster_histos_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_cluster_histos_8hpp}{ClusterHistos.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00018}\mbox{\hyperlink{_cluster_histos_8cpp_a4d6b09cfb99ceba60665a0324b21f93d}{00018}} \mbox{\hyperlink{_cluster_histos_8cpp_a4d6b09cfb99ceba60665a0324b21f93d}{ClassImp}}(\mbox{\hyperlink{class_cluster_histos}{ClusterHistos}});}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00021}00021  \textcolor{comment}{// CTOR1}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00023}\mbox{\hyperlink{class_cluster_histos_a4e4637f778e514a5c22de06aa9973f87}{00023}} \textcolor{comment}{} \mbox{\hyperlink{class_cluster_histos_a4e4637f778e514a5c22de06aa9973f87}{ClusterHistos::ClusterHistos}}(\textcolor{keyword}{const} TString \& name,}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00024}00024                AnalysisConfiguration * configuration,}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00025}00025                \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}  debugLevel)}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00026}00026  :}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00027}00027  \mbox{\hyperlink{class_histograms}{Histograms}}(name,configuration,10,debugLevel),}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00028}00028  h\_cluster\_Npart(0),}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00029}00029  h\_cluster\_Pt(0),}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00030}00030  h\_cluster\_Phi(0),}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00031}00031  h\_cluster\_Y(0),}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00032}00032  h\_cluster\_Mass(0)}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00033}00033  \{}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00034}00034  \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterHistos::CTOR1() Started."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00035}00035  initialize();}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00036}00036  \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterHistos::CTOR1() Completed."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00037}00037  \}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00040}00040  \textcolor{comment}{// CTOR2}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00042}\mbox{\hyperlink{class_cluster_histos_acec6de3d22f2157a0eaa39a273428049}{00042}} \textcolor{comment}{} \mbox{\hyperlink{class_cluster_histos_a4e4637f778e514a5c22de06aa9973f87}{ClusterHistos::ClusterHistos}}(TFile * inputFile,}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00043}00043                \textcolor{keyword}{const} TString \& name,}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00044}00044                AnalysisConfiguration * configuration,}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00045}00045                \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}  debugLevel)}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00046}00046  :}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00047}00047  \mbox{\hyperlink{class_histograms}{Histograms}}(name,configuration,100,debugLevel),}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00048}00048  h\_cluster\_Npart(0),}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00049}00049  h\_cluster\_Pt(0),}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00050}00050  h\_cluster\_Phi(0),}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00051}00051  h\_cluster\_Y(0),}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00052}00052  h\_cluster\_Mass(0)}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00053}00053  \{}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00054}00054  \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterHistos::CTOR2() Started"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00055}00055  \mbox{\hyperlink{class_cluster_histos_ab5001305375fc5d09338a241dcc68c2a}{loadHistograms}}(inputFile);}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00056}00056  \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterHistos::CTOR2() Completed"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00057}00057  \}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00060}00060  \textcolor{comment}{// DTOR}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00062}\mbox{\hyperlink{class_cluster_histos_aac01a886fa311ef47a37eeb9dec570d7}{00062}} \textcolor{comment}{} \mbox{\hyperlink{class_cluster_histos_aac01a886fa311ef47a37eeb9dec570d7}{ClusterHistos::\string~ClusterHistos}}()}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00063}00063  \{}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00064}00064  \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterHistos::DTOR() No ops."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00065}00065  \}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00068}00068  \textcolor{comment}{// Initialize the cluster histograms}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00070}\mbox{\hyperlink{class_cluster_histos_ab4b31a52456da5d1d2dd031e1db2366b}{00070}} \textcolor{comment}{}  \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cluster_histos_ab4b31a52456da5d1d2dd031e1db2366b}{ClusterHistos::createHistograms}}()}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00071}00071  \{}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00072}00072  \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterHistos::initialize() Started."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00073}00073  AnalysisConfiguration \& ac = *(AnalysisConfiguration*) \mbox{\hyperlink{class_histograms_a832145197a059f198fddd24b39613a13}{getConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00074}00074  TString bn = \mbox{\hyperlink{class_histograms_aae59902c04cb1034e705f69545c9c1a9}{getHistoBaseName}}();}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00075}00075  TString yieldLabel = \textcolor{stringliteral}{"{}Counts"{}};}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00076}00076  \mbox{\hyperlink{class_cluster_histos_a5147e078d39c13e9b9e54d5db30dff7f}{h\_cluster\_Npart}} = \mbox{\hyperlink{class_histogram_collection_a5f7de86232efa5df2a9cdf659834450e}{createHistogram}}(bn+\textcolor{stringliteral}{"{}ClusterNpart"{}},ac.nBins\_nPartTot,ac.min\_nPartTot,ac.max\_nPartTot,\textcolor{stringliteral}{"{}Cluster N"{}},    yieldLabel, scaled, saved, notPlotted, notPrinted);}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00077}00077  \mbox{\hyperlink{class_cluster_histos_aded6f5c23da166c37745976ebf03ef6f}{h\_cluster\_Pt}}    = \mbox{\hyperlink{class_histogram_collection_a5f7de86232efa5df2a9cdf659834450e}{createHistogram}}(bn+\textcolor{stringliteral}{"{}ClusterPt"{}},   ac.nBins\_pt,      ac.min\_pt,      ac.max\_pt,      \textcolor{stringliteral}{"{}Cluster Pt"{}},   yieldLabel, scaled, saved, notPlotted, notPrinted);}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00078}00078  \mbox{\hyperlink{class_cluster_histos_afccff36577c5ff96619503dbe7ec73d6}{h\_cluster\_Phi}}   = \mbox{\hyperlink{class_histogram_collection_a5f7de86232efa5df2a9cdf659834450e}{createHistogram}}(bn+\textcolor{stringliteral}{"{}ClusterPhi"{}},  ac.nBins\_phi,     ac.min\_phi,     ac.max\_phi,     \textcolor{stringliteral}{"{}Cluster \#phi"{}}, yieldLabel, scaled, saved, notPlotted, notPrinted);}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00079}00079  \mbox{\hyperlink{class_cluster_histos_a5e95740ad225acf763158b780d470d39}{h\_cluster\_Y}}     = \mbox{\hyperlink{class_histogram_collection_a5f7de86232efa5df2a9cdf659834450e}{createHistogram}}(bn+\textcolor{stringliteral}{"{}ClusterY"{}},    ac.nBins\_eta,     ac.min\_eta,     ac.max\_eta,     \textcolor{stringliteral}{"{}Cluster Y"{}},    yieldLabel, scaled, saved, notPlotted, notPrinted);}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00080}00080  \mbox{\hyperlink{class_cluster_histos_a6250d72124cba99ea24e520a72c70a0b}{h\_cluster\_Mass}}  = \mbox{\hyperlink{class_histogram_collection_a5f7de86232efa5df2a9cdf659834450e}{createHistogram}}(bn+\textcolor{stringliteral}{"{}ClusterMass"{}}, 200, 0.0, 2.0, \textcolor{stringliteral}{"{}Cluster M"{}}, yieldLabel,scaled, saved, notPlotted, notPrinted);}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00082}00082  \textcolor{keywordflow}{if} (ac.fillQ3D)}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00083}00083    \{}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00084}00084    \mbox{\hyperlink{class_cluster_histos_af1b1ab071edd35e1cca45b9b3f9354fe}{h\_cluster\_Q3D}}   = \mbox{\hyperlink{class_histogram_collection_a5f7de86232efa5df2a9cdf659834450e}{createHistogram}}(bn+TString(\textcolor{stringliteral}{"{}n2\_Q3D\_Clus"{}}),ac.nBins\_DeltaPlong, ac.min\_DeltaPlong, ac.max\_DeltaPlong,}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00085}00085                                 ac.nBins\_DeltaPside, ac.min\_DeltaPside, ac.max\_DeltaPside,ac.nBins\_DeltaPout,  ac.min\_DeltaPout,  ac.max\_DeltaPout,}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00086}00086                                 \textcolor{stringliteral}{"{}Q\_\{long\} (GeV/c)"{}}, \textcolor{stringliteral}{"{}Q\_\{side\}  (GeV/c)"{}}, \textcolor{stringliteral}{"{}Q\_\{out\}  (GeV/c)"{}},\textcolor{stringliteral}{"{}Yield"{}}, scaled, saved, notPlotted, notPrinted);}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00087}00087    \}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00090}00090  \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterHistos::initialize() Completed."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00091}00091  \}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00094}00094  \textcolor{comment}{// load the cluster histograms from the given file and base name}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00096}\mbox{\hyperlink{class_cluster_histos_ab5001305375fc5d09338a241dcc68c2a}{00096}} \textcolor{comment}{} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cluster_histos_ab5001305375fc5d09338a241dcc68c2a}{ClusterHistos::loadHistograms}}(TFile * inputFile)}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00097}00097  \{}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00098}00098   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterHistos::loadHistograms(...) Started."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00099}00099  TString bn = \mbox{\hyperlink{class_histograms_aae59902c04cb1034e705f69545c9c1a9}{getHistoBaseName}}();}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00100}00100  \mbox{\hyperlink{class_cluster_histos_a5147e078d39c13e9b9e54d5db30dff7f}{h\_cluster\_Npart}} = \mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,bn+\textcolor{stringliteral}{"{}ClusterNpart"{}});}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00101}00101  \mbox{\hyperlink{class_cluster_histos_aded6f5c23da166c37745976ebf03ef6f}{h\_cluster\_Pt}}    = \mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,bn+\textcolor{stringliteral}{"{}ClusterPt"{}});}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00102}00102  \mbox{\hyperlink{class_cluster_histos_afccff36577c5ff96619503dbe7ec73d6}{h\_cluster\_Phi}}   = \mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,bn+\textcolor{stringliteral}{"{}ClusterPhi"{}});}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00103}00103  \mbox{\hyperlink{class_cluster_histos_a5e95740ad225acf763158b780d470d39}{h\_cluster\_Y}}     = \mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,bn+\textcolor{stringliteral}{"{}ClusterY"{}});}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00104}00104  \mbox{\hyperlink{class_cluster_histos_a6250d72124cba99ea24e520a72c70a0b}{h\_cluster\_Mass}}  = \mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,bn+\textcolor{stringliteral}{"{}ClusterMass"{}});}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00105}00105   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterHistos::loadHistograms(...) Completed."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00106}00106  \}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00109}00109  \textcolor{comment}{// fill the cluster histograms with the given cluster}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00111}\mbox{\hyperlink{class_cluster_histos_a07e9175122a69173d2c0fcf1894f25e9}{00111}} \textcolor{comment}{}  \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cluster_histos_a07e9175122a69173d2c0fcf1894f25e9}{ClusterHistos::fill}}(\mbox{\hyperlink{class_cluster}{Cluster}} * cluster, \textcolor{keywordtype}{double} weight)}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00112}00112  \{}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00113}00113  \mbox{\hyperlink{class_cluster_histos_a5147e078d39c13e9b9e54d5db30dff7f}{h\_cluster\_Npart}} -\/>Fill(\textcolor{keywordtype}{double}(cluster-\/>\mbox{\hyperlink{class_cluster_adad2f2501d611456597de9dbf87fda59}{nParticles}}));}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00114}00114  \mbox{\hyperlink{class_cluster_histos_aded6f5c23da166c37745976ebf03ef6f}{h\_cluster\_Pt}}    -\/>Fill(cluster-\/>\mbox{\hyperlink{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}{p}}.Pt());}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00115}00115  \mbox{\hyperlink{class_cluster_histos_afccff36577c5ff96619503dbe7ec73d6}{h\_cluster\_Phi}}   -\/>Fill(cluster-\/>\mbox{\hyperlink{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}{p}}.Phi());}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00116}00116  \mbox{\hyperlink{class_cluster_histos_a5e95740ad225acf763158b780d470d39}{h\_cluster\_Y}}     -\/>Fill(cluster-\/>\mbox{\hyperlink{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}{p}}.Rapidity());}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00117}00117  \mbox{\hyperlink{class_cluster_histos_a6250d72124cba99ea24e520a72c70a0b}{h\_cluster\_Mass}}  -\/>Fill(cluster-\/>\mbox{\hyperlink{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}{p}}.M());}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00119}00119  AnalysisConfiguration \& ac = *(AnalysisConfiguration*) \mbox{\hyperlink{class_histograms_a832145197a059f198fddd24b39613a13}{getConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00120}00120  \textcolor{keywordflow}{if} (ac.fillQ3D)}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00121}00121    \{}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00122}00122    \mbox{\hyperlink{class_cluster_histos_af1b1ab071edd35e1cca45b9b3f9354fe}{h\_cluster\_Q3D}}-\/>Fill(cluster-\/>\mbox{\hyperlink{class_cluster_ac762e7125269215dcf702b874a0ea333}{Qlong}}, cluster-\/>\mbox{\hyperlink{class_cluster_a14411271e09ebcaedfd452ddbc93745b}{Qside}}, cluster-\/>\mbox{\hyperlink{class_cluster_a666778c06f55c42df9579f870dcad1ac}{Qout}}, weight);}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00123}00123    \}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00124}00124  \}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00126}00126 }
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00127}\mbox{\hyperlink{class_cluster_histos_a53453d0b73044774d6e3c9ece0817966}{00127}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cluster_histos_a53453d0b73044774d6e3c9ece0817966}{ClusterHistos::finalize}}()}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00128}00128  \{}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00129}00129   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterHistos::loadHistograms(...) Started."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00130}00130  AnalysisConfiguration \& ac = *(AnalysisConfiguration*) \mbox{\hyperlink{class_histograms_a832145197a059f198fddd24b39613a13}{getConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00131}00131  \textcolor{keywordflow}{if} (ac.fillQ3D)}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00132}00132    \{}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00133}00133    \mbox{\hyperlink{class_cluster_histos_aaae25691198474a37e8f1418124a32fa}{h\_cluster\_Q3D\_xy}} = (TH2 *) \mbox{\hyperlink{class_cluster_histos_af1b1ab071edd35e1cca45b9b3f9354fe}{h\_cluster\_Q3D}}-\/>Project3D(\textcolor{stringliteral}{"{}xy"{}});     addToList(\mbox{\hyperlink{class_cluster_histos_aaae25691198474a37e8f1418124a32fa}{h\_cluster\_Q3D\_xy}}, notScaled, saved, plotted, printed);}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00134}00134    \mbox{\hyperlink{class_cluster_histos_a1130dd16c92c93b8f2cad338ae53e2f4}{h\_cluster\_Q3D\_xz}} = (TH2 *) \mbox{\hyperlink{class_cluster_histos_af1b1ab071edd35e1cca45b9b3f9354fe}{h\_cluster\_Q3D}}-\/>Project3D(\textcolor{stringliteral}{"{}xz"{}});     addToList(\mbox{\hyperlink{class_cluster_histos_a1130dd16c92c93b8f2cad338ae53e2f4}{h\_cluster\_Q3D\_xz}}, notScaled, saved, plotted, printed);}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00135}00135    \mbox{\hyperlink{class_cluster_histos_af155ce07402b5e3e6e2fbf5fb0a4909c}{h\_cluster\_Q3D\_yz}} = (TH2 *) \mbox{\hyperlink{class_cluster_histos_af1b1ab071edd35e1cca45b9b3f9354fe}{h\_cluster\_Q3D}}-\/>Project3D(\textcolor{stringliteral}{"{}yz"{}});     addToList(\mbox{\hyperlink{class_cluster_histos_af155ce07402b5e3e6e2fbf5fb0a4909c}{h\_cluster\_Q3D\_yz}}, notScaled, saved, plotted, printed);}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00136}00136    \}}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00137}00137   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterHistos::loadHistograms(...) Completed."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_histos_8cpp_source_l00138}00138  \}}
+
+\end{DoxyCode}

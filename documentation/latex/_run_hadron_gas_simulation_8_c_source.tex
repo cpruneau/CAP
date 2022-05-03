@@ -1,0 +1,361 @@
+\hypertarget{_run_hadron_gas_simulation_8_c_source}{}\doxysection{Run\+Hadron\+Gas\+Simulation.\+C}
+\label{_run_hadron_gas_simulation_8_c_source}\index{Macros/RunHadronGasSimulation.C@{Macros/RunHadronGasSimulation.C}}
+\mbox{\hyperlink{_run_hadron_gas_simulation_8_c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00001}00001 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00002}00002 \textcolor{comment}{//  calculate the thermodynamic quantities of hadron resonance gas}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00003}00003 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00004}00004 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00005}00005 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00006}00006 \textcolor{preprocessor}{\#include <TStyle.h>}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00007}00007 \textcolor{preprocessor}{\#include <TROOT.h>}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00008}00008 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00011}\mbox{\hyperlink{_run_hadron_gas_simulation_8_c_ac09041c0238dc7f2bec68bbad315d822}{00011}} \textcolor{keywordtype}{int} \mbox{\hyperlink{_run_hadron_gas_simulation_8_c_ac09041c0238dc7f2bec68bbad315d822}{RunHadronGasSimulation}}()}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00012}00012 \{}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00013}00013   TString includesPath = getenv(\textcolor{stringliteral}{"{}WAC\_SRC"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00014}00014   includesPath += \textcolor{stringliteral}{"{}/Base/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00015}00015   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}MessageLogger.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00016}00016   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}TaskConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00017}00017   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Task.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00018}00018   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}TaskIterator.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00019}00019   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}GraphConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00020}00020   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Collection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00021}00021   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}CanvasCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00022}00022   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}HistogramCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00023}00023   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}CanvasConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00024}00024   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Histograms.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00025}00025   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Plotter.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00026}00026   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Particle.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00027}00027   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticleType.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00028}00028   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticleTypeCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00029}00029   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticleDecayMode.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00030}00030   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticleDecayerTask.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00031}00031   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticleAnalyzerV2.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00032}00032   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticlePairAnalyzerV2.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00033}00033   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}RadialBoostTask.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00034}00034   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}SubSampleStatCalculator.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00035}00035   gSystem-\/>Load(\textcolor{stringliteral}{"{}libBase.dylib"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00037}00037   \textcolor{comment}{//  includesPath = "{}/Users/claudeapruneau/Documents/GitHub/WAC/WacPythia/"{};}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00038}00038   \textcolor{comment}{//  gSystem-\/>Load(includesPath+"{}PythiaConfiguration.hpp"{});}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00039}00039   \textcolor{comment}{//  gSystem-\/>Load(includesPath+"{}PythiaEventGenerator.hpp"{});}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00040}00040   \textcolor{comment}{//  gSystem-\/>Load(includesPath+"{}PythiaEventReader.hpp"{});}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00041}00041   \textcolor{comment}{//  gSystem-\/>Load("{}libWacPythia.dylib"{});}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00043}00043   includesPath = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/WAC/HadronGas/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00044}00044   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}HadronGas.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00045}00045   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}HadronGasGeneratorConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00046}00046   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}HadronGasHistograms.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00047}00047   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}HadronGasVsTempHistograms.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00048}00048   gSystem-\/>Load(\textcolor{stringliteral}{"{}libHadronGas.dylib"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00050}00050   \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}} messageLevel =  \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{MessageLogger::Info}}; \textcolor{comment}{// MessageLogger::Debug; //}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00051}00051   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} nEventRequested   = 10000000-\/1;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00052}00052   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} nEventReported    =  1000000;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00053}00053   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} nEventPartialSave =  1000000;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00054}00054   \textcolor{keywordtype}{bool}    partialSave             = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00055}00055   \textcolor{keywordtype}{bool}    subsampleAnalysis       = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00056}00056   \textcolor{keywordtype}{double}  minBias                 = \textcolor{keyword}{true}; \textcolor{comment}{// alternative is AliceV0}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00057}00057   TString outputFileNameBase      = \textcolor{stringliteral}{"{}HG\_Isotropic\_200MeV\_"{}};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00058}00058   TString inputPathName           = getenv(\textcolor{stringliteral}{"{}WAC\_INPUT\_PATH"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00059}00059   TString outputPathName          = getenv(\textcolor{stringliteral}{"{}WAC\_OUTPUT\_PATH"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00060}00060   inputPathName  += \textcolor{stringliteral}{"{}/HG/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00061}00061   outputPathName = \textcolor{stringliteral}{"{}/Volumes/ClaudeDisc4/OutputFiles/HG/Wide/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00062}00062   gSystem-\/>mkdir(outputPathName,1);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00064}00064   std::cout << \textcolor{stringliteral}{"{}=================================================================================="{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00065}00065   std::cout << \textcolor{stringliteral}{"{}Hadron Gas Model Analysis "{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00066}00066   std::cout << \textcolor{stringliteral}{"{}=================================================================================="{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00067}00067   TString pdgDataTable = getenv(\textcolor{stringliteral}{"{}WAC\_SRC"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00068}00068   pdgDataTable += \textcolor{stringliteral}{"{}/EOS/pdg.dat"{}};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00069}00069   \mbox{\hyperlink{class_particle_type_collection}{ParticleTypeCollection}} * particles = \mbox{\hyperlink{class_particle_type_collection_a278cbb74300003089d2d4e8fd4f1dc02}{ParticleTypeCollection::getMasterParticleCollection}}(); \textcolor{comment}{//ParticleTypeCollection::getMasterParticleCollection();}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00070}00070   particles-\/>\mbox{\hyperlink{class_particle_type_collection_a047c28d219ddb27d9814ffbfeeb1fbcc}{readFromFile}}(pdgDataTable);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00071}00071   \textcolor{comment}{//particles-\/>printProperties(std::cout);}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00072}00072   \mbox{\hyperlink{class_particle_type_collection}{ParticleTypeCollection}} * stableParticles = particles-\/>\mbox{\hyperlink{class_particle_type_collection_ae9156cd0aff9cdfd0fa1b7f98236701d}{extractCollection}}(1);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00073}00073   \textcolor{comment}{//stableParticles-\/>printProperties(std::cout);}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00075}00075 \textcolor{comment}{//  ofstream decayList;}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00076}00076 \textcolor{comment}{//  decayList.open ("{}fullDecayList.tex"{});}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00077}00077 \textcolor{comment}{//  particles-\/>printDecayProperties(decayList);}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00078}00078 \textcolor{comment}{//  decayList.close();}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00080}00080   CollisionGeometryConfiguration * cggConfig = \textcolor{keyword}{new} CollisionGeometryConfiguration();}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00081}00081   cggConfig-\/>forceHistogramsRewrite = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00082}00082   cggConfig-\/>nnCrossSection         = 6.4; \textcolor{comment}{// cross section must be adjusted for beam energy.}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00083}00083   cggConfig-\/>outputPath             = outputPathName;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00084}00084   cggConfig-\/>rootOuputFileName      = outputFileNameBase;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00086}00086   HadronGasGeneratorConfiguration * hggc = \textcolor{keyword}{new} HadronGasGeneratorConfiguration();}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00087}00087   hggc-\/>nKineticTemp    = 1;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00088}00088   hggc-\/>minKineticTemp  = 0.160;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00089}00089   hggc-\/>maxKineticTemp  = 0.160;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00090}00090   hggc-\/>kineticTemp     = 0.160;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00091}00091   hggc-\/>nChemicalTemp   = 1;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00092}00092   hggc-\/>minChemicalTemp = 0.200;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00093}00093   hggc-\/>maxChemicalTemp = 0.200;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00094}00094   hggc-\/>chemicalTemp    = 0.200;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00095}00095   hggc-\/>nMuB            = 1;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00096}00096   hggc-\/>minMuB          = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00097}00097   hggc-\/>maxMuB          = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00098}00098   hggc-\/>muB             = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00099}00099   hggc-\/>nMuS            = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00100}00100   hggc-\/>minMuS          = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00101}00101   hggc-\/>maxMuS          = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00102}00102   hggc-\/>muS             = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00103}00103   hggc-\/>volume          = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00104}00104   hggc-\/>minTotalMult    = 20;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00105}00105   hggc-\/>maxTotalMult    = 50;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00106}00106   hggc-\/>minY            = -\/4.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00107}00107   hggc-\/>maxY            =  4.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00108}00108   hggc-\/>generatorType   = \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5ac324dfaff7d218084c013e1db71bd779}{MomentumGenerator::CylindricalMaxwellPtUniformY}};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00109}00109   hggc-\/>standaloneMode      = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00110}00110   hggc-\/>useEventStream0     = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00111}00111   hggc-\/>dataInputUsed       = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00112}00112   hggc-\/>dataInputFileName   = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00113}00113   hggc-\/>createHistograms    = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00114}00114   hggc-\/>scaleHistograms     = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00115}00115   hggc-\/>saveHistograms      = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00116}00116   hggc-\/>subsampleAnalysis   = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00117}00117   hggc-\/>partialSave         = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00118}00118   hggc-\/>outputPath          = outputPathName;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00119}00119   hggc-\/>rootOuputFileName   = outputFileNameBase;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00122}00122   GlobalAnalyzerConfiguration * gConfig = \textcolor{keyword}{new} GlobalAnalyzerConfiguration();}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00123}00123   gConfig-\/>useEventStream0             = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00124}00124   gConfig-\/>loadHistograms              = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00125}00125   gConfig-\/>createHistograms            = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00126}00126   gConfig-\/>scaleHistograms             = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00127}00127   gConfig-\/>calculateDerivedHistograms  = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00128}00128   gConfig-\/>saveHistograms              = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00129}00129   gConfig-\/>forceHistogramsRewrite      = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00130}00130   gConfig-\/>subsampleAnalysis           = subsampleAnalysis;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00131}00131   gConfig-\/>partialSave                 = partialSave;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00132}00132   gConfig-\/>outputPath                  = outputPathName;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00133}00133   gConfig-\/>rootOuputFileName           = outputFileNameBase;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00134}00134   gConfig-\/>countParticles              = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00135}00135   gConfig-\/>setEvent                    = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00136}00136   gConfig-\/>fillCorrelationHistos       = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00137}00137   gConfig-\/>nBins\_n  = 400;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00138}00138   gConfig-\/>nBins\_n2 = 40;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00139}00139   gConfig-\/>min\_n    = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00140}00140   gConfig-\/>max\_n    = 400;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00141}00141   gConfig-\/>nBins\_e  = 200;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00142}00142   gConfig-\/>nBins\_e2 = 20;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00143}00143   gConfig-\/>min\_e    = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00144}00144   gConfig-\/>max\_e    = 1000.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00145}00145   gConfig-\/>nBins\_q  = 200;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00146}00146   gConfig-\/>nBins\_q2 = 20;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00147}00147   gConfig-\/>min\_q    = -\/20.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00148}00148   gConfig-\/>max\_q    = 20.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00149}00149   gConfig-\/>nBins\_b  = 200;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00150}00150   gConfig-\/>nBins\_b2 = 200;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00151}00151   gConfig-\/>min\_b    = -\/20.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00152}00152   gConfig-\/>max\_b    = 20.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00153}00153   gConfig-\/>validate();}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00154}00154   GlobalAnalyzerConfiguration * gConfig2 = \textcolor{keyword}{new} GlobalAnalyzerConfiguration(*gConfig);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00155}00155   gConfig2-\/>setEvent  = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00157}00157 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00158}00158   ParticleAnalyzerConfiguration * p1Config = \textcolor{keyword}{new} ParticleAnalyzerConfiguration();}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00159}00159   p1Config-\/>useEventStream0             = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00160}00160   p1Config-\/>loadHistograms              = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00161}00161   p1Config-\/>createHistograms            = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00162}00162   p1Config-\/>scaleHistograms             = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00163}00163   p1Config-\/>calculateDerivedHistograms  = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00164}00164   p1Config-\/>saveHistograms              = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00165}00165   p1Config-\/>forceHistogramsRewrite      = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00166}00166   p1Config-\/>partialSave                 = partialSave;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00167}00167   p1Config-\/>subsampleAnalysis           = subsampleAnalysis;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00168}00168   p1Config-\/>inputPath                   = inputPathName;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00169}00169   p1Config-\/>outputPath                  = outputPathName;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00170}00170   p1Config-\/>rootOuputFileName           = outputFileNameBase;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00171}00171 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00172}00172   p1Config-\/>fillEta     = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00173}00173   p1Config-\/>fillY       = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00174}00174   p1Config-\/>fillP2      = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00175}00175   p1Config-\/>nBins\_n1    = 200;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00176}00176   p1Config-\/>min\_n1      = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00177}00177   p1Config-\/>max\_n1      = 200.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00178}00178   p1Config-\/>nBins\_eTot  = 100;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00179}00179   p1Config-\/>min\_eTot    = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00180}00180   p1Config-\/>max\_eTot    = 1000.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00181}00181   p1Config-\/>nBins\_pt    = 400;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00182}00182   p1Config-\/>min\_pt      = 0.00;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00183}00183   p1Config-\/>max\_pt      = 4.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00184}00184   p1Config-\/>nBins\_eta   = 40;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00185}00185   p1Config-\/>min\_eta     = -\/2;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00186}00186   p1Config-\/>max\_eta     =  2;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00187}00187   p1Config-\/>nBins\_y     = 40;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00188}00188   p1Config-\/>min\_y       = -\/2;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00189}00189   p1Config-\/>max\_y       = 2;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00190}00190   p1Config-\/>nBins\_phi   = 36;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00191}00191   p1Config-\/>min\_phi     = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00192}00192   p1Config-\/>max\_phi     = 2.0*3.1415927;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00193}00193   p1Config-\/>validate();}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00194}00194 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00195}00195 \textcolor{comment}{//  nBins\_n1(100),          min\_n1(0.0),    max\_n1(10000.0), range\_n1(10000.0),}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00196}00196 \textcolor{comment}{//  nBins\_eTot(100),        min\_eTot(0.0),  max\_eTot(1.0E6), range\_eTot(1.0E6),}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00197}00197   RadialBoostConfiguration * rbc = \textcolor{keyword}{new} RadialBoostConfiguration();}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00198}00198   rbc-\/>useEventStream0   = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00199}00199   rbc-\/>loadHistograms    = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00200}00200   rbc-\/>createHistograms  = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00201}00201   rbc-\/>scaleHistograms   = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00202}00202   rbc-\/>saveHistograms         = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00203}00203   rbc-\/>forceHistogramsRewrite = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00204}00204   rbc-\/>param\_a     = 0.4;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00205}00205   rbc-\/>param\_b     = 1.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00206}00206   rbc-\/>betaMaximum = 0.999;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00207}00207   rbc-\/>baseName    = \textcolor{stringliteral}{"{}CGGA"{}};\textcolor{comment}{// CG/PbPb/PbPb\_Geom\_Gradients.root"{};}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00208}00208   rbc-\/>inputPath   = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/WAC4/data//OutputFiles/CG/PbPb/"{}}; \textcolor{comment}{//  PbPb\_Geom\_Gradients.root;}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00209}00209   rbc-\/>rootInputFileName = \textcolor{stringliteral}{"{}Geom\_CGGA\_Gradients.root"{}};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00210}00210   rbc-\/>outputPath        = outputPathName;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00211}00211   rbc-\/>rootOuputFileName = outputFileNameBase;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00212}00212 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00213}00213   ParticlePairAnalyzerConfiguration * p2Config = \textcolor{keyword}{new} ParticlePairAnalyzerConfiguration();}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00214}00214   p2Config-\/>useEventStream0             = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00215}00215   p2Config-\/>createHistograms            = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00216}00216   p2Config-\/>scaleHistograms             = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00217}00217   p2Config-\/>calculateDerivedHistograms  = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00218}00218   p2Config-\/>calculateCombinedHistograms = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00219}00219   p2Config-\/>saveHistograms              = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00220}00220   p2Config-\/>forceHistogramsRewrite      = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00221}00221   p2Config-\/>partialSave                 = partialSave;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00222}00222   p2Config-\/>subsampleAnalysis           = subsampleAnalysis;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00223}00223   p2Config-\/>inputPath                   = inputPathName;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00224}00224   p2Config-\/>outputPath                  = outputPathName;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00225}00225   p2Config-\/>rootOuputFileName           = outputFileNameBase;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00226}00226   p2Config-\/>fillEta     = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00227}00227   p2Config-\/>fillY       = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00228}00228   p2Config-\/>fillP2      = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00229}00229   p2Config-\/>nBins\_n1    = 100;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00230}00230   p2Config-\/>min\_n1      = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00231}00231   p2Config-\/>max\_n1      = 100.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00232}00232   p2Config-\/>nBins\_n2    = 100;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00233}00233   p2Config-\/>min\_n2      = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00234}00234   p2Config-\/>max\_n2      = 400.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00235}00235   p2Config-\/>nBins\_pt    = 400;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00236}00236   p2Config-\/>min\_pt      = 0.00;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00237}00237   p2Config-\/>max\_pt      = 4.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00238}00238   p2Config-\/>nBins\_eta   = 40;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00239}00239   p2Config-\/>min\_eta     = -\/2;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00240}00240   p2Config-\/>max\_eta     = 2;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00241}00241   p2Config-\/>nBins\_y     = 40;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00242}00242   p2Config-\/>min\_y       = -\/2;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00243}00243   p2Config-\/>max\_y       = 2;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00244}00244   p2Config-\/>nBins\_phi   = 36;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00245}00245   p2Config-\/>min\_phi     = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00246}00246   p2Config-\/>max\_phi     = 2.0*3.1415927;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00247}00247   p2Config-\/>validate();}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00248}00248 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00250}00250   ParticlePairAnalyzerConfiguration * p2ConfigHadron = \textcolor{keyword}{new} ParticlePairAnalyzerConfiguration();}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00251}00251   p2ConfigHadron-\/>useEventStream0             = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00252}00252   p2ConfigHadron-\/>createHistograms            = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00253}00253   p2ConfigHadron-\/>scaleHistograms             = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00254}00254   p2ConfigHadron-\/>calculateDerivedHistograms  = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00255}00255   p2ConfigHadron-\/>calculateCombinedHistograms = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00256}00256   p2ConfigHadron-\/>saveHistograms              = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00257}00257   p2ConfigHadron-\/>forceHistogramsRewrite      = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00258}00258   p2ConfigHadron-\/>partialSave                 = partialSave;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00259}00259   p2ConfigHadron-\/>subsampleAnalysis           = subsampleAnalysis;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00260}00260   p2ConfigHadron-\/>inputPath                   = inputPathName;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00261}00261   p2ConfigHadron-\/>outputPath                  = outputPathName;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00262}00262   p2ConfigHadron-\/>rootOuputFileName           = outputFileNameBase;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00263}00263   p2ConfigHadron-\/>fillEta     = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00264}00264   p2ConfigHadron-\/>fillY       = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00265}00265   p2ConfigHadron-\/>fillP2      = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00266}00266   p2ConfigHadron-\/>nBins\_n1    = 100;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00267}00267   p2ConfigHadron-\/>min\_n1      = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00268}00268   p2ConfigHadron-\/>max\_n1      = 100.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00269}00269   p2ConfigHadron-\/>nBins\_n2    = 100;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00270}00270   p2ConfigHadron-\/>min\_n2      = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00271}00271   p2ConfigHadron-\/>max\_n2      = 400.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00272}00272   p2ConfigHadron-\/>nBins\_pt    = 400;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00273}00273   p2ConfigHadron-\/>min\_pt      = 0.00;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00274}00274   p2ConfigHadron-\/>max\_pt      = 4.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00275}00275   p2ConfigHadron-\/>nBins\_eta   = 40;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00276}00276   p2ConfigHadron-\/>min\_eta     = -\/2;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00277}00277   p2ConfigHadron-\/>max\_eta     = 2;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00278}00278   p2ConfigHadron-\/>nBins\_y     = 40;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00279}00279   p2ConfigHadron-\/>min\_y       = -\/2;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00280}00280   p2ConfigHadron-\/>max\_y       = 2;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00281}00281   p2ConfigHadron-\/>nBins\_phi   = 36;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00282}00282   p2ConfigHadron-\/>min\_phi     = 0.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00283}00283   p2ConfigHadron-\/>max\_phi     = 2.0*3.1415927;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00284}00284   p2ConfigHadron-\/>validate();}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00285}00285 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00286}00286 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00287}00287   cout << \textcolor{stringliteral}{"{}Now, let's setup the pdg list"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00288}00288 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00289}00289   vector<int> allPdgCodes;     allPdgCodes = particles-\/>\mbox{\hyperlink{class_particle_type_collection_aa237db71cc65699fda93e03c42446fc4}{getListOfPdgCodes}}();}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00290}00290   vector<int> stablePdgCodes;  stablePdgCodes = stableParticles-\/>\mbox{\hyperlink{class_particle_type_collection_aa237db71cc65699fda93e03c42446fc4}{getListOfPdgCodes}}();}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00291}00291 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00292}00292   \mbox{\hyperlink{class_event_filter}{EventFilter}} * openEventFilter = \textcolor{keyword}{new} \mbox{\hyperlink{class_event_filter}{EventFilter}}(EventFilter::MinBias,0.0,0.0);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00293}00293   vector<EventFilter*>    eventFilters;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00294}00294   eventFilters.push\_back( openEventFilter);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00295}00295 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00296}00296   \textcolor{keywordtype}{double} minPt  =  0.001;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00297}00297   \textcolor{keywordtype}{double} maxPt  = 10.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00298}00298   \textcolor{keywordtype}{double} minEta = -\/2.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00299}00299   \textcolor{keywordtype}{double} maxEta =  2.0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00300}00300 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00301}00301   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}} * openPartFilter  = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}(\textcolor{keyword}{false}, 0.0000, 100.0, \textcolor{keyword}{false}, -\/4.0, 4.0, \textcolor{keyword}{false}, 10.0, -\/10.0,ParticleFilter::Hadron,ParticleFilter::AllCharges,ParticleFilter::Live);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00302}00302   vector<ParticleFilter*> particleFilterSet0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00303}00303   particleFilterSet0.push\_back( openPartFilter);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00304}00304   vector<ParticleFilter*>  particleFiltersAllHG       = ParticleFilter::createMultiplePdgFilters(    \textcolor{keyword}{true}, minPt, maxPt, \textcolor{keyword}{true}, minEta, maxEta, \textcolor{keyword}{false}, minEta, maxEta,allPdgCodes);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00305}00305   vector<ParticleFilter*>  particleFiltersStable      = ParticleFilter::createMultiplePdgFilters(    \textcolor{keyword}{true}, minPt, maxPt, \textcolor{keyword}{true}, minEta, maxEta, \textcolor{keyword}{false}, minEta, maxEta,stablePdgCodes);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00306}00306   vector<ParticleFilter*>  particleFiltersChargedH    = \mbox{\hyperlink{class_particle_filter_ab0958a5a13805f4b8c7f7b290276f89f}{ParticleFilter::createChargedHadronFilters}}(  \textcolor{keyword}{true}, minPt, maxPt, \textcolor{keyword}{true}, minEta, maxEta, \textcolor{keyword}{false}, minEta, maxEta);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00307}00307   vector<ParticleFilter*>  particleFiltersChargedPiKP = \mbox{\hyperlink{class_particle_filter_a438da9d967a7c1bef4343afae70a17a4}{ParticleFilter::createPlusMinusHadronFilters}}(\textcolor{keyword}{true}, minPt, maxPt,\textcolor{keyword}{false}, minEta, maxEta, \textcolor{keyword}{true},  minEta, maxEta);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00308}00308 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00309}00309 \textcolor{comment}{//  vector<EventFilter*> eventFiltersRadialBoost;}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00310}00310 \textcolor{comment}{//  vector<double> limits = \{ 0.0, 0.5, 1.0, 2.0, 3.0, 4.0, 6.0, 8.0, 10.0, 12.0, 16.0, 20.0\};}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00311}00311 \textcolor{comment}{//  eventFiltersRadialBoost = EventFilter::createEventFilterSet(EventFilter::ImpactParameter,limits);}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00312}00312 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00313}00313   cout << \textcolor{stringliteral}{"{}Now, instantiating tasks..."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00314}00314 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00315}00315   \textcolor{comment}{//CollisionGeometryGenerator * collisionGeomGenerator = new CollisionGeometryGenerator("{}CGG"{}, cggConfig,eventFilters,messageLevel);}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00316}00316   \mbox{\hyperlink{class_hadron_gas_generator_task}{HadronGasGeneratorTask}}     * hadronGasGeneratorTask = \textcolor{keyword}{new} \mbox{\hyperlink{class_hadron_gas_generator_task}{HadronGasGeneratorTask}}(\textcolor{stringliteral}{"{}HadronGasGenerator"{}},hggc,messageLevel);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00317}00317   \mbox{\hyperlink{class_particle_decayer_task}{ParticleDecayerTask}}        * decayer                = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_decayer_task}{ParticleDecayerTask}}();}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00318}00318   \mbox{\hyperlink{class_radial_boost_task}{RadialBoostTask}}            * r1                     = \textcolor{keyword}{new} \mbox{\hyperlink{class_radial_boost_task}{RadialBoostTask}} (\textcolor{stringliteral}{"{}R1"{}}, rbc,       eventFilters, messageLevel);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00319}00319   \mbox{\hyperlink{class_global_analyzer}{GlobalAnalyzer}}             * gND                    = \textcolor{keyword}{new} \mbox{\hyperlink{class_global_analyzer}{GlobalAnalyzer}}  (\textcolor{stringliteral}{"{}gND"{}},gConfig,   eventFilters, particleFilterSet0, messageLevel);  \textcolor{comment}{// generated}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00320}00320   \mbox{\hyperlink{class_global_analyzer}{GlobalAnalyzer}}             * gWD                    = \textcolor{keyword}{new} \mbox{\hyperlink{class_global_analyzer}{GlobalAnalyzer}}  (\textcolor{stringliteral}{"{}gWD"{}},gConfig2,  eventFilters, particleFilterSet0, messageLevel);  \textcolor{comment}{// boosted}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00321}00321   \textcolor{comment}{//GlobalAnalyzer   * g1Bs    = new GlobalAnalyzer  ("{}G1Bs"{},ga,  eventFilters, particleFilterSet0, messageLevel);  // boosted}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00322}00322   \textcolor{comment}{//ParticleAnalyzerV2 * p1All             = new ParticleAnalyzerV2("{}P1All"{},        p1Config,  eventFilters, particleFiltersAllHG,         messageLevel);  // analysis w/o decays}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00323}00323   ParticleAnalyzerV2 * p1Stable0         = \textcolor{keyword}{new} ParticleAnalyzerV2(\textcolor{stringliteral}{"{}P1Stable0"{}},    p1Config,  eventFilters, particleFiltersStable,        messageLevel);  \textcolor{comment}{// analysis w/o decays}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00324}00324   ParticleAnalyzerV2 * p1Stable          = \textcolor{keyword}{new} ParticleAnalyzerV2(\textcolor{stringliteral}{"{}P1Stable"{}},     p1Config,  eventFilters, particleFiltersStable,        messageLevel);  \textcolor{comment}{// analysis w/o decays}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00325}00325   ParticleAnalyzerV2 * p1ChargedH0       = \textcolor{keyword}{new} ParticleAnalyzerV2(\textcolor{stringliteral}{"{}P1ChargedH0"{}},  p1Config,  eventFilters, particleFiltersChargedH,      messageLevel);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00326}00326   ParticleAnalyzerV2 * p1ChargedH        = \textcolor{keyword}{new} ParticleAnalyzerV2(\textcolor{stringliteral}{"{}P1ChargedH"{}},   p1Config,  eventFilters, particleFiltersChargedH,      messageLevel);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00327}00327   ParticleAnalyzerV2 * p1ChargedPiKP0    = \textcolor{keyword}{new} ParticleAnalyzerV2(\textcolor{stringliteral}{"{}P1ChargedPiKP0"{}},p1Config,  eventFilters, particleFiltersChargedPiKP,   messageLevel);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00328}00328   ParticleAnalyzerV2 * p1ChargedPiKP     = \textcolor{keyword}{new} ParticleAnalyzerV2(\textcolor{stringliteral}{"{}P1ChargedPiKP"{}},p1Config,  eventFilters, particleFiltersChargedPiKP,   messageLevel);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00329}00329   \textcolor{comment}{//ParticlePairAnalyzerV2 * p2Stable      = new ParticlePairAnalyzerV2("{}P2Stable"{},      p2Config, eventFilters, particleFiltersStable,      messageLevel);}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00330}00330   ParticlePairAnalyzerV2 * p2ChargedH    = \textcolor{keyword}{new} ParticlePairAnalyzerV2(\textcolor{stringliteral}{"{}P2ChargedH"{}},    p2ConfigHadron, eventFilters, particleFiltersChargedH,    messageLevel);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00331}00331   ParticlePairAnalyzerV2 * p2ChargedPiKP = \textcolor{keyword}{new} ParticlePairAnalyzerV2(\textcolor{stringliteral}{"{}P2ChargedPiKP"{}}, p2Config, eventFilters, particleFiltersChargedPiKP, messageLevel);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00332}00332 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00333}00333   \mbox{\hyperlink{class_task_iterator}{TaskIterator}} * masterTask = \textcolor{keyword}{new} \mbox{\hyperlink{class_task_iterator}{TaskIterator}}();}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00334}00334   masterTask-\/>\mbox{\hyperlink{class_task_a82427919c7eaa15090057d60ab7d89ec}{setName}}(\textcolor{stringliteral}{"{}IteratorTask"{}});}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00335}00335   masterTask-\/>\mbox{\hyperlink{class_task_iterator_aeab63ef531696d68920f63d2a54adad7}{setNEventRequested}}(nEventRequested);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00336}00336   masterTask-\/>\mbox{\hyperlink{class_task_iterator_a20e711f941e26c763f2860b00163d29f}{setNEventReported}}(nEventReported);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00337}00337   masterTask-\/>\mbox{\hyperlink{class_message_logger_a1e9ef2ba565687d36d69c772c9451149}{setReportLevel}}(messageLevel);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00338}00338   masterTask-\/>\mbox{\hyperlink{class_task_iterator_a2ef80a0c5e980813dbabebf48d5d5578}{setNEventPartialSave}}(nEventPartialSave);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00339}00339   masterTask-\/>\mbox{\hyperlink{class_task_iterator_a216949f75ce876276bb32fe44afb6033}{setPartialSave}}(partialSave);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00340}00340   masterTask-\/>\mbox{\hyperlink{class_task_iterator_a99a9e22a7ef375a21b25278367a15354}{setSubsampleAnalysis}}(subsampleAnalysis);}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00341}00341   \textcolor{comment}{//masterTask-\/>addSubtask( collisionGeomGenerator );}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00342}00342   masterTask-\/>\mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{addSubtask}}( hadronGasGeneratorTask );}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00343}00343   masterTask-\/>\mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{addSubtask}}( gND      );}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00344}00344   \textcolor{comment}{//masterTask-\/>addSubtask( p1ChargedPiKP0 );}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00345}00345   masterTask-\/>\mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{addSubtask}}( decayer     );}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00346}00346   \textcolor{comment}{//masterTask-\/>addSubtask( gWD      );}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00347}00347   \textcolor{comment}{//masterTask-\/>addSubtask( p1ChargedPiKP  );}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00348}00348   \textcolor{comment}{//masterTask-\/>addSubtask( p2Stable      );}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00349}00349   masterTask-\/>\mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{addSubtask}}( p2ChargedH    );}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00350}00350   \textcolor{comment}{//masterTask-\/>addSubtask( p2ChargedPiKP );}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00351}00351   masterTask-\/>\mbox{\hyperlink{class_task_iterator_ae7d75f8ef4ded05e349d16cc91c3cc79}{run}}();}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00352}00352   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00353}00353 \}}
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00354}00354 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00355}00355 }
+\DoxyCodeLine{\Hypertarget{_run_hadron_gas_simulation_8_c_source_l00356}00356 \textcolor{comment}{//}}
+
+\end{DoxyCode}

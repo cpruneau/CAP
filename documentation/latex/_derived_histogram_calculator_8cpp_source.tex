@@ -1,0 +1,76 @@
+\hypertarget{_derived_histogram_calculator_8cpp_source}{}\doxysection{Derived\+Histogram\+Calculator.\+cpp}
+\label{_derived_histogram_calculator_8cpp_source}\index{Base/DerivedHistogramCalculator.cpp@{Base/DerivedHistogramCalculator.cpp}}
+\mbox{\hyperlink{_derived_histogram_calculator_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_derived_histogram_calculator_8hpp}{DerivedHistogramCalculator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00018}\mbox{\hyperlink{_derived_histogram_calculator_8cpp_acd542c5ad201e3e2e6534429ed86dac6}{00018}} \mbox{\hyperlink{_derived_histogram_calculator_8cpp_acd542c5ad201e3e2e6534429ed86dac6}{ClassImp}}(\mbox{\hyperlink{class_derived_histogram_calculator}{DerivedHistogramCalculator}});}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00020}\mbox{\hyperlink{class_derived_histogram_calculator_a5e3f98ccaa86d40c0622f6c045ca5551}{00020}} \mbox{\hyperlink{class_derived_histogram_calculator_a5e3f98ccaa86d40c0622f6c045ca5551}{DerivedHistogramCalculator::DerivedHistogramCalculator}}(\textcolor{keyword}{const} TString \&          \_name,}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00021}00021                                                        \mbox{\hyperlink{class_configuration}{Configuration}} \&          \_configuration,}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00022}00022                                                        vector<EventFilter*>     \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00023}00023                                                        vector<ParticleFilter*>  \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00024}00024                                                        \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                 \_selectedLevel)}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00025}00025 :}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00026}00026 \mbox{\hyperlink{class_task}{Task}}(\_name,\_configuration,\_eventFilters,\_particleFilters, \_reportLevel)}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00027}00027 \{}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00028}00028   \mbox{\hyperlink{class_message_logger_a62ee7a375e1aec16bfb767aec9fba906}{setInstanceName}}(\textcolor{stringliteral}{"{}DerivedHistogramCalculator"{}});}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00029}00029   \mbox{\hyperlink{class_message_logger_a10182fcb56fb5fda0f998c89c4bbe4fb}{appendClassName}}(\_name);}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00030}00030   \mbox{\hyperlink{class_derived_histogram_calculator_a81fd0a9a823289ae5099e01577e73f99}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00031}00031   \mbox{\hyperlink{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}{setConfiguration}}(\_configuration);}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00032}00032 \}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00034}\mbox{\hyperlink{class_derived_histogram_calculator_a81fd0a9a823289ae5099e01577e73f99}{00034}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_derived_histogram_calculator_a81fd0a9a823289ae5099e01577e73f99}{DerivedHistogramCalculator::setDefaultConfiguration}}()}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00035}00035 \{}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00036}00036   \mbox{\hyperlink{class_configuration}{Configuration}} \& \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}} = \mbox{\hyperlink{class_task_a1955cc87bd4885d8ca19435b3609443f}{getConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00037}00037   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}inputPath"{}}, \textcolor{stringliteral}{"{}InputPathUndefined"{}});}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00038}00038   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}inputFileNameBase"{}}, \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00039}00039   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}firstFileIndex"{}}, 0);}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00040}00040   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}lastFileIndex"{}},  1);}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00041}00041   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}outputPath"{}},     \textcolor{stringliteral}{"{}OutputPathUndefined"{}});}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00042}00042   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}outputFileName"{}}, \textcolor{stringliteral}{"{}OutputFileNameUndefined"{}});}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00043}00043   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}inputPath"{}}, \textcolor{stringliteral}{"{}InputPathUndefined"{}});}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00044}00044   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}appendedString"{}},TString(\textcolor{stringliteral}{"{}\_Derived"{}}));}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00045}00045   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}DerivedHistogramCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00046}00046     \{}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00047}00047     \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(cout);}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00048}00048     \}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00049}00049 \}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00052}00052 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_file_task_iterator_aa413681230c253b7287f5bc3e9bb647b}{DerivedHistogramCalculator::run}}()}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00053}00053 \{}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00054}00054   \mbox{\hyperlink{class_task_a5991a0a3e31cec492a994b034e258aa6}{timer}}.\mbox{\hyperlink{class_timer_a3a8b5272198d029779dc9302a54305a8}{start}}();}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00055}00055   \mbox{\hyperlink{class_message_logger_a70146a9f8c113e63290020af9491576f}{postTaskOk}}();}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00057}00057   vector<TString> includePattern;}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00058}00058   includePattern.push\_back(histoBaseName+\textcolor{stringliteral}{"{}Part"{}});}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00059}00059   includePattern.push\_back(\textcolor{stringliteral}{"{}.root"{}});}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00060}00060   \textcolor{comment}{//includePattern.push\_back("{}.root"{});}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00061}00061   vector<TString> excludePattern;}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00062}00062   excludePattern.push\_back(\textcolor{stringliteral}{"{}Derived"{}});}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00063}00063   excludePattern.push\_back(\textcolor{stringliteral}{"{}Sum"{}});}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00064}00064   excludePattern.push\_back(\textcolor{stringliteral}{"{}BF"{}});}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00065}00065   \mbox{\hyperlink{class_file_task_iterator_aceb7d50a6f4e98037f09b708a11be48b}{addFileNames}}(histoInputPath,includePattern,excludePattern);}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00066}00066   \mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{addSubtask}}(\textcolor{keyword}{new} \mbox{\hyperlink{class_particle_derived_histogram_calculator}{ParticleDerivedHistogramCalculator}}    (partLabel, partConfig, \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}, \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}, selectedLevel));}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00067}00067   \mbox{\hyperlink{class_file_task_iterator_aa413681230c253b7287f5bc3e9bb647b}{FileTaskIterator::run}}();}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00068}00068   }
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00069}00069   \mbox{\hyperlink{class_task_a5991a0a3e31cec492a994b034e258aa6}{timer}}.\mbox{\hyperlink{class_timer_a63f0eb44b27402196590a03781515dba}{stop}}();}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00070}00070   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}DerivedHistogramCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}run(...)"{}}))}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00071}00071     \{}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00072}00072     cout << endl;}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00073}00073     cout << \textcolor{stringliteral}{"{}  Completed with status : "{}} << \mbox{\hyperlink{class_message_logger_a61406bc0c87bcf0da414197a2bb474e5}{getTaskStatusName}}() << endl;}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00074}00074     cout << \textcolor{stringliteral}{"{}           : "{}}; \mbox{\hyperlink{class_task_a5991a0a3e31cec492a994b034e258aa6}{timer}}.\mbox{\hyperlink{class_timer_a339d329357b3ad0ad8f9b2ed2224c53e}{print}}(cout);}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00075}00075     cout << endl << endl<< endl << endl;}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00076}00076     \}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8cpp_source_l00077}00077 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,289 @@
+\hypertarget{class_cell}{}\doxysection{Cell Class Reference}
+\label{class_cell}\index{Cell@{Cell}}
+
+
+{\ttfamily \#include $<$Cell.\+hpp$>$}
+
+
+
+Collaboration diagram for Cell\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cell__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cell_a394510643e8664cf12b5efaf5cb99f71}{Cell}} ()
+\item 
+\mbox{\hyperlink{class_cell_a9fa559f7a28e2b4336c6879ca09304d8}{$\sim$\+Cell}} ()
+\item 
+void \mbox{\hyperlink{class_cell_afbc65512fb26ca43bd7b0aae85f2366e}{reset}} ()
+\item 
+\mbox{\hyperlink{class_cluster}{Cluster}} $\ast$ \mbox{\hyperlink{class_cell_aa9df82e017fb4a078011114728bfad7f}{get\+Cluster\+At}} (int index)
+\item 
+void \mbox{\hyperlink{class_cell_adb29f401cd9a946dfcc9417f055c9e01}{add}} (\mbox{\hyperlink{class_cluster}{Cluster}} $\ast$cluster)
+\item 
+void \mbox{\hyperlink{class_cell_ad38fb4e3d33533150f622d2ec97295de}{boost}} (double beta\+\_\+x, double beta\+\_\+y, double beta\+\_\+z)
+\item 
+void \mbox{\hyperlink{class_cell_a088ba8fd4e217c4580b79308456db38f}{boostZ}} (double beta\+\_\+z)
+\item 
+void \mbox{\hyperlink{class_cell_a016a5a61145479c6e0839e1b2857777d}{print\+Properties}} (ostream \&output)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_factory}{Factory}}$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$ $\ast$ \mbox{\hyperlink{class_cell_ac11ed1217989fdd997e4344d8ff64363}{get\+Factory}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_cell_aefeffb0de37f25138d82c247dab6677e}{beta}}
+\item 
+double \mbox{\hyperlink{class_cell_a710df196d4375540adae5c48bb2fa926}{betaX}}
+\item 
+double \mbox{\hyperlink{class_cell_a7419193326e3347b5197a811a46edb02}{betaY}}
+\item 
+double \mbox{\hyperlink{class_cell_ad8011098ffa066e4837e2ca44d14f93c}{betaZ}}
+\item 
+double \mbox{\hyperlink{class_cell_a91a46927ed8ac859ae323bb12a4dc759}{phi}}
+\item 
+int \mbox{\hyperlink{class_cell_ac845493b9210bfc8e594402c79b11290}{n\+Clusters}}
+\item 
+int \mbox{\hyperlink{class_cell_a7733f1b1f56377c772931d048b124205}{n\+Particles}}
+\item 
+\mbox{\hyperlink{class_cluster}{Cluster}} $\ast$$\ast$ \mbox{\hyperlink{class_cell_ab634381a0958f0aad77dd46bee06ea44}{clusters}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_cell_a3818b6d5e1d88693f8237bd06b440615}{n\+Clusters\+Max}} = 100
+\item 
+static int \mbox{\hyperlink{class_cell_ae11a5da92727abb2dc0aa2c9c8fb4a41}{factory\+Size}} = 5000
+\item 
+static \mbox{\hyperlink{class_factory}{Factory}}$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$ $\ast$ \mbox{\hyperlink{class_cell_ab133a8bc0e911f3e88cc32611840d62b}{factory}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_cell_8hpp_source_l00016}{16}} of file \mbox{\hyperlink{_cell_8hpp_source}{Cell.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_cell_a394510643e8664cf12b5efaf5cb99f71}\label{class_cell_a394510643e8664cf12b5efaf5cb99f71}} 
+\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}}
+{\footnotesize\ttfamily Cell\+::\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_cell_8cpp_source}{Cell.\+cpp}}.
+
+\mbox{\Hypertarget{class_cell_a9fa559f7a28e2b4336c6879ca09304d8}\label{class_cell_a9fa559f7a28e2b4336c6879ca09304d8}} 
+\index{Cell@{Cell}!````~Cell@{$\sim$Cell}}
+\index{````~Cell@{$\sim$Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{$\sim$Cell()}{~Cell()}}
+{\footnotesize\ttfamily Cell\+::$\sim$\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{_cell_8cpp_source}{Cell.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_cell_adb29f401cd9a946dfcc9417f055c9e01}\label{class_cell_adb29f401cd9a946dfcc9417f055c9e01}} 
+\index{Cell@{Cell}!add@{add}}
+\index{add@{add}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void Cell\+::add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cluster}{Cluster}} $\ast$}]{cluster }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{_cell_8cpp_source}{Cell.\+cpp}}.
+
+\mbox{\Hypertarget{class_cell_ad38fb4e3d33533150f622d2ec97295de}\label{class_cell_ad38fb4e3d33533150f622d2ec97295de}} 
+\index{Cell@{Cell}!boost@{boost}}
+\index{boost@{boost}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{boost()}{boost()}}
+{\footnotesize\ttfamily void Cell\+::boost (\begin{DoxyParamCaption}\item[{double}]{beta\+\_\+x,  }\item[{double}]{beta\+\_\+y,  }\item[{double}]{beta\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{_cell_8cpp_source}{Cell.\+cpp}}.
+
+\mbox{\Hypertarget{class_cell_a088ba8fd4e217c4580b79308456db38f}\label{class_cell_a088ba8fd4e217c4580b79308456db38f}} 
+\index{Cell@{Cell}!boostZ@{boostZ}}
+\index{boostZ@{boostZ}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{boostZ()}{boostZ()}}
+{\footnotesize\ttfamily void Cell\+::boostZ (\begin{DoxyParamCaption}\item[{double}]{beta\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{_cell_8cpp_source}{Cell.\+cpp}}.
+
+\mbox{\Hypertarget{class_cell_aa9df82e017fb4a078011114728bfad7f}\label{class_cell_aa9df82e017fb4a078011114728bfad7f}} 
+\index{Cell@{Cell}!getClusterAt@{getClusterAt}}
+\index{getClusterAt@{getClusterAt}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{getClusterAt()}{getClusterAt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cluster}{Cluster}} $\ast$ Cell\+::get\+Cluster\+At (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_cell_8cpp_source}{Cell.\+cpp}}.
+
+\mbox{\Hypertarget{class_cell_ac11ed1217989fdd997e4344d8ff64363}\label{class_cell_ac11ed1217989fdd997e4344d8ff64363}} 
+\index{Cell@{Cell}!getFactory@{getFactory}}
+\index{getFactory@{getFactory}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{getFactory()}{getFactory()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_factory}{Factory}}$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$ $\ast$ Cell\+::get\+Factory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{_cell_8cpp_source}{Cell.\+cpp}}.
+
+\mbox{\Hypertarget{class_cell_a016a5a61145479c6e0839e1b2857777d}\label{class_cell_a016a5a61145479c6e0839e1b2857777d}} 
+\index{Cell@{Cell}!printProperties@{printProperties}}
+\index{printProperties@{printProperties}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{printProperties()}{printProperties()}}
+{\footnotesize\ttfamily void Cell\+::print\+Properties (\begin{DoxyParamCaption}\item[{ostream \&}]{output }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8cpp_source_l00106}{106}} of file \mbox{\hyperlink{_cell_8cpp_source}{Cell.\+cpp}}.
+
+\mbox{\Hypertarget{class_cell_afbc65512fb26ca43bd7b0aae85f2366e}\label{class_cell_afbc65512fb26ca43bd7b0aae85f2366e}} 
+\index{Cell@{Cell}!reset@{reset}}
+\index{reset@{reset}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Cell\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{_cell_8cpp_source}{Cell.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_cell_aefeffb0de37f25138d82c247dab6677e}\label{class_cell_aefeffb0de37f25138d82c247dab6677e}} 
+\index{Cell@{Cell}!beta@{beta}}
+\index{beta@{beta}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{beta}{beta}}
+{\footnotesize\ttfamily double Cell\+::beta}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{_cell_8hpp_source}{Cell.\+hpp}}.
+
+\mbox{\Hypertarget{class_cell_a710df196d4375540adae5c48bb2fa926}\label{class_cell_a710df196d4375540adae5c48bb2fa926}} 
+\index{Cell@{Cell}!betaX@{betaX}}
+\index{betaX@{betaX}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{betaX}{betaX}}
+{\footnotesize\ttfamily double Cell\+::betaX}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8hpp_source_l00033}{33}} of file \mbox{\hyperlink{_cell_8hpp_source}{Cell.\+hpp}}.
+
+\mbox{\Hypertarget{class_cell_a7419193326e3347b5197a811a46edb02}\label{class_cell_a7419193326e3347b5197a811a46edb02}} 
+\index{Cell@{Cell}!betaY@{betaY}}
+\index{betaY@{betaY}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{betaY}{betaY}}
+{\footnotesize\ttfamily double Cell\+::betaY}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{_cell_8hpp_source}{Cell.\+hpp}}.
+
+\mbox{\Hypertarget{class_cell_ad8011098ffa066e4837e2ca44d14f93c}\label{class_cell_ad8011098ffa066e4837e2ca44d14f93c}} 
+\index{Cell@{Cell}!betaZ@{betaZ}}
+\index{betaZ@{betaZ}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{betaZ}{betaZ}}
+{\footnotesize\ttfamily double Cell\+::betaZ}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{_cell_8hpp_source}{Cell.\+hpp}}.
+
+\mbox{\Hypertarget{class_cell_ab634381a0958f0aad77dd46bee06ea44}\label{class_cell_ab634381a0958f0aad77dd46bee06ea44}} 
+\index{Cell@{Cell}!clusters@{clusters}}
+\index{clusters@{clusters}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{clusters}{clusters}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cluster}{Cluster}}$\ast$$\ast$ Cell\+::clusters}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8hpp_source_l00039}{39}} of file \mbox{\hyperlink{_cell_8hpp_source}{Cell.\+hpp}}.
+
+\mbox{\Hypertarget{class_cell_ab133a8bc0e911f3e88cc32611840d62b}\label{class_cell_ab133a8bc0e911f3e88cc32611840d62b}} 
+\index{Cell@{Cell}!factory@{factory}}
+\index{factory@{factory}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{factory}{factory}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_factory}{Factory}}$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$ $\ast$ Cell\+::factory = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{_cell_8hpp_source}{Cell.\+hpp}}.
+
+\mbox{\Hypertarget{class_cell_ae11a5da92727abb2dc0aa2c9c8fb4a41}\label{class_cell_ae11a5da92727abb2dc0aa2c9c8fb4a41}} 
+\index{Cell@{Cell}!factorySize@{factorySize}}
+\index{factorySize@{factorySize}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{factorySize}{factorySize}}
+{\footnotesize\ttfamily int Cell\+::factory\+Size = 5000\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8hpp_source_l00042}{42}} of file \mbox{\hyperlink{_cell_8hpp_source}{Cell.\+hpp}}.
+
+\mbox{\Hypertarget{class_cell_ac845493b9210bfc8e594402c79b11290}\label{class_cell_ac845493b9210bfc8e594402c79b11290}} 
+\index{Cell@{Cell}!nClusters@{nClusters}}
+\index{nClusters@{nClusters}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{nClusters}{nClusters}}
+{\footnotesize\ttfamily int Cell\+::n\+Clusters}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8hpp_source_l00037}{37}} of file \mbox{\hyperlink{_cell_8hpp_source}{Cell.\+hpp}}.
+
+\mbox{\Hypertarget{class_cell_a3818b6d5e1d88693f8237bd06b440615}\label{class_cell_a3818b6d5e1d88693f8237bd06b440615}} 
+\index{Cell@{Cell}!nClustersMax@{nClustersMax}}
+\index{nClustersMax@{nClustersMax}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{nClustersMax}{nClustersMax}}
+{\footnotesize\ttfamily int Cell\+::n\+Clusters\+Max = 100\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{_cell_8hpp_source}{Cell.\+hpp}}.
+
+\mbox{\Hypertarget{class_cell_a7733f1b1f56377c772931d048b124205}\label{class_cell_a7733f1b1f56377c772931d048b124205}} 
+\index{Cell@{Cell}!nParticles@{nParticles}}
+\index{nParticles@{nParticles}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{nParticles}{nParticles}}
+{\footnotesize\ttfamily int Cell\+::n\+Particles}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8hpp_source_l00038}{38}} of file \mbox{\hyperlink{_cell_8hpp_source}{Cell.\+hpp}}.
+
+\mbox{\Hypertarget{class_cell_a91a46927ed8ac859ae323bb12a4dc759}\label{class_cell_a91a46927ed8ac859ae323bb12a4dc759}} 
+\index{Cell@{Cell}!phi@{phi}}
+\index{phi@{phi}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{phi}{phi}}
+{\footnotesize\ttfamily double Cell\+::phi}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{_cell_8hpp_source}{Cell.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Cluster/\mbox{\hyperlink{_cell_8hpp}{Cell.\+hpp}}\item 
+Cluster/\mbox{\hyperlink{_cell_8cpp}{Cell.\+cpp}}\end{DoxyCompactItemize}

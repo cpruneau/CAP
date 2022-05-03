@@ -1,6 +1,8 @@
 ##################
 # CAP
 ##################
+bin
+lib
 build
 publishedData
 CMakeFiles

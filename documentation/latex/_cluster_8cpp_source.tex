@@ -1,0 +1,132 @@
+\hypertarget{_cluster_8cpp_source}{}\doxysection{Cluster.\+cpp}
+\label{_cluster_8cpp_source}\index{Cluster/Cluster.cpp@{Cluster/Cluster.cpp}}
+\mbox{\hyperlink{_cluster_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_cluster_8hpp}{Cluster.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00020}\mbox{\hyperlink{_cluster_8cpp_abd4bd644feaf908344360bf8fc05f774}{00020}} \mbox{\hyperlink{_cluster_8cpp_abd4bd644feaf908344360bf8fc05f774}{ClassImp}}(\mbox{\hyperlink{class_cluster}{Cluster}});}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00023}00023 \textcolor{comment}{// CTOR}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00025}\mbox{\hyperlink{class_cluster_aee7feb1d599d4c8fda6c3ee83e86ba81}{00025}} \textcolor{comment}{}\mbox{\hyperlink{class_cluster_aee7feb1d599d4c8fda6c3ee83e86ba81}{Cluster::Cluster}}()}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00026}00026 :}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00027}00027 nParticles(0),}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00028}00028 particles (0),}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00029}00029 p         (0,0,0,0),}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00030}00030 Qlong     (0),}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00031}00031 Qout      (0),}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00032}00032 Qside     (0)}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00033}00033 \{}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00034}00034   \mbox{\hyperlink{class_cluster_af29aef888c92e1ca02f06f84c01f3d00}{particles}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle}{Particle}}*[5];}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00035}00035 \}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00037}00037 \textcolor{comment}{// DTOR}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00039}\mbox{\hyperlink{class_cluster_a4bddfc88ac859610acab15dd12851b58}{00039}} \textcolor{comment}{}\mbox{\hyperlink{class_cluster_a4bddfc88ac859610acab15dd12851b58}{Cluster::\string~Cluster}}()}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00040}00040 \{}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00041}00041   \textcolor{keyword}{delete}[] \mbox{\hyperlink{class_cluster_af29aef888c92e1ca02f06f84c01f3d00}{particles}};}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00042}00042 \}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00045}00045 \textcolor{comment}{// Get the particle at the given index}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00047}\mbox{\hyperlink{class_cluster_a6acc10e7ac0efb7b969d81378fb0f975}{00047}} \textcolor{comment}{}\mbox{\hyperlink{class_particle}{Particle}} * \mbox{\hyperlink{class_cluster_a6acc10e7ac0efb7b969d81378fb0f975}{Cluster::getParticleAt}}(\textcolor{keywordtype}{int} index)}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00048}00048 \{}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00049}00049   \textcolor{comment}{//cout << "{}-\/-\/-\/DEBUG-\/-\/-\/ getParticle(int index) index:"{} << index << endl;}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00050}00050   \textcolor{keywordflow}{if} (index>=0 \&\& index<\mbox{\hyperlink{class_cluster_adad2f2501d611456597de9dbf87fda59}{nParticles}})}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00051}00051     \{}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00052}00052     \textcolor{keywordflow}{return} \mbox{\hyperlink{class_cluster_af29aef888c92e1ca02f06f84c01f3d00}{particles}}[index];}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00053}00053     \}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00054}00054   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00055}00055     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00056}00056 \}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00059}00059 \textcolor{comment}{// Reset this cluster}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00061}\mbox{\hyperlink{class_cluster_a7a02a3e447a7b47f26ca341b1d01b99b}{00061}} \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{class_cluster_a7a02a3e447a7b47f26ca341b1d01b99b}{Cluster::reset}}()}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00062}00062 \{}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00063}00063   \mbox{\hyperlink{class_cluster_adad2f2501d611456597de9dbf87fda59}{nParticles}} = 0;}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00064}00064 \}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00067}00067 \textcolor{comment}{// Add the given particle to this cluster}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00069}\mbox{\hyperlink{class_cluster_a5eefcbc72b4c4a915080595a37b8e74f}{00069}} \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{class_cluster_a5eefcbc72b4c4a915080595a37b8e74f}{Cluster::add}}(\mbox{\hyperlink{class_particle}{Particle}} * particle)}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00070}00070 \{}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00071}00071   \textcolor{keywordflow}{if} (!particle)}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00072}00072     \{}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00073}00073     cout << \textcolor{stringliteral}{"{}-\/ERROR-\/ Cluster::add(Particle*) Invalid particle pointer."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00074}00074     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00075}00075     \}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00076}00076 \textcolor{comment}{//  cout << "{}    Cluster::add nParticles = "{} << nParticles << endl;}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00077}00077   \mbox{\hyperlink{class_cluster_af29aef888c92e1ca02f06f84c01f3d00}{particles}}[\mbox{\hyperlink{class_cluster_adad2f2501d611456597de9dbf87fda59}{nParticles}}++] = particle;}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00078}00078 \textcolor{comment}{//  cout << "{}    Cluster::add nParticles = "{} << nParticles << endl;}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00079}00079 \}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00081}\mbox{\hyperlink{class_cluster_aac478c8f00f1607063052750727efee5}{00081}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cluster_aac478c8f00f1607063052750727efee5}{Cluster::boost}}(\textcolor{keywordtype}{double} beta\_x, \textcolor{keywordtype}{double} beta\_y, \textcolor{keywordtype}{double} beta\_z)}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00082}00082 \{}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00083}00083   \textcolor{comment}{// boost the momentum of the cluster}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00084}00084   \mbox{\hyperlink{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}{p}}.Boost(beta\_x, beta\_y, beta\_z);}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00085}00085   \textcolor{comment}{// boost all particles within the cluster}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00087}00087   \textcolor{comment}{//  cout << "{} boost beta(x,y,z):"{} << beta\_x << "{},"{} << beta\_y << "{},"{} << beta\_z << endl;}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00089}00089   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iPart=0; iPart<\mbox{\hyperlink{class_cluster_adad2f2501d611456597de9dbf87fda59}{nParticles}}; iPart++)}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00090}00090     \{}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00091}00091     \textcolor{comment}{//cout <<  "{}boost() before particles[k]-\/>boost(-\/beta\_x, -\/beta\_y, -\/beta\_z) k:"{} << k << "{} E:"{} << particles[k]-\/>e << "{} px:"{} << particles[k]-\/>px << "{} py:"{} << particles[k]-\/>py << "{} pz:"{} << particles[k]-\/>pz << endl;}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00092}00092     \mbox{\hyperlink{class_cluster_af29aef888c92e1ca02f06f84c01f3d00}{particles}}[iPart]-\/>\mbox{\hyperlink{class_particle_ae5c4a6610dc075ce4156a2fe9a622af7}{boost}}(-\/beta\_x, -\/beta\_y, -\/beta\_z);}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00093}00093     \textcolor{comment}{//cout <<  "{}boost()  after particles[k]-\/>boost(-\/beta\_x, -\/beta\_y, -\/beta\_z) k:"{} << k << "{} E:"{} << particles[k]-\/>e << "{} px:"{} << particles[k]-\/>px << "{} py:"{} << particles[k]-\/>py << "{} pz:"{} << particles[k]-\/>pz << endl;}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00094}00094     \}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00095}00095 \}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00097}\mbox{\hyperlink{class_cluster_a2998461226eb1ee7da0821498f52b233}{00097}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cluster_a2998461226eb1ee7da0821498f52b233}{Cluster::boostZ}}(\textcolor{keywordtype}{double} boost)}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00098}00098 \{}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00099}00099   \textcolor{keywordtype}{double} rapidity, mt, px, py, pz, e;}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00100}00100   \textcolor{comment}{// boost the momentum of the cluster}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00101}00101   rapidity = \mbox{\hyperlink{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}{p}}.Rapidity() + \mbox{\hyperlink{class_cluster_aac478c8f00f1607063052750727efee5}{boost}};}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00102}00102   mt       = \mbox{\hyperlink{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}{p}}.Mt();}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00103}00103   px       = \mbox{\hyperlink{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}{p}}.Px();}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00104}00104   py       = \mbox{\hyperlink{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}{p}}.Py();}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00105}00105   pz       = mt * sinh(rapidity);}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00106}00106   e        = mt * cosh(rapidity);}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00107}00107   \mbox{\hyperlink{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}{p}}.SetPxPyPzE(px,py,pz,e);}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00108}00108    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iPart=0; iPart<\mbox{\hyperlink{class_cluster_adad2f2501d611456597de9dbf87fda59}{nParticles}}; iPart++)}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00109}00109     \{}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00110}00110     \mbox{\hyperlink{class_cluster_af29aef888c92e1ca02f06f84c01f3d00}{particles}}[iPart]-\/>\mbox{\hyperlink{class_particle_ae36701f6ca8744f9b7e5d4849df6e7a9}{boostRapidity}}(\mbox{\hyperlink{class_cluster_aac478c8f00f1607063052750727efee5}{boost}});}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00111}00111     \}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00112}00112 \}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00115}00115 \textcolor{comment}{// Print properties of this cluster}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00117}\mbox{\hyperlink{class_cluster_aebb84225d13b422447075064ad95167d}{00117}} \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{class_cluster_aebb84225d13b422447075064ad95167d}{Cluster::printProperties}}(ostream \& output)}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00118}00118 \{}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00120}00120   output << \textcolor{stringliteral}{"{}      Cluster mass: "{}} << \mbox{\hyperlink{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}{p}}.M() << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00121}00121   output << \textcolor{stringliteral}{"{}        Cluster pt: "{}} << \mbox{\hyperlink{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}{p}}.Pt() << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00122}00122   output << \textcolor{stringliteral}{"{}       Cluster phi: "{}} << \mbox{\hyperlink{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}{p}}.Phi() << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00123}00123   output << \textcolor{stringliteral}{"{}  Cluster rapidity: "{}} << \mbox{\hyperlink{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}{p}}.Rapidity() << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00124}00124   output << \textcolor{stringliteral}{"{}       Cluster eta: "{}} << \mbox{\hyperlink{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}{p}}.Eta() << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00125}00125   output << \textcolor{stringliteral}{"{}Cluster nParticles: "{}} << \mbox{\hyperlink{class_cluster_adad2f2501d611456597de9dbf87fda59}{nParticles}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00126}00126   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iPart=0; iPart<\mbox{\hyperlink{class_cluster_adad2f2501d611456597de9dbf87fda59}{nParticles}}; iPart++)}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00127}00127     \{}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00128}00128     \mbox{\hyperlink{class_cluster_af29aef888c92e1ca02f06f84c01f3d00}{particles}}[iPart]-\/>\mbox{\hyperlink{class_particle_a36f86cf24657c46aba1164cb247e64c9}{printProperties}}(output);}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00129}00129     \}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00130}00130 \}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00131}00131 }
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00132}00132 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_cluster_a6fc965e1dd6081c30e2db725e5e592c6}{Cluster::factorySize}} = 500;}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00133}00133 \mbox{\hyperlink{class_factory}{Factory<Cluster>}} * \mbox{\hyperlink{class_cluster_a262b3d3b69df9e3f067662ef8b039d08}{Cluster::factory}} = 0;}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00134}\mbox{\hyperlink{class_cluster_a016d4bc2d4f3472e63489a6e052ca309}{00134}} \mbox{\hyperlink{class_factory}{Factory<Cluster>}} * \mbox{\hyperlink{class_cluster_a016d4bc2d4f3472e63489a6e052ca309}{Cluster::getFactory}}()}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00135}00135 \{}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00136}00136   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_cluster_a262b3d3b69df9e3f067662ef8b039d08}{factory}})}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00137}00137     \{}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00138}00138     \mbox{\hyperlink{class_cluster_a262b3d3b69df9e3f067662ef8b039d08}{factory}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_factory}{Factory<Cluster>}}();}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00139}00139     \mbox{\hyperlink{class_cluster_a262b3d3b69df9e3f067662ef8b039d08}{factory}}-\/>\mbox{\hyperlink{class_factory_a93bb6d06d547e5ef951340d530946bb1}{initialize}}(\mbox{\hyperlink{class_cluster_a6fc965e1dd6081c30e2db725e5e592c6}{factorySize}});}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00140}00140     \}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00141}00141    \textcolor{keywordflow}{return} \mbox{\hyperlink{class_cluster_a262b3d3b69df9e3f067662ef8b039d08}{factory}};}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00142}00142 \}}
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00144}00144 }
+\DoxyCodeLine{\Hypertarget{_cluster_8cpp_source_l00145}00145 }
+
+\end{DoxyCode}

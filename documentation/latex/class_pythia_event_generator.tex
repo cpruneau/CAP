@@ -1,0 +1,265 @@
+\hypertarget{class_pythia_event_generator}{}\doxysection{Pythia\+Event\+Generator Class Reference}
+\label{class_pythia_event_generator}\index{PythiaEventGenerator@{PythiaEventGenerator}}
+
+
+{\ttfamily \#include $<$Pythia\+Event\+Generator.\+hpp$>$}
+
+
+
+Inheritance diagram for Pythia\+Event\+Generator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{class_pythia_event_generator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Pythia\+Event\+Generator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pythia_event_generator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pythia_event_generator_a7bc58042a1700b3fabe6477cdf73d661}{Pythia\+Event\+Generator}} (const TString \&\+\_\+name, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&\+\_\+event\+Filters, vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&\+\_\+particle\+Filters, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \+\_\+selected\+Level)
+\item 
+virtual \mbox{\hyperlink{class_pythia_event_generator_a0f28aab08dd2711f050e5cff0da257f4}{$\sim$\+Pythia\+Event\+Generator}} ()
+\item 
+virtual void \mbox{\hyperlink{class_pythia_event_generator_ab3ffbd5da16039ca5793f75483772900}{set\+Default\+Configuration}} ()
+\item 
+virtual void \mbox{\hyperlink{class_pythia_event_generator_a550f4ec5d2289a8007af613ac1102faa}{initialize}} ()
+\item 
+virtual void \mbox{\hyperlink{class_pythia_event_generator_aa8650c8714e6fa13f5df4ff2ec96a1b3}{finalize}} ()
+\item 
+virtual void \mbox{\hyperlink{class_pythia_event_generator_a1ae36a189f187b202eb9c70a133a1be6}{execute}} ()
+\item 
+virtual void \mbox{\hyperlink{class_pythia_event_generator_ad1cacc2d3f70494ec5f261b0675798f9}{generate}} (\mbox{\hyperlink{class_particle}{Particle}} $\ast$parent)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TPythia8 $\ast$ \mbox{\hyperlink{class_pythia_event_generator_a2f891157f93c204d250e6b5597b7d3bc}{pythia8}}
+\item 
+int \mbox{\hyperlink{class_pythia_event_generator_ad716fb98f1b1f5598eca05580c9a30ca}{n\+Max\+Clones\+Array}}
+\item 
+TClones\+Array $\ast$ \mbox{\hyperlink{class_pythia_event_generator_a831fc0b8662c4ed13ef58d51acdd5f74}{particles}}
+\item 
+TFile $\ast$ \mbox{\hyperlink{class_pythia_event_generator_a57357218d4edf19ecbc430c2aeda6893}{output\+File}}
+\item 
+Pythia8\+::\+Event $\ast$ \mbox{\hyperlink{class_pythia_event_generator_aeb4e913811e9ec349927a684d5d1277b}{output\+Event}}
+\item 
+TTree $\ast$ \mbox{\hyperlink{class_pythia_event_generator_aec3d828a505842c24d2214ef16fbcc09}{output\+Tree}}
+\item 
+bool \mbox{\hyperlink{class_pythia_event_generator_ae4e4ef3057a1c1474009564722220bdb}{data\+Conversion\+To\+Wac}}
+\item 
+bool \mbox{\hyperlink{class_pythia_event_generator_aa8b42ecbf22ee994153078c04ea9658c}{data\+Output\+Used}}
+\item 
+bool \mbox{\hyperlink{class_pythia_event_generator_aea3643db84784a16a1a3a2848b2a88b0}{standalone\+Mode}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class defining Pythia Generator Wrapper for use in WAC 
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8hpp_source_l00019}{19}} of file \mbox{\hyperlink{_pythia_event_generator_8hpp_source}{Pythia\+Event\+Generator.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_pythia_event_generator_a7bc58042a1700b3fabe6477cdf73d661}\label{class_pythia_event_generator_a7bc58042a1700b3fabe6477cdf73d661}} 
+\index{PythiaEventGenerator@{PythiaEventGenerator}!PythiaEventGenerator@{PythiaEventGenerator}}
+\index{PythiaEventGenerator@{PythiaEventGenerator}!PythiaEventGenerator@{PythiaEventGenerator}}
+\doxysubsubsection{\texorpdfstring{PythiaEventGenerator()}{PythiaEventGenerator()}}
+{\footnotesize\ttfamily Pythia\+Event\+Generator\+::\+Pythia\+Event\+Generator (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&}]{\+\_\+event\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&}]{\+\_\+particle\+Filters,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{\+\_\+selected\+Level }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_pythia_event_generator_8cpp_source}{Pythia\+Event\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_generator_a0f28aab08dd2711f050e5cff0da257f4}\label{class_pythia_event_generator_a0f28aab08dd2711f050e5cff0da257f4}} 
+\index{PythiaEventGenerator@{PythiaEventGenerator}!````~PythiaEventGenerator@{$\sim$PythiaEventGenerator}}
+\index{````~PythiaEventGenerator@{$\sim$PythiaEventGenerator}!PythiaEventGenerator@{PythiaEventGenerator}}
+\doxysubsubsection{\texorpdfstring{$\sim$PythiaEventGenerator()}{~PythiaEventGenerator()}}
+{\footnotesize\ttfamily virtual Pythia\+Event\+Generator\+::$\sim$\+Pythia\+Event\+Generator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8hpp_source_l00029}{29}} of file \mbox{\hyperlink{_pythia_event_generator_8hpp_source}{Pythia\+Event\+Generator.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pythia_event_generator_a1ae36a189f187b202eb9c70a133a1be6}\label{class_pythia_event_generator_a1ae36a189f187b202eb9c70a133a1be6}} 
+\index{PythiaEventGenerator@{PythiaEventGenerator}!execute@{execute}}
+\index{execute@{execute}!PythiaEventGenerator@{PythiaEventGenerator}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Pythia\+Event\+Generator\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Execute this task instance. This base class implementation only increments the counters n\+Event\+Processed and n\+Event\+Accepted. Implement this method in derived class to achieve the actual task of interest. Note\+: You can increase the counters n\+Event\+Processed and n\+Event\+Accepted indiscrimately by a call to \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task\+::execute()}}. However, in general, you may wish to count all events looked and only count as accepted those that passed one of the event filters used by this task. To achive this, use calls to the methods \mbox{\hyperlink{class_task_a724ff83138229238fdc58566a0cd350f}{increment\+Event\+Processed()}} and \mbox{\hyperlink{class_task_a01762aa4383b0931850efb56b697a856}{increment\+Event\+Accepted()}} rather than explicitly incrementing the variable n\+Event\+Processed and n\+Event\+Accepted. These are currently protected but may defined as private in a future release. 
+
+Reimplemented from \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8cpp_source_l00134}{134}} of file \mbox{\hyperlink{_pythia_event_generator_8cpp_source}{Pythia\+Event\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_generator_aa8650c8714e6fa13f5df4ff2ec96a1b3}\label{class_pythia_event_generator_aa8650c8714e6fa13f5df4ff2ec96a1b3}} 
+\index{PythiaEventGenerator@{PythiaEventGenerator}!finalize@{finalize}}
+\index{finalize@{finalize}!PythiaEventGenerator@{PythiaEventGenerator}}
+\doxysubsubsection{\texorpdfstring{finalize()}{finalize()}}
+{\footnotesize\ttfamily void Pythia\+Event\+Generator\+::finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Finalize this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient. 
+
+Reimplemented from \mbox{\hyperlink{class_task_aab4bc670089cc073247542c3a26da5aa}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8cpp_source_l00293}{293}} of file \mbox{\hyperlink{_pythia_event_generator_8cpp_source}{Pythia\+Event\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_generator_ad1cacc2d3f70494ec5f261b0675798f9}\label{class_pythia_event_generator_ad1cacc2d3f70494ec5f261b0675798f9}} 
+\index{PythiaEventGenerator@{PythiaEventGenerator}!generate@{generate}}
+\index{generate@{generate}!PythiaEventGenerator@{PythiaEventGenerator}}
+\doxysubsubsection{\texorpdfstring{generate()}{generate()}}
+{\footnotesize\ttfamily void Pythia\+Event\+Generator\+::generate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{parent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Generate a particle according to the task parameters set at construction and fill the given particle instance. 
+
+Reimplemented from \mbox{\hyperlink{class_nucleon_nucleon_collision_generator_ad80ca783ffd7292b0d7a8f7445cd9f78}{Nucleon\+Nucleon\+Collision\+Generator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8cpp_source_l00207}{207}} of file \mbox{\hyperlink{_pythia_event_generator_8cpp_source}{Pythia\+Event\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_generator_a550f4ec5d2289a8007af613ac1102faa}\label{class_pythia_event_generator_a550f4ec5d2289a8007af613ac1102faa}} 
+\index{PythiaEventGenerator@{PythiaEventGenerator}!initialize@{initialize}}
+\index{initialize@{initialize}!PythiaEventGenerator@{PythiaEventGenerator}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Pythia\+Event\+Generator\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Initialize generator pythia8-\/\texorpdfstring{$>$}{>}Initialize(2212 /$\ast$ p {\itshape /, 2212 /} p {\itshape /, 14000. /} GeV $\ast$/); 
+
+Reimplemented from \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{_pythia_event_generator_8cpp_source}{Pythia\+Event\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_generator_ab3ffbd5da16039ca5793f75483772900}\label{class_pythia_event_generator_ab3ffbd5da16039ca5793f75483772900}} 
+\index{PythiaEventGenerator@{PythiaEventGenerator}!setDefaultConfiguration@{setDefaultConfiguration}}
+\index{setDefaultConfiguration@{setDefaultConfiguration}!PythiaEventGenerator@{PythiaEventGenerator}}
+\doxysubsubsection{\texorpdfstring{setDefaultConfiguration()}{setDefaultConfiguration()}}
+{\footnotesize\ttfamily void Pythia\+Event\+Generator\+::set\+Default\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Initialize the configuration parameter of the task to their default value; 
+
+Reimplemented from \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{_pythia_event_generator_8cpp_source}{Pythia\+Event\+Generator.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_pythia_event_generator_ae4e4ef3057a1c1474009564722220bdb}\label{class_pythia_event_generator_ae4e4ef3057a1c1474009564722220bdb}} 
+\index{PythiaEventGenerator@{PythiaEventGenerator}!dataConversionToWac@{dataConversionToWac}}
+\index{dataConversionToWac@{dataConversionToWac}!PythiaEventGenerator@{PythiaEventGenerator}}
+\doxysubsubsection{\texorpdfstring{dataConversionToWac}{dataConversionToWac}}
+{\footnotesize\ttfamily bool Pythia\+Event\+Generator\+::data\+Conversion\+To\+Wac}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{_pythia_event_generator_8hpp_source}{Pythia\+Event\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_generator_aa8b42ecbf22ee994153078c04ea9658c}\label{class_pythia_event_generator_aa8b42ecbf22ee994153078c04ea9658c}} 
+\index{PythiaEventGenerator@{PythiaEventGenerator}!dataOutputUsed@{dataOutputUsed}}
+\index{dataOutputUsed@{dataOutputUsed}!PythiaEventGenerator@{PythiaEventGenerator}}
+\doxysubsubsection{\texorpdfstring{dataOutputUsed}{dataOutputUsed}}
+{\footnotesize\ttfamily bool Pythia\+Event\+Generator\+::data\+Output\+Used}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8hpp_source_l00049}{49}} of file \mbox{\hyperlink{_pythia_event_generator_8hpp_source}{Pythia\+Event\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_generator_ad716fb98f1b1f5598eca05580c9a30ca}\label{class_pythia_event_generator_ad716fb98f1b1f5598eca05580c9a30ca}} 
+\index{PythiaEventGenerator@{PythiaEventGenerator}!nMaxClonesArray@{nMaxClonesArray}}
+\index{nMaxClonesArray@{nMaxClonesArray}!PythiaEventGenerator@{PythiaEventGenerator}}
+\doxysubsubsection{\texorpdfstring{nMaxClonesArray}{nMaxClonesArray}}
+{\footnotesize\ttfamily int Pythia\+Event\+Generator\+::n\+Max\+Clones\+Array}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8hpp_source_l00039}{39}} of file \mbox{\hyperlink{_pythia_event_generator_8hpp_source}{Pythia\+Event\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_generator_aeb4e913811e9ec349927a684d5d1277b}\label{class_pythia_event_generator_aeb4e913811e9ec349927a684d5d1277b}} 
+\index{PythiaEventGenerator@{PythiaEventGenerator}!outputEvent@{outputEvent}}
+\index{outputEvent@{outputEvent}!PythiaEventGenerator@{PythiaEventGenerator}}
+\doxysubsubsection{\texorpdfstring{outputEvent}{outputEvent}}
+{\footnotesize\ttfamily Pythia8\+::\+Event$\ast$ Pythia\+Event\+Generator\+::output\+Event}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{_pythia_event_generator_8hpp_source}{Pythia\+Event\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_generator_a57357218d4edf19ecbc430c2aeda6893}\label{class_pythia_event_generator_a57357218d4edf19ecbc430c2aeda6893}} 
+\index{PythiaEventGenerator@{PythiaEventGenerator}!outputFile@{outputFile}}
+\index{outputFile@{outputFile}!PythiaEventGenerator@{PythiaEventGenerator}}
+\doxysubsubsection{\texorpdfstring{outputFile}{outputFile}}
+{\footnotesize\ttfamily TFile$\ast$ Pythia\+Event\+Generator\+::output\+File}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8hpp_source_l00044}{44}} of file \mbox{\hyperlink{_pythia_event_generator_8hpp_source}{Pythia\+Event\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_generator_aec3d828a505842c24d2214ef16fbcc09}\label{class_pythia_event_generator_aec3d828a505842c24d2214ef16fbcc09}} 
+\index{PythiaEventGenerator@{PythiaEventGenerator}!outputTree@{outputTree}}
+\index{outputTree@{outputTree}!PythiaEventGenerator@{PythiaEventGenerator}}
+\doxysubsubsection{\texorpdfstring{outputTree}{outputTree}}
+{\footnotesize\ttfamily TTree$\ast$ Pythia\+Event\+Generator\+::output\+Tree}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{_pythia_event_generator_8hpp_source}{Pythia\+Event\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_generator_a831fc0b8662c4ed13ef58d51acdd5f74}\label{class_pythia_event_generator_a831fc0b8662c4ed13ef58d51acdd5f74}} 
+\index{PythiaEventGenerator@{PythiaEventGenerator}!particles@{particles}}
+\index{particles@{particles}!PythiaEventGenerator@{PythiaEventGenerator}}
+\doxysubsubsection{\texorpdfstring{particles}{particles}}
+{\footnotesize\ttfamily TClones\+Array$\ast$ Pythia\+Event\+Generator\+::particles}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8hpp_source_l00040}{40}} of file \mbox{\hyperlink{_pythia_event_generator_8hpp_source}{Pythia\+Event\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_generator_a2f891157f93c204d250e6b5597b7d3bc}\label{class_pythia_event_generator_a2f891157f93c204d250e6b5597b7d3bc}} 
+\index{PythiaEventGenerator@{PythiaEventGenerator}!pythia8@{pythia8}}
+\index{pythia8@{pythia8}!PythiaEventGenerator@{PythiaEventGenerator}}
+\doxysubsubsection{\texorpdfstring{pythia8}{pythia8}}
+{\footnotesize\ttfamily TPythia8$\ast$ Pythia\+Event\+Generator\+::pythia8}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{_pythia_event_generator_8hpp_source}{Pythia\+Event\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_generator_aea3643db84784a16a1a3a2848b2a88b0}\label{class_pythia_event_generator_aea3643db84784a16a1a3a2848b2a88b0}} 
+\index{PythiaEventGenerator@{PythiaEventGenerator}!standaloneMode@{standaloneMode}}
+\index{standaloneMode@{standaloneMode}!PythiaEventGenerator@{PythiaEventGenerator}}
+\doxysubsubsection{\texorpdfstring{standaloneMode}{standaloneMode}}
+{\footnotesize\ttfamily bool Pythia\+Event\+Generator\+::standalone\+Mode}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_generator_8hpp_source_l00050}{50}} of file \mbox{\hyperlink{_pythia_event_generator_8hpp_source}{Pythia\+Event\+Generator.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Wac\+Pythia/\mbox{\hyperlink{_pythia_event_generator_8hpp}{Pythia\+Event\+Generator.\+hpp}}\item 
+Wac\+Pythia/\mbox{\hyperlink{_pythia_event_generator_8cpp}{Pythia\+Event\+Generator.\+cpp}}\end{DoxyCompactItemize}

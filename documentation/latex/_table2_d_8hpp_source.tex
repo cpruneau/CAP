@@ -1,0 +1,44 @@
+\hypertarget{_table2_d_8hpp_source}{}\doxysection{Table2\+D.\+hpp}
+\label{_table2_d_8hpp_source}\index{HadronGas/Table2D.hpp@{HadronGas/Table2D.hpp}}
+\mbox{\hyperlink{_table2_d_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef Table2D\_h}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define Table2D\_h}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00006}00006 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00008}\mbox{\hyperlink{class_table2_d}{00008}} \textcolor{keyword}{class }\mbox{\hyperlink{class_table2_d}{Table2D}}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00009}00009 \{}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00010}00010   \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00011}00011     std::vector< std::vector<double>* >* data;}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00012}00012     \textcolor{keywordtype}{int} tb\_sizeX, tb\_sizeY;}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00013}00013     \textcolor{keywordtype}{double} varX\_min;}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00014}00014     \textcolor{keywordtype}{double} varY\_min;}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00015}00015     \textcolor{keywordtype}{double} dvarX;}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00016}00016     \textcolor{keywordtype}{double} dvarY;}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00018}00018   \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00019}00019     \mbox{\hyperlink{class_table2_d_a1f71d5e3ff7e028404e64141709bc60d}{Table2D}}();}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00020}00020     \mbox{\hyperlink{class_table2_d_a1f71d5e3ff7e028404e64141709bc60d}{Table2D}}(\textcolor{keywordtype}{string} );}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00021}00021     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_table2_d_afc8f1aa3e5d180e75553ae3950c0ac11}{loadTableFromFile}}(\textcolor{keywordtype}{string} );}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00022}\mbox{\hyperlink{class_table2_d_a68a05625083db37a6ca4be12054c0e3d}{00022}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_table2_d_a68a05625083db37a6ca4be12054c0e3d}{setVarXmin}}(\textcolor{keywordtype}{double} xmin) \{varX\_min = xmin;\}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00023}\mbox{\hyperlink{class_table2_d_a0dfceb0b7a31b569b1bf7ce7906bcd9e}{00023}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_table2_d_a0dfceb0b7a31b569b1bf7ce7906bcd9e}{setVarYmin}}(\textcolor{keywordtype}{double} ymin) \{varY\_min = ymin;\}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00024}\mbox{\hyperlink{class_table2_d_a172369b0224af5ce0cb7fb6821e8c0e7}{00024}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_table2_d_a172369b0224af5ce0cb7fb6821e8c0e7}{setdvarX}}(\textcolor{keywordtype}{double} dx) \{dvarX = dx;\}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00025}\mbox{\hyperlink{class_table2_d_a9fd486a40549f8c2560c6e651622ab06}{00025}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_table2_d_a9fd486a40549f8c2560c6e651622ab06}{setdvarY}}(\textcolor{keywordtype}{double} dy) \{dvarY = dy;\}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00026}\mbox{\hyperlink{class_table2_d_a91bfda461fd4492ea210698e0114e284}{00026}}     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_table2_d_a91bfda461fd4492ea210698e0114e284}{getVarXmin}}() \{\textcolor{keywordflow}{return}(varX\_min);\}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00027}\mbox{\hyperlink{class_table2_d_ac8af4edec272e241d9786c42df27c0a4}{00027}}     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_table2_d_ac8af4edec272e241d9786c42df27c0a4}{getVarYmin}}() \{\textcolor{keywordflow}{return}(varY\_min);\}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00028}\mbox{\hyperlink{class_table2_d_ac50575ef775db615b77c697afedb9f9f}{00028}}     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_table2_d_ac50575ef775db615b77c697afedb9f9f}{getdvarX}}() \{\textcolor{keywordflow}{return}(dvarX);\}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00029}\mbox{\hyperlink{class_table2_d_aaae2bb752e81d025513c4d6f36804003}{00029}}     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_table2_d_aaae2bb752e81d025513c4d6f36804003}{getdvarY}}() \{\textcolor{keywordflow}{return}(dvarY);\}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00030}\mbox{\hyperlink{class_table2_d_adeee0434b81e479e553fbe7fcb8041e5}{00030}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_table2_d_adeee0434b81e479e553fbe7fcb8041e5}{getTbsizeX}}() \{\textcolor{keywordflow}{return}(tb\_sizeX);\}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00031}\mbox{\hyperlink{class_table2_d_a2b19be45e8dc65ed9346d1bf1dd00293}{00031}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_table2_d_a2b19be45e8dc65ed9346d1bf1dd00293}{getTbsizeY}}() \{\textcolor{keywordflow}{return}(tb\_sizeY);\}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00032}\mbox{\hyperlink{class_table2_d_a3fa850d5b35738144725264610d5509b}{00032}}     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_table2_d_a3fa850d5b35738144725264610d5509b}{getTbdata}}(\textcolor{keywordtype}{int} idx, \textcolor{keywordtype}{int} idy) \{\textcolor{keywordflow}{return}((*(*data)[idy])[idx]);\}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00033}\mbox{\hyperlink{class_table2_d_a5526adce362f7053f4671999e3792b2e}{00033}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_table2_d_a5526adce362f7053f4671999e3792b2e}{setTbdata}}(\textcolor{keywordtype}{int} idx, \textcolor{keywordtype}{int} idy, \textcolor{keywordtype}{double} value) \{(*(*data)[idy])[idx]=value;\}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00034}00034     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_table2_d_ad42f8d047942ca8695233aeabd81bcd9}{outputTableToFile}}(\textcolor{keywordtype}{string} filename);}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00035}00035 \};}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00037}00037 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_table2_d_8hpp_source_l00038}00038 }
+
+\end{DoxyCode}

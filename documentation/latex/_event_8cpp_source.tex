@@ -1,0 +1,241 @@
+\hypertarget{_event_8cpp_source}{}\doxysection{Event.\+cpp}
+\label{_event_8cpp_source}\index{Base/Event.cpp@{Base/Event.cpp}}
+\mbox{\hyperlink{_event_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   12/12/16}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00003}00003 \textcolor{comment}{/*************************************************************************}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.                                   *}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.                                                  *}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment                             *}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00007}00007 \textcolor{comment}{ *                                                                       *}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.                                  *}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00009}00009 \textcolor{comment}{ *************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_event_8hpp}{Event.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00017}\mbox{\hyperlink{_event_8cpp_af77bf068e46d6e5d3223a9d2d80eccd8}{00017}} \mbox{\hyperlink{_event_8cpp_af77bf068e46d6e5d3223a9d2d80eccd8}{ClassImp}}(\mbox{\hyperlink{class_event}{Event}});}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00019}\mbox{\hyperlink{class_event_a5a40dd4708297f7031e29b39e039ae10}{00019}} \mbox{\hyperlink{class_event_a5a40dd4708297f7031e29b39e039ae10}{Event::Event}}()}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00020}00020  :}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00021}00021 eventIndex(0),}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00022}00022 eventNumber(0),}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00023}00023 particles(),}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00024}00024 eventProperties(new \mbox{\hyperlink{class_event_properties}{EventProperties}}() ),}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00025}00025 b(-\/9999.0),}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00026}00026 nucleusA(new \mbox{\hyperlink{class_nucleus}{Nucleus}}()),}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00027}00027 nucleusB(new \mbox{\hyperlink{class_nucleus}{Nucleus}}()),}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00028}00028 binaryMoments(new \mbox{\hyperlink{class_collision_geometry_moments}{CollisionGeometryMoments}}()),}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00029}00029 participantMoments(new \mbox{\hyperlink{class_collision_geometry_moments}{CollisionGeometryMoments}}())}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00030}00030 \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00031}00031  \textcolor{comment}{// no ops}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00032}00032 \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00034}00034 \textcolor{comment}{// ====================================================}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00035}00035 \textcolor{comment}{// DTOR}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00036}00036 \textcolor{comment}{// ====================================================}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00037}\mbox{\hyperlink{class_event_a7704ec01ce91e673885792054214b3d2}{00037}} \mbox{\hyperlink{class_event_a7704ec01ce91e673885792054214b3d2}{Event::\string~Event}}()}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00038}00038 \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00039}00039   \mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}.clear();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00040}00040   \mbox{\hyperlink{class_event_aad3919d83a12e18a8f91f515b32825d0}{eventProperties}}-\/>\mbox{\hyperlink{class_event_properties_a45d48e28f1e6d757df15900bb4a89d01}{clear}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00041}00041   \textcolor{keyword}{delete} \mbox{\hyperlink{class_event_aad3919d83a12e18a8f91f515b32825d0}{eventProperties}};}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00042}00042   \textcolor{keyword}{delete} \mbox{\hyperlink{class_event_a0800713ebfb49bcad20b0fa04be0237e}{nucleusA}};}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00043}00043   \textcolor{keyword}{delete} \mbox{\hyperlink{class_event_abc999b40aee5bbf56c6401f76f557fe9}{nucleusB}};}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00044}00044   \textcolor{keyword}{delete} \mbox{\hyperlink{class_event_a2fa3893308b9b19ac88b7b6f15702c08}{binaryMoments}};}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00045}00045   \textcolor{keyword}{delete} \mbox{\hyperlink{class_event_a1ac318c363330c9ce3efa50d1c8fba85}{participantMoments}};}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00046}00046 \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00048}00048 \textcolor{comment}{// ====================================================}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00049}00049 \textcolor{comment}{// Call before (re)starting simulation}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00050}00050 \textcolor{comment}{// ====================================================}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00051}\mbox{\hyperlink{class_event_a0862af1471604bf30a4f50a5e028637a}{00051}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_a0862af1471604bf30a4f50a5e028637a}{Event::clear}}()}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00052}00052 \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00053}00053   \mbox{\hyperlink{class_event_ad456ef21c6706d6ff8194bf07c33c692}{eventIndex}}      = 0;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00054}00054   \mbox{\hyperlink{class_event_ab746ab81d6d03d2152e28eb9ed6ee969}{eventNumber}}     = 0;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00055}00055   \mbox{\hyperlink{class_event_a97b540a51be2b2dc547a0b8cf3776b67}{b}}               = -\/99999;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00056}00056   \mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}.clear();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00057}00057   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_event_a0800713ebfb49bcad20b0fa04be0237e}{nucleusA}}) \mbox{\hyperlink{class_event_a0800713ebfb49bcad20b0fa04be0237e}{nucleusA}}-\/>\mbox{\hyperlink{class_nucleus_ad255489b68b67e3e6a0d60da0eeab830}{clear}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00058}00058   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_event_abc999b40aee5bbf56c6401f76f557fe9}{nucleusB}}) \mbox{\hyperlink{class_event_abc999b40aee5bbf56c6401f76f557fe9}{nucleusB}}-\/>\mbox{\hyperlink{class_nucleus_ad255489b68b67e3e6a0d60da0eeab830}{clear}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00059}00059   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_event_a2fa3893308b9b19ac88b7b6f15702c08}{binaryMoments}}) \mbox{\hyperlink{class_event_a2fa3893308b9b19ac88b7b6f15702c08}{binaryMoments}}-\/>\mbox{\hyperlink{class_collision_geometry_moments_ac9f0322a7c831b8c794c9f88a7cbbc07}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00060}00060   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_event_a1ac318c363330c9ce3efa50d1c8fba85}{participantMoments}}) \mbox{\hyperlink{class_event_a1ac318c363330c9ce3efa50d1c8fba85}{participantMoments}}-\/>\mbox{\hyperlink{class_collision_geometry_moments_ac9f0322a7c831b8c794c9f88a7cbbc07}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00061}00061   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_event_aad3919d83a12e18a8f91f515b32825d0}{eventProperties}}) \mbox{\hyperlink{class_event_aad3919d83a12e18a8f91f515b32825d0}{eventProperties}}-\/>\mbox{\hyperlink{class_event_properties_a1a0628894564a9b1f6983ebf1256b9db}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00062}00062   \textcolor{comment}{//Particle::getFactory()-\/>reset();}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00063}00063 \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00065}00065 \textcolor{comment}{// ====================================================}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00066}00066 \textcolor{comment}{// Call before generating new event}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00067}00067 \textcolor{comment}{// ====================================================}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00068}\mbox{\hyperlink{class_event_a149bd3fe9d4ab548a17d684b30283c87}{00068}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_a149bd3fe9d4ab548a17d684b30283c87}{Event::reset}}()}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00069}00069 \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00070}00070   \mbox{\hyperlink{class_event_ad456ef21c6706d6ff8194bf07c33c692}{eventIndex}}++;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00071}00071   \mbox{\hyperlink{class_event_ab746ab81d6d03d2152e28eb9ed6ee969}{eventNumber}}   = 0;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00072}00072   \mbox{\hyperlink{class_event_a97b540a51be2b2dc547a0b8cf3776b67}{b}}             = -\/99999;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00073}00073   \mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}.clear();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00074}00074   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_event_a0800713ebfb49bcad20b0fa04be0237e}{nucleusA}}) \mbox{\hyperlink{class_event_a0800713ebfb49bcad20b0fa04be0237e}{nucleusA}}-\/>\mbox{\hyperlink{class_nucleus_a5be4ea2b5719dfd1c511f81ef6915181}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00075}00075   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_event_abc999b40aee5bbf56c6401f76f557fe9}{nucleusB}}) \mbox{\hyperlink{class_event_abc999b40aee5bbf56c6401f76f557fe9}{nucleusB}}-\/>\mbox{\hyperlink{class_nucleus_a5be4ea2b5719dfd1c511f81ef6915181}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00076}00076   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_event_a2fa3893308b9b19ac88b7b6f15702c08}{binaryMoments}}) \mbox{\hyperlink{class_event_a2fa3893308b9b19ac88b7b6f15702c08}{binaryMoments}}-\/>\mbox{\hyperlink{class_collision_geometry_moments_ac9f0322a7c831b8c794c9f88a7cbbc07}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00077}00077   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_event_a1ac318c363330c9ce3efa50d1c8fba85}{participantMoments}}) \mbox{\hyperlink{class_event_a1ac318c363330c9ce3efa50d1c8fba85}{participantMoments}}-\/>\mbox{\hyperlink{class_collision_geometry_moments_ac9f0322a7c831b8c794c9f88a7cbbc07}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00078}00078   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_event_aad3919d83a12e18a8f91f515b32825d0}{eventProperties}}) \mbox{\hyperlink{class_event_aad3919d83a12e18a8f91f515b32825d0}{eventProperties}}-\/>\mbox{\hyperlink{class_event_properties_a1a0628894564a9b1f6983ebf1256b9db}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00079}00079 \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00082}00082 \textcolor{comment}{// ====================================================}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00083}00083 \textcolor{comment}{// Get the particle at the given index}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00084}00084 \textcolor{comment}{// ====================================================}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00085}\mbox{\hyperlink{class_event_a2634bcc8f8dae7dce4578af73b98200a}{00085}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_a2634bcc8f8dae7dce4578af73b98200a}{Event::add}}(\mbox{\hyperlink{class_particle}{Particle}} * particle)}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00086}00086 \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00087}00087   \mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}.push\_back(particle);}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00088}00088 \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00091}\mbox{\hyperlink{class_event_a04a79182977a0bf3f89888cb3f28aa5d}{00091}} \mbox{\hyperlink{class_particle}{Particle}}* \mbox{\hyperlink{class_event_a04a79182977a0bf3f89888cb3f28aa5d}{Event::addInteraction}}(\mbox{\hyperlink{class_particle}{Particle}}* particleA,}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00092}00092                                 \mbox{\hyperlink{class_particle}{Particle}}* particleB)}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00093}00093 \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00095}00095   \mbox{\hyperlink{class_particle}{Particle}} * interaction = \mbox{\hyperlink{class_particle_aea48229b90fe17f83263e98348857102}{Particle::getFactory}}()-\/>\mbox{\hyperlink{class_factory_a6f646ad85a0e516aa9a93f6f5db1d8d3}{getNextObject}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00096}00096   interaction-\/>\mbox{\hyperlink{class_particle_af52e0cb899fafce995f82cb636c94708}{setParents}}(particleA,particleB);}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00097}00097   interaction-\/>\mbox{\hyperlink{class_particle_aed911356f1efb3cd78986e1d387dd784}{setType}}(\mbox{\hyperlink{class_particle_type_a8ad843478cad8af8fb76733f925c2d15}{ParticleType::getInteractionType}}());}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00098}00098   interaction-\/>\mbox{\hyperlink{class_particle_a67b099a8c11615f65fcfaba094e4550e}{setLive}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00099}00099   \mbox{\hyperlink{class_event_a2634bcc8f8dae7dce4578af73b98200a}{add}}(interaction);}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00100}00100   \textcolor{keywordflow}{return} interaction;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00101}00101 \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00103}\mbox{\hyperlink{class_event_a231d273e05043d176bc9cfc5b195c9e0}{00103}} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_event_a231d273e05043d176bc9cfc5b195c9e0}{Event::getNParticipants}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00104}00104 \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00105}00105   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_event_a0800713ebfb49bcad20b0fa04be0237e}{nucleusA}} \&\& \mbox{\hyperlink{class_event_abc999b40aee5bbf56c6401f76f557fe9}{nucleusB}})}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00106}00106     \textcolor{keywordflow}{return}  \mbox{\hyperlink{class_event_a0800713ebfb49bcad20b0fa04be0237e}{nucleusA}}-\/>\mbox{\hyperlink{class_nucleus_a2fccaa6a9d3e44ff5b5f4bf15cd811b7}{countWounded}}() + \mbox{\hyperlink{class_event_abc999b40aee5bbf56c6401f76f557fe9}{nucleusB}}-\/>\mbox{\hyperlink{class_nucleus_a2fccaa6a9d3e44ff5b5f4bf15cd811b7}{countWounded}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00107}00107   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00108}00108     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00109}00109 \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00111}\mbox{\hyperlink{class_event_a4f60f5eae51c98ba6999da48a29cd4b4}{00111}} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_event_a4f60f5eae51c98ba6999da48a29cd4b4}{Event::getNBinaryCollisions}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00112}00112 \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00113}00113   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  nBinary = 0;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00114}00114   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iPart=0; iPart<\mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}.size(); iPart++)}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00115}00115     \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00116}00116     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}[iPart]-\/>isNucleonNucleonInteraction()) nBinary++;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00117}00117     \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00118}00118   \textcolor{keywordflow}{return} nBinary;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00119}00119 \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00121}\mbox{\hyperlink{class_event_a2ede6a2bc4e363dd1ad87ea3b4c8ab58}{00121}} vector<Particle*> \mbox{\hyperlink{class_event_a2ede6a2bc4e363dd1ad87ea3b4c8ab58}{Event::getNucleonNucleonInteractions}}()}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00122}00122 \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00123}00123   vector<Particle*>  interactions;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00124}00124   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iPart=0; iPart<\mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}.size(); iPart++)}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00125}00125     \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00126}00126     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}[iPart]-\/>isNucleonNucleonInteraction()) interactions.push\_back(\mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}[iPart]);}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00127}00127     \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00128}00128   \textcolor{keywordflow}{return} interactions;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00129}00129 \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00131}00131 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00133}00133 \textcolor{comment}{//unsigned int CollisionGeometry::getNProtonProtonCollisions()   const}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00134}00134 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00135}00135 \textcolor{comment}{//  unsigned int n = 0;}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00136}00136 \textcolor{comment}{//  for (unsigned int k=0; k<nnInteractions.size(); k++)}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00137}00137 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00138}00138 \textcolor{comment}{//    if (nnInteractions[k].isProtonProton()) n++;}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00139}00139 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00140}00140 \textcolor{comment}{//  return n;}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00141}00141 \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00142}00142 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00143}00143 \textcolor{comment}{//unsigned int CollisionGeometry::getNProtonNeutronCollisions()  const}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00144}00144 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00145}00145 \textcolor{comment}{//  unsigned int n = 0;}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00146}00146 \textcolor{comment}{//  for (unsigned int k=0; k<nnInteractions.size(); k++)}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00147}00147 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00148}00148 \textcolor{comment}{//    if (nnInteractions[k].isProtonNeutron()) n++;}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00149}00149 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00150}00150 \textcolor{comment}{//  return n;}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00151}00151 \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00152}00152 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00153}00153 \textcolor{comment}{//unsigned int CollisionGeometry::getNNeutronNeutronCollisions() const}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00154}00154 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00155}00155 \textcolor{comment}{//  unsigned int n = 0;}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00156}00156 \textcolor{comment}{//  for (unsigned int k=0; k<nnInteractions.size(); k++)}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00157}00157 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00158}00158 \textcolor{comment}{//    if (nnInteractions[k].isNeutronNeutron()) n++;}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00159}00159 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00160}00160 \textcolor{comment}{//  return n;}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00161}00161 \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00162}00162 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00163}00163 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00164}\mbox{\hyperlink{class_event_abc674e4897861a3f774be0c66a4b54cb}{00164}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_abc674e4897861a3f774be0c66a4b54cb}{Event::setNucleusA}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} z, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} a)}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00165}00165 \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00166}00166   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_event_a0800713ebfb49bcad20b0fa04be0237e}{nucleusA}}) \mbox{\hyperlink{class_event_a0800713ebfb49bcad20b0fa04be0237e}{nucleusA}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_nucleus}{Nucleus}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00167}00167   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_event_a0800713ebfb49bcad20b0fa04be0237e}{nucleusA}}-\/>\mbox{\hyperlink{class_nucleus_ab4f65926a86356527ba8417204c62464}{getNProtons}}()==z \&\& \mbox{\hyperlink{class_event_a0800713ebfb49bcad20b0fa04be0237e}{nucleusA}}-\/>\mbox{\hyperlink{class_nucleus_afac21c676b691e7b0bf9d12b70cc20f2}{getNNucleons}}()==a) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00168}00168   \mbox{\hyperlink{class_event_a0800713ebfb49bcad20b0fa04be0237e}{nucleusA}}-\/>\mbox{\hyperlink{class_nucleus_a4de2a89183995f36361cb9c774ec8391}{defineAs}}(z,a);}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00169}00169 \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00170}00170 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00171}\mbox{\hyperlink{class_event_ad236bb05e0996e592ca271faf35299b7}{00171}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_ad236bb05e0996e592ca271faf35299b7}{Event::setNucleusB}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} z, \textcolor{keywordtype}{unsigned}  \textcolor{keywordtype}{int} a)}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00172}00172 \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00173}00173   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_event_abc999b40aee5bbf56c6401f76f557fe9}{nucleusB}}) \mbox{\hyperlink{class_event_abc999b40aee5bbf56c6401f76f557fe9}{nucleusB}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_nucleus}{Nucleus}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00174}00174   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_event_abc999b40aee5bbf56c6401f76f557fe9}{nucleusB}}-\/>\mbox{\hyperlink{class_nucleus_ab4f65926a86356527ba8417204c62464}{getNProtons}}()==z \&\& \mbox{\hyperlink{class_event_abc999b40aee5bbf56c6401f76f557fe9}{nucleusB}}-\/>\mbox{\hyperlink{class_nucleus_afac21c676b691e7b0bf9d12b70cc20f2}{getNNucleons}}()==a) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00175}00175   \mbox{\hyperlink{class_event_abc999b40aee5bbf56c6401f76f557fe9}{nucleusB}}-\/>\mbox{\hyperlink{class_nucleus_a4de2a89183995f36361cb9c774ec8391}{defineAs}}(z,a);}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00176}00176 \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00177}00177 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00178}00178 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00180}00180  \textcolor{comment}{// Print properties of this event at the given output}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00182}\mbox{\hyperlink{class_event_a260d0735156a0e18183b7d4fd750df9a}{00182}} \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_a260d0735156a0e18183b7d4fd750df9a}{Event::printProperties}}(ostream \& output)}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00183}00183  \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00184}00184  output << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00185}00185  output << \textcolor{stringliteral}{"{}      stream index : "{}} << \mbox{\hyperlink{class_event_a62c2a5af123d87400dff185f699b11f7}{streamIndex}} << endl;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00186}00186  output << \textcolor{stringliteral}{"{}       event index : "{}} << \mbox{\hyperlink{class_event_ad456ef21c6706d6ff8194bf07c33c692}{eventIndex}} << endl;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00187}00187  output << \textcolor{stringliteral}{"{}      event number : "{}} << \mbox{\hyperlink{class_event_ab746ab81d6d03d2152e28eb9ed6ee969}{eventNumber}} << endl;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00188}00188  output << \textcolor{stringliteral}{"{} number of particle: "{}} << \mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}.size() << endl;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00189}00189  \mbox{\hyperlink{class_event_aad3919d83a12e18a8f91f515b32825d0}{eventProperties}}-\/>\mbox{\hyperlink{class_event_properties_a56f9e838407cdd868cf4974ffe13d969}{printProperties}}(output);}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00190}00190  \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} iParticle=0; iParticle<\mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}.size(); iParticle++)}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00191}00191    \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00192}00192    \mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}[iParticle]-\/>printProperties(output);}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00193}00193    \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00194}00194  \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00195}00195 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00196}00196 vector<Event*> \mbox{\hyperlink{class_event_a3f9ced0649df6ce594df597e919d8115}{Event::eventStreamsStore}};}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00197}00197 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00198}\mbox{\hyperlink{class_event_afaab747c9fb60168b29cde523b039db3}{00198}} \mbox{\hyperlink{class_event}{Event}} * \mbox{\hyperlink{class_event_afaab747c9fb60168b29cde523b039db3}{Event::getEventStream}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} index)}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00199}00199 \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00200}00200   \textcolor{comment}{//cout << "{}Event::getEventStream(unsigned int index) w/ index:"{} << index << endl;}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00201}00201   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nStreams = \mbox{\hyperlink{class_event_a3f9ced0649df6ce594df597e919d8115}{eventStreamsStore}}.size();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00202}00202   \mbox{\hyperlink{class_event}{Event}} * event;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00203}00203   \textcolor{keywordflow}{if} (nStreams == 0)}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00204}00204     \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00205}00205     \textcolor{comment}{// none exist, create one}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00206}00206     cout << \textcolor{stringliteral}{"{}Event::getEventStream(unsigned int index) nStreams == 0; Create an event"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00207}00207     \textcolor{keyword}{event} = \textcolor{keyword}{new} \mbox{\hyperlink{class_event_a5a40dd4708297f7031e29b39e039ae10}{Event}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00208}00208     \textcolor{keyword}{event}-\/>setStreamIndex(index);}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00209}00209     \mbox{\hyperlink{class_event_a3f9ced0649df6ce594df597e919d8115}{eventStreamsStore}}.push\_back(event);}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00210}00210     \textcolor{keywordflow}{return} event;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00211}00211     \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00212}00212   \textcolor{comment}{// streams already exist, find the one requested}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00213}00213   \textcolor{comment}{//cout << "{}Event::getEventStream(unsigned int index) nStreams: "{} << nStreams << "{} Find it"{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00214}00214 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00215}00215   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k=0; k<nStreams; k++)}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00216}00216     \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00217}00217     \textcolor{keyword}{event} = \mbox{\hyperlink{class_event_a3f9ced0649df6ce594df597e919d8115}{eventStreamsStore}}[k];}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00218}00218     \textcolor{keywordflow}{if} (event-\/>\mbox{\hyperlink{class_event_ae0638a3364fd3e7f5c8c952b84672b5c}{getStreamIndex}}() == index) \textcolor{keywordflow}{return} event;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00219}00219     \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00220}00220   \textcolor{comment}{//cout << "{}Event::getEventStream(unsigned int index) stream index "{} << index << "{} not found. Create it"{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00221}00221 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00222}00222   \textcolor{comment}{// stream does not exist, create it}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00223}00223   \textcolor{keyword}{event} = \textcolor{keyword}{new} \mbox{\hyperlink{class_event_a5a40dd4708297f7031e29b39e039ae10}{Event}}();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00224}00224   \textcolor{keyword}{event}-\/>setStreamIndex(index);}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00225}00225   \mbox{\hyperlink{class_event_a3f9ced0649df6ce594df597e919d8115}{eventStreamsStore}}.push\_back(event);}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00226}00226   \textcolor{keywordflow}{return} event;}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00227}00227 \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00228}00228 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00229}\mbox{\hyperlink{class_event_af49ca73bb407194145a4db2d9da39d1d}{00229}} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_event_af49ca73bb407194145a4db2d9da39d1d}{Event::getNEventStreams}}()}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00230}00230 \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00231}00231   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_event_a3f9ced0649df6ce594df597e919d8115}{eventStreamsStore}}.size();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00232}00232 \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00233}00233 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00234}\mbox{\hyperlink{class_event_af76973eb3e6e0070333d5120b26044a3}{00234}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_af76973eb3e6e0070333d5120b26044a3}{Event::resetEventStreams}}()}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00235}00235 \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00236}00236   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nStreams = \mbox{\hyperlink{class_event_a3f9ced0649df6ce594df597e919d8115}{eventStreamsStore}}.size();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00237}00237   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iStream=0; iStream<nStreams; iStream++)}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00238}00238     \{}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00239}00239     \mbox{\hyperlink{class_event_a3f9ced0649df6ce594df597e919d8115}{eventStreamsStore}}[iStream]-\/>reset();}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00240}00240     \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00241}00241 \}}
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00242}00242 }
+\DoxyCodeLine{\Hypertarget{_event_8cpp_source_l00243}00243 }
+
+\end{DoxyCode}

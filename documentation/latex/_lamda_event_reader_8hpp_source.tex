@@ -1,0 +1,310 @@
+\hypertarget{_lamda_event_reader_8hpp_source}{}\doxysection{Lamda\+Event\+Reader.\+hpp}
+\label{_lamda_event_reader_8hpp_source}\index{LambdaAnalysis/LamdaEventReader.hpp@{LambdaAnalysis/LamdaEventReader.hpp}}
+\mbox{\hyperlink{_lamda_event_reader_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00001}00001 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00002}00002 \textcolor{comment}{//  LamdaEventReader.hpp}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00003}00003 \textcolor{comment}{//  CodeV3}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00004}00004 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00005}00005 \textcolor{comment}{//  Created by Claude Pruneau on 8/18/17.}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00006}00006 \textcolor{comment}{//  Copyright © 2017 Claude Pruneau. All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00007}00007 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00009}00009 \textcolor{preprocessor}{\#ifndef LamdaEventReader\_hpp}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#define LamdaEventReader\_hpp}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#include "{}TMath.h"{}}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}TTree.h"{}}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}TChain.h"{}}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}GeneratorConfiguration.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}EventGenerator.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00017}\mbox{\hyperlink{class_lamda_event_reader}{00017}} \textcolor{keyword}{class }\mbox{\hyperlink{class_lamda_event_reader}{LamdaEventReader}} : \textcolor{keyword}{public} EventGenerator}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00018}00018 \{}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00019}00019 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00023}00023   \textcolor{comment}{// CTOR}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00025}\mbox{\hyperlink{class_lamda_event_reader_a3fba17c4d3c6c30eaab0b79317455411}{00025}} \textcolor{comment}{}  \mbox{\hyperlink{class_lamda_event_reader_a3fba17c4d3c6c30eaab0b79317455411}{LamdaEventReader}}(\mbox{\hyperlink{class_event}{Event}} * event,}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00026}00026       GeneratorConfiguration * configuration,}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00027}00027       TRandom * randomGenerator,}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00028}00028       \textcolor{keywordtype}{bool} debugLevel)}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00029}00029 :}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00030}00030   EventGenerator  (event, configuration, randomGenerator, debugLevel)}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00031}00031 \{}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00032}00032     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}-\/DEBUG-\/ LamdaEventReader::CTOR(...) No ops"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00033}00033 \}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00036}00036   \textcolor{comment}{// DTOR}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00038}\mbox{\hyperlink{class_lamda_event_reader_a1325168601d3ab882ef2fc015a09aeff}{00038}} \textcolor{comment}{}  \textcolor{keyword}{virtual} \mbox{\hyperlink{class_lamda_event_reader_a1325168601d3ab882ef2fc015a09aeff}{\string~LamdaEventReader}}()}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00039}00039   \{}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00040}00040   \}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00043}00043   \textcolor{comment}{// Initialize generator}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00045}\mbox{\hyperlink{class_lamda_event_reader_aeba402e9c56bc07c4e0097b2455c2cd0}{00045}} \textcolor{comment}{}  \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_lamda_event_reader_aeba402e9c56bc07c4e0097b2455c2cd0}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00046}00046   \{}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00047}00047     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}-\/DEBUG-\/ LamdaEventReader::initialize() Started"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00050}00050     \textcolor{keyword}{event}           -\/>reset();}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00051}00051     particleFactory -\/>reset();}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00055}00055     TChain *chain = \textcolor{keyword}{new} TChain(\textcolor{stringliteral}{"{}events"{}},\textcolor{stringliteral}{"{} "{}});}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00056}00056    }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00057}00057     chain-\/>Add(\textcolor{stringliteral}{"{}/media/sumit/7392998e-\/237a-\/4d75-\/8cec-\/93c8749a031d/savefiles/analysis/lamda\_analysis/purest\_hyperons.root"{}});}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00058}00058     \mbox{\hyperlink{class_lamda_event_reader_a66116cf0219d463dfddf39bdbdf7f92d}{Init}}(chain);}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00059}00059     \mbox{\hyperlink{class_lamda_event_reader_acfe10d43ad11dd006bf92783695ffe90}{jentry}} = 0;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00061}00061     \mbox{\hyperlink{class_lamda_event_reader_a4a6b7c3305c9613480547961acc24400}{nentries}} = \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>GetEntries();}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00062}00062     cout << \textcolor{stringliteral}{"{}-\/INFO-\/ initialize() nentries: "{}} << \mbox{\hyperlink{class_lamda_event_reader_a4a6b7c3305c9613480547961acc24400}{nentries}} << endl;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00063}00063     \mbox{\hyperlink{class_lamda_event_reader_a16dc900aeacc89aae870a796f96bd440}{nbytes}} = 0;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00064}00064     \mbox{\hyperlink{class_lamda_event_reader_a176d16371fb54c6f40a49ac3d8811e46}{nb}} = 0;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00068}00068     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}-\/DEBUG-\/ LamdaEventReader::initialize() Completed"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00069}00069   \}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00073}00073   \textcolor{comment}{// Reset and Initialize the generator}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00075}\mbox{\hyperlink{class_lamda_event_reader_afbaae2b59511d9f544cfc0eedbbf88e1}{00075}} \textcolor{comment}{}  \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_lamda_event_reader_afbaae2b59511d9f544cfc0eedbbf88e1}{reset}}()}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00076}00076   \{}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00077}00077     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}-\/DEBUG-\/ LamdaEventReader::reset() Started"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00078}00078     \textcolor{keyword}{event}-\/>reset();}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00079}00079     particleFactory-\/>reset();}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00080}00080     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}-\/DEBUG-\/ LamdaEventReader::reset() Completed"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00082}00082   \}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00086}00086   \textcolor{comment}{// Generate an event}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00088}\mbox{\hyperlink{class_lamda_event_reader_addc4e3d2ac2c1188114bb38f4f036a1e}{00088}} \textcolor{comment}{}  \mbox{\hyperlink{class_event}{Event}} * \mbox{\hyperlink{class_lamda_event_reader_addc4e3d2ac2c1188114bb38f4f036a1e}{generate}}()}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00089}00089   \{}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00090}00090     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}LamdaEventReader::generate() Started"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00092}00092     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}})}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00093}00093     \{}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00094}00094       cout << \textcolor{stringliteral}{"{}-\/FATAL-\/ LamdaEventReader::generate() no TChain available"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00095}00095     \}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00097}00097     \textcolor{keywordtype}{bool} seekingEvent = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00098}00098     \textcolor{keywordflow}{while} (seekingEvent)}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00099}00099     \{}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00100}00100       \textcolor{comment}{// load another event from the root file/TTree}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00101}00101       Long64\_t ientry = \mbox{\hyperlink{class_lamda_event_reader_aac6037651d1595beb42a107f1a6cc8fe}{LoadTree}}(\mbox{\hyperlink{class_lamda_event_reader_acfe10d43ad11dd006bf92783695ffe90}{jentry}}++);}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00103}00103       \textcolor{comment}{// returning a null point is an indication that}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00104}00104       \textcolor{comment}{// there are no more events in the file or stack of files.}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00105}00105       \textcolor{keywordflow}{if} (ientry < 0) \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00107}00107       \mbox{\hyperlink{class_lamda_event_reader_a176d16371fb54c6f40a49ac3d8811e46}{nb}} = \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>GetEntry(\mbox{\hyperlink{class_lamda_event_reader_acfe10d43ad11dd006bf92783695ffe90}{jentry}});   \mbox{\hyperlink{class_lamda_event_reader_a16dc900aeacc89aae870a796f96bd440}{nbytes}} += \mbox{\hyperlink{class_lamda_event_reader_a176d16371fb54c6f40a49ac3d8811e46}{nb}};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00108}00108       }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00109}00109       \textcolor{comment}{// check if the event is acceptable.}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00110}00110       \textcolor{comment}{//  if (Mult==0) continue;}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00111}00111         }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00112}00112      \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_lamda_event_reader_a31765b67f0da96e034d08142db1626fc}{cent}} >= generatorConfiguration-\/>impactParameterMinimum \&\& cent <= generatorConfiguration-\/>impactParameterMaximum) seekingEvent = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00113}00113 \textcolor{comment}{//cout<<Mult<<"{}   "{}<<Cent<<endl;}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00114}00114     \}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00115}00115   \textcolor{comment}{//cout<<"{}   "{}<<cent<<"{}  "{}<<N<<endl;}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00117}00117 \textcolor{comment}{}    \textcolor{keywordtype}{int} thePid;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00118}00118     \textcolor{keywordtype}{double} charge;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00119}00119     \textcolor{keywordtype}{double} p\_x, p\_y, p\_z, p\_e, p\_t, y, y\_maxim,m\_e;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00120}00120     \textcolor{keywordtype}{double} px,py,pz,mt;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00121}00121     \mbox{\hyperlink{class_particle}{Particle}} * particle;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00122}00122 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00124}00124     \textcolor{keyword}{event}-\/>\mbox{\hyperlink{class_particle_a0df75e7ca5475b07c67746d7a7f41e22}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00125}00125     particleFactory-\/>reset();}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00126}00126       }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00127}00127     \textcolor{keywordtype}{int} particleAccepted = 0;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00128}00128     \textcolor{comment}{// load particles from TTree and copy those that are selected into}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00129}00129     \textcolor{comment}{// event}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00130}00130     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iPart1=0; iPart1<\mbox{\hyperlink{class_lamda_event_reader_a137f54a2c4941be90094b5f98dd5dcd7}{N}}; iPart1++)}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00131}00131     \{}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00132}00132       \textcolor{comment}{//if(ist[iPart1]!=0) continue;}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00133}00133       \textcolor{comment}{//cout << "{}========== part1: "{} << iPart1 << endl;}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00134}00134 \textcolor{comment}{//if(Mult==0) continue;}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00135}00135       thePid = \mbox{\hyperlink{class_lamda_event_reader_adbe7a150ec1a69d865970f4748970121}{v}}[iPart1];}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00136}00136       px=\mbox{\hyperlink{class_lamda_event_reader_aa99e0c14bfbe5dd48daff7335743c703}{pt}}[iPart1]*(TMath::Cos(\mbox{\hyperlink{class_lamda_event_reader_aac056789874409e894ba1880c7ce08e9}{phi}}[iPart1]));}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00137}00137       py=\mbox{\hyperlink{class_lamda_event_reader_aa99e0c14bfbe5dd48daff7335743c703}{pt}}[iPart1]*TMath::Sin(\mbox{\hyperlink{class_lamda_event_reader_aac056789874409e894ba1880c7ce08e9}{phi}}[iPart1]);}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00138}00138       mt=TMath::Sqrt(\mbox{\hyperlink{class_lamda_event_reader_aa99e0c14bfbe5dd48daff7335743c703}{pt}}[iPart1]*\mbox{\hyperlink{class_lamda_event_reader_aa99e0c14bfbe5dd48daff7335743c703}{pt}}[iPart1]+\mbox{\hyperlink{class_lamda_event_reader_a74c5e96dd63d92731c21b065676cf7be}{m}}[iPart1]*\mbox{\hyperlink{class_lamda_event_reader_a74c5e96dd63d92731c21b065676cf7be}{m}}[iPart1]);}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00139}00139       pz=mt*TMath::SinH(\mbox{\hyperlink{class_lamda_event_reader_ae4d26f348a4ade5c6914720d529694f4}{rap}}[iPart1]);}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00140}00140        \textcolor{comment}{//cout<<thePid<<endl;}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00141}00141    \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/  Select some pid based BF corr -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Starts}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00142}00142    \textcolor{comment}{//     if(thePid==120||thePid==-\/120||thePid==1120||thePid==-\/1120) continue;}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00143}00143         }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00144}00144    \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Select some pid based BF corr -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Ends}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00145}00145       \textcolor{keywordflow}{if} ( thePid == 1)}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00146}00146         charge = 1;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00147}00147       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (thePid == -\/1)}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00148}00148         charge = -\/1;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00149}00149       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00150}00150         charge = 0;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00151}00151       \textcolor{comment}{// only accept charged particles}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00152}00152      }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00153}00153       \textcolor{keywordflow}{if} (charge==0) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00154}00154       p\_x = px;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00155}00155       p\_y = py;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00156}00156       p\_z = pz;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00157}00157       m\_e = \mbox{\hyperlink{class_lamda_event_reader_a74c5e96dd63d92731c21b065676cf7be}{m}}[iPart1];}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00158}00158       p\_t = \mbox{\hyperlink{class_lamda_event_reader_aa99e0c14bfbe5dd48daff7335743c703}{pt}}[iPart1];}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00159}00159       p\_e =sqrt(px*px + py*py + pz*pz + \mbox{\hyperlink{class_lamda_event_reader_a74c5e96dd63d92731c21b065676cf7be}{m}}[iPart1]*\mbox{\hyperlink{class_lamda_event_reader_a74c5e96dd63d92731c21b065676cf7be}{m}}[iPart1]);}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00160}00160       \textcolor{keywordflow}{if} (p\_t<generatorConfiguration-\/>ptMinimum || p\_t>generatorConfiguration-\/>ptMaximum) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00161}00161       \textcolor{keywordtype}{double} plus  = p\_e + p\_z;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00162}00162       \textcolor{keywordtype}{double} minus = p\_e -\/ p\_z;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00163}00163       \textcolor{keywordflow}{if} (plus <=0.0)}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00164}00164         y = -\/1.0E50;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00165}00165       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (minus <=0.0)}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00166}00166         y = 1.0E50;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00167}00167       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00168}00168         y = 0.5 * log( plus/minus );}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00169}00169         \textcolor{comment}{//y\_maxim=rap[iPart1];}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00170}00170        \textcolor{comment}{// cout<<"{}      "{}<<y\_maxim<<"{}    "{}<<y<<endl;}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00171}00171        \textcolor{comment}{//cout<<"{}      "{}<<thePid<<"{}    "{}<<y<<endl;}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00172}00172       \textcolor{keywordflow}{if} (y<generatorConfiguration-\/>yMinimum || y>generatorConfiguration-\/>yMaximum) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00173}00173         \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/here}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00174}00174       }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00175}00175         }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00176}00176       particle = particleFactory-\/>getObject();}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00177}00177       particle-\/>\mbox{\hyperlink{class_particle_ac7ca57ecb691687b4c7ad13f803a7c0c}{pid}}    = thePid;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00178}00178       particle-\/>charge = charge;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00179}00179       particle-\/>\mbox{\hyperlink{class_particle_aec8818bc53cd79f67dbb1328ec877531}{setPxPyPzE}}(p\_x,p\_y,p\_z,p\_e);}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00180}00180         }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00181}00181       \textcolor{comment}{//particle-\/>printProperties(cout);}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00182}00182       particleAccepted++;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00183}00183     \}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00184}00184     \textcolor{keyword}{event}-\/>nParticles = particleAccepted;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00185}00185     \textcolor{comment}{//cout<<"{}No of accepted Particles : "{}<<particleAccepted<<endl;}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00186}00186     \textcolor{comment}{//event-\/>printProperties(cout);}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00187}00187     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}-\/DEBUG-\/ LamdaEventReader::generate() event completed!"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00188}00188     \textcolor{keywordflow}{return} event;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00189}00189   \}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00190}00190 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00191}00191 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00192}\mbox{\hyperlink{class_lamda_event_reader_ae5048e0a32f8ae6afaed8174266d4e56}{00192}}   Int\_t \mbox{\hyperlink{class_lamda_event_reader_ae5048e0a32f8ae6afaed8174266d4e56}{GetEntry}}(Long64\_t entry)}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00193}00193   \{}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00194}00194     \textcolor{comment}{// Read contents of entry.}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00195}00195     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}) \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00196}00196     \textcolor{keywordflow}{return} \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>GetEntry(entry);}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00197}00197   \}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00198}00198 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00199}\mbox{\hyperlink{class_lamda_event_reader_aac6037651d1595beb42a107f1a6cc8fe}{00199}}   Long64\_t \mbox{\hyperlink{class_lamda_event_reader_aac6037651d1595beb42a107f1a6cc8fe}{LoadTree}}(Long64\_t entry)}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00200}00200   \{}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00201}00201     \textcolor{comment}{// Set the environment to read one entry}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00202}00202     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}) \textcolor{keywordflow}{return} -\/5;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00203}00203     Long64\_t centry = \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>LoadTree(entry);}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00204}00204     \textcolor{keywordflow}{if} (centry < 0) \textcolor{keywordflow}{return} centry;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00205}00205     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>GetTreeNumber() != \mbox{\hyperlink{class_lamda_event_reader_af81e387911302e39c89e9b630ef78e99}{fCurrent}}) \{}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00206}00206       \mbox{\hyperlink{class_lamda_event_reader_af81e387911302e39c89e9b630ef78e99}{fCurrent}} = \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>GetTreeNumber();}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00207}00207       \mbox{\hyperlink{class_lamda_event_reader_a15e8e2791df0570d2cd27f01ffa8d1b4}{Notify}}();}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00208}00208     \}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00209}00209     \textcolor{keywordflow}{return} centry;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00210}00210   \}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00211}00211 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00212}\mbox{\hyperlink{class_lamda_event_reader_a66116cf0219d463dfddf39bdbdf7f92d}{00212}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_lamda_event_reader_a66116cf0219d463dfddf39bdbdf7f92d}{Init}}(TTree *tree)}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00213}00213   \{}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00214}00214     \textcolor{keywordflow}{if} (!tree) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00215}00215     \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}} = tree;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00216}00216     \mbox{\hyperlink{class_lamda_event_reader_af81e387911302e39c89e9b630ef78e99}{fCurrent}} = -\/1;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00217}00217     \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>SetMakeClass(1);}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00218}00218 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00219}00219     \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}run"{}}, \&\mbox{\hyperlink{class_lamda_event_reader_af640e2847599bf561ce359723337d6ee}{run}}, \&\mbox{\hyperlink{class_lamda_event_reader_acffbb361e5fa2760d42495da48bf8afa}{b\_run}});}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00220}00220    \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}magfld"{}}, \&\mbox{\hyperlink{class_lamda_event_reader_a2e7c4a3cb8a8d86ca1ad0a0758ad1eaa}{magfld}}, \&\mbox{\hyperlink{class_lamda_event_reader_a863403c5cca8280ea2b2a15ef4bb053b}{b\_magfld}});}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00221}00221    \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}cent"{}}, \&\mbox{\hyperlink{class_lamda_event_reader_a31765b67f0da96e034d08142db1626fc}{cent}}, \&\mbox{\hyperlink{class_lamda_event_reader_a3e0f4466902028f33a00f9ae03dbc8c4}{b\_cent}});}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00222}00222    \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}vz"{}}, \&\mbox{\hyperlink{class_lamda_event_reader_aedaac527fb41ab1e88443ba390a3901e}{vz}}, \&\mbox{\hyperlink{class_lamda_event_reader_a338943640270a799f4c2d7959f7b7c13}{b\_vz}});}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00223}00223    \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}q"{}}, \mbox{\hyperlink{class_lamda_event_reader_acce2976f02302f51b15efe1c6a771443}{q}}, \&\mbox{\hyperlink{class_lamda_event_reader_a4169a79b12466cda78d748034ea30cf5}{b\_q}});}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00224}00224    \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}tm"{}}, \&\mbox{\hyperlink{class_lamda_event_reader_a2a2f5e2b5d230b51b38b3968d5b4cd41}{tm}}, \&\mbox{\hyperlink{class_lamda_event_reader_abd5f41ebd80733b0778fa8d0acda342b}{b\_tm}});}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00225}00225    \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}tx"{}}, \mbox{\hyperlink{class_lamda_event_reader_a20aac9aab8cdf7c38e172724a580ef12}{tx}}, \&\mbox{\hyperlink{class_lamda_event_reader_aaf88d67c57d932431806bceb0fd628ed}{b\_tx}});}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00226}00226    \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}ty"{}}, \mbox{\hyperlink{class_lamda_event_reader_a438bffe1945f6ae0cb5e2f31736148d6}{ty}}, \&\mbox{\hyperlink{class_lamda_event_reader_a77f94f717b84cd285404dea081f337db}{b\_ty}});}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00227}00227    \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}N"{}}, \&\mbox{\hyperlink{class_lamda_event_reader_a137f54a2c4941be90094b5f98dd5dcd7}{N}}, \&\mbox{\hyperlink{class_lamda_event_reader_aa31c1fedb63f967b810127e6ac15d641}{b\_N}});}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00228}00228    \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}v"{}}, \mbox{\hyperlink{class_lamda_event_reader_adbe7a150ec1a69d865970f4748970121}{v}}, \&\mbox{\hyperlink{class_lamda_event_reader_a895e85351f0ffb21de20018ada919f4a}{b\_v}});}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00229}00229    \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}m"{}}, \mbox{\hyperlink{class_lamda_event_reader_a74c5e96dd63d92731c21b065676cf7be}{m}}, \&\mbox{\hyperlink{class_lamda_event_reader_ac6821d75b709bb3141368efd232b83b8}{b\_m}});}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00230}00230    \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}pt"{}}, \mbox{\hyperlink{class_lamda_event_reader_aa99e0c14bfbe5dd48daff7335743c703}{pt}}, \&\mbox{\hyperlink{class_lamda_event_reader_a84166979e9150c568585bd854bba058b}{b\_pt}});}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00231}00231    \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}rap"{}}, \mbox{\hyperlink{class_lamda_event_reader_ae4d26f348a4ade5c6914720d529694f4}{rap}}, \&\mbox{\hyperlink{class_lamda_event_reader_ae6424dbfd7119f40d3088d4945f6c719}{b\_rap}});}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00232}00232    \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}phi"{}}, \mbox{\hyperlink{class_lamda_event_reader_aac056789874409e894ba1880c7ce08e9}{phi}}, \&\mbox{\hyperlink{class_lamda_event_reader_a5e4440e8bbf94c258c6d57091f6e70a0}{b\_phi}});}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00233}00233    \mbox{\hyperlink{class_lamda_event_reader_a15e8e2791df0570d2cd27f01ffa8d1b4}{Notify}}();}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00234}00234 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00235}00235 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00236}00236     \mbox{\hyperlink{class_lamda_event_reader_a4a6b7c3305c9613480547961acc24400}{nentries}} = \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>GetEntriesFast();}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00237}00237     \mbox{\hyperlink{class_lamda_event_reader_a16dc900aeacc89aae870a796f96bd440}{nbytes}} = 0;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00238}00238     \mbox{\hyperlink{class_lamda_event_reader_a176d16371fb54c6f40a49ac3d8811e46}{nb}} = 0;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00239}00239 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00240}00240   \}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00241}00241 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00242}\mbox{\hyperlink{class_lamda_event_reader_a15e8e2791df0570d2cd27f01ffa8d1b4}{00242}}   Bool\_t \mbox{\hyperlink{class_lamda_event_reader_a15e8e2791df0570d2cd27f01ffa8d1b4}{Notify}}()}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00243}00243   \{}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00244}00244 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00245}00245 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00246}00246     \textcolor{keywordflow}{return} kTRUE;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00247}00247   \}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00248}00248 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00249}\mbox{\hyperlink{class_lamda_event_reader_a92de1bcbb5d801ea23b4c056f862a927}{00249}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_lamda_event_reader_a92de1bcbb5d801ea23b4c056f862a927}{Show}}(Long64\_t entry)}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00250}00250   \{}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00251}00251 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00252}00252     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00253}00253     \mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}}-\/>Show(entry);}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00254}00254   \}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00255}\mbox{\hyperlink{class_lamda_event_reader_a13ab56d0f470ce7c8f9452aa524e8dff}{00255}}   Int\_t \mbox{\hyperlink{class_lamda_event_reader_a13ab56d0f470ce7c8f9452aa524e8dff}{Cut}}(Long64\_t entry)}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00256}00256   \{}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00257}00257     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00258}00258   \}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00259}00259 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00260}00260 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00261}00261 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00262}00262 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00264}00264   \textcolor{comment}{// Data members}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00266}\mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{00266}} \textcolor{comment}{}  TTree          *\mbox{\hyperlink{class_lamda_event_reader_ad346b33b36ec1b2bf1c674667205d08e}{fChain}};   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00267}\mbox{\hyperlink{class_lamda_event_reader_af81e387911302e39c89e9b630ef78e99}{00267}}   Int\_t           \mbox{\hyperlink{class_lamda_event_reader_af81e387911302e39c89e9b630ef78e99}{fCurrent}}; }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00268}00268 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00269}\mbox{\hyperlink{class_lamda_event_reader_a4a6b7c3305c9613480547961acc24400}{00269}}   Long64\_t \mbox{\hyperlink{class_lamda_event_reader_a4a6b7c3305c9613480547961acc24400}{nentries}};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00270}\mbox{\hyperlink{class_lamda_event_reader_a16dc900aeacc89aae870a796f96bd440}{00270}}   Long64\_t \mbox{\hyperlink{class_lamda_event_reader_a16dc900aeacc89aae870a796f96bd440}{nbytes}};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00271}\mbox{\hyperlink{class_lamda_event_reader_a176d16371fb54c6f40a49ac3d8811e46}{00271}}   Long64\_t \mbox{\hyperlink{class_lamda_event_reader_a176d16371fb54c6f40a49ac3d8811e46}{nb}};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00272}00272 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00273}\mbox{\hyperlink{class_lamda_event_reader_acfe10d43ad11dd006bf92783695ffe90}{00273}}   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_lamda_event_reader_acfe10d43ad11dd006bf92783695ffe90}{jentry}};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00274}00274 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00275}\mbox{\hyperlink{class_lamda_event_reader_afa3d9f83dcd23b5cdd3f41d1fb123a30}{00275}}   \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_lamda_event_reader_afa3d9f83dcd23b5cdd3f41d1fb123a30}{arr}} = 40;}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00276}00276 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00277}00277   \textcolor{comment}{// Declaration of leaf types}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00278}00278   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00279}\mbox{\hyperlink{class_lamda_event_reader_af640e2847599bf561ce359723337d6ee}{00279}}    Int\_t           \mbox{\hyperlink{class_lamda_event_reader_af640e2847599bf561ce359723337d6ee}{run}};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00280}\mbox{\hyperlink{class_lamda_event_reader_a2e7c4a3cb8a8d86ca1ad0a0758ad1eaa}{00280}}    Float\_t         \mbox{\hyperlink{class_lamda_event_reader_a2e7c4a3cb8a8d86ca1ad0a0758ad1eaa}{magfld}};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00281}\mbox{\hyperlink{class_lamda_event_reader_a31765b67f0da96e034d08142db1626fc}{00281}}    Float\_t         \mbox{\hyperlink{class_lamda_event_reader_a31765b67f0da96e034d08142db1626fc}{cent}};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00282}\mbox{\hyperlink{class_lamda_event_reader_aedaac527fb41ab1e88443ba390a3901e}{00282}}    Float\_t         \mbox{\hyperlink{class_lamda_event_reader_aedaac527fb41ab1e88443ba390a3901e}{vz}};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00283}\mbox{\hyperlink{class_lamda_event_reader_acce2976f02302f51b15efe1c6a771443}{00283}}    Float\_t         \mbox{\hyperlink{class_lamda_event_reader_acce2976f02302f51b15efe1c6a771443}{q}}[4];}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00284}\mbox{\hyperlink{class_lamda_event_reader_a2a2f5e2b5d230b51b38b3968d5b4cd41}{00284}}    Float\_t         \mbox{\hyperlink{class_lamda_event_reader_a2a2f5e2b5d230b51b38b3968d5b4cd41}{tm}};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00285}\mbox{\hyperlink{class_lamda_event_reader_a20aac9aab8cdf7c38e172724a580ef12}{00285}}    Float\_t         \mbox{\hyperlink{class_lamda_event_reader_a20aac9aab8cdf7c38e172724a580ef12}{tx}}[3];}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00286}\mbox{\hyperlink{class_lamda_event_reader_a438bffe1945f6ae0cb5e2f31736148d6}{00286}}    Float\_t         \mbox{\hyperlink{class_lamda_event_reader_a438bffe1945f6ae0cb5e2f31736148d6}{ty}}[3];}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00287}\mbox{\hyperlink{class_lamda_event_reader_a137f54a2c4941be90094b5f98dd5dcd7}{00287}}    Int\_t           \mbox{\hyperlink{class_lamda_event_reader_a137f54a2c4941be90094b5f98dd5dcd7}{N}};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00288}\mbox{\hyperlink{class_lamda_event_reader_adbe7a150ec1a69d865970f4748970121}{00288}}    Int\_t           \mbox{\hyperlink{class_lamda_event_reader_adbe7a150ec1a69d865970f4748970121}{v}}[\mbox{\hyperlink{class_lamda_event_reader_afa3d9f83dcd23b5cdd3f41d1fb123a30}{arr}}];   \textcolor{comment}{//[N]}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00289}\mbox{\hyperlink{class_lamda_event_reader_a74c5e96dd63d92731c21b065676cf7be}{00289}}    Float\_t         \mbox{\hyperlink{class_lamda_event_reader_a74c5e96dd63d92731c21b065676cf7be}{m}}[\mbox{\hyperlink{class_lamda_event_reader_afa3d9f83dcd23b5cdd3f41d1fb123a30}{arr}}];   \textcolor{comment}{//[N]}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00290}\mbox{\hyperlink{class_lamda_event_reader_aa99e0c14bfbe5dd48daff7335743c703}{00290}}    Float\_t         \mbox{\hyperlink{class_lamda_event_reader_aa99e0c14bfbe5dd48daff7335743c703}{pt}}[\mbox{\hyperlink{class_lamda_event_reader_afa3d9f83dcd23b5cdd3f41d1fb123a30}{arr}}];   \textcolor{comment}{//[N]}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00291}\mbox{\hyperlink{class_lamda_event_reader_ae4d26f348a4ade5c6914720d529694f4}{00291}}    Float\_t         \mbox{\hyperlink{class_lamda_event_reader_ae4d26f348a4ade5c6914720d529694f4}{rap}}[\mbox{\hyperlink{class_lamda_event_reader_afa3d9f83dcd23b5cdd3f41d1fb123a30}{arr}}];   \textcolor{comment}{//[N]}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00292}\mbox{\hyperlink{class_lamda_event_reader_aac056789874409e894ba1880c7ce08e9}{00292}}    Float\_t         \mbox{\hyperlink{class_lamda_event_reader_aac056789874409e894ba1880c7ce08e9}{phi}}[\mbox{\hyperlink{class_lamda_event_reader_afa3d9f83dcd23b5cdd3f41d1fb123a30}{arr}}];   \textcolor{comment}{//[N]  }}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00293}00293   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00294}00294   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00295}00295   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00296}00296   \textcolor{comment}{// List of branches}}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00297}\mbox{\hyperlink{class_lamda_event_reader_acffbb361e5fa2760d42495da48bf8afa}{00297}}    TBranch        *\mbox{\hyperlink{class_lamda_event_reader_acffbb361e5fa2760d42495da48bf8afa}{b\_run}};   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00298}\mbox{\hyperlink{class_lamda_event_reader_a863403c5cca8280ea2b2a15ef4bb053b}{00298}}    TBranch        *\mbox{\hyperlink{class_lamda_event_reader_a863403c5cca8280ea2b2a15ef4bb053b}{b\_magfld}};   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00299}\mbox{\hyperlink{class_lamda_event_reader_a3e0f4466902028f33a00f9ae03dbc8c4}{00299}}    TBranch        *\mbox{\hyperlink{class_lamda_event_reader_a3e0f4466902028f33a00f9ae03dbc8c4}{b\_cent}};   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00300}\mbox{\hyperlink{class_lamda_event_reader_a338943640270a799f4c2d7959f7b7c13}{00300}}    TBranch        *\mbox{\hyperlink{class_lamda_event_reader_a338943640270a799f4c2d7959f7b7c13}{b\_vz}};   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00301}\mbox{\hyperlink{class_lamda_event_reader_a4169a79b12466cda78d748034ea30cf5}{00301}}    TBranch        *\mbox{\hyperlink{class_lamda_event_reader_a4169a79b12466cda78d748034ea30cf5}{b\_q}};   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00302}\mbox{\hyperlink{class_lamda_event_reader_abd5f41ebd80733b0778fa8d0acda342b}{00302}}    TBranch        *\mbox{\hyperlink{class_lamda_event_reader_abd5f41ebd80733b0778fa8d0acda342b}{b\_tm}};   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00303}\mbox{\hyperlink{class_lamda_event_reader_aaf88d67c57d932431806bceb0fd628ed}{00303}}    TBranch        *\mbox{\hyperlink{class_lamda_event_reader_aaf88d67c57d932431806bceb0fd628ed}{b\_tx}};   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00304}\mbox{\hyperlink{class_lamda_event_reader_a77f94f717b84cd285404dea081f337db}{00304}}    TBranch        *\mbox{\hyperlink{class_lamda_event_reader_a77f94f717b84cd285404dea081f337db}{b\_ty}};   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00305}\mbox{\hyperlink{class_lamda_event_reader_aa31c1fedb63f967b810127e6ac15d641}{00305}}    TBranch        *\mbox{\hyperlink{class_lamda_event_reader_aa31c1fedb63f967b810127e6ac15d641}{b\_N}};   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00306}\mbox{\hyperlink{class_lamda_event_reader_a895e85351f0ffb21de20018ada919f4a}{00306}}    TBranch        *\mbox{\hyperlink{class_lamda_event_reader_a895e85351f0ffb21de20018ada919f4a}{b\_v}};   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00307}\mbox{\hyperlink{class_lamda_event_reader_ac6821d75b709bb3141368efd232b83b8}{00307}}    TBranch        *\mbox{\hyperlink{class_lamda_event_reader_ac6821d75b709bb3141368efd232b83b8}{b\_m}};   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00308}\mbox{\hyperlink{class_lamda_event_reader_a84166979e9150c568585bd854bba058b}{00308}}    TBranch        *\mbox{\hyperlink{class_lamda_event_reader_a84166979e9150c568585bd854bba058b}{b\_pt}};   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00309}\mbox{\hyperlink{class_lamda_event_reader_ae6424dbfd7119f40d3088d4945f6c719}{00309}}    TBranch        *\mbox{\hyperlink{class_lamda_event_reader_ae6424dbfd7119f40d3088d4945f6c719}{b\_rap}};   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00310}\mbox{\hyperlink{class_lamda_event_reader_a5e4440e8bbf94c258c6d57091f6e70a0}{00310}}    TBranch        *\mbox{\hyperlink{class_lamda_event_reader_a5e4440e8bbf94c258c6d57091f6e70a0}{b\_phi}};   }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00311}00311 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00312}00312 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00313}00313 \};}
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00314}00314 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00315}00315 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00316}00316 }
+\DoxyCodeLine{\Hypertarget{_lamda_event_reader_8hpp_source_l00317}00317 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* LamdaEventReader\_hpp */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

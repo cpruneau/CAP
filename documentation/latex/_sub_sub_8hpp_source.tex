@@ -1,0 +1,64 @@
+\hypertarget{_sub_sub_8hpp_source}{}\doxysection{Sub\+Sub.\+hpp}
+\label{_sub_sub_8hpp_source}\index{Base/SubSub.hpp@{Base/SubSub.hpp}}
+\mbox{\hyperlink{_sub_sub_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#ifndef CAP\_\_SubSampleStatCalculator}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#define CAP\_\_SubSampleStatCalculator}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}TClass.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}TH1D.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}TH1F.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}TH2D.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}TH2F.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00019}00019 \textcolor{preprocessor}{\#include "{}TH3D.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00020}00020 \textcolor{preprocessor}{\#include "{}TH3F.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00021}00021 \textcolor{preprocessor}{\#include "{}TProfile.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00022}00022 \textcolor{preprocessor}{\#include "{}TProfile2D.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00023}00023 \textcolor{preprocessor}{\#include "{}TFile.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00024}00024 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00025}00025 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00026}00026 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_histograms_8hpp}{Histograms.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00027}00027 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00029}00029 \textcolor{keyword}{class }\mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00030}00030 \{}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00031}00031 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00033}\mbox{\hyperlink{class_sub_sample_stat_calculator_a748d743e24135da7ab88c3e8e2b82cd2}{00033}}   \mbox{\hyperlink{class_histograms}{Histograms}} * \mbox{\hyperlink{class_sub_sample_stat_calculator_a748d743e24135da7ab88c3e8e2b82cd2}{store}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00034}\mbox{\hyperlink{class_sub_sample_stat_calculator_ad4ad4881c38517072b69ff25e736cac2}{00034}}   \mbox{\hyperlink{class_histograms}{Histograms}} * \mbox{\hyperlink{class_sub_sample_stat_calculator_ad4ad4881c38517072b69ff25e736cac2}{reader}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00035}\mbox{\hyperlink{class_sub_sample_stat_calculator_ada3afe70db18eac43116ab9016d01d61}{00035}}   TString ** \mbox{\hyperlink{class_sub_sample_stat_calculator_ada3afe70db18eac43116ab9016d01d61}{fileNames}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00036}\mbox{\hyperlink{class_sub_sample_stat_calculator_aa978298c82e076e07554245e6134b1cb}{00036}}   TString \mbox{\hyperlink{class_sub_sample_stat_calculator_aa978298c82e076e07554245e6134b1cb}{inputPath}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00037}\mbox{\hyperlink{class_sub_sample_stat_calculator_afc6445ba312cd790a1e419deed13ae28}{00037}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_sub_sample_stat_calculator_afc6445ba312cd790a1e419deed13ae28}{nFiles}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00038}\mbox{\hyperlink{class_sub_sample_stat_calculator_a56379269b1b72a27a3f4c538e872e2f1}{00038}}   TString \mbox{\hyperlink{class_sub_sample_stat_calculator_a56379269b1b72a27a3f4c538e872e2f1}{outputPath}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00039}\mbox{\hyperlink{class_sub_sample_stat_calculator_a93a978509696490374c4f843fe868b41}{00039}}   TString \mbox{\hyperlink{class_sub_sample_stat_calculator_a93a978509696490374c4f843fe868b41}{outputFileName}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00040}\mbox{\hyperlink{class_sub_sample_stat_calculator_af9b7451e2564de5a7d69de6d474be82d}{00040}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_sub_sample_stat_calculator_af9b7451e2564de5a7d69de6d474be82d}{weight}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00041}\mbox{\hyperlink{class_sub_sample_stat_calculator_a815df658bc06f361fa960fff568124f4}{00041}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_sub_sample_stat_calculator_a815df658bc06f361fa960fff568124f4}{sumWeights}};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00043}\mbox{\hyperlink{class_sub_sample_stat_calculator_acabefe8f32ed47c696fd824aa73d565e}{00043}}   \mbox{\hyperlink{class_sub_sample_stat_calculator_acabefe8f32ed47c696fd824aa73d565e}{SubSampleStatCalculator}}(\mbox{\hyperlink{class_configuration}{Configuration}} * \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}},}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00044}00044                           \mbox{\hyperlink{class_histograms}{Histograms}} * \_store,}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00045}00045                           \mbox{\hyperlink{class_histograms}{Histograms}} * \_reader,}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00046}00046                           \textcolor{keyword}{const} TString \& \_inputPath,}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00047}00047                           \textcolor{keywordtype}{int} \_nFiles,}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00048}00048                           TString ** \_fileNames,}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00049}00049                           \textcolor{keyword}{const} TString \& \_outputPath,}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00050}00050                           \textcolor{keyword}{const} TString \& \_outputFileName,}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00051}00051                           \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}} debugLevel);}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00052}\mbox{\hyperlink{class_sub_sample_stat_calculator_a7802474260929257e3d504b0a60639e1}{00052}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_sub_sample_stat_calculator_a7802474260929257e3d504b0a60639e1}{\string~SubSampleStatCalculator}}();}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00053}\mbox{\hyperlink{class_sub_sample_stat_calculator_aabdd8bc6f416473cd9de2391e5643cba}{00053}}   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sub_sample_stat_calculator_aabdd8bc6f416473cd9de2391e5643cba}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00055}00055   ClassDef(\mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}},0)}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00056}00056 \};}
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_sub_sub_8hpp_source_l00058}00058 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_SubSampleStatCalculator */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

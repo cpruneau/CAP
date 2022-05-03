@@ -1,0 +1,97 @@
+\hypertarget{_calculate_xsect_slices_8_c_source}{}\doxysection{Calculate\+Xsect\+Slices.\+C}
+\label{_calculate_xsect_slices_8_c_source}\index{Macros/CalculateXsectSlices.C@{Macros/CalculateXsectSlices.C}}
+\mbox{\hyperlink{_calculate_xsect_slices_8_c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00001}00001 \textcolor{comment}{//  Created by Claude Pruneau on 6/19/2020.}}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00002}00002 \textcolor{comment}{//  Copyright © 2020 Claude Pruneau. All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00004}00004 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00005}00005 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00006}00006 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00007}00007 \textcolor{preprocessor}{\#include <TStyle.h>}}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00008}00008 \textcolor{preprocessor}{\#include <TROOT.h>}}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00010}\mbox{\hyperlink{_calculate_xsect_slices_8_c_a3e2ee76cd18eea32b89302d79894cb74}{00010}} \textcolor{keywordtype}{int} \mbox{\hyperlink{_calculate_xsect_slices_8_c_a3e2ee76cd18eea32b89302d79894cb74}{CalculateXsectSlices}}()}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00011}00011 \{}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00012}00012   TString includesPath = getenv(\textcolor{stringliteral}{"{}WAC\_SRC"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00013}00013   includesPath += \textcolor{stringliteral}{"{}/Base/"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00014}00014   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}CanvasCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00015}00015   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}CanvasConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00016}00016   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}TaskConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00017}00017   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Factory.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00018}00018   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}FunctionCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00019}00019   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}GraphConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00020}00020   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}HistogramCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00021}00021   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Histograms.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00022}00022   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}RandomGenerators.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00023}00023   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}MessageLogger.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00024}00024   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Plotter.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00025}00025   gSystem-\/>Load(\textcolor{stringliteral}{"{}libBase.dylib"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00028}00028   cout << \textcolor{stringliteral}{"{}<I> CalculateXsectSlices() -\/ Starting"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00030}00030   TString inputPathName = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/WAC4/data//OutputFiles//PYTHIA/7TEV/SpeedTest/"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00031}00031   TString inputFileName = \textcolor{stringliteral}{"{}PYTHIA\_pp\_7TeV\_inelastic\_G1Pre\_Sum.root"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00032}00032   TString histoName = \textcolor{stringliteral}{"{}G1Pre\_MB\_V0M\_n"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00034}00034   TFile * inputFile = \textcolor{keyword}{new} TFile(inputPathName+inputFileName,\textcolor{stringliteral}{"{}OLD"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00035}00035   \textcolor{keywordflow}{if} (!inputFile)}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00036}00036     \{}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00037}00037     cout << \textcolor{stringliteral}{"{}<F> CalculateXsectSlices() -\/ File not found: "{}} << inputPathName+inputFileName << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00038}00038     cout << \textcolor{stringliteral}{"{}<F> CalculateXsectSlices() -\/ ABORT"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00039}00039     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00040}00040     \}}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00041}00041   TH1D * histo = (TH1D*) inputFile-\/>Get(histoName);}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00042}00042   \textcolor{keywordflow}{if} (!histo)}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00043}00043     \{}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00044}00044     cout << \textcolor{stringliteral}{"{}<F> CalculateXsectSlices() -\/ Histo not found: "{}} << histoName << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00045}00045     cout << \textcolor{stringliteral}{"{}<F> CalculateXsectSlices() -\/ ABORT"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00046}00046     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00047}00047     \}}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00048}00048   histo-\/>Draw();}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00050}00050   \textcolor{keywordtype}{double} fractions[6];}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00051}00051   fractions[0] = 0.2;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00052}00052   fractions[1] = 0.4;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00053}00053   fractions[2] = 0.6;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00054}00054   fractions[3] = 0.8;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00055}00055   fractions[4] = 1.00;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00056}00056   fractions[5] = 2.00;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00058}00058   \textcolor{keywordtype}{double} sum = 0.0;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00059}00059   \textcolor{keywordtype}{double} count = 0;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00060}00060   \textcolor{keywordtype}{double} frac;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00061}00061   \textcolor{keywordtype}{double} content;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00063}00063   \textcolor{keywordtype}{int} n = histo-\/>GetNbinsX();}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00064}00064   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=1; i<=n; i++)}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00065}00065   \{}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00066}00066   content = histo-\/>GetBinContent(i);}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00067}00067   sum += content;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00068}00068   \}}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00070}00070   \textcolor{keywordtype}{int} iFrac = 0;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00071}00071   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=1; i<=n; i++)}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00072}00072   \{}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00073}00073   \textcolor{keywordtype}{double} edge = histo-\/>GetBinLowEdge(i);}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00074}00074   \textcolor{keywordtype}{double} width = histo-\/>GetBinWidth(i);}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00075}00075   content = histo-\/>GetBinContent(i);}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00076}00076   count += content;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00077}00077   frac = count/sum;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00078}00078   \textcolor{comment}{//cout << content << "{}    "{}  << count << "{}     "{} << frac << "{}    "{} << edge << endl;}}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00079}00079   \textcolor{keywordflow}{if} (frac>fractions[iFrac])}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00080}00080     \{}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00081}00081     \textcolor{keywordtype}{double} excessFrac = (frac -\/ fractions[iFrac]);}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00082}00082     \textcolor{keywordtype}{double} adjustedEdge = edge -\/ excessFrac*width;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00083}00083     cout << frac  << \textcolor{stringliteral}{"{}   "{}} << edge <<  \textcolor{stringliteral}{"{}   "{}} << adjustedEdge << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00084}00084     iFrac++;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00085}00085     \}}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00086}00086   \}}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00088}00088   cout << \textcolor{stringliteral}{"{}<I> CalculateXsectSlices() -\/ Done"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00089}00089   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00090}00090 \}}
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{_calculate_xsect_slices_8_c_source_l00092}00092 }
+
+\end{DoxyCode}

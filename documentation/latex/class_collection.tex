@@ -1,0 +1,366 @@
+\hypertarget{class_collection}{}\doxysection{Collection\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_collection}\index{Collection$<$ T $>$@{Collection$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Collection.\+hpp$>$}
+
+
+
+Inheritance diagram for Collection\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{class_collection__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Collection\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{class_collection__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_collection_a167c2976b381fa3fa3a33c893b838a49}{Collection}} ()
+\item 
+\mbox{\hyperlink{class_collection_a50d00d1f4aa7ab462c9a2b64bf61f1bc}{Collection}} (const TString \&\+\_\+name, bool \+\_\+ownership, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} log\+Level)
+\item 
+\mbox{\hyperlink{class_collection_a152d14543a8806ec2576a7e5866ee295}{Collection}} (const \mbox{\hyperlink{class_collection}{Collection}} \&source)
+\item 
+virtual \mbox{\hyperlink{class_collection_af9740fbb78093fd820e2350e9f3f64a0}{$\sim$\+Collection}} ()
+\item 
+\mbox{\hyperlink{class_collection}{Collection}} \& \mbox{\hyperlink{class_collection_a31b1949265604b805b10b0fb4c107a7c}{operator=}} (const \mbox{\hyperlink{class_collection}{Collection}} source)
+\item 
+bool \mbox{\hyperlink{class_collection_ada16c328da6d4a51df1100b7c8029e1d}{has\+Owner\+Ship}} () const
+\item 
+void \mbox{\hyperlink{class_collection_a53171739ab8ad75c86285a35b43cdab2}{set\+Ownership}} (bool owns=true)
+\item 
+void \mbox{\hyperlink{class_collection_a4240b3a7e25d7ddce96e757bed4d23e4}{set\+Name}} (const TString \&\+\_\+name)
+\item 
+const TString \& \mbox{\hyperlink{class_collection_a559e2c06e36b204e5a8e6ee2c2aedc37}{get\+Name}} () const
+\item 
+void \mbox{\hyperlink{class_collection_a9ccb9847a5815d86a76b3bad7551733d}{clear}} ()
+\item 
+unsigned long \mbox{\hyperlink{class_collection_accaed765a35af099fe1644bfc89ec373}{size}} () const
+\item 
+unsigned long \mbox{\hyperlink{class_collection_a836b607457fa6bec3b85373a9d2559bd}{get\+NObject}} () const
+\item 
+T $\ast$ \mbox{\hyperlink{class_collection_a0ca3ec89d72c391ce8529119c362b8d0}{get\+Object\+At}} (int index)
+\item 
+T $\ast$ \mbox{\hyperlink{class_collection_a68f8526c85f392b40280a33c3f29ab7c}{operator\mbox{[}$\,$\mbox{]}}} (int index)
+\item 
+unsigned long \mbox{\hyperlink{class_collection_afdf4799b9e4a8b4dbb446de2f0cec6e1}{get\+Collection\+Size}} () const
+\item 
+T $\ast$ \mbox{\hyperlink{class_collection_aa30145e7c4162758ae55bf73d3f4ea48}{push\+\_\+back}} (T $\ast$object)
+\item 
+T $\ast$ \mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}} (T $\ast$object)
+\item 
+T $\ast$ \mbox{\hyperlink{class_collection_afda08ec642d84dbe4b3c3365a5ab5197}{back}} ()
+\item 
+bool \mbox{\hyperlink{class_collection_aa2f7148ab6bd9771cf4c12f12d42f9c2}{same\+Size\+As}} (const \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$ \&other)
+\item 
+void \mbox{\hyperlink{class_collection_a085e9375f7fb9c8a50fa8019b8e1906e}{copy}} (long n, T $\ast$$\ast$source)
+\item 
+void \mbox{\hyperlink{class_collection_ad4a2e034fe55fbf5c4f7a185d26ff840}{deep\+Copy}} (long n, T $\ast$$\ast$source)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ T $\ast$ $>$ \mbox{\hyperlink{class_collection_a47809a917ab4efe8a76a0c2dd9f07ff3}{objects}}
+\item 
+bool \mbox{\hyperlink{class_collection_a5418b7dc43fca6d47a150db1324f1042}{ownership}}
+\item 
+TString \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Collection$<$ T $>$}
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00030}{30}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_collection_a167c2976b381fa3fa3a33c893b838a49}\label{class_collection_a167c2976b381fa3fa3a33c893b838a49}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!Collection@{Collection}}
+\index{Collection@{Collection}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Collection()}{Collection()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\mbox{\hyperlink{class_collection}{\+::\+Collection}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00039}{39}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_a50d00d1f4aa7ab462c9a2b64bf61f1bc}\label{class_collection_a50d00d1f4aa7ab462c9a2b64bf61f1bc}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!Collection@{Collection}}
+\index{Collection@{Collection}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Collection()}{Collection()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\mbox{\hyperlink{class_collection}{\+::\+Collection}} (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{bool}]{\+\_\+ownership,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{log\+Level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_a152d14543a8806ec2576a7e5866ee295}\label{class_collection_a152d14543a8806ec2576a7e5866ee295}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!Collection@{Collection}}
+\index{Collection@{Collection}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Collection()}{Collection()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\mbox{\hyperlink{class_collection}{\+::\+Collection}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$ \&}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00055}{55}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_af9740fbb78093fd820e2350e9f3f64a0}\label{class_collection_af9740fbb78093fd820e2350e9f3f64a0}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!````~Collection@{$\sim$Collection}}
+\index{````~Collection@{$\sim$Collection}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$Collection()}{~Collection()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::$\sim$\mbox{\hyperlink{class_collection}{Collection}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00064}{64}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_collection_a95959d6b2893d4642152be63ccac9de4}\label{class_collection_a95959d6b2893d4642152be63ccac9de4}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!append@{append}}
+\index{append@{append}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{append()}{append()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T $\ast$ \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::append (\begin{DoxyParamCaption}\item[{T $\ast$}]{object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00145}{145}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_afda08ec642d84dbe4b3c3365a5ab5197}\label{class_collection_afda08ec642d84dbe4b3c3365a5ab5197}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!back@{back}}
+\index{back@{back}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{back()}{back()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T $\ast$ \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00151}{151}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_a9ccb9847a5815d86a76b3bad7551733d}\label{class_collection_a9ccb9847a5815d86a76b3bad7551733d}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!clear@{clear}}
+\index{clear@{clear}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00100}{100}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_a085e9375f7fb9c8a50fa8019b8e1906e}\label{class_collection_a085e9375f7fb9c8a50fa8019b8e1906e}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!copy@{copy}}
+\index{copy@{copy}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{copy()}{copy()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::copy (\begin{DoxyParamCaption}\item[{long}]{n,  }\item[{T $\ast$$\ast$}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00162}{162}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_ad4a2e034fe55fbf5c4f7a185d26ff840}\label{class_collection_ad4a2e034fe55fbf5c4f7a185d26ff840}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!deepCopy@{deepCopy}}
+\index{deepCopy@{deepCopy}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{deepCopy()}{deepCopy()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::deep\+Copy (\begin{DoxyParamCaption}\item[{long}]{n,  }\item[{T $\ast$$\ast$}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00170}{170}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_afdf4799b9e4a8b4dbb446de2f0cec6e1}\label{class_collection_afdf4799b9e4a8b4dbb446de2f0cec6e1}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!getCollectionSize@{getCollectionSize}}
+\index{getCollectionSize@{getCollectionSize}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getCollectionSize()}{getCollectionSize()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+unsigned long \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::get\+Collection\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00134}{134}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_a559e2c06e36b204e5a8e6ee2c2aedc37}\label{class_collection_a559e2c06e36b204e5a8e6ee2c2aedc37}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!getName@{getName}}
+\index{getName@{getName}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+const TString \& \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00095}{95}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_a836b607457fa6bec3b85373a9d2559bd}\label{class_collection_a836b607457fa6bec3b85373a9d2559bd}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!getNObject@{getNObject}}
+\index{getNObject@{getNObject}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getNObject()}{getNObject()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+unsigned long \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::get\+NObject (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00119}{119}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_a0ca3ec89d72c391ce8529119c362b8d0}\label{class_collection_a0ca3ec89d72c391ce8529119c362b8d0}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!getObjectAt@{getObjectAt}}
+\index{getObjectAt@{getObjectAt}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getObjectAt()}{getObjectAt()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T $\ast$ \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::get\+Object\+At (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00124}{124}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_ada16c328da6d4a51df1100b7c8029e1d}\label{class_collection_ada16c328da6d4a51df1100b7c8029e1d}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!hasOwnerShip@{hasOwnerShip}}
+\index{hasOwnerShip@{hasOwnerShip}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{hasOwnerShip()}{hasOwnerShip()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::has\+Owner\+Ship (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00080}{80}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_a31b1949265604b805b10b0fb4c107a7c}\label{class_collection_a31b1949265604b805b10b0fb4c107a7c}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_collection}{Collection}} \& \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00069}{69}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_a68f8526c85f392b40280a33c3f29ab7c}\label{class_collection_a68f8526c85f392b40280a33c3f29ab7c}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T $\ast$ \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00129}{129}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_aa30145e7c4162758ae55bf73d3f4ea48}\label{class_collection_aa30145e7c4162758ae55bf73d3f4ea48}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!push\_back@{push\_back}}
+\index{push\_back@{push\_back}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T $\ast$ \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{T $\ast$}]{object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00139}{139}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_aa2f7148ab6bd9771cf4c12f12d42f9c2}\label{class_collection_aa2f7148ab6bd9771cf4c12f12d42f9c2}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!sameSizeAs@{sameSizeAs}}
+\index{sameSizeAs@{sameSizeAs}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{sameSizeAs()}{sameSizeAs()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::same\+Size\+As (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00156}{156}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_a4240b3a7e25d7ddce96e757bed4d23e4}\label{class_collection_a4240b3a7e25d7ddce96e757bed4d23e4}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!setName@{setName}}
+\index{setName@{setName}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::set\+Name (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00090}{90}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_a53171739ab8ad75c86285a35b43cdab2}\label{class_collection_a53171739ab8ad75c86285a35b43cdab2}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!setOwnership@{setOwnership}}
+\index{setOwnership@{setOwnership}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setOwnership()}{setOwnership()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::set\+Ownership (\begin{DoxyParamCaption}\item[{bool}]{owns = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_accaed765a35af099fe1644bfc89ec373}\label{class_collection_accaed765a35af099fe1644bfc89ec373}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!size@{size}}
+\index{size@{size}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+unsigned long \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00114}{114}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_collection_a5c730635992bdce01329c77bdcb21608}\label{class_collection_a5c730635992bdce01329c77bdcb21608}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!name@{name}}
+\index{name@{name}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+TString \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_a47809a917ab4efe8a76a0c2dd9f07ff3}\label{class_collection_a47809a917ab4efe8a76a0c2dd9f07ff3}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!objects@{objects}}
+\index{objects@{objects}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{objects}{objects}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$T$\ast$$>$ \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::objects\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00033}{33}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_collection_a5418b7dc43fca6d47a150db1324f1042}\label{class_collection_a5418b7dc43fca6d47a150db1324f1042}} 
+\index{Collection$<$ T $>$@{Collection$<$ T $>$}!ownership@{ownership}}
+\index{ownership@{ownership}!Collection$<$ T $>$@{Collection$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ownership}{ownership}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{class_collection}{Collection}}$<$ T $>$\+::ownership\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{_collection_8hpp_source}{Collection.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_collection_8hpp}{Collection.\+hpp}}\end{DoxyCompactItemize}

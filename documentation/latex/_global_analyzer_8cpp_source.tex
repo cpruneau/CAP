@@ -1,0 +1,203 @@
+\hypertarget{_global_analyzer_8cpp_source}{}\doxysection{Global\+Analyzer.\+cpp}
+\label{_global_analyzer_8cpp_source}\index{Base/GlobalAnalyzer.cpp@{Base/GlobalAnalyzer.cpp}}
+\mbox{\hyperlink{_global_analyzer_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00003}00003 \textcolor{comment}{/*************************************************************************}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.                                   *}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.                                                  *}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment                             *}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00007}00007 \textcolor{comment}{ *                                                                       *}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.                                  *}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00009}00009 \textcolor{comment}{ *************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include <TLorentzVector.h>}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_global_analyzer_8hpp}{GlobalAnalyzer.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00020}\mbox{\hyperlink{_global_analyzer_8cpp_a2b1356d443569f9d344ec6acb6ceb564}{00020}} \mbox{\hyperlink{_global_analyzer_8cpp_a2b1356d443569f9d344ec6acb6ceb564}{ClassImp}}(\mbox{\hyperlink{class_global_analyzer}{GlobalAnalyzer}});}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00022}\mbox{\hyperlink{class_global_analyzer_aa215511647880074a8162207e11b80ab}{00022}} \mbox{\hyperlink{class_global_analyzer_aa215511647880074a8162207e11b80ab}{GlobalAnalyzer::GlobalAnalyzer}}(\textcolor{keyword}{const} TString \&           \_name,}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00023}00023                                \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \&     \_configuration,}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00024}00024                                vector<EventFilter*> \&    \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00025}00025                                vector<ParticleFilter*> \& \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00026}00026                                \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                  \_requiredLevel)}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00027}00027 :}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00028}00028 \mbox{\hyperlink{class_task}{Task}}(\_name,\_configuration,\_eventFilters,\_particleFilters,\_requiredLevel),}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00029}00029 setEvent(false),}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00030}00030 n(),}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00031}00031 e(),}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00032}00032 q(),}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00033}00033 s(),}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00034}00034 b()}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00035}00035 \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00036}00036   \mbox{\hyperlink{class_message_logger_a10182fcb56fb5fda0f998c89c4bbe4fb}{appendClassName}}(\textcolor{stringliteral}{"{}GlobalAnalyzer"{}});}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00037}00037   \mbox{\hyperlink{class_message_logger_a62ee7a375e1aec16bfb767aec9fba906}{setInstanceName}}(\_name);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00038}00038   \mbox{\hyperlink{class_global_analyzer_a3d1397698628cfdcec6b12672e5c8926}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00039}00039   \mbox{\hyperlink{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}{setConfiguration}}(\_configuration);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00040}00040 \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00044}\mbox{\hyperlink{class_global_analyzer_a3d1397698628cfdcec6b12672e5c8926}{00044}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_global_analyzer_a3d1397698628cfdcec6b12672e5c8926}{GlobalAnalyzer::setDefaultConfiguration}}()}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00045}00045 \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00046}00046   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}GlobalAnalyzer"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00047}00047     \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00048}00048     \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00049}00049   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8420b979e7d98bf6562ec2f6cc28d0d8}{setName}}(\textcolor{stringliteral}{"{}GlobalAnalyzer Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00050}00050   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}useEventStream0"{}},  \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00051}00051   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}useParticles"{}},     \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00052}00052   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}createHistograms"{}}, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00053}00053   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}saveHistograms"{}},   \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00054}00054   }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00055}00055   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}setEvent"{}},         \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00056}00056   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}countParticles"{}},   \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00057}00057   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillCorrelationHistos"{}},\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00058}00058   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_n"{}}, 100);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00059}00059   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_n2"{}},20);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00060}00060   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_n"{}},   0.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00061}00061   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_n"{}},   1000.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00062}00062   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}range\_n"{}}, 1000.0),}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00063}00063   }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00064}00064   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_e"{}}, 100);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00065}00065   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_e2"{}},20);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00066}00066   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_e"{}},   0.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00067}00067   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_e"{}},   1000.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00068}00068   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}range\_e"{}}, 1000.0),}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00069}00069   }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00070}00070   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_q"{}}, 100);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00071}00071   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_q2"{}},20);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00072}00072   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_q"{}},   -\/50.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00073}00073   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_q"{}},    50.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00074}00074   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}range\_n"{}}, 100.0),}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00075}00075   }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00076}00076   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_b"{}}, 100);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00077}00077   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_b2"{}},20);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00078}00078   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_b"{}},   -\/50.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00079}00079   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_b"{}},    50.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00080}00080   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}range\_b"{}}, 100.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00081}00081   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}GlobalAnalyzer"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00082}00082     \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00083}00083     \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(cout);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00084}00084     \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00085}00085 \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00087}\mbox{\hyperlink{class_global_analyzer_ac53f215ccbf04bf8c4ff33820f7edff8}{00087}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_global_analyzer_ac53f215ccbf04bf8c4ff33820f7edff8}{GlobalAnalyzer::initialize}}()}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00088}00088 \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00089}00089   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}GlobalAnalyzer"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00090}00090     ;}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00091}00091   \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{Task::initialize}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00092}00092   \textcolor{keywordtype}{int} nParticleFilters = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00093}00093   \mbox{\hyperlink{class_global_analyzer_ae678de2b9e3fb0efa84274005a82ded2}{setEvent}} = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}(\textcolor{stringliteral}{"{}setEvent"{}});}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00094}00094   \mbox{\hyperlink{class_global_analyzer_a459401d6668c90f4175dafadcc978909}{n}}.assign(nParticleFilters,0.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00095}00095   \mbox{\hyperlink{class_global_analyzer_a10f99e3b7d7227dc43af893bc67df623}{e}}.assign(nParticleFilters,0.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00096}00096   \mbox{\hyperlink{class_global_analyzer_aa2f901ea94cc526f51d71bf62f015130}{q}}.assign(nParticleFilters,0.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00097}00097   \mbox{\hyperlink{class_global_analyzer_a0f3fcffaeb0004a7fbd8f9668655183b}{s}}.assign(nParticleFilters,0.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00098}00098   \mbox{\hyperlink{class_global_analyzer_a6d061bc2428b5f372c9cf7324f1e319f}{b}}.assign(nParticleFilters,0.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00099}00099   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}GlobalAnalyzer"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00100}00100     \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00101}00101     cout << \textcolor{stringliteral}{"{} \#event added streams: "{}}  << \mbox{\hyperlink{class_task_ac9787e5cfaedbdb6f420d0ec24682f1e}{getNEventStreams}}() << endl;}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00102}00102     \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00103}00103 \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00105}\mbox{\hyperlink{class_global_analyzer_a15a2ca1de8bda49cc1dde4f618b5be25}{00105}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_global_analyzer_a15a2ca1de8bda49cc1dde4f618b5be25}{GlobalAnalyzer::createHistograms}}()}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00106}00106 \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00107}00107   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}GlobalAnalyzer"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}createHistograms()"{}}))}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00108}00108     ;}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00109}00109   \mbox{\hyperlink{class_configuration}{Configuration}} \& \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}} = \mbox{\hyperlink{class_task_a1955cc87bd4885d8ca19435b3609443f}{getConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00110}00110   TString prefixName = \mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(); \textcolor{comment}{//prefixName += "{}\_"{};}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00111}00111   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nEventFilters    = \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00112}00112   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nParticleFilters = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00113}00113   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}TransverseSpherocityAnalyzer"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}createHistograms()"{}}))}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00114}00114     \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00115}00115     cout << \textcolor{stringliteral}{"{}Creating Histograms for : "{}} << prefixName  << endl;}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00116}00116     cout << \textcolor{stringliteral}{"{}          nEventFilters : "{}} << nEventFilters << endl;}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00117}00117     cout << \textcolor{stringliteral}{"{}       nParticleFilters : "{}} << nParticleFilters << endl;}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00118}00118     \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00119}00119   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00120}00120     \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00121}00121     \mbox{\hyperlink{class_global_histos}{GlobalHistos}} * histos = \textcolor{keyword}{new} \mbox{\hyperlink{class_global_histos}{GlobalHistos}}(prefixName+\mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}[iEventFilter]-\/>\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}},\mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}},\mbox{\hyperlink{class_message_logger_aaa759a0af20793b7586bb33722463d22}{getReportLevel}}());}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00122}00122     histos-\/>\mbox{\hyperlink{class_global_histos_a038346972d971c6c842e6ec26b7d2aef}{createHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00123}00123     \mbox{\hyperlink{class_task_a49637b241f2bb93c22a611756240f577}{histograms}}.push\_back(histos);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00124}00124     \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00125}00125   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}GlobalAnalyzer"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}createHistograms()"{}}))}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00126}00126     ;}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00127}00127 \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00128}00128 }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00129}\mbox{\hyperlink{class_global_analyzer_a6d77d8ca0516784fdb1f94bdf8dcff05}{00129}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}{GlobalAnalyzer::loadHistograms}}(TFile * inputFile)}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00130}00130 \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00131}00131   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}GlobalAnalyzer"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}loadHistograms(TFile * inputFile)"{}}))}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00132}00132     ;}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00133}00133   \mbox{\hyperlink{class_configuration}{Configuration}} \& \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}} = \mbox{\hyperlink{class_task_a1955cc87bd4885d8ca19435b3609443f}{getConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00134}00134   TString prefixName = \mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(); prefixName += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00135}00135   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nEventFilters    = \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00136}00136   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nParticleFilters = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00137}00137   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}TransverseSpherocityAnalyzer"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}createHistograms()"{}}))}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00138}00138     \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00139}00139     cout << \textcolor{stringliteral}{"{}Creating Histograms for "{}} << prefixName  << endl;}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00140}00140     cout << \textcolor{stringliteral}{"{}       nEventFilters: "{}} << nEventFilters << endl;}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00141}00141     cout << \textcolor{stringliteral}{"{}    nParticleFilters: "{}} << nParticleFilters << endl;}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00142}00142     \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00143}00143   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00144}00144     \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00145}00145     \mbox{\hyperlink{class_global_histos}{GlobalHistos}} * histos = \textcolor{keyword}{new} \mbox{\hyperlink{class_global_histos}{GlobalHistos}}(prefixName+\mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}[iEventFilter]-\/>\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}},\mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}},\mbox{\hyperlink{class_message_logger_aaa759a0af20793b7586bb33722463d22}{getReportLevel}}());}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00146}00146     histos-\/>\mbox{\hyperlink{class_global_histos_a374ee6683ba6c25af5e53bfa9debe0f9}{loadHistograms}}(inputFile);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00147}00147     \mbox{\hyperlink{class_task_a49637b241f2bb93c22a611756240f577}{histograms}}.push\_back(histos);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00148}00148     \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00149}00149   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}GlobalAnalyzer"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}loadHistograms(TFile * inputFile)"{}}))}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00150}00150     ;}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00151}00151 \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00152}00152 }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00153}\mbox{\hyperlink{class_global_analyzer_a121a1469ca3935657410aece6865629c}{00153}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_global_analyzer_a121a1469ca3935657410aece6865629c}{GlobalAnalyzer::execute}}()}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00154}00154 \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00155}00155   \textcolor{comment}{//  if (reportDebug("{}GlobalAnalyzer"{},getName(),"{}execute()"{}))}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00156}00156   \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00157}00157   \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00158}00158   \mbox{\hyperlink{class_task_a724ff83138229238fdc58566a0cd350f}{incrementEventProcessed}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00159}00159   \mbox{\hyperlink{class_event}{Event}} \& \textcolor{keyword}{event} = * \mbox{\hyperlink{class_task_a388f8e261c0d610bba89e9269309d11e}{getEventStream}}(0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00160}00160   \textcolor{comment}{// count eventStreams used to fill histograms and for scaling at the end...}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00161}00161   \mbox{\hyperlink{class_task_a829739fde1f6ee30d98de2163261fec2}{resetParticleCounters}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00162}00162   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nEventFilters    = \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00163}00163   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nParticleFilters = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00164}00164   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nParticles       = \textcolor{keyword}{event}.getNParticles();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00165}00165   }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00166}00166   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00167}00167     \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00168}00168     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}[iEventFilter]-\/>accept(event)) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00169}00169     \mbox{\hyperlink{class_task_a01762aa4383b0931850efb56b697a856}{incrementEventAccepted}}(iEventFilter);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00170}00170     \textcolor{keywordflow}{if} (nParticles<1) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00171}00171     }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00172}00172     \mbox{\hyperlink{class_global_analyzer_a459401d6668c90f4175dafadcc978909}{n}}.assign(nParticleFilters,0.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00173}00173     \mbox{\hyperlink{class_global_analyzer_a10f99e3b7d7227dc43af893bc67df623}{e}}.assign(nParticleFilters,0.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00174}00174     \mbox{\hyperlink{class_global_analyzer_aa2f901ea94cc526f51d71bf62f015130}{q}}.assign(nParticleFilters,0.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00175}00175     \mbox{\hyperlink{class_global_analyzer_a0f3fcffaeb0004a7fbd8f9668655183b}{s}}.assign(nParticleFilters,0.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00176}00176     \mbox{\hyperlink{class_global_analyzer_a6d061bc2428b5f372c9cf7324f1e319f}{b}}.assign(nParticleFilters,0.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00177}00177     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iParticle=0; iParticle<\textcolor{keyword}{event}.getNParticles(); iParticle++)}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00178}00178       \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00179}00179       \mbox{\hyperlink{class_task_a8d4bb538429fda63b48bba2675fcac6d}{incrementParticlesCounted}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00180}00180       \mbox{\hyperlink{class_particle}{Particle}} \& particle = * \textcolor{keyword}{event}.getParticleAt(iParticle);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00181}00181       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00182}00182         \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00183}00183         \textcolor{comment}{//cout << iParticleFilter << "{}  "{} << particle.getType().getName() << endl;}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00184}00184         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}[iParticleFilter]-\/>accept(particle))}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00185}00185           \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00186}00186           \mbox{\hyperlink{class_task_a6a2ecf82b74c1329bcabd4ef85dac0a8}{incrementParticlesAccepted}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00187}00187           \mbox{\hyperlink{class_particle_type}{ParticleType}} \& type = particle.\mbox{\hyperlink{class_particle_a9880b1e61532e7a6871179423afb9a02}{getType}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00188}00188           TLorentzVector \& momentum = particle.\mbox{\hyperlink{class_particle_a562fcf06a3f5e28ca666b2ff8276b531}{getMomentum}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00189}00189           \mbox{\hyperlink{class_global_analyzer_a459401d6668c90f4175dafadcc978909}{n}}[iParticleFilter]++;}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00190}00190           \mbox{\hyperlink{class_global_analyzer_a10f99e3b7d7227dc43af893bc67df623}{e}}[iParticleFilter] += momentum.E();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00191}00191           \mbox{\hyperlink{class_global_analyzer_aa2f901ea94cc526f51d71bf62f015130}{q}}[iParticleFilter] += type.\mbox{\hyperlink{class_particle_type_ab58524d5fb53e3ffa5cd569e93324f80}{getCharge}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00192}00192           \mbox{\hyperlink{class_global_analyzer_a0f3fcffaeb0004a7fbd8f9668655183b}{s}}[iParticleFilter] += type.\mbox{\hyperlink{class_particle_type_a706ec95e72fb83e7d29dba043bbc654b}{getStrange}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00193}00193           \mbox{\hyperlink{class_global_analyzer_a6d061bc2428b5f372c9cf7324f1e319f}{b}}[iParticleFilter] += type.\mbox{\hyperlink{class_particle_type_a3b05f87d26a72eea9aaed980277f1bd7}{getBaryon}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00194}00194           \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00195}00195         \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00196}00196       \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00197}00197     \textcolor{keywordflow}{if} (iEventFilter==0 \&\& \mbox{\hyperlink{class_global_analyzer_ae678de2b9e3fb0efa84274005a82ded2}{setEvent}})}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00198}00198       \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00199}00199       \mbox{\hyperlink{class_event_properties}{EventProperties}} * ep = \textcolor{keyword}{event}.getEventProperties();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00200}00200       ep-\/>\mbox{\hyperlink{class_event_properties_a96cf73b3052c214bda2e412c6110ffb7}{fill}}(\mbox{\hyperlink{class_global_analyzer_a459401d6668c90f4175dafadcc978909}{n}},\mbox{\hyperlink{class_global_analyzer_a10f99e3b7d7227dc43af893bc67df623}{e}},\mbox{\hyperlink{class_global_analyzer_aa2f901ea94cc526f51d71bf62f015130}{q}},\mbox{\hyperlink{class_global_analyzer_a0f3fcffaeb0004a7fbd8f9668655183b}{s}},\mbox{\hyperlink{class_global_analyzer_a6d061bc2428b5f372c9cf7324f1e319f}{b}});}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00201}00201       \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00202}00202     \mbox{\hyperlink{class_global_histos}{GlobalHistos}} * globalHistos = (\mbox{\hyperlink{class_global_histos}{GlobalHistos}} * ) \mbox{\hyperlink{class_task_a49637b241f2bb93c22a611756240f577}{histograms}}[iEventFilter];}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00203}00203     globalHistos-\/>\mbox{\hyperlink{class_global_histos_a566001759db02efa64cfc75ab8f57731}{fill}}(\mbox{\hyperlink{class_global_analyzer_a459401d6668c90f4175dafadcc978909}{n}},\mbox{\hyperlink{class_global_analyzer_a10f99e3b7d7227dc43af893bc67df623}{e}},\mbox{\hyperlink{class_global_analyzer_aa2f901ea94cc526f51d71bf62f015130}{q}},\mbox{\hyperlink{class_global_analyzer_a0f3fcffaeb0004a7fbd8f9668655183b}{s}},\mbox{\hyperlink{class_global_analyzer_a6d061bc2428b5f372c9cf7324f1e319f}{b}},1.0);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00204}00204     \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00205}00205 \}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8cpp_source_l00206}00206  }
+
+\end{DoxyCode}

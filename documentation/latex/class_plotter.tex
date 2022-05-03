@@ -1,0 +1,299 @@
+\hypertarget{class_plotter}{}\doxysection{Plotter Class Reference}
+\label{class_plotter}\index{Plotter@{Plotter}}
+
+
+{\ttfamily \#include $<$Plotter.\+hpp$>$}
+
+
+
+Inheritance diagram for Plotter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_plotter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Plotter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{class_plotter__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_plotter_aa78b072dc50292ab120d720319ae7fd8}{Plotter}} (const TString \&\+\_\+name, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \+\_\+log\+Level=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}})
+\item 
+virtual \mbox{\hyperlink{class_plotter_acd0883f9597a6b3bfcca0fce926809a0}{$\sim$\+Plotter}} ()
+\item 
+TCanvas $\ast$ \mbox{\hyperlink{class_plotter_a861c11293799d7029e05e226c0554c1a}{plot}} (TString canvas\+Name, \mbox{\hyperlink{class_canvas_configuration}{Canvas\+Configuration}} $\ast$cc, \mbox{\hyperlink{class_graph_configuration}{Graph\+Configuration}} $\ast$gc, TString x\+Title, double x\+Min, double x\+Max, TString y\+Title, double y\+Min, double y\+Max, TH1 $\ast$h, TString h\+Legend, double x\+Min\+Leg, double y\+Min\+Leg, double x\+Max\+Leg, double y\+Max\+Leg, double legend\+Size)
+\item 
+TCanvas $\ast$ \mbox{\hyperlink{class_plotter_a127cad5dadc4f3017dfa6d1988be767a}{plot}} (TString canvas\+Name, \mbox{\hyperlink{class_canvas_configuration}{Canvas\+Configuration}} $\ast$cc, \mbox{\hyperlink{class_graph_configuration}{Graph\+Configuration}} $\ast$gc, TString x\+Title, double x\+Min, double x\+Max, TString y\+Title, double y\+Min, double y\+Max, TString z\+Title, double z\+Min, double z\+Max, TH2 $\ast$h, bool label1=0, TString text1=\char`\"{}\char`\"{}, double x1=0.\+0, double y1=0.\+0, int color1=1, double font\+Size1=0.\+05, bool label2=0, TString text2=\char`\"{}\char`\"{}, double x2=0.\+0, double y2=0.\+0, int color2=1, double font\+Size2=0.\+05)
+\item 
+TCanvas $\ast$ \mbox{\hyperlink{class_plotter_ae0b572e29ddfc57e8ae84e7ceb06198b}{plot}} (int n\+Hists, TString canvas\+Name, \mbox{\hyperlink{class_canvas_configuration}{Canvas\+Configuration}} $\ast$cc, \mbox{\hyperlink{class_graph_configuration}{Graph\+Configuration}} $\ast$$\ast$gc, TString x\+Title, double x\+Min, double x\+Max, TString y\+Title, double y\+Min, double y\+Max, TH1 $\ast$$\ast$h, TString $\ast$$\ast$legends, double x\+Min\+Leg, double y\+Min\+Leg, double x\+Max\+Leg, double y\+Max\+Leg, double legend\+Size)
+\item 
+TCanvas $\ast$ \mbox{\hyperlink{class_plotter_a1bf0e0329d50b8c67d514d9a039950f4}{plot}} (TString canvas\+Name, \mbox{\hyperlink{class_canvas_configuration}{Canvas\+Configuration}} $\ast$cc, vector$<$ \mbox{\hyperlink{class_graph_configuration}{Graph\+Configuration}} $\ast$ $>$ gc, TString x\+Title, double x\+Min, double x\+Max, TString y\+Title, double y\+Min, double y\+Max, vector$<$ TH1 $\ast$ $>$ histograms, vector$<$ TString $>$ legends, double x\+Min\+Leg, double y\+Min\+Leg, double x\+Max\+Leg, double y\+Max\+Leg, double legend\+Size, bool label1=0, TString text1=\char`\"{}\char`\"{}, double x1=0.\+0, double y1=0.\+0, int color1=1, double font\+Size1=0.\+05, bool label2=0, TString text2=\char`\"{}\char`\"{}, double x2=0.\+0, double y2=0.\+0, int color2=1, double font\+Size2=0.\+05)
+\item 
+TCanvas $\ast$ \mbox{\hyperlink{class_plotter_a4af286a20e9521b8660a3f082cd5fd85}{plot}} (TString canvas\+Name, \mbox{\hyperlink{class_canvas_configuration}{Canvas\+Configuration}} $\ast$cc, TString x\+Title, double x\+Min, double x\+Max, TString y\+Title, double y\+Min, double y\+Max, vector$<$ \mbox{\hyperlink{class_data_graph}{Data\+Graph}} $\ast$ $>$ graphs, double x\+Min\+Leg, double y\+Min\+Leg, double x\+Max\+Leg, double y\+Max\+Leg, double legend\+Size)
+\item 
+void \mbox{\hyperlink{class_plotter_af642b6cf92939f585151ba0f2e2656ec}{set\+Properties}} (TH1 $\ast$h, const \mbox{\hyperlink{class_graph_configuration}{Graph\+Configuration}} \&graph\+Configuration)
+\item 
+void \mbox{\hyperlink{class_plotter_a613e8ec007e53c4868576a3b44dcf6c4}{set\+Properties}} (TH1 $\ast$h, const \mbox{\hyperlink{class_graph_configuration}{Graph\+Configuration}} \&graph\+Configuration, const TString \&x\+Title, const TString \&y\+Title, const TString \&z\+Title=\char`\"{}\char`\"{})
+\item 
+void \mbox{\hyperlink{class_plotter_afb2d9395c4c6c46eacb6bc00474b2a3d}{set\+Properties}} (TGraph $\ast$g, const \mbox{\hyperlink{class_graph_configuration}{Graph\+Configuration}} \&graph\+Configuration)
+\item 
+void \mbox{\hyperlink{class_plotter_af396d2e026bd14eec6ebb81a12aa23f9}{set\+Properties}} (TGraph $\ast$g, const \mbox{\hyperlink{class_graph_configuration}{Graph\+Configuration}} \&graph\+Configuration, const TString \&x\+Title, const TString \&y\+Title)
+\item 
+TLatex $\ast$ \mbox{\hyperlink{class_plotter_a9917d5248166be185f748c7fc17ce4fb}{create\+Label}} (double x, double y, int color, int font\+Type, double font\+Size, const TString \&text, bool do\+Draw=true)
+\item 
+TLatex $\ast$ \mbox{\hyperlink{class_plotter_ac5a3b64bce50967cb834b324289daa45}{create\+Label}} (double x, double y, double angle, int color, int font\+Type, double font\+Size, const TString \&text, bool do\+Draw=true)
+\item 
+TLegend $\ast$ \mbox{\hyperlink{class_plotter_abeeb14e4f7ac3e294c73f694ee4a5147}{create\+Legend}} (float x1, float y1, float x2, float y2, int font\+Type, float font\+Size)
+\item 
+TLegend $\ast$ \mbox{\hyperlink{class_plotter_a190813e0f5abd5d9003bce73398682d1}{create\+Legend}} (TH1 $\ast$h, TString \&legend\+Text, float x1, float y1, float x2, float y2, int font\+Type, float font\+Size, bool do\+Draw=true)
+\item 
+TLegend $\ast$ \mbox{\hyperlink{class_plotter_a7253b4d6088d719fd403626a2335f942}{create\+Legend}} (int n\+Graphs, TH1 $\ast$$\ast$h, TString $\ast$$\ast$legend\+Texts, float x1, float y1, float x2, float y2, int font\+Type, float font\+Size, bool do\+Draw=true)
+\item 
+TLegend $\ast$ \mbox{\hyperlink{class_plotter_a438ba8f5f4da9f9c596363c26e2a8643}{create\+Legend}} (vector$<$ TH1 $\ast$ $>$ h, vector$<$ TString $>$ legend\+Texts, float x1, float y1, float x2, float y2, int font\+Type, float font\+Size, bool do\+Draw=true)
+\item 
+TLegend $\ast$ \mbox{\hyperlink{class_plotter_a5259db56025477d5b5b16a31ca287c21}{create\+Legend}} (vector$<$ \mbox{\hyperlink{class_data_graph}{Data\+Graph}} $\ast$ $>$ graphs, float x1, float y1, float x2, float y2, int font\+Type, float font\+Size, bool do\+Draw=true)
+\item 
+TLine $\ast$ \mbox{\hyperlink{class_plotter_a10b659ec2e88a5a7e2c4dc21690a7b64}{create\+Line}} (float x1, float y1, float x2, float y2, int style, int color, int width, bool do\+Draw=true)
+\item 
+TArrow $\ast$ \mbox{\hyperlink{class_plotter_ade325a804c19eb98f8913fe9736e3c5e}{create\+Arrow}} (float x1, float y1, float x2, float y2, float arrow\+Size, Option\+\_\+t $\ast$option, int style, int color, int width, bool do\+Draw=true)
+\item 
+void \mbox{\hyperlink{class_plotter_a1a56a21cf6de3ecb891f6de697ea7fa1}{set\+Default\+Options}} (bool color)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_plotter_8hpp_source_l00030}{30}} of file \mbox{\hyperlink{_plotter_8hpp_source}{Plotter.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_plotter_aa78b072dc50292ab120d720319ae7fd8}\label{class_plotter_aa78b072dc50292ab120d720319ae7fd8}} 
+\index{Plotter@{Plotter}!Plotter@{Plotter}}
+\index{Plotter@{Plotter}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{Plotter()}{Plotter()}}
+{\footnotesize\ttfamily Plotter\+::\+Plotter (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{\+\_\+log\+Level = {\ttfamily \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_acd0883f9597a6b3bfcca0fce926809a0}\label{class_plotter_acd0883f9597a6b3bfcca0fce926809a0}} 
+\index{Plotter@{Plotter}!````~Plotter@{$\sim$Plotter}}
+\index{````~Plotter@{$\sim$Plotter}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{$\sim$Plotter()}{~Plotter()}}
+{\footnotesize\ttfamily Plotter\+::$\sim$\+Plotter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_plotter_ade325a804c19eb98f8913fe9736e3c5e}\label{class_plotter_ade325a804c19eb98f8913fe9736e3c5e}} 
+\index{Plotter@{Plotter}!createArrow@{createArrow}}
+\index{createArrow@{createArrow}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{createArrow()}{createArrow()}}
+{\footnotesize\ttfamily TArrow $\ast$ Plotter\+::create\+Arrow (\begin{DoxyParamCaption}\item[{float}]{x1,  }\item[{float}]{y1,  }\item[{float}]{x2,  }\item[{float}]{y2,  }\item[{float}]{arrow\+Size,  }\item[{Option\+\_\+t $\ast$}]{option,  }\item[{int}]{style,  }\item[{int}]{color,  }\item[{int}]{width,  }\item[{bool}]{do\+Draw = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00510}{510}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_ac5a3b64bce50967cb834b324289daa45}\label{class_plotter_ac5a3b64bce50967cb834b324289daa45}} 
+\index{Plotter@{Plotter}!createLabel@{createLabel}}
+\index{createLabel@{createLabel}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{createLabel()}{createLabel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily TLatex $\ast$ Plotter\+::create\+Label (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{angle,  }\item[{int}]{color,  }\item[{int}]{font\+Type,  }\item[{double}]{font\+Size,  }\item[{const TString \&}]{text,  }\item[{bool}]{do\+Draw = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00405}{405}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_a9917d5248166be185f748c7fc17ce4fb}\label{class_plotter_a9917d5248166be185f748c7fc17ce4fb}} 
+\index{Plotter@{Plotter}!createLabel@{createLabel}}
+\index{createLabel@{createLabel}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{createLabel()}{createLabel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily TLatex $\ast$ Plotter\+::create\+Label (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{int}]{color,  }\item[{int}]{font\+Type,  }\item[{double}]{font\+Size,  }\item[{const TString \&}]{text,  }\item[{bool}]{do\+Draw = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00391}{391}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_abeeb14e4f7ac3e294c73f694ee4a5147}\label{class_plotter_abeeb14e4f7ac3e294c73f694ee4a5147}} 
+\index{Plotter@{Plotter}!createLegend@{createLegend}}
+\index{createLegend@{createLegend}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{createLegend()}{createLegend()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily TLegend $\ast$ Plotter\+::create\+Legend (\begin{DoxyParamCaption}\item[{float}]{x1,  }\item[{float}]{y1,  }\item[{float}]{x2,  }\item[{float}]{y2,  }\item[{int}]{font\+Type,  }\item[{float}]{font\+Size }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00424}{424}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_a7253b4d6088d719fd403626a2335f942}\label{class_plotter_a7253b4d6088d719fd403626a2335f942}} 
+\index{Plotter@{Plotter}!createLegend@{createLegend}}
+\index{createLegend@{createLegend}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{createLegend()}{createLegend()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily TLegend $\ast$ Plotter\+::create\+Legend (\begin{DoxyParamCaption}\item[{int}]{n\+Graphs,  }\item[{TH1 $\ast$$\ast$}]{h,  }\item[{TString $\ast$$\ast$}]{legend\+Texts,  }\item[{float}]{x1,  }\item[{float}]{y1,  }\item[{float}]{x2,  }\item[{float}]{y2,  }\item[{int}]{font\+Type,  }\item[{float}]{font\+Size,  }\item[{bool}]{do\+Draw = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00448}{448}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_a190813e0f5abd5d9003bce73398682d1}\label{class_plotter_a190813e0f5abd5d9003bce73398682d1}} 
+\index{Plotter@{Plotter}!createLegend@{createLegend}}
+\index{createLegend@{createLegend}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{createLegend()}{createLegend()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily TLegend $\ast$ Plotter\+::create\+Legend (\begin{DoxyParamCaption}\item[{TH1 $\ast$}]{h,  }\item[{TString \&}]{legend\+Text,  }\item[{float}]{x1,  }\item[{float}]{y1,  }\item[{float}]{x2,  }\item[{float}]{y2,  }\item[{int}]{font\+Type,  }\item[{float}]{font\+Size,  }\item[{bool}]{do\+Draw = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00437}{437}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_a5259db56025477d5b5b16a31ca287c21}\label{class_plotter_a5259db56025477d5b5b16a31ca287c21}} 
+\index{Plotter@{Plotter}!createLegend@{createLegend}}
+\index{createLegend@{createLegend}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{createLegend()}{createLegend()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily TLegend $\ast$ Plotter\+::create\+Legend (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_data_graph}{Data\+Graph}} $\ast$ $>$}]{graphs,  }\item[{float}]{x1,  }\item[{float}]{y1,  }\item[{float}]{x2,  }\item[{float}]{y2,  }\item[{int}]{font\+Type,  }\item[{float}]{font\+Size,  }\item[{bool}]{do\+Draw = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00478}{478}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_a438ba8f5f4da9f9c596363c26e2a8643}\label{class_plotter_a438ba8f5f4da9f9c596363c26e2a8643}} 
+\index{Plotter@{Plotter}!createLegend@{createLegend}}
+\index{createLegend@{createLegend}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{createLegend()}{createLegend()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily TLegend $\ast$ Plotter\+::create\+Legend (\begin{DoxyParamCaption}\item[{vector$<$ TH1 $\ast$ $>$}]{h,  }\item[{vector$<$ TString $>$}]{legend\+Texts,  }\item[{float}]{x1,  }\item[{float}]{y1,  }\item[{float}]{x2,  }\item[{float}]{y2,  }\item[{int}]{font\+Type,  }\item[{float}]{font\+Size,  }\item[{bool}]{do\+Draw = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00464}{464}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_a10b659ec2e88a5a7e2c4dc21690a7b64}\label{class_plotter_a10b659ec2e88a5a7e2c4dc21690a7b64}} 
+\index{Plotter@{Plotter}!createLine@{createLine}}
+\index{createLine@{createLine}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{createLine()}{createLine()}}
+{\footnotesize\ttfamily TLine $\ast$ Plotter\+::create\+Line (\begin{DoxyParamCaption}\item[{float}]{x1,  }\item[{float}]{y1,  }\item[{float}]{x2,  }\item[{float}]{y2,  }\item[{int}]{style,  }\item[{int}]{color,  }\item[{int}]{width,  }\item[{bool}]{do\+Draw = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00495}{495}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_ae0b572e29ddfc57e8ae84e7ceb06198b}\label{class_plotter_ae0b572e29ddfc57e8ae84e7ceb06198b}} 
+\index{Plotter@{Plotter}!plot@{plot}}
+\index{plot@{plot}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{plot()}{plot()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily TCanvas $\ast$ Plotter\+::plot (\begin{DoxyParamCaption}\item[{int}]{n\+Hists,  }\item[{TString}]{canvas\+Name,  }\item[{\mbox{\hyperlink{class_canvas_configuration}{Canvas\+Configuration}} $\ast$}]{cc,  }\item[{\mbox{\hyperlink{class_graph_configuration}{Graph\+Configuration}} $\ast$$\ast$}]{gc,  }\item[{TString}]{x\+Title,  }\item[{double}]{x\+Min,  }\item[{double}]{x\+Max,  }\item[{TString}]{y\+Title,  }\item[{double}]{y\+Min,  }\item[{double}]{y\+Max,  }\item[{TH1 $\ast$$\ast$}]{h,  }\item[{TString $\ast$$\ast$}]{legends,  }\item[{double}]{x\+Min\+Leg,  }\item[{double}]{y\+Min\+Leg,  }\item[{double}]{x\+Max\+Leg,  }\item[{double}]{y\+Max\+Leg,  }\item[{double}]{legend\+Size }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00111}{111}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_a861c11293799d7029e05e226c0554c1a}\label{class_plotter_a861c11293799d7029e05e226c0554c1a}} 
+\index{Plotter@{Plotter}!plot@{plot}}
+\index{plot@{plot}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{plot()}{plot()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily TCanvas $\ast$ Plotter\+::plot (\begin{DoxyParamCaption}\item[{TString}]{canvas\+Name,  }\item[{\mbox{\hyperlink{class_canvas_configuration}{Canvas\+Configuration}} $\ast$}]{cc,  }\item[{\mbox{\hyperlink{class_graph_configuration}{Graph\+Configuration}} $\ast$}]{gc,  }\item[{TString}]{x\+Title,  }\item[{double}]{x\+Min,  }\item[{double}]{x\+Max,  }\item[{TString}]{y\+Title,  }\item[{double}]{y\+Min,  }\item[{double}]{y\+Max,  }\item[{TH1 $\ast$}]{h,  }\item[{TString}]{h\+Legend,  }\item[{double}]{x\+Min\+Leg,  }\item[{double}]{y\+Min\+Leg,  }\item[{double}]{x\+Max\+Leg,  }\item[{double}]{y\+Max\+Leg,  }\item[{double}]{legend\+Size }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_a127cad5dadc4f3017dfa6d1988be767a}\label{class_plotter_a127cad5dadc4f3017dfa6d1988be767a}} 
+\index{Plotter@{Plotter}!plot@{plot}}
+\index{plot@{plot}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{plot()}{plot()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily TCanvas $\ast$ Plotter\+::plot (\begin{DoxyParamCaption}\item[{TString}]{canvas\+Name,  }\item[{\mbox{\hyperlink{class_canvas_configuration}{Canvas\+Configuration}} $\ast$}]{cc,  }\item[{\mbox{\hyperlink{class_graph_configuration}{Graph\+Configuration}} $\ast$}]{gc,  }\item[{TString}]{x\+Title,  }\item[{double}]{x\+Min,  }\item[{double}]{x\+Max,  }\item[{TString}]{y\+Title,  }\item[{double}]{y\+Min,  }\item[{double}]{y\+Max,  }\item[{TString}]{z\+Title,  }\item[{double}]{z\+Min,  }\item[{double}]{z\+Max,  }\item[{TH2 $\ast$}]{h,  }\item[{bool}]{label1 = {\ttfamily 0},  }\item[{TString}]{text1 = {\ttfamily \char`\"{}\char`\"{}},  }\item[{double}]{x1 = {\ttfamily 0.0},  }\item[{double}]{y1 = {\ttfamily 0.0},  }\item[{int}]{color1 = {\ttfamily 1},  }\item[{double}]{font\+Size1 = {\ttfamily 0.05},  }\item[{bool}]{label2 = {\ttfamily 0},  }\item[{TString}]{text2 = {\ttfamily \char`\"{}\char`\"{}},  }\item[{double}]{x2 = {\ttfamily 0.0},  }\item[{double}]{y2 = {\ttfamily 0.0},  }\item[{int}]{color2 = {\ttfamily 1},  }\item[{double}]{font\+Size2 = {\ttfamily 0.05} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_a4af286a20e9521b8660a3f082cd5fd85}\label{class_plotter_a4af286a20e9521b8660a3f082cd5fd85}} 
+\index{Plotter@{Plotter}!plot@{plot}}
+\index{plot@{plot}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{plot()}{plot()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily TCanvas $\ast$ Plotter\+::plot (\begin{DoxyParamCaption}\item[{TString}]{canvas\+Name,  }\item[{\mbox{\hyperlink{class_canvas_configuration}{Canvas\+Configuration}} $\ast$}]{cc,  }\item[{TString}]{x\+Title,  }\item[{double}]{x\+Min,  }\item[{double}]{x\+Max,  }\item[{TString}]{y\+Title,  }\item[{double}]{y\+Min,  }\item[{double}]{y\+Max,  }\item[{vector$<$ \mbox{\hyperlink{class_data_graph}{Data\+Graph}} $\ast$ $>$}]{graphs,  }\item[{double}]{x\+Min\+Leg,  }\item[{double}]{y\+Min\+Leg,  }\item[{double}]{x\+Max\+Leg,  }\item[{double}]{y\+Max\+Leg,  }\item[{double}]{legend\+Size }\end{DoxyParamCaption})}
+
+Function to plot n Data\+Graphs on a single canvas 
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00336}{336}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_a1bf0e0329d50b8c67d514d9a039950f4}\label{class_plotter_a1bf0e0329d50b8c67d514d9a039950f4}} 
+\index{Plotter@{Plotter}!plot@{plot}}
+\index{plot@{plot}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{plot()}{plot()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily TCanvas $\ast$ Plotter\+::plot (\begin{DoxyParamCaption}\item[{TString}]{canvas\+Name,  }\item[{\mbox{\hyperlink{class_canvas_configuration}{Canvas\+Configuration}} $\ast$}]{cc,  }\item[{vector$<$ \mbox{\hyperlink{class_graph_configuration}{Graph\+Configuration}} $\ast$ $>$}]{gc,  }\item[{TString}]{x\+Title,  }\item[{double}]{x\+Min,  }\item[{double}]{x\+Max,  }\item[{TString}]{y\+Title,  }\item[{double}]{y\+Min,  }\item[{double}]{y\+Max,  }\item[{vector$<$ TH1 $\ast$ $>$}]{histograms,  }\item[{vector$<$ TString $>$}]{legends,  }\item[{double}]{x\+Min\+Leg,  }\item[{double}]{y\+Min\+Leg,  }\item[{double}]{x\+Max\+Leg,  }\item[{double}]{y\+Max\+Leg,  }\item[{double}]{legend\+Size,  }\item[{bool}]{label1 = {\ttfamily 0},  }\item[{TString}]{text1 = {\ttfamily \char`\"{}\char`\"{}},  }\item[{double}]{x1 = {\ttfamily 0.0},  }\item[{double}]{y1 = {\ttfamily 0.0},  }\item[{int}]{color1 = {\ttfamily 1},  }\item[{double}]{font\+Size1 = {\ttfamily 0.05},  }\item[{bool}]{label2 = {\ttfamily 0},  }\item[{TString}]{text2 = {\ttfamily \char`\"{}\char`\"{}},  }\item[{double}]{x2 = {\ttfamily 0.0},  }\item[{double}]{y2 = {\ttfamily 0.0},  }\item[{int}]{color2 = {\ttfamily 1},  }\item[{double}]{font\+Size2 = {\ttfamily 0.05} }\end{DoxyParamCaption})}
+
+Function to plot n\+Hists 1D histogram h \+: vector of n\+Hists pointers to histograms legends \+: vector of n\+Hists pointers to labels used as legends in the body of the plot 
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00217}{217}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_a1a56a21cf6de3ecb891f6de697ea7fa1}\label{class_plotter_a1a56a21cf6de3ecb891f6de697ea7fa1}} 
+\index{Plotter@{Plotter}!setDefaultOptions@{setDefaultOptions}}
+\index{setDefaultOptions@{setDefaultOptions}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{setDefaultOptions()}{setDefaultOptions()}}
+{\footnotesize\ttfamily void Plotter\+::set\+Default\+Options (\begin{DoxyParamCaption}\item[{bool}]{color }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00627}{627}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_afb2d9395c4c6c46eacb6bc00474b2a3d}\label{class_plotter_afb2d9395c4c6c46eacb6bc00474b2a3d}} 
+\index{Plotter@{Plotter}!setProperties@{setProperties}}
+\index{setProperties@{setProperties}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{setProperties()}{setProperties()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily void Plotter\+::set\+Properties (\begin{DoxyParamCaption}\item[{TGraph $\ast$}]{g,  }\item[{const \mbox{\hyperlink{class_graph_configuration}{Graph\+Configuration}} \&}]{graph\+Configuration }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00582}{582}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_af396d2e026bd14eec6ebb81a12aa23f9}\label{class_plotter_af396d2e026bd14eec6ebb81a12aa23f9}} 
+\index{Plotter@{Plotter}!setProperties@{setProperties}}
+\index{setProperties@{setProperties}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{setProperties()}{setProperties()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void Plotter\+::set\+Properties (\begin{DoxyParamCaption}\item[{TGraph $\ast$}]{g,  }\item[{const \mbox{\hyperlink{class_graph_configuration}{Graph\+Configuration}} \&}]{graph\+Configuration,  }\item[{const TString \&}]{x\+Title,  }\item[{const TString \&}]{y\+Title }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00609}{609}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_af642b6cf92939f585151ba0f2e2656ec}\label{class_plotter_af642b6cf92939f585151ba0f2e2656ec}} 
+\index{Plotter@{Plotter}!setProperties@{setProperties}}
+\index{setProperties@{setProperties}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{setProperties()}{setProperties()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void Plotter\+::set\+Properties (\begin{DoxyParamCaption}\item[{TH1 $\ast$}]{h,  }\item[{const \mbox{\hyperlink{class_graph_configuration}{Graph\+Configuration}} \&}]{graph\+Configuration }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00526}{526}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+\mbox{\Hypertarget{class_plotter_a613e8ec007e53c4868576a3b44dcf6c4}\label{class_plotter_a613e8ec007e53c4868576a3b44dcf6c4}} 
+\index{Plotter@{Plotter}!setProperties@{setProperties}}
+\index{setProperties@{setProperties}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{setProperties()}{setProperties()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void Plotter\+::set\+Properties (\begin{DoxyParamCaption}\item[{TH1 $\ast$}]{h,  }\item[{const \mbox{\hyperlink{class_graph_configuration}{Graph\+Configuration}} \&}]{graph\+Configuration,  }\item[{const TString \&}]{x\+Title,  }\item[{const TString \&}]{y\+Title,  }\item[{const TString \&}]{z\+Title = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_plotter_8cpp_source_l00563}{563}} of file \mbox{\hyperlink{_plotter_8cpp_source}{Plotter.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_plotter_8hpp}{Plotter.\+hpp}}\item 
+Base/\mbox{\hyperlink{_plotter_8cpp}{Plotter.\+cpp}}\end{DoxyCompactItemize}

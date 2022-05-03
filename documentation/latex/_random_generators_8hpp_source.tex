@@ -1,0 +1,182 @@
+\hypertarget{_random_generators_8hpp_source}{}\doxysection{Random\+Generators.\+hpp}
+\label{_random_generators_8hpp_source}\index{Base/RandomGenerators.hpp@{Base/RandomGenerators.hpp}}
+\mbox{\hyperlink{_random_generators_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.                                 *}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.                                                *}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment                           *}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00007}00007 \textcolor{comment}{ *                                                                     *}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.                                *}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#ifndef CAP\_\_RandomGenerators}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#define CAP\_\_RandomGenerators}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00015}00015 \textcolor{comment}{//                                                                     //}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00016}00016 \textcolor{comment}{// RandomGenerators                                                    //}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00017}00017 \textcolor{comment}{//                                                                     //}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00018}00018 \textcolor{comment}{// Various random number generators                                    //}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00019}00019 \textcolor{comment}{//                                                                     //}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00021}00021 \textcolor{comment}{}\textcolor{preprocessor}{\#include "{}TRandom.h"{}}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00022}00022 \textcolor{preprocessor}{\#include "{}TH1.h"{}}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00023}00023 \textcolor{preprocessor}{\#include "{}TH2.h"{}}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00025}\mbox{\hyperlink{class_random_generator}{00025}} \textcolor{keyword}{class }\mbox{\hyperlink{class_random_generator}{RandomGenerator}}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00026}00026 \{}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00027}00027 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00029}00029   \textcolor{comment}{// Member functions}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00031}00031 \textcolor{comment}{}  \mbox{\hyperlink{class_random_generator_a465f54e7845880dca2968690f21862df}{RandomGenerator}}(TRandom * rg);}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00032}\mbox{\hyperlink{class_random_generator_a283192f8ac2f031ad7e236daa057bff5}{00032}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_random_generator_a283192f8ac2f031ad7e236daa057bff5}{\string~RandomGenerator}}()\{\}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00034}00034   \textcolor{comment}{// Data Members}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00036}\mbox{\hyperlink{class_random_generator_a9a5e5365fbc3658485e44c84bea180ad}{00036}} \textcolor{comment}{}  TRandom * \mbox{\hyperlink{class_random_generator_a9a5e5365fbc3658485e44c84bea180ad}{randomGenerator}};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00038}00038   ClassDef(\mbox{\hyperlink{class_random_generator}{RandomGenerator}},0)}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00039}00039 \};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00044}\mbox{\hyperlink{class_scalar_int_random_generator}{00044}} \textcolor{keyword}{class }\mbox{\hyperlink{class_scalar_int_random_generator}{ScalarIntRandomGenerator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_random_generator}{RandomGenerator}}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00045}00045 \{}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00046}00046 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00047}00047   \mbox{\hyperlink{class_scalar_int_random_generator_a4ceb2fc3368db9c5306a401813361d13}{ScalarIntRandomGenerator}}(\textcolor{keywordtype}{int} min, \textcolor{keywordtype}{int} max, TRandom * rg);}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00048}\mbox{\hyperlink{class_scalar_int_random_generator_abd930e15a1fec8319a5a7ab2c1bfed43}{00048}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_scalar_int_random_generator_abd930e15a1fec8319a5a7ab2c1bfed43}{\string~ScalarIntRandomGenerator}}()\{\}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00050}00050   \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_scalar_int_random_generator_a99fb927b78f3ce418df0280f0c6f17f7}{generate}}();}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00053}00053   \textcolor{comment}{// Data Members}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00055}\mbox{\hyperlink{class_scalar_int_random_generator_ab6e73dcd11e2acace1746c191d9e5a0f}{00055}} \textcolor{comment}{}  \textcolor{keywordtype}{int} \mbox{\hyperlink{class_scalar_int_random_generator_ab6e73dcd11e2acace1746c191d9e5a0f}{minimum}};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00056}\mbox{\hyperlink{class_scalar_int_random_generator_aa0a57b6db009460c8f118faa3c35580c}{00056}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_scalar_int_random_generator_aa0a57b6db009460c8f118faa3c35580c}{maximum}};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00057}\mbox{\hyperlink{class_scalar_int_random_generator_a1663aca6b4082ced3d8c8ed89492e4fd}{00057}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_scalar_int_random_generator_a1663aca6b4082ced3d8c8ed89492e4fd}{range}};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00059}00059   ClassDef(\mbox{\hyperlink{class_scalar_int_random_generator}{ScalarIntRandomGenerator}},0)}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00060}00060 \};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00064}00064 \textcolor{comment}{// Returns A Fixed (Preselected) Integer}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00066}\mbox{\hyperlink{class_fixed_scalar_int_random_generator}{00066}} \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_fixed_scalar_int_random_generator}{FixedScalarIntRandomGenerator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_scalar_int_random_generator}{ScalarIntRandomGenerator}}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00067}00067 \{}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00068}00068 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00069}00069   \mbox{\hyperlink{class_fixed_scalar_int_random_generator_ae1a3e4b24b0cfd62d120009402c5bef0}{FixedScalarIntRandomGenerator}}(\textcolor{keywordtype}{int} fixedValue);}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00070}\mbox{\hyperlink{class_fixed_scalar_int_random_generator_a477baf9932770f950e78b1c5c9179557}{00070}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_fixed_scalar_int_random_generator_a477baf9932770f950e78b1c5c9179557}{\string~FixedScalarIntRandomGenerator}}()\{\}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00071}00071   \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_fixed_scalar_int_random_generator_ab62a12d3a32bda36d045b0b790a7256b}{generate}}();}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00073}00073   ClassDef(\mbox{\hyperlink{class_fixed_scalar_int_random_generator}{FixedScalarIntRandomGenerator}},0)}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00074}00074 \};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00077}00077 \textcolor{comment}{// Returns exponentially distributed integers above given minimum}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00079}\mbox{\hyperlink{class_exp_scalar_int_random_generator}{00079}} \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_exp_scalar_int_random_generator}{ExpScalarIntRandomGenerator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_scalar_int_random_generator}{ScalarIntRandomGenerator}}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00080}00080 \{}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00081}00081 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00083}00083   \textcolor{comment}{// Data Members}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00085}\mbox{\hyperlink{class_exp_scalar_int_random_generator_adcb4b705c4317849d2ea22f5d397330b}{00085}} \textcolor{comment}{}  \textcolor{keywordtype}{double} \mbox{\hyperlink{class_exp_scalar_int_random_generator_adcb4b705c4317849d2ea22f5d397330b}{slope}};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00088}00088   \textcolor{comment}{// Member functions}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00090}00090 \textcolor{comment}{}  \mbox{\hyperlink{class_exp_scalar_int_random_generator_a5cfb4372a8456b1f9e16fedde21f5e77}{ExpScalarIntRandomGenerator}}(\textcolor{keywordtype}{int}    \mbox{\hyperlink{class_scalar_int_random_generator_ab6e73dcd11e2acace1746c191d9e5a0f}{minimum}},}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00091}00091                               \textcolor{keywordtype}{double} theSlope,}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00092}00092                               TRandom * rg);}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00093}\mbox{\hyperlink{class_exp_scalar_int_random_generator_a935f2de2fbc36dc01f081527f013168f}{00093}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_exp_scalar_int_random_generator_a935f2de2fbc36dc01f081527f013168f}{\string~ExpScalarIntRandomGenerator}}()\{\}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00094}00094   \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_exp_scalar_int_random_generator_a58f01ff220cfe6fb597a4190ac1e17b9}{generate}}();}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00096}00096   ClassDef(\mbox{\hyperlink{class_exp_scalar_int_random_generator}{ExpScalarIntRandomGenerator}},0)}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00098}00098 \};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00102}00102 \textcolor{comment}{// Generates Random Doubles in a bounded range w/ uniform probability}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00104}\mbox{\hyperlink{class_scalar_double_random_generator}{00104}} \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_scalar_double_random_generator}{ScalarDoubleRandomGenerator}}  : \textcolor{keyword}{public} \mbox{\hyperlink{class_random_generator}{RandomGenerator}}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00105}00105 \{}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00106}00106 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00109}00109   \textcolor{comment}{// Member functions}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00111}00111 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00112}00112   \mbox{\hyperlink{class_scalar_double_random_generator_a4ab3bc747aa117b93ed48d61b361dd92}{ScalarDoubleRandomGenerator}}(\textcolor{keywordtype}{double} min,\textcolor{keywordtype}{double} max,TRandom * rg);}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00113}\mbox{\hyperlink{class_scalar_double_random_generator_a56704df5e6d11029a673d8a4bf65c74e}{00113}}  \textcolor{keyword}{virtual} \mbox{\hyperlink{class_scalar_double_random_generator_a56704df5e6d11029a673d8a4bf65c74e}{\string~ScalarDoubleRandomGenerator}}()\{\}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00114}00114   \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_scalar_double_random_generator_a6e7f6d8d2043b5395fca4a5264131a94}{generate}}();}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00117}00117   \textcolor{comment}{// Data Members}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00119}\mbox{\hyperlink{class_scalar_double_random_generator_a92dd94cbd845336227592693aca8bcbc}{00119}} \textcolor{comment}{}  \textcolor{keywordtype}{double} \mbox{\hyperlink{class_scalar_double_random_generator_a92dd94cbd845336227592693aca8bcbc}{minimum}};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00120}\mbox{\hyperlink{class_scalar_double_random_generator_ad50d1595301f9cb737e607e88020eb86}{00120}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_scalar_double_random_generator_ad50d1595301f9cb737e607e88020eb86}{maximum}};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00121}\mbox{\hyperlink{class_scalar_double_random_generator_a16e175c0ea104a65780f941c98c8454d}{00121}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_scalar_double_random_generator_a16e175c0ea104a65780f941c98c8454d}{range}};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00122}00122 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00123}00123   ClassDef(\mbox{\hyperlink{class_scalar_double_random_generator}{ScalarDoubleRandomGenerator}},0)}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00124}00124 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00125}00125 \};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00126}00126 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00129}00129 \textcolor{comment}{// Returns A Fixed (Preselected) Double}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00131}\mbox{\hyperlink{class_fixed_scalar_double_random_generator}{00131}} \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_fixed_scalar_double_random_generator}{FixedScalarDoubleRandomGenerator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_scalar_double_random_generator}{ScalarDoubleRandomGenerator}}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00132}00132 \{}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00133}00133 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00135}00135   \textcolor{comment}{// Member functions}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00137}00137 \textcolor{comment}{}  \mbox{\hyperlink{class_fixed_scalar_double_random_generator_a5c4b925c79f35d014bc3025ae6803535}{FixedScalarDoubleRandomGenerator}}(\textcolor{keywordtype}{double} fixedValue);}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00138}\mbox{\hyperlink{class_fixed_scalar_double_random_generator_a749301184113f10ab1fee527633d1ad7}{00138}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_fixed_scalar_double_random_generator_a749301184113f10ab1fee527633d1ad7}{\string~FixedScalarDoubleRandomGenerator}}()\{\}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00139}00139   \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_fixed_scalar_double_random_generator_ae2ebb6f864f3514e82be8dbf3135c03b}{generate}}();}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00141}00141   ClassDef(\mbox{\hyperlink{class_fixed_scalar_double_random_generator}{FixedScalarDoubleRandomGenerator}},0)}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00142}00142 \};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00144}\mbox{\hyperlink{class_linear_scalar_double_random_generator}{00144}} \textcolor{keyword}{class }\mbox{\hyperlink{class_linear_scalar_double_random_generator}{LinearScalarDoubleRandomGenerator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_scalar_double_random_generator}{ScalarDoubleRandomGenerator}}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00145}00145 \{}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00146}00146 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00148}00148   \textcolor{comment}{// Member functions}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00150}00150 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00151}00151   \mbox{\hyperlink{class_linear_scalar_double_random_generator_aa941b8f3ae59341ab3ada8b3b3f1f9e4}{LinearScalarDoubleRandomGenerator}}(\textcolor{keywordtype}{double} \mbox{\hyperlink{class_scalar_double_random_generator_a92dd94cbd845336227592693aca8bcbc}{minimum}},\textcolor{keywordtype}{double} \mbox{\hyperlink{class_scalar_double_random_generator_ad50d1595301f9cb737e607e88020eb86}{maximum}}, TRandom * \mbox{\hyperlink{class_random_generator_a9a5e5365fbc3658485e44c84bea180ad}{randomGenerator}});}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00152}\mbox{\hyperlink{class_linear_scalar_double_random_generator_a1ce252c40b70834b2e11f84213fd6f6c}{00152}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_linear_scalar_double_random_generator_a1ce252c40b70834b2e11f84213fd6f6c}{\string~LinearScalarDoubleRandomGenerator}}()\{\}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00153}00153   \textcolor{keyword}{virtual} \textcolor{keywordtype}{double}  \mbox{\hyperlink{class_linear_scalar_double_random_generator_adc6404899e035f2176ee8c9a99e56666}{generate}}();}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00154}00154 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00155}00155   ClassDef(\mbox{\hyperlink{class_linear_scalar_double_random_generator}{LinearScalarDoubleRandomGenerator}},0)}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00156}00156 \};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00157}00157 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00159}00159 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00160}\mbox{\hyperlink{class_exp_scalar_double_random_generator}{00160}} \textcolor{keyword}{class }\mbox{\hyperlink{class_exp_scalar_double_random_generator}{ExpScalarDoubleRandomGenerator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_scalar_double_random_generator}{ScalarDoubleRandomGenerator}}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00161}00161 \{}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00162}00162 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00164}00164   \textcolor{comment}{// Member functions}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00166}00166 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00167}00167   \mbox{\hyperlink{class_exp_scalar_double_random_generator_a6896e99d1ac70df7024dc0ac08aa5f17}{ExpScalarDoubleRandomGenerator}}(\textcolor{keywordtype}{double} \mbox{\hyperlink{class_scalar_double_random_generator_a92dd94cbd845336227592693aca8bcbc}{minimum}},}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00168}00168                                  \textcolor{keywordtype}{double} slope,}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00169}00169                                  TRandom * \mbox{\hyperlink{class_random_generator_a9a5e5365fbc3658485e44c84bea180ad}{randomGenerator}});}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00170}\mbox{\hyperlink{class_exp_scalar_double_random_generator_a65fe3885e575fd576c6fc7ed4fa116c6}{00170}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_exp_scalar_double_random_generator_a65fe3885e575fd576c6fc7ed4fa116c6}{\string~ExpScalarDoubleRandomGenerator}}()\{\}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00171}00171   \textcolor{keyword}{virtual} \textcolor{keywordtype}{double}  \mbox{\hyperlink{class_exp_scalar_double_random_generator_aa4a19716cb12f620ab8eb3ec162fd717}{generate}}();}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00172}00172 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00173}00173   ClassDef(\mbox{\hyperlink{class_exp_scalar_double_random_generator}{ExpScalarDoubleRandomGenerator}},0)}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00174}00174 \};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00175}00175 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00176}\mbox{\hyperlink{class_histo_scalar_double_random_generator}{00176}} \textcolor{keyword}{class }\mbox{\hyperlink{class_histo_scalar_double_random_generator}{HistoScalarDoubleRandomGenerator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_scalar_double_random_generator}{ScalarDoubleRandomGenerator}}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00177}00177 \{}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00178}00178 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00181}00181   \textcolor{comment}{// Data Members}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00183}\mbox{\hyperlink{class_histo_scalar_double_random_generator_a9f377851acb9da2c0618a04d3cfb825a}{00183}} \textcolor{comment}{}  TH1 * \mbox{\hyperlink{class_histo_scalar_double_random_generator_a9f377851acb9da2c0618a04d3cfb825a}{histogram}};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00184}00184 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00186}00186   \textcolor{comment}{// Member functions}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00188}00188 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00189}00189   \mbox{\hyperlink{class_histo_scalar_double_random_generator_a1c9f1146fcb9a7c934e2937a3956fab6}{HistoScalarDoubleRandomGenerator}}(TH1 * theHistogram);}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00190}\mbox{\hyperlink{class_histo_scalar_double_random_generator_a20235117bb3c6deb905ce686bd6b58b3}{00190}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_histo_scalar_double_random_generator_a20235117bb3c6deb905ce686bd6b58b3}{\string~HistoScalarDoubleRandomGenerator}}()\{\}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00191}00191   \textcolor{keyword}{virtual} \textcolor{keywordtype}{double}  \mbox{\hyperlink{class_histo_scalar_double_random_generator_aa47f5d700408c4006f3011ecde55bb99}{generate}}();}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00192}00192 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00193}00193   ClassDef(\mbox{\hyperlink{class_histo_scalar_double_random_generator}{HistoScalarDoubleRandomGenerator}},0)}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00194}00194 \};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00195}00195 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00196}00196 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00198}00198 \textcolor{comment}{// Generates a unit vector uniformly distributed in 4pi}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00200}\mbox{\hyperlink{class_vector_random_generator}{00200}} \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_vector_random_generator}{VectorRandomGenerator}} :  \textcolor{keyword}{public} \mbox{\hyperlink{class_random_generator}{RandomGenerator}}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00201}00201 \{}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00202}00202 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00204}00204   \textcolor{comment}{// Member functions}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00206}00206 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00207}00207   \mbox{\hyperlink{class_vector_random_generator_a3ac33eb3b84df15e0940a8b171da86a5}{VectorRandomGenerator}}(TRandom * rg);}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00208}\mbox{\hyperlink{class_vector_random_generator_a29b9bcf0f9058e4a0c7a95f2107d413c}{00208}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_vector_random_generator_a29b9bcf0f9058e4a0c7a95f2107d413c}{\string~VectorRandomGenerator}}()\{\}}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00209}00209   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_vector_random_generator_a325b5c984ea4555d02cfc671b1bf3830}{generate}}(\textcolor{keywordtype}{double} \&theta, \textcolor{keywordtype}{double} \&phi, \textcolor{keywordtype}{double} \& ax, \textcolor{keywordtype}{double} \& ay,\textcolor{keywordtype}{double} \& az);}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00210}00210 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00211}00211   ClassDef(\mbox{\hyperlink{class_vector_random_generator}{VectorRandomGenerator}},0)}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00212}00212 \};}
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00213}00213 }
+\DoxyCodeLine{\Hypertarget{_random_generators_8hpp_source_l00214}00214 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* RandomGenerators\_hpp */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

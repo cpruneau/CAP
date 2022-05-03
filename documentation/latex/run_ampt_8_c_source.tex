@@ -1,0 +1,128 @@
+\hypertarget{run_ampt_8_c_source}{}\doxysection{run\+Ampt.\+C}
+\label{run_ampt_8_c_source}\index{Ampt/runAmpt.C@{Ampt/runAmpt.C}}
+\mbox{\hyperlink{run_ampt_8_c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00011}00011 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00012}00012 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00013}00013 \textcolor{preprocessor}{\#include "{}TRandom.h"{}}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_filter_8hpp}{ParticleFilter.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_pair_filter_8hpp}{ParticlePairFilter.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00016}00016 \textcolor{preprocessor}{\#include "{}AnalysisConfiguration.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_canvas_configuration_8hpp}{CanvasConfiguration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00018}00018 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_graph_configuration_8hpp}{GraphConfiguration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00019}00019 \textcolor{preprocessor}{\#include "{}GeneratorConfiguration.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00020}00020 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_ampt_event_reader_8hpp}{AmptEventReader.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00021}00021 \textcolor{preprocessor}{\#include "{}GenericEventAnalyzer.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00024}00024 \textcolor{comment}{// =================================================}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00025}00025 \textcolor{comment}{// Run a correlation analysis with AMPT events}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00026}00026 \textcolor{comment}{// =================================================}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00027}\mbox{\hyperlink{run_ampt_8_c_a2865b7bb7e448d74187b723113c9f090}{00027}} \textcolor{keywordtype}{void} \mbox{\hyperlink{run_ampt_8_c_a2865b7bb7e448d74187b723113c9f090}{runAmpt}}(\textcolor{keywordtype}{long} nEventsRequested=5000000)}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00028}00028 \{}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00029}00029   cout << \textcolor{stringliteral}{"{}<INFO> runClusterModelAnalysis() Setup configuration"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00031}00031   AnalysisConfiguration * ac = \textcolor{keyword}{new} AnalysisConfiguration();}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00032}00032   ac-\/>outputPath               = \textcolor{stringliteral}{"{}../Ampt\_paper/0p2\_p20\_set4/"{}};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00033}00033   ac-\/>baseName                 = \textcolor{stringliteral}{"{}Ampt\_6099"{}};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00034}00034   ac-\/>configFileName           = \textcolor{stringliteral}{"{}Config\_6099.txt"{}};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00035}00035   ac-\/>rootOutputFileName       = \textcolor{stringliteral}{"{}Ampt\_Histograms\_6099   .root"{}};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00037}00037     cout<<\textcolor{stringliteral}{"{}================================================================"{}}<<endl;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00038}00038     cout<<\textcolor{stringliteral}{"{}"{}}<<endl;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00039}00039     cout<<\textcolor{stringliteral}{"{}         running for = "{}}<<ac-\/>baseName<<endl;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00040}00040     cout<<\textcolor{stringliteral}{"{}"{}}<<endl;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00041}00041     cout<<\textcolor{stringliteral}{"{}================================================================"{}}<<endl;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00044}00044   ac-\/>nBins\_pt    = 18;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00045}00045   ac-\/>min\_pt      = 0.2;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00046}00046   ac-\/>max\_pt      = 2.0;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00047}00047   ac-\/>nBins\_eta   = 20;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00048}00048   ac-\/>min\_eta     = -\/2.0;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00049}00049   ac-\/>max\_eta     = 2.0;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00050}00050   ac-\/>nBins\_y     = 20;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00051}00051   ac-\/>min\_y       = -\/2.0;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00052}00052   ac-\/>max\_y       = 2.0;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00053}00053   ac-\/>nBins\_phi   = 18;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00054}00054   ac-\/>min\_phi     = 0.0;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00055}00055   ac-\/>max\_phi     = 2.0*3.1415927;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00057}00057   ac-\/>nBins\_DeltaPlong = 10;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00058}00058   ac-\/>min\_DeltaPlong   = -\/1.0;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00059}00059   ac-\/>max\_DeltaPlong   =  1.0;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00060}00060   ac-\/>nBins\_DeltaPside = 10;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00061}00061   ac-\/>min\_DeltaPside   = -\/1.0;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00062}00062   ac-\/>max\_DeltaPside   =  1.0;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00063}00063   ac-\/>nBins\_DeltaPout  = 10;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00064}00064   ac-\/>min\_DeltaPout    = -\/1.0;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00065}00065   ac-\/>max\_DeltaPout    =  1.0;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00067}00067   ac-\/>fillPairs        = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00068}00068   ac-\/>fill3D           = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00069}00069   ac-\/>fill6D           = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00070}00070   ac-\/>fillQ3D          = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00071}00071   ac-\/>fillY            = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00073}00073   ac-\/>scaleHistograms      = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00074}00074   ac-\/>externalScaling      = 1.0;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00075}00075   ac-\/>saveHistosToRootFile = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00076}00076   ac-\/>forceRewrite         = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00077}00077   ac-\/>saveHistosToTextFile = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00078}00078   ac-\/>calculateDerived     = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00079}00079   ac-\/>plotGraphs           = \textcolor{keyword}{true}; \textcolor{comment}{//on off plots for root display}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00082}00082   \textcolor{comment}{// use the following options to select which graphs are plotted on screen.}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00083}00083   ac-\/>plotSingles         = \textcolor{keyword}{true};     \textcolor{comment}{// selects the single part histo to be printed}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00084}00084   ac-\/>plotPairs           = \textcolor{keyword}{true};    \textcolor{comment}{// selects the part pair histo to be printed}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00085}00085   ac-\/>plotDerivedPairs    = \textcolor{keyword}{true};    \textcolor{comment}{// selects the derived part pair histo  to be printed}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00086}00086   ac-\/>plotCombined        = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00087}00087   ac-\/>plotEventHistos     = \textcolor{keyword}{true};    \textcolor{comment}{// global event stuff}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00089}00089   ac-\/>printGraphs          = \textcolor{keyword}{false}; \textcolor{comment}{//on off plots for root display}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00090}00090   ac-\/>plotAll              = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00091}00091   ac-\/>printAll             = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00093}00093   ac-\/>particleFilter1      = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}( 1,ac-\/>min\_pt+0.001,ac-\/>max\_pt,ac-\/>min\_eta,ac-\/>max\_eta,ac-\/>min\_y,ac-\/>max\_y); \textcolor{comment}{// +ve only}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00094}00094   ac-\/>particleFilter2      = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}(-\/1,ac-\/>min\_pt+0.001,ac-\/>max\_pt,ac-\/>min\_eta,ac-\/>max\_eta,ac-\/>min\_y,ac-\/>max\_y); \textcolor{comment}{// -\/ve only}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00095}00095   ac-\/>particlePairFilter12 = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_pair_filter}{ParticlePairFilter}}(0.0, 100.0,}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00096}00096                                                     0.0, 2.0*3.1415927,}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00097}00097                                                     0.0, 6.0);}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00099}00099   ac-\/>canvasConfiguration1D  = \textcolor{keyword}{new} \mbox{\hyperlink{class_canvas_configuration}{CanvasConfiguration}}(1);}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00100}00100   ac-\/>graphConfiguration1D   = \textcolor{keyword}{new} \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}}(1,1);}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00101}00101   ac-\/>canvasConfiguration2D  = \textcolor{keyword}{new} \mbox{\hyperlink{class_canvas_configuration}{CanvasConfiguration}}(0);}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00102}00102   ac-\/>graphConfiguration2D   = \textcolor{keyword}{new} \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}}(2);}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00104}00104   \textcolor{comment}{// ==================================================================================}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00105}00105   \textcolor{comment}{// Ampt Model Selection Parameters}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00106}00106   \textcolor{comment}{// ==================================================================================}}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00107}00107   GeneratorConfiguration * mc = \textcolor{keyword}{new} GeneratorConfiguration(\textcolor{stringliteral}{"{}AmptModel"{}},4);}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00108}00108   mc-\/>impactParameterMinimum     = 12.47;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00109}00109   mc-\/>impactParameterMaximum     = 20.01;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00110}00110   mc-\/>ptMinimum = 0.1;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00111}00111   mc-\/>ptMaximum = 2.5;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00112}00112   mc-\/>yMinimum = -\/2.5;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00113}00113   mc-\/>yMaximum =  2.5;}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00115}00115   \mbox{\hyperlink{class_ampt_event_reader}{AmptEventReader}} * eventGenerator = \textcolor{keyword}{new} \mbox{\hyperlink{class_ampt_event_reader}{AmptEventReader}}(event,modelConfig,randomGenerator,debugGenerator);}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00116}00116   \mbox{\hyperlink{class_generic_event_analyzer}{GenericEventAnalyzer}} * eventAnalyzer  = \textcolor{keyword}{new} \mbox{\hyperlink{class_generic_event_analyzer}{GenericEventAnalyzer}}(analysisConfig,randomGenerator,debugAnalyzer);}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00117}00117 }
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00118}00118   EventLoop eventLoop = \textcolor{keyword}{new} EventLoop();}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00119}00119   eventLoop-\/>addTask(eventGenerator);}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00120}00120   eventLoop-\/>addTask(eventAnalyzer);}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00121}00121   eventLoop-\/>run(nEventsRequested);}
+\DoxyCodeLine{\Hypertarget{run_ampt_8_c_source_l00122}00122 \}}
+
+\end{DoxyCode}

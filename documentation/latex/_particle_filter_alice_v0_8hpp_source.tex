@@ -1,0 +1,88 @@
+\hypertarget{_particle_filter_alice_v0_8hpp_source}{}\doxysection{Particle\+Filter\+Alice\+V0.\+hpp}
+\label{_particle_filter_alice_v0_8hpp_source}\index{Base/ParticleFilterAliceV0.hpp@{Base/ParticleFilterAliceV0.hpp}}
+\mbox{\hyperlink{_particle_filter_alice_v0_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef CAP\_\_ParticleFilterAliceV0}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define CAP\_\_ParticleFilterAliceV0}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_filter_8hpp}{ParticleFilter.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00016}00016 \textcolor{comment}{// Single Particle Filter}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00017}00017 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00018}00018 \textcolor{comment}{// chargeSelected:}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00019}00019 \textcolor{comment}{// case -\/1:    accepts negative only}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00020}00020 \textcolor{comment}{// case  0:    accepts neutral only}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00021}00021 \textcolor{comment}{// case  1:    accepts positive only}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00022}00022 \textcolor{comment}{// case  999:  accepts all}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00024}00024 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00027}\mbox{\hyperlink{class_particle_filter_alice_v0}{00027}} \textcolor{keyword}{class }\mbox{\hyperlink{class_particle_filter_alice_v0}{ParticleFilterAliceV0}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00028}00028 \{}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00029}00029 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00031}\mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063a0cea898ebc3ccbcdab1327676914ec11}{00031}}   \textcolor{keyword}{enum} \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063}{V0Selection}}   \{ \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063a0cea898ebc3ccbcdab1327676914ec11}{V0A}}, \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063aac22a5717c2d64d860691e6d6e219a6c}{V0C}}, \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063ab7110590ca0f886f6de1a5aee7b786aa}{V0M}} \};}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00033}\mbox{\hyperlink{class_particle_filter_alice_v0_a8eeffeb0618750d506279d47f4fdbacf}{00033}}   \mbox{\hyperlink{class_particle_filter_alice_v0_a8eeffeb0618750d506279d47f4fdbacf}{ParticleFilterAliceV0}}(\textcolor{keywordtype}{bool}   filteringOnPt,}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00034}00034                         \textcolor{keywordtype}{double} minPt,}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00035}00035                         \textcolor{keywordtype}{double} maxPt,}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00036}00036                         \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063}{V0Selection}}     \mbox{\hyperlink{class_particle_filter_alice_v0_a1b16b501b2080cb59c42131c6bba8288}{v0Selected}}=\mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063ab7110590ca0f886f6de1a5aee7b786aa}{V0M}},}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00037}00037                         FamilySelection familySelected = Hadron,}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00038}00038                         ChargeSelection chargeSelected = Charged,}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00039}00039                         StatusSelection statusSelected = Live);}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00041}\mbox{\hyperlink{class_particle_filter_alice_v0_a56a6f6393b724cdfdc4177efb2214761}{00041}}   \mbox{\hyperlink{class_particle_filter_alice_v0_a56a6f6393b724cdfdc4177efb2214761}{ParticleFilterAliceV0}}(\textcolor{keywordtype}{bool}   filteringOnPt,}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00042}00042                         \textcolor{keywordtype}{double} minPt,}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00043}00043                         \textcolor{keywordtype}{double} maxPt,}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00044}00044                         \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063}{V0Selection}}     \mbox{\hyperlink{class_particle_filter_alice_v0_a1b16b501b2080cb59c42131c6bba8288}{v0Selected}}=\mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063ab7110590ca0f886f6de1a5aee7b786aa}{V0M}},}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00045}00045                         NameSelection   nameSelected   = PionPlus,}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00046}00046                         StatusSelection statusSelected = Live);}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00048}\mbox{\hyperlink{class_particle_filter_alice_v0_ac4a4dcb45be7a2282325c3243f6021ee}{00048}}   \mbox{\hyperlink{class_particle_filter_alice_v0_ac4a4dcb45be7a2282325c3243f6021ee}{ParticleFilterAliceV0}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_particle_filter_alice_v0}{ParticleFilterAliceV0}} \& otherFilter);}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00049}00049   \mbox{\hyperlink{class_particle_filter_alice_v0}{ParticleFilterAliceV0}} \& \mbox{\hyperlink{class_particle_filter_alice_v0_a3b09537f72becefb6c84422af13cebdc}{operator=}}( \textcolor{keyword}{const} \mbox{\hyperlink{class_particle_filter_alice_v0}{ParticleFilterAliceV0}} \& otherFilter);}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00051}\mbox{\hyperlink{class_particle_filter_alice_v0_aff5a4653864f7cf8ccf87f1d7f043220}{00051}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_filter_alice_v0_aff5a4653864f7cf8ccf87f1d7f043220}{\string~ParticleFilterAliceV0}}()\{\}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00053}\mbox{\hyperlink{class_particle_filter_alice_v0_a0cbed3071ceb6695a637d155c85d7cec}{00053}}   \textcolor{keyword}{virtual} \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_filter_alice_v0_a0cbed3071ceb6695a637d155c85d7cec}{acceptEta}}(\textcolor{keywordtype}{double} eta)}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00054}00054   \{}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00055}00055   \textcolor{keywordtype}{bool} accepting;}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00056}00056   \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_particle_filter_alice_v0_a1b16b501b2080cb59c42131c6bba8288}{v0Selected}})}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00057}00057       \{}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00058}00058         \textcolor{keywordflow}{case} \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063a0cea898ebc3ccbcdab1327676914ec11}{V0A}}:   accepting = (\mbox{\hyperlink{class_particle_filter_alice_v0_ab1c9ce331b19533c19333b7855c15eb4}{min\_eta\_v0A}}<=eta)\&\&(eta<\mbox{\hyperlink{class_particle_filter_alice_v0_ac5c86bd080e411640801ac22aec3471a}{max\_eta\_v0A}}); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00059}00059         \textcolor{keywordflow}{case} \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063aac22a5717c2d64d860691e6d6e219a6c}{V0C}}:   accepting = (\mbox{\hyperlink{class_particle_filter_alice_v0_a49f47d0109f8aef3f8dc058986b637ce}{min\_eta\_v0C}}<=eta)\&\&(eta<\mbox{\hyperlink{class_particle_filter_alice_v0_a1c9af72a913269245b4a6644654e9b09}{max\_eta\_v0C}}); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00060}00060         \textcolor{keywordflow}{case} \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063ab7110590ca0f886f6de1a5aee7b786aa}{V0M}}:   accepting = ((\mbox{\hyperlink{class_particle_filter_alice_v0_ab1c9ce331b19533c19333b7855c15eb4}{min\_eta\_v0A}}<=eta)\&\&(eta<\mbox{\hyperlink{class_particle_filter_alice_v0_ac5c86bd080e411640801ac22aec3471a}{max\_eta\_v0A}})) ||  ((\mbox{\hyperlink{class_particle_filter_alice_v0_a49f47d0109f8aef3f8dc058986b637ce}{min\_eta\_v0C}}<=eta)\&\&(eta<\mbox{\hyperlink{class_particle_filter_alice_v0_a1c9af72a913269245b4a6644654e9b09}{max\_eta\_v0C}}));\textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00061}00061       \}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00062}00062   \textcolor{keywordflow}{return} accepting; \textcolor{comment}{//(min\_eta<eta) \&\& (eta<= max\_eta);}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00063}00063   \}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00065}\mbox{\hyperlink{class_particle_filter_alice_v0_a804e988e963ceda8ff9b648bc5bdbb62}{00065}}   \textcolor{keyword}{virtual} TString \mbox{\hyperlink{class_particle_filter_alice_v0_a804e988e963ceda8ff9b648bc5bdbb62}{getName}}() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00066}\mbox{\hyperlink{class_particle_filter_alice_v0_a20041b85c44e61904a39bd2ddf2316e4}{00066}}   \textcolor{keyword}{virtual} TString \mbox{\hyperlink{class_particle_filter_alice_v0_a20041b85c44e61904a39bd2ddf2316e4}{getTitle}}() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00067}\mbox{\hyperlink{class_particle_filter_alice_v0_a24ecb5210de99c025e31c0b6fc5fd6c4}{00067}}   \textcolor{keyword}{virtual} TString \mbox{\hyperlink{class_particle_filter_alice_v0_a24ecb5210de99c025e31c0b6fc5fd6c4}{getLongName}}() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00068}\mbox{\hyperlink{class_particle_filter_alice_v0_aae0328c2add3f9710e7565b64bcfbc0c}{00068}}   \textcolor{keyword}{virtual} TString \mbox{\hyperlink{class_particle_filter_alice_v0_aae0328c2add3f9710e7565b64bcfbc0c}{getLongTitle}}() \textcolor{keyword}{const} ;}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00070}\mbox{\hyperlink{class_particle_filter_alice_v0_a20603241038756b87e6ca73a82e3d31b}{00070}}   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_filter_alice_v0_a20603241038756b87e6ca73a82e3d31b}{printProperties}}(  ostream \& os);}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00073}00073   \textcolor{comment}{// Data Members}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00075}00075 \textcolor{comment}{}\textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00077}\mbox{\hyperlink{class_particle_filter_alice_v0_a1b16b501b2080cb59c42131c6bba8288}{00077}}   \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063}{V0Selection}} \mbox{\hyperlink{class_particle_filter_alice_v0_a1b16b501b2080cb59c42131c6bba8288}{v0Selected}};}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00078}\mbox{\hyperlink{class_particle_filter_alice_v0_ab1c9ce331b19533c19333b7855c15eb4}{00078}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_particle_filter_alice_v0_ab1c9ce331b19533c19333b7855c15eb4}{min\_eta\_v0A}};}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00079}\mbox{\hyperlink{class_particle_filter_alice_v0_ac5c86bd080e411640801ac22aec3471a}{00079}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_particle_filter_alice_v0_ac5c86bd080e411640801ac22aec3471a}{max\_eta\_v0A}};}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00080}\mbox{\hyperlink{class_particle_filter_alice_v0_a49f47d0109f8aef3f8dc058986b637ce}{00080}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_particle_filter_alice_v0_a49f47d0109f8aef3f8dc058986b637ce}{min\_eta\_v0C}};}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00081}\mbox{\hyperlink{class_particle_filter_alice_v0_a1c9af72a913269245b4a6644654e9b09}{00081}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_particle_filter_alice_v0_a1c9af72a913269245b4a6644654e9b09}{max\_eta\_v0C}};}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00083}00083   ClassDef(\mbox{\hyperlink{class_particle_filter_alice_v0}{ParticleFilterAliceV0}},0)}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00084}00084 \};}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8hpp_source_l00086}00086 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_ParticleFilterAliceV0 */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

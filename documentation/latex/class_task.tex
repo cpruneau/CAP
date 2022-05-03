@@ -1,0 +1,1687 @@
+\hypertarget{class_task}{}\doxysection{Task Class Reference}
+\label{class_task}\index{Task@{Task}}
+
+
+{\ttfamily \#include $<$Task.\+hpp$>$}
+
+
+
+Inheritance diagram for Task\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_task__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Task\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_task_a0ca53354bdc006762a0fda68c64f7608}{Task}} ()
+\item 
+\mbox{\hyperlink{class_task_ad0f94e3993c310c6954a6d2e20d92d5d}{Task}} (const TString \&\+\_\+name, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Message\+Logger\+::\+Log\+Level}} \+\_\+report\+Level)
+\item 
+\mbox{\hyperlink{class_task_ae9f3e16bb665512b6d726be7cb6694ab}{Task}} (const TString \&\+\_\+name, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&\+\_\+event\+Filters, vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&\+\_\+particle\+Filters, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Message\+Logger\+::\+Log\+Level}} \+\_\+report\+Level)
+\item 
+\mbox{\hyperlink{class_task_a3afb3fb8c6886b31326f476ea3a523ce}{Task}} (const TString \&\+\_\+name, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&\+\_\+event\+Filters, vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&\+\_\+particle\+Filters, vector$<$ \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} $\ast$ $>$ \&\+\_\+particle\+Smearer, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Message\+Logger\+::\+Log\+Level}} \+\_\+report\+Level)
+\item 
+virtual \mbox{\hyperlink{class_task_a7bff79cc05fa4511c72048d33591503b}{$\sim$\+Task}} ()
+\item 
+virtual void \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3}{set\+Default\+Configuration}} ()
+\item 
+void \mbox{\hyperlink{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}{set\+Configuration}} (const \mbox{\hyperlink{class_configuration}{Configuration}} \&config)
+\item 
+void \mbox{\hyperlink{class_task_a79deeef6e5d1fd7d0eb04158ee9a1e32}{initialize\+Tasks}} ()
+\item 
+void \mbox{\hyperlink{class_task_a60cbc524d9e983cfaefea47f4b2355d3}{execute\+Tasks}} ()
+\item 
+void \mbox{\hyperlink{class_task_a9ad18a77cb084d62faa79f1cb6a9779b}{finalize\+Tasks}} ()
+\item 
+void \mbox{\hyperlink{class_task_aed29732410a89a401b9ffe34ab6ec95a}{reset\+Tasks}} ()
+\item 
+void \mbox{\hyperlink{class_task_ac12c49f455526f2fedaf443557e42730}{clear\+Tasks}} ()
+\item 
+void \mbox{\hyperlink{class_task_a8c001f1dd731687d350378645d5a5dc2}{save\+Partial\+Tasks}} ()
+\item 
+void \mbox{\hyperlink{class_task_a33764b29a625d6a820297dc8f558b0cc}{subsample\+Analysis\+Tasks}} ()
+\item 
+void \mbox{\hyperlink{class_task_a81111139bfa4245c298295ae560b20ca}{print\+Configuration\+Tasks}} (ostream \&output)
+\item 
+bool \mbox{\hyperlink{class_task_ae54e5d3edaf96aa69e657a7e267baafc}{has\+Subtasks}} () const
+\item 
+unsigned int \mbox{\hyperlink{class_task_a406bfbafe03bc9a48a86818ae62e7443}{get\+NSubtasks}} () const
+\item 
+\mbox{\hyperlink{class_task}{Task}} $\ast$ \mbox{\hyperlink{class_task_a0eaaa70792a709f3807770678bc47117}{get\+Subtask\+At}} (unsigned int index)
+\item 
+\mbox{\hyperlink{class_task}{Task}} $\ast$ \mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{add\+Subtask}} (\mbox{\hyperlink{class_task}{Task}} $\ast$task)
+\item 
+virtual void \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{initialize}} ()
+\item 
+virtual void \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{execute}} ()
+\item 
+virtual void \mbox{\hyperlink{class_task_aab4bc670089cc073247542c3a26da5aa}{finalize}} ()
+\item 
+virtual void \mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{reset}} ()
+\item 
+virtual void \mbox{\hyperlink{class_task_a19de4303aa171af0eb3a8fb5ec3ca2fb}{clear}} ()
+\item 
+virtual void \mbox{\hyperlink{class_task_a23dad2af569b74e50abcd9241e03af3e}{save\+Partial}} ()
+\item 
+virtual void \mbox{\hyperlink{class_task_ae14eff4fe34dd94705fdd64b0ff293d4}{print\+Event\+Count}} () const
+\item 
+virtual void \mbox{\hyperlink{class_task_a83ecaa2646c6999e9274a527b76e8716}{print\+Configuration}} (ostream \&output)
+\item 
+virtual void \mbox{\hyperlink{class_task_a709903c615030cd84122df73f2ea6c4f}{create\+Histograms}} ()
+\item 
+virtual void \mbox{\hyperlink{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}{load\+Histograms}} ()
+\item 
+virtual void \mbox{\hyperlink{class_task_ad1318ccc36691886f14958255c79f7b0}{load\+Histograms}} (TFile $\ast$input\+File \+\_\+\+\_\+attribute\+\_\+\+\_\+((unused)))
+\item 
+virtual void \mbox{\hyperlink{class_task_a0f2b1b09574cc8c223953c84a970c2f1}{reset\+Histograms}} ()
+\item 
+virtual void \mbox{\hyperlink{class_task_a098814a2d8c8e0c14ea28a598f585a3c}{clear\+Histograms}} ()
+\item 
+virtual void \mbox{\hyperlink{class_task_af6b2f71e156a8fc092b46fda1c79fb59}{scale\+Histograms}} ()
+\item 
+virtual void \mbox{\hyperlink{class_task_acec60b5ca389b01edeb19c26eaf7b49c}{save\+Histograms\+As\+Text}} ()
+\item 
+virtual void \mbox{\hyperlink{class_task_a522a5de2e54a73e20780d1dc3af96e09}{save\+Histograms}} (TFile $\ast$output\+File)
+\item 
+virtual void \mbox{\hyperlink{class_task_ae4bb5a5ddfea33eadddf6393ce8d0912}{save\+Histograms}} ()
+\item 
+virtual void \mbox{\hyperlink{class_task_a3ec28185c9df5e62f7c0723a8dd7a2b6}{subsample\+Analysis}} ()
+\item 
+virtual void \mbox{\hyperlink{class_task_a4d1268de39943db211b83508367a5916}{add\+Histograms\+To\+Ext\+List}} (TList $\ast$list)
+\item 
+virtual long \mbox{\hyperlink{class_task_a0bc0b2032fda7d3e208b0e15d00a970e}{read\+Parameter}} (TFile $\ast$input\+File, const TString \&parameter\+Name)
+\item 
+TFile $\ast$ \mbox{\hyperlink{class_task_a4491c7a1e03958b1a67e51e387601695}{open\+Root\+File}} (const TString \&\mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{input\+Path}}, const TString \&file\+Name, const TString \&io\+Option)
+\item 
+\mbox{\hyperlink{class_event}{Event}} $\ast$ \mbox{\hyperlink{class_task_a388f8e261c0d610bba89e9269309d11e}{get\+Event\+Stream}} (unsigned int index)
+\item 
+void \mbox{\hyperlink{class_task_a8387ed7cae99be1d2dcd5acca661fc2f}{add\+Event\+Stream}} (\mbox{\hyperlink{class_event}{Event}} $\ast$event)
+\item 
+unsigned int \mbox{\hyperlink{class_task_ac9787e5cfaedbdb6f420d0ec24682f1e}{get\+NEvent\+Streams}} () const
+\item 
+const \mbox{\hyperlink{class_configuration}{Configuration}} \& \mbox{\hyperlink{class_task_a1955cc87bd4885d8ca19435b3609443f}{get\+Configuration}} () const
+\item 
+\mbox{\hyperlink{class_configuration}{Configuration}} \& \mbox{\hyperlink{class_task_aca7d0bc7645e57b57319dec636eb5614}{get\+Configuration}} ()
+\item 
+TString \mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{get\+Name}} () const
+\item 
+void \mbox{\hyperlink{class_task_a82427919c7eaa15090057d60ab7d89ec}{set\+Name}} (const TString \&name)
+\item 
+TRandom $\ast$ \mbox{\hyperlink{class_task_a195e1f631fcbd65cc5a6a8c4deeac546}{get\+Random\+Generator}} ()
+\item 
+void \mbox{\hyperlink{class_task_a724ff83138229238fdc58566a0cd350f}{increment\+Event\+Processed}} ()
+\item 
+void \mbox{\hyperlink{class_task_a01762aa4383b0931850efb56b697a856}{increment\+Event\+Accepted}} (unsigned int event\+Filter\+Index)
+\item 
+long \mbox{\hyperlink{class_task_a5221968e923d8b894fa6616bb5aa7fb3}{get\+NEvent\+Processed}} () const
+\item 
+long \mbox{\hyperlink{class_task_a2195cb138f8a1c6d2b868c9f4b80b212}{get\+NEvent\+Accepted}} () const
+\item 
+long \mbox{\hyperlink{class_task_a42491440777f87297f18d13252cb8e8f}{get\+Sub\+Sample\+Index}} () const
+\item 
+void \mbox{\hyperlink{class_task_a0412ac2b34de1abd8a7a3a7339b1f50e}{write\+Parameter}} (TFile $\ast$output\+File, const TString parameter\+Name, long value)
+\item 
+void \mbox{\hyperlink{class_task_a862a9c27db16ed23c36c573a1236aa19}{save\+NEvent\+Processed}} (TFile $\ast$output\+File)
+\item 
+void \mbox{\hyperlink{class_task_aaaaa6bd653f4e839dd92c3e85f27a401}{save\+NEvent\+Accepted}} (TFile $\ast$output\+File)
+\item 
+void \mbox{\hyperlink{class_task_a512a1b774d9a67425083dbfea7f60ed5}{save\+NFiltered\+Events\+Accepted}} (TFile $\ast$output\+File, vector$<$ unsigned int $>$ \&\mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{n\+Filtered\+Events\+Accepted}})
+\item 
+void \mbox{\hyperlink{class_task_a1ce9012b23b733cda8e14e0ff3e4e1c3}{load\+NEvent\+Processed}} (TFile $\ast$input\+File)
+\item 
+void \mbox{\hyperlink{class_task_a5d7a01590b5a08943c7f3ee1574d62d8}{load\+NEvent\+Accepted}} (TFile $\ast$input\+File)
+\item 
+void \mbox{\hyperlink{class_task_a6626812916c6da46a556408d169dc0cb}{load\+NFiltered\+Events\+Accepted}} (TFile $\ast$input\+File, vector$<$ unsigned int $>$ \&\mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{n\+Filtered\+Events\+Accepted}})
+\item 
+void \mbox{\hyperlink{class_task_a829739fde1f6ee30d98de2163261fec2}{reset\+Particle\+Counters}} ()
+\item 
+void \mbox{\hyperlink{class_task_a8d4bb538429fda63b48bba2675fcac6d}{increment\+Particles\+Counted}} ()
+\item 
+void \mbox{\hyperlink{class_task_a6a2ecf82b74c1329bcabd4ef85dac0a8}{increment\+Particles\+Accepted}} ()
+\item 
+unsigned int \mbox{\hyperlink{class_task_aa38e094d55acb90493a5fe3e2a9caf36}{get\+NParticles\+Counted}} () const
+\item 
+unsigned int \mbox{\hyperlink{class_task_a83fa7c91dfca588df2b7bc387109ecf6}{get\+NParticles\+Accepted}} () const
+\item 
+void \mbox{\hyperlink{class_task_a0d4915f314c41e188fee22abc629717c}{set\+Random\+Generator}} (TRandom $\ast$random\+Generator)
+\item 
+void \mbox{\hyperlink{class_task_a485d9a0b17727aada784ea787f92854a}{clear\+Event\+Filters}} ()
+\item 
+void \mbox{\hyperlink{class_task_ad602e11bcb6d287cc8cb29718662235d}{set\+Event\+Filters}} (vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \+\_\+event\+Filters)
+\item 
+void \mbox{\hyperlink{class_task_a1f068503671b326c80a0f974035e13e5}{add\+Event\+Filter}} (\mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$\+\_\+event\+Filter)
+\item 
+vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \& \mbox{\hyperlink{class_task_a2675ab14e90ce07f5cdb41cfc61393bb}{get\+Event\+Filters}} ()
+\item 
+const vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \& \mbox{\hyperlink{class_task_ab6a16f58538013cee04efbd5ccc6afa3}{get\+Event\+Filters}} () const
+\item 
+void \mbox{\hyperlink{class_task_a45ca983351583bf79dedc96c4ac2a5f1}{clear\+Particle\+Filters}} ()
+\item 
+void \mbox{\hyperlink{class_task_acdd633c1d915397aa34c3dd66c59cf05}{set\+Particle\+Filters}} (vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \+\_\+particle\+Filters)
+\item 
+void \mbox{\hyperlink{class_task_a7541cb0c7f5a49e3d3956de8d07525bd}{add\+Particle\+Filter}} (\mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$\+\_\+particle\+Filter)
+\item 
+vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \& \mbox{\hyperlink{class_task_ade3561496986ec4726f6e68708a6daa4}{get\+Particle\+Filters}} ()
+\item 
+const vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \& \mbox{\hyperlink{class_task_a043676e5e29a4c092660bb8770feab81}{get\+Particle\+Filters}} () const
+\item 
+void \mbox{\hyperlink{class_task_a2d5a94a45b35d3c3ae6153b623d0c6cf}{clear\+Particle\+Smearer}} ()
+\item 
+void \mbox{\hyperlink{class_task_aee86206c9b8191c915be6c24b8980f05}{set\+Particle\+Smearers}} (vector$<$ \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} $\ast$ $>$ \+\_\+particle\+Smearers)
+\item 
+void \mbox{\hyperlink{class_task_a5c517061345999996c48f0f5560276b6}{add\+Particle\+Smearer}} (\mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} $\ast$\+\_\+particle\+Smearer)
+\item 
+vector$<$ \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} $\ast$ $>$ \mbox{\hyperlink{class_task_a0ada1f631d9e8a78620f1797438bfa6b}{get\+Particle\+Smearer}} ()
+\item 
+unsigned int \mbox{\hyperlink{class_task_a801e28d928bcc87169475b7e8be5e03a}{get\+NHistograms}} () const
+\item 
+unsigned int \mbox{\hyperlink{class_task_a2a010e99c438e15e039ba94fc791991e}{get\+NBase\+Single\+Histograms}} () const
+\item 
+unsigned int \mbox{\hyperlink{class_task_aaa9ad4668a4971ccc6a593eadf2ffa4e}{get\+NBase\+Pair\+Histograms}} () const
+\item 
+unsigned int \mbox{\hyperlink{class_task_a6c0e5d4f73c61bddccfd568731b2cccd}{get\+NDerived\+Single\+Histograms}} () const
+\item 
+unsigned int \mbox{\hyperlink{class_task_a29768101d73e59e554a309c5b9bf58ea}{get\+NDerived\+Pair\+Histograms}} () const
+\item 
+unsigned int \mbox{\hyperlink{class_task_ae8ddfe1804f5c8f3c5593d20c0ebd1d9}{get\+NCombined\+Histograms}} () const
+\item 
+vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \& \mbox{\hyperlink{class_task_a6d72e897fd9656fa0ce282f5dbbb4ff4}{get\+Base\+Single\+Histograms}} ()
+\item 
+vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \& \mbox{\hyperlink{class_task_a5e22f4859df9982f6036458b504273a2}{get\+Base\+Pair\+Histograms}} ()
+\item 
+vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \& \mbox{\hyperlink{class_task_a633bbb6b8e51f9d7f8a119446c7da7ce}{get\+Derived\+Single\+Histograms}} ()
+\item 
+vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \& \mbox{\hyperlink{class_task_af5343459e6fe3baf6d1bbe367a2d5c54}{get\+Derived\+Pair\+Histograms}} ()
+\item 
+vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \& \mbox{\hyperlink{class_task_a993151cbe424bcc64f2ec49f10820974}{get\+Combined\+Pair\+Histograms}} ()
+\item 
+const TString \mbox{\hyperlink{class_task_a1b6030e671b0670d448a859b0fb0a065}{create\+Histogram\+Name}} (const TString \&base\+Name, const TString \&evt\+Filter\+Name, const TString \&part\+Filter\+Name, const TString \&observable\+Name=\char`\"{}\char`\"{}, const TString \&suffix=\char`\"{}\char`\"{})
+\item 
+const TString \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{create\+Pair\+Histogram\+Name}} (const TString \&base\+Name, const TString \&evt\+Filter\+Name, const TString \&part\+Filter\+Name1, const TString \&part\+Filter\+Name2, const TString \&observable\+Name=\char`\"{}\char`\"{}, const TString \&suffix=\char`\"{}\char`\"{})
+\item 
+void \mbox{\hyperlink{class_task_a7fb098d3b26e552cbbdc416fd18d7a1f}{set\+Histogram\+File\+Names}} (const TString input\+Name, const TString output\+Name)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static vector$<$ TString $>$ \mbox{\hyperlink{class_task_aac1fd81fca680da790dcfe40d30e95ad}{list\+Files\+In\+Dir}} (const TString \&dirname, const TString ext=\char`\"{}.root\char`\"{})
+\item 
+static vector$<$ TString $>$ \mbox{\hyperlink{class_task_a4c7f57b0dce292ebce810065db256fa6}{list\+Files\+In\+Dir}} (const TString \&path\+Name, vector$<$ TString $>$ include\+Patterns, vector$<$ TString $>$ exclude\+Patterns)
+\item 
+static TString \mbox{\hyperlink{class_task_a901f32c053d45fed79e390b66337e1f2}{remove\+Root\+Extension}} (const TString file\+Name)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_timer}{Timer}} \mbox{\hyperlink{class_task_a5991a0a3e31cec492a994b034e258aa6}{timer}}
+\item 
+TString \mbox{\hyperlink{class_task_a0aa96f5ba1ec134ff65d80740654d759}{task\+Name}}
+\item 
+\mbox{\hyperlink{class_configuration}{Configuration}} \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}
+\item 
+TRandom $\ast$ \mbox{\hyperlink{class_task_a15516b2635c38aa3ae0a3970a479f9f4}{task\+Random\+Generator}}
+\item 
+\mbox{\hyperlink{class_factory}{Factory}}$<$ \mbox{\hyperlink{class_particle}{Particle}} $>$ $\ast$ \mbox{\hyperlink{class_task_aca6dc827b61b440bf610bba393beb673}{particle\+Factory}}
+\item 
+vector$<$ \mbox{\hyperlink{class_event}{Event}} $\ast$ $>$ \mbox{\hyperlink{class_task_a02048625ac29f05812d5229348d36f2e}{event\+Streams}}
+\item 
+vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{event\+Filters}}
+\item 
+vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particle\+Filters}}
+\item 
+vector$<$ \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} $\ast$ $>$ \mbox{\hyperlink{class_task_a348005e901a03674c25682a9370ebff0}{particle\+Smearers}}
+\item 
+\mbox{\hyperlink{class_event_count_histos}{Event\+Count\+Histos}} $\ast$ \mbox{\hyperlink{class_task_afac9929c6201640a924d1e44303ffd29}{event\+Count\+Histos}}
+\item 
+vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \mbox{\hyperlink{class_task_ae257d4df10bd00bb719425721d43ce80}{input\+Histograms}}
+\item 
+vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \mbox{\hyperlink{class_task_a49637b241f2bb93c22a611756240f577}{histograms}}
+\item 
+vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{base\+Single\+Histograms}}
+\item 
+vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \mbox{\hyperlink{class_task_aeb5d14f2e1556bddc04a17dd6fe862ea}{base\+Pair\+Histograms}}
+\item 
+vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \mbox{\hyperlink{class_task_acc1a41e55911576605060a49664c7d1f}{derived\+Single\+Histograms}}
+\item 
+vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \mbox{\hyperlink{class_task_a580f0b416146660bc0efc351e8c1c775}{derived\+Pair\+Histograms}}
+\item 
+vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \mbox{\hyperlink{class_task_a6b4bacd121444576a62bd1354f0b6b68}{combined\+Histograms}}
+\item 
+vector$<$ vector$<$ \mbox{\hyperlink{class_particle_digit}{Particle\+Digit}} $\ast$ $>$ $>$ \mbox{\hyperlink{class_task_a94ef6eae9ca9e31848783bf9ba3cf3d4}{filtered\+Particles}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{n\+Filtered\+Events\+Accepted}}
+\item 
+long \mbox{\hyperlink{class_task_a66a48a46d707a69339ec8c03cf25556c}{n\+Event\+Processed}}
+\item 
+long \mbox{\hyperlink{class_task_aa8a0d1fbb21cfb200e74bb3b38118fa0}{n\+Event\+Accepted}}
+\item 
+unsigned int \mbox{\hyperlink{class_task_a41720f8a32d62265b7dc51e8f55631fa}{particles\+Counted}}
+\item 
+unsigned int \mbox{\hyperlink{class_task_a5d10236f0bb8c1415a26dbc829b468ca}{particles\+Accepted}}
+\item 
+int \mbox{\hyperlink{class_task_a2e27bac30952367cec4c75ce30224993}{sub\+Sample\+Index}}
+\item 
+vector$<$ \mbox{\hyperlink{class_task}{Task}} $\ast$ $>$ \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}
+\item 
+\mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} $\ast$ \mbox{\hyperlink{class_task_ad6f45bd5d1e19d15e69276103dff287a}{master\+Collection}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\doxysubsection*{\mbox{\hyperlink{class_task}{Task}}}
+
+The \mbox{\hyperlink{class_task}{Task}} class is a base class used to define data analysis tasks and provide some of the basic resources required for the generation and analysis of data.
+
+The task base class provides the basic tools and functionality typically required for the analysis of simulation data as well as \char`\"{}real\char`\"{} data. This base class defines basic methods needed for the analysis of data and the management of files, histograms, etc. Tasks are typically data centric and require access to one or more event streams. \mbox{\hyperlink{class_event}{Event}} streams used for i/o by a particular tasks are identified with boolean flags in the task configuration used by a speficific task instance. While most tasks only required one stream (turned on with the use\+Stream0 flag), it is also possible to use as many as 10 streams. This can be of interest, for instance, for tasks that convert data or modify data (e.\+g., class \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}}).
+
+\doxysubsubsection*{Task/subtask(s)}
+
+The \mbox{\hyperlink{class_task}{Task}} class is defined to be recursive, i.\+e., a task can have one or many subtasks. An example of class having one or many subtasks is the \mbox{\hyperlink{class_task_iterator}{Task\+Iterator}} class designed control the analysis of data sets consisting of large numbers of events and requiring calls to different types of classes to carry out several types of operations. Typically an analysis job using the \mbox{\hyperlink{class_task_iterator}{Task\+Iterator}} class would use a task to generate or read data from file (e.\+g., Wac\+Pythia/\+Pythia\+Event\+Generator), and one or more tasks to fill histograms. To add a sub-\/task to a task, use the add\+Subtask method.
+
+The task class provides several methods (functions) used to carry out specific tasks, such as task initialization,, task execution, task finilization, and basic operations related to histograms such as histogram creation, histogram scaling at the end of analysis (to carry normalization e.\+g., per event analyzed, histgram saving to file, calculations of \textquotesingle{}derived\textquotesingle{} histograms, etc. Given a task can have one or many subtasks, a mechanism is required to enable a task to automatically invoke its subtasks. Generic methods thus have two levels of invocation. For instance, to carry out the action for which a specific subclass is designed, call its \char`\"{}execute()\char`\"{} method. However, if the class instance has subtasks and you wish to call the class \char`\"{}execute\char`\"{} as well as the execute methods of all its subtasks, use the \char`\"{}execute\+Tasks()\char`\"{} method. Similarly, methods to clear, reset, initialize, finalize tasks and their subtasks shall be called \char`\"{}clear\+Tasks()\char`\"{}, \char`\"{}reset\+Tasks()\char`\"{}, etc, in general \char`\"{}xxxxx\+Tasks()\char`\"{}. Note, that the operation \char`\"{}xxxxx\char`\"{} is first called for the parent and next invoked for the subtasks. Actually, since tasks can have subtasks recursively, it is this the \char`\"{}xxxxx\+Tasks()\char`\"{} operation which is called on the subtasks. This method in turn calls the \char`\"{}xxxxxx()\char`\"{} on the subtask and next all of its subtasks, if any, recursively.
+
+\doxysubsubsection*{Operations/\+Methods}
+
+Operations defined by the base class are as follows\+: 
+\begin{DoxyEnumerate}
+\item \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{initialize()}}\+: A method called to initialize a task instance. In principle, one could think of initializing a task within its constructor. Within the WAC framework, however, the configuration of a task is kept separate from the task itself and one can actually change the configuration of task after it has been instantiated. Since calling the constructor anew is evidently not possible, the \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{initialize()}} method provides the ability to actually carry out the initialization once the configuration has been set, even though changes may be done after the task is instantiated. Note, however, there is not provision to automatically reinitialize a task if its configuration is changed after initialization. This can be done \char`\"{}manually\char`\"{} however by calling the \mbox{\hyperlink{class_task_a19de4303aa171af0eb3a8fb5ec3ca2fb}{clear()}} or \mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{reset()}} methods of the class as appropriate.
+
+
+\item \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{execute()}}\+: A method called to carry out or execute the task at hand. The present version of the code does not implement a state engine that keeps track of whether or not a task has been initialized or not. This falls under the responsibility of the user. Note that the \mbox{\hyperlink{class_task_iterator}{Task\+Iterator}} class handles all operations sequentially and gracefully thereby insuring operations are carried in \char`\"{}the proper order\char`\"{}. Additionally note that if an exception or error occurs during the initialization, execution, or any other stage of a task, a Post\+Task\+Status call is placed to identify the abnormal condition.
+
+
+\item \mbox{\hyperlink{class_task_aab4bc670089cc073247542c3a26da5aa}{finalize()}}\+: A method called to finalize a task instance. The \mbox{\hyperlink{class_task_aab4bc670089cc073247542c3a26da5aa}{finalize()}} method implemented in the base class automatically calls various functions to scale histograms (per event scaling), to compute derived histogram (as needed), and save histograms to a root file.
+
+
+\item \mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{reset()}}\+: A method called to rest the task so it can be execute anew. 
+\item \mbox{\hyperlink{class_task_a19de4303aa171af0eb3a8fb5ec3ca2fb}{clear()}}\+: A method called to clear the task -- effectively putting the task into an \char`\"{}uninitialized\char`\"{} state. 
+\item \mbox{\hyperlink{class_task_a23dad2af569b74e50abcd9241e03af3e}{save\+Partial()}}\+: A method called to save the histogram objects handled this task to an indexed file. The output path and name of the file are stipulated by the configuration class. Partial saves, as opposed on a single \char`\"{}final\char`\"{} save, of the histogram are carried out automatically if the \char`\"{}partial\+Save\char`\"{} boolean flag is set in the class configuration. The frequency of the partial saves is defined by the \mbox{\hyperlink{class_task_iterator}{Task\+Iterator}} configuration class. The file name under which histograms are saved is specified by a base file name stated in the class configuration and an partial save index automatically incremented after each partial save.
+
+
+\item \mbox{\hyperlink{class_task_a3ec28185c9df5e62f7c0723a8dd7a2b6}{subsample\+Analysis()}}\+: A method called to carry a subsample analysis of the statistical uncertainties of all the histograms held by an instance of this class. This methods uses the base name + partial index to iteratively open all the files to be included in the computation of the statistical uncertainties. Note that while root automatically computes statistical errors or simple histograms, one cannot, typically, on regular error propagation techniques to compute the statistical uncertainties of complex observables such as two, three, or more particle correlators. The subsample analysis technique thus provides a reasonable subtitute for this purpose. See XXXXX. 
+\item \mbox{\hyperlink{class_task_a83ecaa2646c6999e9274a527b76e8716}{print\+Configuration()}}\+: A method to print the configuration of a task instance. While this method usually calls the \mbox{\hyperlink{class_task_a83ecaa2646c6999e9274a527b76e8716}{print\+Configuration()}} method of the configuration class, it may be possible to print additional information into the output stream. 
+\end{DoxyEnumerate}
+
+\doxysubsubsection*{Analysis control }
+
+Data generation and analysis tasks rely on one or several event streams which present a task with one or several instances of the \mbox{\hyperlink{class_event}{Event}} class (or possibly a subclass). Tasks of interest typically involve the generation, transformation, or use of the event stream(s) to fill histograms. Whether feeding or retrieving events into an event stream, it is useful to abstract the control of the type of events and particles produces or accepts based on generic criteria or filters. For filling histograms of single particle observables or correlation observables should not depend explicitly on the type of events being read or the particles these events contain. Indeed, histogram filling operations usually do not depend on details and can thus be considered \char`\"{}abstract\char`\"{} histogram filling tasks. Evidently, a particular analysis be be focused on ultra peripheral or most central heavy-\/ion collisions or anything in between. It may also be of interest to specifically choose the type of particles or what kinematic ranges are of interest. Instead of hard coding such choices, the WAC framework includes notions of event and particle filters, encapsulated into the \mbox{\hyperlink{class_event_filter}{Event\+Filter}} and \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} classes, respectively. There is additionally a \mbox{\hyperlink{class_particle_pair_filter}{Particle\+Pair\+Filter}} class. These filter classes are designed to be very generic and flexible but use a unique strategy and method to decide whether an event or a particle (or a pair of particles) should be accepted and thus used/readin/output by a task. Deciding whether an event or a particle is acceptable, one simply callss the accept method of the filter\+:
+
+
+\begin{DoxyPre}myEventFilter-\/>accept(anEvent);\end{DoxyPre}
+
+
+or
+
+
+\begin{DoxyPre}myParticleFilter-\/>accept(aParticle);\end{DoxyPre}
+
+
+The WAC framework includes the classes \mbox{\hyperlink{class_event_filter}{Event\+Filter}} and \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} that both instrument this \char`\"{}accept\char`\"{} method. These two classes are designed to handle a wide variety of conditions and types of analysis. Please refer to the documentation of these two classes for more information.
+
+In general, in a particular data analysis, it may be desirable to classify the events to be analyzed in several different (partially overlapping or fully) distinct categories. This is readily accomplished by instantiating several event filters as input to a task. Input event filters to a task can be accomplished at \mbox{\hyperlink{class_task}{Task}} construction time by submitting a vector of event filter or by adding filters one by one to the task using the add\+Event\+Filter method.
+
+Similarly, it may also be of interest to repeat the same exact type of analysis of several different particle types. This can be accomplished by instantiating several particle filters and inputing them into a task. As for event filters, this can be accomplished at construction time or via the use of the add\+Particle\+Filter method.
+
+Once constructed and initialized with sets of event and particle filters, most task classes currently defined in the WAC framework will automatically test each event and each particle considered against the several filters they own and the analysis will then be automatically repeated on types of events and for particles of interest. This feature is currently implemented in the \mbox{\hyperlink{class_particle_analyzer}{Particle\+Analyzer}}, Particle\+Pair\+Analyze, \mbox{\hyperlink{class_nu_dyn_analyzer}{Nu\+Dyn\+Analyzer}}, etc, tasks.
+
+Given root expects instantiated histograms to be distinct by name or put in different folders, the \mbox{\hyperlink{class_event_filter}{Event\+Filter}} and \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} classes feature filter name generators that can be (and in fact used by several tasks) to speficify the name of histigrams. Typically, histogram names are build according to the following pattern\+:
+
+
+\begin{DoxyPre}Job Name + \mbox{\hyperlink{class_task}{Task}} Name + \mbox{\hyperlink{class_event}{Event}} \mbox{\hyperlink{class_filter}{Filter}} Name + \mbox{\hyperlink{class_particle}{Particle}} \mbox{\hyperlink{class_filter}{Filter}} Name + Observable Name\end{DoxyPre}
+
+
+Class defining \mbox{\hyperlink{class_task}{Task}}
+
+Class defining \mbox{\hyperlink{class_event}{Event}} \mbox{\hyperlink{class_bidim_gauss_fitter}{Bidim\+Gauss\+Fitter}}
+
+Class defining Two \mbox{\hyperlink{class_particle}{Particle}} Correlation Analyzer \mbox{\hyperlink{class_task}{Task}}
+
+A simple task to random change the reaction plane of event\+Streams by an arbitrary angle phi.
+
+Class defining \mbox{\hyperlink{class_event}{Event}} \mbox{\hyperlink{class_histograms}{Histograms}}
+
+Class defining \mbox{\hyperlink{class_particle_pair_histos}{Particle\+Pair\+Histos}}
+
+Class defining Single \mbox{\hyperlink{class_particle}{Particle}} Histogram Analyzer \mbox{\hyperlink{class_task}{Task}}
+
+Copyright (C) 2019, Claude Pruneau. $\ast$ All rights reserved. $\ast$ Based on the ROOT package and environment $\ast$
+\begin{DoxyItemize}
+\item For the licensing terms see LICENSE. $\ast$
+\end{DoxyItemize}
+
+Class defining Two \mbox{\hyperlink{class_particle}{Particle}} Correlation Analyzer \mbox{\hyperlink{class_task}{Task}}.
+
+Class defining \mbox{\hyperlink{class_particle_pair_b_f_histos}{Particle\+Pair\+BFHistos}}
+
+Class defining \mbox{\hyperlink{class_event}{Event}} \mbox{\hyperlink{class_plotter}{Plotter}}
+
+Class defining \mbox{\hyperlink{class_cluster_histos}{Cluster\+Histos}}
+
+Class defining \mbox{\hyperlink{class_cluster_model_event}{Cluster\+Model\+Event}}
+
+Class defining \mbox{\hyperlink{class_cluster_model_event_generator}{Cluster\+Model\+Event\+Generator}}
+
+Class defining Cluster\+Event\+Histos 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00160}{160}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_task_a0ca53354bdc006762a0fda68c64f7608}\label{class_task_a0ca53354bdc006762a0fda68c64f7608}} 
+\index{Task@{Task}!Task@{Task}}
+\index{Task@{Task}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{Task()}{Task()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Task\+::\+Task (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default constructor. It allocates resources but DOES NOT initialize the task. \mbox{\hyperlink{class_task}{Task}} initialization can be performed by a call to the initialization\+Task() and/or initialization() methods. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_ad0f94e3993c310c6954a6d2e20d92d5d}\label{class_task_ad0f94e3993c310c6954a6d2e20d92d5d}} 
+\index{Task@{Task}!Task@{Task}}
+\index{Task@{Task}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{Task()}{Task()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Task\+::\+Task (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Message\+Logger\+::\+Log\+Level}}}]{\+\_\+report\+Level }\end{DoxyParamCaption})}
+
+Long constructor. It allocates resources but DOES NOT initialize the task. \mbox{\hyperlink{class_task}{Task}} initialization can be performed by a call to the initialization\+Task() and/or initialization() methods. \mbox{\Hypertarget{class_task_ae9f3e16bb665512b6d726be7cb6694ab}\label{class_task_ae9f3e16bb665512b6d726be7cb6694ab}} 
+\index{Task@{Task}!Task@{Task}}
+\index{Task@{Task}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{Task()}{Task()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Task\+::\+Task (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&}]{\+\_\+event\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&}]{\+\_\+particle\+Filters,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Message\+Logger\+::\+Log\+Level}}}]{\+\_\+report\+Level }\end{DoxyParamCaption})}
+
+Longer constructor. It allocates resources but DOES NOT initialize the task. \mbox{\hyperlink{class_task}{Task}} initialization can be performed by a call to the initialization\+Task() and/or initialization() methods. \mbox{\Hypertarget{class_task_a3afb3fb8c6886b31326f476ea3a523ce}\label{class_task_a3afb3fb8c6886b31326f476ea3a523ce}} 
+\index{Task@{Task}!Task@{Task}}
+\index{Task@{Task}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{Task()}{Task()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Task\+::\+Task (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&}]{\+\_\+event\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&}]{\+\_\+particle\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} $\ast$ $>$ \&}]{\+\_\+particle\+Smearer,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Message\+Logger\+::\+Log\+Level}}}]{\+\_\+report\+Level }\end{DoxyParamCaption})}
+
+Longer constructor. It allocates resources but DOES NOT initialize the task. \mbox{\hyperlink{class_task}{Task}} initialization can be performed by a call to the initialization\+Task() and/or initialization() methods. \mbox{\Hypertarget{class_task_a7bff79cc05fa4511c72048d33591503b}\label{class_task_a7bff79cc05fa4511c72048d33591503b}} 
+\index{Task@{Task}!````~Task@{$\sim$Task}}
+\index{````~Task@{$\sim$Task}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{$\sim$Task()}{~Task()}}
+{\footnotesize\ttfamily virtual Task\+::$\sim$\+Task (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+dtor 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00328}{328}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_task_a1f068503671b326c80a0f974035e13e5}\label{class_task_a1f068503671b326c80a0f974035e13e5}} 
+\index{Task@{Task}!addEventFilter@{addEventFilter}}
+\index{addEventFilter@{addEventFilter}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{addEventFilter()}{addEventFilter()}}
+{\footnotesize\ttfamily void Task\+::add\+Event\+Filter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$}]{\+\_\+event\+Filter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Add an event filter to the event filters used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00722}{722}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a8387ed7cae99be1d2dcd5acca661fc2f}\label{class_task_a8387ed7cae99be1d2dcd5acca661fc2f}} 
+\index{Task@{Task}!addEventStream@{addEventStream}}
+\index{addEventStream@{addEventStream}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{addEventStream()}{addEventStream()}}
+{\footnotesize\ttfamily void Task\+::add\+Event\+Stream (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_event}{Event}} $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Add the given event as a stream used by this task instance. 
+\begin{DoxyParams}{Parameters}
+{\em event} & stream to be added to this task. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00541}{541}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a4d1268de39943db211b83508367a5916}\label{class_task_a4d1268de39943db211b83508367a5916}} 
+\index{Task@{Task}!addHistogramsToExtList@{addHistogramsToExtList}}
+\index{addHistogramsToExtList@{addHistogramsToExtList}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{addHistogramsToExtList()}{addHistogramsToExtList()}}
+{\footnotesize\ttfamily void Task\+::add\+Histograms\+To\+Ext\+List (\begin{DoxyParamCaption}\item[{TList $\ast$}]{list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Add the histograms of this task to the given TList. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l01073}{1073}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a7541cb0c7f5a49e3d3956de8d07525bd}\label{class_task_a7541cb0c7f5a49e3d3956de8d07525bd}} 
+\index{Task@{Task}!addParticleFilter@{addParticleFilter}}
+\index{addParticleFilter@{addParticleFilter}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{addParticleFilter()}{addParticleFilter()}}
+{\footnotesize\ttfamily void Task\+::add\+Particle\+Filter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$}]{\+\_\+particle\+Filter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Add a particle filter to the particle filters used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00762}{762}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a5c517061345999996c48f0f5560276b6}\label{class_task_a5c517061345999996c48f0f5560276b6}} 
+\index{Task@{Task}!addParticleSmearer@{addParticleSmearer}}
+\index{addParticleSmearer@{addParticleSmearer}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{addParticleSmearer()}{addParticleSmearer()}}
+{\footnotesize\ttfamily void Task\+::add\+Particle\+Smearer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} $\ast$}]{\+\_\+particle\+Smearer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Add a particle smearer to those used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00803}{803}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}\label{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}} 
+\index{Task@{Task}!addSubtask@{addSubtask}}
+\index{addSubtask@{addSubtask}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{addSubtask()}{addSubtask()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task}{Task}} $\ast$ Task\+::add\+Subtask (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task}{Task}} $\ast$}]{task }\end{DoxyParamCaption})}
+
+Adds the given taks a subtask of this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l01060}{1060}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a19de4303aa171af0eb3a8fb5ec3ca2fb}\label{class_task_a19de4303aa171af0eb3a8fb5ec3ca2fb}} 
+\index{Task@{Task}!clear@{clear}}
+\index{clear@{clear}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Task\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Clear this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient. 
+
+Reimplemented in \mbox{\hyperlink{class_collision_geometry_generator_ac868e7fa6e17a1a56da8214750a959a5}{Collision\+Geometry\+Generator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00400}{400}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a485d9a0b17727aada784ea787f92854a}\label{class_task_a485d9a0b17727aada784ea787f92854a}} 
+\index{Task@{Task}!clearEventFilters@{clearEventFilters}}
+\index{clearEventFilters@{clearEventFilters}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{clearEventFilters()}{clearEventFilters()}}
+{\footnotesize\ttfamily void Task\+::clear\+Event\+Filters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Clear the event filters used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00706}{706}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a098814a2d8c8e0c14ea28a598f585a3c}\label{class_task_a098814a2d8c8e0c14ea28a598f585a3c}} 
+\index{Task@{Task}!clearHistograms@{clearHistograms}}
+\index{clearHistograms@{clearHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{clearHistograms()}{clearHistograms()}}
+{\footnotesize\ttfamily void Task\+::clear\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Calls the clear method of all the histogram groups owned by this task. This effectively delete the histogram groups. Only call this method if you know what you are doing... 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00491}{491}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a45ca983351583bf79dedc96c4ac2a5f1}\label{class_task_a45ca983351583bf79dedc96c4ac2a5f1}} 
+\index{Task@{Task}!clearParticleFilters@{clearParticleFilters}}
+\index{clearParticleFilters@{clearParticleFilters}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{clearParticleFilters()}{clearParticleFilters()}}
+{\footnotesize\ttfamily void Task\+::clear\+Particle\+Filters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Clear the particle filters used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00746}{746}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a2d5a94a45b35d3c3ae6153b623d0c6cf}\label{class_task_a2d5a94a45b35d3c3ae6153b623d0c6cf}} 
+\index{Task@{Task}!clearParticleSmearer@{clearParticleSmearer}}
+\index{clearParticleSmearer@{clearParticleSmearer}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{clearParticleSmearer()}{clearParticleSmearer()}}
+{\footnotesize\ttfamily void Task\+::clear\+Particle\+Smearer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Clear the particle smearer used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00787}{787}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_ac12c49f455526f2fedaf443557e42730}\label{class_task_ac12c49f455526f2fedaf443557e42730}} 
+\index{Task@{Task}!clearTasks@{clearTasks}}
+\index{clearTasks@{clearTasks}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{clearTasks()}{clearTasks()}}
+{\footnotesize\ttfamily void Task\+::clear\+Tasks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Method called to clear this task instance and its subtasks. This method first calls the \mbox{\hyperlink{class_task_a19de4303aa171af0eb3a8fb5ec3ca2fb}{clear()}} method implemented by this class or one of its derived classes. It next calls the \mbox{\hyperlink{class_task_aed29732410a89a401b9ffe34ab6ec95a}{reset\+Tasks()}} method of each of the subtasks of this instance, if any. See the class documentation for the definition of task \char`\"{}clear\char`\"{}. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00925}{925}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a1b6030e671b0670d448a859b0fb0a065}\label{class_task_a1b6030e671b0670d448a859b0fb0a065}} 
+\index{Task@{Task}!createHistogramName@{createHistogramName}}
+\index{createHistogramName@{createHistogramName}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{createHistogramName()}{createHistogramName()}}
+{\footnotesize\ttfamily const TString Task\+::create\+Histogram\+Name (\begin{DoxyParamCaption}\item[{const TString \&}]{base\+Name,  }\item[{const TString \&}]{evt\+Filter\+Name,  }\item[{const TString \&}]{part\+Filter\+Name,  }\item[{const TString \&}]{observable\+Name = {\ttfamily \char`\"{}\char`\"{}},  }\item[{const TString \&}]{suffix = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l01108}{1108}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a709903c615030cd84122df73f2ea6c4f}\label{class_task_a709903c615030cd84122df73f2ea6c4f}} 
+\index{Task@{Task}!createHistograms@{createHistograms}}
+\index{createHistograms@{createHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{createHistograms()}{createHistograms()}}
+{\footnotesize\ttfamily virtual void Task\+::create\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Nominally creates histogram groups used by this task. The method of this based class does not perform any histogram instantiation and must be overiden in a derived class to achieve the desited behavior. 
+
+Reimplemented in \mbox{\hyperlink{class_collision_geometry_analyzer_a9ecf9557c398b217f604214d87a834a5}{Collision\+Geometry\+Analyzer}}, \mbox{\hyperlink{class_global_analyzer_a15a2ca1de8bda49cc1dde4f618b5be25}{Global\+Analyzer}}, \mbox{\hyperlink{class_nu_dyn_analyzer_a9ef59ad391f5338fc9a2cf66b9344436}{Nu\+Dyn\+Analyzer}}, \mbox{\hyperlink{class_nu_dyn_derived_histogram_calculator_a980dcea263433eca6ceae579915b5045}{Nu\+Dyn\+Derived\+Histogram\+Calculator}}, \mbox{\hyperlink{class_particle_analyzer_a3a0342baf13d5ce6f189de46a83d4858}{Particle\+Analyzer}}, \mbox{\hyperlink{class_particle_pair_analyzer_aeb8c90149e72545e826cdb7c844d8d01}{Particle\+Pair\+Analyzer}}, \mbox{\hyperlink{class_particle_analyzer_a39e398afa52ae32b976a4896cd0de67e}{Particle\+Analyzer}}, \mbox{\hyperlink{class_particle_derived_histogram_calculator_ae93ccd4bd14342648e0ac836ebe9b122}{Particle\+Derived\+Histogram\+Calculator}}, \mbox{\hyperlink{class_particle_pair_analyzer_ad94a55650db616ed545a54ca7dfca567}{Particle\+Pair\+Analyzer}}, \mbox{\hyperlink{class_particle_pair_combined_histogram_calculator_a806d12f77d5cc74563942ae18f4f5aa5}{Particle\+Pair\+Combined\+Histogram\+Calculator}}, \mbox{\hyperlink{class_particle_pair_derived_histogram_calculator_ac6ad8ce4bee1b2094897dd4d32abbbe0}{Particle\+Pair\+Derived\+Histogram\+Calculator}}, \mbox{\hyperlink{class_radial_boost_task_a38832bf5fbb5fd4b99ae42fd537813be}{Radial\+Boost\+Task}}, \mbox{\hyperlink{class_transverse_spherocity_analyzer_affb33ddfb442ee6622f8d3d3da0335d4}{Transverse\+Spherocity\+Analyzer}}, and \mbox{\hyperlink{class_cluster_model_event_analyzer_a532483feb52d2b9ea3a1536cb161a3d8}{Cluster\+Model\+Event\+Analyzer}}.
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00458}{458}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a0daababd93a9eeebad919f44734f8243}\label{class_task_a0daababd93a9eeebad919f44734f8243}} 
+\index{Task@{Task}!createPairHistogramName@{createPairHistogramName}}
+\index{createPairHistogramName@{createPairHistogramName}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{createPairHistogramName()}{createPairHistogramName()}}
+{\footnotesize\ttfamily const TString Task\+::create\+Pair\+Histogram\+Name (\begin{DoxyParamCaption}\item[{const TString \&}]{base\+Name,  }\item[{const TString \&}]{evt\+Filter\+Name,  }\item[{const TString \&}]{part\+Filter\+Name1,  }\item[{const TString \&}]{part\+Filter\+Name2,  }\item[{const TString \&}]{observable\+Name = {\ttfamily \char`\"{}\char`\"{}},  }\item[{const TString \&}]{suffix = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l01123}{1123}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a397650b67989fc33c6ba878c36d1c65d}\label{class_task_a397650b67989fc33c6ba878c36d1c65d}} 
+\index{Task@{Task}!execute@{execute}}
+\index{execute@{execute}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily virtual void Task\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Execute this task instance. This base class implementation only increments the counters n\+Event\+Processed and n\+Event\+Accepted. Implement this method in derived class to achieve the actual task of interest. Note\+: You can increase the counters n\+Event\+Processed and n\+Event\+Accepted indiscrimately by a call to \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task\+::execute()}}. However, in general, you may wish to count all events looked and only count as accepted those that passed one of the event filters used by this task. To achive this, use calls to the methods \mbox{\hyperlink{class_task_a724ff83138229238fdc58566a0cd350f}{increment\+Event\+Processed()}} and \mbox{\hyperlink{class_task_a01762aa4383b0931850efb56b697a856}{increment\+Event\+Accepted()}} rather than explicitly incrementing the variable n\+Event\+Processed and n\+Event\+Accepted. These are currently protected but may defined as private in a future release. 
+
+Reimplemented in \mbox{\hyperlink{class_ampt_event_reader_ae2b398efc100acb62e1c22304de012b6}{Ampt\+Event\+Reader}}, \mbox{\hyperlink{class_a_a_collision_generator_a848b62a5ea3269edfd1dac9b0647deee}{AACollision\+Generator}}, \mbox{\hyperlink{class_balance_function_calculator_aebf45d55bc4aa1b059d32586c876ba5b}{Balance\+Function\+Calculator}}, \mbox{\hyperlink{class_closure_test_a287791eca2b8f0547a5d501b5ec78f04}{Closure\+Test}}, \mbox{\hyperlink{class_collision_geometry_analyzer_a21d62d7fcea4d46a3eaca41ea0141f4e}{Collision\+Geometry\+Analyzer}}, \mbox{\hyperlink{class_collision_geometry_generator_ac38e7bd4560739e11302e600856280e3}{Collision\+Geometry\+Generator}}, \mbox{\hyperlink{class_detector_fast_simulator_task_a6c4653a3a482f322a11edccf0442cee9}{Detector\+Fast\+Simulator\+Task}}, \mbox{\hyperlink{class_event_plane_randomizer_task_a1a1bba186358c9ab2bacbca8f82bae1d}{Event\+Plane\+Randomizer\+Task}}, \mbox{\hyperlink{class_event_vertex_randomizer_task_a77829db09f22e322d482f5b2c0b2752e}{Event\+Vertex\+Randomizer\+Task}}, \mbox{\hyperlink{class_file_task_iterator_ae8c7b50f678f1cc685b72f6ee0e9a540}{File\+Task\+Iterator}}, \mbox{\hyperlink{class_gaussian_generator_task_ac724daaaf512268d47dbeadfc146f595}{Gaussian\+Generator\+Task}}, \mbox{\hyperlink{class_global_analyzer_a121a1469ca3935657410aece6865629c}{Global\+Analyzer}}, \mbox{\hyperlink{class_nu_dyn_analyzer_a40787bf145e5e5df389390b7bcf5b95f}{Nu\+Dyn\+Analyzer}}, \mbox{\hyperlink{class_nu_dyn_derived_histogram_calculator_a7094f8345a96e29861a63757ff5c971d}{Nu\+Dyn\+Derived\+Histogram\+Calculator}}, \mbox{\hyperlink{class_particle_analyzer_af1b7ae8d714b93dbc9f43418377d1aa5}{Particle\+Analyzer}}, \mbox{\hyperlink{class_particle_pair_analyzer_a07c253b3ce32d0558c7c4e191fa9b397}{Particle\+Pair\+Analyzer}}, \mbox{\hyperlink{class_particle_analyzer_ab4f390fcfa8166fc6fb955890ba47ef0}{Particle\+Analyzer}}, \mbox{\hyperlink{class_particle_decayer_task_a0b55c6ddcf068c62e92cdf6e20c0dc45}{Particle\+Decayer\+Task}}, \mbox{\hyperlink{class_particle_derived_histogram_calculator_a9495cbe7bb228ce9b652623657b9fd4d}{Particle\+Derived\+Histogram\+Calculator}}, \mbox{\hyperlink{class_particle_pair_analyzer_afc930f499ff8cbe6b34175d4cee5f7ec}{Particle\+Pair\+Analyzer}}, \mbox{\hyperlink{class_particle_pair_derived_histogram_calculator_a7d67aa539ad9e279ba0160d07faea27d}{Particle\+Pair\+Derived\+Histogram\+Calculator}}, \mbox{\hyperlink{class_radial_boost_task_a3c76a4e562dadd5f76ec235be8e953f7}{Radial\+Boost\+Task}}, \mbox{\hyperlink{class_resonance_generator_ab18cc2686ff3a6f8627ec85e5be5ffa2}{Resonance\+Generator}}, \mbox{\hyperlink{class_sub_sample_stat_calculator_a6f6ca62a93799a4299b972da90879b3a}{Sub\+Sample\+Stat\+Calculator}}, \mbox{\hyperlink{class_task_iterator_af480b27e954098aaad2a0f3750940eaf}{Task\+Iterator}}, \mbox{\hyperlink{class_transverse_spherocity_analyzer_abf1c9003c18325920cd5e36d8cca54b2}{Transverse\+Spherocity\+Analyzer}}, \mbox{\hyperlink{class_b_w_model_event_generator_ae042c51d20bef824afb7a30cac9f3d6d}{BWModel\+Event\+Generator}}, \mbox{\hyperlink{class_cluster_model_event_analyzer_a1e3d2223ce4693840b94d43dae6f64e5}{Cluster\+Model\+Event\+Analyzer}}, \mbox{\hyperlink{class_cluster_model_event_generator_a1f39c526972723b899d6e58534161af3}{Cluster\+Model\+Event\+Generator}}, \mbox{\hyperlink{class_cluster_model_event_generator2_aa3f1d8cf7e6074cc6e253f49df3c1b9c}{Cluster\+Model\+Event\+Generator2}}, \mbox{\hyperlink{class_epos_event_reader_ab7169b7517f3b93a1982c7d6527f6c47}{Epos\+Event\+Reader}}, \mbox{\hyperlink{class_hadron_gas_generator_task_a66278775e6a572b5fdc71e64b1842d37}{Hadron\+Gas\+Generator\+Task}}, \mbox{\hyperlink{class_pythia_event_generator_a1ae36a189f187b202eb9c70a133a1be6}{Pythia\+Event\+Generator}}, and \mbox{\hyperlink{class_pythia_event_reader_a5f5ed7fbdbd672eb750ed3c457e2fa76}{Pythia\+Event\+Reader}}.
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00422}{422}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a60cbc524d9e983cfaefea47f4b2355d3}\label{class_task_a60cbc524d9e983cfaefea47f4b2355d3}} 
+\index{Task@{Task}!executeTasks@{executeTasks}}
+\index{executeTasks@{executeTasks}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{executeTasks()}{executeTasks()}}
+{\footnotesize\ttfamily void Task\+::execute\+Tasks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Method called to execute this task instance and its subtasks. This method first calls the \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{execute()}} method implemented by this class or one of its derived classes. It next calls the \mbox{\hyperlink{class_task_a60cbc524d9e983cfaefea47f4b2355d3}{execute\+Tasks()}} method of each of the subtasks of this instance, if any. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00848}{848}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_aab4bc670089cc073247542c3a26da5aa}\label{class_task_aab4bc670089cc073247542c3a26da5aa}} 
+\index{Task@{Task}!finalize@{finalize}}
+\index{finalize@{finalize}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{finalize()}{finalize()}}
+{\footnotesize\ttfamily void Task\+::finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Finalize this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient. 
+
+Reimplemented in \mbox{\hyperlink{class_a_a_collision_generator_a93fe6ab2b2a52b654eda6c140f46b392}{AACollision\+Generator}}, and \mbox{\hyperlink{class_pythia_event_generator_aa8650c8714e6fa13f5df4ff2ec96a1b3}{Pythia\+Event\+Generator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00284}{284}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a9ad18a77cb084d62faa79f1cb6a9779b}\label{class_task_a9ad18a77cb084d62faa79f1cb6a9779b}} 
+\index{Task@{Task}!finalizeTasks@{finalizeTasks}}
+\index{finalizeTasks@{finalizeTasks}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{finalizeTasks()}{finalizeTasks()}}
+{\footnotesize\ttfamily void Task\+::finalize\+Tasks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Method called to finalize this task instance and its subtasks. This method first calls the \mbox{\hyperlink{class_task_aab4bc670089cc073247542c3a26da5aa}{finalize()}} method implemented by this class or one of its derived classes. It next calls the \mbox{\hyperlink{class_task_a9ad18a77cb084d62faa79f1cb6a9779b}{finalize\+Tasks()}} method of each of the subtasks of this instance, if any. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00857}{857}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a5e22f4859df9982f6036458b504273a2}\label{class_task_a5e22f4859df9982f6036458b504273a2}} 
+\index{Task@{Task}!getBasePairHistograms@{getBasePairHistograms}}
+\index{getBasePairHistograms@{getBasePairHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getBasePairHistograms()}{getBasePairHistograms()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \& Task\+::get\+Base\+Pair\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00826}{826}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a6d72e897fd9656fa0ce282f5dbbb4ff4}\label{class_task_a6d72e897fd9656fa0ce282f5dbbb4ff4}} 
+\index{Task@{Task}!getBaseSingleHistograms@{getBaseSingleHistograms}}
+\index{getBaseSingleHistograms@{getBaseSingleHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getBaseSingleHistograms()}{getBaseSingleHistograms()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \& Task\+::get\+Base\+Single\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00825}{825}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a993151cbe424bcc64f2ec49f10820974}\label{class_task_a993151cbe424bcc64f2ec49f10820974}} 
+\index{Task@{Task}!getCombinedPairHistograms@{getCombinedPairHistograms}}
+\index{getCombinedPairHistograms@{getCombinedPairHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getCombinedPairHistograms()}{getCombinedPairHistograms()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \& Task\+::get\+Combined\+Pair\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00829}{829}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_aca7d0bc7645e57b57319dec636eb5614}\label{class_task_aca7d0bc7645e57b57319dec636eb5614}} 
+\index{Task@{Task}!getConfiguration@{getConfiguration}}
+\index{getConfiguration@{getConfiguration}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getConfiguration()}{getConfiguration()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_configuration}{Configuration}} \& Task\+::get\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00564}{564}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a1955cc87bd4885d8ca19435b3609443f}\label{class_task_a1955cc87bd4885d8ca19435b3609443f}} 
+\index{Task@{Task}!getConfiguration@{getConfiguration}}
+\index{getConfiguration@{getConfiguration}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getConfiguration()}{getConfiguration()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_configuration}{Configuration}} \& Task\+::get\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns a pointer to the \mbox{\hyperlink{class_configuration}{Configuration}} object controlling the behavior of this task instance. \begin{DoxyReturn}{Returns}
+pointer to the \mbox{\hyperlink{class_configuration}{Configuration}} instance controlling this task instance. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00559}{559}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_af5343459e6fe3baf6d1bbe367a2d5c54}\label{class_task_af5343459e6fe3baf6d1bbe367a2d5c54}} 
+\index{Task@{Task}!getDerivedPairHistograms@{getDerivedPairHistograms}}
+\index{getDerivedPairHistograms@{getDerivedPairHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getDerivedPairHistograms()}{getDerivedPairHistograms()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \& Task\+::get\+Derived\+Pair\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00828}{828}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a633bbb6b8e51f9d7f8a119446c7da7ce}\label{class_task_a633bbb6b8e51f9d7f8a119446c7da7ce}} 
+\index{Task@{Task}!getDerivedSingleHistograms@{getDerivedSingleHistograms}}
+\index{getDerivedSingleHistograms@{getDerivedSingleHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getDerivedSingleHistograms()}{getDerivedSingleHistograms()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_histograms}{Histograms}} $\ast$ $>$ \& Task\+::get\+Derived\+Single\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00827}{827}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a2675ab14e90ce07f5cdb41cfc61393bb}\label{class_task_a2675ab14e90ce07f5cdb41cfc61393bb}} 
+\index{Task@{Task}!getEventFilters@{getEventFilters}}
+\index{getEventFilters@{getEventFilters}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getEventFilters()}{getEventFilters()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \& Task\+::get\+Event\+Filters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return event filters used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00730}{730}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_ab6a16f58538013cee04efbd5ccc6afa3}\label{class_task_ab6a16f58538013cee04efbd5ccc6afa3}} 
+\index{Task@{Task}!getEventFilters@{getEventFilters}}
+\index{getEventFilters@{getEventFilters}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getEventFilters()}{getEventFilters()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \& Task\+::get\+Event\+Filters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return event filters used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00738}{738}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a388f8e261c0d610bba89e9269309d11e}\label{class_task_a388f8e261c0d610bba89e9269309d11e}} 
+\index{Task@{Task}!getEventStream@{getEventStream}}
+\index{getEventStream@{getEventStream}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getEventStream()}{getEventStream()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_event}{Event}} $\ast$ Task\+::get\+Event\+Stream (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns a pointer to the event stream at the given index. No sanity check is performed in order to keep this call as efficient as possible. 
+\begin{DoxyParams}{Parameters}
+{\em index} & index of the event stream to produce on output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the selected event stream. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00532}{532}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a37caaace682389f3dee73195362df1a2}\label{class_task_a37caaace682389f3dee73195362df1a2}} 
+\index{Task@{Task}!getName@{getName}}
+\index{getName@{getName}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily TString Task\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the name of this task instance. \begin{DoxyReturn}{Returns}
+name of this task instance. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00574}{574}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_aaa9ad4668a4971ccc6a593eadf2ffa4e}\label{class_task_aaa9ad4668a4971ccc6a593eadf2ffa4e}} 
+\index{Task@{Task}!getNBasePairHistograms@{getNBasePairHistograms}}
+\index{getNBasePairHistograms@{getNBasePairHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getNBasePairHistograms()}{getNBasePairHistograms()}}
+{\footnotesize\ttfamily unsigned int Task\+::get\+NBase\+Pair\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00818}{818}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a2a010e99c438e15e039ba94fc791991e}\label{class_task_a2a010e99c438e15e039ba94fc791991e}} 
+\index{Task@{Task}!getNBaseSingleHistograms@{getNBaseSingleHistograms}}
+\index{getNBaseSingleHistograms@{getNBaseSingleHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getNBaseSingleHistograms()}{getNBaseSingleHistograms()}}
+{\footnotesize\ttfamily unsigned int Task\+::get\+NBase\+Single\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00817}{817}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_ae8ddfe1804f5c8f3c5593d20c0ebd1d9}\label{class_task_ae8ddfe1804f5c8f3c5593d20c0ebd1d9}} 
+\index{Task@{Task}!getNCombinedHistograms@{getNCombinedHistograms}}
+\index{getNCombinedHistograms@{getNCombinedHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getNCombinedHistograms()}{getNCombinedHistograms()}}
+{\footnotesize\ttfamily unsigned int Task\+::get\+NCombined\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00821}{821}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a29768101d73e59e554a309c5b9bf58ea}\label{class_task_a29768101d73e59e554a309c5b9bf58ea}} 
+\index{Task@{Task}!getNDerivedPairHistograms@{getNDerivedPairHistograms}}
+\index{getNDerivedPairHistograms@{getNDerivedPairHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getNDerivedPairHistograms()}{getNDerivedPairHistograms()}}
+{\footnotesize\ttfamily unsigned int Task\+::get\+NDerived\+Pair\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00820}{820}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a6c0e5d4f73c61bddccfd568731b2cccd}\label{class_task_a6c0e5d4f73c61bddccfd568731b2cccd}} 
+\index{Task@{Task}!getNDerivedSingleHistograms@{getNDerivedSingleHistograms}}
+\index{getNDerivedSingleHistograms@{getNDerivedSingleHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getNDerivedSingleHistograms()}{getNDerivedSingleHistograms()}}
+{\footnotesize\ttfamily unsigned int Task\+::get\+NDerived\+Single\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00819}{819}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a2195cb138f8a1c6d2b868c9f4b80b212}\label{class_task_a2195cb138f8a1c6d2b868c9f4b80b212}} 
+\index{Task@{Task}!getNEventAccepted@{getNEventAccepted}}
+\index{getNEventAccepted@{getNEventAccepted}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getNEventAccepted()}{getNEventAccepted()}}
+{\footnotesize\ttfamily long Task\+::get\+NEvent\+Accepted (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the number of event accepted (and used, say, to increment/fill histograms) by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00623}{623}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a5221968e923d8b894fa6616bb5aa7fb3}\label{class_task_a5221968e923d8b894fa6616bb5aa7fb3}} 
+\index{Task@{Task}!getNEventProcessed@{getNEventProcessed}}
+\index{getNEventProcessed@{getNEventProcessed}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getNEventProcessed()}{getNEventProcessed()}}
+{\footnotesize\ttfamily long Task\+::get\+NEvent\+Processed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the number of event processed by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00615}{615}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_ac9787e5cfaedbdb6f420d0ec24682f1e}\label{class_task_ac9787e5cfaedbdb6f420d0ec24682f1e}} 
+\index{Task@{Task}!getNEventStreams@{getNEventStreams}}
+\index{getNEventStreams@{getNEventStreams}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getNEventStreams()}{getNEventStreams()}}
+{\footnotesize\ttfamily unsigned int Task\+::get\+NEvent\+Streams (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the number of event streams used by this task instance. \begin{DoxyReturn}{Returns}
+number of streams associated with this task instance. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00550}{550}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a801e28d928bcc87169475b7e8be5e03a}\label{class_task_a801e28d928bcc87169475b7e8be5e03a}} 
+\index{Task@{Task}!getNHistograms@{getNHistograms}}
+\index{getNHistograms@{getNHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getNHistograms()}{getNHistograms()}}
+{\footnotesize\ttfamily unsigned int Task\+::get\+NHistograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00816}{816}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a83fa7c91dfca588df2b7bc387109ecf6}\label{class_task_a83fa7c91dfca588df2b7bc387109ecf6}} 
+\index{Task@{Task}!getNParticlesAccepted@{getNParticlesAccepted}}
+\index{getNParticlesAccepted@{getNParticlesAccepted}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getNParticlesAccepted()}{getNParticlesAccepted()}}
+{\footnotesize\ttfamily unsigned int Task\+::get\+NParticles\+Accepted (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the number of particles accepted by this task in a given event. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00696}{696}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_aa38e094d55acb90493a5fe3e2a9caf36}\label{class_task_aa38e094d55acb90493a5fe3e2a9caf36}} 
+\index{Task@{Task}!getNParticlesCounted@{getNParticlesCounted}}
+\index{getNParticlesCounted@{getNParticlesCounted}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getNParticlesCounted()}{getNParticlesCounted()}}
+{\footnotesize\ttfamily unsigned int Task\+::get\+NParticles\+Counted (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the number of particles \char`\"{}seen\char`\"{} by this task in a given event. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00691}{691}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a406bfbafe03bc9a48a86818ae62e7443}\label{class_task_a406bfbafe03bc9a48a86818ae62e7443}} 
+\index{Task@{Task}!getNSubtasks@{getNSubtasks}}
+\index{getNSubtasks@{getNSubtasks}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getNSubtasks()}{getNSubtasks()}}
+{\footnotesize\ttfamily unsigned int Task\+::get\+NSubtasks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the number of subtasks held by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00394}{394}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_ade3561496986ec4726f6e68708a6daa4}\label{class_task_ade3561496986ec4726f6e68708a6daa4}} 
+\index{Task@{Task}!getParticleFilters@{getParticleFilters}}
+\index{getParticleFilters@{getParticleFilters}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getParticleFilters()}{getParticleFilters()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \& Task\+::get\+Particle\+Filters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return particle filters used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00770}{770}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a043676e5e29a4c092660bb8770feab81}\label{class_task_a043676e5e29a4c092660bb8770feab81}} 
+\index{Task@{Task}!getParticleFilters@{getParticleFilters}}
+\index{getParticleFilters@{getParticleFilters}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getParticleFilters()}{getParticleFilters()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \& Task\+::get\+Particle\+Filters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return particle filters used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00778}{778}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a0ada1f631d9e8a78620f1797438bfa6b}\label{class_task_a0ada1f631d9e8a78620f1797438bfa6b}} 
+\index{Task@{Task}!getParticleSmearer@{getParticleSmearer}}
+\index{getParticleSmearer@{getParticleSmearer}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getParticleSmearer()}{getParticleSmearer()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} $\ast$ $>$ Task\+::get\+Particle\+Smearer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return particle smearers used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00811}{811}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a195e1f631fcbd65cc5a6a8c4deeac546}\label{class_task_a195e1f631fcbd65cc5a6a8c4deeac546}} 
+\index{Task@{Task}!getRandomGenerator@{getRandomGenerator}}
+\index{getRandomGenerator@{getRandomGenerator}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getRandomGenerator()}{getRandomGenerator()}}
+{\footnotesize\ttfamily TRandom $\ast$ Task\+::get\+Random\+Generator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return a pointer to the random generator used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00590}{590}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a42491440777f87297f18d13252cb8e8f}\label{class_task_a42491440777f87297f18d13252cb8e8f}} 
+\index{Task@{Task}!getSubSampleIndex@{getSubSampleIndex}}
+\index{getSubSampleIndex@{getSubSampleIndex}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getSubSampleIndex()}{getSubSampleIndex()}}
+{\footnotesize\ttfamily long Task\+::get\+Sub\+Sample\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the current value of the file (and event subset) index. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00631}{631}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a0eaaa70792a709f3807770678bc47117}\label{class_task_a0eaaa70792a709f3807770678bc47117}} 
+\index{Task@{Task}!getSubtaskAt@{getSubtaskAt}}
+\index{getSubtaskAt@{getSubtaskAt}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{getSubtaskAt()}{getSubtaskAt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task}{Task}} $\ast$ Task\+::get\+Subtask\+At (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns a pointer to the subtask at the given index. The current implementation of the code does not checl whether the index might be larger than the actual number of subtasks held by this instance. As such, a call with a value of index in excess of the number of subtasks will yield an exception (segmentation fault). 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00403}{403}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_ae54e5d3edaf96aa69e657a7e267baafc}\label{class_task_ae54e5d3edaf96aa69e657a7e267baafc}} 
+\index{Task@{Task}!hasSubtasks@{hasSubtasks}}
+\index{hasSubtasks@{hasSubtasks}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{hasSubtasks()}{hasSubtasks()}}
+{\footnotesize\ttfamily bool Task\+::has\+Subtasks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns a boolean (true) is this task instance has subtasks. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00387}{387}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a01762aa4383b0931850efb56b697a856}\label{class_task_a01762aa4383b0931850efb56b697a856}} 
+\index{Task@{Task}!incrementEventAccepted@{incrementEventAccepted}}
+\index{incrementEventAccepted@{incrementEventAccepted}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{incrementEventAccepted()}{incrementEventAccepted()}}
+{\footnotesize\ttfamily void Task\+::increment\+Event\+Accepted (\begin{DoxyParamCaption}\item[{unsigned int}]{event\+Filter\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Increment the number of event accepted (and used, say, to increment/fill histograms) by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00606}{606}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a724ff83138229238fdc58566a0cd350f}\label{class_task_a724ff83138229238fdc58566a0cd350f}} 
+\index{Task@{Task}!incrementEventProcessed@{incrementEventProcessed}}
+\index{incrementEventProcessed@{incrementEventProcessed}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{incrementEventProcessed()}{incrementEventProcessed()}}
+{\footnotesize\ttfamily void Task\+::increment\+Event\+Processed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Increment the number of event processed by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00598}{598}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a6a2ecf82b74c1329bcabd4ef85dac0a8}\label{class_task_a6a2ecf82b74c1329bcabd4ef85dac0a8}} 
+\index{Task@{Task}!incrementParticlesAccepted@{incrementParticlesAccepted}}
+\index{incrementParticlesAccepted@{incrementParticlesAccepted}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{incrementParticlesAccepted()}{incrementParticlesAccepted()}}
+{\footnotesize\ttfamily void Task\+::increment\+Particles\+Accepted (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Increment by one unit the number of particles accepted by this task in a given event. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00686}{686}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a8d4bb538429fda63b48bba2675fcac6d}\label{class_task_a8d4bb538429fda63b48bba2675fcac6d}} 
+\index{Task@{Task}!incrementParticlesCounted@{incrementParticlesCounted}}
+\index{incrementParticlesCounted@{incrementParticlesCounted}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{incrementParticlesCounted()}{incrementParticlesCounted()}}
+{\footnotesize\ttfamily void Task\+::increment\+Particles\+Counted (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Increment by one unit the number of particles \char`\"{}seen\char`\"{} by this task in a given event. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00681}{681}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_aea1a21cf98eb282ddff9754c18379fdf}\label{class_task_aea1a21cf98eb282ddff9754c18379fdf}} 
+\index{Task@{Task}!initialize@{initialize}}
+\index{initialize@{initialize}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Task\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Initialize this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient. 
+
+Reimplemented in \mbox{\hyperlink{class_ampt_event_reader_a867dddecce4553f5827d1803f275a519}{Ampt\+Event\+Reader}}, \mbox{\hyperlink{class_a_a_collision_generator_a9b98d60df28594f01b1d57bbdfd82586}{AACollision\+Generator}}, \mbox{\hyperlink{class_collision_geometry_generator_a5c607ce039ce8fdc8ade782e4b8fab3c}{Collision\+Geometry\+Generator}}, \mbox{\hyperlink{class_event_vertex_randomizer_task_a8f3b46c2f45da854f78ec2cd75af72a1}{Event\+Vertex\+Randomizer\+Task}}, \mbox{\hyperlink{class_gaussian_generator_task_a89f4066ffc33daf71dfe4cc2ed228b5a}{Gaussian\+Generator\+Task}}, \mbox{\hyperlink{class_global_analyzer_ac53f215ccbf04bf8c4ff33820f7edff8}{Global\+Analyzer}}, \mbox{\hyperlink{class_nu_dyn_analyzer_a6aff300563fc71d5815eb7d87fbd9af9}{Nu\+Dyn\+Analyzer}}, \mbox{\hyperlink{class_resonance_generator_a2c1c29287ebe22b62be8b3a0096e612a}{Resonance\+Generator}}, \mbox{\hyperlink{class_transverse_spherocity_analyzer_af1ca883e8e9a8aa4f95ffcaf17e6e129}{Transverse\+Spherocity\+Analyzer}}, \mbox{\hyperlink{class_b_w_model_event_generator_ab6bb139c05a06029b4a5c7377a87ab14}{BWModel\+Event\+Generator}}, \mbox{\hyperlink{class_cluster_model_event_generator_a96a90866a1c8076157794af6a33dd908}{Cluster\+Model\+Event\+Generator}}, \mbox{\hyperlink{class_epos_event_reader_a0d76305be21ef617009d53ea04671cfa}{Epos\+Event\+Reader}}, \mbox{\hyperlink{class_epos_event_reader_a6385c728405a49748f8c31950d784789}{Epos\+Event\+Reader}}, \mbox{\hyperlink{class_hadron_gas_generator_task_aedafa3cad27b8155b1e8dad972bf4fb8}{Hadron\+Gas\+Generator\+Task}}, \mbox{\hyperlink{class_pythia_event_generator_a550f4ec5d2289a8007af613ac1102faa}{Pythia\+Event\+Generator}}, and \mbox{\hyperlink{class_pythia_event_reader_a295ed726efbed04e9de349e9c508e3e9}{Pythia\+Event\+Reader}}.
+
+
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00218}{218}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a79deeef6e5d1fd7d0eb04158ee9a1e32}\label{class_task_a79deeef6e5d1fd7d0eb04158ee9a1e32}} 
+\index{Task@{Task}!initializeTasks@{initializeTasks}}
+\index{initializeTasks@{initializeTasks}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{initializeTasks()}{initializeTasks()}}
+{\footnotesize\ttfamily void Task\+::initialize\+Tasks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Method called for the initialization of this task instance and its subtasks. This method first calls the iniatilize() method implemented by this class or one of its derived classes. It next calls the \mbox{\hyperlink{class_task_a79deeef6e5d1fd7d0eb04158ee9a1e32}{initialize\+Tasks()}} method of each of the subtasks of this instance, if any. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00814}{814}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_aac1fd81fca680da790dcfe40d30e95ad}\label{class_task_aac1fd81fca680da790dcfe40d30e95ad}} 
+\index{Task@{Task}!listFilesInDir@{listFilesInDir}}
+\index{listFilesInDir@{listFilesInDir}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{listFilesInDir()}{listFilesInDir()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily vector$<$ TString $>$ Task\+::list\+Files\+In\+Dir (\begin{DoxyParamCaption}\item[{const TString \&}]{dirname,  }\item[{const TString}]{ext = {\ttfamily \char`\"{}.root\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l01140}{1140}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a4c7f57b0dce292ebce810065db256fa6}\label{class_task_a4c7f57b0dce292ebce810065db256fa6}} 
+\index{Task@{Task}!listFilesInDir@{listFilesInDir}}
+\index{listFilesInDir@{listFilesInDir}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{listFilesInDir()}{listFilesInDir()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily vector$<$ TString $>$ Task\+::list\+Files\+In\+Dir (\begin{DoxyParamCaption}\item[{const TString \&}]{path\+Name,  }\item[{vector$<$ TString $>$}]{include\+Patterns,  }\item[{vector$<$ TString $>$}]{exclude\+Patterns }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get file names at the given location that match all patterns in include\+Patterns and exclude patterns in exclude\+Patterns 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l01169}{1169}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}\label{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}} 
+\index{Task@{Task}!loadHistograms@{loadHistograms}}
+\index{loadHistograms@{loadHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{loadHistograms()}{loadHistograms()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Task\+::load\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Loads histogram groups used by this task. This method opens the root file identified in the \mbox{\hyperlink{class_configuration}{Configuration}} object owned by this task. If the file exists, it calls the \mbox{\hyperlink{_particle_pair_b_f_histos_8cpp_aedc13517fe03e096c2cf2565a3198839}{load\+Histograms(\+TFile $\ast$ input\+File)}} to actually load the relevant groups. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00441}{441}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_ad1318ccc36691886f14958255c79f7b0}\label{class_task_ad1318ccc36691886f14958255c79f7b0}} 
+\index{Task@{Task}!loadHistograms@{loadHistograms}}
+\index{loadHistograms@{loadHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{loadHistograms()}{loadHistograms()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void Task\+::load\+Histograms (\begin{DoxyParamCaption}\item[{TFile $\ast$input\+File }]{\+\_\+\+\_\+attribute\+\_\+\+\_\+(unused) }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Implement this method in a derived class to load from a root file the histogram groups that are need for the execution of this task. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00469}{469}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a5d7a01590b5a08943c7f3ee1574d62d8}\label{class_task_a5d7a01590b5a08943c7f3ee1574d62d8}} 
+\index{Task@{Task}!loadNEventAccepted@{loadNEventAccepted}}
+\index{loadNEventAccepted@{loadNEventAccepted}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{loadNEventAccepted()}{loadNEventAccepted()}}
+{\footnotesize\ttfamily void Task\+::load\+NEvent\+Accepted (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{input\+File }\end{DoxyParamCaption})}
+
+Load the number of event accepted by a previous task instance from the given TFile. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00741}{741}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a1ce9012b23b733cda8e14e0ff3e4e1c3}\label{class_task_a1ce9012b23b733cda8e14e0ff3e4e1c3}} 
+\index{Task@{Task}!loadNEventProcessed@{loadNEventProcessed}}
+\index{loadNEventProcessed@{loadNEventProcessed}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{loadNEventProcessed()}{loadNEventProcessed()}}
+{\footnotesize\ttfamily void Task\+::load\+NEvent\+Processed (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{input\+File }\end{DoxyParamCaption})}
+
+Load the number of event processed by a previous task instance from the given TFile. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00736}{736}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a6626812916c6da46a556408d169dc0cb}\label{class_task_a6626812916c6da46a556408d169dc0cb}} 
+\index{Task@{Task}!loadNFilteredEventsAccepted@{loadNFilteredEventsAccepted}}
+\index{loadNFilteredEventsAccepted@{loadNFilteredEventsAccepted}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{loadNFilteredEventsAccepted()}{loadNFilteredEventsAccepted()}}
+{\footnotesize\ttfamily void Task\+::load\+NFiltered\+Events\+Accepted (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{input\+File,  }\item[{vector$<$ unsigned int $>$ \&}]{n\+Filtered\+Events\+Accepted }\end{DoxyParamCaption})}
+
+Load the number of event accepted for each event filter by a previous task instance from the given TFile. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00746}{746}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a4491c7a1e03958b1a67e51e387601695}\label{class_task_a4491c7a1e03958b1a67e51e387601695}} 
+\index{Task@{Task}!openRootFile@{openRootFile}}
+\index{openRootFile@{openRootFile}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{openRootFile()}{openRootFile()}}
+{\footnotesize\ttfamily TFile $\ast$ Task\+::open\+Root\+File (\begin{DoxyParamCaption}\item[{const TString \&}]{input\+Path,  }\item[{const TString \&}]{file\+Name,  }\item[{const TString \&}]{io\+Option }\end{DoxyParamCaption})}
+
+Open the root file named \char`\"{}file\+Name\char`\"{} located on the path \char`\"{}input\+Path\char`\"{}, using options specified by \char`\"{}io\+Option\char`\"{}. 
+\begin{DoxyParams}{Parameters}
+{\em input\+Path} & path where to find or create the file. \\
+\hline
+{\em file\+Name} & name of the root file to open for i/o. \\
+\hline
+{\em io\+Option} & i/o options. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the file if successfully open or a null pointer if the file could not be opened. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00773}{773}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a83ecaa2646c6999e9274a527b76e8716}\label{class_task_a83ecaa2646c6999e9274a527b76e8716}} 
+\index{Task@{Task}!printConfiguration@{printConfiguration}}
+\index{printConfiguration@{printConfiguration}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{printConfiguration()}{printConfiguration()}}
+{\footnotesize\ttfamily void Task\+::print\+Configuration (\begin{DoxyParamCaption}\item[{ostream \&}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Print this class instance configuration. This is typically achieved by a clas to the print\+Properties of the task configuration (\mbox{\hyperlink{class_configuration}{Configuration}}) instance used to control the behavior of this class. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00415}{415}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a81111139bfa4245c298295ae560b20ca}\label{class_task_a81111139bfa4245c298295ae560b20ca}} 
+\index{Task@{Task}!printConfigurationTasks@{printConfigurationTasks}}
+\index{printConfigurationTasks@{printConfigurationTasks}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{printConfigurationTasks()}{printConfigurationTasks()}}
+{\footnotesize\ttfamily void Task\+::print\+Configuration\+Tasks (\begin{DoxyParamCaption}\item[{ostream \&}]{output }\end{DoxyParamCaption})}
+
+Method called to print the configuration of this task instance and its subtasks. This method first calls the \mbox{\hyperlink{class_task_a83ecaa2646c6999e9274a527b76e8716}{print\+Configuration()}} method implemented by this class or one of its derived classes. It next calls the \mbox{\hyperlink{class_task_a81111139bfa4245c298295ae560b20ca}{print\+Configuration\+Tasks()}} method of each of the subtasks of this instance, if any. The output is sent to the ostream identified by the argument \char`\"{}output\char`\"{}. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l01029}{1029}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_ae14eff4fe34dd94705fdd64b0ff293d4}\label{class_task_ae14eff4fe34dd94705fdd64b0ff293d4}} 
+\index{Task@{Task}!printEventCount@{printEventCount}}
+\index{printEventCount@{printEventCount}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{printEventCount()}{printEventCount()}}
+{\footnotesize\ttfamily void Task\+::print\+Event\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Print event statistics on standard output. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00303}{303}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a0bc0b2032fda7d3e208b0e15d00a970e}\label{class_task_a0bc0b2032fda7d3e208b0e15d00a970e}} 
+\index{Task@{Task}!readParameter@{readParameter}}
+\index{readParameter@{readParameter}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{readParameter()}{readParameter()}}
+{\footnotesize\ttfamily long Task\+::read\+Parameter (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{input\+File,  }\item[{const TString \&}]{parameter\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Read the given named parameter from the given input file. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00757}{757}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a901f32c053d45fed79e390b66337e1f2}\label{class_task_a901f32c053d45fed79e390b66337e1f2}} 
+\index{Task@{Task}!removeRootExtension@{removeRootExtension}}
+\index{removeRootExtension@{removeRootExtension}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{removeRootExtension()}{removeRootExtension()}}
+{\footnotesize\ttfamily TString Task\+::remove\+Root\+Extension (\begin{DoxyParamCaption}\item[{const TString}]{file\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l01221}{1221}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}\label{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}} 
+\index{Task@{Task}!reset@{reset}}
+\index{reset@{reset}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Task\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Reset this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient. 
+
+Reimplemented in \mbox{\hyperlink{class_ampt_event_reader_a6b9d79b1d61649052db6692d78aae5a8}{Ampt\+Event\+Reader}}, \mbox{\hyperlink{class_collision_geometry_generator_a10d8096a95211c1be478692721639a98}{Collision\+Geometry\+Generator}}, \mbox{\hyperlink{class_b_w_model_event_generator_ab3f363c319aed5a3a4c92911a6cb98bd}{BWModel\+Event\+Generator}}, \mbox{\hyperlink{class_cluster_model_event_generator_a85a82d56c03345a914be6cd3b8d40745}{Cluster\+Model\+Event\+Generator}}, \mbox{\hyperlink{class_epos_event_reader_afc1f7193d664915f83c2400291537068}{Epos\+Event\+Reader}}, and \mbox{\hyperlink{class_epos_event_reader_a2dd41fac8728994add291b8342944a73}{Epos\+Event\+Reader}}.
+
+
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00388}{388}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a0f2b1b09574cc8c223953c84a970c2f1}\label{class_task_a0f2b1b09574cc8c223953c84a970c2f1}} 
+\index{Task@{Task}!resetHistograms@{resetHistograms}}
+\index{resetHistograms@{resetHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{resetHistograms()}{resetHistograms()}}
+{\footnotesize\ttfamily void Task\+::reset\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Calls the reset method of all the histogram groups owned by this task. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00475}{475}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a829739fde1f6ee30d98de2163261fec2}\label{class_task_a829739fde1f6ee30d98de2163261fec2}} 
+\index{Task@{Task}!resetParticleCounters@{resetParticleCounters}}
+\index{resetParticleCounters@{resetParticleCounters}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{resetParticleCounters()}{resetParticleCounters()}}
+{\footnotesize\ttfamily void Task\+::reset\+Particle\+Counters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Reset to zero the particle counters associated with this task instance 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00672}{672}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_aed29732410a89a401b9ffe34ab6ec95a}\label{class_task_aed29732410a89a401b9ffe34ab6ec95a}} 
+\index{Task@{Task}!resetTasks@{resetTasks}}
+\index{resetTasks@{resetTasks}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{resetTasks()}{resetTasks()}}
+{\footnotesize\ttfamily void Task\+::reset\+Tasks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Method called to rest this task instance and its subtasks. This method first calls the \mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{reset()}} method implemented by this class or one of its derived classes. It next calls the \mbox{\hyperlink{class_task_aed29732410a89a401b9ffe34ab6ec95a}{reset\+Tasks()}} method of each of the subtasks of this instance, if any. See the class documentation for the definition of task \char`\"{}reset\char`\"{}. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00891}{891}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_ae4bb5a5ddfea33eadddf6393ce8d0912}\label{class_task_ae4bb5a5ddfea33eadddf6393ce8d0912}} 
+\index{Task@{Task}!saveHistograms@{saveHistograms}}
+\index{saveHistograms@{saveHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{saveHistograms()}{saveHistograms()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Task\+::save\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Save this histogram groups owned by this task instance. This method calls opens the root file specified in the configuration object and calls the save\+Histogram methods of the histogram groups owned by this instance. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00652}{652}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a522a5de2e54a73e20780d1dc3af96e09}\label{class_task_a522a5de2e54a73e20780d1dc3af96e09}} 
+\index{Task@{Task}!saveHistograms@{saveHistograms}}
+\index{saveHistograms@{saveHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{saveHistograms()}{saveHistograms()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Task\+::save\+Histograms (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{output\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Save this histogram groups owned by this task instance to the given file. 
+
+Reimplemented in \mbox{\hyperlink{class_cluster_model_event_analyzer_ae3b0b2061993d846ec9a4a6e1a63d39c}{Cluster\+Model\+Event\+Analyzer}}.
+
+
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00598}{598}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_acec60b5ca389b01edeb19c26eaf7b49c}\label{class_task_acec60b5ca389b01edeb19c26eaf7b49c}} 
+\index{Task@{Task}!saveHistogramsAsText@{saveHistogramsAsText}}
+\index{saveHistogramsAsText@{saveHistogramsAsText}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{saveHistogramsAsText()}{saveHistogramsAsText()}}
+{\footnotesize\ttfamily void Task\+::save\+Histograms\+As\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Save this histogram in text format. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00591}{591}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_aaaaa6bd653f4e839dd92c3e85f27a401}\label{class_task_aaaaa6bd653f4e839dd92c3e85f27a401}} 
+\index{Task@{Task}!saveNEventAccepted@{saveNEventAccepted}}
+\index{saveNEventAccepted@{saveNEventAccepted}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{saveNEventAccepted()}{saveNEventAccepted()}}
+{\footnotesize\ttfamily void Task\+::save\+NEvent\+Accepted (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{output\+File }\end{DoxyParamCaption})}
+
+Save the number of event accepted by this task instance to the given TFile output. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00712}{712}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a862a9c27db16ed23c36c573a1236aa19}\label{class_task_a862a9c27db16ed23c36c573a1236aa19}} 
+\index{Task@{Task}!saveNEventProcessed@{saveNEventProcessed}}
+\index{saveNEventProcessed@{saveNEventProcessed}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{saveNEventProcessed()}{saveNEventProcessed()}}
+{\footnotesize\ttfamily void Task\+::save\+NEvent\+Processed (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{output\+File }\end{DoxyParamCaption})}
+
+Save the number of event processed by this task instance to the given TFile output. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00706}{706}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a512a1b774d9a67425083dbfea7f60ed5}\label{class_task_a512a1b774d9a67425083dbfea7f60ed5}} 
+\index{Task@{Task}!saveNFilteredEventsAccepted@{saveNFilteredEventsAccepted}}
+\index{saveNFilteredEventsAccepted@{saveNFilteredEventsAccepted}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{saveNFilteredEventsAccepted()}{saveNFilteredEventsAccepted()}}
+{\footnotesize\ttfamily void Task\+::save\+NFiltered\+Events\+Accepted (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{output\+File,  }\item[{vector$<$ unsigned int $>$ \&}]{n\+Filtered\+Events\+Accepted }\end{DoxyParamCaption})}
+
+Save the number of event accepted by each event filter own by this task instance to the given TFile output. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00725}{725}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a23dad2af569b74e50abcd9241e03af3e}\label{class_task_a23dad2af569b74e50abcd9241e03af3e}} 
+\index{Task@{Task}!savePartial@{savePartial}}
+\index{savePartial@{savePartial}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{savePartial()}{savePartial()}}
+{\footnotesize\ttfamily void Task\+::save\+Partial (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Save histogram groups owned by this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00314}{314}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a8c001f1dd731687d350378645d5a5dc2}\label{class_task_a8c001f1dd731687d350378645d5a5dc2}} 
+\index{Task@{Task}!savePartialTasks@{savePartialTasks}}
+\index{savePartialTasks@{savePartialTasks}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{savePartialTasks()}{savePartialTasks()}}
+{\footnotesize\ttfamily void Task\+::save\+Partial\+Tasks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Method called to save the histogram objects handled this task instance and its subtasks. This method first calls the \mbox{\hyperlink{class_task_a23dad2af569b74e50abcd9241e03af3e}{save\+Partial()}} method implemented by this class or one of its derived classes. It next calls the \mbox{\hyperlink{class_task_a8c001f1dd731687d350378645d5a5dc2}{save\+Partial\+Tasks()}} method of each of the subtasks of this instance, if any. See the class documentation to figure out how to generate partial saves. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00960}{960}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_af6b2f71e156a8fc092b46fda1c79fb59}\label{class_task_af6b2f71e156a8fc092b46fda1c79fb59}} 
+\index{Task@{Task}!scaleHistograms@{scaleHistograms}}
+\index{scaleHistograms@{scaleHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{scaleHistograms()}{scaleHistograms()}}
+{\footnotesize\ttfamily void Task\+::scale\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Scale (all) the histograms held in all the histogram groups owned by this task instance. This operation is executed automatically within the \mbox{\hyperlink{class_task_aab4bc670089cc073247542c3a26da5aa}{finalize()}} method call if and only if the scale\+Histograms parameter of the \mbox{\hyperlink{class_configuration}{Configuration}} instance controlling this task is set to \char`\"{}true\char`\"{}. 
+
+Reimplemented in \mbox{\hyperlink{class_particle_pair_analyzer_a005d808be2b730897411c461e32f6898}{Particle\+Pair\+Analyzer}}, and \mbox{\hyperlink{class_particle_pair_analyzer_a93c1adb796add41931da15a337cb6606}{Particle\+Pair\+Analyzer}}.
+
+
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00514}{514}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}\label{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}} 
+\index{Task@{Task}!setConfiguration@{setConfiguration}}
+\index{setConfiguration@{setConfiguration}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{setConfiguration()}{setConfiguration()}}
+{\footnotesize\ttfamily void Task\+::set\+Configuration (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{config }\end{DoxyParamCaption})}
+
+Set configuration parameters of this task to values in the given config; 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00207}{207}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_abe2c207184c049a2850a956e78ab6ab3}\label{class_task_abe2c207184c049a2850a956e78ab6ab3}} 
+\index{Task@{Task}!setDefaultConfiguration@{setDefaultConfiguration}}
+\index{setDefaultConfiguration@{setDefaultConfiguration}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{setDefaultConfiguration()}{setDefaultConfiguration()}}
+{\footnotesize\ttfamily void Task\+::set\+Default\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Initialize the configuration parameter of the task to their default value; 
+
+Reimplemented in \mbox{\hyperlink{class_a_a_collision_generator_ace626e52e5884d9ebe1b413f5f155472}{AACollision\+Generator}}, \mbox{\hyperlink{class_balance_function_calculator_a79165399959bc4f68288699cdbab69e9}{Balance\+Function\+Calculator}}, \mbox{\hyperlink{class_closure_test_add90da10bec217d9075f7be04e26e20e}{Closure\+Test}}, \mbox{\hyperlink{class_collision_geometry_analyzer_a56d84224070304a024bce34189fa99e9}{Collision\+Geometry\+Analyzer}}, \mbox{\hyperlink{class_collision_geometry_generator_ae693d4c8c9e874e890ccaf5ef7018dbf}{Collision\+Geometry\+Generator}}, \mbox{\hyperlink{class_detector_fast_simulator_task_af0a3ab64ab88b0e8094ae010e24a0c7b}{Detector\+Fast\+Simulator\+Task}}, \mbox{\hyperlink{class_event_plane_randomizer_task_a9c9d65dc29081385891809698028ea2e}{Event\+Plane\+Randomizer\+Task}}, \mbox{\hyperlink{class_event_vertex_randomizer_task_a429d6ea6f137ce42460ae3e02e66e3b1}{Event\+Vertex\+Randomizer\+Task}}, \mbox{\hyperlink{class_file_task_iterator_ac219f99c1e94002e00ff1c1ebc520326}{File\+Task\+Iterator}}, \mbox{\hyperlink{class_gaussian_generator_task_a76a56067fcd838aedc9171f0f2a82e19}{Gaussian\+Generator\+Task}}, \mbox{\hyperlink{class_global_analyzer_a3d1397698628cfdcec6b12672e5c8926}{Global\+Analyzer}}, \mbox{\hyperlink{class_nu_dyn_analyzer_af40090b991f8c197bc7d2b5c96043656}{Nu\+Dyn\+Analyzer}}, \mbox{\hyperlink{class_nu_dyn_derived_histogram_calculator_a9fae1aace283f6864bb1d0ba2b180edb}{Nu\+Dyn\+Derived\+Histogram\+Calculator}}, \mbox{\hyperlink{class_particle_analyzer_ad98ebec326aa434e1bc2f928bf33d908}{Particle\+Analyzer}}, \mbox{\hyperlink{class_particle_decayer_task_a3ea8c8d9da9e17d58aa8d5852d1b1221}{Particle\+Decayer\+Task}}, \mbox{\hyperlink{class_particle_derived_histogram_calculator_ad0d7ea10b87093811ac6f1279350d074}{Particle\+Derived\+Histogram\+Calculator}}, \mbox{\hyperlink{class_particle_pair_analyzer_a5d4c749524c9a018c438253532e04ce8}{Particle\+Pair\+Analyzer}}, \mbox{\hyperlink{class_particle_pair_derived_histogram_calculator_a1742385edbfcdfdccadfe5067706204a}{Particle\+Pair\+Derived\+Histogram\+Calculator}}, \mbox{\hyperlink{class_radial_boost_task_affbf37a9ea2cf5a0f4013a8febbfbd79}{Radial\+Boost\+Task}}, \mbox{\hyperlink{class_resonance_generator_a40bcbf4336e30a597403b84da70b84ee}{Resonance\+Generator}}, \mbox{\hyperlink{class_sub_sample_stat_calculator_a3e2ac905be4224e8da2e3e6c6ea696b8}{Sub\+Sample\+Stat\+Calculator}}, \mbox{\hyperlink{class_task_iterator_a8536aeba1c4465146062e72516c6a6b6}{Task\+Iterator}}, \mbox{\hyperlink{class_transverse_spherocity_analyzer_a66d1e4f3c3a46e6fd0a4df0178632f9e}{Transverse\+Spherocity\+Analyzer}}, \mbox{\hyperlink{class_b_w_model_event_generator_a44adcfe76017b366629cdb889bf6f523}{BWModel\+Event\+Generator}}, \mbox{\hyperlink{class_hadron_gas_generator_task_a7b91c3105545dd986df1c9fc6d63db1a}{Hadron\+Gas\+Generator\+Task}}, \mbox{\hyperlink{class_pythia_event_generator_ab3ffbd5da16039ca5793f75483772900}{Pythia\+Event\+Generator}}, \mbox{\hyperlink{class_pythia_event_reader_a37a9ae51e4555b7d03b248da675c0020}{Pythia\+Event\+Reader}}, and \mbox{\hyperlink{class_derived_histogram_calculator_a81fd0a9a823289ae5099e01577e73f99}{Derived\+Histogram\+Calculator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00158}{158}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_ad602e11bcb6d287cc8cb29718662235d}\label{class_task_ad602e11bcb6d287cc8cb29718662235d}} 
+\index{Task@{Task}!setEventFilters@{setEventFilters}}
+\index{setEventFilters@{setEventFilters}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{setEventFilters()}{setEventFilters()}}
+{\footnotesize\ttfamily void Task\+::set\+Event\+Filters (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$}]{\+\_\+event\+Filters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the event filters used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00714}{714}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a7fb098d3b26e552cbbdc416fd18d7a1f}\label{class_task_a7fb098d3b26e552cbbdc416fd18d7a1f}} 
+\index{Task@{Task}!setHistogramFileNames@{setHistogramFileNames}}
+\index{setHistogramFileNames@{setHistogramFileNames}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{setHistogramFileNames()}{setHistogramFileNames()}}
+{\footnotesize\ttfamily void Task\+::set\+Histogram\+File\+Names (\begin{DoxyParamCaption}\item[{const TString}]{input\+Name,  }\item[{const TString}]{output\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00845}{845}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a82427919c7eaa15090057d60ab7d89ec}\label{class_task_a82427919c7eaa15090057d60ab7d89ec}} 
+\index{Task@{Task}!setName@{setName}}
+\index{setName@{setName}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void Task\+::set\+Name (\begin{DoxyParamCaption}\item[{const TString \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the name of this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00582}{582}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_acdd633c1d915397aa34c3dd66c59cf05}\label{class_task_acdd633c1d915397aa34c3dd66c59cf05}} 
+\index{Task@{Task}!setParticleFilters@{setParticleFilters}}
+\index{setParticleFilters@{setParticleFilters}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{setParticleFilters()}{setParticleFilters()}}
+{\footnotesize\ttfamily void Task\+::set\+Particle\+Filters (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$}]{\+\_\+particle\+Filters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set particle filters used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00754}{754}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_aee86206c9b8191c915be6c24b8980f05}\label{class_task_aee86206c9b8191c915be6c24b8980f05}} 
+\index{Task@{Task}!setParticleSmearers@{setParticleSmearers}}
+\index{setParticleSmearers@{setParticleSmearers}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{setParticleSmearers()}{setParticleSmearers()}}
+{\footnotesize\ttfamily void Task\+::set\+Particle\+Smearers (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} $\ast$ $>$}]{\+\_\+particle\+Smearers }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set particle smearers used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00795}{795}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a0d4915f314c41e188fee22abc629717c}\label{class_task_a0d4915f314c41e188fee22abc629717c}} 
+\index{Task@{Task}!setRandomGenerator@{setRandomGenerator}}
+\index{setRandomGenerator@{setRandomGenerator}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{setRandomGenerator()}{setRandomGenerator()}}
+{\footnotesize\ttfamily void Task\+::set\+Random\+Generator (\begin{DoxyParamCaption}\item[{TRandom $\ast$}]{random\+Generator }\end{DoxyParamCaption})}
+
+Set the random number generator used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00421}{421}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a3ec28185c9df5e62f7c0723a8dd7a2b6}\label{class_task_a3ec28185c9df5e62f7c0723a8dd7a2b6}} 
+\index{Task@{Task}!subsampleAnalysis@{subsampleAnalysis}}
+\index{subsampleAnalysis@{subsampleAnalysis}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{subsampleAnalysis()}{subsampleAnalysis()}}
+{\footnotesize\ttfamily void Task\+::subsample\+Analysis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Carry out a sub-\/sample analysis to compute the statistical uncertainties of the histograms of this task and its subtasks. 
+
+Reimplemented in \mbox{\hyperlink{class_task_iterator_a758cd9c023174494bbf7184d29403357}{Task\+Iterator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00334}{334}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a33764b29a625d6a820297dc8f558b0cc}\label{class_task_a33764b29a625d6a820297dc8f558b0cc}} 
+\index{Task@{Task}!subsampleAnalysisTasks@{subsampleAnalysisTasks}}
+\index{subsampleAnalysisTasks@{subsampleAnalysisTasks}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{subsampleAnalysisTasks()}{subsampleAnalysisTasks()}}
+{\footnotesize\ttfamily void Task\+::subsample\+Analysis\+Tasks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Carry out a sub-\/sample analysis to compute the statistical uncertainties of the histograms of this task and its subtasks. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00994}{994}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_a0412ac2b34de1abd8a7a3a7339b1f50e}\label{class_task_a0412ac2b34de1abd8a7a3a7339b1f50e}} 
+\index{Task@{Task}!writeParameter@{writeParameter}}
+\index{writeParameter@{writeParameter}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{writeParameter()}{writeParameter()}}
+{\footnotesize\ttfamily void Task\+::write\+Parameter (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{output\+File,  }\item[{const TString}]{parameter\+Name,  }\item[{long}]{value }\end{DoxyParamCaption})}
+
+Save the given (long) value with the given name in the given output file. 
+
+Definition at line \mbox{\hyperlink{_task_8cpp_source_l00718}{718}} of file \mbox{\hyperlink{_task_8cpp_source}{Task.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_task_aeb5d14f2e1556bddc04a17dd6fe862ea}\label{class_task_aeb5d14f2e1556bddc04a17dd6fe862ea}} 
+\index{Task@{Task}!basePairHistograms@{basePairHistograms}}
+\index{basePairHistograms@{basePairHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{basePairHistograms}{basePairHistograms}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_histograms}{Histograms}}$\ast$$>$ Task\+::base\+Pair\+Histograms\hspace{0.3cm}{\ttfamily [protected]}}
+
+Array of pointers to particle pair histogram objects produced on output by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00221}{221}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_aa52735b2d2e2e584f168847408a7c605}\label{class_task_aa52735b2d2e2e584f168847408a7c605}} 
+\index{Task@{Task}!baseSingleHistograms@{baseSingleHistograms}}
+\index{baseSingleHistograms@{baseSingleHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{baseSingleHistograms}{baseSingleHistograms}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_histograms}{Histograms}}$\ast$$>$ Task\+::base\+Single\+Histograms\hspace{0.3cm}{\ttfamily [protected]}}
+
+Array of pointers to single particle histogram objects produced on output by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00217}{217}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a6b4bacd121444576a62bd1354f0b6b68}\label{class_task_a6b4bacd121444576a62bd1354f0b6b68}} 
+\index{Task@{Task}!combinedHistograms@{combinedHistograms}}
+\index{combinedHistograms@{combinedHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{combinedHistograms}{combinedHistograms}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_histograms}{Histograms}}$\ast$$>$ Task\+::combined\+Histograms\hspace{0.3cm}{\ttfamily [protected]}}
+
+Array of pointers to \mbox{\hyperlink{class_histograms}{Histograms}} objects produced on output by this task instance as \char`\"{}combinations\char`\"{} of other histogram groups. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00235}{235}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a674e9f776b29c02265731b543c6e32eb}\label{class_task_a674e9f776b29c02265731b543c6e32eb}} 
+\index{Task@{Task}!configuration@{configuration}}
+\index{configuration@{configuration}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{configuration}{configuration}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_configuration}{Configuration}} Task\+::configuration\hspace{0.3cm}{\ttfamily [protected]}}
+
+Pointer to a Task\+Configuation class which defines the behavior of this instance of the class \mbox{\hyperlink{class_task}{Task}} and/or its derived class instances. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00173}{173}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a580f0b416146660bc0efc351e8c1c775}\label{class_task_a580f0b416146660bc0efc351e8c1c775}} 
+\index{Task@{Task}!derivedPairHistograms@{derivedPairHistograms}}
+\index{derivedPairHistograms@{derivedPairHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{derivedPairHistograms}{derivedPairHistograms}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_histograms}{Histograms}}$\ast$$>$ Task\+::derived\+Pair\+Histograms\hspace{0.3cm}{\ttfamily [protected]}}
+
+Array of pointers to \mbox{\hyperlink{class_histograms}{Histograms}} objects produced on output by this task instance as \char`\"{}derivatives\char`\"{} of those contained in the array \char`\"{}histograms\char`\"{}. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00230}{230}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_acc1a41e55911576605060a49664c7d1f}\label{class_task_acc1a41e55911576605060a49664c7d1f}} 
+\index{Task@{Task}!derivedSingleHistograms@{derivedSingleHistograms}}
+\index{derivedSingleHistograms@{derivedSingleHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{derivedSingleHistograms}{derivedSingleHistograms}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_histograms}{Histograms}}$\ast$$>$ Task\+::derived\+Single\+Histograms\hspace{0.3cm}{\ttfamily [protected]}}
+
+Array of pointers to \mbox{\hyperlink{class_histograms}{Histograms}} objects produced on output by this task instance as \char`\"{}derivatives\char`\"{} of those contained in the array \char`\"{}histograms\char`\"{}. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00225}{225}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_afac9929c6201640a924d1e44303ffd29}\label{class_task_afac9929c6201640a924d1e44303ffd29}} 
+\index{Task@{Task}!eventCountHistos@{eventCountHistos}}
+\index{eventCountHistos@{eventCountHistos}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{eventCountHistos}{eventCountHistos}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_event_count_histos}{Event\+Count\+Histos}}$\ast$ Task\+::event\+Count\+Histos\hspace{0.3cm}{\ttfamily [protected]}}
+
+Pointer to an object of the class \mbox{\hyperlink{class_event_count_histos}{Event\+Count\+Histos}}. An instance of the \mbox{\hyperlink{class_event_count_histos}{Event\+Count\+Histos}} is used to keep track of the number of events accepted by this task for each of its event filters. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00203}{203}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}\label{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}} 
+\index{Task@{Task}!eventFilters@{eventFilters}}
+\index{eventFilters@{eventFilters}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{eventFilters}{eventFilters}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_event_filter}{Event\+Filter}}$\ast$$>$ Task\+::event\+Filters\hspace{0.3cm}{\ttfamily [protected]}}
+
+Array of pointers to event filters (class \mbox{\hyperlink{class_event_filter}{Event\+Filter}}) used by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00190}{190}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a02048625ac29f05812d5229348d36f2e}\label{class_task_a02048625ac29f05812d5229348d36f2e}} 
+\index{Task@{Task}!eventStreams@{eventStreams}}
+\index{eventStreams@{eventStreams}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{eventStreams}{eventStreams}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_event}{Event}}$\ast$$>$ Task\+::event\+Streams\hspace{0.3cm}{\ttfamily [protected]}}
+
+Array of pointers to streams (potentially) used by this task. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00186}{186}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a94ef6eae9ca9e31848783bf9ba3cf3d4}\label{class_task_a94ef6eae9ca9e31848783bf9ba3cf3d4}} 
+\index{Task@{Task}!filteredParticles@{filteredParticles}}
+\index{filteredParticles@{filteredParticles}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{filteredParticles}{filteredParticles}}
+{\footnotesize\ttfamily vector$<$ vector$<$\mbox{\hyperlink{class_particle_digit}{Particle\+Digit}}$\ast$$>$ $>$ Task\+::filtered\+Particles\hspace{0.3cm}{\ttfamily [protected]}}
+
+Array of number of events accepted by each of the event filters used by this task instance. Array of filter particles (Particle\+Digits). 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00244}{244}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a49637b241f2bb93c22a611756240f577}\label{class_task_a49637b241f2bb93c22a611756240f577}} 
+\index{Task@{Task}!histograms@{histograms}}
+\index{histograms@{histograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{histograms}{histograms}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_histograms}{Histograms}}$\ast$$>$ Task\+::histograms\hspace{0.3cm}{\ttfamily [protected]}}
+
+Array of pointers to generic histogram objects produced on output by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00212}{212}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_ae257d4df10bd00bb719425721d43ce80}\label{class_task_ae257d4df10bd00bb719425721d43ce80}} 
+\index{Task@{Task}!inputHistograms@{inputHistograms}}
+\index{inputHistograms@{inputHistograms}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{inputHistograms}{inputHistograms}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_histograms}{Histograms}}$\ast$$>$ Task\+::input\+Histograms\hspace{0.3cm}{\ttfamily [protected]}}
+
+Array of pointers to \mbox{\hyperlink{class_histograms}{Histograms}} objects used on input for initialization or calibration of the activity of this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00207}{207}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_ad6f45bd5d1e19d15e69276103dff287a}\label{class_task_ad6f45bd5d1e19d15e69276103dff287a}} 
+\index{Task@{Task}!masterCollection@{masterCollection}}
+\index{masterCollection@{masterCollection}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{masterCollection}{masterCollection}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}}$\ast$ Task\+::master\+Collection\hspace{0.3cm}{\ttfamily [protected]}}
+
+Pointer to a singleton of the class \mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} possibly used by this task instance for particle type identification and classification purposes. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00286}{286}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_aa8a0d1fbb21cfb200e74bb3b38118fa0}\label{class_task_aa8a0d1fbb21cfb200e74bb3b38118fa0}} 
+\index{Task@{Task}!nEventAccepted@{nEventAccepted}}
+\index{nEventAccepted@{nEventAccepted}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{nEventAccepted}{nEventAccepted}}
+{\footnotesize\ttfamily long Task\+::n\+Event\+Accepted\hspace{0.3cm}{\ttfamily [protected]}}
+
+Number of events accepted for analysis by this task instance. Note that this number is actually the sum of the number of events accepted by the event filters used by this task. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00257}{257}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a66a48a46d707a69339ec8c03cf25556c}\label{class_task_a66a48a46d707a69339ec8c03cf25556c}} 
+\index{Task@{Task}!nEventProcessed@{nEventProcessed}}
+\index{nEventProcessed@{nEventProcessed}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{nEventProcessed}{nEventProcessed}}
+{\footnotesize\ttfamily long Task\+::n\+Event\+Processed\hspace{0.3cm}{\ttfamily [protected]}}
+
+Number of events processed by this task instance. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00252}{252}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_aa17c47f50a2c3106a874e64eac7cc30e}\label{class_task_aa17c47f50a2c3106a874e64eac7cc30e}} 
+\index{Task@{Task}!nFilteredEventsAccepted@{nFilteredEventsAccepted}}
+\index{nFilteredEventsAccepted@{nFilteredEventsAccepted}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{nFilteredEventsAccepted}{nFilteredEventsAccepted}}
+{\footnotesize\ttfamily vector$<$double$>$ Task\+::n\+Filtered\+Events\+Accepted\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00248}{248}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_aca6dc827b61b440bf610bba393beb673}\label{class_task_aca6dc827b61b440bf610bba393beb673}} 
+\index{Task@{Task}!particleFactory@{particleFactory}}
+\index{particleFactory@{particleFactory}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{particleFactory}{particleFactory}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_factory}{Factory}}$<$\mbox{\hyperlink{class_particle}{Particle}}$>$$\ast$ Task\+::particle\+Factory\hspace{0.3cm}{\ttfamily [protected]}}
+
+Pointer to a factory of entities of type \mbox{\hyperlink{class_particle}{Particle}}. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00182}{182}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a058e07f3edced0cf8f68f9358c2ff86e}\label{class_task_a058e07f3edced0cf8f68f9358c2ff86e}} 
+\index{Task@{Task}!particleFilters@{particleFilters}}
+\index{particleFilters@{particleFilters}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{particleFilters}{particleFilters}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_particle_filter}{Particle\+Filter}}$\ast$$>$ Task\+::particle\+Filters\hspace{0.3cm}{\ttfamily [protected]}}
+
+Array of pointers to particle filters (class \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}}) used by this task. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00194}{194}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a5d10236f0bb8c1415a26dbc829b468ca}\label{class_task_a5d10236f0bb8c1415a26dbc829b468ca}} 
+\index{Task@{Task}!particlesAccepted@{particlesAccepted}}
+\index{particlesAccepted@{particlesAccepted}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{particlesAccepted}{particlesAccepted}}
+{\footnotesize\ttfamily unsigned int Task\+::particles\+Accepted\hspace{0.3cm}{\ttfamily [protected]}}
+
+Number of particles accepted by particle filters associated with this task instance in a given event. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00267}{267}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a41720f8a32d62265b7dc51e8f55631fa}\label{class_task_a41720f8a32d62265b7dc51e8f55631fa}} 
+\index{Task@{Task}!particlesCounted@{particlesCounted}}
+\index{particlesCounted@{particlesCounted}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{particlesCounted}{particlesCounted}}
+{\footnotesize\ttfamily unsigned int Task\+::particles\+Counted\hspace{0.3cm}{\ttfamily [protected]}}
+
+Number of particles counted by this task instance in a given event. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00262}{262}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a348005e901a03674c25682a9370ebff0}\label{class_task_a348005e901a03674c25682a9370ebff0}} 
+\index{Task@{Task}!particleSmearers@{particleSmearers}}
+\index{particleSmearers@{particleSmearers}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{particleSmearers}{particleSmearers}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}}$\ast$$>$ Task\+::particle\+Smearers\hspace{0.3cm}{\ttfamily [protected]}}
+
+Array of pointers to particle smearers (class \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}}) used by this task. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00198}{198}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a2e27bac30952367cec4c75ce30224993}\label{class_task_a2e27bac30952367cec4c75ce30224993}} 
+\index{Task@{Task}!subSampleIndex@{subSampleIndex}}
+\index{subSampleIndex@{subSampleIndex}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{subSampleIndex}{subSampleIndex}}
+{\footnotesize\ttfamily int Task\+::sub\+Sample\+Index\hspace{0.3cm}{\ttfamily [protected]}}
+
+Index to be tagged to the name of histogram files produced by this task on output. These tags are used to keep track of the sub-\/samples of events used in a particular data analysis. The files can then be read in by \mbox{\hyperlink{class_sub_sample_stat_calculator}{Sub\+Sample\+Stat\+Calculator}} task to compute estimate of the statitical errors of all histograms of all histogram group owned/managed by this task. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00277}{277}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_ad91d609b5c48a229c059e562ca7a20cb}\label{class_task_ad91d609b5c48a229c059e562ca7a20cb}} 
+\index{Task@{Task}!subtasks@{subtasks}}
+\index{subtasks@{subtasks}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{subtasks}{subtasks}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_task}{Task}}$\ast$$>$ Task\+::subtasks\hspace{0.3cm}{\ttfamily [protected]}}
+
+Array of pointers to subtasks called by this task instance, once per event analyzed (or iteration generated by \mbox{\hyperlink{class_task_iterator}{Task\+Iterator}} task). If this instance carries out initialize, finalize, execute type operations, these are performed BEFORE the corresponding operations by the subtasks. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00282}{282}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a0aa96f5ba1ec134ff65d80740654d759}\label{class_task_a0aa96f5ba1ec134ff65d80740654d759}} 
+\index{Task@{Task}!taskName@{taskName}}
+\index{taskName@{taskName}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{taskName}{taskName}}
+{\footnotesize\ttfamily TString Task\+::task\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+Name given to this task instance 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00169}{169}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a15516b2635c38aa3ae0a3970a479f9f4}\label{class_task_a15516b2635c38aa3ae0a3970a479f9f4}} 
+\index{Task@{Task}!taskRandomGenerator@{taskRandomGenerator}}
+\index{taskRandomGenerator@{taskRandomGenerator}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{taskRandomGenerator}{taskRandomGenerator}}
+{\footnotesize\ttfamily TRandom$\ast$ Task\+::task\+Random\+Generator\hspace{0.3cm}{\ttfamily [protected]}}
+
+Pointer to a random number generator of the class TRandom. This variable is set to \char`\"{}g\+Random\char`\"{} by default and thus does not need to be explictly by the user/developer. 
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00178}{178}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_task_a5991a0a3e31cec492a994b034e258aa6}\label{class_task_a5991a0a3e31cec492a994b034e258aa6}} 
+\index{Task@{Task}!timer@{timer}}
+\index{timer@{timer}!Task@{Task}}
+\doxysubsubsection{\texorpdfstring{timer}{timer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_timer}{Timer}} Task\+::timer\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_task_8hpp_source_l00164}{164}} of file \mbox{\hyperlink{_task_8hpp_source}{Task.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_task_8hpp}{Task.\+hpp}}\item 
+Base/\mbox{\hyperlink{_task_8cpp}{Task.\+cpp}}\end{DoxyCompactItemize}

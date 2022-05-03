@@ -1,0 +1,327 @@
+\hypertarget{class_collision_geometry_generator}{}\doxysection{Collision\+Geometry\+Generator Class Reference}
+\label{class_collision_geometry_generator}\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+
+
+{\ttfamily \#include $<$Collision\+Geometry\+Generator.\+hpp$>$}
+
+
+
+Inheritance diagram for Collision\+Geometry\+Generator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{class_collision_geometry_generator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Collision\+Geometry\+Generator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_geometry_generator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_collision_geometry_generator_ae6e3ebb96c07c399af3c6e37261316c4}{Collision\+Geometry\+Generator}} (const TString \&\+\_\+name, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&\+\_\+event\+Filters, vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \+\_\+particle\+Filters, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Message\+Logger\+::\+Log\+Level}} \+\_\+report\+Level=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}})
+\item 
+virtual \mbox{\hyperlink{class_collision_geometry_generator_ab38061774026e353e7560821c5e72219}{$\sim$\+Collision\+Geometry\+Generator}} ()
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_generator_ae693d4c8c9e874e890ccaf5ef7018dbf}{set\+Default\+Configuration}} ()
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_generator_a5c607ce039ce8fdc8ade782e4b8fab3c}{initialize}} ()
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_generator_ac868e7fa6e17a1a56da8214750a959a5}{clear}} ()
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_generator_a10d8096a95211c1be478692721639a98}{reset}} ()
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_generator_ac38e7bd4560739e11302e600856280e3}{execute}} ()
+\item 
+\mbox{\hyperlink{class_nucleus}{Nucleus}} \& \mbox{\hyperlink{class_collision_geometry_generator_a76aadf263a1372c6aaaea24d1271888a}{get\+NucleusA}} ()
+\item 
+\mbox{\hyperlink{class_nucleus}{Nucleus}} \& \mbox{\hyperlink{class_collision_geometry_generator_a8da9b522b12994ca2ccc3d5438a0a2d9}{get\+NucleusB}} ()
+\item 
+\mbox{\hyperlink{class_nucleus_generator}{Nucleus\+Generator}} $\ast$ \mbox{\hyperlink{class_collision_geometry_generator_aa4dab9cc6cd95345996dde69d5025076}{get\+Nucleus\+GeneratorA}} ()
+\item 
+\mbox{\hyperlink{class_nucleus_generator}{Nucleus\+Generator}} $\ast$ \mbox{\hyperlink{class_collision_geometry_generator_a09f52784ba8ffcdfcc3fa0b7c33e5c47}{get\+Nucleus\+GeneratorB}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_nucleus_generator}{Nucleus\+Generator}} $\ast$ \mbox{\hyperlink{class_collision_geometry_generator_ab69b344e93659748b01c7e4efbfa0171}{nucleus\+GeneratorA}}
+\item 
+\mbox{\hyperlink{class_nucleus_generator}{Nucleus\+Generator}} $\ast$ \mbox{\hyperlink{class_collision_geometry_generator_a5b816fdd7faec3b66ea23cd76a15268c}{nucleus\+GeneratorB}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_generator_a82d33bc7c0362c3954386860d9a93b09}{minB}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_generator_ab64c7889ed25ae6b7201fc16b1af6f95}{min\+BSq}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_generator_a46e533c863cdc2bc1d4430ead6b4c33a}{maxB}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_generator_ac87d1fe85acd3ea5aaa3ca522bdae14a}{max\+BSq}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_generator_ab2ca20481d95d076ba7d1ed1c27d78ff}{nn\+Cross\+Section}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_generator_a96128b684930ccdbf43acdb951a6ec3b}{max\+NNDistance\+Sq}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+This class implements a simple heavy-\/ion collision geometry generator. The geometry of the nuclei is randomized and can be set to follow various density profile (see class \mbox{\hyperlink{class_nucleus_generator}{Nucleus\+Generator}}). This collisions generator assumes the elementary objects (either partons or nucleons) travel on straight line trajectories parallel to the z-\/axis (the beam axis). Use the configuration file to set values required at run time. 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{_collision_geometry_generator_8hpp_source}{Collision\+Geometry\+Generator.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_collision_geometry_generator_ae6e3ebb96c07c399af3c6e37261316c4}\label{class_collision_geometry_generator_ae6e3ebb96c07c399af3c6e37261316c4}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{CollisionGeometryGenerator()}{CollisionGeometryGenerator()}}
+{\footnotesize\ttfamily Collision\+Geometry\+Generator\+::\+Collision\+Geometry\+Generator (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&}]{\+\_\+event\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$}]{\+\_\+particle\+Filters,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Message\+Logger\+::\+Log\+Level}}}]{\+\_\+report\+Level = {\ttfamily \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}}} }\end{DoxyParamCaption})}
+
+Detailed CTOR
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+name} & Name given to task instance \\
+\hline
+{\em \+\_\+configuration} & \mbox{\hyperlink{class_configuration}{Configuration}} used to run this task \\
+\hline
+{\em \+\_\+event\+Filters} & Array of event filters to be used by this task \\
+\hline
+{\em \+\_\+particle\+Filters} & Array of particle filters to be used by this task \\
+\hline
+{\em \+\_\+report\+Level} & Message log level to be used by this task.\\
+\hline
+\end{DoxyParams}
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+name} & Name given to this task instance \\
+\hline
+{\em \+\_\+configuration} & \mbox{\hyperlink{class_configuration}{Configuration}} to be used by this task instance \\
+\hline
+{\em \+\_\+event\+Filters} & Vector of event filters to be used by this task instance \\
+\hline
+{\em \+\_\+required\+Level} & Debug/report level to be used by this task instance \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{_collision_geometry_generator_8cpp_source}{Collision\+Geometry\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_generator_ab38061774026e353e7560821c5e72219}\label{class_collision_geometry_generator_ab38061774026e353e7560821c5e72219}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!````~CollisionGeometryGenerator@{$\sim$CollisionGeometryGenerator}}
+\index{````~CollisionGeometryGenerator@{$\sim$CollisionGeometryGenerator}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{$\sim$CollisionGeometryGenerator()}{~CollisionGeometryGenerator()}}
+{\footnotesize\ttfamily Collision\+Geometry\+Generator\+::$\sim$\+Collision\+Geometry\+Generator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+DTOR 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{_collision_geometry_generator_8cpp_source}{Collision\+Geometry\+Generator.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_collision_geometry_generator_ac868e7fa6e17a1a56da8214750a959a5}\label{class_collision_geometry_generator_ac868e7fa6e17a1a56da8214750a959a5}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!clear@{clear}}
+\index{clear@{clear}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Generator\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Clears this task thereby rendering it non initialized. 
+
+Reimplemented from \mbox{\hyperlink{class_task_a19de4303aa171af0eb3a8fb5ec3ca2fb}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8cpp_source_l00157}{157}} of file \mbox{\hyperlink{_collision_geometry_generator_8cpp_source}{Collision\+Geometry\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_generator_ac38e7bd4560739e11302e600856280e3}\label{class_collision_geometry_generator_ac38e7bd4560739e11302e600856280e3}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!execute@{execute}}
+\index{execute@{execute}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Generator\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Execute this task 
+
+Reimplemented from \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8cpp_source_l00167}{167}} of file \mbox{\hyperlink{_collision_geometry_generator_8cpp_source}{Collision\+Geometry\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_generator_a76aadf263a1372c6aaaea24d1271888a}\label{class_collision_geometry_generator_a76aadf263a1372c6aaaea24d1271888a}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!getNucleusA@{getNucleusA}}
+\index{getNucleusA@{getNucleusA}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{getNucleusA()}{getNucleusA()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_nucleus}{Nucleus}} \& Collision\+Geometry\+Generator\+::get\+NucleusA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get nucleus A generated (produced) by this task. \mbox{\hyperlink{class_nucleus}{Nucleus}} A changes event by event 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{_collision_geometry_generator_8hpp_source}{Collision\+Geometry\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_generator_a8da9b522b12994ca2ccc3d5438a0a2d9}\label{class_collision_geometry_generator_a8da9b522b12994ca2ccc3d5438a0a2d9}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!getNucleusB@{getNucleusB}}
+\index{getNucleusB@{getNucleusB}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{getNucleusB()}{getNucleusB()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_nucleus}{Nucleus}} \& Collision\+Geometry\+Generator\+::get\+NucleusB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get nucleus B generated (produced) by this task. \mbox{\hyperlink{class_nucleus}{Nucleus}} B changes event by event 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{_collision_geometry_generator_8hpp_source}{Collision\+Geometry\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_generator_aa4dab9cc6cd95345996dde69d5025076}\label{class_collision_geometry_generator_aa4dab9cc6cd95345996dde69d5025076}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!getNucleusGeneratorA@{getNucleusGeneratorA}}
+\index{getNucleusGeneratorA@{getNucleusGeneratorA}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{getNucleusGeneratorA()}{getNucleusGeneratorA()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_nucleus_generator}{Nucleus\+Generator}} $\ast$ Collision\+Geometry\+Generator\+::get\+Nucleus\+GeneratorA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the nucleus generator used to generate nucleus A. 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8hpp_source_l00083}{83}} of file \mbox{\hyperlink{_collision_geometry_generator_8hpp_source}{Collision\+Geometry\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_generator_a09f52784ba8ffcdfcc3fa0b7c33e5c47}\label{class_collision_geometry_generator_a09f52784ba8ffcdfcc3fa0b7c33e5c47}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!getNucleusGeneratorB@{getNucleusGeneratorB}}
+\index{getNucleusGeneratorB@{getNucleusGeneratorB}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{getNucleusGeneratorB()}{getNucleusGeneratorB()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_nucleus_generator}{Nucleus\+Generator}} $\ast$ Collision\+Geometry\+Generator\+::get\+Nucleus\+GeneratorB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the nucleus generator used to generate nucleus B. 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{_collision_geometry_generator_8hpp_source}{Collision\+Geometry\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_generator_a5c607ce039ce8fdc8ade782e4b8fab3c}\label{class_collision_geometry_generator_a5c607ce039ce8fdc8ade782e4b8fab3c}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!initialize@{initialize}}
+\index{initialize@{initialize}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Generator\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Initialize this task based on the configuration and class variable specified at construction 
+
+Reimplemented from \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8cpp_source_l00107}{107}} of file \mbox{\hyperlink{_collision_geometry_generator_8cpp_source}{Collision\+Geometry\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_generator_a10d8096a95211c1be478692721639a98}\label{class_collision_geometry_generator_a10d8096a95211c1be478692721639a98}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!reset@{reset}}
+\index{reset@{reset}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Generator\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Reset this task and the objects it controls. 
+
+Reimplemented from \mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8cpp_source_l00162}{162}} of file \mbox{\hyperlink{_collision_geometry_generator_8cpp_source}{Collision\+Geometry\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_generator_ae693d4c8c9e874e890ccaf5ef7018dbf}\label{class_collision_geometry_generator_ae693d4c8c9e874e890ccaf5ef7018dbf}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!setDefaultConfiguration@{setDefaultConfiguration}}
+\index{setDefaultConfiguration@{setDefaultConfiguration}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{setDefaultConfiguration()}{setDefaultConfiguration()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Generator\+::set\+Default\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Sets the default values of the configuration parameters used by this task 
+
+Reimplemented from \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{_collision_geometry_generator_8cpp_source}{Collision\+Geometry\+Generator.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_collision_geometry_generator_a46e533c863cdc2bc1d4430ead6b4c33a}\label{class_collision_geometry_generator_a46e533c863cdc2bc1d4430ead6b4c33a}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!maxB@{maxB}}
+\index{maxB@{maxB}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{maxB}{maxB}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Generator\+::maxB\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8hpp_source_l00105}{105}} of file \mbox{\hyperlink{_collision_geometry_generator_8hpp_source}{Collision\+Geometry\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_generator_ac87d1fe85acd3ea5aaa3ca522bdae14a}\label{class_collision_geometry_generator_ac87d1fe85acd3ea5aaa3ca522bdae14a}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!maxBSq@{maxBSq}}
+\index{maxBSq@{maxBSq}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{maxBSq}{maxBSq}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Generator\+::max\+BSq\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8hpp_source_l00105}{105}} of file \mbox{\hyperlink{_collision_geometry_generator_8hpp_source}{Collision\+Geometry\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_generator_a96128b684930ccdbf43acdb951a6ec3b}\label{class_collision_geometry_generator_a96128b684930ccdbf43acdb951a6ec3b}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!maxNNDistanceSq@{maxNNDistanceSq}}
+\index{maxNNDistanceSq@{maxNNDistanceSq}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{maxNNDistanceSq}{maxNNDistanceSq}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Generator\+::max\+NNDistance\+Sq\hspace{0.3cm}{\ttfamily [protected]}}
+
+Square of the maximum distance used internally in the generation of collisions. 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8hpp_source_l00115}{115}} of file \mbox{\hyperlink{_collision_geometry_generator_8hpp_source}{Collision\+Geometry\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_generator_a82d33bc7c0362c3954386860d9a93b09}\label{class_collision_geometry_generator_a82d33bc7c0362c3954386860d9a93b09}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!minB@{minB}}
+\index{minB@{minB}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{minB}{minB}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Generator\+::minB\hspace{0.3cm}{\ttfamily [protected]}}
+
+Min and max values of the impact parameter used by this generator instance 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8hpp_source_l00105}{105}} of file \mbox{\hyperlink{_collision_geometry_generator_8hpp_source}{Collision\+Geometry\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_generator_ab64c7889ed25ae6b7201fc16b1af6f95}\label{class_collision_geometry_generator_ab64c7889ed25ae6b7201fc16b1af6f95}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!minBSq@{minBSq}}
+\index{minBSq@{minBSq}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{minBSq}{minBSq}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Generator\+::min\+BSq\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8hpp_source_l00105}{105}} of file \mbox{\hyperlink{_collision_geometry_generator_8hpp_source}{Collision\+Geometry\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_generator_ab2ca20481d95d076ba7d1ed1c27d78ff}\label{class_collision_geometry_generator_ab2ca20481d95d076ba7d1ed1c27d78ff}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!nnCrossSection@{nnCrossSection}}
+\index{nnCrossSection@{nnCrossSection}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{nnCrossSection}{nnCrossSection}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Generator\+::nn\+Cross\+Section\hspace{0.3cm}{\ttfamily [protected]}}
+
+Nucleon-\/nulceon (or parton-\/parton) cross section used by this instance 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8hpp_source_l00110}{110}} of file \mbox{\hyperlink{_collision_geometry_generator_8hpp_source}{Collision\+Geometry\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_generator_ab69b344e93659748b01c7e4efbfa0171}\label{class_collision_geometry_generator_ab69b344e93659748b01c7e4efbfa0171}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!nucleusGeneratorA@{nucleusGeneratorA}}
+\index{nucleusGeneratorA@{nucleusGeneratorA}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{nucleusGeneratorA}{nucleusGeneratorA}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_nucleus_generator}{Nucleus\+Generator}}$\ast$ Collision\+Geometry\+Generator\+::nucleus\+GeneratorA\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\hyperlink{class_nucleus}{Nucleus}} generator used to generate nucleus A. 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8hpp_source_l00095}{95}} of file \mbox{\hyperlink{_collision_geometry_generator_8hpp_source}{Collision\+Geometry\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_generator_a5b816fdd7faec3b66ea23cd76a15268c}\label{class_collision_geometry_generator_a5b816fdd7faec3b66ea23cd76a15268c}} 
+\index{CollisionGeometryGenerator@{CollisionGeometryGenerator}!nucleusGeneratorB@{nucleusGeneratorB}}
+\index{nucleusGeneratorB@{nucleusGeneratorB}!CollisionGeometryGenerator@{CollisionGeometryGenerator}}
+\doxysubsubsection{\texorpdfstring{nucleusGeneratorB}{nucleusGeneratorB}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_nucleus_generator}{Nucleus\+Generator}}$\ast$ Collision\+Geometry\+Generator\+::nucleus\+GeneratorB\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\hyperlink{class_nucleus}{Nucleus}} generator used to generate nucleus B. 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_generator_8hpp_source_l00100}{100}} of file \mbox{\hyperlink{_collision_geometry_generator_8hpp_source}{Collision\+Geometry\+Generator.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_collision_geometry_generator_8hpp}{Collision\+Geometry\+Generator.\+hpp}}\item 
+Base/\mbox{\hyperlink{_collision_geometry_generator_8cpp}{Collision\+Geometry\+Generator.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,171 @@
+\hypertarget{_total_xsection_8cpp_source}{}\doxysection{Total\+Xsection.\+cpp}
+\label{_total_xsection_8cpp_source}\index{Base/TotalXsection.cpp@{Base/TotalXsection.cpp}}
+\mbox{\hyperlink{_total_xsection_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00003}00003 \textcolor{comment}{/*************************************************************************}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.                                   *}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.                                                  *}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment                             *}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00007}00007 \textcolor{comment}{ *                                                                       *}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.                                  *}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00009}00009 \textcolor{comment}{ *************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_total_xsection_8hpp}{TotalXsection.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}TMath.h"{}}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00020}00020 \textcolor{comment}{// Compute Total Xsect vs sqrt(s)}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00021}00021 \textcolor{comment}{// x[0] : sqrt(s)}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00022}00022 \textcolor{comment}{// Gauron parameterization is "{}s"{}}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00023}\mbox{\hyperlink{_total_xsection_8cpp_a3518c7aee3a8186aaf3198365c066aa4}{00023}} \textcolor{keywordtype}{double} \mbox{\hyperlink{_total_xsection_8cpp_a3518c7aee3a8186aaf3198365c066aa4}{GauronModelF1}}(\textcolor{keywordtype}{double} *xx, \textcolor{keywordtype}{double} *pp)}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00024}00024 \{}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00025}00025   \textcolor{keywordtype}{double} s   = xx[0]*xx[0];}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00026}00026   \textcolor{keywordtype}{double} Z   = pp[0];}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00027}00027   \textcolor{keywordtype}{double} X   = pp[1];}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00028}00028   \textcolor{keywordtype}{double} eps = pp[2];}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00029}00029   \textcolor{keywordtype}{double} Y1  = pp[3];}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00030}00030   \textcolor{keywordtype}{double} Y2  = pp[4];}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00031}00031   \textcolor{keywordtype}{double} alpha = pp[5]-\/1.0;}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00032}00032   \textcolor{keywordflow}{return} Z + X*TMath::Power(s,eps) + (Y1 -\/ Y2)*TMath::Power(s,alpha);}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00033}00033 \}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00035}\mbox{\hyperlink{_total_xsection_8cpp_af5fe993ab47051e2877b0f889789faec}{00035}} \textcolor{keywordtype}{double} \mbox{\hyperlink{_total_xsection_8cpp_af5fe993ab47051e2877b0f889789faec}{GauronGammaModelF1}}(\textcolor{keywordtype}{double} *xx, \textcolor{keywordtype}{double} *pp)}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00036}00036 \{}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00037}00037   \textcolor{keywordtype}{double} s     = xx[0]*xx[0];}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00038}00038   \textcolor{keywordtype}{double} delta = pp[0];}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00039}00039   \textcolor{keywordtype}{double} Z     = pp[1];}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00040}00040   \textcolor{keywordtype}{double} X     = pp[2];}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00041}00041   \textcolor{keywordtype}{double} eps   = pp[3];}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00042}00042   \textcolor{keywordtype}{double} Y1    = pp[4];}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00043}00043   \textcolor{keywordtype}{double} alpha = pp[5]-\/1;}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00044}00044   \textcolor{keywordflow}{return} delta*Z + delta*X*TMath::Power(s,eps) + Y1*TMath::Power(s,alpha);}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00045}00045 \}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00049}\mbox{\hyperlink{_total_xsection_8cpp_a9573a43288f5f9f4689cb1b9a6f2c85b}{00049}} \mbox{\hyperlink{_total_xsection_8cpp_a9573a43288f5f9f4689cb1b9a6f2c85b}{ClassImp}}(\mbox{\hyperlink{class_total_xsection}{TotalXsection}});}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00051}00051 \textcolor{comment}{//double TotalXsection::radius = 1.2;}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00053}\mbox{\hyperlink{class_total_xsection_a032bbccbec56710ce23c8b5069dab9a9}{00053}} \mbox{\hyperlink{class_total_xsection_a032bbccbec56710ce23c8b5069dab9a9}{TotalXsection::TotalXsection}}()}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00054}00054 \{}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00055}00055 \}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00058}\mbox{\hyperlink{class_total_xsection_adccc32ac07a8e004a1c08e214a580c88}{00058}} TF1 * \mbox{\hyperlink{class_total_xsection_adccc32ac07a8e004a1c08e214a580c88}{TotalXsection::getFunctionTotalXsectionVsSqrtS}}(\mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40}{TotalXsectionSystem}} selectedSystem,}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00059}00059                                                      \mbox{\hyperlink{class_total_xsection_addd6529e281d94e85e8f6fc20f2ad8af}{TotalXsectionModel}} selectedModel,}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00060}00060                                                      \textcolor{keywordtype}{double} minSqrtS,}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00061}00061                                                      \textcolor{keywordtype}{double} maxSqrtS)}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00062}00062 \{}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00063}00063   TF1 * function;}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00064}00064   TString functionName;}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00066}00066   \textcolor{keywordflow}{switch} (selectedModel)}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00067}00067     \{}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00068}00068       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_total_xsection_addd6529e281d94e85e8f6fc20f2ad8afa904ad3967be01ce659ec6f648a3c94e3}{GauronModel}}:}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00069}00069       \textcolor{comment}{//      double s   = xx[0]*xx[0];}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00070}00070       \textcolor{comment}{//      double Z   = pp[0];}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00071}00071       \textcolor{comment}{//      double X   = pp[1];}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00072}00072       \textcolor{comment}{//      double eps = pp[2];}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00073}00073       \textcolor{comment}{//      double Y1  = pp[3];}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00074}00074       \textcolor{comment}{//      double Y2  = pp[4];}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00075}00075       \textcolor{comment}{//      double alpha = pp[5]-\/1;}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00076}00076       \textcolor{keywordflow}{switch} (selectedSystem)}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00077}00077         \{}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00078}00078           \textcolor{keywordflow}{case} \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40aa80652d45dd1a8c267baf36033852d97}{PPCollisions}}:}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00079}00079           functionName = \textcolor{stringliteral}{"{}GauronPPCollisions"{}};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00080}00080           function = \textcolor{keyword}{new} TF1(functionName,\mbox{\hyperlink{_total_xsection_8cpp_a3518c7aee3a8186aaf3198365c066aa4}{GauronModelF1}}, minSqrtS, maxSqrtS, 6);}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00081}00081           function-\/>SetParameter(0,20.251); \textcolor{comment}{// Z}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00082}00082           function-\/>SetParameter(1,7.572); \textcolor{comment}{// X}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00083}00083           function-\/>SetParameter(2,0.132); \textcolor{comment}{// eps}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00084}00084           function-\/>SetParameter(3,74.811); \textcolor{comment}{// Y1}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00085}00085           function-\/>SetParameter(4,29.918); \textcolor{comment}{// Y2}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00086}00086           function-\/>SetParameter(5,0.48); \textcolor{comment}{// alpha0}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00087}00087           \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00088}00088           \textcolor{keywordflow}{case} \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40ad0f8cd9b92d5d7245dbf765c5d6fff79}{PPbarCollisions}}:}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00089}00089           functionName = \textcolor{stringliteral}{"{}GauronPPbarCollisions"{}};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00090}00090           function = \textcolor{keyword}{new} TF1(functionName,\mbox{\hyperlink{_total_xsection_8cpp_a3518c7aee3a8186aaf3198365c066aa4}{GauronModelF1}}, minSqrtS, maxSqrtS, 6);}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00091}00091           function-\/>SetParameter(0,20.251); \textcolor{comment}{// Z}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00092}00092           function-\/>SetParameter(1,7.572); \textcolor{comment}{// X}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00093}00093           function-\/>SetParameter(2,0.132); \textcolor{comment}{// eps}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00094}00094           function-\/>SetParameter(3,74.811); \textcolor{comment}{// Y1}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00095}00095           function-\/>SetParameter(4,-\/29.918); \textcolor{comment}{// Y2}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00096}00096           function-\/>SetParameter(5,0.48); \textcolor{comment}{// alpha0}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00097}00097           \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00098}00098           \textcolor{keywordflow}{case} \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40aa95ae9f1d35f8387f0d230342a9adff1}{PiPlusPCollisions}}:}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00099}00099           functionName = \textcolor{stringliteral}{"{}GauronPiPlusPCollisions"{}};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00100}00100           function = \textcolor{keyword}{new} TF1(functionName,\mbox{\hyperlink{_total_xsection_8cpp_a3518c7aee3a8186aaf3198365c066aa4}{GauronModelF1}}, minSqrtS, maxSqrtS, 6);}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00101}00101           function-\/>SetParameter(0,5.283); \textcolor{comment}{// Z}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00102}00102           function-\/>SetParameter(1,7.572); \textcolor{comment}{// X}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00103}00103           function-\/>SetParameter(2,0.132); \textcolor{comment}{// eps}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00104}00104           function-\/>SetParameter(3,48.972); \textcolor{comment}{// Y1}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00105}00105           function-\/>SetParameter(4,6.028); \textcolor{comment}{// Y2}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00106}00106           function-\/>SetParameter(5,0.48); \textcolor{comment}{// alpha0}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00107}00107           \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00108}00108           \textcolor{keywordflow}{case} \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40af3f25c701ce2d925b9db84e60eef4d1a}{PiMinusPCollisions}}:}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00109}00109           functionName = \textcolor{stringliteral}{"{}GauronPiMinusPCollisions"{}};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00110}00110           function = \textcolor{keyword}{new} TF1(functionName,\mbox{\hyperlink{_total_xsection_8cpp_a3518c7aee3a8186aaf3198365c066aa4}{GauronModelF1}}, minSqrtS, maxSqrtS, 6);}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00111}00111           function-\/>SetParameter(0,5.283); \textcolor{comment}{// Z}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00112}00112           function-\/>SetParameter(1,7.572); \textcolor{comment}{// X}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00113}00113           function-\/>SetParameter(2,0.132); \textcolor{comment}{// eps}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00114}00114           function-\/>SetParameter(3,48.972); \textcolor{comment}{// Y1}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00115}00115           function-\/>SetParameter(4,-\/6.028); \textcolor{comment}{// Y2}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00116}00116           function-\/>SetParameter(5,0.48); \textcolor{comment}{// alpha0}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00117}00117           \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00118}00118           \textcolor{keywordflow}{case} \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40a42780cec4716afc0818d688c4a954966}{KPlusPCollisions}}:}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00119}00119           functionName = \textcolor{stringliteral}{"{}GauronKPlusPCollisions"{}};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00120}00120           function = \textcolor{keyword}{new} TF1(functionName,\mbox{\hyperlink{_total_xsection_8cpp_a3518c7aee3a8186aaf3198365c066aa4}{GauronModelF1}}, minSqrtS, maxSqrtS, 6);}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00121}00121           function-\/>SetParameter(0,2.208); \textcolor{comment}{// Z}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00122}00122           function-\/>SetParameter(1,7.572); \textcolor{comment}{// X}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00123}00123           function-\/>SetParameter(2,0.132); \textcolor{comment}{// eps}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00124}00124           function-\/>SetParameter(3,34.483); \textcolor{comment}{// Y1}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00125}00125           function-\/>SetParameter(4,11.935); \textcolor{comment}{// Y2}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00126}00126           function-\/>SetParameter(5,0.48); \textcolor{comment}{// alpha0}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00127}00127           \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00128}00128           \textcolor{keywordflow}{case} \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40ad6e614d89a82b9e7f5833bbd2d4aee55}{KMinusPCollisions}}:}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00129}00129           functionName = \textcolor{stringliteral}{"{}GauronKMinusPCollisions"{}};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00130}00130           function = \textcolor{keyword}{new} TF1(functionName,\mbox{\hyperlink{_total_xsection_8cpp_a3518c7aee3a8186aaf3198365c066aa4}{GauronModelF1}}, minSqrtS, maxSqrtS, 6);}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00131}00131           function-\/>SetParameter(0,2.208); \textcolor{comment}{// Z}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00132}00132           function-\/>SetParameter(1,7.572); \textcolor{comment}{// X}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00133}00133           function-\/>SetParameter(2,0.132); \textcolor{comment}{// eps}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00134}00134           function-\/>SetParameter(3,34.483); \textcolor{comment}{// Y1}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00135}00135           function-\/>SetParameter(4,-\/11.935); \textcolor{comment}{// Y2}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00136}00136           function-\/>SetParameter(5,0.48); \textcolor{comment}{// alpha0}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00137}00137           \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00138}00138           \textcolor{keywordflow}{case} \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40a7131a447f3a1ca09ffb1759b45e4db29}{GammaPCollisions}}:}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00139}00139           \textcolor{comment}{//          double delta = pp[0];}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00140}00140           \textcolor{comment}{//          double Z     = pp[1];}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00141}00141           \textcolor{comment}{//          double X     = pp[2];}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00142}00142           \textcolor{comment}{//          double eps   = pp[3];}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00143}00143           \textcolor{comment}{//          double Y1    = pp[4];}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00144}00144           \textcolor{comment}{//          double alpha = pp[5]-\/1;}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00145}00145           functionName = \textcolor{stringliteral}{"{}GauronGammaPCollisions"{}};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00146}00146           function = \textcolor{keyword}{new} TF1(functionName,\mbox{\hyperlink{_total_xsection_8cpp_af5fe993ab47051e2877b0f889789faec}{GauronGammaModelF1}}, minSqrtS, maxSqrtS, 6);}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00147}00147           function-\/>SetParameter(0,0.303E-\/2); \textcolor{comment}{// delta}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00148}00148           function-\/>SetParameter(1,20.251);    \textcolor{comment}{// Z}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00149}00149           function-\/>SetParameter(2,7.572);    \textcolor{comment}{// X}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00150}00150           function-\/>SetParameter(3,0.132);   \textcolor{comment}{// eps}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00151}00151           function-\/>SetParameter(4,0.121);   \textcolor{comment}{// Y1}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00152}00152           function-\/>SetParameter(5,0.48);   \textcolor{comment}{// alpha0}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00153}00153           \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00154}00154           \textcolor{keywordflow}{case} \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40a60cf3addd9059133edc78c348c06bf5e}{GammaGammaCollisions}}:}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00155}00155           functionName = \textcolor{stringliteral}{"{}GauronGammaGammaCollisions"{}};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00156}00156           function = \textcolor{keyword}{new} TF1(functionName,\mbox{\hyperlink{_total_xsection_8cpp_af5fe993ab47051e2877b0f889789faec}{GauronGammaModelF1}}, minSqrtS, maxSqrtS, 6);}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00157}00157           function-\/>SetParameter(0,0.303E-\/2*0.303E-\/2); \textcolor{comment}{// delta\string^2}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00158}00158           function-\/>SetParameter(1,20.251);    \textcolor{comment}{// Z}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00159}00159           function-\/>SetParameter(2,7.572);    \textcolor{comment}{// X}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00160}00160           function-\/>SetParameter(3,0.132);   \textcolor{comment}{// eps}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00161}00161           function-\/>SetParameter(4,0.0);   \textcolor{comment}{// Y1}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00162}00162           function-\/>SetParameter(5,0.48);   \textcolor{comment}{// alpha0}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00163}00163           \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00164}00164         \}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00165}00165       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00166}00166 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00167}00167       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_total_xsection_addd6529e281d94e85e8f6fc20f2ad8afac72c3a9f285a3c2afeadabcb2f8b4240}{XModel}}: function =  \textcolor{keyword}{nullptr}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00168}00168 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00169}00169       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_total_xsection_addd6529e281d94e85e8f6fc20f2ad8afa14212dab454a5d2ab26d178bc8bbc786}{YModel}}:  function =  \textcolor{keyword}{nullptr}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00170}00170     \}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00171}00171   \textcolor{keywordflow}{return} function;}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8cpp_source_l00172}00172 \}}
+
+\end{DoxyCode}

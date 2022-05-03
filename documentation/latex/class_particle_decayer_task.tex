@@ -1,0 +1,152 @@
+\hypertarget{class_particle_decayer_task}{}\doxysection{Particle\+Decayer\+Task Class Reference}
+\label{class_particle_decayer_task}\index{ParticleDecayerTask@{ParticleDecayerTask}}
+
+
+{\ttfamily \#include $<$Particle\+Decayer\+Task.\+hpp$>$}
+
+
+
+Inheritance diagram for Particle\+Decayer\+Task\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{class_particle_decayer_task__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Particle\+Decayer\+Task\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_decayer_task__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_particle_decayer_task_ab5e6d97caefd5007a8ec70a4e27724e0}{Particle\+Decayer\+Task}} (const TString \&\+\_\+name, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \+\_\+event\+Filters, vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \+\_\+particle\+Filters, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \+\_\+selected\+Level=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}})
+\item 
+virtual \mbox{\hyperlink{class_particle_decayer_task_a3698e66874e381f6317ce222728c418e}{$\sim$\+Particle\+Decayer\+Task}} ()
+\item 
+virtual void \mbox{\hyperlink{class_particle_decayer_task_a3ea8c8d9da9e17d58aa8d5852d1b1221}{set\+Default\+Configuration}} ()
+\item 
+virtual void \mbox{\hyperlink{class_particle_decayer_task_a0b55c6ddcf068c62e92cdf6e20c0dc45}{execute}} ()
+\item 
+\mbox{\hyperlink{class_particle_decayer}{Particle\+Decayer}} \& \mbox{\hyperlink{class_particle_decayer_task_a59fe2f14bcd057ab394578d4d56e9f39}{get\+Particle\+Decayer}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_particle_decayer}{Particle\+Decayer}} \mbox{\hyperlink{class_particle_decayer_task_a54aa18781ce19355f1699c19fb24fd4c}{decayer}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_particle}{Particle}} decay handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_task}{Task}} handles the decay of all decayable particles in the incoming event stream. At execution time, i.\+e., for each event encountered, each particle of the input stream is examined to determine whether it should be decayed. \mbox{\hyperlink{class_particle}{Particle}} deemed decayable are passed to the decay handler (decayer) and decayed. Currently, the decayer handles two and three particle decays. Decayed particles are kept in the event stream but tagged as decayed. Child particles are inserted in the stream and tagged as \char`\"{}live\char`\"{} (undecayed). Child particles that are themselves decayable are decayed iteratively. 
+
+Definition at line \mbox{\hyperlink{_particle_decayer_task_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{_particle_decayer_task_8hpp_source}{Particle\+Decayer\+Task.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_particle_decayer_task_ab5e6d97caefd5007a8ec70a4e27724e0}\label{class_particle_decayer_task_ab5e6d97caefd5007a8ec70a4e27724e0}} 
+\index{ParticleDecayerTask@{ParticleDecayerTask}!ParticleDecayerTask@{ParticleDecayerTask}}
+\index{ParticleDecayerTask@{ParticleDecayerTask}!ParticleDecayerTask@{ParticleDecayerTask}}
+\doxysubsubsection{\texorpdfstring{ParticleDecayerTask()}{ParticleDecayerTask()}}
+{\footnotesize\ttfamily Particle\+Decayer\+Task\+::\+Particle\+Decayer\+Task (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$}]{\+\_\+event\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$}]{\+\_\+particle\+Filters,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{\+\_\+selected\+Level = {\ttfamily \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}}} }\end{DoxyParamCaption})}
+
+Detailed CTOR
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+name} & Name given to task instance \\
+\hline
+{\em \+\_\+configuration} & \mbox{\hyperlink{class_configuration}{Configuration}} used to run this task \\
+\hline
+{\em \+\_\+event\+Filters} & Array of event filters to be used by this task \\
+\hline
+{\em \+\_\+particle\+Filters} & Array of particle filters to be used by this task \\
+\hline
+{\em \+\_\+report\+Level} & Message log level to be used by this task. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_particle_decayer_task_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{_particle_decayer_task_8cpp_source}{Particle\+Decayer\+Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_decayer_task_a3698e66874e381f6317ce222728c418e}\label{class_particle_decayer_task_a3698e66874e381f6317ce222728c418e}} 
+\index{ParticleDecayerTask@{ParticleDecayerTask}!````~ParticleDecayerTask@{$\sim$ParticleDecayerTask}}
+\index{````~ParticleDecayerTask@{$\sim$ParticleDecayerTask}!ParticleDecayerTask@{ParticleDecayerTask}}
+\doxysubsubsection{\texorpdfstring{$\sim$ParticleDecayerTask()}{~ParticleDecayerTask()}}
+{\footnotesize\ttfamily virtual Particle\+Decayer\+Task\+::$\sim$\+Particle\+Decayer\+Task (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+DTOR 
+
+Definition at line \mbox{\hyperlink{_particle_decayer_task_8hpp_source_l00050}{50}} of file \mbox{\hyperlink{_particle_decayer_task_8hpp_source}{Particle\+Decayer\+Task.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_particle_decayer_task_a0b55c6ddcf068c62e92cdf6e20c0dc45}\label{class_particle_decayer_task_a0b55c6ddcf068c62e92cdf6e20c0dc45}} 
+\index{ParticleDecayerTask@{ParticleDecayerTask}!execute@{execute}}
+\index{execute@{execute}!ParticleDecayerTask@{ParticleDecayerTask}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Particle\+Decayer\+Task\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Execute this task based on the configuration and class variable specified at construction 
+
+Reimplemented from \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_particle_decayer_task_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{_particle_decayer_task_8cpp_source}{Particle\+Decayer\+Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_decayer_task_a59fe2f14bcd057ab394578d4d56e9f39}\label{class_particle_decayer_task_a59fe2f14bcd057ab394578d4d56e9f39}} 
+\index{ParticleDecayerTask@{ParticleDecayerTask}!getParticleDecayer@{getParticleDecayer}}
+\index{getParticleDecayer@{getParticleDecayer}!ParticleDecayerTask@{ParticleDecayerTask}}
+\doxysubsubsection{\texorpdfstring{getParticleDecayer()}{getParticleDecayer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_decayer}{Particle\+Decayer}} \& Particle\+Decayer\+Task\+::get\+Particle\+Decayer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getthe decay handle (decayer) used by this task. 
+
+Definition at line \mbox{\hyperlink{_particle_decayer_task_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{_particle_decayer_task_8hpp_source}{Particle\+Decayer\+Task.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_decayer_task_a3ea8c8d9da9e17d58aa8d5852d1b1221}\label{class_particle_decayer_task_a3ea8c8d9da9e17d58aa8d5852d1b1221}} 
+\index{ParticleDecayerTask@{ParticleDecayerTask}!setDefaultConfiguration@{setDefaultConfiguration}}
+\index{setDefaultConfiguration@{setDefaultConfiguration}!ParticleDecayerTask@{ParticleDecayerTask}}
+\doxysubsubsection{\texorpdfstring{setDefaultConfiguration()}{setDefaultConfiguration()}}
+{\footnotesize\ttfamily void Particle\+Decayer\+Task\+::set\+Default\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Sets the default values of the configuration parameters used by this task 
+
+Reimplemented from \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_particle_decayer_task_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_particle_decayer_task_8cpp_source}{Particle\+Decayer\+Task.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_particle_decayer_task_a54aa18781ce19355f1699c19fb24fd4c}\label{class_particle_decayer_task_a54aa18781ce19355f1699c19fb24fd4c}} 
+\index{ParticleDecayerTask@{ParticleDecayerTask}!decayer@{decayer}}
+\index{decayer@{decayer}!ParticleDecayerTask@{ParticleDecayerTask}}
+\doxysubsubsection{\texorpdfstring{decayer}{decayer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_decayer}{Particle\+Decayer}} Particle\+Decayer\+Task\+::decayer\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\mbox{\hyperlink{class_particle}{Particle}} decay handler. 
+
+
+
+Definition at line \mbox{\hyperlink{_particle_decayer_task_8hpp_source_l00028}{28}} of file \mbox{\hyperlink{_particle_decayer_task_8hpp_source}{Particle\+Decayer\+Task.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_particle_decayer_task_8hpp}{Particle\+Decayer\+Task.\+hpp}}\item 
+Base/\mbox{\hyperlink{_particle_decayer_task_8cpp}{Particle\+Decayer\+Task.\+cpp}}\end{DoxyCompactItemize}

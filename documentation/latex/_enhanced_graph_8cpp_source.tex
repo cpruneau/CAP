@@ -1,0 +1,202 @@
+\hypertarget{_enhanced_graph_8cpp_source}{}\doxysection{Enhanced\+Graph.\+cpp}
+\label{_enhanced_graph_8cpp_source}\index{Base/EnhancedGraph.cpp@{Base/EnhancedGraph.cpp}}
+\mbox{\hyperlink{_enhanced_graph_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00003}00003 \textcolor{comment}{/*************************************************************************}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.                                   *}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.                                                  *}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment                             *}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00007}00007 \textcolor{comment}{ *                                                                       *}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.                                  *}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00009}00009 \textcolor{comment}{ *************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_enhanced_graph_8hpp}{EnhancedGraph.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00019}\mbox{\hyperlink{_enhanced_graph_8cpp_a1e9096e73e640f7fc497264dc76f6748}{00019}} \mbox{\hyperlink{_enhanced_graph_8cpp_a1e9096e73e640f7fc497264dc76f6748}{ClassImp}}(\mbox{\hyperlink{class_enhanced_graph}{EnhancedGraph}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00021}\mbox{\hyperlink{class_enhanced_graph_a2c237fb8c309f41bf325339379521e3b}{00021}} \mbox{\hyperlink{class_enhanced_graph_a2c237fb8c309f41bf325339379521e3b}{EnhancedGraph::EnhancedGraph}}(\textcolor{keyword}{const} TString \& graphName,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00022}00022               \textcolor{keyword}{const} TString \& xTitle,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00023}00023               \textcolor{keyword}{const} TString \& yTitle,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00024}00024               \textcolor{keywordtype}{double} minX, \textcolor{keywordtype}{double} maxX,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00025}00025               \textcolor{keywordtype}{double} minY, \textcolor{keywordtype}{double} maxY,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00026}00026               \textcolor{keywordtype}{int} n, \textcolor{keywordtype}{double} * x, \textcolor{keywordtype}{double} *y, \textcolor{keywordtype}{double} *ex, \textcolor{keywordtype}{double} *ey, \textcolor{keywordtype}{int} opt)}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00027}00027 : TH1D(graphName,graphName, 1, minX, maxX),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00028}00028 nPoints(n),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00029}00029 xPtr(x),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00030}00030 exPtr(ex),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00031}00031 yPtr(y),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00032}00032 eyPtr(ey),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00033}00033 ySysMPtr(0),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00034}00034 ySysPPtr(0),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00035}00035 yM(0),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00036}00036 yP(0),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00037}00037 sysAbsolute(false),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00038}00038 option(opt)}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00039}00039 \{}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00040}00040   SetXTitle(xTitle);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00041}00041   SetYTitle(yTitle);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00042}00042   SetMinimum(minY);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00043}00043   SetMaximum(maxY);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00044}00044   \mbox{\hyperlink{class_enhanced_graph_a3e074791580ace69f7994990e3e24c42}{g}} = \textcolor{keyword}{new} TGraphErrors(n, x, y, ex, ey);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00045}00045   \mbox{\hyperlink{class_enhanced_graph_ab34a402dccfac6f9925587b8b642b1fc}{gP}} = 0;}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00046}00046   \mbox{\hyperlink{class_enhanced_graph_a4a4dd9cc8e6e73905a9ec15cca1ef655}{gM}} = 0;}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00047}00047   \mbox{\hyperlink{class_enhanced_graph_a53f2045261ab41987e362566e72e6295}{gSys}} = 0;}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00049}00049   \mbox{\hyperlink{class_enhanced_graph_ab56d44a39570a911ac3fb117f20af1dd}{isVisible}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00050}00050 \}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00052}\mbox{\hyperlink{class_enhanced_graph_ab024e508244a6561a7a294add3208aa0}{00052}} \mbox{\hyperlink{class_enhanced_graph_a2c237fb8c309f41bf325339379521e3b}{EnhancedGraph::EnhancedGraph}}(\textcolor{keyword}{const} TString \& graphName,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00053}00053               \textcolor{keyword}{const} TString \& xTitle,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00054}00054               \textcolor{keyword}{const} TString \& yTitle,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00055}00055               \textcolor{keywordtype}{double} minX, \textcolor{keywordtype}{double} maxX,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00056}00056               \textcolor{keywordtype}{double} minY, \textcolor{keywordtype}{double} maxY,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00057}00057               \textcolor{keywordtype}{int} n, \textcolor{keywordtype}{double} * x, \textcolor{keywordtype}{double} *y, \textcolor{keywordtype}{double} *ex, \textcolor{keywordtype}{double} *ey,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00058}00058               \textcolor{keywordtype}{double} * yM, \textcolor{keywordtype}{double} * yP,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00059}00059               \textcolor{keywordtype}{int} opt,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00060}00060               \textcolor{keywordtype}{bool} absolute)}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00061}00061 : TH1D(graphName,graphName, 100, minX, maxX),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00062}00062 nPoints(n),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00063}00063 xPtr(x),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00064}00064 exPtr(ex),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00065}00065 yPtr(y),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00066}00066 eyPtr(ey),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00067}00067 ySysMPtr(yM),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00068}00068 ySysPPtr(yP),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00069}00069 yM(0),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00070}00070 yP(0),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00071}00071 sysAbsolute(absolute),}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00072}00072 option(opt)}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00073}00073 \{}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00074}00074   SetXTitle(xTitle);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00075}00075   SetYTitle(yTitle);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00076}00076   SetMinimum(minY);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00077}00077   SetMaximum(maxY);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00078}00078   \textcolor{comment}{// graph w/ stat error}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00079}00079   \mbox{\hyperlink{class_enhanced_graph_a3e074791580ace69f7994990e3e24c42}{g}} = \textcolor{keyword}{new} TGraphErrors(n, x, y, ex, ey);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00081}00081   \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_enhanced_graph_a7320a8469bc636f6b0fa42e63ea80ec0}{option}})}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00082}00082   \{}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00083}00083     \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00084}00084     \mbox{\hyperlink{class_enhanced_graph_a477653d427bef651c582764db37a6d38}{yM}} = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[\mbox{\hyperlink{class_enhanced_graph_a0abfa17a2a7353e24c785cd6c2ad04a2}{nPoints}}];}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00085}00085     \mbox{\hyperlink{class_enhanced_graph_a78591101d757075ad8cd2968b47a833b}{yP}} = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[\mbox{\hyperlink{class_enhanced_graph_a0abfa17a2a7353e24c785cd6c2ad04a2}{nPoints}}];}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00086}00086     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<n; k++)}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00087}00087       \{}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00088}00088       \mbox{\hyperlink{class_enhanced_graph_a477653d427bef651c582764db37a6d38}{yM}}[k] = y[k] + \mbox{\hyperlink{class_enhanced_graph_aba8935e87e0e7bb2aab3b50270e1e753}{ySysMPtr}}[k];}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00089}00089       \mbox{\hyperlink{class_enhanced_graph_a78591101d757075ad8cd2968b47a833b}{yP}}[k] = y[k] + \mbox{\hyperlink{class_enhanced_graph_aa2fbb306c1e01df8da7dccf61be8a91e}{ySysPPtr}}[k];}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00090}00090       \}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00091}00091     \mbox{\hyperlink{class_enhanced_graph_ab34a402dccfac6f9925587b8b642b1fc}{gP}} = \textcolor{keyword}{new} TGraph(n, x, \mbox{\hyperlink{class_enhanced_graph_a78591101d757075ad8cd2968b47a833b}{yP}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00092}00092     \mbox{\hyperlink{class_enhanced_graph_a4a4dd9cc8e6e73905a9ec15cca1ef655}{gM}} = \textcolor{keyword}{new} TGraph(n, x, \mbox{\hyperlink{class_enhanced_graph_a477653d427bef651c582764db37a6d38}{yM}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00093}00093     \mbox{\hyperlink{class_enhanced_graph_a53f2045261ab41987e362566e72e6295}{gSys}} = 0;}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00094}00094     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00095}00095     \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00096}00096     \mbox{\hyperlink{class_enhanced_graph_ab34a402dccfac6f9925587b8b642b1fc}{gP}} = 0;}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00097}00097     \mbox{\hyperlink{class_enhanced_graph_a4a4dd9cc8e6e73905a9ec15cca1ef655}{gM}} = 0;}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00098}00098     \mbox{\hyperlink{class_enhanced_graph_a477653d427bef651c582764db37a6d38}{yM}} = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[\mbox{\hyperlink{class_enhanced_graph_a0abfa17a2a7353e24c785cd6c2ad04a2}{nPoints}}];}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00099}00099     \mbox{\hyperlink{class_enhanced_graph_a78591101d757075ad8cd2968b47a833b}{yP}} = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[\mbox{\hyperlink{class_enhanced_graph_a0abfa17a2a7353e24c785cd6c2ad04a2}{nPoints}}];}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00100}00100     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<n; k++)}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00101}00101       \{}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00102}00102       \mbox{\hyperlink{class_enhanced_graph_a477653d427bef651c582764db37a6d38}{yM}}[k] = \mbox{\hyperlink{class_enhanced_graph_aba8935e87e0e7bb2aab3b50270e1e753}{ySysMPtr}}[k];}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00103}00103       \mbox{\hyperlink{class_enhanced_graph_a78591101d757075ad8cd2968b47a833b}{yP}}[k] = \mbox{\hyperlink{class_enhanced_graph_aa2fbb306c1e01df8da7dccf61be8a91e}{ySysPPtr}}[k];}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00104}00104       \}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00105}00105     \mbox{\hyperlink{class_enhanced_graph_a53f2045261ab41987e362566e72e6295}{gSys}} = \textcolor{keyword}{new} TGraphAsymmErrors(n, x, y, ex, ex, \mbox{\hyperlink{class_enhanced_graph_a477653d427bef651c582764db37a6d38}{yM}}, \mbox{\hyperlink{class_enhanced_graph_a78591101d757075ad8cd2968b47a833b}{yP}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00106}00106     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00107}00107   \}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00109}00109   \mbox{\hyperlink{class_enhanced_graph_ab56d44a39570a911ac3fb117f20af1dd}{isVisible}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00110}00110 \}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00111}00111 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00113}\mbox{\hyperlink{class_enhanced_graph_af8d14e481856e97be7896004c9eeaa9b}{00113}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_enhanced_graph_af8d14e481856e97be7896004c9eeaa9b}{EnhancedGraph::draw}}(\textcolor{keywordtype}{bool} same)}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00114}00114 \{}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00115}00115   \textcolor{keywordflow}{if} (!same) Draw();}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00117}00117   \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_enhanced_graph_a7320a8469bc636f6b0fa42e63ea80ec0}{option}})}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00118}00118   \{}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00119}00119     \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00120}00120     \mbox{\hyperlink{class_enhanced_graph_a3e074791580ace69f7994990e3e24c42}{g}}-\/>Draw(\textcolor{stringliteral}{"{}P"{}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00121}00121     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_enhanced_graph_ab34a402dccfac6f9925587b8b642b1fc}{gP}} \&\& \mbox{\hyperlink{class_enhanced_graph_a4a4dd9cc8e6e73905a9ec15cca1ef655}{gM}})}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00122}00122       \{}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00123}00123       \mbox{\hyperlink{class_enhanced_graph_ab34a402dccfac6f9925587b8b642b1fc}{gP}}-\/>Draw(\textcolor{stringliteral}{"{}L"{}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00124}00124       \mbox{\hyperlink{class_enhanced_graph_a4a4dd9cc8e6e73905a9ec15cca1ef655}{gM}}-\/>Draw(\textcolor{stringliteral}{"{}L"{}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00125}00125       \}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00126}00126     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00127}00127     \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00128}00128     \textcolor{comment}{//gSys-\/>SetFillColorAlpha(kYellow,0.5);}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00129}00129     \mbox{\hyperlink{class_enhanced_graph_a53f2045261ab41987e362566e72e6295}{gSys}}-\/>Draw(\textcolor{stringliteral}{"{}P.e2"{}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00130}00130     \mbox{\hyperlink{class_enhanced_graph_a3e074791580ace69f7994990e3e24c42}{g}}-\/>Draw(\textcolor{stringliteral}{"{}P"{}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00131}00131     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00132}00132   \}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00133}00133 \}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00134}00134 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00135}\mbox{\hyperlink{class_enhanced_graph_abd556594a0a50aabf1f69b8712a6cc27}{00135}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_enhanced_graph_abd556594a0a50aabf1f69b8712a6cc27}{EnhancedGraph::setMinMax}}(\textcolor{keywordtype}{double} minY, \textcolor{keywordtype}{double} maxY)}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00136}00136 \{}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00137}00137   SetMinimum(minY);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00138}00138   SetMaximum(maxY);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00139}00139 \}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00141}\mbox{\hyperlink{class_enhanced_graph_a5172bffaaa3679335356b2a996963775}{00141}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_enhanced_graph_a5172bffaaa3679335356b2a996963775}{EnhancedGraph::setProperties}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}} \& graphConfig)}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00142}00142 \{}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00143}00143   cout << \textcolor{stringliteral}{"{}-\/INFO-\/ EnhancedGraph::setProperties() Setting properties of graph: "{}} << \mbox{\hyperlink{class_enhanced_graph_a3e074791580ace69f7994990e3e24c42}{g}}-\/>GetName() << endl;}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00144}00144   \mbox{\hyperlink{class_enhanced_graph_a3e074791580ace69f7994990e3e24c42}{g}}-\/>SetLineColor(graphConfig.\mbox{\hyperlink{class_graph_configuration_aa890be0e69dbb1b7f6d67db3af3960ea}{lineColor}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00145}00145   \mbox{\hyperlink{class_enhanced_graph_a3e074791580ace69f7994990e3e24c42}{g}}-\/>SetLineStyle(graphConfig.\mbox{\hyperlink{class_graph_configuration_aa73267e006b983bdaace8fcf3f027f72}{lineStyle}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00146}00146   \mbox{\hyperlink{class_enhanced_graph_a3e074791580ace69f7994990e3e24c42}{g}}-\/>SetLineWidth(graphConfig.\mbox{\hyperlink{class_graph_configuration_a9e519180edfa6b9a418dc0d1cf5b28b0}{lineWidth}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00147}00147   \mbox{\hyperlink{class_enhanced_graph_a3e074791580ace69f7994990e3e24c42}{g}}-\/>SetMarkerColor(graphConfig.\mbox{\hyperlink{class_graph_configuration_a98d7b6d4d7c9daf47029a4a052f7123f}{markerColor}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00148}00148   \mbox{\hyperlink{class_enhanced_graph_a3e074791580ace69f7994990e3e24c42}{g}}-\/>SetMarkerStyle(graphConfig.\mbox{\hyperlink{class_graph_configuration_a7120c644f2ce934d11f1b5abb12dac4b}{markerStyle}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00149}00149   \mbox{\hyperlink{class_enhanced_graph_a3e074791580ace69f7994990e3e24c42}{g}}-\/>SetMarkerSize(graphConfig.\mbox{\hyperlink{class_graph_configuration_ae75f5e15f7c820b987eaa445b1f9f57d}{markerSize}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00150}00150   \mbox{\hyperlink{class_enhanced_graph_a3e074791580ace69f7994990e3e24c42}{g}}-\/>SetFillColor(0);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00151}00151 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00152}00152   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_enhanced_graph_ab34a402dccfac6f9925587b8b642b1fc}{gP}})}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00153}00153     \{}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00154}00154     \mbox{\hyperlink{class_enhanced_graph_ab34a402dccfac6f9925587b8b642b1fc}{gP}}-\/>SetLineColor(graphConfig.\mbox{\hyperlink{class_graph_configuration_aa890be0e69dbb1b7f6d67db3af3960ea}{lineColor}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00155}00155     \mbox{\hyperlink{class_enhanced_graph_ab34a402dccfac6f9925587b8b642b1fc}{gP}}-\/>SetLineStyle(graphConfig.\mbox{\hyperlink{class_graph_configuration_aa73267e006b983bdaace8fcf3f027f72}{lineStyle}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00156}00156     \mbox{\hyperlink{class_enhanced_graph_ab34a402dccfac6f9925587b8b642b1fc}{gP}}-\/>SetLineWidth(graphConfig.\mbox{\hyperlink{class_graph_configuration_a9e519180edfa6b9a418dc0d1cf5b28b0}{lineWidth}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00157}00157     \mbox{\hyperlink{class_enhanced_graph_a4a4dd9cc8e6e73905a9ec15cca1ef655}{gM}}-\/>SetLineColor(graphConfig.\mbox{\hyperlink{class_graph_configuration_aa890be0e69dbb1b7f6d67db3af3960ea}{lineColor}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00158}00158     \mbox{\hyperlink{class_enhanced_graph_a4a4dd9cc8e6e73905a9ec15cca1ef655}{gM}}-\/>SetLineStyle(graphConfig.\mbox{\hyperlink{class_graph_configuration_aa73267e006b983bdaace8fcf3f027f72}{lineStyle}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00159}00159     \mbox{\hyperlink{class_enhanced_graph_a4a4dd9cc8e6e73905a9ec15cca1ef655}{gM}}-\/>SetLineWidth(graphConfig.\mbox{\hyperlink{class_graph_configuration_a9e519180edfa6b9a418dc0d1cf5b28b0}{lineWidth}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00160}00160 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00161}00161     \}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00162}00162 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00163}00163   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_enhanced_graph_a53f2045261ab41987e362566e72e6295}{gSys}})}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00164}00164     \{}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00165}00165     \mbox{\hyperlink{class_enhanced_graph_a53f2045261ab41987e362566e72e6295}{gSys}}-\/>SetLineColor(graphConfig.\mbox{\hyperlink{class_graph_configuration_aa890be0e69dbb1b7f6d67db3af3960ea}{lineColor}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00166}00166     \mbox{\hyperlink{class_enhanced_graph_a53f2045261ab41987e362566e72e6295}{gSys}}-\/>SetLineStyle(graphConfig.\mbox{\hyperlink{class_graph_configuration_aa73267e006b983bdaace8fcf3f027f72}{lineStyle}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00167}00167     \mbox{\hyperlink{class_enhanced_graph_a53f2045261ab41987e362566e72e6295}{gSys}}-\/>SetLineWidth(graphConfig.\mbox{\hyperlink{class_graph_configuration_a9e519180edfa6b9a418dc0d1cf5b28b0}{lineWidth}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00168}00168     \mbox{\hyperlink{class_enhanced_graph_a53f2045261ab41987e362566e72e6295}{gSys}}-\/>SetMarkerColorAlpha(graphConfig.\mbox{\hyperlink{class_graph_configuration_a98d7b6d4d7c9daf47029a4a052f7123f}{markerColor}},0.1);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00169}00169     \mbox{\hyperlink{class_enhanced_graph_a53f2045261ab41987e362566e72e6295}{gSys}}-\/>SetMarkerStyle(graphConfig.\mbox{\hyperlink{class_graph_configuration_a7120c644f2ce934d11f1b5abb12dac4b}{markerStyle}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00170}00170     \mbox{\hyperlink{class_enhanced_graph_a53f2045261ab41987e362566e72e6295}{gSys}}-\/>SetMarkerSize(graphConfig.\mbox{\hyperlink{class_graph_configuration_ae75f5e15f7c820b987eaa445b1f9f57d}{markerSize}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00171}00171     \mbox{\hyperlink{class_enhanced_graph_a53f2045261ab41987e362566e72e6295}{gSys}}-\/>SetFillColorAlpha(graphConfig.\mbox{\hyperlink{class_graph_configuration_a98d7b6d4d7c9daf47029a4a052f7123f}{markerColor}},0.3);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00172}00172     \}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00173}00173 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00174}00174 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00175}00175   TAxis * xAxis = (TAxis *) GetXaxis();}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00176}00176   xAxis-\/>SetNdivisions(graphConfig.\mbox{\hyperlink{class_graph_configuration_ac043b5e19970b7422c32a23033c51a3e}{nXDivisions}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00177}00177   xAxis-\/>SetTitleSize(graphConfig.\mbox{\hyperlink{class_graph_configuration_a001b2489853dabee3bb2b8835bfc3cfa}{xTitleSize}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00178}00178   xAxis-\/>SetTitleOffset(graphConfig.\mbox{\hyperlink{class_graph_configuration_ad2ef76d02b43c295dee005dfbddf9b22}{xTitleOffset}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00179}00179   xAxis-\/>SetLabelSize(graphConfig.\mbox{\hyperlink{class_graph_configuration_aa266e545fd9cb19486b41394b6474a77}{xLabelSize}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00180}00180   xAxis-\/>SetLabelOffset(graphConfig.\mbox{\hyperlink{class_graph_configuration_a683360a32b7a00441a7aab4e48bf2c53}{xLabelOffset}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00181}00181   TAxis * yAxis = (TAxis *) GetYaxis();}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00182}00182   yAxis-\/>SetNdivisions(graphConfig.\mbox{\hyperlink{class_graph_configuration_aea7584f0680c539efd2e7591df104ca7}{nYDivisions}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00183}00183   yAxis-\/>SetTitleSize(graphConfig.\mbox{\hyperlink{class_graph_configuration_a03d4c44ff1454ae348376787272d80c3}{yTitleSize}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00184}00184   yAxis-\/>SetTitleOffset(graphConfig.\mbox{\hyperlink{class_graph_configuration_af5d0c7c322fe8494f456c7999173f9bb}{yTitleOffset}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00185}00185   yAxis-\/>SetLabelSize(graphConfig.\mbox{\hyperlink{class_graph_configuration_ab8a92b3f536462e2b611db48ec4a3830}{yLabelSize}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00186}00186   yAxis-\/>SetLabelOffset(graphConfig.\mbox{\hyperlink{class_graph_configuration_a7a05038f8099e9e65b92a9cdf63c0c20}{yLabelOffset}});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00187}00187 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00188}00188   cout << \textcolor{stringliteral}{"{}-\/INFO-\/ EnhancedGraph::::setProperties() Completed"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00189}00189 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00190}00190 \}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00191}00191 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00192}\mbox{\hyperlink{class_enhanced_graph_aa97f1d65b02b6bde1bd64048595c2c05}{00192}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_enhanced_graph_aa97f1d65b02b6bde1bd64048595c2c05}{EnhancedGraph::printToFile}}(ostream \& output)}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00193}00193 \{}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00194}00194   output << \textcolor{stringliteral}{"{}========================================================================================"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00195}00195   output << \textcolor{stringliteral}{"{}   Graph Name:"{}} << GetName() << endl;}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00196}00196   output << \textcolor{stringliteral}{"{}  Graph Title:"{}} << GetName() << endl;}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00197}00197   output << \textcolor{stringliteral}{"{}      nPoints:"{}} << \mbox{\hyperlink{class_enhanced_graph_a0abfa17a2a7353e24c785cd6c2ad04a2}{nPoints}} << endl;}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00198}00198   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<\mbox{\hyperlink{class_enhanced_graph_a0abfa17a2a7353e24c785cd6c2ad04a2}{nPoints}}; k++)}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00199}00199     \{}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00200}00200     output << \textcolor{stringliteral}{"{}x:"{}} << \mbox{\hyperlink{class_enhanced_graph_ab69cde8675b4635e4712bc898a5736c8}{xPtr}}[k] << \textcolor{stringliteral}{"{} +-\/ "{}} << \mbox{\hyperlink{class_enhanced_graph_ab84d31cccd8d2c6e9427908058014273}{exPtr}}[k] << \textcolor{stringliteral}{"{} y:"{}} << \mbox{\hyperlink{class_enhanced_graph_a91669353eb4eb1ecc33dc44f52ef6363}{yPtr}}[k] << \textcolor{stringliteral}{"{} +-\/(stat) "{}} << \mbox{\hyperlink{class_enhanced_graph_ac3a6a50a9ffcb35d5ce6daf200c4ca9d}{eyPtr}}[k] << \textcolor{stringliteral}{"{} (SYST) "{}} << \mbox{\hyperlink{class_enhanced_graph_aba8935e87e0e7bb2aab3b50270e1e753}{ySysMPtr}}[k] << \textcolor{stringliteral}{"{}  "{}} << \mbox{\hyperlink{class_enhanced_graph_aa2fbb306c1e01df8da7dccf61be8a91e}{ySysPPtr}}[k] << endl;}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00201}00201     \}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00202}00202   output << \textcolor{stringliteral}{"{}========================================================================================"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8cpp_source_l00203}00203 \}}
+
+\end{DoxyCode}

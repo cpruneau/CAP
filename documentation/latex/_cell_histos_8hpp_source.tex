@@ -1,0 +1,51 @@
+\hypertarget{_cell_histos_8hpp_source}{}\doxysection{Cell\+Histos.\+hpp}
+\label{_cell_histos_8hpp_source}\index{Cluster/CellHistos.hpp@{Cluster/CellHistos.hpp}}
+\mbox{\hyperlink{_cell_histos_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef WAC\_CellHistos}}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define WAC\_CellHistos}}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_histograms_8hpp}{Histograms.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_cell_8hpp}{Cell.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00017}00017 \textcolor{comment}{// Cell Histograms}}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00019}\mbox{\hyperlink{class_cell_histos}{00019}} \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_cell_histos}{CellHistos}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_histograms}{Histograms}}}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00020}00020 \{}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00022}00022 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00024}00024   \mbox{\hyperlink{class_cell_histos_a31ffe61e9628db16ec82cd139ff4fb74}{CellHistos}}(\textcolor{keyword}{const} TString \& collectionName,}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00025}00025              AnalysisConfiguration * \mbox{\hyperlink{class_histograms_a045df45b0d1e815891b73274958e8cb4}{configuration}},}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00026}00026              \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}  debugLevel);}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00027}00027   \mbox{\hyperlink{class_cell_histos_a31ffe61e9628db16ec82cd139ff4fb74}{CellHistos}}(TFile * inputFile,}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00028}00028              \textcolor{keyword}{const} TString \& collectionName,}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00029}00029              AnalysisConfiguration * \mbox{\hyperlink{class_histograms_a045df45b0d1e815891b73274958e8cb4}{configuration}},}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00030}00030              \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}  debugLevel);}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00031}00031   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_histos_add2f43ee72cb25b0d5a446db444137d3}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00032}00032   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_histos_ad6d925de4c097ea7a75c623cdf4d5ebb}{loadHistograms}}(TFile * inputFile);}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00033}00033   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_histos_a041f9fb5cf0695c861fcd0ca8e0b0317}{fill}}(\mbox{\hyperlink{class_cell}{Cell}} * cell);}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00036}00036   \textcolor{comment}{// Data Members -\/-\/ Computed}}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00038}\mbox{\hyperlink{class_cell_histos_a4a457183712b3c9202acf33730470f88}{00038}} \textcolor{comment}{}  TH1 * \mbox{\hyperlink{class_cell_histos_a4a457183712b3c9202acf33730470f88}{hCellNclus}};}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00039}\mbox{\hyperlink{class_cell_histos_a9e275ab5e023608a02f42354d95d7277}{00039}}   TH1 * \mbox{\hyperlink{class_cell_histos_a9e275ab5e023608a02f42354d95d7277}{hCellNpart}};}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00040}\mbox{\hyperlink{class_cell_histos_a5ee9bd517873bf51ea3c4171dc975343}{00040}}   TH1 * \mbox{\hyperlink{class_cell_histos_a5ee9bd517873bf51ea3c4171dc975343}{hCellPt}};}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00041}\mbox{\hyperlink{class_cell_histos_ab303ee6d5e60f894f5dd59a337615855}{00041}}   TH1 * \mbox{\hyperlink{class_cell_histos_ab303ee6d5e60f894f5dd59a337615855}{hCellPhi}};}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00042}\mbox{\hyperlink{class_cell_histos_ae662b3f485c3354064c9771d2162f020}{00042}}   TH1 * \mbox{\hyperlink{class_cell_histos_ae662b3f485c3354064c9771d2162f020}{hCellY}};}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00043}\mbox{\hyperlink{class_cell_histos_aed5143ad4e7b566f90fc0f6ff4c74b90}{00043}}   TH1 * \mbox{\hyperlink{class_cell_histos_aed5143ad4e7b566f90fc0f6ff4c74b90}{hCellMass}};}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00044}\mbox{\hyperlink{class_cell_histos_aa7335ab7c4692647fb4a1c0ef70ba6df}{00044}}   TH1 * \mbox{\hyperlink{class_cell_histos_aa7335ab7c4692647fb4a1c0ef70ba6df}{hCellBeta}};}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00045}00045   \mbox{\hyperlink{class_histogram_collection_a8ac292967dc3381d557d3eb2f5730b38}{ClassDef}}(\mbox{\hyperlink{class_cell_histos}{CellHistos}},0)}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00046}00046 \};}
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_cell_histos_8hpp_source_l00049}00049 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* WAC\_CellHistos  */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,36 @@
+\hypertarget{_eos_hadron_gas_8hpp_source}{}\doxysection{Eos\+Hadron\+Gas.\+hpp}
+\label{_eos_hadron_gas_8hpp_source}\index{HadronGas/EosHadronGas.hpp@{HadronGas/EosHadronGas.hpp}}
+\mbox{\hyperlink{_eos_hadron_gas_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef WAC\_EosHadronGas}}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define WAC\_EosHadronGas}}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00003}00003 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <iomanip>}}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_eos_hadron_gas_8hpp}{EosHadronGas.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00009}\mbox{\hyperlink{class_eos_hadron_gas}{00009}} \textcolor{keyword}{class }\mbox{\hyperlink{class_eos_hadron_gas}{EosHadronGas}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_eos}{Eos}}}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00010}00010 \{}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00011}00011 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00012}00012   \mbox{\hyperlink{class_eos_hadron_gas_a07fb1f754b02f21bc26b66e7b91374e7}{EosHadronGas}}();}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00013}00013   \mbox{\hyperlink{class_eos_hadron_gas_a07fb1f754b02f21bc26b66e7b91374e7}{EosHadronGas}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_eos_hadron_gas}{EosHadronGas}} \& source);}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00014}00014   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_eos_hadron_gas_a33a86ab967b586f3787370add6f007a8}{\string~EosHadronGas}}();}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00015}00015   \mbox{\hyperlink{class_eos_hadron_gas}{EosHadronGas}} \& \mbox{\hyperlink{class_eos_hadron_gas_adf806b1797e12b05976ae65925da8d55}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_eos_hadron_gas}{EosHadronGas}} \& source);}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00017}00017   \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_eos_hadron_gas_a5253fc7ffaf1ce71a35af72f142c66dc}{calculateNumberDensity}}(\textcolor{keywordtype}{double} temperature, \textcolor{keywordtype}{double} mu);}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00018}00018   \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_eos_hadron_gas_a69cc605f820360d9fbb59a6b606579a6}{calculateEnergyDensity}}(\textcolor{keywordtype}{double} temperature);}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00019}00019   \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_eos_hadron_gas_ad1f3b0c9621bbf9b3af6ecc0b1707242}{calculateEntropyDensity}}(\textcolor{keywordtype}{double} temperature);}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00020}00020   \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_eos_hadron_gas_a31d652a593c4b26b48995ac0f1419d46}{calculatePressure}}(\textcolor{keywordtype}{double} temperature);}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00021}00021   \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_eos_hadron_gas_a0dbb32c417d6a74f9b1ebbd0b81a3172}{calculate\_dsdmu}}(\textcolor{keywordtype}{double} temperature);}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00022}00022   \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_eos_hadron_gas_a1f53de0aaddb02ccd1a917e19bac03d2}{calculate\_deoverTdmu}}(\textcolor{keywordtype}{double} temperature);}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00023}00023   \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_eos_hadron_gas_ad7280047d4e309b05946cd2920e50083}{calculate\_dPoverTdmu}}(\textcolor{keywordtype}{double} temperature);}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00024}00024   \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_eos_hadron_gas_a66de5cdd26913b3d6383964f779eccfe}{calculate\_dndmu}}(\textcolor{keywordtype}{double} temperature);}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00026}00026   ClassDef(\mbox{\hyperlink{class_eos_hadron_gas}{EosHadronGas}},0)}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00027}00027 \};}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00029}00029 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// WAC\_EosHadronGas}}
+\DoxyCodeLine{\Hypertarget{_eos_hadron_gas_8hpp_source_l00030}00030 }
+
+\end{DoxyCode}

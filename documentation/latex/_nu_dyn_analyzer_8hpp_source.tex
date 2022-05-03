@@ -1,0 +1,59 @@
+\hypertarget{_nu_dyn_analyzer_8hpp_source}{}\doxysection{Nu\+Dyn\+Analyzer.\+hpp}
+\label{_nu_dyn_analyzer_8hpp_source}\index{Base/NuDynAnalyzer.hpp@{Base/NuDynAnalyzer.hpp}}
+\mbox{\hyperlink{_nu_dyn_analyzer_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#ifndef CAP\_\_NuDynAnalyzer}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#define CAP\_\_NuDynAnalyzer}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include <TParameter.h>}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}TFile.h"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}TList.h"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_event_8hpp}{Event.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_event_filter_8hpp}{EventFilter.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00019}00019 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_nu_dyn_histos_8hpp}{NuDynHistos.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00020}00020 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_nu_dyn_derived_histos_8hpp}{NuDynDerivedHistos.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00021}00021 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_configuration_8hpp}{Configuration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00022}00022 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_filter_8hpp}{ParticleFilter.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00023}00023 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_configuration_8hpp}{Configuration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00036}\mbox{\hyperlink{class_nu_dyn_analyzer}{00036}} \textcolor{keyword}{class }\mbox{\hyperlink{class_nu_dyn_analyzer}{NuDynAnalyzer}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00037}00037 \{}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00038}00038 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00049}00049   \mbox{\hyperlink{class_nu_dyn_analyzer_a34b59753fe18b19a5a31a357824b36f3}{NuDynAnalyzer}}(\textcolor{keyword}{const} TString \&     \_name,}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00050}00050             \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \&   \_configuration,}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00051}00051             vector<EventFilter*>    \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00052}00052             vector<ParticleFilter*> \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00053}00053             \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                \_selectedLevel);}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00057}\mbox{\hyperlink{class_nu_dyn_analyzer_a226dbf87c20c03c8dbe702b8b26e8d4e}{00057}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_nu_dyn_analyzer_a226dbf87c20c03c8dbe702b8b26e8d4e}{\string~NuDynAnalyzer}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00058}00058   }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00062}00062   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nu_dyn_analyzer_af40090b991f8c197bc7d2b5c96043656}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00063}00063   }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00067}00067   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nu_dyn_analyzer_a6aff300563fc71d5815eb7d87fbd9af9}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00068}00068   }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00072}00072   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nu_dyn_analyzer_a40787bf145e5e5df389390b7bcf5b95f}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00073}00073   }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00077}00077   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nu_dyn_analyzer_a9ef59ad391f5338fc9a2cf66b9344436}{createHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00078}00078   }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00082}00082   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}{loadHistograms}}(TFile * inputFile);}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00084}00084 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00085}\mbox{\hyperlink{class_nu_dyn_analyzer_a4e73ab80c03a28db59bf247d21cb2b20}{00085}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_nu_dyn_analyzer_a4e73ab80c03a28db59bf247d21cb2b20}{multiplicityType}}; }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00087}00087   ClassDef(\mbox{\hyperlink{class_nu_dyn_analyzer}{NuDynAnalyzer}},0)}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00088}00088 \};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_analyzer_8hpp_source_l00091}00091 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_NuDynAnalyzer */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

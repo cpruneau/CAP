@@ -1,0 +1,442 @@
+\hypertarget{class_configuration}{}\doxysection{Configuration Class Reference}
+\label{class_configuration}\index{Configuration@{Configuration}}
+
+
+{\ttfamily \#include $<$Configuration.\+hpp$>$}
+
+
+
+Inheritance diagram for Configuration\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_configuration__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Configuration\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=154pt]{class_configuration__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_configuration_a779947337bf652f0e773cb29f37f14ba}{Configuration}} ()
+\item 
+\mbox{\hyperlink{class_configuration_a45f2d328f0ba89d9dd65546969b41a20}{Configuration}} (const TString \&\+\_\+name)
+\item 
+\mbox{\hyperlink{class_configuration_a3dd3fbf2c59a07fa97e28dbf8ffb1efb}{Configuration}} (const \mbox{\hyperlink{class_configuration}{Configuration}} \&config)
+\item 
+\mbox{\hyperlink{class_configuration}{Configuration}} \& \mbox{\hyperlink{class_configuration_a53266efd3cb87a6f30eadb1afe3a884f}{operator=}} (const \mbox{\hyperlink{class_configuration}{Configuration}} \&config)
+\item 
+virtual \mbox{\hyperlink{class_configuration_a1226f87dc3c27be16eb16e53301eb2f3}{$\sim$\+Configuration}} ()
+\item 
+void \mbox{\hyperlink{class_configuration_ab5137bfe94a9fcf22693367ca365b72c}{clear}} ()
+\item 
+void \mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{add\+Parameter}} (const TString \&\mbox{\hyperlink{class_configuration_adc780db92a8d1c6343ff18309a304973}{name}}, bool value)
+\item 
+void \mbox{\hyperlink{class_configuration_a2bbcd8b3551241bf8f9f9ed319ed2ad5}{add\+Parameter}} (const TString \&\mbox{\hyperlink{class_configuration_adc780db92a8d1c6343ff18309a304973}{name}}, int value)
+\item 
+void \mbox{\hyperlink{class_configuration_ad5707fea969ea3fb67a3263da681d6ad}{add\+Parameter}} (const TString \&\mbox{\hyperlink{class_configuration_adc780db92a8d1c6343ff18309a304973}{name}}, long value)
+\item 
+void \mbox{\hyperlink{class_configuration_a0c56ecc965c6d2f561857f895de6d823}{add\+Parameter}} (const TString \&\mbox{\hyperlink{class_configuration_adc780db92a8d1c6343ff18309a304973}{name}}, double value)
+\item 
+void \mbox{\hyperlink{class_configuration_a1c7b00a8d70cf5e1808ee789ab92c340}{add\+Parameter}} (const TString \&\mbox{\hyperlink{class_configuration_adc780db92a8d1c6343ff18309a304973}{name}}, const TString \&value)
+\item 
+void \mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{set\+Parameter}} (const TString \&\mbox{\hyperlink{class_configuration_adc780db92a8d1c6343ff18309a304973}{name}}, bool value)
+\item 
+void \mbox{\hyperlink{class_configuration_a058b51cb1944fe914a2f0a9cbfb25b4b}{set\+Parameter}} (const TString \&\mbox{\hyperlink{class_configuration_adc780db92a8d1c6343ff18309a304973}{name}}, int value)
+\item 
+void \mbox{\hyperlink{class_configuration_ad8c9deb089e4d078424131f1734b24eb}{set\+Parameter}} (const TString \&\mbox{\hyperlink{class_configuration_adc780db92a8d1c6343ff18309a304973}{name}}, long value)
+\item 
+void \mbox{\hyperlink{class_configuration_a73028b48e127ac88a71e2d170dc1a172}{set\+Parameter}} (const TString \&\mbox{\hyperlink{class_configuration_adc780db92a8d1c6343ff18309a304973}{name}}, double value)
+\item 
+void \mbox{\hyperlink{class_configuration_ae2b83f05cacd69518b8749496b1356d9}{set\+Parameter}} (const TString \&\mbox{\hyperlink{class_configuration_adc780db92a8d1c6343ff18309a304973}{name}}, const TString \&value)
+\item 
+void \mbox{\hyperlink{class_configuration_a629cc281aa96617f0382b98f3cd114c2}{set\+Parameters}} (const \mbox{\hyperlink{class_configuration}{Configuration}} \&config)
+\item 
+bool \mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{get\+Value\+Bool}} (const TString \&\mbox{\hyperlink{class_configuration_adc780db92a8d1c6343ff18309a304973}{name}}) const
+\item 
+int \mbox{\hyperlink{class_configuration_ae0804e2d00ec6f41e98d908f37f0a50a}{get\+Value\+Int}} (const TString \&\mbox{\hyperlink{class_configuration_adc780db92a8d1c6343ff18309a304973}{name}}) const
+\item 
+int \mbox{\hyperlink{class_configuration_a6f456438de35b0a8e53d9885852541d9}{get\+Value\+Long}} (const TString \&\mbox{\hyperlink{class_configuration_adc780db92a8d1c6343ff18309a304973}{name}}) const
+\item 
+double \mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{get\+Value\+Double}} (const TString \&\mbox{\hyperlink{class_configuration_adc780db92a8d1c6343ff18309a304973}{name}}) const
+\item 
+TString \mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{get\+Value\+String}} (const TString \&\mbox{\hyperlink{class_configuration_adc780db92a8d1c6343ff18309a304973}{name}}) const
+\item 
+void \mbox{\hyperlink{class_configuration_a8420b979e7d98bf6562ec2f6cc28d0d8}{set\+Name}} (const TString \&\+\_\+name)
+\item 
+TString \mbox{\hyperlink{class_configuration_a9c0492ff844f07b1a70d5004c591395b}{get\+Name}} () const
+\item 
+int \mbox{\hyperlink{class_configuration_a4dc1f351be4695d6fc17c45a7945037a}{get\+NParameters}} ()
+\item 
+virtual void \mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{print\+Configuration}} (ostream \&os)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TString \mbox{\hyperlink{class_configuration_adc780db92a8d1c6343ff18309a304973}{name}}
+\item 
+std\+::map$<$ TString, bool $>$ \mbox{\hyperlink{class_configuration_ab0aa47f662a8f8eb7697efbebb8940ad}{bool\+Map}}
+\item 
+std\+::map$<$ TString, int $>$ \mbox{\hyperlink{class_configuration_a964c0acee57530fa0ae2022be402700c}{int\+Map}}
+\item 
+std\+::map$<$ TString, long $>$ \mbox{\hyperlink{class_configuration_af3aadabbc4059b866c4fd5a11ad4356b}{long\+Map}}
+\item 
+std\+::map$<$ TString, double $>$ \mbox{\hyperlink{class_configuration_a6976215f9ecc341264530a456e921cc2}{double\+Map}}
+\item 
+std\+::map$<$ TString, TString $>$ \mbox{\hyperlink{class_configuration_a983f300c8b4fd5cf01e41a0432617690}{string\+Map}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_configuration}{Configuration}} of a given object or task
+
+Utility class used to define the configuration of objects or tasks 
+
+Definition at line \mbox{\hyperlink{_configuration_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{_configuration_8hpp_source}{Configuration.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_configuration_a779947337bf652f0e773cb29f37f14ba}\label{class_configuration_a779947337bf652f0e773cb29f37f14ba}} 
+\index{Configuration@{Configuration}!Configuration@{Configuration}}
+\index{Configuration@{Configuration}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{Configuration()}{Configuration()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Configuration\+::\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_a45f2d328f0ba89d9dd65546969b41a20}\label{class_configuration_a45f2d328f0ba89d9dd65546969b41a20}} 
+\index{Configuration@{Configuration}!Configuration@{Configuration}}
+\index{Configuration@{Configuration}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{Configuration()}{Configuration()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Configuration\+::\+Configuration (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name }\end{DoxyParamCaption})}
+
+Constructor 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_a3dd3fbf2c59a07fa97e28dbf8ffb1efb}\label{class_configuration_a3dd3fbf2c59a07fa97e28dbf8ffb1efb}} 
+\index{Configuration@{Configuration}!Configuration@{Configuration}}
+\index{Configuration@{Configuration}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{Configuration()}{Configuration()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Configuration\+::\+Configuration (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{config }\end{DoxyParamCaption})}
+
+Copy Constructor 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00044}{44}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_a1226f87dc3c27be16eb16e53301eb2f3}\label{class_configuration_a1226f87dc3c27be16eb16e53301eb2f3}} 
+\index{Configuration@{Configuration}!````~Configuration@{$\sim$Configuration}}
+\index{````~Configuration@{$\sim$Configuration}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{$\sim$Configuration()}{~Configuration()}}
+{\footnotesize\ttfamily virtual Configuration\+::$\sim$\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Dtor 
+
+Definition at line \mbox{\hyperlink{_configuration_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{_configuration_8hpp_source}{Configuration.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}\label{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}} 
+\index{Configuration@{Configuration}!addParameter@{addParameter}}
+\index{addParameter@{addParameter}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{addParameter()}{addParameter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily void Configuration\+::add\+Parameter (\begin{DoxyParamCaption}\item[{const TString \&}]{name,  }\item[{bool}]{value }\end{DoxyParamCaption})}
+
+Add a bool parameter to the configuration with the given name and value 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_a1c7b00a8d70cf5e1808ee789ab92c340}\label{class_configuration_a1c7b00a8d70cf5e1808ee789ab92c340}} 
+\index{Configuration@{Configuration}!addParameter@{addParameter}}
+\index{addParameter@{addParameter}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{addParameter()}{addParameter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily void Configuration\+::add\+Parameter (\begin{DoxyParamCaption}\item[{const TString \&}]{name,  }\item[{const TString \&}]{value }\end{DoxyParamCaption})}
+
+Add a string parameter to the configuration with the given name and value 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_a0c56ecc965c6d2f561857f895de6d823}\label{class_configuration_a0c56ecc965c6d2f561857f895de6d823}} 
+\index{Configuration@{Configuration}!addParameter@{addParameter}}
+\index{addParameter@{addParameter}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{addParameter()}{addParameter()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily void Configuration\+::add\+Parameter (\begin{DoxyParamCaption}\item[{const TString \&}]{name,  }\item[{double}]{value }\end{DoxyParamCaption})}
+
+Add a double parameter to the configuration with the given name and value 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00124}{124}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_a2bbcd8b3551241bf8f9f9ed319ed2ad5}\label{class_configuration_a2bbcd8b3551241bf8f9f9ed319ed2ad5}} 
+\index{Configuration@{Configuration}!addParameter@{addParameter}}
+\index{addParameter@{addParameter}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{addParameter()}{addParameter()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily void Configuration\+::add\+Parameter (\begin{DoxyParamCaption}\item[{const TString \&}]{name,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+Add an int parameter to the configuration with the given name and value 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00095}{95}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_ad5707fea969ea3fb67a3263da681d6ad}\label{class_configuration_ad5707fea969ea3fb67a3263da681d6ad}} 
+\index{Configuration@{Configuration}!addParameter@{addParameter}}
+\index{addParameter@{addParameter}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{addParameter()}{addParameter()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily void Configuration\+::add\+Parameter (\begin{DoxyParamCaption}\item[{const TString \&}]{name,  }\item[{long}]{value }\end{DoxyParamCaption})}
+
+Add an int parameter to the configuration with the given name and value 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00109}{109}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_ab5137bfe94a9fcf22693367ca365b72c}\label{class_configuration_ab5137bfe94a9fcf22693367ca365b72c}} 
+\index{Configuration@{Configuration}!clear@{clear}}
+\index{clear@{clear}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Configuration\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clear/erase all parameters held by this configuration 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_a9c0492ff844f07b1a70d5004c591395b}\label{class_configuration_a9c0492ff844f07b1a70d5004c591395b}} 
+\index{Configuration@{Configuration}!getName@{getName}}
+\index{getName@{getName}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily TString Configuration\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value of the parameter named \textquotesingle{}name\textquotesingle{} 
+
+Definition at line \mbox{\hyperlink{_configuration_8hpp_source_l00149}{149}} of file \mbox{\hyperlink{_configuration_8hpp_source}{Configuration.\+hpp}}.
+
+\mbox{\Hypertarget{class_configuration_a4dc1f351be4695d6fc17c45a7945037a}\label{class_configuration_a4dc1f351be4695d6fc17c45a7945037a}} 
+\index{Configuration@{Configuration}!getNParameters@{getNParameters}}
+\index{getNParameters@{getNParameters}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{getNParameters()}{getNParameters()}}
+{\footnotesize\ttfamily int Configuration\+::get\+NParameters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the value of the parameter named \textquotesingle{}name\textquotesingle{} 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00344}{344}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}\label{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}} 
+\index{Configuration@{Configuration}!getValueBool@{getValueBool}}
+\index{getValueBool@{getValueBool}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{getValueBool()}{getValueBool()}}
+{\footnotesize\ttfamily bool Configuration\+::get\+Value\+Bool (\begin{DoxyParamCaption}\item[{const TString \&}]{name }\end{DoxyParamCaption}) const}
+
+Get the value of the parameter named \textquotesingle{}name\textquotesingle{} 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00229}{229}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}\label{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}} 
+\index{Configuration@{Configuration}!getValueDouble@{getValueDouble}}
+\index{getValueDouble@{getValueDouble}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{getValueDouble()}{getValueDouble()}}
+{\footnotesize\ttfamily double Configuration\+::get\+Value\+Double (\begin{DoxyParamCaption}\item[{const TString \&}]{name }\end{DoxyParamCaption}) const}
+
+Get the value of the parameter named \textquotesingle{}name\textquotesingle{} 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00282}{282}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_ae0804e2d00ec6f41e98d908f37f0a50a}\label{class_configuration_ae0804e2d00ec6f41e98d908f37f0a50a}} 
+\index{Configuration@{Configuration}!getValueInt@{getValueInt}}
+\index{getValueInt@{getValueInt}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{getValueInt()}{getValueInt()}}
+{\footnotesize\ttfamily int Configuration\+::get\+Value\+Int (\begin{DoxyParamCaption}\item[{const TString \&}]{name }\end{DoxyParamCaption}) const}
+
+Get the value of the parameter named \textquotesingle{}name\textquotesingle{} 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00247}{247}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_a6f456438de35b0a8e53d9885852541d9}\label{class_configuration_a6f456438de35b0a8e53d9885852541d9}} 
+\index{Configuration@{Configuration}!getValueLong@{getValueLong}}
+\index{getValueLong@{getValueLong}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{getValueLong()}{getValueLong()}}
+{\footnotesize\ttfamily int Configuration\+::get\+Value\+Long (\begin{DoxyParamCaption}\item[{const TString \&}]{name }\end{DoxyParamCaption}) const}
+
+Get the value of the parameter named \textquotesingle{}name\textquotesingle{} 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00264}{264}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_ace156b503336e7c18e7fb830186dbb87}\label{class_configuration_ace156b503336e7c18e7fb830186dbb87}} 
+\index{Configuration@{Configuration}!getValueString@{getValueString}}
+\index{getValueString@{getValueString}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{getValueString()}{getValueString()}}
+{\footnotesize\ttfamily TString Configuration\+::get\+Value\+String (\begin{DoxyParamCaption}\item[{const TString \&}]{name }\end{DoxyParamCaption}) const}
+
+Get the value of the parameter named \textquotesingle{}name\textquotesingle{} 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00299}{299}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_a53266efd3cb87a6f30eadb1afe3a884f}\label{class_configuration_a53266efd3cb87a6f30eadb1afe3a884f}} 
+\index{Configuration@{Configuration}!operator=@{operator=}}
+\index{operator=@{operator=}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_configuration}{Configuration}} \& Configuration\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{config }\end{DoxyParamCaption})}
+
+Copy operator 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_a8b19a94819ee67bf12fbab045cee329b}\label{class_configuration_a8b19a94819ee67bf12fbab045cee329b}} 
+\index{Configuration@{Configuration}!printConfiguration@{printConfiguration}}
+\index{printConfiguration@{printConfiguration}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{printConfiguration()}{printConfiguration()}}
+{\footnotesize\ttfamily void Configuration\+::print\+Configuration (\begin{DoxyParamCaption}\item[{ostream \&}]{os }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Get the value of the parameter named \textquotesingle{}name\textquotesingle{} 
+
+Reimplemented in \mbox{\hyperlink{class_bidim_gauss_fit_configuration_afb1a0c895c918a2d7e2fb30160f3ae60}{Bidim\+Gauss\+Fit\+Configuration}}.
+
+
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00357}{357}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_a8420b979e7d98bf6562ec2f6cc28d0d8}\label{class_configuration_a8420b979e7d98bf6562ec2f6cc28d0d8}} 
+\index{Configuration@{Configuration}!setName@{setName}}
+\index{setName@{setName}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void Configuration\+::set\+Name (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value of the parameter named \textquotesingle{}name\textquotesingle{} 
+
+Definition at line \mbox{\hyperlink{_configuration_8hpp_source_l00144}{144}} of file \mbox{\hyperlink{_configuration_8hpp_source}{Configuration.\+hpp}}.
+
+\mbox{\Hypertarget{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}\label{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}} 
+\index{Configuration@{Configuration}!setParameter@{setParameter}}
+\index{setParameter@{setParameter}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{setParameter()}{setParameter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily void Configuration\+::set\+Parameter (\begin{DoxyParamCaption}\item[{const TString \&}]{name,  }\item[{bool}]{value }\end{DoxyParamCaption})}
+
+Set the parameter named \textquotesingle{}name\textquotesingle{} to the given value 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00152}{152}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_ae2b83f05cacd69518b8749496b1356d9}\label{class_configuration_ae2b83f05cacd69518b8749496b1356d9}} 
+\index{Configuration@{Configuration}!setParameter@{setParameter}}
+\index{setParameter@{setParameter}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{setParameter()}{setParameter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily void Configuration\+::set\+Parameter (\begin{DoxyParamCaption}\item[{const TString \&}]{name,  }\item[{const TString \&}]{value }\end{DoxyParamCaption})}
+
+Set the parameter named \textquotesingle{}name\textquotesingle{} to the given value 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00213}{213}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_a73028b48e127ac88a71e2d170dc1a172}\label{class_configuration_a73028b48e127ac88a71e2d170dc1a172}} 
+\index{Configuration@{Configuration}!setParameter@{setParameter}}
+\index{setParameter@{setParameter}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{setParameter()}{setParameter()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily void Configuration\+::set\+Parameter (\begin{DoxyParamCaption}\item[{const TString \&}]{name,  }\item[{double}]{value }\end{DoxyParamCaption})}
+
+Set the parameter named \textquotesingle{}name\textquotesingle{} to the given value 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00198}{198}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_a058b51cb1944fe914a2f0a9cbfb25b4b}\label{class_configuration_a058b51cb1944fe914a2f0a9cbfb25b4b}} 
+\index{Configuration@{Configuration}!setParameter@{setParameter}}
+\index{setParameter@{setParameter}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{setParameter()}{setParameter()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily void Configuration\+::set\+Parameter (\begin{DoxyParamCaption}\item[{const TString \&}]{name,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+Set the parameter named \textquotesingle{}name\textquotesingle{} to the given value 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00167}{167}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_ad8c9deb089e4d078424131f1734b24eb}\label{class_configuration_ad8c9deb089e4d078424131f1734b24eb}} 
+\index{Configuration@{Configuration}!setParameter@{setParameter}}
+\index{setParameter@{setParameter}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{setParameter()}{setParameter()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily void Configuration\+::set\+Parameter (\begin{DoxyParamCaption}\item[{const TString \&}]{name,  }\item[{long}]{value }\end{DoxyParamCaption})}
+
+Set the parameter named \textquotesingle{}name\textquotesingle{} to the given value 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00182}{182}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+\mbox{\Hypertarget{class_configuration_a629cc281aa96617f0382b98f3cd114c2}\label{class_configuration_a629cc281aa96617f0382b98f3cd114c2}} 
+\index{Configuration@{Configuration}!setParameters@{setParameters}}
+\index{setParameters@{setParameters}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{setParameters()}{setParameters()}}
+{\footnotesize\ttfamily void Configuration\+::set\+Parameters (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{config }\end{DoxyParamCaption})}
+
+Set the parameters to values supplied in the given configuration 
+
+Definition at line \mbox{\hyperlink{_configuration_8cpp_source_l00316}{316}} of file \mbox{\hyperlink{_configuration_8cpp_source}{Configuration.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_configuration_ab0aa47f662a8f8eb7697efbebb8940ad}\label{class_configuration_ab0aa47f662a8f8eb7697efbebb8940ad}} 
+\index{Configuration@{Configuration}!boolMap@{boolMap}}
+\index{boolMap@{boolMap}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{boolMap}{boolMap}}
+{\footnotesize\ttfamily std\+::map$<$TString,bool$>$ Configuration\+::bool\+Map\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_configuration_8hpp_source_l00167}{167}} of file \mbox{\hyperlink{_configuration_8hpp_source}{Configuration.\+hpp}}.
+
+\mbox{\Hypertarget{class_configuration_a6976215f9ecc341264530a456e921cc2}\label{class_configuration_a6976215f9ecc341264530a456e921cc2}} 
+\index{Configuration@{Configuration}!doubleMap@{doubleMap}}
+\index{doubleMap@{doubleMap}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{doubleMap}{doubleMap}}
+{\footnotesize\ttfamily std\+::map$<$TString,double$>$ Configuration\+::double\+Map\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_configuration_8hpp_source_l00170}{170}} of file \mbox{\hyperlink{_configuration_8hpp_source}{Configuration.\+hpp}}.
+
+\mbox{\Hypertarget{class_configuration_a964c0acee57530fa0ae2022be402700c}\label{class_configuration_a964c0acee57530fa0ae2022be402700c}} 
+\index{Configuration@{Configuration}!intMap@{intMap}}
+\index{intMap@{intMap}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{intMap}{intMap}}
+{\footnotesize\ttfamily std\+::map$<$TString,int$>$ Configuration\+::int\+Map\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_configuration_8hpp_source_l00168}{168}} of file \mbox{\hyperlink{_configuration_8hpp_source}{Configuration.\+hpp}}.
+
+\mbox{\Hypertarget{class_configuration_af3aadabbc4059b866c4fd5a11ad4356b}\label{class_configuration_af3aadabbc4059b866c4fd5a11ad4356b}} 
+\index{Configuration@{Configuration}!longMap@{longMap}}
+\index{longMap@{longMap}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{longMap}{longMap}}
+{\footnotesize\ttfamily std\+::map$<$TString,long$>$ Configuration\+::long\+Map\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_configuration_8hpp_source_l00169}{169}} of file \mbox{\hyperlink{_configuration_8hpp_source}{Configuration.\+hpp}}.
+
+\mbox{\Hypertarget{class_configuration_adc780db92a8d1c6343ff18309a304973}\label{class_configuration_adc780db92a8d1c6343ff18309a304973}} 
+\index{Configuration@{Configuration}!name@{name}}
+\index{name@{name}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily TString Configuration\+::name\hspace{0.3cm}{\ttfamily [protected]}}
+
+Name of this configuration 
+
+Definition at line \mbox{\hyperlink{_configuration_8hpp_source_l00166}{166}} of file \mbox{\hyperlink{_configuration_8hpp_source}{Configuration.\+hpp}}.
+
+\mbox{\Hypertarget{class_configuration_a983f300c8b4fd5cf01e41a0432617690}\label{class_configuration_a983f300c8b4fd5cf01e41a0432617690}} 
+\index{Configuration@{Configuration}!stringMap@{stringMap}}
+\index{stringMap@{stringMap}!Configuration@{Configuration}}
+\doxysubsubsection{\texorpdfstring{stringMap}{stringMap}}
+{\footnotesize\ttfamily std\+::map$<$TString,TString$>$ Configuration\+::string\+Map\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_configuration_8hpp_source_l00171}{171}} of file \mbox{\hyperlink{_configuration_8hpp_source}{Configuration.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_configuration_8hpp}{Configuration.\+hpp}}\item 
+Base/\mbox{\hyperlink{_configuration_8cpp}{Configuration.\+cpp}}\end{DoxyCompactItemize}

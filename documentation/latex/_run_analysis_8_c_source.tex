@@ -1,0 +1,598 @@
+\hypertarget{_run_analysis_8_c_source}{}\doxysection{Run\+Analysis.\+C}
+\label{_run_analysis_8_c_source}\index{Macros/RunAnalysis.C@{Macros/RunAnalysis.C}}
+\mbox{\hyperlink{_run_analysis_8_c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00001}00001 \textcolor{comment}{//  Created by Claude Pruneau on 6/19/2020.}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00002}00002 \textcolor{comment}{//  Copyright © 2020 Claude Pruneau. All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00004}00004 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00005}00005 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00006}00006 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00007}00007 \textcolor{preprocessor}{\#include <TStyle.h>}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00008}00008 \textcolor{preprocessor}{\#include <TROOT.h>}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00010}\mbox{\hyperlink{_run_analysis_8_c_a5d40d9b3e225842a34cab1160c20bb29}{00010}} \textcolor{keywordtype}{int} \mbox{\hyperlink{_run_analysis_8_c_a5d40d9b3e225842a34cab1160c20bb29}{RunAnalysis}}()}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00011}00011 \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00012}00012   TString includesPath = getenv(\textcolor{stringliteral}{"{}WAC\_SRC"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00013}00013   includesPath += \textcolor{stringliteral}{"{}/Base/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00014}00014   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Timer.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00015}00015   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}MessageLogger.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00016}00016   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Task.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00017}00017   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}TaskIterator.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00018}00018   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}GraphConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00019}00019   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Collection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00020}00020   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}CanvasCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00021}00021   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}HistogramCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00022}00022   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}CanvasConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00023}00023   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Histograms.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00024}00024   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Plotter.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00025}00025   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Particle.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00026}00026   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticleType.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00027}00027   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticleTypeCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00028}00028   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticleDecayMode.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00029}00029   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticleAnalyzer.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00030}00030   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticlePairAnalyzer.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00031}00031   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}NuDynAnalyzer.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00032}00032   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}SubSampleStatCalculator.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00033}00033   gSystem-\/>Load(\textcolor{stringliteral}{"{}libBase.dylib"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00035}00035   includesPath = getenv(\textcolor{stringliteral}{"{}WAC\_SRC"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00036}00036   includesPath += \textcolor{stringliteral}{"{}/WacPythia/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00037}00037   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}PythiaEventGenerator.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00038}00038   gSystem-\/>Load(\textcolor{stringliteral}{"{}libWacPythia.dylib"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00039}00039   \textcolor{comment}{// ==================================================================================}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00041}00041   std::cout << \textcolor{stringliteral}{"{}=================================================================================="{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00042}00042   std::cout << \textcolor{stringliteral}{"{}MC Model Analysis"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00043}00043   std::cout << \textcolor{stringliteral}{"{}=================================================================================="{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00045}00045   }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00046}00046   \textcolor{keywordtype}{bool} YES = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00047}00047   \textcolor{keywordtype}{bool} NO  = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00048}00048   TString globalLabel     = \textcolor{stringliteral}{"{}G"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00049}00049   TString spherocityLabel = \textcolor{stringliteral}{"{}S"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00050}00050   TString partLabel       = \textcolor{stringliteral}{"{}Part"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00051}00051   TString pairLabel       = \textcolor{stringliteral}{"{}Pair"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00052}00052   TString nuDynLabel      = \textcolor{stringliteral}{"{}NuDyn"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00054}00054   \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}} infoLevel  = \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{MessageLogger::Info}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00055}00055   \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}} debugLevel = \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa5f1f5d604d1a1e53af3b330224db4986}{MessageLogger::Debug}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00056}00056   \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}} selectedLevel = infoLevel;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00057}00057   }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00058}00058   \textcolor{keywordtype}{long}    nEventRequested     = 100000-\/1;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00059}00059   \textcolor{keywordtype}{long}    nEventReported      = 1000000;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00060}00060   \textcolor{keywordtype}{long}    nEventPartialSave   = 1000000;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00061}00061   \textcolor{keywordtype}{bool}    doPartialSave       = NO;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00062}00062   \textcolor{keywordtype}{bool}    doSubsampleAnalysis = NO;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00063}00063   \textcolor{keywordtype}{double}  beamEnergy          = 13000.0; \textcolor{comment}{// GeV}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00064}00064   \textcolor{keywordtype}{int}     beamPdgCode         = 2212;    \textcolor{comment}{// proton}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00065}00065   \textcolor{keywordtype}{int}     targetPdgCode       = 2212;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00066}00066   \textcolor{keywordtype}{int}     globalEventFilterOptions   = 1;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00067}00067   \textcolor{keywordtype}{int}     analysisParticleFilterOption = 6;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00068}00068   \textcolor{keywordtype}{int}     analysisEventFilterOptions   = 2;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00070}00070   \textcolor{keywordtype}{bool} runPythiaGenerator    = YES;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00071}00071   \textcolor{keywordtype}{bool} runHerwigGenerator    = NO;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00072}00072   \textcolor{keywordtype}{bool} runAmptGenerator      = NO;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00073}00073   \textcolor{keywordtype}{bool} runEposGenerator      = NO;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00074}00074   \textcolor{keywordtype}{bool} runUrqmdGenerator     = NO;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00075}00075   \textcolor{keywordtype}{bool} runHijingGenerator    = NO;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00076}00076   \textcolor{keywordtype}{bool} runGausResGeneator    = NO;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00077}00077   \textcolor{keywordtype}{bool} runGlobalAnalysis     = YES;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00078}00078   \textcolor{keywordtype}{bool} runSpherocityAnalysis = YES;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00079}00079   \textcolor{keywordtype}{bool} runPartAnalysis       = NO;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00080}00080   \textcolor{keywordtype}{bool} runPairAnalysis       = NO;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00081}00081   \textcolor{keywordtype}{bool} runNuDynAnalysis      = NO;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00082}00082   \textcolor{keywordtype}{bool} loadPdgTable          = YES;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00083}00083   }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00084}00084   TString inputPathBase   = \textcolor{stringliteral}{"{}/Volumes/ClaudeDisc4/OutputFiles/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00085}00085   TString outputPathBase  = \textcolor{stringliteral}{"{}/Volumes/ClaudeDisc4/OutputFiles/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00086}00086   TString inputFileNameBase;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00087}00087   TString outputFileNameBase;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00088}00088   TString fileNameSuffix;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00090}00090   TString inputPathName   = inputPathBase;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00091}00091   TString outputPathName  = outputPathBase;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00092}00092  }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00093}00093   \textcolor{keywordflow}{if} (runPythiaGenerator)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00094}00094     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00095}00095     TString pythiaLabel = \textcolor{stringliteral}{"{}PYTHIA\_"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00096}00096     TString systemLabel = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00097}00097     TString energyLabel = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00098}00098     \textcolor{keywordflow}{if} (beamPdgCode    == 2212) systemLabel += \textcolor{stringliteral}{"{}P"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00099}00099     \textcolor{keywordflow}{if} (targetPdgCode  == 2212) systemLabel += \textcolor{stringliteral}{"{}P"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00100}00100     energyLabel += int(beamEnergy);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00101}00101     energyLabel += \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00102}00102     inputPathName  += pythiaLabel;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00103}00103     inputPathName  += \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00104}00104     inputPathName  += systemLabel;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00105}00105     inputPathName  += \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00106}00106     inputPathName  += energyLabel;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00107}00107     inputPathName  += \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00108}00108     outputPathName  += pythiaLabel;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00109}00109     outputPathName  += \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00110}00110     inputPathName  += systemLabel;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00111}00111     inputPathName  += \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00112}00112     outputPathName  += energyLabel;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00113}00113     outputPathName  += \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00114}00114     inputFileNameBase  = \textcolor{stringliteral}{"{}PYTHIA\_"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00115}00115     outputFileNameBase = \textcolor{stringliteral}{"{}PYTHIA\_"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00116}00116     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00117}00117   \textcolor{keywordflow}{if} (runHerwigGenerator)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00118}00118     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00119}00119     std::cout << \textcolor{stringliteral}{"{}Option runHerwigGenerator not currently available"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00120}00120     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00121}00121     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00122}00122   \textcolor{keywordflow}{if} (runAmptGenerator )}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00123}00123     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00124}00124     std::cout << \textcolor{stringliteral}{"{}Option runAmptGenerator not currently available"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00125}00125     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00126}00126     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00127}00127   \textcolor{keywordflow}{if} (runEposGenerator)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00128}00128     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00129}00129     std::cout << \textcolor{stringliteral}{"{}Option runEposGenerator not currently available"{}} <<  std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00130}00130     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00131}00131     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00132}00132   \textcolor{keywordflow}{if} (runUrqmdGenerator)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00133}00133     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00134}00134     std::cout << \textcolor{stringliteral}{"{}Option runUrqmdGenerator not currently available"{}} <<  std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00135}00135     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00136}00136     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00137}00137   \textcolor{keywordflow}{if} (runHijingGenerator)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00138}00138     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00139}00139     std::cout << \textcolor{stringliteral}{"{}Option runHijingGenerator not currently available"{}} <<  std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00140}00140     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00141}00141     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00142}00142   \textcolor{keywordflow}{if} (runGausResGeneator)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00143}00143     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00144}00144     TString gausResLabel = \textcolor{stringliteral}{"{}RhoDecay"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00145}00145     inputPathName  += gausResLabel;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00146}00146     inputPathName  += \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00147}00147     outputPathName += gausResLabel;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00148}00148     outputPathName += \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00149}00149     inputFileNameBase  = \textcolor{stringliteral}{"{}RhoDecay\_"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00150}00150     outputFileNameBase = \textcolor{stringliteral}{"{}RhoDecay\_"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00151}00151     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00152}00152   gSystem-\/>mkdir(outputPathName,1);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00153}00153   }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00154}00154   \textcolor{keywordflow}{if} (loadPdgTable)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00155}00155     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00156}00156     TString pdgDataTable = getenv(\textcolor{stringliteral}{"{}WAC\_SRC"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00157}00157     pdgDataTable += \textcolor{stringliteral}{"{}/EOS/pdg.dat"{}};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00158}00158     \mbox{\hyperlink{class_particle_type_collection}{ParticleTypeCollection}} * particles = \mbox{\hyperlink{class_particle_type_collection_a278cbb74300003089d2d4e8fd4f1dc02}{ParticleTypeCollection::getMasterParticleCollection}}(); \textcolor{comment}{//ParticleTypeCollection::getMasterParticleCollection();}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00159}00159     particles-\/>\mbox{\hyperlink{class_particle_type_collection_a047c28d219ddb27d9814ffbfeeb1fbcc}{readFromFile}}(pdgDataTable);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00160}00160     \textcolor{keywordflow}{if} (selectedLevel == debugLevel) particles-\/>\mbox{\hyperlink{class_particle_type_collection_a95ab1788116ad26fd02db3539e7cd33a}{printProperties}}(std::cout);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00161}00161     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00162}00162  }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00163}00163   \textcolor{comment}{// =========================================}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00164}00164   \textcolor{comment}{// Setup all event filters}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00165}00165   \textcolor{comment}{// =========================================}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00166}00166   vector<EventFilter*> generatorEventFilters;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00167}00167   vector<EventFilter*> analysisEventFilters;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00168}00168 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00169}00169   \mbox{\hyperlink{class_event_filter}{EventFilter}} * openEventFilter  = \textcolor{keyword}{new} \mbox{\hyperlink{class_event_filter}{EventFilter}}();}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00170}00170   openEventFilter-\/>\mbox{\hyperlink{class_filter_adb1b0fd50be6e6e7ddc39ef3e45710ad}{setName}}(\textcolor{stringliteral}{"{}All"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00171}00171   openEventFilter-\/>\mbox{\hyperlink{class_filter_a612c2b462068e089a0fda5c075ab2aac}{setLongName}}(\textcolor{stringliteral}{"{}All"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00172}00172   }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00173}00173   \mbox{\hyperlink{class_event_filter}{EventFilter}} * aliceMinBiasEventFilter  = \textcolor{keyword}{new} \mbox{\hyperlink{class_event_filter}{EventFilter}}();}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00174}00174   aliceMinBiasEventFilter-\/>\mbox{\hyperlink{class_filter_adb1b0fd50be6e6e7ddc39ef3e45710ad}{setName}}(\textcolor{stringliteral}{"{}V0MB"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00175}00175   aliceMinBiasEventFilter-\/>\mbox{\hyperlink{class_filter_a612c2b462068e089a0fda5c075ab2aac}{setLongName}}(\textcolor{stringliteral}{"{}V0MinBias"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00176}00176   aliceMinBiasEventFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(1, 0, 1.0, 1.0E10); \textcolor{comment}{// v0 multiplicity}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00177}00177   aliceMinBiasEventFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(1, 1, 1.0, 1.0E10); \textcolor{comment}{// TPC multiplicity}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00178}00178 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00179}00179   \textcolor{keywordflow}{switch} (analysisEventFilterOptions)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00180}00180     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00181}00181       \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00182}00182       \textcolor{keywordflow}{case} 0: analysisEventFilters.push\_back( openEventFilter); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00183}00183       \textcolor{keywordflow}{case} 1: analysisEventFilters.push\_back( aliceMinBiasEventFilter); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00184}00184       \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00185}00185       \mbox{\hyperlink{class_event_filter}{EventFilter}} * f;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00186}00186       f = \textcolor{keyword}{new} \mbox{\hyperlink{class_event_filter}{EventFilter}}();}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00187}00187       f-\/>\mbox{\hyperlink{class_filter_adb1b0fd50be6e6e7ddc39ef3e45710ad}{setName}}(\textcolor{stringliteral}{"{}V0M1To10"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00188}00188       f-\/>\mbox{\hyperlink{class_filter_a612c2b462068e089a0fda5c075ab2aac}{setLongName}}(\textcolor{stringliteral}{"{}V0M1To10"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00189}00189       f-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(1, 0, 1.0, 10.0); \textcolor{comment}{// v0 multiplicity}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00190}00190       f-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(1, 1, 1.0, 1.0E10); \textcolor{comment}{// TPC multiplicity}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00191}00191       analysisEventFilters.push\_back( f );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00192}00192       f = \textcolor{keyword}{new} \mbox{\hyperlink{class_event_filter}{EventFilter}}();}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00193}00193       f-\/>\mbox{\hyperlink{class_filter_adb1b0fd50be6e6e7ddc39ef3e45710ad}{setName}}(\textcolor{stringliteral}{"{}V0M11To500"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00194}00194       f-\/>\mbox{\hyperlink{class_filter_a612c2b462068e089a0fda5c075ab2aac}{setLongName}}(\textcolor{stringliteral}{"{}V0M11To500"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00195}00195       f-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(1, 0, 11.0, 500.0); \textcolor{comment}{// v0 multiplicity}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00196}00196       f-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(1, 1, 1.0, 1.0E10); \textcolor{comment}{// TPC multiplicity}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00197}00197       analysisEventFilters.push\_back( f );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00198}00198     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00199}00199 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00200}00200   \textcolor{comment}{// =========================================}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00201}00201   \textcolor{comment}{// Setup all particle filters}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00202}00202   \textcolor{comment}{// =========================================}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00203}00203 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00204}00204   vector<ParticleFilter*>  generatorParticleFilters;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00205}00205   vector<ParticleFilter*>  analysisParticleFilters;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00206}00206 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00207}00207   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}* openParticleFilter = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}(); \textcolor{comment}{// no conditions -\/-\/ accepts all}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00208}00208   openParticleFilter-\/>\mbox{\hyperlink{class_filter_adb1b0fd50be6e6e7ddc39ef3e45710ad}{setName}}(\textcolor{stringliteral}{"{}All"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00209}00209   openParticleFilter-\/>\mbox{\hyperlink{class_filter_a612c2b462068e089a0fda5c075ab2aac}{setLongName}}(\textcolor{stringliteral}{"{}All"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00210}00210   openParticleFilter-\/>\mbox{\hyperlink{class_filter_a6f0c7eca80682a6b83950f3746eafa97}{setTitle}}(\textcolor{stringliteral}{"{}All"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00211}00211   openParticleFilter-\/>\mbox{\hyperlink{class_filter_a299696a6f57d9ccde1ae6b75699e244f}{setLongTitle}}(\textcolor{stringliteral}{"{}All"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00212}00212 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00213}00213   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}* chargedParticleFilter = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}(); \textcolor{comment}{// no conditions -\/-\/ accepts all}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00214}00214   chargedParticleFilter-\/>\mbox{\hyperlink{class_filter_adb1b0fd50be6e6e7ddc39ef3e45710ad}{setName}}(\textcolor{stringliteral}{"{}CH"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00215}00215   chargedParticleFilter-\/>\mbox{\hyperlink{class_filter_a612c2b462068e089a0fda5c075ab2aac}{setLongName}}(\textcolor{stringliteral}{"{}CH"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00216}00216   chargedParticleFilter-\/>\mbox{\hyperlink{class_filter_a6f0c7eca80682a6b83950f3746eafa97}{setTitle}}(\textcolor{stringliteral}{"{}CH"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00217}00217   chargedParticleFilter-\/>\mbox{\hyperlink{class_filter_a299696a6f57d9ccde1ae6b75699e244f}{setLongTitle}}(\textcolor{stringliteral}{"{}CH"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00218}00218   chargedParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(0, 1,  0.0, 0.0);  \textcolor{comment}{// live particles only}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00219}00219   chargedParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(4, 1102, 0.0, 0.0);   \textcolor{comment}{// low mass charged hadron}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00220}00220 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00221}00221   }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00222}00222   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}* aliceV0ParticleFilter  = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}();}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00223}00223   aliceV0ParticleFilter-\/>\mbox{\hyperlink{class_filter_adb1b0fd50be6e6e7ddc39ef3e45710ad}{setName}}(\textcolor{stringliteral}{"{}V0M"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00224}00224   aliceV0ParticleFilter-\/>\mbox{\hyperlink{class_filter_a612c2b462068e089a0fda5c075ab2aac}{setLongName}}(\textcolor{stringliteral}{"{}V0M"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00225}00225   aliceV0ParticleFilter-\/>\mbox{\hyperlink{class_filter_a6f0c7eca80682a6b83950f3746eafa97}{setTitle}}(\textcolor{stringliteral}{"{}V0M"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00226}00226   aliceV0ParticleFilter-\/>\mbox{\hyperlink{class_filter_a299696a6f57d9ccde1ae6b75699e244f}{setLongTitle}}(\textcolor{stringliteral}{"{}V0M"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00227}00227   aliceV0ParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(0, 1,  0.0, 0.0);  \textcolor{comment}{// live particles only}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00228}00228   aliceV0ParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(4, 1102, 0.0, 0.0);   \textcolor{comment}{// low mass charged hadron}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00229}00229   aliceV0ParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(5, 1, 0.05,  1000.0);  \textcolor{comment}{// pT}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00230}00230   aliceV0ParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(5, 7, -\/3.7, -\/1.7, 2.8, 5.1); \textcolor{comment}{// pseudorapidity in V0A and V0C}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00231}00231 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00232}00232   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}* aliceTpcParticleFilter = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}();}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00233}00233   aliceTpcParticleFilter-\/>\mbox{\hyperlink{class_filter_adb1b0fd50be6e6e7ddc39ef3e45710ad}{setName}}(\textcolor{stringliteral}{"{}TpcAll"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00234}00234   aliceTpcParticleFilter-\/>\mbox{\hyperlink{class_filter_a612c2b462068e089a0fda5c075ab2aac}{setLongName}}(\textcolor{stringliteral}{"{}TpcAll"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00235}00235   aliceTpcParticleFilter-\/>\mbox{\hyperlink{class_filter_a6f0c7eca80682a6b83950f3746eafa97}{setTitle}}(\textcolor{stringliteral}{"{}TpcAll"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00236}00236   aliceTpcParticleFilter-\/>\mbox{\hyperlink{class_filter_a299696a6f57d9ccde1ae6b75699e244f}{setLongTitle}}(\textcolor{stringliteral}{"{}TpcAll"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00237}00237   aliceTpcParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(0, 1,  0.0, 0.0);     \textcolor{comment}{// live particles only}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00238}00238   aliceTpcParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(4, 1102, 0.0, 0.0);   \textcolor{comment}{// low mass charged hadron}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00239}00239   aliceTpcParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(5, 1, 0.15,  100.0);  \textcolor{comment}{// pT}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00240}00240   aliceTpcParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(5, 7, -\/0.8, 0.8);     \textcolor{comment}{// pseudorapidity in  TPC}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00241}00241 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00242}00242  }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00243}00243   \textcolor{keywordflow}{switch} (analysisParticleFilterOption)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00244}00244     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00245}00245       \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00246}00246       \textcolor{keywordflow}{case} 0:  analysisParticleFilters.push\_back( openParticleFilter      ); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00247}00247       \textcolor{keywordflow}{case} 1:  analysisParticleFilters.push\_back( aliceV0ParticleFilter   ); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00248}00248       \textcolor{keywordflow}{case} 2:  analysisParticleFilters.push\_back( aliceTpcParticleFilter ); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00249}00249       \textcolor{keywordflow}{case} 3:  analysisParticleFilters = \mbox{\hyperlink{class_particle_filter_ab0958a5a13805f4b8c7f7b290276f89f}{ParticleFilter::createChargedHadronFilters}}(YES,0.2, 10.0, YES,-\/6.0, 6.0, NO, 10.0, -\/10.0); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00250}00250       \textcolor{keywordflow}{case} 4:  analysisParticleFilters = \mbox{\hyperlink{class_particle_filter_ab0958a5a13805f4b8c7f7b290276f89f}{ParticleFilter::createChargedHadronFilters}}(YES,0.2, 2.0, YES,-\/1.0, 1.0, NO, 10.0, -\/10.0); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00251}00251       \textcolor{keywordflow}{case} 5:  analysisParticleFilters = \mbox{\hyperlink{class_particle_filter_a438da9d967a7c1bef4343afae70a17a4}{ParticleFilter::createPlusMinusHadronFilters}}(YES,0.2, 2.0, YES,-\/2.0, 2.0, NO, 10.0, -\/10.0); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00252}00252       \textcolor{keywordflow}{case} 6:  analysisParticleFilters = \mbox{\hyperlink{class_particle_filter_a438da9d967a7c1bef4343afae70a17a4}{ParticleFilter::createPlusMinusHadronFilters}}(YES,0.0, 100.0, YES,-\/4.0, 4.0, NO, 10.0, -\/10.0); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00253}00253       \textcolor{comment}{//case 6:  analysisParticleFilters = ParticleFilter::createBaryonFilters(YES,0.2, 10.0, YES, -\/1.0, 1.0, NO, 10.0, -\/10.0); break;}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00254}00254     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00255}00255 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00256}00256   }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00257}00257   std::cout << \textcolor{stringliteral}{"{}=================================================================================="{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00258}00258   std::cout << \textcolor{stringliteral}{"{}Setup Completed -\/ Proceed with loading analysis"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00259}00259   std::cout << \textcolor{stringliteral}{"{}=================================================================================="{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00260}00260 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00261}00261   \mbox{\hyperlink{class_configuration}{Configuration}} iteratorConfig(\textcolor{stringliteral}{"{}Event Iterator Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00262}00262   iteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}nEventsRequested"{}},   nEventRequested);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00263}00263   iteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}nEventReported"{}},     nEventReported);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00264}00264   iteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}nEventPartialSave"{}},  nEventPartialSave);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00265}00265   iteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}doPartialSave"{}},      doPartialSave);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00266}00266   iteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}doSubsampleAnalysis"{}},doSubsampleAnalysis);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00267}00267   \mbox{\hyperlink{class_task_iterator}{TaskIterator}} * masterTask = \textcolor{keyword}{new} \mbox{\hyperlink{class_task_iterator}{TaskIterator}}(\textcolor{stringliteral}{"{}MultiTaskIterator"{}},iteratorConfig,infoLevel);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00268}00268 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00269}00269   \textcolor{keywordflow}{if} (runPythiaGenerator)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00270}00270     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00271}00271     \mbox{\hyperlink{class_configuration}{Configuration}} pythiaConfig(\textcolor{stringliteral}{"{}Pythia Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00272}00272     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}beam"{}},    2212);  \textcolor{comment}{// PDG Code   proton is 2212}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00273}00273     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}target"{}},  2212);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00274}00274     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}energy"{}},  beamEnergy);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00275}00275     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}useEventStream0"{}},    YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00276}00276     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}standaloneMode"{}},     YES);   \textcolor{comment}{// use interactions generated by the geometry generator}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00277}00277     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}dataOutputUsed"{}},      NO);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00278}00278     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}dataConversionToWac"{}},YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00279}00279     \textcolor{comment}{//pythiaConfig.addParameter("{}dataOutputFileName"{}, TString("{}Pythia\_pp\_7000.root"{}) );}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00280}00280     \textcolor{comment}{//pythiaConfig.addParameter("{}dataOutputTreeName"{}, TString("{}PythiaTree"{}) ) ;}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00281}00281     \textcolor{comment}{//pythiaConfig.addParameter("{}dataOutputPath"{},outputPathName);}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00282}00282     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}dataInputUsed"{}},    NO);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00283}00283     \textcolor{comment}{//pythiaConfig.addParameter("{}dataInputFileName"{},TString("{}Pythia\_pp\_13000\_10Mevents.root"{}) );}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00284}00284     \textcolor{comment}{//pythiaConfig.addParameter("{}dataInputTreeName"{},TString("{}PythiaTree"{}) );}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00285}00285     \textcolor{comment}{//pythiaConfig.addParameter("{}dataInputPath"{},    TString(getenv("{}WAC\_INPUT\_DATA\_PATH"{})));}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00286}00286     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}saveHistograms"{}},   NO);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00287}00287     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option0"{}},  TString(\textcolor{stringliteral}{"{}Init:showChangedSettings = on"{}}) );      \textcolor{comment}{// list changed settings}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00288}00288     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option1"{}},  TString(\textcolor{stringliteral}{"{}Init:showChangedParticleData = off"{}}) ); \textcolor{comment}{// list changed particle data}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00289}00289     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option2"{}},  TString(\textcolor{stringliteral}{"{}Next:numberCount = 10000"{}}) );            \textcolor{comment}{// print message every n events}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00290}00290     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option3"{}},  TString(\textcolor{stringliteral}{"{}Next:numberShowInfo = 0"{}}) );            \textcolor{comment}{// print event information n times}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00291}00291     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option4"{}},  TString(\textcolor{stringliteral}{"{}Next:numberShowProcess = 0"{}}) );         \textcolor{comment}{// print process record n times}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00292}00292     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option5"{}},  TString(\textcolor{stringliteral}{"{}Next:numberShowEvent = 0"{}}) );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00293}00293     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option6"{}},  TString(\textcolor{stringliteral}{"{}SoftQCD:inelastic = on"{}}) );             \textcolor{comment}{// All inelastic processes}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00294}00294     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option7"{}},  TString(\textcolor{stringliteral}{"{}ColourReconnection:reconnect = on"{}}) );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00295}00295     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option8"{}},  TString(\textcolor{stringliteral}{"{}130:mayDecay = no"{}}) ); \textcolor{comment}{//K0s decay off}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00296}00296     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option9"{}},  TString(\textcolor{stringliteral}{"{}310:mayDecay = no"{}}) ); \textcolor{comment}{//K0s decay off}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00297}00297     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option10"{}}, TString(\textcolor{stringliteral}{"{}311:mayDecay = no"{}}) ); \textcolor{comment}{//K0  decay off}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00298}00298     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option11"{}}, TString(\textcolor{stringliteral}{"{}3112:mayDecay = no"{}}) );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00299}00299     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option12"{}}, TString(\textcolor{stringliteral}{"{}3122:mayDecay = no"{}}) );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00300}00300     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option13"{}}, TString(\textcolor{stringliteral}{"{}3222:mayDecay = no"{}}) );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00301}00301     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option14"{}}, TString(\textcolor{stringliteral}{"{}3212:mayDecay = no"{}}) );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00302}00302     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option15"{}}, TString(\textcolor{stringliteral}{"{}3322:mayDecay = no"{}}) );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00303}00303     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option16"{}}, TString(\textcolor{stringliteral}{"{}3312:mayDecay = no"{}}) );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00304}00304     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option17"{}}, TString(\textcolor{stringliteral}{"{}3334:mayDecay = no"{}}) );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00305}00305     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option18"{}}, TString(\textcolor{stringliteral}{"{}ParticleDecays:limitTau0 = on"{}}) );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00306}00306     pythiaConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}option19"{}}, TString(\textcolor{stringliteral}{"{}ParticleDecays:tau0Max = 1"{}}   ) );   \textcolor{comment}{// particles decay is c*tau less than 1 mm}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00307}00307     \textcolor{comment}{//if (selectedLevel == debugLevel) pythiaConfig.printConfiguration(cout);}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00308}00308     vector<EventFilter*> pythiaEventFilters;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00309}00309     pythiaEventFilters.push\_back( openEventFilter);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00310}00310     vector<ParticleFilter*> pythiaParticleFilters;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00311}00311     pythiaParticleFilters.push\_back( openParticleFilter );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00312}00312     \mbox{\hyperlink{class_pythia_event_generator}{PythiaEventGenerator}}   * pythiaEventGen   = \textcolor{keyword}{new} \mbox{\hyperlink{class_pythia_event_generator}{PythiaEventGenerator}}(\textcolor{stringliteral}{"{}PythiaEventGenerator"{}},pythiaConfig,pythiaEventFilters,pythiaParticleFilters,selectedLevel);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00313}00313     masterTask-\/>\mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{addSubtask}}( pythiaEventGen  );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00314}00314     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00315}00315   \textcolor{keywordflow}{if} (runHerwigGenerator)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00316}00316     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00317}00317     std::cout << \textcolor{stringliteral}{"{}Option runHerwigGenerator not currently available"{}}  << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00318}00318     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00319}00319     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00320}00320   \textcolor{keywordflow}{if} (runAmptGenerator )}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00321}00321     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00322}00322     std::cout << \textcolor{stringliteral}{"{}Option runAmptGenerator not currently available"{}}  << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00323}00323     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00324}00324     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00325}00325   \textcolor{keywordflow}{if} (runEposGenerator)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00326}00326     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00327}00327     std::cout << \textcolor{stringliteral}{"{}Option runEposGenerator not currently available"{}}  << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00328}00328     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00329}00329     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00330}00330   \textcolor{keywordflow}{if} (runUrqmdGenerator)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00331}00331     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00332}00332     std::cout << \textcolor{stringliteral}{"{}Option runUrqmdGenerator not currently available"{}}  << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00333}00333     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00334}00334     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00335}00335   \textcolor{keywordflow}{if} (runHijingGenerator)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00336}00336     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00337}00337     std::cout << \textcolor{stringliteral}{"{}Option runHijingGenerator not currently available"{}}  << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00338}00338     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00339}00339     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00340}00340   \textcolor{keywordflow}{if} (runGausResGeneator)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00341}00341     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00342}00342     \mbox{\hyperlink{class_configuration}{Configuration}} resConfig(\textcolor{stringliteral}{"{}Resonance Generator Confguration"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00343}00343     resConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}useEventStream0"{}},      YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00344}00344     resConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}standaloneMode"{}},       YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00345}00345     resConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nParticlesMinimum"{}},     10);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00346}00346     resConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nParticlesMaximum"{}},     10);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00347}00347     resConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}yMinimum"{}},            -\/1.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00348}00348     resConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}yMaximum"{}},             1.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00349}00349     resConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}pTslope"{}},              1.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00350}00350     resConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}mass"{}},               0.400);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00351}00351     vector<EventFilter*> eventFiltersR;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00352}00352     eventFiltersR.push\_back( openEventFilter);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00353}00353     vector<ParticleFilter*>  particleFiltersR;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00354}00354     particleFiltersR.push\_back( openParticleFilter );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00355}00355     \mbox{\hyperlink{class_resonance_generator}{ResonanceGenerator}}   * resGen  = \textcolor{keyword}{new} \mbox{\hyperlink{class_resonance_generator}{ResonanceGenerator}}(  \textcolor{stringliteral}{"{}ResonanceGenerator"{}},resConfig,    eventFiltersR,  particleFiltersR,  selectedLevel);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00356}00356     masterTask-\/>\mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{addSubtask}}( resGen );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00357}00357     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00358}00358   }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00359}00359   \textcolor{keywordflow}{if} (runGlobalAnalysis)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00360}00360     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00361}00361     \mbox{\hyperlink{class_configuration}{Configuration}} globalConfig(\textcolor{stringliteral}{"{}Global Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00362}00362     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}useEventStream0"{}},       YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00363}00363     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}},YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00364}00364     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}doSubsampleAnalysis"{}},   doSubsampleAnalysis);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00365}00365     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}doPartialSave"{}},         doPartialSave);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00366}00366     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}scaleHistograms"{}},       YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00367}00367     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}},       outputPathName);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00368}00368     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputFileName"{}},   outputFileNameBase+globalLabel);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00369}00369     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}countParticles"{}},        YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00370}00370     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}setEvent"{}},              YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00371}00371     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillCorrelationHistos"{}}, NO);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00372}00372     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_n"{}},        400);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00373}00373     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_n2"{}},       400);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00374}00374     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_n"{}},         -\/0.5);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00375}00375     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_n"{}},        399.5);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00376}00376     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_e"{}},        200);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00377}00377     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_e2"{}},        20);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00378}00378     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_e"{}},          0.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00379}00379     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_e"{}},    1000000.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00380}00380     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_q"{}},        201);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00381}00381     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_q2"{}},        20);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00382}00382     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_q"{}},       -\/100.5);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00383}00383     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_q"{}},        100.5);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00384}00384     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_b"{}},        41);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00385}00385     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_b2"{}},       41);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00386}00386     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_b"{}},        -\/20.5);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00387}00387     globalConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_b"{}},         20.5);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00388}00388     vector<EventFilter*>     globalEventFilters;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00389}00389     vector<ParticleFilter*>  globalParticleFilters ;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00390}00390     \textcolor{keywordflow}{switch} (globalEventFilterOptions)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00391}00391       \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00392}00392         \textcolor{keywordflow}{case} 0: \textcolor{comment}{// totally open filters}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00393}00393         globalEventFilters.push\_back( openEventFilter);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00394}00394         globalParticleFilters.push\_back( openParticleFilter  );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00395}00395         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00396}00396         }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00397}00397         \textcolor{keywordflow}{case} 1: \textcolor{comment}{// setups an ALICE minbias filter}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00398}00398         globalEventFilters.push\_back( openEventFilter);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00399}00399         globalParticleFilters.push\_back( aliceV0ParticleFilter   );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00400}00400         globalParticleFilters.push\_back( aliceTpcParticleFilter  );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00401}00401         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00402}00402       \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00403}00403     }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00404}00404     \mbox{\hyperlink{class_global_analyzer}{GlobalAnalyzer}} * globalEventAna = \textcolor{keyword}{new} \mbox{\hyperlink{class_global_analyzer}{GlobalAnalyzer}}(globalLabel,globalConfig,globalEventFilters,globalParticleFilters,selectedLevel);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00405}00405     masterTask-\/>\mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{addSubtask}}( globalEventAna  );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00406}00406     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00407}00407     }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00408}00408   \textcolor{keywordflow}{if} (runSpherocityAnalysis)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00409}00409     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00410}00410     \mbox{\hyperlink{class_configuration}{Configuration}} spherocityConfig(\textcolor{stringliteral}{"{}Global Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00411}00411     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}useEventStream0"{}},       YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00412}00412     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}},YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00413}00413     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}doSubsampleAnalysis"{}},   doSubsampleAnalysis);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00414}00414     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}doPartialSave"{}},         doPartialSave);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00415}00415     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}scaleHistograms"{}},       YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00416}00416     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}},       outputPathName);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00417}00417     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputFileName"{}},   outputFileNameBase+spherocityLabel);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00418}00418     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}countParticles"{}},        YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00419}00419     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}setEvent"{}},              NO);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00420}00420     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillCorrelationHistos"{}}, YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00421}00421     }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00422}00422     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nSteps"{}}, 360);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00423}00423     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillS0"{}}, YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00424}00424     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillS1"{}}, NO);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00425}00425     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillS1VsS0"{}},NO);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00426}00426 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00427}00427     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_spherocity"{}}, 100);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00428}00428     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_spherocity"{}},   0.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00429}00429     spherocityConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_spherocity"{}},   1.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00430}00430     vector<EventFilter*>     spherocityEventFilters;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00431}00431     vector<ParticleFilter*>  spherocityParticleFilters ;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00432}00432  }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00433}00433     \textcolor{keywordflow}{switch} (globalEventFilterOptions)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00434}00434       \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00435}00435         \textcolor{keywordflow}{case} 0: \textcolor{comment}{// totally open filters}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00436}00436         spherocityEventFilters.push\_back( openEventFilter);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00437}00437         spherocityParticleFilters.push\_back( openParticleFilter  );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00438}00438         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00439}00439         }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00440}00440         \textcolor{keywordflow}{case} 1: \textcolor{comment}{// setups an ALICE minbias filter}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00441}00441         spherocityEventFilters.push\_back(    aliceMinBiasEventFilter );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00442}00442         spherocityParticleFilters.push\_back( aliceTpcParticleFilter  );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00443}00443         spherocityParticleFilters.push\_back( aliceV0ParticleFilter   );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00444}00444         spherocityParticleFilters.push\_back( openParticleFilter  );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00445}00445         spherocityParticleFilters.push\_back( chargedParticleFilter );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00446}00446         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00447}00447       \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00448}00448     \mbox{\hyperlink{class_transverse_spherocity_analyzer}{TransverseSpherocityAnalyzer}} * spherocityAna = \textcolor{keyword}{new} \mbox{\hyperlink{class_transverse_spherocity_analyzer}{TransverseSpherocityAnalyzer}}(spherocityLabel,spherocityConfig,spherocityEventFilters,spherocityParticleFilters,selectedLevel);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00449}00449     masterTask-\/>\mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{addSubtask}}( spherocityAna  );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00450}00450     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00451}00451   }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00452}00452   \textcolor{keywordflow}{if} (runPartAnalysis)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00453}00453     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00454}00454     \mbox{\hyperlink{class_configuration}{Configuration}} partConfig(\textcolor{stringliteral}{"{}Part Spectra Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00455}00455     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}useEventStream0"{}},         YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00456}00456     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}},  YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00457}00457     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}doSubsampleAnalysis"{}},     doSubsampleAnalysis);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00458}00458     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}doPartialSave"{}},           doPartialSave);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00459}00459     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}scaleHistograms"{}},         YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00460}00460     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}},         outputPathName);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00461}00461     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputFileName"{}},     outputFileNameBase+partLabel);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00462}00462     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_n1"{}},  100);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00463}00463     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_n1"{}},    0.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00464}00464     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_n1"{}},  100.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00465}00465 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00466}00466     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_eTot"{}},  100);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00467}00467     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_eTot"{}},    0.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00468}00468     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_eTot"{}},  100.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00469}00469 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00470}00470     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_pt"{}},  1000);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00471}00471     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_pt"{}},    0.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00472}00472     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_pt"{}},  100.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00473}00473 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00474}00474     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_eta"{}},  80);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00475}00475     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_eta"{}},   -\/4.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00476}00476     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_eta"{}},    4.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00477}00477    }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00478}00478     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phi"{}},  72);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00479}00479     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_phi"{}},    0.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00480}00480     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_phi"{}},    TMath::TwoPi());}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00481}00481 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00482}00482     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillEta"{}},  YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00483}00483     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillY"{}},    NO);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00484}00484     partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillP2"{}},   NO);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00485}00485 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00486}00486     \mbox{\hyperlink{class_particle_analyzer}{ParticleAnalyzer}} * partAna = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_analyzer}{ParticleAnalyzer}}(partLabel,partConfig,analysisEventFilters,analysisParticleFilters,selectedLevel);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00487}00487     masterTask-\/>\mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{addSubtask}}(partAna);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00488}00488     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00489}00489   }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00490}00490   \textcolor{keywordflow}{if} (runPairAnalysis)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00491}00491     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00492}00492     \mbox{\hyperlink{class_configuration}{Configuration}} pairConfig(\textcolor{stringliteral}{"{}Pair Correlation Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00493}00493     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}useEventStream0"{}},         YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00494}00494     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}},  YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00495}00495     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}doSubsampleAnalysis"{}},     doSubsampleAnalysis);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00496}00496     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}doPartialSave"{}},           doPartialSave);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00497}00497     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}scaleHistograms"{}},         YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00498}00498     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}},         outputPathName);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00499}00499     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputFileName"{}},     outputFileNameBase+pairLabel);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00500}00500     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_n1"{}},       100);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00501}00501     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_n1"{}},         0.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00502}00502     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_n1"{}},       100.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00503}00503     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_n2"{}},       100);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00504}00504     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_n2"{}},         0.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00505}00505     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_n2"{}},       400.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00506}00506     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_pt"{}},        40);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00507}00507     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_pt"{}},        0.00);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00508}00508     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_pt"{}},        20.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00509}00509     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_eta"{}},       40);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00510}00510     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_eta"{}},       -\/2.0); \textcolor{comment}{// 1;}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00511}00511     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_eta"{}},        2.0);  \textcolor{comment}{// 1;}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00512}00512     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phi"{}},       72);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00513}00513     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_phi"{}},        0.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00514}00514     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_phi"{}},TMath::TwoPi());}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00515}00515     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillEta"{}},  YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00516}00516     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillY"{}},    NO);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00517}00517     pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillP2"{}},   NO);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00518}00518     \mbox{\hyperlink{class_particle_pair_analyzer}{ParticlePairAnalyzer}} * pairAna = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_pair_analyzer}{ParticlePairAnalyzer}}(pairLabel, pairConfig,analysisEventFilters, analysisParticleFilters,selectedLevel);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00519}00519     masterTask-\/>\mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{addSubtask}}( pairAna  );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00520}00520     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00521}00521   }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00522}00522   \textcolor{keywordflow}{if} (runNuDynAnalysis)}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00523}00523     \{}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00524}00524     \mbox{\hyperlink{class_configuration}{Configuration}} nuDynConfig(\textcolor{stringliteral}{"{}NuDyn Correlation Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00525}00525     nuDynConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}useEventStream0"{}},         YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00526}00526     nuDynConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}},  YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00527}00527     nuDynConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}doSubsampleAnalysis"{}},     doSubsampleAnalysis);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00528}00528     nuDynConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}doPartialSave"{}},           doPartialSave);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00529}00529     nuDynConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}scaleHistograms"{}},         YES);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00530}00530     nuDynConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}},         outputPathName);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00531}00531     nuDynConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputFileName"{}},     outputFileNameBase+nuDynLabel);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00532}00532     nuDynConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}inputType"{}},1);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00533}00533     nuDynConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}pairOnly"{}},\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00534}00534     nuDynConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_mult"{}},200);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00535}00535     nuDynConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_mult"{}}, 0.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00536}00536     nuDynConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_mult"{}},200.0);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00537}00537     \mbox{\hyperlink{class_nu_dyn_analyzer}{NuDynAnalyzer}} * nuDynAna = \textcolor{keyword}{new} \mbox{\hyperlink{class_nu_dyn_analyzer}{NuDynAnalyzer}}(nuDynLabel,nuDynConfig,analysisEventFilters,analysisParticleFilters,selectedLevel);}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00538}00538     masterTask-\/>\mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{addSubtask}}( nuDynAna );}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00539}00539     \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00540}00540   }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00541}00541   std::cout << \textcolor{stringliteral}{"{}=================================================================================="{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00542}00542   std::cout << \textcolor{stringliteral}{"{}Configuration Completed -\/ Run analysis"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00543}00543   std::cout << \textcolor{stringliteral}{"{}=================================================================================="{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00544}00544 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00545}00545 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00546}00546   masterTask-\/>\mbox{\hyperlink{class_task_iterator_ae7d75f8ef4ded05e349d16cc91c3cc79}{run}}();}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00547}00547   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00548}00548 \}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00549}00549 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00550}00550 }
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00551}00551 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00552}00552 \textcolor{comment}{ To generate enhanced charm production -\/-\/ received from Pet Christianssen. Jul 16-\/2021.}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00553}00553 \textcolor{comment}{  // Initialize PYTHIA minbias Generator.}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00554}00554 \textcolor{comment}{   Pythia8::Pythia pythia;}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00555}00555 \textcolor{comment}{   pythia.readString("{}Beams:eCM = 5000."{}); // 5 TeV pp}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00556}00556 \textcolor{comment}{   //  pythia.readString("{}Beams:eCM = 13000."{}); // 13 TeV pp}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00557}00557 \textcolor{comment}{   pythia.readString("{}HardQCD:gg2ccbar = on"{});}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00558}00558 \textcolor{comment}{   pythia.readString("{}HardQCD:qqbar2ccbar = on"{});}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00559}00559 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00560}00560 \textcolor{comment}{   // Prevent charm hadrons from decaying.}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00561}00561 \textcolor{comment}{   pythia.readString("{}ParticleDecays:limitTau0 = on"{});}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00562}00562 \textcolor{comment}{   pythia.readString("{}ParticleDecays:tau0Max = 0"{});}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00563}00563 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00564}00564 \textcolor{comment}{   pythia.init();}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00565}00565 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00566}00566 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00567}00567 \textcolor{comment}{  I select the final state hadrons like this:}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00568}00568 \textcolor{comment}{      // Final}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00569}00569 \textcolor{comment}{       if (!pythia.event[i].isFinal())}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00570}00570 \textcolor{comment}{         continue;}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00571}00571 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00572}00572 \textcolor{comment}{       // Hadron}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00573}00573 \textcolor{comment}{       if(!pythia.event[i].isHadron())}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00574}00574 \textcolor{comment}{         continue;}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00575}00575 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00576}00576 \textcolor{comment}{       // print out all charm hadrons}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00577}00577 \textcolor{comment}{       const int pdg = TMath::Abs(pythia.event[i].id()\%10000); // only 3 digits meson}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00578}00578 \textcolor{comment}{       // or 4 digits baryon}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00579}00579 \textcolor{comment}{       if(pdg < 1000) \{ // meson}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00580}00580 \textcolor{comment}{         if(int(pdg/100) != 4)}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00581}00581 \textcolor{comment}{           continue;}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00582}00582 \textcolor{comment}{       \} else \{}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00583}00583 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00584}00584 \textcolor{comment}{         if(int(pdg/1000) != 4)}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00585}00585 \textcolor{comment}{           continue;}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00586}00586 \textcolor{comment}{       \}}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00587}00587 \textcolor{comment}{ //pythia.readString("{}310:mayDecay = no"{});//K0s decay off}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00588}00588 \textcolor{comment}{ //pythia.readString("{}ParticleDecays:limitTau0 = on"{});}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00589}00589 \textcolor{comment}{ //pythia.readString("{}ParticleDecays:tau0Max = 10"{});}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00590}00590 \textcolor{comment}{ //pythiaOptions.push\_back( new TString("{}SoftQCD:all = on"{}) );                   // Allow total sigma = elastic/SD/DD/ND}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00591}00591 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00592}00592 \textcolor{comment}{ // pythiaOptions.push\_back(  new TString("{}HardQCD:all = on"{});}}
+\DoxyCodeLine{\Hypertarget{_run_analysis_8_c_source_l00593}00593 \textcolor{comment}{*/}}
+
+\end{DoxyCode}

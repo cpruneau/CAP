@@ -1,0 +1,120 @@
+\hypertarget{class_detector_fast_simulator_task}{}\doxysection{Detector\+Fast\+Simulator\+Task Class Reference}
+\label{class_detector_fast_simulator_task}\index{DetectorFastSimulatorTask@{DetectorFastSimulatorTask}}
+
+
+{\ttfamily \#include $<$Detector\+Fast\+Simulator\+Task.\+hpp$>$}
+
+
+
+Inheritance diagram for Detector\+Fast\+Simulator\+Task\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{class_detector_fast_simulator_task__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Detector\+Fast\+Simulator\+Task\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_detector_fast_simulator_task__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_detector_fast_simulator_task_a5f29b206de0afd1cfd049f2e59edf9cc}{Detector\+Fast\+Simulator\+Task}} (const TString \&\+\_\+name, \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \+\_\+event\+Filters, vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \+\_\+particle\+Filters, vector$<$ \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} $\ast$ $>$ \+\_\+particle\+Smearers, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \+\_\+selected\+Level=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}})
+\item 
+virtual \mbox{\hyperlink{class_detector_fast_simulator_task_a90ba1cc3159d31bbec1aef3862238ddd}{$\sim$\+Detector\+Fast\+Simulator\+Task}} ()
+\item 
+virtual void \mbox{\hyperlink{class_detector_fast_simulator_task_af0a3ab64ab88b0e8094ae010e24a0c7b}{set\+Default\+Configuration}} ()
+\item 
+virtual void \mbox{\hyperlink{class_detector_fast_simulator_task_a6c4653a3a482f322a11edccf0442cee9}{execute}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+This class implements a generic fast simulator of the performance of a detection device. The simulator is control by objects of the \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} class which simulate the resolution of measurements devices.\+objects 
+
+Definition at line \mbox{\hyperlink{_detector_fast_simulator_task_8hpp_source_l00018}{18}} of file \mbox{\hyperlink{_detector_fast_simulator_task_8hpp_source}{Detector\+Fast\+Simulator\+Task.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_detector_fast_simulator_task_a5f29b206de0afd1cfd049f2e59edf9cc}\label{class_detector_fast_simulator_task_a5f29b206de0afd1cfd049f2e59edf9cc}} 
+\index{DetectorFastSimulatorTask@{DetectorFastSimulatorTask}!DetectorFastSimulatorTask@{DetectorFastSimulatorTask}}
+\index{DetectorFastSimulatorTask@{DetectorFastSimulatorTask}!DetectorFastSimulatorTask@{DetectorFastSimulatorTask}}
+\doxysubsubsection{\texorpdfstring{DetectorFastSimulatorTask()}{DetectorFastSimulatorTask()}}
+{\footnotesize\ttfamily Detector\+Fast\+Simulator\+Task\+::\+Detector\+Fast\+Simulator\+Task (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{\mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$}]{\+\_\+event\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$}]{\+\_\+particle\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} $\ast$ $>$}]{\+\_\+particle\+Smearers,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{\+\_\+selected\+Level = {\ttfamily \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}}} }\end{DoxyParamCaption})}
+
+Detailed CTOR
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+name} & Name given to task instance \\
+\hline
+{\em \+\_\+configuration} & \mbox{\hyperlink{class_configuration}{Configuration}} used to run this task \\
+\hline
+{\em \+\_\+event\+Filters} & Array of event filters to be used by this task \\
+\hline
+{\em \+\_\+particle\+Filters} & Array of particle filters to be used by this task \\
+\hline
+{\em \+\_\+particle\+Smearers} & Array of particle momentum/position resolution smearers to be used by this task \\
+\hline
+{\em \+\_\+report\+Level} & Message log level to be used by this task. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_detector_fast_simulator_task_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{_detector_fast_simulator_task_8cpp_source}{Detector\+Fast\+Simulator\+Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_detector_fast_simulator_task_a90ba1cc3159d31bbec1aef3862238ddd}\label{class_detector_fast_simulator_task_a90ba1cc3159d31bbec1aef3862238ddd}} 
+\index{DetectorFastSimulatorTask@{DetectorFastSimulatorTask}!````~DetectorFastSimulatorTask@{$\sim$DetectorFastSimulatorTask}}
+\index{````~DetectorFastSimulatorTask@{$\sim$DetectorFastSimulatorTask}!DetectorFastSimulatorTask@{DetectorFastSimulatorTask}}
+\doxysubsubsection{\texorpdfstring{$\sim$DetectorFastSimulatorTask()}{~DetectorFastSimulatorTask()}}
+{\footnotesize\ttfamily virtual Detector\+Fast\+Simulator\+Task\+::$\sim$\+Detector\+Fast\+Simulator\+Task (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+DTOR 
+
+Definition at line \mbox{\hyperlink{_detector_fast_simulator_task_8hpp_source_l00042}{42}} of file \mbox{\hyperlink{_detector_fast_simulator_task_8hpp_source}{Detector\+Fast\+Simulator\+Task.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_detector_fast_simulator_task_a6c4653a3a482f322a11edccf0442cee9}\label{class_detector_fast_simulator_task_a6c4653a3a482f322a11edccf0442cee9}} 
+\index{DetectorFastSimulatorTask@{DetectorFastSimulatorTask}!execute@{execute}}
+\index{execute@{execute}!DetectorFastSimulatorTask@{DetectorFastSimulatorTask}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Detector\+Fast\+Simulator\+Task\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Execute this task based on the configuration and class variable specified at construction 
+
+Reimplemented from \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_detector_fast_simulator_task_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{_detector_fast_simulator_task_8cpp_source}{Detector\+Fast\+Simulator\+Task.\+cpp}}.
+
+\mbox{\Hypertarget{class_detector_fast_simulator_task_af0a3ab64ab88b0e8094ae010e24a0c7b}\label{class_detector_fast_simulator_task_af0a3ab64ab88b0e8094ae010e24a0c7b}} 
+\index{DetectorFastSimulatorTask@{DetectorFastSimulatorTask}!setDefaultConfiguration@{setDefaultConfiguration}}
+\index{setDefaultConfiguration@{setDefaultConfiguration}!DetectorFastSimulatorTask@{DetectorFastSimulatorTask}}
+\doxysubsubsection{\texorpdfstring{setDefaultConfiguration()}{setDefaultConfiguration()}}
+{\footnotesize\ttfamily void Detector\+Fast\+Simulator\+Task\+::set\+Default\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Sets the default values of the configuration parameters used by this task 
+
+Reimplemented from \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_detector_fast_simulator_task_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_detector_fast_simulator_task_8cpp_source}{Detector\+Fast\+Simulator\+Task.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_detector_fast_simulator_task_8hpp}{Detector\+Fast\+Simulator\+Task.\+hpp}}\item 
+Base/\mbox{\hyperlink{_detector_fast_simulator_task_8cpp}{Detector\+Fast\+Simulator\+Task.\+cpp}}\end{DoxyCompactItemize}

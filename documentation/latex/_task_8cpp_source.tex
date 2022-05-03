@@ -1,0 +1,1227 @@
+\hypertarget{_task_8cpp_source}{}\doxysection{Task.\+cpp}
+\label{_task_8cpp_source}\index{Base/Task.cpp@{Base/Task.cpp}}
+\mbox{\hyperlink{_task_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2021, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}TSystem.h"{}}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}TSystemDirectory.h"{}}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}TSystemFile.h"{}}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00019}00019 \textcolor{preprocessor}{\#include "{}TParameter.h"{}}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00020}00020 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00021}00021 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_sub_sample_stat_calculator_8hpp}{SubSampleStatCalculator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00023}\mbox{\hyperlink{_task_8cpp_a0aaa16d8c34507da8352fd279405d8d9}{00023}} \mbox{\hyperlink{_task_8cpp_a0aaa16d8c34507da8352fd279405d8d9}{ClassImp}}(\mbox{\hyperlink{class_task}{Task}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00025}\mbox{\hyperlink{class_task_a0ca53354bdc006762a0fda68c64f7608}{00025}} \mbox{\hyperlink{class_task_a0ca53354bdc006762a0fda68c64f7608}{Task::Task}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00026}00026 :}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00027}00027 \mbox{\hyperlink{class_message_logger}{MessageLogger}}(Info),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00028}00028 taskName                ( \textcolor{stringliteral}{"{}Task"{}} ),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00029}00029 configuration           (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00030}00030 taskRandomGenerator     ( gRandom),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00031}00031 particleFactory         ( nullptr),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00032}00032 eventStreams            (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00033}00033 eventFilters            (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00034}00034 particleFilters         (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00035}00035 particleSmearers        (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00036}00036 eventCountHistos        ( nullptr),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00037}00037 inputHistograms         (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00038}00038 baseSingleHistograms    (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00039}00039 basePairHistograms      (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00040}00040 derivedSingleHistograms (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00041}00041 derivedPairHistograms   (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00042}00042 combinedHistograms      (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00043}00043 nFilteredEventsAccepted (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00044}00044 nEventProcessed         ( 0 ),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00045}00045 nEventAccepted          ( 0 ),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00046}00046 subSampleIndex          ( 0 ),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00047}00047 subtasks                (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00048}00048 masterCollection        (nullptr)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00049}00049 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00050}00050   \mbox{\hyperlink{class_message_logger_a11c8121edbdb8bcbf2c985f8dd076df1}{setClassName}}(\textcolor{stringliteral}{"{}Task"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00051}00051   \mbox{\hyperlink{class_message_logger_a62ee7a375e1aec16bfb767aec9fba906}{setInstanceName}}(\mbox{\hyperlink{class_task_a0aa96f5ba1ec134ff65d80740654d759}{taskName}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00052}00052   \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00053}00053 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00055}00055 \mbox{\hyperlink{class_task_a0ca53354bdc006762a0fda68c64f7608}{Task::Task}}(\textcolor{keyword}{const} TString \&          \_taskName,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00056}00056            \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \&    \_configuration \_\_attribute\_\_((unused)),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00057}00057            \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}}  \_reportLevel)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00058}00058 :}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00059}00059 \mbox{\hyperlink{class_message_logger}{MessageLogger}}(\_reportLevel),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00060}00060 timer(),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00061}00061 taskName                (\_taskName),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00062}00062 configuration           (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00063}00063 taskRandomGenerator     ( gRandom),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00064}00064 particleFactory         ( nullptr),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00065}00065 eventStreams            (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00066}00066 eventFilters            (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00067}00067 particleFilters         (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00068}00068 particleSmearers        (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00069}00069 eventCountHistos        ( nullptr),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00070}00070 inputHistograms         (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00071}00071 baseSingleHistograms    (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00072}00072 basePairHistograms      (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00073}00073 derivedSingleHistograms (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00074}00074 derivedPairHistograms   (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00075}00075 combinedHistograms      (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00076}00076 nFilteredEventsAccepted (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00077}00077 nEventProcessed         ( 0 ),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00078}00078 nEventAccepted          ( 0 ),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00079}00079 subSampleIndex          ( 0 ),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00080}00080 subtasks                (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00081}00081 masterCollection        (nullptr)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00082}00082 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00083}00083   \mbox{\hyperlink{class_message_logger_a11c8121edbdb8bcbf2c985f8dd076df1}{setClassName}}(\textcolor{stringliteral}{"{}Task"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00084}00084   \mbox{\hyperlink{class_message_logger_a62ee7a375e1aec16bfb767aec9fba906}{setInstanceName}}(\_taskName);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00085}00085   \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00086}00086 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00088}00088 \mbox{\hyperlink{class_task_a0ca53354bdc006762a0fda68c64f7608}{Task::Task}}(\textcolor{keyword}{const} TString \&          \_taskName,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00089}00089            \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}}  \&   \_configuration \_\_attribute\_\_((unused)),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00090}00090            vector<EventFilter*> \&   \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00091}00091            vector<ParticleFilter*>\& \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00092}00092            \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}}  \_reportLevel)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00093}00093 :}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00094}00094 \mbox{\hyperlink{class_message_logger}{MessageLogger}}(\_reportLevel),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00095}00095 taskName                (\_taskName),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00096}00096 configuration           (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00097}00097 taskRandomGenerator     ( gRandom),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00098}00098 particleFactory         ( nullptr),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00099}00099 eventStreams            (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00100}00100 eventFilters            (\_eventFilters),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00101}00101 particleFilters         (\_particleFilters),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00102}00102 particleSmearers        (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00103}00103 eventCountHistos        ( nullptr),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00104}00104 inputHistograms         (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00105}00105 baseSingleHistograms    (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00106}00106 basePairHistograms      (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00107}00107 derivedSingleHistograms (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00108}00108 derivedPairHistograms   (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00109}00109 combinedHistograms      (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00110}00110 nFilteredEventsAccepted (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00111}00111 nEventProcessed         ( 0 ),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00112}00112 nEventAccepted          ( 0 ),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00113}00113 subSampleIndex          ( 0 ),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00114}00114 subtasks                (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00115}00115 masterCollection        ( nullptr)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00116}00116 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00117}00117   \mbox{\hyperlink{class_message_logger_a11c8121edbdb8bcbf2c985f8dd076df1}{setClassName}}(\textcolor{stringliteral}{"{}Task"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00118}00118   \mbox{\hyperlink{class_message_logger_a62ee7a375e1aec16bfb767aec9fba906}{setInstanceName}}(\_taskName);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00119}00119   \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00120}00120 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00122}00122 \mbox{\hyperlink{class_task_a0ca53354bdc006762a0fda68c64f7608}{Task::Task}}(\textcolor{keyword}{const} TString \&           \_taskName,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00123}00123            \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}}  \&    \_configuration  \_\_attribute\_\_((unused)),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00124}00124            vector<EventFilter*> \&    \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00125}00125            vector<ParticleFilter*>\&  \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00126}00126            vector<ParticleSmearer*>\& \_particleSmearer,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00127}00127            \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}}   \_reportLevel)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00128}00128 :}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00129}00129 \mbox{\hyperlink{class_message_logger}{MessageLogger}}           (\_reportLevel),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00130}00130 taskName                (\_taskName),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00131}00131 configuration           (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00132}00132 taskRandomGenerator     ( gRandom),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00133}00133 particleFactory         ( nullptr),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00134}00134 eventStreams            (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00135}00135 eventFilters            (\_eventFilters),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00136}00136 particleFilters         (\_particleFilters),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00137}00137 particleSmearers        (\_particleSmearer),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00138}00138 eventCountHistos        (nullptr),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00139}00139 inputHistograms         (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00140}00140 baseSingleHistograms    (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00141}00141 basePairHistograms      (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00142}00142 derivedSingleHistograms (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00143}00143 derivedPairHistograms   (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00144}00144 combinedHistograms      (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00145}00145 nFilteredEventsAccepted (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00146}00146 nEventProcessed         ( 0 ),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00147}00147 nEventAccepted          ( 0 ),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00148}00148 subSampleIndex          ( 0 ),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00149}00149 subtasks                (),}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00150}00150 masterCollection        ( nullptr)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00151}00151 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00152}00152   \mbox{\hyperlink{class_message_logger_a11c8121edbdb8bcbf2c985f8dd076df1}{setClassName}}(\textcolor{stringliteral}{"{}Task"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00153}00153   \mbox{\hyperlink{class_message_logger_a62ee7a375e1aec16bfb767aec9fba906}{setInstanceName}}(\_taskName);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00154}00154   \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00155}00155 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00157}00157 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00158}\mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3}{00158}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3}{Task::setDefaultConfiguration}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00159}00159 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00160}00160   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00161}00161     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00162}00162   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}useParticles"{}},       \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00163}00163   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}useEventStream0"{}},    \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00164}00164   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}useEventStream1"{}},    \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00165}00165   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}useEventStream2"{}},    \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00166}00166   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}useEventStream3"{}},    \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00167}00167   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}createHistograms"{}},   \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00168}00168   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}createDerivedHistograms"{}}, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00169}00169   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}createCombinedHistograms"{}}, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00170}00170   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}loadHistograms"{}},  \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00171}00171   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}saveHistograms"{}},  \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00172}00172   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}resetHistograms"{}}, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00173}00173   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}clearHistograms"{}}, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00174}00174   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}scaleHistograms"{}}, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00175}00175   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}forceHistogramsRewrite"{}}, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00176}00176   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}doSubsampleAnalysis"{}}, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00177}00177   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}doPartialSave"{}},       \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00178}00178   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoInputPath"{}},      TString(\textcolor{stringliteral}{"{}./"{}})   );}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00179}00179   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoInputFileName"{}},  TString(\textcolor{stringliteral}{"{}"{}}) );}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00180}00180   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoOutputPath"{}},     TString(\textcolor{stringliteral}{"{}./"{}})  );}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00181}00181   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoOutputFileName"{}}, TString(\textcolor{stringliteral}{"{}./"{}})  );}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00182}00182   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoBaseName"{}},       TString(\textcolor{stringliteral}{"{}BaseNameUndefined"{}}));}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00183}00183   }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00184}00184   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}dataInputUsed"{}},       \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00185}00185   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}dataInputPath"{}},       TString(\textcolor{stringliteral}{"{}./"{}}));}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00186}00186   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}dataInputFileName"{}},   TString(\textcolor{stringliteral}{"{}"{}}));}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00187}00187   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}dataInputTreeName"{}},   TString(\textcolor{stringliteral}{"{}tree"{}}) );}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00188}00188   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}dataInputFileMinIndex"{}}, 0);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00189}00189   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}dataInputFileMaxIndex"{}}, 1);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00190}00190   }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00191}00191   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}dataOutputUsed"{}},     \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00192}00192   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}dataOutputPath"{}},     TString(\textcolor{stringliteral}{"{}./"{}}));}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00193}00193   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}dataOutputFileName"{}}, TString(\textcolor{stringliteral}{"{}"{}}));}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00194}00194   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}dataOutputTreeName"{}}, TString(\textcolor{stringliteral}{"{}tree"{}}));}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00195}00195   }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00196}00196   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}dataConversionToWac"{}}, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00197}00197   }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00198}00198   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}fileFromParent"{}}, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00199}00199   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histogramInputFileName"{}},TString(\textcolor{stringliteral}{"{}AlternateIn"{}}));}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00200}00200   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histogramOuputFileName"{}},TString(\textcolor{stringliteral}{"{}AlternateOut"{}}));}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00201}00201   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00202}00202     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00203}00203     \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(cout);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00204}00204     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00205}00205 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00206}00206 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00207}\mbox{\hyperlink{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}{00207}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}{Task::setConfiguration}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \& \_configuration)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00208}00208 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00209}00209   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setConfiguration(const Configuration \& config)"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00210}00210     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00211}00211   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a629cc281aa96617f0382b98f3cd114c2}{setParameters}}(\_configuration);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00212}00212   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setConfiguration(const Configuration \& config)"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00213}00213     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00214}00214     \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(cout);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00215}00215     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00216}00216 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00217}00217 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00218}\mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{00218}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{Task::initialize}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00219}00219 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00220}00220   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00221}00221     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00222}00222   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}() \&\& \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}useParticles"{}}) )}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00223}00223     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00224}00224     \mbox{\hyperlink{class_task_aca6dc827b61b440bf610bba393beb673}{particleFactory}}  = \mbox{\hyperlink{class_particle_aea48229b90fe17f83263e98348857102}{Particle::getFactory}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00225}00225     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_task_aca6dc827b61b440bf610bba393beb673}{particleFactory}})}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00226}00226       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00227}00227       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a1dcf96590e2352f7410a6a1623414096}{reportFatal}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00228}00228         \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00229}00229         cout << \textcolor{stringliteral}{"{} Particle factory required but not available. Must abort."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00230}00230         \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00231}00231       \mbox{\hyperlink{class_message_logger_a21de642806f1c039f39a087e1e910984}{postTaskFatal}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00232}00232       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00233}00233       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00234}00234     \mbox{\hyperlink{class_task_ad6f45bd5d1e19d15e69276103dff287a}{masterCollection}} = \mbox{\hyperlink{class_particle_type_collection_a278cbb74300003089d2d4e8fd4f1dc02}{ParticleTypeCollection::getMasterParticleCollection}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00235}00235     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_task_ad6f45bd5d1e19d15e69276103dff287a}{masterCollection}})}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00236}00236       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00237}00237       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a1dcf96590e2352f7410a6a1623414096}{reportFatal}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00238}00238         \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00239}00239         cout << \textcolor{stringliteral}{"{} Particle master collection required but not available. Must abort."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00240}00240         \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00241}00241       \mbox{\hyperlink{class_message_logger_a21de642806f1c039f39a087e1e910984}{postTaskFatal}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00242}00242       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00243}00243       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00244}00244     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00245}00245   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}())}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00246}00246     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00247}00247     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00248}00248       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00249}00249       cout << \textcolor{stringliteral}{"{}Error posted -\/ Abort immediately."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00250}00250       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00251}00251     exit(1);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00252}00252     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00253}00253   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}useEventStream0"{}}) )  \mbox{\hyperlink{class_task_a8387ed7cae99be1d2dcd5acca661fc2f}{addEventStream}}(\mbox{\hyperlink{class_event_afaab747c9fb60168b29cde523b039db3}{Event::getEventStream}}(0));}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00254}00254   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}useEventStream1"{}}) )  \mbox{\hyperlink{class_task_a8387ed7cae99be1d2dcd5acca661fc2f}{addEventStream}}(\mbox{\hyperlink{class_event_afaab747c9fb60168b29cde523b039db3}{Event::getEventStream}}(1));}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00255}00255   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}useEventStream2"{}}) )  \mbox{\hyperlink{class_task_a8387ed7cae99be1d2dcd5acca661fc2f}{addEventStream}}(\mbox{\hyperlink{class_event_afaab747c9fb60168b29cde523b039db3}{Event::getEventStream}}(2));}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00256}00256   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}useEventStream3"{}}) )  \mbox{\hyperlink{class_task_a8387ed7cae99be1d2dcd5acca661fc2f}{addEventStream}}(\mbox{\hyperlink{class_event_afaab747c9fb60168b29cde523b039db3}{Event::getEventStream}}(3));}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00257}00257   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00258}00258     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00259}00259     cout << \textcolor{stringliteral}{"{} \#event added streams: "{}}  << \mbox{\hyperlink{class_task_ac9787e5cfaedbdb6f420d0ec24682f1e}{getNEventStreams}}() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00260}00260     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00261}00261   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}createHistograms"{}}) )}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00262}00262     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00263}00263     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00264}00264       cout << \textcolor{stringliteral}{"{}Create EventCountHistograms"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00265}00265     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nEventFilters = \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00266}00266     \textcolor{keywordflow}{if} (nEventFilters>0)  \mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}}.assign(nEventFilters,0.0);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00267}00267     \mbox{\hyperlink{class_task_afac9929c6201640a924d1e44303ffd29}{eventCountHistos}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_event_count_histos}{EventCountHistos}}(\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}},\mbox{\hyperlink{class_message_logger_aaa759a0af20793b7586bb33722463d22}{getReportLevel}}());}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00268}00268     \mbox{\hyperlink{class_task_afac9929c6201640a924d1e44303ffd29}{eventCountHistos}}-\/>\mbox{\hyperlink{class_event_count_histos_a24f3399fc1ac2977cfac9bc4cf72e2fe}{createHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00269}00269     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}})) cout << \textcolor{stringliteral}{"{}Done with EventCountHistograms"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00270}00270     \mbox{\hyperlink{class_task_a709903c615030cd84122df73f2ea6c4f}{createHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00271}00271     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00272}00272   \mbox{\hyperlink{class_task_a66a48a46d707a69339ec8c03cf25556c}{nEventProcessed}} = 0;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00273}00273   \mbox{\hyperlink{class_task_aa8a0d1fbb21cfb200e74bb3b38118fa0}{nEventAccepted}}  = 0;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00274}00274   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}loadHistograms"{}}) )}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00275}00275     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00276}00276     \mbox{\hyperlink{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}{loadHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00277}00277     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00278}00278   }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00279}00279   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00280}00280     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00281}00281 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00282}00282 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00283}00283 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00284}\mbox{\hyperlink{class_task_aab4bc670089cc073247542c3a26da5aa}{00284}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_aab4bc670089cc073247542c3a26da5aa}{Task::finalize}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00285}00285 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00286}00286   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}finalize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00287}00287     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00288}00288   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_aa8a0d1fbb21cfb200e74bb3b38118fa0}{nEventAccepted}}<1 || \mbox{\hyperlink{class_task_a66a48a46d707a69339ec8c03cf25556c}{nEventProcessed}}<1)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00289}00289     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00290}00290     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}finalize()"{}})) \mbox{\hyperlink{class_task_ae14eff4fe34dd94705fdd64b0ff293d4}{printEventCount}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00291}00291     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00292}00292   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}finalize()"{}})) \mbox{\hyperlink{class_task_ae14eff4fe34dd94705fdd64b0ff293d4}{printEventCount}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00293}00293   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}() )}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00294}00294     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00295}00295     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_afac9929c6201640a924d1e44303ffd29}{eventCountHistos}}) \mbox{\hyperlink{class_task_afac9929c6201640a924d1e44303ffd29}{eventCountHistos}}-\/>\mbox{\hyperlink{class_event_count_histos_ada9f2b731f22c546594d25f275c7c714}{fill}}(\mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00296}00296     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00297}00297   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}() \&\& \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}scaleHistograms"{}}) )  \mbox{\hyperlink{class_task_af6b2f71e156a8fc092b46fda1c79fb59}{scaleHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00298}00298   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}() \&\& \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}saveHistograms"{}})  )  \mbox{\hyperlink{class_task_ae4bb5a5ddfea33eadddf6393ce8d0912}{saveHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00299}00299   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}finalize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00300}00300     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00301}00301 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00302}00302 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00303}\mbox{\hyperlink{class_task_ae14eff4fe34dd94705fdd64b0ff293d4}{00303}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_ae14eff4fe34dd94705fdd64b0ff293d4}{Task::printEventCount}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00304}00304 \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00305}00305   cout << endl}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00306}00306   << \textcolor{stringliteral}{"{}    nEventProcessed:"{}} << \mbox{\hyperlink{class_task_a66a48a46d707a69339ec8c03cf25556c}{nEventProcessed}} << endl}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00307}00307   << \textcolor{stringliteral}{"{}     nEventAccepted:"{}} << \mbox{\hyperlink{class_task_aa8a0d1fbb21cfb200e74bb3b38118fa0}{nEventAccepted}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00308}00308   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k=0; k<\mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}}.size(); k++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00309}00309     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00310}00310     cout << \textcolor{stringliteral}{"{}      Event filter:"{}} << k << \textcolor{stringliteral}{"{}  nFiltered Events Accepted: "{}} << \mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}}[k] << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00311}00311     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00312}00312 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00313}00313 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00314}\mbox{\hyperlink{class_task_a23dad2af569b74e50abcd9241e03af3e}{00314}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a23dad2af569b74e50abcd9241e03af3e}{Task::savePartial}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00315}00315 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00316}00316   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}savePartial()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00317}00317     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00318}00318   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_aa8a0d1fbb21cfb200e74bb3b38118fa0}{nEventAccepted}}<1 || \mbox{\hyperlink{class_task_a66a48a46d707a69339ec8c03cf25556c}{nEventProcessed}}<1)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00319}00319     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00320}00320     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}savePartial()"{}})) \mbox{\hyperlink{class_task_ae14eff4fe34dd94705fdd64b0ff293d4}{printEventCount}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00321}00321     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00322}00322   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}savePartial()"{}})) \mbox{\hyperlink{class_task_ae14eff4fe34dd94705fdd64b0ff293d4}{printEventCount}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00323}00323   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}() )}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00324}00324     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00325}00325     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_afac9929c6201640a924d1e44303ffd29}{eventCountHistos}}) \mbox{\hyperlink{class_task_afac9929c6201640a924d1e44303ffd29}{eventCountHistos}}-\/>\mbox{\hyperlink{class_event_count_histos_ada9f2b731f22c546594d25f275c7c714}{fill}}(\mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00326}00326     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00327}00327   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}() \&\& \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}scaleHistograms"{}})  ) \mbox{\hyperlink{class_task_af6b2f71e156a8fc092b46fda1c79fb59}{scaleHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00328}00328   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}() \&\& \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}saveHistograms"{}})   ) \mbox{\hyperlink{class_task_ae4bb5a5ddfea33eadddf6393ce8d0912}{saveHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00329}00329   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}() \&\& \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}createHistograms"{}}) ) \mbox{\hyperlink{class_task_a0f2b1b09574cc8c223953c84a970c2f1}{resetHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00330}00330   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}savePartial()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00331}00331     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00332}00332 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00333}00333 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00334}\mbox{\hyperlink{class_task_a3ec28185c9df5e62f7c0723a8dd7a2b6}{00334}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a3ec28185c9df5e62f7c0723a8dd7a2b6}{Task::subsampleAnalysis}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00335}00335 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00336}00336   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}subsampleAnalysis()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00337}00337     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00338}00338   \textcolor{keywordtype}{bool} doSubsampleAnalysis = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}(   \textcolor{stringliteral}{"{}doSubsampleAnalysis"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00339}00339   TString inputPathName    = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histoOutputPath"{}}    ); \textcolor{comment}{// where files were saved}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00340}00340   TString inputFileName    = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histoOutputFileName"{}}); \textcolor{comment}{// base name of files in a job}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00341}00341   TString outputPathName   = inputPathName;     \textcolor{comment}{// where files were saved}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00342}00342   TString \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}}   = inputFileName;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00343}00343   \textcolor{keywordtype}{int} numberOfPartialSaves = \mbox{\hyperlink{class_task_a42491440777f87297f18d13252cb8e8f}{getSubSampleIndex}}();                  \textcolor{comment}{// number of partial saves}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00344}00344 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00345}00345   }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00346}00346   \textcolor{keywordflow}{if} (!doSubsampleAnalysis)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00347}00347     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00348}00348     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}subsampleAnalysis(...)"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00349}00349       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00350}00350       cout << \textcolor{stringliteral}{"{}No subsample analysis requested for task:"{}} << \mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00351}00351       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00352}00352     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00353}00353     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00354}00354   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00355}00355     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00356}00356     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}subsampleAnalysis(...)"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00357}00357       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00358}00358       cout << \textcolor{stringliteral}{"{}Subsample analysis requested for task:"{}} << \mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00359}00359       cout << \textcolor{stringliteral}{"{}                        inputPathName:"{}} << inputPathName << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00360}00360       cout << \textcolor{stringliteral}{"{}                        inputFileName:"{}} << inputFileName << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00361}00361       cout << \textcolor{stringliteral}{"{}                 numberOfPartialSaves:"{}} << numberOfPartialSaves << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00362}00362       cout << \textcolor{stringliteral}{"{}                       outputPathName:"{}} << outputPathName << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00363}00363       cout << \textcolor{stringliteral}{"{}                       outputFileName:"{}} << \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00364}00364       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00365}00365     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00366}00366   \mbox{\hyperlink{class_configuration}{Configuration}} statConfig(\textcolor{stringliteral}{"{}subSampleConfig"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00367}00367   statConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}forceHistogramsRewrite"{}}, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00368}00368   statConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}nInputFile"{}},          numberOfPartialSaves-\/1);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00369}00369   statConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoInputPath"{}},      inputPathName         );}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00370}00370   statConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoOutputPath"{}},     outputPathName        );}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00371}00371   statConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoOutputFileName"{}}, \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}}+\textcolor{stringliteral}{"{}\_Sum"{}} );}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00372}00372   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<=numberOfPartialSaves; k++  )}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00373}00373     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00374}00374     TString key(\textcolor{stringliteral}{"{}InputFile"{}}); key += k;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00375}00375     TString name = inputFileName;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00376}00376     name += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00377}00377     name += k;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00378}00378     cout << \textcolor{stringliteral}{"{}   k: "{}} << k << \textcolor{stringliteral}{"{}    "{}} << name << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00379}00379     statConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(key,name);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00380}00380     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00381}00381   \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}} * subSampleStatCalculator = \textcolor{keyword}{new} \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}}(\textcolor{stringliteral}{"{}DefaultSubSampleStatCalculator"{}},statConfig,\mbox{\hyperlink{class_message_logger_aaa759a0af20793b7586bb33722463d22}{getReportLevel}}());}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00382}00382   subSampleStatCalculator-\/>\mbox{\hyperlink{class_sub_sample_stat_calculator_a6f6ca62a93799a4299b972da90879b3a}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00383}00383   \textcolor{keyword}{delete} subSampleStatCalculator;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00384}00384   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}subsampleAnalysis(...)"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00385}00385     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00386}00386 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00387}00387 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00388}\mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{00388}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{Task::reset}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00389}00389 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00390}00390   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}reset(...)"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00391}00391     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00392}00392   \mbox{\hyperlink{class_task_a66a48a46d707a69339ec8c03cf25556c}{nEventProcessed}} = 0;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00393}00393   \mbox{\hyperlink{class_task_aa8a0d1fbb21cfb200e74bb3b38118fa0}{nEventAccepted}}  = 0;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00394}00394   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k=0; k<\mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}}.size(); k++) \mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}}[k] = 0;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00395}00395   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}())   \mbox{\hyperlink{class_task_a0f2b1b09574cc8c223953c84a970c2f1}{resetHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00396}00396   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}reset(...)"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00397}00397     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00398}00398 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00399}00399 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00400}\mbox{\hyperlink{class_task_a19de4303aa171af0eb3a8fb5ec3ca2fb}{00400}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a19de4303aa171af0eb3a8fb5ec3ca2fb}{Task::clear}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00401}00401 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00402}00402   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}clear()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00403}00403     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00404}00404   }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00405}00405   \textcolor{comment}{// we keep the filters as guidelines for what is done but everything else is wiped out for}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00406}00406   \textcolor{comment}{// a clean start; i.e., all histograms...}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00407}00407   \mbox{\hyperlink{class_task_a66a48a46d707a69339ec8c03cf25556c}{nEventProcessed}} = 0;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00408}00408   \mbox{\hyperlink{class_task_aa8a0d1fbb21cfb200e74bb3b38118fa0}{nEventAccepted}}  = 0;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00409}00409   \mbox{\hyperlink{class_task_a098814a2d8c8e0c14ea28a598f585a3c}{clearHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00410}00410   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}clear()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00411}00411     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00412}00412 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00413}00413 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00414}00414 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00415}\mbox{\hyperlink{class_task_a83ecaa2646c6999e9274a527b76e8716}{00415}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a83ecaa2646c6999e9274a527b76e8716}{Task::printConfiguration}}(ostream \& output)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00416}00416 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00417}00417   output << \textcolor{stringliteral}{"{}Task Name : "{}} << \mbox{\hyperlink{class_task_a0aa96f5ba1ec134ff65d80740654d759}{taskName}} <<  endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00418}00418   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(output);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00419}00419 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00420}00420 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00421}\mbox{\hyperlink{class_task_a0d4915f314c41e188fee22abc629717c}{00421}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a0d4915f314c41e188fee22abc629717c}{Task::setRandomGenerator}}(TRandom * randomGenerator)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00422}00422 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00423}00423   \textcolor{keywordflow}{if} (!randomGenerator)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00424}00424     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00425}00425     \mbox{\hyperlink{class_task_a15516b2635c38aa3ae0a3970a479f9f4}{taskRandomGenerator}} = randomGenerator;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00426}00426     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setRandomGenerator(TRandom * randomGenerator)"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00427}00427       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00428}00428       cout << \textcolor{stringliteral}{"{}Default random generator was changed."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00429}00429       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00430}00430     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00431}00431   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00432}00432     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00433}00433     \mbox{\hyperlink{class_message_logger_a3c1f17bac1dc8a33dda04eb1a565b062}{postTaskWarning}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00434}00434     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setConfiguration(...)"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00435}00435       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00436}00436       cout << \textcolor{stringliteral}{"{}Null pointer. Random generator will not be set."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00437}00437       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00438}00438     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00439}00439 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00440}00440 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00441}\mbox{\hyperlink{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}{00441}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}{Task::loadHistograms}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00442}00442 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00443}00443   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}loadHistograms()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00444}00444     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00445}00445   TString inputFileName;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00446}00446   }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00447}00447   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}(\textcolor{stringliteral}{"{}fileFromParent"{}}) )}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00448}00448     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00449}00449     \textcolor{comment}{// this is used by the FileIterator to set the file name to be read}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00450}00450     inputFileName = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histogramInputFileName"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00451}00451     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00452}00452   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00453}00453     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00454}00454     \textcolor{comment}{// this is used normally to identify the file name to be used to save or load from.}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00455}00455     inputFileName = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histoInputPath"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00456}00456     inputFileName += \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histoInputFileName"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00457}00457     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00458}00458   TFile * inputFile = \mbox{\hyperlink{class_task_a4491c7a1e03958b1a67e51e387601695}{openRootFile}}(\textcolor{stringliteral}{"{}"{}},inputFileName,\textcolor{stringliteral}{"{}READ"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00459}00459   \textcolor{keywordflow}{if} (!inputFile)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00460}00460     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00461}00461     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}loadHistograms()"{}})) cout << \textcolor{stringliteral}{"{}Could not open input file:"{}}  << inputFileName << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00462}00462     \mbox{\hyperlink{class_message_logger_a0532494797013d9afcb82b5fcf442488}{postTaskError}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00463}00463     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00464}00464     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00465}00465   \mbox{\hyperlink{class_task_afac9929c6201640a924d1e44303ffd29}{eventCountHistos}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_event_count_histos}{EventCountHistos}}(\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}},\mbox{\hyperlink{class_message_logger_aaa759a0af20793b7586bb33722463d22}{getReportLevel}}());}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00466}00466   \mbox{\hyperlink{class_task_afac9929c6201640a924d1e44303ffd29}{eventCountHistos}}-\/>\mbox{\hyperlink{class_event_count_histos_a28661f4eb3e55c5515ba61710486f6f7}{loadHistograms}}(inputFile);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00467}00467   \mbox{\hyperlink{class_task_a1ce9012b23b733cda8e14e0ff3e4e1c3}{loadNEventProcessed}}(inputFile);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00468}00468   \mbox{\hyperlink{class_task_a5d7a01590b5a08943c7f3ee1574d62d8}{loadNEventAccepted}}(inputFile);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00469}00469   \mbox{\hyperlink{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}{loadHistograms}}(inputFile);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00470}00470   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}loadHistograms()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00471}00471     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00472}00472 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00473}00473 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00474}00474 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00475}\mbox{\hyperlink{class_task_a0f2b1b09574cc8c223953c84a970c2f1}{00475}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a0f2b1b09574cc8c223953c84a970c2f1}{Task::resetHistograms}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00476}00476 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00477}00477   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}resetHistograms()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00478}00478     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00479}00479   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_afac9929c6201640a924d1e44303ffd29}{eventCountHistos}}) \mbox{\hyperlink{class_task_afac9929c6201640a924d1e44303ffd29}{eventCountHistos}}-\/>\mbox{\hyperlink{class_histogram_collection_a0c283103076173f0d24d1ee1fb8d628d}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00480}00480   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_ae257d4df10bd00bb719425721d43ce80}{inputHistograms}}.size();        iHisto++) \mbox{\hyperlink{class_task_ae257d4df10bd00bb719425721d43ce80}{inputHistograms}}[iHisto]-\/>\mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00481}00481   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_a49637b241f2bb93c22a611756240f577}{histograms}}.size();             iHisto++) \mbox{\hyperlink{class_task_a49637b241f2bb93c22a611756240f577}{histograms}}[iHisto]-\/>\mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00482}00482   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}.size();   iHisto++) \mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}[iHisto]-\/>\mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00483}00483   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_aeb5d14f2e1556bddc04a17dd6fe862ea}{basePairHistograms}}.size();     iHisto++) \mbox{\hyperlink{class_task_aeb5d14f2e1556bddc04a17dd6fe862ea}{basePairHistograms}}[iHisto]-\/>\mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00484}00484   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_acc1a41e55911576605060a49664c7d1f}{derivedSingleHistograms}}.size();iHisto++) \mbox{\hyperlink{class_task_acc1a41e55911576605060a49664c7d1f}{derivedSingleHistograms}}[iHisto]-\/>\mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00485}00485   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_a580f0b416146660bc0efc351e8c1c775}{derivedPairHistograms}}.size();  iHisto++) \mbox{\hyperlink{class_task_a580f0b416146660bc0efc351e8c1c775}{derivedPairHistograms}}[iHisto]-\/>\mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00486}00486   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_a6b4bacd121444576a62bd1354f0b6b68}{combinedHistograms}}.size();     iHisto++) \mbox{\hyperlink{class_task_a6b4bacd121444576a62bd1354f0b6b68}{combinedHistograms}}[iHisto]-\/>\mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00487}00487   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}resetHistograms()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00488}00488     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00489}00489 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00490}00490 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00491}\mbox{\hyperlink{class_task_a098814a2d8c8e0c14ea28a598f585a3c}{00491}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a098814a2d8c8e0c14ea28a598f585a3c}{Task::clearHistograms}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00492}00492 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00493}00493   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}clearHistograms()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00494}00494     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00495}00495   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_afac9929c6201640a924d1e44303ffd29}{eventCountHistos}}) \textcolor{keyword}{delete} \mbox{\hyperlink{class_task_afac9929c6201640a924d1e44303ffd29}{eventCountHistos}};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00496}00496   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_ae257d4df10bd00bb719425721d43ce80}{inputHistograms}}.size();        iHisto++) \textcolor{keyword}{delete} \mbox{\hyperlink{class_task_ae257d4df10bd00bb719425721d43ce80}{inputHistograms}}[iHisto];}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00497}00497   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_a49637b241f2bb93c22a611756240f577}{histograms}}.size();             iHisto++) \textcolor{keyword}{delete} \mbox{\hyperlink{class_task_a49637b241f2bb93c22a611756240f577}{histograms}}[iHisto];}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00498}00498   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}.size();   iHisto++) \textcolor{keyword}{delete} \mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}[iHisto];}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00499}00499   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_aeb5d14f2e1556bddc04a17dd6fe862ea}{basePairHistograms}}.size();     iHisto++) \textcolor{keyword}{delete} \mbox{\hyperlink{class_task_aeb5d14f2e1556bddc04a17dd6fe862ea}{basePairHistograms}}[iHisto];}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00500}00500   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_acc1a41e55911576605060a49664c7d1f}{derivedSingleHistograms}}.size();iHisto++) \textcolor{keyword}{delete} \mbox{\hyperlink{class_task_acc1a41e55911576605060a49664c7d1f}{derivedSingleHistograms}}[iHisto];}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00501}00501   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_a580f0b416146660bc0efc351e8c1c775}{derivedPairHistograms}}.size();  iHisto++) \textcolor{keyword}{delete} \mbox{\hyperlink{class_task_a580f0b416146660bc0efc351e8c1c775}{derivedPairHistograms}}[iHisto];}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00502}00502   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_a6b4bacd121444576a62bd1354f0b6b68}{combinedHistograms}}.size();     iHisto++) \textcolor{keyword}{delete} \mbox{\hyperlink{class_task_a6b4bacd121444576a62bd1354f0b6b68}{combinedHistograms}}[iHisto];}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00503}00503   \mbox{\hyperlink{class_task_ae257d4df10bd00bb719425721d43ce80}{inputHistograms}}.clear();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00504}00504   \mbox{\hyperlink{class_task_a49637b241f2bb93c22a611756240f577}{histograms}}.clear();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00505}00505   \mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}.clear();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00506}00506   \mbox{\hyperlink{class_task_aeb5d14f2e1556bddc04a17dd6fe862ea}{basePairHistograms}}.clear();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00507}00507   \mbox{\hyperlink{class_task_acc1a41e55911576605060a49664c7d1f}{derivedSingleHistograms}}.clear();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00508}00508   \mbox{\hyperlink{class_task_a580f0b416146660bc0efc351e8c1c775}{derivedPairHistograms}}.clear();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00509}00509   \mbox{\hyperlink{class_task_a6b4bacd121444576a62bd1354f0b6b68}{combinedHistograms}}.clear();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00510}00510   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}clearHistograms()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00511}00511     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00512}00512 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00513}00513 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00514}\mbox{\hyperlink{class_task_af6b2f71e156a8fc092b46fda1c79fb59}{00514}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_af6b2f71e156a8fc092b46fda1c79fb59}{Task::scaleHistograms}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00515}00515 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00516}00516   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}scaleHistograms()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00517}00517     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00518}00518   \textcolor{keywordtype}{double} scalingFactor;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00519}00519   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nEventFilters    = \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00520}00520   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nParticleFilters = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00521}00521   \textcolor{keywordtype}{int} index;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00522}00522   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}scaleHistograms()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00523}00523     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00524}00524     cout << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00525}00525     cout << \textcolor{stringliteral}{"{}              Accepted number of events: "{}} <<  \mbox{\hyperlink{class_task_aa8a0d1fbb21cfb200e74bb3b38118fa0}{nEventAccepted}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00526}00526     cout << \textcolor{stringliteral}{"{}                          nEventFilters: "{}} <<  nEventFilters << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00527}00527     cout << \textcolor{stringliteral}{"{}                       nParticleFilters: "{}} <<  nParticleFilters << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00528}00528     cout << \textcolor{stringliteral}{"{}            baseSingleHistograms.size(): "{}} <<  \mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}.size() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00529}00529     cout << \textcolor{stringliteral}{"{}              basePairHistograms.size(): "{}} <<  \mbox{\hyperlink{class_task_aeb5d14f2e1556bddc04a17dd6fe862ea}{basePairHistograms}}.size() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00530}00530     cout << \textcolor{stringliteral}{"{}         derivedSingleHistograms.size(): "{}} <<  \mbox{\hyperlink{class_task_acc1a41e55911576605060a49664c7d1f}{derivedSingleHistograms}}.size() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00531}00531     cout << \textcolor{stringliteral}{"{}           derivedPairHistograms.size(): "{}} <<  \mbox{\hyperlink{class_task_a580f0b416146660bc0efc351e8c1c775}{derivedPairHistograms}}.size() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00532}00532     cout << \textcolor{stringliteral}{"{}              combinedHistograms.size(): "{}} <<  \mbox{\hyperlink{class_task_a6b4bacd121444576a62bd1354f0b6b68}{combinedHistograms}}.size() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00533}00533     cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/   Accumulated statistics: -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00534}00534     \mbox{\hyperlink{class_task_ae14eff4fe34dd94705fdd64b0ff293d4}{printEventCount}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00535}00535     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00536}00536   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00537}00537     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00538}00538     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}}[iEventFilter]>1)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00539}00539       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00540}00540       scalingFactor = 1.0/double(\mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}}[iEventFilter]);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00541}00541       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}scaleHistograms()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00542}00542         \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00543}00543         cout << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00544}00544         cout << \textcolor{stringliteral}{"{}                                    iEventFilter: "{}} <<  iEventFilter<< endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00545}00545         cout << \textcolor{stringliteral}{"{}           nFilteredEventsAccepted[iEventFilter]: "{}} <<  \mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}}[iEventFilter]<< endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00546}00546         cout << \textcolor{stringliteral}{"{}                                   scalingFactor: "{}} <<  scalingFactor << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00547}00547         \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00548}00548       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_a49637b241f2bb93c22a611756240f577}{histograms}}.size()>0)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00549}00549         \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00550}00550           \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}scaleHistograms()"{}})) cout <<  \textcolor{stringliteral}{"{}Scaling group named "{}} <<  \mbox{\hyperlink{class_task_a49637b241f2bb93c22a611756240f577}{histograms}}[iEventFilter]-\/>getName() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00551}00551           \mbox{\hyperlink{class_task_a49637b241f2bb93c22a611756240f577}{histograms}}[iEventFilter]-\/>scale(scalingFactor);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00552}00552         \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00553}00553       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}.size()>0)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00554}00554         \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00555}00555         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00556}00556           \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00557}00557           index = iEventFilter*nParticleFilters + iParticleFilter1;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00558}00558           \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}scaleHistograms()"{}}))cout <<  \textcolor{stringliteral}{"{}Scaling group index:"{}} << index << \textcolor{stringliteral}{"{} named "{}} <<  \mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}[index]-\/>getName() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00559}00559           \mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}[index]-\/>scale(scalingFactor);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00560}00560           \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00561}00561         \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00562}00562       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_aeb5d14f2e1556bddc04a17dd6fe862ea}{basePairHistograms}}.size()>0)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00563}00563         \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00564}00564         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00565}00565           \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00566}00566           \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00567}00567             \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00568}00568             index = iEventFilter*nParticleFilters*nParticleFilters+iParticleFilter1*nParticleFilters+iParticleFilter2;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00569}00569             \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}scaleHistograms()"{}}))cout <<  \textcolor{stringliteral}{"{}Scaling group index:"{}} << index << \textcolor{stringliteral}{"{} named "{}} <<  \mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}[index]-\/>getName() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00570}00570             \mbox{\hyperlink{class_task_aeb5d14f2e1556bddc04a17dd6fe862ea}{basePairHistograms}}[index]-\/>scale(scalingFactor);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00571}00571             \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00572}00572           \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00573}00573         \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00574}00574       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00575}00575     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00576}00576       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00577}00577       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}scaleHistograms()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00578}00578         \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00579}00579         cout << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00580}00580         cout << \textcolor{stringliteral}{"{}                                    iEventFilter: "{}} <<  iEventFilter<< endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00581}00581         cout << \textcolor{stringliteral}{"{}           nFilteredEventsAccepted[iEventFilter]: "{}} <<  \mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}}[iEventFilter]<< endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00582}00582         cout << \textcolor{stringliteral}{"{}                            no scaling performed: "{}} <<  endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00583}00583         \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00584}00584       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00585}00585     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00586}00586   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}scaleHistograms()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00587}00587     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00588}00588 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00589}00589 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00590}00590 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00591}\mbox{\hyperlink{class_task_acec60b5ca389b01edeb19c26eaf7b49c}{00591}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_acec60b5ca389b01edeb19c26eaf7b49c}{Task::saveHistogramsAsText}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00592}00592 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00593}00593   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a13fccb07610d6aa3cb1b900a249906e0}{reportNoOps}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}saveHistogramsAsText()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00594}00594     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00595}00595 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00596}00596 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00597}00597 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00598}\mbox{\hyperlink{class_task_a522a5de2e54a73e20780d1dc3af96e09}{00598}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_ae4bb5a5ddfea33eadddf6393ce8d0912}{Task::saveHistograms}}(TFile * outputFile)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00599}00599 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00600}00600   TString fct = \textcolor{stringliteral}{"{}saveHistograms(TFile * outputFile)"{}};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00601}00601   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),fct))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00602}00602     \{  \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00603}00603   outputFile-\/>cd();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00604}00604   \mbox{\hyperlink{class_task_a862a9c27db16ed23c36c573a1236aa19}{saveNEventProcessed}}(outputFile);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00605}00605   \mbox{\hyperlink{class_task_aaaaa6bd653f4e839dd92c3e85f27a401}{saveNEventAccepted}}(outputFile);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00606}00606   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_afac9929c6201640a924d1e44303ffd29}{eventCountHistos}}) \mbox{\hyperlink{class_task_afac9929c6201640a924d1e44303ffd29}{eventCountHistos}}-\/>\mbox{\hyperlink{class_histogram_collection_aafb8f5520ea580ef5735f8356e236c3f}{saveHistograms}}(outputFile);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00607}00607   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00608}00608     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00609}00609     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),fct)) cout << \textcolor{stringliteral}{"{}eventCountHistos is not defined and thus not saved"{}}<< endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00610}00610     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00611}00611   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),fct))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00612}00612     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00613}00613     cout << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00614}00614     cout << \textcolor{stringliteral}{"{}    base single histogram(s):"{}}  << \mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}.size() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00615}00615     cout << \textcolor{stringliteral}{"{}      base pair histogram(s):"{}}  << \mbox{\hyperlink{class_task_aeb5d14f2e1556bddc04a17dd6fe862ea}{basePairHistograms}}.size() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00616}00616     cout << \textcolor{stringliteral}{"{} derived single histogram(s):"{}}  << \mbox{\hyperlink{class_task_acc1a41e55911576605060a49664c7d1f}{derivedSingleHistograms}}.size() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00617}00617     cout << \textcolor{stringliteral}{"{}   derived pair histogram(s):"{}}  << \mbox{\hyperlink{class_task_a580f0b416146660bc0efc351e8c1c775}{derivedPairHistograms}}.size() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00618}00618     cout << \textcolor{stringliteral}{"{}       combined histogram(s):"{}}  << \mbox{\hyperlink{class_task_a6b4bacd121444576a62bd1354f0b6b68}{combinedHistograms}}.size() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00619}00619     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00620}00620   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_a49637b241f2bb93c22a611756240f577}{histograms}}.size(); iHisto++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00621}00621     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00622}00622     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),fct)) cout << \textcolor{stringliteral}{"{}Saving global histogram(s) group:"{}} << iHisto << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00623}00623     \mbox{\hyperlink{class_task_a49637b241f2bb93c22a611756240f577}{histograms}}[iHisto]-\/>saveHistograms(outputFile);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00624}00624     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00625}00625   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}.size(); iHisto++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00626}00626     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00627}00627     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),fct)) cout << \textcolor{stringliteral}{"{}Saving single histogram(s) group:"{}} << iHisto << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00628}00628     \mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}[iHisto]-\/>saveHistograms(outputFile);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00629}00629     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00630}00630   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_aeb5d14f2e1556bddc04a17dd6fe862ea}{basePairHistograms}}.size(); iHisto++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00631}00631     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00632}00632     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),fct)) cout << \textcolor{stringliteral}{"{}Saving pair histogram(s) group:"{}} << iHisto << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00633}00633     \mbox{\hyperlink{class_task_aeb5d14f2e1556bddc04a17dd6fe862ea}{basePairHistograms}}[iHisto]-\/>saveHistograms(outputFile);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00634}00634     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00635}00635   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_acc1a41e55911576605060a49664c7d1f}{derivedSingleHistograms}}.size(); iHisto++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00636}00636     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00637}00637     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),fct)) cout << \textcolor{stringliteral}{"{}Saving derived single histogram(s) group:"{}} << iHisto  << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00638}00638     \mbox{\hyperlink{class_task_acc1a41e55911576605060a49664c7d1f}{derivedSingleHistograms}}[iHisto]-\/>saveHistograms(outputFile);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00639}00639     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00640}00640   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_a580f0b416146660bc0efc351e8c1c775}{derivedPairHistograms}}.size(); iHisto++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00641}00641     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00642}00642     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),fct)) cout << \textcolor{stringliteral}{"{}Saving derived pair histogram(s) group:"{}} << iHisto  << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00643}00643     \mbox{\hyperlink{class_task_a580f0b416146660bc0efc351e8c1c775}{derivedPairHistograms}}[iHisto]-\/>saveHistograms(outputFile);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00644}00644     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00645}00645   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iHisto=0; iHisto<\mbox{\hyperlink{class_task_a6b4bacd121444576a62bd1354f0b6b68}{combinedHistograms}}.size(); iHisto++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00646}00646     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00647}00647     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),fct)) cout << \textcolor{stringliteral}{"{}Saving combined histogram(s) group:"{}} <<  iHisto << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00648}00648     \mbox{\hyperlink{class_task_a6b4bacd121444576a62bd1354f0b6b68}{combinedHistograms}}[iHisto]-\/>saveHistograms(outputFile);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00649}00649     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00650}00650 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00651}00651 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00652}\mbox{\hyperlink{class_task_ae4bb5a5ddfea33eadddf6393ce8d0912}{00652}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_ae4bb5a5ddfea33eadddf6393ce8d0912}{Task::saveHistograms}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00653}00653 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00654}00654   TString fct = \textcolor{stringliteral}{"{}saveHistograms()"{}};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00655}00655   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),fct))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00656}00656     \{  \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00657}00657   \textcolor{comment}{//TString outputPath;}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00658}00658   TString \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00659}00659   TFile * outputFile = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00660}00660   }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00661}00661   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}(\textcolor{stringliteral}{"{}fileFromParent"{}}) )}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00662}00662     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00663}00663     \textcolor{comment}{// this is used by the FileIterator to set the file name to be read}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00664}00664     \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}(\textcolor{stringliteral}{"{}histogramOuputFileName"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00665}00665     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00666}00666   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00667}00667     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00668}00668     \textcolor{comment}{// this is used normally to identify the file name to be used to save or load from.}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00669}00669     \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histoOutputPath"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00670}00670     \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} += \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histoOutputFileName"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00671}00671     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00672}00672   }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00673}00673   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}doSubsampleAnalysis"{}}) || \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}doPartialSave"{}}) )}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00674}00674     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00675}00675     \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00676}00676     \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} += \mbox{\hyperlink{class_task_a2e27bac30952367cec4c75ce30224993}{subSampleIndex}}++;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00677}00677     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00678}00678   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}forceHistogramsRewrite"{}}) || \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}(\textcolor{stringliteral}{"{}fileFromParent"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00679}00679     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00680}00680     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),fct)) cout << \textcolor{stringliteral}{"{}Opening output (RECREATE) file  "{}} << \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00681}00681     outputFile = \mbox{\hyperlink{class_task_a4491c7a1e03958b1a67e51e387601695}{openRootFile}}(\textcolor{stringliteral}{"{}"{}},\mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}},\textcolor{stringliteral}{"{}RECREATE"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00682}00682     \textcolor{keywordflow}{if} (!outputFile)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00683}00683       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00684}00684       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}saveHistograms()"{}})) cout << \textcolor{stringliteral}{"{}Could not open (RECREATE) file:"{}}  << \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00685}00685       \mbox{\hyperlink{class_message_logger_a0532494797013d9afcb82b5fcf442488}{postTaskError}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00686}00686       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00687}00687       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00688}00688     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00689}00689   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00690}00690     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00691}00691     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),fct)) cout << \textcolor{stringliteral}{"{}Opening  output (NEW) file  "{}} << \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00692}00692     outputFile = \mbox{\hyperlink{class_task_a4491c7a1e03958b1a67e51e387601695}{openRootFile}}(\textcolor{stringliteral}{"{}"{}},\mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}},\textcolor{stringliteral}{"{}NEW"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00693}00693     \textcolor{keywordflow}{if} (!outputFile)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00694}00694       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00695}00695       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),fct)) cout << \textcolor{stringliteral}{"{}Could not open (NEW) file  "{}} << \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00696}00696       \mbox{\hyperlink{class_message_logger_a3c1f17bac1dc8a33dda04eb1a565b062}{postTaskWarning}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00697}00697       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00698}00698       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00699}00699     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00700}00700   \mbox{\hyperlink{class_task_ae4bb5a5ddfea33eadddf6393ce8d0912}{saveHistograms}}(outputFile);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00701}00701   outputFile-\/>Close();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00702}00702   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),fct))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00703}00703     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00704}00704 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00705}00705 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00706}\mbox{\hyperlink{class_task_a862a9c27db16ed23c36c573a1236aa19}{00706}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a862a9c27db16ed23c36c573a1236aa19}{Task::saveNEventProcessed}}(TFile * outputFile)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00707}00707 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00708}00708   outputFile-\/>cd();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00709}00709   TParameter<Long64\_t>(\textcolor{stringliteral}{"{}EventProcessed"{}},\mbox{\hyperlink{class_task_a66a48a46d707a69339ec8c03cf25556c}{nEventProcessed}},\textcolor{charliteral}{'+'}).Write();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00710}00710 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00711}00711 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00712}\mbox{\hyperlink{class_task_aaaaa6bd653f4e839dd92c3e85f27a401}{00712}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_aaaaa6bd653f4e839dd92c3e85f27a401}{Task::saveNEventAccepted}}(TFile * outputFile)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00713}00713 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00714}00714   outputFile-\/>cd();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00715}00715   TParameter<Long64\_t>(\textcolor{stringliteral}{"{}EventAccepted"{}},\mbox{\hyperlink{class_task_aa8a0d1fbb21cfb200e74bb3b38118fa0}{nEventAccepted}},\textcolor{charliteral}{'+'}).Write();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00716}00716 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00717}00717 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00718}\mbox{\hyperlink{class_task_a0412ac2b34de1abd8a7a3a7339b1f50e}{00718}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a0412ac2b34de1abd8a7a3a7339b1f50e}{Task::writeParameter}}(TFile * outputFile, \textcolor{keyword}{const} TString parameterName, \textcolor{keywordtype}{long} value)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00719}00719 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00720}00720   outputFile-\/>cd();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00721}00721   TParameter<Long64\_t>(parameterName,value,\textcolor{charliteral}{'+'}).Write();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00722}00722 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00723}00723 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00724}00724 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00725}\mbox{\hyperlink{class_task_a512a1b774d9a67425083dbfea7f60ed5}{00725}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a512a1b774d9a67425083dbfea7f60ed5}{Task::saveNFilteredEventsAccepted}}(TFile * outputFile, vector<unsigned int> \& nFilteredEventsAccepted)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00726}00726 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00727}00727   outputFile-\/>cd();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00728}00728   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k=0; k<\mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}}.size(); k++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00729}00729     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00730}00730     TString name = \textcolor{stringliteral}{"{}nFilteredEventsAccepted\_"{}}; name += k;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00731}00731     TParameter<Long64\_t>(name,\mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}}[k],\textcolor{charliteral}{'+'}).Write();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00732}00732     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00733}00733 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00734}00734 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00735}00735 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00736}\mbox{\hyperlink{class_task_a1ce9012b23b733cda8e14e0ff3e4e1c3}{00736}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a1ce9012b23b733cda8e14e0ff3e4e1c3}{Task::loadNEventProcessed}}(TFile * inputFile)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00737}00737 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00738}00738   \mbox{\hyperlink{class_task_a66a48a46d707a69339ec8c03cf25556c}{nEventProcessed}} = \mbox{\hyperlink{class_task_a0bc0b2032fda7d3e208b0e15d00a970e}{readParameter}}(inputFile,\textcolor{stringliteral}{"{}EventProcessed"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00739}00739 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00740}00740 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00741}\mbox{\hyperlink{class_task_a5d7a01590b5a08943c7f3ee1574d62d8}{00741}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a5d7a01590b5a08943c7f3ee1574d62d8}{Task::loadNEventAccepted}}(TFile * inputFile)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00742}00742 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00743}00743   \mbox{\hyperlink{class_task_aa8a0d1fbb21cfb200e74bb3b38118fa0}{nEventAccepted}} = \mbox{\hyperlink{class_task_a0bc0b2032fda7d3e208b0e15d00a970e}{readParameter}}(inputFile,\textcolor{stringliteral}{"{}EventAccepted"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00744}00744 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00745}00745 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00746}\mbox{\hyperlink{class_task_a6626812916c6da46a556408d169dc0cb}{00746}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a6626812916c6da46a556408d169dc0cb}{Task::loadNFilteredEventsAccepted}}(TFile * inputFile, vector<unsigned int> \& nFilteredEventsAccepted)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00747}00747 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00748}00748   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k=0; k<\mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}}.size(); k++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00749}00749     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00750}00750     TString name = \textcolor{stringliteral}{"{}nFilteredEventsAccepted\_"{}}; name += k;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00751}00751     TParameter<Long64\_t> *par = (TParameter<Long64\_t> *) inputFile-\/>Get(name);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00752}00752     \mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}}[k] = par-\/>GetVal();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00753}00753     \textcolor{keyword}{delete} par;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00754}00754     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00755}00755 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00756}00756 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00757}\mbox{\hyperlink{class_task_a0bc0b2032fda7d3e208b0e15d00a970e}{00757}} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_task_a0bc0b2032fda7d3e208b0e15d00a970e}{Task::readParameter}}(TFile * inputFile, \textcolor{keyword}{const} TString \& parameterName)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00758}00758 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00759}00759   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}} (\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}readParameter(...)"{}})) cout << \textcolor{stringliteral}{"{}Reading parameter: "{}} << parameterName << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00760}00760   TParameter<Long64\_t> *par = (TParameter<Long64\_t> *) inputFile-\/>Get(parameterName);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00761}00761   \textcolor{keywordflow}{if} (!par)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00762}00762     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00763}00763     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}readParameter()"{}})) cout << \textcolor{stringliteral}{"{}Parameter not found."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00764}00764     \mbox{\hyperlink{class_message_logger_a0532494797013d9afcb82b5fcf442488}{postTaskError}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00765}00765     \textcolor{keywordflow}{return} 1.0;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00766}00766     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00767}00767   \textcolor{keywordtype}{double} value = par-\/>GetVal();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00768}00768   \textcolor{keyword}{delete} par;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00769}00769   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}} (\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}readParameter(...)"{}})) cout << \textcolor{stringliteral}{"{}Parameter value : "{}} << value << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00770}00770   \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00771}00771 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00772}00772 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00773}\mbox{\hyperlink{class_task_a4491c7a1e03958b1a67e51e387601695}{00773}} TFile *  \mbox{\hyperlink{class_task_a4491c7a1e03958b1a67e51e387601695}{Task::openRootFile}}(\textcolor{keyword}{const} TString \& \mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}}, \textcolor{keyword}{const} TString \& fileName, \textcolor{keyword}{const} TString \& ioOption)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00774}00774 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00775}00775   TString inputFileName = \mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00776}00776   }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00777}00777   \textcolor{comment}{// make sure that if an inputPath is given, it ends with '/'}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00778}00778   \textcolor{keywordtype}{int} slash = inputFileName.First(\textcolor{charliteral}{'/'});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00779}00779   \textcolor{keywordtype}{int} len = inputFileName.Length();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00780}00780   \textcolor{comment}{//  cout << slash << endl;}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00781}00781   \textcolor{comment}{//  cout << len << endl;}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00782}00782   \textcolor{keywordflow}{if} (len>0 \&\& (len-\/1)!=slash)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00783}00783     inputFileName += \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00784}00784   }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00785}00785   inputFileName += fileName;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00786}00786   \textcolor{keywordflow}{if} (!inputFileName.Contains(\textcolor{stringliteral}{"{}.root"{}})) inputFileName += \textcolor{stringliteral}{"{}.root"{}};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00787}00787   }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00788}00788   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}} (\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}openRootFile(...)"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00789}00789     cout << \textcolor{stringliteral}{"{}Opening file: "{}} << inputFileName << \textcolor{stringliteral}{"{} with option: "{}} << ioOption << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00790}00790   TFile * inputFile = \textcolor{keyword}{new} TFile(inputFileName,ioOption);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00791}00791   \textcolor{keywordflow}{if} (!inputFile)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00792}00792     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00793}00793     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}openRootFile()"{}})) cout << \textcolor{stringliteral}{"{}file: "{}} << inputFileName << \textcolor{stringliteral}{"{} not found."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00794}00794     \mbox{\hyperlink{class_message_logger_a0532494797013d9afcb82b5fcf442488}{postTaskError}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00795}00795     \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00796}00796     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00797}00797   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00798}00798     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00799}00799     \textcolor{keywordflow}{if} (!inputFile-\/>IsOpen())}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00800}00800       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00801}00801       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}openRootFile()"{}})) cout << \textcolor{stringliteral}{"{}file: "{}} << inputFileName << \textcolor{stringliteral}{"{} not found."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00802}00802       \mbox{\hyperlink{class_message_logger_a0532494797013d9afcb82b5fcf442488}{postTaskError}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00803}00803       \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00804}00804       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00805}00805     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00806}00806       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00807}00807       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}} (\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}openRootFile()"{}})) cout << \textcolor{stringliteral}{"{}file opened successfully."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00808}00808       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00809}00809     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00810}00810   \textcolor{keywordflow}{return} inputFile;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00811}00811 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00812}00812 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00813}00813 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00814}\mbox{\hyperlink{class_task_a79deeef6e5d1fd7d0eb04158ee9a1e32}{00814}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a79deeef6e5d1fd7d0eb04158ee9a1e32}{Task::initializeTasks}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00815}00815 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00816}00816   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initializeTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00817}00817     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00818}00818   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00819}00819   \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00820}00820   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nSubtasks = \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}.size();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00821}00821   \textcolor{keywordflow}{if} (nSubtasks>0)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00822}00822     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00823}00823     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initializeTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00824}00824       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00825}00825       cout << \textcolor{stringliteral}{"{}Initializing "{}} << nSubtasks << \textcolor{stringliteral}{"{} tasks."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00826}00826       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00827}00827     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  iTask=0; iTask<nSubtasks; iTask++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00828}00828       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00829}00829       \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00830}00830       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initializeTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00831}00831         \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00832}00832         cout << \textcolor{stringliteral}{"{}Initializing task:"{}} << \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}[iTask]-\/>getName() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00833}00833         \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00834}00834       \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}[iTask]-\/>initializeTasks();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00835}00835       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00836}00836     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00837}00837   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00838}00838     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00839}00839     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initializeTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00840}00840       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00841}00841       cout << \textcolor{stringliteral}{"{}No subtask to initialize. "{}} <<   endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00842}00842       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00843}00843     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00844}00844   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initializeTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00845}00845     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00846}00846 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00847}00847 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00848}\mbox{\hyperlink{class_task_a60cbc524d9e983cfaefea47f4b2355d3}{00848}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a60cbc524d9e983cfaefea47f4b2355d3}{Task::executeTasks}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00849}00849 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00850}00850   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00851}00851   \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00852}00852   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nSubtasks = \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}.size();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00853}00853   \textcolor{keywordflow}{if} (nSubtasks>0)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00854}00854     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  iTask=0; iTask<nSubtasks; iTask++)  \{ \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}[iTask]-\/>executeTasks(); \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00855}00855 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00856}00856 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00857}\mbox{\hyperlink{class_task_a9ad18a77cb084d62faa79f1cb6a9779b}{00857}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a9ad18a77cb084d62faa79f1cb6a9779b}{Task::finalizeTasks}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00858}00858 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00859}00859   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}finalizeTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00860}00860     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00861}00861   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00862}00862   \mbox{\hyperlink{class_task_aab4bc670089cc073247542c3a26da5aa}{finalize}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00863}00863   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nSubtasks = \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}.size();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00864}00864   \textcolor{keywordflow}{if} (nSubtasks>0)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00865}00865     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00866}00866     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}finalizeTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00867}00867       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00868}00868       cout << \textcolor{stringliteral}{"{}Finalizing "{}} << nSubtasks << \textcolor{stringliteral}{"{} tasks."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00869}00869       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00870}00870     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  iTask=0; iTask<nSubtasks; iTask++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00871}00871       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00872}00872       \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00873}00873       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}finalizeTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00874}00874         \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00875}00875         cout << \textcolor{stringliteral}{"{}Finalizing task:"{}} << \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}[iTask]-\/>getName() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00876}00876         \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00877}00877       \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}[iTask]-\/>finalizeTasks();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00878}00878       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00879}00879     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00880}00880   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00881}00881     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00882}00882     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}finalizeTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00883}00883       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00884}00884       cout << \textcolor{stringliteral}{"{}No subtasks to finalize."{}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00885}00885       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00886}00886     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00887}00887   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}finalizeTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00888}00888     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00889}00889 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00890}00890 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00891}\mbox{\hyperlink{class_task_aed29732410a89a401b9ffe34ab6ec95a}{00891}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_aed29732410a89a401b9ffe34ab6ec95a}{Task::resetTasks}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00892}00892 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00893}00893   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}resetTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00894}00894     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00895}00895   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00896}00896   \mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00897}00897   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nSubtasks = \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}.size();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00898}00898   \textcolor{keywordflow}{if} (nSubtasks>0)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00899}00899     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00900}00900     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}resetTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00901}00901       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00902}00902       cout << \textcolor{stringliteral}{"{}Resetting "{}} << nSubtasks << \textcolor{stringliteral}{"{} tasks."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00903}00903       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00904}00904     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  iTask=0; iTask<nSubtasks; iTask++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00905}00905       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00906}00906       \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00907}00907       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}resetTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00908}00908         \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00909}00909         cout << \textcolor{stringliteral}{"{}Resetting task:"{}} << \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}[iTask]-\/>getName() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00910}00910         \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00911}00911       \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}[iTask]-\/>resetTasks();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00912}00912       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00913}00913     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00914}00914   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00915}00915     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00916}00916     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}resetTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00917}00917       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00918}00918       cout << \textcolor{stringliteral}{"{}No subtasks to reset."{}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00919}00919       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00920}00920     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00921}00921   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}resetTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00922}00922     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00923}00923 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00924}00924 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00925}\mbox{\hyperlink{class_task_ac12c49f455526f2fedaf443557e42730}{00925}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_ac12c49f455526f2fedaf443557e42730}{Task::clearTasks}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00926}00926 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00927}00927   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}clearTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00928}00928     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00929}00929   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00930}00930   \mbox{\hyperlink{class_task_a19de4303aa171af0eb3a8fb5ec3ca2fb}{clear}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00931}00931   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nSubtasks = \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}.size();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00932}00932   \textcolor{keywordflow}{if} (nSubtasks>0)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00933}00933     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00934}00934     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}clearTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00935}00935       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00936}00936       cout << \textcolor{stringliteral}{"{}Clearing "{}} << nSubtasks << \textcolor{stringliteral}{"{} tasks."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00937}00937       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00938}00938     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  iTask=0; iTask<nSubtasks; iTask++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00939}00939       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00940}00940       \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00941}00941       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}clearTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00942}00942         \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00943}00943         cout << \textcolor{stringliteral}{"{}Clearing task:"{}} << \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}[iTask]-\/>getName() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00944}00944         \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00945}00945       \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}[iTask]-\/>clearTasks();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00946}00946       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00947}00947     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00948}00948   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00949}00949     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00950}00950     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}clearTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00951}00951       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00952}00952       cout << \textcolor{stringliteral}{"{}No subtasks to clear."{}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00953}00953       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00954}00954     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00955}00955   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}clearTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00956}00956     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00957}00957 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00958}00958 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00959}00959 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00960}\mbox{\hyperlink{class_task_a8c001f1dd731687d350378645d5a5dc2}{00960}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a8c001f1dd731687d350378645d5a5dc2}{Task::savePartialTasks}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00961}00961 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00962}00962   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}savePartialTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00963}00963     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00964}00964   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00965}00965   \mbox{\hyperlink{class_task_a23dad2af569b74e50abcd9241e03af3e}{savePartial}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00966}00966   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nSubtasks = \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}.size();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00967}00967   \textcolor{keywordflow}{if} (nSubtasks>0)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00968}00968     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00969}00969     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}savePartialTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00970}00970       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00971}00971       cout << \textcolor{stringliteral}{"{}Calling partial save for  "{}} << nSubtasks << \textcolor{stringliteral}{"{} tasks."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00972}00972       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00973}00973     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  iTask=0; iTask<nSubtasks; iTask++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00974}00974       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00975}00975       \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00976}00976       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}savePartialTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00977}00977         \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00978}00978         cout << \textcolor{stringliteral}{"{}Calling partial  for  :"{}} << \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}[iTask]-\/>getName() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00979}00979         \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00980}00980       \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}[iTask]-\/>savePartialTasks();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00981}00981       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00982}00982     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00983}00983   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00984}00984     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00985}00985     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}savePartialTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00986}00986       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00987}00987       cout << \textcolor{stringliteral}{"{}No subtasks to partial save..."{}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00988}00988       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00989}00989     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00990}00990   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}savePartialTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00991}00991     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00992}00992 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00993}00993 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00994}\mbox{\hyperlink{class_task_a33764b29a625d6a820297dc8f558b0cc}{00994}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a33764b29a625d6a820297dc8f558b0cc}{Task::subsampleAnalysisTasks}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00995}00995 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00996}00996   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}subsampleAnalysisTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00997}00997     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00998}00998   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l00999}00999   \mbox{\hyperlink{class_task_a3ec28185c9df5e62f7c0723a8dd7a2b6}{subsampleAnalysis}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01000}01000   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nSubtasks = \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}.size();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01001}01001   \textcolor{keywordflow}{if} (nSubtasks>0)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01002}01002     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01003}01003     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}subsampleAnalysisTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01004}01004       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01005}01005       cout << \textcolor{stringliteral}{"{}Calling subsample analysis for  "{}} << nSubtasks << \textcolor{stringliteral}{"{} tasks."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01006}01006       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01007}01007     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  iTask=0; iTask<nSubtasks; iTask++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01008}01008       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01009}01009       \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01010}01010       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}subsampleAnalysisTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01011}01011         \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01012}01012         cout << \textcolor{stringliteral}{"{}Calling subsample analysis for  :"{}} << \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}[iTask]-\/>getName() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01013}01013         \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01014}01014       \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}[iTask]-\/>subsampleAnalysis();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01015}01015       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01016}01016     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01017}01017   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01018}01018     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01019}01019     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}subsampleAnalysisTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01020}01020       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01021}01021       cout << \textcolor{stringliteral}{"{}No subtasks to carry out subsample analysis for..."{}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01022}01022       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01023}01023     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01024}01024   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}subsampleAnalysisTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01025}01025     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01026}01026 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01027}01027 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01028}01028 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01029}\mbox{\hyperlink{class_task_a81111139bfa4245c298295ae560b20ca}{01029}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a81111139bfa4245c298295ae560b20ca}{Task::printConfigurationTasks}}(ostream \& output)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01030}01030 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01031}01031   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01032}01032   \mbox{\hyperlink{class_task_a83ecaa2646c6999e9274a527b76e8716}{printConfiguration}}(output);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01033}01033   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nSubtasks = \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}.size();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01034}01034   \textcolor{keywordflow}{if} (nSubtasks>0)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01035}01035     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01036}01036     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}printConfigurationTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01037}01037       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01038}01038       cout << \textcolor{stringliteral}{"{}Printing configurations for  "{}} << nSubtasks << \textcolor{stringliteral}{"{} tasks."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01039}01039       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01040}01040     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  iTask=0; iTask<nSubtasks; iTask++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01041}01041       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01042}01042       \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01043}01043       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}printConfigurationTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01044}01044         \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01045}01045         cout << \textcolor{stringliteral}{"{}Calling subsample analysis for  :"{}} << \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}[iTask]-\/>getName() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01046}01046         \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01047}01047       \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}[iTask]-\/>printConfigurationTasks(output);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01048}01048       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01049}01049     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01050}01050   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01051}01051     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01052}01052     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}printConfigurationTasks()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01053}01053       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01054}01054       cout << \textcolor{stringliteral}{"{}No subtasks to print configuration for..."{}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01055}01055       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01056}01056     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01057}01057 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01058}01058 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01059}01059 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01060}\mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{01060}} \mbox{\hyperlink{class_task}{Task}} *  \mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{Task::addSubtask}}(\mbox{\hyperlink{class_task}{Task}} * task)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01061}01061 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01062}01062   \textcolor{keywordflow}{if} (!task)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01063}01063     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01064}01064     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a1dcf96590e2352f7410a6a1623414096}{reportFatal}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}addSubtask(Task * task)"{}})) cout << \textcolor{stringliteral}{"{}Given task pointer is null. Abort."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01065}01065     \mbox{\hyperlink{class_message_logger_a21de642806f1c039f39a087e1e910984}{postTaskFatal}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01066}01066     \textcolor{keywordflow}{return} task;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01067}01067     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01068}01068   \mbox{\hyperlink{class_task_ad91d609b5c48a229c059e562ca7a20cb}{subtasks}}.push\_back( task );}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01069}01069   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}addSubtask(Task * task)"{}})) cout << \textcolor{stringliteral}{"{}Added task "{}} << task-\/>\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}() << \textcolor{stringliteral}{"{} to task "{}} << \mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01070}01070   \textcolor{keywordflow}{return} task;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01071}01071 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01072}01072 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01073}\mbox{\hyperlink{class_task_a4d1268de39943db211b83508367a5916}{01073}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a4d1268de39943db211b83508367a5916}{Task::addHistogramsToExtList}}(TList *list)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01074}01074 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01075}01075   TString \mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fctName}} = \textcolor{stringliteral}{"{}addHistogramsToExtList(TList *list)"{}};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01076}01076   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fctName}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01077}01077     ;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01078}01078   \textcolor{keywordflow}{if} (!list)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01079}01079     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01080}01080     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\textcolor{stringliteral}{"{}Task"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fctName}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01081}01081       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01082}01082       cout << \textcolor{stringliteral}{"{}Given list pointer is null."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01083}01083       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01084}01084     \mbox{\hyperlink{class_message_logger_a3c1f17bac1dc8a33dda04eb1a565b062}{postTaskWarning}}();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01085}01085     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01086}01086     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01087}01087   list-\/>Add(\textcolor{keyword}{new} TParameter<Long64\_t>(\textcolor{stringliteral}{"{}nEventProcessed"{}},\mbox{\hyperlink{class_task_a5221968e923d8b894fa6616bb5aa7fb3}{getNEventProcessed}}(),\textcolor{charliteral}{'+'}));}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01088}01088   }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01089}01089   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k=0; \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}.size(); k++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01090}01090     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01091}01091     TString name = \textcolor{stringliteral}{"{}nFilteredEventsAccepted"{}}; name += k;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01092}01092     list-\/>Add(\textcolor{keyword}{new} TParameter<Long64\_t>(name,\mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}}[k],\textcolor{charliteral}{'+'}));}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01093}01093     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01094}01094   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k=1; k<\mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}.size(); k++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01095}01095     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01096}01096     \mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}[k]-\/>addHistogramsToExtList(list);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01097}01097     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01098}01098   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k=1; k<\mbox{\hyperlink{class_task_aeb5d14f2e1556bddc04a17dd6fe862ea}{basePairHistograms}}.size(); k++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01099}01099     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01100}01100     \mbox{\hyperlink{class_task_aeb5d14f2e1556bddc04a17dd6fe862ea}{basePairHistograms}}[k]-\/>addHistogramsToExtList(list);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01101}01101     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01102}01102   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k=1; k<\mbox{\hyperlink{class_task_a580f0b416146660bc0efc351e8c1c775}{derivedPairHistograms}}.size(); k++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01103}01103     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01104}01104     \mbox{\hyperlink{class_task_a580f0b416146660bc0efc351e8c1c775}{derivedPairHistograms}}[k]-\/>addHistogramsToExtList(list);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01105}01105     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01106}01106 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01107}01107 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01108}\mbox{\hyperlink{class_task_a1b6030e671b0670d448a859b0fb0a065}{01108}} \textcolor{keyword}{const} TString \mbox{\hyperlink{class_task_a1b6030e671b0670d448a859b0fb0a065}{Task::createHistogramName}}(\textcolor{keyword}{const} TString \& baseName,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01109}01109                                         \textcolor{keyword}{const} TString \& evtFilterName,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01110}01110                                         \textcolor{keyword}{const} TString \& partFilterName1,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01111}01111                                         \textcolor{keyword}{const} TString \& observableName,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01112}01112                                         \textcolor{keyword}{const} TString \& suffix)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01113}01113 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01114}01114   TString histoName  = baseName;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01115}01115   histoName += evtFilterName;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01116}01116   histoName += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01117}01117   histoName += partFilterName1;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01118}01118   histoName += observableName;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01119}01119   histoName += suffix;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01120}01120   \textcolor{keywordflow}{return} histoName;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01121}01121 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01122}01122 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01123}\mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{01123}} \textcolor{keyword}{const} TString \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{Task::createPairHistogramName}}(\textcolor{keyword}{const} TString \& baseName,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01124}01124                                             \textcolor{keyword}{const} TString \& evtFilterName,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01125}01125                                             \textcolor{keyword}{const} TString \& partFilterName1,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01126}01126                                             \textcolor{keyword}{const} TString \& partFilterName2,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01127}01127                                             \textcolor{keyword}{const} TString \& observableName,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01128}01128                                             \textcolor{keyword}{const} TString \& suffix)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01129}01129 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01130}01130   TString histoName  = baseName;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01131}01131   histoName += evtFilterName;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01132}01132   histoName += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01133}01133   histoName += partFilterName1;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01134}01134   histoName += partFilterName2;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01135}01135   histoName += observableName;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01136}01136   histoName += suffix;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01137}01137   \textcolor{keywordflow}{return} histoName;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01138}01138 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01139}01139 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01140}\mbox{\hyperlink{class_task_aac1fd81fca680da790dcfe40d30e95ad}{01140}} vector<TString> \mbox{\hyperlink{class_task_aac1fd81fca680da790dcfe40d30e95ad}{Task::listFilesInDir}}(\textcolor{keyword}{const} TString \& dirname,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01141}01141                                      \textcolor{keyword}{const} TString ext)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01142}01142 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01143}01143   TSystemDirectory dir(dirname, dirname);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01144}01144   TList *files = dir.GetListOfFiles();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01145}01145   vector<TString>  fileNames;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01146}01146   }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01147}01147   \textcolor{keywordflow}{if} (files)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01148}01148     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01149}01149     TSystemFile *file;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01150}01150     TString fname;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01151}01151     TIter next(files);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01152}01152     \textcolor{keywordflow}{while} ((file=(TSystemFile*)next()))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01153}01153       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01154}01154       fname = file-\/>GetName();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01155}01155       \textcolor{keywordflow}{if} (!file-\/>IsDirectory() \&\& fname.EndsWith(ext))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01156}01156         \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01157}01157         fileNames.push\_back(fname);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01158}01158         \textcolor{comment}{//cout << fname.Data() << endl;}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01159}01159         \textcolor{comment}{//cout << fname << endl;}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01160}01160         \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01161}01161       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01162}01162     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01163}01163   \textcolor{keywordflow}{return} fileNames;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01164}01164 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01165}01165 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01169}\mbox{\hyperlink{class_task_a4c7f57b0dce292ebce810065db256fa6}{01169}} vector<TString>  \mbox{\hyperlink{class_task_aac1fd81fca680da790dcfe40d30e95ad}{Task::listFilesInDir}}(\textcolor{keyword}{const} TString \& pathName,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01170}01170                                       vector<TString> includePatterns,}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01171}01171                                       vector<TString> excludePatterns)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01172}01172 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01173}01173   cout << \textcolor{stringliteral}{"{}Task::addFileNames(const TString pathName,vector<TString> includePatterns,vector<TString> excludePatterns)"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01174}01174   vector<TString> outputList;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01175}01175   vector<TString> fileList = \mbox{\hyperlink{class_task_aac1fd81fca680da790dcfe40d30e95ad}{listFilesInDir}}(pathName,\textcolor{stringliteral}{"{}.root"{}});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01176}01176   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nNames = fileList.size();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01177}01177   cout << \textcolor{stringliteral}{"{}      nNames:"{}} << nNames << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01178}01178   cout << \textcolor{stringliteral}{"{}   nIncludes:"{}} << includePatterns.size() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01179}01179   cout << \textcolor{stringliteral}{"{}   nExcludes:"{}} << excludePatterns.size() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01180}01180   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k=0; k<fileList.size(); k++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01181}01181     \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01182}01182     TString name = fileList[k];}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01183}01183     \textcolor{keywordtype}{bool} include = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01184}01184     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} kInclude=0; kInclude<includePatterns.size(); kInclude++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01185}01185       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01186}01186       TString pattern = includePatterns[kInclude];}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01187}01187       \textcolor{keywordflow}{if} (!name.Contains(pattern)) \{ include = \textcolor{keyword}{false}; \textcolor{keywordflow}{break};\}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01188}01188       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01189}01189     \textcolor{keywordflow}{if} (!include)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01190}01190       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01191}01191       \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01192}01192       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01193}01193     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} kExclude=0; kExclude<excludePatterns.size(); kExclude++)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01194}01194       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01195}01195       TString pattern = excludePatterns[kExclude];}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01196}01196       \textcolor{keywordflow}{if} (name.Contains(pattern))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01197}01197         \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01198}01198         include = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01199}01199         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01200}01200         \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01201}01201       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01202}01202     \textcolor{keywordflow}{if} (include)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01203}01203       \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01204}01204         \textcolor{keywordflow}{if} (name.Contains(\textcolor{stringliteral}{"{}.root"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01205}01205           \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01206}01206           \textcolor{keywordtype}{int} dot = name.First(\textcolor{charliteral}{'.'});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01207}01207           \textcolor{keywordtype}{int} len = name.Length();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01208}01208           \textcolor{keywordflow}{if} (dot==len-\/5 )}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01209}01209           name.Remove(dot,len-\/dot);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01210}01210           \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01211}01211       TString check = pathName+name;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01212}01212       cout << \textcolor{stringliteral}{"{} CHECK:::::: "{}} << check << endl;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01213}01213       outputList.push\_back(pathName+name);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01214}01214       \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01215}01215     \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01216}01216   \textcolor{keywordflow}{return} outputList;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01217}01217 \}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01218}01218 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01219}01219 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01220}01220 }
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01221}\mbox{\hyperlink{class_task_a901f32c053d45fed79e390b66337e1f2}{01221}} TString \mbox{\hyperlink{class_task_a901f32c053d45fed79e390b66337e1f2}{Task::removeRootExtension}}(\textcolor{keyword}{const} TString fileName)}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01222}01222 \{}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01223}01223   TString name = fileName;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01224}01224   \textcolor{keywordtype}{int} dot = name.Last(\textcolor{charliteral}{'.'});}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01225}01225   \textcolor{keywordtype}{int} len = name.Length();}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01226}01226   \textcolor{comment}{//  cout << dot << endl;}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01227}01227   \textcolor{comment}{//  cout << len << endl;}}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01228}01228   \textcolor{keywordflow}{if} (dot==len-\/5 ) name.Remove(dot,len-\/dot);}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01229}01229   \textcolor{keywordflow}{return} name;}
+\DoxyCodeLine{\Hypertarget{_task_8cpp_source_l01230}01230 \}}
+
+\end{DoxyCode}

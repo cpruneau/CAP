@@ -1,0 +1,53 @@
+\hypertarget{_collision_geometry_analyzer_8hpp_source}{}\doxysection{Collision\+Geometry\+Analyzer.\+hpp}
+\label{_collision_geometry_analyzer_8hpp_source}\index{Base/CollisionGeometryAnalyzer.hpp@{Base/CollisionGeometryAnalyzer.hpp}}
+\mbox{\hyperlink{_collision_geometry_analyzer_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef CAP\_\_CollisionGeometryAnalyzer}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define CAP\_\_CollisionGeometryAnalyzer}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_collision_geometry_8hpp}{CollisionGeometry.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_collision_geometry_histograms_8hpp}{CollisionGeometryHistograms.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00021}\mbox{\hyperlink{class_collision_geometry_analyzer}{00021}} \textcolor{keyword}{class }\mbox{\hyperlink{class_collision_geometry_analyzer}{CollisionGeometryAnalyzer}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00022}00022 \{}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00023}00023 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00034}00034   \mbox{\hyperlink{class_collision_geometry_analyzer_aa787204be8b191726e56d5a16a482df6}{CollisionGeometryAnalyzer}}(\textcolor{keyword}{const} TString \&          \_name,}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00035}00035                             \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}}  \&   \_configuration,}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00036}00036                             vector<EventFilter*> \&   \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00037}00037                             vector<ParticleFilter*>  \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00038}00038                             \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}}  \_reportLevel);}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00039}00039   }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00043}\mbox{\hyperlink{class_collision_geometry_analyzer_a9ddada41273c6e0523d6937ed96099e0}{00043}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_collision_geometry_analyzer_a9ddada41273c6e0523d6937ed96099e0}{\string~CollisionGeometryAnalyzer}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00044}00044   }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00048}00048   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_collision_geometry_analyzer_a56d84224070304a024bce34189fa99e9}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00049}00049   }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00053}00053   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_collision_geometry_analyzer_a21d62d7fcea4d46a3eaca41ea0141f4e}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00054}00054   }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00058}00058   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_collision_geometry_analyzer_a9ecf9557c398b217f604214d87a834a5}{createHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00063}00063   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}{loadHistograms}}(TFile * inputFile);}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00064}00064   }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00068}\mbox{\hyperlink{class_collision_geometry_analyzer_af9668116627f6f93e045c260acd753d9}{00068}}   \mbox{\hyperlink{class_collision_geometry}{CollisionGeometry}} * \mbox{\hyperlink{class_collision_geometry_analyzer_af9668116627f6f93e045c260acd753d9}{getCollisionGeometry}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collision_geometry_analyzer_ab8b25260e89a66aa70ef0b300b0f782f}{collisionGeometry}}; \}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00070}00070 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00075}\mbox{\hyperlink{class_collision_geometry_analyzer_ab8b25260e89a66aa70ef0b300b0f782f}{00075}}   \mbox{\hyperlink{class_collision_geometry}{CollisionGeometry}} * \mbox{\hyperlink{class_collision_geometry_analyzer_ab8b25260e89a66aa70ef0b300b0f782f}{collisionGeometry}};}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00077}00077   ClassDef(\mbox{\hyperlink{class_collision_geometry_analyzer}{CollisionGeometryAnalyzer}},0)}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00078}00078 \};}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_analyzer_8hpp_source_l00080}00080 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_CollisionGeometryAnalyzer */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,62 @@
+\hypertarget{_stat_study_model_8cpp_source}{}\doxysection{Stat\+Study\+Model.\+cpp}
+\label{_stat_study_model_8cpp_source}\index{Base/StatStudyModel.cpp@{Base/StatStudyModel.cpp}}
+\mbox{\hyperlink{_stat_study_model_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_stat_study_model_8hpp}{StatStudyModel.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}TRandom.h"{}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00004}\mbox{\hyperlink{_stat_study_model_8cpp_aca614dbf73e799a09024096a1567321f}{00004}} \mbox{\hyperlink{_stat_study_model_8cpp_aca614dbf73e799a09024096a1567321f}{ClassImp}}(\mbox{\hyperlink{class_stat_study_model}{StatStudyModel}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00006}\mbox{\hyperlink{class_stat_study_model_a3a4dbb0cbb496835f4918555aa8ec8b2}{00006}} \mbox{\hyperlink{class_stat_study_model_a3a4dbb0cbb496835f4918555aa8ec8b2}{StatStudyModel::StatStudyModel}}(\textcolor{keywordtype}{double} nPlusAvgReq,}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00007}00007                                \textcolor{keywordtype}{double} nMinusAvgReq,}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00008}00008                                \textcolor{keywordtype}{double} nPlusPlusAvgReq,}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00009}00009                                \textcolor{keywordtype}{double} nPlusMinusAvgReq,}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00010}00010                                \textcolor{keywordtype}{double} nMinusMinusAvgReq,}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00011}00011                                \textcolor{keywordtype}{double} plusEfficiencyReq,}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00012}00012                                \textcolor{keywordtype}{double} minusEfficiencyReq,}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00013}00013                                \textcolor{keywordtype}{long}   nEventsReq)}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00014}00014 :}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00015}00015 nPlusAvg(nPlusAvgReq),}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00016}00016 nMinusAvg(nMinusAvgReq),}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00017}00017 nPlusPlusAvg(nPlusPlusAvgReq),}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00018}00018 nPlusMinusAvg(nPlusMinusAvgReq),}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00019}00019 nMinusMinusAvg(nMinusMinusAvgReq),}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00020}00020 plusEfficiency(plusEfficiencyReq),}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00021}00021 minusEfficiency(minusEfficiencyReq),}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00022}00022 nEvents(nEventsReq)}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00023}00023 \{  \}}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00025}\mbox{\hyperlink{class_stat_study_model_aa50305e54611be4a575a001f2acbf398}{00025}} \mbox{\hyperlink{class_stat_study_model_aa50305e54611be4a575a001f2acbf398}{StatStudyModel::\string~StatStudyModel}}()}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00026}00026 \{}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00027}00027 \}}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00029}\mbox{\hyperlink{class_stat_study_model_ae9f8df0d31adbb7cb35305872bc2b93e}{00029}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_stat_study_model_ae9f8df0d31adbb7cb35305872bc2b93e}{StatStudyModel::generate}}(\textcolor{keywordtype}{double} \& nPlus, \textcolor{keywordtype}{double} \& nMinus, \textcolor{keywordtype}{double} \& nPlusEff, \textcolor{keywordtype}{double} \& nMinusEff)}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00030}00030 \{}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00031}00031    \textcolor{keywordtype}{double} nPlusPlus;}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00032}00032    \textcolor{keywordtype}{double} nPlusMinus;}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00033}00033    \textcolor{keywordtype}{double} nMinusMinus;}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00035}00035   nPlus       = int( gRandom-\/>Gaus(\mbox{\hyperlink{class_stat_study_model_a384d08dacba9102afe6e2cfb77ade74b}{nPlusAvg}},sqrt(\mbox{\hyperlink{class_stat_study_model_a384d08dacba9102afe6e2cfb77ade74b}{nPlusAvg}}))    +0.5        );}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00036}00036   nMinus      = int( gRandom-\/>Gaus(\mbox{\hyperlink{class_stat_study_model_a40cb290f5295e8e1d76b2cd780f4fc12}{nMinusAvg}},sqrt(\mbox{\hyperlink{class_stat_study_model_a40cb290f5295e8e1d76b2cd780f4fc12}{nMinusAvg}}))     +0.5     );}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00037}00037   nPlusPlus   = int( gRandom-\/>Gaus(\mbox{\hyperlink{class_stat_study_model_a75586695ed2dc2f4d8e894ee63cde1ad}{nPlusPlusAvg}},sqrt(\mbox{\hyperlink{class_stat_study_model_a75586695ed2dc2f4d8e894ee63cde1ad}{nPlusPlusAvg}})) +0.5   );}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00038}00038   nPlusMinus  = int( gRandom-\/>Gaus(\mbox{\hyperlink{class_stat_study_model_a7fc1e99670d5d4a76541f74c27845c88}{nPlusMinusAvg}},sqrt(\mbox{\hyperlink{class_stat_study_model_a7fc1e99670d5d4a76541f74c27845c88}{nPlusMinusAvg}}))+0.5  );}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00039}00039   nMinusMinus = int( gRandom-\/>Gaus(\mbox{\hyperlink{class_stat_study_model_aa56f301e110ceb07cf95dfb1530b194f}{nMinusMinusAvg}},sqrt(\mbox{\hyperlink{class_stat_study_model_aa56f301e110ceb07cf95dfb1530b194f}{nMinusMinusAvg}}))+0.5);}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00040}00040   nPlus  += 2.0*nPlusPlus;}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00041}00041   nPlus  += nPlusMinus;}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00042}00042   nMinus += 2.0*nMinusMinus;}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00043}00043   nMinus += nPlusMinus;}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00044}00044   nPlusEff   = \mbox{\hyperlink{class_stat_study_model_a52a0c34c98798240b3b877108e0855ef}{binomialLoss}}(nPlus,\mbox{\hyperlink{class_stat_study_model_ab7ff31d1df2ccc5fd6167da1920299b8}{plusEfficiency}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00045}00045   nMinusEff  = \mbox{\hyperlink{class_stat_study_model_a52a0c34c98798240b3b877108e0855ef}{binomialLoss}}(nMinus,\mbox{\hyperlink{class_stat_study_model_a2c4c361166b21db515f00bb5291dd0e0}{minusEfficiency}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00046}00046 \}}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00048}\mbox{\hyperlink{class_stat_study_model_a52a0c34c98798240b3b877108e0855ef}{00048}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_stat_study_model_a52a0c34c98798240b3b877108e0855ef}{StatStudyModel::binomialLoss}}(\textcolor{keywordtype}{int} nIn, \textcolor{keywordtype}{double} efficiency)}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00049}00049 \{}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00050}00050   \textcolor{keywordtype}{int} nOut = 0;}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00051}00051   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} n=0; n<nIn; n++)}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00052}00052     \{}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00053}00053     \textcolor{keywordflow}{if} (gRandom-\/>Rndm()<efficiency) nOut++;}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00054}00054     \}}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00055}00055   \textcolor{keywordflow}{return} nOut;}
+\DoxyCodeLine{\Hypertarget{_stat_study_model_8cpp_source_l00056}00056 \}}
+
+\end{DoxyCode}

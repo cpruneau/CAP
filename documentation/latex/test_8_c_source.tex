@@ -1,0 +1,268 @@
+\hypertarget{test_8_c_source}{}\doxysection{test.\+C}
+\label{test_8_c_source}\index{Macros/test.C@{Macros/test.C}}
+\mbox{\hyperlink{test_8_c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00001}00001 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00003}00003 \textcolor{comment}{//template < class T >}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00004}00004 \textcolor{comment}{//class Parameter : public TObject}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00005}00005 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00006}00006 \textcolor{comment}{//public:}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00007}00007 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00008}00008 \textcolor{comment}{//  Parameter(const TString \& \_name, T \_value)}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00009}00009 \textcolor{comment}{//  :}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00010}00010 \textcolor{comment}{//  name(\_name),}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00011}00011 \textcolor{comment}{//  value(\_value)}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00012}00012 \textcolor{comment}{//  \{}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00013}00013 \textcolor{comment}{//  // no ops}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00014}00014 \textcolor{comment}{//  \}}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00015}00015 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00016}00016 \textcolor{comment}{//  virtual \string~Parameter() \{\}}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00017}00017 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00018}00018 \textcolor{comment}{//  Parameter(const Parameter \& cp)}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00019}00019 \textcolor{comment}{//  :}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00020}00020 \textcolor{comment}{//  name(cp.name),}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00021}00021 \textcolor{comment}{//  value(cp.bValue)}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00022}00022 \textcolor{comment}{//  \{\}}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00023}00023 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00024}00024 \textcolor{comment}{//  Parameter \& operator=(const Parameter \& cp)}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00025}00025 \textcolor{comment}{//  \{}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00026}00026 \textcolor{comment}{//  if (this != \&cp)}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00027}00027 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00028}00028 \textcolor{comment}{//    name = cp.name;}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00029}00029 \textcolor{comment}{//    value = cp.value;}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00030}00030 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00031}00031 \textcolor{comment}{//  return *this;}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00032}00032 \textcolor{comment}{//  \}}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00033}00033 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00034}00034 \textcolor{comment}{//  const TString \& getName() const \{ return name; \}}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00035}00035 \textcolor{comment}{//  T   getValue() const     \{ return value; \}}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00036}00036 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00037}00037 \textcolor{comment}{//  void setName(const TString \& \_name) \{ name = \_name;    \}}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00038}00038 \textcolor{comment}{//  void setValue(T \_value)      \{ value = \_value; \}}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00039}00039 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00040}00040 \textcolor{comment}{//protected:}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00041}00041 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00042}00042 \textcolor{comment}{//  TString name;}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00043}00043 \textcolor{comment}{//  T       value;}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00044}00044 \textcolor{comment}{//\};}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00046}\mbox{\hyperlink{class_test_configuration}{00046}} \textcolor{keyword}{class }\mbox{\hyperlink{class_test_configuration}{TestConfiguration}}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00047}00047 \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00048}00048 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00049}00049   }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00050}\mbox{\hyperlink{class_test_configuration_a62f0bddb56eee8dc3bb558719021ffa4}{00050}}   \mbox{\hyperlink{class_test_configuration_a62f0bddb56eee8dc3bb558719021ffa4}{TestConfiguration}}()}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00051}00051   :}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00052}00052   \mbox{\hyperlink{class_test_configuration_af04051511a6f6f41736e8db9725f4296}{boolMap}}(),}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00053}00053   \mbox{\hyperlink{class_test_configuration_a558331978b6ff99ad10dca34c298bed7}{intMap}}(),}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00054}00054   \mbox{\hyperlink{class_test_configuration_a844775c16c4d20960c773fe9787e9009}{doubleMap}}(),}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00055}00055   \mbox{\hyperlink{class_test_configuration_ab5114a8a2fba2dde322e42e9e1037da1}{stringMap}}()}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00056}00056   \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00057}00057   }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00058}00058   \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00060}\mbox{\hyperlink{class_test_configuration_a2280838a381f839e8d64db48254ae796}{00060}}   \mbox{\hyperlink{class_test_configuration_a2280838a381f839e8d64db48254ae796}{TestConfiguration}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_test_configuration}{TestConfiguration}} \& config)}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00061}00061   :}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00062}00062   \mbox{\hyperlink{class_test_configuration_af04051511a6f6f41736e8db9725f4296}{boolMap}}(config.\mbox{\hyperlink{class_test_configuration_af04051511a6f6f41736e8db9725f4296}{boolMap}}),}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00063}00063   \mbox{\hyperlink{class_test_configuration_a558331978b6ff99ad10dca34c298bed7}{intMap}}(config.\mbox{\hyperlink{class_test_configuration_a558331978b6ff99ad10dca34c298bed7}{intMap}}),}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00064}00064   \mbox{\hyperlink{class_test_configuration_a844775c16c4d20960c773fe9787e9009}{doubleMap}}(config.\mbox{\hyperlink{class_test_configuration_a844775c16c4d20960c773fe9787e9009}{doubleMap}}),}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00065}00065   \mbox{\hyperlink{class_test_configuration_ab5114a8a2fba2dde322e42e9e1037da1}{stringMap}}(config.\mbox{\hyperlink{class_test_configuration_ab5114a8a2fba2dde322e42e9e1037da1}{stringMap}})}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00066}00066   \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00068}00068   \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00070}00070   }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00071}\mbox{\hyperlink{class_test_configuration_a4f28924e757ac867c0bc9378860cff33}{00071}}   \mbox{\hyperlink{class_test_configuration}{TestConfiguration}} \& \mbox{\hyperlink{class_test_configuration_a4f28924e757ac867c0bc9378860cff33}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_test_configuration}{TestConfiguration}} \& config)}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00072}00072   \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00073}00073   \textcolor{keywordflow}{if} (\textcolor{keyword}{this}!=\&config)}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00074}00074     \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00075}00075     \mbox{\hyperlink{class_test_configuration_af04051511a6f6f41736e8db9725f4296}{boolMap}}   = config.\mbox{\hyperlink{class_test_configuration_af04051511a6f6f41736e8db9725f4296}{boolMap}};}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00076}00076     \mbox{\hyperlink{class_test_configuration_a558331978b6ff99ad10dca34c298bed7}{intMap}}    = config.\mbox{\hyperlink{class_test_configuration_a558331978b6ff99ad10dca34c298bed7}{intMap}};}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00077}00077     \mbox{\hyperlink{class_test_configuration_a844775c16c4d20960c773fe9787e9009}{doubleMap}} = config.\mbox{\hyperlink{class_test_configuration_a844775c16c4d20960c773fe9787e9009}{doubleMap}};}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00078}00078     \mbox{\hyperlink{class_test_configuration_ab5114a8a2fba2dde322e42e9e1037da1}{stringMap}} = config.\mbox{\hyperlink{class_test_configuration_ab5114a8a2fba2dde322e42e9e1037da1}{stringMap}};}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00079}00079     \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00080}00080   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00081}00081   \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00082}00082   }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00083}\mbox{\hyperlink{class_test_configuration_a30b304432284c0b189d10871bd5adb73}{00083}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_test_configuration_a30b304432284c0b189d10871bd5adb73}{clear}}()}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00084}00084   \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00085}00085   \mbox{\hyperlink{class_test_configuration_af04051511a6f6f41736e8db9725f4296}{boolMap}}.clear();}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00086}00086   \mbox{\hyperlink{class_test_configuration_a558331978b6ff99ad10dca34c298bed7}{intMap}}.clear();}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00087}00087   \mbox{\hyperlink{class_test_configuration_a844775c16c4d20960c773fe9787e9009}{doubleMap}}.clear();}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00088}00088   \mbox{\hyperlink{class_test_configuration_ab5114a8a2fba2dde322e42e9e1037da1}{stringMap}}.clear();}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00089}00089   \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00091}\mbox{\hyperlink{class_test_configuration_a057380ca35349917b482a0362c4e023e}{00091}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_test_configuration_a057380ca35349917b482a0362c4e023e}{addParameter}}(\textcolor{keyword}{const} TString \& name, \textcolor{keywordtype}{bool} value)}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00092}00092   \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00093}00093   std::map<TString,bool>::iterator it;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00094}00094   it = \mbox{\hyperlink{class_test_configuration_af04051511a6f6f41736e8db9725f4296}{boolMap}}.find(name);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00095}00095   \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{class_test_configuration_af04051511a6f6f41736e8db9725f4296}{boolMap}}.end())}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00096}00096     \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00097}00097     it-\/>second = value;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00098}00098     \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00099}00099   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00100}00100     \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00101}00101     \mbox{\hyperlink{class_test_configuration_af04051511a6f6f41736e8db9725f4296}{boolMap}}[name] = value;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00102}00102     \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00103}00103   \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00105}\mbox{\hyperlink{class_test_configuration_a9f7678de105af21c6dc4baec209f6e02}{00105}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_test_configuration_a9f7678de105af21c6dc4baec209f6e02}{addParameter}}(\textcolor{keyword}{const} TString \& name, \textcolor{keywordtype}{int} value)}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00106}00106   \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00107}00107   std::map<TString,int>::iterator it;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00108}00108   it = \mbox{\hyperlink{class_test_configuration_a558331978b6ff99ad10dca34c298bed7}{intMap}}.find(name);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00109}00109   \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{class_test_configuration_a558331978b6ff99ad10dca34c298bed7}{intMap}}.end())}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00110}00110     \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00111}00111     it-\/>second = value;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00112}00112     \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00113}00113   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00114}00114     \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00115}00115     \mbox{\hyperlink{class_test_configuration_a558331978b6ff99ad10dca34c298bed7}{intMap}}[name] = value;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00116}00116     \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00117}00117   \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00118}00118   }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00119}\mbox{\hyperlink{class_test_configuration_a644ecbd4c2e39e22ae50e3b93f0c56a6}{00119}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_test_configuration_a644ecbd4c2e39e22ae50e3b93f0c56a6}{addParameter}}(\textcolor{keyword}{const} TString \& name, \textcolor{keywordtype}{double} value)}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00120}00120   \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00121}00121   std::map<TString,double>::iterator it;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00122}00122   it = \mbox{\hyperlink{class_test_configuration_a844775c16c4d20960c773fe9787e9009}{doubleMap}}.find(name);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00123}00123   \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{class_test_configuration_a844775c16c4d20960c773fe9787e9009}{doubleMap}}.end())}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00124}00124     \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00125}00125     it-\/>second = value;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00126}00126     \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00127}00127   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00128}00128     \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00129}00129     \mbox{\hyperlink{class_test_configuration_a844775c16c4d20960c773fe9787e9009}{doubleMap}}[name] = value;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00130}00130     \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00131}00131   \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00132}00132   }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00133}\mbox{\hyperlink{class_test_configuration_a12ace0f191be207e11537301177ad2cb}{00133}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_test_configuration_a12ace0f191be207e11537301177ad2cb}{addParameter}}(\textcolor{keyword}{const} TString \& name, \textcolor{keyword}{const} TString \&  value)}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00134}00134   \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00135}00135   std::map<TString,TString>::iterator it;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00136}00136   it = \mbox{\hyperlink{class_test_configuration_ab5114a8a2fba2dde322e42e9e1037da1}{stringMap}}.find(name);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00137}00137   \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{class_test_configuration_ab5114a8a2fba2dde322e42e9e1037da1}{stringMap}}.end())}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00138}00138     \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00139}00139     it-\/>second = value;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00140}00140     \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00141}00141   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00142}00142     \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00143}00143     \mbox{\hyperlink{class_test_configuration_ab5114a8a2fba2dde322e42e9e1037da1}{stringMap}}[name] = value;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00144}00144     \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00145}00145   \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00146}00146   }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00147}\mbox{\hyperlink{class_test_configuration_ae5b1bd392d3c544c2e313204b49f0afa}{00147}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_test_configuration_ae5b1bd392d3c544c2e313204b49f0afa}{getValueBool}}(\textcolor{keyword}{const} TString \& name)}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00148}00148   \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00149}00149   \textcolor{keywordtype}{bool} value = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00150}00150   std::map<TString,bool>::iterator it;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00151}00151   it = \mbox{\hyperlink{class_test_configuration_af04051511a6f6f41736e8db9725f4296}{boolMap}}.find(name);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00152}00152    \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{class_test_configuration_af04051511a6f6f41736e8db9725f4296}{boolMap}}.end())}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00153}00153      \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00154}00154      cout << \textcolor{stringliteral}{"{} Key:"{}} <<  name << \textcolor{stringliteral}{"{} value:"{}} <<  it-\/>second << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00155}00155      value = it-\/>second;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00156}00156      \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00157}00157   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00158}00158     \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00159}00159     cout << \textcolor{stringliteral}{"{} did not find key:"{}} << name << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00160}00160     value = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00161}00161     \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00162}00162   \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00163}00163   \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00164}00164   }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00165}\mbox{\hyperlink{class_test_configuration_ad26b814d01666568e0aecad7ef47a0f0}{00165}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_test_configuration_ad26b814d01666568e0aecad7ef47a0f0}{getValueInt}}(\textcolor{keyword}{const} TString \& name)}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00166}00166   \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00167}00167   \textcolor{keywordtype}{int} value = -\/99999;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00168}00168   std::map<TString,int>::iterator it;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00169}00169   it = \mbox{\hyperlink{class_test_configuration_a558331978b6ff99ad10dca34c298bed7}{intMap}}.find(name);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00170}00170    \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{class_test_configuration_a558331978b6ff99ad10dca34c298bed7}{intMap}}.end())}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00171}00171      \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00172}00172      cout << \textcolor{stringliteral}{"{} Key:"{}} <<  name << \textcolor{stringliteral}{"{} value:"{}} <<  it-\/>second << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00173}00173      value = it-\/>second;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00174}00174      \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00175}00175   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00176}00176     \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00177}00177     cout << \textcolor{stringliteral}{"{} did not find key:"{}} << name << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00178}00178     \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00179}00179   \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00180}00180   \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00182}\mbox{\hyperlink{class_test_configuration_acbd3533f3b86c9be9f16c457a7ad5c64}{00182}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_test_configuration_acbd3533f3b86c9be9f16c457a7ad5c64}{getValueDouble}}(\textcolor{keyword}{const} TString \& name)}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00183}00183   \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00184}00184   \textcolor{keywordtype}{double} value = -\/9.99E100;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00185}00185   std::map<TString,double>::iterator it;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00186}00186   it = \mbox{\hyperlink{class_test_configuration_a844775c16c4d20960c773fe9787e9009}{doubleMap}}.find(name);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00187}00187    \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{class_test_configuration_a844775c16c4d20960c773fe9787e9009}{doubleMap}}.end())}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00188}00188      \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00189}00189      cout << \textcolor{stringliteral}{"{} Key:"{}} <<  name << \textcolor{stringliteral}{"{} value:"{}} <<  it-\/>second << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00190}00190      value = it-\/>second;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00191}00191      \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00192}00192   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00193}00193     \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00194}00194     cout << \textcolor{stringliteral}{"{} did not find key:"{}} << name << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00195}00195     \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00196}00196   \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00197}00197   \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00198}00198 }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00199}\mbox{\hyperlink{class_test_configuration_a2c1414ec0dad502f931378d621f0886b}{00199}}   TString  \mbox{\hyperlink{class_test_configuration_a2c1414ec0dad502f931378d621f0886b}{getValueString}}(\textcolor{keyword}{const} TString \& name)}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00200}00200   \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00201}00201   TString value = \textcolor{stringliteral}{"{}notFound"{}};}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00202}00202   std::map<TString,TString>::iterator it;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00203}00203   it = \mbox{\hyperlink{class_test_configuration_ab5114a8a2fba2dde322e42e9e1037da1}{stringMap}}.find(name);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00204}00204    \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{class_test_configuration_ab5114a8a2fba2dde322e42e9e1037da1}{stringMap}}.end())}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00205}00205      \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00206}00206      cout << \textcolor{stringliteral}{"{} Key:"{}} <<  name << \textcolor{stringliteral}{"{} value:"{}} <<  it-\/>second << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00207}00207      value = it-\/>second;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00208}00208      \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00209}00209   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00210}00210     \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00211}00211     cout << \textcolor{stringliteral}{"{} did not find key:"{}} << name << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00212}00212     \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00213}00213   \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00214}00214   \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00215}00215 }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00216}00216 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00217}00217   }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00218}\mbox{\hyperlink{class_test_configuration_af04051511a6f6f41736e8db9725f4296}{00218}}   std::map<TString,bool>    \mbox{\hyperlink{class_test_configuration_af04051511a6f6f41736e8db9725f4296}{boolMap}};}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00219}\mbox{\hyperlink{class_test_configuration_a558331978b6ff99ad10dca34c298bed7}{00219}}   std::map<TString,int>     \mbox{\hyperlink{class_test_configuration_a558331978b6ff99ad10dca34c298bed7}{intMap}};}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00220}\mbox{\hyperlink{class_test_configuration_a844775c16c4d20960c773fe9787e9009}{00220}}   std::map<TString,double>  \mbox{\hyperlink{class_test_configuration_a844775c16c4d20960c773fe9787e9009}{doubleMap}};}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00221}\mbox{\hyperlink{class_test_configuration_ab5114a8a2fba2dde322e42e9e1037da1}{00221}}   std::map<TString,TString> \mbox{\hyperlink{class_test_configuration_ab5114a8a2fba2dde322e42e9e1037da1}{stringMap}};}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00222}00222 \};}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00223}00223 }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00224}00224 }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00225}\mbox{\hyperlink{test_8_c_ac8da963855e09bf929c085486f4a3b47}{00225}} \textcolor{keywordtype}{int} \mbox{\hyperlink{test_8_c_ac8da963855e09bf929c085486f4a3b47}{test}}()}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00226}00226 \{}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00227}00227   \mbox{\hyperlink{class_test_configuration}{TestConfiguration}} config;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00228}00228   }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00229}00229   config.\mbox{\hyperlink{class_test_configuration_a057380ca35349917b482a0362c4e023e}{addParameter}}(\textcolor{stringliteral}{"{}aa"{}},\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00230}00230   config.\mbox{\hyperlink{class_test_configuration_a057380ca35349917b482a0362c4e023e}{addParameter}}(\textcolor{stringliteral}{"{}bb"{}},2);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00231}00231   config.\mbox{\hyperlink{class_test_configuration_a057380ca35349917b482a0362c4e023e}{addParameter}}(\textcolor{stringliteral}{"{}cc"{}},4);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00232}00232   cout << config.\mbox{\hyperlink{class_test_configuration_ad26b814d01666568e0aecad7ef47a0f0}{getValueInt}}(\textcolor{stringliteral}{"{}cc"{}}) << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00233}00233   config.\mbox{\hyperlink{class_test_configuration_a057380ca35349917b482a0362c4e023e}{addParameter}}(\textcolor{stringliteral}{"{}cc"{}},66);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00234}00234   cout << config.\mbox{\hyperlink{class_test_configuration_ad26b814d01666568e0aecad7ef47a0f0}{getValueInt}}(\textcolor{stringliteral}{"{}cc"{}}) << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00235}00235   config.\mbox{\hyperlink{class_test_configuration_a057380ca35349917b482a0362c4e023e}{addParameter}}(\textcolor{stringliteral}{"{}cc"{}},666);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00236}00236   cout << config.\mbox{\hyperlink{class_test_configuration_ad26b814d01666568e0aecad7ef47a0f0}{getValueInt}}(\textcolor{stringliteral}{"{}cc"{}}) << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00237}00237   config.\mbox{\hyperlink{class_test_configuration_a057380ca35349917b482a0362c4e023e}{addParameter}}(\textcolor{stringliteral}{"{}cc"{}},6666);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00238}00238   cout << config.\mbox{\hyperlink{class_test_configuration_ad26b814d01666568e0aecad7ef47a0f0}{getValueInt}}(\textcolor{stringliteral}{"{}cc"{}}) << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00239}00239   }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00240}00240   config.\mbox{\hyperlink{class_test_configuration_a057380ca35349917b482a0362c4e023e}{addParameter}}(\textcolor{stringliteral}{"{}dd"{}},3.1415927);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00241}00241   cout << config.\mbox{\hyperlink{class_test_configuration_acbd3533f3b86c9be9f16c457a7ad5c64}{getValueDouble}}(\textcolor{stringliteral}{"{}dd"{}}) << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00242}00242   config.\mbox{\hyperlink{class_test_configuration_a057380ca35349917b482a0362c4e023e}{addParameter}}(\textcolor{stringliteral}{"{}dd"{}},6.2815927);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00243}00243   cout << config.\mbox{\hyperlink{class_test_configuration_acbd3533f3b86c9be9f16c457a7ad5c64}{getValueDouble}}(\textcolor{stringliteral}{"{}dd"{}}) << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00244}00244   config.\mbox{\hyperlink{class_test_configuration_a057380ca35349917b482a0362c4e023e}{addParameter}}(\textcolor{stringliteral}{"{}dd"{}},1119.2815927);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00245}00245   cout << config.\mbox{\hyperlink{class_test_configuration_acbd3533f3b86c9be9f16c457a7ad5c64}{getValueDouble}}(\textcolor{stringliteral}{"{}dd"{}}) << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00246}00246   config.\mbox{\hyperlink{class_test_configuration_a057380ca35349917b482a0362c4e023e}{addParameter}}(\textcolor{stringliteral}{"{}dd"{}},9.2815927);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00247}00247   cout << config.\mbox{\hyperlink{class_test_configuration_acbd3533f3b86c9be9f16c457a7ad5c64}{getValueDouble}}(\textcolor{stringliteral}{"{}dd"{}}) << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00248}00248 }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00249}00249   config.\mbox{\hyperlink{class_test_configuration_a30b304432284c0b189d10871bd5adb73}{clear}}();}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00250}00250   cout << config.\mbox{\hyperlink{class_test_configuration_acbd3533f3b86c9be9f16c457a7ad5c64}{getValueDouble}}(\textcolor{stringliteral}{"{}dd"{}}) << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00251}00251   config.\mbox{\hyperlink{class_test_configuration_a057380ca35349917b482a0362c4e023e}{addParameter}}(\textcolor{stringliteral}{"{}ee"{}},1.0E20);}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00252}00252   config.\mbox{\hyperlink{class_test_configuration_a057380ca35349917b482a0362c4e023e}{addParameter}}(\textcolor{stringliteral}{"{}ss"{}},TString(\textcolor{stringliteral}{"{}somethingSaid"{}}));}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00253}00253 }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00254}00254   cout << config.\mbox{\hyperlink{class_test_configuration_ae5b1bd392d3c544c2e313204b49f0afa}{getValueBool}}(\textcolor{stringliteral}{"{}aa"{}}) << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00255}00255   cout << config.\mbox{\hyperlink{class_test_configuration_ad26b814d01666568e0aecad7ef47a0f0}{getValueInt}}(\textcolor{stringliteral}{"{}cc"{}}) << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00256}00256   cout << config.\mbox{\hyperlink{class_test_configuration_acbd3533f3b86c9be9f16c457a7ad5c64}{getValueDouble}}(\textcolor{stringliteral}{"{}dd"{}}) << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00257}00257   cout << config.\mbox{\hyperlink{class_test_configuration_acbd3533f3b86c9be9f16c457a7ad5c64}{getValueDouble}}(\textcolor{stringliteral}{"{}ee"{}}) << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00258}00258   cout << config.\mbox{\hyperlink{class_test_configuration_a2c1414ec0dad502f931378d621f0886b}{getValueString}}(\textcolor{stringliteral}{"{}ss"{}}) << endl;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00259}00259 }
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00260}00260   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00261}00261 \}}
+\DoxyCodeLine{\Hypertarget{test_8_c_source_l00262}00262 }
+
+\end{DoxyCode}

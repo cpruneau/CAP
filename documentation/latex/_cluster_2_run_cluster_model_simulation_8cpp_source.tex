@@ -1,0 +1,200 @@
+\hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source}{}\doxysection{Run\+Cluster\+Model\+Simulation.\+cpp}
+\label{_cluster_2_run_cluster_model_simulation_8cpp_source}\index{Cluster/RunClusterModelSimulation.cpp@{Cluster/RunClusterModelSimulation.cpp}}
+\mbox{\hyperlink{_cluster_2_run_cluster_model_simulation_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00001}00001 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00002}00002 \textcolor{comment}{//  cm\_figure9\_7.c}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00003}00003 \textcolor{comment}{//  MyMC}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00004}00004 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00005}00005 \textcolor{comment}{//  Created by Claude Pruneau on 4/10/17.}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00006}00006 \textcolor{comment}{//  Copyright © 2017 Claude Pruneau. All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00007}00007 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00008}00008 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00010}00010 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00011}00011 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#include <TStyle.h>}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00014}00014 \textcolor{preprocessor}{\#include <TROOT.h>}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_cluster_model_event_8hpp}{ClusterModelEvent.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_cluster_model_configuration_8hpp}{ClusterModelConfiguration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_cluster_model_event_generator2_8hpp}{ClusterModelEventGenerator2.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}AnalysisConfiguration.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00019}00019 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_cluster_model_event_analyzer_8hpp}{ClusterModelEventAnalyzer.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00020}00020 \textcolor{preprocessor}{\#include "{}TwoPartCorrelationAnalyzer.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00021}00021 \textcolor{preprocessor}{\#include "{}EventLoop.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00022}00022 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_event_filter_8hpp}{EventFilter.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00023}00023 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_filter_8hpp}{ParticleFilter.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00026}00026 \textcolor{comment}{// Run an analysis with the Cluster Model}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00028}00028 \textcolor{comment}{}\textcolor{comment}{//void runClusterModel(long nEventsRequested=50000)}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00030}\mbox{\hyperlink{_cluster_2_run_cluster_model_simulation_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00030}} \textcolor{keywordtype}{int} \mbox{\hyperlink{_cluster_2_run_cluster_model_simulation_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00031}00031 \{}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00032}00032   cout << \textcolor{stringliteral}{"{}<INFO> Cluster Model Analysis -\/ Starting"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00034}00034   \textcolor{keywordtype}{long} nEventsRequested=100;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00036}00036   AnalysisConfiguration * ac = \textcolor{keyword}{new} AnalysisConfiguration(\textcolor{stringliteral}{"{}ClusterModel1"{}},\textcolor{stringliteral}{"{}ClusterModel"{}},\textcolor{stringliteral}{"{}1.0"{}});}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00037}00037   ac-\/>loadHistograms  = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00038}00038   ac-\/>createHistograms  = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00039}00039   ac-\/>scaleHistograms  = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00040}00040   ac-\/>calculateDerivedHistograms  = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00041}00041   ac-\/>saveHistograms  = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00042}00042   ac-\/>resetHistograms  = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00043}00043   ac-\/>clearHistograms  = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00044}00044   ac-\/>forceHistogramsRewrite  = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00045}00045   ac-\/>inputPath = \textcolor{stringliteral}{"{}./"{}};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00046}00046   ac-\/>configurationFileName = \textcolor{stringliteral}{"{}configuration"{}};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00047}00047   ac-\/>rootInputFileName = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00048}00048   ac-\/>outputPath = \textcolor{stringliteral}{"{}./"{}};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00049}00049   ac-\/>rootOuputFileName =  \textcolor{stringliteral}{"{}output"{}};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00050}00050   ac-\/>histoBaseName =  \textcolor{stringliteral}{"{}CMsim"{}};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00051}00051   ac-\/>nBins\_nCell = 100;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00052}00052   ac-\/>min\_nCell   = 0.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00053}00053   ac-\/>max\_nCell   = 100.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00054}00054   ac-\/>nBins\_nPartPerCell = 100;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00055}00055   ac-\/>min\_nPartPerCell   = 0.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00056}00056   ac-\/>max\_nPartPerCell   = 100.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00057}00057   ac-\/>nBins\_nPartTot = 300.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00058}00058   ac-\/>min\_nPartTot = 0.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00059}00059   ac-\/>max\_nPartTot = 300;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00061}00061   ac-\/>nBins\_pt    = 40;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00062}00062   ac-\/>min\_pt      = 0.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00063}00063   ac-\/>max\_pt      = 3.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00064}00064   ac-\/>nBins\_eta   = 20;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00065}00065   ac-\/>min\_eta     = -\/2;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00066}00066   ac-\/>max\_eta     = 2;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00067}00067   ac-\/>nBins\_y     = 20;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00068}00068   ac-\/>min\_y       = -\/2;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00069}00069   ac-\/>max\_y       = 2;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00070}00070   ac-\/>nBins\_phi   = 36;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00071}00071   ac-\/>min\_phi     = 0.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00072}00072   ac-\/>max\_phi     = 2.0*3.1415927;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00074}00074   ac-\/>nBins\_DeltaPlong = 40;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00075}00075   ac-\/>min\_DeltaPlong   = -\/1.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00076}00076   ac-\/>max\_DeltaPlong   =  1.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00077}00077   ac-\/>nBins\_DeltaPside = 40;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00078}00078   ac-\/>min\_DeltaPside   = -\/1.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00079}00079   ac-\/>max\_DeltaPside   =  1.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00080}00080   ac-\/>nBins\_DeltaPout  = 40;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00081}00081   ac-\/>min\_DeltaPout    = -\/1.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00082}00082   ac-\/>max\_DeltaPout    =  1.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00084}00084   ac-\/>fillPairs        = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00085}00085   ac-\/>fill3D           = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00086}00086   ac-\/>fill6D           = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00087}00087   ac-\/>fillQ3D          = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00088}00088   ac-\/>fillY            = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00090}00090   \textcolor{comment}{// ==================================================================================}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00091}00091   \textcolor{comment}{// Cluster Model Generator Parameters}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00092}00092   \textcolor{comment}{// ==================================================================================}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00093}00093   \mbox{\hyperlink{class_cluster_model_configuration}{ClusterModelConfiguration}} * cmc = \textcolor{keyword}{new} \mbox{\hyperlink{class_cluster_model_configuration}{ClusterModelConfiguration}}(\textcolor{stringliteral}{"{}ClusterModel2"{}},\textcolor{stringliteral}{"{}ClusterModel"{}},\textcolor{stringliteral}{"{}1.0"{}});}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00094}00094   cmc-\/>loadHistograms    = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00095}00095   cmc-\/>createHistograms  = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00096}00096   cmc-\/>scaleHistograms   = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00097}00097   cmc-\/>calculateDerivedHistograms  = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00098}00098   cmc-\/>saveHistograms   = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00099}00099   cmc-\/>resetHistograms  = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00100}00100   cmc-\/>clearHistograms  = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00101}00101   cmc-\/>inputPath = \textcolor{stringliteral}{"{}./"{}};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00102}00102   cmc-\/>configurationFileName = \textcolor{stringliteral}{"{}configuration"{}};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00103}00103   cmc-\/>rootInputFileName = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00104}00104   cmc-\/>outputPath = \textcolor{stringliteral}{"{}./"{}};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00105}00105   cmc-\/>rootOuputFileName =  \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00107}00107   \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00108}00108   \textcolor{comment}{// Cell Parameters}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00109}00109   \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00110}00110   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_ae77fe0373c9dc3159ba31e18bc78bb42}{cellMultiplicity\_Random}}     = 1;\textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00111}00111   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_af4855fb97526401fa80c0a58f5553824}{cellMultiplicity\_Fixed}}      = 1;\textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00112}00112   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_ab238e4a60c9a1009dea6c8af41ac049b}{cellMultiplicity\_Minimum}}    = 1;\textcolor{comment}{//2}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00113}00113   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a922715fbbcc9e3558ce11d36631bf242}{cellMultiplicity\_Maximum}}    = 2;\textcolor{comment}{//10}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00114}00114   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_afdb7ececb15d5a194130932bd786dad3}{cellMultiplicity\_Slope}}      = 2.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00116}00116   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a4874d9b12eafd65542f8e37e55499b9e}{cellBeta\_Random}}             = 1;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00117}00117   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a9ed592339cdd0459e4c05c1a2c36a24e}{cellBeta\_Fixed}}              = 0.9;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00118}00118   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a9a3cccefc2fde254a76af23ca578fe2d}{cellBeta\_Minimum}}            = 0.6;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00119}00119   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a6fe571d4406cea40c06fb5d8313a4ecc}{cellBeta\_Maximum}}            = 0.95;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00121}00121   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_ad5a8bcbc415b01a06a43f49286cd1ff1}{cellPhi\_Random}}              = 1;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00122}00122   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_afe23abb136da72d45efcc6252964033b}{cellPhi\_Fixed}}               = 0.5;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00123}00123   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_aa08a5da015c550f3af9d5a0bf2ca2476}{cellPhi\_Minimum}}             = 0.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00124}00124   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a964907a8cc5201e6ed8c41f082fe6442}{cellPhi\_Maximum}}             = 2.0*3.1415927;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00126}00126   \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00127}00127   \textcolor{comment}{// Cluster Parameters}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00128}00128   \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00129}00129   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a486a58388727c38044fd244a0b25712b}{clusterMultiplicity\_Random}}     = 1;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00130}00130   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_abe63851d977dc1c9764665744270ce03}{clusterMultiplicity\_Fixed}}      = 1;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00131}00131   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_aee23c2e799f8484b2e29037ce886781a}{clusterMultiplicity\_Minimum}}    = 1;\textcolor{comment}{//2}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00132}00132   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a62f984176f9a7412b9585003b60e3798}{clusterMultiplicity\_Maximum}}    = 2;\textcolor{comment}{//10}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00133}00133   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_aa414af4cde99d18a59c6c248d0d42948}{clusterMultiplicity\_Slope}}      = 2.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00134}00134 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00135}00135   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_ada2c38c1dd357555c3efafbb55bc1f9d}{clusterMass\_Random}}      = 2;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00136}00136   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a75a5e1899b5f8f6d1baeb12d3b8414c0}{clusterMass\_Fixed}}       = 0.77;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00137}00137   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a02a8dba18f661d389c5464a6fed8a463}{clusterMass\_Minimum}}     = 0.0; \textcolor{comment}{// above the 2 pion threshold.}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00138}00138   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a0638ccb5256a234eab8f82975a8795f8}{clusterMass\_Maximum}}     = 1.5;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00139}00139   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_af9623a79d23c467ff3d763fad7ba0052}{clusterMass\_Slope}}       = 0.13;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00141}00141   \textcolor{comment}{// case 0: // fixed}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00142}00142   \textcolor{comment}{// case 1: // uniform rapidity}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00143}00143   \textcolor{comment}{// case 2: // exponential}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00144}00144   \textcolor{comment}{// case 3: // exponential paired}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00145}00145   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a246cc9e3b304e3b615a5ad0cf308b47e}{clusterRapidity\_Random}}   =  1;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00146}00146   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a097157c68278d8020311be07ccb0c98c}{clusterRapidity\_Fixed}}    =  0.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00147}00147   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a847825d73c3c3bba2aefc964626a9a55}{clusterRapidity\_Minimum}}  = -\/3;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00148}00148   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a6757c58a07534a1796c6105c43f86f82}{clusterRapidity\_Maximum}}  =  3;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00149}00149   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a3b1a65491d198540a7f15c3ff32a8473}{clusterRapidity\_Slope}}    =  0.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00150}00150 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00151}00151   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a380bc8be9fffccef5ac5da083c476b12}{clusterMomentum\_Random}}   =  2;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00152}00152   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_aac6f3d89edcd015201f9d9b14cdc6835}{clusterMomentum\_Fixed}}    =  0.0000;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00153}00153   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a6865246cf060ea8c56ee8f7ffbfd5a8d}{clusterMomentum\_Minimum}}  =  0.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00154}00154   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a2f66506f55edaa74e36d83f0b1ad4ae9}{clusterMomentum\_Maximum}}  =  2.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00155}00155   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a91dfaedd2e0c4dbed2ddc591af8a40fb}{clusterMomentum\_Slope}}    =  0.010;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00157}00157   \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00158}00158   \textcolor{comment}{// Cluster Parameters}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00159}00159   \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00160}00160   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a235cdb5c27f40d9e7fc182623c1eae4a}{particleMultiplicity\_Random}}     = 0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00161}00161   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a2a4f3cbf3c6f9b6ee1d710676d88507e}{particleMultiplicity\_Fixed}}      = 2;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00162}00162   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a15c20eb2fbba27ecd91cc96ad2646436}{particleMultiplicity\_Minimum}}    = 2;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00163}00163   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a26802833153b14ec2f58b1cec26dc33b}{particleMultiplicity\_Maximum}}    = 2;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00164}00164   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a54b0eb72f1e5afc3ced7f4d3db151671}{particleMultiplicity\_Slope}}      = 0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00165}00165 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00166}00166   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a00b4f2614d995881c2c555c11e9b0c73}{particleMomenum\_Random}}     = 2;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00167}00167   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a98d7d07a1bdbe1ac4d0ef1994d4287bc}{particleMomenum\_Fixed}}      = 0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00168}00168   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a597ff70988cd1067ad502f23449caf86}{particleMomenum\_Minimum}}    = 0.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00169}00169   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_a69f272222cb71181173cce073f9b389d}{particleMomenum\_Maximum}}    = 4.0;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00170}00170   cmc-\/>\mbox{\hyperlink{class_cluster_model_configuration_ad63fe850ea529f180fc33060dfbaee38}{particleMomenum\_Slope}}      = 0.15;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00171}00171 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00172}00172 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00173}00173   \mbox{\hyperlink{class_event_filter}{EventFilter}}     * eventFilter      = \textcolor{keyword}{new} \mbox{\hyperlink{class_event_filter}{EventFilter}}();}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00174}00174   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}  * particleFilter1  = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}( 1,ac-\/>min\_pt+0.001,ac-\/>max\_pt,ac-\/>min\_eta,ac-\/>max\_eta, ac-\/>min\_y,ac-\/>max\_y); \textcolor{comment}{// +ve only}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00175}00175   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}  * particleFilter2  = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}( 1,ac-\/>min\_pt+0.001,ac-\/>max\_pt,ac-\/>min\_eta,ac-\/>max\_eta, ac-\/>min\_y,ac-\/>max\_y); \textcolor{comment}{// +ve only}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00176}00176   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}  * particleFilter   = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}(-\/1,ac-\/>min\_pt+0.001,ac-\/>max\_pt,ac-\/>min\_eta,ac-\/>max\_eta, ac-\/>min\_y,ac-\/>max\_y); \textcolor{comment}{// -\/ve only}}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00177}00177 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00178}00178   \mbox{\hyperlink{class_cluster_model_event}{ClusterModelEvent}} * \textcolor{keyword}{event} = \mbox{\hyperlink{class_cluster_model_event_aeb21bde0cd01cb1fa336b66c06839fa2}{ClusterModelEvent::getClusterModelEvent}}();}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00179}00179   \mbox{\hyperlink{class_cluster_model_event_generator2}{ClusterModelEventGenerator2}} * gen  = \textcolor{keyword}{new} \mbox{\hyperlink{class_cluster_model_event_generator2}{ClusterModelEventGenerator2}}(\textcolor{stringliteral}{"{}CMG2"{}},cmc, event);}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00180}00180   \mbox{\hyperlink{class_cluster_model_event_analyzer}{ClusterModelEventAnalyzer}}   * ana1 = \textcolor{keyword}{new} \mbox{\hyperlink{class_cluster_model_event_analyzer}{ClusterModelEventAnalyzer}}  (\textcolor{stringliteral}{"{}CMA"{}}, ac,  event, eventFilter,particleFilter);}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00181}00181   TwoPartCorrelationAnalyzer  * ana2 = \textcolor{keyword}{new} TwoPartCorrelationAnalyzer (\textcolor{stringliteral}{"{}TPA"{}}, ac,  event, eventFilter,particleFilter1,particleFilter2);}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00182}00182 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00183}00183   EventLoop * eventLoop = \textcolor{keyword}{new} EventLoop();}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00184}00184 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00185}00185   gen-\/>\mbox{\hyperlink{class_message_logger_a1e9ef2ba565687d36d69c772c9451149}{setReportLevel}}(\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{MessageLogger::Info}});}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00186}00186   ana1-\/>\mbox{\hyperlink{class_message_logger_a1e9ef2ba565687d36d69c772c9451149}{setReportLevel}}(\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{MessageLogger::Info}});}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00187}00187   ana2-\/>setReportLevel(\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{MessageLogger::Info}});}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00188}00188   eventLoop-\/>setReportLevel(\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{MessageLogger::Info}});}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00189}00189 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00190}00190   eventLoop-\/>addTask(gen);}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00191}00191   eventLoop-\/>addTask(ana1);}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00192}00192   eventLoop-\/>addTask(ana2);}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00193}00193   eventLoop-\/>run(nEventsRequested,10);}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00194}00194 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00195}00195   cout << \textcolor{stringliteral}{"{}<INFO> Cluster Model Analysis -\/ Completed"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00196}00196 }
+\DoxyCodeLine{\Hypertarget{_cluster_2_run_cluster_model_simulation_8cpp_source_l00197}00197 \}}
+
+\end{DoxyCode}

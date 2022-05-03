@@ -1,0 +1,253 @@
+\hypertarget{class_cluster}{}\doxysection{Cluster Class Reference}
+\label{class_cluster}\index{Cluster@{Cluster}}
+
+
+{\ttfamily \#include $<$Cluster.\+hpp$>$}
+
+
+
+Collaboration diagram for Cluster\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cluster__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cluster_aee7feb1d599d4c8fda6c3ee83e86ba81}{Cluster}} ()
+\item 
+\mbox{\hyperlink{class_cluster_a4bddfc88ac859610acab15dd12851b58}{$\sim$\+Cluster}} ()
+\item 
+\mbox{\hyperlink{class_particle}{Particle}} $\ast$ \mbox{\hyperlink{class_cluster_a6acc10e7ac0efb7b969d81378fb0f975}{get\+Particle\+At}} (int index)
+\item 
+void \mbox{\hyperlink{class_cluster_a7a02a3e447a7b47f26ca341b1d01b99b}{reset}} ()
+\item 
+void \mbox{\hyperlink{class_cluster_a5eefcbc72b4c4a915080595a37b8e74f}{add}} (\mbox{\hyperlink{class_particle}{Particle}} $\ast$particle)
+\item 
+void \mbox{\hyperlink{class_cluster_aac478c8f00f1607063052750727efee5}{boost}} (double beta\+\_\+x, double beta\+\_\+y, double beta\+\_\+z)
+\item 
+void \mbox{\hyperlink{class_cluster_a2998461226eb1ee7da0821498f52b233}{boostZ}} (double \mbox{\hyperlink{class_cluster_aac478c8f00f1607063052750727efee5}{boost}})
+\item 
+void \mbox{\hyperlink{class_cluster_aebb84225d13b422447075064ad95167d}{print\+Properties}} (ostream \&output)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_factory}{Factory}}$<$ \mbox{\hyperlink{class_cluster}{Cluster}} $>$ $\ast$ \mbox{\hyperlink{class_cluster_a016d4bc2d4f3472e63489a6e052ca309}{get\+Factory}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_cluster_adad2f2501d611456597de9dbf87fda59}{n\+Particles}}
+\item 
+\mbox{\hyperlink{class_particle}{Particle}} $\ast$$\ast$ \mbox{\hyperlink{class_cluster_af29aef888c92e1ca02f06f84c01f3d00}{particles}}
+\item 
+TLorentz\+Vector \mbox{\hyperlink{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}{p}}
+\item 
+double \mbox{\hyperlink{class_cluster_ac762e7125269215dcf702b874a0ea333}{Qlong}}
+\item 
+double \mbox{\hyperlink{class_cluster_a666778c06f55c42df9579f870dcad1ac}{Qout}}
+\item 
+double \mbox{\hyperlink{class_cluster_a14411271e09ebcaedfd452ddbc93745b}{Qside}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_cluster_a6fc965e1dd6081c30e2db725e5e592c6}{factory\+Size}} = 500
+\item 
+static \mbox{\hyperlink{class_factory}{Factory}}$<$ \mbox{\hyperlink{class_cluster}{Cluster}} $>$ $\ast$ \mbox{\hyperlink{class_cluster_a262b3d3b69df9e3f067662ef8b039d08}{factory}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_cluster_8hpp_source_l00016}{16}} of file \mbox{\hyperlink{_cluster_8hpp_source}{Cluster.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_cluster_aee7feb1d599d4c8fda6c3ee83e86ba81}\label{class_cluster_aee7feb1d599d4c8fda6c3ee83e86ba81}} 
+\index{Cluster@{Cluster}!Cluster@{Cluster}}
+\index{Cluster@{Cluster}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{Cluster()}{Cluster()}}
+{\footnotesize\ttfamily Cluster\+::\+Cluster (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{_cluster_8cpp_source}{Cluster.\+cpp}}.
+
+\mbox{\Hypertarget{class_cluster_a4bddfc88ac859610acab15dd12851b58}\label{class_cluster_a4bddfc88ac859610acab15dd12851b58}} 
+\index{Cluster@{Cluster}!````~Cluster@{$\sim$Cluster}}
+\index{````~Cluster@{$\sim$Cluster}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{$\sim$Cluster()}{~Cluster()}}
+{\footnotesize\ttfamily Cluster\+::$\sim$\+Cluster (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{_cluster_8cpp_source}{Cluster.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_cluster_a5eefcbc72b4c4a915080595a37b8e74f}\label{class_cluster_a5eefcbc72b4c4a915080595a37b8e74f}} 
+\index{Cluster@{Cluster}!add@{add}}
+\index{add@{add}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void Cluster\+::add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{particle }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{_cluster_8cpp_source}{Cluster.\+cpp}}.
+
+\mbox{\Hypertarget{class_cluster_aac478c8f00f1607063052750727efee5}\label{class_cluster_aac478c8f00f1607063052750727efee5}} 
+\index{Cluster@{Cluster}!boost@{boost}}
+\index{boost@{boost}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{boost()}{boost()}}
+{\footnotesize\ttfamily void Cluster\+::boost (\begin{DoxyParamCaption}\item[{double}]{beta\+\_\+x,  }\item[{double}]{beta\+\_\+y,  }\item[{double}]{beta\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{_cluster_8cpp_source}{Cluster.\+cpp}}.
+
+\mbox{\Hypertarget{class_cluster_a2998461226eb1ee7da0821498f52b233}\label{class_cluster_a2998461226eb1ee7da0821498f52b233}} 
+\index{Cluster@{Cluster}!boostZ@{boostZ}}
+\index{boostZ@{boostZ}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{boostZ()}{boostZ()}}
+{\footnotesize\ttfamily void Cluster\+::boostZ (\begin{DoxyParamCaption}\item[{double}]{boost }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8cpp_source_l00097}{97}} of file \mbox{\hyperlink{_cluster_8cpp_source}{Cluster.\+cpp}}.
+
+\mbox{\Hypertarget{class_cluster_a016d4bc2d4f3472e63489a6e052ca309}\label{class_cluster_a016d4bc2d4f3472e63489a6e052ca309}} 
+\index{Cluster@{Cluster}!getFactory@{getFactory}}
+\index{getFactory@{getFactory}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{getFactory()}{getFactory()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_factory}{Factory}}$<$ \mbox{\hyperlink{class_cluster}{Cluster}} $>$ $\ast$ Cluster\+::get\+Factory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8cpp_source_l00134}{134}} of file \mbox{\hyperlink{_cluster_8cpp_source}{Cluster.\+cpp}}.
+
+\mbox{\Hypertarget{class_cluster_a6acc10e7ac0efb7b969d81378fb0f975}\label{class_cluster_a6acc10e7ac0efb7b969d81378fb0f975}} 
+\index{Cluster@{Cluster}!getParticleAt@{getParticleAt}}
+\index{getParticleAt@{getParticleAt}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{getParticleAt()}{getParticleAt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle}{Particle}} $\ast$ Cluster\+::get\+Particle\+At (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{_cluster_8cpp_source}{Cluster.\+cpp}}.
+
+\mbox{\Hypertarget{class_cluster_aebb84225d13b422447075064ad95167d}\label{class_cluster_aebb84225d13b422447075064ad95167d}} 
+\index{Cluster@{Cluster}!printProperties@{printProperties}}
+\index{printProperties@{printProperties}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{printProperties()}{printProperties()}}
+{\footnotesize\ttfamily void Cluster\+::print\+Properties (\begin{DoxyParamCaption}\item[{ostream \&}]{output }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8cpp_source_l00117}{117}} of file \mbox{\hyperlink{_cluster_8cpp_source}{Cluster.\+cpp}}.
+
+\mbox{\Hypertarget{class_cluster_a7a02a3e447a7b47f26ca341b1d01b99b}\label{class_cluster_a7a02a3e447a7b47f26ca341b1d01b99b}} 
+\index{Cluster@{Cluster}!reset@{reset}}
+\index{reset@{reset}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Cluster\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{_cluster_8cpp_source}{Cluster.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_cluster_a262b3d3b69df9e3f067662ef8b039d08}\label{class_cluster_a262b3d3b69df9e3f067662ef8b039d08}} 
+\index{Cluster@{Cluster}!factory@{factory}}
+\index{factory@{factory}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{factory}{factory}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_factory}{Factory}}$<$ \mbox{\hyperlink{class_cluster}{Cluster}} $>$ $\ast$ Cluster\+::factory = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8hpp_source_l00037}{37}} of file \mbox{\hyperlink{_cluster_8hpp_source}{Cluster.\+hpp}}.
+
+\mbox{\Hypertarget{class_cluster_a6fc965e1dd6081c30e2db725e5e592c6}\label{class_cluster_a6fc965e1dd6081c30e2db725e5e592c6}} 
+\index{Cluster@{Cluster}!factorySize@{factorySize}}
+\index{factorySize@{factorySize}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{factorySize}{factorySize}}
+{\footnotesize\ttfamily int Cluster\+::factory\+Size = 500\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{_cluster_8hpp_source}{Cluster.\+hpp}}.
+
+\mbox{\Hypertarget{class_cluster_adad2f2501d611456597de9dbf87fda59}\label{class_cluster_adad2f2501d611456597de9dbf87fda59}} 
+\index{Cluster@{Cluster}!nParticles@{nParticles}}
+\index{nParticles@{nParticles}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{nParticles}{nParticles}}
+{\footnotesize\ttfamily int Cluster\+::n\+Particles}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{_cluster_8hpp_source}{Cluster.\+hpp}}.
+
+\mbox{\Hypertarget{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}\label{class_cluster_a8de4d083ff0ef934cfd9f67993553ba4}} 
+\index{Cluster@{Cluster}!p@{p}}
+\index{p@{p}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{p}{p}}
+{\footnotesize\ttfamily TLorentz\+Vector Cluster\+::p}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8hpp_source_l00033}{33}} of file \mbox{\hyperlink{_cluster_8hpp_source}{Cluster.\+hpp}}.
+
+\mbox{\Hypertarget{class_cluster_af29aef888c92e1ca02f06f84c01f3d00}\label{class_cluster_af29aef888c92e1ca02f06f84c01f3d00}} 
+\index{Cluster@{Cluster}!particles@{particles}}
+\index{particles@{particles}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{particles}{particles}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle}{Particle}}$\ast$$\ast$ Cluster\+::particles}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{_cluster_8hpp_source}{Cluster.\+hpp}}.
+
+\mbox{\Hypertarget{class_cluster_ac762e7125269215dcf702b874a0ea333}\label{class_cluster_ac762e7125269215dcf702b874a0ea333}} 
+\index{Cluster@{Cluster}!Qlong@{Qlong}}
+\index{Qlong@{Qlong}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{Qlong}{Qlong}}
+{\footnotesize\ttfamily double Cluster\+::\+Qlong}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{_cluster_8hpp_source}{Cluster.\+hpp}}.
+
+\mbox{\Hypertarget{class_cluster_a666778c06f55c42df9579f870dcad1ac}\label{class_cluster_a666778c06f55c42df9579f870dcad1ac}} 
+\index{Cluster@{Cluster}!Qout@{Qout}}
+\index{Qout@{Qout}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{Qout}{Qout}}
+{\footnotesize\ttfamily double Cluster\+::\+Qout}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{_cluster_8hpp_source}{Cluster.\+hpp}}.
+
+\mbox{\Hypertarget{class_cluster_a14411271e09ebcaedfd452ddbc93745b}\label{class_cluster_a14411271e09ebcaedfd452ddbc93745b}} 
+\index{Cluster@{Cluster}!Qside@{Qside}}
+\index{Qside@{Qside}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{Qside}{Qside}}
+{\footnotesize\ttfamily double Cluster\+::\+Qside}
+
+
+
+Definition at line \mbox{\hyperlink{_cluster_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{_cluster_8hpp_source}{Cluster.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Cluster/\mbox{\hyperlink{_cluster_8hpp}{Cluster.\+hpp}}\item 
+Cluster/\mbox{\hyperlink{_cluster_8cpp}{Cluster.\+cpp}}\end{DoxyCompactItemize}

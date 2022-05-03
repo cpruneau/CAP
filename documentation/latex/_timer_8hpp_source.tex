@@ -1,0 +1,55 @@
+\hypertarget{_timer_8hpp_source}{}\doxysection{Timer.\+hpp}
+\label{_timer_8hpp_source}\index{Base/Timer.hpp@{Base/Timer.hpp}}
+\mbox{\hyperlink{_timer_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#ifndef CAP\_\_Timer}}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#define CAP\_\_Timer}}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include <wchar.h>}}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}TObject.h"{}}}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00019}00019 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00020}00020 \textcolor{keyword}{using namespace }std::chrono;}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00022}\mbox{\hyperlink{class_timer}{00022}} \textcolor{keyword}{class }\mbox{\hyperlink{class_timer}{Timer}}}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00023}00023 \{}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00024}00024 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00026}00026   \mbox{\hyperlink{class_timer_a5f16e8da27d2a5a5242dead46de05d97}{Timer}}();}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00027}00027   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_timer_a14fa469c4c295c5fa6e66a4ad1092146}{\string~Timer}}();}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00028}00028   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_timer_a3a8b5272198d029779dc9302a54305a8}{start}}();}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00029}00029   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_timer_a63f0eb44b27402196590a03781515dba}{stop}}();}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00030}00030   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_timer_a339d329357b3ad0ad8f9b2ed2224c53e}{print}}(ostream \& os);}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00032}\mbox{\hyperlink{class_timer_acf315d5d7df905f802af778226c38b60}{00032}}   high\_resolution\_clock::time\_point \mbox{\hyperlink{class_timer_acf315d5d7df905f802af778226c38b60}{startTime}};}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00033}\mbox{\hyperlink{class_timer_a5f9bca96bf229d91ce1b3679ad9673a3}{00033}}   high\_resolution\_clock::time\_point \mbox{\hyperlink{class_timer_a5f9bca96bf229d91ce1b3679ad9673a3}{stopTime}};}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00034}\mbox{\hyperlink{class_timer_a29543aa2546cb823ba6d8ea6fbd67581}{00034}}   high\_resolution\_clock::time\_point \mbox{\hyperlink{class_timer_a29543aa2546cb823ba6d8ea6fbd67581}{oldStop}};}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00035}\mbox{\hyperlink{class_timer_afb9cde26b212a43d5db3aa2db2bd8f44}{00035}}   duration<double> \mbox{\hyperlink{class_timer_afb9cde26b212a43d5db3aa2db2bd8f44}{totalDuration}};}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00036}\mbox{\hyperlink{class_timer_a9da20b6f8708b9c56dcbe306c3fb8fbc}{00036}}   duration<double> \mbox{\hyperlink{class_timer_a9da20b6f8708b9c56dcbe306c3fb8fbc}{intervalDuration}};}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00037}\mbox{\hyperlink{class_timer_a35d4e3b76b4b94fd7f4f8784fd2592cd}{00037}}   \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_timer_a35d4e3b76b4b94fd7f4f8784fd2592cd}{days}};}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00038}\mbox{\hyperlink{class_timer_ad4c1b44b1961cda80b62e02e74a7d543}{00038}}   \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_timer_ad4c1b44b1961cda80b62e02e74a7d543}{hours}};}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00039}\mbox{\hyperlink{class_timer_a4b521f860b7afb3e452f795c07dbecd5}{00039}}   \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_timer_a4b521f860b7afb3e452f795c07dbecd5}{minutes}};}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00040}\mbox{\hyperlink{class_timer_a8fee6c09fbfc9779e3dae16de280cf46}{00040}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_timer_a8fee6c09fbfc9779e3dae16de280cf46}{seconds}};}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00041}\mbox{\hyperlink{class_timer_afc4174b1a7f7d082a41b503610964872}{00041}}   \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_timer_afc4174b1a7f7d082a41b503610964872}{deltaDays}};}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00042}\mbox{\hyperlink{class_timer_a8c9c97b73a4c0a580bb52331bdd69f8f}{00042}}   \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_timer_a8c9c97b73a4c0a580bb52331bdd69f8f}{deltaHours}};}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00043}\mbox{\hyperlink{class_timer_ae336630f494e809704154c056d355ada}{00043}}   \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_timer_ae336630f494e809704154c056d355ada}{deltaMinutes}};}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00044}\mbox{\hyperlink{class_timer_a22a8803c50323a9354dee0a9258b86e0}{00044}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_timer_a22a8803c50323a9354dee0a9258b86e0}{deltaSeconds}};}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00046}00046   ClassDef(\mbox{\hyperlink{class_timer}{Timer}},0)}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00047}00047 \};}
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_timer_8hpp_source_l00049}00049 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_Timer */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

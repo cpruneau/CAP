@@ -1,0 +1,169 @@
+\hypertarget{class_radial_boost_histos}{}\doxysection{Radial\+Boost\+Histos Class Reference}
+\label{class_radial_boost_histos}\index{RadialBoostHistos@{RadialBoostHistos}}
+
+
+{\ttfamily \#include $<$Radial\+Boost\+Histos.\+hpp$>$}
+
+
+
+Inheritance diagram for Radial\+Boost\+Histos\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=185pt]{class_radial_boost_histos__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Radial\+Boost\+Histos\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{class_radial_boost_histos__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_radial_boost_histos_a58c6f72963d75351c60b09d7e4c24ed9}{Radial\+Boost\+Histos}} (const TString \&\+\_\+name, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \+\_\+debug\+Level)
+\item 
+virtual \mbox{\hyperlink{class_radial_boost_histos_a794d0d449bd5033fa07de451f0f945be}{$\sim$\+Radial\+Boost\+Histos}} ()
+\item 
+virtual void \mbox{\hyperlink{class_radial_boost_histos_af6d1c41a97cd766333cccdf5ba7f30c2}{create\+Histograms}} ()
+\item 
+virtual void \mbox{\hyperlink{class_radial_boost_histos_a3833657ed3122c7d5330ef14ebd9d172}{load\+Histograms}} (TFile $\ast$input\+File)
+\item 
+virtual void \mbox{\hyperlink{class_radial_boost_histos_aaa755aacd68f524663c16c86cd6cbc78}{fill}} (double x, double y, double r, double phi, double beta, double weight)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_radial_boost_histos_a9b231105978d1b0d68823e4f887b70f8}{h\+\_\+phi}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_radial_boost_histos_a22d7cf339b4f5b9f13dcd11ee7e040c9}{h\+\_\+r}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_radial_boost_histos_a34ff3c60b8ea4ddcf2e54be29a038a7d}{h\+\_\+beta}}
+\item 
+TH2 $\ast$ \mbox{\hyperlink{class_radial_boost_histos_a6b213a860f0683af1d320d16ed6ca628}{h\+\_\+xy}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_radial_boost_histos_8hpp_source_l00016}{16}} of file \mbox{\hyperlink{_radial_boost_histos_8hpp_source}{Radial\+Boost\+Histos.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_radial_boost_histos_a58c6f72963d75351c60b09d7e4c24ed9}\label{class_radial_boost_histos_a58c6f72963d75351c60b09d7e4c24ed9}} 
+\index{RadialBoostHistos@{RadialBoostHistos}!RadialBoostHistos@{RadialBoostHistos}}
+\index{RadialBoostHistos@{RadialBoostHistos}!RadialBoostHistos@{RadialBoostHistos}}
+\doxysubsubsection{\texorpdfstring{RadialBoostHistos()}{RadialBoostHistos()}}
+{\footnotesize\ttfamily Radial\+Boost\+Histos\+::\+Radial\+Boost\+Histos (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{\+\_\+debug\+Level }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_radial_boost_histos_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_radial_boost_histos_8cpp_source}{Radial\+Boost\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_radial_boost_histos_a794d0d449bd5033fa07de451f0f945be}\label{class_radial_boost_histos_a794d0d449bd5033fa07de451f0f945be}} 
+\index{RadialBoostHistos@{RadialBoostHistos}!````~RadialBoostHistos@{$\sim$RadialBoostHistos}}
+\index{````~RadialBoostHistos@{$\sim$RadialBoostHistos}!RadialBoostHistos@{RadialBoostHistos}}
+\doxysubsubsection{\texorpdfstring{$\sim$RadialBoostHistos()}{~RadialBoostHistos()}}
+{\footnotesize\ttfamily Radial\+Boost\+Histos\+::$\sim$\+Radial\+Boost\+Histos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_radial_boost_histos_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{_radial_boost_histos_8cpp_source}{Radial\+Boost\+Histos.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_radial_boost_histos_af6d1c41a97cd766333cccdf5ba7f30c2}\label{class_radial_boost_histos_af6d1c41a97cd766333cccdf5ba7f30c2}} 
+\index{RadialBoostHistos@{RadialBoostHistos}!createHistograms@{createHistograms}}
+\index{createHistograms@{createHistograms}!RadialBoostHistos@{RadialBoostHistos}}
+\doxysubsubsection{\texorpdfstring{createHistograms()}{createHistograms()}}
+{\footnotesize\ttfamily void Radial\+Boost\+Histos\+::create\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overload this class to create histograms. 
+
+Reimplemented from \mbox{\hyperlink{class_histograms_ae6197b40e3cb970716aa4fc8a8eaffb2}{Histograms}}.
+
+
+
+Definition at line \mbox{\hyperlink{_radial_boost_histos_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{_radial_boost_histos_8cpp_source}{Radial\+Boost\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_radial_boost_histos_aaa755aacd68f524663c16c86cd6cbc78}\label{class_radial_boost_histos_aaa755aacd68f524663c16c86cd6cbc78}} 
+\index{RadialBoostHistos@{RadialBoostHistos}!fill@{fill}}
+\index{fill@{fill}!RadialBoostHistos@{RadialBoostHistos}}
+\doxysubsubsection{\texorpdfstring{fill()}{fill()}}
+{\footnotesize\ttfamily void Radial\+Boost\+Histos\+::fill (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{r,  }\item[{double}]{phi,  }\item[{double}]{beta,  }\item[{double}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_radial_boost_histos_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{_radial_boost_histos_8cpp_source}{Radial\+Boost\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_radial_boost_histos_a3833657ed3122c7d5330ef14ebd9d172}\label{class_radial_boost_histos_a3833657ed3122c7d5330ef14ebd9d172}} 
+\index{RadialBoostHistos@{RadialBoostHistos}!loadHistograms@{loadHistograms}}
+\index{loadHistograms@{loadHistograms}!RadialBoostHistos@{RadialBoostHistos}}
+\doxysubsubsection{\texorpdfstring{loadHistograms()}{loadHistograms()}}
+{\footnotesize\ttfamily void Radial\+Boost\+Histos\+::load\+Histograms (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{input\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overload this class to load histograms. 
+
+Reimplemented from \mbox{\hyperlink{class_histograms_a20ca1f616c8af6d3261e6ca3127ecd9d}{Histograms}}.
+
+
+
+Definition at line \mbox{\hyperlink{_radial_boost_histos_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{_radial_boost_histos_8cpp_source}{Radial\+Boost\+Histos.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_radial_boost_histos_a34ff3c60b8ea4ddcf2e54be29a038a7d}\label{class_radial_boost_histos_a34ff3c60b8ea4ddcf2e54be29a038a7d}} 
+\index{RadialBoostHistos@{RadialBoostHistos}!h\_beta@{h\_beta}}
+\index{h\_beta@{h\_beta}!RadialBoostHistos@{RadialBoostHistos}}
+\doxysubsubsection{\texorpdfstring{h\_beta}{h\_beta}}
+{\footnotesize\ttfamily TH1$\ast$ Radial\+Boost\+Histos\+::h\+\_\+beta}
+
+
+
+Definition at line \mbox{\hyperlink{_radial_boost_histos_8hpp_source_l00033}{33}} of file \mbox{\hyperlink{_radial_boost_histos_8hpp_source}{Radial\+Boost\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_radial_boost_histos_a9b231105978d1b0d68823e4f887b70f8}\label{class_radial_boost_histos_a9b231105978d1b0d68823e4f887b70f8}} 
+\index{RadialBoostHistos@{RadialBoostHistos}!h\_phi@{h\_phi}}
+\index{h\_phi@{h\_phi}!RadialBoostHistos@{RadialBoostHistos}}
+\doxysubsubsection{\texorpdfstring{h\_phi}{h\_phi}}
+{\footnotesize\ttfamily TH1$\ast$ Radial\+Boost\+Histos\+::h\+\_\+phi}
+
+
+
+Definition at line \mbox{\hyperlink{_radial_boost_histos_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{_radial_boost_histos_8hpp_source}{Radial\+Boost\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_radial_boost_histos_a22d7cf339b4f5b9f13dcd11ee7e040c9}\label{class_radial_boost_histos_a22d7cf339b4f5b9f13dcd11ee7e040c9}} 
+\index{RadialBoostHistos@{RadialBoostHistos}!h\_r@{h\_r}}
+\index{h\_r@{h\_r}!RadialBoostHistos@{RadialBoostHistos}}
+\doxysubsubsection{\texorpdfstring{h\_r}{h\_r}}
+{\footnotesize\ttfamily TH1$\ast$ Radial\+Boost\+Histos\+::h\+\_\+r}
+
+
+
+Definition at line \mbox{\hyperlink{_radial_boost_histos_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{_radial_boost_histos_8hpp_source}{Radial\+Boost\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_radial_boost_histos_a6b213a860f0683af1d320d16ed6ca628}\label{class_radial_boost_histos_a6b213a860f0683af1d320d16ed6ca628}} 
+\index{RadialBoostHistos@{RadialBoostHistos}!h\_xy@{h\_xy}}
+\index{h\_xy@{h\_xy}!RadialBoostHistos@{RadialBoostHistos}}
+\doxysubsubsection{\texorpdfstring{h\_xy}{h\_xy}}
+{\footnotesize\ttfamily TH2$\ast$ Radial\+Boost\+Histos\+::h\+\_\+xy}
+
+
+
+Definition at line \mbox{\hyperlink{_radial_boost_histos_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{_radial_boost_histos_8hpp_source}{Radial\+Boost\+Histos.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_radial_boost_histos_8hpp}{Radial\+Boost\+Histos.\+hpp}}\item 
+Base/\mbox{\hyperlink{_radial_boost_histos_8cpp}{Radial\+Boost\+Histos.\+cpp}}\end{DoxyCompactItemize}

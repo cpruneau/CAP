@@ -1,0 +1,58 @@
+\hypertarget{_a_a_collision_generator_8hpp_source}{}\doxysection{AACollision\+Generator.\+hpp}
+\label{_a_a_collision_generator_8hpp_source}\index{Base/AACollisionGenerator.hpp@{Base/AACollisionGenerator.hpp}}
+\mbox{\hyperlink{_a_a_collision_generator_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef CAP\_\_AACollisionGenerator}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define CAP\_\_AACollisionGenerator}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_collision_geometry_8hpp}{CollisionGeometry.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00031}\mbox{\hyperlink{class_a_a_collision_generator}{00031}} \textcolor{keyword}{class }\mbox{\hyperlink{class_a_a_collision_generator}{AACollisionGenerator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00032}00032 \{}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00033}00033 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00044}00044   \mbox{\hyperlink{class_a_a_collision_generator_a4aefe203c1d58c0b43d2f376cb6ae834}{AACollisionGenerator}}(\textcolor{keyword}{const} TString \&          \mbox{\hyperlink{class_task_a0aa96f5ba1ec134ff65d80740654d759}{taskName}},}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00045}00045                        \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}}  \&   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}},}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00046}00046                        vector<EventFilter*> \&   \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}},}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00047}00047                        vector<ParticleFilter*>\& \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}},}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00048}00048                        \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}}  \mbox{\hyperlink{class_message_logger_ad9d41b1a0dbbf52fabee01267c0491e6}{reportLevel}});}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00053}\mbox{\hyperlink{class_a_a_collision_generator_a71b2d905ee3907f669b0708c350d7401}{00053}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_a_a_collision_generator_a71b2d905ee3907f669b0708c350d7401}{\string~AACollisionGenerator}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00054}00054   }
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00058}00058   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_a_a_collision_generator_ace626e52e5884d9ebe1b413f5f155472}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00059}00059   }
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00063}00063   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_a_a_collision_generator_a9b98d60df28594f01b1d57bbdfd82586}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00064}00064   }
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00068}00068   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_a_a_collision_generator_a93fe6ab2b2a52b654eda6c140f46b392}{finalize}}();}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00069}00069   }
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00073}00073   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_a_a_collision_generator_a848b62a5ea3269edfd1dac9b0647deee}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00078}\mbox{\hyperlink{class_a_a_collision_generator_abc6271a84ecaf2b3c124c74686e5b938}{00078}}   \mbox{\hyperlink{class_nucleon_nucleon_collision_generator}{NucleonNucleonCollisionGenerator}} * \mbox{\hyperlink{class_a_a_collision_generator_abc6271a84ecaf2b3c124c74686e5b938}{getCollisionGenerator}}()}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00079}00079   \{}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00080}00080   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_a_a_collision_generator_a0cab07bd4ef78b70107872b0d2eb6a82}{nnCollisionGenerator}};}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00081}00081   \}}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00086}00086   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_a_a_collision_generator_a617dc704b0313c5fffd23a0360117f53}{setNucleonNucleonCollisionGenerator}}(\mbox{\hyperlink{class_nucleon_nucleon_collision_generator}{NucleonNucleonCollisionGenerator}}  * \_nnCollisionGenerator);}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00088}00088 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00093}\mbox{\hyperlink{class_a_a_collision_generator_a0cab07bd4ef78b70107872b0d2eb6a82}{00093}}   \mbox{\hyperlink{class_nucleon_nucleon_collision_generator}{NucleonNucleonCollisionGenerator}} * \mbox{\hyperlink{class_a_a_collision_generator_a0cab07bd4ef78b70107872b0d2eb6a82}{nnCollisionGenerator}};}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00094}00094   }
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00095}00095   ClassDef(\mbox{\hyperlink{class_a_a_collision_generator}{AACollisionGenerator}},0)}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00096}00096 \};}
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{_a_a_collision_generator_8hpp_source_l00099}00099 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/*CAP\_\_AACollisionGenerator*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

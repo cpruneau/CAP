@@ -1,0 +1,272 @@
+\hypertarget{class_particle_type_collection}{}\doxysection{Particle\+Type\+Collection Class Reference}
+\label{class_particle_type_collection}\index{ParticleTypeCollection@{ParticleTypeCollection}}
+
+
+{\ttfamily \#include $<$Particle\+Type\+Collection.\+hpp$>$}
+
+
+
+Inheritance diagram for Particle\+Type\+Collection\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{class_particle_type_collection__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Particle\+Type\+Collection\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{class_particle_type_collection__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_particle_type_collection_a8b45aeea4552a5d5ba72ae995868807e}{Particle\+Type\+Collection}} ()
+\item 
+virtual \mbox{\hyperlink{class_particle_type_collection_a6aa651ad3c1ffc60c93d7b3ed9d29bd6}{$\sim$\+Particle\+Type\+Collection}} ()
+\item 
+void \mbox{\hyperlink{class_particle_type_collection_a047c28d219ddb27d9814ffbfeeb1fbcc}{read\+From\+File}} (const TString \&input\+File\+Name)
+\item 
+void \mbox{\hyperlink{class_particle_type_collection_a718fdb07d54ab82f0c3ece944546b728}{sort\+By\+Mass}} ()
+\item 
+\mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} $\ast$ \mbox{\hyperlink{class_particle_type_collection_ae9156cd0aff9cdfd0fa1b7f98236701d}{extract\+Collection}} (int option)
+\item 
+int \mbox{\hyperlink{class_particle_type_collection_a3d9a962bc1f9289bbdc1a93e3d0e6255}{find\+Index\+For\+Type}} (\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$type)
+\item 
+int \mbox{\hyperlink{class_particle_type_collection_ae4754a229a42e3e1dc6c9dd300ea50ca}{find\+Index\+For\+Pdg\+Code}} (int pdg\+Code)
+\item 
+int \mbox{\hyperlink{class_particle_type_collection_a671d5406ad51a16f01dd3788481660ab}{find\+Index\+For\+Private\+Code}} (int private\+Code)
+\item 
+void \mbox{\hyperlink{class_particle_type_collection_a995de43a0e2d016e7aa7c93a6feeb98a}{resolve\+Types}} ()
+\item 
+\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ \mbox{\hyperlink{class_particle_type_collection_ac8ee25b3ed9077300626d6aa20768fd1}{find\+Pdg\+Code}} (int pdg\+Code)
+\item 
+\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ \mbox{\hyperlink{class_particle_type_collection_a1e65eed57ec50a38704e54f881f5bc52}{find\+Private\+Code}} (int private\+Code)
+\item 
+\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ \mbox{\hyperlink{class_particle_type_collection_a1edc5d71559535a1f0c0801babfdc650}{get\+Particle\+Type}} (int index)
+\item 
+\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ \mbox{\hyperlink{class_particle_type_collection_ad87f9aff38e5f8c99a8ae39193d0fd76}{operator\mbox{[}$\,$\mbox{]}}} (int index)
+\item 
+vector$<$ int $>$ \mbox{\hyperlink{class_particle_type_collection_aa237db71cc65699fda93e03c42446fc4}{get\+List\+Of\+Pdg\+Codes}} ()
+\item 
+ostream \& \mbox{\hyperlink{class_particle_type_collection_a95ab1788116ad26fd02db3539e7cd33a}{print\+Properties}} (ostream \&os)
+\item 
+ostream \& \mbox{\hyperlink{class_particle_type_collection_affb5f1726bb9e7885f490346f83a51df}{print\+Decay\+Properties}} (ostream \&os)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} $\ast$ \mbox{\hyperlink{class_particle_type_collection_a278cbb74300003089d2d4e8fd4f1dc02}{get\+Master\+Particle\+Collection}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} $\ast$ \mbox{\hyperlink{class_particle_type_collection_aaa378547484129c0d08523fa179981a6}{master\+Particle\+Collection}} = nullptr
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8hpp_source_l00016}{16}} of file \mbox{\hyperlink{_particle_type_collection_8hpp_source}{Particle\+Type\+Collection.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_particle_type_collection_a8b45aeea4552a5d5ba72ae995868807e}\label{class_particle_type_collection_a8b45aeea4552a5d5ba72ae995868807e}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!ParticleTypeCollection@{ParticleTypeCollection}}
+\index{ParticleTypeCollection@{ParticleTypeCollection}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{ParticleTypeCollection()}{ParticleTypeCollection()}}
+{\footnotesize\ttfamily Particle\+Type\+Collection\+::\+Particle\+Type\+Collection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{_particle_type_collection_8cpp_source}{Particle\+Type\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_type_collection_a6aa651ad3c1ffc60c93d7b3ed9d29bd6}\label{class_particle_type_collection_a6aa651ad3c1ffc60c93d7b3ed9d29bd6}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!````~ParticleTypeCollection@{$\sim$ParticleTypeCollection}}
+\index{````~ParticleTypeCollection@{$\sim$ParticleTypeCollection}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{$\sim$ParticleTypeCollection()}{~ParticleTypeCollection()}}
+{\footnotesize\ttfamily Particle\+Type\+Collection\+::$\sim$\+Particle\+Type\+Collection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{_particle_type_collection_8cpp_source}{Particle\+Type\+Collection.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_particle_type_collection_ae9156cd0aff9cdfd0fa1b7f98236701d}\label{class_particle_type_collection_ae9156cd0aff9cdfd0fa1b7f98236701d}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!extractCollection@{extractCollection}}
+\index{extractCollection@{extractCollection}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{extractCollection()}{extractCollection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} $\ast$ Particle\+Type\+Collection\+::extract\+Collection (\begin{DoxyParamCaption}\item[{int}]{option }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8cpp_source_l00190}{190}} of file \mbox{\hyperlink{_particle_type_collection_8cpp_source}{Particle\+Type\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_type_collection_ae4754a229a42e3e1dc6c9dd300ea50ca}\label{class_particle_type_collection_ae4754a229a42e3e1dc6c9dd300ea50ca}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!findIndexForPdgCode@{findIndexForPdgCode}}
+\index{findIndexForPdgCode@{findIndexForPdgCode}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{findIndexForPdgCode()}{findIndexForPdgCode()}}
+{\footnotesize\ttfamily int Particle\+Type\+Collection\+::find\+Index\+For\+Pdg\+Code (\begin{DoxyParamCaption}\item[{int}]{pdg\+Code }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8cpp_source_l00213}{213}} of file \mbox{\hyperlink{_particle_type_collection_8cpp_source}{Particle\+Type\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_type_collection_a671d5406ad51a16f01dd3788481660ab}\label{class_particle_type_collection_a671d5406ad51a16f01dd3788481660ab}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!findIndexForPrivateCode@{findIndexForPrivateCode}}
+\index{findIndexForPrivateCode@{findIndexForPrivateCode}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{findIndexForPrivateCode()}{findIndexForPrivateCode()}}
+{\footnotesize\ttfamily int Particle\+Type\+Collection\+::find\+Index\+For\+Private\+Code (\begin{DoxyParamCaption}\item[{int}]{private\+Code }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8cpp_source_l00222}{222}} of file \mbox{\hyperlink{_particle_type_collection_8cpp_source}{Particle\+Type\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_type_collection_a3d9a962bc1f9289bbdc1a93e3d0e6255}\label{class_particle_type_collection_a3d9a962bc1f9289bbdc1a93e3d0e6255}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!findIndexForType@{findIndexForType}}
+\index{findIndexForType@{findIndexForType}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{findIndexForType()}{findIndexForType()}}
+{\footnotesize\ttfamily int Particle\+Type\+Collection\+::find\+Index\+For\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$}]{type }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8cpp_source_l00231}{231}} of file \mbox{\hyperlink{_particle_type_collection_8cpp_source}{Particle\+Type\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_type_collection_ac8ee25b3ed9077300626d6aa20768fd1}\label{class_particle_type_collection_ac8ee25b3ed9077300626d6aa20768fd1}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!findPdgCode@{findPdgCode}}
+\index{findPdgCode@{findPdgCode}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{findPdgCode()}{findPdgCode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ Particle\+Type\+Collection\+::find\+Pdg\+Code (\begin{DoxyParamCaption}\item[{int}]{pdg\+Code }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8cpp_source_l00240}{240}} of file \mbox{\hyperlink{_particle_type_collection_8cpp_source}{Particle\+Type\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_type_collection_a1e65eed57ec50a38704e54f881f5bc52}\label{class_particle_type_collection_a1e65eed57ec50a38704e54f881f5bc52}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!findPrivateCode@{findPrivateCode}}
+\index{findPrivateCode@{findPrivateCode}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{findPrivateCode()}{findPrivateCode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ Particle\+Type\+Collection\+::find\+Private\+Code (\begin{DoxyParamCaption}\item[{int}]{private\+Code }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8cpp_source_l00258}{258}} of file \mbox{\hyperlink{_particle_type_collection_8cpp_source}{Particle\+Type\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_type_collection_aa237db71cc65699fda93e03c42446fc4}\label{class_particle_type_collection_aa237db71cc65699fda93e03c42446fc4}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!getListOfPdgCodes@{getListOfPdgCodes}}
+\index{getListOfPdgCodes@{getListOfPdgCodes}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{getListOfPdgCodes()}{getListOfPdgCodes()}}
+{\footnotesize\ttfamily vector$<$ int $>$ Particle\+Type\+Collection\+::get\+List\+Of\+Pdg\+Codes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8cpp_source_l00327}{327}} of file \mbox{\hyperlink{_particle_type_collection_8cpp_source}{Particle\+Type\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_type_collection_a278cbb74300003089d2d4e8fd4f1dc02}\label{class_particle_type_collection_a278cbb74300003089d2d4e8fd4f1dc02}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!getMasterParticleCollection@{getMasterParticleCollection}}
+\index{getMasterParticleCollection@{getMasterParticleCollection}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{getMasterParticleCollection()}{getMasterParticleCollection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} $\ast$ Particle\+Type\+Collection\+::get\+Master\+Particle\+Collection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8cpp_source_l00317}{317}} of file \mbox{\hyperlink{_particle_type_collection_8cpp_source}{Particle\+Type\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_type_collection_a1edc5d71559535a1f0c0801babfdc650}\label{class_particle_type_collection_a1edc5d71559535a1f0c0801babfdc650}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!getParticleType@{getParticleType}}
+\index{getParticleType@{getParticleType}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{getParticleType()}{getParticleType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ Particle\+Type\+Collection\+::get\+Particle\+Type (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{_particle_type_collection_8hpp_source}{Particle\+Type\+Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_type_collection_ad87f9aff38e5f8c99a8ae39193d0fd76}\label{class_particle_type_collection_ad87f9aff38e5f8c99a8ae39193d0fd76}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ Particle\+Type\+Collection\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8hpp_source_l00037}{37}} of file \mbox{\hyperlink{_particle_type_collection_8hpp_source}{Particle\+Type\+Collection.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_type_collection_affb5f1726bb9e7885f490346f83a51df}\label{class_particle_type_collection_affb5f1726bb9e7885f490346f83a51df}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!printDecayProperties@{printDecayProperties}}
+\index{printDecayProperties@{printDecayProperties}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{printDecayProperties()}{printDecayProperties()}}
+{\footnotesize\ttfamily ostream \& Particle\+Type\+Collection\+::print\+Decay\+Properties (\begin{DoxyParamCaption}\item[{ostream \&}]{os }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8cpp_source_l00300}{300}} of file \mbox{\hyperlink{_particle_type_collection_8cpp_source}{Particle\+Type\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_type_collection_a95ab1788116ad26fd02db3539e7cd33a}\label{class_particle_type_collection_a95ab1788116ad26fd02db3539e7cd33a}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!printProperties@{printProperties}}
+\index{printProperties@{printProperties}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{printProperties()}{printProperties()}}
+{\footnotesize\ttfamily ostream \& Particle\+Type\+Collection\+::print\+Properties (\begin{DoxyParamCaption}\item[{ostream \&}]{os }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8cpp_source_l00269}{269}} of file \mbox{\hyperlink{_particle_type_collection_8cpp_source}{Particle\+Type\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_type_collection_a047c28d219ddb27d9814ffbfeeb1fbcc}\label{class_particle_type_collection_a047c28d219ddb27d9814ffbfeeb1fbcc}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!readFromFile@{readFromFile}}
+\index{readFromFile@{readFromFile}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{readFromFile()}{readFromFile()}}
+{\footnotesize\ttfamily void Particle\+Type\+Collection\+::read\+From\+File (\begin{DoxyParamCaption}\item[{const TString \&}]{input\+File\+Name }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{_particle_type_collection_8cpp_source}{Particle\+Type\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_type_collection_a995de43a0e2d016e7aa7c93a6feeb98a}\label{class_particle_type_collection_a995de43a0e2d016e7aa7c93a6feeb98a}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!resolveTypes@{resolveTypes}}
+\index{resolveTypes@{resolveTypes}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{resolveTypes()}{resolveTypes()}}
+{\footnotesize\ttfamily void Particle\+Type\+Collection\+::resolve\+Types (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8cpp_source_l00160}{160}} of file \mbox{\hyperlink{_particle_type_collection_8cpp_source}{Particle\+Type\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_type_collection_a718fdb07d54ab82f0c3ece944546b728}\label{class_particle_type_collection_a718fdb07d54ab82f0c3ece944546b728}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!sortByMass@{sortByMass}}
+\index{sortByMass@{sortByMass}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{sortByMass()}{sortByMass()}}
+{\footnotesize\ttfamily void Particle\+Type\+Collection\+::sort\+By\+Mass (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8cpp_source_l00137}{137}} of file \mbox{\hyperlink{_particle_type_collection_8cpp_source}{Particle\+Type\+Collection.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_particle_type_collection_aaa378547484129c0d08523fa179981a6}\label{class_particle_type_collection_aaa378547484129c0d08523fa179981a6}} 
+\index{ParticleTypeCollection@{ParticleTypeCollection}!masterParticleCollection@{masterParticleCollection}}
+\index{masterParticleCollection@{masterParticleCollection}!ParticleTypeCollection@{ParticleTypeCollection}}
+\doxysubsubsection{\texorpdfstring{masterParticleCollection}{masterParticleCollection}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} $\ast$ Particle\+Type\+Collection\+::master\+Particle\+Collection = nullptr\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_type_collection_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{_particle_type_collection_8hpp_source}{Particle\+Type\+Collection.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_particle_type_collection_8hpp}{Particle\+Type\+Collection.\+hpp}}\item 
+Base/\mbox{\hyperlink{_particle_type_collection_8cpp}{Particle\+Type\+Collection.\+cpp}}\end{DoxyCompactItemize}

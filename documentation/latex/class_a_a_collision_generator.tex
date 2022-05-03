@@ -1,0 +1,218 @@
+\hypertarget{class_a_a_collision_generator}{}\doxysection{AACollision\+Generator Class Reference}
+\label{class_a_a_collision_generator}\index{AACollisionGenerator@{AACollisionGenerator}}
+
+
+MC generator producing AA collisions as superpositions of n\+Binary nucleon-\/nucleon collisions.  
+
+
+
+
+{\ttfamily \#include $<$AACollision\+Generator.\+hpp$>$}
+
+
+
+Inheritance diagram for AACollision\+Generator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{class_a_a_collision_generator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for AACollision\+Generator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_a_collision_generator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_a_collision_generator_a4aefe203c1d58c0b43d2f376cb6ae834}{AACollision\+Generator}} (const TString \&\mbox{\hyperlink{class_task_a0aa96f5ba1ec134ff65d80740654d759}{task\+Name}}, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}, vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&\mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{event\+Filters}}, vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&\mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particle\+Filters}}, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Message\+Logger\+::\+Log\+Level}} \mbox{\hyperlink{class_message_logger_ad9d41b1a0dbbf52fabee01267c0491e6}{report\+Level}})
+\item 
+virtual \mbox{\hyperlink{class_a_a_collision_generator_a71b2d905ee3907f669b0708c350d7401}{$\sim$\+AACollision\+Generator}} ()
+\item 
+virtual void \mbox{\hyperlink{class_a_a_collision_generator_ace626e52e5884d9ebe1b413f5f155472}{set\+Default\+Configuration}} ()
+\item 
+virtual void \mbox{\hyperlink{class_a_a_collision_generator_a9b98d60df28594f01b1d57bbdfd82586}{initialize}} ()
+\item 
+virtual void \mbox{\hyperlink{class_a_a_collision_generator_a93fe6ab2b2a52b654eda6c140f46b392}{finalize}} ()
+\item 
+virtual void \mbox{\hyperlink{class_a_a_collision_generator_a848b62a5ea3269edfd1dac9b0647deee}{execute}} ()
+\item 
+\mbox{\hyperlink{class_nucleon_nucleon_collision_generator}{Nucleon\+Nucleon\+Collision\+Generator}} $\ast$ \mbox{\hyperlink{class_a_a_collision_generator_abc6271a84ecaf2b3c124c74686e5b938}{get\+Collision\+Generator}} ()
+\item 
+void \mbox{\hyperlink{class_a_a_collision_generator_a617dc704b0313c5fffd23a0360117f53}{set\+Nucleon\+Nucleon\+Collision\+Generator}} (\mbox{\hyperlink{class_nucleon_nucleon_collision_generator}{Nucleon\+Nucleon\+Collision\+Generator}} $\ast$\+\_\+nn\+Collision\+Generator)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_nucleon_nucleon_collision_generator}{Nucleon\+Nucleon\+Collision\+Generator}} $\ast$ \mbox{\hyperlink{class_a_a_collision_generator_a0cab07bd4ef78b70107872b0d2eb6a82}{nn\+Collision\+Generator}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+MC generator producing AA collisions as superpositions of n\+Binary nucleon-\/nucleon collisions. 
+
+\doxysubsection*{\mbox{\hyperlink{class_a_a_collision_generator}{AACollision\+Generator}} }
+
+\mbox{\hyperlink{class_task}{Task}} designed to produce AA collisions as superpositions of n\+Binary nucleon-\/nucleon collisions. The does not generate the nucleon-\/nucleon collisions but instead call another task class that does. This task assumes an event is already loaded with \char`\"{}interactions\char`\"{} (instance of the class \mbox{\hyperlink{class_particle}{Particle}}) that carry a type for the interactions, a momentum, and a position. Nucleon-\/nucleon collision positions can for instance be generated with the \mbox{\hyperlink{class_collision_geometry}{Collision\+Geometry}} class. \begin{DoxyAuthor}{Author}
+Claude A. Pruneau, Wayne State University 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022 
+\end{DoxyDate}
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000001}{Bug}}]No known bug \end{DoxyRefDesc}
+\begin{DoxyWarning}{Warning}
+Improper use can crash your application 
+\end{DoxyWarning}
+\begin{DoxyCopyright}{Copyright}
+Claude A. Pruneau, All rights reserved. 
+\end{DoxyCopyright}
+
+
+Definition at line \mbox{\hyperlink{_a_a_collision_generator_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{_a_a_collision_generator_8hpp_source}{AACollision\+Generator.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_a_a_collision_generator_a4aefe203c1d58c0b43d2f376cb6ae834}\label{class_a_a_collision_generator_a4aefe203c1d58c0b43d2f376cb6ae834}} 
+\index{AACollisionGenerator@{AACollisionGenerator}!AACollisionGenerator@{AACollisionGenerator}}
+\index{AACollisionGenerator@{AACollisionGenerator}!AACollisionGenerator@{AACollisionGenerator}}
+\doxysubsubsection{\texorpdfstring{AACollisionGenerator()}{AACollisionGenerator()}}
+{\footnotesize\ttfamily AACollision\+Generator\+::\+AACollision\+Generator (\begin{DoxyParamCaption}\item[{const TString \&}]{task\+Name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{configuration,  }\item[{vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&}]{event\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&}]{particle\+Filters,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Message\+Logger\+::\+Log\+Level}}}]{report\+Level }\end{DoxyParamCaption})}
+
+Detailed CTOR
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+name} & Name given to task instance \\
+\hline
+{\em \+\_\+configuration} & \mbox{\hyperlink{class_configuration}{Configuration}} used to run this task \\
+\hline
+{\em \+\_\+event\+Filters} & Array of event filters to be used by this task \\
+\hline
+{\em \+\_\+particle\+Filters} & Array of particle filters to be used by this task \\
+\hline
+{\em \+\_\+report\+Level} & Message log level to be used by this task. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_a_a_collision_generator_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{_a_a_collision_generator_8cpp_source}{AACollision\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_a_a_collision_generator_a71b2d905ee3907f669b0708c350d7401}\label{class_a_a_collision_generator_a71b2d905ee3907f669b0708c350d7401}} 
+\index{AACollisionGenerator@{AACollisionGenerator}!````~AACollisionGenerator@{$\sim$AACollisionGenerator}}
+\index{````~AACollisionGenerator@{$\sim$AACollisionGenerator}!AACollisionGenerator@{AACollisionGenerator}}
+\doxysubsubsection{\texorpdfstring{$\sim$AACollisionGenerator()}{~AACollisionGenerator()}}
+{\footnotesize\ttfamily virtual AACollision\+Generator\+::$\sim$\+AACollision\+Generator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+DTOR 
+
+Definition at line \mbox{\hyperlink{_a_a_collision_generator_8hpp_source_l00053}{53}} of file \mbox{\hyperlink{_a_a_collision_generator_8hpp_source}{AACollision\+Generator.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_a_a_collision_generator_a848b62a5ea3269edfd1dac9b0647deee}\label{class_a_a_collision_generator_a848b62a5ea3269edfd1dac9b0647deee}} 
+\index{AACollisionGenerator@{AACollisionGenerator}!execute@{execute}}
+\index{execute@{execute}!AACollisionGenerator@{AACollisionGenerator}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void AACollision\+Generator\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Execute this task based on the configuration and class variable specified at construction 
+
+Reimplemented from \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_a_a_collision_generator_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{_a_a_collision_generator_8cpp_source}{AACollision\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_a_a_collision_generator_a93fe6ab2b2a52b654eda6c140f46b392}\label{class_a_a_collision_generator_a93fe6ab2b2a52b654eda6c140f46b392}} 
+\index{AACollisionGenerator@{AACollisionGenerator}!finalize@{finalize}}
+\index{finalize@{finalize}!AACollisionGenerator@{AACollisionGenerator}}
+\doxysubsubsection{\texorpdfstring{finalize()}{finalize()}}
+{\footnotesize\ttfamily void AACollision\+Generator\+::finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Finalize this task 
+
+Reimplemented from \mbox{\hyperlink{class_task_aab4bc670089cc073247542c3a26da5aa}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_a_a_collision_generator_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{_a_a_collision_generator_8cpp_source}{AACollision\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_a_a_collision_generator_abc6271a84ecaf2b3c124c74686e5b938}\label{class_a_a_collision_generator_abc6271a84ecaf2b3c124c74686e5b938}} 
+\index{AACollisionGenerator@{AACollisionGenerator}!getCollisionGenerator@{getCollisionGenerator}}
+\index{getCollisionGenerator@{getCollisionGenerator}!AACollisionGenerator@{AACollisionGenerator}}
+\doxysubsubsection{\texorpdfstring{getCollisionGenerator()}{getCollisionGenerator()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_nucleon_nucleon_collision_generator}{Nucleon\+Nucleon\+Collision\+Generator}} $\ast$ AACollision\+Generator\+::get\+Collision\+Generator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the collision generator object used by this task 
+
+Definition at line \mbox{\hyperlink{_a_a_collision_generator_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{_a_a_collision_generator_8hpp_source}{AACollision\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_a_a_collision_generator_a9b98d60df28594f01b1d57bbdfd82586}\label{class_a_a_collision_generator_a9b98d60df28594f01b1d57bbdfd82586}} 
+\index{AACollisionGenerator@{AACollisionGenerator}!initialize@{initialize}}
+\index{initialize@{initialize}!AACollisionGenerator@{AACollisionGenerator}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void AACollision\+Generator\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Initialize this task 
+
+Reimplemented from \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_a_a_collision_generator_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{_a_a_collision_generator_8cpp_source}{AACollision\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_a_a_collision_generator_ace626e52e5884d9ebe1b413f5f155472}\label{class_a_a_collision_generator_ace626e52e5884d9ebe1b413f5f155472}} 
+\index{AACollisionGenerator@{AACollisionGenerator}!setDefaultConfiguration@{setDefaultConfiguration}}
+\index{setDefaultConfiguration@{setDefaultConfiguration}!AACollisionGenerator@{AACollisionGenerator}}
+\doxysubsubsection{\texorpdfstring{setDefaultConfiguration()}{setDefaultConfiguration()}}
+{\footnotesize\ttfamily void AACollision\+Generator\+::set\+Default\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Sets the default values of the configuration parameters used by this task 
+
+Reimplemented from \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_a_a_collision_generator_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{_a_a_collision_generator_8cpp_source}{AACollision\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_a_a_collision_generator_a617dc704b0313c5fffd23a0360117f53}\label{class_a_a_collision_generator_a617dc704b0313c5fffd23a0360117f53}} 
+\index{AACollisionGenerator@{AACollisionGenerator}!setNucleonNucleonCollisionGenerator@{setNucleonNucleonCollisionGenerator}}
+\index{setNucleonNucleonCollisionGenerator@{setNucleonNucleonCollisionGenerator}!AACollisionGenerator@{AACollisionGenerator}}
+\doxysubsubsection{\texorpdfstring{setNucleonNucleonCollisionGenerator()}{setNucleonNucleonCollisionGenerator()}}
+{\footnotesize\ttfamily void AACollision\+Generator\+::set\+Nucleon\+Nucleon\+Collision\+Generator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_nucleon_nucleon_collision_generator}{Nucleon\+Nucleon\+Collision\+Generator}} $\ast$}]{\+\_\+nn\+Collision\+Generator }\end{DoxyParamCaption})}
+
+Set the collision generator object used by this task 
+
+Definition at line \mbox{\hyperlink{_a_a_collision_generator_8cpp_source_l00068}{68}} of file \mbox{\hyperlink{_a_a_collision_generator_8cpp_source}{AACollision\+Generator.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_a_a_collision_generator_a0cab07bd4ef78b70107872b0d2eb6a82}\label{class_a_a_collision_generator_a0cab07bd4ef78b70107872b0d2eb6a82}} 
+\index{AACollisionGenerator@{AACollisionGenerator}!nnCollisionGenerator@{nnCollisionGenerator}}
+\index{nnCollisionGenerator@{nnCollisionGenerator}!AACollisionGenerator@{AACollisionGenerator}}
+\doxysubsubsection{\texorpdfstring{nnCollisionGenerator}{nnCollisionGenerator}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_nucleon_nucleon_collision_generator}{Nucleon\+Nucleon\+Collision\+Generator}}$\ast$ AACollision\+Generator\+::nn\+Collision\+Generator\hspace{0.3cm}{\ttfamily [protected]}}
+
+Collision generator object used by this task 
+
+Definition at line \mbox{\hyperlink{_a_a_collision_generator_8hpp_source_l00093}{93}} of file \mbox{\hyperlink{_a_a_collision_generator_8hpp_source}{AACollision\+Generator.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_a_a_collision_generator_8hpp}{AACollision\+Generator.\+hpp}}\item 
+Base/\mbox{\hyperlink{_a_a_collision_generator_8cpp}{AACollision\+Generator.\+cpp}}\end{DoxyCompactItemize}

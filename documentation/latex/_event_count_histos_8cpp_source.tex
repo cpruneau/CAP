@@ -1,0 +1,65 @@
+\hypertarget{_event_count_histos_8cpp_source}{}\doxysection{Event\+Count\+Histos.\+cpp}
+\label{_event_count_histos_8cpp_source}\index{Base/EventCountHistos.cpp@{Base/EventCountHistos.cpp}}
+\mbox{\hyperlink{_event_count_histos_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00001}00001 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00002}00002 \textcolor{comment}{//  EventCountHistos.cpp}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00003}00003 \textcolor{comment}{//  MyMC}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00004}00004 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00005}00005 \textcolor{comment}{//  Created by Claude Pruneau on 9/23/16.}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00006}00006 \textcolor{comment}{//  Copyright © 2016 Claude Pruneau. All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00007}00007 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#include "{}TLorentzVector.h"{}}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00010}00010 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_event_count_histos_8hpp}{EventCountHistos.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00011}\mbox{\hyperlink{_event_count_histos_8cpp_a71145dfd97e00d6bbc124985ace5478b}{00011}} \mbox{\hyperlink{_event_count_histos_8cpp_a71145dfd97e00d6bbc124985ace5478b}{ClassImp}}(\mbox{\hyperlink{class_event_count_histos}{EventCountHistos}});}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00013}\mbox{\hyperlink{class_event_count_histos_a0583fd70af36b8e18cf7d43267feb041}{00013}} \mbox{\hyperlink{class_event_count_histos_a0583fd70af36b8e18cf7d43267feb041}{EventCountHistos::EventCountHistos}}(\textcolor{keyword}{const} TString \& \_name,}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00014}00014                                    \mbox{\hyperlink{class_configuration}{Configuration}} \& \_configuration,}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00015}00015                                    \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}        \_debugLevel)}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00016}00016 :}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00017}00017 \mbox{\hyperlink{class_histograms}{Histograms}}(\_name,\_configuration,\_debugLevel),}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00018}00018 h\_eventCounts(nullptr)}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00019}00019 \{}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00020}00020   \textcolor{comment}{// no ops}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00021}00021 \}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00023}00023 \textcolor{comment}{// for now use the same boundaries for eta and y histogram}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00024}\mbox{\hyperlink{class_event_count_histos_a24f3399fc1ac2977cfac9bc4cf72e2fe}{00024}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_count_histos_a24f3399fc1ac2977cfac9bc4cf72e2fe}{EventCountHistos::createHistograms}}()}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00025}00025 \{}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00026}00026   TString bn = \mbox{\hyperlink{class_histograms_aae59902c04cb1034e705f69545c9c1a9}{getHistoBaseName}}();}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00027}00027   \mbox{\hyperlink{class_event_count_histos_a18051a04d6e3d4d2106e6c053bf8f497}{h\_eventCounts}} = \mbox{\hyperlink{class_histogram_collection_a5f7de86232efa5df2a9cdf659834450e}{createHistogram}}(bn+TString(\textcolor{stringliteral}{"{}eventCount"{}}),100,  0.0,  100.0,  \textcolor{stringliteral}{"{}FilterIndex"{}},\textcolor{stringliteral}{"{}EventCount"{}});}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00028}00028  \}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00030}00030 \textcolor{comment}{//\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00031}\mbox{\hyperlink{class_event_count_histos_a28661f4eb3e55c5515ba61710486f6f7}{00031}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_count_histos_a28661f4eb3e55c5515ba61710486f6f7}{EventCountHistos::loadHistograms}}(TFile * inputFile)}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00032}00032 \{}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00033}00033   \textcolor{keywordflow}{if} (!inputFile)}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00034}00034     \{}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00035}00035     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a1dcf96590e2352f7410a6a1623414096}{reportFatal}}()) cout << \textcolor{stringliteral}{"{}Attempting to load EventCountHistos from an invalid file pointer"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00036}00036     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00037}00037     \}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00038}00038   TString bn = \mbox{\hyperlink{class_histograms_aae59902c04cb1034e705f69545c9c1a9}{getHistoBaseName}}();}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00039}00039   TString histoName = bn+TString(\textcolor{stringliteral}{"{}eventCount"{}});}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00040}00040   \mbox{\hyperlink{class_event_count_histos_a18051a04d6e3d4d2106e6c053bf8f497}{h\_eventCounts}} = \mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,histoName);}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00041}00041   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_event_count_histos_a18051a04d6e3d4d2106e6c053bf8f497}{h\_eventCounts}})}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00042}00042     \{}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00043}00043     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}()) cout << \textcolor{stringliteral}{"{}Could not load histogram: "{}} << histoName << endl;}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00044}00044     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00045}00045     \}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00046}00046 \}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00048}00048 \textcolor{comment}{// This fills the event count histogram. It should be called only}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00049}00049 \textcolor{comment}{// once per event or once per histo file save.}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00050}\mbox{\hyperlink{class_event_count_histos_ada9f2b731f22c546594d25f275c7c714}{00050}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_count_histos_ada9f2b731f22c546594d25f275c7c714}{EventCountHistos::fill}}(vector<double> eventCounts)}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00051}00051 \{}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00052}00052   \textcolor{keywordtype}{double} x = 0.5;}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00053}00053   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k=0; k<eventCounts.size(); k++)}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00054}00054     \{}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00055}00055     \mbox{\hyperlink{class_event_count_histos_a18051a04d6e3d4d2106e6c053bf8f497}{h\_eventCounts}}-\/>Fill(x,eventCounts[k]);}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00056}00056     x += 1.0;}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00057}00057     \}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00058}00058 \}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8cpp_source_l00059}00059 }
+
+\end{DoxyCode}

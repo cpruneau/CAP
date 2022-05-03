@@ -1,0 +1,237 @@
+\hypertarget{class_eos}{}\doxysection{Eos Class Reference}
+\label{class_eos}\index{Eos@{Eos}}
+
+
+{\ttfamily \#include $<$Eos.\+hpp$>$}
+
+
+
+Inheritance diagram for Eos\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{class_eos__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_eos_ae2586d26c5dd68b4e1208dd3d741a7e2}{Eos}} (const TString \&name, double g\+Spin, double \+\_\+mass)
+\item 
+\mbox{\hyperlink{class_eos_a0aa2b9357d9cb4815c09989aeaeda2a8}{Eos}} (const \mbox{\hyperlink{class_eos}{Eos}} \&source)
+\item 
+virtual \mbox{\hyperlink{class_eos_a677a74786d2a4f07e6c7cd070be9171e}{$\sim$\+Eos}} ()
+\item 
+\mbox{\hyperlink{class_eos}{Eos}} \& \mbox{\hyperlink{class_eos_ad41ba194bcd4c59b42b6f9ada2cb91d9}{operator=}} (const \mbox{\hyperlink{class_eos}{Eos}} \&source)
+\item 
+virtual double \mbox{\hyperlink{class_eos_a55646050ddfbbd31893558d23f5fd195}{calculate\+Properties}} (double temperature, double mu)
+\item 
+virtual double \mbox{\hyperlink{class_eos_a12ed7d2d52085d2b40692e8d7c544a5f}{calculate\+Number\+Density}} (double temperature, double mu)
+\item 
+virtual double \mbox{\hyperlink{class_eos_a097a45941b9b7adc5b5ee0cc170bbc9a}{calculate\+Energy\+Density}} (double temperature)
+\item 
+virtual double \mbox{\hyperlink{class_eos_a7e31dafc271b06e936404cece3b2a8de}{calculate\+Entropy\+Density}} (double temperature)
+\item 
+virtual double \mbox{\hyperlink{class_eos_ad4a6d16d4badf06f5c6f20394d984d79}{calculate\+Pressure}} (double temperature)
+\item 
+virtual double \mbox{\hyperlink{class_eos_a98d36b9c8ffd2ddcdd31e43a25c171ce}{calculate\+\_\+dsdmu}} (double temperature)
+\item 
+virtual double \mbox{\hyperlink{class_eos_a590b6f22e488d276528afce77bf66a09}{calculate\+\_\+deover\+Tdmu}} (double temperature)
+\item 
+virtual double \mbox{\hyperlink{class_eos_a2014d80fc1b06c1e65823557cbbdbeb0}{calculate\+\_\+d\+Pover\+Tdmu}} (double temperature)
+\item 
+virtual double \mbox{\hyperlink{class_eos_aac2e160bf218e08be445a8222c2230f3}{calculate\+\_\+dndmu}} (double temperature)
+\item 
+ostream \& \mbox{\hyperlink{class_eos_ad24593feeb84eb3662da4a1a04a4b19e}{print\+Properties}} (ostream \&os)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_eos_8hpp_source_l00010}{10}} of file \mbox{\hyperlink{_eos_8hpp_source}{Eos.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_eos_ae2586d26c5dd68b4e1208dd3d741a7e2}\label{class_eos_ae2586d26c5dd68b4e1208dd3d741a7e2}} 
+\index{Eos@{Eos}!Eos@{Eos}}
+\index{Eos@{Eos}!Eos@{Eos}}
+\doxysubsubsection{\texorpdfstring{Eos()}{Eos()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Eos\+::\+Eos (\begin{DoxyParamCaption}\item[{const TString \&}]{name,  }\item[{double}]{g\+Spin,  }\item[{double}]{\+\_\+mass }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_eos_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{_eos_8cpp_source}{Eos.\+cpp}}.
+
+\mbox{\Hypertarget{class_eos_a0aa2b9357d9cb4815c09989aeaeda2a8}\label{class_eos_a0aa2b9357d9cb4815c09989aeaeda2a8}} 
+\index{Eos@{Eos}!Eos@{Eos}}
+\index{Eos@{Eos}!Eos@{Eos}}
+\doxysubsubsection{\texorpdfstring{Eos()}{Eos()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Eos\+::\+Eos (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_eos}{Eos}} \&}]{source }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_eos_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{_eos_8cpp_source}{Eos.\+cpp}}.
+
+\mbox{\Hypertarget{class_eos_a677a74786d2a4f07e6c7cd070be9171e}\label{class_eos_a677a74786d2a4f07e6c7cd070be9171e}} 
+\index{Eos@{Eos}!````~Eos@{$\sim$Eos}}
+\index{````~Eos@{$\sim$Eos}!Eos@{Eos}}
+\doxysubsubsection{\texorpdfstring{$\sim$Eos()}{~Eos()}}
+{\footnotesize\ttfamily Eos\+::$\sim$\+Eos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_eos_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{_eos_8cpp_source}{Eos.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_eos_a590b6f22e488d276528afce77bf66a09}\label{class_eos_a590b6f22e488d276528afce77bf66a09}} 
+\index{Eos@{Eos}!calculate\_deoverTdmu@{calculate\_deoverTdmu}}
+\index{calculate\_deoverTdmu@{calculate\_deoverTdmu}!Eos@{Eos}}
+\doxysubsubsection{\texorpdfstring{calculate\_deoverTdmu()}{calculate\_deoverTdmu()}}
+{\footnotesize\ttfamily void Eos\+::calculate\+\_\+deover\+Tdmu (\begin{DoxyParamCaption}\item[{double}]{temperature }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_eos_hadron_gas_a1f53de0aaddb02ccd1a917e19bac03d2}{Eos\+Hadron\+Gas}}.
+
+
+
+Definition at line \mbox{\hyperlink{_eos_8cpp_source_l00115}{115}} of file \mbox{\hyperlink{_eos_8cpp_source}{Eos.\+cpp}}.
+
+\mbox{\Hypertarget{class_eos_aac2e160bf218e08be445a8222c2230f3}\label{class_eos_aac2e160bf218e08be445a8222c2230f3}} 
+\index{Eos@{Eos}!calculate\_dndmu@{calculate\_dndmu}}
+\index{calculate\_dndmu@{calculate\_dndmu}!Eos@{Eos}}
+\doxysubsubsection{\texorpdfstring{calculate\_dndmu()}{calculate\_dndmu()}}
+{\footnotesize\ttfamily void Eos\+::calculate\+\_\+dndmu (\begin{DoxyParamCaption}\item[{double}]{temperature }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_eos_hadron_gas_a66de5cdd26913b3d6383964f779eccfe}{Eos\+Hadron\+Gas}}.
+
+
+
+Definition at line \mbox{\hyperlink{_eos_8cpp_source_l00117}{117}} of file \mbox{\hyperlink{_eos_8cpp_source}{Eos.\+cpp}}.
+
+\mbox{\Hypertarget{class_eos_a2014d80fc1b06c1e65823557cbbdbeb0}\label{class_eos_a2014d80fc1b06c1e65823557cbbdbeb0}} 
+\index{Eos@{Eos}!calculate\_dPoverTdmu@{calculate\_dPoverTdmu}}
+\index{calculate\_dPoverTdmu@{calculate\_dPoverTdmu}!Eos@{Eos}}
+\doxysubsubsection{\texorpdfstring{calculate\_dPoverTdmu()}{calculate\_dPoverTdmu()}}
+{\footnotesize\ttfamily void Eos\+::calculate\+\_\+d\+Pover\+Tdmu (\begin{DoxyParamCaption}\item[{double}]{temperature }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_eos_hadron_gas_ad7280047d4e309b05946cd2920e50083}{Eos\+Hadron\+Gas}}.
+
+
+
+Definition at line \mbox{\hyperlink{_eos_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{_eos_8cpp_source}{Eos.\+cpp}}.
+
+\mbox{\Hypertarget{class_eos_a98d36b9c8ffd2ddcdd31e43a25c171ce}\label{class_eos_a98d36b9c8ffd2ddcdd31e43a25c171ce}} 
+\index{Eos@{Eos}!calculate\_dsdmu@{calculate\_dsdmu}}
+\index{calculate\_dsdmu@{calculate\_dsdmu}!Eos@{Eos}}
+\doxysubsubsection{\texorpdfstring{calculate\_dsdmu()}{calculate\_dsdmu()}}
+{\footnotesize\ttfamily void Eos\+::calculate\+\_\+dsdmu (\begin{DoxyParamCaption}\item[{double}]{temperature }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_eos_hadron_gas_a0dbb32c417d6a74f9b1ebbd0b81a3172}{Eos\+Hadron\+Gas}}.
+
+
+
+Definition at line \mbox{\hyperlink{_eos_8cpp_source_l00114}{114}} of file \mbox{\hyperlink{_eos_8cpp_source}{Eos.\+cpp}}.
+
+\mbox{\Hypertarget{class_eos_a097a45941b9b7adc5b5ee0cc170bbc9a}\label{class_eos_a097a45941b9b7adc5b5ee0cc170bbc9a}} 
+\index{Eos@{Eos}!calculateEnergyDensity@{calculateEnergyDensity}}
+\index{calculateEnergyDensity@{calculateEnergyDensity}!Eos@{Eos}}
+\doxysubsubsection{\texorpdfstring{calculateEnergyDensity()}{calculateEnergyDensity()}}
+{\footnotesize\ttfamily void Eos\+::calculate\+Energy\+Density (\begin{DoxyParamCaption}\item[{double}]{temperature }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_eos_hadron_gas_a69cc605f820360d9fbb59a6b606579a6}{Eos\+Hadron\+Gas}}.
+
+
+
+Definition at line \mbox{\hyperlink{_eos_8cpp_source_l00111}{111}} of file \mbox{\hyperlink{_eos_8cpp_source}{Eos.\+cpp}}.
+
+\mbox{\Hypertarget{class_eos_a7e31dafc271b06e936404cece3b2a8de}\label{class_eos_a7e31dafc271b06e936404cece3b2a8de}} 
+\index{Eos@{Eos}!calculateEntropyDensity@{calculateEntropyDensity}}
+\index{calculateEntropyDensity@{calculateEntropyDensity}!Eos@{Eos}}
+\doxysubsubsection{\texorpdfstring{calculateEntropyDensity()}{calculateEntropyDensity()}}
+{\footnotesize\ttfamily void Eos\+::calculate\+Entropy\+Density (\begin{DoxyParamCaption}\item[{double}]{temperature }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_eos_hadron_gas_ad1f3b0c9621bbf9b3af6ecc0b1707242}{Eos\+Hadron\+Gas}}.
+
+
+
+Definition at line \mbox{\hyperlink{_eos_8cpp_source_l00112}{112}} of file \mbox{\hyperlink{_eos_8cpp_source}{Eos.\+cpp}}.
+
+\mbox{\Hypertarget{class_eos_a12ed7d2d52085d2b40692e8d7c544a5f}\label{class_eos_a12ed7d2d52085d2b40692e8d7c544a5f}} 
+\index{Eos@{Eos}!calculateNumberDensity@{calculateNumberDensity}}
+\index{calculateNumberDensity@{calculateNumberDensity}!Eos@{Eos}}
+\doxysubsubsection{\texorpdfstring{calculateNumberDensity()}{calculateNumberDensity()}}
+{\footnotesize\ttfamily void Eos\+::calculate\+Number\+Density (\begin{DoxyParamCaption}\item[{double}]{temperature,  }\item[{double}]{mu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_eos_hadron_gas_a5253fc7ffaf1ce71a35af72f142c66dc}{Eos\+Hadron\+Gas}}.
+
+
+
+Definition at line \mbox{\hyperlink{_eos_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{_eos_8cpp_source}{Eos.\+cpp}}.
+
+\mbox{\Hypertarget{class_eos_ad4a6d16d4badf06f5c6f20394d984d79}\label{class_eos_ad4a6d16d4badf06f5c6f20394d984d79}} 
+\index{Eos@{Eos}!calculatePressure@{calculatePressure}}
+\index{calculatePressure@{calculatePressure}!Eos@{Eos}}
+\doxysubsubsection{\texorpdfstring{calculatePressure()}{calculatePressure()}}
+{\footnotesize\ttfamily void Eos\+::calculate\+Pressure (\begin{DoxyParamCaption}\item[{double}]{temperature }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_eos_hadron_gas_a31d652a593c4b26b48995ac0f1419d46}{Eos\+Hadron\+Gas}}.
+
+
+
+Definition at line \mbox{\hyperlink{_eos_8cpp_source_l00113}{113}} of file \mbox{\hyperlink{_eos_8cpp_source}{Eos.\+cpp}}.
+
+\mbox{\Hypertarget{class_eos_a55646050ddfbbd31893558d23f5fd195}\label{class_eos_a55646050ddfbbd31893558d23f5fd195}} 
+\index{Eos@{Eos}!calculateProperties@{calculateProperties}}
+\index{calculateProperties@{calculateProperties}!Eos@{Eos}}
+\doxysubsubsection{\texorpdfstring{calculateProperties()}{calculateProperties()}}
+{\footnotesize\ttfamily void Eos\+::calculate\+Properties (\begin{DoxyParamCaption}\item[{double}]{temperature,  }\item[{double}]{mu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_eos_8cpp_source_l00095}{95}} of file \mbox{\hyperlink{_eos_8cpp_source}{Eos.\+cpp}}.
+
+\mbox{\Hypertarget{class_eos_ad41ba194bcd4c59b42b6f9ada2cb91d9}\label{class_eos_ad41ba194bcd4c59b42b6f9ada2cb91d9}} 
+\index{Eos@{Eos}!operator=@{operator=}}
+\index{operator=@{operator=}!Eos@{Eos}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_eos}{Eos}} \& Eos\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_eos}{Eos}} \&}]{source }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_eos_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{_eos_8cpp_source}{Eos.\+cpp}}.
+
+\mbox{\Hypertarget{class_eos_ad24593feeb84eb3662da4a1a04a4b19e}\label{class_eos_ad24593feeb84eb3662da4a1a04a4b19e}} 
+\index{Eos@{Eos}!printProperties@{printProperties}}
+\index{printProperties@{printProperties}!Eos@{Eos}}
+\doxysubsubsection{\texorpdfstring{printProperties()}{printProperties()}}
+{\footnotesize\ttfamily ostream \& Eos\+::print\+Properties (\begin{DoxyParamCaption}\item[{ostream \&}]{os }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_eos_8cpp_source_l00119}{119}} of file \mbox{\hyperlink{_eos_8cpp_source}{Eos.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Hadron\+Gas/\mbox{\hyperlink{_eos_8hpp}{Eos.\+hpp}}\item 
+Hadron\+Gas/\mbox{\hyperlink{_eos_8cpp}{Eos.\+cpp}}\end{DoxyCompactItemize}

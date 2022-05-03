@@ -1,0 +1,13 @@
+<map id="Event" name="Event">
+<area shape="rect" id="node1" title=" " alt="" coords="903,173,959,200"/>
+<area shape="rect" id="node2" title=" " alt="" coords="19,5,153,32"/>
+<area shape="rect" id="node7" href="$class_particle.html" title=" " alt="" coords="311,95,377,121"/>
+<area shape="rect" id="node3" href="$class_event_properties.html" title=" " alt="" coords="589,173,703,200"/>
+<area shape="rect" id="node4" title=" " alt="" coords="284,316,404,343"/>
+<area shape="rect" id="node5" title=" " alt="" coords="583,224,709,251"/>
+<area shape="rect" id="node6" href="$class_nucleus.html" title=" " alt="" coords="611,61,681,88"/>
+<area shape="rect" id="node9" href="$class_factory.html" title=" " alt="" coords="579,123,713,149"/>
+<area shape="rect" id="node8" href="$class_particle_type.html" title=" " alt="" coords="39,241,133,268"/>
+<area shape="rect" id="node10" title=" " alt="" coords="310,179,378,205"/>
+<area shape="rect" id="node11" href="$class_collision_geometry_moments.html" title=" " alt="" coords="555,281,737,308"/>
+</map>

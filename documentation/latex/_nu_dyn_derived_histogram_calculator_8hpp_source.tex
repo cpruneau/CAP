@@ -1,0 +1,47 @@
+\hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source}{}\doxysection{Nu\+Dyn\+Derived\+Histogram\+Calculator.\+hpp}
+\label{_nu_dyn_derived_histogram_calculator_8hpp_source}\index{Base/NuDynDerivedHistogramCalculator.hpp@{Base/NuDynDerivedHistogramCalculator.hpp}}
+\mbox{\hyperlink{_nu_dyn_derived_histogram_calculator_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef CAP\_\_NuDynDerivedHistogramCalculator}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define CAP\_\_NuDynDerivedHistogramCalculator}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_nu_dyn_histos_8hpp}{NuDynHistos.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_nu_dyn_derived_histos_8hpp}{NuDynDerivedHistos.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00021}\mbox{\hyperlink{class_nu_dyn_derived_histogram_calculator}{00021}} \textcolor{keyword}{class }\mbox{\hyperlink{class_nu_dyn_derived_histogram_calculator}{NuDynDerivedHistogramCalculator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00022}00022 \{}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00023}00023 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00024}00024   }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00034}00034   \mbox{\hyperlink{class_nu_dyn_derived_histogram_calculator_a03cdd5c7a1d668e7ce0947b349bd43ee}{NuDynDerivedHistogramCalculator}}(\textcolor{keyword}{const} TString \&          \_name,}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00035}00035                                   \mbox{\hyperlink{class_configuration}{Configuration}} \&          \_configuration,}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00036}00036                                   vector<EventFilter*>   \& \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00037}00037                                   vector<ParticleFilter*>\& \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00038}00038                                   \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                 \_selectedLevel=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}});}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00042}\mbox{\hyperlink{class_nu_dyn_derived_histogram_calculator_ac95dca4598dd49424e6e396ea37075ca}{00042}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_nu_dyn_derived_histogram_calculator_ac95dca4598dd49424e6e396ea37075ca}{\string~NuDynDerivedHistogramCalculator}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00043}00043   }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00047}00047   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nu_dyn_derived_histogram_calculator_a9fae1aace283f6864bb1d0ba2b180edb}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00052}00052   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nu_dyn_derived_histogram_calculator_a7094f8345a96e29861a63757ff5c971d}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00053}00053   }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00057}00057   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nu_dyn_derived_histogram_calculator_a980dcea263433eca6ceae579915b5045}{createHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00062}00062   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}{loadHistograms}}(TFile * inputFile);}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00063}00063   }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00064}00064 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00065}00065   }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00066}00066   ClassDef(\mbox{\hyperlink{class_nu_dyn_derived_histogram_calculator}{NuDynDerivedHistogramCalculator}},0)}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00067}00067 \};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histogram_calculator_8hpp_source_l00070}00070 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,83 @@
+\hypertarget{_hadron_type_archive_8hpp_source}{}\doxysection{Hadron\+Type\+Archive.\+hpp}
+\label{_hadron_type_archive_8hpp_source}\index{HadronGas/HadronTypeArchive.hpp@{HadronGas/HadronTypeArchive.hpp}}
+\mbox{\hyperlink{_hadron_type_archive_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef WAC\_HadronType}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define WAC\_HadronType}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00003}00003 \textcolor{preprocessor}{\#include "{}ParticleType.h"{}}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00005}\mbox{\hyperlink{class_hadron_type}{00005}} \textcolor{keyword}{class }\mbox{\hyperlink{class_hadron_type}{HadronType}}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00006}00006 \{}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00007}00007 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00008}00008   \textcolor{keyword}{static} \textcolor{keywordtype}{double} hbarC;     \textcolor{comment}{// GeV*fm}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00009}00009   \textcolor{keyword}{static} \textcolor{keywordtype}{double} pionMass;  \textcolor{comment}{// Monte-\/Carlo number according PDG}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00010}00010   \textcolor{keyword}{static} \textcolor{keywordtype}{int}    trunOrder; \textcolor{comment}{// truncated order in the summation}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00012}00012   \mbox{\hyperlink{class_particle_type}{ParticleType}} * type;}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00013}00013   \textcolor{keywordtype}{double} mu;}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00014}00014   \textcolor{keywordtype}{double} temperature;}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00015}00015   \textcolor{keywordtype}{double} density;        \textcolor{comment}{// HadronType thermal yield at given T and mu}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00016}00016   \textcolor{keywordtype}{double} stableDensity;  \textcolor{comment}{// HadronType yield after decays}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00017}00017   \textcolor{keywordtype}{double} energyDensity;}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00018}00018   \textcolor{keywordtype}{double} entropyDensity;}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00019}00019   \textcolor{keywordtype}{double} pressure;       \textcolor{comment}{// thermodynamic quantities at given T and mu}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00020}00020   \textcolor{keywordtype}{double} dPoverTdmu;}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00021}00021   \textcolor{keywordtype}{double} deoverTdmu;}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00022}00022   \textcolor{keywordtype}{double} dndmu;}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00023}00023   \textcolor{keywordtype}{double} dsdmu;}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00024}00024   \textcolor{comment}{// array to record HadronType decay probability}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00025}00025   \textcolor{comment}{// for the HadronType decays into stable ones}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00026}00026   \textcolor{keywordtype}{double}* decayProbability;}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00027}00027   \textcolor{keywordtype}{double}** decayProbabilityPairs;}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00029}00029 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00030}\mbox{\hyperlink{class_hadron_type_a690f6b63771700a77028175be268727b}{00030}}   \mbox{\hyperlink{class_hadron_type_a690f6b63771700a77028175be268727b}{HadronType}}();}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00031}00031   \mbox{\hyperlink{class_hadron_type_a690f6b63771700a77028175be268727b}{HadronType}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_hadron_type}{HadronType}} \& source);}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00032}00032   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_hadron_type_ab9b1f237529400ad28149294ceeadc8a}{\string~HadronType}}();}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00033}00033   \mbox{\hyperlink{class_hadron_type}{HadronType}} \& \mbox{\hyperlink{class_hadron_type_a23d78531f20b80fae3b646e685d85a6a}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_hadron_type}{HadronType}} \& source);}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00035}\mbox{\hyperlink{class_hadron_type_a978cc2188340d56514b4523fc50eb9b3}{00035}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_a978cc2188340d56514b4523fc50eb9b3}{setParticleType}}(\mbox{\hyperlink{class_particle_type}{ParticleType}} * \_type) \{ type = \_type; \}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00036}\mbox{\hyperlink{class_hadron_type_ab522b7a68d1ece7080d6e044ab8ffb5a}{00036}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_ab522b7a68d1ece7080d6e044ab8ffb5a}{setMu}}(\textcolor{keywordtype}{double} \_mu)                     \{ mu   = \_mum;  \}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00037}\mbox{\hyperlink{class_hadron_type_aff0182d25fd3b76aa88f9067182f8847}{00037}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_aff0182d25fd3b76aa88f9067182f8847}{setTemperature}}(\textcolor{keywordtype}{double} \_temperature)   \{ temperature = \_temperature;\}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00039}00039   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_a43a2c3787ab61e98c82a26ceaf83def3}{createDecayProbabilityArray}}(\textcolor{keywordtype}{int} nStable);}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00040}00040   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_ad435fc720dc8adeb14e4769c5c5e8985}{calculateChemicalPotential}}(\textcolor{keywordtype}{double} muB, \textcolor{keywordtype}{double} muS);}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00041}00041   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_aae755b8dec3e13c1192ecc2e27c2da58}{calculateParticleDensity}}(\textcolor{keywordtype}{double} temperature, \textcolor{keywordtype}{double} muB, \textcolor{keywordtype}{double} muS);}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00042}00042   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_a3bba2309da2053550ff3fbac64ab6ec2}{calculateEnergyDensity}}(\textcolor{keywordtype}{double} temperature);}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00043}00043   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_a6905727b244eac498bb8ad96b112fb9a}{calculatePressure}}(\textcolor{keywordtype}{double} temperature);}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00044}00044   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_a1f457815f0e3e6cb195bf9dc82a4d41e}{calculateEntropyDensity}}(\textcolor{keywordtype}{double} temperature);}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00045}\mbox{\hyperlink{class_hadron_type_a86f28f1be5e8ce18cba740e6e24776a7}{00045}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_a86f28f1be5e8ce18cba740e6e24776a7}{computeDensityAt}}(\textcolor{keywordtype}{double} p);}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00046}00046   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_a86f28f1be5e8ce18cba740e6e24776a7}{computeDensityAt}}(\textcolor{keywordtype}{double} p,\textcolor{keywordtype}{double} temperature,\textcolor{keywordtype}{double} mu);}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00047}00047   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_aff19b496cd7267a7ba8746450891ec43}{calculate\_dsdmu}}(\textcolor{keywordtype}{double} temperature);}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00048}00048   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_a37ddc043a960732e588cf268d9ea0eb3}{calculate\_deoverTdmu}}(\textcolor{keywordtype}{double} temperature);}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00049}00049   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_a5c92b7f2c82cf67cad9ec1e49c29891d}{calculate\_dPoverTdmu}}(\textcolor{keywordtype}{double} temperature);}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00050}00050   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_a64b2d77099c1a8ead4c630796565461c}{calculate\_dndmu}}(\textcolor{keywordtype}{double} temperature);}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00052}\mbox{\hyperlink{class_hadron_type_a6b7f434e327f79f028b9c01e79dc69df}{00052}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_a6b7f434e327f79f028b9c01e79dc69df}{setStableParticleYield}}(\textcolor{keywordtype}{double} yield\_in) \{stableYield = yield\_in;\}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00053}\mbox{\hyperlink{class_hadron_type_ab22ccacc03eade7e97b78916a7bd1c45}{00053}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_hadron_type_ab22ccacc03eade7e97b78916a7bd1c45}{getStableParticleYield}}() \{\textcolor{keywordflow}{return}(stableYield);\}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00054}\mbox{\hyperlink{class_hadron_type_aa1bd2b303f200d91e550aa4aa6d5c93a}{00054}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_aa1bd2b303f200d91e550aa4aa6d5c93a}{getBulkViscosityCoefficients}}(\textcolor{keywordtype}{double} Tdec, \textcolor{keywordtype}{double}* bulkvisCoefficients);}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00056}\mbox{\hyperlink{class_hadron_type_a5f06bcb4d6e035825149ce3429a52652}{00056}}   \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_hadron_type_a5f06bcb4d6e035825149ce3429a52652}{getParticleType}}(e) \{ \textcolor{keywordflow}{return} type; \}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00057}\mbox{\hyperlink{class_hadron_type_a62984ca65227025acb84dcd9e5dd40c1}{00057}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_hadron_type_a62984ca65227025acb84dcd9e5dd40c1}{getMu}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} mu;\}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00058}\mbox{\hyperlink{class_hadron_type_a89db6d10093602c79b091db7ca24b37f}{00058}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_hadron_type_a89db6d10093602c79b091db7ca24b37f}{getTemperature}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} temperature; \}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00059}\mbox{\hyperlink{class_hadron_type_a669edfd2c0958666ba89e76710e994eb}{00059}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_hadron_type_a669edfd2c0958666ba89e76710e994eb}{getDecayProbability}}(\textcolor{keywordtype}{int} i)\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return}(decayProbability[i]);\}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00060}\mbox{\hyperlink{class_hadron_type_afcba3fbdec2633f82aeb476c2edd4129}{00060}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_hadron_type_afcba3fbdec2633f82aeb476c2edd4129}{getDecayProbability}}(\textcolor{keywordtype}{int} i,\textcolor{keywordtype}{int} j)\textcolor{keyword}{  const }\{\textcolor{keywordflow}{return}(decayProbabilityPairs[i][j]);\}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00062}\mbox{\hyperlink{class_hadron_type_a5920d4843442104f0f4d0d6905d97260}{00062}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_a5920d4843442104f0f4d0d6905d97260}{setDecayProbability}}(\textcolor{keywordtype}{int} i, \textcolor{keywordtype}{double} val)}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00063}00063   \{}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00064}00064   decayProbability[i] = val;}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00065}00065   \}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00066}\mbox{\hyperlink{class_hadron_type_a0e457d81843e7917451244bb6fcd9461}{00066}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_hadron_type_a0e457d81843e7917451244bb6fcd9461}{setDecayProbability}}(\textcolor{keywordtype}{int} i, \textcolor{keywordtype}{int} j, \textcolor{keywordtype}{double} val)}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00067}00067   \{}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00068}00068   decayProbabilityPairs[i][j] = val;}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00069}00069   \}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00071}\mbox{\hyperlink{class_hadron_type_a8accdb3c5c03195f18f7479cd817f1c7}{00071}}   ostream \& \mbox{\hyperlink{class_hadron_type_a8accdb3c5c03195f18f7479cd817f1c7}{printProperties}}(ostream \& os);}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00073}00073   ClassDef(\mbox{\hyperlink{class_hadron_type}{HadronType}},0)}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00074}00074 \};}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00076}00076 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// SRC\_Hadron\_H\_}}
+\DoxyCodeLine{\Hypertarget{_hadron_type_archive_8hpp_source_l00077}00077 }
+
+\end{DoxyCode}

@@ -1,0 +1,54 @@
+\hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source}{}\doxysection{recursive\+Scanned\+Ur\+QMDMerge.\+C}
+\label{recursive_scanned_ur_q_m_d_merge_8_c_source}\index{Urqmd/recursiveScannedUrQMDMerge.C@{Urqmd/recursiveScannedUrQMDMerge.C}}
+\mbox{\hyperlink{recursive_scanned_ur_q_m_d_merge_8_c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00004}00004 \textcolor{preprocessor}{\#if !defined(\_\_CINT\_\_) || defined(\_\_MAKECINT\_\_)}}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00005}00005 \textcolor{preprocessor}{\#include "{}TMath.h"{}}}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00006}00006 \textcolor{preprocessor}{\#include "{}TObjArray.h"{}}}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00007}00007 \textcolor{preprocessor}{\#include "{}TFileMerger.h"{}}}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00008}00008 \textcolor{preprocessor}{\#include "{}TSystem.h"{}}}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00009}00009 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00010}00010 \textcolor{preprocessor}{\#include "{}TError.h"{}}}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00011}00011 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00013}\mbox{\hyperlink{recursive_scanned_ur_q_m_d_merge_8_c_a96299abee116b8c49b5b55abea07c1ad}{00013}} \textcolor{keywordtype}{void} \mbox{\hyperlink{recursive_scanned_ur_q_m_d_merge_8_c_a96299abee116b8c49b5b55abea07c1ad}{recursiveScannedUrQMDMerge}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *outdir, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *dirpattern, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{run_urqmd_8c_a5fb93c8274d871fe03f71e4c5f7b0f7e}{cent}}, Int\_t nmerge=5, Bool\_t verbose=kTRUE)}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00014}00014 \{}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00019}00019   TString outputFile = TString::Format(\textcolor{stringliteral}{"{}\%s/Urqmd\_Histograms\_\%s"{}},outdir,\mbox{\hyperlink{run_urqmd_8c_a5fb93c8274d871fe03f71e4c5f7b0f7e}{cent}});}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00020}00020   TString \mbox{\hyperlink{_plot_hep_data_8_c_a32be468b422ff3800be85388bcdce9d1}{inputFiles}} = gSystem-\/>GetFromPipe(TString::Format(\textcolor{stringliteral}{"{}find \%s -\/name \(\backslash\)"{}Urqmd\_Histograms\_\%s.root\(\backslash\)"{} -\/type f"{}},dirpattern,\mbox{\hyperlink{run_urqmd_8c_a5fb93c8274d871fe03f71e4c5f7b0f7e}{cent}}).Data());}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00022}00022   TObjArray *arr=\mbox{\hyperlink{_plot_hep_data_8_c_a32be468b422ff3800be85388bcdce9d1}{inputFiles}}.Tokenize(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00024}00024   Int\_t depth=0;}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00026}00026   \textcolor{keywordflow}{while} (arr-\/>GetEntries()>1)\{}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00027}00027     printf(\textcolor{stringliteral}{"{}depth: \%d\(\backslash\)n"{}},depth);}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00028}00028     \textcolor{keywordflow}{for} (Int\_t iIter=0; iIter<TMath::Ceil((Double\_t)arr-\/>GetEntries()/((Double\_t)nmerge)); ++iIter)\{}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00029}00029       \textcolor{keywordflow}{if} (verbose) Info(\textcolor{stringliteral}{"{}SimpleRecursiveMerge"{}},\textcolor{stringliteral}{"{}Iter: \%d\(\backslash\)n"{}},iIter);}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00030}00030       TFileMerger m(0);}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00031}00031       m.OutputFile(Form(\textcolor{stringliteral}{"{}\%s.\%d.\%d.root"{}},outputFile.Data(),depth,iIter));}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00032}00032       \textcolor{keywordflow}{if} (verbose) Info(\textcolor{stringliteral}{"{}SimpleRecursiveMerge"{}},\textcolor{stringliteral}{"{}writing output file: \%s\(\backslash\)n"{}}, Form(\textcolor{stringliteral}{"{}\%s.\%d.\%d.root"{}},outputFile.Data(),depth,iIter));}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00033}00033       \textcolor{keywordflow}{for} (Int\_t ifile=iIter*nmerge; ifile<(iIter+1)*nmerge; ++ifile)\{}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00034}00034         \textcolor{keywordflow}{if} (!arr-\/>At(ifile)) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00035}00035         \textcolor{keywordflow}{if} (verbose) Info(\textcolor{stringliteral}{"{}SimpleRecursiveMerge"{}},\textcolor{stringliteral}{"{}Adding file: \%s\(\backslash\)n"{}},arr-\/>At(ifile)-\/>GetName());}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00036}00036         m.AddFile(arr-\/>At(ifile)-\/>GetName());}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00037}00037       \}}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00038}00038       m.Merge();}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00039}00039     \}}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00040}00040     \textcolor{keyword}{delete} arr;}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00041}00041     arr=0x0;}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00042}00042     TString s=gSystem-\/>GetFromPipe(Form(\textcolor{stringliteral}{"{}ls \%s.\%d.[0-\/9]*.root"{}},outputFile.Data(),depth));}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00043}00043     arr=s.Tokenize(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00044}00044     ++depth;}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00045}00045     \textcolor{keywordflow}{if} (verbose) Info(\textcolor{stringliteral}{"{}SimpleRecursiveMerge"{}},\textcolor{stringliteral}{"{}\%s"{}},\textcolor{stringliteral}{"{}\(\backslash\)n-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00046}00046   \}}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00047}00047   gSystem-\/>Exec(Form(\textcolor{stringliteral}{"{}mv \%s.\%d.0.root \%s.root"{}},outputFile.Data(),depth-\/1,outputFile.Data()));}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00048}00048   gSystem-\/>Exec(Form(\textcolor{stringliteral}{"{}rm \%s.[0-\/9]*.[0-\/9]*.root"{}},outputFile.Data()));}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00049}00049   }
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00050}00050   \textcolor{keyword}{delete} arr;}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00051}00051 \}}
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{recursive_scanned_ur_q_m_d_merge_8_c_source_l00053}00053 }
+
+\end{DoxyCode}

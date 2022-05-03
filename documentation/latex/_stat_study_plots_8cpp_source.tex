@@ -1,0 +1,370 @@
+\hypertarget{_stat_study_plots_8cpp_source}{}\doxysection{Stat\+Study\+Plots.\+cpp}
+\label{_stat_study_plots_8cpp_source}\index{StatStudies/StatStudyPlots.cpp@{StatStudies/StatStudyPlots.cpp}}
+\mbox{\hyperlink{_stat_study_plots_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include "{}TRandom.h"{}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00004}00004 \textcolor{comment}{//\#include "{}TFile.h"{}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00005}00005 \textcolor{comment}{//\#include "{}AnalysisConfiguration.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00006}00006 \textcolor{comment}{//\#include "{}NuDynHistos.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00007}00007 \textcolor{comment}{//\#include "{}NuDynDerivedHistos.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00008}00008 \textcolor{comment}{//\#include "{}CanvasConfiguration.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00009}00009 \textcolor{comment}{//\#include "{}HistogramCollection.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00010}00010 \textcolor{comment}{//\#include "{}GraphConfiguration.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00011}00011 \textcolor{comment}{//\#include "{}CanvasConfiguration.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00012}00012 \textcolor{comment}{//\#include "{}TRint.h"{}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00015}00015 \textcolor{comment}{//R\_\_LOAD\_LIBRARY(/Users/claudeapruneau/opt/WAC/lib/libBase.dylib)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00017}00017 \textcolor{comment}{//void plot(int n, TH1** h, GraphConfiguration** g, HistogramCollection * hc, int rebin=1);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00019}00019 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00021}00021 \textcolor{comment}{}\textcolor{comment}{//void calculateRatio(double f1,double ef1,double f2,double ef2,double \& r,double \& er)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00022}00022 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00023}00023 \textcolor{comment}{//  double ref1, ref2, rer;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00024}00024 \textcolor{comment}{//  if (f2!=0)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00025}00025 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00026}00026 \textcolor{comment}{//    ref1   = ef1/f1;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00027}00027 \textcolor{comment}{//    ref2   = ef2/f2;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00028}00028 \textcolor{comment}{//    rer    = ref1*ref1 + ref2*ref2;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00029}00029 \textcolor{comment}{//    r = f1/f2;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00030}00030 \textcolor{comment}{//    er = r*sqrt(rer);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00031}00031 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00032}00032 \textcolor{comment}{//  else}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00033}00033 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00034}00034 \textcolor{comment}{//    r = 0.0;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00035}00035 \textcolor{comment}{//    er = 0.0;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00036}00036 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00037}00037 \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00038}00038 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00039}00039 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00042}00042 \textcolor{comment}{}\textcolor{comment}{//void calculateR2(double f1,double ef1,double f2,double ef2,double \& r2,double \& er2)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00043}00043 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00044}00044 \textcolor{comment}{//  // calculate ratio and error for r2 = f2/f1/f1}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00045}00045 \textcolor{comment}{//  double ref1, ref2, rer2;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00046}00046 \textcolor{comment}{//  if (f1>0)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00047}00047 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00048}00048 \textcolor{comment}{//    ref1 = ef1/f1;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00049}00049 \textcolor{comment}{//    ref2   = ef2/f2;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00050}00050 \textcolor{comment}{//    rer2   = 4*ref1*ref1 + ref2*ref2;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00051}00051 \textcolor{comment}{//    r2 = f2/(f1*f1) -\/ 1.0;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00052}00052 \textcolor{comment}{//    er2 = r2*sqrt(rer2);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00053}00053 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00054}00054 \textcolor{comment}{//  else}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00055}00055 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00056}00056 \textcolor{comment}{//    r2 = 0.0;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00057}00057 \textcolor{comment}{//    er2 = 0.0;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00058}00058 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00059}00059 \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00060}00060 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00062}00062 \textcolor{comment}{}\textcolor{comment}{//void calculateR2(double f1\_1,double ef1\_1,double f1\_2,double ef1\_2,double f2,double ef2,double \& r2,double \& er2)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00063}00063 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00064}00064 \textcolor{comment}{//  // calculate ratio and error for r2 = f2/f1\_1/f1\_2}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00065}00065 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00066}00066 \textcolor{comment}{//  double ref1\_1, ref1\_2, ref2, rer2;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00067}00067 \textcolor{comment}{//  if (f1\_1>0 \& f1\_2>0)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00068}00068 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00069}00069 \textcolor{comment}{//    ref1\_1 = ef1\_1/f1\_1;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00070}00070 \textcolor{comment}{//    ref1\_2 = ef1\_2/f1\_2;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00071}00071 \textcolor{comment}{//    ref2   = ef2/f2;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00072}00072 \textcolor{comment}{//    rer2   = ref1\_1*ref1\_1 + ref1\_2*ref1\_2 + ref2*ref2;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00073}00073 \textcolor{comment}{//    r2 = f2/(f1\_1*f1\_2) -\/ 1.0;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00074}00074 \textcolor{comment}{//    er2 = r2*sqrt(rer2);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00075}00075 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00076}00076 \textcolor{comment}{//  else}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00077}00077 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00078}00078 \textcolor{comment}{//    r2 = 0.0;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00079}00079 \textcolor{comment}{//    er2 = 0.0;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00080}00080 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00081}00081 \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00082}00082 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00083}00083 \textcolor{comment}{//void calculateNudyn(double r2\_11,double er2\_11,double r2\_12,double er2\_12,double r2\_22,double er2\_22,double \& nudyn,double \& enudyn)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00084}00084 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00085}00085 \textcolor{comment}{//  nudyn = r2\_11 + r2\_22 -\/ 2.0*r2\_12;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00086}00086 \textcolor{comment}{//  enudyn = sqrt(er2\_11*er2\_11 + er2\_22*er2\_22 + 4.0*er2\_12*er2\_12);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00087}00087 \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00088}00088 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00089}00089 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00090}00090 \textcolor{comment}{//void calculateR2(TH1* h1, TH1* h2, TH1* hr)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00091}00091 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00092}00092 \textcolor{comment}{//  double v1, ev1, v2, ev2, r, er;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00093}00093 \textcolor{comment}{//  int nBins = h1-\/>GetNbinsX();}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00094}00094 \textcolor{comment}{//  for (int iBin = 1; iBin <=nBins; iBin++)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00095}00095 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00096}00096 \textcolor{comment}{//    v1   = h1-\/>GetBinContent(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00097}00097 \textcolor{comment}{//    ev1  = h1-\/>GetBinError(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00098}00098 \textcolor{comment}{//    v2   = h2-\/>GetBinContent(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00099}00099 \textcolor{comment}{//    ev2  = h2-\/>GetBinError(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00100}00100 \textcolor{comment}{//    calculateR2(v1,ev1,v2,ev2,r,er);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00101}00101 \textcolor{comment}{//    hr-\/>SetBinContent(iBin, r);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00102}00102 \textcolor{comment}{//    hr-\/>SetBinError(iBin,   er);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00103}00103 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00104}00104 \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00105}00105 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00106}00106 \textcolor{comment}{//void calculateR2(TH1* h1\_1, TH1* h1\_2, TH1* h2\_12, TH1* hr)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00107}00107 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00108}00108 \textcolor{comment}{//  double v1\_1, ev1\_1, v1\_2, ev1\_2, v2, ev2, r, er;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00109}00109 \textcolor{comment}{//  int nBins = h1\_1-\/>GetNbinsX();}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00110}00110 \textcolor{comment}{//  for (int iBin = 1; iBin <=nBins; iBin++)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00111}00111 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00112}00112 \textcolor{comment}{//    v1\_1   = h1\_1-\/>GetBinContent(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00113}00113 \textcolor{comment}{//    ev1\_1  = h1\_1-\/>GetBinError(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00114}00114 \textcolor{comment}{//    v1\_2   = h1\_2-\/>GetBinContent(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00115}00115 \textcolor{comment}{//    ev1\_2  = h1\_2-\/>GetBinError(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00116}00116 \textcolor{comment}{//    v2     = h2\_12-\/>GetBinContent(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00117}00117 \textcolor{comment}{//    ev2    = h2\_12-\/>GetBinError(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00118}00118 \textcolor{comment}{//    calculateR2(v1\_1,ev1\_1,v1\_2,ev1\_2,v2,ev2,r,er);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00119}00119 \textcolor{comment}{//    hr-\/>SetBinContent(iBin, r);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00120}00120 \textcolor{comment}{//    hr-\/>SetBinError(iBin,   er);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00121}00121 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00122}00122 \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00123}00123 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00124}00124 \textcolor{comment}{//void calculateNuDyn(TH1* r2\_11, TH1* r2\_12, TH1* r2\_22, TH1* nudyn)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00125}00125 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00126}00126 \textcolor{comment}{//  double v2\_11, ev2\_11, v2\_12, ev2\_12, v2\_22, ev2\_22, nu, enu;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00127}00127 \textcolor{comment}{//  int nBins = r2\_11-\/>GetNbinsX();}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00128}00128 \textcolor{comment}{//  for (int iBin = 1; iBin <=nBins; iBin++)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00129}00129 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00130}00130 \textcolor{comment}{//    v2\_11   = r2\_11-\/>GetBinContent(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00131}00131 \textcolor{comment}{//    ev2\_11  = r2\_11-\/>GetBinError(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00132}00132 \textcolor{comment}{//    v2\_12   = r2\_12-\/>GetBinContent(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00133}00133 \textcolor{comment}{//    ev2\_12  = r2\_12-\/>GetBinError(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00134}00134 \textcolor{comment}{//    v2\_22   = r2\_22-\/>GetBinContent(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00135}00135 \textcolor{comment}{//    ev2\_22  = r2\_22-\/>GetBinError(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00136}00136 \textcolor{comment}{//    calculateNudyn(v2\_11,ev2\_11,v2\_12,ev2\_12,v2\_22,ev2\_22,nu,enu);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00137}00137 \textcolor{comment}{//    nudyn-\/>SetBinContent(iBin, nu);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00138}00138 \textcolor{comment}{//    nudyn-\/>SetBinError(iBin,   enu);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00139}00139 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00140}00140 \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00142}00142 \textcolor{comment}{}\textcolor{comment}{//void calculateRatio(TH1 * h1, TH1 * h2, TH1 * ratio)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00143}00143 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00144}00144 \textcolor{comment}{//  double v1, ev1, v2, ev2, r, er;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00145}00145 \textcolor{comment}{//  int nBins = h1-\/>GetNbinsX();}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00146}00146 \textcolor{comment}{//  for (int iBin = 1; iBin <=nBins; iBin++)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00147}00147 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00148}00148 \textcolor{comment}{//    v1   = h1-\/>GetBinContent(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00149}00149 \textcolor{comment}{//    ev1  = h1-\/>GetBinError(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00150}00150 \textcolor{comment}{//    v2   = h2-\/>GetBinContent(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00151}00151 \textcolor{comment}{//    ev2  = h2-\/>GetBinError(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00152}00152 \textcolor{comment}{//    calculateRatio(v1,ev1,v2,ev2,r,er);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00153}00153 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00154}00154 \textcolor{comment}{//    cout << ratio-\/>GetName() << "{} iBin:"{} << iBin << "{}  r:"{} << r << "{}   er:"{} << er << endl;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00155}00155 \textcolor{comment}{//    ratio-\/>SetBinContent(iBin, r);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00156}00156 \textcolor{comment}{//    ratio-\/>SetBinError  (iBin, er);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00157}00157 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00158}00158 \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00159}00159 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00160}00160 \textcolor{comment}{//void calculateMeanAndStd(TH1 * h, int nBins, double \&mean, double \&eMean, double \&std)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00161}00161 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00162}00162 \textcolor{comment}{//  double m1  = 0;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00163}00163 \textcolor{comment}{//  double em1 = 0;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00164}00164 \textcolor{comment}{//  double m2  = 0;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00165}00165 \textcolor{comment}{//  double v, ev;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00166}00166 \textcolor{comment}{//  // calculate mean value of the nBins}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00167}00167 \textcolor{comment}{//  for (int iBin=1; iBin<=nBins; iBin++)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00168}00168 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00169}00169 \textcolor{comment}{//    v  = h-\/>GetBinContent(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00170}00170 \textcolor{comment}{//    ev = h-\/>GetBinError(iBin);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00171}00171 \textcolor{comment}{//    m1 += v;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00172}00172 \textcolor{comment}{//    em1 += ev*ev;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00173}00173 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00174}00174 \textcolor{comment}{//  mean = m1/double(nBins);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00175}00175 \textcolor{comment}{//  eMean = sqrt(em1)/double(nBins);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00176}00176 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00177}00177 \textcolor{comment}{//  for (int iBin=1; iBin<=nBins; iBin++)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00178}00178 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00179}00179 \textcolor{comment}{//    v  = h-\/>GetBinContent(iBin)-\/mean;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00180}00180 \textcolor{comment}{//    m2 += v*v;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00181}00181 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00182}00182 \textcolor{comment}{//  m2 = m2/double(nBins-\/1);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00183}00183 \textcolor{comment}{//  std = sqrt(m2);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00184}00184 \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00185}00185 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00186}00186 \textcolor{comment}{//void extractGauss(TH1* h, double \& mean, double \& sigma)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00187}00187 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00188}00188 \textcolor{comment}{//  TF1* h\_fct = h-\/>GetFunction("{}gaus"{});}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00189}00189 \textcolor{comment}{//  mean  = h\_fct-\/>GetParameter(1);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00190}00190 \textcolor{comment}{//  sigma = h\_fct-\/>GetParameter(2);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00191}00191 \textcolor{comment}{//  cout << h-\/>GetName() << "{} mean:"{} << mean << "{}  sigma:"{} << sigma << endl;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00192}00192 \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00193}00193 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00194}00194 \textcolor{comment}{//void compareRatio(TString name,}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00195}00195 \textcolor{comment}{//                  double num,  double eNum,}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00196}00196 \textcolor{comment}{//                  double dem,  double eDem,}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00197}00197 \textcolor{comment}{//                  double \& predictedRatio, double \& predictedError,}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00198}00198 \textcolor{comment}{//                  double ratioMean,  double  ratioSigma)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00199}00199 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00200}00200 \textcolor{comment}{//  double predictedToActualMean, predictedToActualSigma;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00201}00201 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00202}00202 \textcolor{comment}{//  predictedRatio  = num/dem;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00203}00203 \textcolor{comment}{//  predictedToActualMean = predictedRatio/ratioMean;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00204}00204 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00205}00205 \textcolor{comment}{//  // assume no correlations are present...}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00206}00206 \textcolor{comment}{//  double re1, re2;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00207}00207 \textcolor{comment}{//  re1 = eNum/num;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00208}00208 \textcolor{comment}{//  re2 = eDem/dem;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00209}00209 \textcolor{comment}{//  predictedError  = predictedRatio*sqrt(re1*re1 + re2*re2);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00210}00210 \textcolor{comment}{//  predictedToActualSigma = predictedError/ratioSigma;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00211}00211 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00212}00212 \textcolor{comment}{//  cout << "{}Compare ratio for "{} << name << endl;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00213}00213 \textcolor{comment}{//  cout << "{}Uncorrelated errors"{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00214}00214 \textcolor{comment}{//  cout << "{}Predicted Ratio Mean  :"{} << predictedRatio  << "{} Actual Ratio Mean:"{} << ratioMean << "{} Ratio of Predicted to actual Ratio Mean: "{} << predictedToActualMean << endl;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00215}00215 \textcolor{comment}{//  cout << "{}Predicted Ratio Sigma :"{} << predictedError << "{} Actual Ratio Sigma:"{} << ratioSigma << "{} Ratio of Predicted to actual Ratio Sigma: "{} << predictedToActualSigma << endl;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00216}00216 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00217}00217 \textcolor{comment}{//  predictedError  = predictedRatio*sqrt( fabs((1.0-\/ 2.0*predictedRatio)*re1*re1 + re2*re2));}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00218}00218 \textcolor{comment}{//  predictedToActualSigma = predictedError/ratioSigma;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00219}00219 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00220}00220 \textcolor{comment}{//  cout << "{}Binomial  errors"{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00221}00221 \textcolor{comment}{//  cout << "{}Predicted Ratio Mean  :"{} << predictedRatio  << "{} Actual Ratio Mean:"{} << ratioMean << "{} Ratio of Predicted to actual Ratio Mean: "{} << predictedToActualMean << endl;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00222}00222 \textcolor{comment}{//  cout << "{}Predicted Ratio Sigma :"{} << predictedError << "{} Actual Ratio Sigma:"{} << ratioSigma << "{} Ratio of Predicted to actual Ratio Sigma: "{} << predictedToActualSigma << endl;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00223}00223 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00224}00224 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00225}00225 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00226}00226 \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00227}00227 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00228}00228 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00229}00229 \textcolor{comment}{//void compareR2(TString name,}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00230}00230 \textcolor{comment}{//               double f2\_mean, double f2\_sigma,}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00231}00231 \textcolor{comment}{//               double f1\_mean, double f1\_sigma,}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00232}00232 \textcolor{comment}{//               double \& predictedR2Mean, double \& predictedR2Sigma,}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00233}00233 \textcolor{comment}{//               double r2\_mean, double r2\_sigma)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00234}00234 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00235}00235 \textcolor{comment}{//  double predictedToActualMean, predictedToActualSigma;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00236}00236 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00237}00237 \textcolor{comment}{//  predictedR2Mean = f2\_mean/(f1\_mean*f1\_mean);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00238}00238 \textcolor{comment}{//  predictedToActualMean = predictedR2Mean/r2\_mean;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00239}00239 \textcolor{comment}{//  double ref2 = f2\_sigma/f2\_mean;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00240}00240 \textcolor{comment}{//  double ref1 = f1\_sigma/f1\_mean;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00241}00241 \textcolor{comment}{//  predictedR2Sigma = predictedR2Mean * sqrt(ref2*ref2 + 4.0*ref1*ref1);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00242}00242 \textcolor{comment}{//  predictedToActualSigma = predictedR2Sigma/r2\_sigma;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00243}00243 \textcolor{comment}{//  cout << "{}Compare r2 for "{} <<  name << endl;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00244}00244 \textcolor{comment}{//  cout << "{}Predicted r2 Mean  :"{} << predictedR2Mean  << "{}  Actual r2 Mean:"{} << r2\_mean << "{} Ratio of Predicted to actual r2 Mean: "{} << predictedToActualMean << endl;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00245}00245 \textcolor{comment}{//  cout << "{}Predicted r2 Sigma :"{} << predictedR2Sigma << "{} Actual r2 Sigma:"{} << r2\_sigma << "{} Ratio of Predicted to actual r2 Sigma: "{} << predictedToActualSigma << endl;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00246}00246 \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00247}00247 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00248}00248 \textcolor{comment}{//void compareR2(TString name,}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00249}00249 \textcolor{comment}{//               double f2\_mean, double f2\_sigma,}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00250}00250 \textcolor{comment}{//               double f1\_1\_mean, double f1\_1\_sigma,}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00251}00251 \textcolor{comment}{//               double f1\_2\_mean, double f1\_2\_sigma,}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00252}00252 \textcolor{comment}{//               double \& predictedR2Mean, double \& predictedR2Sigma,}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00253}00253 \textcolor{comment}{//               double r2\_mean, double r2\_sigma)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00254}00254 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00255}00255 \textcolor{comment}{//  double predictedToActualMean, predictedToActualSigma;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00256}00256 \textcolor{comment}{//  predictedR2Mean = f2\_mean/(f1\_1\_mean*f1\_2\_mean);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00257}00257 \textcolor{comment}{//  predictedToActualMean = predictedR2Mean/r2\_mean;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00258}00258 \textcolor{comment}{//  double ref2 = f2\_sigma/f2\_mean;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00259}00259 \textcolor{comment}{//  double ref11 = f1\_1\_sigma/f1\_1\_mean;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00260}00260 \textcolor{comment}{//  double ref12 = f1\_2\_sigma/f1\_2\_mean;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00261}00261 \textcolor{comment}{//  predictedR2Sigma = predictedR2Mean * sqrt(ref2*ref2 + ref11*ref11 + ref12*ref12);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00262}00262 \textcolor{comment}{//  predictedToActualSigma = predictedR2Sigma/r2\_sigma;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00263}00263 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00264}00264 \textcolor{comment}{//  cout << "{}Compare r2 for "{} <<  name << endl;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00265}00265 \textcolor{comment}{//  cout << "{}Predicted r2 Mean  :"{} << predictedR2Mean  << "{}  Actual r2 Mean:"{} << r2\_mean << "{} Ratio of Predicted to actual r2 Mean: "{} << predictedToActualMean << endl;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00266}00266 \textcolor{comment}{//  cout << "{}Predicted r2 Sigma :"{} << predictedR2Sigma << "{} Actual r2 Sigma:"{} << r2\_sigma << "{} Ratio of Predicted to actual r2 Sigma: "{} << predictedToActualSigma << endl;}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00267}00267 \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00268}00268 }
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00269}00269 }
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00270}\mbox{\hyperlink{_stat_study_plots_8cpp_ad02c90eb2de191e87fe95f62c4598ee1}{00270}} \textcolor{keywordtype}{int} \mbox{\hyperlink{_stat_study_plots_8cpp_ad02c90eb2de191e87fe95f62c4598ee1}{StatStudyPlots}}()}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00271}00271 \{}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00272}00272   TString includesPath = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/WAC/Base/"{}};}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00273}00273   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}CanvasCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00274}00274   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}CanvasConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00275}00275   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}TaskConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00276}00276   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}EnhancedGraph.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00277}00277   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Factory.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00278}00278   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}FunctionCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00279}00279   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}GraphConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00280}00280   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}HistogramCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00281}00281   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Histograms.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00282}00282   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}RandomGenerators.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00283}00283   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}RapidityGenerator.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00284}00284   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Task.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00285}00285   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}TaskCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00286}00286   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Property.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00287}00287   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}MessageLogger.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00288}00288   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}AnalysisConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00289}00289   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Event.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00290}00290   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}EventFilter.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00291}00291   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}EventHistos.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00292}00292   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}EventLoop.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00293}00293   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}GeneralizedGaussianConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00294}00294   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}GeneralizedGaussianProfile.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00295}00295   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}GeneratorConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00296}00296   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}TwoPartCorrelationAnalyzer.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00297}00297   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Particle.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00298}00298   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticleFilter.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00299}00299   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticleHistos.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00300}00300   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticlePairCombinedHistos.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00301}00301   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticlePairDerivedHistos.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00302}00302   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticlePairFilter.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00303}00303   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticlePairHistos.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00304}00304   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}TrackAndPairConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00305}00305   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}NuDynTask.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00306}00306   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}NuDynHistos.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00307}00307   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}NuDynDerivedHistos.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00308}00308   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}StatStudyHistograms.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00309}00309   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Plotter.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00310}00310   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}StatStudyPlotter.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00311}00311   gSystem-\/>Load(\textcolor{stringliteral}{"{}libBase.dylib"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00312}00312 }
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00313}00313   \textcolor{keywordtype}{int} nSubSamples = 1000;}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00314}00314 }
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00315}00315   \mbox{\hyperlink{class_histogram_collection}{HistogramCollection}} * histogramCollection = \textcolor{keyword}{new} \mbox{\hyperlink{class_histogram_collection}{HistogramCollection}}(\textcolor{stringliteral}{"{}Collection"{}},100);}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00316}00316   histogramCollection-\/>\mbox{\hyperlink{class_histogram_collection_a4b4edb2784b2376e96665e4b224ba8f7}{setDefaultOptions}}(1);}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00317}00317   \mbox{\hyperlink{class_canvas_collection}{CanvasCollection}}    * canvasCollection    = \textcolor{keyword}{new} \mbox{\hyperlink{class_canvas_collection}{CanvasCollection}}();}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00318}00318   \mbox{\hyperlink{class_canvas_configuration}{CanvasConfiguration}} * canvasConfiguration = \textcolor{keyword}{new} \mbox{\hyperlink{class_canvas_configuration}{CanvasConfiguration}}(\mbox{\hyperlink{class_canvas_configuration_ac781dbabe064427d3c40da81c60d2149a498f4396efe651194bfa2699190568c6}{CanvasConfiguration::Landscape}},\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00319}00319   \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}}  ** graphConfigurations = \textcolor{keyword}{new} \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}}*[10];}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00320}00320   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iGraph=0;iGraph<10;iGraph++)}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00321}00321     \{}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00322}00322     graphConfigurations[iGraph] = \textcolor{keyword}{new} \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}}(1,iGraph);}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00323}00323     \}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00324}00324 }
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00325}00325   TString \mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}} = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/StatStudy/"{}};}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00326}00326   TString \mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}} = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/StatStudy/"{}};}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00327}00327   \textcolor{keywordtype}{int} nModels            = 5;}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00328}00328   TFile ** \mbox{\hyperlink{_plot_hep_data_8_c_a32be468b422ff3800be85388bcdce9d1}{inputFiles}} = \textcolor{keyword}{new} TFile* [nModels];}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00329}00329   \mbox{\hyperlink{class_stat_study_histograms}{StatStudyHistograms}} ** statStudy = \textcolor{keyword}{new} \mbox{\hyperlink{class_stat_study_histograms}{StatStudyHistograms}}*[nModels];}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00330}00330   \mbox{\hyperlink{class_stat_study_histograms}{StatStudyHistograms}} ** statStudy2 = \textcolor{keyword}{new} \mbox{\hyperlink{class_stat_study_histograms}{StatStudyHistograms}}*[nModels];}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00331}00331   \mbox{\hyperlink{class_stat_study_plotter}{StatStudyPlotter}}    ** plotter   = \textcolor{keyword}{new} \mbox{\hyperlink{class_stat_study_plotter}{StatStudyPlotter}}*[nModels];}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00332}00332   TString nameBase = \textcolor{stringliteral}{"{}StatStudySet"{}};}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00333}00333   TString name, title;}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00334}00334   TString ** modelName  = \textcolor{keyword}{new} TString*[nModels];}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00335}00335   TString ** modelTitle = \textcolor{keyword}{new} TString*[nModels];}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00336}00336   TString canvasNameBase;}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00337}00337   \textcolor{comment}{//for (int iModel=0;iModel<nModels;iModel++)}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00338}00338     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iModel=0;iModel<nModels;iModel++)}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00339}00339     \{}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00340}00340     name = nameBase;}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00341}00341     name += iModel;}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00342}00342     modelName[iModel]  = \textcolor{keyword}{new} TString(name);}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00343}00343     canvasNameBase = name;}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00344}00344     canvasNameBase += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00345}00345     title = \textcolor{stringliteral}{"{}Set "{}};}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00346}00346     title += iModel;}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00347}00347 }
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00348}00348     modelTitle[iModel]  = \textcolor{keyword}{new} TString(title);}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00349}00349     \mbox{\hyperlink{_plot_hep_data_8_c_a32be468b422ff3800be85388bcdce9d1}{inputFiles}}[iModel] = \textcolor{keyword}{new} TFile(\mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}}+name+\textcolor{stringliteral}{"{}.root"{}},\textcolor{stringliteral}{"{}OLD"{}});;}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00350}00350     statStudy[iModel]  = \textcolor{keyword}{new} \mbox{\hyperlink{class_stat_study_histograms}{StatStudyHistograms}}(\mbox{\hyperlink{_plot_hep_data_8_c_a32be468b422ff3800be85388bcdce9d1}{inputFiles}}[iModel], name ,\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa5f1f5d604d1a1e53af3b330224db4986}{MessageLogger::Debug}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00351}00351     plotter[iModel]    = \textcolor{keyword}{new} \mbox{\hyperlink{class_stat_study_plotter}{StatStudyPlotter}}();}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00352}00352     \textcolor{comment}{//plotter[iModel]-\/>makePlots(*modelName[iModel],statStudy[iModel],canvasConfiguration,graphConfigurations);}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00353}00353     plotter[iModel]-\/>\mbox{\hyperlink{class_stat_study_plotter_ada2cb0c70c04b68d0a8a72ec9a99cdc6}{makePlots}}(canvasNameBase,statStudy[iModel],canvasConfiguration,graphConfigurations);}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00354}00354     plotter[iModel]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00355}00355     \}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00356}00356 }
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00357}00357   \mbox{\hyperlink{class_stat_study_plotter}{StatStudyPlotter}} * compPlotter = \textcolor{keyword}{new} \mbox{\hyperlink{class_stat_study_plotter}{StatStudyPlotter}}();}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00358}00358   compPlotter-\/>\mbox{\hyperlink{class_stat_study_plotter_a42722c4387ef37a10b4de4488e82f75e}{makeComparisonPlots}}(\textcolor{stringliteral}{"{}ModelComparisonSampleSize\_"{}}, canvasConfiguration,3,statStudy,modelTitle,graphConfigurations);}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00359}00359   compPlotter-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00360}00360 }
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00361}00361   \mbox{\hyperlink{class_stat_study_plotter}{StatStudyPlotter}} * compPlotter2 = \textcolor{keyword}{new} \mbox{\hyperlink{class_stat_study_plotter}{StatStudyPlotter}}();}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00362}00362   statStudy++;statStudy++;}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00363}00363   modelTitle++;modelTitle++;}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00364}00364    compPlotter2-\/>\mbox{\hyperlink{class_stat_study_plotter_a42722c4387ef37a10b4de4488e82f75e}{makeComparisonPlots}}(\textcolor{stringliteral}{"{}ModelComparisonPartMult\_"{}}, canvasConfiguration,3,statStudy,modelTitle,graphConfigurations);}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00365}00365    compPlotter2-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00366}00366 }
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00367}00367   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00368}00368 \}}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00369}00369 }
+
+\end{DoxyCode}

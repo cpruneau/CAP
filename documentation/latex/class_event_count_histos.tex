@@ -1,0 +1,133 @@
+\hypertarget{class_event_count_histos}{}\doxysection{Event\+Count\+Histos Class Reference}
+\label{class_event_count_histos}\index{EventCountHistos@{EventCountHistos}}
+
+
+{\ttfamily \#include $<$Event\+Count\+Histos.\+hpp$>$}
+
+
+
+Inheritance diagram for Event\+Count\+Histos\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=185pt]{class_event_count_histos__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Event\+Count\+Histos\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{class_event_count_histos__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_count_histos_a0583fd70af36b8e18cf7d43267feb041}{Event\+Count\+Histos}} (const TString \&\+\_\+collection\+Name, \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \+\_\+debug\+Level)
+\item 
+virtual \mbox{\hyperlink{class_event_count_histos_abadab1f948181ec94e4330b86e7d6230}{$\sim$\+Event\+Count\+Histos}} ()
+\item 
+virtual void \mbox{\hyperlink{class_event_count_histos_a24f3399fc1ac2977cfac9bc4cf72e2fe}{create\+Histograms}} ()
+\item 
+virtual void \mbox{\hyperlink{class_event_count_histos_a28661f4eb3e55c5515ba61710486f6f7}{load\+Histograms}} (TFile $\ast$input\+File)
+\item 
+virtual void \mbox{\hyperlink{class_event_count_histos_ada9f2b731f22c546594d25f275c7c714}{fill}} (vector$<$ double $>$ event\+Counts)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_event_count_histos_a18051a04d6e3d4d2106e6c053bf8f497}{h\+\_\+event\+Counts}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_event_count_histos_8hpp_source_l00018}{18}} of file \mbox{\hyperlink{_event_count_histos_8hpp_source}{Event\+Count\+Histos.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_event_count_histos_a0583fd70af36b8e18cf7d43267feb041}\label{class_event_count_histos_a0583fd70af36b8e18cf7d43267feb041}} 
+\index{EventCountHistos@{EventCountHistos}!EventCountHistos@{EventCountHistos}}
+\index{EventCountHistos@{EventCountHistos}!EventCountHistos@{EventCountHistos}}
+\doxysubsubsection{\texorpdfstring{EventCountHistos()}{EventCountHistos()}}
+{\footnotesize\ttfamily Event\+Count\+Histos\+::\+Event\+Count\+Histos (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+collection\+Name,  }\item[{\mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{\+\_\+debug\+Level }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_event_count_histos_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{_event_count_histos_8cpp_source}{Event\+Count\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_count_histos_abadab1f948181ec94e4330b86e7d6230}\label{class_event_count_histos_abadab1f948181ec94e4330b86e7d6230}} 
+\index{EventCountHistos@{EventCountHistos}!````~EventCountHistos@{$\sim$EventCountHistos}}
+\index{````~EventCountHistos@{$\sim$EventCountHistos}!EventCountHistos@{EventCountHistos}}
+\doxysubsubsection{\texorpdfstring{$\sim$EventCountHistos()}{~EventCountHistos()}}
+{\footnotesize\ttfamily virtual Event\+Count\+Histos\+::$\sim$\+Event\+Count\+Histos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_count_histos_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{_event_count_histos_8hpp_source}{Event\+Count\+Histos.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_event_count_histos_a24f3399fc1ac2977cfac9bc4cf72e2fe}\label{class_event_count_histos_a24f3399fc1ac2977cfac9bc4cf72e2fe}} 
+\index{EventCountHistos@{EventCountHistos}!createHistograms@{createHistograms}}
+\index{createHistograms@{createHistograms}!EventCountHistos@{EventCountHistos}}
+\doxysubsubsection{\texorpdfstring{createHistograms()}{createHistograms()}}
+{\footnotesize\ttfamily void Event\+Count\+Histos\+::create\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overload this class to create histograms. 
+
+Reimplemented from \mbox{\hyperlink{class_histograms_ae6197b40e3cb970716aa4fc8a8eaffb2}{Histograms}}.
+
+
+
+Definition at line \mbox{\hyperlink{_event_count_histos_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{_event_count_histos_8cpp_source}{Event\+Count\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_count_histos_ada9f2b731f22c546594d25f275c7c714}\label{class_event_count_histos_ada9f2b731f22c546594d25f275c7c714}} 
+\index{EventCountHistos@{EventCountHistos}!fill@{fill}}
+\index{fill@{fill}!EventCountHistos@{EventCountHistos}}
+\doxysubsubsection{\texorpdfstring{fill()}{fill()}}
+{\footnotesize\ttfamily void Event\+Count\+Histos\+::fill (\begin{DoxyParamCaption}\item[{vector$<$ double $>$}]{event\+Counts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_count_histos_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{_event_count_histos_8cpp_source}{Event\+Count\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_count_histos_a28661f4eb3e55c5515ba61710486f6f7}\label{class_event_count_histos_a28661f4eb3e55c5515ba61710486f6f7}} 
+\index{EventCountHistos@{EventCountHistos}!loadHistograms@{loadHistograms}}
+\index{loadHistograms@{loadHistograms}!EventCountHistos@{EventCountHistos}}
+\doxysubsubsection{\texorpdfstring{loadHistograms()}{loadHistograms()}}
+{\footnotesize\ttfamily void Event\+Count\+Histos\+::load\+Histograms (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{input\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overload this class to load histograms. 
+
+Reimplemented from \mbox{\hyperlink{class_histograms_a20ca1f616c8af6d3261e6ca3127ecd9d}{Histograms}}.
+
+
+
+Definition at line \mbox{\hyperlink{_event_count_histos_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{_event_count_histos_8cpp_source}{Event\+Count\+Histos.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_event_count_histos_a18051a04d6e3d4d2106e6c053bf8f497}\label{class_event_count_histos_a18051a04d6e3d4d2106e6c053bf8f497}} 
+\index{EventCountHistos@{EventCountHistos}!h\_eventCounts@{h\_eventCounts}}
+\index{h\_eventCounts@{h\_eventCounts}!EventCountHistos@{EventCountHistos}}
+\doxysubsubsection{\texorpdfstring{h\_eventCounts}{h\_eventCounts}}
+{\footnotesize\ttfamily TH1$\ast$ Event\+Count\+Histos\+::h\+\_\+event\+Counts}
+
+
+
+Definition at line \mbox{\hyperlink{_event_count_histos_8hpp_source_l00033}{33}} of file \mbox{\hyperlink{_event_count_histos_8hpp_source}{Event\+Count\+Histos.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_event_count_histos_8hpp}{Event\+Count\+Histos.\+hpp}}\item 
+Base/\mbox{\hyperlink{_event_count_histos_8cpp}{Event\+Count\+Histos.\+cpp}}\end{DoxyCompactItemize}

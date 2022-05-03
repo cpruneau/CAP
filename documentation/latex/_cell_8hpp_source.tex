@@ -1,0 +1,54 @@
+\hypertarget{_cell_8hpp_source}{}\doxysection{Cell.\+hpp}
+\label{_cell_8hpp_source}\index{Cluster/Cell.hpp@{Cluster/Cell.hpp}}
+\mbox{\hyperlink{_cell_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#ifndef WAC\_Cell}}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#define WAC\_Cell}}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_cluster_8hpp}{Cluster.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_factory_8hpp}{Factory.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00016}\mbox{\hyperlink{class_cell}{00016}} \textcolor{keyword}{class }\mbox{\hyperlink{class_cell}{Cell}}}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00017}00017 \{}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00018}00018 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00019}00019   }
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00020}00020   \mbox{\hyperlink{class_cell_a394510643e8664cf12b5efaf5cb99f71}{Cell}}();}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00021}00021   \mbox{\hyperlink{class_cell_a9fa559f7a28e2b4336c6879ca09304d8}{\string~Cell}}();}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00022}00022   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_afbc65512fb26ca43bd7b0aae85f2366e}{reset}}();;}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00023}00023   \mbox{\hyperlink{class_cluster}{Cluster}} * \mbox{\hyperlink{class_cell_aa9df82e017fb4a078011114728bfad7f}{getClusterAt}}(\textcolor{keywordtype}{int} index);}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00024}00024   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_adb29f401cd9a946dfcc9417f055c9e01}{add}}(\mbox{\hyperlink{class_cluster}{Cluster}} * cluster);}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00025}00025   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_ad38fb4e3d33533150f622d2ec97295de}{boost}}(\textcolor{keywordtype}{double} beta\_x, \textcolor{keywordtype}{double} beta\_y, \textcolor{keywordtype}{double} beta\_z);}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00026}00026   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_a088ba8fd4e217c4580b79308456db38f}{boostZ}}(\textcolor{keywordtype}{double} beta\_z);}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00027}00027   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_a016a5a61145479c6e0839e1b2857777d}{printProperties}}(ostream \& output);}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00030}00030   \textcolor{comment}{// Data Members}}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00032}\mbox{\hyperlink{class_cell_aefeffb0de37f25138d82c247dab6677e}{00032}} \textcolor{comment}{}  \textcolor{keywordtype}{double} \mbox{\hyperlink{class_cell_aefeffb0de37f25138d82c247dab6677e}{beta}};}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00033}\mbox{\hyperlink{class_cell_a710df196d4375540adae5c48bb2fa926}{00033}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_cell_a710df196d4375540adae5c48bb2fa926}{betaX}};}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00034}\mbox{\hyperlink{class_cell_a7419193326e3347b5197a811a46edb02}{00034}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_cell_a7419193326e3347b5197a811a46edb02}{betaY}};}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00035}\mbox{\hyperlink{class_cell_ad8011098ffa066e4837e2ca44d14f93c}{00035}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_cell_ad8011098ffa066e4837e2ca44d14f93c}{betaZ}};}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00036}\mbox{\hyperlink{class_cell_a91a46927ed8ac859ae323bb12a4dc759}{00036}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_cell_a91a46927ed8ac859ae323bb12a4dc759}{phi}};}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00037}\mbox{\hyperlink{class_cell_ac845493b9210bfc8e594402c79b11290}{00037}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_cell_ac845493b9210bfc8e594402c79b11290}{nClusters}};}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00038}\mbox{\hyperlink{class_cell_a7733f1b1f56377c772931d048b124205}{00038}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_cell_a7733f1b1f56377c772931d048b124205}{nParticles}};}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00039}\mbox{\hyperlink{class_cell_ab634381a0958f0aad77dd46bee06ea44}{00039}}   \mbox{\hyperlink{class_cluster}{Cluster}} ** \mbox{\hyperlink{class_cell_ab634381a0958f0aad77dd46bee06ea44}{clusters}};}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00041}\mbox{\hyperlink{class_cell_a3818b6d5e1d88693f8237bd06b440615}{00041}}   \textcolor{keyword}{static} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_cell_a3818b6d5e1d88693f8237bd06b440615}{nClustersMax}};}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00042}\mbox{\hyperlink{class_cell_ae11a5da92727abb2dc0aa2c9c8fb4a41}{00042}}   \textcolor{keyword}{static} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_cell_ae11a5da92727abb2dc0aa2c9c8fb4a41}{factorySize}};}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00043}\mbox{\hyperlink{class_cell_ab133a8bc0e911f3e88cc32611840d62b}{00043}}   \textcolor{keyword}{static} \mbox{\hyperlink{class_factory}{Factory<Cell>}} * \mbox{\hyperlink{class_cell_ab133a8bc0e911f3e88cc32611840d62b}{factory}};}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00044}00044   \textcolor{keyword}{static} \mbox{\hyperlink{class_factory}{Factory<Cell>}} * \mbox{\hyperlink{class_cell_ac11ed1217989fdd997e4344d8ff64363}{getFactory}}();}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00046}00046   ClassDef(\mbox{\hyperlink{class_cell}{Cell}},0)}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00047}00047 \};}
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_cell_8hpp_source_l00050}00050 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* WAC\_Cell */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

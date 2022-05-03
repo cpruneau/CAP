@@ -1,0 +1,95 @@
+\hypertarget{_event_filter_alice_v0_8cpp_source}{}\doxysection{Event\+Filter\+Alice\+V0.\+cpp}
+\label{_event_filter_alice_v0_8cpp_source}\index{Base/EventFilterAliceV0.cpp@{Base/EventFilterAliceV0.cpp}}
+\mbox{\hyperlink{_event_filter_alice_v0_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00001}00001 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00002}00002 \textcolor{comment}{//  EventFilterAliceV0.cpp}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00003}00003 \textcolor{comment}{//  MyMC}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00004}00004 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00005}00005 \textcolor{comment}{//  Created by Claude Pruneau on 12/12/16.}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00006}00006 \textcolor{comment}{//  Copyright © 2016 Claude Pruneau. All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00007}00007 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_event_filter_alice_v0_8hpp}{EventFilterAliceV0.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00011}\mbox{\hyperlink{_event_filter_alice_v0_8cpp_a82e7d4d2ead948bf8268754332d1e604}{00011}} \mbox{\hyperlink{_event_filter_alice_v0_8cpp_a82e7d4d2ead948bf8268754332d1e604}{ClassImp}}(\mbox{\hyperlink{class_event_filter_alice_v0}{EventFilterAliceV0}});}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00013}\mbox{\hyperlink{class_event_filter_alice_v0_a55ba9a7388d1edd784cd40958fc72d02}{00013}} \mbox{\hyperlink{class_event_filter_alice_v0_a55ba9a7388d1edd784cd40958fc72d02}{EventFilterAliceV0::EventFilterAliceV0}}(\textcolor{keywordtype}{double} nMinV0,}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00014}00014                                        \textcolor{keywordtype}{double} nMaxV0,}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00015}00015                                        \textcolor{keywordtype}{double} nMinTPC,}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00016}00016                                        \textcolor{keywordtype}{double} nMaxTPC)}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00017}00017 :}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00018}00018 \mbox{\hyperlink{class_event_filter}{EventFilter}}(ParticleFilter0,nMinV0,nMaxV0,\textcolor{stringliteral}{"{}AliceV0"{}}),}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00019}00019 nMinimumTPC(nMinTPC),}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00020}00020 nMaximumTPC(nMaxTPC)}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00021}00021 \{}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00022}00022   \textcolor{comment}{// no ops}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00023}00023 \}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00026}\mbox{\hyperlink{class_event_filter_alice_v0_aaa13083b5795694e6c3131a7305c6d0f}{00026}} \mbox{\hyperlink{class_event_filter_alice_v0_aaa13083b5795694e6c3131a7305c6d0f}{EventFilterAliceV0::\string~EventFilterAliceV0}}()}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00027}00027 \{}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00028}00028   \textcolor{comment}{// no ops}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00029}00029 \}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00031}\mbox{\hyperlink{class_event_filter_alice_v0_a995c89eee1055b92b9ab4831a456b3ec}{00031}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_event_filter_alice_v0_a995c89eee1055b92b9ab4831a456b3ec}{EventFilterAliceV0::accept}}(\mbox{\hyperlink{class_event}{Event}} \& event)}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00032}00032 \{}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00033}00033   cout << \textcolor{stringliteral}{"{}EventFilterAliceV0::accept(Event \& event) called"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00035}00035   \mbox{\hyperlink{class_event_properties}{EventProperties}} * ptr = \textcolor{keyword}{event}.getEventProperties();}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00036}00036   \textcolor{keywordflow}{if} (ptr)}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00037}00037     \{}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00038}00038     cout << \textcolor{stringliteral}{"{}EventFilterAliceV0::accept(Event \& event) ptr appears OK"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00039}00039     \}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00040}00040   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00041}00041     \{}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00042}00042     cout << \textcolor{stringliteral}{"{}EventFilterAliceV0::accept(Event \& event) ptr is NOT OK"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00043}00043     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00044}00044     \}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00046}00046   \mbox{\hyperlink{class_event_properties}{EventProperties}} \& ep = *ptr;}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00047}00047   \textcolor{keywordtype}{double} nV0  = ep.\mbox{\hyperlink{class_event_properties_a64e0b4dd397f2fe04a79e10b5331099a}{nFiltered}}[0];}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00048}00048   \textcolor{keywordtype}{double} nTPC = 1; \textcolor{comment}{// ep.nFiltered[1];}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00049}00049   cout << \textcolor{stringliteral}{"{}EventFilterAliceV0::accept(Event \& event) all GOOD!!!!"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00051}00051   \textcolor{keywordflow}{return} (nV0 >= minimum) \&\& (nV0 < maximum) \&\& (nTPC>=nMinimumTPC) \&\& (nTPC<nMaximumTPC);}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00052}00052 \}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00054}00054 TString \mbox{\hyperlink{class_filter_aa921cda113f744819a6ed9ae68ae1c52}{EventFilterAliceV0::getName}}()}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00055}00055 \{}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00056}00056   TString \mbox{\hyperlink{class_filter_ad9d71926ff1cdeee93005b0986ed2391}{name}} = Form(\textcolor{stringliteral}{"{}Alice\_V0MGeq\%gLt\%g\_TPCGeq\%gLt\%g"{}},minimum,maximum,nMinimumTPC,nMaximumTPC);}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00057}00057   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_filter_ad9d71926ff1cdeee93005b0986ed2391}{name}};}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00058}00058 \}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00062}00062 TString \mbox{\hyperlink{class_filter_a3251e7b1413a7845efa2c40d3fc39b1e}{EventFilterAliceV0::getTitle}}()}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00063}00063 \{}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00064}00064   TString \mbox{\hyperlink{class_filter_ad9d71926ff1cdeee93005b0986ed2391}{name}} = Form(\textcolor{stringliteral}{"{}Alice: \%g\#le V0<\%g; \%g\#le TPC<\%g"{}},minimum,maximum,nMinimumTPC,nMaximumTPC);}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00065}00065   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_filter_ad9d71926ff1cdeee93005b0986ed2391}{name}};}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00066}00066 \}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00069}00069 TString \mbox{\hyperlink{class_filter_aa0f6c28bbc32966888052208e4f8eeb6}{EventFilterAliceV0::getLongName}}()}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00070}00070 \{}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00071}00071   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_filter_aa921cda113f744819a6ed9ae68ae1c52}{getName}}();}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00072}00072 \}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00074}00074 TString \mbox{\hyperlink{class_filter_a007556688839ecee17827c6b42628e6d}{EventFilterAliceV0::getLongTitle}}()}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00075}00075 \{}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00076}00076   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_filter_a3251e7b1413a7845efa2c40d3fc39b1e}{getTitle}}();}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00077}00077 \}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00080}00080 vector<EventFilter*> EventFilterAliceV0::createEventFilterAliceV0Set(vector<double> limits)}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00081}00081 \{}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00082}00082   vector<EventFilter*> filters;}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00083}00083   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} n = limits.size() -\/ 1;}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00084}00084   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k=0; k<n; k++)}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00085}00085     \{}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00086}00086     filters.push\_back( \textcolor{keyword}{new} \mbox{\hyperlink{class_event_filter_alice_v0_a55ba9a7388d1edd784cd40958fc72d02}{EventFilterAliceV0}}(limits[k], limits[k+1],1.0,1000.0) );}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00087}00087     \}}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00088}00088   \textcolor{keywordflow}{return} filters;}
+\DoxyCodeLine{\Hypertarget{_event_filter_alice_v0_8cpp_source_l00089}00089 \}}
+
+\end{DoxyCode}

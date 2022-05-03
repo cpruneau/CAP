@@ -1,0 +1,281 @@
+\hypertarget{class_nu_dyn_histos}{}\doxysection{Nu\+Dyn\+Histos Class Reference}
+\label{class_nu_dyn_histos}\index{NuDynHistos@{NuDynHistos}}
+
+
+{\ttfamily \#include $<$Nu\+Dyn\+Histos.\+hpp$>$}
+
+
+
+Inheritance diagram for Nu\+Dyn\+Histos\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=185pt]{class_nu_dyn_histos__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Nu\+Dyn\+Histos\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{class_nu_dyn_histos__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_nu_dyn_histos_a4014ca257e7faddf1b3e5a2e61097621}{Nu\+Dyn\+Histos}} (const TString \&\mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}}, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\mbox{\hyperlink{class_histograms_a045df45b0d1e815891b73274958e8cb4}{configuration}}, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} debug\+Level)
+\item 
+virtual \mbox{\hyperlink{class_nu_dyn_histos_ad2ad2d1c3a8f59d6990468377b93efeb}{$\sim$\+Nu\+Dyn\+Histos}} ()
+\item 
+virtual void \mbox{\hyperlink{class_nu_dyn_histos_a35248aba580801d35dd48564fbdae87f}{create\+Histograms}} ()
+\item 
+virtual void \mbox{\hyperlink{class_nu_dyn_histos_a3b613cfca560d5c187f38ba4064ba440}{load\+Histograms}} (TFile $\ast$input\+File)
+\item 
+virtual void \mbox{\hyperlink{class_nu_dyn_histos_aa23fea684721fdc52a72032ae7f3d5cd}{fill}} (double mult, vector$<$ double $>$ \&n\+Accepted, double weight)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_nu_dyn_histos_a7ca324f75fefb6233d6842b988e46d0b}{h\+\_\+event\+Streams}}
+\item 
+unsigned int \mbox{\hyperlink{class_nu_dyn_histos_abced1c6e487465160ba52242545364eb}{n\+Filters}}
+\item 
+unsigned int \mbox{\hyperlink{class_nu_dyn_histos_a90c577722bdc6232176dc0b797d456ba}{multiplicity\+Type}}
+\item 
+bool \mbox{\hyperlink{class_nu_dyn_histos_a4335f9c5e156e1b58d6318c2a629c977}{pair\+Only}}
+\item 
+vector$<$ TProfile $\ast$ $>$ \mbox{\hyperlink{class_nu_dyn_histos_a1842d1b203bcf0a6c6ab0e5b2fa6cd40}{h\+\_\+f1}}
+\item 
+vector$<$ TProfile $\ast$ $>$ \mbox{\hyperlink{class_nu_dyn_histos_a11bedd4853999ccf9131c6542ade924b}{h\+\_\+f2}}
+\item 
+vector$<$ TProfile $\ast$ $>$ \mbox{\hyperlink{class_nu_dyn_histos_a73843f2c3388c4b45636c1760c4f7a22}{h\+\_\+f3}}
+\item 
+vector$<$ TProfile $\ast$ $>$ \mbox{\hyperlink{class_nu_dyn_histos_a3c963ad94a4091ad10006193c8ed636e}{h\+\_\+f4}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_nu_dyn_histos_aec9e8ba774d592c471f14f404a192db1}{h\+\_\+event\+Streams\+\_\+vs\+Mult}}
+\item 
+vector$<$ TProfile $\ast$ $>$ \mbox{\hyperlink{class_nu_dyn_histos_a3ab26e07f75eb24ae4725a0ba2f55f29}{h\+\_\+f1\+\_\+vs\+Mult}}
+\item 
+vector$<$ TProfile $\ast$ $>$ \mbox{\hyperlink{class_nu_dyn_histos_a21d65cb0a3312ccfa5b2203fe38d8f20}{h\+\_\+f2\+\_\+vs\+Mult}}
+\item 
+vector$<$ TProfile $\ast$ $>$ \mbox{\hyperlink{class_nu_dyn_histos_a73117fa79cfcb279c0d0824232d3d63e}{h\+\_\+f3\+\_\+vs\+Mult}}
+\item 
+vector$<$ TProfile $\ast$ $>$ \mbox{\hyperlink{class_nu_dyn_histos_a312ac115a077fd3251c956c8de2194e5}{h\+\_\+f4\+\_\+vs\+Mult}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Calculate lowest moments up to order 4 The calculation is carried out for N distinct types (species) of particles (N distinct filters)
+
+Let the species be\+: a, b, c, etc First order moments\+: f\+\_\+1(a), f\+\_\+1(b), f\+\_\+1(c), etc Second order moments\+: f\+\_\+2(a,a), f\+\_\+2(a,b), f\+\_\+2(a,c), ..., f\+\_\+2(b,b), f\+\_\+2(b,c), etc Third order moments\+: f\+\_\+3(a,a,a), f\+\_\+3(a,a,b), f\+\_\+3(a,a,c), f(a,a,d), f(a,b,b), etc Fourth order moments\+: f\+\_\+4(a,a,a,a), f\+\_\+(a,a,a,b), f\+\_\+4(a,a,b,b), etc
+
+// ================================================================================ 
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{_nu_dyn_histos_8hpp_source}{Nu\+Dyn\+Histos.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_nu_dyn_histos_a4014ca257e7faddf1b3e5a2e61097621}\label{class_nu_dyn_histos_a4014ca257e7faddf1b3e5a2e61097621}} 
+\index{NuDynHistos@{NuDynHistos}!NuDynHistos@{NuDynHistos}}
+\index{NuDynHistos@{NuDynHistos}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{NuDynHistos()}{NuDynHistos()}}
+{\footnotesize\ttfamily Nu\+Dyn\+Histos\+::\+Nu\+Dyn\+Histos (\begin{DoxyParamCaption}\item[{const TString \&}]{name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{configuration,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{debug\+Level }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_nu_dyn_histos_8cpp_source}{Nu\+Dyn\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_nu_dyn_histos_ad2ad2d1c3a8f59d6990468377b93efeb}\label{class_nu_dyn_histos_ad2ad2d1c3a8f59d6990468377b93efeb}} 
+\index{NuDynHistos@{NuDynHistos}!````~NuDynHistos@{$\sim$NuDynHistos}}
+\index{````~NuDynHistos@{$\sim$NuDynHistos}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{$\sim$NuDynHistos()}{~NuDynHistos()}}
+{\footnotesize\ttfamily Nu\+Dyn\+Histos\+::$\sim$\+Nu\+Dyn\+Histos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_nu_dyn_histos_8cpp_source}{Nu\+Dyn\+Histos.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_nu_dyn_histos_a35248aba580801d35dd48564fbdae87f}\label{class_nu_dyn_histos_a35248aba580801d35dd48564fbdae87f}} 
+\index{NuDynHistos@{NuDynHistos}!createHistograms@{createHistograms}}
+\index{createHistograms@{createHistograms}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{createHistograms()}{createHistograms()}}
+{\footnotesize\ttfamily void Nu\+Dyn\+Histos\+::create\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overload this class to create histograms. 
+
+Reimplemented from \mbox{\hyperlink{class_histograms_ae6197b40e3cb970716aa4fc8a8eaffb2}{Histograms}}.
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{_nu_dyn_histos_8cpp_source}{Nu\+Dyn\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_nu_dyn_histos_aa23fea684721fdc52a72032ae7f3d5cd}\label{class_nu_dyn_histos_aa23fea684721fdc52a72032ae7f3d5cd}} 
+\index{NuDynHistos@{NuDynHistos}!fill@{fill}}
+\index{fill@{fill}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{fill()}{fill()}}
+{\footnotesize\ttfamily void Nu\+Dyn\+Histos\+::fill (\begin{DoxyParamCaption}\item[{double}]{mult,  }\item[{vector$<$ double $>$ \&}]{n\+Accepted,  }\item[{double}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{_nu_dyn_histos_8cpp_source}{Nu\+Dyn\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_nu_dyn_histos_a3b613cfca560d5c187f38ba4064ba440}\label{class_nu_dyn_histos_a3b613cfca560d5c187f38ba4064ba440}} 
+\index{NuDynHistos@{NuDynHistos}!loadHistograms@{loadHistograms}}
+\index{loadHistograms@{loadHistograms}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{loadHistograms()}{loadHistograms()}}
+{\footnotesize\ttfamily void Nu\+Dyn\+Histos\+::load\+Histograms (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{input\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overload this class to load histograms. 
+
+Reimplemented from \mbox{\hyperlink{class_histograms_a20ca1f616c8af6d3261e6ca3127ecd9d}{Histograms}}.
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8cpp_source_l00089}{89}} of file \mbox{\hyperlink{_nu_dyn_histos_8cpp_source}{Nu\+Dyn\+Histos.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_nu_dyn_histos_a7ca324f75fefb6233d6842b988e46d0b}\label{class_nu_dyn_histos_a7ca324f75fefb6233d6842b988e46d0b}} 
+\index{NuDynHistos@{NuDynHistos}!h\_eventStreams@{h\_eventStreams}}
+\index{h\_eventStreams@{h\_eventStreams}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{h\_eventStreams}{h\_eventStreams}}
+{\footnotesize\ttfamily TH1$\ast$ Nu\+Dyn\+Histos\+::h\+\_\+event\+Streams}
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{_nu_dyn_histos_8hpp_source}{Nu\+Dyn\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_nu_dyn_histos_aec9e8ba774d592c471f14f404a192db1}\label{class_nu_dyn_histos_aec9e8ba774d592c471f14f404a192db1}} 
+\index{NuDynHistos@{NuDynHistos}!h\_eventStreams\_vsMult@{h\_eventStreams\_vsMult}}
+\index{h\_eventStreams\_vsMult@{h\_eventStreams\_vsMult}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{h\_eventStreams\_vsMult}{h\_eventStreams\_vsMult}}
+{\footnotesize\ttfamily TH1$\ast$ Nu\+Dyn\+Histos\+::h\+\_\+event\+Streams\+\_\+vs\+Mult}
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8hpp_source_l00094}{94}} of file \mbox{\hyperlink{_nu_dyn_histos_8hpp_source}{Nu\+Dyn\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_nu_dyn_histos_a1842d1b203bcf0a6c6ab0e5b2fa6cd40}\label{class_nu_dyn_histos_a1842d1b203bcf0a6c6ab0e5b2fa6cd40}} 
+\index{NuDynHistos@{NuDynHistos}!h\_f1@{h\_f1}}
+\index{h\_f1@{h\_f1}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{h\_f1}{h\_f1}}
+{\footnotesize\ttfamily vector$<$TProfile $\ast$$>$ Nu\+Dyn\+Histos\+::h\+\_\+f1}
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8hpp_source_l00089}{89}} of file \mbox{\hyperlink{_nu_dyn_histos_8hpp_source}{Nu\+Dyn\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_nu_dyn_histos_a3ab26e07f75eb24ae4725a0ba2f55f29}\label{class_nu_dyn_histos_a3ab26e07f75eb24ae4725a0ba2f55f29}} 
+\index{NuDynHistos@{NuDynHistos}!h\_f1\_vsMult@{h\_f1\_vsMult}}
+\index{h\_f1\_vsMult@{h\_f1\_vsMult}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{h\_f1\_vsMult}{h\_f1\_vsMult}}
+{\footnotesize\ttfamily vector$<$TProfile $\ast$$>$ Nu\+Dyn\+Histos\+::h\+\_\+f1\+\_\+vs\+Mult}
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8hpp_source_l00095}{95}} of file \mbox{\hyperlink{_nu_dyn_histos_8hpp_source}{Nu\+Dyn\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_nu_dyn_histos_a11bedd4853999ccf9131c6542ade924b}\label{class_nu_dyn_histos_a11bedd4853999ccf9131c6542ade924b}} 
+\index{NuDynHistos@{NuDynHistos}!h\_f2@{h\_f2}}
+\index{h\_f2@{h\_f2}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{h\_f2}{h\_f2}}
+{\footnotesize\ttfamily vector$<$TProfile $\ast$$>$ Nu\+Dyn\+Histos\+::h\+\_\+f2}
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8hpp_source_l00090}{90}} of file \mbox{\hyperlink{_nu_dyn_histos_8hpp_source}{Nu\+Dyn\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_nu_dyn_histos_a21d65cb0a3312ccfa5b2203fe38d8f20}\label{class_nu_dyn_histos_a21d65cb0a3312ccfa5b2203fe38d8f20}} 
+\index{NuDynHistos@{NuDynHistos}!h\_f2\_vsMult@{h\_f2\_vsMult}}
+\index{h\_f2\_vsMult@{h\_f2\_vsMult}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{h\_f2\_vsMult}{h\_f2\_vsMult}}
+{\footnotesize\ttfamily vector$<$TProfile $\ast$$>$ Nu\+Dyn\+Histos\+::h\+\_\+f2\+\_\+vs\+Mult}
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8hpp_source_l00096}{96}} of file \mbox{\hyperlink{_nu_dyn_histos_8hpp_source}{Nu\+Dyn\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_nu_dyn_histos_a73843f2c3388c4b45636c1760c4f7a22}\label{class_nu_dyn_histos_a73843f2c3388c4b45636c1760c4f7a22}} 
+\index{NuDynHistos@{NuDynHistos}!h\_f3@{h\_f3}}
+\index{h\_f3@{h\_f3}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{h\_f3}{h\_f3}}
+{\footnotesize\ttfamily vector$<$TProfile $\ast$$>$ Nu\+Dyn\+Histos\+::h\+\_\+f3}
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8hpp_source_l00091}{91}} of file \mbox{\hyperlink{_nu_dyn_histos_8hpp_source}{Nu\+Dyn\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_nu_dyn_histos_a73117fa79cfcb279c0d0824232d3d63e}\label{class_nu_dyn_histos_a73117fa79cfcb279c0d0824232d3d63e}} 
+\index{NuDynHistos@{NuDynHistos}!h\_f3\_vsMult@{h\_f3\_vsMult}}
+\index{h\_f3\_vsMult@{h\_f3\_vsMult}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{h\_f3\_vsMult}{h\_f3\_vsMult}}
+{\footnotesize\ttfamily vector$<$TProfile $\ast$$>$ Nu\+Dyn\+Histos\+::h\+\_\+f3\+\_\+vs\+Mult}
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8hpp_source_l00097}{97}} of file \mbox{\hyperlink{_nu_dyn_histos_8hpp_source}{Nu\+Dyn\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_nu_dyn_histos_a3c963ad94a4091ad10006193c8ed636e}\label{class_nu_dyn_histos_a3c963ad94a4091ad10006193c8ed636e}} 
+\index{NuDynHistos@{NuDynHistos}!h\_f4@{h\_f4}}
+\index{h\_f4@{h\_f4}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{h\_f4}{h\_f4}}
+{\footnotesize\ttfamily vector$<$TProfile $\ast$$>$ Nu\+Dyn\+Histos\+::h\+\_\+f4}
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8hpp_source_l00092}{92}} of file \mbox{\hyperlink{_nu_dyn_histos_8hpp_source}{Nu\+Dyn\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_nu_dyn_histos_a312ac115a077fd3251c956c8de2194e5}\label{class_nu_dyn_histos_a312ac115a077fd3251c956c8de2194e5}} 
+\index{NuDynHistos@{NuDynHistos}!h\_f4\_vsMult@{h\_f4\_vsMult}}
+\index{h\_f4\_vsMult@{h\_f4\_vsMult}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{h\_f4\_vsMult}{h\_f4\_vsMult}}
+{\footnotesize\ttfamily vector$<$TProfile $\ast$$>$ Nu\+Dyn\+Histos\+::h\+\_\+f4\+\_\+vs\+Mult}
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8hpp_source_l00098}{98}} of file \mbox{\hyperlink{_nu_dyn_histos_8hpp_source}{Nu\+Dyn\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_nu_dyn_histos_a90c577722bdc6232176dc0b797d456ba}\label{class_nu_dyn_histos_a90c577722bdc6232176dc0b797d456ba}} 
+\index{NuDynHistos@{NuDynHistos}!multiplicityType@{multiplicityType}}
+\index{multiplicityType@{multiplicityType}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{multiplicityType}{multiplicityType}}
+{\footnotesize\ttfamily unsigned int Nu\+Dyn\+Histos\+::multiplicity\+Type}
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8hpp_source_l00086}{86}} of file \mbox{\hyperlink{_nu_dyn_histos_8hpp_source}{Nu\+Dyn\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_nu_dyn_histos_abced1c6e487465160ba52242545364eb}\label{class_nu_dyn_histos_abced1c6e487465160ba52242545364eb}} 
+\index{NuDynHistos@{NuDynHistos}!nFilters@{nFilters}}
+\index{nFilters@{nFilters}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{nFilters}{nFilters}}
+{\footnotesize\ttfamily unsigned int Nu\+Dyn\+Histos\+::n\+Filters}
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{_nu_dyn_histos_8hpp_source}{Nu\+Dyn\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_nu_dyn_histos_a4335f9c5e156e1b58d6318c2a629c977}\label{class_nu_dyn_histos_a4335f9c5e156e1b58d6318c2a629c977}} 
+\index{NuDynHistos@{NuDynHistos}!pairOnly@{pairOnly}}
+\index{pairOnly@{pairOnly}!NuDynHistos@{NuDynHistos}}
+\doxysubsubsection{\texorpdfstring{pairOnly}{pairOnly}}
+{\footnotesize\ttfamily bool Nu\+Dyn\+Histos\+::pair\+Only}
+
+
+
+Definition at line \mbox{\hyperlink{_nu_dyn_histos_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{_nu_dyn_histos_8hpp_source}{Nu\+Dyn\+Histos.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_nu_dyn_histos_8hpp}{Nu\+Dyn\+Histos.\+hpp}}\item 
+Base/\mbox{\hyperlink{_nu_dyn_histos_8cpp}{Nu\+Dyn\+Histos.\+cpp}}\end{DoxyCompactItemize}

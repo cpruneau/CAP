@@ -1,0 +1,205 @@
+\hypertarget{class_hadron_gas_vs_temp_histograms}{}\doxysection{Hadron\+Gas\+Vs\+Temp\+Histograms Class Reference}
+\label{class_hadron_gas_vs_temp_histograms}\index{HadronGasVsTempHistograms@{HadronGasVsTempHistograms}}
+
+
+{\ttfamily \#include $<$Hadron\+Gas\+Vs\+Temp\+Histograms.\+hpp$>$}
+
+
+
+Inheritance diagram for Hadron\+Gas\+Vs\+Temp\+Histograms\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{class_hadron_gas_vs_temp_histograms__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Hadron\+Gas\+Vs\+Temp\+Histograms\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{class_hadron_gas_vs_temp_histograms__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hadron_gas_vs_temp_histograms_aebeccbb1a9eaae30f8924a1a5bc85493}{Hadron\+Gas\+Vs\+Temp\+Histograms}} (const TString \&\+\_\+name, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+config, \mbox{\hyperlink{class_hadron_gas}{Hadron\+Gas}} $\ast$\+\_\+hadron\+Gas, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \+\_\+debug\+Level)
+\item 
+virtual \mbox{\hyperlink{class_hadron_gas_vs_temp_histograms_a5a5886f782ae750bcc64d72cb0ee1021}{$\sim$\+Hadron\+Gas\+Vs\+Temp\+Histograms}} ()
+\item 
+void \mbox{\hyperlink{class_hadron_gas_vs_temp_histograms_aa79dd0065f43332ecc812ce2d817b0cc}{create\+Histograms}} ()
+\item 
+void \mbox{\hyperlink{class_hadron_gas_vs_temp_histograms_ae28a86641227085949b489a9c7bf1ae8}{load\+Histograms}} (TFile $\ast$input\+File)
+\item 
+void \mbox{\hyperlink{class_hadron_gas_vs_temp_histograms_a512c6df9480fb48a922b54b0196efe63}{fill}} (\mbox{\hyperlink{class_hadron_gas}{Hadron\+Gas}} \&hadron\+Gas)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_hadron_gas_vs_temp_histograms_ad25da3601d1016447df6b99b4a7eeaa9}{number\+Density\+VsT}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_hadron_gas_vs_temp_histograms_a8209d34b579975bb5b4e669fa83b0166}{energy\+Density\+VsT}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_hadron_gas_vs_temp_histograms_ac503804f6faca254ac668cf5a27650bf}{entropy\+Density\+VsT}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_hadron_gas_vs_temp_histograms_ac7be3b200bd3984ad6d7d73fa6f0f1dc}{pressure\+VsT}}
+\item 
+vector$<$ TH1 $\ast$ $>$ \mbox{\hyperlink{class_hadron_gas_vs_temp_histograms_a45da185e30eb8081ae95c9b143994f8e}{n\+Density\+VsT}}
+\item 
+vector$<$ TH1 $\ast$ $>$ \mbox{\hyperlink{class_hadron_gas_vs_temp_histograms_a2ce53c3e90f9b7763da0a233e88ce472}{e\+Density\+VsT}}
+\item 
+vector$<$ TH1 $\ast$ $>$ \mbox{\hyperlink{class_hadron_gas_vs_temp_histograms_abb7ea593584c512018f63dc000186fcd}{s\+Density\+VsT}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source_l00015}{15}} of file \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source}{Hadron\+Gas\+Vs\+Temp\+Histograms.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hadron_gas_vs_temp_histograms_aebeccbb1a9eaae30f8924a1a5bc85493}\label{class_hadron_gas_vs_temp_histograms_aebeccbb1a9eaae30f8924a1a5bc85493}} 
+\index{HadronGasVsTempHistograms@{HadronGasVsTempHistograms}!HadronGasVsTempHistograms@{HadronGasVsTempHistograms}}
+\index{HadronGasVsTempHistograms@{HadronGasVsTempHistograms}!HadronGasVsTempHistograms@{HadronGasVsTempHistograms}}
+\doxysubsubsection{\texorpdfstring{HadronGasVsTempHistograms()}{HadronGasVsTempHistograms()}}
+{\footnotesize\ttfamily Hadron\+Gas\+Vs\+Temp\+Histograms\+::\+Hadron\+Gas\+Vs\+Temp\+Histograms (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+config,  }\item[{\mbox{\hyperlink{class_hadron_gas}{Hadron\+Gas}} $\ast$}]{\+\_\+hadron\+Gas,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{\+\_\+debug\+Level }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8cpp_source}{Hadron\+Gas\+Vs\+Temp\+Histograms.\+cpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_vs_temp_histograms_a5a5886f782ae750bcc64d72cb0ee1021}\label{class_hadron_gas_vs_temp_histograms_a5a5886f782ae750bcc64d72cb0ee1021}} 
+\index{HadronGasVsTempHistograms@{HadronGasVsTempHistograms}!````~HadronGasVsTempHistograms@{$\sim$HadronGasVsTempHistograms}}
+\index{````~HadronGasVsTempHistograms@{$\sim$HadronGasVsTempHistograms}!HadronGasVsTempHistograms@{HadronGasVsTempHistograms}}
+\doxysubsubsection{\texorpdfstring{$\sim$HadronGasVsTempHistograms()}{~HadronGasVsTempHistograms()}}
+{\footnotesize\ttfamily virtual Hadron\+Gas\+Vs\+Temp\+Histograms\+::$\sim$\+Hadron\+Gas\+Vs\+Temp\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source}{Hadron\+Gas\+Vs\+Temp\+Histograms.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hadron_gas_vs_temp_histograms_aa79dd0065f43332ecc812ce2d817b0cc}\label{class_hadron_gas_vs_temp_histograms_aa79dd0065f43332ecc812ce2d817b0cc}} 
+\index{HadronGasVsTempHistograms@{HadronGasVsTempHistograms}!createHistograms@{createHistograms}}
+\index{createHistograms@{createHistograms}!HadronGasVsTempHistograms@{HadronGasVsTempHistograms}}
+\doxysubsubsection{\texorpdfstring{createHistograms()}{createHistograms()}}
+{\footnotesize\ttfamily void Hadron\+Gas\+Vs\+Temp\+Histograms\+::create\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overload this class to create histograms. 
+
+Reimplemented from \mbox{\hyperlink{class_histograms_ae6197b40e3cb970716aa4fc8a8eaffb2}{Histograms}}.
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8cpp_source}{Hadron\+Gas\+Vs\+Temp\+Histograms.\+cpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_vs_temp_histograms_a512c6df9480fb48a922b54b0196efe63}\label{class_hadron_gas_vs_temp_histograms_a512c6df9480fb48a922b54b0196efe63}} 
+\index{HadronGasVsTempHistograms@{HadronGasVsTempHistograms}!fill@{fill}}
+\index{fill@{fill}!HadronGasVsTempHistograms@{HadronGasVsTempHistograms}}
+\doxysubsubsection{\texorpdfstring{fill()}{fill()}}
+{\footnotesize\ttfamily void Hadron\+Gas\+Vs\+Temp\+Histograms\+::fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_hadron_gas}{Hadron\+Gas}} \&}]{hadron\+Gas }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8cpp_source}{Hadron\+Gas\+Vs\+Temp\+Histograms.\+cpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_vs_temp_histograms_ae28a86641227085949b489a9c7bf1ae8}\label{class_hadron_gas_vs_temp_histograms_ae28a86641227085949b489a9c7bf1ae8}} 
+\index{HadronGasVsTempHistograms@{HadronGasVsTempHistograms}!loadHistograms@{loadHistograms}}
+\index{loadHistograms@{loadHistograms}!HadronGasVsTempHistograms@{HadronGasVsTempHistograms}}
+\doxysubsubsection{\texorpdfstring{loadHistograms()}{loadHistograms()}}
+{\footnotesize\ttfamily void Hadron\+Gas\+Vs\+Temp\+Histograms\+::load\+Histograms (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{input\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overload this class to load histograms. 
+
+Reimplemented from \mbox{\hyperlink{class_histograms_a20ca1f616c8af6d3261e6ca3127ecd9d}{Histograms}}.
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8cpp_source}{Hadron\+Gas\+Vs\+Temp\+Histograms.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_hadron_gas_vs_temp_histograms_a2ce53c3e90f9b7763da0a233e88ce472}\label{class_hadron_gas_vs_temp_histograms_a2ce53c3e90f9b7763da0a233e88ce472}} 
+\index{HadronGasVsTempHistograms@{HadronGasVsTempHistograms}!eDensityVsT@{eDensityVsT}}
+\index{eDensityVsT@{eDensityVsT}!HadronGasVsTempHistograms@{HadronGasVsTempHistograms}}
+\doxysubsubsection{\texorpdfstring{eDensityVsT}{eDensityVsT}}
+{\footnotesize\ttfamily vector$<$TH1$\ast$$>$ Hadron\+Gas\+Vs\+Temp\+Histograms\+::e\+Density\+VsT}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source}{Hadron\+Gas\+Vs\+Temp\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_vs_temp_histograms_a8209d34b579975bb5b4e669fa83b0166}\label{class_hadron_gas_vs_temp_histograms_a8209d34b579975bb5b4e669fa83b0166}} 
+\index{HadronGasVsTempHistograms@{HadronGasVsTempHistograms}!energyDensityVsT@{energyDensityVsT}}
+\index{energyDensityVsT@{energyDensityVsT}!HadronGasVsTempHistograms@{HadronGasVsTempHistograms}}
+\doxysubsubsection{\texorpdfstring{energyDensityVsT}{energyDensityVsT}}
+{\footnotesize\ttfamily TH1$\ast$ Hadron\+Gas\+Vs\+Temp\+Histograms\+::energy\+Density\+VsT}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source_l00030}{30}} of file \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source}{Hadron\+Gas\+Vs\+Temp\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_vs_temp_histograms_ac503804f6faca254ac668cf5a27650bf}\label{class_hadron_gas_vs_temp_histograms_ac503804f6faca254ac668cf5a27650bf}} 
+\index{HadronGasVsTempHistograms@{HadronGasVsTempHistograms}!entropyDensityVsT@{entropyDensityVsT}}
+\index{entropyDensityVsT@{entropyDensityVsT}!HadronGasVsTempHistograms@{HadronGasVsTempHistograms}}
+\doxysubsubsection{\texorpdfstring{entropyDensityVsT}{entropyDensityVsT}}
+{\footnotesize\ttfamily TH1$\ast$ Hadron\+Gas\+Vs\+Temp\+Histograms\+::entropy\+Density\+VsT}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source}{Hadron\+Gas\+Vs\+Temp\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_vs_temp_histograms_a45da185e30eb8081ae95c9b143994f8e}\label{class_hadron_gas_vs_temp_histograms_a45da185e30eb8081ae95c9b143994f8e}} 
+\index{HadronGasVsTempHistograms@{HadronGasVsTempHistograms}!nDensityVsT@{nDensityVsT}}
+\index{nDensityVsT@{nDensityVsT}!HadronGasVsTempHistograms@{HadronGasVsTempHistograms}}
+\doxysubsubsection{\texorpdfstring{nDensityVsT}{nDensityVsT}}
+{\footnotesize\ttfamily vector$<$TH1$\ast$$>$ Hadron\+Gas\+Vs\+Temp\+Histograms\+::n\+Density\+VsT}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source}{Hadron\+Gas\+Vs\+Temp\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_vs_temp_histograms_ad25da3601d1016447df6b99b4a7eeaa9}\label{class_hadron_gas_vs_temp_histograms_ad25da3601d1016447df6b99b4a7eeaa9}} 
+\index{HadronGasVsTempHistograms@{HadronGasVsTempHistograms}!numberDensityVsT@{numberDensityVsT}}
+\index{numberDensityVsT@{numberDensityVsT}!HadronGasVsTempHistograms@{HadronGasVsTempHistograms}}
+\doxysubsubsection{\texorpdfstring{numberDensityVsT}{numberDensityVsT}}
+{\footnotesize\ttfamily TH1$\ast$ Hadron\+Gas\+Vs\+Temp\+Histograms\+::number\+Density\+VsT}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source_l00029}{29}} of file \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source}{Hadron\+Gas\+Vs\+Temp\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_vs_temp_histograms_ac7be3b200bd3984ad6d7d73fa6f0f1dc}\label{class_hadron_gas_vs_temp_histograms_ac7be3b200bd3984ad6d7d73fa6f0f1dc}} 
+\index{HadronGasVsTempHistograms@{HadronGasVsTempHistograms}!pressureVsT@{pressureVsT}}
+\index{pressureVsT@{pressureVsT}!HadronGasVsTempHistograms@{HadronGasVsTempHistograms}}
+\doxysubsubsection{\texorpdfstring{pressureVsT}{pressureVsT}}
+{\footnotesize\ttfamily TH1$\ast$ Hadron\+Gas\+Vs\+Temp\+Histograms\+::pressure\+VsT}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source}{Hadron\+Gas\+Vs\+Temp\+Histograms.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_vs_temp_histograms_abb7ea593584c512018f63dc000186fcd}\label{class_hadron_gas_vs_temp_histograms_abb7ea593584c512018f63dc000186fcd}} 
+\index{HadronGasVsTempHistograms@{HadronGasVsTempHistograms}!sDensityVsT@{sDensityVsT}}
+\index{sDensityVsT@{sDensityVsT}!HadronGasVsTempHistograms@{HadronGasVsTempHistograms}}
+\doxysubsubsection{\texorpdfstring{sDensityVsT}{sDensityVsT}}
+{\footnotesize\ttfamily vector$<$TH1$\ast$$>$ Hadron\+Gas\+Vs\+Temp\+Histograms\+::s\+Density\+VsT}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source_l00037}{37}} of file \mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp_source}{Hadron\+Gas\+Vs\+Temp\+Histograms.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Hadron\+Gas/\mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8hpp}{Hadron\+Gas\+Vs\+Temp\+Histograms.\+hpp}}\item 
+Hadron\+Gas/\mbox{\hyperlink{_hadron_gas_vs_temp_histograms_8cpp}{Hadron\+Gas\+Vs\+Temp\+Histograms.\+cpp}}\end{DoxyCompactItemize}

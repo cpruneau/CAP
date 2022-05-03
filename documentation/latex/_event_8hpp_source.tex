@@ -1,0 +1,147 @@
+\hypertarget{_event_8hpp_source}{}\doxysection{Event.\+hpp}
+\label{_event_8hpp_source}\index{Base/Event.hpp@{Base/Event.hpp}}
+\mbox{\hyperlink{_event_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef Event\_hpp}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define Event\_hpp}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_8hpp}{Particle.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_nucleus_8hpp}{Nucleus.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_event_properties_8hpp}{EventProperties.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_collision_geometry_moments_8hpp}{CollisionGeometryMoments.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00021}\mbox{\hyperlink{class_event}{00021}} \textcolor{keyword}{class }\mbox{\hyperlink{class_event}{Event}}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00022}00022 \{}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00023}00023 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00028}00028   \mbox{\hyperlink{class_event_a5a40dd4708297f7031e29b39e039ae10}{Event}}();}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00030}00030   \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00032}00032   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_event_a7704ec01ce91e673885792054214b3d2}{\string~Event}}();}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00037}00037   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_a0862af1471604bf30a4f50a5e028637a}{clear}}();}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00042}00042   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_a149bd3fe9d4ab548a17d684b30283c87}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00047}00047   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_a2634bcc8f8dae7dce4578af73b98200a}{add}}(\mbox{\hyperlink{class_particle}{Particle}} * particle);}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00053}\mbox{\hyperlink{class_event_a56b4eb03e516fc8fbc40a0f6db762f35}{00053}}   \mbox{\hyperlink{class_particle}{Particle}} * \mbox{\hyperlink{class_event_a56b4eb03e516fc8fbc40a0f6db762f35}{getParticleAt}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} index)}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00054}00054   \{}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00055}00055     \textcolor{keywordflow}{if} (index<\mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}.size() )}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00056}00056       \{}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00057}00057       \textcolor{keywordflow}{return} \mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}[index];}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00058}00058       \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00059}00059     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00060}00060       \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00061}00061   \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00066}\mbox{\hyperlink{class_event_a5b52382310a340cb4010b0128f632ccc}{00066}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long}  \mbox{\hyperlink{class_event_a5b52382310a340cb4010b0128f632ccc}{getParticleCount}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}.size();\}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00071}\mbox{\hyperlink{class_event_a44dcbb957de58cc2d5393eb4ef6bc8e9}{00071}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long}  \mbox{\hyperlink{class_event_a44dcbb957de58cc2d5393eb4ef6bc8e9}{getNParticles}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}.size();\}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00076}\mbox{\hyperlink{class_event_ad9074f2fdcf1a0ab77504418225ec784}{00076}}   vector<Particle*> \& \mbox{\hyperlink{class_event_ad9074f2fdcf1a0ab77504418225ec784}{getParticles}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}};\}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00081}\mbox{\hyperlink{class_event_ae1977911c0a1d5f8d3d7f1859e8a0c77}{00081}}   \textcolor{keyword}{const} vector<Particle*> \& \mbox{\hyperlink{class_event_ae1977911c0a1d5f8d3d7f1859e8a0c77}{getParticles}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}};\}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00087}\mbox{\hyperlink{class_event_aea17d9fac3bcfc23c55b1960b715cde3}{00087}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_event_aea17d9fac3bcfc23c55b1960b715cde3}{getEventIndex}}()\textcolor{keyword}{ const      }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_event_ad456ef21c6706d6ff8194bf07c33c692}{eventIndex}};  \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00093}\mbox{\hyperlink{class_event_a4819cff35176f2967362e7ce09c653c8}{00093}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_event_a4819cff35176f2967362e7ce09c653c8}{getEventNumber}}()\textcolor{keyword}{ const     }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_event_ab746ab81d6d03d2152e28eb9ed6ee969}{eventNumber}}; \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00098}\mbox{\hyperlink{class_event_a22f7afdf875baf1ab6dc58faad9ec0c1}{00098}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_a22f7afdf875baf1ab6dc58faad9ec0c1}{incrementEventIndex}}()      \{ \mbox{\hyperlink{class_event_ad456ef21c6706d6ff8194bf07c33c692}{eventIndex}}++;       \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00103}\mbox{\hyperlink{class_event_a442352e8fa54636e9c77cfe55d8a6227}{00103}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_a442352e8fa54636e9c77cfe55d8a6227}{setEventIndex}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} index)  \{ \mbox{\hyperlink{class_event_ad456ef21c6706d6ff8194bf07c33c692}{eventIndex}}  = index;\}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00108}\mbox{\hyperlink{class_event_a9cf8adfb77b8f7a4bbf539d3e221c614}{00108}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_a9cf8adfb77b8f7a4bbf539d3e221c614}{setEventNumber}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} number)\{ \mbox{\hyperlink{class_event_ab746ab81d6d03d2152e28eb9ed6ee969}{eventNumber}} = number;\}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00109}00109 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00113}\mbox{\hyperlink{class_event_ae948ec41d6c28afc29d9d35413674750}{00113}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_ae948ec41d6c28afc29d9d35413674750}{setEventProperties}}(\mbox{\hyperlink{class_event_properties}{EventProperties}} * properties) \{ \mbox{\hyperlink{class_event_aad3919d83a12e18a8f91f515b32825d0}{eventProperties}} = properties; \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00118}00118   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_a260d0735156a0e18183b7d4fd750df9a}{printProperties}}(ostream \& output);}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00124}00124   \mbox{\hyperlink{class_particle}{Particle}}* \mbox{\hyperlink{class_event_a04a79182977a0bf3f89888cb3f28aa5d}{addInteraction}}(\mbox{\hyperlink{class_particle}{Particle}}* nucleonA, \mbox{\hyperlink{class_particle}{Particle}}* nucleonB);}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00129}\mbox{\hyperlink{class_event_adaecdb121a1057578cd0adee16ec954a}{00129}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_adaecdb121a1057578cd0adee16ec954a}{setImpactParameter}}(\textcolor{keywordtype}{double} \_b)  \{ \mbox{\hyperlink{class_event_a97b540a51be2b2dc547a0b8cf3776b67}{b}} = \_b;   \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00135}00135   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_abc674e4897861a3f774be0c66a4b54cb}{setNucleusA}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} z, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} a);}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00136}00136   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_ad236bb05e0996e592ca271faf35299b7}{setNucleusB}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} z, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} a);}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00137}00137 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00138}\mbox{\hyperlink{class_event_ad0424d190149f3ae3dba635ec5e17850}{00138}}   \textcolor{keywordtype}{double}    \mbox{\hyperlink{class_event_ad0424d190149f3ae3dba635ec5e17850}{getImpactParameter}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_event_a97b540a51be2b2dc547a0b8cf3776b67}{b}}; \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00139}\mbox{\hyperlink{class_event_aa1131f30b264ee2873fd45134550cec9}{00139}}   \textcolor{keywordtype}{double}    \mbox{\hyperlink{class_event_aa1131f30b264ee2873fd45134550cec9}{getCrossSection}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_event_a97b540a51be2b2dc547a0b8cf3776b67}{b}}*\mbox{\hyperlink{class_event_a97b540a51be2b2dc547a0b8cf3776b67}{b}}/2.0; \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00140}\mbox{\hyperlink{class_event_a161572ff6137fb68b2f0beeb693fa6b6}{00140}}   \mbox{\hyperlink{class_nucleus}{Nucleus}} \& \mbox{\hyperlink{class_event_a161572ff6137fb68b2f0beeb693fa6b6}{getNucleusA}}() \{ \textcolor{keywordflow}{return} *\mbox{\hyperlink{class_event_a0800713ebfb49bcad20b0fa04be0237e}{nucleusA}}; \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00141}\mbox{\hyperlink{class_event_af6e93c3572040217760efd11024f8d6c}{00141}}   \mbox{\hyperlink{class_nucleus}{Nucleus}} \& \mbox{\hyperlink{class_event_af6e93c3572040217760efd11024f8d6c}{getNucleusB}}() \{ \textcolor{keywordflow}{return} *\mbox{\hyperlink{class_event_abc999b40aee5bbf56c6401f76f557fe9}{nucleusB}}; \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00142}00142 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00143}00143   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_event_a231d273e05043d176bc9cfc5b195c9e0}{getNParticipants}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00144}00144   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_event_a4f60f5eae51c98ba6999da48a29cd4b4}{getNBinaryCollisions}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00145}00145 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00146}00146   vector<Particle*> \mbox{\hyperlink{class_event_a2ede6a2bc4e363dd1ad87ea3b4c8ab58}{getNucleonNucleonInteractions}}();}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00147}00147 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00148}00148 \textcolor{comment}{//  unsigned int getNProtonProtonCollisions()   const;}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00149}00149 \textcolor{comment}{//  unsigned int getNProtonNeutronCollisions()  const;}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00150}00150 \textcolor{comment}{//  unsigned int getNNeutronNeutronCollisions() const;}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00151}00151 \textcolor{comment}{//  unsigned int getNBinaryCollisions() const           \{ return nnInteractions.size(); \}}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00152}00152 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00153}\mbox{\hyperlink{class_event_a71f6c476981f53a7db6f8dfe87494928}{00153}}   \mbox{\hyperlink{class_event_properties}{EventProperties}} * \mbox{\hyperlink{class_event_a71f6c476981f53a7db6f8dfe87494928}{getEventProperties}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_event_aad3919d83a12e18a8f91f515b32825d0}{eventProperties}}; \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00154}\mbox{\hyperlink{class_event_aab262dd3393deac58c50f000e790ec7c}{00154}}   \mbox{\hyperlink{class_event_properties}{EventProperties}} * \mbox{\hyperlink{class_event_aab262dd3393deac58c50f000e790ec7c}{getEventProperties}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_event_aad3919d83a12e18a8f91f515b32825d0}{eventProperties}}; \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00155}00155 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00156}00156   \textcolor{keyword}{static} \mbox{\hyperlink{class_event}{Event}} * \mbox{\hyperlink{class_event_afaab747c9fb60168b29cde523b039db3}{getEventStream}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} index);}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00157}00157   \textcolor{keyword}{static} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_event_af49ca73bb407194145a4db2d9da39d1d}{getNEventStreams}}();}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00158}00158   \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_af76973eb3e6e0070333d5120b26044a3}{resetEventStreams}}();}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00159}00159 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00163}\mbox{\hyperlink{class_event_a29b0d1d1ef428c6d8b2261c57abeacdd}{00163}}   \mbox{\hyperlink{class_collision_geometry_moments}{CollisionGeometryMoments}} \& \mbox{\hyperlink{class_event_a29b0d1d1ef428c6d8b2261c57abeacdd}{getParticipantMoments}}()}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00164}00164   \{}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00165}00165   \textcolor{keywordflow}{return} *\mbox{\hyperlink{class_event_a1ac318c363330c9ce3efa50d1c8fba85}{participantMoments}};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00166}00166   \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00171}\mbox{\hyperlink{class_event_aab4e9e5dbe66061a81c952931d457e78}{00171}}   \textcolor{keyword}{const} \mbox{\hyperlink{class_collision_geometry_moments}{CollisionGeometryMoments}} \& \mbox{\hyperlink{class_event_aab4e9e5dbe66061a81c952931d457e78}{getParticipantMoments}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00172}00172 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00173}00173   \textcolor{keywordflow}{return} *\mbox{\hyperlink{class_event_a1ac318c363330c9ce3efa50d1c8fba85}{participantMoments}};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00174}00174   \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00175}00175 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00179}\mbox{\hyperlink{class_event_a2a4812283cddf70757d46bb566968ed4}{00179}}   \mbox{\hyperlink{class_collision_geometry_moments}{CollisionGeometryMoments}} \& \mbox{\hyperlink{class_event_a2a4812283cddf70757d46bb566968ed4}{getBinaryMoments}}()}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00180}00180   \{}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00181}00181   \textcolor{keywordflow}{return} *\mbox{\hyperlink{class_event_a2fa3893308b9b19ac88b7b6f15702c08}{binaryMoments}};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00182}00182   \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00183}00183 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00187}\mbox{\hyperlink{class_event_abe8f4def4a7e6566bf9939f9ae4956d4}{00187}}   \textcolor{keyword}{const} \mbox{\hyperlink{class_collision_geometry_moments}{CollisionGeometryMoments}} \& \mbox{\hyperlink{class_event_abe8f4def4a7e6566bf9939f9ae4956d4}{getBinaryMoments}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00188}00188 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00189}00189   \textcolor{keywordflow}{return} *\mbox{\hyperlink{class_event_a2fa3893308b9b19ac88b7b6f15702c08}{binaryMoments}};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00190}00190   \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00191}00191 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00192}\mbox{\hyperlink{class_event_a65446821374a39120da2e66e63a3a4bc}{00192}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_a65446821374a39120da2e66e63a3a4bc}{setStreamIndex}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} index)}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00193}00193   \{}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00194}00194   \mbox{\hyperlink{class_event_a62c2a5af123d87400dff185f699b11f7}{streamIndex}} = index;}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00195}00195   \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00196}00196 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00197}\mbox{\hyperlink{class_event_ae0638a3364fd3e7f5c8c952b84672b5c}{00197}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  \mbox{\hyperlink{class_event_ae0638a3364fd3e7f5c8c952b84672b5c}{getStreamIndex}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00198}00198 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00199}00199    \textcolor{keywordflow}{return} \mbox{\hyperlink{class_event_a62c2a5af123d87400dff185f699b11f7}{streamIndex}};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00200}00200   \}}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00201}00201 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00202}00202 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00203}00203 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00204}00204 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00205}\mbox{\hyperlink{class_event_a62c2a5af123d87400dff185f699b11f7}{00205}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  \mbox{\hyperlink{class_event_a62c2a5af123d87400dff185f699b11f7}{streamIndex}};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00206}\mbox{\hyperlink{class_event_ad456ef21c6706d6ff8194bf07c33c692}{00206}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_event_ad456ef21c6706d6ff8194bf07c33c692}{eventIndex}};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00207}\mbox{\hyperlink{class_event_ab746ab81d6d03d2152e28eb9ed6ee969}{00207}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_event_ab746ab81d6d03d2152e28eb9ed6ee969}{eventNumber}};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00208}\mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{00208}}   vector<Particle*> \mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00209}\mbox{\hyperlink{class_event_aad3919d83a12e18a8f91f515b32825d0}{00209}}   \mbox{\hyperlink{class_event_properties}{EventProperties}} * \mbox{\hyperlink{class_event_aad3919d83a12e18a8f91f515b32825d0}{eventProperties}};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00210}\mbox{\hyperlink{class_event_a3f9ced0649df6ce594df597e919d8115}{00210}}   \textcolor{keyword}{static} vector<Event*> \mbox{\hyperlink{class_event_a3f9ced0649df6ce594df597e919d8115}{eventStreamsStore}};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00211}00211 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00212}\mbox{\hyperlink{class_event_a97b540a51be2b2dc547a0b8cf3776b67}{00212}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_event_a97b540a51be2b2dc547a0b8cf3776b67}{b}};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00213}\mbox{\hyperlink{class_event_a0800713ebfb49bcad20b0fa04be0237e}{00213}}   \mbox{\hyperlink{class_nucleus}{Nucleus}} * \mbox{\hyperlink{class_event_a0800713ebfb49bcad20b0fa04be0237e}{nucleusA}};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00214}\mbox{\hyperlink{class_event_abc999b40aee5bbf56c6401f76f557fe9}{00214}}   \mbox{\hyperlink{class_nucleus}{Nucleus}} * \mbox{\hyperlink{class_event_abc999b40aee5bbf56c6401f76f557fe9}{nucleusB}};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00215}\mbox{\hyperlink{class_event_a2fa3893308b9b19ac88b7b6f15702c08}{00215}}   \mbox{\hyperlink{class_collision_geometry_moments}{CollisionGeometryMoments}} * \mbox{\hyperlink{class_event_a2fa3893308b9b19ac88b7b6f15702c08}{binaryMoments}};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00216}\mbox{\hyperlink{class_event_a1ac318c363330c9ce3efa50d1c8fba85}{00216}}   \mbox{\hyperlink{class_collision_geometry_moments}{CollisionGeometryMoments}} * \mbox{\hyperlink{class_event_a1ac318c363330c9ce3efa50d1c8fba85}{participantMoments}};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00217}00217 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00218}00218   ClassDef(\mbox{\hyperlink{class_event}{Event}},0)}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00219}00219 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00220}00220 \};}
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00221}00221 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00222}00222 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00223}00223 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00224}00224 }
+\DoxyCodeLine{\Hypertarget{_event_8hpp_source_l00225}00225 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* Event\_hpp */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

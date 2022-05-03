@@ -1,0 +1,188 @@
+\hypertarget{_save_8_c_source}{}\doxysection{Save.\+C}
+\label{_save_8_c_source}\index{Macros/Save.C@{Macros/Save.C}}
+\mbox{\hyperlink{_save_8_c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00001}00001 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00002}00002 \textcolor{preprocessor}{\#include "{}TRandom.h"{}}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00013}\mbox{\hyperlink{_save_8_c_a9bb5a3b257cc81f19795869a800bb656}{00013}} TFile * \mbox{\hyperlink{_save_8_c_a9bb5a3b257cc81f19795869a800bb656}{openRootFileReadOnly}}(\textcolor{keyword}{const} TString \& pathName, \textcolor{keyword}{const} TString \& fileName)}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00014}00014 \{}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00015}00015   TString fn = pathName + fileName;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00016}00016   TFile * file = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00017}00017   file = \textcolor{keyword}{new} TFile(fn,\textcolor{stringliteral}{"{}OLD"{}});}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00018}00018   \textcolor{keywordflow}{if} (file-\/>IsOpen())}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00019}00019     \{}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00020}00020     cout << \textcolor{stringliteral}{"{}<I> openRootFileReadOnly() Successfully opened: "{}} << fn << endl;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00021}00021     \textcolor{keywordflow}{return} file;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00022}00022     \}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00023}00023   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00024}00024     \{}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00025}00025     cout << \textcolor{stringliteral}{"{}<E> openRootFileReadOnly() Unable to open: "{}} << fn << endl;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00026}00026     \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00027}00027     \}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00028}00028 \}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00030}\mbox{\hyperlink{_save_8_c_a1790e69cfb624ac931b3d9fcfe90c367}{00030}} TFile * \mbox{\hyperlink{_save_8_c_a1790e69cfb624ac931b3d9fcfe90c367}{openRootFileRecreate}}(\textcolor{keyword}{const} TString \& pathName, \textcolor{keyword}{const} TString \& fileName)}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00031}00031 \{}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00032}00032   TString fn = pathName + fileName;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00033}00033   TFile * file = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00034}00034   file = \textcolor{keyword}{new} TFile(fn,\textcolor{stringliteral}{"{}RECREATE"{}});}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00035}00035   \textcolor{keywordflow}{if} (file-\/>IsOpen())}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00036}00036     \{}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00037}00037     cout << \textcolor{stringliteral}{"{}<I> openRootFileRecreate() Successfully opened: "{}} << fn << endl;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00038}00038     \textcolor{keywordflow}{return} file;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00039}00039     \}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00040}00040   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00041}00041     \{}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00042}00042     cout << \textcolor{stringliteral}{"{}<E> openRootFileRecreate() Unable to open: "{}} << fn << endl;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00043}00043     \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00044}00044     \}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00046}00046 \}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00048}\mbox{\hyperlink{_save_8_c_ad65394156510f8b7584be03b8587c028}{00048}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_save_8_c_ad65394156510f8b7584be03b8587c028}{writeParameter}}(TFile * outputFile, \textcolor{keyword}{const} TString parameterName, \textcolor{keywordtype}{long} value, \textcolor{keywordtype}{bool} verbose=0)}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00049}00049 \{}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00050}00050   \textcolor{keywordflow}{if} (!outputFile)}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00051}00051     \{}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00052}00052     cout << \textcolor{stringliteral}{"{}<I> writeParameter() outputFile is a null pointer"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00053}00053     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00054}00054     \}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00055}00055   \textcolor{keywordflow}{if} (verbose) cout << \textcolor{stringliteral}{"{}<I> writeParameter(...)  Saving "{}} <<  parameterName << \textcolor{stringliteral}{"{} with value: "{}}  << value << endl;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00056}00056   outputFile-\/>cd();}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00057}00057   TParameter<Long64\_t>(parameterName,value,\textcolor{charliteral}{'+'}).Write();}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00058}00058 \}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00060}\mbox{\hyperlink{_save_8_c_aacf30e9b077de6269a1145a2cc471e65}{00060}} \textcolor{keywordtype}{long}  \mbox{\hyperlink{_save_8_c_aacf30e9b077de6269a1145a2cc471e65}{readParameter}}(TFile * inputFile, \textcolor{keyword}{const} TString \& parameterName, \textcolor{keywordtype}{bool} verbose=0)}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00061}00061 \{}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00062}00062   \textcolor{keywordflow}{if} (!inputFile)}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00063}00063     \{}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00064}00064     cout << \textcolor{stringliteral}{"{}<I> readParameter() inputFile is a null pointer"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00065}00065     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00066}00066     \}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00067}00067   \textcolor{keywordflow}{if} (verbose) cout << \textcolor{stringliteral}{"{}<I> readParameter() Reading parameter: "{}} << parameterName << \textcolor{stringliteral}{"{} from file: "{}} << inputFile-\/>GetName() << endl;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00068}00068   TParameter<Long64\_t> *par = (TParameter<Long64\_t> *) inputFile-\/>Get(parameterName);}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00069}00069   \textcolor{keywordflow}{if} (!par)}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00070}00070     \{}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00071}00071     cout << \textcolor{stringliteral}{"{}Parameter not found. Returning value=1"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00072}00072     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00073}00073     \}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00074}00074   \textcolor{keywordtype}{long} value = par-\/>GetVal();}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00075}00075   \textcolor{keyword}{delete} par;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00076}00076   \textcolor{keywordflow}{if} (verbose) cout << \textcolor{stringliteral}{"{}<I> readParameter()  Parameter value : "{}} << value << endl;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00077}00077   \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00078}00078 \}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00080}\mbox{\hyperlink{_save_8_c_a86c8a7ac715f791f3f7a65fcd1fff9f9}{00080}} \textcolor{keywordtype}{int} \mbox{\hyperlink{_save_8_c_a86c8a7ac715f791f3f7a65fcd1fff9f9}{RunDerivedHistogramCalculator}}(TString pathName=\textcolor{stringliteral}{"{}/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/7TEV/100MEventsMB\_CRON\_Charged\_eta4/"{}},}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00081}00081                                   TString baseFileName=\textcolor{stringliteral}{"{}PYTHIA\_pp\_7TeV\_inelastic\_"{}},}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00082}00082                                   \textcolor{keywordtype}{int} first = 0,}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00083}00083                                   \textcolor{keywordtype}{int} last=287)}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00084}00084 \{}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00085}00085   cout << \textcolor{stringliteral}{"{}RunDerivedHistogramCalculator() Starting"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00087}00087   TString includesPath = getenv(\textcolor{stringliteral}{"{}WAC\_SRC"{}});}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00088}00088   includesPath += \textcolor{stringliteral}{"{}/Base/"{}};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00089}00089   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}MessageLogger.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00090}00090   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Task.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00091}00091   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}TaskConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00092}00092   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}HistogramCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00093}00093   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Histograms.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00094}00094   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}DerivedHistogramCalculator.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00095}00095   gSystem-\/>Load(\textcolor{stringliteral}{"{}libBase.dylib"{}});}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00097}00097   \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}}  debugLevel = \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{MessageLogger::Info}}; \textcolor{comment}{//MessageLogger::Debug; //}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00099}00099   ParticleHistosConfiguration * p1Config = \textcolor{keyword}{new} ParticleHistosConfiguration();}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00100}00100   p1Config-\/>fillEta     = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00101}00101   p1Config-\/>fillY       = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00102}00102   p1Config-\/>fillP2      = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00103}00103   p1Config-\/>nBins\_n1    = 200;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00104}00104   p1Config-\/>min\_n1      = 0.0;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00105}00105   p1Config-\/>max\_n1      = 200.0;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00106}00106   p1Config-\/>nBins\_eTot  = 100;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00107}00107   p1Config-\/>min\_eTot    = 0.0;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00108}00108   p1Config-\/>max\_eTot    = 1000.0;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00109}00109   p1Config-\/>nBins\_pt    = 200;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00110}00110   p1Config-\/>min\_pt      = 0.00;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00111}00111   p1Config-\/>max\_pt      = 10.0;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00112}00112   p1Config-\/>nBins\_eta   = 20;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00113}00113   p1Config-\/>min\_eta     = -\/1;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00114}00114   p1Config-\/>max\_eta     =  1;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00115}00115   p1Config-\/>nBins\_y     = 20;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00116}00116   p1Config-\/>min\_y       = -\/1;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00117}00117   p1Config-\/>max\_y       = 1;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00118}00118   p1Config-\/>nBins\_phi   = 36;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00119}00119   p1Config-\/>min\_phi     = 0.0;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00120}00120   p1Config-\/>max\_phi     = 2.0*3.1415927;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00121}00121   p1Config-\/>validate();}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00122}00122 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00124}00124   ParticlePairHistosConfiguration * p2Config = \textcolor{keyword}{new} ParticlePairHistosConfiguration();}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00125}00125   p2Config-\/>fillEta     = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00126}00126   p2Config-\/>fillY       = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00127}00127   p2Config-\/>fillP2      = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00128}00128   p2Config-\/>nBins\_n1    = 100;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00129}00129   p2Config-\/>min\_n1      = 0.0;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00130}00130   p2Config-\/>max\_n1      = 100.0;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00131}00131   p2Config-\/>nBins\_n2    = 100;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00132}00132   p2Config-\/>min\_n2      = 0.0;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00133}00133   p2Config-\/>max\_n2      = 400.0;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00134}00134   p2Config-\/>nBins\_pt    = 20;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00135}00135   p2Config-\/>min\_pt      = 0.00;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00136}00136   p2Config-\/>max\_pt      = 2.0;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00137}00137   p2Config-\/>nBins\_eta   = 80;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00138}00138   p2Config-\/>min\_eta     = -\/4;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00139}00139   p2Config-\/>max\_eta     = 4;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00140}00140   p2Config-\/>nBins\_y     = 80;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00141}00141   p2Config-\/>min\_y       = -\/4;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00142}00142   p2Config-\/>max\_y       = 4;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00143}00143   p2Config-\/>nBins\_phi   = 36;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00144}00144   p2Config-\/>min\_phi     = 0.0;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00145}00145   p2Config-\/>max\_phi     = 2.0*3.1415927;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00146}00146   p2Config-\/>validate();}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00147}00147 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00148}00148 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00149}00149   \textcolor{comment}{// =========================================}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00150}00150   \textcolor{comment}{// Setup all event filters}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00151}00151   \textcolor{comment}{// =========================================}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00152}00152   vector<EventFilter*> eventFiltersP1;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00153}00153   vector<EventFilter*> eventFiltersP2;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00154}00154   \mbox{\hyperlink{class_event_filter}{EventFilter}} * openEventFilter  = \textcolor{keyword}{new} \mbox{\hyperlink{class_event_filter}{EventFilter}}(EventFilter::MinBias,0.0,0.0);}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00155}00155   \mbox{\hyperlink{class_event_filter}{EventFilter}} * aliceEventFilter = \textcolor{keyword}{new} \mbox{\hyperlink{class_event_filter_alice_v0}{EventFilterAliceV0}}(1.0, 1000.0, 1.0, 1000.0);}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00156}00156   eventFiltersP1.push\_back( openEventFilter);}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00157}00157   eventFiltersP2.push\_back( openEventFilter);}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00159}00159   \textcolor{comment}{// =========================================}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00160}00160   \textcolor{comment}{// Setup all particle filters}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00161}00161   \textcolor{comment}{// =========================================}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00162}00162   vector<ParticleFilter*>  particleFiltersP1;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00163}00163   vector<ParticleFilter*>  particleFiltersP2;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00164}00164   vector<double> limits;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00165}00165 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00166}00166   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}* openParticleFilter     = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}       (\textcolor{keyword}{false}, 0.000, 100.0, \textcolor{keyword}{false},  6.0, -\/6.0, \textcolor{keyword}{true},  -\/10.0, 10.0, ParticleFilter::Hadron,ParticleFilter::AllCharges);}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00167}00167   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}* aliceV0ParticleFilter  = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_filter_alice_v0}{ParticleFilterAliceV0}}(\textcolor{keyword}{true}, 0.001, 100.0, \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063ab7110590ca0f886f6de1a5aee7b786aa}{ParticleFilterAliceV0::V0M}},    ParticleFilter::Hadron,ParticleFilter::Charged);}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00168}00168   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}* aliceTpcParticleFilter = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}       (\textcolor{keyword}{true}, 0.200, 100.0, \textcolor{keyword}{true}, -\/1.0, 1.0,   \textcolor{keyword}{false},  10.0, -\/10.0,ParticleFilter::Hadron,ParticleFilter::Charged);}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00169}00169 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00170}00170   \textcolor{keywordtype}{int} analysisOptionP2 = 4;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00171}00171   \textcolor{keywordflow}{switch} (analysisOptionP2)}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00172}00172     \{}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00173}00173       \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00174}00174       \textcolor{keywordflow}{case} 0:  particleFiltersP2.push\_back( openParticleFilter      ); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00175}00175       \textcolor{keywordflow}{case} 1:  particleFiltersP2.push\_back( aliceV0ParticleFilter   ); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00176}00176       \textcolor{keywordflow}{case} 2:  particleFiltersP2.push\_back( aliceTpcParticleFilter  ); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00177}00177       \textcolor{keywordflow}{case} 3:  particleFiltersP2 = \mbox{\hyperlink{class_particle_filter_ab0958a5a13805f4b8c7f7b290276f89f}{ParticleFilter::createChargedHadronFilters}}(  \textcolor{keyword}{true}, 0.2, 10.0, \textcolor{keyword}{true}, -\/6.0, 6.0, \textcolor{keyword}{false},10.0, -\/10.0); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00178}00178       \textcolor{keywordflow}{case} 4:  particleFiltersP2 = \mbox{\hyperlink{class_particle_filter_ab0958a5a13805f4b8c7f7b290276f89f}{ParticleFilter::createChargedHadronFilters}}(  \textcolor{keyword}{true}, 0.0, 100.0, \textcolor{keyword}{true}, -\/4.0, 4.0, \textcolor{keyword}{false}, 4.0, -\/4.0); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00179}00179       \textcolor{keywordflow}{case} 5:  particleFiltersP2 = \mbox{\hyperlink{class_particle_filter_a438da9d967a7c1bef4343afae70a17a4}{ParticleFilter::createPlusMinusHadronFilters}}(\textcolor{keyword}{true}, 0.0, 100.0,\textcolor{keyword}{false}, 6.0, -\/6.0,\textcolor{keyword}{true}, -\/4.0, 4.0); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00180}00180       \textcolor{keywordflow}{case} 6:  particleFiltersP2 = ParticleFilter::createBaryonFilters(         \textcolor{keyword}{true}, 0.2, 10.0, \textcolor{keyword}{true}, -\/1.0, 1.0, \textcolor{keyword}{false},10.0, -\/10.0); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00181}00181     \}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00182}00182 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00183}00183   \mbox{\hyperlink{class_file_task_iterator}{FileTaskIterator}} * iterator = \textcolor{keyword}{new} \mbox{\hyperlink{class_file_task_iterator}{FileTaskIterator}}();}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00184}00184   iterator-\/>addFilenameTemplates(pathName,baseFileName,excludePattern,includePattern);}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00185}00185   iterator-\/>\mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{addSubtask}}(\textcolor{keyword}{new} \mbox{\hyperlink{class_particle_pair_derived_histogram_calculator}{ParticlePairDerivedHistogramCalculator}}(\textcolor{stringliteral}{"{}P2"{}}, p2Config, eventFiltersP2, particleFiltersP2, debugLevel));}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00186}00186   iterator-\/>\mbox{\hyperlink{class_file_task_iterator_ae8c7b50f678f1cc685b72f6ee0e9a540}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00187}00187 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00188}00188   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00189}00189 }
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00190}00190 \}}
+\DoxyCodeLine{\Hypertarget{_save_8_c_source_l00191}00191 }
+
+\end{DoxyCode}

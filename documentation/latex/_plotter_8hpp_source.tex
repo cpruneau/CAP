@@ -1,0 +1,128 @@
+\hypertarget{_plotter_8hpp_source}{}\doxysection{Plotter.\+hpp}
+\label{_plotter_8hpp_source}\index{Base/Plotter.hpp@{Base/Plotter.hpp}}
+\mbox{\hyperlink{_plotter_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00003}00003 \textcolor{comment}{/*************************************************************************}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00009}00009 \textcolor{comment}{ *************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef CAP\_\_Plotter}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define CAP\_\_Plotter}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_canvas_collection_8hpp}{CanvasCollection.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_canvas_configuration_8hpp}{CanvasConfiguration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_graph_configuration_8hpp}{GraphConfiguration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_data_graph_8hpp}{DataGraph.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_message_logger_8hpp}{MessageLogger.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}TStyle.h"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}TH1.h"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00019}00019 \textcolor{preprocessor}{\#include "{}TH1F.h"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00020}00020 \textcolor{preprocessor}{\#include "{}TH1D.h"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00021}00021 \textcolor{preprocessor}{\#include "{}TH2.h"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00022}00022 \textcolor{preprocessor}{\#include "{}TH2F.h"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00023}00023 \textcolor{preprocessor}{\#include "{}TH2D.h"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00024}00024 \textcolor{preprocessor}{\#include "{}TGraph.h"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00025}00025 \textcolor{preprocessor}{\#include "{}TLatex.h"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00026}00026 \textcolor{preprocessor}{\#include "{}TLegend.h"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00027}00027 \textcolor{preprocessor}{\#include "{}TLine.h"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00028}00028 \textcolor{preprocessor}{\#include "{}TArrow.h"{}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00030}\mbox{\hyperlink{class_plotter}{00030}} \textcolor{keyword}{class }\mbox{\hyperlink{class_plotter}{Plotter}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_canvas_collection}{CanvasCollection}}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00031}00031 \{}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00032}00032 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00034}00034   \mbox{\hyperlink{class_plotter_aa78b072dc50292ab120d720319ae7fd8}{Plotter}}(\textcolor{keyword}{const} TString\& \_name,\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}} \_logLevel=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}});}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00035}00035   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_plotter_acd0883f9597a6b3bfcca0fce926809a0}{\string~Plotter}}();}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00037}00037   \textcolor{comment}{// ================================================================================================}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00038}00038   \textcolor{comment}{// Function to plot a single 1D histogram}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00039}00039   \textcolor{comment}{// h       : pointer  to one histograms}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00040}00040   \textcolor{comment}{// legends : label  used as legend in the body of the plot}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00041}00041   \textcolor{comment}{// ================================================================================================}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00042}00042   TCanvas *  \mbox{\hyperlink{class_plotter_a861c11293799d7029e05e226c0554c1a}{plot}}(TString   canvasName, \mbox{\hyperlink{class_canvas_configuration}{CanvasConfiguration}} * cc, \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}} * gc,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00043}00043                   TString   xTitle,  \textcolor{keywordtype}{double} xMin, \textcolor{keywordtype}{double} xMax,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00044}00044                   TString   yTitle,  \textcolor{keywordtype}{double} yMin, \textcolor{keywordtype}{double} yMax,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00045}00045                   TH1 * h,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00046}00046                   TString   hLegend,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00047}00047                   \textcolor{keywordtype}{double} xMinLeg, \textcolor{keywordtype}{double} yMinLeg, \textcolor{keywordtype}{double} xMaxLeg, \textcolor{keywordtype}{double} yMaxLeg,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00048}00048                   \textcolor{keywordtype}{double} legendSize);}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00050}00050   \textcolor{comment}{// ================================================================================================}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00051}00051   \textcolor{comment}{// Function to plot a single 2D histogram}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00052}00052   \textcolor{comment}{// ================================================================================================}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00053}00053   TCanvas *  \mbox{\hyperlink{class_plotter_a861c11293799d7029e05e226c0554c1a}{plot}}(TString   canvasName, \mbox{\hyperlink{class_canvas_configuration}{CanvasConfiguration}} * cc, \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}} * gc,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00054}00054                   TString   xTitle,  \textcolor{keywordtype}{double} xMin, \textcolor{keywordtype}{double} xMax,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00055}00055                   TString   yTitle,  \textcolor{keywordtype}{double} yMin, \textcolor{keywordtype}{double} yMax,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00056}00056                   TString   zTitle,  \textcolor{keywordtype}{double} zMin, \textcolor{keywordtype}{double} zMax,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00057}00057                   TH2 * h,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00058}00058                   \textcolor{keywordtype}{bool} label1=0, TString text1=\textcolor{stringliteral}{"{}"{}}, \textcolor{keywordtype}{double} x1=0.0, \textcolor{keywordtype}{double} y1=0.0, \textcolor{keywordtype}{int} color1=1,  \textcolor{keywordtype}{double} fontSize1=0.05,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00059}00059                   \textcolor{keywordtype}{bool} label2=0, TString text2=\textcolor{stringliteral}{"{}"{}}, \textcolor{keywordtype}{double} x2=0.0, \textcolor{keywordtype}{double} y2=0.0, \textcolor{keywordtype}{int} color2=1,  \textcolor{keywordtype}{double} fontSize2=0.05);}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00061}00061   \textcolor{comment}{// ================================================================================================}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00062}00062   \textcolor{comment}{// Function to plot nHists 1D histogram}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00063}00063   \textcolor{comment}{// h       : array of nHists pointers to histograms}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00064}00064   \textcolor{comment}{// legends : array of nHists pointers to labels used as legends in the body of the plot}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00065}00065   \textcolor{comment}{// ================================================================================================}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00066}00066   TCanvas *  \mbox{\hyperlink{class_plotter_a861c11293799d7029e05e226c0554c1a}{plot}}(\textcolor{keywordtype}{int} nHists, TString  canvasName, \mbox{\hyperlink{class_canvas_configuration}{CanvasConfiguration}} * cc, \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}} ** gc,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00067}00067                   TString   xTitle,  \textcolor{keywordtype}{double} xMin, \textcolor{keywordtype}{double} xMax,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00068}00068                   TString   yTitle,  \textcolor{keywordtype}{double} yMin, \textcolor{keywordtype}{double} yMax,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00069}00069                   TH1 ** h,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00070}00070                   TString ** legends,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00071}00071                   \textcolor{keywordtype}{double} xMinLeg, \textcolor{keywordtype}{double} yMinLeg, \textcolor{keywordtype}{double} xMaxLeg, \textcolor{keywordtype}{double} yMaxLeg,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00072}00072                   \textcolor{keywordtype}{double} legendSize);}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00074}00074   \textcolor{comment}{// ================================================================================================}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00075}00075   \textcolor{comment}{// Function to plot nHists 1D histogram}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00076}00076   \textcolor{comment}{// h       : vector of nHists pointers to histograms}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00077}00077   \textcolor{comment}{// legends : vector of nHists pointers to labels used as legends in the body of the plot}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00078}00078   \textcolor{comment}{// ================================================================================================}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00079}00079   TCanvas *  \mbox{\hyperlink{class_plotter_a861c11293799d7029e05e226c0554c1a}{plot}}(TString  canvasName, \mbox{\hyperlink{class_canvas_configuration}{CanvasConfiguration}} * cc, vector<GraphConfiguration*> gc,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00080}00080                   TString  xTitle,  \textcolor{keywordtype}{double} xMin, \textcolor{keywordtype}{double} xMax,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00081}00081                   TString  yTitle,  \textcolor{keywordtype}{double} yMin, \textcolor{keywordtype}{double} yMax,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00082}00082                   vector<TH1*> histograms,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00083}00083                   vector<TString> legends,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00084}00084                   \textcolor{keywordtype}{double} xMinLeg, \textcolor{keywordtype}{double} yMinLeg, \textcolor{keywordtype}{double} xMaxLeg, \textcolor{keywordtype}{double} yMaxLeg,\textcolor{keywordtype}{double} legendSize,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00085}00085                   \textcolor{keywordtype}{bool} label1=0, TString text1=\textcolor{stringliteral}{"{}"{}}, \textcolor{keywordtype}{double} x1=0.0, \textcolor{keywordtype}{double} y1=0.0, \textcolor{keywordtype}{int} color1=1,  \textcolor{keywordtype}{double} fontSize1=0.05,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00086}00086                   \textcolor{keywordtype}{bool} label2=0, TString text2=\textcolor{stringliteral}{"{}"{}}, \textcolor{keywordtype}{double} x2=0.0, \textcolor{keywordtype}{double} y2=0.0, \textcolor{keywordtype}{int} color2=1,  \textcolor{keywordtype}{double} fontSize2=0.05);}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00088}00088   TCanvas * \mbox{\hyperlink{class_plotter_a861c11293799d7029e05e226c0554c1a}{plot}}(TString  canvasName, \mbox{\hyperlink{class_canvas_configuration}{CanvasConfiguration}} * cc,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00089}00089                  TString  xTitle,  \textcolor{keywordtype}{double} xMin, \textcolor{keywordtype}{double} xMax,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00090}00090                  TString  yTitle,  \textcolor{keywordtype}{double} yMin, \textcolor{keywordtype}{double} yMax,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00091}00091                  vector<DataGraph*> graphs,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00092}00092                  \textcolor{keywordtype}{double} xMinLeg, \textcolor{keywordtype}{double} yMinLeg, \textcolor{keywordtype}{double} xMaxLeg, \textcolor{keywordtype}{double} yMaxLeg,\textcolor{keywordtype}{double} legendSize);}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00095}00095   \textcolor{comment}{// Setting Histogram Properties}}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00097}00097 \textcolor{comment}{}  \textcolor{keywordtype}{void} \mbox{\hyperlink{class_plotter_af642b6cf92939f585151ba0f2e2656ec}{setProperties}}(TH1 * h, \textcolor{keyword}{const} \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}} \& graphConfiguration);}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00098}00098   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_plotter_af642b6cf92939f585151ba0f2e2656ec}{setProperties}}(TH1 * h, \textcolor{keyword}{const} \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}} \& graphConfiguration, \textcolor{keyword}{const} TString \& xTitle, \textcolor{keyword}{const} TString \& yTitle, \textcolor{keyword}{const} TString \& zTitle=\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00100}00100   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_plotter_af642b6cf92939f585151ba0f2e2656ec}{setProperties}}(TGraph * g, \textcolor{keyword}{const} \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}} \& graphConfiguration);}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00101}00101   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_plotter_af642b6cf92939f585151ba0f2e2656ec}{setProperties}}(TGraph * g, \textcolor{keyword}{const} \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}} \& graphConfiguration, \textcolor{keyword}{const} TString \& xTitle, \textcolor{keyword}{const} TString \& yTitle);}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00103}00103   TLatex  * \mbox{\hyperlink{class_plotter_a9917d5248166be185f748c7fc17ce4fb}{createLabel}}(\textcolor{keywordtype}{double} x, \textcolor{keywordtype}{double} y, \textcolor{keywordtype}{int} color, \textcolor{keywordtype}{int} fontType, \textcolor{keywordtype}{double} fontSize, \textcolor{keyword}{const} TString \& text, \textcolor{keywordtype}{bool} doDraw=\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00104}00104   TLatex  * \mbox{\hyperlink{class_plotter_a9917d5248166be185f748c7fc17ce4fb}{createLabel}}(\textcolor{keywordtype}{double} x, \textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} angle, \textcolor{keywordtype}{int} color, \textcolor{keywordtype}{int} fontType, \textcolor{keywordtype}{double} fontSize, \textcolor{keyword}{const} TString \& text, \textcolor{keywordtype}{bool} doDraw=\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00105}00105 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00106}00106   TLegend * \mbox{\hyperlink{class_plotter_abeeb14e4f7ac3e294c73f694ee4a5147}{createLegend}}(\textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{int} fontType, \textcolor{keywordtype}{float} fontSize);}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00107}00107   TLegend * \mbox{\hyperlink{class_plotter_abeeb14e4f7ac3e294c73f694ee4a5147}{createLegend}}(TH1 * h, TString \& legendText,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00108}00108                          \textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{int} fontType, \textcolor{keywordtype}{float} fontSize, \textcolor{keywordtype}{bool} doDraw=\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00109}00109   TLegend * \mbox{\hyperlink{class_plotter_abeeb14e4f7ac3e294c73f694ee4a5147}{createLegend}}(\textcolor{keywordtype}{int} nGraphs, TH1 ** h, TString ** legendTexts,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00110}00110                          \textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{int} fontType, \textcolor{keywordtype}{float} fontSize, \textcolor{keywordtype}{bool} doDraw=\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00111}00111   TLegend * \mbox{\hyperlink{class_plotter_abeeb14e4f7ac3e294c73f694ee4a5147}{createLegend}}(vector<TH1*> h,vector<TString> legendTexts,}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00112}00112                          \textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{int} fontType, \textcolor{keywordtype}{float} fontSize, \textcolor{keywordtype}{bool} doDraw=\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00114}00114   TLegend * \mbox{\hyperlink{class_plotter_abeeb14e4f7ac3e294c73f694ee4a5147}{createLegend}}(vector<DataGraph*> graphs,\textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{int} fontType, \textcolor{keywordtype}{float} fontSize, \textcolor{keywordtype}{bool} doDraw=\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00117}00117   TLine   * \mbox{\hyperlink{class_plotter_a10b659ec2e88a5a7e2c4dc21690a7b64}{createLine}}(\textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{int} style, \textcolor{keywordtype}{int} color, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{bool} doDraw=\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00118}00118   TArrow  * \mbox{\hyperlink{class_plotter_ade325a804c19eb98f8913fe9736e3c5e}{createArrow}}(\textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{float} arrowSize, Option\_t* option, \textcolor{keywordtype}{int} style, \textcolor{keywordtype}{int} color, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{bool} doDraw=\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00119}00119   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_plotter_a1a56a21cf6de3ecb891f6de697ea7fa1}{setDefaultOptions}}(\textcolor{keywordtype}{bool} color);}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00121}00121     ClassDef(\mbox{\hyperlink{class_plotter}{Plotter}},0)}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00122}00122 \};}
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{_plotter_8hpp_source_l00124}00124 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_Plotter */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,43 @@
+\hypertarget{_detector_fast_simulator_task_8hpp_source}{}\doxysection{Detector\+Fast\+Simulator\+Task.\+hpp}
+\label{_detector_fast_simulator_task_8hpp_source}\index{Base/DetectorFastSimulatorTask.hpp@{Base/DetectorFastSimulatorTask.hpp}}
+\mbox{\hyperlink{_detector_fast_simulator_task_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#ifndef CAP\_\_DetectorFastSimulatorTask}}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#define CAP\_\_DetectorFastSimulatorTask}}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00018}\mbox{\hyperlink{class_detector_fast_simulator_task}{00018}} \textcolor{keyword}{class }\mbox{\hyperlink{class_detector_fast_simulator_task}{DetectorFastSimulatorTask}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00019}00019 \{}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00020}00020 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00021}00021   }
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00032}00032   \mbox{\hyperlink{class_detector_fast_simulator_task_a5f29b206de0afd1cfd049f2e59edf9cc}{DetectorFastSimulatorTask}}(\textcolor{keyword}{const} TString \&          \_name,}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00033}00033                             \mbox{\hyperlink{class_configuration}{Configuration}} \&          \_configuration,}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00034}00034                             vector<EventFilter*>     \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00035}00035                             vector<ParticleFilter*>  \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00036}00036                             vector<ParticleSmearer*> \_particleSmearers,}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00037}00037                             \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                 \_selectedLevel=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}});}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00038}00038   }
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00042}\mbox{\hyperlink{class_detector_fast_simulator_task_a90ba1cc3159d31bbec1aef3862238ddd}{00042}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_detector_fast_simulator_task_a90ba1cc3159d31bbec1aef3862238ddd}{\string~DetectorFastSimulatorTask}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00043}00043   }
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00047}00047   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_detector_fast_simulator_task_af0a3ab64ab88b0e8094ae010e24a0c7b}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00048}00048   }
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00052}00052   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_detector_fast_simulator_task_a6c4653a3a482f322a11edccf0442cee9}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00053}00053  }
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00054}00054 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00055}00055   ClassDef(\mbox{\hyperlink{class_detector_fast_simulator_task}{DetectorFastSimulatorTask}},0)}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00056}00056 \};}
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{_detector_fast_simulator_task_8hpp_source_l00059}00059 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_DetectorFastSimulatorTask */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

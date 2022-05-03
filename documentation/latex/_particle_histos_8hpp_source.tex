@@ -1,0 +1,116 @@
+\hypertarget{_particle_histos_8hpp_source}{}\doxysection{Particle\+Histos.\+hpp}
+\label{_particle_histos_8hpp_source}\index{Base/ParticleHistos.hpp@{Base/ParticleHistos.hpp}}
+\mbox{\hyperlink{_particle_histos_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef CAP\_\_ParticleHistos}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define CAP\_\_ParticleHistos}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_histograms_8hpp}{Histograms.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_8hpp}{Particle.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_digit_8hpp}{ParticleDigit.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_configuration_8hpp}{Configuration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}TLorentzVector.h"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00018}00018 \textcolor{keyword}{class }\mbox{\hyperlink{class_particle_histos}{ParticleHistos}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_histograms}{Histograms}}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00019}00019 \{}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00020}00020 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00022}00022   \mbox{\hyperlink{class_particle_histos_a680e2eb4a8b620571448ce9ee228cc16}{ParticleHistos}}(\textcolor{keyword}{const} TString \&       \_name,}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00023}00023                  \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \& \_configuration,}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00024}00024                  \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}              \_debugLevel);}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00025}\mbox{\hyperlink{class_particle_histos_a970583fc0ba57c88978e493133d2507e}{00025}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_histos_a970583fc0ba57c88978e493133d2507e}{\string~ParticleHistos}}();}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00026}\mbox{\hyperlink{class_particle_histos_aa258e45100571e549fca767ac552fec6}{00026}}   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_histos_aa258e45100571e549fca767ac552fec6}{createHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00027}\mbox{\hyperlink{class_particle_histos_ac2baec89d691bbe0c7ac041b0a8d091f}{00027}}   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_histos_ac2baec89d691bbe0c7ac041b0a8d091f}{loadHistograms}}(TFile * inputFile);}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00028}00028   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_histos_a2c0f2b1e931d7321973b18f77f16962f}{fill}}(vector<ParticleDigit*> \& particles, \textcolor{keywordtype}{double} weight);}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00029}\mbox{\hyperlink{class_particle_histos_a09be7c2dd5efed2c8f5abf8ee09db002}{00029}}   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_histos_a09be7c2dd5efed2c8f5abf8ee09db002}{fill}}(\mbox{\hyperlink{class_particle}{Particle}} \& particle, \textcolor{keywordtype}{double} weight);}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00030}\mbox{\hyperlink{class_particle_histos_ad376d9a93a8aecfabd2d919fd707c986}{00030}}   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_histos_ad376d9a93a8aecfabd2d919fd707c986}{fillMultiplicity}}(\textcolor{keywordtype}{double} nAccepted, \textcolor{keywordtype}{double} totalEnergy, \textcolor{keywordtype}{double} weight);}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00031}00031   }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00032}\mbox{\hyperlink{class_particle_histos_af1dfbb6436073ebc1769a5d7a459badd}{00032}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_particle_histos_af1dfbb6436073ebc1769a5d7a459badd}{getPtBinFor}}(\textcolor{keywordtype}{float} v)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00033}00033 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00034}00034   \textcolor{keywordtype}{int} index = 1+double(\mbox{\hyperlink{class_particle_histos_a8e6cdcd508a2013411fd04b5e416980b}{nBins\_pt}})*(v-\/\mbox{\hyperlink{class_particle_histos_ac513a76b2710475bf0343f7548865b23}{min\_pt}})/\mbox{\hyperlink{class_particle_histos_a79d1825b457c1638bb74ddc5f1b5f174}{range\_pt}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00035}00035   \textcolor{keywordflow}{if} (index>\textcolor{keywordtype}{int}(\mbox{\hyperlink{class_particle_histos_a8e6cdcd508a2013411fd04b5e416980b}{nBins\_pt}})) index = -\/1;}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00036}00036   \textcolor{comment}{//cout << "{}getPtBinFor() v:"{} << v << "{} min:"{} << min\_pt <<  "{} max:"{} << max\_pt <<  "{} range:"{} << range\_pt << "{} index:"{} << index << endl;}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00037}00037   \textcolor{keywordflow}{return} index;}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00038}00038   \}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00040}\mbox{\hyperlink{class_particle_histos_a6944c0ff980bdce173861653e340079f}{00040}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_particle_histos_a6944c0ff980bdce173861653e340079f}{getPhiBinFor}}(\textcolor{keywordtype}{float} v)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00041}00041 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00042}00042   \textcolor{keywordflow}{if} (v<0.0) v += TMath::TwoPi();}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00043}00043   \textcolor{keywordtype}{int} index = 1+ double(\mbox{\hyperlink{class_particle_histos_ace55cde96be058ecc5998c6d688de9cb}{nBins\_phi}})*(v-\/\mbox{\hyperlink{class_particle_histos_a5c04c2e5a7ef07b7e638740f5be89185}{min\_phi}})/\mbox{\hyperlink{class_particle_histos_a5850f833aec815e5ff85a9703036e6ba}{range\_phi}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00044}00044   \textcolor{keywordflow}{if} (index>\textcolor{keywordtype}{int}(\mbox{\hyperlink{class_particle_histos_ace55cde96be058ecc5998c6d688de9cb}{nBins\_phi}})) index = -\/1;}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00045}00045   \textcolor{keywordflow}{return} index;}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00046}00046   \}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00048}\mbox{\hyperlink{class_particle_histos_a6621abd2f4fe27918b7b84b54b5dd1ce}{00048}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_particle_histos_a6621abd2f4fe27918b7b84b54b5dd1ce}{getEtaBinFor}}(\textcolor{keywordtype}{float} v)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00049}00049 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00050}00050   \textcolor{keywordtype}{int} index = 1+ double(\mbox{\hyperlink{class_particle_histos_a286129c7298b2ae170ef7c461eb7ec97}{nBins\_eta}})*(v-\/\mbox{\hyperlink{class_particle_histos_a4e2da71d41be6dfe04d09c5e4b07656a}{min\_eta}})/\mbox{\hyperlink{class_particle_histos_afb94f0fd20a3e0c8179c291f158201a3}{range\_eta}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00051}00051   \textcolor{keywordflow}{if} (index>\textcolor{keywordtype}{int}(\mbox{\hyperlink{class_particle_histos_a286129c7298b2ae170ef7c461eb7ec97}{nBins\_eta}})) index = -\/1;}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00052}00052   \textcolor{keywordflow}{return} index;}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00053}00053   \}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00055}\mbox{\hyperlink{class_particle_histos_aaae105ae76debd6a0689da466660cfad}{00055}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_particle_histos_aaae105ae76debd6a0689da466660cfad}{getYBinFor}}(\textcolor{keywordtype}{float} v)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00056}00056 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00057}00057   \textcolor{keywordtype}{int} index = 1+double(\mbox{\hyperlink{class_particle_histos_a185abc5e1ef09af063a40ece540c9c5e}{nBins\_y}})*(v-\/\mbox{\hyperlink{class_particle_histos_a2b6c0b3bf7aec811e035417837ef0ba3}{min\_y}})/\mbox{\hyperlink{class_particle_histos_a69cd5bb807e01f9201281408a25d16d8}{range\_y}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00058}00058   \textcolor{keywordflow}{if} (index>\textcolor{keywordtype}{int}(\mbox{\hyperlink{class_particle_histos_a185abc5e1ef09af063a40ece540c9c5e}{nBins\_y}})) index = -\/1;}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00059}00059   \textcolor{keywordflow}{return} index;}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00060}00060   \}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00063}00063   \textcolor{comment}{// Data Members -\/ Histograms}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00065}\mbox{\hyperlink{class_particle_histos_a1feb6ab4995d3c3d24cf70097e44c541}{00065}} \textcolor{comment}{}  \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_histos_a1feb6ab4995d3c3d24cf70097e44c541}{fillEta}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00066}\mbox{\hyperlink{class_particle_histos_a511abf18c31905f6ceb3b5a4b3c5e807}{00066}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_histos_a511abf18c31905f6ceb3b5a4b3c5e807}{fillY}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00067}\mbox{\hyperlink{class_particle_histos_aa4b696b3c9bb52fd1397f924cdb7a24b}{00067}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_histos_aa4b696b3c9bb52fd1397f924cdb7a24b}{fillP2}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00068}\mbox{\hyperlink{class_particle_histos_a0532fe519a15a195d6a279a00990c6fe}{00068}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_particle_histos_a0532fe519a15a195d6a279a00990c6fe}{nBins\_n1}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00069}\mbox{\hyperlink{class_particle_histos_a80476f96347163ec90d61df498807e7a}{00069}}   \textcolor{keywordtype}{float}        \mbox{\hyperlink{class_particle_histos_a80476f96347163ec90d61df498807e7a}{min\_n1}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00070}\mbox{\hyperlink{class_particle_histos_a2155893283b4fa392b57328c5a3065c1}{00070}}   \textcolor{keywordtype}{float}        \mbox{\hyperlink{class_particle_histos_a2155893283b4fa392b57328c5a3065c1}{max\_n1}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00071}\mbox{\hyperlink{class_particle_histos_a8e6cdcd508a2013411fd04b5e416980b}{00071}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_particle_histos_a8e6cdcd508a2013411fd04b5e416980b}{nBins\_pt}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00072}\mbox{\hyperlink{class_particle_histos_ac513a76b2710475bf0343f7548865b23}{00072}}   \textcolor{keywordtype}{float}        \mbox{\hyperlink{class_particle_histos_ac513a76b2710475bf0343f7548865b23}{min\_pt}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00073}\mbox{\hyperlink{class_particle_histos_a3f3f6820d8c063712f119202067a91af}{00073}}   \textcolor{keywordtype}{float}        \mbox{\hyperlink{class_particle_histos_a3f3f6820d8c063712f119202067a91af}{max\_pt}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00074}\mbox{\hyperlink{class_particle_histos_a79d1825b457c1638bb74ddc5f1b5f174}{00074}}   \textcolor{keywordtype}{float}        \mbox{\hyperlink{class_particle_histos_a79d1825b457c1638bb74ddc5f1b5f174}{range\_pt}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00075}\mbox{\hyperlink{class_particle_histos_ace55cde96be058ecc5998c6d688de9cb}{00075}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_particle_histos_ace55cde96be058ecc5998c6d688de9cb}{nBins\_phi}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00076}\mbox{\hyperlink{class_particle_histos_a5c04c2e5a7ef07b7e638740f5be89185}{00076}}   \textcolor{keywordtype}{float}        \mbox{\hyperlink{class_particle_histos_a5c04c2e5a7ef07b7e638740f5be89185}{min\_phi}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00077}\mbox{\hyperlink{class_particle_histos_ac486c2c50462892c4a9d66d58c2a84a4}{00077}}   \textcolor{keywordtype}{float}        \mbox{\hyperlink{class_particle_histos_ac486c2c50462892c4a9d66d58c2a84a4}{max\_phi}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00078}\mbox{\hyperlink{class_particle_histos_a5850f833aec815e5ff85a9703036e6ba}{00078}}   \textcolor{keywordtype}{float}        \mbox{\hyperlink{class_particle_histos_a5850f833aec815e5ff85a9703036e6ba}{range\_phi}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00079}\mbox{\hyperlink{class_particle_histos_a286129c7298b2ae170ef7c461eb7ec97}{00079}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_particle_histos_a286129c7298b2ae170ef7c461eb7ec97}{nBins\_eta}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00080}\mbox{\hyperlink{class_particle_histos_a4e2da71d41be6dfe04d09c5e4b07656a}{00080}}   \textcolor{keywordtype}{float}        \mbox{\hyperlink{class_particle_histos_a4e2da71d41be6dfe04d09c5e4b07656a}{min\_eta}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00081}\mbox{\hyperlink{class_particle_histos_ada61a2c891b050946b2c2c306023a489}{00081}}   \textcolor{keywordtype}{float}        \mbox{\hyperlink{class_particle_histos_ada61a2c891b050946b2c2c306023a489}{max\_eta}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00082}\mbox{\hyperlink{class_particle_histos_afb94f0fd20a3e0c8179c291f158201a3}{00082}}   \textcolor{keywordtype}{float}        \mbox{\hyperlink{class_particle_histos_afb94f0fd20a3e0c8179c291f158201a3}{range\_eta}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00083}\mbox{\hyperlink{class_particle_histos_a185abc5e1ef09af063a40ece540c9c5e}{00083}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_particle_histos_a185abc5e1ef09af063a40ece540c9c5e}{nBins\_y}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00084}\mbox{\hyperlink{class_particle_histos_a2b6c0b3bf7aec811e035417837ef0ba3}{00084}}   \textcolor{keywordtype}{float}        \mbox{\hyperlink{class_particle_histos_a2b6c0b3bf7aec811e035417837ef0ba3}{min\_y}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00085}\mbox{\hyperlink{class_particle_histos_ac37ce853ccf2b8dd0b0a5757f8650680}{00085}}   \textcolor{keywordtype}{float}        \mbox{\hyperlink{class_particle_histos_ac37ce853ccf2b8dd0b0a5757f8650680}{max\_y}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00086}\mbox{\hyperlink{class_particle_histos_a69cd5bb807e01f9201281408a25d16d8}{00086}}   \textcolor{keywordtype}{float}        \mbox{\hyperlink{class_particle_histos_a69cd5bb807e01f9201281408a25d16d8}{range\_y}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00087}\mbox{\hyperlink{class_particle_histos_ac589df3cab45d7a21cdad8e323bcffb9}{00087}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_particle_histos_ac589df3cab45d7a21cdad8e323bcffb9}{nBins\_phiEta}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00088}\mbox{\hyperlink{class_particle_histos_a737061483db8a1c4b9829257c2f63a95}{00088}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_particle_histos_a737061483db8a1c4b9829257c2f63a95}{nBins\_phiEtaPt}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00089}\mbox{\hyperlink{class_particle_histos_af5a23a490067ba312764595ddb5b9cc0}{00089}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_particle_histos_af5a23a490067ba312764595ddb5b9cc0}{nBins\_phiY}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00090}\mbox{\hyperlink{class_particle_histos_aa1271b0dbb440896f28e54905052b6ba}{00090}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_particle_histos_aa1271b0dbb440896f28e54905052b6ba}{nBins\_phiYPt}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00091}00091   }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00094}00094   TH1 * \mbox{\hyperlink{class_particle_histos_a168eb371934cab95c8008e50d2346f14}{h\_n1}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00095}00095   TH1 * \mbox{\hyperlink{class_particle_histos_a342b306eeca273cbffc2f600b4f7e37a}{h\_n1\_eTotal}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00096}00096   TH1 * \mbox{\hyperlink{class_particle_histos_aeb482c8548ac1d8f69b63e453edcd477}{h\_n1\_pt}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00097}00097   TH1 * \mbox{\hyperlink{class_particle_histos_ad671610da0bd80b2cef1c5e7767697f9}{h\_n1\_ptXS}};  \textcolor{comment}{// 1/pt dN/dptdy}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00099}00099   TH2 * \mbox{\hyperlink{class_particle_histos_a3940808ca65a24a6baa93c82c86abee0}{h\_n1\_phiEta}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00100}00100   TH2 * \mbox{\hyperlink{class_particle_histos_aa36c59956b9fc65cb8596c679bf9a4aa}{h\_spt\_phiEta}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00102}00102   TH2 * \mbox{\hyperlink{class_particle_histos_afa9457b76d8e1684d09fdcf32a63d23b}{h\_n1\_phiY}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00103}00103   TH2 * \mbox{\hyperlink{class_particle_histos_aeb31d2da31d60238435cfe4093ba91cf}{h\_spt\_phiY}};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00105}00105 }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00106}00106     \mbox{\hyperlink{class_histogram_collection_a8ac292967dc3381d557d3eb2f5730b38}{ClassDef}}(\mbox{\hyperlink{class_particle_histos}{ParticleHistos}},0)}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00108}00108 \};}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00109}00109 }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00110}00110 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_ParticleHistos  */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00111}00111 }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{_particle_histos_8hpp_source_l00113}00113 }
+
+\end{DoxyCode}

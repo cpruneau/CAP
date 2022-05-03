@@ -1,0 +1,80 @@
+\hypertarget{_enhanced_graph_8hpp_source}{}\doxysection{Enhanced\+Graph.\+hpp}
+\label{_enhanced_graph_8hpp_source}\index{Base/EnhancedGraph.hpp@{Base/EnhancedGraph.hpp}}
+\mbox{\hyperlink{_enhanced_graph_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.                                 *}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.                                                *}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment                           *}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00007}00007 \textcolor{comment}{ *                                                                     *}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.                                *}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#ifndef CAP\_\_EnhancedGraph}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#define CAP\_\_EnhancedGraph}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00015}00015 \textcolor{comment}{//                                                                     //}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00016}00016 \textcolor{comment}{// EnhancedGraph                                                       //}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00017}00017 \textcolor{comment}{//                                                                     //}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00018}00018 \textcolor{comment}{// Class used to draw graphs with stat and syst error bars             //}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00019}00019 \textcolor{comment}{//                                                                     //}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00021}00021 \textcolor{comment}{}\textcolor{preprocessor}{\#include "{}TString.h"{}}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00022}00022 \textcolor{preprocessor}{\#include "{}TGraph.h"{}}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00023}00023 \textcolor{preprocessor}{\#include "{}TGraphErrors.h"{}}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00024}00024 \textcolor{preprocessor}{\#include "{}TGraphAsymmErrors.h"{}}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00025}00025 \textcolor{preprocessor}{\#include "{}TH1D.h"{}}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00026}00026 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_graph_configuration_8hpp}{GraphConfiguration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00029}00029 \textcolor{comment}{// Class EnhancedGraph}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00031}\mbox{\hyperlink{class_enhanced_graph}{00031}} \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_enhanced_graph}{EnhancedGraph}} : \textcolor{keyword}{public} TH1D}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00032}00032 \{}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00033}00033 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00035}00035   \textcolor{comment}{// Data Members}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00037}\mbox{\hyperlink{class_enhanced_graph_a3e074791580ace69f7994990e3e24c42}{00037}} \textcolor{comment}{}  TGraph * \mbox{\hyperlink{class_enhanced_graph_a3e074791580ace69f7994990e3e24c42}{g}};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00038}\mbox{\hyperlink{class_enhanced_graph_ab34a402dccfac6f9925587b8b642b1fc}{00038}}   TGraph * \mbox{\hyperlink{class_enhanced_graph_ab34a402dccfac6f9925587b8b642b1fc}{gP}};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00039}\mbox{\hyperlink{class_enhanced_graph_a4a4dd9cc8e6e73905a9ec15cca1ef655}{00039}}   TGraph * \mbox{\hyperlink{class_enhanced_graph_a4a4dd9cc8e6e73905a9ec15cca1ef655}{gM}};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00040}\mbox{\hyperlink{class_enhanced_graph_a53f2045261ab41987e362566e72e6295}{00040}}   TGraph * \mbox{\hyperlink{class_enhanced_graph_a53f2045261ab41987e362566e72e6295}{gSys}};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00042}\mbox{\hyperlink{class_enhanced_graph_a0abfa17a2a7353e24c785cd6c2ad04a2}{00042}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_enhanced_graph_a0abfa17a2a7353e24c785cd6c2ad04a2}{nPoints}};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00043}\mbox{\hyperlink{class_enhanced_graph_ab69cde8675b4635e4712bc898a5736c8}{00043}}   \textcolor{keywordtype}{double} * \mbox{\hyperlink{class_enhanced_graph_ab69cde8675b4635e4712bc898a5736c8}{xPtr}};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00044}\mbox{\hyperlink{class_enhanced_graph_ab84d31cccd8d2c6e9427908058014273}{00044}}   \textcolor{keywordtype}{double} * \mbox{\hyperlink{class_enhanced_graph_ab84d31cccd8d2c6e9427908058014273}{exPtr}};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00045}\mbox{\hyperlink{class_enhanced_graph_a91669353eb4eb1ecc33dc44f52ef6363}{00045}}   \textcolor{keywordtype}{double} * \mbox{\hyperlink{class_enhanced_graph_a91669353eb4eb1ecc33dc44f52ef6363}{yPtr}};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00046}\mbox{\hyperlink{class_enhanced_graph_ac3a6a50a9ffcb35d5ce6daf200c4ca9d}{00046}}   \textcolor{keywordtype}{double} * \mbox{\hyperlink{class_enhanced_graph_ac3a6a50a9ffcb35d5ce6daf200c4ca9d}{eyPtr}};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00047}\mbox{\hyperlink{class_enhanced_graph_aba8935e87e0e7bb2aab3b50270e1e753}{00047}}   \textcolor{keywordtype}{double} * \mbox{\hyperlink{class_enhanced_graph_aba8935e87e0e7bb2aab3b50270e1e753}{ySysMPtr}};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00048}\mbox{\hyperlink{class_enhanced_graph_aa2fbb306c1e01df8da7dccf61be8a91e}{00048}}   \textcolor{keywordtype}{double} * \mbox{\hyperlink{class_enhanced_graph_aa2fbb306c1e01df8da7dccf61be8a91e}{ySysPPtr}};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00049}\mbox{\hyperlink{class_enhanced_graph_a477653d427bef651c582764db37a6d38}{00049}}   \textcolor{keywordtype}{double} * \mbox{\hyperlink{class_enhanced_graph_a477653d427bef651c582764db37a6d38}{yM}};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00050}\mbox{\hyperlink{class_enhanced_graph_a78591101d757075ad8cd2968b47a833b}{00050}}   \textcolor{keywordtype}{double} * \mbox{\hyperlink{class_enhanced_graph_a78591101d757075ad8cd2968b47a833b}{yP}};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00051}\mbox{\hyperlink{class_enhanced_graph_a0ea5cb8d21511b224052aca3c7bf04df}{00051}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_enhanced_graph_a0ea5cb8d21511b224052aca3c7bf04df}{sysAbsolute}};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00052}\mbox{\hyperlink{class_enhanced_graph_a7320a8469bc636f6b0fa42e63ea80ec0}{00052}}   \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_enhanced_graph_a7320a8469bc636f6b0fa42e63ea80ec0}{option}};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00053}00053   }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00054}\mbox{\hyperlink{class_enhanced_graph_ab56d44a39570a911ac3fb117f20af1dd}{00054}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_enhanced_graph_ab56d44a39570a911ac3fb117f20af1dd}{isVisible}};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00056}00056   \textcolor{comment}{// Member functions}}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00058}00058 \textcolor{comment}{}  \mbox{\hyperlink{class_enhanced_graph_a2c237fb8c309f41bf325339379521e3b}{EnhancedGraph}}(\textcolor{keyword}{const} TString \& graphName,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00059}00059                 \textcolor{keyword}{const} TString \& xTitle,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00060}00060                 \textcolor{keyword}{const} TString \& yTitle,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00061}00061                 \textcolor{keywordtype}{double} minX, \textcolor{keywordtype}{double} maxX,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00062}00062                 \textcolor{keywordtype}{double} minY, \textcolor{keywordtype}{double} maxY,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00063}00063                 \textcolor{keywordtype}{int} n, \textcolor{keywordtype}{double} * x, \textcolor{keywordtype}{double} *y, \textcolor{keywordtype}{double} *ex, \textcolor{keywordtype}{double} *ey, \textcolor{keywordtype}{int} opt=0);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00064}00064   \mbox{\hyperlink{class_enhanced_graph_a2c237fb8c309f41bf325339379521e3b}{EnhancedGraph}}(\textcolor{keyword}{const} TString \& graphName,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00065}00065                 \textcolor{keyword}{const} TString \& xTitle,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00066}00066                 \textcolor{keyword}{const} TString \& yTitle,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00067}00067                 \textcolor{keywordtype}{double} minX, \textcolor{keywordtype}{double} maxX,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00068}00068                 \textcolor{keywordtype}{double} minY, \textcolor{keywordtype}{double} maxY,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00069}00069                 \textcolor{keywordtype}{int} n, \textcolor{keywordtype}{double} * x, \textcolor{keywordtype}{double} *y, \textcolor{keywordtype}{double} *ex, \textcolor{keywordtype}{double} *ey,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00070}00070                 \textcolor{keywordtype}{double} * \mbox{\hyperlink{class_enhanced_graph_a477653d427bef651c582764db37a6d38}{yM}}, \textcolor{keywordtype}{double} * \mbox{\hyperlink{class_enhanced_graph_a78591101d757075ad8cd2968b47a833b}{yP}},}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00071}00071                 \textcolor{keywordtype}{int} opt=0,}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00072}00072                 \textcolor{keywordtype}{bool} absolute=\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00073}00073   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_enhanced_graph_af8d14e481856e97be7896004c9eeaa9b}{draw}}(\textcolor{keywordtype}{bool} same);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00074}00074   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_enhanced_graph_abd556594a0a50aabf1f69b8712a6cc27}{setMinMax}}(\textcolor{keywordtype}{double} minY, \textcolor{keywordtype}{double} maxY);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00075}00075   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_enhanced_graph_a5172bffaaa3679335356b2a996963775}{setProperties}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}} \& graphConfig);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00076}00076   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_enhanced_graph_aa97f1d65b02b6bde1bd64048595c2c05}{printToFile}}(ostream \& output);}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00078}00078   ClassDef(\mbox{\hyperlink{class_enhanced_graph}{EnhancedGraph}},0)}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00079}00079   }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00080}00080 \};}
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{_enhanced_graph_8hpp_source_l00082}00082 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* EnhancedGraph\_hpp */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

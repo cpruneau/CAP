@@ -1,0 +1,382 @@
+\hypertarget{class_collision_geometry_moments}{}\doxysection{Collision\+Geometry\+Moments Class Reference}
+\label{class_collision_geometry_moments}\index{CollisionGeometryMoments@{CollisionGeometryMoments}}
+
+
+{\ttfamily \#include $<$Collision\+Geometry\+Moments.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_collision_geometry_moments_a7f6d9698a7ae529598d1944a910a8890}{Collision\+Geometry\+Moments}} ()
+\item 
+\mbox{\hyperlink{class_collision_geometry_moments_af35dc5cbe76a513793f7e8045e59b200}{Collision\+Geometry\+Moments}} (const \mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} \&source)
+\item 
+virtual \mbox{\hyperlink{class_collision_geometry_moments_aca841b39ad473d8c909b8eaa1e17137b}{$\sim$\+Collision\+Geometry\+Moments}} ()
+\item 
+\mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} \& \mbox{\hyperlink{class_collision_geometry_moments_a7ed748c964b7cacebb9f2a115e585ec0}{operator=}} (const \mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} \&source)
+\item 
+void \mbox{\hyperlink{class_collision_geometry_moments_ac9f0322a7c831b8c794c9f88a7cbbc07}{reset}} ()
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_moments_a8869a69878bf6ee02561710f1a1ea0d6}{fill}} (double x, double y)
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_moments_a5d3db2b45fd4e23ea71412043d54bad9}{calculate}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_a91c11a5f4cc8fc59f47a8276d19d19db}{m0}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_ab140e2326e6c913cd0480b1dcc247bac}{m1x}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_a389cb18508f88d2dbf33d3a4fd0cb6bc}{m1y}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_a2db46016957f07ae382395d0c6221bd5}{m2x2}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_a8219fa556d795d61b4967331fb7f21de}{m2y2}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_ab101f245f46c9c7c8e4a20a240c39f03}{m2xy}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_aa21d5b3eacb3d4932e815883f61995f0}{meanX}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_ad085bf3e97291b0db49bd4c5b65c44cc}{meanY}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_a9bd88d63adb04cb81ecc801b342d7e04}{varX}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_a64ee7ddaa5a3ef57ee490b0b575d21ed}{varY}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_a9c6d85394b1d4e6d3057b18181105fc6}{var\+XY}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_af89ff605b8b57b4c9679f1e7ce35e0ed}{epsX}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_aefaf884decd7345f0af9fb90f382e963}{epsY}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_a66af9f9c2549aed3db620ad0fa8d060b}{eps\+Denom}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_aa9e058911d70da4c228be7fab6a0da29}{eps\+Mod}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_a8d5265bc3e7a403c8136e4a83f839c76}{psi2}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_a7d342937e4a343b80efc383f5649bd00}{area}}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_a93ad4a28b84089e78b1d192ec59228ba}{cphiN}} \mbox{[}10\mbox{]}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_a232f8e5ddb441c73e79e5178f678c5a6}{sphiN}} \mbox{[}10\mbox{]}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_a920e46f67be2413576e1ac8de5100a63}{rN}} \mbox{[}10\mbox{]}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_a0ea16796646d0859c89709b2f116cef9}{psiN}} \mbox{[}10\mbox{]}
+\item 
+double \mbox{\hyperlink{class_collision_geometry_moments_a0edc6297035c3454011e314a4a3f148b}{eccN}} \mbox{[}10\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class defining \mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00019}{19}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_collision_geometry_moments_a7f6d9698a7ae529598d1944a910a8890}\label{class_collision_geometry_moments_a7f6d9698a7ae529598d1944a910a8890}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{CollisionGeometryMoments()}{CollisionGeometryMoments()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Collision\+Geometry\+Moments\+::\+Collision\+Geometry\+Moments (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_collision_geometry_moments_8cpp_source}{Collision\+Geometry\+Moments.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_af35dc5cbe76a513793f7e8045e59b200}\label{class_collision_geometry_moments_af35dc5cbe76a513793f7e8045e59b200}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{CollisionGeometryMoments()}{CollisionGeometryMoments()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Collision\+Geometry\+Moments\+::\+Collision\+Geometry\+Moments (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} \&}]{source }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8cpp_source_l00042}{42}} of file \mbox{\hyperlink{_collision_geometry_moments_8cpp_source}{Collision\+Geometry\+Moments.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_aca841b39ad473d8c909b8eaa1e17137b}\label{class_collision_geometry_moments_aca841b39ad473d8c909b8eaa1e17137b}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!````~CollisionGeometryMoments@{$\sim$CollisionGeometryMoments}}
+\index{````~CollisionGeometryMoments@{$\sim$CollisionGeometryMoments}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{$\sim$CollisionGeometryMoments()}{~CollisionGeometryMoments()}}
+{\footnotesize\ttfamily virtual Collision\+Geometry\+Moments\+::$\sim$\+Collision\+Geometry\+Moments (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_collision_geometry_moments_a5d3db2b45fd4e23ea71412043d54bad9}\label{class_collision_geometry_moments_a5d3db2b45fd4e23ea71412043d54bad9}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!calculate@{calculate}}
+\index{calculate@{calculate}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{calculate()}{calculate()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Moments\+::calculate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8cpp_source_l00148}{148}} of file \mbox{\hyperlink{_collision_geometry_moments_8cpp_source}{Collision\+Geometry\+Moments.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_a8869a69878bf6ee02561710f1a1ea0d6}\label{class_collision_geometry_moments_a8869a69878bf6ee02561710f1a1ea0d6}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!fill@{fill}}
+\index{fill@{fill}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{fill()}{fill()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Moments\+::fill (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8cpp_source_l00137}{137}} of file \mbox{\hyperlink{_collision_geometry_moments_8cpp_source}{Collision\+Geometry\+Moments.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_a7ed748c964b7cacebb9f2a115e585ec0}\label{class_collision_geometry_moments_a7ed748c964b7cacebb9f2a115e585ec0}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!operator=@{operator=}}
+\index{operator=@{operator=}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} \& Collision\+Geometry\+Moments\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} \&}]{source }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_collision_geometry_moments_8cpp_source}{Collision\+Geometry\+Moments.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_ac9f0322a7c831b8c794c9f88a7cbbc07}\label{class_collision_geometry_moments_ac9f0322a7c831b8c794c9f88a7cbbc07}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!reset@{reset}}
+\index{reset@{reset}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Moments\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{_collision_geometry_moments_8cpp_source}{Collision\+Geometry\+Moments.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_collision_geometry_moments_a7d342937e4a343b80efc383f5649bd00}\label{class_collision_geometry_moments_a7d342937e4a343b80efc383f5649bd00}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!area@{area}}
+\index{area@{area}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{area}{area}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::area}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_a93ad4a28b84089e78b1d192ec59228ba}\label{class_collision_geometry_moments_a93ad4a28b84089e78b1d192ec59228ba}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!cphiN@{cphiN}}
+\index{cphiN@{cphiN}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{cphiN}{cphiN}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::cphiN\mbox{[}10\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_a0edc6297035c3454011e314a4a3f148b}\label{class_collision_geometry_moments_a0edc6297035c3454011e314a4a3f148b}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!eccN@{eccN}}
+\index{eccN@{eccN}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{eccN}{eccN}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::eccN\mbox{[}10\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_a66af9f9c2549aed3db620ad0fa8d060b}\label{class_collision_geometry_moments_a66af9f9c2549aed3db620ad0fa8d060b}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!epsDenom@{epsDenom}}
+\index{epsDenom@{epsDenom}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{epsDenom}{epsDenom}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::eps\+Denom}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00044}{44}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_aa9e058911d70da4c228be7fab6a0da29}\label{class_collision_geometry_moments_aa9e058911d70da4c228be7fab6a0da29}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!epsMod@{epsMod}}
+\index{epsMod@{epsMod}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{epsMod}{epsMod}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::eps\+Mod}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_af89ff605b8b57b4c9679f1e7ce35e0ed}\label{class_collision_geometry_moments_af89ff605b8b57b4c9679f1e7ce35e0ed}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!epsX@{epsX}}
+\index{epsX@{epsX}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{epsX}{epsX}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::epsX}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00042}{42}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_aefaf884decd7345f0af9fb90f382e963}\label{class_collision_geometry_moments_aefaf884decd7345f0af9fb90f382e963}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!epsY@{epsY}}
+\index{epsY@{epsY}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{epsY}{epsY}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::epsY}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_a91c11a5f4cc8fc59f47a8276d19d19db}\label{class_collision_geometry_moments_a91c11a5f4cc8fc59f47a8276d19d19db}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!m0@{m0}}
+\index{m0@{m0}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{m0}{m0}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::m0}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_ab140e2326e6c913cd0480b1dcc247bac}\label{class_collision_geometry_moments_ab140e2326e6c913cd0480b1dcc247bac}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!m1x@{m1x}}
+\index{m1x@{m1x}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{m1x}{m1x}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::m1x}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_a389cb18508f88d2dbf33d3a4fd0cb6bc}\label{class_collision_geometry_moments_a389cb18508f88d2dbf33d3a4fd0cb6bc}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!m1y@{m1y}}
+\index{m1y@{m1y}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{m1y}{m1y}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::m1y}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_a2db46016957f07ae382395d0c6221bd5}\label{class_collision_geometry_moments_a2db46016957f07ae382395d0c6221bd5}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!m2x2@{m2x2}}
+\index{m2x2@{m2x2}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{m2x2}{m2x2}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::m2x2}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_ab101f245f46c9c7c8e4a20a240c39f03}\label{class_collision_geometry_moments_ab101f245f46c9c7c8e4a20a240c39f03}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!m2xy@{m2xy}}
+\index{m2xy@{m2xy}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{m2xy}{m2xy}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::m2xy}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_a8219fa556d795d61b4967331fb7f21de}\label{class_collision_geometry_moments_a8219fa556d795d61b4967331fb7f21de}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!m2y2@{m2y2}}
+\index{m2y2@{m2y2}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{m2y2}{m2y2}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::m2y2}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_aa21d5b3eacb3d4932e815883f61995f0}\label{class_collision_geometry_moments_aa21d5b3eacb3d4932e815883f61995f0}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!meanX@{meanX}}
+\index{meanX@{meanX}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{meanX}{meanX}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::meanX}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00037}{37}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_ad085bf3e97291b0db49bd4c5b65c44cc}\label{class_collision_geometry_moments_ad085bf3e97291b0db49bd4c5b65c44cc}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!meanY@{meanY}}
+\index{meanY@{meanY}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{meanY}{meanY}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::meanY}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00038}{38}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_a8d5265bc3e7a403c8136e4a83f839c76}\label{class_collision_geometry_moments_a8d5265bc3e7a403c8136e4a83f839c76}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!psi2@{psi2}}
+\index{psi2@{psi2}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{psi2}{psi2}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::psi2}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_a0ea16796646d0859c89709b2f116cef9}\label{class_collision_geometry_moments_a0ea16796646d0859c89709b2f116cef9}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!psiN@{psiN}}
+\index{psiN@{psiN}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{psiN}{psiN}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::psiN\mbox{[}10\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_a920e46f67be2413576e1ac8de5100a63}\label{class_collision_geometry_moments_a920e46f67be2413576e1ac8de5100a63}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!rN@{rN}}
+\index{rN@{rN}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{rN}{rN}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::rN\mbox{[}10\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00050}{50}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_a232f8e5ddb441c73e79e5178f678c5a6}\label{class_collision_geometry_moments_a232f8e5ddb441c73e79e5178f678c5a6}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!sphiN@{sphiN}}
+\index{sphiN@{sphiN}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{sphiN}{sphiN}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::sphiN\mbox{[}10\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00049}{49}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_a9bd88d63adb04cb81ecc801b342d7e04}\label{class_collision_geometry_moments_a9bd88d63adb04cb81ecc801b342d7e04}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!varX@{varX}}
+\index{varX@{varX}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{varX}{varX}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::varX}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00039}{39}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_a9c6d85394b1d4e6d3057b18181105fc6}\label{class_collision_geometry_moments_a9c6d85394b1d4e6d3057b18181105fc6}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!varXY@{varXY}}
+\index{varXY@{varXY}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{varXY}{varXY}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::var\+XY}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_moments_a64ee7ddaa5a3ef57ee490b0b575d21ed}\label{class_collision_geometry_moments_a64ee7ddaa5a3ef57ee490b0b575d21ed}} 
+\index{CollisionGeometryMoments@{CollisionGeometryMoments}!varY@{varY}}
+\index{varY@{varY}!CollisionGeometryMoments@{CollisionGeometryMoments}}
+\doxysubsubsection{\texorpdfstring{varY}{varY}}
+{\footnotesize\ttfamily double Collision\+Geometry\+Moments\+::varY}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_moments_8hpp_source_l00040}{40}} of file \mbox{\hyperlink{_collision_geometry_moments_8hpp_source}{Collision\+Geometry\+Moments.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_collision_geometry_moments_8hpp}{Collision\+Geometry\+Moments.\+hpp}}\item 
+Base/\mbox{\hyperlink{_collision_geometry_moments_8cpp}{Collision\+Geometry\+Moments.\+cpp}}\end{DoxyCompactItemize}

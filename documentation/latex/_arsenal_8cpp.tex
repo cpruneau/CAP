@@ -1,0 +1,279 @@
+\hypertarget{_arsenal_8cpp}{}\doxysection{Hadron\+Gas/\+Arsenal.cpp File Reference}
+\label{_arsenal_8cpp}\index{HadronGas/Arsenal.cpp@{HadronGas/Arsenal.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include \char`\"{}Arsenal.\+hpp\char`\"{}}\newline
+Include dependency graph for Arsenal.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_arsenal_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_arsenal_8cpp_a91ed4760a30880350237bb614ae96972}{interpolation1\+D\+\_\+linear}} (double $\ast$Tb\+\_\+x, double $\ast$Tb\+\_\+y, double $\ast$xval, double $\ast$yval, int n\+Tblength)
+\item 
+double \mbox{\hyperlink{_arsenal_8cpp_aefcc747cf91dd85ac917708586b5a600}{Simpson\+\_\+sum}} (double $\ast$array, int num, double h\+\_\+step)
+\item 
+vector$<$ vector$<$ double $>$ $\ast$ $>$ $\ast$ \mbox{\hyperlink{_arsenal_8cpp_a2e0bbaf3df3956eb651d272a917651fb}{read\+Block\+Data}} (istream \&stream\+\_\+in)
+\item 
+void \mbox{\hyperlink{_arsenal_8cpp_abc1c2466fa5454ce18bd91572d79a483}{release\+Block\+Data}} (vector$<$ vector$<$ double $>$ $\ast$ $>$ $\ast$data)
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{_arsenal_8cpp_a83a32730f98fc4fe18862dc9eb6a55e4}{string\+To\+Doubles}} (string str)
+\item 
+double \mbox{\hyperlink{_arsenal_8cpp_afec8b9fd79a6c3dc81e24e41a60dacb8}{interp\+Cubic\+Direct}} (vector$<$ double $>$ $\ast$x, vector$<$ double $>$ $\ast$y, double x0)
+\item 
+double \mbox{\hyperlink{_arsenal_8cpp_ac742fdbc8f506ac2197ef44122737762}{interp\+Linear\+Direct}} (vector$<$ double $>$ $\ast$x, vector$<$ double $>$ $\ast$y, double x0)
+\item 
+double \mbox{\hyperlink{_arsenal_8cpp_a9e098c13a5a50e37667a0622b1aa0fe1}{interp\+Nearest\+Direct}} (vector$<$ double $>$ $\ast$x, vector$<$ double $>$ $\ast$y, double x0)
+\item 
+double \mbox{\hyperlink{_arsenal_8cpp_ac64e117a561d87893774f28278302a66}{interp\+Cubic\+Mono}} (vector$<$ double $>$ $\ast$x, vector$<$ double $>$ $\ast$y, double xx)
+\item 
+double \mbox{\hyperlink{_arsenal_8cpp_a5f7ab461cd6988522c6a067992f638cd}{interp\+Linear\+Mono}} (vector$<$ double $>$ $\ast$x, vector$<$ double $>$ $\ast$y, double xx)
+\item 
+double \mbox{\hyperlink{_arsenal_8cpp_a8dd5902a8770150e2d59b1644371607d}{interp\+Nearest\+Mono}} (vector$<$ double $>$ $\ast$x, vector$<$ double $>$ $\ast$y, double xx)
+\item 
+double \mbox{\hyperlink{_arsenal_8cpp_a6044315dd9981784140318ee6c6cdc51}{invert\+Func}} (double($\ast$func)(double), double y, double xL, double xR, double dx, double x0, double relative\+\_\+accuracy)
+\item 
+double \mbox{\hyperlink{_arsenal_8cpp_a27e11a9e791091ff4b5cb929b3c3158e}{invert\+Table\+Direct\+\_\+hook}} (double xx)
+\item 
+double \mbox{\hyperlink{_arsenal_8cpp_a6533016c5d3392c23c90706db9c4cc0f}{invert\+Table\+Direct}} (vector$<$ double $>$ $\ast$x, vector$<$ double $>$ $\ast$y, double y0, double x0, double relative\+\_\+accuracy)
+\item 
+long \mbox{\hyperlink{_arsenal_8cpp_a5919c604f227faff91734a91c77944c9}{binary\+Search}} (vector$<$ double $>$ $\ast$A, double value)
+\item 
+void \mbox{\hyperlink{_arsenal_8cpp_ad506d089e68f1a775ba2e2865d22b500}{output\+Functionerror}} (string function\+\_\+name, string massage, double value, int level)
+\item 
+string \mbox{\hyperlink{_arsenal_8cpp_a637fd73afd1fadd689749ce8ec66e33a}{to\+Lower}} (string str)
+\item 
+string \mbox{\hyperlink{_arsenal_8cpp_aa7cb820696f8a66d03330e091482020c}{trim}} (string str)
+\item 
+double \mbox{\hyperlink{_arsenal_8cpp_a7e564ec0266d67f518a0b0f80f17e203}{string\+To\+Double}} (string str)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ double $>$ $\ast$ \mbox{\hyperlink{_arsenal_8cpp_aa41a7cabe73aaf4ec0057be2f2dce1b7}{zq\+\_\+x\+\_\+global}}
+\item 
+vector$<$ double $>$ $\ast$ \mbox{\hyperlink{_arsenal_8cpp_afe8dd86a36e09ac520ba8f19d01727c1}{zq\+\_\+y\+\_\+global}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_arsenal_8cpp_a5919c604f227faff91734a91c77944c9}\label{_arsenal_8cpp_a5919c604f227faff91734a91c77944c9}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!binarySearch@{binarySearch}}
+\index{binarySearch@{binarySearch}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{binarySearch()}{binarySearch()}}
+{\footnotesize\ttfamily long binary\+Search (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ $\ast$}]{A,  }\item[{double}]{value }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00518}{518}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_afec8b9fd79a6c3dc81e24e41a60dacb8}\label{_arsenal_8cpp_afec8b9fd79a6c3dc81e24e41a60dacb8}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!interpCubicDirect@{interpCubicDirect}}
+\index{interpCubicDirect@{interpCubicDirect}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{interpCubicDirect()}{interpCubicDirect()}}
+{\footnotesize\ttfamily double interp\+Cubic\+Direct (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ $\ast$}]{x,  }\item[{vector$<$ double $>$ $\ast$}]{y,  }\item[{double}]{x0 }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00176}{176}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_ac64e117a561d87893774f28278302a66}\label{_arsenal_8cpp_ac64e117a561d87893774f28278302a66}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!interpCubicMono@{interpCubicMono}}
+\index{interpCubicMono@{interpCubicMono}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{interpCubicMono()}{interpCubicMono()}}
+{\footnotesize\ttfamily double interp\+Cubic\+Mono (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ $\ast$}]{x,  }\item[{vector$<$ double $>$ $\ast$}]{y,  }\item[{double}]{xx }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00290}{290}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_ac742fdbc8f506ac2197ef44122737762}\label{_arsenal_8cpp_ac742fdbc8f506ac2197ef44122737762}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!interpLinearDirect@{interpLinearDirect}}
+\index{interpLinearDirect@{interpLinearDirect}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{interpLinearDirect()}{interpLinearDirect()}}
+{\footnotesize\ttfamily double interp\+Linear\+Direct (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ $\ast$}]{x,  }\item[{vector$<$ double $>$ $\ast$}]{y,  }\item[{double}]{x0 }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00228}{228}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_a5f7ab461cd6988522c6a067992f638cd}\label{_arsenal_8cpp_a5f7ab461cd6988522c6a067992f638cd}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!interpLinearMono@{interpLinearMono}}
+\index{interpLinearMono@{interpLinearMono}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{interpLinearMono()}{interpLinearMono()}}
+{\footnotesize\ttfamily double interp\+Linear\+Mono (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ $\ast$}]{x,  }\item[{vector$<$ double $>$ $\ast$}]{y,  }\item[{double}]{xx }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00374}{374}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_a9e098c13a5a50e37667a0622b1aa0fe1}\label{_arsenal_8cpp_a9e098c13a5a50e37667a0622b1aa0fe1}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!interpNearestDirect@{interpNearestDirect}}
+\index{interpNearestDirect@{interpNearestDirect}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{interpNearestDirect()}{interpNearestDirect()}}
+{\footnotesize\ttfamily double interp\+Nearest\+Direct (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ $\ast$}]{x,  }\item[{vector$<$ double $>$ $\ast$}]{y,  }\item[{double}]{x0 }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00259}{259}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_a8dd5902a8770150e2d59b1644371607d}\label{_arsenal_8cpp_a8dd5902a8770150e2d59b1644371607d}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!interpNearestMono@{interpNearestMono}}
+\index{interpNearestMono@{interpNearestMono}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{interpNearestMono()}{interpNearestMono()}}
+{\footnotesize\ttfamily double interp\+Nearest\+Mono (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ $\ast$}]{x,  }\item[{vector$<$ double $>$ $\ast$}]{y,  }\item[{double}]{xx }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00404}{404}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_a91ed4760a30880350237bb614ae96972}\label{_arsenal_8cpp_a91ed4760a30880350237bb614ae96972}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!interpolation1D\_linear@{interpolation1D\_linear}}
+\index{interpolation1D\_linear@{interpolation1D\_linear}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{interpolation1D\_linear()}{interpolation1D\_linear()}}
+{\footnotesize\ttfamily void interpolation1\+D\+\_\+linear (\begin{DoxyParamCaption}\item[{double $\ast$}]{Tb\+\_\+x,  }\item[{double $\ast$}]{Tb\+\_\+y,  }\item[{double $\ast$}]{xval,  }\item[{double $\ast$}]{yval,  }\item[{int}]{n\+Tblength }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_a6044315dd9981784140318ee6c6cdc51}\label{_arsenal_8cpp_a6044315dd9981784140318ee6c6cdc51}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!invertFunc@{invertFunc}}
+\index{invertFunc@{invertFunc}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{invertFunc()}{invertFunc()}}
+{\footnotesize\ttfamily double invert\+Func (\begin{DoxyParamCaption}\item[{double($\ast$)(double)}]{func,  }\item[{double}]{y,  }\item[{double}]{xL,  }\item[{double}]{xR,  }\item[{double}]{dx,  }\item[{double}]{x0,  }\item[{double}]{relative\+\_\+accuracy }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00434}{434}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_a6533016c5d3392c23c90706db9c4cc0f}\label{_arsenal_8cpp_a6533016c5d3392c23c90706db9c4cc0f}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!invertTableDirect@{invertTableDirect}}
+\index{invertTableDirect@{invertTableDirect}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{invertTableDirect()}{invertTableDirect()}}
+{\footnotesize\ttfamily double invert\+Table\+Direct (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ $\ast$}]{x,  }\item[{vector$<$ double $>$ $\ast$}]{y,  }\item[{double}]{y0,  }\item[{double}]{x0,  }\item[{double}]{relative\+\_\+accuracy }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00505}{505}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_a27e11a9e791091ff4b5cb929b3c3158e}\label{_arsenal_8cpp_a27e11a9e791091ff4b5cb929b3c3158e}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!invertTableDirect\_hook@{invertTableDirect\_hook}}
+\index{invertTableDirect\_hook@{invertTableDirect\_hook}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{invertTableDirect\_hook()}{invertTableDirect\_hook()}}
+{\footnotesize\ttfamily double invert\+Table\+Direct\+\_\+hook (\begin{DoxyParamCaption}\item[{double}]{xx }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00504}{504}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_ad506d089e68f1a775ba2e2865d22b500}\label{_arsenal_8cpp_ad506d089e68f1a775ba2e2865d22b500}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!outputFunctionerror@{outputFunctionerror}}
+\index{outputFunctionerror@{outputFunctionerror}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{outputFunctionerror()}{outputFunctionerror()}}
+{\footnotesize\ttfamily void output\+Functionerror (\begin{DoxyParamCaption}\item[{string}]{function\+\_\+name,  }\item[{string}]{massage,  }\item[{double}]{value,  }\item[{int}]{level }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00548}{548}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_a2e0bbaf3df3956eb651d272a917651fb}\label{_arsenal_8cpp_a2e0bbaf3df3956eb651d272a917651fb}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!readBlockData@{readBlockData}}
+\index{readBlockData@{readBlockData}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{readBlockData()}{readBlockData()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ double $>$ $\ast$ $>$ $\ast$ read\+Block\+Data (\begin{DoxyParamCaption}\item[{istream \&}]{stream\+\_\+in }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00098}{98}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_abc1c2466fa5454ce18bd91572d79a483}\label{_arsenal_8cpp_abc1c2466fa5454ce18bd91572d79a483}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!releaseBlockData@{releaseBlockData}}
+\index{releaseBlockData@{releaseBlockData}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{releaseBlockData()}{releaseBlockData()}}
+{\footnotesize\ttfamily void release\+Block\+Data (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ double $>$ $\ast$ $>$ $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00146}{146}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_aefcc747cf91dd85ac917708586b5a600}\label{_arsenal_8cpp_aefcc747cf91dd85ac917708586b5a600}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!Simpson\_sum@{Simpson\_sum}}
+\index{Simpson\_sum@{Simpson\_sum}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{Simpson\_sum()}{Simpson\_sum()}}
+{\footnotesize\ttfamily double Simpson\+\_\+sum (\begin{DoxyParamCaption}\item[{double $\ast$}]{array,  }\item[{int}]{num,  }\item[{double}]{h\+\_\+step }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00088}{88}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_a7e564ec0266d67f518a0b0f80f17e203}\label{_arsenal_8cpp_a7e564ec0266d67f518a0b0f80f17e203}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!stringToDouble@{stringToDouble}}
+\index{stringToDouble@{stringToDouble}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{stringToDouble()}{stringToDouble()}}
+{\footnotesize\ttfamily double string\+To\+Double (\begin{DoxyParamCaption}\item[{string}]{str }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00604}{604}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_a83a32730f98fc4fe18862dc9eb6a55e4}\label{_arsenal_8cpp_a83a32730f98fc4fe18862dc9eb6a55e4}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!stringToDoubles@{stringToDoubles}}
+\index{stringToDoubles@{stringToDoubles}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{stringToDoubles()}{stringToDoubles()}}
+{\footnotesize\ttfamily vector$<$ double $>$ string\+To\+Doubles (\begin{DoxyParamCaption}\item[{string}]{str }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00158}{158}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_a637fd73afd1fadd689749ce8ec66e33a}\label{_arsenal_8cpp_a637fd73afd1fadd689749ce8ec66e33a}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!toLower@{toLower}}
+\index{toLower@{toLower}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{toLower()}{toLower()}}
+{\footnotesize\ttfamily string to\+Lower (\begin{DoxyParamCaption}\item[{string}]{str }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00580}{580}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_aa7cb820696f8a66d03330e091482020c}\label{_arsenal_8cpp_aa7cb820696f8a66d03330e091482020c}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!trim@{trim}}
+\index{trim@{trim}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{trim()}{trim()}}
+{\footnotesize\ttfamily string trim (\begin{DoxyParamCaption}\item[{string}]{str }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00588}{588}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_arsenal_8cpp_aa41a7cabe73aaf4ec0057be2f2dce1b7}\label{_arsenal_8cpp_aa41a7cabe73aaf4ec0057be2f2dce1b7}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!zq\_x\_global@{zq\_x\_global}}
+\index{zq\_x\_global@{zq\_x\_global}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{zq\_x\_global}{zq\_x\_global}}
+{\footnotesize\ttfamily vector$<$double$>$$\ast$ zq\+\_\+x\+\_\+global}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00503}{503}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+
+\mbox{\Hypertarget{_arsenal_8cpp_afe8dd86a36e09ac520ba8f19d01727c1}\label{_arsenal_8cpp_afe8dd86a36e09ac520ba8f19d01727c1}} 
+\index{Arsenal.cpp@{Arsenal.cpp}!zq\_y\_global@{zq\_y\_global}}
+\index{zq\_y\_global@{zq\_y\_global}!Arsenal.cpp@{Arsenal.cpp}}
+\doxysubsubsection{\texorpdfstring{zq\_y\_global}{zq\_y\_global}}
+{\footnotesize\ttfamily vector$<$double$>$ $\ast$ zq\+\_\+y\+\_\+global}
+
+
+
+Definition at line \mbox{\hyperlink{_arsenal_8cpp_source_l00503}{503}} of file \mbox{\hyperlink{_arsenal_8cpp_source}{Arsenal.\+cpp}}.
+

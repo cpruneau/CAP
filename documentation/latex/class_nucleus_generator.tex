@@ -1,0 +1,356 @@
+\hypertarget{class_nucleus_generator}{}\doxysection{Nucleus\+Generator Class Reference}
+\label{class_nucleus_generator}\index{NucleusGenerator@{NucleusGenerator}}
+
+
+{\ttfamily \#include $<$Nucleus\+Generator.\+hpp$>$}
+
+
+
+Inheritance diagram for Nucleus\+Generator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{class_nucleus_generator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Nucleus\+Generator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{class_nucleus_generator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7}{Generator\+Type}} \{ \newline
+\mbox{\hyperlink{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7a014755ab7523eefa475a08cead5ef832}{Uniform}}
+, \mbox{\hyperlink{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7a2f600647e410be1740077ea955da472b}{Woods\+Saxon}}
+, \mbox{\hyperlink{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7a1705057b0a58158c873d24b4b27213fd}{Exponential}}
+, \mbox{\hyperlink{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7a4d2921ee07d8ee135a617d1d8ebd35e5}{Gaussian}}
+, \newline
+\mbox{\hyperlink{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7add60b5d799fbdc0d4be2024d108e0a81}{Double\+Gaussian}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_nucleus_generator_aa1641f7b97d2ed4ee1e83b44f4a52dde}{Nucleus\+Generator}} ()
+\item 
+virtual \mbox{\hyperlink{class_nucleus_generator_a036813af06db1683a986f511376afbd4}{$\sim$\+Nucleus\+Generator}} ()
+\item 
+virtual void \mbox{\hyperlink{class_nucleus_generator_a85ffaa558cd04ec5bc9e3f7571e3ab9b}{initialize}} (const TString \&\+\_\+generator\+Type\+Name, int \+\_\+generator\+Type, double \+\_\+parA, double \+\_\+parB, double \+\_\+parC, int \+\_\+nR, double \+\_\+minR, double \+\_\+maxR, bool \+\_\+use\+Recentering, bool \+\_\+use\+Nucleon\+Exclusion, double \+\_\+exclusion\+Radius)
+\item 
+virtual void \mbox{\hyperlink{class_nucleus_generator_ad31d842377505a838d08de5c51c421dc}{generate}} (\mbox{\hyperlink{class_nucleus}{Nucleus}} \&nucleus, double x\+Shift)
+\item 
+virtual void \mbox{\hyperlink{class_nucleus_generator_a7c3b9b621875c576b6f5453a9b346da4}{generate}} (double \&r, double \&cos\+Theta, double \&phi)
+\item 
+virtual void \mbox{\hyperlink{class_nucleus_generator_add2f5eb34249100d3767cb0ffa512cb8}{save\+Histograms}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TString \mbox{\hyperlink{class_nucleus_generator_a94c47cf001eec29dee79f98d58c9b08f}{generator\+Type\+Name}}
+\item 
+int \mbox{\hyperlink{class_nucleus_generator_a319f82df3b133d64cbe666a6fe5f1e40}{generator\+Type}}
+\item 
+int \mbox{\hyperlink{class_nucleus_generator_aca2f91a0c651841f6ef164bd03b9918a}{nR}}
+\item 
+double \mbox{\hyperlink{class_nucleus_generator_a13a300ecc8794b339966820fd2fd682e}{minR}}
+\item 
+double \mbox{\hyperlink{class_nucleus_generator_adea4227002230ed9c00730b99427d8f7}{maxR}}
+\item 
+double \mbox{\hyperlink{class_nucleus_generator_a6f2df3305cbdfd9ecbabef6cbaefd324}{parA}}
+\item 
+double \mbox{\hyperlink{class_nucleus_generator_a35cc2fd6386c944edce0ac8f51c764cf}{parB}}
+\item 
+double \mbox{\hyperlink{class_nucleus_generator_a2859f3d5105f6df40523c66fa812efff}{parC}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_nucleus_generator_a1dce9594d513cd4bdc927784f5206fe6}{r\+Density}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_nucleus_generator_a0dcd32fc6ed6c8d1635c2f4cfcef5083}{r\+Profile}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_nucleus_generator_a7b678e73791caaab2780e1d4c5ea82fd}{r\+Profile\+Gen}}
+\item 
+bool \mbox{\hyperlink{class_nucleus_generator_a517edcd5176dce27c1f28903193f9235}{use\+Recentering}}
+\item 
+bool \mbox{\hyperlink{class_nucleus_generator_a143b8fd61ed18bad714dd48b460950c8}{use\+Nucleon\+Exclusion}}
+\item 
+double \mbox{\hyperlink{class_nucleus_generator_a2344fe68e02e8f7d9bd95c7541f84741}{exclusion\+Radius}}
+\item 
+double \mbox{\hyperlink{class_nucleus_generator_a54c29f672fae7fe4dab46df661b5da4d}{exclusion\+Radius\+Sq}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\hypertarget{class_nucleus_generator_autotoc_md0}{}\doxysubsection{Nucleus\+Generator}\label{class_nucleus_generator_autotoc_md0}
+n\+Nucleons \+: number of nucleons n\+Protons \+: number of protons n\+Neutrons \+: number of neutron
+
+x,y,z \+: cartesian coordinates relative to its container (collision) radius \+: nominal radius of the \mbox{\hyperlink{class_nucleus_generator}{Nucleus\+Generator}} used for generation purposes
+
+Class defining \mbox{\hyperlink{class_nucleus_generator}{Nucleus\+Generator}} 
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00028}{28}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7}\label{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7}} 
+\index{NucleusGenerator@{NucleusGenerator}!GeneratorType@{GeneratorType}}
+\index{GeneratorType@{GeneratorType}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{GeneratorType}{GeneratorType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7}{Nucleus\+Generator\+::\+Generator\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Uniform@{Uniform}!NucleusGenerator@{NucleusGenerator}}\index{NucleusGenerator@{NucleusGenerator}!Uniform@{Uniform}}}\mbox{\Hypertarget{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7a014755ab7523eefa475a08cead5ef832}\label{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7a014755ab7523eefa475a08cead5ef832}} 
+Uniform&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WoodsSaxon@{WoodsSaxon}!NucleusGenerator@{NucleusGenerator}}\index{NucleusGenerator@{NucleusGenerator}!WoodsSaxon@{WoodsSaxon}}}\mbox{\Hypertarget{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7a2f600647e410be1740077ea955da472b}\label{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7a2f600647e410be1740077ea955da472b}} 
+Woods\+Saxon&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Exponential@{Exponential}!NucleusGenerator@{NucleusGenerator}}\index{NucleusGenerator@{NucleusGenerator}!Exponential@{Exponential}}}\mbox{\Hypertarget{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7a1705057b0a58158c873d24b4b27213fd}\label{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7a1705057b0a58158c873d24b4b27213fd}} 
+Exponential&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Gaussian@{Gaussian}!NucleusGenerator@{NucleusGenerator}}\index{NucleusGenerator@{NucleusGenerator}!Gaussian@{Gaussian}}}\mbox{\Hypertarget{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7a4d2921ee07d8ee135a617d1d8ebd35e5}\label{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7a4d2921ee07d8ee135a617d1d8ebd35e5}} 
+Gaussian&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DoubleGaussian@{DoubleGaussian}!NucleusGenerator@{NucleusGenerator}}\index{NucleusGenerator@{NucleusGenerator}!DoubleGaussian@{DoubleGaussian}}}\mbox{\Hypertarget{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7add60b5d799fbdc0d4be2024d108e0a81}\label{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7add60b5d799fbdc0d4be2024d108e0a81}} 
+Double\+Gaussian&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_nucleus_generator_aa1641f7b97d2ed4ee1e83b44f4a52dde}\label{class_nucleus_generator_aa1641f7b97d2ed4ee1e83b44f4a52dde}} 
+\index{NucleusGenerator@{NucleusGenerator}!NucleusGenerator@{NucleusGenerator}}
+\index{NucleusGenerator@{NucleusGenerator}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{NucleusGenerator()}{NucleusGenerator()}}
+{\footnotesize\ttfamily Nucleus\+Generator\+::\+Nucleus\+Generator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{_nucleus_generator_8cpp_source}{Nucleus\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_a036813af06db1683a986f511376afbd4}\label{class_nucleus_generator_a036813af06db1683a986f511376afbd4}} 
+\index{NucleusGenerator@{NucleusGenerator}!````~NucleusGenerator@{$\sim$NucleusGenerator}}
+\index{````~NucleusGenerator@{$\sim$NucleusGenerator}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{$\sim$NucleusGenerator()}{~NucleusGenerator()}}
+{\footnotesize\ttfamily Nucleus\+Generator\+::$\sim$\+Nucleus\+Generator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{_nucleus_generator_8cpp_source}{Nucleus\+Generator.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_nucleus_generator_a7c3b9b621875c576b6f5453a9b346da4}\label{class_nucleus_generator_a7c3b9b621875c576b6f5453a9b346da4}} 
+\index{NucleusGenerator@{NucleusGenerator}!generate@{generate}}
+\index{generate@{generate}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{generate()}{generate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Nucleus\+Generator\+::generate (\begin{DoxyParamCaption}\item[{double \&}]{r,  }\item[{double \&}]{cos\+Theta,  }\item[{double \&}]{phi }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8cpp_source_l00184}{184}} of file \mbox{\hyperlink{_nucleus_generator_8cpp_source}{Nucleus\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_ad31d842377505a838d08de5c51c421dc}\label{class_nucleus_generator_ad31d842377505a838d08de5c51c421dc}} 
+\index{NucleusGenerator@{NucleusGenerator}!generate@{generate}}
+\index{generate@{generate}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{generate()}{generate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Nucleus\+Generator\+::generate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_nucleus}{Nucleus}} \&}]{nucleus,  }\item[{double}]{x\+Shift }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8cpp_source_l00127}{127}} of file \mbox{\hyperlink{_nucleus_generator_8cpp_source}{Nucleus\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_a85ffaa558cd04ec5bc9e3f7571e3ab9b}\label{class_nucleus_generator_a85ffaa558cd04ec5bc9e3f7571e3ab9b}} 
+\index{NucleusGenerator@{NucleusGenerator}!initialize@{initialize}}
+\index{initialize@{initialize}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Nucleus\+Generator\+::initialize (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+generator\+Type\+Name,  }\item[{int}]{\+\_\+generator\+Type,  }\item[{double}]{\+\_\+parA,  }\item[{double}]{\+\_\+parB,  }\item[{double}]{\+\_\+parC,  }\item[{int}]{\+\_\+nR,  }\item[{double}]{\+\_\+minR,  }\item[{double}]{\+\_\+maxR,  }\item[{bool}]{\+\_\+use\+Recentering,  }\item[{bool}]{\+\_\+use\+Nucleon\+Exclusion,  }\item[{double}]{\+\_\+exclusion\+Radius }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{_nucleus_generator_8cpp_source}{Nucleus\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_add2f5eb34249100d3767cb0ffa512cb8}\label{class_nucleus_generator_add2f5eb34249100d3767cb0ffa512cb8}} 
+\index{NucleusGenerator@{NucleusGenerator}!saveHistograms@{saveHistograms}}
+\index{saveHistograms@{saveHistograms}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{saveHistograms()}{saveHistograms()}}
+{\footnotesize\ttfamily void Nucleus\+Generator\+::save\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8cpp_source_l00192}{192}} of file \mbox{\hyperlink{_nucleus_generator_8cpp_source}{Nucleus\+Generator.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_nucleus_generator_a2344fe68e02e8f7d9bd95c7541f84741}\label{class_nucleus_generator_a2344fe68e02e8f7d9bd95c7541f84741}} 
+\index{NucleusGenerator@{NucleusGenerator}!exclusionRadius@{exclusionRadius}}
+\index{exclusionRadius@{exclusionRadius}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{exclusionRadius}{exclusionRadius}}
+{\footnotesize\ttfamily double Nucleus\+Generator\+::exclusion\+Radius}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_a54c29f672fae7fe4dab46df661b5da4d}\label{class_nucleus_generator_a54c29f672fae7fe4dab46df661b5da4d}} 
+\index{NucleusGenerator@{NucleusGenerator}!exclusionRadiusSq@{exclusionRadiusSq}}
+\index{exclusionRadiusSq@{exclusionRadiusSq}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{exclusionRadiusSq}{exclusionRadiusSq}}
+{\footnotesize\ttfamily double Nucleus\+Generator\+::exclusion\+Radius\+Sq}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_a319f82df3b133d64cbe666a6fe5f1e40}\label{class_nucleus_generator_a319f82df3b133d64cbe666a6fe5f1e40}} 
+\index{NucleusGenerator@{NucleusGenerator}!generatorType@{generatorType}}
+\index{generatorType@{generatorType}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{generatorType}{generatorType}}
+{\footnotesize\ttfamily int Nucleus\+Generator\+::generator\+Type}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_a94c47cf001eec29dee79f98d58c9b08f}\label{class_nucleus_generator_a94c47cf001eec29dee79f98d58c9b08f}} 
+\index{NucleusGenerator@{NucleusGenerator}!generatorTypeName@{generatorTypeName}}
+\index{generatorTypeName@{generatorTypeName}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{generatorTypeName}{generatorTypeName}}
+{\footnotesize\ttfamily TString Nucleus\+Generator\+::generator\+Type\+Name}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_adea4227002230ed9c00730b99427d8f7}\label{class_nucleus_generator_adea4227002230ed9c00730b99427d8f7}} 
+\index{NucleusGenerator@{NucleusGenerator}!maxR@{maxR}}
+\index{maxR@{maxR}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{maxR}{maxR}}
+{\footnotesize\ttfamily double Nucleus\+Generator\+::maxR}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00037}{37}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_a13a300ecc8794b339966820fd2fd682e}\label{class_nucleus_generator_a13a300ecc8794b339966820fd2fd682e}} 
+\index{NucleusGenerator@{NucleusGenerator}!minR@{minR}}
+\index{minR@{minR}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{minR}{minR}}
+{\footnotesize\ttfamily double Nucleus\+Generator\+::minR}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00037}{37}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_aca2f91a0c651841f6ef164bd03b9918a}\label{class_nucleus_generator_aca2f91a0c651841f6ef164bd03b9918a}} 
+\index{NucleusGenerator@{NucleusGenerator}!nR@{nR}}
+\index{nR@{nR}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{nR}{nR}}
+{\footnotesize\ttfamily int Nucleus\+Generator\+::nR}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_a6f2df3305cbdfd9ecbabef6cbaefd324}\label{class_nucleus_generator_a6f2df3305cbdfd9ecbabef6cbaefd324}} 
+\index{NucleusGenerator@{NucleusGenerator}!parA@{parA}}
+\index{parA@{parA}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{parA}{parA}}
+{\footnotesize\ttfamily double Nucleus\+Generator\+::parA}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00038}{38}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_a35cc2fd6386c944edce0ac8f51c764cf}\label{class_nucleus_generator_a35cc2fd6386c944edce0ac8f51c764cf}} 
+\index{NucleusGenerator@{NucleusGenerator}!parB@{parB}}
+\index{parB@{parB}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{parB}{parB}}
+{\footnotesize\ttfamily double Nucleus\+Generator\+::parB}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00039}{39}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_a2859f3d5105f6df40523c66fa812efff}\label{class_nucleus_generator_a2859f3d5105f6df40523c66fa812efff}} 
+\index{NucleusGenerator@{NucleusGenerator}!parC@{parC}}
+\index{parC@{parC}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{parC}{parC}}
+{\footnotesize\ttfamily double Nucleus\+Generator\+::parC}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00040}{40}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_a1dce9594d513cd4bdc927784f5206fe6}\label{class_nucleus_generator_a1dce9594d513cd4bdc927784f5206fe6}} 
+\index{NucleusGenerator@{NucleusGenerator}!rDensity@{rDensity}}
+\index{rDensity@{rDensity}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{rDensity}{rDensity}}
+{\footnotesize\ttfamily TH1$\ast$ Nucleus\+Generator\+::r\+Density}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_a0dcd32fc6ed6c8d1635c2f4cfcef5083}\label{class_nucleus_generator_a0dcd32fc6ed6c8d1635c2f4cfcef5083}} 
+\index{NucleusGenerator@{NucleusGenerator}!rProfile@{rProfile}}
+\index{rProfile@{rProfile}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{rProfile}{rProfile}}
+{\footnotesize\ttfamily TH1$\ast$ Nucleus\+Generator\+::r\+Profile}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00042}{42}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_a7b678e73791caaab2780e1d4c5ea82fd}\label{class_nucleus_generator_a7b678e73791caaab2780e1d4c5ea82fd}} 
+\index{NucleusGenerator@{NucleusGenerator}!rProfileGen@{rProfileGen}}
+\index{rProfileGen@{rProfileGen}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{rProfileGen}{rProfileGen}}
+{\footnotesize\ttfamily TH1$\ast$ Nucleus\+Generator\+::r\+Profile\+Gen}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_a143b8fd61ed18bad714dd48b460950c8}\label{class_nucleus_generator_a143b8fd61ed18bad714dd48b460950c8}} 
+\index{NucleusGenerator@{NucleusGenerator}!useNucleonExclusion@{useNucleonExclusion}}
+\index{useNucleonExclusion@{useNucleonExclusion}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{useNucleonExclusion}{useNucleonExclusion}}
+{\footnotesize\ttfamily bool Nucleus\+Generator\+::use\+Nucleon\+Exclusion}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+\mbox{\Hypertarget{class_nucleus_generator_a517edcd5176dce27c1f28903193f9235}\label{class_nucleus_generator_a517edcd5176dce27c1f28903193f9235}} 
+\index{NucleusGenerator@{NucleusGenerator}!useRecentering@{useRecentering}}
+\index{useRecentering@{useRecentering}!NucleusGenerator@{NucleusGenerator}}
+\doxysubsubsection{\texorpdfstring{useRecentering}{useRecentering}}
+{\footnotesize\ttfamily bool Nucleus\+Generator\+::use\+Recentering}
+
+
+
+Definition at line \mbox{\hyperlink{_nucleus_generator_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{_nucleus_generator_8hpp_source}{Nucleus\+Generator.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_nucleus_generator_8hpp}{Nucleus\+Generator.\+hpp}}\item 
+Base/\mbox{\hyperlink{_nucleus_generator_8cpp}{Nucleus\+Generator.\+cpp}}\end{DoxyCompactItemize}

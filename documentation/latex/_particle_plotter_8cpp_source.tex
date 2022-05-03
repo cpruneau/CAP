@@ -1,0 +1,158 @@
+\hypertarget{_particle_plotter_8cpp_source}{}\doxysection{Particle\+Plotter.\+cpp}
+\label{_particle_plotter_8cpp_source}\index{Macros/ParticlePlotter.cpp@{Macros/ParticlePlotter.cpp}}
+\mbox{\hyperlink{_particle_plotter_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_plotter_8hpp}{ParticlePlotter.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00002}\mbox{\hyperlink{_particle_plotter_8cpp_aadae08854c4f843c5048f6a290ade75b}{00002}} \mbox{\hyperlink{_particle_plotter_8cpp_aadae08854c4f843c5048f6a290ade75b}{ClassImp}}(\mbox{\hyperlink{class_particle_plotter}{ParticlePlotter}});}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00004}\mbox{\hyperlink{class_particle_plotter_a285f83b5f45ce80b28617b77563db078}{00004}} \mbox{\hyperlink{class_particle_plotter_a285f83b5f45ce80b28617b77563db078}{ParticlePlotter::ParticlePlotter}}()}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00005}00005 :}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00006}00006 \mbox{\hyperlink{class_plotter}{Plotter}}(\textcolor{stringliteral}{"{}ParticlePplotter"{}}, Info)}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00007}00007 \{  \}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00009}\mbox{\hyperlink{class_particle_plotter_ab01068061f0d81496fb3f2ea231ffb70}{00009}} \mbox{\hyperlink{class_particle_plotter_ab01068061f0d81496fb3f2ea231ffb70}{ParticlePlotter::\string~ParticlePlotter}}()}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00010}00010 \{}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00011}00011 \}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00015}\mbox{\hyperlink{class_particle_plotter_afc76ee5331ac84e0d117024062cf8af7}{00015}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_plotter_afc76ee5331ac84e0d117024062cf8af7}{ParticlePlotter::makePlots}}(\textcolor{keyword}{const} TString \& canvasNameBase,}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00016}00016                                 \textcolor{keywordtype}{int} nSets,}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00017}00017                                 \mbox{\hyperlink{class_particle_histos}{ParticleHistos}} ** particleHistos,}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00018}00018                                 TString ** \mbox{\hyperlink{_plot_hep_data_8_c_ac1c32cfdaf7bc1f1601c4161f5e88ca0}{particleNames}},}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00019}00019                                 TString ** \mbox{\hyperlink{_plot_hep_data_8_c_a48539a6193f4aa05dc2530ded45f3b72}{particleTitles}},}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00020}00020                                 \mbox{\hyperlink{class_canvas_configuration}{CanvasConfiguration}} * canvasConfiguration,}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00021}00021                                 \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}}  ** graphConfigurations)}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00022}00022 \{}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00023}00023   TH1 ** histograms = \textcolor{keyword}{new} TH1* [100];}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00024}00024   TString histNames = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00025}00025   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iSet=0;iSet<nSets;iSet++)}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00026}00026   \{}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00027}00027   histNames += *\mbox{\hyperlink{_plot_hep_data_8_c_ac1c32cfdaf7bc1f1601c4161f5e88ca0}{particleNames}}[iSet];}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00028}00028   \}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00030}00030   \textcolor{comment}{//canvasConfiguration-\/>setAxes(CanvasConfiguration::LogY);}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00031}00031   \textcolor{comment}{//canvasConfiguration-\/>setAxes(CanvasConfiguration::Linear);}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00033}00033   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iSet=0;iSet<nSets;iSet++)}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00034}00034   \{}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00035}00035   histograms[iSet] = particleHistos[iSet]-\/>\mbox{\hyperlink{class_particle_histos_a168eb371934cab95c8008e50d2346f14}{h\_n1}};}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00036}00036   \}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00037}00037   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65ab06aef94aa1805e40340d8098cadfcaf}{CanvasConfiguration::LogY}});}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00038}00038   \mbox{\hyperlink{class_plotter_a861c11293799d7029e05e226c0554c1a}{plot}}(nSets, canvasNameBase+histNames+\textcolor{stringliteral}{"{}\_MultDist"{}},canvasConfiguration,graphConfigurations,}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00039}00039        \textcolor{stringliteral}{"{}N"{}}, 0.0, 200.0,}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00040}00040        \textcolor{stringliteral}{"{}Counts"{}}, 1.0E-\/6, 5.0E-\/1,}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00041}00041        histograms,\mbox{\hyperlink{_plot_hep_data_8_c_a48539a6193f4aa05dc2530ded45f3b72}{particleTitles}},0.75, 0.5, 0.85, 0.9, 0.055);}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00043}00043   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iSet=0;iSet<nSets;iSet++)}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00044}00044   \{}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00045}00045   histograms[iSet] = particleHistos[iSet]-\/>\mbox{\hyperlink{class_particle_histos_a0f032e1baac86b8d80aac0ac02341f6f}{h\_n1\_eta}};}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00046}00046   \}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00047}00047   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00048}00048   \mbox{\hyperlink{class_plotter_a861c11293799d7029e05e226c0554c1a}{plot}}(nSets, canvasNameBase+histNames+\textcolor{stringliteral}{"{}\_dndeta"{}},canvasConfiguration,graphConfigurations,}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00049}00049        \textcolor{stringliteral}{"{}\#eta"{}}, 2.0, -\/2.0,}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00050}00050        \textcolor{stringliteral}{"{}dN/d\#eta"{}}, 0.0, 0.8,}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00051}00051        histograms,\mbox{\hyperlink{_plot_hep_data_8_c_a48539a6193f4aa05dc2530ded45f3b72}{particleTitles}},0.75, 0.2, 0.85, 0.6, 0.055);}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00053}00053   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iSet=0;iSet<nSets;iSet++)}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00054}00054   \{}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00055}00055   histograms[iSet] = particleHistos[iSet]-\/>\mbox{\hyperlink{class_particle_histos_aeb482c8548ac1d8f69b63e453edcd477}{h\_n1\_pt}};}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00056}00056   \}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00057}00057   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65ab06aef94aa1805e40340d8098cadfcaf}{CanvasConfiguration::LogY}});}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00058}00058   \mbox{\hyperlink{class_plotter_a861c11293799d7029e05e226c0554c1a}{plot}}(nSets, canvasNameBase+histNames+\textcolor{stringliteral}{"{}\_dndpt"{}},canvasConfiguration,graphConfigurations,}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00059}00059        \textcolor{stringliteral}{"{}p\_\{T\}"{}}, 0.0, 20.0,}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00060}00060        \textcolor{stringliteral}{"{}dN/dp\_\{T\}"{}}, 1.0E-\/7, 5.0E0,}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00061}00061        histograms,\mbox{\hyperlink{_plot_hep_data_8_c_a48539a6193f4aa05dc2530ded45f3b72}{particleTitles}},0.7, 0.4, 0.85, 0.9, 0.055);}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00063}00063   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iSet=0;iSet<nSets;iSet++)}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00064}00064   \{}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00065}00065   histograms[iSet] = particleHistos[iSet]-\/>\mbox{\hyperlink{class_particle_histos_ad671610da0bd80b2cef1c5e7767697f9}{h\_n1\_ptXS}};}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00066}00066   \}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00067}00067   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65ab06aef94aa1805e40340d8098cadfcaf}{CanvasConfiguration::LogY}});}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00068}00068   \mbox{\hyperlink{class_plotter_a861c11293799d7029e05e226c0554c1a}{plot}}(nSets, canvasNameBase+histNames+\textcolor{stringliteral}{"{}\_dnptdpt"{}},canvasConfiguration,graphConfigurations,}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00069}00069        \textcolor{stringliteral}{"{}p\_\{T\}"{}}, 0.0, 20.0,}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00070}00070        \textcolor{stringliteral}{"{}dN/p\_\{T\}dp\_\{T\}"{}}, 1.0E-\/9, 3.0E1,}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00071}00071        histograms,\mbox{\hyperlink{_plot_hep_data_8_c_a48539a6193f4aa05dc2530ded45f3b72}{particleTitles}},0.7, 0.4, 0.85, 0.9, 0.055);}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00073}00073 \}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00075}00075 \textcolor{comment}{//void ParticlePlotter::makeComparisonPlots(const TString \& canvasNameBase,}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00076}00076 \textcolor{comment}{//                                          CanvasConfiguration * canvasConfiguration,}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00077}00077 \textcolor{comment}{//                                          int nGraphs,}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00078}00078 \textcolor{comment}{//                                          ParticleHistos ** particleHistos,}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00079}00079 \textcolor{comment}{//                                          TString ** histLabels,}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00080}00080 \textcolor{comment}{//                                          GraphConfiguration  ** graphConfigurations)}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00081}00081 \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00082}00082 \textcolor{comment}{//  TH1 ** histograms = new TH1* [100];}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00083}00083 \textcolor{comment}{//  TString ** histTitles = new TString * [100];}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00084}00084 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00085}00085 \textcolor{comment}{//  TString histName;}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00086}00086 \textcolor{comment}{//  TString histTitleBase;}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00087}00087 \textcolor{comment}{//  TString histTitle;}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00088}00088 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00089}00089 \textcolor{comment}{//  canvasConfiguration-\/>setAxes(CanvasConfiguration::Linear);}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00090}00090 \textcolor{comment}{//  //canvasConfiguration-\/>setAxes(CanvasConfiguration::LogY);}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00091}00091 \textcolor{comment}{//int index1234 = nuDynHistos[0]-\/>index4(0,1,2,3);}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00092}00092 \textcolor{comment}{//  histTitleBase = "{}f\_\{4\}"{};}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00093}00093 \textcolor{comment}{//  for (int i1=0; i1<nGraphs; i1++)}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00094}00094 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00095}00095 \textcolor{comment}{//    histTitle = histTitleBase;}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00096}00096 \textcolor{comment}{//    histTitle += *histLabels[i1];}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00097}00097 \textcolor{comment}{//    //cout << "{}Inserting: "{} << histTitle  << endl;}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00098}00098 \textcolor{comment}{//    histograms[i1] = nuDynHistos[i1]-\/>h\_f4\_vsMult[index1234];}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00099}00099 \textcolor{comment}{//    if (!histograms[i1])}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00100}00100 \textcolor{comment}{//        \{}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00101}00101 \textcolor{comment}{//        cout << "{}<F> Histograms not loaded!!!! ABORT!!!"{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00102}00102 \textcolor{comment}{//        return;}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00103}00103 \textcolor{comment}{//        \}}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00104}00104 \textcolor{comment}{//    histTitles[i1] = new TString(histTitle);}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00105}00105 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00106}00106 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00107}00107 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00108}00108 \textcolor{comment}{//   plot(nGraphs, canvasNameBase+"{}f4\_vsMult"{},canvasConfiguration,graphConfigurations,}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00109}00109 \textcolor{comment}{//        "{}Mult"{}, 20.0, 400.0,}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00110}00110 \textcolor{comment}{//        "{}f\_\{4\}"{}, 0.0, -\/1.2,}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00111}00111 \textcolor{comment}{//        histograms,histTitles,0.25, 0.6, 0.45, 0.85, 0.055);}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00112}00112 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00113}00113 \textcolor{comment}{//  histTitleBase = "{}F\_\{4\}"{};}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00114}00114 \textcolor{comment}{//   for (int i1=0; i1<nGraphs; i1++)}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00115}00115 \textcolor{comment}{//     \{}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00116}00116 \textcolor{comment}{//     histTitle = histTitleBase;}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00117}00117 \textcolor{comment}{//     histTitle += *histLabels[i1];}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00118}00118 \textcolor{comment}{//     cout << "{}Inserting: "{} << histTitle  << endl;}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00119}00119 \textcolor{comment}{//     histograms[i1] = nuDynDerivedHistos[i1]-\/>h\_F4\_vsMult[index1234]; histTitles[i1] = new TString(histTitle);}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00120}00120 \textcolor{comment}{//     if (!histograms[i1])}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00121}00121 \textcolor{comment}{//       \{}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00122}00122 \textcolor{comment}{//       cout << "{}<F> Histograms not loaded!!!! ABORT!!!"{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00123}00123 \textcolor{comment}{//       return;}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00124}00124 \textcolor{comment}{//       \}}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00125}00125 \textcolor{comment}{//     \}}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00126}00126 \textcolor{comment}{//    plot(nGraphs, canvasNameBase+"{}F4\_vsMult"{},canvasConfiguration,graphConfigurations,}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00127}00127 \textcolor{comment}{//         "{}Mult"{}, 20.0, 400.0,}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00128}00128 \textcolor{comment}{//         "{}F\_\{4\}"{}, -\/50000, 50000,}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00129}00129 \textcolor{comment}{//         histograms,histTitles,0.25, 0.6, 0.45, 0.85, 0.055);}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00130}00130 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00131}00131 \textcolor{comment}{//  histTitleBase = "{}R\_\{4\}"{};}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00132}00132 \textcolor{comment}{//  for (int i1=0; i1<nGraphs; i1++)}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00133}00133 \textcolor{comment}{//    \{}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00134}00134 \textcolor{comment}{//    histTitle = histTitleBase;}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00135}00135 \textcolor{comment}{//    histTitle += *histLabels[i1];}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00136}00136 \textcolor{comment}{//    cout << "{}Inserting: "{} << histTitle  << endl;}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00137}00137 \textcolor{comment}{//    histograms[i1] = nuDynDerivedHistos[i1]-\/>h\_R4\_vsMult[index1234]; histTitles[i1] = new TString(histTitle);}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00138}00138 \textcolor{comment}{//    if (!histograms[i1])}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00139}00139 \textcolor{comment}{//      \{}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00140}00140 \textcolor{comment}{//      cout << "{}<F> Histograms not loaded!!!! ABORT!!!"{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00141}00141 \textcolor{comment}{//      return;}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00142}00142 \textcolor{comment}{//      \}}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00143}00143 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00144}00144 \textcolor{comment}{//   plot(nGraphs, canvasNameBase+"{}R4\_vsMult"{},canvasConfiguration,graphConfigurations,}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00145}00145 \textcolor{comment}{//        "{}Mult"{}, 20.0, 400.0,}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00146}00146 \textcolor{comment}{//        "{}R\_\{4\}"{}, -\/0.3, 0.3,}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00147}00147 \textcolor{comment}{//        histograms,histTitles,0.65, 0.6, 0.85, 0.9, 0.055);}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00148}00148 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00149}00149 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00150}00150 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00151}00151 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_plotter_8cpp_source_l00152}00152 \textcolor{comment}{//\}}}
+
+\end{DoxyCode}

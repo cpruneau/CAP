@@ -1,0 +1,42 @@
+\hypertarget{_chemical_potential_8hpp_source}{}\doxysection{Chemical\+Potential.\+hpp}
+\label{_chemical_potential_8hpp_source}\index{HadronGas/ChemicalPotential.hpp@{HadronGas/ChemicalPotential.hpp}}
+\mbox{\hyperlink{_chemical_potential_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef WAC\_ChemicalPotential}}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define WAC\_ChemicalPotential}}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00003}00003 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_table2_d_8hpp}{Table2D.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00005}\mbox{\hyperlink{class_chemical_potential}{00005}} \textcolor{keyword}{class }\mbox{\hyperlink{class_chemical_potential}{ChemicalPotential}}}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00006}00006 \{}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00007}00007    \textcolor{keyword}{private}: }
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00008}00008       \textcolor{keywordtype}{int} Tb\_length, nStableParticles;}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00009}00009       \mbox{\hyperlink{class_table2_d}{Table2D}}* EOS\_Mu\_Table\_ptr;}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00010}00010       \textcolor{keywordtype}{double}* T;}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00011}00011       \textcolor{keywordtype}{double} T\_chem;}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00012}00012       \textcolor{keywordtype}{int} nT;}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00013}00013       \textcolor{keywordtype}{double}** mu\_table;}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00014}00014       \textcolor{keywordtype}{int} read\_in\_flag;}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00015}00015       \textcolor{keywordtype}{int} *stable\_Particle\_monval\_list;}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00016}00016       }
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00017}00017    \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00018}00018       \mbox{\hyperlink{class_chemical_potential_a3a61f93a3ac82c67323f823a0416cdb2}{ChemicalPotential}}();}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00019}00019       \mbox{\hyperlink{class_chemical_potential_a0ad32d65eeb0d3c5b5db7c803f75587e}{\string~ChemicalPotential}}();}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00021}00021       \textcolor{keywordtype}{void} \mbox{\hyperlink{class_chemical_potential_af4b461ef56dd6c0dbd64b75866db12d9}{readChemicalPotentialTableFromFile}}(\textcolor{keywordtype}{string} filename);}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00022}00022       \textcolor{keywordtype}{void} \mbox{\hyperlink{class_chemical_potential_a1efb75156918279e0608d1e2b54a0b58}{readStableParticleListFromFile}}(\textcolor{keywordtype}{string} filename);}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00024}\mbox{\hyperlink{class_chemical_potential_afc13a7c0e4d3759277c0bdc56b6bc876}{00024}}       \textcolor{keywordtype}{int} \mbox{\hyperlink{class_chemical_potential_afc13a7c0e4d3759277c0bdc56b6bc876}{get\_Tblength}}() \{\textcolor{keywordflow}{return}(Tb\_length);\};}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00025}\mbox{\hyperlink{class_chemical_potential_a5f660783d1d216e63d3a2b4438d65cfa}{00025}}       \textcolor{keywordtype}{int} \mbox{\hyperlink{class_chemical_potential_a5f660783d1d216e63d3a2b4438d65cfa}{getNStableParticles}}() \{\textcolor{keywordflow}{return}(nStableParticles);\};}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00026}\mbox{\hyperlink{class_chemical_potential_a8f25f4470bfe647ee8cb41b18dac47a0}{00026}}       \textcolor{keywordtype}{int} \mbox{\hyperlink{class_chemical_potential_a8f25f4470bfe647ee8cb41b18dac47a0}{get\_stable\_Particle\_monval}}(\textcolor{keywordtype}{int} i) }
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00027}00027           \{\textcolor{keywordflow}{return}(stable\_Particle\_monval\_list[i]);\};}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00028}\mbox{\hyperlink{class_chemical_potential_acf16ba1f9235f35065f49fa84164530b}{00028}}       \textcolor{keywordtype}{double} \mbox{\hyperlink{class_chemical_potential_acf16ba1f9235f35065f49fa84164530b}{get\_T}}(\textcolor{keywordtype}{int} i) \{\textcolor{keywordflow}{return}(T[i]);\};}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00030}00030       \textcolor{keywordtype}{void} \mbox{\hyperlink{class_chemical_potential_ad4dd8bf27177f6603426babd81f9107b}{getStableParticleMuTable}}(\textcolor{keywordtype}{int} iT, \textcolor{keywordtype}{double}* mu);}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00031}00031       \textcolor{keywordtype}{void} \mbox{\hyperlink{class_chemical_potential_a0fc51adcaea105815a14f9e60ea08f90}{output\_stable\_mu}}(\textcolor{keywordtype}{double} temperature, \textcolor{keywordtype}{double}* mu); }
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00033}00033 \};}
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{_chemical_potential_8hpp_source_l00036}00036 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

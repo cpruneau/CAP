@@ -1,0 +1,75 @@
+\hypertarget{_nucleus_8hpp_source}{}\doxysection{Nucleus.\+hpp}
+\label{_nucleus_8hpp_source}\index{Base/Nucleus.hpp@{Base/Nucleus.hpp}}
+\mbox{\hyperlink{_nucleus_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   05/08/2020}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.  }}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef CAP\_\_Nucleus}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define CAP\_\_Nucleus}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_8hpp}{Particle.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00013}00013 \textcolor{comment}{// ***************************************************************************}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00014}00014 \textcolor{comment}{// Nucleus}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00015}00015 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00016}00016 \textcolor{comment}{// nProtons      : number of protons}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00017}00017 \textcolor{comment}{// nNeutrons     : number of neutron}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00018}00018 \textcolor{comment}{// ***************************************************************************}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00019}\mbox{\hyperlink{class_nucleus}{00019}} \textcolor{keyword}{class }\mbox{\hyperlink{class_nucleus}{Nucleus}}  : \textcolor{keyword}{public}  \mbox{\hyperlink{class_particle}{Particle}}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00020}00020 \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00021}00021 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00023}00023   \mbox{\hyperlink{class_nucleus_ac1dc2e47269ccacfb55b1f27d39596af}{Nucleus}}();}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00024}\mbox{\hyperlink{class_nucleus_af0a77d5eab097d7c2550c86a1971d07b}{00024}}   \textcolor{keyword}{virtual}  \mbox{\hyperlink{class_nucleus_af0a77d5eab097d7c2550c86a1971d07b}{\string~Nucleus}}()}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00025}00025   \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00026}00026   \textcolor{comment}{// no ops.}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00027}00027   \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00028}00028   \mbox{\hyperlink{class_nucleus_ac1dc2e47269ccacfb55b1f27d39596af}{Nucleus}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_nucleus}{Nucleus}} \& otherNucleus);}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00029}00029   \mbox{\hyperlink{class_nucleus}{Nucleus}} \& \mbox{\hyperlink{class_nucleus_a00d84fe76da8d39ffebd2453059b19a4}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_nucleus}{Nucleus}} \& otherNucleus);}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00031}00031   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_a4de2a89183995f36361cb9c774ec8391}{defineAs}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} z, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} a);}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00032}00032   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_ad255489b68b67e3e6a0d60da0eeab830}{clear}}();}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00033}00033   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_a5be4ea2b5719dfd1c511f81ef6915181}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00034}00034   \textcolor{keyword}{virtual} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  \mbox{\hyperlink{class_nucleus_a2fccaa6a9d3e44ff5b5f4bf15cd811b7}{countWounded}}();}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00035}00035   vector<Particle*> \mbox{\hyperlink{class_nucleus_ad59c01de57ee8f12141bd5e62bc2b520}{getWoundedNucleons}}();}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00037}\mbox{\hyperlink{class_nucleus_a95e03d81c95f5c0706fb93d39aba5933}{00037}}   \mbox{\hyperlink{class_particle}{Particle}} * \mbox{\hyperlink{class_nucleus_a95e03d81c95f5c0706fb93d39aba5933}{getNucleonAt}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} index)}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00038}00038   \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00039}00039   \textcolor{keywordflow}{if} (index>=\mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}.size())}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00040}00040     \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00041}00041   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00042}00042    \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}[index];}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00043}00043   \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00045}\mbox{\hyperlink{class_nucleus_ab4f65926a86356527ba8417204c62464}{00045}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_nucleus_ab4f65926a86356527ba8417204c62464}{getNProtons}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00046}00046 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00047}00047   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_nucleus_a2063f09f434983d1776cc58b1bd9ee3c}{nProtons}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00048}00048   \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00050}\mbox{\hyperlink{class_nucleus_ad0ad1c8591d02c11e2c61421ad6922a0}{00050}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_nucleus_ad0ad1c8591d02c11e2c61421ad6922a0}{getNNeutrons}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00051}00051 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00052}00052     \textcolor{keywordflow}{return} \mbox{\hyperlink{class_nucleus_aee0421461de1a4caece4ea5373a357f1}{nNeutrons}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00053}00053   \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00055}\mbox{\hyperlink{class_nucleus_afac21c676b691e7b0bf9d12b70cc20f2}{00055}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_nucleus_afac21c676b691e7b0bf9d12b70cc20f2}{getNNucleons}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00056}00056 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00057}00057     \textcolor{keywordflow}{return} \mbox{\hyperlink{class_nucleus_a2063f09f434983d1776cc58b1bd9ee3c}{nProtons}}+\mbox{\hyperlink{class_nucleus_aee0421461de1a4caece4ea5373a357f1}{nNeutrons}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00058}00058   \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00060}00060 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00062}\mbox{\hyperlink{class_nucleus_a2063f09f434983d1776cc58b1bd9ee3c}{00062}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_nucleus_a2063f09f434983d1776cc58b1bd9ee3c}{nProtons}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00063}\mbox{\hyperlink{class_nucleus_aee0421461de1a4caece4ea5373a357f1}{00063}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_nucleus_aee0421461de1a4caece4ea5373a357f1}{nNeutrons}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00065}00065   ClassDef(\mbox{\hyperlink{class_nucleus}{Nucleus}},0)}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00066}00066   }
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00067}00067 \};}
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8hpp_source_l00069}00069 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* Nucleus\_hpp */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

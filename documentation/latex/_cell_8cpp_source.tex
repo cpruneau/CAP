@@ -1,0 +1,129 @@
+\hypertarget{_cell_8cpp_source}{}\doxysection{Cell.\+cpp}
+\label{_cell_8cpp_source}\index{Cluster/Cell.cpp@{Cluster/Cell.cpp}}
+\mbox{\hyperlink{_cell_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00003}00003 \textcolor{comment}{/*************************************************************************}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00009}00009 \textcolor{comment}{ *************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_cell_8hpp}{Cell.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00017}\mbox{\hyperlink{_cell_8cpp_a00f68ac82c52b976fc0968237b952355}{00017}} \mbox{\hyperlink{_cell_8cpp_a00f68ac82c52b976fc0968237b952355}{ClassImp}}(\mbox{\hyperlink{class_cell}{Cell}});}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00019}\mbox{\hyperlink{class_cell_a394510643e8664cf12b5efaf5cb99f71}{00019}} \mbox{\hyperlink{class_cell_a394510643e8664cf12b5efaf5cb99f71}{Cell::Cell}}()}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00020}00020 :}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00021}00021 beta(0.0),}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00022}00022 betaX(0.0),}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00023}00023 betaY(0.0),}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00024}00024 betaZ(0.0),}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00025}00025 phi(0.0),}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00026}00026 nClusters(0),}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00027}00027 nParticles(0),}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00028}00028 clusters(0)}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00029}00029  \{}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00030}00030  \mbox{\hyperlink{class_cell_ab634381a0958f0aad77dd46bee06ea44}{clusters}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_cluster}{Cluster}}*[\mbox{\hyperlink{class_cell_a3818b6d5e1d88693f8237bd06b440615}{nClustersMax}}];}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00031}00031  \}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00034}00034  \textcolor{comment}{// DTOR}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00036}\mbox{\hyperlink{class_cell_a9fa559f7a28e2b4336c6879ca09304d8}{00036}} \textcolor{comment}{} \mbox{\hyperlink{class_cell_a9fa559f7a28e2b4336c6879ca09304d8}{Cell::\string~Cell}}()}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00037}00037  \{}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00038}00038  \}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00041}00041  \textcolor{comment}{// Reset this cell}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00043}\mbox{\hyperlink{class_cell_afbc65512fb26ca43bd7b0aae85f2366e}{00043}} \textcolor{comment}{} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_afbc65512fb26ca43bd7b0aae85f2366e}{Cell::reset}}()}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00044}00044  \{}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00045}00045  \mbox{\hyperlink{class_cell_aefeffb0de37f25138d82c247dab6677e}{beta}}              = 0;}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00046}00046  \mbox{\hyperlink{class_cell_a91a46927ed8ac859ae323bb12a4dc759}{phi}}               = 0;}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00047}00047  \mbox{\hyperlink{class_cell_a710df196d4375540adae5c48bb2fa926}{betaX}}             = 0;}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00048}00048  \mbox{\hyperlink{class_cell_a7419193326e3347b5197a811a46edb02}{betaY}}             = 0;}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00049}00049  \mbox{\hyperlink{class_cell_ad8011098ffa066e4837e2ca44d14f93c}{betaZ}}             = 0;}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00050}00050  \mbox{\hyperlink{class_cell_ac845493b9210bfc8e594402c79b11290}{nClusters}}         = 0;}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00051}00051  \mbox{\hyperlink{class_cell_a7733f1b1f56377c772931d048b124205}{nParticles}}        = 0;}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00052}00052  \}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00055}00055  \textcolor{comment}{// Get the cluster (within this cell) at the given index}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00057}\mbox{\hyperlink{class_cell_aa9df82e017fb4a078011114728bfad7f}{00057}} \textcolor{comment}{} \mbox{\hyperlink{class_cluster}{Cluster}} * \mbox{\hyperlink{class_cell_aa9df82e017fb4a078011114728bfad7f}{Cell::getClusterAt}}(\textcolor{keywordtype}{int} index)}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00058}00058  \{}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00059}00059  \textcolor{keywordflow}{if} (index>=0 \&\& index<\mbox{\hyperlink{class_cell_ac845493b9210bfc8e594402c79b11290}{nClusters}})}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00060}00060    \{}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00061}00061    \textcolor{keywordflow}{return} \mbox{\hyperlink{class_cell_ab634381a0958f0aad77dd46bee06ea44}{clusters}}[index];}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00062}00062    \}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00063}00063  \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00064}00064    \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00065}00065  \}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00068}00068  \textcolor{comment}{// Add the given cluster to this cell}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00070}\mbox{\hyperlink{class_cell_adb29f401cd9a946dfcc9417f055c9e01}{00070}} \textcolor{comment}{} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_adb29f401cd9a946dfcc9417f055c9e01}{Cell::add}}(\mbox{\hyperlink{class_cluster}{Cluster}} * cluster)}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00071}00071  \{}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00072}00072 \textcolor{comment}{// cout << "{}                 nClusters = "{} << nClusters << endl;}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00073}00073  \mbox{\hyperlink{class_cell_ab634381a0958f0aad77dd46bee06ea44}{clusters}}[\mbox{\hyperlink{class_cell_ac845493b9210bfc8e594402c79b11290}{nClusters}}] = cluster;}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00074}00074  \mbox{\hyperlink{class_cell_ac845493b9210bfc8e594402c79b11290}{nClusters}}++;}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00075}00075 \textcolor{comment}{// cout << "{}                 nClusters = "{} << nClusters << endl;}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00076}00076  \mbox{\hyperlink{class_cell_a7733f1b1f56377c772931d048b124205}{nParticles}} += cluster-\/>\mbox{\hyperlink{class_cluster_adad2f2501d611456597de9dbf87fda59}{nParticles}};}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00077}00077  \}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00079}\mbox{\hyperlink{class_cell_ad38fb4e3d33533150f622d2ec97295de}{00079}}  \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_ad38fb4e3d33533150f622d2ec97295de}{Cell::boost}}(\textcolor{keywordtype}{double} beta\_x, \textcolor{keywordtype}{double} beta\_y, \textcolor{keywordtype}{double} beta\_z)}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00080}00080  \{}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00081}00081  \textcolor{comment}{// boost the momentum of the whole cell vector}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00082}00082  \textcolor{comment}{// p.Boost(beta\_x, beta\_y, beta\_z);}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00084}00084  \textcolor{comment}{// boost all clusters within the cell}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00085}00085  \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iCluster=0; iCluster<\mbox{\hyperlink{class_cell_ac845493b9210bfc8e594402c79b11290}{nClusters}}; iCluster++)}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00086}00086    \{}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00087}00087    \mbox{\hyperlink{class_cell_ab634381a0958f0aad77dd46bee06ea44}{clusters}}[iCluster]-\/>\mbox{\hyperlink{class_cluster_aac478c8f00f1607063052750727efee5}{boost}}(beta\_x, beta\_y, beta\_z);}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00088}00088    \}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00089}00089  \}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00091}\mbox{\hyperlink{class_cell_a088ba8fd4e217c4580b79308456db38f}{00091}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_a088ba8fd4e217c4580b79308456db38f}{Cell::boostZ}}(\textcolor{keywordtype}{double} beta\_z)}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00092}00092 \{}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00093}00093 \textcolor{comment}{// boost the momentum of the whole cell vector}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00094}00094 \textcolor{comment}{// along the z axis}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00095}00095 \textcolor{comment}{// boost all clusters within the cell}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00096}00096   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iCluster=0; iCluster<\mbox{\hyperlink{class_cell_ac845493b9210bfc8e594402c79b11290}{nClusters}}; iCluster++)}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00097}00097     \{}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00098}00098     \mbox{\hyperlink{class_cell_ab634381a0958f0aad77dd46bee06ea44}{clusters}}[iCluster]-\/>\mbox{\hyperlink{class_cluster_a2998461226eb1ee7da0821498f52b233}{boostZ}}(beta\_z);}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00099}00099     \}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00100}00100 \}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00104}00104  \textcolor{comment}{// Print properties of this cell at the given output}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00106}\mbox{\hyperlink{class_cell_a016a5a61145479c6e0839e1b2857777d}{00106}} \textcolor{comment}{} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cell_a016a5a61145479c6e0839e1b2857777d}{Cell::printProperties}}(ostream \& output)}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00107}00107  \{}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00108}00108  output}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00109}00109  << \textcolor{stringliteral}{"{}==========================================="{}} << endl}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00110}00110  << \textcolor{stringliteral}{"{}      Cell\# "{}} << endl}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00111}00111  << \textcolor{stringliteral}{"{}      beta: "{}} << \mbox{\hyperlink{class_cell_aefeffb0de37f25138d82c247dab6677e}{beta}} << endl}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00112}00112  << \textcolor{stringliteral}{"{}       phi: "{}} << \mbox{\hyperlink{class_cell_a91a46927ed8ac859ae323bb12a4dc759}{phi}} << endl}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00113}00113  << \textcolor{stringliteral}{"{}     betaX: "{}} << \mbox{\hyperlink{class_cell_a710df196d4375540adae5c48bb2fa926}{betaX}} << endl}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00114}00114  << \textcolor{stringliteral}{"{}     betaY: "{}} << \mbox{\hyperlink{class_cell_a7419193326e3347b5197a811a46edb02}{betaY}} << endl}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00115}00115  << \textcolor{stringliteral}{"{}     betaZ: "{}} << \mbox{\hyperlink{class_cell_ad8011098ffa066e4837e2ca44d14f93c}{betaZ}} << endl}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00116}00116  << \textcolor{stringliteral}{"{} nClusters: "{}} << \mbox{\hyperlink{class_cell_ac845493b9210bfc8e594402c79b11290}{nClusters}} << endl}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00117}00117  << \textcolor{stringliteral}{"{}nParticles: "{}} << \mbox{\hyperlink{class_cell_a7733f1b1f56377c772931d048b124205}{nParticles}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00118}00118  \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iCluster=0; iCluster<\mbox{\hyperlink{class_cell_ac845493b9210bfc8e594402c79b11290}{nClusters}}; iCluster++)}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00119}00119    \{}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00120}00120    output}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00121}00121    << \textcolor{stringliteral}{"{}==========================================="{}} << endl}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00122}00122    << \textcolor{stringliteral}{"{}       Cluster\# "{}} << iCluster << endl;}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00123}00123    \mbox{\hyperlink{class_cell_ab634381a0958f0aad77dd46bee06ea44}{clusters}}[iCluster]-\/>\mbox{\hyperlink{class_cluster_aebb84225d13b422447075064ad95167d}{printProperties}}(output);}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00124}00124    \}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00125}00125  \}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00126}00126 }
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00127}00127 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_cell_a3818b6d5e1d88693f8237bd06b440615}{Cell::nClustersMax}} = 100;}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00128}00128 }
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00129}00129 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_cell_ae11a5da92727abb2dc0aa2c9c8fb4a41}{Cell::factorySize}} = 5000;}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00130}00130 \mbox{\hyperlink{class_factory}{Factory<Cell>}} * \mbox{\hyperlink{class_cell_ab133a8bc0e911f3e88cc32611840d62b}{Cell::factory}} = 0;}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00131}\mbox{\hyperlink{class_cell_ac11ed1217989fdd997e4344d8ff64363}{00131}} \mbox{\hyperlink{class_factory}{Factory<Cell>}} * \mbox{\hyperlink{class_cell_ac11ed1217989fdd997e4344d8ff64363}{Cell::getFactory}}()}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00132}00132 \{}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00133}00133   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_cell_ab133a8bc0e911f3e88cc32611840d62b}{factory}})}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00134}00134     \{}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00135}00135     \mbox{\hyperlink{class_cell_ab133a8bc0e911f3e88cc32611840d62b}{factory}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_factory}{Factory<Cell>}}();}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00136}00136     \mbox{\hyperlink{class_cell_ab133a8bc0e911f3e88cc32611840d62b}{factory}}-\/>\mbox{\hyperlink{class_factory_a93bb6d06d547e5ef951340d530946bb1}{initialize}}(\mbox{\hyperlink{class_cell_ae11a5da92727abb2dc0aa2c9c8fb4a41}{factorySize}});}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00137}00137     \}}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00138}00138    \textcolor{keywordflow}{return} \mbox{\hyperlink{class_cell_ab133a8bc0e911f3e88cc32611840d62b}{factory}};}
+\DoxyCodeLine{\Hypertarget{_cell_8cpp_source_l00139}00139 \}}
+
+\end{DoxyCode}

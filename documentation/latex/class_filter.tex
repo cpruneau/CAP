@@ -1,0 +1,321 @@
+\hypertarget{class_filter}{}\doxysection{Filter\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_filter}\index{Filter$<$ T $>$@{Filter$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Filter.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_filter_a46a62eaa8a4877deff565f588265cd0c}{Filter}} ()
+\item 
+virtual \mbox{\hyperlink{class_filter_adda3dc313ae570ae974401a5dd5d3875}{$\sim$\+Filter}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_filter_aec03f18d404a88f27e1869b461e03c94}{accept}} (const T \&object \+\_\+\+\_\+attribute\+\_\+\+\_\+((unused)))
+\item 
+virtual bool \mbox{\hyperlink{class_filter_a772cd13bd30824202b90935822a5873a}{accept}} (const T \&object1 \+\_\+\+\_\+attribute\+\_\+\+\_\+((unused)), const T \&object2 \+\_\+\+\_\+attribute\+\_\+\+\_\+((unused)))
+\item 
+TString \mbox{\hyperlink{class_filter_aa921cda113f744819a6ed9ae68ae1c52}{get\+Name}} () const
+\item 
+TString \mbox{\hyperlink{class_filter_a3251e7b1413a7845efa2c40d3fc39b1e}{get\+Title}} () const
+\item 
+TString \mbox{\hyperlink{class_filter_aa0f6c28bbc32966888052208e4f8eeb6}{get\+Long\+Name}} () const
+\item 
+TString \mbox{\hyperlink{class_filter_a007556688839ecee17827c6b42628e6d}{get\+Long\+Title}} () const
+\item 
+virtual void \mbox{\hyperlink{class_filter_a2db2fcaa695965ba88b8e9f5d4b2f67e}{print\+Properties}} (std\+::ostream \&os)
+\item 
+void \mbox{\hyperlink{class_filter_adb1b0fd50be6e6e7ddc39ef3e45710ad}{set\+Name}} (const TString \&new\+Name)
+\item 
+void \mbox{\hyperlink{class_filter_a6f0c7eca80682a6b83950f3746eafa97}{set\+Title}} (const TString \&new\+Title)
+\item 
+void \mbox{\hyperlink{class_filter_a612c2b462068e089a0fda5c075ab2aac}{set\+Long\+Name}} (const TString \&new\+Long\+Name)
+\item 
+void \mbox{\hyperlink{class_filter_a299696a6f57d9ccde1ae6b75699e244f}{set\+Long\+Title}} (const TString \&new\+Long\+Title)
+\item 
+void \mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{add\+Condition}} (unsigned int type, unsigned int subtype, double minimum, double maximum)
+\item 
+void \mbox{\hyperlink{class_filter_a2b6cf41a9f93699246dfb966117941b4}{add\+Condition}} (unsigned int type, unsigned int subtype, double minimum, double maximum, double minimum2, double maximum2)
+\item 
+unsigned int \mbox{\hyperlink{class_filter_a9851542bb9ff1f747a4635166c7d7fff}{get\+NConditions}} () const
+\item 
+const std\+::vector$<$ \mbox{\hyperlink{class_condition}{Condition}} $\ast$ $>$ \& \mbox{\hyperlink{class_filter_a2b2535cd837fba41869ed8929ee79a02}{get\+Conditions}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TString \mbox{\hyperlink{class_filter_ad9d71926ff1cdeee93005b0986ed2391}{name}}
+\item 
+TString \mbox{\hyperlink{class_filter_ad71c5a62bebcfae08517eeb2cc73d082}{long\+Name}}
+\item 
+TString \mbox{\hyperlink{class_filter_a850605a98d3b80c09e4966b09077b7dd}{title}}
+\item 
+TString \mbox{\hyperlink{class_filter_a9ecd7559ceb7b5afddac1c5dc120a0f7}{long\+Title}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_condition}{Condition}} $\ast$ $>$ \mbox{\hyperlink{class_filter_adf972000e44060ce36ef7bfe50604211}{conditions}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Filter$<$ T $>$}
+Abstract and templated filter 
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00135}{135}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_filter_a46a62eaa8a4877deff565f588265cd0c}\label{class_filter_a46a62eaa8a4877deff565f588265cd0c}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!Filter@{Filter}}
+\index{Filter@{Filter}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Filter()}{Filter()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\mbox{\hyperlink{class_filter}{\+::\+Filter}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Ctor 
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00144}{144}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_adda3dc313ae570ae974401a5dd5d3875}\label{class_filter_adda3dc313ae570ae974401a5dd5d3875}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!````~Filter@{$\sim$Filter}}
+\index{````~Filter@{$\sim$Filter}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$Filter()}{~Filter()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::$\sim$\mbox{\hyperlink{class_filter}{Filter}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Dtor 
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00158}{158}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_filter_aec03f18d404a88f27e1869b461e03c94}\label{class_filter_aec03f18d404a88f27e1869b461e03c94}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!accept@{accept}}
+\index{accept@{accept}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual bool \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::accept (\begin{DoxyParamCaption}\item[{const T \&object }]{\+\_\+\+\_\+attribute\+\_\+\+\_\+(unused) }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Test whether the given object is acceptable based on this filters criteria.\+object The base class uses the default\+Accept parameter to return acceptability status. 
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00171}{171}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_a772cd13bd30824202b90935822a5873a}\label{class_filter_a772cd13bd30824202b90935822a5873a}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!accept@{accept}}
+\index{accept@{accept}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual bool \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::accept (\begin{DoxyParamCaption}\item[{const T \&object1 }]{\+\_\+\+\_\+attribute\+\_\+\+\_\+(unused),  }\item[{const T \&object2 }]{\+\_\+\+\_\+attribute\+\_\+\+\_\+(unused) }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00176}{176}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_a51a99f976ce87aef610c4047eee43d60}\label{class_filter_a51a99f976ce87aef610c4047eee43d60}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!addCondition@{addCondition}}
+\index{addCondition@{addCondition}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{addCondition()}{addCondition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::add\+Condition (\begin{DoxyParamCaption}\item[{unsigned int}]{type,  }\item[{unsigned int}]{subtype,  }\item[{double}]{minimum,  }\item[{double}]{maximum }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00271}{271}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_a2b6cf41a9f93699246dfb966117941b4}\label{class_filter_a2b6cf41a9f93699246dfb966117941b4}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!addCondition@{addCondition}}
+\index{addCondition@{addCondition}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{addCondition()}{addCondition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::add\+Condition (\begin{DoxyParamCaption}\item[{unsigned int}]{type,  }\item[{unsigned int}]{subtype,  }\item[{double}]{minimum,  }\item[{double}]{maximum,  }\item[{double}]{minimum2,  }\item[{double}]{maximum2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00277}{277}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_a2b2535cd837fba41869ed8929ee79a02}\label{class_filter_a2b2535cd837fba41869ed8929ee79a02}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!getConditions@{getConditions}}
+\index{getConditions@{getConditions}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getConditions()}{getConditions()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+const std\+::vector$<$ \mbox{\hyperlink{class_condition}{Condition}} $\ast$ $>$ \& \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::get\+Conditions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00289}{289}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_aa0f6c28bbc32966888052208e4f8eeb6}\label{class_filter_aa0f6c28bbc32966888052208e4f8eeb6}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!getLongName@{getLongName}}
+\index{getLongName@{getLongName}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getLongName()}{getLongName()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+TString \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::get\+Long\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the long name of this filter Call the initialize() method to automatically set names and titles of this filter or call the corresponding set methods directly to set them manually 
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00207}{207}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_a007556688839ecee17827c6b42628e6d}\label{class_filter_a007556688839ecee17827c6b42628e6d}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!getLongTitle@{getLongTitle}}
+\index{getLongTitle@{getLongTitle}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getLongTitle()}{getLongTitle()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+TString \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::get\+Long\+Title (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the long title of this filter Call the initialize() method to automatically set names and titles of this filter or call the corresponding set methods directly to set them manually 
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00217}{217}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_aa921cda113f744819a6ed9ae68ae1c52}\label{class_filter_aa921cda113f744819a6ed9ae68ae1c52}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!getName@{getName}}
+\index{getName@{getName}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+TString \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the short name of this filter Call the initialize() method to automatically set names and titles of this filter or call the corresponding set methods directly to set them manually 
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00187}{187}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_a9851542bb9ff1f747a4635166c7d7fff}\label{class_filter_a9851542bb9ff1f747a4635166c7d7fff}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!getNConditions@{getNConditions}}
+\index{getNConditions@{getNConditions}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getNConditions()}{getNConditions()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+unsigned int \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::get\+NConditions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00284}{284}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_a3251e7b1413a7845efa2c40d3fc39b1e}\label{class_filter_a3251e7b1413a7845efa2c40d3fc39b1e}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!getTitle@{getTitle}}
+\index{getTitle@{getTitle}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getTitle()}{getTitle()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+TString \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::get\+Title (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the short title of this filter Call the initialize() method to automatically set names and titles of this filter or call the corresponding set methods directly to set them manually 
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00197}{197}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_a2db2fcaa695965ba88b8e9f5d4b2f67e}\label{class_filter_a2db2fcaa695965ba88b8e9f5d4b2f67e}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!printProperties@{printProperties}}
+\index{printProperties@{printProperties}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{printProperties()}{printProperties()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual void \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::print\+Properties (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Stream the properties and attributes of this filter onto the given stream. 
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00225}{225}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_a612c2b462068e089a0fda5c075ab2aac}\label{class_filter_a612c2b462068e089a0fda5c075ab2aac}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!setLongName@{setLongName}}
+\index{setLongName@{setLongName}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setLongName()}{setLongName()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::set\+Long\+Name (\begin{DoxyParamCaption}\item[{const TString \&}]{new\+Long\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the long name of this filter 
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00258}{258}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_a299696a6f57d9ccde1ae6b75699e244f}\label{class_filter_a299696a6f57d9ccde1ae6b75699e244f}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!setLongTitle@{setLongTitle}}
+\index{setLongTitle@{setLongTitle}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setLongTitle()}{setLongTitle()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::set\+Long\+Title (\begin{DoxyParamCaption}\item[{const TString \&}]{new\+Long\+Title }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the long title of this filter 
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00266}{266}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_adb1b0fd50be6e6e7ddc39ef3e45710ad}\label{class_filter_adb1b0fd50be6e6e7ddc39ef3e45710ad}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!setName@{setName}}
+\index{setName@{setName}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::set\+Name (\begin{DoxyParamCaption}\item[{const TString \&}]{new\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the short name of this filter 
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00242}{242}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_a6f0c7eca80682a6b83950f3746eafa97}\label{class_filter_a6f0c7eca80682a6b83950f3746eafa97}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!setTitle@{setTitle}}
+\index{setTitle@{setTitle}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setTitle()}{setTitle()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::set\+Title (\begin{DoxyParamCaption}\item[{const TString \&}]{new\+Title }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the short title of this filter 
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00250}{250}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_filter_adf972000e44060ce36ef7bfe50604211}\label{class_filter_adf972000e44060ce36ef7bfe50604211}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!conditions@{conditions}}
+\index{conditions@{conditions}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{conditions}{conditions}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$\mbox{\hyperlink{class_condition}{Condition}}$\ast$$>$ \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::conditions\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00300}{300}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_ad71c5a62bebcfae08517eeb2cc73d082}\label{class_filter_ad71c5a62bebcfae08517eeb2cc73d082}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!longName@{longName}}
+\index{longName@{longName}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{longName}{longName}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+TString \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::long\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00297}{297}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_a9ecd7559ceb7b5afddac1c5dc120a0f7}\label{class_filter_a9ecd7559ceb7b5afddac1c5dc120a0f7}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!longTitle@{longTitle}}
+\index{longTitle@{longTitle}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{longTitle}{longTitle}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+TString \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::long\+Title\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00299}{299}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_ad9d71926ff1cdeee93005b0986ed2391}\label{class_filter_ad9d71926ff1cdeee93005b0986ed2391}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!name@{name}}
+\index{name@{name}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+TString \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00296}{296}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+\mbox{\Hypertarget{class_filter_a850605a98d3b80c09e4966b09077b7dd}\label{class_filter_a850605a98d3b80c09e4966b09077b7dd}} 
+\index{Filter$<$ T $>$@{Filter$<$ T $>$}!title@{title}}
+\index{title@{title}!Filter$<$ T $>$@{Filter$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{title}{title}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+TString \mbox{\hyperlink{class_filter}{Filter}}$<$ T $>$\+::title\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_filter_8hpp_source_l00298}{298}} of file \mbox{\hyperlink{_filter_8hpp_source}{Filter.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_filter_8hpp}{Filter.\+hpp}}\end{DoxyCompactItemize}

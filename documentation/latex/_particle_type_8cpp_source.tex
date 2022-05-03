@@ -1,0 +1,406 @@
+\hypertarget{_particle_type_8cpp_source}{}\doxysection{Particle\+Type.\+cpp}
+\label{_particle_type_8cpp_source}\index{Base/ParticleType.cpp@{Base/ParticleType.cpp}}
+\mbox{\hyperlink{_particle_type_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00001}00001 \textcolor{comment}{// Copyright 2021 Claude Pruneau}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00002}00002 \textcolor{comment}{// Copyright 2016 Chun Shen}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00003}00003 \textcolor{comment}{// This code is adapted from Chun's code}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00004}00004 \textcolor{comment}{// for the purpose of computing hadronic resonance}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00005}00005 \textcolor{comment}{// correlations...}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00007}00007 \textcolor{comment}{//\#include <gsl/gsl\_sf\_bessel.h>}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00008}00008 \textcolor{comment}{//\#include <gsl/gsl\_sf\_expint.h>}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00010}00010 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00011}00011 \textcolor{preprocessor}{\#include <iomanip>}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#include <cstdlib>}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00014}00014 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00015}00015 \textcolor{preprocessor}{\#include <TMath.h>}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}Math/SpecFunc.h"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_type_8hpp}{ParticleType.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_selection_generator_8hpp}{SelectionGenerator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00019}00019 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_type_collection_8hpp}{ParticleTypeCollection.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00021}\mbox{\hyperlink{_particle_type_8cpp_a407177d10536595343f910a254bee87a}{00021}} \mbox{\hyperlink{_particle_type_8cpp_a407177d10536595343f910a254bee87a}{ClassImp}}(\mbox{\hyperlink{class_particle_type}{ParticleType}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00023}\mbox{\hyperlink{class_particle_type_a034cb7cfd02cb12089b039be9666e074}{00023}} \mbox{\hyperlink{class_particle_type_a034cb7cfd02cb12089b039be9666e074}{ParticleType::ParticleType}}()}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00024}00024 :}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00025}00025 name(),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00026}00026 title(),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00027}00027 privateCode(-\/1),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00028}00028 pdgCode(-\/1),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00029}00029 mass(0.0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00030}00030 width(0.0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00031}00031 gSpin(0.0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00032}00032 gIsospin(0.0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00033}00033 baryon(0.0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00034}00034 strange(0.0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00035}00035 charm(0.0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00036}00036 bottom(0.0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00037}00037 leptonElectron(0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00038}00038 leptonMuon(0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00039}00039 leptonTau(0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00040}00040 charge(0.0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00041}00041 stable(0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00042}00042 weakStable(0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00043}00043 statistics(0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00044}00044 decayModes(),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00045}00045 decayRndmSelector(nullptr)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00046}00046 \{\}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00048}\mbox{\hyperlink{class_particle_type_adb57d15a5b4001732dfc22d32ae38d49}{00048}} \mbox{\hyperlink{class_particle_type_a034cb7cfd02cb12089b039be9666e074}{ParticleType::ParticleType}}(\textcolor{keywordtype}{int} pdgCode\_in, TString \& name\_in, TString \& title\_in,}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00049}00049                            \textcolor{keywordtype}{double} mass\_in,}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00050}00050                            \textcolor{keywordtype}{double} width\_in, \textcolor{keywordtype}{int} gSpin\_in, \textcolor{keywordtype}{int} baryon\_in, \textcolor{keywordtype}{int} strange\_in,}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00051}00051                            \textcolor{keywordtype}{int} charm\_in, \textcolor{keywordtype}{int} bottom\_in, \textcolor{keywordtype}{int} gIsospin\_in, \textcolor{keywordtype}{int} charge\_in)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00052}00052 :}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00053}00053 name(name\_in),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00054}00054 title(title\_in),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00055}00055 privateCode(-\/1),    \textcolor{comment}{// Code used in this package only (convenience)}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00056}00056 pdgCode(pdgCode\_in),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00057}00057 mass(mass\_in),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00058}00058 width(width\_in),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00059}00059 gSpin(gSpin\_in),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00060}00060 gIsospin(gIsospin\_in),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00061}00061 baryon(baryon\_in),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00062}00062 strange(strange\_in),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00063}00063 charm(charm\_in),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00064}00064 bottom(bottom\_in),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00065}00065 leptonElectron(0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00066}00066 leptonMuon(0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00067}00067 leptonTau(0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00068}00068 charge(charge\_in),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00069}00069 stable(true),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00070}00070 weakStable(true),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00071}00071 statistics(0),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00072}00072 decayModes(),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00073}00073 decayRndmSelector(nullptr)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00074}00074 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00075}00075   \textcolor{comment}{// for now, we do not differentiate between stable and weakStable}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00076}00076   \textcolor{keywordflow}{if} (width<1.0E-\/4)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00077}00077     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00078}00078     stable     = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00079}00079     weakStable = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00080}00080     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00081}00081   \textcolor{keywordflow}{if} (abs(baryon)==1 ||}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00082}00082       abs(leptonElectron)==1 ||}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00083}00083       abs(leptonMuon)==1 ||}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00084}00084       abs(leptonTau)==1)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00085}00085     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00086}00086     statistics = 1;  \textcolor{comment}{// Fermi-\/Dirac}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00087}00087     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00088}00088   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00089}00089     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00090}00090     statistics = -\/1;  \textcolor{comment}{// Bose-\/Einstein}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00091}00091     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00092}00092 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00094}\mbox{\hyperlink{class_particle_type_a9711b1b94092b1367dae7b449202c45c}{00094}} \mbox{\hyperlink{class_particle_type_a9711b1b94092b1367dae7b449202c45c}{ParticleType::\string~ParticleType}}()}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00095}00095 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00096}00096   \textcolor{keyword}{delete} decayRndmSelector;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00097}00097 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00099}\mbox{\hyperlink{class_particle_type_a71bb573814bf3405dafdd82b7b5623e2}{00099}} \mbox{\hyperlink{class_particle_type_a034cb7cfd02cb12089b039be9666e074}{ParticleType::ParticleType}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_particle_type}{ParticleType}} \& source)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00100}00100 :}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00101}00101 name(source.name),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00102}00102 title(source.title),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00103}00103 privateCode(source.privateCode),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00104}00104 pdgCode(source.pdgCode),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00105}00105 mass(source.mass),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00106}00106 width(source.width),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00107}00107 gSpin(source.gSpin),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00108}00108 gIsospin(source.gIsospin),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00109}00109 baryon(source.baryon),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00110}00110 strange(source.strange),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00111}00111 charm(source.charm),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00112}00112 bottom(source.bottom),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00113}00113 leptonElectron(source.leptonElectron),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00114}00114 leptonMuon(source.leptonMuon),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00115}00115 leptonTau(source.leptonTau),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00116}00116 charge(source.charge),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00117}00117 stable(source.stable),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00118}00118 weakStable(source.weakStable),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00119}00119 statistics(source.statistics), \textcolor{comment}{// determine Bose/Fermi statistic for ParticleType}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00120}00120 decayModes(source.decayModes),}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00121}00121 decayRndmSelector(source.decayRndmSelector)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00122}00122 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00123}00123 \textcolor{comment}{// no ops}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00124}00124 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00126}\mbox{\hyperlink{class_particle_type_a04b6970f46c97f055c5ed9ceec47825e}{00126}} \mbox{\hyperlink{class_particle_type}{ParticleType}} \& \mbox{\hyperlink{class_particle_type_a04b6970f46c97f055c5ed9ceec47825e}{ParticleType::operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_particle_type}{ParticleType}} \& source)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00127}00127 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00128}00128   \textcolor{keywordflow}{if} (\textcolor{keyword}{this}!=\&source)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00129}00129     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00130}00130     pdgCode  =  source.pdgCode;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00131}00131     name     =  source.name;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00132}00132     title    =  source.title;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00133}00133     mass     =  source.mass;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00134}00134     width    =  source.width;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00135}00135     gSpin    =  source.gSpin;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00136}00136     gIsospin =  source.gIsospin;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00137}00137     baryon   =  source.baryon;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00138}00138     strange  =  source.strange;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00139}00139     charm    =  source.charm;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00140}00140     bottom   =  source.bottom;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00141}00141     leptonElectron =  source.leptonElectron;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00142}00142     leptonMuon     =  source.leptonMuon;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00143}00143     leptonTau      =  source.leptonTau;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00144}00144     charge         =  source.charge;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00145}00145     stable         =  source.stable;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00146}00146     weakStable     =  source.weakStable;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00147}00147     statistics  =  source.statistics;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00148}00148     decayModes     =  source.decayModes;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00149}00149     decayRndmSelector    = source.decayRndmSelector;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00150}00150     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00151}00151   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00152}00152 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00153}00153 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00154}00154 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00155}\mbox{\hyperlink{class_particle_type_aa41aa11d87ff0da72bcb2f065c3f0edf}{00155}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_type_aa41aa11d87ff0da72bcb2f065c3f0edf}{ParticleType::addDecayMode}}(\textcolor{keywordtype}{double} branchingRatio,}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00156}00156                                 std::vector<int> children)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00157}00157 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00158}00158   \mbox{\hyperlink{class_particle_decay_mode}{ParticleDecayMode}} decayMode;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00159}00159   decayMode.\mbox{\hyperlink{class_particle_decay_mode_a9140910ee8111344aeb0b4172e411882}{setBranchingRatio}}(branchingRatio);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00160}00160   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<int(children.size()); k++)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00161}00161   \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00162}00162   decayMode.\mbox{\hyperlink{class_particle_decay_mode_a8e260a6f3c2882d819623a8c0fbea0b3}{addChild}}(children[k]);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00163}00163   \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00164}00164   decayModes.push\_back(decayMode);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00165}00165   \textcolor{keywordflow}{if} (decayModes.size() > 1)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00166}00166     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00167}00167     stable     = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00168}00168     weakStable = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00169}00169     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00170}00170   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00171}00171     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00172}00172     \textcolor{keywordflow}{if} (pdgCode != decayModes[0].getChildPdgCode(0))}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00173}00173       \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00174}00174       stable     = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00175}00175       weakStable = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00176}00176       \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00177}00177     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00178}00178 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00180}\mbox{\hyperlink{class_particle_type_a3c3ee8f2fa49e88475c7484e86be2b94}{00180}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_type_aa41aa11d87ff0da72bcb2f065c3f0edf}{ParticleType::addDecayMode}}(\mbox{\hyperlink{class_particle_decay_mode}{ParticleDecayMode}} \&decayMode)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00181}00181 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00182}00182   decayModes.push\_back(decayMode);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00183}00183   \textcolor{keywordflow}{if} (decayModes.size() > 1)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00184}00184     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00185}00185     stable     = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00186}00186     weakStable = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00187}00187     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00188}00188   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00189}00189     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00190}00190     \textcolor{keywordflow}{if} (pdgCode != decayModes[0].getChildPdgCode(0))}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00191}00191       \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00192}00192       stable = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00193}00193       weakStable = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00194}00194       \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00195}00195     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00196}00196 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00197}00197 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00198}00198 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00199}00199 \textcolor{comment}{// ======================================================================}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00200}00200 \textcolor{comment}{// Return the corresponding anti-\/ParticleType' Monte-\/Carlo value}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00201}00201 \textcolor{comment}{// ======================================================================}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00202}\mbox{\hyperlink{class_particle_type_a17278392e1a88c807b0b34299a6d700a}{00202}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_particle_type_a17278392e1a88c807b0b34299a6d700a}{ParticleType::getAntiParticlePdgCode}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00203}00203 \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00204}00204   \textcolor{keywordflow}{if} (baryon == 0 \&\& charge == 0 \&\& strange == 0)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00205}00205     \textcolor{keywordflow}{return}(pdgCode);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00206}00206   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00207}00207     \textcolor{keywordflow}{return}(-\/pdgCode);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00208}00208 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00209}00209 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00210}\mbox{\hyperlink{class_particle_type_ac846b19d06ac5eabf3a486dea15aa340}{00210}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_type_ac846b19d06ac5eabf3a486dea15aa340}{ParticleType::setupDecayGenerator}}()}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00211}00211 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00212}00212   \textcolor{keywordtype}{int} nDecayModes = decayModes.size();}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00213}00213   vector<double> decayBranchingRatios;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00214}00214   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<nDecayModes; k++)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00215}00215   \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00216}00216   decayBranchingRatios.push\_back(decayModes[k].getBranchingRatio());}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00217}00217   \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00218}00218   decayRndmSelector = \textcolor{keyword}{new} \mbox{\hyperlink{class_selection_generator}{SelectionGenerator}}(decayBranchingRatios);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00219}00219 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00220}00220 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00221}\mbox{\hyperlink{class_particle_type_a0f1121c60ec2d67300caafadc3b6b0a6}{00221}} \mbox{\hyperlink{class_particle_decay_mode}{ParticleDecayMode}} \& \mbox{\hyperlink{class_particle_type_a0f1121c60ec2d67300caafadc3b6b0a6}{ParticleType::generateDecayMode}}()}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00222}00222 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00223}00223   \textcolor{keywordflow}{if} (!decayRndmSelector)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00224}00224     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00225}00225     exit(0);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00226}00226     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00227}00227   \textcolor{keywordtype}{int} index = decayRndmSelector-\/>\mbox{\hyperlink{class_selection_generator_a55988d965291874319f16f6a65915afd}{generate}}();}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00228}00228   \textcolor{keywordflow}{if} (index<0)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00229}00229     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00230}00230     exit(0);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00231}00231     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00232}00232   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (index>= \textcolor{keywordtype}{int}(decayModes.size()))}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00233}00233     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00234}00234     index = decayModes.size()-\/1;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00235}00235     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00236}00236   \textcolor{keywordflow}{return} decayModes[index];}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00237}00237 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00238}00238 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00239}\mbox{\hyperlink{class_particle_type_a07f1fa378695527a89374b4b253920b8}{00239}} ostream \& \mbox{\hyperlink{class_particle_type_a07f1fa378695527a89374b4b253920b8}{ParticleType::printProperties}}(ostream \& os)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00240}00240 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00241}00241   \textcolor{comment}{//scientific}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00242}00242   os <<  fixed << setw(10) << setprecision(8) << pdgCode;         \textcolor{comment}{// Monte-\/Carlo number according PDG}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00243}00243   os <<  setw(20) << name;   \textcolor{comment}{// ParticleType name}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00244}00244   os <<  setw(20) << title;   \textcolor{comment}{// ParticleType title}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00245}00245   os <<  scientific << setw(20) << setprecision(4) <<  mass;        \textcolor{comment}{// ParticleType mass (GeV)}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00246}00246   os <<  scientific << setw(20) << setprecision(4) <<  width;       \textcolor{comment}{// decay width}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00247}00247   os <<  fixed << setw(7) << setprecision(3) <<  gSpin;          \textcolor{comment}{// spin degeneracy}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00248}00248   os <<  fixed << setw(5) << setprecision(3) <<  baryon;         \textcolor{comment}{// baryon number}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00249}00249   os <<  fixed << setw(5) << setprecision(3) <<  strange;        \textcolor{comment}{// strangeness}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00250}00250   os <<  fixed << setw(5) << setprecision(3) <<  charm;          \textcolor{comment}{// charmness}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00251}00251   os <<  fixed << setw(5) << setprecision(3) <<  bottom;         \textcolor{comment}{// bottomness}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00252}00252   os <<  fixed << setw(5) << setprecision(3) <<  gIsospin;       \textcolor{comment}{// isospin degeneracy}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00253}00253   os <<  fixed << setw(5) << setprecision(3) <<  charge;         \textcolor{comment}{// charge}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00254}00254   os <<  fixed << setw(5) << setprecision(6) <<  decayModes.size();         \textcolor{comment}{// amount of decays listed for this resonance}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00255}00255   os <<  fixed << setw(5) << setprecision(3) <<  stable;         \textcolor{comment}{// defines whether this ParticleType is stable}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00256}00256   os <<  fixed << setw(5) << setprecision(3) <<  weakStable;         \textcolor{comment}{// defines whether this ParticleType is stable}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00257}00257   os <<  fixed << setw(5) << setprecision(3) <<  statistics;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00258}00258   os <<  endl;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00259}00259   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0;k<int(decayModes.size());k++)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00260}00260   \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00261}00261     \textcolor{keywordflow}{if} (pdgCode != decayModes[0].getChildPdgCode(0))}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00262}00262       \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00263}00263         cout << \textcolor{stringliteral}{"{}                     "{}} << k << \textcolor{stringliteral}{"{}    "{}};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00264}00264         decayModes[k].printProperties(os);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00265}00265       \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00266}00266   \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00267}00267   \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00268}00268 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00269}00269 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00270}\mbox{\hyperlink{class_particle_type_ae209685aafa5d8af935422495a847af5}{00270}} ostream \& \mbox{\hyperlink{class_particle_type_ae209685aafa5d8af935422495a847af5}{ParticleType::printDecayProperties}}(ostream \& os)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00271}00271 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00272}00272   TString latex;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00273}00273   latex = \textcolor{stringliteral}{"{}\$"{}};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00274}00274   latex += title;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00275}00275   latex += \textcolor{stringliteral}{"{}\$"{}};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00276}00276   os <<  \textcolor{stringliteral}{"{} PDG:"{}} << fixed << setw(10) << setprecision(8) << pdgCode;         \textcolor{comment}{// Monte-\/Carlo number according PDG}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00277}00277   os <<  setw(20) << latex;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00278}00278   os <<  \textcolor{stringliteral}{"{} \$m=\$ "{}} << scientific << setw(20) << setprecision(4) <<  mass << \textcolor{stringliteral}{"{} GeV/\$c\string^2\$"{}};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00279}00279   os <<  \textcolor{stringliteral}{"{} \$\#Gamma=\$ "{}} << scientific << setw(20) << setprecision(4) <<  width << \textcolor{stringliteral}{"{} GeV/\$c\string^2\$ \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)"{}};       \textcolor{comment}{// decay width}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00280}00280   os <<  endl;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00281}00281   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0;k<int(decayModes.size());k++)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00282}00282   \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00283}00283     \textcolor{keywordflow}{if} (pdgCode != decayModes[0].getChildPdgCode(0))}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00284}00284       \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00285}00285       os << \textcolor{stringliteral}{"{}        Br(xx)= "{}} << scientific << setw(20) << setprecision(4) << (100.0*decayModes[k].getBranchingRatio()) << \textcolor{stringliteral}{"{}    "{}};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00286}00286       os << \textcolor{stringliteral}{"{}   \$"{}}<< title << \textcolor{stringliteral}{"{}\#rightarrow "{}};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00287}00287       \textcolor{keywordtype}{int} nChildren = decayModes[k].getNChildren();}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00288}00288       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iChild=0; iChild<nChildren; iChild++)}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00289}00289         \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00290}00290         \mbox{\hyperlink{class_particle_type}{ParticleType}} \& type = decayModes[k].getChildType(iChild);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00291}00291         os << type.\mbox{\hyperlink{class_particle_type_af2c49a01ff1238f409c43cb6434acb52}{getTitle}}();}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00292}00292         \textcolor{keywordflow}{if} (iChild < nChildren-\/1)  os << \textcolor{stringliteral}{"{}+"{}};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00293}00293         \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00294}00294       os << \textcolor{stringliteral}{"{}\$ \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)"{}}<< endl;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00295}00295       \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00296}00296   \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00297}00297   \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00298}00298 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00299}00299 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00300}00300 \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_particle_type_acc7a174435957b4febb1d53d0854b509}{ParticleType::decayModeType}}     = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00301}00301 \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_particle_type_ab08aa1c5cefe76b8aa25b6cf937447eb}{ParticleType::interactionType}}   = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00302}00302 \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_particle_type_ad249209bc29d658b2861f3409063cb9e}{ParticleType::protonProtonInteractionType}}   = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00303}00303 \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_particle_type_ad8c6127cde1adff89d865f4d120d177c}{ParticleType::protonNeutronInteractionType}}  = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00304}00304 \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_particle_type_a6d32fc8483a0fed0acb5890f641503c6}{ParticleType::neutronNeutronInteractionType}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00305}00305 \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_particle_type_a2ad48bff4e47830458a6650f7f9a46dd}{ParticleType::protonType}}  = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00306}00306 \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_particle_type_a7a8c25740d5ad1152e556a6987fef4cb}{ParticleType::neutronType}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00307}00307 \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_particle_type_a54516e8a443c5b09233ce5da573e6554}{ParticleType::nucleusType}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00308}00308 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00309}\mbox{\hyperlink{class_particle_type_a29fc46e3fc8c4f77eebfbfcb088e840c}{00309}} \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_particle_type_a29fc46e3fc8c4f77eebfbfcb088e840c}{ParticleType::getDecayModeType}}()}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00310}00310 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00311}00311   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_particle_type_acc7a174435957b4febb1d53d0854b509}{decayModeType}}==\textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00312}00312     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00313}00313     \mbox{\hyperlink{class_particle_type_acc7a174435957b4febb1d53d0854b509}{decayModeType}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_type_a034cb7cfd02cb12089b039be9666e074}{ParticleType}}();}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00314}00314     \mbox{\hyperlink{class_particle_type_acc7a174435957b4febb1d53d0854b509}{decayModeType}}-\/>\mbox{\hyperlink{class_particle_type_a16ffc2479bd15c147a954f0b91fd461e}{setPdgCode}}(1000001);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00315}00315     \mbox{\hyperlink{class_particle_type_acc7a174435957b4febb1d53d0854b509}{decayModeType}}-\/>\mbox{\hyperlink{class_particle_type_a7b350d0f90483f7e5011f4ac56ec492f}{setName}}(\textcolor{stringliteral}{"{}decayMode"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00316}00316     \mbox{\hyperlink{class_particle_type_acc7a174435957b4febb1d53d0854b509}{decayModeType}}-\/>\mbox{\hyperlink{class_particle_type_a33808d1209493cb8396712900c3587f9}{setTitle}}(\textcolor{stringliteral}{"{}decay mode"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00317}00317     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00318}00318   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_type_acc7a174435957b4febb1d53d0854b509}{decayModeType}};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00319}00319 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00320}00320 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00321}\mbox{\hyperlink{class_particle_type_a8ad843478cad8af8fb76733f925c2d15}{00321}} \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_particle_type_a8ad843478cad8af8fb76733f925c2d15}{ParticleType::getInteractionType}}()}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00322}00322 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00323}00323   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_particle_type_ab08aa1c5cefe76b8aa25b6cf937447eb}{interactionType}}==\textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00324}00324     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00325}00325     \mbox{\hyperlink{class_particle_type_ab08aa1c5cefe76b8aa25b6cf937447eb}{interactionType}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_type_a034cb7cfd02cb12089b039be9666e074}{ParticleType}}();}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00326}00326     \mbox{\hyperlink{class_particle_type_ab08aa1c5cefe76b8aa25b6cf937447eb}{interactionType}}-\/>\mbox{\hyperlink{class_particle_type_a16ffc2479bd15c147a954f0b91fd461e}{setPdgCode}}(1000010);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00327}00327     \mbox{\hyperlink{class_particle_type_ab08aa1c5cefe76b8aa25b6cf937447eb}{interactionType}}-\/>\mbox{\hyperlink{class_particle_type_a7b350d0f90483f7e5011f4ac56ec492f}{setName}}(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00328}00328     \mbox{\hyperlink{class_particle_type_ab08aa1c5cefe76b8aa25b6cf937447eb}{interactionType}}-\/>\mbox{\hyperlink{class_particle_type_a33808d1209493cb8396712900c3587f9}{setTitle}}(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00329}00329     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00330}00330   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_type_ab08aa1c5cefe76b8aa25b6cf937447eb}{interactionType}};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00331}00331 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00332}00332 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00333}\mbox{\hyperlink{class_particle_type_afc6bbc7d699f161eb9f1ef2cccf9c7c2}{00333}} \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_particle_type_afc6bbc7d699f161eb9f1ef2cccf9c7c2}{ParticleType::getPPInteractionType}}()}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00334}00334 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00335}00335   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_particle_type_ad249209bc29d658b2861f3409063cb9e}{protonProtonInteractionType}}==\textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00336}00336     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00337}00337     \mbox{\hyperlink{class_particle_type_ad249209bc29d658b2861f3409063cb9e}{protonProtonInteractionType}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_type_a034cb7cfd02cb12089b039be9666e074}{ParticleType}}();}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00338}00338     \mbox{\hyperlink{class_particle_type_ad249209bc29d658b2861f3409063cb9e}{protonProtonInteractionType}}-\/>\mbox{\hyperlink{class_particle_type_a16ffc2479bd15c147a954f0b91fd461e}{setPdgCode}}(1000011);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00339}00339     \mbox{\hyperlink{class_particle_type_ad249209bc29d658b2861f3409063cb9e}{protonProtonInteractionType}}-\/>\mbox{\hyperlink{class_particle_type_a7b350d0f90483f7e5011f4ac56ec492f}{setName}}(\textcolor{stringliteral}{"{}pp"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00340}00340     \mbox{\hyperlink{class_particle_type_ad249209bc29d658b2861f3409063cb9e}{protonProtonInteractionType}}-\/>\mbox{\hyperlink{class_particle_type_a33808d1209493cb8396712900c3587f9}{setTitle}}(\textcolor{stringliteral}{"{}pp"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00341}00341     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00342}00342   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_type_ad249209bc29d658b2861f3409063cb9e}{protonProtonInteractionType}};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00343}00343 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00344}00344 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00345}00345 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00346}\mbox{\hyperlink{class_particle_type_a468ffab1f0c04256bfb338a8faa74994}{00346}} \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_particle_type_a468ffab1f0c04256bfb338a8faa74994}{ParticleType::getPNInteractionType}}()}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00347}00347 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00348}00348   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_particle_type_ad8c6127cde1adff89d865f4d120d177c}{protonNeutronInteractionType}}==\textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00349}00349     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00350}00350     \mbox{\hyperlink{class_particle_type_ad8c6127cde1adff89d865f4d120d177c}{protonNeutronInteractionType}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_type_a034cb7cfd02cb12089b039be9666e074}{ParticleType}}();}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00351}00351     \mbox{\hyperlink{class_particle_type_ad8c6127cde1adff89d865f4d120d177c}{protonNeutronInteractionType}}-\/>\mbox{\hyperlink{class_particle_type_a16ffc2479bd15c147a954f0b91fd461e}{setPdgCode}}(1000012);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00352}00352     \mbox{\hyperlink{class_particle_type_ad8c6127cde1adff89d865f4d120d177c}{protonNeutronInteractionType}}-\/>\mbox{\hyperlink{class_particle_type_a7b350d0f90483f7e5011f4ac56ec492f}{setName}}(\textcolor{stringliteral}{"{}pn"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00353}00353     \mbox{\hyperlink{class_particle_type_ad8c6127cde1adff89d865f4d120d177c}{protonNeutronInteractionType}}-\/>\mbox{\hyperlink{class_particle_type_a33808d1209493cb8396712900c3587f9}{setTitle}}(\textcolor{stringliteral}{"{}pn"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00354}00354     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00355}00355   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_type_ad8c6127cde1adff89d865f4d120d177c}{protonNeutronInteractionType}};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00356}00356 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00357}00357 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00358}\mbox{\hyperlink{class_particle_type_a8ce969b23ee2c735920b2a9682fdd88f}{00358}} \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_particle_type_a8ce969b23ee2c735920b2a9682fdd88f}{ParticleType::getNNInteractionType}}()}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00359}00359 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00360}00360   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_particle_type_a6d32fc8483a0fed0acb5890f641503c6}{neutronNeutronInteractionType}}==\textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00361}00361     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00362}00362     \mbox{\hyperlink{class_particle_type_a6d32fc8483a0fed0acb5890f641503c6}{neutronNeutronInteractionType}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_type_a034cb7cfd02cb12089b039be9666e074}{ParticleType}}();}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00363}00363     \mbox{\hyperlink{class_particle_type_a6d32fc8483a0fed0acb5890f641503c6}{neutronNeutronInteractionType}}-\/>\mbox{\hyperlink{class_particle_type_a16ffc2479bd15c147a954f0b91fd461e}{setPdgCode}}(1000013);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00364}00364     \mbox{\hyperlink{class_particle_type_a6d32fc8483a0fed0acb5890f641503c6}{neutronNeutronInteractionType}}-\/>\mbox{\hyperlink{class_particle_type_a7b350d0f90483f7e5011f4ac56ec492f}{setName}}(\textcolor{stringliteral}{"{}nn"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00365}00365     \mbox{\hyperlink{class_particle_type_a6d32fc8483a0fed0acb5890f641503c6}{neutronNeutronInteractionType}}-\/>\mbox{\hyperlink{class_particle_type_a33808d1209493cb8396712900c3587f9}{setTitle}}(\textcolor{stringliteral}{"{}nn"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00366}00366     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00367}00367   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_type_a6d32fc8483a0fed0acb5890f641503c6}{neutronNeutronInteractionType}};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00368}00368 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00369}00369 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00370}00370 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00371}\mbox{\hyperlink{class_particle_type_ab6a8a8aaec80cf744f0fde2ab9bf9ce6}{00371}} \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_particle_type_ab6a8a8aaec80cf744f0fde2ab9bf9ce6}{ParticleType::getProtonType}}()}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00372}00372 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00373}00373   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_particle_type_a2ad48bff4e47830458a6650f7f9a46dd}{protonType}}==\textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00374}00374     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00375}00375     \mbox{\hyperlink{class_particle_type_a2ad48bff4e47830458a6650f7f9a46dd}{protonType}} = \mbox{\hyperlink{class_particle_type_collection_a278cbb74300003089d2d4e8fd4f1dc02}{ParticleTypeCollection::getMasterParticleCollection}}()-\/>\mbox{\hyperlink{class_particle_type_collection_ac8ee25b3ed9077300626d6aa20768fd1}{findPdgCode}}(2212);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00376}00376     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00377}00377   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_type_a2ad48bff4e47830458a6650f7f9a46dd}{protonType}};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00378}00378 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00379}00379 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00380}\mbox{\hyperlink{class_particle_type_a5898c9337e0fe886b8d58e52d19c9754}{00380}} \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_particle_type_a5898c9337e0fe886b8d58e52d19c9754}{ParticleType::getNeutronType}}()}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00381}00381 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00382}00382   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_particle_type_a7a8c25740d5ad1152e556a6987fef4cb}{neutronType}}==\textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00383}00383     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00384}00384     \mbox{\hyperlink{class_particle_type_a7a8c25740d5ad1152e556a6987fef4cb}{neutronType}} = \mbox{\hyperlink{class_particle_type_collection_a278cbb74300003089d2d4e8fd4f1dc02}{ParticleTypeCollection::getMasterParticleCollection}}()-\/>\mbox{\hyperlink{class_particle_type_collection_ac8ee25b3ed9077300626d6aa20768fd1}{findPdgCode}}(2112);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00385}00385     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00386}00386   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_type_a7a8c25740d5ad1152e556a6987fef4cb}{neutronType}};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00387}00387 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00388}00388 }
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00389}\mbox{\hyperlink{class_particle_type_ad35795548f6c363605979c5e35505def}{00389}} \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_particle_type_ad35795548f6c363605979c5e35505def}{ParticleType::getNucleusType}}()}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00390}00390 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00391}00391   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_particle_type_a54516e8a443c5b09233ce5da573e6554}{nucleusType}}==\textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00392}00392     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00393}00393     \mbox{\hyperlink{class_particle_type_a54516e8a443c5b09233ce5da573e6554}{nucleusType}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_type_a034cb7cfd02cb12089b039be9666e074}{ParticleType}}();}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00394}00394     \mbox{\hyperlink{class_particle_type_a54516e8a443c5b09233ce5da573e6554}{nucleusType}}-\/>\mbox{\hyperlink{class_particle_type_a16ffc2479bd15c147a954f0b91fd461e}{setPdgCode}}(1000020);}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00395}00395     \mbox{\hyperlink{class_particle_type_a54516e8a443c5b09233ce5da573e6554}{nucleusType}}-\/>\mbox{\hyperlink{class_particle_type_a7b350d0f90483f7e5011f4ac56ec492f}{setName}}(\textcolor{stringliteral}{"{}Nucleus"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00396}00396     \mbox{\hyperlink{class_particle_type_a54516e8a443c5b09233ce5da573e6554}{nucleusType}}-\/>\mbox{\hyperlink{class_particle_type_a33808d1209493cb8396712900c3587f9}{setTitle}}(\textcolor{stringliteral}{"{}Nucleus"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00397}00397     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00398}00398   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_type_a54516e8a443c5b09233ce5da573e6554}{nucleusType}};}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00399}00399 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_8cpp_source_l00400}00400 }
+
+\end{DoxyCode}

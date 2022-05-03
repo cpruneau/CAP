@@ -1,0 +1,50 @@
+\hypertarget{_arsenal_8hpp_source}{}\doxysection{Arsenal.\+hpp}
+\label{_arsenal_8hpp_source}\index{HadronGas/Arsenal.hpp@{HadronGas/Arsenal.hpp}}
+\mbox{\hyperlink{_arsenal_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef WAC\_Arsenal}}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define WAC\_Arsenal}}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include<fstream>}}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include<string>}}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include<vector>}}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include<cstdlib>}}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00009}00009 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00011}00011 \textcolor{keywordtype}{void} \mbox{\hyperlink{_arsenal_8hpp_a91ed4760a30880350237bb614ae96972}{interpolation1D\_linear}}(\textcolor{keywordtype}{double}* Tb\_x, \textcolor{keywordtype}{double}* Tb\_y, \textcolor{keywordtype}{double}* xval, \textcolor{keywordtype}{double}* yval, \textcolor{keywordtype}{int} nTblength);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00013}00013 \textcolor{keywordtype}{double} \mbox{\hyperlink{_arsenal_8hpp_a2b8bd90118495f92b90c3c52835bd9b6}{Simpson\_sum}}(\textcolor{keywordtype}{double}* , \textcolor{keywordtype}{int}, \textcolor{keywordtype}{double});}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00014}00014 \textcolor{comment}{//double interpolation2D\_bilinear(Table2D* , double , double , int);}}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00016}00016 vector< vector<double>* >* \mbox{\hyperlink{_arsenal_8hpp_a2e0bbaf3df3956eb651d272a917651fb}{readBlockData}}(istream \&stream\_in);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00017}00017 \textcolor{keywordtype}{void} \mbox{\hyperlink{_arsenal_8hpp_abc1c2466fa5454ce18bd91572d79a483}{releaseBlockData}}(vector< vector<double>* >* data);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00018}00018 vector<double> \mbox{\hyperlink{_arsenal_8hpp_a83a32730f98fc4fe18862dc9eb6a55e4}{stringToDoubles}}(\textcolor{keywordtype}{string} str);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00020}00020 \textcolor{keywordtype}{void}}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00021}\mbox{\hyperlink{_arsenal_8hpp_abb03a7db028bfa997fee7a0bc6954041}{00021}} \mbox{\hyperlink{_arsenal_8hpp_abb03a7db028bfa997fee7a0bc6954041}{gauss}} (\textcolor{keywordtype}{int} npts, \textcolor{keywordtype}{int} job, \textcolor{keywordtype}{double} a, \textcolor{keywordtype}{double} b, \textcolor{keywordtype}{double} xpts[], \textcolor{keywordtype}{double} weights[]); \textcolor{comment}{//generate points and weights for gaussian quadrature, code is in gauss.cpp}}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00023}00023 \textcolor{keywordtype}{double} \mbox{\hyperlink{_arsenal_8hpp_aa3e3c68f4b293a471bb55739e60c4970}{interpCubicDirect}}(vector<double>* x, vector<double>* y, \textcolor{keywordtype}{double} xx);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00024}00024 \textcolor{keywordtype}{double} \mbox{\hyperlink{_arsenal_8hpp_ac64e117a561d87893774f28278302a66}{interpCubicMono}}(vector<double>* x, vector<double>* y, \textcolor{keywordtype}{double} xx);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00025}00025 \textcolor{keywordtype}{double} \mbox{\hyperlink{_arsenal_8hpp_ac8eb8a59f1c4d8dd6fb1da71758a3bee}{interpLinearDirect}}(vector<double>* x, vector<double>* y, \textcolor{keywordtype}{double} xx);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00026}00026 \textcolor{keywordtype}{double} \mbox{\hyperlink{_arsenal_8hpp_a5f7ab461cd6988522c6a067992f638cd}{interpLinearMono}}(vector<double>* x, vector<double>* y, \textcolor{keywordtype}{double} xx);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00027}00027 \textcolor{keywordtype}{double} \mbox{\hyperlink{_arsenal_8hpp_ace3f9c1e4076184bc1e9ec9e5325183f}{interpNearestDirect}}(vector<double>* x, vector<double>* y, \textcolor{keywordtype}{double} xx);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00028}00028 \textcolor{keywordtype}{double} \mbox{\hyperlink{_arsenal_8hpp_a8dd5902a8770150e2d59b1644371607d}{interpNearestMono}}(vector<double>* x, vector<double>* y, \textcolor{keywordtype}{double} xx);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00030}00030 \textcolor{keywordtype}{double} \mbox{\hyperlink{_arsenal_8hpp_adf43563842d2d20dd7b60bd8552cf66c}{invertFunc}}(\textcolor{keywordtype}{double} (*func)(\textcolor{keywordtype}{double}), \textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} xL, \textcolor{keywordtype}{double} xR, \textcolor{keywordtype}{double} dx, \textcolor{keywordtype}{double} x0, \textcolor{keywordtype}{double} relative\_accuracy=1e-\/10);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00032}00032 \textcolor{keywordtype}{double} \mbox{\hyperlink{_arsenal_8hpp_a27e11a9e791091ff4b5cb929b3c3158e}{invertTableDirect\_hook}}(\textcolor{keywordtype}{double} xx);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00033}00033 \textcolor{keywordtype}{double} \mbox{\hyperlink{_arsenal_8hpp_a0d63c807fb89b75a24ce550bda4e45be}{invertTableDirect}}(vector<double>* x, vector<double>* y, \textcolor{keywordtype}{double} y0, \textcolor{keywordtype}{double} x0, \textcolor{keywordtype}{double} relative\_accuracy=1e-\/10);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00035}00035 \textcolor{keywordtype}{long} \mbox{\hyperlink{_arsenal_8hpp_a5919c604f227faff91734a91c77944c9}{binarySearch}}(vector<double>* A, \textcolor{keywordtype}{double} value);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00037}00037 \textcolor{keywordtype}{void} \mbox{\hyperlink{_arsenal_8hpp_ad506d089e68f1a775ba2e2865d22b500}{outputFunctionerror}}(\textcolor{keywordtype}{string} function\_name, \textcolor{keywordtype}{string} massage, \textcolor{keywordtype}{double} value, \textcolor{keywordtype}{int} level);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00039}00039 \textcolor{keywordtype}{string} \mbox{\hyperlink{_arsenal_8hpp_a637fd73afd1fadd689749ce8ec66e33a}{toLower}}(\textcolor{keywordtype}{string} str);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00040}00040 \textcolor{keywordtype}{string} \mbox{\hyperlink{_arsenal_8hpp_aa7cb820696f8a66d03330e091482020c}{trim}}(\textcolor{keywordtype}{string} str);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00041}00041 \textcolor{keywordtype}{double} \mbox{\hyperlink{_arsenal_8hpp_a7e564ec0266d67f518a0b0f80f17e203}{stringToDouble}}(\textcolor{keywordtype}{string} str);}
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{_arsenal_8hpp_source_l00044}00044 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

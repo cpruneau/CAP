@@ -1,0 +1,62 @@
+\hypertarget{_run_subsample_analysis_8_c_source}{}\doxysection{Run\+Subsample\+Analysis.\+C}
+\label{_run_subsample_analysis_8_c_source}\index{Macros/RunSubsampleAnalysis.C@{Macros/RunSubsampleAnalysis.C}}
+\mbox{\hyperlink{_run_subsample_analysis_8_c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00004}00004 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00005}00005 \textcolor{preprocessor}{\#include "{}TRandom.h"{}}}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00006}00006 \textcolor{comment}{//\#include "{}TFile.h"{}}}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00007}00007 \textcolor{comment}{//\#include "{}AnalysisConfiguration.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00008}00008 \textcolor{comment}{//\#include "{}NuDynHistos.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00009}00009 \textcolor{comment}{//\#include "{}NuDynDerivedHistos.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00010}00010 \textcolor{comment}{//\#include "{}CanvasConfiguration.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00011}00011 \textcolor{comment}{//\#include "{}HistogramCollection.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00012}00012 \textcolor{comment}{//\#include "{}GraphConfiguration.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00013}00013 \textcolor{comment}{//\#include "{}CanvasConfiguration.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00014}00014 \textcolor{comment}{//\#include "{}TRint.h"{}}}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00017}00017 \textcolor{comment}{//R\_\_LOAD\_LIBRARY(/Users/claudeapruneau/opt/WAC/lib/libBase.dylib)}}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00029}\mbox{\hyperlink{_run_subsample_analysis_8_c_a237b5b3883e8e30e33a0c76805160916}{00029}} \textcolor{keywordtype}{int} \mbox{\hyperlink{_run_subsample_analysis_8_c_a237b5b3883e8e30e33a0c76805160916}{RunSubsampleAnalysis}}(TString pathName=\textcolor{stringliteral}{"{}/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/7TEV/100MEventsMB\_CRON\_Charged\_eta4/"{}},}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00030}00030                          TString fileName=\textcolor{stringliteral}{"{}PYTHIA\_pp\_7TeV\_inelastic\_P2\_Derived"{}},}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00031}00031                          \textcolor{keywordtype}{int} first =251,}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00032}00032                          \textcolor{keywordtype}{int} last=279 )}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00033}00033 \{}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00034}00034   cout << \textcolor{stringliteral}{"{}RunSubsampleAnalysis() Starting"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00036}00036   TString includesPath = getenv(\textcolor{stringliteral}{"{}WAC\_SRC"{}});}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00037}00037   includesPath += \textcolor{stringliteral}{"{}/Base/"{}};}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00038}00038   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}MessageLogger.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00039}00039   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Task.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00040}00040   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}TaskConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00041}00041   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}HistogramCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00042}00042   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Histograms.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00043}00043   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}SubSampleStatCalculator.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00044}00044   gSystem-\/>Load(\textcolor{stringliteral}{"{}libBase.dylib"{}});}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00046}00046   \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}}  debugLevel = \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{MessageLogger::Info}}; \textcolor{comment}{// MessageLogger::Debug; //}}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00047}00047   TString inputFileName  = fileName;}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00048}00048   TString \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} = fileName;}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00049}00049   \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} += \textcolor{stringliteral}{"{}\_Sum\_"{}};}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00050}00050   \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} += first;}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00051}00051   \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00052}00052   \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} += last;}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00054}00054   cout << \textcolor{stringliteral}{"{}            path Name: "{}} << pathName << endl;}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00055}00055   cout << \textcolor{stringliteral}{"{}      input File Name: "{}} << inputFileName << endl;}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00056}00056   cout << \textcolor{stringliteral}{"{}                First: "{}} << first << endl;}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00057}00057   cout << \textcolor{stringliteral}{"{}                 Last: "{}} << last << endl;}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00058}00058   cout << \textcolor{stringliteral}{"{}     output File Name: "{}} << \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} << endl;}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00060}00060   \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}} * calculator = \textcolor{keyword}{new} \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}}(pathName,inputFileName,first ,last,}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00061}00061                                                                      pathName,\mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}},debugLevel);}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00062}00062   calculator-\/>\mbox{\hyperlink{class_sub_sample_stat_calculator_a6f6ca62a93799a4299b972da90879b3a}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00064}00064   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{_run_subsample_analysis_8_c_source_l00066}00066 \}}
+
+\end{DoxyCode}

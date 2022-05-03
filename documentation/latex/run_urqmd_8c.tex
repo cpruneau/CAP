@@ -1,0 +1,165 @@
+\hypertarget{run_urqmd_8c}{}\doxysection{Urqmd/run\+Urqmd.c File Reference}
+\label{run_urqmd_8c}\index{Urqmd/runUrqmd.c@{Urqmd/runUrqmd.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include \char`\"{}TRandom.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Particle\+Filter.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Particle\+Pair\+Filter.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Analysis\+Configuration.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Canvas\+Configuration.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Graph\+Configuration.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Generator\+Configuration.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Master\+Analysis.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Ur\+QMDEvent.\+hpp\char`\"{}}\newline
+Include dependency graph for run\+Urqmd.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{run_urqmd_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{run_urqmd_8c_a0b47bb08fe716836ce5e8814bd148587}{Class\+Imp}} (\mbox{\hyperlink{class_ur_q_m_d_particle}{Ur\+QMDParticle}})
+\item 
+void \mbox{\hyperlink{run_urqmd_8c_af83a8e7aab7d35545ab508459b185692}{run\+Urqmd}} (const char $\ast$source, const char $\ast$outdir, const char $\ast$productiondir, Int\+\_\+t centix, long n\+Events\+Requested=5000000000)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const Int\+\_\+t \mbox{\hyperlink{run_urqmd_8c_a0fbf433d31e78571d0d9a4811d5a3455}{ncent}} = 14
+\item 
+const char $\ast$ \mbox{\hyperlink{run_urqmd_8c_a5fb93c8274d871fe03f71e4c5f7b0f7e}{cent}} \mbox{[}\mbox{\hyperlink{run_urqmd_8c_a0fbf433d31e78571d0d9a4811d5a3455}{ncent}}\mbox{]}
+\item 
+const double \mbox{\hyperlink{run_urqmd_8c_aefc231d441165687e664c791015de228}{lowb}} \mbox{[}\mbox{\hyperlink{run_urqmd_8c_a0fbf433d31e78571d0d9a4811d5a3455}{ncent}}\mbox{]}
+\item 
+const double \mbox{\hyperlink{run_urqmd_8c_a5c13bbcfc6ad392fff1e9cc73777428a}{highb}} \mbox{[}\mbox{\hyperlink{run_urqmd_8c_a0fbf433d31e78571d0d9a4811d5a3455}{ncent}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{run_urqmd_8c_a0b47bb08fe716836ce5e8814bd148587}\label{run_urqmd_8c_a0b47bb08fe716836ce5e8814bd148587}} 
+\index{runUrqmd.c@{runUrqmd.c}!ClassImp@{ClassImp}}
+\index{ClassImp@{ClassImp}!runUrqmd.c@{runUrqmd.c}}
+\doxysubsubsection{\texorpdfstring{ClassImp()}{ClassImp()}}
+{\footnotesize\ttfamily Class\+Imp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ur_q_m_d_particle}{Ur\+QMDParticle}}}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{run_urqmd_8c_source_l00034}{34}} of file \mbox{\hyperlink{run_urqmd_8c_source}{run\+Urqmd.\+c}}.
+
+\mbox{\Hypertarget{run_urqmd_8c_af83a8e7aab7d35545ab508459b185692}\label{run_urqmd_8c_af83a8e7aab7d35545ab508459b185692}} 
+\index{runUrqmd.c@{runUrqmd.c}!runUrqmd@{runUrqmd}}
+\index{runUrqmd@{runUrqmd}!runUrqmd.c@{runUrqmd.c}}
+\doxysubsubsection{\texorpdfstring{runUrqmd()}{runUrqmd()}}
+{\footnotesize\ttfamily void run\+Urqmd (\begin{DoxyParamCaption}\item[{const char $\ast$}]{source,  }\item[{const char $\ast$}]{outdir,  }\item[{const char $\ast$}]{productiondir,  }\item[{Int\+\_\+t}]{centix,  }\item[{long}]{n\+Events\+Requested = {\ttfamily 5000000000} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{run_urqmd_8c_source_l00134}{134}} of file \mbox{\hyperlink{run_urqmd_8c_source}{run\+Urqmd.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{run_urqmd_8c_a5fb93c8274d871fe03f71e4c5f7b0f7e}\label{run_urqmd_8c_a5fb93c8274d871fe03f71e4c5f7b0f7e}} 
+\index{runUrqmd.c@{runUrqmd.c}!cent@{cent}}
+\index{cent@{cent}!runUrqmd.c@{runUrqmd.c}}
+\doxysubsubsection{\texorpdfstring{cent}{cent}}
+{\footnotesize\ttfamily const char$\ast$ cent\mbox{[}\mbox{\hyperlink{run_urqmd_8c_a0fbf433d31e78571d0d9a4811d5a3455}{ncent}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}0001"{}},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}0102"{}},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}0203"{}},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}0304"{}},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}0405"{}},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}0005"{}},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}0510"{}},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}1020"{}},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}2030"{}},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}3040"{}},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}4050"{}},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}5060"{}},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}6070"{}},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}7080"{}}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{run_urqmd_8c_source_l00080}{80}} of file \mbox{\hyperlink{run_urqmd_8c_source}{run\+Urqmd.\+c}}.
+
+\mbox{\Hypertarget{run_urqmd_8c_a5c13bbcfc6ad392fff1e9cc73777428a}\label{run_urqmd_8c_a5c13bbcfc6ad392fff1e9cc73777428a}} 
+\index{runUrqmd.c@{runUrqmd.c}!highb@{highb}}
+\index{highb@{highb}!runUrqmd.c@{runUrqmd.c}}
+\doxysubsubsection{\texorpdfstring{highb}{highb}}
+{\footnotesize\ttfamily const double highb\mbox{[}\mbox{\hyperlink{run_urqmd_8c_a0fbf433d31e78571d0d9a4811d5a3455}{ncent}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    1.57,}
+\DoxyCodeLine{    2.22,}
+\DoxyCodeLine{    2.71,}
+\DoxyCodeLine{    3.13,}
+\DoxyCodeLine{    3.50,}
+\DoxyCodeLine{    3.50,}
+\DoxyCodeLine{    4.94,}
+\DoxyCodeLine{    6.98,}
+\DoxyCodeLine{    8.55,}
+\DoxyCodeLine{    9.88,}
+\DoxyCodeLine{    11.04,}
+\DoxyCodeLine{    12.09,}
+\DoxyCodeLine{    13.05,}
+\DoxyCodeLine{    13.97}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{run_urqmd_8c_source_l00112}{112}} of file \mbox{\hyperlink{run_urqmd_8c_source}{run\+Urqmd.\+c}}.
+
+\mbox{\Hypertarget{run_urqmd_8c_aefc231d441165687e664c791015de228}\label{run_urqmd_8c_aefc231d441165687e664c791015de228}} 
+\index{runUrqmd.c@{runUrqmd.c}!lowb@{lowb}}
+\index{lowb@{lowb}!runUrqmd.c@{runUrqmd.c}}
+\doxysubsubsection{\texorpdfstring{lowb}{lowb}}
+{\footnotesize\ttfamily const double lowb\mbox{[}\mbox{\hyperlink{run_urqmd_8c_a0fbf433d31e78571d0d9a4811d5a3455}{ncent}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    0.000000001,}
+\DoxyCodeLine{    1.57,}
+\DoxyCodeLine{    2.22,}
+\DoxyCodeLine{    2.71,}
+\DoxyCodeLine{    3.13,}
+\DoxyCodeLine{    0.000000001,}
+\DoxyCodeLine{    3.50,}
+\DoxyCodeLine{    4.94,}
+\DoxyCodeLine{    6.98,}
+\DoxyCodeLine{    8.55,}
+\DoxyCodeLine{    9.88,}
+\DoxyCodeLine{    11.04,}
+\DoxyCodeLine{    12.09,}
+\DoxyCodeLine{    13.05,}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{run_urqmd_8c_source_l00096}{96}} of file \mbox{\hyperlink{run_urqmd_8c_source}{run\+Urqmd.\+c}}.
+
+\mbox{\Hypertarget{run_urqmd_8c_a0fbf433d31e78571d0d9a4811d5a3455}\label{run_urqmd_8c_a0fbf433d31e78571d0d9a4811d5a3455}} 
+\index{runUrqmd.c@{runUrqmd.c}!ncent@{ncent}}
+\index{ncent@{ncent}!runUrqmd.c@{runUrqmd.c}}
+\doxysubsubsection{\texorpdfstring{ncent}{ncent}}
+{\footnotesize\ttfamily const Int\+\_\+t ncent = 14}
+
+
+
+Definition at line \mbox{\hyperlink{run_urqmd_8c_source_l00079}{79}} of file \mbox{\hyperlink{run_urqmd_8c_source}{run\+Urqmd.\+c}}.
+

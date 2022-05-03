@@ -1,0 +1,816 @@
+\hypertarget{class_hadron_gas}{}\doxysection{Hadron\+Gas Class Reference}
+\label{class_hadron_gas}\index{HadronGas@{HadronGas}}
+
+
+{\ttfamily \#include $<$Hadron\+Gas.\+hpp$>$}
+
+
+
+Inheritance diagram for Hadron\+Gas\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{class_hadron_gas__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Hadron\+Gas\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hadron_gas__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hadron_gas_a47040728179c8f76dd25f304071a7219}{Hadron\+Gas}} (\mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} $\ast$\+\_\+particles, \mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} $\ast$\+\_\+stable\+Particles, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} debug\+Level)
+\item 
+virtual \mbox{\hyperlink{class_hadron_gas_a42b855dfceef6e7bbbbcc133825cf751}{$\sim$\+Hadron\+Gas}} ()
+\item 
+virtual void \mbox{\hyperlink{class_hadron_gas_af3b827929a173c98d79eb90486ba94c0}{clear}} ()
+\item 
+virtual void \mbox{\hyperlink{class_hadron_gas_a81473e36e1c530266bc0049c4f2a7dbc}{calculate\+Particle\+Decay\+Probability}} ()
+\item 
+virtual void \mbox{\hyperlink{class_hadron_gas_ab119b0bbb09e90994714b8c95e805508}{calculate\+Particle\+Decays}} ()
+\item 
+virtual void \mbox{\hyperlink{class_hadron_gas_ac09ed3721a845cf1c08eb444cb13b171}{calculate\+All\+Properties}} (double \mbox{\hyperlink{class_hadron_gas_aac3759f11496e592fc9e6509c8acae94}{temperature}}, double \mbox{\hyperlink{class_hadron_gas_a990b450f2468e849ebc0d4caed847b8c}{muB}}, double \mbox{\hyperlink{class_hadron_gas_abbb89adbec2e66ac7b0beb9fc4962120}{muS}})
+\item 
+virtual double \mbox{\hyperlink{class_hadron_gas_a18004ee75067d6c4be0a9df93114d82e}{compute\+Thermal\+Density\+VsP}} (double \mbox{\hyperlink{class_hadron_gas_aac3759f11496e592fc9e6509c8acae94}{temperature}}, double mass, double \mbox{\hyperlink{class_hadron_gas_a376e39e5ad3e21aa62a67487b49fc498}{mu}}, double g, double sign, double p)
+\item 
+\mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} \& \mbox{\hyperlink{class_hadron_gas_a10aa2fb5f802a8e0380e79fbbf168b1f}{get\+Particle\+Types}} ()
+\item 
+\mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} \& \mbox{\hyperlink{class_hadron_gas_a1e6904b6438936b3461b4489e1b2cd20}{get\+Stable\+Particle\+Types}} ()
+\item 
+const TString \& \mbox{\hyperlink{class_hadron_gas_aee70ddabce962f67f600cf70b1328d92}{get\+Name}} () const
+\item 
+void \mbox{\hyperlink{class_hadron_gas_a70757c0ac293e72a8c2c39c4c7697dc2}{set\+Name}} (TString \&\+\_\+name)
+\item 
+\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ \mbox{\hyperlink{class_hadron_gas_a37b122fb5337b8b99e87bc50a052f63f}{get\+Particle\+Type}} (int index)
+\item 
+\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ \mbox{\hyperlink{class_hadron_gas_a58b49a94ed5af2d6962e368f18b3552a}{get\+Stable\+Particle\+Type}} (int index)
+\item 
+void \mbox{\hyperlink{class_hadron_gas_ac45479581fe706bd6797197f60d34121}{setup\+Decay\+Generator}} ()
+\item 
+\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ \mbox{\hyperlink{class_hadron_gas_ab339174fac78864d5eac231dc07e8c94}{generate\+Random\+Hadron}} ()
+\item 
+int \mbox{\hyperlink{class_hadron_gas_a385b05a583cef6952d2eebc44bd579bf}{generate\+Random\+Hadron\+By\+Index}} ()
+\item 
+double \mbox{\hyperlink{class_hadron_gas_a2e95810c3633249b5c99fafb12f622c1}{get\+Temperature}} () const
+\item 
+double \mbox{\hyperlink{class_hadron_gas_ac088909cc34c8f795777b2054d6fb4d1}{get\+Mu}} () const
+\item 
+double \mbox{\hyperlink{class_hadron_gas_ac331777a921c304b6cb11e0800102ef5}{get\+MuB}} () const
+\item 
+double \mbox{\hyperlink{class_hadron_gas_a9069765df692f61cfacea9990949237a}{get\+MuS}} () const
+\item 
+double \mbox{\hyperlink{class_hadron_gas_aaef3950c2e42cd25970f2d610b8c882e}{get\+MuQ}} () const
+\item 
+double \mbox{\hyperlink{class_hadron_gas_a59403c20ebae320a71afb9550b7f37b8}{get\+Number\+Density}} () const
+\item 
+double \mbox{\hyperlink{class_hadron_gas_ada111691fa8c7319ca344f9277b631cb}{get\+Energy\+Density}} () const
+\item 
+double \mbox{\hyperlink{class_hadron_gas_ace72975999f03e4995fe6206105f936f}{get\+Entropy\+Density}} () const
+\item 
+double \mbox{\hyperlink{class_hadron_gas_ab76347efc1208d044f94cc20bffe37bc}{get\+Pressure}} () const
+\item 
+ostream \& \mbox{\hyperlink{class_hadron_gas_a22957da7f616eb85e40b4bbdcc0a24aa}{print\+Properties}} (ostream \&os)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} $\ast$ \mbox{\hyperlink{class_hadron_gas_ab1f67d0c9d2911636fe8fcc3d3c26938}{particle\+Types}}
+\item 
+\mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} $\ast$ \mbox{\hyperlink{class_hadron_gas_a5a6b0b618537545da25d56ceeea61841}{stable\+Particle\+Types}}
+\item 
+double \mbox{\hyperlink{class_hadron_gas_aac3759f11496e592fc9e6509c8acae94}{temperature}}
+\item 
+double \mbox{\hyperlink{class_hadron_gas_a376e39e5ad3e21aa62a67487b49fc498}{mu}}
+\item 
+double \mbox{\hyperlink{class_hadron_gas_a990b450f2468e849ebc0d4caed847b8c}{muB}}
+\item 
+double \mbox{\hyperlink{class_hadron_gas_abbb89adbec2e66ac7b0beb9fc4962120}{muS}}
+\item 
+double \mbox{\hyperlink{class_hadron_gas_a0d8d640888bd3fd7709fa8ef156c5b14}{muQ}}
+\item 
+double \mbox{\hyperlink{class_hadron_gas_aaf3e93452e414637bc6873926958922f}{thermal\+Number\+Density}}
+\item 
+double \mbox{\hyperlink{class_hadron_gas_a9c487bed44fbde68fbb847b52d916456}{thermal\+Net\+Baryon\+Density}}
+\item 
+double \mbox{\hyperlink{class_hadron_gas_a773a86c5b17f7826a643c35309e715de}{thermal\+Net\+Strangeness\+Density}}
+\item 
+double \mbox{\hyperlink{class_hadron_gas_aaff6b71159619e165901059548e65d6c}{thermal\+Net\+Charge\+Density}}
+\item 
+double \mbox{\hyperlink{class_hadron_gas_ac0e49d125256185f8a33c381d5d2ff2d}{thermal\+Energy\+Density}}
+\item 
+double \mbox{\hyperlink{class_hadron_gas_a0d0468508cf0d11fa3c3dc73b91cfcbb}{thermal\+Entropy\+Density}}
+\item 
+double \mbox{\hyperlink{class_hadron_gas_a31b64286aef381ad96e595afd02521da}{thermal\+Pressure}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{class_hadron_gas_a4687bcb37b98f612c75c2b861443fbb5}{chemical\+Potentials}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{class_hadron_gas_af21666e27c232b7c9db57d7d89094c7e}{particle\+Densities}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{class_hadron_gas_afa435e03780e16d26c5040cda8958af5}{particle\+Energies}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{class_hadron_gas_a8470ad57861298818c4e3f5b0906a644}{particle\+Entropies}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{class_hadron_gas_a3ca8e77b8c10ba069c427ba56b0f86fd}{particle\+Pressures}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{class_hadron_gas_a4d4890f5c4eb329223a36fb043afd631}{particle\+Ds\+Dmu}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{class_hadron_gas_ae4cc28d0f42cc704d3faea93b3d89966}{particle\+Dn\+Dmu}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{class_hadron_gas_ad161eb770b3a3a86538c27c6afdc30b0}{particle\+De\+Over\+TDmu}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{class_hadron_gas_a35a88bf62ed1d0a182f8b8932c4bc3fc}{particle\+Dp\+Over\+Tmu}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{class_hadron_gas_a9db272e0345731529d81950daa8045b4}{delta\+N\+\_\+bulk\+\_\+term1s}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{class_hadron_gas_a2ae0973f6342a0a54990dd6aedb15b85}{delta\+N\+\_\+bulk\+\_\+term2s}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{class_hadron_gas_aa862714cd5f161b078772b7b594dc7b7}{delta\+N\+\_\+qmu\+\_\+term1s}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{class_hadron_gas_a039fa360181db89f3d579ab67657f841}{delta\+N\+\_\+qmu\+\_\+term2s}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{class_hadron_gas_aef174d13fdd76aced186b145a6e75d5a}{stable\+Particle\+Densities}}
+\item 
+vector$<$ vector$<$ double $>$ $>$ \mbox{\hyperlink{class_hadron_gas_aff87e89425ef5d478e6a8468eeeb7a69}{stable\+Particle\+Pair\+Densities}}
+\item 
+vector$<$ vector$<$ double $>$ $>$ \mbox{\hyperlink{class_hadron_gas_afd66d89869449e67412ecc241c974c2d}{stable\+Particle\+Pair\+Correlated\+Densities}}
+\item 
+vector$<$ vector$<$ double $>$ $>$ \mbox{\hyperlink{class_hadron_gas_a3ec28b6b8bc2bd0f3025c2c782539770}{stable\+Particle\+Pair\+Uncorrelated\+Densities}}
+\item 
+vector$<$ vector$<$ double $>$ $>$ \mbox{\hyperlink{class_hadron_gas_aa486d1c31b3061e42cd74a6e4415bf2d}{decay\+Probabilities}}
+\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{class_hadron_gas_a8fe1c21d405e93ed2496786449207b12}{decay\+Pair\+Probabilities}}
+\item 
+\mbox{\hyperlink{class_selection_generator}{Selection\+Generator}} $\ast$ \mbox{\hyperlink{class_hadron_gas_ab93ff042e948c91975766690a7003936}{hadron\+Rndm\+Selector}}
+\item 
+TString \mbox{\hyperlink{class_hadron_gas_af2944162971da8d4c9582ff3c2b5f7b6}{name}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static double \mbox{\hyperlink{class_hadron_gas_a738b3e178d7044837a4ffc6dd4b89367}{two\+Pi}} = 2.\+0$\ast$3.\+1415927
+\item 
+static double \mbox{\hyperlink{class_hadron_gas_a3cf092ccf0a19534612d15240500c0b3}{two\+Pi\+Cube}} = \mbox{\hyperlink{class_hadron_gas_a738b3e178d7044837a4ffc6dd4b89367}{two\+Pi}}$\ast$\mbox{\hyperlink{class_hadron_gas_a738b3e178d7044837a4ffc6dd4b89367}{two\+Pi}}$\ast$\mbox{\hyperlink{class_hadron_gas_a738b3e178d7044837a4ffc6dd4b89367}{two\+Pi}}
+\item 
+static int \mbox{\hyperlink{class_hadron_gas_a36570af95f7b4cfd0c397a59a2dbf414}{trun\+Order}} = 10
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00017}{17}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hadron_gas_a47040728179c8f76dd25f304071a7219}\label{class_hadron_gas_a47040728179c8f76dd25f304071a7219}} 
+\index{HadronGas@{HadronGas}!HadronGas@{HadronGas}}
+\index{HadronGas@{HadronGas}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{HadronGas()}{HadronGas()}}
+{\footnotesize\ttfamily Hadron\+Gas\+::\+Hadron\+Gas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} $\ast$}]{\+\_\+particles,  }\item[{\mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} $\ast$}]{\+\_\+stable\+Particles,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{debug\+Level }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{_hadron_gas_8cpp_source}{Hadron\+Gas.\+cpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a42b855dfceef6e7bbbbcc133825cf751}\label{class_hadron_gas_a42b855dfceef6e7bbbbcc133825cf751}} 
+\index{HadronGas@{HadronGas}!````~HadronGas@{$\sim$HadronGas}}
+\index{````~HadronGas@{$\sim$HadronGas}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{$\sim$HadronGas()}{~HadronGas()}}
+{\footnotesize\ttfamily Hadron\+Gas\+::$\sim$\+Hadron\+Gas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{_hadron_gas_8cpp_source}{Hadron\+Gas.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hadron_gas_ac09ed3721a845cf1c08eb444cb13b171}\label{class_hadron_gas_ac09ed3721a845cf1c08eb444cb13b171}} 
+\index{HadronGas@{HadronGas}!calculateAllProperties@{calculateAllProperties}}
+\index{calculateAllProperties@{calculateAllProperties}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{calculateAllProperties()}{calculateAllProperties()}}
+{\footnotesize\ttfamily void Hadron\+Gas\+::calculate\+All\+Properties (\begin{DoxyParamCaption}\item[{double}]{temperature,  }\item[{double}]{muB,  }\item[{double}]{muS }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8cpp_source_l00346}{346}} of file \mbox{\hyperlink{_hadron_gas_8cpp_source}{Hadron\+Gas.\+cpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a81473e36e1c530266bc0049c4f2a7dbc}\label{class_hadron_gas_a81473e36e1c530266bc0049c4f2a7dbc}} 
+\index{HadronGas@{HadronGas}!calculateParticleDecayProbability@{calculateParticleDecayProbability}}
+\index{calculateParticleDecayProbability@{calculateParticleDecayProbability}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{calculateParticleDecayProbability()}{calculateParticleDecayProbability()}}
+{\footnotesize\ttfamily void Hadron\+Gas\+::calculate\+Particle\+Decay\+Probability (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{_hadron_gas_8cpp_source}{Hadron\+Gas.\+cpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_ab119b0bbb09e90994714b8c95e805508}\label{class_hadron_gas_ab119b0bbb09e90994714b8c95e805508}} 
+\index{HadronGas@{HadronGas}!calculateParticleDecays@{calculateParticleDecays}}
+\index{calculateParticleDecays@{calculateParticleDecays}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{calculateParticleDecays()}{calculateParticleDecays()}}
+{\footnotesize\ttfamily void Hadron\+Gas\+::calculate\+Particle\+Decays (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8cpp_source_l00253}{253}} of file \mbox{\hyperlink{_hadron_gas_8cpp_source}{Hadron\+Gas.\+cpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_af3b827929a173c98d79eb90486ba94c0}\label{class_hadron_gas_af3b827929a173c98d79eb90486ba94c0}} 
+\index{HadronGas@{HadronGas}!clear@{clear}}
+\index{clear@{clear}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Hadron\+Gas\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8cpp_source_l00318}{318}} of file \mbox{\hyperlink{_hadron_gas_8cpp_source}{Hadron\+Gas.\+cpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a18004ee75067d6c4be0a9df93114d82e}\label{class_hadron_gas_a18004ee75067d6c4be0a9df93114d82e}} 
+\index{HadronGas@{HadronGas}!computeThermalDensityVsP@{computeThermalDensityVsP}}
+\index{computeThermalDensityVsP@{computeThermalDensityVsP}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{computeThermalDensityVsP()}{computeThermalDensityVsP()}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::compute\+Thermal\+Density\+VsP (\begin{DoxyParamCaption}\item[{double}]{temperature,  }\item[{double}]{mass,  }\item[{double}]{mu,  }\item[{double}]{g,  }\item[{double}]{sign,  }\item[{double}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8cpp_source_l00567}{567}} of file \mbox{\hyperlink{_hadron_gas_8cpp_source}{Hadron\+Gas.\+cpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_ab339174fac78864d5eac231dc07e8c94}\label{class_hadron_gas_ab339174fac78864d5eac231dc07e8c94}} 
+\index{HadronGas@{HadronGas}!generateRandomHadron@{generateRandomHadron}}
+\index{generateRandomHadron@{generateRandomHadron}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{generateRandomHadron()}{generateRandomHadron()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ Hadron\+Gas\+::generate\+Random\+Hadron (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8cpp_source_l00553}{553}} of file \mbox{\hyperlink{_hadron_gas_8cpp_source}{Hadron\+Gas.\+cpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a385b05a583cef6952d2eebc44bd579bf}\label{class_hadron_gas_a385b05a583cef6952d2eebc44bd579bf}} 
+\index{HadronGas@{HadronGas}!generateRandomHadronByIndex@{generateRandomHadronByIndex}}
+\index{generateRandomHadronByIndex@{generateRandomHadronByIndex}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{generateRandomHadronByIndex()}{generateRandomHadronByIndex()}}
+{\footnotesize\ttfamily int Hadron\+Gas\+::generate\+Random\+Hadron\+By\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8cpp_source_l00559}{559}} of file \mbox{\hyperlink{_hadron_gas_8cpp_source}{Hadron\+Gas.\+cpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_ada111691fa8c7319ca344f9277b631cb}\label{class_hadron_gas_ada111691fa8c7319ca344f9277b631cb}} 
+\index{HadronGas@{HadronGas}!getEnergyDensity@{getEnergyDensity}}
+\index{getEnergyDensity@{getEnergyDensity}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{getEnergyDensity()}{getEnergyDensity()}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::get\+Energy\+Density (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00108}{108}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_ace72975999f03e4995fe6206105f936f}\label{class_hadron_gas_ace72975999f03e4995fe6206105f936f}} 
+\index{HadronGas@{HadronGas}!getEntropyDensity@{getEntropyDensity}}
+\index{getEntropyDensity@{getEntropyDensity}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{getEntropyDensity()}{getEntropyDensity()}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::get\+Entropy\+Density (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00109}{109}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_ac088909cc34c8f795777b2054d6fb4d1}\label{class_hadron_gas_ac088909cc34c8f795777b2054d6fb4d1}} 
+\index{HadronGas@{HadronGas}!getMu@{getMu}}
+\index{getMu@{getMu}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{getMu()}{getMu()}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::get\+Mu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00103}{103}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_ac331777a921c304b6cb11e0800102ef5}\label{class_hadron_gas_ac331777a921c304b6cb11e0800102ef5}} 
+\index{HadronGas@{HadronGas}!getMuB@{getMuB}}
+\index{getMuB@{getMuB}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{getMuB()}{getMuB()}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::get\+MuB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00104}{104}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_aaef3950c2e42cd25970f2d610b8c882e}\label{class_hadron_gas_aaef3950c2e42cd25970f2d610b8c882e}} 
+\index{HadronGas@{HadronGas}!getMuQ@{getMuQ}}
+\index{getMuQ@{getMuQ}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{getMuQ()}{getMuQ()}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::get\+MuQ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00106}{106}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a9069765df692f61cfacea9990949237a}\label{class_hadron_gas_a9069765df692f61cfacea9990949237a}} 
+\index{HadronGas@{HadronGas}!getMuS@{getMuS}}
+\index{getMuS@{getMuS}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{getMuS()}{getMuS()}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::get\+MuS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00105}{105}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_aee70ddabce962f67f600cf70b1328d92}\label{class_hadron_gas_aee70ddabce962f67f600cf70b1328d92}} 
+\index{HadronGas@{HadronGas}!getName@{getName}}
+\index{getName@{getName}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily const TString \& Hadron\+Gas\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00086}{86}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a59403c20ebae320a71afb9550b7f37b8}\label{class_hadron_gas_a59403c20ebae320a71afb9550b7f37b8}} 
+\index{HadronGas@{HadronGas}!getNumberDensity@{getNumberDensity}}
+\index{getNumberDensity@{getNumberDensity}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{getNumberDensity()}{getNumberDensity()}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::get\+Number\+Density (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00107}{107}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a37b122fb5337b8b99e87bc50a052f63f}\label{class_hadron_gas_a37b122fb5337b8b99e87bc50a052f63f}} 
+\index{HadronGas@{HadronGas}!getParticleType@{getParticleType}}
+\index{getParticleType@{getParticleType}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{getParticleType()}{getParticleType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ Hadron\+Gas\+::get\+Particle\+Type (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_hadron_gas_a10aa2fb5f802a8e0380e79fbbf168b1f}\label{class_hadron_gas_a10aa2fb5f802a8e0380e79fbbf168b1f}} 
+\index{HadronGas@{HadronGas}!getParticleTypes@{getParticleTypes}}
+\index{getParticleTypes@{getParticleTypes}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{getParticleTypes()}{getParticleTypes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} \& Hadron\+Gas\+::get\+Particle\+Types (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_ab76347efc1208d044f94cc20bffe37bc}\label{class_hadron_gas_ab76347efc1208d044f94cc20bffe37bc}} 
+\index{HadronGas@{HadronGas}!getPressure@{getPressure}}
+\index{getPressure@{getPressure}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{getPressure()}{getPressure()}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::get\+Pressure (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00110}{110}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a58b49a94ed5af2d6962e368f18b3552a}\label{class_hadron_gas_a58b49a94ed5af2d6962e368f18b3552a}} 
+\index{HadronGas@{HadronGas}!getStableParticleType@{getStableParticleType}}
+\index{getStableParticleType@{getStableParticleType}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{getStableParticleType()}{getStableParticleType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ Hadron\+Gas\+::get\+Stable\+Particle\+Type (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_hadron_gas_a1e6904b6438936b3461b4489e1b2cd20}\label{class_hadron_gas_a1e6904b6438936b3461b4489e1b2cd20}} 
+\index{HadronGas@{HadronGas}!getStableParticleTypes@{getStableParticleTypes}}
+\index{getStableParticleTypes@{getStableParticleTypes}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{getStableParticleTypes()}{getStableParticleTypes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}} \& Hadron\+Gas\+::get\+Stable\+Particle\+Types (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a2e95810c3633249b5c99fafb12f622c1}\label{class_hadron_gas_a2e95810c3633249b5c99fafb12f622c1}} 
+\index{HadronGas@{HadronGas}!getTemperature@{getTemperature}}
+\index{getTemperature@{getTemperature}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{getTemperature()}{getTemperature()}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::get\+Temperature (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00102}{102}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a22957da7f616eb85e40b4bbdcc0a24aa}\label{class_hadron_gas_a22957da7f616eb85e40b4bbdcc0a24aa}} 
+\index{HadronGas@{HadronGas}!printProperties@{printProperties}}
+\index{printProperties@{printProperties}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{printProperties()}{printProperties()}}
+{\footnotesize\ttfamily ostream \& Hadron\+Gas\+::print\+Properties (\begin{DoxyParamCaption}\item[{ostream \&}]{os }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{_hadron_gas_8cpp_source}{Hadron\+Gas.\+cpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a70757c0ac293e72a8c2c39c4c7697dc2}\label{class_hadron_gas_a70757c0ac293e72a8c2c39c4c7697dc2}} 
+\index{HadronGas@{HadronGas}!setName@{setName}}
+\index{setName@{setName}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void Hadron\+Gas\+::set\+Name (\begin{DoxyParamCaption}\item[{TString \&}]{\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00091}{91}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_ac45479581fe706bd6797197f60d34121}\label{class_hadron_gas_ac45479581fe706bd6797197f60d34121}} 
+\index{HadronGas@{HadronGas}!setupDecayGenerator@{setupDecayGenerator}}
+\index{setupDecayGenerator@{setupDecayGenerator}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{setupDecayGenerator()}{setupDecayGenerator()}}
+{\footnotesize\ttfamily void Hadron\+Gas\+::setup\+Decay\+Generator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8cpp_source_l00548}{548}} of file \mbox{\hyperlink{_hadron_gas_8cpp_source}{Hadron\+Gas.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_hadron_gas_a4687bcb37b98f612c75c2b861443fbb5}\label{class_hadron_gas_a4687bcb37b98f612c75c2b861443fbb5}} 
+\index{HadronGas@{HadronGas}!chemicalPotentials@{chemicalPotentials}}
+\index{chemicalPotentials@{chemicalPotentials}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{chemicalPotentials}{chemicalPotentials}}
+{\footnotesize\ttfamily vector$<$double$>$ Hadron\+Gas\+::chemical\+Potentials}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00040}{40}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a8fe1c21d405e93ed2496786449207b12}\label{class_hadron_gas_a8fe1c21d405e93ed2496786449207b12}} 
+\index{HadronGas@{HadronGas}!decayPairProbabilities@{decayPairProbabilities}}
+\index{decayPairProbabilities@{decayPairProbabilities}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{decayPairProbabilities}{decayPairProbabilities}}
+{\footnotesize\ttfamily vector$<$ vector$<$ vector$<$double$>$ $>$ $>$ Hadron\+Gas\+::decay\+Pair\+Probabilities}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_aa486d1c31b3061e42cd74a6e4415bf2d}\label{class_hadron_gas_aa486d1c31b3061e42cd74a6e4415bf2d}} 
+\index{HadronGas@{HadronGas}!decayProbabilities@{decayProbabilities}}
+\index{decayProbabilities@{decayProbabilities}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{decayProbabilities}{decayProbabilities}}
+{\footnotesize\ttfamily vector$<$ vector$<$double$>$ $>$ Hadron\+Gas\+::decay\+Probabilities}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a9db272e0345731529d81950daa8045b4}\label{class_hadron_gas_a9db272e0345731529d81950daa8045b4}} 
+\index{HadronGas@{HadronGas}!deltaN\_bulk\_term1s@{deltaN\_bulk\_term1s}}
+\index{deltaN\_bulk\_term1s@{deltaN\_bulk\_term1s}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{deltaN\_bulk\_term1s}{deltaN\_bulk\_term1s}}
+{\footnotesize\ttfamily vector$<$double$>$ Hadron\+Gas\+::delta\+N\+\_\+bulk\+\_\+term1s}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00050}{50}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a2ae0973f6342a0a54990dd6aedb15b85}\label{class_hadron_gas_a2ae0973f6342a0a54990dd6aedb15b85}} 
+\index{HadronGas@{HadronGas}!deltaN\_bulk\_term2s@{deltaN\_bulk\_term2s}}
+\index{deltaN\_bulk\_term2s@{deltaN\_bulk\_term2s}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{deltaN\_bulk\_term2s}{deltaN\_bulk\_term2s}}
+{\footnotesize\ttfamily vector$<$double$>$ Hadron\+Gas\+::delta\+N\+\_\+bulk\+\_\+term2s}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_aa862714cd5f161b078772b7b594dc7b7}\label{class_hadron_gas_aa862714cd5f161b078772b7b594dc7b7}} 
+\index{HadronGas@{HadronGas}!deltaN\_qmu\_term1s@{deltaN\_qmu\_term1s}}
+\index{deltaN\_qmu\_term1s@{deltaN\_qmu\_term1s}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{deltaN\_qmu\_term1s}{deltaN\_qmu\_term1s}}
+{\footnotesize\ttfamily vector$<$double$>$ Hadron\+Gas\+::delta\+N\+\_\+qmu\+\_\+term1s}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a039fa360181db89f3d579ab67657f841}\label{class_hadron_gas_a039fa360181db89f3d579ab67657f841}} 
+\index{HadronGas@{HadronGas}!deltaN\_qmu\_term2s@{deltaN\_qmu\_term2s}}
+\index{deltaN\_qmu\_term2s@{deltaN\_qmu\_term2s}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{deltaN\_qmu\_term2s}{deltaN\_qmu\_term2s}}
+{\footnotesize\ttfamily vector$<$double$>$ Hadron\+Gas\+::delta\+N\+\_\+qmu\+\_\+term2s}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00053}{53}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_ab93ff042e948c91975766690a7003936}\label{class_hadron_gas_ab93ff042e948c91975766690a7003936}} 
+\index{HadronGas@{HadronGas}!hadronRndmSelector@{hadronRndmSelector}}
+\index{hadronRndmSelector@{hadronRndmSelector}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{hadronRndmSelector}{hadronRndmSelector}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_selection_generator}{Selection\+Generator}}$\ast$ Hadron\+Gas\+::hadron\+Rndm\+Selector}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00062}{62}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a376e39e5ad3e21aa62a67487b49fc498}\label{class_hadron_gas_a376e39e5ad3e21aa62a67487b49fc498}} 
+\index{HadronGas@{HadronGas}!mu@{mu}}
+\index{mu@{mu}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{mu}{mu}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::mu}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00028}{28}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a990b450f2468e849ebc0d4caed847b8c}\label{class_hadron_gas_a990b450f2468e849ebc0d4caed847b8c}} 
+\index{HadronGas@{HadronGas}!muB@{muB}}
+\index{muB@{muB}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{muB}{muB}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::muB}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00029}{29}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a0d8d640888bd3fd7709fa8ef156c5b14}\label{class_hadron_gas_a0d8d640888bd3fd7709fa8ef156c5b14}} 
+\index{HadronGas@{HadronGas}!muQ@{muQ}}
+\index{muQ@{muQ}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{muQ}{muQ}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::muQ}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_abbb89adbec2e66ac7b0beb9fc4962120}\label{class_hadron_gas_abbb89adbec2e66ac7b0beb9fc4962120}} 
+\index{HadronGas@{HadronGas}!muS@{muS}}
+\index{muS@{muS}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{muS}{muS}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::muS}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00030}{30}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_af2944162971da8d4c9582ff3c2b5f7b6}\label{class_hadron_gas_af2944162971da8d4c9582ff3c2b5f7b6}} 
+\index{HadronGas@{HadronGas}!name@{name}}
+\index{name@{name}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily TString Hadron\+Gas\+::name}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_af21666e27c232b7c9db57d7d89094c7e}\label{class_hadron_gas_af21666e27c232b7c9db57d7d89094c7e}} 
+\index{HadronGas@{HadronGas}!particleDensities@{particleDensities}}
+\index{particleDensities@{particleDensities}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{particleDensities}{particleDensities}}
+{\footnotesize\ttfamily vector$<$double$>$ Hadron\+Gas\+::particle\+Densities}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_ad161eb770b3a3a86538c27c6afdc30b0}\label{class_hadron_gas_ad161eb770b3a3a86538c27c6afdc30b0}} 
+\index{HadronGas@{HadronGas}!particleDeOverTDmu@{particleDeOverTDmu}}
+\index{particleDeOverTDmu@{particleDeOverTDmu}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{particleDeOverTDmu}{particleDeOverTDmu}}
+{\footnotesize\ttfamily vector$<$double$>$ Hadron\+Gas\+::particle\+De\+Over\+TDmu}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_ae4cc28d0f42cc704d3faea93b3d89966}\label{class_hadron_gas_ae4cc28d0f42cc704d3faea93b3d89966}} 
+\index{HadronGas@{HadronGas}!particleDnDmu@{particleDnDmu}}
+\index{particleDnDmu@{particleDnDmu}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{particleDnDmu}{particleDnDmu}}
+{\footnotesize\ttfamily vector$<$double$>$ Hadron\+Gas\+::particle\+Dn\+Dmu}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a35a88bf62ed1d0a182f8b8932c4bc3fc}\label{class_hadron_gas_a35a88bf62ed1d0a182f8b8932c4bc3fc}} 
+\index{HadronGas@{HadronGas}!particleDpOverTmu@{particleDpOverTmu}}
+\index{particleDpOverTmu@{particleDpOverTmu}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{particleDpOverTmu}{particleDpOverTmu}}
+{\footnotesize\ttfamily vector$<$double$>$ Hadron\+Gas\+::particle\+Dp\+Over\+Tmu}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a4d4890f5c4eb329223a36fb043afd631}\label{class_hadron_gas_a4d4890f5c4eb329223a36fb043afd631}} 
+\index{HadronGas@{HadronGas}!particleDsDmu@{particleDsDmu}}
+\index{particleDsDmu@{particleDsDmu}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{particleDsDmu}{particleDsDmu}}
+{\footnotesize\ttfamily vector$<$double$>$ Hadron\+Gas\+::particle\+Ds\+Dmu}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_afa435e03780e16d26c5040cda8958af5}\label{class_hadron_gas_afa435e03780e16d26c5040cda8958af5}} 
+\index{HadronGas@{HadronGas}!particleEnergies@{particleEnergies}}
+\index{particleEnergies@{particleEnergies}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{particleEnergies}{particleEnergies}}
+{\footnotesize\ttfamily vector$<$double$>$ Hadron\+Gas\+::particle\+Energies}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00042}{42}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a8470ad57861298818c4e3f5b0906a644}\label{class_hadron_gas_a8470ad57861298818c4e3f5b0906a644}} 
+\index{HadronGas@{HadronGas}!particleEntropies@{particleEntropies}}
+\index{particleEntropies@{particleEntropies}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{particleEntropies}{particleEntropies}}
+{\footnotesize\ttfamily vector$<$double$>$ Hadron\+Gas\+::particle\+Entropies}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a3ca8e77b8c10ba069c427ba56b0f86fd}\label{class_hadron_gas_a3ca8e77b8c10ba069c427ba56b0f86fd}} 
+\index{HadronGas@{HadronGas}!particlePressures@{particlePressures}}
+\index{particlePressures@{particlePressures}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{particlePressures}{particlePressures}}
+{\footnotesize\ttfamily vector$<$double$>$ Hadron\+Gas\+::particle\+Pressures}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00044}{44}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_ab1f67d0c9d2911636fe8fcc3d3c26938}\label{class_hadron_gas_ab1f67d0c9d2911636fe8fcc3d3c26938}} 
+\index{HadronGas@{HadronGas}!particleTypes@{particleTypes}}
+\index{particleTypes@{particleTypes}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{particleTypes}{particleTypes}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}}$\ast$ Hadron\+Gas\+::particle\+Types}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00020}{20}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_aef174d13fdd76aced186b145a6e75d5a}\label{class_hadron_gas_aef174d13fdd76aced186b145a6e75d5a}} 
+\index{HadronGas@{HadronGas}!stableParticleDensities@{stableParticleDensities}}
+\index{stableParticleDensities@{stableParticleDensities}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{stableParticleDensities}{stableParticleDensities}}
+{\footnotesize\ttfamily vector$<$double$>$ Hadron\+Gas\+::stable\+Particle\+Densities}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00055}{55}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_afd66d89869449e67412ecc241c974c2d}\label{class_hadron_gas_afd66d89869449e67412ecc241c974c2d}} 
+\index{HadronGas@{HadronGas}!stableParticlePairCorrelatedDensities@{stableParticlePairCorrelatedDensities}}
+\index{stableParticlePairCorrelatedDensities@{stableParticlePairCorrelatedDensities}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{stableParticlePairCorrelatedDensities}{stableParticlePairCorrelatedDensities}}
+{\footnotesize\ttfamily vector$<$ vector$<$double$>$ $>$ Hadron\+Gas\+::stable\+Particle\+Pair\+Correlated\+Densities}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_aff87e89425ef5d478e6a8468eeeb7a69}\label{class_hadron_gas_aff87e89425ef5d478e6a8468eeeb7a69}} 
+\index{HadronGas@{HadronGas}!stableParticlePairDensities@{stableParticlePairDensities}}
+\index{stableParticlePairDensities@{stableParticlePairDensities}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{stableParticlePairDensities}{stableParticlePairDensities}}
+{\footnotesize\ttfamily vector$<$ vector$<$double$>$ $>$ Hadron\+Gas\+::stable\+Particle\+Pair\+Densities}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00056}{56}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a3ec28b6b8bc2bd0f3025c2c782539770}\label{class_hadron_gas_a3ec28b6b8bc2bd0f3025c2c782539770}} 
+\index{HadronGas@{HadronGas}!stableParticlePairUncorrelatedDensities@{stableParticlePairUncorrelatedDensities}}
+\index{stableParticlePairUncorrelatedDensities@{stableParticlePairUncorrelatedDensities}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{stableParticlePairUncorrelatedDensities}{stableParticlePairUncorrelatedDensities}}
+{\footnotesize\ttfamily vector$<$ vector$<$double$>$ $>$ Hadron\+Gas\+::stable\+Particle\+Pair\+Uncorrelated\+Densities}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00058}{58}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a5a6b0b618537545da25d56ceeea61841}\label{class_hadron_gas_a5a6b0b618537545da25d56ceeea61841}} 
+\index{HadronGas@{HadronGas}!stableParticleTypes@{stableParticleTypes}}
+\index{stableParticleTypes@{stableParticleTypes}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{stableParticleTypes}{stableParticleTypes}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type_collection}{Particle\+Type\+Collection}}$\ast$ Hadron\+Gas\+::stable\+Particle\+Types}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_aac3759f11496e592fc9e6509c8acae94}\label{class_hadron_gas_aac3759f11496e592fc9e6509c8acae94}} 
+\index{HadronGas@{HadronGas}!temperature@{temperature}}
+\index{temperature@{temperature}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{temperature}{temperature}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::temperature}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00027}{27}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_ac0e49d125256185f8a33c381d5d2ff2d}\label{class_hadron_gas_ac0e49d125256185f8a33c381d5d2ff2d}} 
+\index{HadronGas@{HadronGas}!thermalEnergyDensity@{thermalEnergyDensity}}
+\index{thermalEnergyDensity@{thermalEnergyDensity}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{thermalEnergyDensity}{thermalEnergyDensity}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::thermal\+Energy\+Density}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a0d0468508cf0d11fa3c3dc73b91cfcbb}\label{class_hadron_gas_a0d0468508cf0d11fa3c3dc73b91cfcbb}} 
+\index{HadronGas@{HadronGas}!thermalEntropyDensity@{thermalEntropyDensity}}
+\index{thermalEntropyDensity@{thermalEntropyDensity}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{thermalEntropyDensity}{thermalEntropyDensity}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::thermal\+Entropy\+Density}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00037}{37}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a9c487bed44fbde68fbb847b52d916456}\label{class_hadron_gas_a9c487bed44fbde68fbb847b52d916456}} 
+\index{HadronGas@{HadronGas}!thermalNetBaryonDensity@{thermalNetBaryonDensity}}
+\index{thermalNetBaryonDensity@{thermalNetBaryonDensity}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{thermalNetBaryonDensity}{thermalNetBaryonDensity}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::thermal\+Net\+Baryon\+Density}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00033}{33}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_aaff6b71159619e165901059548e65d6c}\label{class_hadron_gas_aaff6b71159619e165901059548e65d6c}} 
+\index{HadronGas@{HadronGas}!thermalNetChargeDensity@{thermalNetChargeDensity}}
+\index{thermalNetChargeDensity@{thermalNetChargeDensity}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{thermalNetChargeDensity}{thermalNetChargeDensity}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::thermal\+Net\+Charge\+Density}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a773a86c5b17f7826a643c35309e715de}\label{class_hadron_gas_a773a86c5b17f7826a643c35309e715de}} 
+\index{HadronGas@{HadronGas}!thermalNetStrangenessDensity@{thermalNetStrangenessDensity}}
+\index{thermalNetStrangenessDensity@{thermalNetStrangenessDensity}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{thermalNetStrangenessDensity}{thermalNetStrangenessDensity}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::thermal\+Net\+Strangeness\+Density}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_aaf3e93452e414637bc6873926958922f}\label{class_hadron_gas_aaf3e93452e414637bc6873926958922f}} 
+\index{HadronGas@{HadronGas}!thermalNumberDensity@{thermalNumberDensity}}
+\index{thermalNumberDensity@{thermalNumberDensity}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{thermalNumberDensity}{thermalNumberDensity}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::thermal\+Number\+Density}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a31b64286aef381ad96e595afd02521da}\label{class_hadron_gas_a31b64286aef381ad96e595afd02521da}} 
+\index{HadronGas@{HadronGas}!thermalPressure@{thermalPressure}}
+\index{thermalPressure@{thermalPressure}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{thermalPressure}{thermalPressure}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::thermal\+Pressure}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00038}{38}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a36570af95f7b4cfd0c397a59a2dbf414}\label{class_hadron_gas_a36570af95f7b4cfd0c397a59a2dbf414}} 
+\index{HadronGas@{HadronGas}!trunOrder@{trunOrder}}
+\index{trunOrder@{trunOrder}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{trunOrder}{trunOrder}}
+{\footnotesize\ttfamily int Hadron\+Gas\+::trun\+Order = 10\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a738b3e178d7044837a4ffc6dd4b89367}\label{class_hadron_gas_a738b3e178d7044837a4ffc6dd4b89367}} 
+\index{HadronGas@{HadronGas}!twoPi@{twoPi}}
+\index{twoPi@{twoPi}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{twoPi}{twoPi}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::two\+Pi = 2.\+0$\ast$3.\+1415927\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+\mbox{\Hypertarget{class_hadron_gas_a3cf092ccf0a19534612d15240500c0b3}\label{class_hadron_gas_a3cf092ccf0a19534612d15240500c0b3}} 
+\index{HadronGas@{HadronGas}!twoPiCube@{twoPiCube}}
+\index{twoPiCube@{twoPiCube}!HadronGas@{HadronGas}}
+\doxysubsubsection{\texorpdfstring{twoPiCube}{twoPiCube}}
+{\footnotesize\ttfamily double Hadron\+Gas\+::two\+Pi\+Cube = \mbox{\hyperlink{class_hadron_gas_a738b3e178d7044837a4ffc6dd4b89367}{two\+Pi}}$\ast$\mbox{\hyperlink{class_hadron_gas_a738b3e178d7044837a4ffc6dd4b89367}{two\+Pi}}$\ast$\mbox{\hyperlink{class_hadron_gas_a738b3e178d7044837a4ffc6dd4b89367}{two\+Pi}}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_hadron_gas_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{_hadron_gas_8hpp_source}{Hadron\+Gas.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Hadron\+Gas/\mbox{\hyperlink{_hadron_gas_8hpp}{Hadron\+Gas.\+hpp}}\item 
+Hadron\+Gas/\mbox{\hyperlink{_hadron_gas_8cpp}{Hadron\+Gas.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,68 @@
+\hypertarget{_rapidity_generator_8hpp_source}{}\doxysection{Rapidity\+Generator.\+hpp}
+\label{_rapidity_generator_8hpp_source}\index{Base/RapidityGenerator.hpp@{Base/RapidityGenerator.hpp}}
+\mbox{\hyperlink{_rapidity_generator_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.                                 *}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.                                                *}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment                           *}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00007}00007 \textcolor{comment}{ *                                                                     *}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.                                *}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#ifndef CAP\_\_RapidityGenerator}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#define CAP\_\_RapidityGenerator}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00015}00015 \textcolor{comment}{//                                                                     //}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00016}00016 \textcolor{comment}{// RapidityGenerator                                                   //}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00017}00017 \textcolor{comment}{//                                                                     //}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00018}00018 \textcolor{comment}{// Cluster Rapidity Generator                                          //}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00019}00019 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00020}00020 \textcolor{comment}{// option:}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00021}00021 \textcolor{comment}{// 0: uniform distribution}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00022}00022 \textcolor{comment}{// 1: exponential distribution}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00023}00023 \textcolor{comment}{// 2: gaussian distribution}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00024}00024 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00025}00025 \textcolor{comment}{// pairMode:}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00026}00026 \textcolor{comment}{// 0: singles only}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00027}00027 \textcolor{comment}{// 1: pair generation}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00028}00028 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00029}00029 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00031}00031 \textcolor{comment}{}\textcolor{preprocessor}{\#include <ostream>}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00032}00032 \textcolor{preprocessor}{\#include "{}TRandom.h"{}}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00033}00033 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00035}\mbox{\hyperlink{class_rapidity_generator}{00035}} \textcolor{keyword}{class }\mbox{\hyperlink{class_rapidity_generator}{RapidityGenerator}}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00036}00036 \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00037}00037 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00038}00038   }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00039}\mbox{\hyperlink{class_rapidity_generator_aa6136348e00c7cb4946bb6d3a8344a7c}{00039}}   \textcolor{keywordtype}{int}     \mbox{\hyperlink{class_rapidity_generator_aa6136348e00c7cb4946bb6d3a8344a7c}{option}};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00040}\mbox{\hyperlink{class_rapidity_generator_a5177e37822c3a9cd2652f670b2e595f3}{00040}}   \textcolor{keywordtype}{int}     \mbox{\hyperlink{class_rapidity_generator_a5177e37822c3a9cd2652f670b2e595f3}{pairMode}};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00041}\mbox{\hyperlink{class_rapidity_generator_ae89864fae7056a27dac64c4b0887c4c2}{00041}}   \textcolor{keywordtype}{double}  \mbox{\hyperlink{class_rapidity_generator_ae89864fae7056a27dac64c4b0887c4c2}{maxRapidity}};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00042}\mbox{\hyperlink{class_rapidity_generator_a6b173529816ec350be82dd0330a51e89}{00042}}   \textcolor{keywordtype}{double}  \mbox{\hyperlink{class_rapidity_generator_a6b173529816ec350be82dd0330a51e89}{scale}};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00043}\mbox{\hyperlink{class_rapidity_generator_a5b792ac7aa0d0bed9967658ea2564840}{00043}}   \textcolor{keywordtype}{double}  \mbox{\hyperlink{class_rapidity_generator_a5b792ac7aa0d0bed9967658ea2564840}{minimumSeparation}};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00044}\mbox{\hyperlink{class_rapidity_generator_a951a3287b1fb417ebe5162316c75193c}{00044}}   \textcolor{keywordtype}{double}  \mbox{\hyperlink{class_rapidity_generator_a951a3287b1fb417ebe5162316c75193c}{store}}[100];}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00045}\mbox{\hyperlink{class_rapidity_generator_ad79e1e3281e4152b932215bcaf534575}{00045}}   \textcolor{keywordtype}{int}     \mbox{\hyperlink{class_rapidity_generator_ad79e1e3281e4152b932215bcaf534575}{nStored}};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00046}\mbox{\hyperlink{class_rapidity_generator_a84b4eecaf75f4d0db7ad693845d6c482}{00046}}   \textcolor{keywordtype}{double}  \mbox{\hyperlink{class_rapidity_generator_a84b4eecaf75f4d0db7ad693845d6c482}{pairRapidity}};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00047}\mbox{\hyperlink{class_rapidity_generator_a24c0c3c3e9bf2107e8c0d83914d3b4e5}{00047}}   \textcolor{keywordtype}{double}  \mbox{\hyperlink{class_rapidity_generator_a24c0c3c3e9bf2107e8c0d83914d3b4e5}{saveRapidity}};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00048}\mbox{\hyperlink{class_rapidity_generator_a8a918283cbd4950e7cd9299d06760dc7}{00048}}   \textcolor{keywordtype}{int}     \mbox{\hyperlink{class_rapidity_generator_a8a918283cbd4950e7cd9299d06760dc7}{rank}};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00049}\mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{00049}}   TRandom * \mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00050}00050   }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00051}00051   }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00052}00052   \mbox{\hyperlink{class_rapidity_generator_a273a05b52c1e80e8f2419ed0f0e5990a}{RapidityGenerator}}(\textcolor{keywordtype}{int} opt, \textcolor{keywordtype}{int} pair, \textcolor{keywordtype}{double} max, \textcolor{keywordtype}{double} s=10.0, \textcolor{keywordtype}{double} minSep=0.1);}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00054}\mbox{\hyperlink{class_rapidity_generator_a9f8df803a1b0431ab67d8bc6f7c8d127}{00054}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_rapidity_generator_a9f8df803a1b0431ab67d8bc6f7c8d127}{\string~RapidityGenerator}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00056}00056   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_rapidity_generator_a79b5ad22eea6f0d3de5f3c18060beabc}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00057}00057   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_rapidity_generator_a13154931d48ecc28834dff0687aa8938}{generate}}();}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00059}00059   ClassDef(\mbox{\hyperlink{class_rapidity_generator}{RapidityGenerator}},0)}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00061}00061 \};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8hpp_source_l00064}00064 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* RapidityGenerator\_h */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

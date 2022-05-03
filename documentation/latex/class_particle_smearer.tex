@@ -1,0 +1,205 @@
+\hypertarget{class_particle_smearer}{}\doxysection{Particle\+Smearer Class Reference}
+\label{class_particle_smearer}\index{ParticleSmearer@{ParticleSmearer}}
+
+
+{\ttfamily \#include $<$Particle\+Smearer.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_particle_smearer_a8fa15692ad7f8d594a08d221815fc01d}{Particle\+Smearer}} (TH1 $\ast$\+\_\+avg\+Pt, TH1 $\ast$\+\_\+rms\+Pt, TH1 $\ast$\+\_\+avg\+Phi, TH1 $\ast$\+\_\+rms\+Phi, TH1 $\ast$\+\_\+avg\+Eta, TH1 $\ast$\+\_\+rms\+Eta)
+\item 
+\mbox{\hyperlink{class_particle_smearer_a7003ab0d6488e10974665e0e5f919d42}{Particle\+Smearer}} (const \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} \&other\+Filter)
+\item 
+\mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} \& \mbox{\hyperlink{class_particle_smearer_a7157bf449250d2c4d35e4a658f216ef4}{operator=}} (const \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} \&other\+Filter)
+\item 
+virtual \mbox{\hyperlink{class_particle_smearer_aead8e2286c47897d31ddf92e3e19d1c9}{$\sim$\+Particle\+Smearer}} ()
+\item 
+void \mbox{\hyperlink{class_particle_smearer_ad7d0f103b35a81948f35f8d49729dbf1}{smear}} (const TLorentz\+Vector \&in, TLorentz\+Vector \&out)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_particle_smearer_a0d5b48454b570a8b13f1194727bf775c}{smear\+Pt}} (double pt, double phi, double eta, double \&smeared\+Pt)
+\item 
+void \mbox{\hyperlink{class_particle_smearer_a9b813e1494d8cf1f45cbe11d4f720815}{smear\+Eta}} (double pt, double phi, double eta, double \&smeared\+Eta)
+\item 
+void \mbox{\hyperlink{class_particle_smearer_a08a00a5d4c15a5a2b15fb724e4291f67}{smear\+Phi}} (double pt, double phi, double eta, double \&smeared\+Phi)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_smearer_a2979565e272cd06444cf5ad241622093}{avg\+Pt}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_smearer_a69ecb8a8b74fdd729bbe7ec4b9f430b1}{rms\+Pt}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_smearer_afb2dd66de1a13e2e500fc1591f287984}{avg\+Phi}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_smearer_a95423ab641ef3701f13296c7dc8646de}{rms\+Phi}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_smearer_afa807c15541dc41be96bf9a1ad2a09df}{avg\+Eta}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_smearer_ac259042b42e2c584f31e98cc3219f0c8}{rms\+Eta}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_particle}{Particle}} Smearer handler 
+
+Definition at line \mbox{\hyperlink{_particle_smearer_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{_particle_smearer_8hpp_source}{Particle\+Smearer.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_particle_smearer_a8fa15692ad7f8d594a08d221815fc01d}\label{class_particle_smearer_a8fa15692ad7f8d594a08d221815fc01d}} 
+\index{ParticleSmearer@{ParticleSmearer}!ParticleSmearer@{ParticleSmearer}}
+\index{ParticleSmearer@{ParticleSmearer}!ParticleSmearer@{ParticleSmearer}}
+\doxysubsubsection{\texorpdfstring{ParticleSmearer()}{ParticleSmearer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Particle\+Smearer\+::\+Particle\+Smearer (\begin{DoxyParamCaption}\item[{TH1 $\ast$}]{\+\_\+avg\+Pt,  }\item[{TH1 $\ast$}]{\+\_\+rms\+Pt,  }\item[{TH1 $\ast$}]{\+\_\+avg\+Phi,  }\item[{TH1 $\ast$}]{\+\_\+rms\+Phi,  }\item[{TH1 $\ast$}]{\+\_\+avg\+Eta,  }\item[{TH1 $\ast$}]{\+\_\+rms\+Eta }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_smearer_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{_particle_smearer_8cpp_source}{Particle\+Smearer.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_smearer_a7003ab0d6488e10974665e0e5f919d42}\label{class_particle_smearer_a7003ab0d6488e10974665e0e5f919d42}} 
+\index{ParticleSmearer@{ParticleSmearer}!ParticleSmearer@{ParticleSmearer}}
+\index{ParticleSmearer@{ParticleSmearer}!ParticleSmearer@{ParticleSmearer}}
+\doxysubsubsection{\texorpdfstring{ParticleSmearer()}{ParticleSmearer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Particle\+Smearer\+::\+Particle\+Smearer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} \&}]{other\+Filter }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_smearer_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_particle_smearer_8cpp_source}{Particle\+Smearer.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_smearer_aead8e2286c47897d31ddf92e3e19d1c9}\label{class_particle_smearer_aead8e2286c47897d31ddf92e3e19d1c9}} 
+\index{ParticleSmearer@{ParticleSmearer}!````~ParticleSmearer@{$\sim$ParticleSmearer}}
+\index{````~ParticleSmearer@{$\sim$ParticleSmearer}!ParticleSmearer@{ParticleSmearer}}
+\doxysubsubsection{\texorpdfstring{$\sim$ParticleSmearer()}{~ParticleSmearer()}}
+{\footnotesize\ttfamily Particle\+Smearer\+::$\sim$\+Particle\+Smearer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_smearer_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{_particle_smearer_8cpp_source}{Particle\+Smearer.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_particle_smearer_a7157bf449250d2c4d35e4a658f216ef4}\label{class_particle_smearer_a7157bf449250d2c4d35e4a658f216ef4}} 
+\index{ParticleSmearer@{ParticleSmearer}!operator=@{operator=}}
+\index{operator=@{operator=}!ParticleSmearer@{ParticleSmearer}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} \& Particle\+Smearer\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_particle_smearer}{Particle\+Smearer}} \&}]{other\+Filter }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_smearer_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{_particle_smearer_8cpp_source}{Particle\+Smearer.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_smearer_ad7d0f103b35a81948f35f8d49729dbf1}\label{class_particle_smearer_ad7d0f103b35a81948f35f8d49729dbf1}} 
+\index{ParticleSmearer@{ParticleSmearer}!smear@{smear}}
+\index{smear@{smear}!ParticleSmearer@{ParticleSmearer}}
+\doxysubsubsection{\texorpdfstring{smear()}{smear()}}
+{\footnotesize\ttfamily void Particle\+Smearer\+::smear (\begin{DoxyParamCaption}\item[{const TLorentz\+Vector \&}]{in,  }\item[{TLorentz\+Vector \&}]{out }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_smearer_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_particle_smearer_8cpp_source}{Particle\+Smearer.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_smearer_a9b813e1494d8cf1f45cbe11d4f720815}\label{class_particle_smearer_a9b813e1494d8cf1f45cbe11d4f720815}} 
+\index{ParticleSmearer@{ParticleSmearer}!smearEta@{smearEta}}
+\index{smearEta@{smearEta}!ParticleSmearer@{ParticleSmearer}}
+\doxysubsubsection{\texorpdfstring{smearEta()}{smearEta()}}
+{\footnotesize\ttfamily void Particle\+Smearer\+::smear\+Eta (\begin{DoxyParamCaption}\item[{double}]{pt,  }\item[{double}]{phi,  }\item[{double}]{eta,  }\item[{double \&}]{smeared\+Eta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_smearer_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{_particle_smearer_8cpp_source}{Particle\+Smearer.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_smearer_a08a00a5d4c15a5a2b15fb724e4291f67}\label{class_particle_smearer_a08a00a5d4c15a5a2b15fb724e4291f67}} 
+\index{ParticleSmearer@{ParticleSmearer}!smearPhi@{smearPhi}}
+\index{smearPhi@{smearPhi}!ParticleSmearer@{ParticleSmearer}}
+\doxysubsubsection{\texorpdfstring{smearPhi()}{smearPhi()}}
+{\footnotesize\ttfamily void Particle\+Smearer\+::smear\+Phi (\begin{DoxyParamCaption}\item[{double}]{pt,  }\item[{double}]{phi,  }\item[{double}]{eta,  }\item[{double \&}]{smeared\+Phi }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_smearer_8cpp_source_l00190}{190}} of file \mbox{\hyperlink{_particle_smearer_8cpp_source}{Particle\+Smearer.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_smearer_a0d5b48454b570a8b13f1194727bf775c}\label{class_particle_smearer_a0d5b48454b570a8b13f1194727bf775c}} 
+\index{ParticleSmearer@{ParticleSmearer}!smearPt@{smearPt}}
+\index{smearPt@{smearPt}!ParticleSmearer@{ParticleSmearer}}
+\doxysubsubsection{\texorpdfstring{smearPt()}{smearPt()}}
+{\footnotesize\ttfamily void Particle\+Smearer\+::smear\+Pt (\begin{DoxyParamCaption}\item[{double}]{pt,  }\item[{double}]{phi,  }\item[{double}]{eta,  }\item[{double \&}]{smeared\+Pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_smearer_8cpp_source_l00086}{86}} of file \mbox{\hyperlink{_particle_smearer_8cpp_source}{Particle\+Smearer.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_particle_smearer_afa807c15541dc41be96bf9a1ad2a09df}\label{class_particle_smearer_afa807c15541dc41be96bf9a1ad2a09df}} 
+\index{ParticleSmearer@{ParticleSmearer}!avgEta@{avgEta}}
+\index{avgEta@{avgEta}!ParticleSmearer@{ParticleSmearer}}
+\doxysubsubsection{\texorpdfstring{avgEta}{avgEta}}
+{\footnotesize\ttfamily TH1$\ast$ Particle\+Smearer\+::avg\+Eta\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_smearer_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{_particle_smearer_8hpp_source}{Particle\+Smearer.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_smearer_afb2dd66de1a13e2e500fc1591f287984}\label{class_particle_smearer_afb2dd66de1a13e2e500fc1591f287984}} 
+\index{ParticleSmearer@{ParticleSmearer}!avgPhi@{avgPhi}}
+\index{avgPhi@{avgPhi}!ParticleSmearer@{ParticleSmearer}}
+\doxysubsubsection{\texorpdfstring{avgPhi}{avgPhi}}
+{\footnotesize\ttfamily TH1$\ast$ Particle\+Smearer\+::avg\+Phi\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_smearer_8hpp_source_l00044}{44}} of file \mbox{\hyperlink{_particle_smearer_8hpp_source}{Particle\+Smearer.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_smearer_a2979565e272cd06444cf5ad241622093}\label{class_particle_smearer_a2979565e272cd06444cf5ad241622093}} 
+\index{ParticleSmearer@{ParticleSmearer}!avgPt@{avgPt}}
+\index{avgPt@{avgPt}!ParticleSmearer@{ParticleSmearer}}
+\doxysubsubsection{\texorpdfstring{avgPt}{avgPt}}
+{\footnotesize\ttfamily TH1$\ast$ Particle\+Smearer\+::avg\+Pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_smearer_8hpp_source_l00042}{42}} of file \mbox{\hyperlink{_particle_smearer_8hpp_source}{Particle\+Smearer.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_smearer_ac259042b42e2c584f31e98cc3219f0c8}\label{class_particle_smearer_ac259042b42e2c584f31e98cc3219f0c8}} 
+\index{ParticleSmearer@{ParticleSmearer}!rmsEta@{rmsEta}}
+\index{rmsEta@{rmsEta}!ParticleSmearer@{ParticleSmearer}}
+\doxysubsubsection{\texorpdfstring{rmsEta}{rmsEta}}
+{\footnotesize\ttfamily TH1$\ast$ Particle\+Smearer\+::rms\+Eta\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_smearer_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{_particle_smearer_8hpp_source}{Particle\+Smearer.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_smearer_a95423ab641ef3701f13296c7dc8646de}\label{class_particle_smearer_a95423ab641ef3701f13296c7dc8646de}} 
+\index{ParticleSmearer@{ParticleSmearer}!rmsPhi@{rmsPhi}}
+\index{rmsPhi@{rmsPhi}!ParticleSmearer@{ParticleSmearer}}
+\doxysubsubsection{\texorpdfstring{rmsPhi}{rmsPhi}}
+{\footnotesize\ttfamily TH1$\ast$ Particle\+Smearer\+::rms\+Phi\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_smearer_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{_particle_smearer_8hpp_source}{Particle\+Smearer.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_smearer_a69ecb8a8b74fdd729bbe7ec4b9f430b1}\label{class_particle_smearer_a69ecb8a8b74fdd729bbe7ec4b9f430b1}} 
+\index{ParticleSmearer@{ParticleSmearer}!rmsPt@{rmsPt}}
+\index{rmsPt@{rmsPt}!ParticleSmearer@{ParticleSmearer}}
+\doxysubsubsection{\texorpdfstring{rmsPt}{rmsPt}}
+{\footnotesize\ttfamily TH1$\ast$ Particle\+Smearer\+::rms\+Pt\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_smearer_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{_particle_smearer_8hpp_source}{Particle\+Smearer.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_particle_smearer_8hpp}{Particle\+Smearer.\+hpp}}\item 
+Base/\mbox{\hyperlink{_particle_smearer_8cpp}{Particle\+Smearer.\+cpp}}\end{DoxyCompactItemize}

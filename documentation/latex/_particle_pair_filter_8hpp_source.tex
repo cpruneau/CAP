@@ -1,0 +1,40 @@
+\hypertarget{_particle_pair_filter_8hpp_source}{}\doxysection{Particle\+Pair\+Filter.\+hpp}
+\label{_particle_pair_filter_8hpp_source}\index{Base/ParticlePairFilter.hpp@{Base/ParticlePairFilter.hpp}}
+\mbox{\hyperlink{_particle_pair_filter_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00003}00003 \textcolor{comment}{/*************************************************************************}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.                                   *}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.                                                  *}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment                             *}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00007}00007 \textcolor{comment}{ *                                                                       *}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.                                  *}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00009}00009 \textcolor{comment}{ *************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#ifndef CAP\_\_ParticlePairFilter}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00018}00018 \textcolor{preprocessor}{\#define CAP\_\_ParticlePairFilter}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00019}00019 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_filter_8hpp}{Filter.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00020}00020 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_8hpp}{Particle.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00025}\mbox{\hyperlink{class_particle_pair_filter}{00025}} \textcolor{keyword}{class }\mbox{\hyperlink{class_particle_pair_filter}{ParticlePairFilter}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_filter}{Filter}}<Particle>}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00026}00026 \{}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00027}00027 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00032}00032   \mbox{\hyperlink{class_particle_pair_filter_a02eabe391b68ae90470ed0b1ac576fcd}{ParticlePairFilter}}();}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00033}00033   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_pair_filter_a6ff6847a2f87802c9ecf806985901ae4}{\string~ParticlePairFilter}}();}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00034}00034   \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_pair_filter_aef22d81cbbc203fd00e4bc6c7245231b}{accept}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_particle}{Particle}} \& particle1, \textcolor{keyword}{const} \mbox{\hyperlink{class_particle}{Particle}} \&  particle2);}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00037}00037   \textcolor{comment}{// Data Members}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00039}\mbox{\hyperlink{class_particle_pair_filter_afeb224925eed095776b1f3d3aeed0c00}{00039}} \textcolor{comment}{}  \textcolor{keywordtype}{double} \mbox{\hyperlink{class_particle_pair_filter_afeb224925eed095776b1f3d3aeed0c00}{min\_dpt}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00040}\mbox{\hyperlink{class_particle_pair_filter_ab417e5a3fec63d98652906b5ba4a6d29}{00040}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_particle_pair_filter_ab417e5a3fec63d98652906b5ba4a6d29}{max\_dpt}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00041}\mbox{\hyperlink{class_particle_pair_filter_a14590b338ebbcdc874fef8846a94e9bc}{00041}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_particle_pair_filter_a14590b338ebbcdc874fef8846a94e9bc}{min\_dphi}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00042}\mbox{\hyperlink{class_particle_pair_filter_aeaf29af96f9cba1a33bd332be1af523b}{00042}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_particle_pair_filter_aeaf29af96f9cba1a33bd332be1af523b}{max\_dphi}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00043}\mbox{\hyperlink{class_particle_pair_filter_a5cf878dc529f1aa909051971df90895c}{00043}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_particle_pair_filter_a5cf878dc529f1aa909051971df90895c}{min\_deta}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00044}\mbox{\hyperlink{class_particle_pair_filter_acffc61391c062a066f4ead1e3d014c98}{00044}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_particle_pair_filter_acffc61391c062a066f4ead1e3d014c98}{max\_deta}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00046}00046   ClassDef(\mbox{\hyperlink{class_particle_pair_filter}{ParticlePairFilter}},0)}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00047}00047 \};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_filter_8hpp_source_l00049}00049 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_ParticlePairFilter */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

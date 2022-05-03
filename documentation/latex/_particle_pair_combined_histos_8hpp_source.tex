@@ -1,0 +1,78 @@
+\hypertarget{_particle_pair_combined_histos_8hpp_source}{}\doxysection{Particle\+Pair\+Combined\+Histos.\+hpp}
+\label{_particle_pair_combined_histos_8hpp_source}\index{Base/ParticlePairCombinedHistos.hpp@{Base/ParticlePairCombinedHistos.hpp}}
+\mbox{\hyperlink{_particle_pair_combined_histos_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00001}00001 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00002}00002 \textcolor{comment}{//  ParticlePairCombinedHistos.hpp}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00003}00003 \textcolor{comment}{//  MyMC}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00004}00004 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00005}00005 \textcolor{comment}{//  Created by Claude Pruneau on 12/18/16.}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00006}00006 \textcolor{comment}{//  Copyright © 2016 Claude Pruneau. All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00007}00007 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00009}00009 \textcolor{preprocessor}{\#ifndef CAP\_\_ParticlePairCombinedHistos}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#define CAP\_\_ParticlePairCombinedHistos}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_pair_derived_histos_8hpp}{ParticlePairDerivedHistos.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00014}00014 \textcolor{comment}{// Two-\/Particle Correlation Combinations (CI, CD)}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00016}00016 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_particle_pair_combined_histos}{ParticlePairCombinedHistos}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_histograms}{Histograms}}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00017}00017 \{}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00018}00018 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00019}00019   }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00023}\mbox{\hyperlink{class_particle_pair_combined_histos_a835bd40c8b395477b2f6f93d89c9dcb2}{00023}}   \mbox{\hyperlink{class_particle_pair_combined_histos_a835bd40c8b395477b2f6f93d89c9dcb2}{ParticlePairCombinedHistos}}(\textcolor{keyword}{const} TString \& \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}},}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00024}00024                              \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \& \mbox{\hyperlink{class_histograms_a045df45b0d1e815891b73274958e8cb4}{configuration}},}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00025}00025                              \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}  debugLevel);}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00029}\mbox{\hyperlink{class_particle_pair_combined_histos_a35b48008f43871481fbb98179e71ac4c}{00029}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_pair_combined_histos_a35b48008f43871481fbb98179e71ac4c}{\string~ParticlePairCombinedHistos}}();}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00030}00030   }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00034}\mbox{\hyperlink{class_particle_pair_combined_histos_a434ec42f44c110bc43b28e5d08bcdecc}{00034}}   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_pair_combined_histos_a434ec42f44c110bc43b28e5d08bcdecc}{createHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00035}00035   }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00039}\mbox{\hyperlink{class_particle_pair_combined_histos_ab8bbab719f6408db744a9fe3b44345a6}{00039}}   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_pair_combined_histos_ab8bbab719f6408db744a9fe3b44345a6}{loadHistograms}}(TFile * inputFile);}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00040}00040   }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00044}\mbox{\hyperlink{class_particle_pair_combined_histos_a7d6e7b37ad0aed45bb168c8e6eb20c87}{00044}}   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_pair_combined_histos_a7d6e7b37ad0aed45bb168c8e6eb20c87}{calculate}}(\mbox{\hyperlink{class_particle_pair_derived_histos}{ParticlePairDerivedHistos}} * pp,}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00045}00045                          \mbox{\hyperlink{class_particle_pair_derived_histos}{ParticlePairDerivedHistos}} * pm,}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00046}00046                          \mbox{\hyperlink{class_particle_pair_derived_histos}{ParticlePairDerivedHistos}} * mp,}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00047}00047                          \mbox{\hyperlink{class_particle_pair_derived_histos}{ParticlePairDerivedHistos}} * mm,}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00048}00048                          \textcolor{keywordtype}{double} app, \textcolor{keywordtype}{double} apm, \textcolor{keywordtype}{double} amp, \textcolor{keywordtype}{double} amm);}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00049}00049   }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00050}00050 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00051}00051   }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00052}00052   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_ad13de46c13cbfe3acca763070c0374fc}{h\_R2\_etaEta}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00053}00053   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a2524e31efe2046de6a727ad012cdbe43}{h\_R2\_phiPhi}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00054}\mbox{\hyperlink{class_particle_pair_combined_histos_a247f5a3ff84dc0586902a2ea995431b0}{00054}}   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a247f5a3ff84dc0586902a2ea995431b0}{h\_R2\_ptpt}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00055}00055   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a558ad83390c951f89d12335e74445203}{h\_R2\_DetaDphi\_shft}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00056}00056   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_ac8ad4a5a32b1add471f1e1674ee6669c}{h\_R2\_yY}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00057}00057   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_afe9ec6be628a9a26275175d30a389161}{h\_R2\_DyDphi\_shft}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00058}00058   }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00059}00059   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a8923e5dd7158a9868063610e0fe04396}{h\_DptDpt\_etaEta}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00060}00060   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_ad06fb4f6220f718ff767999e2dbae9ee}{h\_DptDpt\_phiPhi}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00061}00061   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a48597d2c470b1f98c34b5c3508ea7695}{h\_DptDpt\_DetaDphi\_shft}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00062}00062   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_aee10f959afcef2c7a6bccee87648cfb3}{h\_DptDpt\_yY}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00063}00063   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_ab86db8cf16978e2a7200d2f1fce54a11}{h\_DptDpt\_DyDphi\_shft}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00064}00064   }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00065}00065   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a5ac0a92dd7fb701d970f301a37e7ca3d}{h\_P2\_etaEta}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00066}00066   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_afc09254b180e5a3b2b2c1b47aafe8f0e}{h\_P2\_phiPhi}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00067}00067   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a504d15e59d3fa2d90dfd11194fcb48cf}{h\_P2\_DetaDphi\_shft}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00068}00068   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a979df72c455380aceec3c5bf8f19751c}{h\_P2\_yY}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00069}00069   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a288eeed43f86638dce1fddf97d8902f9}{h\_P2\_DyDphi\_shft}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00070}00070   }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00071}00071   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a63d97f878dc8b30eeddcbd8acc70f81b}{h\_G2\_etaEta}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00072}00072   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a346f80b1b906e5986f48c2df5e591b27}{h\_G2\_phiPhi}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00073}00073   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a102f623e5a7d191562296b4b747cf669}{h\_G2\_DetaDphi\_shft}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00074}00074   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a831a84e749620ae3f309d2b82c0a82eb}{h\_G2\_yY}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00075}00075   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a03c72a2214801c016ee17c79340a7fc6}{h\_G2\_DyDphi\_shft}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00076}00076   }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00077}00077   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_ac14ae04e128a6eaa59568f09f41b35bc}{h\_BF\_etaEta}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00078}00078   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a7287216b5f0f73fd91ace237e6875b7b}{h\_BF\_phiPhi}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00079}00079   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a3b4588a6b6272b5a6365b32814e9f2a7}{h\_BF\_DetaDphi\_shft}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00080}00080   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a020e2ae7aa17442ee37211f219e78c24}{h\_BF\_yY}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00081}00081   TH2* \mbox{\hyperlink{class_particle_pair_combined_histos_a957bd7795836f9a196767b5014498b6b}{h\_BF\_DyDphi\_shft}};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00082}00082   }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00083}00083   }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00084}00084   \mbox{\hyperlink{class_histogram_collection_a8ac292967dc3381d557d3eb2f5730b38}{ClassDef}}(\mbox{\hyperlink{class_particle_pair_combined_histos}{ParticlePairCombinedHistos}},1)}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00085}00085 \};}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histos_8hpp_source_l00089}00089 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_ParticlePairCombinedHistos */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

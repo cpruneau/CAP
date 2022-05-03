@@ -1,0 +1,79 @@
+\hypertarget{_cluster_model_event_histos_8cpp_source}{}\doxysection{Cluster\+Model\+Event\+Histos.\+cpp}
+\label{_cluster_model_event_histos_8cpp_source}\index{Cluster/ClusterModelEventHistos.cpp@{Cluster/ClusterModelEventHistos.cpp}}
+\mbox{\hyperlink{_cluster_model_event_histos_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_cluster_model_event_histos_8hpp}{ClusterModelEventHistos.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00018}\mbox{\hyperlink{_cluster_model_event_histos_8cpp_a65673e67b27672099e10a7e51aae69db}{00018}} \mbox{\hyperlink{_cluster_model_event_histos_8cpp_a65673e67b27672099e10a7e51aae69db}{ClassImp}}(\mbox{\hyperlink{class_cluster_model_event_histos}{ClusterModelEventHistos}});}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00021}\mbox{\hyperlink{class_cluster_model_event_histos_aba1c66b8c638e96a18d5b2845a5a621f}{00021}} \mbox{\hyperlink{class_cluster_model_event_histos_aba1c66b8c638e96a18d5b2845a5a621f}{ClusterModelEventHistos::ClusterModelEventHistos}}(\textcolor{keyword}{const} TString \& name,}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00022}00022                          AnalysisConfiguration * configuration,}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00023}00023                          \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}  debugLevel)}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00024}00024  :}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00025}00025  \mbox{\hyperlink{class_histograms}{Histograms}}(name, configuration, 5, debugLevel)}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00026}00026  \{}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00027}00027  \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterModelEventHistos::CTOR() Started."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00028}00028  \mbox{\hyperlink{class_cluster_model_event_histos_ad9bc4f4d15d5cc2961e71d7f5ae3f792}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00029}00029  \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterModelEventHistos::CTOR() Completed."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00030}00030  \}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00033}00033  \textcolor{comment}{// CTOR2}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00035}\mbox{\hyperlink{class_cluster_model_event_histos_a97b155da1e5f05a8238591009c3deb7b}{00035}} \textcolor{comment}{} \mbox{\hyperlink{class_cluster_model_event_histos_aba1c66b8c638e96a18d5b2845a5a621f}{ClusterModelEventHistos::ClusterModelEventHistos}}(TFile * inputFile,}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00036}00036                          \textcolor{keyword}{const} TString \& name,}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00037}00037                          AnalysisConfiguration * configuration,}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00038}00038                          \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}  debugLevel)}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00039}00039  :}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00040}00040  \mbox{\hyperlink{class_histograms}{Histograms}}(name,configuration,5,debugLevel)}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00041}00041  \{}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00042}00042  \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterModelEventHistos::CTOR2() "{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00043}00043  \mbox{\hyperlink{class_cluster_model_event_histos_a5c7efe15b8514fb6866cec7b000e55c0}{loadHistograms}}(inputFile);}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00044}00044  \}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00047}00047  \textcolor{comment}{// DTOR}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00049}\mbox{\hyperlink{class_cluster_model_event_histos_ad16d0e1c687411494f47e2977fd16429}{00049}} \textcolor{comment}{} \mbox{\hyperlink{class_cluster_model_event_histos_ad16d0e1c687411494f47e2977fd16429}{ClusterModelEventHistos::\string~ClusterModelEventHistos}}()}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00050}00050  \{}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00051}00051  \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterModelEventHistos::DTOR() No ops."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00052}00052  \}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00055}00055  \textcolor{comment}{// Initialize the cluster histograms}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00057}\mbox{\hyperlink{class_cluster_model_event_histos_ad9bc4f4d15d5cc2961e71d7f5ae3f792}{00057}} \textcolor{comment}{}  \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cluster_model_event_histos_ad9bc4f4d15d5cc2961e71d7f5ae3f792}{ClusterModelEventHistos::initialize}}()}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00058}00058  \{}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00059}00059  \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}EventHistos::initialize() Started."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00060}00060  AnalysisConfiguration \& ac = *\mbox{\hyperlink{class_histograms_a832145197a059f198fddd24b39613a13}{getConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00061}00061  TString baseName = ac.histoBaseName;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00062}00062  \mbox{\hyperlink{class_cluster_model_event_histos_a536a1edc394cfafcfbde15e418ef19f5}{h\_nCell}}      = \mbox{\hyperlink{class_histogram_collection_a5f7de86232efa5df2a9cdf659834450e}{createHistogram}}(baseName + \textcolor{stringliteral}{"{}nCells"{}},    100,   0.0,  100.0,  \textcolor{stringliteral}{"{}n\_\{cell\}"{}},     \textcolor{stringliteral}{"{}Counts"{}},scaled, saved, notPlotted, notPrinted);}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00063}00063  \mbox{\hyperlink{class_cluster_model_event_histos_a8e7816d3af983b9f5b0ff7496082e55f}{h\_nClusters}}  = \mbox{\hyperlink{class_histogram_collection_a5f7de86232efa5df2a9cdf659834450e}{createHistogram}}(baseName + \textcolor{stringliteral}{"{}nClusters"{}}, 1000,  0.0,  1000.0, \textcolor{stringliteral}{"{}n\_\{clusters\}"{}}, \textcolor{stringliteral}{"{}Counts"{}},scaled, saved, notPlotted, notPrinted);}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00064}00064  \mbox{\hyperlink{class_cluster_model_event_histos_a7d8fbdbd1193d5c4b929c8e9c3636a2e}{h\_nParticles}} = \mbox{\hyperlink{class_histogram_collection_a5f7de86232efa5df2a9cdf659834450e}{createHistogram}}(baseName + \textcolor{stringliteral}{"{}nParticles"{}},1000,  0.0,  1000.0, \textcolor{stringliteral}{"{}n\_\{particles\}"{}},\textcolor{stringliteral}{"{}Counts"{}},scaled, saved, notPlotted, notPrinted);}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00065}00065  \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}EventHistos::initialize() Completed."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00066}00066  \}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00069}00069  \textcolor{comment}{// load the cluster histograms from the given file and base name}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00071}\mbox{\hyperlink{class_cluster_model_event_histos_a5c7efe15b8514fb6866cec7b000e55c0}{00071}} \textcolor{comment}{} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cluster_model_event_histos_a5c7efe15b8514fb6866cec7b000e55c0}{ClusterModelEventHistos::loadHistograms}}(TFile * inputFile)}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00072}00072  \{}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00073}00073  \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}EventHistos::loadHistograms(...) Started."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00074}00074  TString \& baseName = \mbox{\hyperlink{class_histograms_a832145197a059f198fddd24b39613a13}{getConfiguration}}()-\/>histoBaseName;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00075}00075  \mbox{\hyperlink{class_cluster_model_event_histos_a536a1edc394cfafcfbde15e418ef19f5}{h\_nCell}}     =  \mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,baseName + \textcolor{stringliteral}{"{}nCells"{}});}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00076}00076  \mbox{\hyperlink{class_cluster_model_event_histos_a8e7816d3af983b9f5b0ff7496082e55f}{h\_nClusters}} =  \mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,baseName + \textcolor{stringliteral}{"{}nClusters"{}});}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00077}00077  \mbox{\hyperlink{class_cluster_model_event_histos_a7d8fbdbd1193d5c4b929c8e9c3636a2e}{h\_nParticles}} = \mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,baseName + \textcolor{stringliteral}{"{}nParticles"{}});}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00078}00078  \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}EventHistos::loadHistograms(...) Completed."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00079}00079  \}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00082}00082  \textcolor{comment}{// fill the cluster histograms with the given cluster}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00084}\mbox{\hyperlink{class_cluster_model_event_histos_a757cbf21eca2a90d638b5fac8d1652aa}{00084}} \textcolor{comment}{} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cluster_model_event_histos_a757cbf21eca2a90d638b5fac8d1652aa}{ClusterModelEventHistos::fill}}(\mbox{\hyperlink{class_cluster_model_event}{ClusterModelEvent}} * event, \textcolor{keywordtype}{double} weight)}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00085}00085  \{}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00086}00086  \mbox{\hyperlink{class_cluster_model_event_histos_a536a1edc394cfafcfbde15e418ef19f5}{h\_nCell}}    -\/>Fill(\textcolor{keywordtype}{double}(event-\/>\mbox{\hyperlink{class_cluster_model_event_aab6463581afec7efbfa3a9a2ac94fabc}{nCells}}),      weight);}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00087}00087  \mbox{\hyperlink{class_cluster_model_event_histos_a8e7816d3af983b9f5b0ff7496082e55f}{h\_nClusters}}-\/>Fill(\textcolor{keywordtype}{double}(event-\/>\mbox{\hyperlink{class_cluster_model_event_a9b549e11fdb98c8b2a554849624d5f41}{nClusters}}),   weight);}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00088}00088  \mbox{\hyperlink{class_cluster_model_event_histos_a7d8fbdbd1193d5c4b929c8e9c3636a2e}{h\_nParticles}}-\/>Fill(\textcolor{keywordtype}{double}(event-\/>nParticles), weight);}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00089}00089  \}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_histos_8cpp_source_l00090}00090 }
+
+\end{DoxyCode}

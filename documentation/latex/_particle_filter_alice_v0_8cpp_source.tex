@@ -1,0 +1,71 @@
+\hypertarget{_particle_filter_alice_v0_8cpp_source}{}\doxysection{Particle\+Filter\+Alice\+V0.\+cpp}
+\label{_particle_filter_alice_v0_8cpp_source}\index{Base/ParticleFilterAliceV0.cpp@{Base/ParticleFilterAliceV0.cpp}}
+\mbox{\hyperlink{_particle_filter_alice_v0_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00001}00001 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00002}00002 \textcolor{comment}{//  ParticleFilterAliceV0.cpp}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00003}00003 \textcolor{comment}{//  MyMC}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00004}00004 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00005}00005 \textcolor{comment}{//  Created by Claude Pruneau on 12/12/16.}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00006}00006 \textcolor{comment}{//  Copyright © 2016 Claude Pruneau. All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00007}00007 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#include <TMath.h>}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00010}00010 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_filter_alice_v0_8hpp}{ParticleFilterAliceV0.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00012}\mbox{\hyperlink{_particle_filter_alice_v0_8cpp_a4a1df396a9e166e586893aca5434cac8}{00012}} \mbox{\hyperlink{_particle_filter_alice_v0_8cpp_a4a1df396a9e166e586893aca5434cac8}{ClassImp}}(\mbox{\hyperlink{class_particle_filter_alice_v0}{ParticleFilterAliceV0}});}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00014}00014 \textcolor{comment}{// ==========================================================================================}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00015}00015 \textcolor{comment}{// CTOR}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00016}00016 \textcolor{comment}{// Note: To turn off filtering on a specific variable, set the min large than the max.}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00017}00017 \textcolor{comment}{// ==========================================================================================}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00018}00018 \mbox{\hyperlink{class_particle_filter_alice_v0_a8eeffeb0618750d506279d47f4fdbacf}{ParticleFilterAliceV0::ParticleFilterAliceV0}}(\textcolor{keywordtype}{int} option=0)}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00019}00019 :}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00020}00020 \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}()}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00021}00021 \{}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00022}00022   \textcolor{keywordflow}{switch} (option)}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00023}00023     \{}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00024}00024       \textcolor{keywordflow}{case} 0: \textcolor{comment}{// V0M}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00025}00025       setName(\textcolor{stringliteral}{"{}V0M"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00026}00026       setLongName(\textcolor{stringliteral}{"{}V0M"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00027}00027       setTitle(\textcolor{stringliteral}{"{}V0M"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00028}00028       setLongTitle(\textcolor{stringliteral}{"{}V0M"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00029}00029       addCondition(0, 1,    0.0, 0.0);  \textcolor{comment}{// live particles only}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00030}00030       addCondition(4, 1101, 0.0, 0.0);   \textcolor{comment}{// low mass charged hadron}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00031}00031       addCondition(5, 1,    0.05, 100.0);   \textcolor{comment}{// pt Cut}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00032}00032       addCondition(5, 7, -\/3.7, -\/1.7, 2.8, 5.1); \textcolor{comment}{// pseudorapidity in V0A and V0C}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00034}00034       \textcolor{keywordflow}{case} 1: \textcolor{comment}{// V0A}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00035}00035       setName(\textcolor{stringliteral}{"{}V0A"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00036}00036       setLongName(\textcolor{stringliteral}{"{}V0A"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00037}00037       setTitle(\textcolor{stringliteral}{"{}V0A"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00038}00038       setLongTitle(\textcolor{stringliteral}{"{}V0A"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00039}00039       addCondition(0, 1,  0.0, 0.0);  \textcolor{comment}{// live particles only}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00040}00040       addCondition(4, 1101, 0.0, 0.0);   \textcolor{comment}{// low mass charged hadron}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00041}00041       addCondition(5, 1, 0.05, 100.0);}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00042}00042       addCondition(5, 7, 2.8, 5.1);}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00044}00044       \textcolor{keywordflow}{case} 2: \textcolor{comment}{// V0C}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00045}00045       setName(\textcolor{stringliteral}{"{}V0C"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00046}00046       setLongName(\textcolor{stringliteral}{"{}V0C"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00047}00047       setTitle(\textcolor{stringliteral}{"{}V0C"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00048}00048       setLongTitle(\textcolor{stringliteral}{"{}V0C"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00049}00049       addCondition(0, 1,  0.0, 0.0);  \textcolor{comment}{// live particles only}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00050}00050       addCondition(4, 1101, 0.0, 0.0);   \textcolor{comment}{// low mass charged hadron}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00051}00051       addCondition(5, 1, 0.05, 100.0);}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00052}00052       addCondition(5, 7, -\/3.7, -\/1.7);}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00053}00053     \}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00054}00054 \}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00057}\mbox{\hyperlink{class_particle_filter_alice_v0_a3b09537f72becefb6c84422af13cebdc}{00057}} \mbox{\hyperlink{class_particle_filter_alice_v0}{ParticleFilterAliceV0}} \& \mbox{\hyperlink{class_particle_filter_alice_v0_a3b09537f72becefb6c84422af13cebdc}{ParticleFilterAliceV0::operator=}}( \textcolor{keyword}{const} \mbox{\hyperlink{class_particle_filter_alice_v0}{ParticleFilterAliceV0}} \& otherFilter)}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00058}00058 \{}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00059}00059   \textcolor{keywordflow}{if} (\textcolor{keyword}{this}!=\&otherFilter)}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00060}00060     \{}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00061}00061     \mbox{\hyperlink{class_particle_filter_abfba3c131ffee429072f15b8e70c75ef}{ParticleFilter::operator=}}(otherFilter);}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00062}00062     \}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00063}00063   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00064}00064 \}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_alice_v0_8cpp_source_l00065}00065 }
+
+\end{DoxyCode}

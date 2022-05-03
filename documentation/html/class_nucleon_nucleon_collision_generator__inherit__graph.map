@@ -1,0 +1,9 @@
+<map id="NucleonNucleonCollisionGenerator" name="NucleonNucleonCollisionGenerator">
+<area shape="rect" id="node1" title=" " alt="" coords="249,155,474,181"/>
+<area shape="rect" id="node4" href="$class_hadron_gas_generator_task.html" title=" " alt="" coords="5,229,179,256"/>
+<area shape="rect" id="node5" href="$class_pythia_event_generator.html" title=" " alt="" coords="203,229,354,256"/>
+<area shape="rect" id="node6" href="$class_pythia_event_reader.html" title=" " alt="" coords="378,229,513,256"/>
+<area shape="rect" id="node7" href="$class_resonance_generator.html" title=" " alt="" coords="537,229,682,256"/>
+<area shape="rect" id="node2" href="$class_task.html" title=" " alt="" coords="336,80,387,107"/>
+<area shape="rect" id="node3" href="$class_message_logger.html" title=" " alt="" coords="304,5,419,32"/>
+</map>

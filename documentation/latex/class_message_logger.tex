@@ -1,0 +1,1087 @@
+\hypertarget{class_message_logger}{}\doxysection{Message\+Logger Class Reference}
+\label{class_message_logger}\index{MessageLogger@{MessageLogger}}
+
+
+{\ttfamily \#include $<$Message\+Logger.\+hpp$>$}
+
+
+
+Inheritance diagram for Message\+Logger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_message_logger__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970}{Task\+Status}} \{ \newline
+\mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970a24eb3d3f70efc8e3a83a09bad266d1a3}{Task\+Unknown}}
+, \mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970a52547feaaf84ae6fb2d3ec8aac30315a}{Task\+Ok}}
+, \mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970a7410d4159f6464c5c44ee3140e259966}{Task\+Eof}}
+, \mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970aca3fb3c0dc0029f6a377fd4caf73555d}{Task\+Eod}}
+, \newline
+\mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970a5ed2e4be225feb29243e563a40484e0a}{Task\+Warning}}
+, \mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970a0d66903056578c6ddfcdc6f2edf97f82}{Task\+Error}}
+, \mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970acf3a6e7c7556322d7d84c76cca8c8703}{Task\+Fatal}}
+ \}
+\item 
+enum \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \{ \newline
+\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa8a70893101404064ee47b88b788fc7c4}{Unknown}}
+, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa5f1f5d604d1a1e53af3b330224db4986}{Debug}}
+, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}}
+, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa7d953a8084c9042e3db81cc507d69dca}{Warning}}
+, \newline
+\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa82ecc51dcc8ef95939bf5af404e8d991}{Error}}
+, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa94c20bba7ddee1c21642487c660f25e7}{Fatal}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_message_logger_ae0234ce40260775207df8fdd4a294800}{Message\+Logger}} (\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} selected\+Level=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}})
+\begin{DoxyCompactList}\small\item\em CTOR. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_message_logger_a7daf33d0326c32b7675b7ba5b48795c4}{$\sim$\+Message\+Logger}} ()
+\begin{DoxyCompactList}\small\item\em DTOR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_message_logger_a1e9ef2ba565687d36d69c772c9451149}{set\+Report\+Level}} (\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} required\+Level)
+\item 
+void \mbox{\hyperlink{class_message_logger_a958254f2ebf38f933bf63fcc496875e0}{set\+Log\+Level}} (\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} required\+Level)
+\item 
+\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \mbox{\hyperlink{class_message_logger_a72f7d9f462862f08d76637cb904b7acd}{get\+Log\+Level}} () const
+\item 
+\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \mbox{\hyperlink{class_message_logger_aaa759a0af20793b7586bb33722463d22}{get\+Report\+Level}} () const
+\item 
+void \mbox{\hyperlink{class_message_logger_a7740022cfbd3f0f3f7a383a935b86408}{set\+Hold\+Log\+Level}} (\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} required\+Level)
+\item 
+void \mbox{\hyperlink{class_message_logger_a25a222efb526a112998a22537afc57c1}{restore\+Log\+Level}} ()
+\item 
+void \mbox{\hyperlink{class_message_logger_a10182fcb56fb5fda0f998c89c4bbe4fb}{append\+Class\+Name}} (const TString \&\+\_\+class\+Name)
+\item 
+void \mbox{\hyperlink{class_message_logger_a11c8121edbdb8bcbf2c985f8dd076df1}{set\+Class\+Name}} (const TString \&\+\_\+class\+Name)
+\item 
+void \mbox{\hyperlink{class_message_logger_a62ee7a375e1aec16bfb767aec9fba906}{set\+Instance\+Name}} (const TString \&\+\_\+instance\+Name)
+\item 
+void \mbox{\hyperlink{class_message_logger_aeb23907e8334ea59deeb54733ba36dac}{set\+Function\+Name}} (const TString \&\+\_\+fct\+Name)
+\item 
+const TString \& \mbox{\hyperlink{class_message_logger_ae455c015d46730cb84627f7eb7139e57}{get\+Class\+Name}} () const
+\item 
+const TString \& \mbox{\hyperlink{class_message_logger_a49b0631e47c37d9dc12a3e5f2e220a6f}{get\+Instance\+Name}} () const
+\item 
+const TString \& \mbox{\hyperlink{class_message_logger_a4d2413577a595583b64fa701099f4d09}{get\+Function\+Name}} () const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{report\+Start}} (ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{report\+End}} (ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{report\+Debug}} (ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{report\+Info}} (ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{report\+Warning}} (ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{report\+Error}} (ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a1dcf96590e2352f7410a6a1623414096}{report\+Fatal}} (ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_aff461135ae81b246c7b83c1666b5cccd}{report\+Debug}} (const TString \&\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}, ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a13fccb07610d6aa3cb1b900a249906e0}{report\+No\+Ops}} (const TString \&\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}, ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a03d1b7e7f7d911951dd8e8a8e58d8f29}{report\+Start}} (const TString \&\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}, ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_ae344b5c560a22bac2b945c182c24e659}{report\+End}} (const TString \&\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}, ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a76445affedbfe3838abdc238a717f2d3}{report\+Info}} (const TString \&\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}, ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a1b32e07170f2b059226fe3d0a6236986}{report\+Warning}} (const TString \&\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}, ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a5f16f3c8d5e013783f1372c5d6c06204}{report\+Error}} (const TString \&\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}, ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a42aa48618b626080ad85d05ac46fe5ee}{report\+Fatal}} (const TString \&\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}, ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a8e7e3ec44a52b0481d104282bbde5971}{report\+Debug}} (const TString \&\mbox{\hyperlink{class_message_logger_afef84947ffad8c08939b06026954c390}{class\+Name}}, const TString \&\mbox{\hyperlink{class_message_logger_af0e7a043f3a53e13b47955e8c0f8aa2b}{instance\+Name}}, const TString \&\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}, ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a7fb3a84159fee3d65df1a765577fc3e4}{report\+No\+Ops}} (const TString \&\mbox{\hyperlink{class_message_logger_afef84947ffad8c08939b06026954c390}{class\+Name}}, const TString \&\mbox{\hyperlink{class_message_logger_af0e7a043f3a53e13b47955e8c0f8aa2b}{instance\+Name}}, const TString \&\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}, ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a590bd5091c0ff862d01457ab85ee87d0}{report\+Start}} (const TString \&\mbox{\hyperlink{class_message_logger_afef84947ffad8c08939b06026954c390}{class\+Name}}, const TString \&\mbox{\hyperlink{class_message_logger_af0e7a043f3a53e13b47955e8c0f8aa2b}{instance\+Name}}, const TString \&\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}, ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a4ccf3ea2b7fa6149a2a1ede038864d1d}{report\+End}} (const TString \&\mbox{\hyperlink{class_message_logger_afef84947ffad8c08939b06026954c390}{class\+Name}}, const TString \&\mbox{\hyperlink{class_message_logger_af0e7a043f3a53e13b47955e8c0f8aa2b}{instance\+Name}}, const TString \&\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}, ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_ab89e9edc128ca4fc7fb33e612c254937}{report\+Info}} (const TString \&\mbox{\hyperlink{class_message_logger_afef84947ffad8c08939b06026954c390}{class\+Name}}, const TString \&\mbox{\hyperlink{class_message_logger_af0e7a043f3a53e13b47955e8c0f8aa2b}{instance\+Name}}, const TString \&\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}, ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a86e5fe6eb8d1acc3b529aad23bcb863a}{report\+Warning}} (const TString \&\mbox{\hyperlink{class_message_logger_afef84947ffad8c08939b06026954c390}{class\+Name}}, const TString \&\mbox{\hyperlink{class_message_logger_af0e7a043f3a53e13b47955e8c0f8aa2b}{instance\+Name}}, const TString \&\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}, ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a385179cdf51919b9e2f9f1f0a612c35e}{report\+Error}} (const TString \&\mbox{\hyperlink{class_message_logger_afef84947ffad8c08939b06026954c390}{class\+Name}}, const TString \&\mbox{\hyperlink{class_message_logger_af0e7a043f3a53e13b47955e8c0f8aa2b}{instance\+Name}}, const TString \&\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}, ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a710f46bf50ea8d806227bf37f142b175}{report\+Fatal}} (const TString \&\mbox{\hyperlink{class_message_logger_afef84947ffad8c08939b06026954c390}{class\+Name}}, const TString \&\mbox{\hyperlink{class_message_logger_af0e7a043f3a53e13b47955e8c0f8aa2b}{instance\+Name}}, const TString \&\mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}, ostream \&output=cout) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_ab6b77391ab92639d661c585af128748f}{ptr\+File\+Exist}} (const TString \&caller, const TFile $\ast$f) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_ae656d9f65da8889ffa7b76216d746657}{ptr\+Exist}} (const TString \&caller, const TH1 $\ast$h1) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a0ade97a428050d2bea30888d76df422a}{ptr\+Exist}} (const TString \&caller, const TH1 $\ast$h1, const TH1 $\ast$h2) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a240b4fbc4528d588e87201576349d986}{ptr\+Exist}} (const TString \&caller, const TH1 $\ast$h1, const TH1 $\ast$h2, const TH1 $\ast$h3) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_adc6dab86e110f6a9a2791f6c4a114286}{ptr\+Exist}} (const TString \&caller, const TH1 $\ast$h1, const TH1 $\ast$h2, const TH1 $\ast$h3, const TH1 $\ast$h4) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_ad5689e0a3268631a2e26d9a0d2c7bfa9}{ptr\+Exist}} (const TString \&caller, const TH1 $\ast$h1, const TH1 $\ast$h2, const TH1 $\ast$h3, const TH1 $\ast$h4, const TH1 $\ast$h5) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a7e44af3e0978d13ee2498b7f6be557bd}{ptr\+Exist}} (const TString \&caller, const TH1 $\ast$h1, const TH1 $\ast$h2, const TH1 $\ast$h3, const TH1 $\ast$h4, const TH1 $\ast$h5, const TH1 $\ast$h6) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_abd73cc876671fb1e6e81fe2622d133fe}{ptr\+Exist}} (const TString \&caller, const TH1 $\ast$h1, const TH1 $\ast$h2, const TH1 $\ast$h3, const TH1 $\ast$h4, const TH1 $\ast$h5, const TH1 $\ast$h6, const TH1 $\ast$h7) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a94977b54c8c3aca52c950eb460a61ba5}{ptr\+Exist}} (const TString \&caller, const TH1 $\ast$h1, const TH1 $\ast$h2, const TH1 $\ast$h3, const TH1 $\ast$h4, const TH1 $\ast$h5, const TH1 $\ast$h6, const TH1 $\ast$h7, const TH1 $\ast$h8) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_aaf765fa9bceb4eeb678049360033a3bb}{ptr\+Exist}} (const TString \&caller, const TH1 $\ast$h1, const TH1 $\ast$h2, const TH1 $\ast$h3, const TH1 $\ast$h4, const TH1 $\ast$h5, const TH1 $\ast$h6, const TH1 $\ast$h7, const TH1 $\ast$h8, const TH1 $\ast$h9) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_aa3718f3a8672471ff92c9c8289140519}{ptr\+Exist}} (const TString \&caller, const TH1 $\ast$h1, const TH1 $\ast$h2, const TH1 $\ast$h3, const TH1 $\ast$h4, const TH1 $\ast$h5, const TH1 $\ast$h6, const TH1 $\ast$h7, const TH1 $\ast$h8, const TH1 $\ast$h9, const TH1 $\ast$h10) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a1c9b286039a61ef843025b7a0dfb63a9}{ptr\+Exist}} (const TString \&caller, const TH1 $\ast$h1, const TH1 $\ast$h2, const TH1 $\ast$h3, const TH1 $\ast$h4, const TH1 $\ast$h5, const TH1 $\ast$h6, const TH1 $\ast$h7, const TH1 $\ast$h8, const TH1 $\ast$h9, const TH1 $\ast$h10, const TH1 $\ast$h11) const
+\item 
+bool \mbox{\hyperlink{class_message_logger_a581047e4ae03db23a186bfce95606baf}{ptr\+Exist}} (const TString \&caller, const TH1 $\ast$h1, const TH1 $\ast$h2, const TH1 $\ast$h3, const TH1 $\ast$h4, const TH1 $\ast$h5, const TH1 $\ast$h6, const TH1 $\ast$h7, const TH1 $\ast$h8, const TH1 $\ast$h9, const TH1 $\ast$h10, const TH1 $\ast$h11, const TH1 $\ast$h12) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970}{Task\+Status}} \mbox{\hyperlink{class_message_logger_acc26b4549e78da627fcd7f1b968bfe42}{get\+Task\+Status}} ()
+\item 
+static void \mbox{\hyperlink{class_message_logger_aebb0b1325b480bb78cd0c83547b87ae2}{set\+Task\+Status}} (\mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970}{Task\+Status}} new\+Status)
+\item 
+static void \mbox{\hyperlink{class_message_logger_a70146a9f8c113e63290020af9491576f}{post\+Task\+Ok}} ()
+\item 
+static void \mbox{\hyperlink{class_message_logger_a3f9f5d953c426b000d0d22c7cd7a2777}{post\+Task\+Eof}} ()
+\item 
+static void \mbox{\hyperlink{class_message_logger_aa8781e2ed12726ca70f8c0e87b7f2453}{post\+Task\+Eod}} ()
+\item 
+static void \mbox{\hyperlink{class_message_logger_a3c1f17bac1dc8a33dda04eb1a565b062}{post\+Task\+Warning}} ()
+\item 
+static void \mbox{\hyperlink{class_message_logger_a0532494797013d9afcb82b5fcf442488}{post\+Task\+Error}} ()
+\item 
+static void \mbox{\hyperlink{class_message_logger_a21de642806f1c039f39a087e1e910984}{post\+Task\+Fatal}} ()
+\item 
+static bool \mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{is\+Task\+Ok}} ()
+\item 
+static TString \mbox{\hyperlink{class_message_logger_a61406bc0c87bcf0da414197a2bb474e5}{get\+Task\+Status\+Name}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \mbox{\hyperlink{class_message_logger_ad9d41b1a0dbbf52fabee01267c0491e6}{report\+Level}}
+\begin{DoxyCompactList}\small\item\em Minimal error level reported by object instances inheriting from this class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \mbox{\hyperlink{class_message_logger_a07cfc4ccf589dc31b050d6f415594035}{hold\+Report\+Level}}
+\begin{DoxyCompactList}\small\item\em Internal variable used internally to set/reset the nominal report level selected by the user. \end{DoxyCompactList}\item 
+TString \mbox{\hyperlink{class_message_logger_afef84947ffad8c08939b06026954c390}{class\+Name}}
+\begin{DoxyCompactList}\small\item\em name of the class of this object instance \end{DoxyCompactList}\item 
+TString \mbox{\hyperlink{class_message_logger_af0e7a043f3a53e13b47955e8c0f8aa2b}{instance\+Name}}
+\begin{DoxyCompactList}\small\item\em name given to this object instance \end{DoxyCompactList}\item 
+TString \mbox{\hyperlink{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}{fct\+Name}}
+\begin{DoxyCompactList}\small\item\em name of the function initiating messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970}{Task\+Status}} \mbox{\hyperlink{class_message_logger_a621904557af6d743b025a71acabec5e9}{task\+Status}} = \mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970a52547feaaf84ae6fb2d3ec8aac30315a}{Message\+Logger\+::\+Task\+Ok}}
+\item 
+static TString \mbox{\hyperlink{class_message_logger_a1964b8aa39a644cc9b3c014683bdc87a}{start\+String}} = \char`\"{}$<$DS$>$ \char`\"{}
+\item 
+static TString \mbox{\hyperlink{class_message_logger_af80673aa369addb0f6fe68b7107a7b8d}{end\+String}} = \char`\"{}$<$DE$>$ \char`\"{}
+\item 
+static TString \mbox{\hyperlink{class_message_logger_ad195a2ca144f0032def5e9c37e7e9dec}{debug\+String}} = \char`\"{}$<$D$>$ \char`\"{}
+\item 
+static TString \mbox{\hyperlink{class_message_logger_a38bc2ece5008afb8430dea607f21a60c}{info\+String}} = \char`\"{}$<$I$>$ \char`\"{}
+\item 
+static TString \mbox{\hyperlink{class_message_logger_a1323d1b9969d3aafebf066a0ab14197d}{warning\+String}} = \char`\"{}$<$W$>$ \char`\"{}
+\item 
+static TString \mbox{\hyperlink{class_message_logger_a73072b902a615fc2dd76f11dfd77abd6}{error\+String}} = \char`\"{}$<$E$>$ \char`\"{}
+\item 
+static TString \mbox{\hyperlink{class_message_logger_a79ab9a58818de348da7bb14fcfbf5a43}{fatal\+String}} = \char`\"{}$<$F$>$ \char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Message logger class used (inherited) by all tasks and histogram classes and subclasses of this package. Instances of this class keep track of the state of an ongoing job (controlled by by an iterator). The following states are possible\+:
+\begin{DoxyItemize}
+\item Task\+Unknown The state of the job is unknown, i.\+e., has not been set.
+\item Task\+Ok The job is running normally.
+\item Task\+Eof The job has reached an end of file (EoF) on input.
+\item Task\+Eod The job has reached an end of data (EoD) on input and will now be finalized.
+\item Task\+Warning The job has encountered a minor error, a warning, and will continue.
+\item Task\+Error The job has encountered an error and will be terminated gracefully if possible.
+\item Task\+Fatal The job has encounterd a fatal error and will be aborted immediately.
+\end{DoxyItemize}
+
+Instances of this class maintain a log level variable which determines what error level will be reported on output (cout). The following levels exist
+\begin{DoxyItemize}
+\item Unknown The report level has not been set.
+\item Debug All messages produced, including debug messages, will be produced on output.
+\item Info Only informational and error messages will be produced on output.
+\item Warning Only warning and more severe error message will be produced on output. Debug and informational messages will be muted.
+\item Error Only fatal errors reported.
+\item Fatal 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00054}{54}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_message_logger_a1198794cb23cd903dcbc0072929a276a}\label{class_message_logger_a1198794cb23cd903dcbc0072929a276a}} 
+\index{MessageLogger@{MessageLogger}!LogLevel@{LogLevel}}
+\index{LogLevel@{LogLevel}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{LogLevel}{LogLevel}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Message\+Logger\+::\+Log\+Level}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Unknown@{Unknown}!MessageLogger@{MessageLogger}}\index{MessageLogger@{MessageLogger}!Unknown@{Unknown}}}\mbox{\Hypertarget{class_message_logger_a1198794cb23cd903dcbc0072929a276aa8a70893101404064ee47b88b788fc7c4}\label{class_message_logger_a1198794cb23cd903dcbc0072929a276aa8a70893101404064ee47b88b788fc7c4}} 
+Unknown&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Debug@{Debug}!MessageLogger@{MessageLogger}}\index{MessageLogger@{MessageLogger}!Debug@{Debug}}}\mbox{\Hypertarget{class_message_logger_a1198794cb23cd903dcbc0072929a276aa5f1f5d604d1a1e53af3b330224db4986}\label{class_message_logger_a1198794cb23cd903dcbc0072929a276aa5f1f5d604d1a1e53af3b330224db4986}} 
+Debug&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Info@{Info}!MessageLogger@{MessageLogger}}\index{MessageLogger@{MessageLogger}!Info@{Info}}}\mbox{\Hypertarget{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}\label{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}} 
+Info&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Warning@{Warning}!MessageLogger@{MessageLogger}}\index{MessageLogger@{MessageLogger}!Warning@{Warning}}}\mbox{\Hypertarget{class_message_logger_a1198794cb23cd903dcbc0072929a276aa7d953a8084c9042e3db81cc507d69dca}\label{class_message_logger_a1198794cb23cd903dcbc0072929a276aa7d953a8084c9042e3db81cc507d69dca}} 
+Warning&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Error@{Error}!MessageLogger@{MessageLogger}}\index{MessageLogger@{MessageLogger}!Error@{Error}}}\mbox{\Hypertarget{class_message_logger_a1198794cb23cd903dcbc0072929a276aa82ecc51dcc8ef95939bf5af404e8d991}\label{class_message_logger_a1198794cb23cd903dcbc0072929a276aa82ecc51dcc8ef95939bf5af404e8d991}} 
+Error&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Fatal@{Fatal}!MessageLogger@{MessageLogger}}\index{MessageLogger@{MessageLogger}!Fatal@{Fatal}}}\mbox{\Hypertarget{class_message_logger_a1198794cb23cd903dcbc0072929a276aa94c20bba7ddee1c21642487c660f25e7}\label{class_message_logger_a1198794cb23cd903dcbc0072929a276aa94c20bba7ddee1c21642487c660f25e7}} 
+Fatal&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_ae5642c495c7bd917887bed12444f1970}\label{class_message_logger_ae5642c495c7bd917887bed12444f1970}} 
+\index{MessageLogger@{MessageLogger}!TaskStatus@{TaskStatus}}
+\index{TaskStatus@{TaskStatus}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{TaskStatus}{TaskStatus}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970}{Message\+Logger\+::\+Task\+Status}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TaskUnknown@{TaskUnknown}!MessageLogger@{MessageLogger}}\index{MessageLogger@{MessageLogger}!TaskUnknown@{TaskUnknown}}}\mbox{\Hypertarget{class_message_logger_ae5642c495c7bd917887bed12444f1970a24eb3d3f70efc8e3a83a09bad266d1a3}\label{class_message_logger_ae5642c495c7bd917887bed12444f1970a24eb3d3f70efc8e3a83a09bad266d1a3}} 
+Task\+Unknown&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TaskOk@{TaskOk}!MessageLogger@{MessageLogger}}\index{MessageLogger@{MessageLogger}!TaskOk@{TaskOk}}}\mbox{\Hypertarget{class_message_logger_ae5642c495c7bd917887bed12444f1970a52547feaaf84ae6fb2d3ec8aac30315a}\label{class_message_logger_ae5642c495c7bd917887bed12444f1970a52547feaaf84ae6fb2d3ec8aac30315a}} 
+Task\+Ok&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TaskEof@{TaskEof}!MessageLogger@{MessageLogger}}\index{MessageLogger@{MessageLogger}!TaskEof@{TaskEof}}}\mbox{\Hypertarget{class_message_logger_ae5642c495c7bd917887bed12444f1970a7410d4159f6464c5c44ee3140e259966}\label{class_message_logger_ae5642c495c7bd917887bed12444f1970a7410d4159f6464c5c44ee3140e259966}} 
+Task\+Eof&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TaskEod@{TaskEod}!MessageLogger@{MessageLogger}}\index{MessageLogger@{MessageLogger}!TaskEod@{TaskEod}}}\mbox{\Hypertarget{class_message_logger_ae5642c495c7bd917887bed12444f1970aca3fb3c0dc0029f6a377fd4caf73555d}\label{class_message_logger_ae5642c495c7bd917887bed12444f1970aca3fb3c0dc0029f6a377fd4caf73555d}} 
+Task\+Eod&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TaskWarning@{TaskWarning}!MessageLogger@{MessageLogger}}\index{MessageLogger@{MessageLogger}!TaskWarning@{TaskWarning}}}\mbox{\Hypertarget{class_message_logger_ae5642c495c7bd917887bed12444f1970a5ed2e4be225feb29243e563a40484e0a}\label{class_message_logger_ae5642c495c7bd917887bed12444f1970a5ed2e4be225feb29243e563a40484e0a}} 
+Task\+Warning&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TaskError@{TaskError}!MessageLogger@{MessageLogger}}\index{MessageLogger@{MessageLogger}!TaskError@{TaskError}}}\mbox{\Hypertarget{class_message_logger_ae5642c495c7bd917887bed12444f1970a0d66903056578c6ddfcdc6f2edf97f82}\label{class_message_logger_ae5642c495c7bd917887bed12444f1970a0d66903056578c6ddfcdc6f2edf97f82}} 
+Task\+Error&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TaskFatal@{TaskFatal}!MessageLogger@{MessageLogger}}\index{MessageLogger@{MessageLogger}!TaskFatal@{TaskFatal}}}\mbox{\Hypertarget{class_message_logger_ae5642c495c7bd917887bed12444f1970acf3a6e7c7556322d7d84c76cca8c8703}\label{class_message_logger_ae5642c495c7bd917887bed12444f1970acf3a6e7c7556322d7d84c76cca8c8703}} 
+Task\+Fatal&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00058}{58}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_message_logger_ae0234ce40260775207df8fdd4a294800}\label{class_message_logger_ae0234ce40260775207df8fdd4a294800}} 
+\index{MessageLogger@{MessageLogger}!MessageLogger@{MessageLogger}}
+\index{MessageLogger@{MessageLogger}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{MessageLogger()}{MessageLogger()}}
+{\footnotesize\ttfamily Message\+Logger\+::\+Message\+Logger (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{selected\+Level = {\ttfamily \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+CTOR. 
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a7daf33d0326c32b7675b7ba5b48795c4}\label{class_message_logger_a7daf33d0326c32b7675b7ba5b48795c4}} 
+\index{MessageLogger@{MessageLogger}!````~MessageLogger@{$\sim$MessageLogger}}
+\index{````~MessageLogger@{$\sim$MessageLogger}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{$\sim$MessageLogger()}{~MessageLogger()}}
+{\footnotesize\ttfamily virtual Message\+Logger\+::$\sim$\+Message\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+DTOR. 
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00082}{82}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_message_logger_a10182fcb56fb5fda0f998c89c4bbe4fb}\label{class_message_logger_a10182fcb56fb5fda0f998c89c4bbe4fb}} 
+\index{MessageLogger@{MessageLogger}!appendClassName@{appendClassName}}
+\index{appendClassName@{appendClassName}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{appendClassName()}{appendClassName()}}
+{\footnotesize\ttfamily void Message\+Logger\+::append\+Class\+Name (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+class\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Append the given string to the class name sequence of this object instance. 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00137}{137}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_ae455c015d46730cb84627f7eb7139e57}\label{class_message_logger_ae455c015d46730cb84627f7eb7139e57}} 
+\index{MessageLogger@{MessageLogger}!getClassName@{getClassName}}
+\index{getClassName@{getClassName}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{getClassName()}{getClassName()}}
+{\footnotesize\ttfamily const TString \& Message\+Logger\+::get\+Class\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00150}{150}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a4d2413577a595583b64fa701099f4d09}\label{class_message_logger_a4d2413577a595583b64fa701099f4d09}} 
+\index{MessageLogger@{MessageLogger}!getFunctionName@{getFunctionName}}
+\index{getFunctionName@{getFunctionName}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{getFunctionName()}{getFunctionName()}}
+{\footnotesize\ttfamily const TString \& Message\+Logger\+::get\+Function\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00152}{152}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a49b0631e47c37d9dc12a3e5f2e220a6f}\label{class_message_logger_a49b0631e47c37d9dc12a3e5f2e220a6f}} 
+\index{MessageLogger@{MessageLogger}!getInstanceName@{getInstanceName}}
+\index{getInstanceName@{getInstanceName}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{getInstanceName()}{getInstanceName()}}
+{\footnotesize\ttfamily const TString \& Message\+Logger\+::get\+Instance\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00151}{151}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a72f7d9f462862f08d76637cb904b7acd}\label{class_message_logger_a72f7d9f462862f08d76637cb904b7acd}} 
+\index{MessageLogger@{MessageLogger}!getLogLevel@{getLogLevel}}
+\index{getLogLevel@{getLogLevel}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{getLogLevel()}{getLogLevel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} Message\+Logger\+::get\+Log\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the desired reported level used by instances (objects) of this class or subclasses. 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00104}{104}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_aaa759a0af20793b7586bb33722463d22}\label{class_message_logger_aaa759a0af20793b7586bb33722463d22}} 
+\index{MessageLogger@{MessageLogger}!getReportLevel@{getReportLevel}}
+\index{getReportLevel@{getReportLevel}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{getReportLevel()}{getReportLevel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} Message\+Logger\+::get\+Report\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the desired reported level used by instances (objects) of this class or subclasses. 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00112}{112}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_acc26b4549e78da627fcd7f1b968bfe42}\label{class_message_logger_acc26b4549e78da627fcd7f1b968bfe42}} 
+\index{MessageLogger@{MessageLogger}!getTaskStatus@{getTaskStatus}}
+\index{getTaskStatus@{getTaskStatus}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{getTaskStatus()}{getTaskStatus()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970}{Task\+Status}} Message\+Logger\+::get\+Task\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Return the current task status of all ongoing tasks in this job. 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00183}{183}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a61406bc0c87bcf0da414197a2bb474e5}\label{class_message_logger_a61406bc0c87bcf0da414197a2bb474e5}} 
+\index{MessageLogger@{MessageLogger}!getTaskStatusName@{getTaskStatusName}}
+\index{getTaskStatusName@{getTaskStatusName}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{getTaskStatusName()}{getTaskStatusName()}}
+{\footnotesize\ttfamily TString Message\+Logger\+::get\+Task\+Status\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Returns a string corresponding to the current status of all ongoing tasks in this job. 
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00299}{299}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}\label{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}} 
+\index{MessageLogger@{MessageLogger}!isTaskOk@{isTaskOk}}
+\index{isTaskOk@{isTaskOk}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{isTaskOk()}{isTaskOk()}}
+{\footnotesize\ttfamily static bool Message\+Logger\+::is\+Task\+Ok (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Returns \char`\"{}true\char`\"{} is the current status of all ongoing tasks in this job is OK or WARNING. 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00220}{220}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_aa8781e2ed12726ca70f8c0e87b7f2453}\label{class_message_logger_aa8781e2ed12726ca70f8c0e87b7f2453}} 
+\index{MessageLogger@{MessageLogger}!postTaskEod@{postTaskEod}}
+\index{postTaskEod@{postTaskEod}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{postTaskEod()}{postTaskEod()}}
+{\footnotesize\ttfamily static void Message\+Logger\+::post\+Task\+Eod (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Declare the current status of all ongoing tasks in this job as EOD (reached end of data, no more events available in the current file and no more files registered for analysis by this job) 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00200}{200}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a3f9f5d953c426b000d0d22c7cd7a2777}\label{class_message_logger_a3f9f5d953c426b000d0d22c7cd7a2777}} 
+\index{MessageLogger@{MessageLogger}!postTaskEof@{postTaskEof}}
+\index{postTaskEof@{postTaskEof}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{postTaskEof()}{postTaskEof()}}
+{\footnotesize\ttfamily static void Message\+Logger\+::post\+Task\+Eof (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Declare the current status of all ongoing tasks in this job as EOF (reached end of file, no more events available in the current file) 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00195}{195}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a0532494797013d9afcb82b5fcf442488}\label{class_message_logger_a0532494797013d9afcb82b5fcf442488}} 
+\index{MessageLogger@{MessageLogger}!postTaskError@{postTaskError}}
+\index{postTaskError@{postTaskError}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{postTaskError()}{postTaskError()}}
+{\footnotesize\ttfamily static void Message\+Logger\+::post\+Task\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Declare the current status of all ongoing tasks in this job as ERROR, thereby indicating that some serious error condition has occured. The tasks will be able to continue until graceful completion of the job is accomplished. 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00210}{210}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a21de642806f1c039f39a087e1e910984}\label{class_message_logger_a21de642806f1c039f39a087e1e910984}} 
+\index{MessageLogger@{MessageLogger}!postTaskFatal@{postTaskFatal}}
+\index{postTaskFatal@{postTaskFatal}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{postTaskFatal()}{postTaskFatal()}}
+{\footnotesize\ttfamily static void Message\+Logger\+::post\+Task\+Fatal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Declare the current status of all ongoing tasks in this job as FATAL, thereby indicating that some fatal error condition has occured. This job is immediately aborted with a call to exit(1). 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00215}{215}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a70146a9f8c113e63290020af9491576f}\label{class_message_logger_a70146a9f8c113e63290020af9491576f}} 
+\index{MessageLogger@{MessageLogger}!postTaskOk@{postTaskOk}}
+\index{postTaskOk@{postTaskOk}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{postTaskOk()}{postTaskOk()}}
+{\footnotesize\ttfamily static void Message\+Logger\+::post\+Task\+Ok (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Declare the current status of all ongoing tasks in this job as OK. 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00191}{191}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a3c1f17bac1dc8a33dda04eb1a565b062}\label{class_message_logger_a3c1f17bac1dc8a33dda04eb1a565b062}} 
+\index{MessageLogger@{MessageLogger}!postTaskWarning@{postTaskWarning}}
+\index{postTaskWarning@{postTaskWarning}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{postTaskWarning()}{postTaskWarning()}}
+{\footnotesize\ttfamily static void Message\+Logger\+::post\+Task\+Warning (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Declare the current status of all ongoing tasks in this job as WARNING, thereby indicating that some abnormal but benign condition has occured. 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00205}{205}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_ae656d9f65da8889ffa7b76216d746657}\label{class_message_logger_ae656d9f65da8889ffa7b76216d746657}} 
+\index{MessageLogger@{MessageLogger}!ptrExist@{ptrExist}}
+\index{ptrExist@{ptrExist}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{ptrExist()}{ptrExist()}\hspace{0.1cm}{\footnotesize\ttfamily [1/12]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::ptr\+Exist (\begin{DoxyParamCaption}\item[{const TString \&}]{caller,  }\item[{const TH1 $\ast$}]{h1 }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00317}{317}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a0ade97a428050d2bea30888d76df422a}\label{class_message_logger_a0ade97a428050d2bea30888d76df422a}} 
+\index{MessageLogger@{MessageLogger}!ptrExist@{ptrExist}}
+\index{ptrExist@{ptrExist}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{ptrExist()}{ptrExist()}\hspace{0.1cm}{\footnotesize\ttfamily [2/12]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::ptr\+Exist (\begin{DoxyParamCaption}\item[{const TString \&}]{caller,  }\item[{const TH1 $\ast$}]{h1,  }\item[{const TH1 $\ast$}]{h2 }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00339}{339}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a240b4fbc4528d588e87201576349d986}\label{class_message_logger_a240b4fbc4528d588e87201576349d986}} 
+\index{MessageLogger@{MessageLogger}!ptrExist@{ptrExist}}
+\index{ptrExist@{ptrExist}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{ptrExist()}{ptrExist()}\hspace{0.1cm}{\footnotesize\ttfamily [3/12]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::ptr\+Exist (\begin{DoxyParamCaption}\item[{const TString \&}]{caller,  }\item[{const TH1 $\ast$}]{h1,  }\item[{const TH1 $\ast$}]{h2,  }\item[{const TH1 $\ast$}]{h3 }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00355}{355}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_adc6dab86e110f6a9a2791f6c4a114286}\label{class_message_logger_adc6dab86e110f6a9a2791f6c4a114286}} 
+\index{MessageLogger@{MessageLogger}!ptrExist@{ptrExist}}
+\index{ptrExist@{ptrExist}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{ptrExist()}{ptrExist()}\hspace{0.1cm}{\footnotesize\ttfamily [4/12]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::ptr\+Exist (\begin{DoxyParamCaption}\item[{const TString \&}]{caller,  }\item[{const TH1 $\ast$}]{h1,  }\item[{const TH1 $\ast$}]{h2,  }\item[{const TH1 $\ast$}]{h3,  }\item[{const TH1 $\ast$}]{h4 }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00376}{376}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_ad5689e0a3268631a2e26d9a0d2c7bfa9}\label{class_message_logger_ad5689e0a3268631a2e26d9a0d2c7bfa9}} 
+\index{MessageLogger@{MessageLogger}!ptrExist@{ptrExist}}
+\index{ptrExist@{ptrExist}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{ptrExist()}{ptrExist()}\hspace{0.1cm}{\footnotesize\ttfamily [5/12]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::ptr\+Exist (\begin{DoxyParamCaption}\item[{const TString \&}]{caller,  }\item[{const TH1 $\ast$}]{h1,  }\item[{const TH1 $\ast$}]{h2,  }\item[{const TH1 $\ast$}]{h3,  }\item[{const TH1 $\ast$}]{h4,  }\item[{const TH1 $\ast$}]{h5 }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00402}{402}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a7e44af3e0978d13ee2498b7f6be557bd}\label{class_message_logger_a7e44af3e0978d13ee2498b7f6be557bd}} 
+\index{MessageLogger@{MessageLogger}!ptrExist@{ptrExist}}
+\index{ptrExist@{ptrExist}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{ptrExist()}{ptrExist()}\hspace{0.1cm}{\footnotesize\ttfamily [6/12]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::ptr\+Exist (\begin{DoxyParamCaption}\item[{const TString \&}]{caller,  }\item[{const TH1 $\ast$}]{h1,  }\item[{const TH1 $\ast$}]{h2,  }\item[{const TH1 $\ast$}]{h3,  }\item[{const TH1 $\ast$}]{h4,  }\item[{const TH1 $\ast$}]{h5,  }\item[{const TH1 $\ast$}]{h6 }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00433}{433}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_abd73cc876671fb1e6e81fe2622d133fe}\label{class_message_logger_abd73cc876671fb1e6e81fe2622d133fe}} 
+\index{MessageLogger@{MessageLogger}!ptrExist@{ptrExist}}
+\index{ptrExist@{ptrExist}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{ptrExist()}{ptrExist()}\hspace{0.1cm}{\footnotesize\ttfamily [7/12]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::ptr\+Exist (\begin{DoxyParamCaption}\item[{const TString \&}]{caller,  }\item[{const TH1 $\ast$}]{h1,  }\item[{const TH1 $\ast$}]{h2,  }\item[{const TH1 $\ast$}]{h3,  }\item[{const TH1 $\ast$}]{h4,  }\item[{const TH1 $\ast$}]{h5,  }\item[{const TH1 $\ast$}]{h6,  }\item[{const TH1 $\ast$}]{h7 }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00469}{469}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a94977b54c8c3aca52c950eb460a61ba5}\label{class_message_logger_a94977b54c8c3aca52c950eb460a61ba5}} 
+\index{MessageLogger@{MessageLogger}!ptrExist@{ptrExist}}
+\index{ptrExist@{ptrExist}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{ptrExist()}{ptrExist()}\hspace{0.1cm}{\footnotesize\ttfamily [8/12]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::ptr\+Exist (\begin{DoxyParamCaption}\item[{const TString \&}]{caller,  }\item[{const TH1 $\ast$}]{h1,  }\item[{const TH1 $\ast$}]{h2,  }\item[{const TH1 $\ast$}]{h3,  }\item[{const TH1 $\ast$}]{h4,  }\item[{const TH1 $\ast$}]{h5,  }\item[{const TH1 $\ast$}]{h6,  }\item[{const TH1 $\ast$}]{h7,  }\item[{const TH1 $\ast$}]{h8 }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00510}{510}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_aaf765fa9bceb4eeb678049360033a3bb}\label{class_message_logger_aaf765fa9bceb4eeb678049360033a3bb}} 
+\index{MessageLogger@{MessageLogger}!ptrExist@{ptrExist}}
+\index{ptrExist@{ptrExist}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{ptrExist()}{ptrExist()}\hspace{0.1cm}{\footnotesize\ttfamily [9/12]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::ptr\+Exist (\begin{DoxyParamCaption}\item[{const TString \&}]{caller,  }\item[{const TH1 $\ast$}]{h1,  }\item[{const TH1 $\ast$}]{h2,  }\item[{const TH1 $\ast$}]{h3,  }\item[{const TH1 $\ast$}]{h4,  }\item[{const TH1 $\ast$}]{h5,  }\item[{const TH1 $\ast$}]{h6,  }\item[{const TH1 $\ast$}]{h7,  }\item[{const TH1 $\ast$}]{h8,  }\item[{const TH1 $\ast$}]{h9 }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00557}{557}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_aa3718f3a8672471ff92c9c8289140519}\label{class_message_logger_aa3718f3a8672471ff92c9c8289140519}} 
+\index{MessageLogger@{MessageLogger}!ptrExist@{ptrExist}}
+\index{ptrExist@{ptrExist}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{ptrExist()}{ptrExist()}\hspace{0.1cm}{\footnotesize\ttfamily [10/12]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::ptr\+Exist (\begin{DoxyParamCaption}\item[{const TString \&}]{caller,  }\item[{const TH1 $\ast$}]{h1,  }\item[{const TH1 $\ast$}]{h2,  }\item[{const TH1 $\ast$}]{h3,  }\item[{const TH1 $\ast$}]{h4,  }\item[{const TH1 $\ast$}]{h5,  }\item[{const TH1 $\ast$}]{h6,  }\item[{const TH1 $\ast$}]{h7,  }\item[{const TH1 $\ast$}]{h8,  }\item[{const TH1 $\ast$}]{h9,  }\item[{const TH1 $\ast$}]{h10 }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00610}{610}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a1c9b286039a61ef843025b7a0dfb63a9}\label{class_message_logger_a1c9b286039a61ef843025b7a0dfb63a9}} 
+\index{MessageLogger@{MessageLogger}!ptrExist@{ptrExist}}
+\index{ptrExist@{ptrExist}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{ptrExist()}{ptrExist()}\hspace{0.1cm}{\footnotesize\ttfamily [11/12]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::ptr\+Exist (\begin{DoxyParamCaption}\item[{const TString \&}]{caller,  }\item[{const TH1 $\ast$}]{h1,  }\item[{const TH1 $\ast$}]{h2,  }\item[{const TH1 $\ast$}]{h3,  }\item[{const TH1 $\ast$}]{h4,  }\item[{const TH1 $\ast$}]{h5,  }\item[{const TH1 $\ast$}]{h6,  }\item[{const TH1 $\ast$}]{h7,  }\item[{const TH1 $\ast$}]{h8,  }\item[{const TH1 $\ast$}]{h9,  }\item[{const TH1 $\ast$}]{h10,  }\item[{const TH1 $\ast$}]{h11 }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00668}{668}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a581047e4ae03db23a186bfce95606baf}\label{class_message_logger_a581047e4ae03db23a186bfce95606baf}} 
+\index{MessageLogger@{MessageLogger}!ptrExist@{ptrExist}}
+\index{ptrExist@{ptrExist}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{ptrExist()}{ptrExist()}\hspace{0.1cm}{\footnotesize\ttfamily [12/12]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::ptr\+Exist (\begin{DoxyParamCaption}\item[{const TString \&}]{caller,  }\item[{const TH1 $\ast$}]{h1,  }\item[{const TH1 $\ast$}]{h2,  }\item[{const TH1 $\ast$}]{h3,  }\item[{const TH1 $\ast$}]{h4,  }\item[{const TH1 $\ast$}]{h5,  }\item[{const TH1 $\ast$}]{h6,  }\item[{const TH1 $\ast$}]{h7,  }\item[{const TH1 $\ast$}]{h8,  }\item[{const TH1 $\ast$}]{h9,  }\item[{const TH1 $\ast$}]{h10,  }\item[{const TH1 $\ast$}]{h11,  }\item[{const TH1 $\ast$}]{h12 }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00731}{731}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_ab6b77391ab92639d661c585af128748f}\label{class_message_logger_ab6b77391ab92639d661c585af128748f}} 
+\index{MessageLogger@{MessageLogger}!ptrFileExist@{ptrFileExist}}
+\index{ptrFileExist@{ptrFileExist}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{ptrFileExist()}{ptrFileExist()}}
+{\footnotesize\ttfamily bool Message\+Logger\+::ptr\+File\+Exist (\begin{DoxyParamCaption}\item[{const TString \&}]{caller,  }\item[{const TFile $\ast$}]{f }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00328}{328}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a8e7e3ec44a52b0481d104282bbde5971}\label{class_message_logger_a8e7e3ec44a52b0481d104282bbde5971}} 
+\index{MessageLogger@{MessageLogger}!reportDebug@{reportDebug}}
+\index{reportDebug@{reportDebug}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportDebug()}{reportDebug()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Debug (\begin{DoxyParamCaption}\item[{const TString \&}]{class\+Name,  }\item[{const TString \&}]{instance\+Name,  }\item[{const TString \&}]{fct\+Name,  }\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00122}{122}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_aff461135ae81b246c7b83c1666b5cccd}\label{class_message_logger_aff461135ae81b246c7b83c1666b5cccd}} 
+\index{MessageLogger@{MessageLogger}!reportDebug@{reportDebug}}
+\index{reportDebug@{reportDebug}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportDebug()}{reportDebug()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Debug (\begin{DoxyParamCaption}\item[{const TString \&}]{fct\+Name,  }\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}\label{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}} 
+\index{MessageLogger@{MessageLogger}!reportDebug@{reportDebug}}
+\index{reportDebug@{reportDebug}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportDebug()}{reportDebug()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Debug (\begin{DoxyParamCaption}\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00239}{239}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a4ccf3ea2b7fa6149a2a1ede038864d1d}\label{class_message_logger_a4ccf3ea2b7fa6149a2a1ede038864d1d}} 
+\index{MessageLogger@{MessageLogger}!reportEnd@{reportEnd}}
+\index{reportEnd@{reportEnd}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportEnd()}{reportEnd()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+End (\begin{DoxyParamCaption}\item[{const TString \&}]{class\+Name,  }\item[{const TString \&}]{instance\+Name,  }\item[{const TString \&}]{fct\+Name,  }\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00155}{155}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_ae344b5c560a22bac2b945c182c24e659}\label{class_message_logger_ae344b5c560a22bac2b945c182c24e659}} 
+\index{MessageLogger@{MessageLogger}!reportEnd@{reportEnd}}
+\index{reportEnd@{reportEnd}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportEnd()}{reportEnd()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+End (\begin{DoxyParamCaption}\item[{const TString \&}]{fct\+Name,  }\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}\label{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}} 
+\index{MessageLogger@{MessageLogger}!reportEnd@{reportEnd}}
+\index{reportEnd@{reportEnd}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportEnd()}{reportEnd()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+End (\begin{DoxyParamCaption}\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00228}{228}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a385179cdf51919b9e2f9f1f0a612c35e}\label{class_message_logger_a385179cdf51919b9e2f9f1f0a612c35e}} 
+\index{MessageLogger@{MessageLogger}!reportError@{reportError}}
+\index{reportError@{reportError}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportError()}{reportError()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Error (\begin{DoxyParamCaption}\item[{const TString \&}]{class\+Name,  }\item[{const TString \&}]{instance\+Name,  }\item[{const TString \&}]{fct\+Name,  }\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00192}{192}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a5f16f3c8d5e013783f1372c5d6c06204}\label{class_message_logger_a5f16f3c8d5e013783f1372c5d6c06204}} 
+\index{MessageLogger@{MessageLogger}!reportError@{reportError}}
+\index{reportError@{reportError}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportError()}{reportError()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Error (\begin{DoxyParamCaption}\item[{const TString \&}]{fct\+Name,  }\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00098}{98}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}\label{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}} 
+\index{MessageLogger@{MessageLogger}!reportError@{reportError}}
+\index{reportError@{reportError}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportError()}{reportError()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Error (\begin{DoxyParamCaption}\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00274}{274}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a710f46bf50ea8d806227bf37f142b175}\label{class_message_logger_a710f46bf50ea8d806227bf37f142b175}} 
+\index{MessageLogger@{MessageLogger}!reportFatal@{reportFatal}}
+\index{reportFatal@{reportFatal}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportFatal()}{reportFatal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Fatal (\begin{DoxyParamCaption}\item[{const TString \&}]{class\+Name,  }\item[{const TString \&}]{instance\+Name,  }\item[{const TString \&}]{fct\+Name,  }\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00204}{204}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a42aa48618b626080ad85d05ac46fe5ee}\label{class_message_logger_a42aa48618b626080ad85d05ac46fe5ee}} 
+\index{MessageLogger@{MessageLogger}!reportFatal@{reportFatal}}
+\index{reportFatal@{reportFatal}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportFatal()}{reportFatal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Fatal (\begin{DoxyParamCaption}\item[{const TString \&}]{fct\+Name,  }\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a1dcf96590e2352f7410a6a1623414096}\label{class_message_logger_a1dcf96590e2352f7410a6a1623414096}} 
+\index{MessageLogger@{MessageLogger}!reportFatal@{reportFatal}}
+\index{reportFatal@{reportFatal}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportFatal()}{reportFatal()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Fatal (\begin{DoxyParamCaption}\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00286}{286}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_ab89e9edc128ca4fc7fb33e612c254937}\label{class_message_logger_ab89e9edc128ca4fc7fb33e612c254937}} 
+\index{MessageLogger@{MessageLogger}!reportInfo@{reportInfo}}
+\index{reportInfo@{reportInfo}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportInfo()}{reportInfo()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Info (\begin{DoxyParamCaption}\item[{const TString \&}]{class\+Name,  }\item[{const TString \&}]{instance\+Name,  }\item[{const TString \&}]{fct\+Name,  }\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00167}{167}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a76445affedbfe3838abdc238a717f2d3}\label{class_message_logger_a76445affedbfe3838abdc238a717f2d3}} 
+\index{MessageLogger@{MessageLogger}!reportInfo@{reportInfo}}
+\index{reportInfo@{reportInfo}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportInfo()}{reportInfo()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Info (\begin{DoxyParamCaption}\item[{const TString \&}]{fct\+Name,  }\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}\label{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}} 
+\index{MessageLogger@{MessageLogger}!reportInfo@{reportInfo}}
+\index{reportInfo@{reportInfo}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportInfo()}{reportInfo()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Info (\begin{DoxyParamCaption}\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00250}{250}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a7fb3a84159fee3d65df1a765577fc3e4}\label{class_message_logger_a7fb3a84159fee3d65df1a765577fc3e4}} 
+\index{MessageLogger@{MessageLogger}!reportNoOps@{reportNoOps}}
+\index{reportNoOps@{reportNoOps}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportNoOps()}{reportNoOps()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+No\+Ops (\begin{DoxyParamCaption}\item[{const TString \&}]{class\+Name,  }\item[{const TString \&}]{instance\+Name,  }\item[{const TString \&}]{fct\+Name,  }\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00133}{133}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a13fccb07610d6aa3cb1b900a249906e0}\label{class_message_logger_a13fccb07610d6aa3cb1b900a249906e0}} 
+\index{MessageLogger@{MessageLogger}!reportNoOps@{reportNoOps}}
+\index{reportNoOps@{reportNoOps}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportNoOps()}{reportNoOps()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+No\+Ops (\begin{DoxyParamCaption}\item[{const TString \&}]{fct\+Name,  }\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a590bd5091c0ff862d01457ab85ee87d0}\label{class_message_logger_a590bd5091c0ff862d01457ab85ee87d0}} 
+\index{MessageLogger@{MessageLogger}!reportStart@{reportStart}}
+\index{reportStart@{reportStart}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportStart()}{reportStart()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Start (\begin{DoxyParamCaption}\item[{const TString \&}]{class\+Name,  }\item[{const TString \&}]{instance\+Name,  }\item[{const TString \&}]{fct\+Name,  }\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00144}{144}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a03d1b7e7f7d911951dd8e8a8e58d8f29}\label{class_message_logger_a03d1b7e7f7d911951dd8e8a8e58d8f29}} 
+\index{MessageLogger@{MessageLogger}!reportStart@{reportStart}}
+\index{reportStart@{reportStart}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportStart()}{reportStart()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Start (\begin{DoxyParamCaption}\item[{const TString \&}]{fct\+Name,  }\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a2212252d4b587b44586d23fb4418d088}\label{class_message_logger_a2212252d4b587b44586d23fb4418d088}} 
+\index{MessageLogger@{MessageLogger}!reportStart@{reportStart}}
+\index{reportStart@{reportStart}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportStart()}{reportStart()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Start (\begin{DoxyParamCaption}\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00217}{217}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a86e5fe6eb8d1acc3b529aad23bcb863a}\label{class_message_logger_a86e5fe6eb8d1acc3b529aad23bcb863a}} 
+\index{MessageLogger@{MessageLogger}!reportWarning@{reportWarning}}
+\index{reportWarning@{reportWarning}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportWarning()}{reportWarning()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Warning (\begin{DoxyParamCaption}\item[{const TString \&}]{class\+Name,  }\item[{const TString \&}]{instance\+Name,  }\item[{const TString \&}]{fct\+Name,  }\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00179}{179}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a1b32e07170f2b059226fe3d0a6236986}\label{class_message_logger_a1b32e07170f2b059226fe3d0a6236986}} 
+\index{MessageLogger@{MessageLogger}!reportWarning@{reportWarning}}
+\index{reportWarning@{reportWarning}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportWarning()}{reportWarning()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Warning (\begin{DoxyParamCaption}\item[{const TString \&}]{fct\+Name,  }\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00085}{85}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}\label{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}} 
+\index{MessageLogger@{MessageLogger}!reportWarning@{reportWarning}}
+\index{reportWarning@{reportWarning}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportWarning()}{reportWarning()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily bool Message\+Logger\+::report\+Warning (\begin{DoxyParamCaption}\item[{ostream \&}]{output = {\ttfamily cout} }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8cpp_source_l00262}{262}} of file \mbox{\hyperlink{_message_logger_8cpp_source}{Message\+Logger.\+cpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a25a222efb526a112998a22537afc57c1}\label{class_message_logger_a25a222efb526a112998a22537afc57c1}} 
+\index{MessageLogger@{MessageLogger}!restoreLogLevel@{restoreLogLevel}}
+\index{restoreLogLevel@{restoreLogLevel}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{restoreLogLevel()}{restoreLogLevel()}}
+{\footnotesize\ttfamily void Message\+Logger\+::restore\+Log\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Restore the nominal report level requested by the user. 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00129}{129}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a11c8121edbdb8bcbf2c985f8dd076df1}\label{class_message_logger_a11c8121edbdb8bcbf2c985f8dd076df1}} 
+\index{MessageLogger@{MessageLogger}!setClassName@{setClassName}}
+\index{setClassName@{setClassName}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{setClassName()}{setClassName()}}
+{\footnotesize\ttfamily void Message\+Logger\+::set\+Class\+Name (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+class\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00143}{143}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_aeb23907e8334ea59deeb54733ba36dac}\label{class_message_logger_aeb23907e8334ea59deeb54733ba36dac}} 
+\index{MessageLogger@{MessageLogger}!setFunctionName@{setFunctionName}}
+\index{setFunctionName@{setFunctionName}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{setFunctionName()}{setFunctionName()}}
+{\footnotesize\ttfamily void Message\+Logger\+::set\+Function\+Name (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+fct\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00149}{149}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a7740022cfbd3f0f3f7a383a935b86408}\label{class_message_logger_a7740022cfbd3f0f3f7a383a935b86408}} 
+\index{MessageLogger@{MessageLogger}!setHoldLogLevel@{setHoldLogLevel}}
+\index{setHoldLogLevel@{setHoldLogLevel}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{setHoldLogLevel()}{setHoldLogLevel()}}
+{\footnotesize\ttfamily void Message\+Logger\+::set\+Hold\+Log\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{required\+Level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the hold level . 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00120}{120}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a62ee7a375e1aec16bfb767aec9fba906}\label{class_message_logger_a62ee7a375e1aec16bfb767aec9fba906}} 
+\index{MessageLogger@{MessageLogger}!setInstanceName@{setInstanceName}}
+\index{setInstanceName@{setInstanceName}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{setInstanceName()}{setInstanceName()}}
+{\footnotesize\ttfamily void Message\+Logger\+::set\+Instance\+Name (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+instance\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00148}{148}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a958254f2ebf38f933bf63fcc496875e0}\label{class_message_logger_a958254f2ebf38f933bf63fcc496875e0}} 
+\index{MessageLogger@{MessageLogger}!setLogLevel@{setLogLevel}}
+\index{setLogLevel@{setLogLevel}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{setLogLevel()}{setLogLevel()}}
+{\footnotesize\ttfamily void Message\+Logger\+::set\+Log\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{required\+Level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the desired reported level used by instances (objects) of this class or subclasses. 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00096}{96}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a1e9ef2ba565687d36d69c772c9451149}\label{class_message_logger_a1e9ef2ba565687d36d69c772c9451149}} 
+\index{MessageLogger@{MessageLogger}!setReportLevel@{setReportLevel}}
+\index{setReportLevel@{setReportLevel}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{setReportLevel()}{setReportLevel()}}
+{\footnotesize\ttfamily void Message\+Logger\+::set\+Report\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{required\+Level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the desired reported level used by instances (objects) of this class or subclasses. 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_aebb0b1325b480bb78cd0c83547b87ae2}\label{class_message_logger_aebb0b1325b480bb78cd0c83547b87ae2}} 
+\index{MessageLogger@{MessageLogger}!setTaskStatus@{setTaskStatus}}
+\index{setTaskStatus@{setTaskStatus}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{setTaskStatus()}{setTaskStatus()}}
+{\footnotesize\ttfamily static void Message\+Logger\+::set\+Task\+Status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970}{Task\+Status}}}]{new\+Status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Set the current status of all ongoing tasks in this job. 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00187}{187}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_message_logger_afef84947ffad8c08939b06026954c390}\label{class_message_logger_afef84947ffad8c08939b06026954c390}} 
+\index{MessageLogger@{MessageLogger}!className@{className}}
+\index{className@{className}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{className}{className}}
+{\footnotesize\ttfamily TString Message\+Logger\+::class\+Name}
+
+
+
+name of the class of this object instance 
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_ad195a2ca144f0032def5e9c37e7e9dec}\label{class_message_logger_ad195a2ca144f0032def5e9c37e7e9dec}} 
+\index{MessageLogger@{MessageLogger}!debugString@{debugString}}
+\index{debugString@{debugString}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{debugString}{debugString}}
+{\footnotesize\ttfamily TString Message\+Logger\+::debug\+String = \char`\"{}$<$D$>$ \char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00232}{232}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_af80673aa369addb0f6fe68b7107a7b8d}\label{class_message_logger_af80673aa369addb0f6fe68b7107a7b8d}} 
+\index{MessageLogger@{MessageLogger}!endString@{endString}}
+\index{endString@{endString}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{endString}{endString}}
+{\footnotesize\ttfamily TString Message\+Logger\+::end\+String = \char`\"{}$<$DE$>$ \char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00231}{231}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a73072b902a615fc2dd76f11dfd77abd6}\label{class_message_logger_a73072b902a615fc2dd76f11dfd77abd6}} 
+\index{MessageLogger@{MessageLogger}!errorString@{errorString}}
+\index{errorString@{errorString}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{errorString}{errorString}}
+{\footnotesize\ttfamily TString Message\+Logger\+::error\+String = \char`\"{}$<$E$>$ \char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00235}{235}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a79ab9a58818de348da7bb14fcfbf5a43}\label{class_message_logger_a79ab9a58818de348da7bb14fcfbf5a43}} 
+\index{MessageLogger@{MessageLogger}!fatalString@{fatalString}}
+\index{fatalString@{fatalString}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{fatalString}{fatalString}}
+{\footnotesize\ttfamily TString Message\+Logger\+::fatal\+String = \char`\"{}$<$F$>$ \char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00236}{236}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}\label{class_message_logger_aeafb41c042a0b00cc82df8b7e159cc9c}} 
+\index{MessageLogger@{MessageLogger}!fctName@{fctName}}
+\index{fctName@{fctName}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{fctName}{fctName}}
+{\footnotesize\ttfamily TString Message\+Logger\+::fct\+Name}
+
+
+
+name of the function initiating messages. 
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a07cfc4ccf589dc31b050d6f415594035}\label{class_message_logger_a07cfc4ccf589dc31b050d6f415594035}} 
+\index{MessageLogger@{MessageLogger}!holdReportLevel@{holdReportLevel}}
+\index{holdReportLevel@{holdReportLevel}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{holdReportLevel}{holdReportLevel}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} Message\+Logger\+::hold\+Report\+Level}
+
+
+
+Internal variable used internally to set/reset the nominal report level selected by the user. 
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a38bc2ece5008afb8430dea607f21a60c}\label{class_message_logger_a38bc2ece5008afb8430dea607f21a60c}} 
+\index{MessageLogger@{MessageLogger}!infoString@{infoString}}
+\index{infoString@{infoString}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{infoString}{infoString}}
+{\footnotesize\ttfamily TString Message\+Logger\+::info\+String = \char`\"{}$<$I$>$ \char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00233}{233}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_af0e7a043f3a53e13b47955e8c0f8aa2b}\label{class_message_logger_af0e7a043f3a53e13b47955e8c0f8aa2b}} 
+\index{MessageLogger@{MessageLogger}!instanceName@{instanceName}}
+\index{instanceName@{instanceName}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{instanceName}{instanceName}}
+{\footnotesize\ttfamily TString Message\+Logger\+::instance\+Name}
+
+
+
+name given to this object instance 
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00069}{69}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_ad9d41b1a0dbbf52fabee01267c0491e6}\label{class_message_logger_ad9d41b1a0dbbf52fabee01267c0491e6}} 
+\index{MessageLogger@{MessageLogger}!reportLevel@{reportLevel}}
+\index{reportLevel@{reportLevel}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{reportLevel}{reportLevel}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} Message\+Logger\+::report\+Level}
+
+
+
+Minimal error level reported by object instances inheriting from this class. 
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a1964b8aa39a644cc9b3c014683bdc87a}\label{class_message_logger_a1964b8aa39a644cc9b3c014683bdc87a}} 
+\index{MessageLogger@{MessageLogger}!startString@{startString}}
+\index{startString@{startString}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{startString}{startString}}
+{\footnotesize\ttfamily TString Message\+Logger\+::start\+String = \char`\"{}$<$DS$>$ \char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00230}{230}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a621904557af6d743b025a71acabec5e9}\label{class_message_logger_a621904557af6d743b025a71acabec5e9}} 
+\index{MessageLogger@{MessageLogger}!taskStatus@{taskStatus}}
+\index{taskStatus@{taskStatus}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{taskStatus}{taskStatus}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970}{Message\+Logger\+::\+Task\+Status}} Message\+Logger\+::task\+Status = \mbox{\hyperlink{class_message_logger_ae5642c495c7bd917887bed12444f1970a52547feaaf84ae6fb2d3ec8aac30315a}{Message\+Logger\+::\+Task\+Ok}}\hspace{0.3cm}{\ttfamily [static]}}
+
+Status of the ongoing tasks. Since this is a static variable, it reflects a global state or status of an ongoing analysis. The task status may be set or read by all objects of class deriving from this class. 
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00064}{64}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+\mbox{\Hypertarget{class_message_logger_a1323d1b9969d3aafebf066a0ab14197d}\label{class_message_logger_a1323d1b9969d3aafebf066a0ab14197d}} 
+\index{MessageLogger@{MessageLogger}!warningString@{warningString}}
+\index{warningString@{warningString}!MessageLogger@{MessageLogger}}
+\doxysubsubsection{\texorpdfstring{warningString}{warningString}}
+{\footnotesize\ttfamily TString Message\+Logger\+::warning\+String = \char`\"{}$<$W$>$ \char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_message_logger_8hpp_source_l00234}{234}} of file \mbox{\hyperlink{_message_logger_8hpp_source}{Message\+Logger.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_message_logger_8hpp}{Message\+Logger.\+hpp}}\item 
+Base/\mbox{\hyperlink{_message_logger_8cpp}{Message\+Logger.\+cpp}}\end{DoxyCompactItemize}

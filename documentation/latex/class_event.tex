@@ -1,0 +1,685 @@
+\hypertarget{class_event}{}\doxysection{Event Class Reference}
+\label{class_event}\index{Event@{Event}}
+
+
+{\ttfamily \#include $<$Event.\+hpp$>$}
+
+
+
+Inheritance diagram for Event\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{class_event__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Event\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_event__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_event_a7704ec01ce91e673885792054214b3d2}{$\sim$\+Event}} ()
+\item 
+virtual void \mbox{\hyperlink{class_event_a0862af1471604bf30a4f50a5e028637a}{clear}} ()
+\item 
+virtual void \mbox{\hyperlink{class_event_a149bd3fe9d4ab548a17d684b30283c87}{reset}} ()
+\item 
+virtual void \mbox{\hyperlink{class_event_a2634bcc8f8dae7dce4578af73b98200a}{add}} (\mbox{\hyperlink{class_particle}{Particle}} $\ast$particle)
+\item 
+\mbox{\hyperlink{class_particle}{Particle}} $\ast$ \mbox{\hyperlink{class_event_a56b4eb03e516fc8fbc40a0f6db762f35}{get\+Particle\+At}} (unsigned long index)
+\item 
+unsigned long \mbox{\hyperlink{class_event_a5b52382310a340cb4010b0128f632ccc}{get\+Particle\+Count}} ()
+\item 
+unsigned long \mbox{\hyperlink{class_event_a44dcbb957de58cc2d5393eb4ef6bc8e9}{get\+NParticles}} ()
+\item 
+vector$<$ \mbox{\hyperlink{class_particle}{Particle}} $\ast$ $>$ \& \mbox{\hyperlink{class_event_ad9074f2fdcf1a0ab77504418225ec784}{get\+Particles}} ()
+\item 
+const vector$<$ \mbox{\hyperlink{class_particle}{Particle}} $\ast$ $>$ \& \mbox{\hyperlink{class_event_ae1977911c0a1d5f8d3d7f1859e8a0c77}{get\+Particles}} () const
+\item 
+unsigned long \mbox{\hyperlink{class_event_aea17d9fac3bcfc23c55b1960b715cde3}{get\+Event\+Index}} () const
+\item 
+unsigned long \mbox{\hyperlink{class_event_a4819cff35176f2967362e7ce09c653c8}{get\+Event\+Number}} () const
+\item 
+void \mbox{\hyperlink{class_event_a22f7afdf875baf1ab6dc58faad9ec0c1}{increment\+Event\+Index}} ()
+\item 
+void \mbox{\hyperlink{class_event_a442352e8fa54636e9c77cfe55d8a6227}{set\+Event\+Index}} (unsigned long index)
+\item 
+void \mbox{\hyperlink{class_event_a9cf8adfb77b8f7a4bbf539d3e221c614}{set\+Event\+Number}} (unsigned long number)
+\item 
+void \mbox{\hyperlink{class_event_ae948ec41d6c28afc29d9d35413674750}{set\+Event\+Properties}} (\mbox{\hyperlink{class_event_properties}{Event\+Properties}} $\ast$properties)
+\item 
+virtual void \mbox{\hyperlink{class_event_a260d0735156a0e18183b7d4fd750df9a}{print\+Properties}} (ostream \&output)
+\item 
+\mbox{\hyperlink{class_particle}{Particle}} $\ast$ \mbox{\hyperlink{class_event_a04a79182977a0bf3f89888cb3f28aa5d}{add\+Interaction}} (\mbox{\hyperlink{class_particle}{Particle}} $\ast$nucleonA, \mbox{\hyperlink{class_particle}{Particle}} $\ast$nucleonB)
+\item 
+void \mbox{\hyperlink{class_event_adaecdb121a1057578cd0adee16ec954a}{set\+Impact\+Parameter}} (double \+\_\+b)
+\item 
+void \mbox{\hyperlink{class_event_abc674e4897861a3f774be0c66a4b54cb}{set\+NucleusA}} (unsigned int z, unsigned int a)
+\item 
+void \mbox{\hyperlink{class_event_ad236bb05e0996e592ca271faf35299b7}{set\+NucleusB}} (unsigned int z, unsigned int a)
+\item 
+double \mbox{\hyperlink{class_event_ad0424d190149f3ae3dba635ec5e17850}{get\+Impact\+Parameter}} () const
+\item 
+double \mbox{\hyperlink{class_event_aa1131f30b264ee2873fd45134550cec9}{get\+Cross\+Section}} () const
+\item 
+\mbox{\hyperlink{class_nucleus}{Nucleus}} \& \mbox{\hyperlink{class_event_a161572ff6137fb68b2f0beeb693fa6b6}{get\+NucleusA}} ()
+\item 
+\mbox{\hyperlink{class_nucleus}{Nucleus}} \& \mbox{\hyperlink{class_event_af6e93c3572040217760efd11024f8d6c}{get\+NucleusB}} ()
+\item 
+unsigned int \mbox{\hyperlink{class_event_a231d273e05043d176bc9cfc5b195c9e0}{get\+NParticipants}} () const
+\item 
+unsigned int \mbox{\hyperlink{class_event_a4f60f5eae51c98ba6999da48a29cd4b4}{get\+NBinary\+Collisions}} () const
+\item 
+vector$<$ \mbox{\hyperlink{class_particle}{Particle}} $\ast$ $>$ \mbox{\hyperlink{class_event_a2ede6a2bc4e363dd1ad87ea3b4c8ab58}{get\+Nucleon\+Nucleon\+Interactions}} ()
+\item 
+\mbox{\hyperlink{class_event_properties}{Event\+Properties}} $\ast$ \mbox{\hyperlink{class_event_a71f6c476981f53a7db6f8dfe87494928}{get\+Event\+Properties}} ()
+\item 
+\mbox{\hyperlink{class_event_properties}{Event\+Properties}} $\ast$ \mbox{\hyperlink{class_event_aab262dd3393deac58c50f000e790ec7c}{get\+Event\+Properties}} () const
+\item 
+\mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} \& \mbox{\hyperlink{class_event_a29b0d1d1ef428c6d8b2261c57abeacdd}{get\+Participant\+Moments}} ()
+\item 
+const \mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} \& \mbox{\hyperlink{class_event_aab4e9e5dbe66061a81c952931d457e78}{get\+Participant\+Moments}} () const
+\item 
+\mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} \& \mbox{\hyperlink{class_event_a2a4812283cddf70757d46bb566968ed4}{get\+Binary\+Moments}} ()
+\item 
+const \mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} \& \mbox{\hyperlink{class_event_abe8f4def4a7e6566bf9939f9ae4956d4}{get\+Binary\+Moments}} () const
+\item 
+void \mbox{\hyperlink{class_event_a65446821374a39120da2e66e63a3a4bc}{set\+Stream\+Index}} (unsigned int index)
+\item 
+unsigned int \mbox{\hyperlink{class_event_ae0638a3364fd3e7f5c8c952b84672b5c}{get\+Stream\+Index}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_event}{Event}} $\ast$ \mbox{\hyperlink{class_event_afaab747c9fb60168b29cde523b039db3}{get\+Event\+Stream}} (unsigned int index)
+\item 
+static unsigned int \mbox{\hyperlink{class_event_af49ca73bb407194145a4db2d9da39d1d}{get\+NEvent\+Streams}} ()
+\item 
+static void \mbox{\hyperlink{class_event_af76973eb3e6e0070333d5120b26044a3}{reset\+Event\+Streams}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_a5a40dd4708297f7031e29b39e039ae10}{Event}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{class_event_a62c2a5af123d87400dff185f699b11f7}{stream\+Index}}
+\item 
+unsigned long \mbox{\hyperlink{class_event_ad456ef21c6706d6ff8194bf07c33c692}{event\+Index}}
+\item 
+unsigned long \mbox{\hyperlink{class_event_ab746ab81d6d03d2152e28eb9ed6ee969}{event\+Number}}
+\item 
+vector$<$ \mbox{\hyperlink{class_particle}{Particle}} $\ast$ $>$ \mbox{\hyperlink{class_event_aa986d52fc175ee27d16d1e8658a05ae2}{particles}}
+\item 
+\mbox{\hyperlink{class_event_properties}{Event\+Properties}} $\ast$ \mbox{\hyperlink{class_event_aad3919d83a12e18a8f91f515b32825d0}{event\+Properties}}
+\item 
+double \mbox{\hyperlink{class_event_a97b540a51be2b2dc547a0b8cf3776b67}{b}}
+\item 
+\mbox{\hyperlink{class_nucleus}{Nucleus}} $\ast$ \mbox{\hyperlink{class_event_a0800713ebfb49bcad20b0fa04be0237e}{nucleusA}}
+\item 
+\mbox{\hyperlink{class_nucleus}{Nucleus}} $\ast$ \mbox{\hyperlink{class_event_abc999b40aee5bbf56c6401f76f557fe9}{nucleusB}}
+\item 
+\mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} $\ast$ \mbox{\hyperlink{class_event_a2fa3893308b9b19ac88b7b6f15702c08}{binary\+Moments}}
+\item 
+\mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} $\ast$ \mbox{\hyperlink{class_event_a1ac318c363330c9ce3efa50d1c8fba85}{participant\+Moments}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static vector$<$ \mbox{\hyperlink{class_event}{Event}} $\ast$ $>$ \mbox{\hyperlink{class_event_a3f9ced0649df6ce594df597e919d8115}{event\+Streams\+Store}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Copyright (C) 2019-\/2021, Claude Pruneau, Victor Gonzalez, Sumit Basu. All rights reserved. Based on the ROOT package and environment For the licensing terms see LICENSE. Class encupsalting all components of events (real data or monte carlo) 
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_event_a5a40dd4708297f7031e29b39e039ae10}\label{class_event_a5a40dd4708297f7031e29b39e039ae10}} 
+\index{Event@{Event}!Event@{Event}}
+\index{Event@{Event}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{Event()}{Event()}}
+{\footnotesize\ttfamily Event\+::\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Constructor is protected. Use the static function \mbox{\hyperlink{class_event_afaab747c9fb60168b29cde523b039db3}{get\+Event\+Stream()}} to obtain instances of this class. 
+
+Definition at line \mbox{\hyperlink{_event_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_event_8cpp_source}{Event.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_a7704ec01ce91e673885792054214b3d2}\label{class_event_a7704ec01ce91e673885792054214b3d2}} 
+\index{Event@{Event}!````~Event@{$\sim$Event}}
+\index{````~Event@{$\sim$Event}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{$\sim$Event()}{~Event()}}
+{\footnotesize\ttfamily Event\+::$\sim$\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{_event_8cpp_source}{Event.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_event_a2634bcc8f8dae7dce4578af73b98200a}\label{class_event_a2634bcc8f8dae7dce4578af73b98200a}} 
+\index{Event@{Event}!add@{add}}
+\index{add@{add}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void Event\+::add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{particle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Add the given particle to this event 
+
+Definition at line \mbox{\hyperlink{_event_8cpp_source_l00085}{85}} of file \mbox{\hyperlink{_event_8cpp_source}{Event.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_a04a79182977a0bf3f89888cb3f28aa5d}\label{class_event_a04a79182977a0bf3f89888cb3f28aa5d}} 
+\index{Event@{Event}!addInteraction@{addInteraction}}
+\index{addInteraction@{addInteraction}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{addInteraction()}{addInteraction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle}{Particle}} $\ast$ Event\+::add\+Interaction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{nucleonA,  }\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{nucleonB }\end{DoxyParamCaption})}
+
+Add an interaction between the two given nucleons to the current event. The function does NOT change the wounded status of the two nucleons being added. Changing their wounded status must be done explicitly by calling the set\+Wounded(true) on instances nucleonA and nucleonB. 
+
+Definition at line \mbox{\hyperlink{_event_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{_event_8cpp_source}{Event.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_a0862af1471604bf30a4f50a5e028637a}\label{class_event_a0862af1471604bf30a4f50a5e028637a}} 
+\index{Event@{Event}!clear@{clear}}
+\index{clear@{clear}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Event\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Clear the event as an empty event 
+
+Reimplemented in \mbox{\hyperlink{class_cluster_model_event_a0b2da6378b4aa866c1580f84db840d81}{Cluster\+Model\+Event}}.
+
+
+
+Definition at line \mbox{\hyperlink{_event_8cpp_source_l00051}{51}} of file \mbox{\hyperlink{_event_8cpp_source}{Event.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_a2a4812283cddf70757d46bb566968ed4}\label{class_event_a2a4812283cddf70757d46bb566968ed4}} 
+\index{Event@{Event}!getBinaryMoments@{getBinaryMoments}}
+\index{getBinaryMoments@{getBinaryMoments}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getBinaryMoments()}{getBinaryMoments()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} \& Event\+::get\+Binary\+Moments (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the binary moments of the current event 
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00179}{179}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_abe8f4def4a7e6566bf9939f9ae4956d4}\label{class_event_abe8f4def4a7e6566bf9939f9ae4956d4}} 
+\index{Event@{Event}!getBinaryMoments@{getBinaryMoments}}
+\index{getBinaryMoments@{getBinaryMoments}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getBinaryMoments()}{getBinaryMoments()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} \& Event\+::get\+Binary\+Moments (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the binary moments of the current event 
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00187}{187}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_aa1131f30b264ee2873fd45134550cec9}\label{class_event_aa1131f30b264ee2873fd45134550cec9}} 
+\index{Event@{Event}!getCrossSection@{getCrossSection}}
+\index{getCrossSection@{getCrossSection}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getCrossSection()}{getCrossSection()}}
+{\footnotesize\ttfamily double Event\+::get\+Cross\+Section (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00139}{139}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_aea17d9fac3bcfc23c55b1960b715cde3}\label{class_event_aea17d9fac3bcfc23c55b1960b715cde3}} 
+\index{Event@{Event}!getEventIndex@{getEventIndex}}
+\index{getEventIndex@{getEventIndex}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getEventIndex()}{getEventIndex()}}
+{\footnotesize\ttfamily unsigned long Event\+::get\+Event\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the index of this event. The event index might correspond to the position of the event in the production or input stream. 
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_a4819cff35176f2967362e7ce09c653c8}\label{class_event_a4819cff35176f2967362e7ce09c653c8}} 
+\index{Event@{Event}!getEventNumber@{getEventNumber}}
+\index{getEventNumber@{getEventNumber}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getEventNumber()}{getEventNumber()}}
+{\footnotesize\ttfamily unsigned long Event\+::get\+Event\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the event number of this event. The event number might correspond to a tag or index given to this event externally by some other production or input stream. 
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00093}{93}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_a71f6c476981f53a7db6f8dfe87494928}\label{class_event_a71f6c476981f53a7db6f8dfe87494928}} 
+\index{Event@{Event}!getEventProperties@{getEventProperties}}
+\index{getEventProperties@{getEventProperties}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getEventProperties()}{getEventProperties()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_event_properties}{Event\+Properties}} $\ast$ Event\+::get\+Event\+Properties (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00153}{153}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_aab262dd3393deac58c50f000e790ec7c}\label{class_event_aab262dd3393deac58c50f000e790ec7c}} 
+\index{Event@{Event}!getEventProperties@{getEventProperties}}
+\index{getEventProperties@{getEventProperties}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getEventProperties()}{getEventProperties()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_event_properties}{Event\+Properties}} $\ast$ Event\+::get\+Event\+Properties (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00154}{154}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_afaab747c9fb60168b29cde523b039db3}\label{class_event_afaab747c9fb60168b29cde523b039db3}} 
+\index{Event@{Event}!getEventStream@{getEventStream}}
+\index{getEventStream@{getEventStream}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getEventStream()}{getEventStream()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_event}{Event}} $\ast$ Event\+::get\+Event\+Stream (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8cpp_source_l00198}{198}} of file \mbox{\hyperlink{_event_8cpp_source}{Event.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_ad0424d190149f3ae3dba635ec5e17850}\label{class_event_ad0424d190149f3ae3dba635ec5e17850}} 
+\index{Event@{Event}!getImpactParameter@{getImpactParameter}}
+\index{getImpactParameter@{getImpactParameter}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getImpactParameter()}{getImpactParameter()}}
+{\footnotesize\ttfamily double Event\+::get\+Impact\+Parameter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00138}{138}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_a4f60f5eae51c98ba6999da48a29cd4b4}\label{class_event_a4f60f5eae51c98ba6999da48a29cd4b4}} 
+\index{Event@{Event}!getNBinaryCollisions@{getNBinaryCollisions}}
+\index{getNBinaryCollisions@{getNBinaryCollisions}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getNBinaryCollisions()}{getNBinaryCollisions()}}
+{\footnotesize\ttfamily unsigned int Event\+::get\+NBinary\+Collisions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8cpp_source_l00111}{111}} of file \mbox{\hyperlink{_event_8cpp_source}{Event.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_af49ca73bb407194145a4db2d9da39d1d}\label{class_event_af49ca73bb407194145a4db2d9da39d1d}} 
+\index{Event@{Event}!getNEventStreams@{getNEventStreams}}
+\index{getNEventStreams@{getNEventStreams}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getNEventStreams()}{getNEventStreams()}}
+{\footnotesize\ttfamily unsigned int Event\+::get\+NEvent\+Streams (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8cpp_source_l00229}{229}} of file \mbox{\hyperlink{_event_8cpp_source}{Event.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_a231d273e05043d176bc9cfc5b195c9e0}\label{class_event_a231d273e05043d176bc9cfc5b195c9e0}} 
+\index{Event@{Event}!getNParticipants@{getNParticipants}}
+\index{getNParticipants@{getNParticipants}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getNParticipants()}{getNParticipants()}}
+{\footnotesize\ttfamily unsigned int Event\+::get\+NParticipants (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{_event_8cpp_source}{Event.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_a44dcbb957de58cc2d5393eb4ef6bc8e9}\label{class_event_a44dcbb957de58cc2d5393eb4ef6bc8e9}} 
+\index{Event@{Event}!getNParticles@{getNParticles}}
+\index{getNParticles@{getNParticles}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getNParticles()}{getNParticles()}}
+{\footnotesize\ttfamily unsigned long Event\+::get\+NParticles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the number of particles stored in this event. 
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_a2ede6a2bc4e363dd1ad87ea3b4c8ab58}\label{class_event_a2ede6a2bc4e363dd1ad87ea3b4c8ab58}} 
+\index{Event@{Event}!getNucleonNucleonInteractions@{getNucleonNucleonInteractions}}
+\index{getNucleonNucleonInteractions@{getNucleonNucleonInteractions}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getNucleonNucleonInteractions()}{getNucleonNucleonInteractions()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_particle}{Particle}} $\ast$ $>$ Event\+::get\+Nucleon\+Nucleon\+Interactions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8cpp_source_l00121}{121}} of file \mbox{\hyperlink{_event_8cpp_source}{Event.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_a161572ff6137fb68b2f0beeb693fa6b6}\label{class_event_a161572ff6137fb68b2f0beeb693fa6b6}} 
+\index{Event@{Event}!getNucleusA@{getNucleusA}}
+\index{getNucleusA@{getNucleusA}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getNucleusA()}{getNucleusA()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_nucleus}{Nucleus}} \& Event\+::get\+NucleusA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00140}{140}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_af6e93c3572040217760efd11024f8d6c}\label{class_event_af6e93c3572040217760efd11024f8d6c}} 
+\index{Event@{Event}!getNucleusB@{getNucleusB}}
+\index{getNucleusB@{getNucleusB}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getNucleusB()}{getNucleusB()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_nucleus}{Nucleus}} \& Event\+::get\+NucleusB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00141}{141}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_a29b0d1d1ef428c6d8b2261c57abeacdd}\label{class_event_a29b0d1d1ef428c6d8b2261c57abeacdd}} 
+\index{Event@{Event}!getParticipantMoments@{getParticipantMoments}}
+\index{getParticipantMoments@{getParticipantMoments}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getParticipantMoments()}{getParticipantMoments()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} \& Event\+::get\+Participant\+Moments (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the participant moments of the current event 
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00163}{163}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_aab4e9e5dbe66061a81c952931d457e78}\label{class_event_aab4e9e5dbe66061a81c952931d457e78}} 
+\index{Event@{Event}!getParticipantMoments@{getParticipantMoments}}
+\index{getParticipantMoments@{getParticipantMoments}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getParticipantMoments()}{getParticipantMoments()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}} \& Event\+::get\+Participant\+Moments (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the participant moments of the current event 
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00171}{171}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_a56b4eb03e516fc8fbc40a0f6db762f35}\label{class_event_a56b4eb03e516fc8fbc40a0f6db762f35}} 
+\index{Event@{Event}!getParticleAt@{getParticleAt}}
+\index{getParticleAt@{getParticleAt}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getParticleAt()}{getParticleAt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle}{Particle}} $\ast$ Event\+::get\+Particle\+At (\begin{DoxyParamCaption}\item[{unsigned long}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return to the particle at position \char`\"{}index\char`\"{} in this event. A null pointer is returned is index exceeds the number of particles in this event. 
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00053}{53}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_a5b52382310a340cb4010b0128f632ccc}\label{class_event_a5b52382310a340cb4010b0128f632ccc}} 
+\index{Event@{Event}!getParticleCount@{getParticleCount}}
+\index{getParticleCount@{getParticleCount}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getParticleCount()}{getParticleCount()}}
+{\footnotesize\ttfamily unsigned long Event\+::get\+Particle\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the number of particles stored in this event. 
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_ad9074f2fdcf1a0ab77504418225ec784}\label{class_event_ad9074f2fdcf1a0ab77504418225ec784}} 
+\index{Event@{Event}!getParticles@{getParticles}}
+\index{getParticles@{getParticles}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getParticles()}{getParticles()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_particle}{Particle}} $\ast$ $>$ \& Event\+::get\+Particles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return a vector of all the particles stored in this event. 
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_ae1977911c0a1d5f8d3d7f1859e8a0c77}\label{class_event_ae1977911c0a1d5f8d3d7f1859e8a0c77}} 
+\index{Event@{Event}!getParticles@{getParticles}}
+\index{getParticles@{getParticles}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getParticles()}{getParticles()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const vector$<$ \mbox{\hyperlink{class_particle}{Particle}} $\ast$ $>$ \& Event\+::get\+Particles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return a constant vector of all the particles stored in this event. 
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_ae0638a3364fd3e7f5c8c952b84672b5c}\label{class_event_ae0638a3364fd3e7f5c8c952b84672b5c}} 
+\index{Event@{Event}!getStreamIndex@{getStreamIndex}}
+\index{getStreamIndex@{getStreamIndex}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getStreamIndex()}{getStreamIndex()}}
+{\footnotesize\ttfamily unsigned int Event\+::get\+Stream\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00197}{197}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_a22f7afdf875baf1ab6dc58faad9ec0c1}\label{class_event_a22f7afdf875baf1ab6dc58faad9ec0c1}} 
+\index{Event@{Event}!incrementEventIndex@{incrementEventIndex}}
+\index{incrementEventIndex@{incrementEventIndex}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{incrementEventIndex()}{incrementEventIndex()}}
+{\footnotesize\ttfamily void Event\+::increment\+Event\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Increment the index of this event.. 
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00098}{98}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_a260d0735156a0e18183b7d4fd750df9a}\label{class_event_a260d0735156a0e18183b7d4fd750df9a}} 
+\index{Event@{Event}!printProperties@{printProperties}}
+\index{printProperties@{printProperties}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{printProperties()}{printProperties()}}
+{\footnotesize\ttfamily void Event\+::print\+Properties (\begin{DoxyParamCaption}\item[{ostream \&}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Print the properties of this event on the given output stream. 
+
+Reimplemented in \mbox{\hyperlink{class_cluster_model_event_a25390af788de41b17717370cf0b93742}{Cluster\+Model\+Event}}.
+
+
+
+Definition at line \mbox{\hyperlink{_event_8cpp_source_l00182}{182}} of file \mbox{\hyperlink{_event_8cpp_source}{Event.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_a149bd3fe9d4ab548a17d684b30283c87}\label{class_event_a149bd3fe9d4ab548a17d684b30283c87}} 
+\index{Event@{Event}!reset@{reset}}
+\index{reset@{reset}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Event\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Reset the event as an empty event 
+
+Reimplemented in \mbox{\hyperlink{class_cluster_model_event_a682cd59d4635a1dce3d298ea29646afc}{Cluster\+Model\+Event}}.
+
+
+
+Definition at line \mbox{\hyperlink{_event_8cpp_source_l00068}{68}} of file \mbox{\hyperlink{_event_8cpp_source}{Event.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_af76973eb3e6e0070333d5120b26044a3}\label{class_event_af76973eb3e6e0070333d5120b26044a3}} 
+\index{Event@{Event}!resetEventStreams@{resetEventStreams}}
+\index{resetEventStreams@{resetEventStreams}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{resetEventStreams()}{resetEventStreams()}}
+{\footnotesize\ttfamily void Event\+::reset\+Event\+Streams (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8cpp_source_l00234}{234}} of file \mbox{\hyperlink{_event_8cpp_source}{Event.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_a442352e8fa54636e9c77cfe55d8a6227}\label{class_event_a442352e8fa54636e9c77cfe55d8a6227}} 
+\index{Event@{Event}!setEventIndex@{setEventIndex}}
+\index{setEventIndex@{setEventIndex}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{setEventIndex()}{setEventIndex()}}
+{\footnotesize\ttfamily void Event\+::set\+Event\+Index (\begin{DoxyParamCaption}\item[{unsigned long}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the index of this event.. 
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00103}{103}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_a9cf8adfb77b8f7a4bbf539d3e221c614}\label{class_event_a9cf8adfb77b8f7a4bbf539d3e221c614}} 
+\index{Event@{Event}!setEventNumber@{setEventNumber}}
+\index{setEventNumber@{setEventNumber}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{setEventNumber()}{setEventNumber()}}
+{\footnotesize\ttfamily void Event\+::set\+Event\+Number (\begin{DoxyParamCaption}\item[{unsigned long}]{number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the event number of this event. 
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00108}{108}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_ae948ec41d6c28afc29d9d35413674750}\label{class_event_ae948ec41d6c28afc29d9d35413674750}} 
+\index{Event@{Event}!setEventProperties@{setEventProperties}}
+\index{setEventProperties@{setEventProperties}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{setEventProperties()}{setEventProperties()}}
+{\footnotesize\ttfamily void Event\+::set\+Event\+Properties (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_event_properties}{Event\+Properties}} $\ast$}]{properties }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Replace (set) the current event property object held by this event to that given. This is a pointer assignment not a deep copy/assignment. 
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00113}{113}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_adaecdb121a1057578cd0adee16ec954a}\label{class_event_adaecdb121a1057578cd0adee16ec954a}} 
+\index{Event@{Event}!setImpactParameter@{setImpactParameter}}
+\index{setImpactParameter@{setImpactParameter}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{setImpactParameter()}{setImpactParameter()}}
+{\footnotesize\ttfamily void Event\+::set\+Impact\+Parameter (\begin{DoxyParamCaption}\item[{double}]{\+\_\+b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the impact parameter of this event to the given value. 
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+b} & impact paramter of this event. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00129}{129}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_abc674e4897861a3f774be0c66a4b54cb}\label{class_event_abc674e4897861a3f774be0c66a4b54cb}} 
+\index{Event@{Event}!setNucleusA@{setNucleusA}}
+\index{setNucleusA@{setNucleusA}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{setNucleusA()}{setNucleusA()}}
+{\footnotesize\ttfamily void Event\+::set\+NucleusA (\begin{DoxyParamCaption}\item[{unsigned int}]{z,  }\item[{unsigned int}]{a }\end{DoxyParamCaption})}
+
+Set nucleus A to have the given atomic number (z) and mass number (a). 
+\begin{DoxyParams}{Parameters}
+{\em z} & atomic number. \\
+\hline
+{\em a} & mass number. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_event_8cpp_source_l00164}{164}} of file \mbox{\hyperlink{_event_8cpp_source}{Event.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_ad236bb05e0996e592ca271faf35299b7}\label{class_event_ad236bb05e0996e592ca271faf35299b7}} 
+\index{Event@{Event}!setNucleusB@{setNucleusB}}
+\index{setNucleusB@{setNucleusB}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{setNucleusB()}{setNucleusB()}}
+{\footnotesize\ttfamily void Event\+::set\+NucleusB (\begin{DoxyParamCaption}\item[{unsigned int}]{z,  }\item[{unsigned int}]{a }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8cpp_source_l00171}{171}} of file \mbox{\hyperlink{_event_8cpp_source}{Event.\+cpp}}.
+
+\mbox{\Hypertarget{class_event_a65446821374a39120da2e66e63a3a4bc}\label{class_event_a65446821374a39120da2e66e63a3a4bc}} 
+\index{Event@{Event}!setStreamIndex@{setStreamIndex}}
+\index{setStreamIndex@{setStreamIndex}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{setStreamIndex()}{setStreamIndex()}}
+{\footnotesize\ttfamily void Event\+::set\+Stream\+Index (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00192}{192}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_event_a97b540a51be2b2dc547a0b8cf3776b67}\label{class_event_a97b540a51be2b2dc547a0b8cf3776b67}} 
+\index{Event@{Event}!b@{b}}
+\index{b@{b}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{b}{b}}
+{\footnotesize\ttfamily double Event\+::b\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00212}{212}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_a2fa3893308b9b19ac88b7b6f15702c08}\label{class_event_a2fa3893308b9b19ac88b7b6f15702c08}} 
+\index{Event@{Event}!binaryMoments@{binaryMoments}}
+\index{binaryMoments@{binaryMoments}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{binaryMoments}{binaryMoments}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}}$\ast$ Event\+::binary\+Moments\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00215}{215}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_ad456ef21c6706d6ff8194bf07c33c692}\label{class_event_ad456ef21c6706d6ff8194bf07c33c692}} 
+\index{Event@{Event}!eventIndex@{eventIndex}}
+\index{eventIndex@{eventIndex}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{eventIndex}{eventIndex}}
+{\footnotesize\ttfamily unsigned long Event\+::event\+Index\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00206}{206}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_ab746ab81d6d03d2152e28eb9ed6ee969}\label{class_event_ab746ab81d6d03d2152e28eb9ed6ee969}} 
+\index{Event@{Event}!eventNumber@{eventNumber}}
+\index{eventNumber@{eventNumber}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{eventNumber}{eventNumber}}
+{\footnotesize\ttfamily unsigned long Event\+::event\+Number\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00207}{207}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_aad3919d83a12e18a8f91f515b32825d0}\label{class_event_aad3919d83a12e18a8f91f515b32825d0}} 
+\index{Event@{Event}!eventProperties@{eventProperties}}
+\index{eventProperties@{eventProperties}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{eventProperties}{eventProperties}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_event_properties}{Event\+Properties}}$\ast$ Event\+::event\+Properties\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00209}{209}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_a3f9ced0649df6ce594df597e919d8115}\label{class_event_a3f9ced0649df6ce594df597e919d8115}} 
+\index{Event@{Event}!eventStreamsStore@{eventStreamsStore}}
+\index{eventStreamsStore@{eventStreamsStore}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{eventStreamsStore}{eventStreamsStore}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_event}{Event}} $\ast$ $>$ Event\+::event\+Streams\+Store\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00210}{210}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_a0800713ebfb49bcad20b0fa04be0237e}\label{class_event_a0800713ebfb49bcad20b0fa04be0237e}} 
+\index{Event@{Event}!nucleusA@{nucleusA}}
+\index{nucleusA@{nucleusA}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{nucleusA}{nucleusA}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_nucleus}{Nucleus}}$\ast$ Event\+::nucleusA\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00213}{213}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_abc999b40aee5bbf56c6401f76f557fe9}\label{class_event_abc999b40aee5bbf56c6401f76f557fe9}} 
+\index{Event@{Event}!nucleusB@{nucleusB}}
+\index{nucleusB@{nucleusB}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{nucleusB}{nucleusB}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_nucleus}{Nucleus}}$\ast$ Event\+::nucleusB\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00214}{214}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_a1ac318c363330c9ce3efa50d1c8fba85}\label{class_event_a1ac318c363330c9ce3efa50d1c8fba85}} 
+\index{Event@{Event}!participantMoments@{participantMoments}}
+\index{participantMoments@{participantMoments}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{participantMoments}{participantMoments}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_collision_geometry_moments}{Collision\+Geometry\+Moments}}$\ast$ Event\+::participant\+Moments\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00216}{216}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_aa986d52fc175ee27d16d1e8658a05ae2}\label{class_event_aa986d52fc175ee27d16d1e8658a05ae2}} 
+\index{Event@{Event}!particles@{particles}}
+\index{particles@{particles}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{particles}{particles}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{class_particle}{Particle}}$\ast$$>$ Event\+::particles\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00208}{208}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_a62c2a5af123d87400dff185f699b11f7}\label{class_event_a62c2a5af123d87400dff185f699b11f7}} 
+\index{Event@{Event}!streamIndex@{streamIndex}}
+\index{streamIndex@{streamIndex}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{streamIndex}{streamIndex}}
+{\footnotesize\ttfamily unsigned int Event\+::stream\+Index\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_event_8hpp_source_l00205}{205}} of file \mbox{\hyperlink{_event_8hpp_source}{Event.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_event_8hpp}{Event.\+hpp}}\item 
+Base/\mbox{\hyperlink{_event_8cpp}{Event.\+cpp}}\end{DoxyCompactItemize}

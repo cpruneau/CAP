@@ -1,0 +1,28 @@
+\hypertarget{loopdir_8_c_source}{}\doxysection{loopdir.\+C}
+\label{loopdir_8_c_source}\index{Macros/loopdir.C@{Macros/loopdir.C}}
+\mbox{\hyperlink{loopdir_8_c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00013}\mbox{\hyperlink{loopdir_8_c_ab1aa564b019309d74d218aa3641509a5}{00013}} \textcolor{keywordtype}{void} \mbox{\hyperlink{loopdir_8_c_ab1aa564b019309d74d218aa3641509a5}{loopdir}}() \{}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00014}00014    TFile *f1 = TFile::Open(\textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/WAC/OutputFiles//PYTHIA\_softOnHardOff\_Singles\_LUMP\_Wide\_MB\_Sum0\_99.root"{}});}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00015}00015    TIter keyList(f1-\/>GetListOfKeys());}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00016}00016    TKey *key;}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00017}00017   TCanvas c1;}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00018}00018    c1.Print(\textcolor{stringliteral}{"{}hsimple.pdf["{}});}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00019}00019    \textcolor{keywordflow}{while} ((key = (TKey*)keyList())) \{}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00020}00020       TClass *cl = gROOT-\/>GetClass(key-\/>GetClassName());}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00021}00021       \textcolor{keywordflow}{if} (!cl-\/>InheritsFrom(\textcolor{stringliteral}{"{}TH1"{}})) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00022}00022      TH1 *h = (TH1*)key-\/>ReadObj();}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00023}00023      TH1 *hc = (TH1*) h-\/>Clone();}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00025}00025      cout << hc-\/>GetName() << endl;}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00027}00027            hc-\/>Draw();}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00028}00028       c1.Print(\textcolor{stringliteral}{"{}hsimple.pdf"{}});}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00029}00029    \}}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00030}00030    c1.Print(\textcolor{stringliteral}{"{}hsimple.pdf]"{}});}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00031}00031 \}}
+\DoxyCodeLine{\Hypertarget{loopdir_8_c_source_l00032}00032 }
+
+\end{DoxyCode}

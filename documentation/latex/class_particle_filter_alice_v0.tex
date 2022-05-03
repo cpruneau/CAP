@@ -1,0 +1,248 @@
+\hypertarget{class_particle_filter_alice_v0}{}\doxysection{Particle\+Filter\+Alice\+V0 Class Reference}
+\label{class_particle_filter_alice_v0}\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+
+
+{\ttfamily \#include $<$Particle\+Filter\+Alice\+V0.\+hpp$>$}
+
+
+
+Inheritance diagram for Particle\+Filter\+Alice\+V0\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=185pt]{class_particle_filter_alice_v0__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Particle\+Filter\+Alice\+V0\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=185pt]{class_particle_filter_alice_v0__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063}{V0\+Selection}} \{ \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063a0cea898ebc3ccbcdab1327676914ec11}{V0A}}
+, \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063aac22a5717c2d64d860691e6d6e219a6c}{V0C}}
+, \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063ab7110590ca0f886f6de1a5aee7b786aa}{V0M}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_particle_filter_alice_v0_a8eeffeb0618750d506279d47f4fdbacf}{Particle\+Filter\+Alice\+V0}} (bool filtering\+On\+Pt, double min\+Pt, double max\+Pt, \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063}{V0\+Selection}} \mbox{\hyperlink{class_particle_filter_alice_v0_a1b16b501b2080cb59c42131c6bba8288}{v0\+Selected}}=\mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063ab7110590ca0f886f6de1a5aee7b786aa}{V0M}}, Family\+Selection family\+Selected=Hadron, Charge\+Selection charge\+Selected=Charged, Status\+Selection status\+Selected=Live)
+\item 
+\mbox{\hyperlink{class_particle_filter_alice_v0_a56a6f6393b724cdfdc4177efb2214761}{Particle\+Filter\+Alice\+V0}} (bool filtering\+On\+Pt, double min\+Pt, double max\+Pt, \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063}{V0\+Selection}} \mbox{\hyperlink{class_particle_filter_alice_v0_a1b16b501b2080cb59c42131c6bba8288}{v0\+Selected}}=\mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063ab7110590ca0f886f6de1a5aee7b786aa}{V0M}}, Name\+Selection name\+Selected=Pion\+Plus, Status\+Selection status\+Selected=Live)
+\item 
+\mbox{\hyperlink{class_particle_filter_alice_v0_ac4a4dcb45be7a2282325c3243f6021ee}{Particle\+Filter\+Alice\+V0}} (const \mbox{\hyperlink{class_particle_filter_alice_v0}{Particle\+Filter\+Alice\+V0}} \&other\+Filter)
+\item 
+\mbox{\hyperlink{class_particle_filter_alice_v0}{Particle\+Filter\+Alice\+V0}} \& \mbox{\hyperlink{class_particle_filter_alice_v0_a3b09537f72becefb6c84422af13cebdc}{operator=}} (const \mbox{\hyperlink{class_particle_filter_alice_v0}{Particle\+Filter\+Alice\+V0}} \&other\+Filter)
+\item 
+virtual \mbox{\hyperlink{class_particle_filter_alice_v0_aff5a4653864f7cf8ccf87f1d7f043220}{$\sim$\+Particle\+Filter\+Alice\+V0}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_particle_filter_alice_v0_a0cbed3071ceb6695a637d155c85d7cec}{accept\+Eta}} (double eta)
+\item 
+virtual TString \mbox{\hyperlink{class_particle_filter_alice_v0_a804e988e963ceda8ff9b648bc5bdbb62}{get\+Name}} () const
+\item 
+virtual TString \mbox{\hyperlink{class_particle_filter_alice_v0_a20041b85c44e61904a39bd2ddf2316e4}{get\+Title}} () const
+\item 
+virtual TString \mbox{\hyperlink{class_particle_filter_alice_v0_a24ecb5210de99c025e31c0b6fc5fd6c4}{get\+Long\+Name}} () const
+\item 
+virtual TString \mbox{\hyperlink{class_particle_filter_alice_v0_aae0328c2add3f9710e7565b64bcfbc0c}{get\+Long\+Title}} () const
+\item 
+virtual void \mbox{\hyperlink{class_particle_filter_alice_v0_a20603241038756b87e6ca73a82e3d31b}{print\+Properties}} (ostream \&os)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063}{V0\+Selection}} \mbox{\hyperlink{class_particle_filter_alice_v0_a1b16b501b2080cb59c42131c6bba8288}{v0\+Selected}}
+\item 
+double \mbox{\hyperlink{class_particle_filter_alice_v0_ab1c9ce331b19533c19333b7855c15eb4}{min\+\_\+eta\+\_\+v0A}}
+\item 
+double \mbox{\hyperlink{class_particle_filter_alice_v0_ac5c86bd080e411640801ac22aec3471a}{max\+\_\+eta\+\_\+v0A}}
+\item 
+double \mbox{\hyperlink{class_particle_filter_alice_v0_a49f47d0109f8aef3f8dc058986b637ce}{min\+\_\+eta\+\_\+v0C}}
+\item 
+double \mbox{\hyperlink{class_particle_filter_alice_v0_a1c9af72a913269245b4a6644654e9b09}{max\+\_\+eta\+\_\+v0C}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source_l00027}{27}} of file \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source}{Particle\+Filter\+Alice\+V0.\+hpp}}.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063}\label{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!V0Selection@{V0Selection}}
+\index{V0Selection@{V0Selection}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{V0Selection}{V0Selection}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063}{Particle\+Filter\+Alice\+V0\+::\+V0\+Selection}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V0A@{V0A}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!V0A@{V0A}}}\mbox{\Hypertarget{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063a0cea898ebc3ccbcdab1327676914ec11}\label{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063a0cea898ebc3ccbcdab1327676914ec11}} 
+V0A&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V0C@{V0C}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!V0C@{V0C}}}\mbox{\Hypertarget{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063aac22a5717c2d64d860691e6d6e219a6c}\label{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063aac22a5717c2d64d860691e6d6e219a6c}} 
+V0C&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V0M@{V0M}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!V0M@{V0M}}}\mbox{\Hypertarget{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063ab7110590ca0f886f6de1a5aee7b786aa}\label{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063ab7110590ca0f886f6de1a5aee7b786aa}} 
+V0M&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source}{Particle\+Filter\+Alice\+V0.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_particle_filter_alice_v0_a8eeffeb0618750d506279d47f4fdbacf}\label{class_particle_filter_alice_v0_a8eeffeb0618750d506279d47f4fdbacf}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{ParticleFilterAliceV0()}{ParticleFilterAliceV0()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Particle\+Filter\+Alice\+V0\+::\+Particle\+Filter\+Alice\+V0 (\begin{DoxyParamCaption}\item[{bool}]{filtering\+On\+Pt,  }\item[{double}]{min\+Pt,  }\item[{double}]{max\+Pt,  }\item[{\mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063}{V0\+Selection}}}]{v0\+Selected = {\ttfamily \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063ab7110590ca0f886f6de1a5aee7b786aa}{V0M}}},  }\item[{Family\+Selection}]{family\+Selected = {\ttfamily Hadron},  }\item[{Charge\+Selection}]{charge\+Selected = {\ttfamily Charged},  }\item[{Status\+Selection}]{status\+Selected = {\ttfamily Live} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_particle_filter_alice_v0_a56a6f6393b724cdfdc4177efb2214761}\label{class_particle_filter_alice_v0_a56a6f6393b724cdfdc4177efb2214761}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{ParticleFilterAliceV0()}{ParticleFilterAliceV0()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Particle\+Filter\+Alice\+V0\+::\+Particle\+Filter\+Alice\+V0 (\begin{DoxyParamCaption}\item[{bool}]{filtering\+On\+Pt,  }\item[{double}]{min\+Pt,  }\item[{double}]{max\+Pt,  }\item[{\mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063}{V0\+Selection}}}]{v0\+Selected = {\ttfamily \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063ab7110590ca0f886f6de1a5aee7b786aa}{V0M}}},  }\item[{Name\+Selection}]{name\+Selected = {\ttfamily PionPlus},  }\item[{Status\+Selection}]{status\+Selected = {\ttfamily Live} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_particle_filter_alice_v0_ac4a4dcb45be7a2282325c3243f6021ee}\label{class_particle_filter_alice_v0_ac4a4dcb45be7a2282325c3243f6021ee}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{ParticleFilterAliceV0()}{ParticleFilterAliceV0()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Particle\+Filter\+Alice\+V0\+::\+Particle\+Filter\+Alice\+V0 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_particle_filter_alice_v0}{Particle\+Filter\+Alice\+V0}} \&}]{other\+Filter }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_particle_filter_alice_v0_aff5a4653864f7cf8ccf87f1d7f043220}\label{class_particle_filter_alice_v0_aff5a4653864f7cf8ccf87f1d7f043220}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!````~ParticleFilterAliceV0@{$\sim$ParticleFilterAliceV0}}
+\index{````~ParticleFilterAliceV0@{$\sim$ParticleFilterAliceV0}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{$\sim$ParticleFilterAliceV0()}{~ParticleFilterAliceV0()}}
+{\footnotesize\ttfamily virtual Particle\+Filter\+Alice\+V0\+::$\sim$\+Particle\+Filter\+Alice\+V0 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source}{Particle\+Filter\+Alice\+V0.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_particle_filter_alice_v0_a0cbed3071ceb6695a637d155c85d7cec}\label{class_particle_filter_alice_v0_a0cbed3071ceb6695a637d155c85d7cec}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!acceptEta@{acceptEta}}
+\index{acceptEta@{acceptEta}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{acceptEta()}{acceptEta()}}
+{\footnotesize\ttfamily virtual bool Particle\+Filter\+Alice\+V0\+::accept\+Eta (\begin{DoxyParamCaption}\item[{double}]{eta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source_l00053}{53}} of file \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source}{Particle\+Filter\+Alice\+V0.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_filter_alice_v0_a24ecb5210de99c025e31c0b6fc5fd6c4}\label{class_particle_filter_alice_v0_a24ecb5210de99c025e31c0b6fc5fd6c4}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!getLongName@{getLongName}}
+\index{getLongName@{getLongName}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{getLongName()}{getLongName()}}
+{\footnotesize\ttfamily virtual TString Particle\+Filter\+Alice\+V0\+::get\+Long\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{class_particle_filter_alice_v0_aae0328c2add3f9710e7565b64bcfbc0c}\label{class_particle_filter_alice_v0_aae0328c2add3f9710e7565b64bcfbc0c}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!getLongTitle@{getLongTitle}}
+\index{getLongTitle@{getLongTitle}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{getLongTitle()}{getLongTitle()}}
+{\footnotesize\ttfamily virtual TString Particle\+Filter\+Alice\+V0\+::get\+Long\+Title (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{class_particle_filter_alice_v0_a804e988e963ceda8ff9b648bc5bdbb62}\label{class_particle_filter_alice_v0_a804e988e963ceda8ff9b648bc5bdbb62}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!getName@{getName}}
+\index{getName@{getName}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily virtual TString Particle\+Filter\+Alice\+V0\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{class_particle_filter_alice_v0_a20041b85c44e61904a39bd2ddf2316e4}\label{class_particle_filter_alice_v0_a20041b85c44e61904a39bd2ddf2316e4}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!getTitle@{getTitle}}
+\index{getTitle@{getTitle}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{getTitle()}{getTitle()}}
+{\footnotesize\ttfamily virtual TString Particle\+Filter\+Alice\+V0\+::get\+Title (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{class_particle_filter_alice_v0_a3b09537f72becefb6c84422af13cebdc}\label{class_particle_filter_alice_v0_a3b09537f72becefb6c84422af13cebdc}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!operator=@{operator=}}
+\index{operator=@{operator=}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_filter_alice_v0}{Particle\+Filter\+Alice\+V0}} \& Particle\+Filter\+Alice\+V0\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_particle_filter_alice_v0}{Particle\+Filter\+Alice\+V0}} \&}]{other\+Filter }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_filter_alice_v0_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_particle_filter_alice_v0_8cpp_source}{Particle\+Filter\+Alice\+V0.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_filter_alice_v0_a20603241038756b87e6ca73a82e3d31b}\label{class_particle_filter_alice_v0_a20603241038756b87e6ca73a82e3d31b}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!printProperties@{printProperties}}
+\index{printProperties@{printProperties}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{printProperties()}{printProperties()}}
+{\footnotesize\ttfamily virtual void Particle\+Filter\+Alice\+V0\+::print\+Properties (\begin{DoxyParamCaption}\item[{ostream \&}]{os }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_particle_filter_alice_v0_ac5c86bd080e411640801ac22aec3471a}\label{class_particle_filter_alice_v0_ac5c86bd080e411640801ac22aec3471a}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!max\_eta\_v0A@{max\_eta\_v0A}}
+\index{max\_eta\_v0A@{max\_eta\_v0A}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{max\_eta\_v0A}{max\_eta\_v0A}}
+{\footnotesize\ttfamily double Particle\+Filter\+Alice\+V0\+::max\+\_\+eta\+\_\+v0A\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source_l00079}{79}} of file \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source}{Particle\+Filter\+Alice\+V0.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_filter_alice_v0_a1c9af72a913269245b4a6644654e9b09}\label{class_particle_filter_alice_v0_a1c9af72a913269245b4a6644654e9b09}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!max\_eta\_v0C@{max\_eta\_v0C}}
+\index{max\_eta\_v0C@{max\_eta\_v0C}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{max\_eta\_v0C}{max\_eta\_v0C}}
+{\footnotesize\ttfamily double Particle\+Filter\+Alice\+V0\+::max\+\_\+eta\+\_\+v0C\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source}{Particle\+Filter\+Alice\+V0.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_filter_alice_v0_ab1c9ce331b19533c19333b7855c15eb4}\label{class_particle_filter_alice_v0_ab1c9ce331b19533c19333b7855c15eb4}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!min\_eta\_v0A@{min\_eta\_v0A}}
+\index{min\_eta\_v0A@{min\_eta\_v0A}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{min\_eta\_v0A}{min\_eta\_v0A}}
+{\footnotesize\ttfamily double Particle\+Filter\+Alice\+V0\+::min\+\_\+eta\+\_\+v0A\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source}{Particle\+Filter\+Alice\+V0.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_filter_alice_v0_a49f47d0109f8aef3f8dc058986b637ce}\label{class_particle_filter_alice_v0_a49f47d0109f8aef3f8dc058986b637ce}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!min\_eta\_v0C@{min\_eta\_v0C}}
+\index{min\_eta\_v0C@{min\_eta\_v0C}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{min\_eta\_v0C}{min\_eta\_v0C}}
+{\footnotesize\ttfamily double Particle\+Filter\+Alice\+V0\+::min\+\_\+eta\+\_\+v0C\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source_l00080}{80}} of file \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source}{Particle\+Filter\+Alice\+V0.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_filter_alice_v0_a1b16b501b2080cb59c42131c6bba8288}\label{class_particle_filter_alice_v0_a1b16b501b2080cb59c42131c6bba8288}} 
+\index{ParticleFilterAliceV0@{ParticleFilterAliceV0}!v0Selected@{v0Selected}}
+\index{v0Selected@{v0Selected}!ParticleFilterAliceV0@{ParticleFilterAliceV0}}
+\doxysubsubsection{\texorpdfstring{v0Selected}{v0Selected}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_filter_alice_v0_abcf58772980b8a848b420d64f3030063}{V0\+Selection}} Particle\+Filter\+Alice\+V0\+::v0\+Selected\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{_particle_filter_alice_v0_8hpp_source}{Particle\+Filter\+Alice\+V0.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_particle_filter_alice_v0_8hpp}{Particle\+Filter\+Alice\+V0.\+hpp}}\item 
+Base/\mbox{\hyperlink{_particle_filter_alice_v0_8cpp}{Particle\+Filter\+Alice\+V0.\+cpp}}\end{DoxyCompactItemize}

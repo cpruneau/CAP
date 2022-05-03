@@ -1,0 +1,102 @@
+\hypertarget{class_nucleon_nucleon_collision_generator}{}\doxysection{Nucleon\+Nucleon\+Collision\+Generator Class Reference}
+\label{class_nucleon_nucleon_collision_generator}\index{NucleonNucleonCollisionGenerator@{NucleonNucleonCollisionGenerator}}
+
+
+{\ttfamily \#include $<$Nucleon\+Nucleon\+Collision\+Generator.\+hpp$>$}
+
+
+
+Inheritance diagram for Nucleon\+Nucleon\+Collision\+Generator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_nucleon_nucleon_collision_generator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Nucleon\+Nucleon\+Collision\+Generator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_nucleon_nucleon_collision_generator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_nucleon_nucleon_collision_generator_a35853ff107f07e6a138841cdc689771c}{Nucleon\+Nucleon\+Collision\+Generator}} (const TString \&\+\_\+name, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&\+\_\+event\+Filters, vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&\+\_\+particle\+Filters, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \+\_\+selected\+Level)
+\item 
+virtual \mbox{\hyperlink{class_nucleon_nucleon_collision_generator_ae81156a09f4c98eb3da8ca56cc99827a}{$\sim$\+Nucleon\+Nucleon\+Collision\+Generator}} ()
+\item 
+virtual void \mbox{\hyperlink{class_nucleon_nucleon_collision_generator_ad80ca783ffd7292b0d7a8f7445cd9f78}{generate}} (\mbox{\hyperlink{class_particle}{Particle}} $\ast$parent)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Generic and abstract task used for the generation of NN collisions 
+
+Definition at line \mbox{\hyperlink{_nucleon_nucleon_collision_generator_8hpp_source_l00010}{10}} of file \mbox{\hyperlink{_nucleon_nucleon_collision_generator_8hpp_source}{Nucleon\+Nucleon\+Collision\+Generator.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_nucleon_nucleon_collision_generator_a35853ff107f07e6a138841cdc689771c}\label{class_nucleon_nucleon_collision_generator_a35853ff107f07e6a138841cdc689771c}} 
+\index{NucleonNucleonCollisionGenerator@{NucleonNucleonCollisionGenerator}!NucleonNucleonCollisionGenerator@{NucleonNucleonCollisionGenerator}}
+\index{NucleonNucleonCollisionGenerator@{NucleonNucleonCollisionGenerator}!NucleonNucleonCollisionGenerator@{NucleonNucleonCollisionGenerator}}
+\doxysubsubsection{\texorpdfstring{NucleonNucleonCollisionGenerator()}{NucleonNucleonCollisionGenerator()}}
+{\footnotesize\ttfamily Nucleon\+Nucleon\+Collision\+Generator\+::\+Nucleon\+Nucleon\+Collision\+Generator (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&}]{\+\_\+event\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&}]{\+\_\+particle\+Filters,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{\+\_\+selected\+Level }\end{DoxyParamCaption})}
+
+Detailed CTOR
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+name} & Name given to task instance \\
+\hline
+{\em \+\_\+configuration} & \mbox{\hyperlink{class_configuration}{Configuration}} used to run this task \\
+\hline
+{\em \+\_\+event\+Filters} & Array of event filters to be used by this task \\
+\hline
+{\em \+\_\+particle\+Filters} & Array of particle filters to be used by this task \\
+\hline
+{\em \+\_\+report\+Level} & Message log level to be used by this task. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_nucleon_nucleon_collision_generator_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{_nucleon_nucleon_collision_generator_8cpp_source}{Nucleon\+Nucleon\+Collision\+Generator.\+cpp}}.
+
+\mbox{\Hypertarget{class_nucleon_nucleon_collision_generator_ae81156a09f4c98eb3da8ca56cc99827a}\label{class_nucleon_nucleon_collision_generator_ae81156a09f4c98eb3da8ca56cc99827a}} 
+\index{NucleonNucleonCollisionGenerator@{NucleonNucleonCollisionGenerator}!````~NucleonNucleonCollisionGenerator@{$\sim$NucleonNucleonCollisionGenerator}}
+\index{````~NucleonNucleonCollisionGenerator@{$\sim$NucleonNucleonCollisionGenerator}!NucleonNucleonCollisionGenerator@{NucleonNucleonCollisionGenerator}}
+\doxysubsubsection{\texorpdfstring{$\sim$NucleonNucleonCollisionGenerator()}{~NucleonNucleonCollisionGenerator()}}
+{\footnotesize\ttfamily virtual Nucleon\+Nucleon\+Collision\+Generator\+::$\sim$\+Nucleon\+Nucleon\+Collision\+Generator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+DTOR 
+
+Definition at line \mbox{\hyperlink{_nucleon_nucleon_collision_generator_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{_nucleon_nucleon_collision_generator_8hpp_source}{Nucleon\+Nucleon\+Collision\+Generator.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_nucleon_nucleon_collision_generator_ad80ca783ffd7292b0d7a8f7445cd9f78}\label{class_nucleon_nucleon_collision_generator_ad80ca783ffd7292b0d7a8f7445cd9f78}} 
+\index{NucleonNucleonCollisionGenerator@{NucleonNucleonCollisionGenerator}!generate@{generate}}
+\index{generate@{generate}!NucleonNucleonCollisionGenerator@{NucleonNucleonCollisionGenerator}}
+\doxysubsubsection{\texorpdfstring{generate()}{generate()}}
+{\footnotesize\ttfamily void Nucleon\+Nucleon\+Collision\+Generator\+::generate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{parent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Generate a particle according to the task parameters set at construction and fill the given particle instance. 
+
+Reimplemented in \mbox{\hyperlink{class_resonance_generator_a4c61d8b10cfad7afe6107ea930e45ab6}{Resonance\+Generator}}, \mbox{\hyperlink{class_hadron_gas_generator_task_a7c1cf933ab58457442f9405afc81652a}{Hadron\+Gas\+Generator\+Task}}, and \mbox{\hyperlink{class_pythia_event_generator_ad1cacc2d3f70494ec5f261b0675798f9}{Pythia\+Event\+Generator}}.
+
+
+
+Definition at line \mbox{\hyperlink{_nucleon_nucleon_collision_generator_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{_nucleon_nucleon_collision_generator_8cpp_source}{Nucleon\+Nucleon\+Collision\+Generator.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_nucleon_nucleon_collision_generator_8hpp}{Nucleon\+Nucleon\+Collision\+Generator.\+hpp}}\item 
+Base/\mbox{\hyperlink{_nucleon_nucleon_collision_generator_8cpp}{Nucleon\+Nucleon\+Collision\+Generator.\+cpp}}\end{DoxyCompactItemize}

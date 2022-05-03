@@ -1,0 +1,83 @@
+\hypertarget{_epos_event_reader_8hpp_source}{}\doxysection{Epos\+Event\+Reader.\+hpp}
+\label{_epos_event_reader_8hpp_source}\index{Epos/EposEventReader.hpp@{Epos/EposEventReader.hpp}}
+\mbox{\hyperlink{_epos_event_reader_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef WAC\_EposEventReader}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define WAC\_EposEventReader}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}TChain.h"{}}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}TTree.h"{}}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}TBranch.h"{}}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_event_filter_8hpp}{EventFilter.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_filter_8hpp}{ParticleFilter.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00019}00019 \textcolor{keyword}{class }\mbox{\hyperlink{class_epos_event_reader}{EposEventReader}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00020}00020 \{}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00021}00021 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00023}00023   \mbox{\hyperlink{class_epos_event_reader_a3b6d4599a313cae1197864001c4e653f}{EposEventReader}}(\textcolor{keyword}{const} TString \& name,}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00024}00024                   TaskConfiguration * \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}},}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00025}00025                   \mbox{\hyperlink{class_event}{Event}} * event,}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00026}00026                   \mbox{\hyperlink{class_event_filter}{EventFilter}} * ef,}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00027}00027                   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}} * pf);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00028}\mbox{\hyperlink{class_epos_event_reader_a233d0355238939c58ebfd5bcb991e249}{00028}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_epos_event_reader_a233d0355238939c58ebfd5bcb991e249}{\string~EposEventReader}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00029}\mbox{\hyperlink{class_epos_event_reader_a6385c728405a49748f8c31950d784789}{00029}}   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_epos_event_reader_a6385c728405a49748f8c31950d784789}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00030}\mbox{\hyperlink{class_epos_event_reader_a2dd41fac8728994add291b8342944a73}{00030}}   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_epos_event_reader_a2dd41fac8728994add291b8342944a73}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00031}00031   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_epos_event_reader_ab7169b7517f3b93a1982c7d6527f6c47}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00033}\mbox{\hyperlink{class_epos_event_reader_a5ed3c75eec512d374f63451a1170b144}{00033}}   Int\_t \mbox{\hyperlink{class_epos_event_reader_a5ed3c75eec512d374f63451a1170b144}{GetEntry}}(Long64\_t entry);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00034}\mbox{\hyperlink{class_epos_event_reader_ad85463bdc313327218d1462df45d1bf2}{00034}}   Long64\_t \mbox{\hyperlink{class_epos_event_reader_ad85463bdc313327218d1462df45d1bf2}{LoadTree}}(Long64\_t entry);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00035}\mbox{\hyperlink{class_epos_event_reader_a1f09cba329ef31dbe18091d189a213dc}{00035}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_epos_event_reader_a1f09cba329ef31dbe18091d189a213dc}{Init}}(TTree *tree);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00036}\mbox{\hyperlink{class_epos_event_reader_a3c0c2164a0f7b882e68e31a319500beb}{00036}}   Bool\_t \mbox{\hyperlink{class_epos_event_reader_a3c0c2164a0f7b882e68e31a319500beb}{Notify}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00037}\mbox{\hyperlink{class_epos_event_reader_a4f33ea50f49e44b02cdf1732d122f3bb}{00037}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_epos_event_reader_a4f33ea50f49e44b02cdf1732d122f3bb}{Show}}(Long64\_t entry);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00038}\mbox{\hyperlink{class_epos_event_reader_abc60e8e7602558c92cbd544889d694ef}{00038}}   Int\_t \mbox{\hyperlink{class_epos_event_reader_abc60e8e7602558c92cbd544889d694ef}{Cut}}(Long64\_t entry);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00041}00041   \textcolor{comment}{// Data members}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00043}00043 \textcolor{comment}{}  TTree          *\mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}};   }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00044}00044   Int\_t           \mbox{\hyperlink{class_epos_event_reader_afd54acff3e63cb73ebaeeccade2814f6}{fCurrent}}; }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00046}00046   Long64\_t \mbox{\hyperlink{class_epos_event_reader_ae198255e73b5a442a74fe2abe8029f08}{nentries}};}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00047}00047   Long64\_t \mbox{\hyperlink{class_epos_event_reader_af81aa687420d09564ae8901689f854b1}{nbytes}};}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00048}00048   Long64\_t \mbox{\hyperlink{class_epos_event_reader_affe0243fd48ab9f86ef1c6091a0b2f58}{nb}};}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00050}00050   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_epos_event_reader_a4192accf897e56c181f23af68e451ea6}{jentry}};}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00052}\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{00052}}   \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{arraySize}} = 22000;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00054}00054    \textcolor{comment}{// Declaration of leaf types}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00055}\mbox{\hyperlink{class_epos_event_reader_a367b3f9175004086133dc55519c759c5}{00055}}    Int\_t           \mbox{\hyperlink{class_epos_event_reader_a367b3f9175004086133dc55519c759c5}{events}};}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00056}\mbox{\hyperlink{class_epos_event_reader_abfa9639e2100661d94f20b6a2aabf012}{00056}}    Int\_t           \mbox{\hyperlink{class_epos_event_reader_abfa9639e2100661d94f20b6a2aabf012}{mult}};}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00057}\mbox{\hyperlink{class_epos_event_reader_a2d74c695355b8c70e7941a09822eb2da}{00057}}    Float\_t         \mbox{\hyperlink{class_epos_event_reader_a2d74c695355b8c70e7941a09822eb2da}{impact}};}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00058}\mbox{\hyperlink{class_epos_event_reader_a7a414e63738a819ffc1af4c280bf539d}{00058}}    Int\_t           \mbox{\hyperlink{class_epos_event_reader_a7a414e63738a819ffc1af4c280bf539d}{pid}}[\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{arraySize}}];   \textcolor{comment}{//[Mult]}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00059}\mbox{\hyperlink{class_epos_event_reader_a73785b32ef4260bc72726a8ad8838fc8}{00059}}    Float\_t         \mbox{\hyperlink{class_epos_event_reader_a73785b32ef4260bc72726a8ad8838fc8}{px}}[\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{arraySize}}];   \textcolor{comment}{//[Mult]}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00060}\mbox{\hyperlink{class_epos_event_reader_a50081a677f7506559db4208de2b9273d}{00060}}    Float\_t         \mbox{\hyperlink{class_epos_event_reader_a50081a677f7506559db4208de2b9273d}{py}}[\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{arraySize}}];   \textcolor{comment}{//[Mult]}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00061}\mbox{\hyperlink{class_epos_event_reader_a651951ae21047a2e5496d49ed2037f7e}{00061}}    Float\_t         \mbox{\hyperlink{class_epos_event_reader_a651951ae21047a2e5496d49ed2037f7e}{pz}}[\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{arraySize}}];   \textcolor{comment}{//[Mult]}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00062}\mbox{\hyperlink{class_epos_event_reader_a5c01927f8d001f0f66ca91b9e324b629}{00062}}    Float\_t         \mbox{\hyperlink{class_epos_event_reader_a5c01927f8d001f0f66ca91b9e324b629}{e}}[\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{arraySize}}];   \textcolor{comment}{//[Mult]}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00064}00064    \textcolor{comment}{// List of branches}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00065}00065    TBranch        *\mbox{\hyperlink{class_epos_event_reader_aae4cc1fc27ee8eca3d7805c349d1bff7}{b\_Events}};   }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00066}00066    TBranch        *\mbox{\hyperlink{class_epos_event_reader_a8c2c9f893b94b0f23895475fa8b4d3e9}{b\_Mult}};   }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00067}00067    TBranch        *\mbox{\hyperlink{class_epos_event_reader_ad95987c9be9ae2232054a2d1149b368e}{b\_Impact}};   }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00068}00068    TBranch        *\mbox{\hyperlink{class_epos_event_reader_aa238ee93bf3b8efccba6fea8bb4a0515}{b\_PID}};   }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00069}00069    TBranch        *\mbox{\hyperlink{class_epos_event_reader_a25de43eaa1ff4a4408206b39c1e2fc5d}{b\_Px}};   }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00070}00070    TBranch        *\mbox{\hyperlink{class_epos_event_reader_ad2965b726ee449874ff45364f202166b}{b\_Py}};   }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00071}00071    TBranch        *\mbox{\hyperlink{class_epos_event_reader_a65a3ac847d20bb000c1dc35fafb1fe1c}{b\_Pz}};   }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00072}00072    TBranch        *\mbox{\hyperlink{class_epos_event_reader_aacf55ecabc6b3847b8db3e60e5b3216d}{b\_E}};   }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00073}\mbox{\hyperlink{class_epos_event_reader_a35e4f13c870dfa771deef7b15a4c1017}{00073}}   \mbox{\hyperlink{class_event_filter}{EventFilter}} * \mbox{\hyperlink{class_epos_event_reader_a35e4f13c870dfa771deef7b15a4c1017}{eventFilter}};}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00074}\mbox{\hyperlink{class_epos_event_reader_aaf6ce483ef7f0da9576370b030c7cdc0}{00074}}   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}} * \mbox{\hyperlink{class_epos_event_reader_aaf6ce483ef7f0da9576370b030c7cdc0}{particleFilter}};}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00076}00076   ClassDef(\mbox{\hyperlink{class_epos_event_reader}{EposEventReader}},0)}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00077}00077 \};}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8hpp_source_l00079}00079 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* WAC\_EposEventReader */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

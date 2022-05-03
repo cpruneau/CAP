@@ -1,0 +1,139 @@
+\hypertarget{_p_t_histos_8hpp_source}{}\doxysection{PTHistos.\+hpp}
+\label{_p_t_histos_8hpp_source}\index{Base/PTHistos.hpp@{Base/PTHistos.hpp}}
+\mbox{\hyperlink{_p_t_histos_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef CAP\_\_PTHistos}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define CAP\_\_PTHistos}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00003}00003 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_histograms_8hpp}{Histograms.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_configuration_8hpp}{Configuration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include "{}TMath.h"{}}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <cstdlib>}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00008}00008 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00010}\mbox{\hyperlink{class_p_t_histos}{00010}} \textcolor{keyword}{class }\mbox{\hyperlink{class_p_t_histos}{PTHistos}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_histograms}{Histograms}}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00011}00011 \{}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00012}00012 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00014}00014   \mbox{\hyperlink{class_p_t_histos_aaebe254d37072f236b960f2f76b8caf4}{PTHistos}}(\textcolor{keyword}{const} TString \& collectionName,}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00015}00015            \mbox{\hyperlink{class_configuration}{Configuration}} * analysisConfiguration,}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00016}00016            \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}  debugLevel,}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00017}00017            \textcolor{keywordtype}{int} ord);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00018}00018   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_p_t_histos_a34d08528d024c471c5121ff3365e8022}{\string~PTHistos}}();}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00020}00020   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_p_t_histos_aa4381a0d50ad238845e5f650118127ac}{createHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00021}00021   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_p_t_histos_a7aba54b46050c5ba011b7d24b7a65cf6}{loadHistograms}}(TFile * inputFile);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00022}00022   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_p_t_histos_aa2434c4eb18b1f1cc327138e0f14efde}{fillDerivedHistos}}(\textcolor{keywordtype}{bool} *** acceptances, \textcolor{keywordtype}{double} * mults, \textcolor{keywordtype}{double} * cents, \textcolor{keywordtype}{int} * numParticles, \textcolor{keywordtype}{double} ** pT);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00023}00023   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_p_t_histos_a464c19b6ab93f3ca9d4cda1499534be5}{saveHistograms}}(TFile * outputFile, \textcolor{keywordtype}{bool} saveAll=\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00024}00024   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_p_t_histos_ada7217e39988a152d56e2cf659ee0938}{createHistogramRec}}(TString * baseName, TString * baseTitle, \textcolor{keywordtype}{int} depth, \textcolor{keywordtype}{int} partIndex);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00025}00025   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_p_t_histos_a0c8c0dca4600735e94ccb2bc8236c30d}{loadHistogramRec}}(TString * baseName, \textcolor{keywordtype}{int} depth, \textcolor{keywordtype}{int} partIndex, TFile * inputFile);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00026}00026   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_p_t_histos_af1069f343b11ca37c73c0cd241ce8570}{fillEventHistos}}(\textcolor{keywordtype}{double} mult, \textcolor{keywordtype}{double} \mbox{\hyperlink{run_urqmd_8c_a5fb93c8274d871fe03f71e4c5f7b0f7e}{cent}}, \textcolor{keywordtype}{double} weight);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00027}00027   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_p_t_histos_a44b75fcbf674cb5316472d0947785e73}{fillNormalizedPTValues}}( \textcolor{keywordtype}{int} depth, \textcolor{keywordtype}{int} partIndex, \textcolor{keywordtype}{double} product, \textcolor{keywordtype}{double} * \mbox{\hyperlink{class_p_t_histos_a85e71a439ca3925b4594af371b92fd41}{SValues}}, \textcolor{keywordtype}{double}  mult, \textcolor{keywordtype}{double}  \mbox{\hyperlink{run_urqmd_8c_a5fb93c8274d871fe03f71e4c5f7b0f7e}{cent}});}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00028}00028   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_p_t_histos_a44b75fcbf674cb5316472d0947785e73}{fillNormalizedPTValues}}( \textcolor{keywordtype}{int} depth, \textcolor{keywordtype}{int} partIndex, \textcolor{keywordtype}{double} product, TH1 *** values, \textcolor{keywordtype}{int}* \mbox{\hyperlink{class_p_t_histos_a3ca9f8bb6d8dd4f3385bfef2db1c1297}{reorder}}, \textcolor{keywordtype}{int}*  nBin);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00029}00029   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_p_t_histos_aa848c24446cba7342a12164458a1da33}{calculateCumulants}}(TProfile ** Shistos, TH1 **CHistos, \textcolor{keywordtype}{int} nBins, \textcolor{keywordtype}{double} min, \textcolor{keywordtype}{double} max);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00030}00030   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_p_t_histos_af23abe41481a60c16999b32816570668}{calcRecSum}}(TH1 **CHistos, \textcolor{keywordtype}{int} iBin, \textcolor{keywordtype}{double}\& absESq, \textcolor{keywordtype}{double} curRelESq, \textcolor{keywordtype}{int}* iHisto, \textcolor{keywordtype}{int}* Subset, \textcolor{keywordtype}{int} len,  \textcolor{keywordtype}{int} * set, \textcolor{keywordtype}{int} lenSet, \textcolor{keywordtype}{double} productC, \textcolor{keywordtype}{double}* used, \textcolor{keywordtype}{int}\& curInd, \textcolor{keywordtype}{int} productS, \textcolor{keywordtype}{double}\& sum);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00031}00031   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_p_t_histos_a7ceb851a3121dbd4fb098f19ae1998de}{calculateInclusivePtAverage}}(\textcolor{keywordtype}{bool} *** acceptances, \textcolor{keywordtype}{int} * numParticles, \textcolor{keywordtype}{double} ** pT);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00032}00032   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_p_t_histos_ae2364263f944bce359f1e580b89a2bd9}{calculateInclusiveYieldsAverage}}(\textcolor{keywordtype}{bool} *** acceptances, \textcolor{keywordtype}{int} * numParticles);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00033}00033   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_p_t_histos_a84486e7e14a1535a223588bbf8bdd554}{calculateEventMoments}}(\textcolor{keywordtype}{bool} *** acceptances, \textcolor{keywordtype}{int} * numParticles, \textcolor{keywordtype}{double} ** pT);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00036}00036   \textcolor{comment}{//Helper Functions}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00038}00038 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00039}00039   \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_p_t_histos_a1dc0d79c1d33540b46d48d5af1c522e7}{convert}}(\textcolor{keywordtype}{int} * num, \textcolor{keywordtype}{int} len);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00040}00040   \textcolor{keyword}{virtual} \textcolor{keywordtype}{int}* \mbox{\hyperlink{class_p_t_histos_a1dc0d79c1d33540b46d48d5af1c522e7}{convert}}(\textcolor{keywordtype}{int} num, \textcolor{keywordtype}{int} \& len);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00041}00041   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_p_t_histos_af815bf1adf8d5faea992a3843c06a7d9}{convertToBinary}}(\textcolor{keywordtype}{int} num, \textcolor{keywordtype}{char}*str, \textcolor{keywordtype}{int} len );}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00042}00042   \textcolor{keyword}{virtual} \textcolor{keywordtype}{int}* \mbox{\hyperlink{class_p_t_histos_a216b09a2abd29f7c654d94d4554d7d29}{getSubset}}(\textcolor{keywordtype}{char}* subset, \textcolor{keywordtype}{int} * set, \textcolor{keywordtype}{int} len, \textcolor{keywordtype}{int}\& lenSub);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00043}00043   \textcolor{keyword}{virtual} \textcolor{keywordtype}{int}* \mbox{\hyperlink{class_p_t_histos_a2bf58fafedaabe1da451c238fa087226}{getComplementarySubset}}(\textcolor{keywordtype}{char}* subset, \textcolor{keywordtype}{int} * set, \textcolor{keywordtype}{int} len, \textcolor{keywordtype}{int}\& lenSub);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00044}00044   \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_p_t_histos_a2f64791221fabb47a573ad999cc544cd}{getSubsetNumber}}(\textcolor{keywordtype}{int} * subset, \textcolor{keywordtype}{int} lenSub, \textcolor{keywordtype}{int} * mainset, \textcolor{keywordtype}{int} lenSet);}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00049}00049   \textcolor{comment}{// Data Members -\/ Histograms}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00051}00051 \textcolor{comment}{}  \textcolor{comment}{// S is the pT deviation moments}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00052}00052   \textcolor{comment}{// s are the normalized moments}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00053}00053   \textcolor{comment}{// s* are the moments normalized by average pT's}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00054}00054   \textcolor{comment}{// C is the cumulants}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00055}00055   \textcolor{comment}{// c are the normalized cumulants}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00056}00056   \textcolor{comment}{// c* are the cumulants normalizd by average pT's}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00058}00058   \textcolor{comment}{//maximum order of correlation functions (2,3,4 ...) }}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00059}00059   \textcolor{comment}{//order is also equal to number of particle filters in PTCorrelator}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00060}\mbox{\hyperlink{class_p_t_histos_add62688e2ab6224fa347372577af1f3e}{00060}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_p_t_histos_add62688e2ab6224fa347372577af1f3e}{maxOrder}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00062}\mbox{\hyperlink{class_p_t_histos_ac6af901169e12468678239cb7fc11cb4}{00062}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_p_t_histos_ac6af901169e12468678239cb7fc11cb4}{histoIndex}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00064}00064   \textcolor{comment}{//size of   TProfile ** h\_c array}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00065}\mbox{\hyperlink{class_p_t_histos_abb5deb2f0d9928b270d561c9fcfd5942}{00065}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_p_t_histos_abb5deb2f0d9928b270d561c9fcfd5942}{size}}; }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00067}00067   \textcolor{comment}{//keep track of the orders of the correlation functions in the histograms}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00068}\mbox{\hyperlink{class_p_t_histos_afb7cd923d1bce97ee38680c6d8f4e28f}{00068}}   \textcolor{keywordtype}{int} * \mbox{\hyperlink{class_p_t_histos_afb7cd923d1bce97ee38680c6d8f4e28f}{orders}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00070}00070   \textcolor{comment}{// Min bias all included NOT IN ORDER (They are in "{}recursive order"{})}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00071}00071   \textcolor{comment}{// in the order S, s, s*, C, c, }}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00072}\mbox{\hyperlink{class_p_t_histos_a96b92eb4fa8c8b9a2981c76f7cbd55c9}{00072}}   TH1 * \mbox{\hyperlink{class_p_t_histos_a96b92eb4fa8c8b9a2981c76f7cbd55c9}{h\_eventStreams}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00073}00073   \textcolor{comment}{//first index is function index, second index is histo index}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00074}\mbox{\hyperlink{class_p_t_histos_a25663aebe6d554a055b9df67ac252c65}{00074}}   TProfile *** \mbox{\hyperlink{class_p_t_histos_a25663aebe6d554a055b9df67ac252c65}{hS}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00075}\mbox{\hyperlink{class_p_t_histos_a95c941b8d136ef0e79c825e5b7872c69}{00075}}   TH1 *** \mbox{\hyperlink{class_p_t_histos_a95c941b8d136ef0e79c825e5b7872c69}{hC}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00079}00079   \textcolor{comment}{// vs Mult measured in fiducial NOT IN ORDER (They are in "{}recursive order"{})}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00080}00080   \textcolor{comment}{// in the order S, s, s*, C, c, }}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00081}\mbox{\hyperlink{class_p_t_histos_a1ec3e7081b4149ce1000e1493e194019}{00081}}   TH1 * \mbox{\hyperlink{class_p_t_histos_a1ec3e7081b4149ce1000e1493e194019}{h\_eventStreams\_vsMult}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00082}00082   \textcolor{comment}{//first index is function index, second index is histo index}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00083}\mbox{\hyperlink{class_p_t_histos_a356135a96faaa39ed22480cc27534284}{00083}}   TProfile *** \mbox{\hyperlink{class_p_t_histos_a356135a96faaa39ed22480cc27534284}{hS\_vsMult}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00084}\mbox{\hyperlink{class_p_t_histos_ac57414bf556ecd8eaf1eb1315bc21458}{00084}}   TH1 *** \mbox{\hyperlink{class_p_t_histos_ac57414bf556ecd8eaf1eb1315bc21458}{hC\_vsMult}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00087}00087   \textcolor{comment}{// vs Centrality NOT IN ORDER (They are in "{}recursive order"{})}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00088}00088   \textcolor{comment}{// in the order S, s, s*, C, c, c*}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00089}\mbox{\hyperlink{class_p_t_histos_a421a2e0c7b46a004a10e33d809c149f0}{00089}}   TH1 * \mbox{\hyperlink{class_p_t_histos_a421a2e0c7b46a004a10e33d809c149f0}{h\_eventStreams\_vsCent}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00090}00090   \textcolor{comment}{//first index is function index, second index is histo index}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00091}\mbox{\hyperlink{class_p_t_histos_ab23172565f04f601987b4879d5ca64e8}{00091}}   TProfile *** \mbox{\hyperlink{class_p_t_histos_ab23172565f04f601987b4879d5ca64e8}{hS\_vsCent}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00092}\mbox{\hyperlink{class_p_t_histos_acc358c94c93f9f0d40030f414184b51c}{00092}}   TH1 *** \mbox{\hyperlink{class_p_t_histos_acc358c94c93f9f0d40030f414184b51c}{hC\_vsCent}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00095}00095   \textcolor{comment}{//number of pairs, triples ... NOT IN ORDER (They are in "{}recursive order"{})}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00096}\mbox{\hyperlink{class_p_t_histos_a0a04ad77abd7de1eb63e9206d2a34248}{00096}}   TProfile ** \mbox{\hyperlink{class_p_t_histos_a0a04ad77abd7de1eb63e9206d2a34248}{h\_counts}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00097}\mbox{\hyperlink{class_p_t_histos_abc8630750adf898428948fbe3ea0d503}{00097}}   TProfile ** \mbox{\hyperlink{class_p_t_histos_abc8630750adf898428948fbe3ea0d503}{h\_counts\_vsMult}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00098}\mbox{\hyperlink{class_p_t_histos_a4e0cecdcc46889a0784edcb63abe7ba6}{00098}}   TProfile ** \mbox{\hyperlink{class_p_t_histos_a4e0cecdcc46889a0784edcb63abe7ba6}{h\_counts\_vsCent}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00100}00100   \textcolor{comment}{//number of functions we are counting }}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00101}00101   \textcolor{comment}{// here it is 6 (S, s, s*, C, c, c*)}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00102}\mbox{\hyperlink{class_p_t_histos_ae09575bdd36eba6eb303fa7a5ea851c3}{00102}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_p_t_histos_ae09575bdd36eba6eb303fa7a5ea851c3}{numFunc}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00104}00104   \textcolor{comment}{//keep track of which index in "{}recursive order"{} corresponds to which index in normal order}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00105}\mbox{\hyperlink{class_p_t_histos_a3ca9f8bb6d8dd4f3385bfef2db1c1297}{00105}}   \textcolor{keywordtype}{int} * \mbox{\hyperlink{class_p_t_histos_a3ca9f8bb6d8dd4f3385bfef2db1c1297}{reorder}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00107}\mbox{\hyperlink{class_p_t_histos_a1c61057780ac37d5362df5f4ff3edb62}{00107}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_p_t_histos_a1c61057780ac37d5362df5f4ff3edb62}{totEvents}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00109}00109   \textcolor{comment}{//store the inclusive avgpT of each of the particle filters}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00110}\mbox{\hyperlink{class_p_t_histos_aba33fcf65dd87a6ba7d682ea5501dec6}{00110}}   \textcolor{keywordtype}{double} * \mbox{\hyperlink{class_p_t_histos_aba33fcf65dd87a6ba7d682ea5501dec6}{avgpT}}; }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00111}00111   }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00112}00112   \textcolor{comment}{//store the inclusive average yields of each combination of particle filters (1, 2 ... 4, 11, 12, ... 44 ...)}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00113}00113   \textcolor{comment}{//calculated in normal order, but then changed into recursive order.}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00114}\mbox{\hyperlink{class_p_t_histos_a1fd0e08568e74faff4c953a343bf8ef8}{00114}}   \textcolor{keywordtype}{double} * \mbox{\hyperlink{class_p_t_histos_a1fd0e08568e74faff4c953a343bf8ef8}{avgCounts}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00116}00116   \textcolor{comment}{//store the yields of each combination of particle filters (1, 2 ... 4, 11, 12, ... 44 ...) per event}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00117}00117   \textcolor{comment}{//first index is event number}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00118}00118   \textcolor{comment}{//calculated in normal order, but then changed into recursive order.}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00119}\mbox{\hyperlink{class_p_t_histos_a3967ef3771cae3fb4374665cbe81c32f}{00119}}   \textcolor{keywordtype}{int} ** \mbox{\hyperlink{class_p_t_histos_a3967ef3771cae3fb4374665cbe81c32f}{counts}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00121}00121   \textcolor{comment}{//store the moments of each combination of particle filters (1, 2 ... 4, 11, 12, ... 44 ...) per event}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00122}00122   \textcolor{comment}{//first index is event number}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00123}00123   \textcolor{comment}{//calculated in normal order, but then changed into recursive order.}}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00124}\mbox{\hyperlink{class_p_t_histos_a85e71a439ca3925b4594af371b92fd41}{00124}}   \textcolor{keywordtype}{double} ** \mbox{\hyperlink{class_p_t_histos_a85e71a439ca3925b4594af371b92fd41}{SValues}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00126}\mbox{\hyperlink{class_p_t_histos_afa2b356766ab8f8b2bfa6005a6c9a006}{00126}}   TString** \mbox{\hyperlink{class_p_t_histos_afa2b356766ab8f8b2bfa6005a6c9a006}{names}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00128}\mbox{\hyperlink{class_p_t_histos_aceb677a8f4c97ed89ec347629ffb6a91}{00128}} TString* *\mbox{\hyperlink{class_p_t_histos_aceb677a8f4c97ed89ec347629ffb6a91}{titles}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00129}00129 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00130}\mbox{\hyperlink{class_p_t_histos_aa6748aa1b64a47c840bcd79545ef38c8}{00130}} TString** \mbox{\hyperlink{class_p_t_histos_aa6748aa1b64a47c840bcd79545ef38c8}{names2}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00131}00131 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00132}\mbox{\hyperlink{class_p_t_histos_a281e55c78f53d33bc9c88d9dff708b89}{00132}} TString* *\mbox{\hyperlink{class_p_t_histos_a281e55c78f53d33bc9c88d9dff708b89}{titles2}};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00133}00133 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00134}00134   \mbox{\hyperlink{class_histogram_collection_a8ac292967dc3381d557d3eb2f5730b38}{ClassDef}}(\mbox{\hyperlink{class_p_t_histos}{PTHistos}},0)}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00135}00135 \};}
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{_p_t_histos_8hpp_source_l00137}00137 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_PTHistos  */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

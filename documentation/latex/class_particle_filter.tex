@@ -1,0 +1,138 @@
+\hypertarget{class_particle_filter}{}\doxysection{Particle\+Filter Class Reference}
+\label{class_particle_filter}\index{ParticleFilter@{ParticleFilter}}
+
+
+{\ttfamily \#include $<$Particle\+Filter.\+hpp$>$}
+
+
+
+Inheritance diagram for Particle\+Filter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=185pt]{class_particle_filter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Particle\+Filter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{class_particle_filter__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_particle_filter_ac5aeadcc4bf1f9f6a459562813e5b45f}{Particle\+Filter}} ()
+\item 
+\mbox{\hyperlink{class_particle_filter_a66f51dae907642daa8f06cefe11dac77}{Particle\+Filter}} (const \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} \&other\+Filter)
+\item 
+\mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} \& \mbox{\hyperlink{class_particle_filter_abfba3c131ffee429072f15b8e70c75ef}{operator=}} (const \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} \&other\+Filter)
+\item 
+virtual \mbox{\hyperlink{class_particle_filter_a11af91aa05d952e4b0c93f3d14ffbf26}{$\sim$\+Particle\+Filter}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_particle_filter_a8d9135b8eecd5fcb90ac3ba6566c7fed}{accept}} (const \mbox{\hyperlink{class_particle}{Particle}} \&particle)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \mbox{\hyperlink{class_particle_filter_ab0958a5a13805f4b8c7f7b290276f89f}{create\+Charged\+Hadron\+Filters}} (bool filtering\+On\+Pt, double min\+Pt, double max\+Pt, bool filtering\+On\+Eta, double min\+Eta, double max\+Eta, bool filtering\+OnY, double minY, double maxY)
+\item 
+static vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \mbox{\hyperlink{class_particle_filter_a438da9d967a7c1bef4343afae70a17a4}{create\+Plus\+Minus\+Hadron\+Filters}} (bool filtering\+On\+Pt, double min\+Pt, double max\+Pt, bool filtering\+On\+Eta, double min\+Eta, double max\+Eta, bool filtering\+OnY, double minY, double maxY)
+\begin{DoxyCompactList}\small\item\em Produce 6 particle filters\+: pi+, K+, p, pi-\/, K-\/, pbar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_particle_filter_8hpp_source_l00016}{16}} of file \mbox{\hyperlink{_particle_filter_8hpp_source}{Particle\+Filter.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_particle_filter_ac5aeadcc4bf1f9f6a459562813e5b45f}\label{class_particle_filter_ac5aeadcc4bf1f9f6a459562813e5b45f}} 
+\index{ParticleFilter@{ParticleFilter}!ParticleFilter@{ParticleFilter}}
+\index{ParticleFilter@{ParticleFilter}!ParticleFilter@{ParticleFilter}}
+\doxysubsubsection{\texorpdfstring{ParticleFilter()}{ParticleFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Particle\+Filter\+::\+Particle\+Filter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_filter_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{_particle_filter_8cpp_source}{Particle\+Filter.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_filter_a66f51dae907642daa8f06cefe11dac77}\label{class_particle_filter_a66f51dae907642daa8f06cefe11dac77}} 
+\index{ParticleFilter@{ParticleFilter}!ParticleFilter@{ParticleFilter}}
+\index{ParticleFilter@{ParticleFilter}!ParticleFilter@{ParticleFilter}}
+\doxysubsubsection{\texorpdfstring{ParticleFilter()}{ParticleFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Particle\+Filter\+::\+Particle\+Filter (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} \&}]{other\+Filter }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_filter_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{_particle_filter_8cpp_source}{Particle\+Filter.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_filter_a11af91aa05d952e4b0c93f3d14ffbf26}\label{class_particle_filter_a11af91aa05d952e4b0c93f3d14ffbf26}} 
+\index{ParticleFilter@{ParticleFilter}!````~ParticleFilter@{$\sim$ParticleFilter}}
+\index{````~ParticleFilter@{$\sim$ParticleFilter}!ParticleFilter@{ParticleFilter}}
+\doxysubsubsection{\texorpdfstring{$\sim$ParticleFilter()}{~ParticleFilter()}}
+{\footnotesize\ttfamily virtual Particle\+Filter\+::$\sim$\+Particle\+Filter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_filter_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{_particle_filter_8hpp_source}{Particle\+Filter.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_particle_filter_a8d9135b8eecd5fcb90ac3ba6566c7fed}\label{class_particle_filter_a8d9135b8eecd5fcb90ac3ba6566c7fed}} 
+\index{ParticleFilter@{ParticleFilter}!accept@{accept}}
+\index{accept@{accept}!ParticleFilter@{ParticleFilter}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily bool Particle\+Filter\+::accept (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_particle}{Particle}} \&}]{particle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+accept/reject the given particle based on filter parameter 
+
+Definition at line \mbox{\hyperlink{_particle_filter_8cpp_source_l00197}{197}} of file \mbox{\hyperlink{_particle_filter_8cpp_source}{Particle\+Filter.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_filter_ab0958a5a13805f4b8c7f7b290276f89f}\label{class_particle_filter_ab0958a5a13805f4b8c7f7b290276f89f}} 
+\index{ParticleFilter@{ParticleFilter}!createChargedHadronFilters@{createChargedHadronFilters}}
+\index{createChargedHadronFilters@{createChargedHadronFilters}!ParticleFilter@{ParticleFilter}}
+\doxysubsubsection{\texorpdfstring{createChargedHadronFilters()}{createChargedHadronFilters()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ Particle\+Filter\+::create\+Charged\+Hadron\+Filters (\begin{DoxyParamCaption}\item[{bool}]{filtering\+On\+Pt,  }\item[{double}]{min\+Pt,  }\item[{double}]{max\+Pt,  }\item[{bool}]{filtering\+On\+Eta,  }\item[{double}]{min\+Eta,  }\item[{double}]{max\+Eta,  }\item[{bool}]{filtering\+OnY,  }\item[{double}]{minY,  }\item[{double}]{maxY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Create + and -\/ charge filters with the given kinematical parameters 
+
+Definition at line \mbox{\hyperlink{_particle_filter_8cpp_source_l00126}{126}} of file \mbox{\hyperlink{_particle_filter_8cpp_source}{Particle\+Filter.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_filter_a438da9d967a7c1bef4343afae70a17a4}\label{class_particle_filter_a438da9d967a7c1bef4343afae70a17a4}} 
+\index{ParticleFilter@{ParticleFilter}!createPlusMinusHadronFilters@{createPlusMinusHadronFilters}}
+\index{createPlusMinusHadronFilters@{createPlusMinusHadronFilters}!ParticleFilter@{ParticleFilter}}
+\doxysubsubsection{\texorpdfstring{createPlusMinusHadronFilters()}{createPlusMinusHadronFilters()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ Particle\+Filter\+::create\+Plus\+Minus\+Hadron\+Filters (\begin{DoxyParamCaption}\item[{bool}]{filtering\+On\+Pt,  }\item[{double}]{min\+Pt,  }\item[{double}]{max\+Pt,  }\item[{bool}]{filtering\+On\+Eta,  }\item[{double}]{min\+Eta,  }\item[{double}]{max\+Eta,  }\item[{bool}]{filtering\+OnY,  }\item[{double}]{minY,  }\item[{double}]{maxY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Produce 6 particle filters\+: pi+, K+, p, pi-\/, K-\/, pbar. 
+
+
+
+Definition at line \mbox{\hyperlink{_particle_filter_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_particle_filter_8cpp_source}{Particle\+Filter.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_filter_abfba3c131ffee429072f15b8e70c75ef}\label{class_particle_filter_abfba3c131ffee429072f15b8e70c75ef}} 
+\index{ParticleFilter@{ParticleFilter}!operator=@{operator=}}
+\index{operator=@{operator=}!ParticleFilter@{ParticleFilter}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} \& Particle\+Filter\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} \&}]{other\+Filter }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_filter_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{_particle_filter_8cpp_source}{Particle\+Filter.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_particle_filter_8hpp}{Particle\+Filter.\+hpp}}\item 
+Base/\mbox{\hyperlink{_particle_filter_8cpp}{Particle\+Filter.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,25 @@
+var class_enhanced_graph =
+[
+    [ "EnhancedGraph", "class_enhanced_graph.html#a2c237fb8c309f41bf325339379521e3b", null ],
+    [ "EnhancedGraph", "class_enhanced_graph.html#ab024e508244a6561a7a294add3208aa0", null ],
+    [ "draw", "class_enhanced_graph.html#af8d14e481856e97be7896004c9eeaa9b", null ],
+    [ "printToFile", "class_enhanced_graph.html#aa97f1d65b02b6bde1bd64048595c2c05", null ],
+    [ "setMinMax", "class_enhanced_graph.html#abd556594a0a50aabf1f69b8712a6cc27", null ],
+    [ "setProperties", "class_enhanced_graph.html#a5172bffaaa3679335356b2a996963775", null ],
+    [ "exPtr", "class_enhanced_graph.html#ab84d31cccd8d2c6e9427908058014273", null ],
+    [ "eyPtr", "class_enhanced_graph.html#ac3a6a50a9ffcb35d5ce6daf200c4ca9d", null ],
+    [ "g", "class_enhanced_graph.html#a3e074791580ace69f7994990e3e24c42", null ],
+    [ "gM", "class_enhanced_graph.html#a4a4dd9cc8e6e73905a9ec15cca1ef655", null ],
+    [ "gP", "class_enhanced_graph.html#ab34a402dccfac6f9925587b8b642b1fc", null ],
+    [ "gSys", "class_enhanced_graph.html#a53f2045261ab41987e362566e72e6295", null ],
+    [ "isVisible", "class_enhanced_graph.html#ab56d44a39570a911ac3fb117f20af1dd", null ],
+    [ "nPoints", "class_enhanced_graph.html#a0abfa17a2a7353e24c785cd6c2ad04a2", null ],
+    [ "option", "class_enhanced_graph.html#a7320a8469bc636f6b0fa42e63ea80ec0", null ],
+    [ "sysAbsolute", "class_enhanced_graph.html#a0ea5cb8d21511b224052aca3c7bf04df", null ],
+    [ "xPtr", "class_enhanced_graph.html#ab69cde8675b4635e4712bc898a5736c8", null ],
+    [ "yM", "class_enhanced_graph.html#a477653d427bef651c582764db37a6d38", null ],
+    [ "yP", "class_enhanced_graph.html#a78591101d757075ad8cd2968b47a833b", null ],
+    [ "yPtr", "class_enhanced_graph.html#a91669353eb4eb1ecc33dc44f52ef6363", null ],
+    [ "ySysMPtr", "class_enhanced_graph.html#aba8935e87e0e7bb2aab3b50270e1e753", null ],
+    [ "ySysPPtr", "class_enhanced_graph.html#aa2fbb306c1e01df8da7dccf61be8a91e", null ]
+];

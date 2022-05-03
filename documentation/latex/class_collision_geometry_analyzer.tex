@@ -1,0 +1,176 @@
+\hypertarget{class_collision_geometry_analyzer}{}\doxysection{Collision\+Geometry\+Analyzer Class Reference}
+\label{class_collision_geometry_analyzer}\index{CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}}
+
+
+{\ttfamily \#include $<$Collision\+Geometry\+Analyzer.\+hpp$>$}
+
+
+
+Inheritance diagram for Collision\+Geometry\+Analyzer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{class_collision_geometry_analyzer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Collision\+Geometry\+Analyzer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_geometry_analyzer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_collision_geometry_analyzer_aa787204be8b191726e56d5a16a482df6}{Collision\+Geometry\+Analyzer}} (const TString \&\+\_\+name, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&\+\_\+event\+Filters, vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \+\_\+particle\+Filters, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Message\+Logger\+::\+Log\+Level}} \+\_\+report\+Level)
+\item 
+virtual \mbox{\hyperlink{class_collision_geometry_analyzer_a9ddada41273c6e0523d6937ed96099e0}{$\sim$\+Collision\+Geometry\+Analyzer}} ()
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_analyzer_a56d84224070304a024bce34189fa99e9}{set\+Default\+Configuration}} ()
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_analyzer_a21d62d7fcea4d46a3eaca41ea0141f4e}{execute}} ()
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_analyzer_a9ecf9557c398b217f604214d87a834a5}{create\+Histograms}} ()
+\item 
+virtual void \mbox{\hyperlink{class_collision_geometry_analyzer_a5e173b89f952c207d612bcb7753c33f9}{load\+Histograms}} (TFile $\ast$input\+File)
+\item 
+\mbox{\hyperlink{class_collision_geometry}{Collision\+Geometry}} $\ast$ \mbox{\hyperlink{class_collision_geometry_analyzer_af9668116627f6f93e045c260acd753d9}{get\+Collision\+Geometry}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_collision_geometry}{Collision\+Geometry}} $\ast$ \mbox{\hyperlink{class_collision_geometry_analyzer_ab8b25260e89a66aa70ef0b300b0f782f}{collision\+Geometry}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_task}{Task}} to carry out the analysis of the geometry of MC collisions 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_analyzer_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{_collision_geometry_analyzer_8hpp_source}{Collision\+Geometry\+Analyzer.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_collision_geometry_analyzer_aa787204be8b191726e56d5a16a482df6}\label{class_collision_geometry_analyzer_aa787204be8b191726e56d5a16a482df6}} 
+\index{CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}!CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}}
+\index{CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}!CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}}
+\doxysubsubsection{\texorpdfstring{CollisionGeometryAnalyzer()}{CollisionGeometryAnalyzer()}}
+{\footnotesize\ttfamily Collision\+Geometry\+Analyzer\+::\+Collision\+Geometry\+Analyzer (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&}]{\+\_\+event\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$}]{\+\_\+particle\+Filters,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Message\+Logger\+::\+Log\+Level}}}]{\+\_\+report\+Level }\end{DoxyParamCaption})}
+
+Detailed CTOR
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+name} & Name given to task instance \\
+\hline
+{\em \+\_\+configuration} & \mbox{\hyperlink{class_configuration}{Configuration}} used to run this task \\
+\hline
+{\em \+\_\+event\+Filters} & Array of event filters to be used by this task \\
+\hline
+{\em \+\_\+particle\+Filters} & Array of particle filters to be used by this task \\
+\hline
+{\em \+\_\+report\+Level} & Message log level to be used by this task. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_analyzer_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_collision_geometry_analyzer_8cpp_source}{Collision\+Geometry\+Analyzer.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_analyzer_a9ddada41273c6e0523d6937ed96099e0}\label{class_collision_geometry_analyzer_a9ddada41273c6e0523d6937ed96099e0}} 
+\index{CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}!````~CollisionGeometryAnalyzer@{$\sim$CollisionGeometryAnalyzer}}
+\index{````~CollisionGeometryAnalyzer@{$\sim$CollisionGeometryAnalyzer}!CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}}
+\doxysubsubsection{\texorpdfstring{$\sim$CollisionGeometryAnalyzer()}{~CollisionGeometryAnalyzer()}}
+{\footnotesize\ttfamily virtual Collision\+Geometry\+Analyzer\+::$\sim$\+Collision\+Geometry\+Analyzer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+DTOR 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_analyzer_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{_collision_geometry_analyzer_8hpp_source}{Collision\+Geometry\+Analyzer.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_collision_geometry_analyzer_a9ecf9557c398b217f604214d87a834a5}\label{class_collision_geometry_analyzer_a9ecf9557c398b217f604214d87a834a5}} 
+\index{CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}!createHistograms@{createHistograms}}
+\index{createHistograms@{createHistograms}!CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}}
+\doxysubsubsection{\texorpdfstring{createHistograms()}{createHistograms()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Analyzer\+::create\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Creates the histograms filled by this task at execution 
+
+Reimplemented from \mbox{\hyperlink{class_task_a709903c615030cd84122df73f2ea6c4f}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_analyzer_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{_collision_geometry_analyzer_8cpp_source}{Collision\+Geometry\+Analyzer.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_analyzer_a21d62d7fcea4d46a3eaca41ea0141f4e}\label{class_collision_geometry_analyzer_a21d62d7fcea4d46a3eaca41ea0141f4e}} 
+\index{CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}!execute@{execute}}
+\index{execute@{execute}!CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Analyzer\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Execute this task based on the configuration and class variable specified at construction 
+
+Reimplemented from \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_analyzer_8cpp_source_l00145}{145}} of file \mbox{\hyperlink{_collision_geometry_analyzer_8cpp_source}{Collision\+Geometry\+Analyzer.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_analyzer_af9668116627f6f93e045c260acd753d9}\label{class_collision_geometry_analyzer_af9668116627f6f93e045c260acd753d9}} 
+\index{CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}!getCollisionGeometry@{getCollisionGeometry}}
+\index{getCollisionGeometry@{getCollisionGeometry}!CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}}
+\doxysubsubsection{\texorpdfstring{getCollisionGeometry()}{getCollisionGeometry()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_collision_geometry}{Collision\+Geometry}} $\ast$ Collision\+Geometry\+Analyzer\+::get\+Collision\+Geometry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the collision geometry object used by this task 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_analyzer_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{_collision_geometry_analyzer_8hpp_source}{Collision\+Geometry\+Analyzer.\+hpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_analyzer_a5e173b89f952c207d612bcb7753c33f9}\label{class_collision_geometry_analyzer_a5e173b89f952c207d612bcb7753c33f9}} 
+\index{CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}!loadHistograms@{loadHistograms}}
+\index{loadHistograms@{loadHistograms}!CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}}
+\doxysubsubsection{\texorpdfstring{loadHistograms()}{loadHistograms()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Analyzer\+::load\+Histograms (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{input\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Loads the histograms retquired by this task at execution 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_analyzer_8cpp_source_l00120}{120}} of file \mbox{\hyperlink{_collision_geometry_analyzer_8cpp_source}{Collision\+Geometry\+Analyzer.\+cpp}}.
+
+\mbox{\Hypertarget{class_collision_geometry_analyzer_a56d84224070304a024bce34189fa99e9}\label{class_collision_geometry_analyzer_a56d84224070304a024bce34189fa99e9}} 
+\index{CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}!setDefaultConfiguration@{setDefaultConfiguration}}
+\index{setDefaultConfiguration@{setDefaultConfiguration}!CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}}
+\doxysubsubsection{\texorpdfstring{setDefaultConfiguration()}{setDefaultConfiguration()}}
+{\footnotesize\ttfamily void Collision\+Geometry\+Analyzer\+::set\+Default\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Sets the default values of the configuration parameters used by this task 
+
+Reimplemented from \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_collision_geometry_analyzer_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{_collision_geometry_analyzer_8cpp_source}{Collision\+Geometry\+Analyzer.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_collision_geometry_analyzer_ab8b25260e89a66aa70ef0b300b0f782f}\label{class_collision_geometry_analyzer_ab8b25260e89a66aa70ef0b300b0f782f}} 
+\index{CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}!collisionGeometry@{collisionGeometry}}
+\index{collisionGeometry@{collisionGeometry}!CollisionGeometryAnalyzer@{CollisionGeometryAnalyzer}}
+\doxysubsubsection{\texorpdfstring{collisionGeometry}{collisionGeometry}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_collision_geometry}{Collision\+Geometry}}$\ast$ Collision\+Geometry\+Analyzer\+::collision\+Geometry\hspace{0.3cm}{\ttfamily [protected]}}
+
+Collision geometry object used by this task 
+
+Definition at line \mbox{\hyperlink{_collision_geometry_analyzer_8hpp_source_l00075}{75}} of file \mbox{\hyperlink{_collision_geometry_analyzer_8hpp_source}{Collision\+Geometry\+Analyzer.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_collision_geometry_analyzer_8hpp}{Collision\+Geometry\+Analyzer.\+hpp}}\item 
+Base/\mbox{\hyperlink{_collision_geometry_analyzer_8cpp}{Collision\+Geometry\+Analyzer.\+cpp}}\end{DoxyCompactItemize}

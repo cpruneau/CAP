@@ -1,0 +1,48 @@
+\hypertarget{_event_count_histos_8hpp_source}{}\doxysection{Event\+Count\+Histos.\+hpp}
+\label{_event_count_histos_8hpp_source}\index{Base/EventCountHistos.hpp@{Base/EventCountHistos.hpp}}
+\mbox{\hyperlink{_event_count_histos_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef CAP\_\_EventCountHistos}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define CAP\_\_EventCountHistos}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_histograms_8hpp}{Histograms.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_8hpp}{Particle.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_configuration_8hpp}{Configuration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}TLorentzVector.h"{}}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00018}\mbox{\hyperlink{class_event_count_histos}{00018}} \textcolor{keyword}{class }\mbox{\hyperlink{class_event_count_histos}{EventCountHistos}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_histograms}{Histograms}}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00019}00019 \{}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00020}00020 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00022}00022   \mbox{\hyperlink{class_event_count_histos_a0583fd70af36b8e18cf7d43267feb041}{EventCountHistos}}(\textcolor{keyword}{const} TString \& \_collectionName,}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00023}00023                    \mbox{\hyperlink{class_configuration}{Configuration}} \& \_configuration,}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00024}00024                    \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}        \_debugLevel);}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00025}\mbox{\hyperlink{class_event_count_histos_abadab1f948181ec94e4330b86e7d6230}{00025}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_event_count_histos_abadab1f948181ec94e4330b86e7d6230}{\string~EventCountHistos}}()\{\}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00026}00026   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_count_histos_a24f3399fc1ac2977cfac9bc4cf72e2fe}{createHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00027}00027   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_count_histos_a28661f4eb3e55c5515ba61710486f6f7}{loadHistograms}}(TFile * inputFile);}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00028}00028   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_count_histos_ada9f2b731f22c546594d25f275c7c714}{fill}}(vector<double> eventCounts);}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00030}00030   \textcolor{comment}{// //////////////////////////////////////////////////////////////////////////}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00031}00031   \textcolor{comment}{// Data Members -\/ Histograms}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00032}00032   \textcolor{comment}{// //////////////////////////////////////////////////////////////////////////}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00033}\mbox{\hyperlink{class_event_count_histos_a18051a04d6e3d4d2106e6c053bf8f497}{00033}}   TH1 * \mbox{\hyperlink{class_event_count_histos_a18051a04d6e3d4d2106e6c053bf8f497}{h\_eventCounts}};}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00035}00035     \mbox{\hyperlink{class_histogram_collection_a8ac292967dc3381d557d3eb2f5730b38}{ClassDef}}(\mbox{\hyperlink{class_event_count_histos}{EventCountHistos}},0)}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00037}00037 \};}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00039}00039 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_EventCountHistos  */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_event_count_histos_8hpp_source_l00042}00042 }
+
+\end{DoxyCode}

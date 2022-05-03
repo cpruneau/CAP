@@ -1,0 +1,180 @@
+\hypertarget{_bidim_gauss_fitter_8hpp_source}{}\doxysection{Bidim\+Gauss\+Fitter.\+hpp}
+\label{_bidim_gauss_fitter_8hpp_source}\index{Base/BidimGaussFitter.hpp@{Base/BidimGaussFitter.hpp}}
+\mbox{\hyperlink{_bidim_gauss_fitter_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Victor Gonzalez  Dec 19, 2020}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00003}00003 \textcolor{comment}{/*************************************************************************}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Victor Gonzalez, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00009}00009 \textcolor{comment}{ *************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef CAP\_\_BidimGaussFitFunction}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define CAP\_\_BidimGaussFitFunction}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_plotter_8hpp}{Plotter.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_bidim_gauss_fit_configuration_8hpp}{BidimGaussFitConfiguration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_bidim_gauss_fit_result_8hpp}{BidimGaussFitResult.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}TF2.h"{}}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}TMatrixDSym.h"{}}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00018}00018 \textcolor{keyword}{using} std::cout;}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00019}00019 \textcolor{keyword}{using} std::endl;}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00020}00020 \textcolor{keyword}{using} std::ofstream;}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00023}\mbox{\hyperlink{_bidim_gauss_fitter_8hpp_a4db6d311f100a17ee5a9028bddad5cec}{00023}} \textcolor{keywordtype}{double}  \mbox{\hyperlink{_bidim_gauss_fitter_8hpp_a4db6d311f100a17ee5a9028bddad5cec}{DeltaPhiWidth2DFitFunction}}(\textcolor{keywordtype}{double}  *x, \textcolor{keywordtype}{double}  *par);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00024}\mbox{\hyperlink{_bidim_gauss_fitter_8hpp_aab19bdc7f9c33f9d0dd2407a7155b656}{00024}} \textcolor{keywordtype}{double}  \mbox{\hyperlink{_bidim_gauss_fitter_8hpp_aab19bdc7f9c33f9d0dd2407a7155b656}{CentralPeak2DFitFunction}}(\textcolor{keywordtype}{double}  *x, \textcolor{keywordtype}{double}  *par);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00025}00025 \textcolor{keywordtype}{double}  \mbox{\hyperlink{_bidim_gauss_fitter_8hpp_a1d085cb19a638275f63a01cb95bcc4d1}{Global2DFitFunction}}(\textcolor{keywordtype}{double}  *x, \textcolor{keywordtype}{double}  *par);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00027}\mbox{\hyperlink{class_bidim_gauss_fitter}{00027}} \textcolor{keyword}{class }\mbox{\hyperlink{class_bidim_gauss_fitter}{BidimGaussFitter}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_plotter}{Plotter}}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00028}00028 \{}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00029}00029   \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00030}00030   \mbox{\hyperlink{class_bidim_gauss_fitter_a4dc9e11cb6bda4788feb8a6cd0b488a5}{BidimGaussFitter}}();}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00031}00031   \mbox{\hyperlink{class_bidim_gauss_fitter_a4dc9e11cb6bda4788feb8a6cd0b488a5}{BidimGaussFitter}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_bidim_gauss_fitter}{BidimGaussFitter}}\& source);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00032}00032   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_bidim_gauss_fitter_a019589a212bd0293c75340e999bdc84b}{\string~BidimGaussFitter}}();}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00033}00033   \textcolor{keyword}{const} \mbox{\hyperlink{class_bidim_gauss_fitter}{BidimGaussFitter}} \& \mbox{\hyperlink{class_bidim_gauss_fitter_a882cbdb6ae7841ad3773be0afc7f3f05}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_bidim_gauss_fitter}{BidimGaussFitter}} \& source);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00035}00035   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_acf89386551173846be0bf24c7a0ab530}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00036}00036   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_a835ffc0f864404d4a76f847fba8fc708}{flowFit}}(TH2 *data,  \mbox{\hyperlink{class_bidim_gauss_fit_configuration}{BidimGaussFitConfiguration}} \& fitConfig);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00037}00037   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_aa8d8a8ec3fc4505ff7b26a62d6a051d0}{fullFit}}(TH2 *data,  \mbox{\hyperlink{class_bidim_gauss_fit_configuration}{BidimGaussFitConfiguration}} \& fitConfig);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00039}00039   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_a411e931c8147ab53581a8387ebd1673c}{setParameters}}(TF2* f, \textcolor{keywordtype}{int} first, \textcolor{keywordtype}{int} last, \textcolor{keywordtype}{double} value=0.0);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00040}00040   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_a3c6644138f8e910ef554afac49f488cc}{setParameterLimits}}(TF2* f, \textcolor{keyword}{const} \mbox{\hyperlink{class_bidim_gauss_fit_configuration}{BidimGaussFitConfiguration}} \& fitConfig, \textcolor{keywordtype}{int} first, \textcolor{keywordtype}{int} last, \textcolor{keywordtype}{double} scale);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00041}00041   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_a7da86a9fac94146f79a837c52cb9b9a8}{releaseAllParameters}}(TF2* f);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00042}00042   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_af69dfafc656785fffd9a72f0df269ff9}{releaseParameters}}(TF2* f, \textcolor{keywordtype}{int} first, \textcolor{keywordtype}{int} last);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00043}00043   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_ac17ac939ac71541e3c29a2ce7dfc1a1b}{fixUserParameters}}(TF1 *f, \textcolor{keyword}{const} \mbox{\hyperlink{class_bidim_gauss_fit_configuration}{BidimGaussFitConfiguration}} \& fitConfig);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00044}00044   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_a9261526b7e0cf4075b97f3d1d187fb52}{fixPeakParameters}}(TF2* f, \textcolor{keywordtype}{double} a,  \textcolor{keywordtype}{double} sigmaEta, \textcolor{keywordtype}{double} sigmaPhi, \textcolor{keywordtype}{double} gammaEta, \textcolor{keywordtype}{double} gammaPhi);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00045}00045   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_a009b2912cb0602345c3276afea35f7e7}{fixFlowParameters}}(TF2* f,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00046}00046                          \textcolor{keywordtype}{double} a0, \textcolor{keywordtype}{double} a1, \textcolor{keywordtype}{double} a2, \textcolor{keywordtype}{double} a3, \textcolor{keywordtype}{double} a4, \textcolor{keywordtype}{double} a5, \textcolor{keywordtype}{double} a6,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00047}00047                          \textcolor{keywordtype}{double} a2eta, \textcolor{keywordtype}{double} a3eta, \textcolor{keywordtype}{double} a2eta2, \textcolor{keywordtype}{double} a3eta2);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00048}00048   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_a9c3e472b0e9024da7ede4d80b0336ceb}{fixFlowParametersToZero}}(TF2* f);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00049}00049   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_aa4211043cc318d2c1db66c2f869023fe}{setFunctionParameterNames}}(TF2* f, \textcolor{keyword}{const} \mbox{\hyperlink{class_bidim_gauss_fit_configuration}{BidimGaussFitConfiguration}} \& fitConfig);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00050}\mbox{\hyperlink{class_bidim_gauss_fitter_aaddb5d721583dadad6528ccaceb7deca}{00050}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_aaddb5d721583dadad6528ccaceb7deca}{setFunctionParameterNamesFlowOnly}}(TF2* f, \textcolor{keyword}{const} \mbox{\hyperlink{class_bidim_gauss_fit_configuration}{BidimGaussFitConfiguration}} \& fitConfig, \textcolor{keywordtype}{double} initialValue=1.0E-\/2);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00051}00051   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_a2fb4b7cfdcb118ce79d9d53414f59357}{initializePeakFitParameters}}(TF2 * f, \textcolor{keyword}{const} \mbox{\hyperlink{class_bidim_gauss_fit_configuration}{BidimGaussFitConfiguration}} \& fitConfig, \textcolor{keywordtype}{double} scale);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00052}00052   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_ac43ff2f363dd333259d7c1842a274420}{initializeFlowFitParameters}}(TF2 * f, \textcolor{keyword}{const} \mbox{\hyperlink{class_bidim_gauss_fit_configuration}{BidimGaussFitConfiguration}} \& fitConfig, \textcolor{keywordtype}{double} scale);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00053}00053   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_af72f54925b526837adc7e14541fc3468}{initializeAllFitParameters}}(TF2 * f, \textcolor{keyword}{const} \mbox{\hyperlink{class_bidim_gauss_fit_configuration}{BidimGaussFitConfiguration}} \& fitConfig, \textcolor{keywordtype}{double} scale);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00055}00055   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_ab82ed6f6fd3f18a5a1daf8fd57d9c529}{setOuterRangeByBin}}(TH2* h, \textcolor{keyword}{const} \mbox{\hyperlink{class_bidim_gauss_fit_configuration}{BidimGaussFitConfiguration}} \& fitConfig);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00056}00056   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_bidim_gauss_fitter_a6eaf859f793bf22a0248e741e4dc1102}{isFlowPresent}}(\mbox{\hyperlink{class_bidim_gauss_fit_result}{BidimGaussFitResult}} \& fitResult);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00058}00058   \textcolor{comment}{//TH2 *injectErrors(TH2 *h2, Float\_t sigma);}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00060}00060   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_a23233f33636c075db93435833e817a97}{projectHistoAndFit}}(TH2 *dataHist,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00061}00061                           TH2 *fitHist,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00062}00062                           \textcolor{keywordtype}{double} xLow,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00063}00063                           \textcolor{keywordtype}{double} xHigh,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00064}00064                           \textcolor{keywordtype}{double} yLow,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00065}00065                           \textcolor{keywordtype}{double} yHigh,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00066}00066                           \textcolor{keyword}{const} \mbox{\hyperlink{class_bidim_gauss_fit_configuration}{BidimGaussFitConfiguration}} \& fitConfig,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00067}00067                           \textcolor{keyword}{const} TString \& label);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00068}00068   }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00069}00069   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_aae1ba479cde94fddda9f6c039155a849}{projectFlowComponents}}(TH2 *dataHist,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00070}00070                              TF2 *f,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00071}00071                              \textcolor{keywordtype}{double} xLow,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00072}00072                              \textcolor{keywordtype}{double} xHigh,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00073}00073                              \textcolor{keywordtype}{double} yLow,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00074}00074                              \textcolor{keywordtype}{double} yHigh,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00075}00075                              \textcolor{keyword}{const} \mbox{\hyperlink{class_bidim_gauss_fit_configuration}{BidimGaussFitConfiguration}} \& fitConfig,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00076}00076                              \textcolor{keyword}{const} TString \& label);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00080}00080   TH2* \mbox{\hyperlink{class_bidim_gauss_fitter_a9a7a0d3850e3a464ec82432bd7e37019}{subtractEtaSides}}(TH2* dataHist,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00081}00081                         TF2 *\mbox{\hyperlink{class_bidim_gauss_fitter_abae7844e85a9d29575d39c632276595b}{flowFitFct}},}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00082}00082                         \textcolor{keyword}{const} \mbox{\hyperlink{class_bidim_gauss_fit_configuration}{BidimGaussFitConfiguration}} \& fitConfig);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00083}00083   TH1* \mbox{\hyperlink{class_bidim_gauss_fitter_a20385161f785f69affe263fdb165774b}{cloneAndReset}}(\textcolor{keyword}{const} TH1* h, \textcolor{keyword}{const} TString \& hName);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00084}00084   TH1* \mbox{\hyperlink{class_bidim_gauss_fitter_ae946dfa3169be1120760e3a836bf94cf}{cloneAndSetWithFct}}(\textcolor{keyword}{const} TH1* h,  TF1* f, \textcolor{keyword}{const} TString \& hName);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00085}00085   TH2* \mbox{\hyperlink{class_bidim_gauss_fitter_a20385161f785f69affe263fdb165774b}{cloneAndReset}}(\textcolor{keyword}{const} TH2* h, \textcolor{keyword}{const} TString \& hName);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00086}00086   TH2* \mbox{\hyperlink{class_bidim_gauss_fitter_ae946dfa3169be1120760e3a836bf94cf}{cloneAndSetWithFct}}(\textcolor{keyword}{const} TH2* h,  TF2* f, \textcolor{keyword}{const} TString \& hName);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00087}00087   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_aca2a24652c6cd0f6bbf3235a033e6a6e}{divideByHistoErrors}}(\textcolor{keyword}{const} TH2* numerator, \textcolor{keyword}{const} TH2* denominator, TH2* target);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00089}00089   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_a8a0e28a47c66eb9bc57ba403f1fad4bc}{calculateResidualHistos}}(\textcolor{keyword}{const} TString \& baseName,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00090}00090                                \textcolor{keyword}{const} TString \& baseTitle,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00091}00091                                TH2* data,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00092}00092                                TH2* fit,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00093}00093                                TH2*\& residuals,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00094}00094                                TH2*\& residualsNorm,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00095}00095                                TH2*\& residualsRatio);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00097}00097   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fitter_a11d2b50c72ebd0cd63de120fa6bc4a1e}{calculateChi2}}(TH2*h,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00098}00098                      \textcolor{keywordtype}{int} xFirst, \textcolor{keywordtype}{int} xLast,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00099}00099                      \textcolor{keywordtype}{int} yFirst, \textcolor{keywordtype}{int} yLast,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00100}00100                      \textcolor{keywordtype}{int} xFirstEx, \textcolor{keywordtype}{int} xLastEx,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00101}00101                      \textcolor{keywordtype}{int} yFirstEx, \textcolor{keywordtype}{int} yLastEx,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00102}00102                      \textcolor{keywordtype}{double} \& chi2,}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00103}00103                      \textcolor{keywordtype}{double} \& ndf);}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00105}\mbox{\hyperlink{class_bidim_gauss_fitter_a7b0ce6f7b69e9bd64ac92ac6c38aac21}{00105}}   TString \mbox{\hyperlink{class_bidim_gauss_fitter_a7b0ce6f7b69e9bd64ac92ac6c38aac21}{histBaseTitle}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00106}\mbox{\hyperlink{class_bidim_gauss_fitter_a8e8b071a7167d9363c448f8d1fadf86b}{00106}}   TString \mbox{\hyperlink{class_bidim_gauss_fitter_a8e8b071a7167d9363c448f8d1fadf86b}{histBaseName}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00107}\mbox{\hyperlink{class_bidim_gauss_fitter_a6e24da778b3efe399929257dcdc68a17}{00107}}   \mbox{\hyperlink{class_bidim_gauss_fit_result}{BidimGaussFitResult}}  \mbox{\hyperlink{class_bidim_gauss_fitter_a6e24da778b3efe399929257dcdc68a17}{flowFitResult}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00108}\mbox{\hyperlink{class_bidim_gauss_fitter_a822ccb7ebf9cdf33cd728d07b0e9c137}{00108}}   \mbox{\hyperlink{class_bidim_gauss_fit_result}{BidimGaussFitResult}}  \mbox{\hyperlink{class_bidim_gauss_fitter_a822ccb7ebf9cdf33cd728d07b0e9c137}{fullFitResult}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00109}\mbox{\hyperlink{class_bidim_gauss_fitter_abcfd15411930344ff902cb9589bcb5f2}{00109}}   \mbox{\hyperlink{class_bidim_gauss_fit_result}{BidimGaussFitResult}}  \mbox{\hyperlink{class_bidim_gauss_fitter_abcfd15411930344ff902cb9589bcb5f2}{peakFitResult}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00111}\mbox{\hyperlink{class_bidim_gauss_fitter_af89e89c7bf37f86b05acaa514a739468}{00111}}   TH2 * \mbox{\hyperlink{class_bidim_gauss_fitter_af89e89c7bf37f86b05acaa514a739468}{dataMinusFlow}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00112}\mbox{\hyperlink{class_bidim_gauss_fitter_afc5f10ef8fb82ef1c2970bdbf741a0e0}{00112}}   TH2 * \mbox{\hyperlink{class_bidim_gauss_fitter_afc5f10ef8fb82ef1c2970bdbf741a0e0}{flowFitOnlyHist}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00113}\mbox{\hyperlink{class_bidim_gauss_fitter_aaad03b6989d781f93d29067081f6378f}{00113}}   TH1 * \mbox{\hyperlink{class_bidim_gauss_fitter_aaad03b6989d781f93d29067081f6378f}{datMinusFlowEtaProj}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00114}\mbox{\hyperlink{class_bidim_gauss_fitter_aaf936d9bec93c54268377d2195b5df09}{00114}}   TH1 * \mbox{\hyperlink{class_bidim_gauss_fitter_aaf936d9bec93c54268377d2195b5df09}{datMinusFlowPhiProj}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00116}\mbox{\hyperlink{class_bidim_gauss_fitter_a9414c3d2add2808b3d0b4e9a9cfaabb4}{00116}}   TH2 ** \mbox{\hyperlink{class_bidim_gauss_fitter_a9414c3d2add2808b3d0b4e9a9cfaabb4}{flowFitHist2D}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00117}\mbox{\hyperlink{class_bidim_gauss_fitter_a967a8642c8ed1d4c513ac82b50c22eb7}{00117}}   TH2 * \mbox{\hyperlink{class_bidim_gauss_fitter_a967a8642c8ed1d4c513ac82b50c22eb7}{flowFitHist}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00118}\mbox{\hyperlink{class_bidim_gauss_fitter_ab1cbba176259bc4f5840dd063f24a8ee}{00118}}   TH2 * \mbox{\hyperlink{class_bidim_gauss_fitter_ab1cbba176259bc4f5840dd063f24a8ee}{flowFitResiduals}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00119}\mbox{\hyperlink{class_bidim_gauss_fitter_ae00925a56e40b622c0138a14d0d6680d}{00119}}   TH2 * \mbox{\hyperlink{class_bidim_gauss_fitter_ae00925a56e40b622c0138a14d0d6680d}{flowFitResidualsNorm}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00120}\mbox{\hyperlink{class_bidim_gauss_fitter_a0a868ce1b7894c1070e7c91ca0f8c586}{00120}}   TH2 * \mbox{\hyperlink{class_bidim_gauss_fitter_a0a868ce1b7894c1070e7c91ca0f8c586}{flowFitResidualsRatio}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00122}\mbox{\hyperlink{class_bidim_gauss_fitter_a2f6de36f6ff08588882a054f5f9d0ec3}{00122}}   TH2 * \mbox{\hyperlink{class_bidim_gauss_fitter_a2f6de36f6ff08588882a054f5f9d0ec3}{fullFitHist}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00123}\mbox{\hyperlink{class_bidim_gauss_fitter_a535aa151c046ba044bec73fc30af4ac4}{00123}}   TH2 * \mbox{\hyperlink{class_bidim_gauss_fitter_a535aa151c046ba044bec73fc30af4ac4}{fullFitResiduals}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00124}\mbox{\hyperlink{class_bidim_gauss_fitter_abf11ed427b5ecd8107d382d4eab0e3a1}{00124}}   TH2 * \mbox{\hyperlink{class_bidim_gauss_fitter_abf11ed427b5ecd8107d382d4eab0e3a1}{fullFitResidualsNorm}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00125}\mbox{\hyperlink{class_bidim_gauss_fitter_ae2372226c7ac87f6a044f4c441da1bde}{00125}}   TH2 * \mbox{\hyperlink{class_bidim_gauss_fitter_ae2372226c7ac87f6a044f4c441da1bde}{fullFitResidualsRatio}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00126}00126 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00127}\mbox{\hyperlink{class_bidim_gauss_fitter_a5515ae5992057cfcb8c3b0d3463df3d4}{00127}}   TH2 * \mbox{\hyperlink{class_bidim_gauss_fitter_a5515ae5992057cfcb8c3b0d3463df3d4}{peakHist}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00128}\mbox{\hyperlink{class_bidim_gauss_fitter_af8b65d68831b74789816dc2fd8d1b255}{00128}}   TH2 * \mbox{\hyperlink{class_bidim_gauss_fitter_af8b65d68831b74789816dc2fd8d1b255}{peakFitHist}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00129}\mbox{\hyperlink{class_bidim_gauss_fitter_ad657191aa5cf44b417ff22a73b7148ab}{00129}}   TH2 * \mbox{\hyperlink{class_bidim_gauss_fitter_ad657191aa5cf44b417ff22a73b7148ab}{peakFitResiduals}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00130}\mbox{\hyperlink{class_bidim_gauss_fitter_a1a4740814148732f9e1adb4e255a5bbc}{00130}}   TH2 * \mbox{\hyperlink{class_bidim_gauss_fitter_a1a4740814148732f9e1adb4e255a5bbc}{peakFitResidualsNorm}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00131}\mbox{\hyperlink{class_bidim_gauss_fitter_af9c2055c4da5555a04d93bc6d36c4c1c}{00131}}   TH2 * \mbox{\hyperlink{class_bidim_gauss_fitter_af9c2055c4da5555a04d93bc6d36c4c1c}{peakFitResidualsRatio}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00133}\mbox{\hyperlink{class_bidim_gauss_fitter_a328878a30a9020a74d401ce9658808f5}{00133}}   TF2 * \mbox{\hyperlink{class_bidim_gauss_fitter_a328878a30a9020a74d401ce9658808f5}{fullFitFct}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00134}\mbox{\hyperlink{class_bidim_gauss_fitter_abae7844e85a9d29575d39c632276595b}{00134}}   TF2 * \mbox{\hyperlink{class_bidim_gauss_fitter_abae7844e85a9d29575d39c632276595b}{flowFitFct}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00135}\mbox{\hyperlink{class_bidim_gauss_fitter_a7c96ea98542955d71dc325bf67e5f0e2}{00135}}   TF2 * \mbox{\hyperlink{class_bidim_gauss_fitter_a7c96ea98542955d71dc325bf67e5f0e2}{peakFitFct}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00137}00137 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00138}\mbox{\hyperlink{class_bidim_gauss_fitter_aa8d0fe32010dab6e6b7acec717cca3e0}{00138}}   TString ** \mbox{\hyperlink{class_bidim_gauss_fitter_aa8d0fe32010dab6e6b7acec717cca3e0}{flowLegends}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00139}\mbox{\hyperlink{class_bidim_gauss_fitter_aea49626f27dcb3ca40a96d8f12261567}{00139}}   TString ** \mbox{\hyperlink{class_bidim_gauss_fitter_aea49626f27dcb3ca40a96d8f12261567}{flowLegends2}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00140}\mbox{\hyperlink{class_bidim_gauss_fitter_acf87475ccb102a5ff110bbd64c85663d}{00140}}   TString ** \mbox{\hyperlink{class_bidim_gauss_fitter_acf87475ccb102a5ff110bbd64c85663d}{fullLegends}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00141}\mbox{\hyperlink{class_bidim_gauss_fitter_a17b92f775eb51d0920c180d0a0e5b9d3}{00141}}   TString ** \mbox{\hyperlink{class_bidim_gauss_fitter_a17b92f775eb51d0920c180d0a0e5b9d3}{peakLegends}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00142}\mbox{\hyperlink{class_bidim_gauss_fitter_aad6fe40ac192d871734181f4cb46a715}{00142}}   TH1 ** \mbox{\hyperlink{class_bidim_gauss_fitter_aad6fe40ac192d871734181f4cb46a715}{flowEtaProj}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00143}\mbox{\hyperlink{class_bidim_gauss_fitter_a18cd0f4705ef31d35750b3eb8e527ae8}{00143}}   TH1 ** \mbox{\hyperlink{class_bidim_gauss_fitter_a18cd0f4705ef31d35750b3eb8e527ae8}{flowPhiProj}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00144}\mbox{\hyperlink{class_bidim_gauss_fitter_a277aabb0cd4a3ab11fbece65457041e3}{00144}}   TH1 ** \mbox{\hyperlink{class_bidim_gauss_fitter_a277aabb0cd4a3ab11fbece65457041e3}{flowEtaProj2}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00145}\mbox{\hyperlink{class_bidim_gauss_fitter_a0a071964d7bc2fa7c11f292f5c42c768}{00145}}   TH1 ** \mbox{\hyperlink{class_bidim_gauss_fitter_a0a071964d7bc2fa7c11f292f5c42c768}{flowPhiProj2}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00146}\mbox{\hyperlink{class_bidim_gauss_fitter_a0345cdea573a0dbc1919d40ede1f7c1f}{00146}}   TH1 ** \mbox{\hyperlink{class_bidim_gauss_fitter_a0345cdea573a0dbc1919d40ede1f7c1f}{fullEtaProj}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00147}\mbox{\hyperlink{class_bidim_gauss_fitter_ae2bdb6ef7274c64cfba050b464cbe507}{00147}}   TH1 ** \mbox{\hyperlink{class_bidim_gauss_fitter_ae2bdb6ef7274c64cfba050b464cbe507}{fullPhiProj}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00148}\mbox{\hyperlink{class_bidim_gauss_fitter_a35113f0826aab3a3110466962612a64e}{00148}}   TH1 ** \mbox{\hyperlink{class_bidim_gauss_fitter_a35113f0826aab3a3110466962612a64e}{peakEtaProj}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00149}\mbox{\hyperlink{class_bidim_gauss_fitter_a293d3cdeec1bdf2451f60ee25ae560a2}{00149}}   TH1 ** \mbox{\hyperlink{class_bidim_gauss_fitter_a293d3cdeec1bdf2451f60ee25ae560a2}{peakPhiProj}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00150}00150 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00151}\mbox{\hyperlink{class_bidim_gauss_fitter_a1e2422db5128d1570d6063440c902552}{00151}}   \textcolor{keywordtype}{int}   \mbox{\hyperlink{class_bidim_gauss_fitter_a1e2422db5128d1570d6063440c902552}{nEtaProjections}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00152}\mbox{\hyperlink{class_bidim_gauss_fitter_a359be5ae2e4f335934f6e291a03f8fe0}{00152}}   \textcolor{keywordtype}{int}   \mbox{\hyperlink{class_bidim_gauss_fitter_a359be5ae2e4f335934f6e291a03f8fe0}{nPhiProjections}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00153}\mbox{\hyperlink{class_bidim_gauss_fitter_a33fb13b2185a82d1041fde4c083ffd6b}{00153}}   TString \mbox{\hyperlink{class_bidim_gauss_fitter_a33fb13b2185a82d1041fde4c083ffd6b}{etaProjectName}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00154}\mbox{\hyperlink{class_bidim_gauss_fitter_a3161d99df6d7a573f58edd4e17fbfcb6}{00154}}   TString \mbox{\hyperlink{class_bidim_gauss_fitter_a3161d99df6d7a573f58edd4e17fbfcb6}{phiProjectName}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00155}\mbox{\hyperlink{class_bidim_gauss_fitter_a6b0a8a3451d253dccd26012e8cd53d05}{00155}}   TH1 * \mbox{\hyperlink{class_bidim_gauss_fitter_a6b0a8a3451d253dccd26012e8cd53d05}{etaProjections}}[10];}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00156}\mbox{\hyperlink{class_bidim_gauss_fitter_a46de5b2f766b83c88b3bbe47aea11f1b}{00156}}   TH1 * \mbox{\hyperlink{class_bidim_gauss_fitter_a46de5b2f766b83c88b3bbe47aea11f1b}{phiProjections}}[10];}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00157}00157 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00158}00158  }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00159}\mbox{\hyperlink{class_bidim_gauss_fitter_a393aa8b9dae55e1171ef0b35c412fc1a}{00159}}   \mbox{\hyperlink{class_canvas_configuration}{CanvasConfiguration}} *  \mbox{\hyperlink{class_bidim_gauss_fitter_a393aa8b9dae55e1171ef0b35c412fc1a}{canvasConfig1DLinear}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00160}\mbox{\hyperlink{class_bidim_gauss_fitter_a91810aaade6574c1d6d33c397834a8c4}{00160}}   \mbox{\hyperlink{class_canvas_configuration}{CanvasConfiguration}} *  \mbox{\hyperlink{class_bidim_gauss_fitter_a91810aaade6574c1d6d33c397834a8c4}{canvasConfig2DLinear}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00161}\mbox{\hyperlink{class_bidim_gauss_fitter_a0058e8aebe1df2f58a034c1fe05f72f4}{00161}}   \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}}  ** \mbox{\hyperlink{class_bidim_gauss_fitter_a0058e8aebe1df2f58a034c1fe05f72f4}{graphConfigs1D}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00162}\mbox{\hyperlink{class_bidim_gauss_fitter_a2c5f0ef8eb63289ef81abc0b129d76b7}{00162}}   \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}}  ** \mbox{\hyperlink{class_bidim_gauss_fitter_a2c5f0ef8eb63289ef81abc0b129d76b7}{graphConfigs2D}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00163}\mbox{\hyperlink{class_bidim_gauss_fitter_a2db6b3f1981f8aaab59ffadd0488dd22}{00163}}   TH1     ** \mbox{\hyperlink{class_bidim_gauss_fitter_a2db6b3f1981f8aaab59ffadd0488dd22}{histograms}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00164}\mbox{\hyperlink{class_bidim_gauss_fitter_a4679d0bb5c4b7c5164602fbc5b563008}{00164}}   TString ** \mbox{\hyperlink{class_bidim_gauss_fitter_a4679d0bb5c4b7c5164602fbc5b563008}{legends}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00165}\mbox{\hyperlink{class_bidim_gauss_fitter_a273c980c451e77ae9b7eb0c696a5e06f}{00165}}   TString ** \mbox{\hyperlink{class_bidim_gauss_fitter_a273c980c451e77ae9b7eb0c696a5e06f}{options}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00166}\mbox{\hyperlink{class_bidim_gauss_fitter_aa460a9725a38f04904a8c6ebe39e7abd}{00166}}   TString * \mbox{\hyperlink{class_bidim_gauss_fitter_aa460a9725a38f04904a8c6ebe39e7abd}{lineOption}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00167}\mbox{\hyperlink{class_bidim_gauss_fitter_abe5fc00eadffa4348e9229178186277c}{00167}}   TString * \mbox{\hyperlink{class_bidim_gauss_fitter_abe5fc00eadffa4348e9229178186277c}{pointOption}};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00168}00168 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00169}00169 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00170}00170 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00171}00171   ClassDef(\mbox{\hyperlink{class_bidim_gauss_fitter}{BidimGaussFitter}},0)}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00172}00172   \};}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00173}00173 }
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fitter_8hpp_source_l00174}00174 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_BidimGaussFitFunction */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

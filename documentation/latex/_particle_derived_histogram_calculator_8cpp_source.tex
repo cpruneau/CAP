@@ -1,0 +1,202 @@
+\hypertarget{_particle_derived_histogram_calculator_8cpp_source}{}\doxysection{Particle\+Derived\+Histogram\+Calculator.\+cpp}
+\label{_particle_derived_histogram_calculator_8cpp_source}\index{Base/ParticleDerivedHistogramCalculator.cpp@{Base/ParticleDerivedHistogramCalculator.cpp}}
+\mbox{\hyperlink{_particle_derived_histogram_calculator_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00003}00003 \textcolor{comment}{/*************************************************************************}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.                                   *}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.                                                  *}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment                             *}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00007}00007 \textcolor{comment}{ *                                                                       *}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.                                  *}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00009}00009 \textcolor{comment}{ *************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_derived_histos_8hpp}{ParticleDerivedHistos.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_derived_histogram_calculator_8hpp}{ParticleDerivedHistogramCalculator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00020}\mbox{\hyperlink{_particle_derived_histogram_calculator_8cpp_a8477b36b5532fe5a6568d794a7314740}{00020}} \mbox{\hyperlink{_particle_derived_histogram_calculator_8cpp_a8477b36b5532fe5a6568d794a7314740}{ClassImp}}(\mbox{\hyperlink{class_particle_derived_histogram_calculator}{ParticleDerivedHistogramCalculator}});}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00022}\mbox{\hyperlink{class_particle_derived_histogram_calculator_a023b593d0c8ebbd883c70b8910048ff6}{00022}} \mbox{\hyperlink{class_particle_derived_histogram_calculator_a023b593d0c8ebbd883c70b8910048ff6}{ParticleDerivedHistogramCalculator::ParticleDerivedHistogramCalculator}}(\textcolor{keyword}{const} TString \&          \_name,}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00023}00023                                                                        \mbox{\hyperlink{class_configuration}{Configuration}} \&          \_configuration,}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00024}00024                                                                        vector<EventFilter*>   \& \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00025}00025                                                                        vector<ParticleFilter*>\& \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00026}00026                                                                        \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                 \_selectedLevel)}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00027}00027 :}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00028}00028 \mbox{\hyperlink{class_task}{Task}}(\_name, \_configuration, \_eventFilters, \_particleFilters, \_selectedLevel)}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00029}00029 \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00030}00030   \mbox{\hyperlink{class_message_logger_a10182fcb56fb5fda0f998c89c4bbe4fb}{appendClassName}}(\textcolor{stringliteral}{"{}ParticleDerivedHistogramCalculator"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00031}00031   \mbox{\hyperlink{class_particle_derived_histogram_calculator_ad0d7ea10b87093811ac6f1279350d074}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00032}00032   \mbox{\hyperlink{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}{setConfiguration}}(\_configuration);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00033}00033 \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00038}\mbox{\hyperlink{class_particle_derived_histogram_calculator_ac01808b06aede5f269b0b07cab921ae9}{00038}} \mbox{\hyperlink{class_particle_derived_histogram_calculator_a023b593d0c8ebbd883c70b8910048ff6}{ParticleDerivedHistogramCalculator::ParticleDerivedHistogramCalculator}}(\textcolor{keyword}{const} TString \&    \_name,}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00039}00039                                                                        \mbox{\hyperlink{class_particle_analyzer}{ParticleAnalyzer}} * \_analyzer,}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00040}00040                                                                        \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}           \_selectedLevel)}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00041}00041 :}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00042}00042 \mbox{\hyperlink{class_task}{Task}}(\_name,\_analyzer-\/>getConfiguration(),\_analyzer-\/>getEventFilters(),\_analyzer-\/>getParticleFilters(),\_selectedLevel)}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00043}00043 \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00044}00044   \mbox{\hyperlink{class_message_logger_a10182fcb56fb5fda0f998c89c4bbe4fb}{appendClassName}}(\textcolor{stringliteral}{"{}ParticleDerivedHistogramCalculator"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00045}00045   \mbox{\hyperlink{class_particle_derived_histogram_calculator_ad0d7ea10b87093811ac6f1279350d074}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00046}00046   \mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}} = \_analyzer-\/>\mbox{\hyperlink{class_task_a6d72e897fd9656fa0ce282f5dbbb4ff4}{getBaseSingleHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00047}00047   }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00048}00048 \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00050}\mbox{\hyperlink{class_particle_derived_histogram_calculator_ad0d7ea10b87093811ac6f1279350d074}{00050}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_derived_histogram_calculator_ad0d7ea10b87093811ac6f1279350d074}{ParticleDerivedHistogramCalculator::setDefaultConfiguration}}()}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00051}00051 \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00052}00052   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}ParticleDerivedHistogramCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00053}00053     \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00054}00054     \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00055}00055   \mbox{\hyperlink{class_configuration}{Configuration}} \&  \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}} = \mbox{\hyperlink{class_task_a1955cc87bd4885d8ca19435b3609443f}{getConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00056}00056   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8420b979e7d98bf6562ec2f6cc28d0d8}{setName}}(\textcolor{stringliteral}{"{}ParticleDerivedHistogramCalculator Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00057}00057   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}createHistograms"{}}, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00058}00058   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}loadHistograms"{}}, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00059}00059   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}saveHistograms"{}}, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00060}00060    }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00061}00061   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_n1"{}},  100);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00062}00062   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_n1"{}},    0.0);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00063}00063   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_n1"{}},  100.0);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00065}00065   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_eTot"{}},  100);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00066}00066   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_eTot"{}},    0.0);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00067}00067   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_eTot"{}},  100.0);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00069}00069   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_pt"{}},  100);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00070}00070   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_pt"{}},    0.0);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00071}00071   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_pt"{}},  100.0);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00073}00073   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_eta"{}},  20);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00074}00074   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_eta"{}},   -\/1.0);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00075}00075   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_eta"{}},    1.0);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00077}00077   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_y"{}},  20);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00078}00078   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_y"{}},   -\/1.0);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00079}00079   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_y"{}},    1.0);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00081}00081   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phi"{}},  36);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00082}00082   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_phi"{}},    0.0);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00083}00083   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_phi"{}},    TMath::TwoPi());}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00085}00085   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phiEta"{}},     720);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00086}00086   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phiEtaPt"{}},  7200);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00087}00087   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phiY"{}},       720);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00088}00088   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phiYPt"{}},    7200);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00089}00089   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillEta"{}},   \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00090}00090   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillY"{}},    \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00091}00091   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillP2"{}},   \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00092}00092   }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00093}00093   }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00094}00094   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}ParticleDerivedHistogramCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00095}00095     \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00096}00096     \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(cout);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00097}00097     \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00098}00098 \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00103}\mbox{\hyperlink{class_particle_derived_histogram_calculator_ae93ccd4bd14342648e0ac836ebe9b122}{00103}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_derived_histogram_calculator_ae93ccd4bd14342648e0ac836ebe9b122}{ParticleDerivedHistogramCalculator::createHistograms}}()}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00104}00104 \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00105}00105   TString fct = \textcolor{stringliteral}{"{}createHistograms()"{}};}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00106}00106   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(fct))}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00107}00107     \{ \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00108}00108   \mbox{\hyperlink{class_configuration}{Configuration}} \& \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}} = \mbox{\hyperlink{class_task_a1955cc87bd4885d8ca19435b3609443f}{getConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00109}00109   TString prefixName = \mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(); prefixName += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00110}00110   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nEventFilters    = \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00111}00111   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nParticleFilters = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00112}00112   }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00113}00113   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(fct))}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00114}00114     \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00115}00115     cout << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00116}00116     cout << \textcolor{stringliteral}{"{}Creating Histogram(s) for..."{}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00117}00117     cout << \textcolor{stringliteral}{"{}       nEventFilters: "{}} << nEventFilters << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00118}00118     cout << \textcolor{stringliteral}{"{}    nParticleFilters: "{}} << nParticleFilters << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00119}00119     \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00120}00120   \mbox{\hyperlink{class_particle_derived_histos}{ParticleDerivedHistos}} * histos;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00121}00121   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00122}00122     \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00123}00123     TString evtFilterName = \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}[iEventFilter]-\/>getName();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00124}00124     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00125}00125       \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00126}00126       TString partFilterName = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}[iParticleFilter]-\/>getName();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00127}00127       TString histoName  = prefixName;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00128}00128       histoName += evtFilterName;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00129}00129       histoName += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00130}00130       histoName += partFilterName;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00131}00131       histos = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_derived_histos}{ParticleDerivedHistos}}(histoName,\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}},\mbox{\hyperlink{class_message_logger_aaa759a0af20793b7586bb33722463d22}{getReportLevel}}());}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00132}00132       histos-\/>\mbox{\hyperlink{class_particle_derived_histos_aa932e18231f28247218e558e4f1b46d4}{createHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00133}00133       \mbox{\hyperlink{class_task_acc1a41e55911576605060a49664c7d1f}{derivedSingleHistograms}}.push\_back(histos);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00134}00134       \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00135}00135     \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00136}00136   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(fct))}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00137}00137     \{ \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00138}00138 \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00141}\mbox{\hyperlink{class_particle_derived_histogram_calculator_a923886053feb99f44ef716cf5c9997db}{00141}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}{ParticleDerivedHistogramCalculator::loadHistograms}}(TFile * inputFile)}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00142}00142 \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00143}00143   TString fct = \textcolor{stringliteral}{"{}loadHistograms(TFile * inputFile)"{}};}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00144}00144   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(fct))}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00145}00145     \{ \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00146}00146   \mbox{\hyperlink{class_configuration}{Configuration}} \& \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}} = \mbox{\hyperlink{class_task_a1955cc87bd4885d8ca19435b3609443f}{getConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00147}00147   TString prefixName = \mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(); prefixName += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00148}00148   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nEventFilters    = \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00149}00149   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nParticleFilters = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00150}00150   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(fct))}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00151}00151     \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00152}00152     cout << \textcolor{stringliteral}{"{}Loading Histogram(s) for..."{}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00153}00153     cout << \textcolor{stringliteral}{"{}       nEventFilters: "{}} << nEventFilters << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00154}00154     cout << \textcolor{stringliteral}{"{}    nParticleFilters: "{}} << nParticleFilters << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00155}00155     \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00157}00157   \mbox{\hyperlink{class_particle_histos}{ParticleHistos}}     * histos;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00158}00158   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00159}00159     \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00160}00160     TString efn = \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}[iEventFilter]-\/>getName();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00161}00161     \textcolor{comment}{// singles}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00162}00162     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00163}00163       \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00164}00164       TString pfn = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}[iParticleFilter]-\/>getName();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00165}00165       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}ParticleDerivedHistogramCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}createHistograms()"{}}))}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00166}00166         \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00167}00167         cout << \textcolor{stringliteral}{"{}Particle filter (Singles):"{}} << pfn << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00168}00168         \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00169}00169       histos = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_histos}{ParticleHistos}}(\mbox{\hyperlink{class_task_a1b6030e671b0670d448a859b0fb0a065}{createHistogramName}}(prefixName,efn,pfn,\textcolor{stringliteral}{"{}"{}}),\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}},\mbox{\hyperlink{class_message_logger_aaa759a0af20793b7586bb33722463d22}{getReportLevel}}());}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00170}00170       histos-\/>\mbox{\hyperlink{class_particle_histos_ade0541fea8cd433404afb5c76bfc083a}{loadHistograms}}(inputFile);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00171}00171       \mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}.push\_back(histos);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00172}00172       \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00173}00173     \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00174}00174 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00175}00175   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(fct))}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00176}00176     \{ \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00177}00177 \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00178}00178 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00179}\mbox{\hyperlink{class_particle_derived_histogram_calculator_a9495cbe7bb228ce9b652623657b9fd4d}{00179}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_derived_histogram_calculator_a9495cbe7bb228ce9b652623657b9fd4d}{ParticleDerivedHistogramCalculator::execute}}()}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00180}00180 \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00181}00181   TString fct = \textcolor{stringliteral}{"{}execute()"{}};}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00182}00182   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(fct))}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00183}00183     \{ \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00184}00184   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nEventFilters    = \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00185}00185   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nParticleFilters = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00186}00186   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(fct))}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00187}00187     \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00188}00188     cout << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00189}00189     cout << \textcolor{stringliteral}{"{}Computing derived histograms for: "{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00190}00190     cout << \textcolor{stringliteral}{"{}                   nEventFilters: "{}} << nEventFilters << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00191}00191     cout << \textcolor{stringliteral}{"{}                nParticleFilters: "{}} << nParticleFilters << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00192}00192     \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00193}00193   \mbox{\hyperlink{class_particle_histos}{ParticleHistos}}        * baseHistos;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00194}00194   \mbox{\hyperlink{class_particle_derived_histos}{ParticleDerivedHistos}} * derivedHistos;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00195}00195   \textcolor{keywordtype}{unsigned} index;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00196}00196 }
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00199}00199   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00200}00200     \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00201}00201     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00202}00202       \{}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00203}00203       index = iEventFilter*nParticleFilters + iParticleFilter;}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00204}00204       baseHistos    = (\mbox{\hyperlink{class_particle_histos}{ParticleHistos}} *) \mbox{\hyperlink{class_task_aa52735b2d2e2e584f168847408a7c605}{baseSingleHistograms}}[index];}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00205}00205       derivedHistos = (\mbox{\hyperlink{class_particle_derived_histos}{ParticleDerivedHistos}} *) \mbox{\hyperlink{class_task_acc1a41e55911576605060a49664c7d1f}{derivedSingleHistograms}}[index];}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00206}00206       derivedHistos-\/>\mbox{\hyperlink{class_particle_derived_histos_ac02a19a8da63aec0a0128d3423cd96cb}{calculateDerivedHistograms}}(baseHistos);}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00207}00207       \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00208}00208     \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00209}00209   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(fct))}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00210}00210    \{ \}}
+\DoxyCodeLine{\Hypertarget{_particle_derived_histogram_calculator_8cpp_source_l00211}00211 \}}
+
+\end{DoxyCode}

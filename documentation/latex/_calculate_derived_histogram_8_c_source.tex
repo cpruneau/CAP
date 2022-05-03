@@ -1,0 +1,459 @@
+\hypertarget{_calculate_derived_histogram_8_c_source}{}\doxysection{Calculate\+Derived\+Histogram.\+C}
+\label{_calculate_derived_histogram_8_c_source}\index{Macros/CalculateDerivedHistogram.C@{Macros/CalculateDerivedHistogram.C}}
+\mbox{\hyperlink{_calculate_derived_histogram_8_c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00001}00001 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00002}00002 \textcolor{preprocessor}{\#include "{}TRandom.h"{}}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00004}\mbox{\hyperlink{_calculate_derived_histogram_8_c_aa38eaac076e6112a100e3e1959115aec}{00004}} \textcolor{keywordtype}{int} \mbox{\hyperlink{_calculate_derived_histogram_8_c_aa38eaac076e6112a100e3e1959115aec}{CalculateDerivedHistogram}}()}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00005}00005 \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00006}00006   std::cout << \textcolor{stringliteral}{"{}=================================================================================="{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00007}00007   std::cout << \textcolor{stringliteral}{"{}CalculateDerivedHistogram()"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00008}00008   std::cout << \textcolor{stringliteral}{"{}=================================================================================="{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00009}00009  }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00010}00010   TString includesPath = getenv(\textcolor{stringliteral}{"{}WAC\_SRC"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00011}00011   includesPath += \textcolor{stringliteral}{"{}/Base/"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00012}00012   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}MessageLogger.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00013}00013   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Task.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00014}00014   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}HistogramCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00015}00015   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}Histograms.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00016}00016   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}DerivedHistogramCalculator.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00017}00017   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}ParticleFilterAliceV0.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00018}00018   gSystem-\/>Load(\textcolor{stringliteral}{"{}libBase.dylib"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00020}00020   \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}}  infoLevel  = \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{MessageLogger::Info}};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00021}00021   \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}}  debugLevel = \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa5f1f5d604d1a1e53af3b330224db4986}{MessageLogger::Debug}};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00022}00022   \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}}  selectedLevel = debugLevel; \textcolor{comment}{//infoLevel;}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00023}00023   \textcolor{keywordtype}{bool} YES = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00024}00024   \textcolor{keywordtype}{bool} NO  = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00025}00025   \textcolor{comment}{//TString histoInputPath      = "{}/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/13TEV/Eta2/"{};}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00026}00026   \textcolor{comment}{//TString baseFileName  = "{}PYTHIA\_pp\_13TeV\_inelastic\_Pair\_"{};}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00027}00027    }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00028}00028   TString histoInputPath       = \textcolor{stringliteral}{"{}/Volumes/ClaudeDisc4/OutputFiles/RhoResonanceTestWiderFinest/"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00029}00029   TString histoInputFileName   = \textcolor{stringliteral}{"{}RhoResonance\_"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00030}00030   TString histoOutputPath      = \textcolor{stringliteral}{"{}/Volumes/ClaudeDisc4/OutputFiles/RhoResonanceTestWiderFinest/"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00031}00031   TString histoOutputFileName  = \textcolor{stringliteral}{"{}RhoResonance\_"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00032}00032   TString histoBaseName        = \textcolor{stringliteral}{"{}RhoResonance\_"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00033}00033   TString globalLabel          = \textcolor{stringliteral}{"{}Global"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00034}00034   TString partLabel            = \textcolor{stringliteral}{"{}Part"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00035}00035   TString pairLabel            = \textcolor{stringliteral}{"{}Pair"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00036}00036   TString nuDynLabel           = \textcolor{stringliteral}{"{}NuDyn"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00037}00037   TString derivedLabel         = \textcolor{stringliteral}{"{}Derived"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00038}00038   TString sumLabel             = \textcolor{stringliteral}{"{}Sum"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00039}00039   TString balFctLabel          = \textcolor{stringliteral}{"{}BalFct"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00040}00040   TString rootExt              = \textcolor{stringliteral}{"{}.root"{}};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00041}00041   }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00042}00042   \textcolor{keywordtype}{bool} forceHistogramsRewrite  =  YES;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00043}00043   \textcolor{keywordtype}{int}  eventSelection      = 0;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00044}00044   \textcolor{keywordtype}{int}  particleSelection   = 3;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00045}00045   \textcolor{keywordtype}{int}  observableSelection = 1;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00046}00046   \textcolor{keywordtype}{int}  defaultGroupSize    = 10;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00048}00048   \textcolor{keywordtype}{bool} sumBasicHistograms       = NO;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00049}00049   \textcolor{keywordtype}{bool} sumDerivedHistograms     = NO;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00050}00050   \textcolor{keywordtype}{bool} sumBalFctHistograms      = NO;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00051}00051   \textcolor{keywordtype}{bool} computeDerivedHistograms = YES;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00052}00052   \textcolor{keywordtype}{bool} computeBalFct            = NO;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00053}00053   \textcolor{keywordtype}{bool} doGlobals                = NO;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00054}00054   \textcolor{keywordtype}{bool} doParticles              = YES;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00055}00055   \textcolor{keywordtype}{bool} doPairs                  = NO;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00056}00056   \textcolor{keywordtype}{bool} doNuDyns                 = NO;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00059}00059   \mbox{\hyperlink{class_configuration}{Configuration}} partConfig(\textcolor{stringliteral}{"{}Part Spectra Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00060}00060   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}forceHistogramsRewrite"{}}, forceHistogramsRewrite);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00061}00061   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoInputPath"{}},         histoInputPath      );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00062}00062   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoInputFileName"{}},     histoInputFileName+partLabel   );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00063}00063   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoOutputPath"{}},        histoOutputPath     );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00064}00064   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoOutputFileName"{}},    histoOutputFileName+partLabel );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00065}00065   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoBaseName"{}},          partLabel    );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00066}00066   }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00067}00067   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_n1"{}},  100);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00068}00068   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_n1"{}},    0.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00069}00069   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_n1"{}},  100.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00071}00071   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_eTot"{}},  100);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00072}00072   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_eTot"{}},    0.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00073}00073   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_eTot"{}},  100.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00075}00075   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_pt"{}},  1000);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00076}00076   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_pt"{}},    0.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00077}00077   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_pt"{}},  100.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00079}00079   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_eta"{}},  80);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00080}00080   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_eta"{}},   -\/4.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00081}00081   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_eta"{}},    4.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00082}00082  }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00083}00083   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phi"{}},  72);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00084}00084   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_phi"{}},    0.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00085}00085   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_phi"{}},    TMath::TwoPi());}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00087}00087   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillEta"{}},  YES);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00088}00088   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillY"{}},    NO);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00089}00089   partConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillP2"{}},   NO);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00090}00090   \textcolor{keywordflow}{if} (selectedLevel == debugLevel) partConfig.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(cout);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00091}00091   }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00092}00092   }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00093}00093   \mbox{\hyperlink{class_configuration}{Configuration}} pairConfig(\textcolor{stringliteral}{"{}Pair Correlation Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00094}00094   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}useEventStream0"{}},         NO);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00095}00095   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}},  forceHistogramsRewrite);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00096}00096   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}createHistograms"{}},        YES);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00097}00097   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}saveHistograms"{}},          YES);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00098}00098   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}loadHistograms"{}},          YES);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00099}00099   }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00100}00100   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoInputPath"{}},      histoInputPath      );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00101}00101   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoInputFileName"{}},  histoInputFileName+pairLabel   );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00102}00102   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoOutputPath"{}},     histoOutputPath     );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00103}00103   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoOutputFileName"{}}, histoOutputFileName+pairLabel  );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00104}00104   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}histoBaseName"{}},       pairLabel           );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00105}00105   }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00106}00106   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_n1"{}},       100);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00107}00107   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_n1"{}},         0.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00108}00108   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_n1"{}},       100.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00109}00109   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_n2"{}},       100);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00110}00110   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_n2"{}},         0.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00111}00111   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_n2"{}},       400.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00112}00112   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_pt"{}},        20);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00113}00113   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_pt"{}},        0.00);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00114}00114   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_pt"{}},         2.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00115}00115   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_eta"{}},       40);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00116}00116   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_eta"{}},       -\/2.0); \textcolor{comment}{// 1;}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00117}00117   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_eta"{}},        2.0);  \textcolor{comment}{// 1;}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00118}00118   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phi"{}},       72);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00119}00119   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_phi"{}},        0.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00120}00120   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_phi"{}},TMath::TwoPi());}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00121}00121   }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00122}00122   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_Dphi"{}},         72);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00123}00123   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_Dphi"{}},          0.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00124}00124   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_Dphi"{}},TMath::TwoPi());}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00125}00125   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}width\_Dphi"{}},TMath::TwoPi());}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00126}00126   }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00127}00127   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_Dphi\_shft"{}},    72);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00128}00128   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_Dphi\_shft"{}},     0.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00129}00129   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_Dphi\_shft"{}},     0.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00130}00130   }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00131}00131   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_Deta"{}},         79);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00132}00132   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_Deta"{}},         -\/2.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00133}00133   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_Deta"{}},          2.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00134}00134   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}width\_Deta"{}},   4.0/79.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00135}00135   }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00136}00136   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_Dy"{}},           79);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00137}00137   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_Dy"{}},           -\/2.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00138}00138   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_Dy"{}},            2.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00139}00139   pairConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}width\_Dy"{}},     4.0/79.0);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00140}00140   \textcolor{keywordflow}{if} (selectedLevel == debugLevel) pairConfig.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(cout);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00142}00142   \mbox{\hyperlink{class_configuration}{Configuration}} nuDynConfig(\textcolor{stringliteral}{"{}Nu Dyn Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00144}00144   }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00145}00145   }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00146}00146   vector<EventFilter*> eventFilters;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00147}00147   vector<ParticleFilter*>  particleFilters;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00148}00148 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00149}00149   \mbox{\hyperlink{class_event_filter}{EventFilter}} * openEventFilter  = \textcolor{keyword}{new} \mbox{\hyperlink{class_event_filter}{EventFilter}}();}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00150}00150   openEventFilter-\/>\mbox{\hyperlink{class_filter_adb1b0fd50be6e6e7ddc39ef3e45710ad}{setName}}(\textcolor{stringliteral}{"{}All"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00151}00151   openEventFilter-\/>\mbox{\hyperlink{class_filter_a612c2b462068e089a0fda5c075ab2aac}{setLongName}}(\textcolor{stringliteral}{"{}All"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00152}00152   \mbox{\hyperlink{class_event_filter}{EventFilter}} * aliceMinBiasEventFilter  = \textcolor{keyword}{new} \mbox{\hyperlink{class_event_filter}{EventFilter}}();}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00153}00153   aliceMinBiasEventFilter-\/>\mbox{\hyperlink{class_filter_adb1b0fd50be6e6e7ddc39ef3e45710ad}{setName}}(\textcolor{stringliteral}{"{}V0MB"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00154}00154   aliceMinBiasEventFilter-\/>\mbox{\hyperlink{class_filter_a612c2b462068e089a0fda5c075ab2aac}{setLongName}}(\textcolor{stringliteral}{"{}V0MinBias"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00155}00155   aliceMinBiasEventFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(1, 0, 1.0, 1.0E10); \textcolor{comment}{// v0 multiplicity}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00156}00156   aliceMinBiasEventFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(1, 1, 1.0, 1.0E10); \textcolor{comment}{// TPC multiplicity}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00157}00157   \textcolor{keywordflow}{switch} (eventSelection)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00158}00158     \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00159}00159       \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00160}00160       \textcolor{keywordflow}{case} 0: eventFilters.push\_back( openEventFilter ); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00161}00161       \textcolor{keywordflow}{case} 1: eventFilters.push\_back( aliceMinBiasEventFilter );\textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00162}00162     \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00163}00163 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00164}00164   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}* openParticleFilter     = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}(); \textcolor{comment}{// no conditions -\/-\/ accepts all}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00165}00165   openParticleFilter-\/>\mbox{\hyperlink{class_filter_adb1b0fd50be6e6e7ddc39ef3e45710ad}{setName}}(\textcolor{stringliteral}{"{}OpenFilter\_"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00166}00166   openParticleFilter-\/>\mbox{\hyperlink{class_filter_a612c2b462068e089a0fda5c075ab2aac}{setLongName}}(\textcolor{stringliteral}{"{}OpenFilter\_"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00167}00167   openParticleFilter-\/>\mbox{\hyperlink{class_filter_a6f0c7eca80682a6b83950f3746eafa97}{setTitle}}(\textcolor{stringliteral}{"{}Open"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00168}00168   openParticleFilter-\/>\mbox{\hyperlink{class_filter_a299696a6f57d9ccde1ae6b75699e244f}{setLongTitle}}(\textcolor{stringliteral}{"{}Open"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00169}00169 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00170}00170   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}* aliceV0ParticleFilter  = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}();}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00171}00171   aliceV0ParticleFilter-\/>\mbox{\hyperlink{class_filter_adb1b0fd50be6e6e7ddc39ef3e45710ad}{setName}}(\textcolor{stringliteral}{"{}V0M"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00172}00172   aliceV0ParticleFilter-\/>\mbox{\hyperlink{class_filter_a612c2b462068e089a0fda5c075ab2aac}{setLongName}}(\textcolor{stringliteral}{"{}HM"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00173}00173   aliceV0ParticleFilter-\/>\mbox{\hyperlink{class_filter_a6f0c7eca80682a6b83950f3746eafa97}{setTitle}}(\textcolor{stringliteral}{"{}V0M"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00174}00174   aliceV0ParticleFilter-\/>\mbox{\hyperlink{class_filter_a299696a6f57d9ccde1ae6b75699e244f}{setLongTitle}}(\textcolor{stringliteral}{"{}V0M"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00175}00175   aliceV0ParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(0, 1,  0.0, 0.0);  \textcolor{comment}{// live particles only}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00176}00176   aliceV0ParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(4, 1103, 0.0, 0.0);   \textcolor{comment}{// low mass charged hadron}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00177}00177   aliceV0ParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(5, 1, 0.05,  1000.0);  \textcolor{comment}{// pT}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00178}00178   aliceV0ParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(5, 7, -\/3.7, -\/1.7, 2.8, 5.1); \textcolor{comment}{// pseudorapidity in V0A and V0C}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00180}00180   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}* aliceTpcParticleFilter = \textcolor{keyword}{new} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}}();}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00181}00181   aliceTpcParticleFilter-\/>\mbox{\hyperlink{class_filter_adb1b0fd50be6e6e7ddc39ef3e45710ad}{setName}}(\textcolor{stringliteral}{"{}TpcAll"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00182}00182   aliceTpcParticleFilter-\/>\mbox{\hyperlink{class_filter_a612c2b462068e089a0fda5c075ab2aac}{setLongName}}(\textcolor{stringliteral}{"{}TpcAll"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00183}00183   aliceTpcParticleFilter-\/>\mbox{\hyperlink{class_filter_a6f0c7eca80682a6b83950f3746eafa97}{setTitle}}(\textcolor{stringliteral}{"{}TpcAll"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00184}00184   aliceTpcParticleFilter-\/>\mbox{\hyperlink{class_filter_a299696a6f57d9ccde1ae6b75699e244f}{setLongTitle}}(\textcolor{stringliteral}{"{}TpcAll"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00185}00185   aliceTpcParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(0, 1,  0.0, 0.0);  \textcolor{comment}{// live particles only}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00186}00186   aliceTpcParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(4, 1103, 0.0, 0.0);   \textcolor{comment}{// low mass charged hadron}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00187}00187   aliceTpcParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(5, 1, 0.15,  100.0);  \textcolor{comment}{// pT}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00188}00188   aliceTpcParticleFilter-\/>\mbox{\hyperlink{class_filter_a51a99f976ce87aef610c4047eee43d60}{addCondition}}(5, 7, -\/1.0, 1.0); \textcolor{comment}{// pseudorapidity in  TPC}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00189}00189 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00190}00190   \textcolor{keywordflow}{switch} (particleSelection)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00191}00191     \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00192}00192       \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00193}00193       \textcolor{keywordflow}{case} 0: particleFilters.push\_back( openParticleFilter ); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00194}00194       \textcolor{keywordflow}{case} 1: particleFilters.push\_back( aliceV0ParticleFilter ); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00195}00195       \textcolor{keywordflow}{case} 2: particleFilters.push\_back( aliceTpcParticleFilter);  \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00196}00196       \textcolor{keywordflow}{case} 3: particleFilters = \mbox{\hyperlink{class_particle_filter_ab0958a5a13805f4b8c7f7b290276f89f}{ParticleFilter::createChargedHadronFilters}}(YES,0.2, 10.0, YES,-\/6.0, 6.0, NO, 10.0, -\/10.0);  \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00197}00197       \textcolor{keywordflow}{case} 4: particleFilters = \mbox{\hyperlink{class_particle_filter_ab0958a5a13805f4b8c7f7b290276f89f}{ParticleFilter::createChargedHadronFilters}}(YES,0.2, 2.0, YES,-\/1.0, 1.0, NO, 10.0, -\/10.0);   \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00198}00198       \textcolor{keywordflow}{case} 5: particleFilters = \mbox{\hyperlink{class_particle_filter_a438da9d967a7c1bef4343afae70a17a4}{ParticleFilter::createPlusMinusHadronFilters}}(YES,0.2, 2.0, YES,-\/2.0, 2.0, NO, 10.0, -\/10.0); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00199}00199     \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00200}00200 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00201}00201   cout << \textcolor{stringliteral}{"{}           histoInputPath : "{}} << histoInputPath << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00202}00202   cout << \textcolor{stringliteral}{"{}             baseFileName : "{}} << histoBaseName << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00203}00203   cout << \textcolor{stringliteral}{"{}              globalLabel : "{}} << globalLabel << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00204}00204   cout << \textcolor{stringliteral}{"{}                partLabel : "{}} << partLabel << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00205}00205   cout << \textcolor{stringliteral}{"{}               nuDynLabel : "{}} << nuDynLabel << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00206}00206   cout << \textcolor{stringliteral}{"{}             derivedLabel : "{}} << derivedLabel << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00207}00207   cout << \textcolor{stringliteral}{"{}                 sumLabel : "{}} << sumLabel << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00208}00208   cout << \textcolor{stringliteral}{"{}              balFctLabel : "{}} << balFctLabel << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00209}00209   cout << \textcolor{stringliteral}{"{}           eventSelection : "{}} << eventSelection << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00210}00210   cout << \textcolor{stringliteral}{"{}        particleSelection : "{}} << particleSelection << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00211}00211   cout << \textcolor{stringliteral}{"{}      observableSelection : "{}} << observableSelection << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00212}00212   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k=0; k<particleFilters.size(); k++)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00213}00213     \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00214}00214     cout << \textcolor{stringliteral}{"{} particle filter k:"{}} << k << \textcolor{stringliteral}{"{} Name: "{}} << particleFilters[k]-\/>getName() << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00215}00215     \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00216}00216   }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00217}00217   }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00218}00218 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00219}00219   \textcolor{keywordflow}{if} (computeDerivedHistograms)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00220}00220     \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00221}00221      \textcolor{keywordflow}{if} (doParticles)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00222}00222       \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00223}00223       \mbox{\hyperlink{class_configuration}{Configuration}} fileIteratorConfig(\textcolor{stringliteral}{"{}ParticleDerivedHistogramIterator Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00224}00224       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoInputPath"{}},        histoInputPath      );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00225}00225       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}},       histoOutputPath     );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00226}00226       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}},forceHistogramsRewrite);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00227}00227       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern0"{}},rootExt);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00228}00228       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern1"{}},histoBaseName+partLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00229}00229       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern0"{}},derivedLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00230}00230       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern1"{}},sumLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00231}00231       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern2"{}},balFctLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00232}00232       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}appendedString"{}},  derivedLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00233}00233       \mbox{\hyperlink{class_file_task_iterator}{FileTaskIterator}} * iterator = \textcolor{keyword}{new} \mbox{\hyperlink{class_file_task_iterator}{FileTaskIterator}}(\textcolor{stringliteral}{"{}ParticleDerivedHistogramIterator"{}},fileIteratorConfig,selectedLevel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00234}00234       iterator-\/>\mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{addSubtask}}(\textcolor{keyword}{new} \mbox{\hyperlink{class_particle_derived_histogram_calculator}{ParticleDerivedHistogramCalculator}}(partLabel, partConfig, eventFilters, particleFilters, selectedLevel));}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00235}00235       iterator-\/>\mbox{\hyperlink{class_file_task_iterator_aa413681230c253b7287f5bc3e9bb647b}{run}}();}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00236}00236       \textcolor{keyword}{delete} iterator;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00237}00237       \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00238}00238     }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00239}00239     \textcolor{keywordflow}{if} (doPairs)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00240}00240       \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00241}00241       \mbox{\hyperlink{class_configuration}{Configuration}} fileIteratorConfig(\textcolor{stringliteral}{"{}PairDerivedHistogramIterator Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00242}00242       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoInputPath"{}},        histoInputPath      );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00243}00243       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}},       histoOutputPath     );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00244}00244       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}},forceHistogramsRewrite);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00245}00245       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern0"{}},rootExt);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00246}00246       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern1"{}},histoBaseName+pairLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00247}00247       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern0"{}},derivedLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00248}00248       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern1"{}},sumLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00249}00249       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern2"{}},balFctLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00250}00250       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}appendedString"{}},  derivedLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00251}00251       \mbox{\hyperlink{class_file_task_iterator}{FileTaskIterator}} * iterator = \textcolor{keyword}{new} \mbox{\hyperlink{class_file_task_iterator}{FileTaskIterator}}(\textcolor{stringliteral}{"{}ParticleDerivedHistogramIterator"{}},fileIteratorConfig,selectedLevel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00252}00252       iterator-\/>\mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{addSubtask}}(\textcolor{keyword}{new} \mbox{\hyperlink{class_particle_derived_histogram_calculator}{ParticleDerivedHistogramCalculator}}(partLabel, partConfig, eventFilters, particleFilters, selectedLevel));}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00253}00253       iterator-\/>\mbox{\hyperlink{class_file_task_iterator_aa413681230c253b7287f5bc3e9bb647b}{run}}();}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00254}00254       \textcolor{keyword}{delete} iterator;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00255}00255       \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00256}00256     }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00257}00257     \textcolor{keywordflow}{if} (doNuDyns)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00258}00258       \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00259}00259       \mbox{\hyperlink{class_configuration}{Configuration}} fileIteratorConfig(\textcolor{stringliteral}{"{}NuDynDerivedHistogramIterator Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00260}00260       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoInputPath"{}},        histoInputPath      );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00261}00261       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}},       histoOutputPath     );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00262}00262       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}},forceHistogramsRewrite);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00263}00263       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern0"{}},rootExt);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00264}00264       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern1"{}},histoBaseName+nuDynLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00265}00265       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern0"{}},derivedLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00266}00266       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern1"{}},sumLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00267}00267       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern2"{}},balFctLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00268}00268       fileIteratorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}appendedString"{}},  derivedLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00269}00269       \mbox{\hyperlink{class_file_task_iterator}{FileTaskIterator}} * iterator = \textcolor{keyword}{new} \mbox{\hyperlink{class_file_task_iterator}{FileTaskIterator}}(\textcolor{stringliteral}{"{}NuDynDerivedHistogramIterator"{}},fileIteratorConfig,selectedLevel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00270}00270       iterator-\/>\mbox{\hyperlink{class_task_a78f7bbeb2ec377c1d8f8c6d26c4a6a58}{addSubtask}}(\textcolor{keyword}{new} \mbox{\hyperlink{class_nu_dyn_derived_histogram_calculator}{NuDynDerivedHistogramCalculator}}(nuDynLabel, nuDynConfig, eventFilters, particleFilters, selectedLevel));}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00271}00271       iterator-\/>\mbox{\hyperlink{class_file_task_iterator_aa413681230c253b7287f5bc3e9bb647b}{run}}();}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00272}00272       \textcolor{keyword}{delete} iterator;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00273}00273       \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00274}00274     \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00275}00275 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00276}00276   \textcolor{keywordflow}{if} (sumBasicHistograms)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00277}00277     \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00278}00278     \textcolor{keywordflow}{if} (doParticles)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00279}00279       \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00280}00280       \mbox{\hyperlink{class_configuration}{Configuration}} subSampleCalcularorConfig(\textcolor{stringliteral}{"{}SubSampleCalcularor-\/Particles Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00281}00281       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoInputPath"{}},        histoInputPath      );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00282}00282       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}},       histoOutputPath     );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00283}00283       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}},forceHistogramsRewrite);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00284}00284       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern0"{}}, rootExt);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00285}00285       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern1"{}}, histoBaseName+partLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00286}00286       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern0"{}}, derivedLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00287}00287       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern1"{}}, sumLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00288}00288       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern2"{}}, balFctLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00289}00289       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}defaultGroupSize"{}}, 10);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00290}00290       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}appendedString"{}},   \textcolor{stringliteral}{"{}Sum\_"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00291}00291       \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}} * calculator = \textcolor{keyword}{new} \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}}(\textcolor{stringliteral}{"{}SubSampleStatCalculator-\/Particles"{}},subSampleCalcularorConfig,infoLevel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00292}00292       calculator-\/>\mbox{\hyperlink{class_sub_sample_stat_calculator_a99a979c37d9b6df40613c20943893be3}{run}}();}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00293}00293       \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00294}00294     \textcolor{keywordflow}{if} (doPairs)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00295}00295       \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00296}00296       \mbox{\hyperlink{class_configuration}{Configuration}} subSampleCalcularorConfig(\textcolor{stringliteral}{"{}SubSampleCalcularor-\/Pairs Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00297}00297       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoInputPath"{}},        histoInputPath      );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00298}00298       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}},       histoOutputPath     );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00299}00299       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}},forceHistogramsRewrite);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00300}00300       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern0"{}}, rootExt);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00301}00301       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern1"{}}, histoBaseName+pairLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00302}00302       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern0"{}}, derivedLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00303}00303       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern1"{}}, sumLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00304}00304       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern2"{}}, balFctLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00305}00305       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}defaultGroupSize"{}}, 10);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00306}00306       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}appendedString"{}},   \textcolor{stringliteral}{"{}Sum\_"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00307}00307       \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}} * calculator = \textcolor{keyword}{new} \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}}(\textcolor{stringliteral}{"{}SubSampleStatCalculator-\/Pairs"{}},subSampleCalcularorConfig,infoLevel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00308}00308       calculator-\/>\mbox{\hyperlink{class_sub_sample_stat_calculator_a99a979c37d9b6df40613c20943893be3}{run}}();}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00309}00309       \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00310}00310     \textcolor{keywordflow}{if} (doNuDyns)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00311}00311       \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00312}00312       \mbox{\hyperlink{class_configuration}{Configuration}} subSampleCalcularorConfig(\textcolor{stringliteral}{"{}SubSampleCalcularor-\/NuDyns Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00313}00313       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoInputPath"{}},        histoInputPath      );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00314}00314       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}},       histoOutputPath     );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00315}00315       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}},forceHistogramsRewrite);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00316}00316       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern0"{}}, rootExt);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00317}00317       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern1"{}}, histoBaseName+nuDynLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00318}00318       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern2"{}}, derivedLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00319}00319       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern0"{}}, sumLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00320}00320       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern1"{}}, balFctLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00321}00321       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}defaultGroupSize"{}}, 10);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00322}00322       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}appendedString"{}},   \textcolor{stringliteral}{"{}Derived\_Sum\_"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00323}00323       \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}} * calculator = \textcolor{keyword}{new} \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}}(\textcolor{stringliteral}{"{}SubSampleStatCalculator-\/NuDyns"{}},subSampleCalcularorConfig,infoLevel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00324}00324       calculator-\/>\mbox{\hyperlink{class_sub_sample_stat_calculator_a99a979c37d9b6df40613c20943893be3}{run}}();}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00325}00325       \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00326}00326     \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00327}00327   }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00328}00328   \textcolor{keywordflow}{if} (sumDerivedHistograms)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00329}00329     \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00330}00330     \textcolor{keywordflow}{if} (doParticles)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00331}00331       \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00332}00332       \mbox{\hyperlink{class_configuration}{Configuration}} subSampleCalcularorConfig(\textcolor{stringliteral}{"{}SubSampleCalcularor-\/Particles Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00333}00333       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoInputPath"{}},        histoInputPath      );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00334}00334       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}},       histoOutputPath     );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00335}00335       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}},forceHistogramsRewrite);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00336}00336       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern0"{}}, rootExt);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00337}00337       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern1"{}}, histoBaseName+partLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00338}00338       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern2"{}}, derivedLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00339}00339       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern0"{}}, sumLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00340}00340       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern1"{}}, balFctLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00341}00341       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}defaultGroupSize"{}}, 10);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00342}00342       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}appendedString"{}},   \textcolor{stringliteral}{"{}Derived\_Sum\_"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00343}00343       \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}} * calculator = \textcolor{keyword}{new} \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}}(\textcolor{stringliteral}{"{}SubSampleStatCalculator-\/Particles"{}},subSampleCalcularorConfig,infoLevel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00344}00344       calculator-\/>\mbox{\hyperlink{class_sub_sample_stat_calculator_a99a979c37d9b6df40613c20943893be3}{run}}();}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00345}00345       \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00346}00346     \textcolor{keywordflow}{if} (doPairs)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00347}00347       \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00348}00348       \mbox{\hyperlink{class_configuration}{Configuration}} subSampleCalcularorConfig(\textcolor{stringliteral}{"{}SubSampleCalcularor-\/Pairs Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00349}00349       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoInputPath"{}},        histoInputPath      );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00350}00350       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}},       histoOutputPath     );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00351}00351       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}},forceHistogramsRewrite);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00352}00352       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern0"{}}, rootExt);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00353}00353       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern1"{}}, histoBaseName+pairLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00354}00354       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern2"{}}, derivedLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00355}00355       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern0"{}}, sumLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00356}00356       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern1"{}}, balFctLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00357}00357       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}defaultGroupSize"{}}, 10);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00358}00358       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}appendedString"{}},   \textcolor{stringliteral}{"{}Derived\_Sum\_"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00359}00359       \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}} * calculator = \textcolor{keyword}{new} \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}}(\textcolor{stringliteral}{"{}SubSampleStatCalculator-\/Pairs"{}},subSampleCalcularorConfig,infoLevel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00360}00360       calculator-\/>\mbox{\hyperlink{class_sub_sample_stat_calculator_a99a979c37d9b6df40613c20943893be3}{run}}();}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00361}00361       \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00362}00362     \textcolor{keywordflow}{if} (doNuDyns)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00363}00363       \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00364}00364       \mbox{\hyperlink{class_configuration}{Configuration}} subSampleCalcularorConfig(\textcolor{stringliteral}{"{}SubSampleCalcularor-\/NuDyns Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00365}00365       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoInputPath"{}},        histoInputPath      );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00366}00366       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}},       histoOutputPath     );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00367}00367       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}},forceHistogramsRewrite);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00368}00368       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern0"{}}, rootExt);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00369}00369       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern1"{}}, histoBaseName+nuDynLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00370}00370       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}IncludedPattern2"{}}, derivedLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00371}00371       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern0"{}}, sumLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00372}00372       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ExcludedPattern1"{}}, balFctLabel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00373}00373       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}defaultGroupSize"{}}, 10);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00374}00374       subSampleCalcularorConfig.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}appendedString"{}},   \textcolor{stringliteral}{"{}Derived\_Sum\_"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00375}00375       \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}} * calculator = \textcolor{keyword}{new} \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}}(\textcolor{stringliteral}{"{}SubSampleStatCalculator-\/NuDyns"{}},subSampleCalcularorConfig,infoLevel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00376}00376       calculator-\/>\mbox{\hyperlink{class_sub_sample_stat_calculator_a99a979c37d9b6df40613c20943893be3}{run}}();}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00377}00377       \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00378}00378     \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00379}00379 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00380}00380   \textcolor{keywordflow}{if} (computeBalFct)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00381}00381     \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00382}00382     cout << \textcolor{stringliteral}{"{}ComputeBF -\/-\/ from folder:"{}} << histoInputPath  << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00383}00383 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00384}00384    }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00385}00385     vector<TString> summedFiles = \mbox{\hyperlink{class_task_aac1fd81fca680da790dcfe40d30e95ad}{Task::listFilesInDir}}(histoInputPath,\textcolor{stringliteral}{"{}Derived\_Group\_0\_to\_9.root"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00386}00386     \textcolor{keywordtype}{int} nSummedFiles = summedFiles.size();}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00387}00387     cout << \textcolor{stringliteral}{"{}  nSummedFiles: "{}} << nSummedFiles << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00388}00388     \textcolor{keywordflow}{if} (nSummedFiles<1)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00389}00389       \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00390}00390       cout << \textcolor{stringliteral}{"{}<E> RunDerivedHistogramCalculator(...) No sum of derived files founds???"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00391}00391       \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00392}00392       \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00393}00393  }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00394}00394 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00395}00395     vector<TString>  sObservableNames;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00396}00396     vector<TString>  pObservableNames;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00397}00397     \textcolor{keywordflow}{switch} (observableSelection)}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00398}00398       \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00399}00399         \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00400}00400         \textcolor{keywordflow}{case} 0: \textcolor{comment}{// eta based observables, full complement}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00401}00401         sObservableNames.push\_back(\textcolor{stringliteral}{"{}\_n1\_eta"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00402}00402         sObservableNames.push\_back(\textcolor{stringliteral}{"{}\_n1\_phi"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00403}00403         pObservableNames.push\_back(\textcolor{stringliteral}{"{}\_R2\_ptpt"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00404}00404         pObservableNames.push\_back(\textcolor{stringliteral}{"{}\_R2\_phiPhi"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00405}00405         pObservableNames.push\_back(\textcolor{stringliteral}{"{}\_R2\_etaEta"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00406}00406         pObservableNames.push\_back(\textcolor{stringliteral}{"{}\_R2\_DetaDphi\_shft"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00407}00407         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00408}00408 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00409}00409         \textcolor{keywordflow}{case} 1: \textcolor{comment}{// eta based observables, only DeltaEta vs DeltaPhi}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00410}00410         sObservableNames.push\_back(\textcolor{stringliteral}{"{}\_n1\_eta"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00411}00411         sObservableNames.push\_back(\textcolor{stringliteral}{"{}\_n1\_phi"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00412}00412         pObservableNames.push\_back(\textcolor{stringliteral}{"{}\_R2\_DetaDphi\_shft"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00413}00413         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00414}00414 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00415}00415         \textcolor{keywordflow}{case} 2: \textcolor{comment}{// y based observables, full complement}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00416}00416         sObservableNames.push\_back(\textcolor{stringliteral}{"{}\_n1\_y"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00417}00417         sObservableNames.push\_back(\textcolor{stringliteral}{"{}\_n1\_phi"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00418}00418         pObservableNames.push\_back(\textcolor{stringliteral}{"{}\_R2\_ptpt"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00419}00419         pObservableNames.push\_back(\textcolor{stringliteral}{"{}\_R2\_phiPhi"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00420}00420         pObservableNames.push\_back(\textcolor{stringliteral}{"{}\_R2\_yY"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00421}00421         pObservableNames.push\_back(\textcolor{stringliteral}{"{}\_R2\_DyDphi\_shft"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00422}00422         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00423}00423 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00424}00424         \textcolor{keywordflow}{case} 3: \textcolor{comment}{// y based observables, only DeltaY vs DeltaPhi}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00425}00425         sObservableNames.push\_back(\textcolor{stringliteral}{"{}\_n1\_y"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00426}00426         sObservableNames.push\_back(\textcolor{stringliteral}{"{}\_n1\_phi"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00427}00427         pObservableNames.push\_back(\textcolor{stringliteral}{"{}\_R2\_DyDphi\_shft"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00428}00428         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00429}00429 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00430}00430         \textcolor{keywordflow}{case} 4: \textcolor{comment}{// eta based observables, only DeltaEta vs DeltaPhi}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00431}00431         sObservableNames.push\_back(\textcolor{stringliteral}{"{}\_n1\_eta"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00432}00432         sObservableNames.push\_back(\textcolor{stringliteral}{"{}\_n1\_phi"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00433}00433         pObservableNames.push\_back(\textcolor{stringliteral}{"{}\_B2AB\_DetaDphi\_shft"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00434}00434         pObservableNames.push\_back(\textcolor{stringliteral}{"{}\_B2BA\_DetaDphi\_shft"{}});}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00435}00435         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00436}00436       \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00437}00437    }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00438}00438     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k=0; k<nSummedFiles; k++  )}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00439}00439       \{}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00440}00440       pairConfig.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}( \textcolor{stringliteral}{"{}histoInputPath"{}},      histoInputPath    );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00441}00441       pairConfig.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}( \textcolor{stringliteral}{"{}histoInputFileName"{}},  summedFiles[k]    );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00442}00442       pairConfig.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}( \textcolor{stringliteral}{"{}histoOutputPath"{}},     histoOutputPath   );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00443}00443       pairConfig.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}( \textcolor{stringliteral}{"{}histoOutputFileName"{}}, TString(\textcolor{stringliteral}{"{}test"{}})   );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00444}00444       pairConfig.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}( \textcolor{stringliteral}{"{}histoBaseName"{}},       TString(\textcolor{stringliteral}{"{}Pair\_"{}})  );}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00445}00445       \mbox{\hyperlink{class_balance_function_calculator}{BalanceFunctionCalculator}} * bfc = \textcolor{keyword}{new} \mbox{\hyperlink{class_balance_function_calculator}{BalanceFunctionCalculator}}(\textcolor{stringliteral}{"{}BFC"{}},pairConfig,eventFilters, particleFilters, sObservableNames, pObservableNames, selectedLevel);}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00446}00446       bfc-\/>\mbox{\hyperlink{class_balance_function_calculator_aebf45d55bc4aa1b059d32586c876ba5b}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00447}00447       \textcolor{keyword}{delete} bfc;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00448}00448       \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00449}00449     \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00450}00450 }
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00451}00451   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00452}00452 \}}
+\DoxyCodeLine{\Hypertarget{_calculate_derived_histogram_8_c_source_l00453}00453 }
+
+\end{DoxyCode}

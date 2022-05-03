@@ -1,0 +1,895 @@
+\hypertarget{class_particle_histos}{}\doxysection{Particle\+Histos Class Reference}
+\label{class_particle_histos}\index{ParticleHistos@{ParticleHistos}}
+
+
+{\ttfamily \#include $<$Particle\+Histos.\+hpp$>$}
+
+
+
+Inheritance diagram for Particle\+Histos\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=185pt]{class_particle_histos__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Particle\+Histos\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{class_particle_histos__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_particle_histos_a680e2eb4a8b620571448ce9ee228cc16}{Particle\+Histos}} (const TString \&collection\+Name, Particle\+Analyzer\+Configuration $\ast$analysis\+Configuration, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} debug\+Level)
+\item 
+virtual \mbox{\hyperlink{class_particle_histos_a268f2b7f25709ba8f80ed1e0749c8066}{$\sim$\+Particle\+Histos}} ()
+\item 
+virtual void \mbox{\hyperlink{class_particle_histos_ab43319a25b232db90ccfe3d4f1576387}{create\+Histograms}} ()
+\item 
+virtual void \mbox{\hyperlink{class_particle_histos_ade0541fea8cd433404afb5c76bfc083a}{load\+Histograms}} (TFile $\ast$input\+File)
+\item 
+virtual void \mbox{\hyperlink{class_particle_histos_a2c0f2b1e931d7321973b18f77f16962f}{fill}} (\mbox{\hyperlink{class_particle}{Particle}} \&particle, double weight)
+\item 
+virtual void \mbox{\hyperlink{class_particle_histos_ac28ead7981319b59545f33ce36a6bbde}{fill}} (TLorentz\+Vector \&p, double weight)
+\item 
+virtual void \mbox{\hyperlink{class_particle_histos_a53e5b02843c6cce3901286d90cd4143d}{complete\+Fill}} ()
+\item 
+virtual void \mbox{\hyperlink{class_particle_histos_a214b4a0b94d7dd4a23639b4544a3e134}{fill\+Multiplicity}} (double n\+Accepted, double total\+Energy, double weight)
+\item 
+virtual void \mbox{\hyperlink{class_particle_histos_a81e90ad9a7ed1acf78d8be1c0edcc4e7}{calculate\+Averages}} ()
+\item 
+\mbox{\hyperlink{class_particle_histos_ab2daa7aeec0cd65458f1038a452d5019}{Particle\+Histos}} (const TString \&\+\_\+name, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \+\_\+debug\+Level)
+\item 
+virtual \mbox{\hyperlink{class_particle_histos_a970583fc0ba57c88978e493133d2507e}{$\sim$\+Particle\+Histos}} ()
+\item 
+virtual void \mbox{\hyperlink{class_particle_histos_aa258e45100571e549fca767ac552fec6}{create\+Histograms}} ()
+\item 
+virtual void \mbox{\hyperlink{class_particle_histos_ac2baec89d691bbe0c7ac041b0a8d091f}{load\+Histograms}} (TFile $\ast$input\+File)
+\item 
+virtual void \mbox{\hyperlink{class_particle_histos_ad9eab5037ebeff9d7cf0489116818ab4}{fill}} (vector$<$ \mbox{\hyperlink{class_particle_digit}{Particle\+Digit}} $\ast$ $>$ \&particles, double weight)
+\item 
+virtual void \mbox{\hyperlink{class_particle_histos_a09be7c2dd5efed2c8f5abf8ee09db002}{fill}} (\mbox{\hyperlink{class_particle}{Particle}} \&particle, double weight)
+\item 
+virtual void \mbox{\hyperlink{class_particle_histos_ad376d9a93a8aecfabd2d919fd707c986}{fill\+Multiplicity}} (double n\+Accepted, double total\+Energy, double weight)
+\item 
+int \mbox{\hyperlink{class_particle_histos_af1dfbb6436073ebc1769a5d7a459badd}{get\+Pt\+Bin\+For}} (float v) const
+\item 
+int \mbox{\hyperlink{class_particle_histos_a6944c0ff980bdce173861653e340079f}{get\+Phi\+Bin\+For}} (float v) const
+\item 
+int \mbox{\hyperlink{class_particle_histos_a6621abd2f4fe27918b7b84b54b5dd1ce}{get\+Eta\+Bin\+For}} (float v) const
+\item 
+int \mbox{\hyperlink{class_particle_histos_aaae105ae76debd6a0689da466660cfad}{get\+YBin\+For}} (float v) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_histos_a168eb371934cab95c8008e50d2346f14}{h\+\_\+n1}}
+\begin{DoxyCompactList}\small\item\em Primary histograms. \end{DoxyCompactList}\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_histos_a342b306eeca273cbffc2f600b4f7e37a}{h\+\_\+n1\+\_\+e\+Total}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_histos_aeb482c8548ac1d8f69b63e453edcd477}{h\+\_\+n1\+\_\+pt}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_histos_ad671610da0bd80b2cef1c5e7767697f9}{h\+\_\+n1\+\_\+pt\+XS}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_histos_a0f032e1baac86b8d80aac0ac02341f6f}{h\+\_\+n1\+\_\+eta}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_histos_ad6a295a1e1337f1ea7106fe91ac8cbc2}{h\+\_\+n1\+\_\+phi}}
+\item 
+TH2 $\ast$ \mbox{\hyperlink{class_particle_histos_aab55c4bcc21abf3460036e8a5fb5393a}{h\+\_\+n1\+\_\+pt\+Eta}}
+\item 
+TH2 $\ast$ \mbox{\hyperlink{class_particle_histos_aba3c48741fc638560c9ac9ba8c2ff8f0}{h\+\_\+n1\+\_\+pt\+Phi}}
+\item 
+TH2 $\ast$ \mbox{\hyperlink{class_particle_histos_a3940808ca65a24a6baa93c82c86abee0}{h\+\_\+n1\+\_\+phi\+Eta}}
+\item 
+TH3 $\ast$ \mbox{\hyperlink{class_particle_histos_a7a4bda695585eda2861c3c7c1d6c2376}{h\+\_\+n1\+\_\+pt\+Phi\+Eta}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_histos_a929c4b0ba36bbaffd72fba54a03cea36}{h\+\_\+spt\+\_\+phi}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_histos_acf9b4965b5ebbe318449a83a4edf769c}{h\+\_\+spt\+\_\+eta}}
+\item 
+TH2 $\ast$ \mbox{\hyperlink{class_particle_histos_aa36c59956b9fc65cb8596c679bf9a4aa}{h\+\_\+spt\+\_\+phi\+Eta}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_histos_a378a6ffb2cce3962557812db82691174}{h\+\_\+pt\+\_\+phi}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_histos_a060c9a7ffcb1e618058e62f2259cdadf}{h\+\_\+pt\+\_\+eta}}
+\item 
+TH2 $\ast$ \mbox{\hyperlink{class_particle_histos_a06160ebdd49a0243036a5be758798aa4}{h\+\_\+pt\+\_\+phi\+Eta}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_histos_a92e0a5b055cbcd7b94d9208a19072a1c}{h\+\_\+n1\+\_\+y}}
+\item 
+TH2 $\ast$ \mbox{\hyperlink{class_particle_histos_aa2c5f920322dd5d8f02549cdcd9ce195}{h\+\_\+n1\+\_\+ptY}}
+\item 
+TH2 $\ast$ \mbox{\hyperlink{class_particle_histos_afa9457b76d8e1684d09fdcf32a63d23b}{h\+\_\+n1\+\_\+phiY}}
+\item 
+TH3 $\ast$ \mbox{\hyperlink{class_particle_histos_a26fd9d07fb59ed9d5925dfa13c10198e}{h\+\_\+n1\+\_\+pt\+PhiY}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_histos_a61a72b184330d95eb2b03977019b3ce6}{h\+\_\+spt\+\_\+y}}
+\item 
+TH2 $\ast$ \mbox{\hyperlink{class_particle_histos_aeb31d2da31d60238435cfe4093ba91cf}{h\+\_\+spt\+\_\+phiY}}
+\item 
+TH1 $\ast$ \mbox{\hyperlink{class_particle_histos_a7694b1d8f00221ccd511400a1f83cbdd}{h\+\_\+pt\+\_\+y}}
+\item 
+TH2 $\ast$ \mbox{\hyperlink{class_particle_histos_a65f640172296c45cf8cafe752a05b064}{h\+\_\+pt\+\_\+phiY}}
+\item 
+bool \mbox{\hyperlink{class_particle_histos_a1feb6ab4995d3c3d24cf70097e44c541}{fill\+Eta}}
+\item 
+bool \mbox{\hyperlink{class_particle_histos_a511abf18c31905f6ceb3b5a4b3c5e807}{fillY}}
+\item 
+bool \mbox{\hyperlink{class_particle_histos_aa4b696b3c9bb52fd1397f924cdb7a24b}{fill\+P2}}
+\item 
+unsigned int \mbox{\hyperlink{class_particle_histos_a0532fe519a15a195d6a279a00990c6fe}{n\+Bins\+\_\+n1}}
+\item 
+float \mbox{\hyperlink{class_particle_histos_a80476f96347163ec90d61df498807e7a}{min\+\_\+n1}}
+\item 
+float \mbox{\hyperlink{class_particle_histos_a2155893283b4fa392b57328c5a3065c1}{max\+\_\+n1}}
+\item 
+unsigned int \mbox{\hyperlink{class_particle_histos_a8e6cdcd508a2013411fd04b5e416980b}{n\+Bins\+\_\+pt}}
+\item 
+float \mbox{\hyperlink{class_particle_histos_ac513a76b2710475bf0343f7548865b23}{min\+\_\+pt}}
+\item 
+float \mbox{\hyperlink{class_particle_histos_a3f3f6820d8c063712f119202067a91af}{max\+\_\+pt}}
+\item 
+float \mbox{\hyperlink{class_particle_histos_a79d1825b457c1638bb74ddc5f1b5f174}{range\+\_\+pt}}
+\item 
+unsigned int \mbox{\hyperlink{class_particle_histos_ace55cde96be058ecc5998c6d688de9cb}{n\+Bins\+\_\+phi}}
+\item 
+float \mbox{\hyperlink{class_particle_histos_a5c04c2e5a7ef07b7e638740f5be89185}{min\+\_\+phi}}
+\item 
+float \mbox{\hyperlink{class_particle_histos_ac486c2c50462892c4a9d66d58c2a84a4}{max\+\_\+phi}}
+\item 
+float \mbox{\hyperlink{class_particle_histos_a5850f833aec815e5ff85a9703036e6ba}{range\+\_\+phi}}
+\item 
+unsigned int \mbox{\hyperlink{class_particle_histos_a286129c7298b2ae170ef7c461eb7ec97}{n\+Bins\+\_\+eta}}
+\item 
+float \mbox{\hyperlink{class_particle_histos_a4e2da71d41be6dfe04d09c5e4b07656a}{min\+\_\+eta}}
+\item 
+float \mbox{\hyperlink{class_particle_histos_ada61a2c891b050946b2c2c306023a489}{max\+\_\+eta}}
+\item 
+float \mbox{\hyperlink{class_particle_histos_afb94f0fd20a3e0c8179c291f158201a3}{range\+\_\+eta}}
+\item 
+unsigned int \mbox{\hyperlink{class_particle_histos_a185abc5e1ef09af063a40ece540c9c5e}{n\+Bins\+\_\+y}}
+\item 
+float \mbox{\hyperlink{class_particle_histos_a2b6c0b3bf7aec811e035417837ef0ba3}{min\+\_\+y}}
+\item 
+float \mbox{\hyperlink{class_particle_histos_ac37ce853ccf2b8dd0b0a5757f8650680}{max\+\_\+y}}
+\item 
+float \mbox{\hyperlink{class_particle_histos_a69cd5bb807e01f9201281408a25d16d8}{range\+\_\+y}}
+\item 
+unsigned int \mbox{\hyperlink{class_particle_histos_ac589df3cab45d7a21cdad8e323bcffb9}{n\+Bins\+\_\+phi\+Eta}}
+\item 
+unsigned int \mbox{\hyperlink{class_particle_histos_a737061483db8a1c4b9829257c2f63a95}{n\+Bins\+\_\+phi\+Eta\+Pt}}
+\item 
+unsigned int \mbox{\hyperlink{class_particle_histos_af5a23a490067ba312764595ddb5b9cc0}{n\+Bins\+\_\+phiY}}
+\item 
+unsigned int \mbox{\hyperlink{class_particle_histos_aa1271b0dbb440896f28e54905052b6ba}{n\+Bins\+\_\+phi\+YPt}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00018}{18}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_particle_histos_a680e2eb4a8b620571448ce9ee228cc16}\label{class_particle_histos_a680e2eb4a8b620571448ce9ee228cc16}} 
+\index{ParticleHistos@{ParticleHistos}!ParticleHistos@{ParticleHistos}}
+\index{ParticleHistos@{ParticleHistos}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{ParticleHistos()}{ParticleHistos()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Particle\+Histos\+::\+Particle\+Histos (\begin{DoxyParamCaption}\item[{const TString \&}]{collection\+Name,  }\item[{Particle\+Analyzer\+Configuration $\ast$}]{analysis\+Configuration,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{debug\+Level }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source}{Particle\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a268f2b7f25709ba8f80ed1e0749c8066}\label{class_particle_histos_a268f2b7f25709ba8f80ed1e0749c8066}} 
+\index{ParticleHistos@{ParticleHistos}!````~ParticleHistos@{$\sim$ParticleHistos}}
+\index{````~ParticleHistos@{$\sim$ParticleHistos}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{$\sim$ParticleHistos()}{~ParticleHistos()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Particle\+Histos\+::$\sim$\+Particle\+Histos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source}{Particle\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_ab2daa7aeec0cd65458f1038a452d5019}\label{class_particle_histos_ab2daa7aeec0cd65458f1038a452d5019}} 
+\index{ParticleHistos@{ParticleHistos}!ParticleHistos@{ParticleHistos}}
+\index{ParticleHistos@{ParticleHistos}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{ParticleHistos()}{ParticleHistos()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Particle\+Histos\+::\+Particle\+Histos (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{\+\_\+debug\+Level }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{_particle_histos_8cpp_source}{Particle\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a970583fc0ba57c88978e493133d2507e}\label{class_particle_histos_a970583fc0ba57c88978e493133d2507e}} 
+\index{ParticleHistos@{ParticleHistos}!````~ParticleHistos@{$\sim$ParticleHistos}}
+\index{````~ParticleHistos@{$\sim$ParticleHistos}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{$\sim$ParticleHistos()}{~ParticleHistos()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual Particle\+Histos\+::$\sim$\+Particle\+Histos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_particle_histos_a81e90ad9a7ed1acf78d8be1c0edcc4e7}\label{class_particle_histos_a81e90ad9a7ed1acf78d8be1c0edcc4e7}} 
+\index{ParticleHistos@{ParticleHistos}!calculateAverages@{calculateAverages}}
+\index{calculateAverages@{calculateAverages}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{calculateAverages()}{calculateAverages()}}
+{\footnotesize\ttfamily void Particle\+Histos\+::calculate\+Averages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source_l00228}{228}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source}{Particle\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a53e5b02843c6cce3901286d90cd4143d}\label{class_particle_histos_a53e5b02843c6cce3901286d90cd4143d}} 
+\index{ParticleHistos@{ParticleHistos}!completeFill@{completeFill}}
+\index{completeFill@{completeFill}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{completeFill()}{completeFill()}}
+{\footnotesize\ttfamily void Particle\+Histos\+::complete\+Fill (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source_l00182}{182}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source}{Particle\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_ab43319a25b232db90ccfe3d4f1576387}\label{class_particle_histos_ab43319a25b232db90ccfe3d4f1576387}} 
+\index{ParticleHistos@{ParticleHistos}!createHistograms@{createHistograms}}
+\index{createHistograms@{createHistograms}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{createHistograms()}{createHistograms()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Particle\+Histos\+::create\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overload this class to create histograms. 
+
+Reimplemented from \mbox{\hyperlink{class_histograms_ae6197b40e3cb970716aa4fc8a8eaffb2}{Histograms}}.
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source}{Particle\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_aa258e45100571e549fca767ac552fec6}\label{class_particle_histos_aa258e45100571e549fca767ac552fec6}} 
+\index{ParticleHistos@{ParticleHistos}!createHistograms@{createHistograms}}
+\index{createHistograms@{createHistograms}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{createHistograms()}{createHistograms()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void Particle\+Histos\+::create\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overload this class to create histograms. 
+
+Reimplemented from \mbox{\hyperlink{class_histograms_ae6197b40e3cb970716aa4fc8a8eaffb2}{Histograms}}.
+
+\mbox{\Hypertarget{class_particle_histos_a2c0f2b1e931d7321973b18f77f16962f}\label{class_particle_histos_a2c0f2b1e931d7321973b18f77f16962f}} 
+\index{ParticleHistos@{ParticleHistos}!fill@{fill}}
+\index{fill@{fill}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{fill()}{fill()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily void Particle\+Histos\+::fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} \&}]{particle,  }\item[{double}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Fiil single particle histograms of this class with the particles contained in the given list. 
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source_l00143}{143}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source}{Particle\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a09be7c2dd5efed2c8f5abf8ee09db002}\label{class_particle_histos_a09be7c2dd5efed2c8f5abf8ee09db002}} 
+\index{ParticleHistos@{ParticleHistos}!fill@{fill}}
+\index{fill@{fill}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{fill()}{fill()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily virtual void Particle\+Histos\+::fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} \&}]{particle,  }\item[{double}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{class_particle_histos_ac28ead7981319b59545f33ce36a6bbde}\label{class_particle_histos_ac28ead7981319b59545f33ce36a6bbde}} 
+\index{ParticleHistos@{ParticleHistos}!fill@{fill}}
+\index{fill@{fill}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{fill()}{fill()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void Particle\+Histos\+::fill (\begin{DoxyParamCaption}\item[{TLorentz\+Vector \&}]{p,  }\item[{double}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source_l00149}{149}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source}{Particle\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_ad9eab5037ebeff9d7cf0489116818ab4}\label{class_particle_histos_ad9eab5037ebeff9d7cf0489116818ab4}} 
+\index{ParticleHistos@{ParticleHistos}!fill@{fill}}
+\index{fill@{fill}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{fill()}{fill()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void Particle\+Histos\+::fill (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_particle_digit}{Particle\+Digit}} $\ast$ $>$ \&}]{particles,  }\item[{double}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Fiil single particle histograms of this class with the particles contained in the given list. 
+
+Definition at line \mbox{\hyperlink{_particle_histos_8cpp_source_l00164}{164}} of file \mbox{\hyperlink{_particle_histos_8cpp_source}{Particle\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a214b4a0b94d7dd4a23639b4544a3e134}\label{class_particle_histos_a214b4a0b94d7dd4a23639b4544a3e134}} 
+\index{ParticleHistos@{ParticleHistos}!fillMultiplicity@{fillMultiplicity}}
+\index{fillMultiplicity@{fillMultiplicity}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{fillMultiplicity()}{fillMultiplicity()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Particle\+Histos\+::fill\+Multiplicity (\begin{DoxyParamCaption}\item[{double}]{n\+Accepted,  }\item[{double}]{total\+Energy,  }\item[{double}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Fiil the global histogram for the multiplicity and the total energy of an event. Call this function only once per event. 
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source_l00174}{174}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source}{Particle\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_ad376d9a93a8aecfabd2d919fd707c986}\label{class_particle_histos_ad376d9a93a8aecfabd2d919fd707c986}} 
+\index{ParticleHistos@{ParticleHistos}!fillMultiplicity@{fillMultiplicity}}
+\index{fillMultiplicity@{fillMultiplicity}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{fillMultiplicity()}{fillMultiplicity()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void Particle\+Histos\+::fill\+Multiplicity (\begin{DoxyParamCaption}\item[{double}]{n\+Accepted,  }\item[{double}]{total\+Energy,  }\item[{double}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{class_particle_histos_a6621abd2f4fe27918b7b84b54b5dd1ce}\label{class_particle_histos_a6621abd2f4fe27918b7b84b54b5dd1ce}} 
+\index{ParticleHistos@{ParticleHistos}!getEtaBinFor@{getEtaBinFor}}
+\index{getEtaBinFor@{getEtaBinFor}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{getEtaBinFor()}{getEtaBinFor()}}
+{\footnotesize\ttfamily int Particle\+Histos\+::get\+Eta\+Bin\+For (\begin{DoxyParamCaption}\item[{float}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a6944c0ff980bdce173861653e340079f}\label{class_particle_histos_a6944c0ff980bdce173861653e340079f}} 
+\index{ParticleHistos@{ParticleHistos}!getPhiBinFor@{getPhiBinFor}}
+\index{getPhiBinFor@{getPhiBinFor}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{getPhiBinFor()}{getPhiBinFor()}}
+{\footnotesize\ttfamily int Particle\+Histos\+::get\+Phi\+Bin\+For (\begin{DoxyParamCaption}\item[{float}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00040}{40}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_af1dfbb6436073ebc1769a5d7a459badd}\label{class_particle_histos_af1dfbb6436073ebc1769a5d7a459badd}} 
+\index{ParticleHistos@{ParticleHistos}!getPtBinFor@{getPtBinFor}}
+\index{getPtBinFor@{getPtBinFor}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{getPtBinFor()}{getPtBinFor()}}
+{\footnotesize\ttfamily int Particle\+Histos\+::get\+Pt\+Bin\+For (\begin{DoxyParamCaption}\item[{float}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_aaae105ae76debd6a0689da466660cfad}\label{class_particle_histos_aaae105ae76debd6a0689da466660cfad}} 
+\index{ParticleHistos@{ParticleHistos}!getYBinFor@{getYBinFor}}
+\index{getYBinFor@{getYBinFor}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{getYBinFor()}{getYBinFor()}}
+{\footnotesize\ttfamily int Particle\+Histos\+::get\+YBin\+For (\begin{DoxyParamCaption}\item[{float}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00055}{55}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_ade0541fea8cd433404afb5c76bfc083a}\label{class_particle_histos_ade0541fea8cd433404afb5c76bfc083a}} 
+\index{ParticleHistos@{ParticleHistos}!loadHistograms@{loadHistograms}}
+\index{loadHistograms@{loadHistograms}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{loadHistograms()}{loadHistograms()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Particle\+Histos\+::load\+Histograms (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{input\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overload this class to load histograms. 
+
+Reimplemented from \mbox{\hyperlink{class_histograms_a20ca1f616c8af6d3261e6ca3127ecd9d}{Histograms}}.
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source_l00095}{95}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8cpp_source}{Particle\+Histos.\+cpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_ac2baec89d691bbe0c7ac041b0a8d091f}\label{class_particle_histos_ac2baec89d691bbe0c7ac041b0a8d091f}} 
+\index{ParticleHistos@{ParticleHistos}!loadHistograms@{loadHistograms}}
+\index{loadHistograms@{loadHistograms}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{loadHistograms()}{loadHistograms()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void Particle\+Histos\+::load\+Histograms (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{input\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overload this class to load histograms. 
+
+Reimplemented from \mbox{\hyperlink{class_histograms_a20ca1f616c8af6d3261e6ca3127ecd9d}{Histograms}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_particle_histos_a1feb6ab4995d3c3d24cf70097e44c541}\label{class_particle_histos_a1feb6ab4995d3c3d24cf70097e44c541}} 
+\index{ParticleHistos@{ParticleHistos}!fillEta@{fillEta}}
+\index{fillEta@{fillEta}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{fillEta}{fillEta}}
+{\footnotesize\ttfamily bool Particle\+Histos\+::fill\+Eta}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_aa4b696b3c9bb52fd1397f924cdb7a24b}\label{class_particle_histos_aa4b696b3c9bb52fd1397f924cdb7a24b}} 
+\index{ParticleHistos@{ParticleHistos}!fillP2@{fillP2}}
+\index{fillP2@{fillP2}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{fillP2}{fillP2}}
+{\footnotesize\ttfamily bool Particle\+Histos\+::fill\+P2}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a511abf18c31905f6ceb3b5a4b3c5e807}\label{class_particle_histos_a511abf18c31905f6ceb3b5a4b3c5e807}} 
+\index{ParticleHistos@{ParticleHistos}!fillY@{fillY}}
+\index{fillY@{fillY}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{fillY}{fillY}}
+{\footnotesize\ttfamily bool Particle\+Histos\+::fillY}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a168eb371934cab95c8008e50d2346f14}\label{class_particle_histos_a168eb371934cab95c8008e50d2346f14}} 
+\index{ParticleHistos@{ParticleHistos}!h\_n1@{h\_n1}}
+\index{h\_n1@{h\_n1}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_n1}{h\_n1}}
+{\footnotesize\ttfamily TH1 $\ast$ Particle\+Histos\+::h\+\_\+n1}
+
+
+
+Primary histograms. 
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00037}{37}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a0f032e1baac86b8d80aac0ac02341f6f}\label{class_particle_histos_a0f032e1baac86b8d80aac0ac02341f6f}} 
+\index{ParticleHistos@{ParticleHistos}!h\_n1\_eta@{h\_n1\_eta}}
+\index{h\_n1\_eta@{h\_n1\_eta}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_n1\_eta}{h\_n1\_eta}}
+{\footnotesize\ttfamily TH1$\ast$ Particle\+Histos\+::h\+\_\+n1\+\_\+eta}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a342b306eeca273cbffc2f600b4f7e37a}\label{class_particle_histos_a342b306eeca273cbffc2f600b4f7e37a}} 
+\index{ParticleHistos@{ParticleHistos}!h\_n1\_eTotal@{h\_n1\_eTotal}}
+\index{h\_n1\_eTotal@{h\_n1\_eTotal}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_n1\_eTotal}{h\_n1\_eTotal}}
+{\footnotesize\ttfamily TH1 $\ast$ Particle\+Histos\+::h\+\_\+n1\+\_\+e\+Total}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00038}{38}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_ad6a295a1e1337f1ea7106fe91ac8cbc2}\label{class_particle_histos_ad6a295a1e1337f1ea7106fe91ac8cbc2}} 
+\index{ParticleHistos@{ParticleHistos}!h\_n1\_phi@{h\_n1\_phi}}
+\index{h\_n1\_phi@{h\_n1\_phi}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_n1\_phi}{h\_n1\_phi}}
+{\footnotesize\ttfamily TH1$\ast$ Particle\+Histos\+::h\+\_\+n1\+\_\+phi}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00042}{42}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a3940808ca65a24a6baa93c82c86abee0}\label{class_particle_histos_a3940808ca65a24a6baa93c82c86abee0}} 
+\index{ParticleHistos@{ParticleHistos}!h\_n1\_phiEta@{h\_n1\_phiEta}}
+\index{h\_n1\_phiEta@{h\_n1\_phiEta}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_n1\_phiEta}{h\_n1\_phiEta}}
+{\footnotesize\ttfamily TH2 $\ast$ Particle\+Histos\+::h\+\_\+n1\+\_\+phi\+Eta}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_afa9457b76d8e1684d09fdcf32a63d23b}\label{class_particle_histos_afa9457b76d8e1684d09fdcf32a63d23b}} 
+\index{ParticleHistos@{ParticleHistos}!h\_n1\_phiY@{h\_n1\_phiY}}
+\index{h\_n1\_phiY@{h\_n1\_phiY}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_n1\_phiY}{h\_n1\_phiY}}
+{\footnotesize\ttfamily TH2 $\ast$ Particle\+Histos\+::h\+\_\+n1\+\_\+phiY}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00056}{56}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_aeb482c8548ac1d8f69b63e453edcd477}\label{class_particle_histos_aeb482c8548ac1d8f69b63e453edcd477}} 
+\index{ParticleHistos@{ParticleHistos}!h\_n1\_pt@{h\_n1\_pt}}
+\index{h\_n1\_pt@{h\_n1\_pt}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_n1\_pt}{h\_n1\_pt}}
+{\footnotesize\ttfamily TH1 $\ast$ Particle\+Histos\+::h\+\_\+n1\+\_\+pt}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00039}{39}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_aab55c4bcc21abf3460036e8a5fb5393a}\label{class_particle_histos_aab55c4bcc21abf3460036e8a5fb5393a}} 
+\index{ParticleHistos@{ParticleHistos}!h\_n1\_ptEta@{h\_n1\_ptEta}}
+\index{h\_n1\_ptEta@{h\_n1\_ptEta}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_n1\_ptEta}{h\_n1\_ptEta}}
+{\footnotesize\ttfamily TH2$\ast$ Particle\+Histos\+::h\+\_\+n1\+\_\+pt\+Eta}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_aba3c48741fc638560c9ac9ba8c2ff8f0}\label{class_particle_histos_aba3c48741fc638560c9ac9ba8c2ff8f0}} 
+\index{ParticleHistos@{ParticleHistos}!h\_n1\_ptPhi@{h\_n1\_ptPhi}}
+\index{h\_n1\_ptPhi@{h\_n1\_ptPhi}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_n1\_ptPhi}{h\_n1\_ptPhi}}
+{\footnotesize\ttfamily TH2$\ast$ Particle\+Histos\+::h\+\_\+n1\+\_\+pt\+Phi}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00044}{44}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a7a4bda695585eda2861c3c7c1d6c2376}\label{class_particle_histos_a7a4bda695585eda2861c3c7c1d6c2376}} 
+\index{ParticleHistos@{ParticleHistos}!h\_n1\_ptPhiEta@{h\_n1\_ptPhiEta}}
+\index{h\_n1\_ptPhiEta@{h\_n1\_ptPhiEta}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_n1\_ptPhiEta}{h\_n1\_ptPhiEta}}
+{\footnotesize\ttfamily TH3$\ast$ Particle\+Histos\+::h\+\_\+n1\+\_\+pt\+Phi\+Eta}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a26fd9d07fb59ed9d5925dfa13c10198e}\label{class_particle_histos_a26fd9d07fb59ed9d5925dfa13c10198e}} 
+\index{ParticleHistos@{ParticleHistos}!h\_n1\_ptPhiY@{h\_n1\_ptPhiY}}
+\index{h\_n1\_ptPhiY@{h\_n1\_ptPhiY}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_n1\_ptPhiY}{h\_n1\_ptPhiY}}
+{\footnotesize\ttfamily TH3$\ast$ Particle\+Histos\+::h\+\_\+n1\+\_\+pt\+PhiY}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_ad671610da0bd80b2cef1c5e7767697f9}\label{class_particle_histos_ad671610da0bd80b2cef1c5e7767697f9}} 
+\index{ParticleHistos@{ParticleHistos}!h\_n1\_ptXS@{h\_n1\_ptXS}}
+\index{h\_n1\_ptXS@{h\_n1\_ptXS}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_n1\_ptXS}{h\_n1\_ptXS}}
+{\footnotesize\ttfamily TH1 $\ast$ Particle\+Histos\+::h\+\_\+n1\+\_\+pt\+XS}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00040}{40}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_aa2c5f920322dd5d8f02549cdcd9ce195}\label{class_particle_histos_aa2c5f920322dd5d8f02549cdcd9ce195}} 
+\index{ParticleHistos@{ParticleHistos}!h\_n1\_ptY@{h\_n1\_ptY}}
+\index{h\_n1\_ptY@{h\_n1\_ptY}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_n1\_ptY}{h\_n1\_ptY}}
+{\footnotesize\ttfamily TH2$\ast$ Particle\+Histos\+::h\+\_\+n1\+\_\+ptY}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00055}{55}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a92e0a5b055cbcd7b94d9208a19072a1c}\label{class_particle_histos_a92e0a5b055cbcd7b94d9208a19072a1c}} 
+\index{ParticleHistos@{ParticleHistos}!h\_n1\_y@{h\_n1\_y}}
+\index{h\_n1\_y@{h\_n1\_y}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_n1\_y}{h\_n1\_y}}
+{\footnotesize\ttfamily TH1$\ast$ Particle\+Histos\+::h\+\_\+n1\+\_\+y}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00054}{54}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a060c9a7ffcb1e618058e62f2259cdadf}\label{class_particle_histos_a060c9a7ffcb1e618058e62f2259cdadf}} 
+\index{ParticleHistos@{ParticleHistos}!h\_pt\_eta@{h\_pt\_eta}}
+\index{h\_pt\_eta@{h\_pt\_eta}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_pt\_eta}{h\_pt\_eta}}
+{\footnotesize\ttfamily TH1$\ast$ Particle\+Histos\+::h\+\_\+pt\+\_\+eta}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a378a6ffb2cce3962557812db82691174}\label{class_particle_histos_a378a6ffb2cce3962557812db82691174}} 
+\index{ParticleHistos@{ParticleHistos}!h\_pt\_phi@{h\_pt\_phi}}
+\index{h\_pt\_phi@{h\_pt\_phi}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_pt\_phi}{h\_pt\_phi}}
+{\footnotesize\ttfamily TH1$\ast$ Particle\+Histos\+::h\+\_\+pt\+\_\+phi}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00050}{50}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a06160ebdd49a0243036a5be758798aa4}\label{class_particle_histos_a06160ebdd49a0243036a5be758798aa4}} 
+\index{ParticleHistos@{ParticleHistos}!h\_pt\_phiEta@{h\_pt\_phiEta}}
+\index{h\_pt\_phiEta@{h\_pt\_phiEta}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_pt\_phiEta}{h\_pt\_phiEta}}
+{\footnotesize\ttfamily TH2$\ast$ Particle\+Histos\+::h\+\_\+pt\+\_\+phi\+Eta}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a65f640172296c45cf8cafe752a05b064}\label{class_particle_histos_a65f640172296c45cf8cafe752a05b064}} 
+\index{ParticleHistos@{ParticleHistos}!h\_pt\_phiY@{h\_pt\_phiY}}
+\index{h\_pt\_phiY@{h\_pt\_phiY}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_pt\_phiY}{h\_pt\_phiY}}
+{\footnotesize\ttfamily TH2$\ast$ Particle\+Histos\+::h\+\_\+pt\+\_\+phiY}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00061}{61}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a7694b1d8f00221ccd511400a1f83cbdd}\label{class_particle_histos_a7694b1d8f00221ccd511400a1f83cbdd}} 
+\index{ParticleHistos@{ParticleHistos}!h\_pt\_y@{h\_pt\_y}}
+\index{h\_pt\_y@{h\_pt\_y}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_pt\_y}{h\_pt\_y}}
+{\footnotesize\ttfamily TH1$\ast$ Particle\+Histos\+::h\+\_\+pt\+\_\+y}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_acf9b4965b5ebbe318449a83a4edf769c}\label{class_particle_histos_acf9b4965b5ebbe318449a83a4edf769c}} 
+\index{ParticleHistos@{ParticleHistos}!h\_spt\_eta@{h\_spt\_eta}}
+\index{h\_spt\_eta@{h\_spt\_eta}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_spt\_eta}{h\_spt\_eta}}
+{\footnotesize\ttfamily TH1$\ast$ Particle\+Histos\+::h\+\_\+spt\+\_\+eta}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a929c4b0ba36bbaffd72fba54a03cea36}\label{class_particle_histos_a929c4b0ba36bbaffd72fba54a03cea36}} 
+\index{ParticleHistos@{ParticleHistos}!h\_spt\_phi@{h\_spt\_phi}}
+\index{h\_spt\_phi@{h\_spt\_phi}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_spt\_phi}{h\_spt\_phi}}
+{\footnotesize\ttfamily TH1$\ast$ Particle\+Histos\+::h\+\_\+spt\+\_\+phi}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_aa36c59956b9fc65cb8596c679bf9a4aa}\label{class_particle_histos_aa36c59956b9fc65cb8596c679bf9a4aa}} 
+\index{ParticleHistos@{ParticleHistos}!h\_spt\_phiEta@{h\_spt\_phiEta}}
+\index{h\_spt\_phiEta@{h\_spt\_phiEta}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_spt\_phiEta}{h\_spt\_phiEta}}
+{\footnotesize\ttfamily TH2 $\ast$ Particle\+Histos\+::h\+\_\+spt\+\_\+phi\+Eta}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00049}{49}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_aeb31d2da31d60238435cfe4093ba91cf}\label{class_particle_histos_aeb31d2da31d60238435cfe4093ba91cf}} 
+\index{ParticleHistos@{ParticleHistos}!h\_spt\_phiY@{h\_spt\_phiY}}
+\index{h\_spt\_phiY@{h\_spt\_phiY}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_spt\_phiY}{h\_spt\_phiY}}
+{\footnotesize\ttfamily TH2 $\ast$ Particle\+Histos\+::h\+\_\+spt\+\_\+phiY}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a61a72b184330d95eb2b03977019b3ce6}\label{class_particle_histos_a61a72b184330d95eb2b03977019b3ce6}} 
+\index{ParticleHistos@{ParticleHistos}!h\_spt\_y@{h\_spt\_y}}
+\index{h\_spt\_y@{h\_spt\_y}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{h\_spt\_y}{h\_spt\_y}}
+{\footnotesize\ttfamily TH1$\ast$ Particle\+Histos\+::h\+\_\+spt\+\_\+y}
+
+
+
+Definition at line \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source_l00058}{58}} of file \mbox{\hyperlink{obsolete_2_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_ada61a2c891b050946b2c2c306023a489}\label{class_particle_histos_ada61a2c891b050946b2c2c306023a489}} 
+\index{ParticleHistos@{ParticleHistos}!max\_eta@{max\_eta}}
+\index{max\_eta@{max\_eta}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{max\_eta}{max\_eta}}
+{\footnotesize\ttfamily float Particle\+Histos\+::max\+\_\+eta}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a2155893283b4fa392b57328c5a3065c1}\label{class_particle_histos_a2155893283b4fa392b57328c5a3065c1}} 
+\index{ParticleHistos@{ParticleHistos}!max\_n1@{max\_n1}}
+\index{max\_n1@{max\_n1}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{max\_n1}{max\_n1}}
+{\footnotesize\ttfamily float Particle\+Histos\+::max\+\_\+n1}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_ac486c2c50462892c4a9d66d58c2a84a4}\label{class_particle_histos_ac486c2c50462892c4a9d66d58c2a84a4}} 
+\index{ParticleHistos@{ParticleHistos}!max\_phi@{max\_phi}}
+\index{max\_phi@{max\_phi}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{max\_phi}{max\_phi}}
+{\footnotesize\ttfamily float Particle\+Histos\+::max\+\_\+phi}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a3f3f6820d8c063712f119202067a91af}\label{class_particle_histos_a3f3f6820d8c063712f119202067a91af}} 
+\index{ParticleHistos@{ParticleHistos}!max\_pt@{max\_pt}}
+\index{max\_pt@{max\_pt}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{max\_pt}{max\_pt}}
+{\footnotesize\ttfamily float Particle\+Histos\+::max\+\_\+pt}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_ac37ce853ccf2b8dd0b0a5757f8650680}\label{class_particle_histos_ac37ce853ccf2b8dd0b0a5757f8650680}} 
+\index{ParticleHistos@{ParticleHistos}!max\_y@{max\_y}}
+\index{max\_y@{max\_y}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{max\_y}{max\_y}}
+{\footnotesize\ttfamily float Particle\+Histos\+::max\+\_\+y}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a4e2da71d41be6dfe04d09c5e4b07656a}\label{class_particle_histos_a4e2da71d41be6dfe04d09c5e4b07656a}} 
+\index{ParticleHistos@{ParticleHistos}!min\_eta@{min\_eta}}
+\index{min\_eta@{min\_eta}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{min\_eta}{min\_eta}}
+{\footnotesize\ttfamily float Particle\+Histos\+::min\+\_\+eta}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00080}{80}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a80476f96347163ec90d61df498807e7a}\label{class_particle_histos_a80476f96347163ec90d61df498807e7a}} 
+\index{ParticleHistos@{ParticleHistos}!min\_n1@{min\_n1}}
+\index{min\_n1@{min\_n1}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{min\_n1}{min\_n1}}
+{\footnotesize\ttfamily float Particle\+Histos\+::min\+\_\+n1}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00069}{69}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a5c04c2e5a7ef07b7e638740f5be89185}\label{class_particle_histos_a5c04c2e5a7ef07b7e638740f5be89185}} 
+\index{ParticleHistos@{ParticleHistos}!min\_phi@{min\_phi}}
+\index{min\_phi@{min\_phi}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{min\_phi}{min\_phi}}
+{\footnotesize\ttfamily float Particle\+Histos\+::min\+\_\+phi}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_ac513a76b2710475bf0343f7548865b23}\label{class_particle_histos_ac513a76b2710475bf0343f7548865b23}} 
+\index{ParticleHistos@{ParticleHistos}!min\_pt@{min\_pt}}
+\index{min\_pt@{min\_pt}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{min\_pt}{min\_pt}}
+{\footnotesize\ttfamily float Particle\+Histos\+::min\+\_\+pt}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a2b6c0b3bf7aec811e035417837ef0ba3}\label{class_particle_histos_a2b6c0b3bf7aec811e035417837ef0ba3}} 
+\index{ParticleHistos@{ParticleHistos}!min\_y@{min\_y}}
+\index{min\_y@{min\_y}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{min\_y}{min\_y}}
+{\footnotesize\ttfamily float Particle\+Histos\+::min\+\_\+y}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a286129c7298b2ae170ef7c461eb7ec97}\label{class_particle_histos_a286129c7298b2ae170ef7c461eb7ec97}} 
+\index{ParticleHistos@{ParticleHistos}!nBins\_eta@{nBins\_eta}}
+\index{nBins\_eta@{nBins\_eta}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{nBins\_eta}{nBins\_eta}}
+{\footnotesize\ttfamily unsigned int Particle\+Histos\+::n\+Bins\+\_\+eta}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00079}{79}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a0532fe519a15a195d6a279a00990c6fe}\label{class_particle_histos_a0532fe519a15a195d6a279a00990c6fe}} 
+\index{ParticleHistos@{ParticleHistos}!nBins\_n1@{nBins\_n1}}
+\index{nBins\_n1@{nBins\_n1}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{nBins\_n1}{nBins\_n1}}
+{\footnotesize\ttfamily unsigned int Particle\+Histos\+::n\+Bins\+\_\+n1}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_ace55cde96be058ecc5998c6d688de9cb}\label{class_particle_histos_ace55cde96be058ecc5998c6d688de9cb}} 
+\index{ParticleHistos@{ParticleHistos}!nBins\_phi@{nBins\_phi}}
+\index{nBins\_phi@{nBins\_phi}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{nBins\_phi}{nBins\_phi}}
+{\footnotesize\ttfamily unsigned int Particle\+Histos\+::n\+Bins\+\_\+phi}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00075}{75}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_ac589df3cab45d7a21cdad8e323bcffb9}\label{class_particle_histos_ac589df3cab45d7a21cdad8e323bcffb9}} 
+\index{ParticleHistos@{ParticleHistos}!nBins\_phiEta@{nBins\_phiEta}}
+\index{nBins\_phiEta@{nBins\_phiEta}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{nBins\_phiEta}{nBins\_phiEta}}
+{\footnotesize\ttfamily unsigned int Particle\+Histos\+::n\+Bins\+\_\+phi\+Eta}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a737061483db8a1c4b9829257c2f63a95}\label{class_particle_histos_a737061483db8a1c4b9829257c2f63a95}} 
+\index{ParticleHistos@{ParticleHistos}!nBins\_phiEtaPt@{nBins\_phiEtaPt}}
+\index{nBins\_phiEtaPt@{nBins\_phiEtaPt}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{nBins\_phiEtaPt}{nBins\_phiEtaPt}}
+{\footnotesize\ttfamily unsigned int Particle\+Histos\+::n\+Bins\+\_\+phi\+Eta\+Pt}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_af5a23a490067ba312764595ddb5b9cc0}\label{class_particle_histos_af5a23a490067ba312764595ddb5b9cc0}} 
+\index{ParticleHistos@{ParticleHistos}!nBins\_phiY@{nBins\_phiY}}
+\index{nBins\_phiY@{nBins\_phiY}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{nBins\_phiY}{nBins\_phiY}}
+{\footnotesize\ttfamily unsigned int Particle\+Histos\+::n\+Bins\+\_\+phiY}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00089}{89}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_aa1271b0dbb440896f28e54905052b6ba}\label{class_particle_histos_aa1271b0dbb440896f28e54905052b6ba}} 
+\index{ParticleHistos@{ParticleHistos}!nBins\_phiYPt@{nBins\_phiYPt}}
+\index{nBins\_phiYPt@{nBins\_phiYPt}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{nBins\_phiYPt}{nBins\_phiYPt}}
+{\footnotesize\ttfamily unsigned int Particle\+Histos\+::n\+Bins\+\_\+phi\+YPt}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00090}{90}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a8e6cdcd508a2013411fd04b5e416980b}\label{class_particle_histos_a8e6cdcd508a2013411fd04b5e416980b}} 
+\index{ParticleHistos@{ParticleHistos}!nBins\_pt@{nBins\_pt}}
+\index{nBins\_pt@{nBins\_pt}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{nBins\_pt}{nBins\_pt}}
+{\footnotesize\ttfamily unsigned int Particle\+Histos\+::n\+Bins\+\_\+pt}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a185abc5e1ef09af063a40ece540c9c5e}\label{class_particle_histos_a185abc5e1ef09af063a40ece540c9c5e}} 
+\index{ParticleHistos@{ParticleHistos}!nBins\_y@{nBins\_y}}
+\index{nBins\_y@{nBins\_y}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{nBins\_y}{nBins\_y}}
+{\footnotesize\ttfamily unsigned int Particle\+Histos\+::n\+Bins\+\_\+y}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00083}{83}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_afb94f0fd20a3e0c8179c291f158201a3}\label{class_particle_histos_afb94f0fd20a3e0c8179c291f158201a3}} 
+\index{ParticleHistos@{ParticleHistos}!range\_eta@{range\_eta}}
+\index{range\_eta@{range\_eta}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{range\_eta}{range\_eta}}
+{\footnotesize\ttfamily float Particle\+Histos\+::range\+\_\+eta}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00082}{82}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a5850f833aec815e5ff85a9703036e6ba}\label{class_particle_histos_a5850f833aec815e5ff85a9703036e6ba}} 
+\index{ParticleHistos@{ParticleHistos}!range\_phi@{range\_phi}}
+\index{range\_phi@{range\_phi}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{range\_phi}{range\_phi}}
+{\footnotesize\ttfamily float Particle\+Histos\+::range\+\_\+phi}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a79d1825b457c1638bb74ddc5f1b5f174}\label{class_particle_histos_a79d1825b457c1638bb74ddc5f1b5f174}} 
+\index{ParticleHistos@{ParticleHistos}!range\_pt@{range\_pt}}
+\index{range\_pt@{range\_pt}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{range\_pt}{range\_pt}}
+{\footnotesize\ttfamily float Particle\+Histos\+::range\+\_\+pt}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00074}{74}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_histos_a69cd5bb807e01f9201281408a25d16d8}\label{class_particle_histos_a69cd5bb807e01f9201281408a25d16d8}} 
+\index{ParticleHistos@{ParticleHistos}!range\_y@{range\_y}}
+\index{range\_y@{range\_y}!ParticleHistos@{ParticleHistos}}
+\doxysubsubsection{\texorpdfstring{range\_y}{range\_y}}
+{\footnotesize\ttfamily float Particle\+Histos\+::range\+\_\+y}
+
+
+
+Definition at line \mbox{\hyperlink{_particle_histos_8hpp_source_l00086}{86}} of file \mbox{\hyperlink{_particle_histos_8hpp_source}{Particle\+Histos.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/obsolete/\mbox{\hyperlink{obsolete_2_particle_histos_8hpp}{Particle\+Histos.\+hpp}}\item 
+Base/\mbox{\hyperlink{_particle_histos_8hpp}{Particle\+Histos.\+hpp}}\item 
+Base/obsolete/\mbox{\hyperlink{obsolete_2_particle_histos_8cpp}{Particle\+Histos.\+cpp}}\item 
+Base/\mbox{\hyperlink{_particle_histos_8cpp}{Particle\+Histos.\+cpp}}\end{DoxyCompactItemize}

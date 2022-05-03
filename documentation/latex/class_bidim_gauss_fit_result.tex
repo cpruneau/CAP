@@ -1,0 +1,778 @@
+\hypertarget{class_bidim_gauss_fit_result}{}\doxysection{Bidim\+Gauss\+Fit\+Result Class Reference}
+\label{class_bidim_gauss_fit_result}\index{BidimGaussFitResult@{BidimGaussFitResult}}
+
+
+{\ttfamily \#include $<$Bidim\+Gauss\+Fit\+Result.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bidim_gauss_fit_result_aa4a825bd7be77b5f618a2fbf0e302706}{Bidim\+Gauss\+Fit\+Result}} ()
+\item 
+\mbox{\hyperlink{class_bidim_gauss_fit_result_a9b780f6a4cf9498cdb27732eda5cc93f}{Bidim\+Gauss\+Fit\+Result}} (const \mbox{\hyperlink{class_bidim_gauss_fit_result}{Bidim\+Gauss\+Fit\+Result}} \&source)
+\item 
+virtual \mbox{\hyperlink{class_bidim_gauss_fit_result_a4b74ab048da1b5afb3bc3d33325bfede}{$\sim$\+Bidim\+Gauss\+Fit\+Result}} ()
+\item 
+const \mbox{\hyperlink{class_bidim_gauss_fit_result}{Bidim\+Gauss\+Fit\+Result}} \& \mbox{\hyperlink{class_bidim_gauss_fit_result_a63ae0d7686e6f1b71960dd964b79d1a3}{operator=}} (const \mbox{\hyperlink{class_bidim_gauss_fit_result}{Bidim\+Gauss\+Fit\+Result}} \&source)
+\item 
+virtual void \mbox{\hyperlink{class_bidim_gauss_fit_result_ac70ab74ab37fbaa4f39a0ed0537bb5e4}{reset}} ()
+\item 
+virtual void \mbox{\hyperlink{class_bidim_gauss_fit_result_a01f8022bb14456eca469b6cb1545f55f}{save\+Results}} (TF2 $\ast$fit\+Function)
+\item 
+virtual void \mbox{\hyperlink{class_bidim_gauss_fit_result_a81c7e49fe6e2768cdc86f7676808688c}{print\+Results}} (ostream \&out)
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_aa158934f8b8eb31c45bd824f6ab52cbf}{extract\+Generalized\+RMS}} (TF1 $\ast$func, int sigma\+Index, int beta\+Index)
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a0c97e5800e5dc31274d5691933094da3}{extract\+Generalized\+RMSError}} (TF1 $\ast$func, TMatrix\+DSym \&cov, int sigma\+Index, int beta\+Index)
+\item 
+std\+::tuple$<$ double, double $>$ \mbox{\hyperlink{class_bidim_gauss_fit_result_a3216cdaee34e9d57c86848d79f1e963d}{extract\+Generalized\+RMSError}} (TH1 $\ast$h)
+\item 
+std\+::tuple$<$ double, double, double, double $>$ \mbox{\hyperlink{class_bidim_gauss_fit_result_a00872469bc01c2afc2cc45e8f227ff95}{extract\+Generalized\+RMSand\+RMSError}} (TH2 $\ast$h, int xlowlimbin, int ylowlimbin)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a9e08d89ee302ff67eab93589d0aad970}{sigma\+Eta}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a96fe17332da73694f0287b1def5d95f2}{sigma\+Eta\+Err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_abd9dd508cc5015ecd764717263af4fd8}{sigma\+Phi}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_af02a48d21bb21a6b57ef61a8f504d3c3}{sigma\+Phi\+Err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_ae98491ce6837834b0c3be37896c80dc7}{A}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a021f911023a6cdc2ee61250b1b3fe6ff}{Aerr}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a4632fe4ddfcc07736f069358db59df80}{w\+Eta}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a48918629fe87ead68c819ca4ade51602}{w\+Eta\+Err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a5c714530c0f5e94be43d472a75f96870}{w\+Phi}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_aa4b9f496f00ee3e9f471bd111642506b}{w\+Phi\+Err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_adf517063fab34e71caa6ce3f0318d86d}{gamma\+Eta}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_aac62b4b8b00d14fc1735383a8cbcdac3}{gamma\+Eta\+Err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a531e9c81456ad74ae7e1a0324fa178d5}{gamma\+Phi}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_aa610708519eee00a2540ce8497319942}{gamma\+Phi\+Err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a79ba126eb04e56cd8f7ef742c027e7dd}{a0}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_abaec64fb7f7401ed00700adb3662d224}{a0err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a3058defeb205598cdc1801dffbc7a703}{a1}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a53de864fb127b5f641551d5aaa751c7b}{a1err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a7a5f0fb2e593da6270425475709881f8}{a2}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_af5ed4dbbe9c10f21576cbff33450edd7}{a2err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_abe9e12bdf74cef1574223d2f8424deaf}{a3}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a6ef67c3dd6f7733fc4ca2009d82846f8}{a3err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_abcebb0b2fa8852c121981227e4b2e531}{a4}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a4f0fe2604bd632c94b7ec01217f9e31e}{a4err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_ae3f5bf25f269c9707b3393982b728628}{a5}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a446246068621065ec9da15071f4f80ca}{a5err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a7a2ee013ebf1dc667bde69905ffc438c}{a6}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a95807993e0e47bd6e655283c958d803e}{a6err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_ac1c529dbc900d74c99d8c1eb997b6790}{lina2}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a74cba43b63e2fa4cec3151879d96392e}{lina2err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_abda089ec14768d19980a9f24d3af2cbe}{lina3}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a938b712a4692457652bfe1145cee50ec}{lina3err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a733a938b38e838b570b0aa0c5aebf6b9}{sqa2}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a9f005f92872227c63c425ea39bcf87b2}{sqa2err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a87ec7f782fb04797aa51acae5e9258a8}{sqa3}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a2fca6c5d38c4f308c31551ca9b2ac382}{sqa3err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a70341e994ead2b0912f180a3a6c4f7e1}{ndf}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a99d4b8bd2faaff55a76a723a81d9ac57}{ndf\+Wo\+Middle}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_af6e8b36039add9442f2ef58762704dbe}{ndf\+Full\+Wo\+Middle}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a115cd1bb285b7e1325f72b5087ce1206}{chi2}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a786be3db549b72b0cd5c2f568631dc52}{chi2\+Wo\+Middle}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a51704894e31412769d33cee5071adde8}{chi2\+Full\+Wo\+Middle}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a6206245f198ea1ee6e563edcbcba639e}{chi2\+Ndf}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_abb36788b3686084ed358cbd051aa029c}{chi2\+Ndf\+Wo\+Middle}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_aa9efb9401f261184d971c9aec0cc4d5b}{chi2\+Ndf\+Full\+Wo\+Middle}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_ae9d834f3ad1efd92492903c1519d12d3}{rms\+Eta}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a445e07c933c3adc1f663f676232a426f}{rms\+Eta\+Err}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a8ab5f821d847bf2f00f74d5a83110da8}{rms\+Phi}}
+\item 
+double \mbox{\hyperlink{class_bidim_gauss_fit_result_a6013ca3fd43e9e1af80f0385b1c9198d}{rms\+Phi\+Err}}
+\item 
+bool \mbox{\hyperlink{class_bidim_gauss_fit_result_a323433c2d9bef26b2006c4881941fb23}{success}}
+\item 
+TFit\+Result\+Ptr \mbox{\hyperlink{class_bidim_gauss_fit_result_a41c1846733085f1135c57b8908edefee}{result\+Ptr}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_aa4a825bd7be77b5f618a2fbf0e302706}\label{class_bidim_gauss_fit_result_aa4a825bd7be77b5f618a2fbf0e302706}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!BidimGaussFitResult@{BidimGaussFitResult}}
+\index{BidimGaussFitResult@{BidimGaussFitResult}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{BidimGaussFitResult()}{BidimGaussFitResult()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Bidim\+Gauss\+Fit\+Result\+::\+Bidim\+Gauss\+Fit\+Result (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source}{Bidim\+Gauss\+Fit\+Result.\+cpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a9b780f6a4cf9498cdb27732eda5cc93f}\label{class_bidim_gauss_fit_result_a9b780f6a4cf9498cdb27732eda5cc93f}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!BidimGaussFitResult@{BidimGaussFitResult}}
+\index{BidimGaussFitResult@{BidimGaussFitResult}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{BidimGaussFitResult()}{BidimGaussFitResult()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Bidim\+Gauss\+Fit\+Result\+::\+Bidim\+Gauss\+Fit\+Result (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bidim_gauss_fit_result}{Bidim\+Gauss\+Fit\+Result}} \&}]{source }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source}{Bidim\+Gauss\+Fit\+Result.\+cpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a4b74ab048da1b5afb3bc3d33325bfede}\label{class_bidim_gauss_fit_result_a4b74ab048da1b5afb3bc3d33325bfede}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!````~BidimGaussFitResult@{$\sim$BidimGaussFitResult}}
+\index{````~BidimGaussFitResult@{$\sim$BidimGaussFitResult}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{$\sim$BidimGaussFitResult()}{~BidimGaussFitResult()}}
+{\footnotesize\ttfamily Bidim\+Gauss\+Fit\+Result\+::$\sim$\+Bidim\+Gauss\+Fit\+Result (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source_l00134}{134}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source}{Bidim\+Gauss\+Fit\+Result.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_aa158934f8b8eb31c45bd824f6ab52cbf}\label{class_bidim_gauss_fit_result_aa158934f8b8eb31c45bd824f6ab52cbf}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!extractGeneralizedRMS@{extractGeneralizedRMS}}
+\index{extractGeneralizedRMS@{extractGeneralizedRMS}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{extractGeneralizedRMS()}{extractGeneralizedRMS()}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::extract\+Generalized\+RMS (\begin{DoxyParamCaption}\item[{TF1 $\ast$}]{func,  }\item[{int}]{sigma\+Index,  }\item[{int}]{beta\+Index }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source_l00429}{429}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source}{Bidim\+Gauss\+Fit\+Result.\+cpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a00872469bc01c2afc2cc45e8f227ff95}\label{class_bidim_gauss_fit_result_a00872469bc01c2afc2cc45e8f227ff95}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!extractGeneralizedRMSandRMSError@{extractGeneralizedRMSandRMSError}}
+\index{extractGeneralizedRMSandRMSError@{extractGeneralizedRMSandRMSError}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{extractGeneralizedRMSandRMSError()}{extractGeneralizedRMSandRMSError()}}
+{\footnotesize\ttfamily std\+::tuple$<$ double, double, double, double $>$ Bidim\+Gauss\+Fit\+Result\+::extract\+Generalized\+RMSand\+RMSError (\begin{DoxyParamCaption}\item[{TH2 $\ast$}]{h,  }\item[{int}]{xlowlimbin,  }\item[{int}]{ylowlimbin }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source_l00399}{399}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source}{Bidim\+Gauss\+Fit\+Result.\+cpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a0c97e5800e5dc31274d5691933094da3}\label{class_bidim_gauss_fit_result_a0c97e5800e5dc31274d5691933094da3}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!extractGeneralizedRMSError@{extractGeneralizedRMSError}}
+\index{extractGeneralizedRMSError@{extractGeneralizedRMSError}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{extractGeneralizedRMSError()}{extractGeneralizedRMSError()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::extract\+Generalized\+RMSError (\begin{DoxyParamCaption}\item[{TF1 $\ast$}]{func,  }\item[{TMatrix\+DSym \&}]{cov,  }\item[{int}]{sigma\+Index,  }\item[{int}]{beta\+Index }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source_l00436}{436}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source}{Bidim\+Gauss\+Fit\+Result.\+cpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a3216cdaee34e9d57c86848d79f1e963d}\label{class_bidim_gauss_fit_result_a3216cdaee34e9d57c86848d79f1e963d}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!extractGeneralizedRMSError@{extractGeneralizedRMSError}}
+\index{extractGeneralizedRMSError@{extractGeneralizedRMSError}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{extractGeneralizedRMSError()}{extractGeneralizedRMSError()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::tuple$<$ double, double $>$ Bidim\+Gauss\+Fit\+Result\+::extract\+Generalized\+RMSError (\begin{DoxyParamCaption}\item[{TH1 $\ast$}]{h }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source_l00352}{352}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source}{Bidim\+Gauss\+Fit\+Result.\+cpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a63ae0d7686e6f1b71960dd964b79d1a3}\label{class_bidim_gauss_fit_result_a63ae0d7686e6f1b71960dd964b79d1a3}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!operator=@{operator=}}
+\index{operator=@{operator=}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_bidim_gauss_fit_result}{Bidim\+Gauss\+Fit\+Result}} \& Bidim\+Gauss\+Fit\+Result\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bidim_gauss_fit_result}{Bidim\+Gauss\+Fit\+Result}} \&}]{source }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source_l00140}{140}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source}{Bidim\+Gauss\+Fit\+Result.\+cpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a81c7e49fe6e2768cdc86f7676808688c}\label{class_bidim_gauss_fit_result_a81c7e49fe6e2768cdc86f7676808688c}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!printResults@{printResults}}
+\index{printResults@{printResults}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{printResults()}{printResults()}}
+{\footnotesize\ttfamily void Bidim\+Gauss\+Fit\+Result\+::print\+Results (\begin{DoxyParamCaption}\item[{ostream \&}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source_l00452}{452}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source}{Bidim\+Gauss\+Fit\+Result.\+cpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_ac70ab74ab37fbaa4f39a0ed0537bb5e4}\label{class_bidim_gauss_fit_result_ac70ab74ab37fbaa4f39a0ed0537bb5e4}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!reset@{reset}}
+\index{reset@{reset}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Bidim\+Gauss\+Fit\+Result\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source_l00201}{201}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source}{Bidim\+Gauss\+Fit\+Result.\+cpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a01f8022bb14456eca469b6cb1545f55f}\label{class_bidim_gauss_fit_result_a01f8022bb14456eca469b6cb1545f55f}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!saveResults@{saveResults}}
+\index{saveResults@{saveResults}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{saveResults()}{saveResults()}}
+{\footnotesize\ttfamily void Bidim\+Gauss\+Fit\+Result\+::save\+Results (\begin{DoxyParamCaption}\item[{TF2 $\ast$}]{fit\+Function }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source_l00254}{254}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8cpp_source}{Bidim\+Gauss\+Fit\+Result.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_ae98491ce6837834b0c3be37896c80dc7}\label{class_bidim_gauss_fit_result_ae98491ce6837834b0c3be37896c80dc7}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!A@{A}}
+\index{A@{A}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{A}{A}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::A}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a79ba126eb04e56cd8f7ef742c027e7dd}\label{class_bidim_gauss_fit_result_a79ba126eb04e56cd8f7ef742c027e7dd}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!a0@{a0}}
+\index{a0@{a0}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{a0}{a0}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::a0}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_abaec64fb7f7401ed00700adb3662d224}\label{class_bidim_gauss_fit_result_abaec64fb7f7401ed00700adb3662d224}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!a0err@{a0err}}
+\index{a0err@{a0err}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{a0err}{a0err}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::a0err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a3058defeb205598cdc1801dffbc7a703}\label{class_bidim_gauss_fit_result_a3058defeb205598cdc1801dffbc7a703}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!a1@{a1}}
+\index{a1@{a1}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{a1}{a1}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::a1}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00069}{69}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a53de864fb127b5f641551d5aaa751c7b}\label{class_bidim_gauss_fit_result_a53de864fb127b5f641551d5aaa751c7b}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!a1err@{a1err}}
+\index{a1err@{a1err}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{a1err}{a1err}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::a1err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a7a5f0fb2e593da6270425475709881f8}\label{class_bidim_gauss_fit_result_a7a5f0fb2e593da6270425475709881f8}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!a2@{a2}}
+\index{a2@{a2}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{a2}{a2}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::a2}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_af5ed4dbbe9c10f21576cbff33450edd7}\label{class_bidim_gauss_fit_result_af5ed4dbbe9c10f21576cbff33450edd7}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!a2err@{a2err}}
+\index{a2err@{a2err}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{a2err}{a2err}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::a2err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_abe9e12bdf74cef1574223d2f8424deaf}\label{class_bidim_gauss_fit_result_abe9e12bdf74cef1574223d2f8424deaf}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!a3@{a3}}
+\index{a3@{a3}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{a3}{a3}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::a3}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a6ef67c3dd6f7733fc4ca2009d82846f8}\label{class_bidim_gauss_fit_result_a6ef67c3dd6f7733fc4ca2009d82846f8}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!a3err@{a3err}}
+\index{a3err@{a3err}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{a3err}{a3err}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::a3err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00074}{74}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_abcebb0b2fa8852c121981227e4b2e531}\label{class_bidim_gauss_fit_result_abcebb0b2fa8852c121981227e4b2e531}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!a4@{a4}}
+\index{a4@{a4}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{a4}{a4}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::a4}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00075}{75}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a4f0fe2604bd632c94b7ec01217f9e31e}\label{class_bidim_gauss_fit_result_a4f0fe2604bd632c94b7ec01217f9e31e}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!a4err@{a4err}}
+\index{a4err@{a4err}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{a4err}{a4err}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::a4err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_ae3f5bf25f269c9707b3393982b728628}\label{class_bidim_gauss_fit_result_ae3f5bf25f269c9707b3393982b728628}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!a5@{a5}}
+\index{a5@{a5}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{a5}{a5}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::a5}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a446246068621065ec9da15071f4f80ca}\label{class_bidim_gauss_fit_result_a446246068621065ec9da15071f4f80ca}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!a5err@{a5err}}
+\index{a5err@{a5err}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{a5err}{a5err}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::a5err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a7a2ee013ebf1dc667bde69905ffc438c}\label{class_bidim_gauss_fit_result_a7a2ee013ebf1dc667bde69905ffc438c}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!a6@{a6}}
+\index{a6@{a6}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{a6}{a6}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::a6}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00079}{79}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a95807993e0e47bd6e655283c958d803e}\label{class_bidim_gauss_fit_result_a95807993e0e47bd6e655283c958d803e}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!a6err@{a6err}}
+\index{a6err@{a6err}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{a6err}{a6err}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::a6err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00080}{80}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a021f911023a6cdc2ee61250b1b3fe6ff}\label{class_bidim_gauss_fit_result_a021f911023a6cdc2ee61250b1b3fe6ff}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!Aerr@{Aerr}}
+\index{Aerr@{Aerr}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{Aerr}{Aerr}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::\+Aerr}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00058}{58}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a115cd1bb285b7e1325f72b5087ce1206}\label{class_bidim_gauss_fit_result_a115cd1bb285b7e1325f72b5087ce1206}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!chi2@{chi2}}
+\index{chi2@{chi2}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{chi2}{chi2}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::chi2}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a51704894e31412769d33cee5071adde8}\label{class_bidim_gauss_fit_result_a51704894e31412769d33cee5071adde8}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!chi2FullWoMiddle@{chi2FullWoMiddle}}
+\index{chi2FullWoMiddle@{chi2FullWoMiddle}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{chi2FullWoMiddle}{chi2FullWoMiddle}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::chi2\+Full\+Wo\+Middle}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00090}{90}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a6206245f198ea1ee6e563edcbcba639e}\label{class_bidim_gauss_fit_result_a6206245f198ea1ee6e563edcbcba639e}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!chi2Ndf@{chi2Ndf}}
+\index{chi2Ndf@{chi2Ndf}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{chi2Ndf}{chi2Ndf}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::chi2\+Ndf}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00091}{91}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_aa9efb9401f261184d971c9aec0cc4d5b}\label{class_bidim_gauss_fit_result_aa9efb9401f261184d971c9aec0cc4d5b}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!chi2NdfFullWoMiddle@{chi2NdfFullWoMiddle}}
+\index{chi2NdfFullWoMiddle@{chi2NdfFullWoMiddle}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{chi2NdfFullWoMiddle}{chi2NdfFullWoMiddle}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::chi2\+Ndf\+Full\+Wo\+Middle}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00093}{93}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_abb36788b3686084ed358cbd051aa029c}\label{class_bidim_gauss_fit_result_abb36788b3686084ed358cbd051aa029c}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!chi2NdfWoMiddle@{chi2NdfWoMiddle}}
+\index{chi2NdfWoMiddle@{chi2NdfWoMiddle}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{chi2NdfWoMiddle}{chi2NdfWoMiddle}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::chi2\+Ndf\+Wo\+Middle}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00092}{92}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a786be3db549b72b0cd5c2f568631dc52}\label{class_bidim_gauss_fit_result_a786be3db549b72b0cd5c2f568631dc52}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!chi2WoMiddle@{chi2WoMiddle}}
+\index{chi2WoMiddle@{chi2WoMiddle}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{chi2WoMiddle}{chi2WoMiddle}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::chi2\+Wo\+Middle}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00089}{89}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_adf517063fab34e71caa6ce3f0318d86d}\label{class_bidim_gauss_fit_result_adf517063fab34e71caa6ce3f0318d86d}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!gammaEta@{gammaEta}}
+\index{gammaEta@{gammaEta}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{gammaEta}{gammaEta}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::gamma\+Eta}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_aac62b4b8b00d14fc1735383a8cbcdac3}\label{class_bidim_gauss_fit_result_aac62b4b8b00d14fc1735383a8cbcdac3}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!gammaEtaErr@{gammaEtaErr}}
+\index{gammaEtaErr@{gammaEtaErr}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{gammaEtaErr}{gammaEtaErr}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::gamma\+Eta\+Err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00064}{64}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a531e9c81456ad74ae7e1a0324fa178d5}\label{class_bidim_gauss_fit_result_a531e9c81456ad74ae7e1a0324fa178d5}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!gammaPhi@{gammaPhi}}
+\index{gammaPhi@{gammaPhi}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{gammaPhi}{gammaPhi}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::gamma\+Phi}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_aa610708519eee00a2540ce8497319942}\label{class_bidim_gauss_fit_result_aa610708519eee00a2540ce8497319942}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!gammaPhiErr@{gammaPhiErr}}
+\index{gammaPhiErr@{gammaPhiErr}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{gammaPhiErr}{gammaPhiErr}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::gamma\+Phi\+Err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_ac1c529dbc900d74c99d8c1eb997b6790}\label{class_bidim_gauss_fit_result_ac1c529dbc900d74c99d8c1eb997b6790}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!lina2@{lina2}}
+\index{lina2@{lina2}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{lina2}{lina2}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::lina2}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a74cba43b63e2fa4cec3151879d96392e}\label{class_bidim_gauss_fit_result_a74cba43b63e2fa4cec3151879d96392e}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!lina2err@{lina2err}}
+\index{lina2err@{lina2err}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{lina2err}{lina2err}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::lina2err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_abda089ec14768d19980a9f24d3af2cbe}\label{class_bidim_gauss_fit_result_abda089ec14768d19980a9f24d3af2cbe}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!lina3@{lina3}}
+\index{lina3@{lina3}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{lina3}{lina3}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::lina3}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00082}{82}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a938b712a4692457652bfe1145cee50ec}\label{class_bidim_gauss_fit_result_a938b712a4692457652bfe1145cee50ec}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!lina3err@{lina3err}}
+\index{lina3err@{lina3err}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{lina3err}{lina3err}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::lina3err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00082}{82}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a70341e994ead2b0912f180a3a6c4f7e1}\label{class_bidim_gauss_fit_result_a70341e994ead2b0912f180a3a6c4f7e1}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!ndf@{ndf}}
+\index{ndf@{ndf}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{ndf}{ndf}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::ndf}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_af6e8b36039add9442f2ef58762704dbe}\label{class_bidim_gauss_fit_result_af6e8b36039add9442f2ef58762704dbe}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!ndfFullWoMiddle@{ndfFullWoMiddle}}
+\index{ndfFullWoMiddle@{ndfFullWoMiddle}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{ndfFullWoMiddle}{ndfFullWoMiddle}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::ndf\+Full\+Wo\+Middle}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a99d4b8bd2faaff55a76a723a81d9ac57}\label{class_bidim_gauss_fit_result_a99d4b8bd2faaff55a76a723a81d9ac57}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!ndfWoMiddle@{ndfWoMiddle}}
+\index{ndfWoMiddle@{ndfWoMiddle}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{ndfWoMiddle}{ndfWoMiddle}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::ndf\+Wo\+Middle}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00086}{86}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a41c1846733085f1135c57b8908edefee}\label{class_bidim_gauss_fit_result_a41c1846733085f1135c57b8908edefee}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!resultPtr@{resultPtr}}
+\index{resultPtr@{resultPtr}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{resultPtr}{resultPtr}}
+{\footnotesize\ttfamily TFit\+Result\+Ptr Bidim\+Gauss\+Fit\+Result\+::result\+Ptr}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00100}{100}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_ae9d834f3ad1efd92492903c1519d12d3}\label{class_bidim_gauss_fit_result_ae9d834f3ad1efd92492903c1519d12d3}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!rmsEta@{rmsEta}}
+\index{rmsEta@{rmsEta}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{rmsEta}{rmsEta}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::rms\+Eta}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00095}{95}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a445e07c933c3adc1f663f676232a426f}\label{class_bidim_gauss_fit_result_a445e07c933c3adc1f663f676232a426f}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!rmsEtaErr@{rmsEtaErr}}
+\index{rmsEtaErr@{rmsEtaErr}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{rmsEtaErr}{rmsEtaErr}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::rms\+Eta\+Err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00096}{96}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a8ab5f821d847bf2f00f74d5a83110da8}\label{class_bidim_gauss_fit_result_a8ab5f821d847bf2f00f74d5a83110da8}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!rmsPhi@{rmsPhi}}
+\index{rmsPhi@{rmsPhi}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{rmsPhi}{rmsPhi}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::rms\+Phi}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00097}{97}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a6013ca3fd43e9e1af80f0385b1c9198d}\label{class_bidim_gauss_fit_result_a6013ca3fd43e9e1af80f0385b1c9198d}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!rmsPhiErr@{rmsPhiErr}}
+\index{rmsPhiErr@{rmsPhiErr}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{rmsPhiErr}{rmsPhiErr}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::rms\+Phi\+Err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00098}{98}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a9e08d89ee302ff67eab93589d0aad970}\label{class_bidim_gauss_fit_result_a9e08d89ee302ff67eab93589d0aad970}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!sigmaEta@{sigmaEta}}
+\index{sigmaEta@{sigmaEta}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{sigmaEta}{sigmaEta}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::sigma\+Eta}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00053}{53}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a96fe17332da73694f0287b1def5d95f2}\label{class_bidim_gauss_fit_result_a96fe17332da73694f0287b1def5d95f2}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!sigmaEtaErr@{sigmaEtaErr}}
+\index{sigmaEtaErr@{sigmaEtaErr}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{sigmaEtaErr}{sigmaEtaErr}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::sigma\+Eta\+Err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00054}{54}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_abd9dd508cc5015ecd764717263af4fd8}\label{class_bidim_gauss_fit_result_abd9dd508cc5015ecd764717263af4fd8}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!sigmaPhi@{sigmaPhi}}
+\index{sigmaPhi@{sigmaPhi}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{sigmaPhi}{sigmaPhi}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::sigma\+Phi}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00055}{55}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_af02a48d21bb21a6b57ef61a8f504d3c3}\label{class_bidim_gauss_fit_result_af02a48d21bb21a6b57ef61a8f504d3c3}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!sigmaPhiErr@{sigmaPhiErr}}
+\index{sigmaPhiErr@{sigmaPhiErr}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{sigmaPhiErr}{sigmaPhiErr}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::sigma\+Phi\+Err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00056}{56}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a733a938b38e838b570b0aa0c5aebf6b9}\label{class_bidim_gauss_fit_result_a733a938b38e838b570b0aa0c5aebf6b9}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!sqa2@{sqa2}}
+\index{sqa2@{sqa2}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{sqa2}{sqa2}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::sqa2}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00083}{83}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a9f005f92872227c63c425ea39bcf87b2}\label{class_bidim_gauss_fit_result_a9f005f92872227c63c425ea39bcf87b2}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!sqa2err@{sqa2err}}
+\index{sqa2err@{sqa2err}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{sqa2err}{sqa2err}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::sqa2err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00083}{83}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a87ec7f782fb04797aa51acae5e9258a8}\label{class_bidim_gauss_fit_result_a87ec7f782fb04797aa51acae5e9258a8}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!sqa3@{sqa3}}
+\index{sqa3@{sqa3}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{sqa3}{sqa3}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::sqa3}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a2fca6c5d38c4f308c31551ca9b2ac382}\label{class_bidim_gauss_fit_result_a2fca6c5d38c4f308c31551ca9b2ac382}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!sqa3err@{sqa3err}}
+\index{sqa3err@{sqa3err}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{sqa3err}{sqa3err}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::sqa3err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a323433c2d9bef26b2006c4881941fb23}\label{class_bidim_gauss_fit_result_a323433c2d9bef26b2006c4881941fb23}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!success@{success}}
+\index{success@{success}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{success}{success}}
+{\footnotesize\ttfamily bool Bidim\+Gauss\+Fit\+Result\+::success}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00099}{99}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a4632fe4ddfcc07736f069358db59df80}\label{class_bidim_gauss_fit_result_a4632fe4ddfcc07736f069358db59df80}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!wEta@{wEta}}
+\index{wEta@{wEta}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{wEta}{wEta}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::w\+Eta}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a48918629fe87ead68c819ca4ade51602}\label{class_bidim_gauss_fit_result_a48918629fe87ead68c819ca4ade51602}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!wEtaErr@{wEtaErr}}
+\index{wEtaErr@{wEtaErr}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{wEtaErr}{wEtaErr}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::w\+Eta\+Err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_a5c714530c0f5e94be43d472a75f96870}\label{class_bidim_gauss_fit_result_a5c714530c0f5e94be43d472a75f96870}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!wPhi@{wPhi}}
+\index{wPhi@{wPhi}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{wPhi}{wPhi}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::w\+Phi}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00061}{61}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+\mbox{\Hypertarget{class_bidim_gauss_fit_result_aa4b9f496f00ee3e9f471bd111642506b}\label{class_bidim_gauss_fit_result_aa4b9f496f00ee3e9f471bd111642506b}} 
+\index{BidimGaussFitResult@{BidimGaussFitResult}!wPhiErr@{wPhiErr}}
+\index{wPhiErr@{wPhiErr}!BidimGaussFitResult@{BidimGaussFitResult}}
+\doxysubsubsection{\texorpdfstring{wPhiErr}{wPhiErr}}
+{\footnotesize\ttfamily double Bidim\+Gauss\+Fit\+Result\+::w\+Phi\+Err}
+
+
+
+Definition at line \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source_l00062}{62}} of file \mbox{\hyperlink{_bidim_gauss_fit_result_8hpp_source}{Bidim\+Gauss\+Fit\+Result.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_bidim_gauss_fit_result_8hpp}{Bidim\+Gauss\+Fit\+Result.\+hpp}}\item 
+Base/\mbox{\hyperlink{_bidim_gauss_fit_result_8cpp}{Bidim\+Gauss\+Fit\+Result.\+cpp}}\end{DoxyCompactItemize}

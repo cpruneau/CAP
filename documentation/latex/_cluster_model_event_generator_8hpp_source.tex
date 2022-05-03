@@ -1,0 +1,73 @@
+\hypertarget{_cluster_model_event_generator_8hpp_source}{}\doxysection{Cluster\+Model\+Event\+Generator.\+hpp}
+\label{_cluster_model_event_generator_8hpp_source}\index{Cluster/ClusterModelEventGenerator.hpp@{Cluster/ClusterModelEventGenerator.hpp}}
+\mbox{\hyperlink{_cluster_model_event_generator_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#ifndef WAC\_ClusterModelEventGenerator}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#define WAC\_ClusterModelEventGenerator}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00014}00014 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00015}00015 \textcolor{comment}{// Hierarchy}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00016}00016 \textcolor{comment}{// -\/ Event}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00017}00017 \textcolor{comment}{//   -\/ Cell}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00018}00018 \textcolor{comment}{//     -\/ Cluster}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00019}00019 \textcolor{comment}{//       -\/ Particle}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00021}00021 \textcolor{comment}{}\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00022}00022 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_cluster_model_event_8hpp}{ClusterModelEvent.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00023}00023 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_cluster_model_configuration_8hpp}{ClusterModelConfiguration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00024}00024 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_random_generators_8hpp}{RandomGenerators.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00025}00025 \textcolor{preprocessor}{\#include "{}TGenPhaseSpace.h"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00026}00026 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_8hpp}{Particle.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00028}\mbox{\hyperlink{class_cluster_model_event_generator}{00028}} \textcolor{keyword}{class }\mbox{\hyperlink{class_cluster_model_event_generator}{ClusterModelEventGenerator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00029}00029 \{}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00030}00030 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00031}00031   }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00032}00032   \mbox{\hyperlink{class_cluster_model_event_generator_a756ba8c0929fbac1b0334148ee232268}{ClusterModelEventGenerator}}(\textcolor{keyword}{const} TString \&  name,}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00033}00033                              TaskConfiguration * \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}},}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00034}00034                              \mbox{\hyperlink{class_cluster_model_event}{ClusterModelEvent}} * event);}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00035}00035   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_cluster_model_event_generator_a3405c473e6f2eb7d6caa6cada7bebeb8}{\string~ClusterModelEventGenerator}}();}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00036}00036   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cluster_model_event_generator_a96a90866a1c8076157794af6a33dd908}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00037}00037   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cluster_model_event_generator_a85a82d56c03345a914be6cd3b8d40745}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00038}00038   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cluster_model_event_generator_a1f39c526972723b899d6e58534161af3}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00040}00040   \mbox{\hyperlink{class_event}{Event}} * \mbox{\hyperlink{class_cluster_model_event_generator_a40774ab2c75c4c9af0aa7c0e0d85eb46}{getClusterModelEvent}}();}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00043}00043   \textcolor{comment}{// Data members}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00045}00045 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00046}\mbox{\hyperlink{class_cluster_model_event_generator_aabcc49dd70cca2f86b314b866fd78bef}{00046}}   \mbox{\hyperlink{class_scalar_int_random_generator}{ScalarIntRandomGenerator}}    * \mbox{\hyperlink{class_cluster_model_event_generator_aabcc49dd70cca2f86b314b866fd78bef}{cellMultiplicityGenerator}};}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00047}\mbox{\hyperlink{class_cluster_model_event_generator_abfbca8e8f7282be8591e975b9341e217}{00047}}   \mbox{\hyperlink{class_scalar_double_random_generator}{ScalarDoubleRandomGenerator}} * \mbox{\hyperlink{class_cluster_model_event_generator_abfbca8e8f7282be8591e975b9341e217}{cellBetaGenerator}};}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00048}\mbox{\hyperlink{class_cluster_model_event_generator_a344f36c29e77a79343dfb09ef3cf88bf}{00048}}   \mbox{\hyperlink{class_scalar_double_random_generator}{ScalarDoubleRandomGenerator}} * \mbox{\hyperlink{class_cluster_model_event_generator_a344f36c29e77a79343dfb09ef3cf88bf}{cellPhiGenerator}};}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00049}\mbox{\hyperlink{class_cluster_model_event_generator_aed70f2244ee3f8fb83d56d9653bfc0e0}{00049}}   \mbox{\hyperlink{class_scalar_int_random_generator}{ScalarIntRandomGenerator}}    * \mbox{\hyperlink{class_cluster_model_event_generator_aed70f2244ee3f8fb83d56d9653bfc0e0}{clusterMultiplicityGenerator}};}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00050}\mbox{\hyperlink{class_cluster_model_event_generator_aae5005e983618a900487e8f7e819c3ba}{00050}}   \mbox{\hyperlink{class_scalar_double_random_generator}{ScalarDoubleRandomGenerator}} * \mbox{\hyperlink{class_cluster_model_event_generator_aae5005e983618a900487e8f7e819c3ba}{clusterRapidityGenerator}};}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00051}\mbox{\hyperlink{class_cluster_model_event_generator_a4f4c37b3c573f3b49990036dc881eba9}{00051}}   \mbox{\hyperlink{class_scalar_double_random_generator}{ScalarDoubleRandomGenerator}} * \mbox{\hyperlink{class_cluster_model_event_generator_a4f4c37b3c573f3b49990036dc881eba9}{clusterMassGenerator}};}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00052}\mbox{\hyperlink{class_cluster_model_event_generator_acf951a117cd032848e3e5f379d4db3ea}{00052}}   \mbox{\hyperlink{class_scalar_double_random_generator}{ScalarDoubleRandomGenerator}} * \mbox{\hyperlink{class_cluster_model_event_generator_acf951a117cd032848e3e5f379d4db3ea}{clusterMomentumGenerator}};}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00053}\mbox{\hyperlink{class_cluster_model_event_generator_a67ccc7dd5a323d8bb6e0fcdca8761761}{00053}}   \mbox{\hyperlink{class_vector_random_generator}{VectorRandomGenerator}}       * \mbox{\hyperlink{class_cluster_model_event_generator_a67ccc7dd5a323d8bb6e0fcdca8761761}{clusterDirectionGenerator}};}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00054}\mbox{\hyperlink{class_cluster_model_event_generator_a2f865b06a98f8b34dbc79276a5c92e4a}{00054}}   \mbox{\hyperlink{class_vector_random_generator}{VectorRandomGenerator}}       * \mbox{\hyperlink{class_cluster_model_event_generator_a2f865b06a98f8b34dbc79276a5c92e4a}{particleDirectionGenerator}};}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00055}\mbox{\hyperlink{class_cluster_model_event_generator_a97698c9c1777904963d2e4658f0185fd}{00055}}   \mbox{\hyperlink{class_scalar_int_random_generator}{ScalarIntRandomGenerator}}    * \mbox{\hyperlink{class_cluster_model_event_generator_a97698c9c1777904963d2e4658f0185fd}{particleMultiplicityGenerator}};}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00056}\mbox{\hyperlink{class_cluster_model_event_generator_a180e6771396955d2ce68a881028af1cc}{00056}}   \mbox{\hyperlink{class_scalar_double_random_generator}{ScalarDoubleRandomGenerator}} * \mbox{\hyperlink{class_cluster_model_event_generator_a180e6771396955d2ce68a881028af1cc}{particleMomenumGenerator}};}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00057}\mbox{\hyperlink{class_cluster_model_event_generator_a0abf6d39a18b51b90fefafe8f2badcc3}{00057}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_cluster_model_event_generator_a0abf6d39a18b51b90fefafe8f2badcc3}{particleIndex}};}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00058}\mbox{\hyperlink{class_cluster_model_event_generator_aebf5504442f6b89baac78199bd96ee6d}{00058}}   TLorentzVector * \mbox{\hyperlink{class_cluster_model_event_generator_aebf5504442f6b89baac78199bd96ee6d}{p1}};}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00059}00059   }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00060}\mbox{\hyperlink{class_cluster_model_event_generator_aee6594f95aad90247a68b29914b630d1}{00060}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_cluster_model_event_generator_aee6594f95aad90247a68b29914b630d1}{masses}}[100];}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00061}\mbox{\hyperlink{class_cluster_model_event_generator_a00d519d9a217b8c02c6d882dadf2cd93}{00061}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_cluster_model_event_generator_a00d519d9a217b8c02c6d882dadf2cd93}{massesSq}}[100];}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00062}00062   }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00063}00063  \textcolor{comment}{// static constexpr double pionMass = 0.14;}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00064}\mbox{\hyperlink{class_cluster_model_event_generator_a8b5e5414b6a15891307a0574294a10c2}{00064}}  \textcolor{keywordtype}{double} \mbox{\hyperlink{class_cluster_model_event_generator_a8b5e5414b6a15891307a0574294a10c2}{pionMass}};}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00066}\mbox{\hyperlink{class_cluster_model_event_generator_ad47b7df0f2202fa6a0acf1ff6d5ca329}{00066}}   \mbox{\hyperlink{class_cluster_model_event}{ClusterModelEvent}} * \mbox{\hyperlink{class_cluster_model_event_generator_ad47b7df0f2202fa6a0acf1ff6d5ca329}{cmEvent}};}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00067}00067    ClassDef(\mbox{\hyperlink{class_cluster_model_event_generator}{ClusterModelEventGenerator}},0)}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00068}00068 \};}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00070}00070 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* WAC\_ClusterModelEventGenerator */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator_8hpp_source_l00071}00071 }
+
+\end{DoxyCode}

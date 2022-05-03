@@ -1,0 +1,120 @@
+\hypertarget{_closure_test_8cpp_source}{}\doxysection{Closure\+Test.\+cpp}
+\label{_closure_test_8cpp_source}\index{Base/ClosureTest.cpp@{Base/ClosureTest.cpp}}
+\mbox{\hyperlink{_closure_test_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_histogram_collection_8hpp}{HistogramCollection.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_closure_test_8hpp}{ClosureTest.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00015}\mbox{\hyperlink{_closure_test_8cpp_a0d36ca7a217d0832e35ed5191706ac12}{00015}} \mbox{\hyperlink{_closure_test_8cpp_a0d36ca7a217d0832e35ed5191706ac12}{ClassImp}}(\mbox{\hyperlink{class_closure_test}{ClosureTest}});}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00017}\mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{00017}} TString \mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}};}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00018}\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{00018}} TString \mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}};}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00019}\mbox{\hyperlink{_closure_test_8cpp_a2615bf4dcdff37191cfcd928cc9bb14a}{00019}} TString \mbox{\hyperlink{_closure_test_8cpp_a2615bf4dcdff37191cfcd928cc9bb14a}{generatorLevelFileName}};  \textcolor{comment}{// Truth}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00020}\mbox{\hyperlink{_closure_test_8cpp_a9722ac7173a42ba827a07957428f9008}{00020}} TString \mbox{\hyperlink{_closure_test_8cpp_a9722ac7173a42ba827a07957428f9008}{detectorLevelFileName}};   \textcolor{comment}{// Measured}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00021}\mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{00021}} TString \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}};          \textcolor{comment}{// Comparison}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00022}\mbox{\hyperlink{_closure_test_8cpp_a759d5b53c03fdcf8992e3bedb75ea2c5}{00022}} ClosureTestMethod \mbox{\hyperlink{_closure_test_8cpp_a759d5b53c03fdcf8992e3bedb75ea2c5}{selectedMethod}};}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00024}\mbox{\hyperlink{class_closure_test_a102bd973eb10c0fc1633468067423094}{00024}} \mbox{\hyperlink{class_closure_test_a102bd973eb10c0fc1633468067423094}{ClosureTest::ClosureTest}}(\textcolor{keyword}{const} TString \&   \_inputPath,}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00025}00025                          \textcolor{keyword}{const} TString \&   \_generatorLevel,}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00026}00026                          \textcolor{keyword}{const} TString \&   \_detectorLevel,}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00027}00027                          \textcolor{keyword}{const} TString \&   \_outputPath,}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00028}00028                          \textcolor{keyword}{const} TString \&   \_closureFileName,}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00029}00029                          \mbox{\hyperlink{class_closure_test_a225ae3ffdfa1be85ac8419bd777f9440}{ClosureTestMethod}} \_selectedMethod,}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00030}00030                          \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}} debugLevel)}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00031}00031 :}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00032}00032 \mbox{\hyperlink{class_task}{Task}}(),}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00033}00033 \mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}}(\_inputPath),}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00034}00034 \mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}}(\_outputPath),}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00035}00035 \mbox{\hyperlink{_closure_test_8cpp_a2615bf4dcdff37191cfcd928cc9bb14a}{generatorLevelFileName}}(\_generatorLevel),}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00036}00036 \mbox{\hyperlink{_closure_test_8cpp_a9722ac7173a42ba827a07957428f9008}{detectorLevelFileName}}(\_detectorLevel),}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00037}00037 closureFileName(\_closureFileName),}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00038}00038 \mbox{\hyperlink{_closure_test_8cpp_a759d5b53c03fdcf8992e3bedb75ea2c5}{selectedMethod}}(\_selectedMethod)}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00039}00039 \{}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00040}00040   \mbox{\hyperlink{class_message_logger_a1e9ef2ba565687d36d69c772c9451149}{setReportLevel}}(debugLevel);}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00041}00041 \}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00043}\mbox{\hyperlink{class_closure_test_add90da10bec217d9075f7be04e26e20e}{00043}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_closure_test_add90da10bec217d9075f7be04e26e20e}{ClosureTest::setDefaultConfiguration}}()}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00044}00044 \{}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00045}00045   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}ParticleAnalyzer"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00046}00046     \{}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00047}00047     \}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00048}00048   \mbox{\hyperlink{class_configuration}{Configuration}} \& \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}} = \mbox{\hyperlink{class_task_a1955cc87bd4885d8ca19435b3609443f}{getConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00049}00049   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8420b979e7d98bf6562ec2f6cc28d0d8}{setName}}(\textcolor{stringliteral}{"{}ClosureTest Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00050}00050   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}useParticles"{}},\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00051}00051   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}createHistograms"{}},\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00052}00052   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}saveHistograms"{}},\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00053}00053    }
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00054}00054   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}ParticleAnalyzer"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00055}00055     \{}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00056}00056     \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(cout);}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00057}00057     \}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00058}00058 \}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00062}\mbox{\hyperlink{class_closure_test_a287791eca2b8f0547a5d501b5ec78f04}{00062}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_closure_test_a287791eca2b8f0547a5d501b5ec78f04}{ClosureTest::execute}}()}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00063}00063 \{}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00064}00064   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}ClosureTest"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}}))}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00065}00065     \{}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00066}00066     cout}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00067}00067     << \textcolor{stringliteral}{"{}   Starting closure test:"{}} << endl}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00068}00068     << \textcolor{stringliteral}{"{}               inputPath:"{}} << \mbox{\hyperlink{class_closure_test_a34469ad67b70d56140e385b0b0dd7c42}{inputPath}}  << endl}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00069}00069     << \textcolor{stringliteral}{"{}              outputPath:"{}} << \mbox{\hyperlink{class_closure_test_a9be03666559f9d633084c7bed630a84e}{outputPath}} << endl}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00070}00070     << \textcolor{stringliteral}{"{}  generatorLevelFileName:"{}} << \mbox{\hyperlink{class_closure_test_abe6d888ac8dd55a5aada0aee4046b054}{generatorLevelFileName}} << endl}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00071}00071     << \textcolor{stringliteral}{"{}   detectorLevelFileName:"{}} << \mbox{\hyperlink{class_closure_test_aeed6a69900a1a7c0452bfbecfcd3d90c}{detectorLevelFileName}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00072}00072     \}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00075}00075   TFile * generatorFile = \mbox{\hyperlink{class_task_a4491c7a1e03958b1a67e51e387601695}{openRootFile}}(\mbox{\hyperlink{class_closure_test_a34469ad67b70d56140e385b0b0dd7c42}{inputPath}}, \mbox{\hyperlink{class_closure_test_abe6d888ac8dd55a5aada0aee4046b054}{generatorLevelFileName}}, \textcolor{stringliteral}{"{}READ"{}});}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00076}00076   TFile * detectorFile  = \mbox{\hyperlink{class_task_a4491c7a1e03958b1a67e51e387601695}{openRootFile}}(\mbox{\hyperlink{class_closure_test_a34469ad67b70d56140e385b0b0dd7c42}{inputPath}}, \mbox{\hyperlink{class_closure_test_aeed6a69900a1a7c0452bfbecfcd3d90c}{detectorLevelFileName}},  \textcolor{stringliteral}{"{}READ"{}});}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00077}00077   TFile * closureFile;}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00079}00079   \textcolor{keywordflow}{if} (!generatorFile)}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00080}00080     \{}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00081}00081     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\textcolor{stringliteral}{"{}ClosureTest"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}}))}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00082}00082       \{}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00083}00083       cout << \textcolor{stringliteral}{"{}Generator File Name: "{}} << \mbox{\hyperlink{class_closure_test_abe6d888ac8dd55a5aada0aee4046b054}{generatorLevelFileName}} << \textcolor{stringliteral}{"{} NOT FOUND"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00084}00084       \}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00085}00085     setTaskError();}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00086}00086     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00087}00087     \}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00088}00088   \textcolor{keywordflow}{if} (!detectorFile)}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00089}00089     \{}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00090}00090     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\textcolor{stringliteral}{"{}ClosureTest"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}}))}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00091}00091       \{}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00092}00092       cout << \textcolor{stringliteral}{"{}Detector File Name: "{}} << detectorFile << \textcolor{stringliteral}{"{} NOT FOUND"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00093}00093       \}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00094}00094     setTaskError();}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00095}00095     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00096}00096     \}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00098}00098   \mbox{\hyperlink{class_histogram_collection}{HistogramCollection}} * generatorCollection = \textcolor{keyword}{new} \mbox{\hyperlink{class_histogram_collection}{HistogramCollection}}(\textcolor{stringliteral}{"{}GeneratorLevel"{}},\mbox{\hyperlink{class_message_logger_aaa759a0af20793b7586bb33722463d22}{getReportLevel}}());}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00099}00099   \mbox{\hyperlink{class_histogram_collection}{HistogramCollection}} * detectorCollection  = \textcolor{keyword}{new} \mbox{\hyperlink{class_histogram_collection}{HistogramCollection}}(\textcolor{stringliteral}{"{}DetectorLevel"{}}, \mbox{\hyperlink{class_message_logger_aaa759a0af20793b7586bb33722463d22}{getReportLevel}}());}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00100}00100   \mbox{\hyperlink{class_histogram_collection}{HistogramCollection}} * closureCollection   = \textcolor{keyword}{new} \mbox{\hyperlink{class_histogram_collection}{HistogramCollection}}(\textcolor{stringliteral}{"{}Closure"{}},       \mbox{\hyperlink{class_message_logger_aaa759a0af20793b7586bb33722463d22}{getReportLevel}}());}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00102}00102   generatorCollection-\/>\mbox{\hyperlink{class_histogram_collection_a6744a60c1babf1709fb884f71e59b5dd}{loadCollection}}(generatorFile);}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00103}00103   detectorCollection -\/>\mbox{\hyperlink{class_histogram_collection_a6744a60c1babf1709fb884f71e59b5dd}{loadCollection}}(detectorFile);}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00105}00105   closureCollection-\/>ratio(*detectorCollection, *generatorCollection);}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00106}00106   TFile * outputFile = \mbox{\hyperlink{class_task_a4491c7a1e03958b1a67e51e387601695}{openRootFile}}(\mbox{\hyperlink{class_closure_test_a9be03666559f9d633084c7bed630a84e}{outputPath}}, \mbox{\hyperlink{class_closure_test_a988f9e4916c763dc81cf3aed5a8432a6}{closureFileName}}, \textcolor{stringliteral}{"{}RECREATE"{}});}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00107}00107   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00108}00108   closureCollection-\/>\mbox{\hyperlink{class_histogram_collection_aafb8f5520ea580ef5735f8356e236c3f}{saveHistograms}}(outputFile);}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00109}00109   \textcolor{keyword}{delete} generatorCollection;}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00110}00110   \textcolor{keyword}{delete} detectorCollection;}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00111}00111   \textcolor{keyword}{delete} closureCollection;}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00112}00112   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}} (\textcolor{stringliteral}{"{}ClosureTest"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}Closure Test Completed."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00113}00113 \}}
+\DoxyCodeLine{\Hypertarget{_closure_test_8cpp_source_l00114}00114 }
+
+\end{DoxyCode}
