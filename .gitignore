@@ -1,8 +1,15 @@
-build
-publishedData
 ##################
 # CAP
 ##################
+build
+publishedData
+CMakeFiles
+Book2
+Makefile
+*/Makefile
+*/CMakeFiles
+*/*/CMakeFiles
+*.root
 *.com
 *.class
 *.dll
