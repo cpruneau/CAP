@@ -22,13 +22,10 @@ int RunAnalysis()
   gSystem->Load(includesPath+"MessageLogger.hpp");
   gSystem->Load(includesPath+"Task.hpp");
   gSystem->Load(includesPath+"TaskIterator.hpp");
-  gSystem->Load(includesPath+"GraphConfiguration.hpp");
   gSystem->Load(includesPath+"Collection.hpp");
   gSystem->Load(includesPath+"CanvasCollection.hpp");
   gSystem->Load(includesPath+"HistogramCollection.hpp");
-  gSystem->Load(includesPath+"CanvasConfiguration.hpp");
   gSystem->Load(includesPath+"Histograms.hpp");
-  gSystem->Load(includesPath+"Plotter.hpp");
   gSystem->Load(includesPath+"Particle.hpp");
   gSystem->Load(includesPath+"ParticleType.hpp");
   gSystem->Load(includesPath+"ParticleTypeCollection.hpp");
@@ -62,7 +59,7 @@ int RunAnalysis()
   MessageLogger::LogLevel debugLevel = MessageLogger::Debug;
   MessageLogger::LogLevel selectedLevel = infoLevel;
   
-  long    nEventRequested     = 1000-1;
+  long    nEventRequested     = 100000-1;
   long    nEventReported      = 1000000;
   long    nEventPartialSave   = 1000000;
   bool    doPartialSave       = NO;
