@@ -1,24 +1,28 @@
-# Compiled Object files
-*.o
-*.obj
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
+build
+publishedData
+##################
+# CAP
+##################
+*.com
+*.class
 *.dll
-
-# Compiled Static libraries
-*.a
-*.lib
-
-# Executables
 *.exe
-
-# DUB
-.dub
-docs.json
-__dummy.html
-docs/
-
-# Code coverage
-*.lst
+*.o
+*.so
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.log
+*.sql
+*.sqlite
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
