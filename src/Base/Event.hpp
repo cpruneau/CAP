@@ -126,19 +126,12 @@ protected:
   Particle* addInteraction(Particle* nucleonA, Particle* nucleonB);
 
   //!
-  //! Set the impact parameter of this event to the given value.
-  //! @param _b impact paramter of this event.
-  void setImpactParameter(double _b)  { b = _b;   }
-
-  //!
   //! Set nucleus A to have the given atomic number (z) and mass number (a).
   //! @param z atomic number.
   //! @param a mass number.
   void setNucleusA(unsigned int z, unsigned int a);
   void setNucleusB(unsigned int z, unsigned int a);
 
-  double    getImpactParameter() const { return b; }
-  double    getCrossSection() const { return b*b/2.0; }
   Nucleus & getNucleusA() { return *nucleusA; }
   Nucleus & getNucleusB() { return *nucleusB; }
 
@@ -209,13 +202,13 @@ protected:
   unsigned long eventNumber;
   vector<Particle*> particles;
   EventProperties * eventProperties;
-  static vector<Event*> eventStreamsStore;
-
-  double b;
+  //double b;
   Nucleus * nucleusA;
   Nucleus * nucleusB;
   CollisionGeometryMoments * binaryMoments;
   CollisionGeometryMoments * participantMoments;
+
+  static vector<Event*> eventStreamsStore;
 
   ClassDef(Event,0)
 

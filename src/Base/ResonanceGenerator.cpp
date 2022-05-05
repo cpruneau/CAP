@@ -111,13 +111,13 @@ void ResonanceGenerator::execute()
     ep.zTarget           = 1;     // atomic number target
     ep.aTarget           = 1;     // mass number target
     ep.nPartTarget       = 1;     // number of participants  target
-    ep.nPartTotal        = 2;     // total number of participants
+    ep.nParticipantsTotal        = 2;     // total number of participants
     ep.nBinaryTotal      = 1;     // total number of binary collisions
     ep.impactParameter   = -99999; // nucleus-nucleus center distance in fm
-    ep.centrality        = -99999; // fraction cross section value
-    ep.multiplicity      = getNParticlesAccepted(); // nominal multiplicity in the reference range
-    ep.particlesCounted  = getNParticlesCounted();
-    ep.particlesAccepted = getNParticlesAccepted();
+    ep.fractionalXSection = -99999; // fraction cross section value
+    ep.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
+    ep.particlesCounted   = getNParticlesCounted();
+    ep.particlesAccepted  = getNParticlesAccepted();
     }
   else
     {
@@ -142,7 +142,7 @@ void ResonanceGenerator::execute()
       {
       generate(interactions[kInter]);
       }
-    ep.multiplicity      = getNParticlesAccepted(); // nominal multiplicity in the reference range
+    ep.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
     ep.particlesCounted  = getNParticlesCounted();
     ep.particlesAccepted = getNParticlesAccepted();
     }

@@ -858,6 +858,14 @@ public:
                                         vector<TString> includePatterns,
                                         vector<TString> excludePatterns);
 
+  //!
+  //!Get selected files in the given directory. The selection is made by means of two sets of configuration parameters
+  //!of the form IncludePattern# and ExcludePattern# (where # represents a number between 0 and 20. These include
+  //!and exclude patterns are used to assemble two lists, vector<TString> includePatterns and vector<TString> excludePatterns)
+  //!which are then used to identify all file names of the given folder that match the includePatterns but exclude the excludePatterns. 
+  //!
+  vector<TString> getSelectedFileNamesFrom(const TString & folder);
+  
   static TString removeRootExtension(const TString fileName);
 
   ClassDef(Task,0)

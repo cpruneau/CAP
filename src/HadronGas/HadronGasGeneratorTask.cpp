@@ -242,11 +242,11 @@ void HadronGasGeneratorTask::execute()
     ep.zTarget           = 1;     // atomic number target
     ep.aTarget           = 1;     // mass number target
     ep.nPartTarget       = 1;     // number of participants  target
-    ep.nPartTotal        = 2;     // total number of participants
+    ep.nParticipantsTotal= 2;     // total number of participants
     ep.nBinaryTotal      = 1;     // total number of binary collisions
     ep.impactParameter   = -99999; // nucleus-nucleus center distance in fm
-    ep.centrality        = -99999; // fraction cross section value
-    ep.multiplicity      = eventStreams[0]->getNParticles();// nominal multiplicity in the reference range
+    ep.fractionalXSection= -99999; // fraction cross section value
+    ep.referenceMultiplicity = eventStreams[0]->getNParticles();// nominal multiplicity in the reference range
     ep.particlesCounted  = getNParticlesCounted();
     ep.particlesAccepted = getNParticlesAccepted();
     }
@@ -274,9 +274,9 @@ void HadronGasGeneratorTask::execute()
       generate(interactions[kInter]);
       }
     EventProperties & ep = * event.getEventProperties();
-    ep.multiplicity      = getNParticlesAccepted(); // nominal multiplicity in the reference range
-    ep.particlesCounted  = getNParticlesCounted();
-    ep.particlesAccepted = getNParticlesAccepted();
+    ep.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
+    ep.particlesCounted      = getNParticlesCounted();
+    ep.particlesAccepted     = getNParticlesAccepted();
     }
 }
 

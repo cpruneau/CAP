@@ -98,7 +98,7 @@ public:
   {
   return currentFileIndex;
   }
-
+  
   //!
   //! Get array of file names to be processes by this iterator task.
   //!

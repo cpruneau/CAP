@@ -47,14 +47,13 @@ void PythiaEventReader::execute()
   Event & event = * eventStreams[0];
   event.reset();
   particleFactory->reset();
-  int nparts;
   bool seekingEvent = true;
   //if (reportDebug("PythiaEventReader",getName(),"execute()")) cout << "Start seek loop" << endl;
   while (seekingEvent)
     {
-    //if (reportDebug("PythiaEventReader",getName(),"execute()")) cout << "jentry:" << jentry << endl;
+    //if (reportDebug("PythiaEventReader",getName(),"execute()")) cout << "jentry:" << entryIndex << endl;
     // load another event from the root file/TTree
-    Long64_t ientry = LoadTree(jentry++);
+    Long64_t ientry = LoadTree(entryIndex++);
     //if (reportDebug("PythiaEventReader",getName(),"execute()")) cout << "ientry:" << ientry << endl;
     // returning a null point is an indication that
     // there are no more events in the file or stack of files.
@@ -63,10 +62,9 @@ void PythiaEventReader::execute()
       postTaskEod(); // end of data
       return;
       }
-    nb = fChain->GetEntry(jentry);   nbytes += nb;
-    nparts = particles_;
-    if (reportDebug("PythiaEventReader",getName(),"execute()")) cout << " nb:" << nb << " nparts:" <<  nparts << endl;
-    if (nparts>2) seekingEvent = false;
+    nb = rootInputTreeChain()->GetEntry(entryIndex);   nBytes += nb;
+    if (reportDebug("PythiaEventReader",getName(),"execute()")) cout << " nb:" << nb << " nParticles:" <<  nParticles << endl;
+    if (nParticles>2) seekingEvent = false;
     }
   
   int thePid;
@@ -76,7 +74,7 @@ void PythiaEventReader::execute()
   int particleAccepted = 0;
   int particleCounted = 0;
   
-  for (int iParticle = 0; iParticle < nparts; iParticle++)
+  for (int iParticle = 0; iParticle < nParticles; iParticle++)
     {
     //  if (reportDebug("PythiaEventReader",getName(),"execute()")) cout << "iParticle: " << iParticle << endl;
     
@@ -111,39 +109,32 @@ void PythiaEventReader::execute()
     }
 }
 
-void PythiaEventReader::Init(TTree *tree)
+void PythiaEventReader::initInputTreeMapping()
 {
-  if (!tree) return;
-  fChain = tree;
-  fCurrent = -1;
-  fChain->SetMakeClass(1);
-  
-  fChain->SetBranchAddress("particles", &particles_, &b_particles_);
-  fChain->SetBranchAddress("particles.fUniqueID", particles_fUniqueID, &b_particles_fUniqueID);
-  fChain->SetBranchAddress("particles.fBits", particles_fBits, &b_particles_fBits);
-  fChain->SetBranchAddress("particles.fLineColor", particles_fLineColor, &b_particles_fLineColor);
-  fChain->SetBranchAddress("particles.fLineStyle", particles_fLineStyle, &b_particles_fLineStyle);
-  fChain->SetBranchAddress("particles.fLineWidth", particles_fLineWidth, &b_particles_fLineWidth);
-  fChain->SetBranchAddress("particles.fPdgCode", particles_fPdgCode, &b_particles_fPdgCode);
-  fChain->SetBranchAddress("particles.fStatusCode", particles_fStatusCode, &b_particles_fStatusCode);
-  fChain->SetBranchAddress("particles.fMother[2]", particles_fMother, &b_particles_fMother);
-  fChain->SetBranchAddress("particles.fDaughter[2]", particles_fDaughter, &b_particles_fDaughter);
-  fChain->SetBranchAddress("particles.fWeight", particles_fWeight, &b_particles_fWeight);
-  fChain->SetBranchAddress("particles.fCalcMass", particles_fCalcMass, &b_particles_fCalcMass);
-  fChain->SetBranchAddress("particles.fPx", particles_fPx, &b_particles_fPx);
-  fChain->SetBranchAddress("particles.fPy", particles_fPy, &b_particles_fPy);
-  fChain->SetBranchAddress("particles.fPz", particles_fPz, &b_particles_fPz);
-  fChain->SetBranchAddress("particles.fE", particles_fE, &b_particles_fE);
-  fChain->SetBranchAddress("particles.fVx", particles_fVx, &b_particles_fVx);
-  fChain->SetBranchAddress("particles.fVy", particles_fVy, &b_particles_fVy);
-  fChain->SetBranchAddress("particles.fVz", particles_fVz, &b_particles_fVz);
-  fChain->SetBranchAddress("particles.fVt", particles_fVt, &b_particles_fVt);
-  fChain->SetBranchAddress("particles.fPolarTheta", particles_fPolarTheta, &b_particles_fPolarTheta);
-  fChain->SetBranchAddress("particles.fPolarPhi", particles_fPolarPhi, &b_particles_fPolarPhi);
-  Notify();
-  nentries = fChain->GetEntriesFast();
-  nbytes = 0;
-  nb = 0;
+  TTree * tree = rootInputTreeChain();
+  tree->SetMakeClass(1);
+  tree->SetBranchAddress("particles", &nParticles, &b_particles_);
+  tree->SetBranchAddress("particles.fUniqueID", particles_fUniqueID, &b_particles_fUniqueID);
+  tree->SetBranchAddress("particles.fBits", particles_fBits, &b_particles_fBits);
+  tree->SetBranchAddress("particles.fLineColor", particles_fLineColor, &b_particles_fLineColor);
+  tree->SetBranchAddress("particles.fLineStyle", particles_fLineStyle, &b_particles_fLineStyle);
+  tree->SetBranchAddress("particles.fLineWidth", particles_fLineWidth, &b_particles_fLineWidth);
+  tree->SetBranchAddress("particles.fPdgCode", particles_fPdgCode, &b_particles_fPdgCode);
+  tree->SetBranchAddress("particles.fStatusCode", particles_fStatusCode, &b_particles_fStatusCode);
+  tree->SetBranchAddress("particles.fMother[2]", particles_fMother, &b_particles_fMother);
+  tree->SetBranchAddress("particles.fDaughter[2]", particles_fDaughter, &b_particles_fDaughter);
+  tree->SetBranchAddress("particles.fWeight", particles_fWeight, &b_particles_fWeight);
+  tree->SetBranchAddress("particles.fCalcMass", particles_fCalcMass, &b_particles_fCalcMass);
+  tree->SetBranchAddress("particles.fPx", particles_fPx, &b_particles_fPx);
+  tree->SetBranchAddress("particles.fPy", particles_fPy, &b_particles_fPy);
+  tree->SetBranchAddress("particles.fPz", particles_fPz, &b_particles_fPz);
+  tree->SetBranchAddress("particles.fE", particles_fE, &b_particles_fE);
+  tree->SetBranchAddress("particles.fVx", particles_fVx, &b_particles_fVx);
+  tree->SetBranchAddress("particles.fVy", particles_fVy, &b_particles_fVy);
+  tree->SetBranchAddress("particles.fVz", particles_fVz, &b_particles_fVz);
+  tree->SetBranchAddress("particles.fVt", particles_fVt, &b_particles_fVt);
+  tree->SetBranchAddress("particles.fPolarTheta", particles_fPolarTheta, &b_particles_fPolarTheta);
+  tree->SetBranchAddress("particles.fPolarPhi", particles_fPolarPhi, &b_particles_fPolarPhi);
 }
 
 

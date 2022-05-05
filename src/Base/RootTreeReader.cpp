@@ -20,16 +20,26 @@ RootTreeReader::RootTreeReader(const TString &         _name,
                                LogLevel                _selectedLevel)
 :
 Task(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel),
-fChain(nullptr),
-fCurrent(0),
-inputDataFile(nullptr),
-nentries(0),
-nbytes(0),
-nb(0),
-jentry(0)
-{
-}
 
+dataInputPath(),
+dataInputFileName("FOLDER"),
+dataInputTreeName("tree"),
+firstFile(-1),
+lastFile(-1),
+clonesMaxArraySize(1000),
+randomizeEventPlane(false),
+inputRootChain(nullptr),
+inputRootTreeIndex(0),
+inputDataFile(nullptr),
+nEntries(0),
+nBytes(0),
+nb(0),
+entryIndex(0)
+{
+  appendClassName("RootTreeReader");
+  setDefaultConfiguration();
+  setConfiguration(_configuration);
+}
 
 RootTreeReader::~RootTreeReader()
 {
@@ -45,11 +55,19 @@ void RootTreeReader::setDefaultConfiguration()
 {
   Task::setDefaultConfiguration();
   Configuration & config = getConfiguration();
-  config.setParameter("useParticles",     true);
-  config.setParameter("useEventStream0",  true);
-  config.addParameter("clonesArraySize", 10000);
-  config.addParameter("removePhotons",    true);
-  config.addParameter("standaloneMode",   true);
+  config.setParameter("useParticles",          true);
+  config.setParameter("useEventStream0",       true);
+  config.setParameter("dataInputUsed",         true);
+  config.setParameter("dataInputPath",         TString("./"));
+  config.setParameter("dataInputFileName",     TString("FOLDER"));
+  config.setParameter("dataInputTreeName",     TString("tree"));
+  config.setParameter("dataInputFileMinIndex", -1);
+  config.setParameter("dataInputFileMaxIndex", -1);
+  
+  config.addParameter("removePhotons",         true);
+  config.addParameter("standaloneMode",        true);
+  config.addParameter("clonesMaxArraySize",    10000);
+  config.addParameter("randomizeEventPlane",   true);
 }
 
 void RootTreeReader::initialize()
@@ -58,30 +76,76 @@ void RootTreeReader::initialize()
   if (reportStart("RootTreeReader",getName(),"initialize()"))
     ;
   
-  const Configuration & config = getConfiguration();
-  TString dataInputTreeName = config.getValueString("dataInputTreeName");
-  TString inputFileName = config.getValueString("dataInputPath");
-  inputFileName += "/";
-  inputFileName += config.getValueString("dataInputFileName");
-  if (reportInfo("RootTreeReader",getName(),"initialize()")) cout << "Opening file: " << inputFileName << endl;
-  inputDataFile = TFile::Open(inputFileName);
-  if (!inputDataFile)
+  const Configuration & configuration = getConfiguration();
+  dataInputPath     = configuration.getValueString("dataInputPath");
+  dataInputFileName = configuration.getValueString("dataInputFileName");
+  dataInputTreeName = configuration.getValueString("dataInputTreeName");
+  firstFile           = configuration.getValueInt("dataInputFileMinIndex");
+  lastFile            = configuration.getValueInt("dataInputFileMaxIndex");
+  clonesMaxArraySize  = configuration.getValueInt("clonesMaxArraySize");
+  randomizeEventPlane = configuration.getValueBool("randomizeEventPlane");
+  
+  inputRootChain = new TChain(dataInputTreeName);
+  if (!inputRootChain)
     {
-    if (reportFatal("RootTreeReader",getName(),"initialize()")) cout << "Unable to open file: " << inputFileName <<endl;
+    if (reportFatal("RootTreeReader",getName(),"initialize()")) cout << "Chain is a null pointer" << endl;
     postTaskFatal();
     return;
     }
-  TTree * inputTree = nullptr;
-  inputDataFile->GetObject(dataInputTreeName,inputTree);
-  if (!inputTree)
+
+  // If the dataInputFileName is equal to "folder", then the use has requested
+  // the data be read from the folder identified by the dataInputPath parameter
+  // and using IncludePattern and ExcludePattern to extract the data files to be
+  // used in this particular analysis.
+  vector<TString> selectedFileNames;
+  if (dataInputFileName.Contains("FOLDER"))
     {
-    if (reportFatal("RootTreeReader",getName(),"initialize()"))
-      cout << "No inputTree named: " << dataInputTreeName << " in file: " << inputFileName << endl;
+    selectedFileNames = getSelectedFileNamesFrom(dataInputPath);
+    }
+  else
+    {
+    selectedFileNames.push_back(dataInputPath+dataInputFileName);
+    }
+  if (selectedFileNames.size()<1)
+    {
+    if (reportError("RootTreeReader",getName(),"initialize()")) cout << "No root data file selected for input" << endl;
+    postTaskError();
+    return;
+    }
+    
+  // If the parameters firstFile and lastFile are less than zero, unspecified by the user,
+  // we assume the user wants to read all files in the selection.
+  if (firstFile < 0) firstFile = 0;
+  if (lastFile < 0)  lastFile  = selectedFileNames.size();
+  if (lastFile > int(selectedFileNames.size())) lastFile  = selectedFileNames.size();
+  for(int iFile=firstFile; iFile<lastFile; iFile++)
+    {
+    TString fileName = selectedFileNames[iFile];
+    if (!fileName.EndsWith(".root")) fileName += ".root";
+    if (reportInfo("RootTreeReader",getName(),"initialize()"))
+      cout << "Adding input file:" << fileName << endl;
+    inputRootChain->Add(fileName);
+    }
+  initInputTreeMapping();
+  setInputRootTreeIndex(-1);
+  entryIndex = 0;
+  nEntries = inputRootChain->GetEntriesFast();
+  if (nEntries < 1)
+    {
+    if (reportError("RootTreeReader",getName(),"initialize()"))
+      cout << "No data found: nEntries < 1. Abort job!" << endl;
     postTaskFatal();
     return;
     }
-  Init(inputTree);
-  if (reportDebug("RootTreeReader",getName(),"initialize()")) cout << "RootTreeReader::initialize() Completed" << endl;
+  else
+    {
+    if (reportInfo("RootTreeReader",getName(),"initialize()"))
+      cout << "nEntries: " << nEntries << endl;
+    }
+  nBytes = 0;
+  nb = 0;
+  if (reportEnd("RootTreeReader",getName(),"initialize()"))
+    ;
 }
 
 
@@ -99,8 +163,8 @@ void RootTreeReader::execute()
 //!
 Int_t RootTreeReader::GetEntry(Long64_t entry)
 {
-  if (!fChain) return 0;
-  return fChain->GetEntry(entry);
+  if (!inputRootChain) return 0;
+  return inputRootChain->GetEntry(entry);
 }
 
 //!
@@ -111,24 +175,17 @@ Int_t RootTreeReader::GetEntry(Long64_t entry)
 Long64_t RootTreeReader::LoadTree(Long64_t entry)
 {
   // Set the environment to read one entry
-  if (!fChain) return -5;
-  Long64_t centry = fChain->LoadTree(entry);
+  if (!inputRootChain) return -5;
+  Long64_t centry = inputRootChain->LoadTree(entry);
   if (centry < 0) return centry;
-  if (fChain->GetTreeNumber() != fCurrent)
+  if (inputRootChain->GetTreeNumber() != inputRootTreeIndex)
     {
-    fCurrent = fChain->GetTreeNumber();
+    inputRootTreeIndex = inputRootChain->GetTreeNumber();
   }
   return centry;
 }
 
-//!
-//!initialize the input tree chain by mapping branches onto specific variables.
-//!
-//!This method must be implemented in a sub class of the RootTreeReader class.
-//!
-void RootTreeReader::Init(TTree *tree)
+void RootTreeReader::initInputTreeMapping()
 {
  // no ops.
 }
-
-

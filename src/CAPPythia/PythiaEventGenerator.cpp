@@ -134,7 +134,7 @@ void PythiaEventGenerator::execute()
     ;
   incrementEventProcessed();
   Event & event = *getEventStream(0);
-  EventProperties & ep = * event.getEventProperties();
+  EventProperties & eventProperties = * event.getEventProperties();
 
   Particle * interaction;
   resetParticleCounters();
@@ -154,19 +154,19 @@ void PythiaEventGenerator::execute()
     event.setNucleusA(1.0,1.0);
     event.setNucleusB(1.0,1.0);
     generate(interaction);
-    ep.zProjectile       = 1;     // atomic number projectile
-    ep.aProjectile       = 1;     // mass number projectile
-    ep.nPartProjectile   = 1;     // number of participants  projectile
-    ep.zTarget           = 1;     // atomic number target
-    ep.aTarget           = 1;     // mass number target
-    ep.nPartTarget       = 1;     // number of participants  target
-    ep.nPartTotal        = 2;     // total number of participants
-    ep.nBinaryTotal      = 1;     // total number of binary collisions
-    ep.impactParameter   = -99999; // nucleus-nucleus center distance in fm
-    ep.centrality        = -99999; // fraction cross section value
-    ep.multiplicity      = getNParticlesAccepted(); // nominal multiplicity in the reference range
-    ep.particlesCounted  = getNParticlesCounted();
-    ep.particlesAccepted = getNParticlesAccepted();
+    eventProperties.zProjectile        = 1;     // atomic number projectile
+    eventProperties.aProjectile        = 1;     // mass number projectile
+    eventProperties.nPartProjectile    = 1;     // number of participants  projectile
+    eventProperties.zTarget            = 1;     // atomic number target
+    eventProperties.aTarget            = 1;     // mass number target
+    eventProperties.nPartTarget        = 1;     // number of participants  target
+    eventProperties.nParticipantsTotal = 2;     // total number of participants
+    eventProperties.nBinaryTotal       = 1;     // total number of binary collisions
+    eventProperties.impactParameter       = -99999; // nucleus-nucleus center distance in fm
+    eventProperties.fractionalXSection    = -99999; // fraction cross section value
+    eventProperties.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
+    eventProperties.particlesCounted      = getNParticlesCounted();
+    eventProperties.particlesAccepted     = getNParticlesAccepted();
     }
   else
     {
@@ -191,20 +191,20 @@ void PythiaEventGenerator::execute()
       {
       generate(interactions[kInter]);
       }
-    ep.multiplicity      = getNParticlesAccepted(); // nominal multiplicity in the reference range
-    ep.particlesCounted  = getNParticlesCounted();
-    ep.particlesAccepted = getNParticlesAccepted();
+    eventProperties.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
+    eventProperties.particlesCounted      = getNParticlesCounted();
+    eventProperties.particlesAccepted     = getNParticlesAccepted();
     }
   if (reportDebug("PythiaEventGenerator",getName(),"execute()"))
     {
-    ep.printProperties(cout);
+    eventProperties.printProperties(cout);
     }
 }
 
 void PythiaEventGenerator::generate(Particle * parentInteraction)
 {
   Particle * particle;
-  int nparts   = 0;
+  int nParticles   = 0;
   double zero  = 0.0;
 
   bool seekingEvent = true;
@@ -213,12 +213,12 @@ void PythiaEventGenerator::generate(Particle * parentInteraction)
     pythia8->GenerateEvent();
     if (reportDebug()) pythia8->EventListing();
     pythia8->ImportParticles(particles,"Final");
-    nparts = particles->GetEntriesFast();
-    if (nparts>2) seekingEvent = false;
+    nParticles = particles->GetEntriesFast();
+    if (nParticles>2) seekingEvent = false;
     }
-  if (nparts>nMaxClonesArray)
+  if (nParticles>nMaxClonesArray)
     {
-    if (reportError()) cout << " ARRAY TOO SMALL np>nMaxClonesArray; nparts:" << nparts << " nMax:" << nMaxClonesArray << endl;
+    if (reportError()) cout << " ARRAY TOO SMALL np>nMaxClonesArray; nParticles:" << nParticles << " nMax:" << nMaxClonesArray << endl;
     postTaskFatal();
     exit(1);
     }
@@ -238,7 +238,7 @@ void PythiaEventGenerator::generate(Particle * parentInteraction)
     ParticleFilter & particleFilter = * particleFilters[0];
     // load particles from TClone storage and copy into event.
     //if (reportDebug()) cout << "PythiaEventGenerator::execute() starting copy loop into event..." << endl;
-    for (int iParticle = 0; iParticle < nparts; iParticle++)
+    for (int iParticle = 0; iParticle < nParticles; iParticle++)
       {
       TParticle & part = * (TParticle*) particles->At(iParticle);
       int ist = part.GetStatusCode();
@@ -348,7 +348,7 @@ void PythiaEventGenerator::finalize()
 ////pythia8->ReadString("Random:seed = 42");
 
 
-//for (int iParticle = 0; iParticle < nparts; iParticle++)
+//for (int iParticle = 0; iParticle < nParticles; iParticle++)
 //  {
 //  TParticle & part = * (TParticle*) particles->At(iParticle);
 //  int ist = part.GetStatusCode();

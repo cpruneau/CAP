@@ -102,7 +102,7 @@ void GlobalAnalyzer::createHistograms()
   if (reportStart("GlobalAnalyzer",getName(),"createHistograms()"))
     ;
   Configuration & configuration = getConfiguration();
-  TString prefixName = getName(); //prefixName += "_";
+  TString prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
   if (reportInfo("TransverseSpherocityAnalyzer",getName(),"createHistograms()"))

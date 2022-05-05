@@ -21,11 +21,11 @@ nPartProjectile(0),
 zTarget(0),
 aTarget(0),
 nPartTarget(0),
-nPartTotal(0),
+nParticipantsTotal(0),
 nBinaryTotal(0),
 impactParameter(0),
-centrality(0),
-multiplicity(0),
+fractionalXSection(0),
+referenceMultiplicity(0),
 other(0),
 nFilters(0),
 nFiltered(),
@@ -47,11 +47,11 @@ nPartProjectile(source.nPartProjectile),
 zTarget(source.zTarget),
 aTarget(source.aTarget),
 nPartTarget(source.nPartTarget),
-nPartTotal(source.nPartTotal),
+nParticipantsTotal(source.nParticipantsTotal),
 nBinaryTotal(source.nBinaryTotal),
 impactParameter(source.impactParameter),
-centrality(source.centrality),
-multiplicity(source.multiplicity),
+fractionalXSection(source.fractionalXSection),
+referenceMultiplicity(source.referenceMultiplicity),
 other(source.other),
 nFilters(source.nFilters),
 nFiltered(source.nFiltered),
@@ -75,11 +75,11 @@ EventProperties & EventProperties::operator=(const EventProperties & source)
     zTarget          =  source.zTarget;
     aTarget          =  source.aTarget;
     nPartTarget      =  source.nPartTarget;
-    nPartTotal       =  source.nPartTotal;
+    nParticipantsTotal       =  source.nParticipantsTotal;
     nBinaryTotal     =  source.nBinaryTotal;
     impactParameter  =  source.impactParameter;
-    centrality       =  source.centrality;
-    multiplicity     =  source.multiplicity;
+    fractionalXSection       =  source.fractionalXSection;
+    referenceMultiplicity     =  source.referenceMultiplicity;
     other      =  source.other;
     nFilters   =  source.nFilters;
     nFiltered  =  source.nFiltered;
@@ -101,11 +101,11 @@ void EventProperties::clear()
   zTarget         = 0;
   aTarget         = 0;
   nPartTarget     = 0;
-  nPartTotal      = 0;
+  nParticipantsTotal      = 0;
   nBinaryTotal    = 0;
   impactParameter = 0;
-  centrality      = 0;
-  multiplicity    = 0;
+  fractionalXSection      = 0;
+  referenceMultiplicity    = 0;
   other           = 0;
   nFilters        = 0;
   nFiltered.clear();
@@ -125,11 +125,11 @@ void EventProperties::reset()
   zTarget         = 0;
   aTarget         = 0;
   nPartTarget     = 0;
-  nPartTotal      = 0;
+  nParticipantsTotal      = 0;
   nBinaryTotal    = 0;
   impactParameter = 0;
-  centrality      = 0;
-  multiplicity    = 0;
+  fractionalXSection      = 0;
+  referenceMultiplicity    = 0;
   other           = 0;
   nFilters        = 0;
   nFiltered.clear();
@@ -170,20 +170,24 @@ void EventProperties::printProperties(ostream & output)
   output << "===============================================" << endl;
   output << "Event Properties" << endl;
   output << "===============================================" << endl;
-  output << "          zProjectile : " << zProjectile << endl;     // atomic number projectile
-  output << "          aProjectile : " << aProjectile << endl;     // mass number projectile
-  output << "      nPartProjectile : " << nPartProjectile << endl; // number of participants  projectile
-  output << "              zTarget : " << zTarget << endl;         // atomic number target
-  output << "              aTarget : " << aTarget << endl;         // mass number target
-  output << "          nPartTarget : " << nPartTarget << endl;     // number of participants  target
-  output << "           nPartTotal : " << nPartTotal << endl;      // total number of participants
-  output << "         nBinaryTotal : " << nBinaryTotal << endl;    // total number of binary collisions
-  output << "      impactParameter : " << impactParameter << endl; // nucleus-nucleus center distance in fm
-  output << "           centrality : " << centrality << endl;      // fraction cross section value
-  output << "         multiplicity : " << multiplicity << endl;    // nominal multiplicity in the reference range
-  output << "                other : " << other << endl;           // other value of interest
+  output << "           zProjectile : " << zProjectile << endl;     // atomic number projectile
+  output << "           aProjectile : " << aProjectile << endl;     // mass number projectile
+  output << "       nPartProjectile : " << nPartProjectile << endl; // number of participants  projectile
+  output << "               zTarget : " << zTarget << endl;         // atomic number target
+  output << "               aTarget : " << aTarget << endl;         // mass number target
+  output << "           nPartTarget : " << nPartTarget << endl;     // number of participants  target
+  output << "    nParticipantsTotal : " << nParticipantsTotal << endl;      // total number of participants
+  output << "          nBinaryTotal : " << nBinaryTotal << endl;    // total number of binary collisions
+  output << "       impactParameter : " << impactParameter << endl; // nucleus-nucleus center distance in fm
+  output << "    fractionalXSection : " << fractionalXSection << endl;      // fraction cross section value
+  output << " referenceMultiplicity : " << referenceMultiplicity << endl;    // nominal multiplicity in the reference range
+  output << "                 other : " << other << endl;           // other value of interest
+  output << "       particlesCounted: " << particlesCounted << endl;
+  output << "      particlesAccepted: " << particlesAccepted << endl;
+
   nFilters = nFiltered.size();
   output << "             nFilters : " << nFilters << endl;
+  
   for (int k=0;k<nFilters;k++)
   {
   output 

@@ -171,7 +171,6 @@ void CollisionGeometryGenerator::execute()
   Nucleus & nucleusB = event.getNucleusB();
   double rr = gRandom->Rndm();
   double b  = sqrt(minBSq + rr*(maxBSq-minBSq));
-  event.setImpactParameter(b);
   nucleusGeneratorA->generate(nucleusA, -b/2.0);
   nucleusGeneratorB->generate(nucleusB,  b/2.0);
   Particle* interaction;
@@ -221,19 +220,20 @@ void CollisionGeometryGenerator::execute()
   double nWoundedA = nucleusA.countWounded();
   double nWoundedB = nucleusB.countWounded();
   EventProperties & ep = *event.getEventProperties();
+  ep.impactParameter   = b;
   ep.zProjectile       = nucleusA.getNProtons();     // atomic number projectile
   ep.aProjectile       = nucleusA.getNNucleons();    // mass number projectile
   ep.nPartProjectile   = nWoundedA;                  // number of participants  projectile
   ep.zTarget           = nucleusB.getNProtons();     // atomic number target
   ep.aTarget           = nucleusB.getNNucleons();    // mass number target
   ep.nPartTarget       = nWoundedB;                  // number of participants  target
-  ep.nPartTotal        = nWoundedA+nWoundedB;        // total number of participants
+  ep.nParticipantsTotal        = nWoundedA+nWoundedB;        // total number of participants
   ep.nBinaryTotal      = event.getNBinaryCollisions();  // total number of binary collisions
   ep.impactParameter   = b;    // nucleus-nucleus center distance in fm
-  ep.centrality        = -99999; // fraction cross section value
-  ep.multiplicity      = ep.nBinaryTotal; // number of binary collisions
-  ep.particlesCounted  = ep.nBinaryTotal;
-  ep.particlesAccepted = ep.nBinaryTotal;
+  ep.fractionalXSection        = -99999; // fraction cross section value
+  ep.referenceMultiplicity     = -99999; // number of binary collisions
+  ep.particlesCounted  = -99999;
+  ep.particlesAccepted = -99999;
   if (reportDebug("CollisionGeometryGenerator",getName(),"execute()"))
     {
     event.printProperties(cout);

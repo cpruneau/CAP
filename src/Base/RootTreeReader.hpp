@@ -60,46 +60,89 @@ public:
   //! event and particle filters providing at construction.
   //!
   virtual void execute();
+
+  
+  //!
+  //!Initialize the input tree chain by mapping branches onto specific variables.
+  //!This method must be implemented in a sub class of the RootTreeReader class.
+  //!
+  virtual void initInputTreeMapping();
+
+  //!
+  //!Get pointer to the root input chain
+  //!
+  inline TChain  * rootInputTreeChain()
+  {
+  return inputRootChain;
+  }
+
+
+  inline void setInputRootTreeIndex(int value)
+  {
+  inputRootTreeIndex = value;
+  }
+  
+  inline int getInputRootTreeIndex() const
+  {
+  return inputRootTreeIndex;
+  }
   
 protected:
   
-  void Init(TTree *tree);
  
-  inline Bool_t Notify()
-  {
-    return kTRUE;
-  }
-
   inline void Show(Long64_t entry)
   {
-    if (!fChain) return;
-    fChain->Show(entry);
+    if (!inputRootChain) return;
+    inputRootChain->Show(entry);
   }
 
-  inline Int_t Cut(Long64_t entry)
-  {
-    return 1;
-  }
-
-
-  
   Int_t GetEntry(Long64_t entry);
   Long64_t LoadTree(Long64_t entry);
- 
+
+  inline bool useRandomizeEventPlane() const
+  {
+  return randomizeEventPlane;
+  }
+
+  inline void setRandomizeEventPlane(bool value)
+  {
+  randomizeEventPlane = value;
+  }
   
-  ////////////////////////////////////////////////////////////////////////////////////////
+  double getRandomEventPlaneAngle() const
+  {
+  return  TMath::TwoPi() * gRandom->Rndm();
+  }
+   
+  int getClonesMaxArraySize() const
+  {
+  return clonesMaxArraySize;
+  }
+  
+  void getClonesMaxArraySize(int value)
+  {
+  clonesMaxArraySize = value;
+  }
+
+  //
   // Data members
-  ////////////////////////////////////////////////////////////////////////////////////////
-  TTree  *fChain;   //!pointer to the analyzed TTree or TChain
-  Int_t   fCurrent; //!current Tree number in a TChain
-  TFile  *inputDataFile;
-  Long64_t nentries;
-  Long64_t nbytes;
+  //
+  TString dataInputPath;
+  TString dataInputFileName;
+  TString dataInputTreeName;
+  int  firstFile;
+  int  lastFile;
+  int  clonesMaxArraySize;
+  bool randomizeEventPlane;
+  
+  TChain  *inputRootChain;     //!pointer to the analyzed (input)  TTree or TChain
+  Int_t    inputRootTreeIndex; //!current Tree number in an input  TChain
+  TFile   *inputDataFile;
+  Long64_t nEntries; //! number of entries in an input TTree or TChain 
+  Long64_t nBytes;
   Long64_t nb;
-  long jentry;
-  
-  static const int kMaxparticles = 2000;
-  
+  long entryIndex;
+
   ClassDef(RootTreeReader,0)
 };
 

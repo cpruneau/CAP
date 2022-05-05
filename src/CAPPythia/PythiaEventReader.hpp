@@ -55,12 +55,14 @@ public:
   //!
   //! Initialize the mapping of Root Tree Branches onto local variables..
   //!
-  void Init(TTree *tree);
-
+  virtual void initInputTreeMapping();
+  
 protected:
 
+  static const int kMaxparticles = 10000;
+  
   // Declaration of leaf types
-  Int_t           particles_;
+  Int_t           nParticles;
   UInt_t          particles_fUniqueID[kMaxparticles];   //[particles_]
   UInt_t          particles_fBits[kMaxparticles];   //[particles_]
   Short_t         particles_fLineColor[kMaxparticles];   //[particles_]

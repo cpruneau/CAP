@@ -500,7 +500,7 @@ void BidimGaussFitConfiguration::setExtraConfigParams(TH2 * h)
 // bidim gauss fit.
 // If excludedBins[iCent] < 0, use the value of deltaEtaExclusionRegion to determine
 // the bins to be excluded. Otherwise, use the number of bins specified in the
-// array excludedBins for the given "centrality" class.
+// array excludedBins for the given "fractionalXSection" class.
 // ==============================================================================
 void BidimGaussFitConfiguration::excludedEtaBins(double deltaEtaExclusionRegion,
                                           const TH2 *hist,
@@ -526,7 +526,7 @@ void BidimGaussFitConfiguration::excludedEtaBins(double deltaEtaExclusionRegion,
 // bidim gauss fit.
 // If excludedBins[iCent] < 0, use the value of deltaEtaExclusionRegion to determine
 // the bins to be excluded. Otherwise, use the number of bins specified in the
-// array excludedBins for the given "centrality" class.
+// array excludedBins for the given "fractionalXSection" class.
 // ==============================================================================
 void BidimGaussFitConfiguration::excludedPhiBins(double deltaEtaExclusionRegion,
                                           const TH2 *hist,

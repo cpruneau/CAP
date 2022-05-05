@@ -14,6 +14,7 @@
 #define EventProperties_hpp
 #include <vector>
 #include "Particle.hpp"
+#include "ParticleType.hpp"
 
 class EventProperties
 {
@@ -39,20 +40,22 @@ public:
   // ================================================
   // Data Members
   // ================================================
-  unsigned int    zProjectile;     // atomic number projectile
-  unsigned int    aProjectile;     // mass number projectile
-  unsigned int    nPartProjectile; // number of participants  projectile
-  unsigned int    zTarget;         // atomic number target
-  unsigned int    aTarget;         // mass number target
-  unsigned int    nPartTarget;     // number of participants  target
-  unsigned int    nPartTotal;      // total number of participants
-  unsigned int    nBinaryTotal;    // total number of binary collisions
-  double impactParameter; // nucleus-nucleus center distance in fm
-  double centrality;      // fraction cross section value
-  double multiplicity;    // nominal multiplicity in the reference range
-  double other;           // other value of interest
-  unsigned int    particlesCounted;   // number of particles provided internally by event generator/reader
-  unsigned int    particlesAccepted;  // number of particles accepted by event generator/reader's particle filter
+  ParticleType  * projectileType;    //! type of the projectile
+  ParticleType  * targetType;        //! type of the target
+  unsigned int    zProjectile;       //!< atomic number projectile
+  unsigned int    aProjectile;       //!< mass number projectile
+  unsigned int    nPartProjectile;   //!< number of participants  projectile
+  unsigned int    zTarget;           //!< atomic number target
+  unsigned int    aTarget;           //!< mass number target
+  unsigned int    nPartTarget;       //!< number of participants  target
+  unsigned int    nParticipantsTotal; //!< total number of participants
+  unsigned int    nBinaryTotal;       //!< total number of binary collisions
+  double impactParameter;             //!< nucleus-nucleus center distance in fm
+  double fractionalXSection;          //!< fraction cross section value
+  double referenceMultiplicity;       //!< nominal multiplicity in the reference range
+  double other;                       //!< other value of interest
+  unsigned int    particlesCounted;   //!< number of particles provided internally by event generator/reader
+  unsigned int    particlesAccepted;  //!< number of particles accepted by event generator/reader's particle filter
 
   // From Model
   vector<double> modelParameters;

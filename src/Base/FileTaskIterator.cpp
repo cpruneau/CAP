@@ -46,23 +46,13 @@ void FileTaskIterator::setDefaultConfiguration()
   configuration.setParameter("useParticles",false);
   configuration.addParameter("appendedString",TString("_Derived") );
 
-  for (int k=0; k<20; k++)
-    {
-    TString key("IncludedPattern"); key += k;
-    TString value("none"); value += k;
-    configuration.addParameter(key, value);
-    }
-  for (int k=0; k<20; k++)
-    {
-    TString key("ExcludedPattern"); key += k;
-    TString value("none"); value += k;
-    configuration.addParameter(key, value);
-    }
   if (reportDebug("FileTaskIterator",getName(),"setDefaultConfiguration()"))
     {
     configuration.printConfiguration(cout);
     }
 }
+
+
 
 
 void FileTaskIterator::run()
@@ -75,23 +65,8 @@ void FileTaskIterator::run()
     {
     // no file selected, get the list from the designated folder
     // with the included and excluded patterns.
-
     TString histoInputPath = configuration.getValueString("histoInputPath");
-    vector<TString> includePatterns;
-    vector<TString> excludePatterns;
-    for (int k=0; k<20; k++)
-      {
-      TString key = "IncludedPattern"; key += k;
-      TString  value = configuration.getValueString(key);
-      if (!value.Contains("none")) includePatterns.push_back(value);
-      }
-    for (int k=0; k<20; k++)
-      {
-      TString key = "ExcludedPattern"; key += k;
-      TString  value = configuration.getValueString(key);
-      if (!value.Contains("none")) excludePatterns.push_back(value);
-      }
-    selectedFileNames = listFilesInDir(histoInputPath,includePatterns,excludePatterns);
+    selectedFileNames = getSelectedFileNamesFrom(histoInputPath);
     }
   nSelectedFiles = selectedFileNames.size();
   if (nSelectedFiles<1)

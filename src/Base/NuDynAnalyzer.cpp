@@ -152,9 +152,9 @@ void NuDynAnalyzer::execute()
     NuDynHistos * nuDynHistos = (NuDynHistos *) histograms[iEventFilter];
     switch ( multiplicityType )
       {
-        case 0: nuDynHistos->fill(ep.centrality,   nAccepted,1.0); break;
-        case 1: nuDynHistos->fill(ep.multiplicity, nAccepted,1.0); break;
-        case 2: nuDynHistos->fill(ep.multiplicity, nAccepted,1.0); break;
+        case 0: nuDynHistos->fill(ep.fractionalXSection,   nAccepted,1.0); break;
+        case 1: nuDynHistos->fill(ep.referenceMultiplicity, nAccepted,1.0); break;
+        case 2: nuDynHistos->fill(ep.referenceMultiplicity, nAccepted,1.0); break;
       }
     }
 }

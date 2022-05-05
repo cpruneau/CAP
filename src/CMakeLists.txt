@@ -49,5 +49,5 @@ add_subdirectory(CAPPythia)
 #add_subdirectory(Music)
 #add_subdirectory(Urqmd)
 #add_subdirectory(Cluster)
-#add_subdirectory(Ampt)
+add_subdirectory(Ampt)
 

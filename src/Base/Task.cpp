@@ -179,10 +179,10 @@ void Task::setDefaultConfiguration()
   
   configuration.addParameter( "dataInputUsed",       false);
   configuration.addParameter( "dataInputPath",       TString("./"));
-  configuration.addParameter( "dataInputFileName",   TString(""));
+  configuration.addParameter( "dataInputFileName",   TString("FOLDER"));
   configuration.addParameter( "dataInputTreeName",   TString("tree") );
-  configuration.addParameter( "dataInputFileMinIndex", 0);
-  configuration.addParameter( "dataInputFileMaxIndex", 1);
+  configuration.addParameter( "dataInputFileMinIndex", -1);
+  configuration.addParameter( "dataInputFileMaxIndex", -1);
   
   configuration.addParameter( "dataOutputUsed",     false);
   configuration.addParameter( "dataOutputPath",     TString("./"));
@@ -194,6 +194,20 @@ void Task::setDefaultConfiguration()
   configuration.addParameter( "fileFromParent", false);
   configuration.addParameter( "histogramInputFileName",TString("AlternateIn"));
   configuration.addParameter( "histogramOuputFileName",TString("AlternateOut"));
+  
+  for (int k=0; k<20; k++)
+    {
+    TString key("IncludedPattern"); key += k;
+    TString value("none"); value += k;
+    configuration.addParameter(key, value);
+    }
+  for (int k=0; k<20; k++)
+    {
+    TString key("ExcludedPattern"); key += k;
+    TString value("none"); value += k;
+    configuration.addParameter(key, value);
+    }
+  
   if (reportEnd("Task",getName(),"setDefaultConfiguration()"))
     {
     configuration.printConfiguration(cout);
@@ -1204,15 +1218,33 @@ vector<TString>  Task::listFilesInDir(const TString & pathName,
           if (dot==len-5 )
           name.Remove(dot,len-dot);
           }
-      TString check = pathName+name;
-      cout << " CHECK:::::: " << check << endl;
+      //TString check = pathName+name;
+      //cout << " CHECK:::::: " << check << endl;
       outputList.push_back(pathName+name);
       }
     }
   return outputList;
 }
 
-
+vector<TString> Task::getSelectedFileNamesFrom(const TString & folder)
+{
+  vector<TString> includePatterns;
+  vector<TString> excludePatterns;
+  vector<TString> selectedNames;
+  for (int k=0; k<20; k++)
+    {
+    TString key = "IncludedPattern"; key += k;
+    TString  value = configuration.getValueString(key);
+    if (!value.Contains("none")) includePatterns.push_back(value);
+    }
+  for (int k=0; k<20; k++)
+    {
+    TString key = "ExcludedPattern"; key += k;
+    TString  value = configuration.getValueString(key);
+    if (!value.Contains("none")) excludePatterns.push_back(value);
+    }
+  return listFilesInDir(folder,includePatterns,excludePatterns);
+}
 
 TString Task::removeRootExtension(const TString fileName)
 {

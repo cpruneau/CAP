@@ -9,57 +9,62 @@
  * Author: Claude Pruneau,   04/01/2022
  *
  * *********************************************************************/
-#ifndef WAC_AmptEventReader
-#define WAC_AmptEventReader
-#include "TChain.h"
-#include "TTree.h"
-#include "TBranch.h"
-#include "Task.hpp"
+#ifndef CAP__AmptEventReader
+#define CAP__AmptEventReader
+#include "RootTreeReader.hpp"
 
-class AmptEventReader : public Task
+//!
+//! This class defines tasks capable of reading Ampt data file.
+//!
+//!
+class AmptEventReader : public RootTreeReader
 {
 public:
 
+  //!
+  //! Detailed CTOR
+  //!
+  //! @param _name Name given to task instance
+  //! @param _configuration Configuration used to run this task
+  //! @param _eventFilters Array of event filters to be used by this task
+  //! @param _particleFilters Array of particle filters to be used by this task
+  //! @param _reportLevel Message log level to be used by this task.
+  //!
   AmptEventReader(const TString &          _name,
                   Configuration &          _configuration,
                   vector<EventFilter*>   & _eventFilters,
                   vector<ParticleFilter*>& _particleFilters,
                   LogLevel                 _selectedLevel=Info);
-  virtual ~AmptEventReader();
-  virtual void initialize();
-  virtual void reset();
+  
+  //!
+  //! DTOR
+  //!
+  virtual ~AmptEventReader() {}
+  
+  //!
+  //! Sets the default  values of the configuration parameters used by this task
+  //!
+  void setDefaultConfiguration();
+  
+  //!
+  //! Read one AMPT event and insert it in the CAP event stream.
+  //!
   void execute();
+
+  virtual void initInputTreeMapping();
 
 protected:
   
-  Int_t GetEntry(Long64_t entry);
-  Long64_t LoadTree(Long64_t entry);
-  void Init(TTree *tree);
-  Bool_t Notify();
-  void Show(Long64_t entry);
-  Int_t Cut(Long64_t entry);
 
-  ////////////////////////////////////////////////////////////////////////////////////////
-  // Data members
-  ////////////////////////////////////////////////////////////////////////////////////////
-  TTree          *fChain;   //!pointer to the analyzed TTree or TChain
-  Int_t           fCurrent; //!current Tree number in a TChain
-
-  Long64_t nentries;
-  Long64_t nbytes;
-  Long64_t nb;
-
-  long jentry;
-
-  static const int arraySize = 30000;
-
+  static const int arraySize = 50000;
+  
   // Declaration of leaf types
   Int_t           eventNo;
-  Int_t           mult;
+  Int_t           nParticles;
   Int_t           Nproj;
   Int_t           Ntarg;
   Float_t         impact;
-  Int_t           Nparttotal;
+  Int_t           nPartTotal;
   Int_t           pid[arraySize];   //[Mult]
   Float_t         px[arraySize];   //[Mult]
   Float_t         py[arraySize];   //[Mult]
@@ -74,7 +79,7 @@ protected:
   TBranch        *b_Nproj;   //!
   TBranch        *b_Ntarg;   //!
   TBranch        *b_impact;   //!
-  TBranch        *b_Nparttotal;   //!
+  TBranch        *b_nPartTotal;   //!
   TBranch        *b_pid;   //!
   TBranch        *b_px;   //!
   TBranch        *b_py;   //!

@@ -18,7 +18,7 @@ eventIndex(0),
 eventNumber(0),
 particles(),
 eventProperties(new EventProperties() ),
-b(-9999.0),
+//b(-9999.0),
 nucleusA(new Nucleus()),
 nucleusB(new Nucleus()),
 binaryMoments(new CollisionGeometryMoments()),
@@ -48,7 +48,7 @@ void Event::clear()
 {
   eventIndex      = 0;
   eventNumber     = 0;
-  b               = -99999;
+  //b               = -99999;
   particles.clear();
   if (nucleusA) nucleusA->clear();
   if (nucleusB) nucleusB->clear();
@@ -65,7 +65,7 @@ void Event::reset()
 {
   eventIndex++;
   eventNumber   = 0;
-  b             = -99999;
+  //b             = -99999;
   particles.clear();
   if (nucleusA) nucleusA->reset();
   if (nucleusB) nucleusB->reset();
