@@ -375,7 +375,7 @@ void Task::subsampleAnalysis()
     }
   Configuration statConfig("subSampleConfig");
   statConfig.addParameter( "forceHistogramsRewrite", true);
-  statConfig.addParameter( "nInputFile",          numberOfPartialSaves-1);
+  statConfig.addParameter( "nInputFile",          numberOfPartialSaves  );
   statConfig.addParameter( "histoInputPath",      inputPathName         );
   statConfig.addParameter( "histoOutputPath",     outputPathName        );
   statConfig.addParameter( "histoOutputFileName", outputFileName+"_Sum" );

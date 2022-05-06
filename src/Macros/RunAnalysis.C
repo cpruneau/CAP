@@ -131,6 +131,7 @@ int RunAnalysis()
   if (runAmptReader )
     {
     inputPathName  = "/Volumes/ClaudeDisc4/Simulations/ampt/";
+    outputFileNameBase = "AMPT_";
     }
   if (runEposGenerator)
     {

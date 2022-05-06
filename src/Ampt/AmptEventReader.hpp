@@ -51,6 +51,10 @@ public:
   //!
   void execute();
 
+  //!
+  //! Initialize the mapping between the branches and the storage variables
+  //! used in Ampt data files.
+  //!
   virtual void initInputTreeMapping();
 
 protected:

@@ -20,7 +20,7 @@ AmptEventReader::AmptEventReader(const TString &          _name,
 :
 RootTreeReader(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel)
 {
-  appendClassName("RootTreeReader");
+  appendClassName("AmptEventReader");
   setDefaultConfiguration();
   setConfiguration(_configuration);
 }
