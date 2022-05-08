@@ -145,18 +145,36 @@ void ParticleTypeCollection::readFromFile(const TString & inputFileName)
   cout << "ParticleTypeCollection::readFromFile(const TString & inputFileName) Completed." << endl;
 }
 
+void ParticleTypeCollection::writeToFile(const TString & outputFileName, bool printDecayProperties)
+{
+  cout << "<I> ParticleTypeCollection::readFromFile() Writing particle list to file:" <<  outputFileName << endl;
+  ofstream outputFile(outputFileName.Data());
+  for (unsigned int iType=0; iType<size(); iType++)
+    {
+    ParticleType * type = operator[](iType);
+    if (type->getPdgCode()<0) continue; // not printing antiparticles
+    //type->printToFile(outputFile,true);
+    if (printDecayProperties)
+      {
+      //
+      }
+    }
+  outputFile.close();
+  cout << "ParticleTypeCollection::readFromFile(const TString & inputFileName) Completed." << endl;
+}
+
 void ParticleTypeCollection::sortByMass()
 {
   cout << "<D> ParticleTypeCollection::sortHadronListByHadronMass() Collection size:"
   << size() << endl;
-  double m1, m2;
+  //double m1, m2;
   int n = size();
   for (int i = 1; i<n; i++)
   {
   int k = i;
   int j = i - 1;
-  m1 = objects[k]->getMass();
-  m2 = objects[j]->getMass();
+  //m1 = objects[k]->getMass();
+  //m2 = objects[j]->getMass();
   while (j >= 0 && (operator[](k)->getMass() < operator[](j)->getMass()) )
     {
     ParticleType* temp = objects[j];

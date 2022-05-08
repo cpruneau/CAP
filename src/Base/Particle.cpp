@@ -32,9 +32,6 @@ ixEtaPhi (0),
 ixYPhi   (0)
 {  }
 
-Particle::~Particle()
-{  }
-
 Particle::Particle(const Particle& other)
 :
 momentum (other.momentum),

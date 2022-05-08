@@ -64,11 +64,11 @@ int RunAnalysis()
   MessageLogger::LogLevel debugLevel = MessageLogger::Debug;
   MessageLogger::LogLevel selectedLevel = infoLevel;
   
-  long    nEventRequested     = 1000000;
+  long    nEventRequested     = 100;
   long    nEventReported      = 100000;
   long    nEventPartialSave   = 100000;
-  bool    doPartialSave       = YES;
-  bool    doSubsampleAnalysis = YES;
+  bool    doPartialSave       = NO;
+  bool    doSubsampleAnalysis = NO;
   double  beamEnergy          = 13000.0; // GeV
   int     beamPdgCode         = 2212;    // proton
   int     targetPdgCode       = 2212;
@@ -91,7 +91,7 @@ int RunAnalysis()
   bool loadPdgTable          = YES;
   
   TString inputPathBase   = "/Volumes/ClaudeDisc4/OutputFiles/";
-  TString outputPathBase  = "/Volumes/ClaudeDisc4/OutputFiles/";
+  TString outputPathBase  = "/Volumes/ClaudeDisc4/OutputFiles/quickTest";
   TString inputFileNameBase;
   TString outputFileNameBase;
   TString fileNameSuffix;
@@ -162,11 +162,18 @@ int RunAnalysis()
   
   if (loadPdgTable)
     {
-    TString pdgDataTable = getenv("CAP_SRC");
-    pdgDataTable += "/EOS/pdgPhysicalKaons.dat"; // this table has k-short and k-long in addition to k0 and k0-bar
-    ParticleTypeCollection * particles = ParticleTypeCollection::getMasterParticleCollection(); //ParticleTypeCollection::getMasterParticleCollection();
-    particles->readFromFile(pdgDataTable);
-    if (selectedLevel == debugLevel) particles->printProperties(std::cout);
+    Configuration pdgDataConfig("ParticleTypeTableLoader Configuration");
+    pdgDataConfig.addParameter("dataInputUsed",     true);
+    pdgDataConfig.addParameter("dataInputPath",     TString(getenv("CAP_SRC")));
+    pdgDataConfig.addParameter("dataInputFileName", TString("/EOS/pdgPhysicalKaons.dat"));
+    Task * particleTypeTableLoader = new ParticleTypeTableLoader("ParticleTypeTableLoader",pdgDataConfig,selectedLevel);
+    particleTypeTableLoader->execute();
+    
+//    TString pdgDataTable = getenv("CAP_SRC");
+//    pdgDataTable += "/EOS/pdgPhysicalKaons.dat"; // this table has k-short and k-long in addition to k0 and k0-bar
+//    ParticleTypeCollection * particles = ParticleTypeCollection::getMasterParticleCollection(); //ParticleTypeCollection::getMasterParticleCollection();
+//    particles->readFromFile(pdgDataTable);
+//    if (selectedLevel == debugLevel) particles->printProperties(std::cout);
     }
  
   // =========================================

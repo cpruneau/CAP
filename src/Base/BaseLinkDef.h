@@ -71,6 +71,7 @@
 
 #pragma link C++ class ParticleType+;
 #pragma link C++ class ParticleTypeCollection+;
+#pragma link C++ class ParticleTypeTableLoader+;
 #pragma link C++ class ParticleFilter+;
 #pragma link C++ class ParticleFilterEfficiency+;
 ///#pragma link C++ class ParticleFilterAliceV0+;
