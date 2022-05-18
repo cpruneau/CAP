@@ -15,5 +15,6 @@ var class_particle_type_collection =
     [ "printProperties", "class_particle_type_collection.html#a95ab1788116ad26fd02db3539e7cd33a", null ],
     [ "readFromFile", "class_particle_type_collection.html#a047c28d219ddb27d9814ffbfeeb1fbcc", null ],
     [ "resolveTypes", "class_particle_type_collection.html#a995de43a0e2d016e7aa7c93a6feeb98a", null ],
-    [ "sortByMass", "class_particle_type_collection.html#a718fdb07d54ab82f0c3ece944546b728", null ]
+    [ "sortByMass", "class_particle_type_collection.html#a718fdb07d54ab82f0c3ece944546b728", null ],
+    [ "writeToFile", "class_particle_type_collection.html#a3dfb1e1eda60621f1cd300c4dae323f5", null ]
 ];

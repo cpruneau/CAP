@@ -153,7 +153,46 @@ public:
   //! Get the value of the parameter named 'name'
   //!
   int getNParameters();
-  
+
+  //!
+  //!Generates and stores in the configuration of this task a list of key,value parameters based on the given parameters.value
+  //!The keys generated have the form keyBaseName## where keyBaseName is the base name of the keys and ## is an integer k
+  //!from 0 to nKeysToGenerate-1 (inclusively)
+  //!
+  //!@param keyBaseName base name of the keys
+  //!@param defaultValue default value given for all key,value pairs
+  //!@param nKeysToGenerate number of key,value pairs to generate and add to this task configuration.
+  //!
+  void generateKeyValuePairs(const TString keyBaseName, const TString defaultValue, int nKeysToGenerate);
+
+  //!
+  //!Parse the configuration associated with task to find the key,value pairs that DO NOT feature the defaultValue
+  //!
+  //!@param keyBaseName base name of the keys
+  //!@param defaultValue default value that is selected against
+  //!
+  vector<TString> getSelectedValues(const TString keyBaseName, const TString defaultValue) const;
+
+  //!
+  //!Get  the number of key,value pairs with the given key base name  that DO NOT feature the defaultValue
+  //!
+  //!@param keyBaseName base name of the keys to be tested against.
+  //!@param defaultValue default value that is selected against
+  //!
+  int getNSelectedValues(const TString keyBaseName, const TString defaultValue)  const;
+
+  int getNPossibleValues(const TString keyBaseName) const;
+
+
+  //!
+  //!Add key,value pairs with the given key base name  and values provided in the selectedValues array.
+  //!
+  //!@param keyBaseName base name of the keys to be used
+  //!@param defaultValue default value that is selected against
+  //!@param selectedValues  number of key,value pairs to be checked
+  //!
+  void addSelectedValues(const TString keyBaseName, const TString defaultValue, const vector<TString> & selectedValues);
+
   //!
   //! Get the value of the parameter named 'name'
   //!

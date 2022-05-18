@@ -121,8 +121,8 @@ Collaboration diagram for Particle:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a40f4c7e248029d72e7714b7802d5e5e1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a40f4c7e248029d72e7714b7802d5e5e1">Particle</a> ()</td></tr>
 <tr class="separator:a40f4c7e248029d72e7714b7802d5e5e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad030d0fe7b88cf81744b127c99244ff4"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#ad030d0fe7b88cf81744b127c99244ff4">~Particle</a> ()</td></tr>
-<tr class="separator:ad030d0fe7b88cf81744b127c99244ff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a058b1abe765620e5c5bad2aad654e6bc"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a058b1abe765620e5c5bad2aad654e6bc">~Particle</a> ()</td></tr>
+<tr class="separator:a058b1abe765620e5c5bad2aad654e6bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24b04cb7c6f7ea4242d25c410f44ae56"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a24b04cb7c6f7ea4242d25c410f44ae56">Particle</a> (const <a class="el" href="class_particle.html">Particle</a> &amp;other)</td></tr>
 <tr class="separator:a24b04cb7c6f7ea4242d25c410f44ae56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70adc57286f9c07626fc7a1bb8a51ca0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_particle.html">Particle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a70adc57286f9c07626fc7a1bb8a51ca0">operator=</a> (const <a class="el" href="class_particle.html">Particle</a> &amp;other)</td></tr>
@@ -137,6 +137,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aed911356f1efb3cd78986e1d387dd784"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9880b1e61532e7a6871179423afb9a02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_particle_type.html">ParticleType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a9880b1e61532e7a6871179423afb9a02">getType</a> () const</td></tr>
 <tr class="separator:a9880b1e61532e7a6871179423afb9a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4990eb03942889dc432b3537a49759ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_particle_type.html">ParticleType</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a4990eb03942889dc432b3537a49759ea">getTypePtr</a> () const</td></tr>
+<tr class="separator:a4990eb03942889dc432b3537a49759ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a894a96eb9fe6aa17f5eec14560bd2e05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a894a96eb9fe6aa17f5eec14560bd2e05">set</a> (<a class="el" href="class_particle_type.html">ParticleType</a> *<a class="el" href="class_particle.html#a249d17234d8475ce38f76a40a104b843">type</a>, double p_x, double p_y, double p_z, double p_e, double x, double y, double z, double t, bool <a class="el" href="class_particle.html#a2244f1b8544823239c4bf1a5a940d526">live</a>=true)</td></tr>
 <tr class="separator:a894a96eb9fe6aa17f5eec14560bd2e05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adafdcd1c59b277b74d20cff34d58b070"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#adafdcd1c59b277b74d20cff34d58b070">set</a> (<a class="el" href="class_particle_type.html">ParticleType</a> *<a class="el" href="class_particle.html#a249d17234d8475ce38f76a40a104b843">type</a>, TLorentzVector &amp;<a class="el" href="class_particle.html#a5ed4c9627f9efa6bfd34d1e77b2dada3">momentum</a>, TLorentzVector &amp;<a class="el" href="class_particle.html#a61d849f8f519c82ba916bbaea10b18dd">position</a>, bool <a class="el" href="class_particle.html#a2244f1b8544823239c4bf1a5a940d526">live</a>=true)</td></tr>
@@ -151,10 +153,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a336367bdbce5e5cfdca68850870fca52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec8818bc53cd79f67dbb1328ec877531"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#aec8818bc53cd79f67dbb1328ec877531">setPxPyPzE</a> (double p_x, double p_y, double p_z, double p_e)</td></tr>
 <tr class="separator:aec8818bc53cd79f67dbb1328ec877531"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07281d3e609667d030165706c444ecf9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a07281d3e609667d030165706c444ecf9">setPxPyPzE</a> (TLorentzVector &amp;_momentum)</td></tr>
-<tr class="separator:a07281d3e609667d030165706c444ecf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2abb241197e821fdf0629716fdaf0385"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a2abb241197e821fdf0629716fdaf0385">setMomentum</a> (TLorentzVector &amp;_momentum)</td></tr>
-<tr class="separator:a2abb241197e821fdf0629716fdaf0385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dd10861dcd26a93e0f2dbda47ec4f93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a4dd10861dcd26a93e0f2dbda47ec4f93">setPxPyPzE</a> (const TLorentzVector &amp;_momentum)</td></tr>
+<tr class="separator:a4dd10861dcd26a93e0f2dbda47ec4f93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42b39ec4c4df8965795c93da9c0238fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a42b39ec4c4df8965795c93da9c0238fb">setMomentum</a> (const TLorentzVector &amp;_momentum)</td></tr>
+<tr class="separator:a42b39ec4c4df8965795c93da9c0238fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a045fe2f72de18ce20ad6d4a860564bfe"><td class="memItemLeft" align="right" valign="top">TLorentzVector &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a045fe2f72de18ce20ad6d4a860564bfe">getPosition</a> ()</td></tr>
 <tr class="separator:a045fe2f72de18ce20ad6d4a860564bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a822001a538d94f64b518f094c8f5b3a1"><td class="memItemLeft" align="right" valign="top">const TLorentzVector &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a822001a538d94f64b518f094c8f5b3a1">getPosition</a> () const</td></tr>
@@ -314,28 +316,48 @@ Static Public Attributes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a5ed4c9627f9efa6bfd34d1e77b2dada3"><td class="memItemLeft" align="right" valign="top">TLorentzVector&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a5ed4c9627f9efa6bfd34d1e77b2dada3">momentum</a></td></tr>
+<tr class="memdesc:a5ed4c9627f9efa6bfd34d1e77b2dada3"><td class="mdescLeft">&#160;</td><td class="mdescRight">4-momentum of the particle  <a href="class_particle.html#a5ed4c9627f9efa6bfd34d1e77b2dada3">More...</a><br /></td></tr>
 <tr class="separator:a5ed4c9627f9efa6bfd34d1e77b2dada3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61d849f8f519c82ba916bbaea10b18dd"><td class="memItemLeft" align="right" valign="top">TLorentzVector&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a61d849f8f519c82ba916bbaea10b18dd">position</a></td></tr>
+<tr class="memdesc:a61d849f8f519c82ba916bbaea10b18dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">4-position of the particle  <a href="class_particle.html#a61d849f8f519c82ba916bbaea10b18dd">More...</a><br /></td></tr>
 <tr class="separator:a61d849f8f519c82ba916bbaea10b18dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a249d17234d8475ce38f76a40a104b843"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_particle_type.html">ParticleType</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a249d17234d8475ce38f76a40a104b843">type</a></td></tr>
+<tr class="memdesc:a249d17234d8475ce38f76a40a104b843"><td class="mdescLeft">&#160;</td><td class="mdescRight">type of this particle  <a href="class_particle.html#a249d17234d8475ce38f76a40a104b843">More...</a><br /></td></tr>
 <tr class="separator:a249d17234d8475ce38f76a40a104b843"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a748ba9fdcb18bbe3b3cbaf22247adad5"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="class_particle.html">Particle</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a748ba9fdcb18bbe3b3cbaf22247adad5">parents</a></td></tr>
+<tr class="memdesc:a748ba9fdcb18bbe3b3cbaf22247adad5"><td class="mdescLeft">&#160;</td><td class="mdescRight">array containing the parents of this particle.  <a href="class_particle.html#a748ba9fdcb18bbe3b3cbaf22247adad5">More...</a><br /></td></tr>
 <tr class="separator:a748ba9fdcb18bbe3b3cbaf22247adad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84d1f55c7f17aa62787f6d31e7c62955"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="class_particle.html">Particle</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a84d1f55c7f17aa62787f6d31e7c62955">children</a></td></tr>
+<tr class="memdesc:a84d1f55c7f17aa62787f6d31e7c62955"><td class="mdescLeft">&#160;</td><td class="mdescRight">array containing the children of this particle.  <a href="class_particle.html#a84d1f55c7f17aa62787f6d31e7c62955">More...</a><br /></td></tr>
 <tr class="separator:a84d1f55c7f17aa62787f6d31e7c62955"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a95e4ab8d0bbc51e4ab6034d108f68e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_particle.html">Particle</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a0a95e4ab8d0bbc51e4ab6034d108f68e">truth</a></td></tr>
+<tr class="memdesc:a0a95e4ab8d0bbc51e4ab6034d108f68e"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the truth particle corresponding to this particle.  <a href="class_particle.html#a0a95e4ab8d0bbc51e4ab6034d108f68e">More...</a><br /></td></tr>
 <tr class="separator:a0a95e4ab8d0bbc51e4ab6034d108f68e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2244f1b8544823239c4bf1a5a940d526"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#a2244f1b8544823239c4bf1a5a940d526">live</a></td></tr>
+<tr class="memdesc:a2244f1b8544823239c4bf1a5a940d526"><td class="mdescLeft">&#160;</td><td class="mdescRight">whether this particle is live or dead (measurable or not)  <a href="class_particle.html#a2244f1b8544823239c4bf1a5a940d526">More...</a><br /></td></tr>
 <tr class="separator:a2244f1b8544823239c4bf1a5a940d526"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7ca57ecb691687b4c7ad13f803a7c0c"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#ac7ca57ecb691687b4c7ad13f803a7c0c">pid</a></td></tr>
+<tr class="memdesc:ac7ca57ecb691687b4c7ad13f803a7c0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">used defined identified used in some applications  <a href="class_particle.html#ac7ca57ecb691687b4c7ad13f803a7c0c">More...</a><br /></td></tr>
 <tr class="separator:ac7ca57ecb691687b4c7ad13f803a7c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afef798a229b67c215d202e675c5c2d2b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle.html#afef798a229b67c215d202e675c5c2d2b">sourceIndex</a></td></tr>
+<tr class="memdesc:afef798a229b67c215d202e675c5c2d2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">source index used in some applications  <a href="class_particle.html#afef798a229b67c215d202e675c5c2d2b">More...</a><br /></td></tr>
 <tr class="separator:afef798a229b67c215d202e675c5c2d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Class defining <a class="el" href="class_particle.html">Particle</a> </p>
+<div class="textblock"><p >This class encapsualtes the notion of particles as encounted in particle and nuclear physics simulations of elementary particle collisions or nucleus-nucleus collisions. <a class="el" href="class_particle.html">Particle</a> object can be created and handled on their own or in small aggregates but they are better handled based on a particle factory that keeps track and handle the memory used for the storage of particles.</p>
+<p ><a class="el" href="class_particle.html">Particle</a> described by this class have the following properties and attributes:</p><ul>
+<li>type : A pointer to a ParticleTy[e object that described the type of this particle,</li>
+<li>position: The position implemented as TLorentVector where this particle originates from. The position can be chosen to be a macroscopic vertex position or the microscopic location, within the emitting system, where it was produced. The usage depends on the speficities of the simulations.</li>
+<li>momentum: The momentum of the particle in the reference frame of interest (usually the laboratory frame of reference). -user type: optionally, a user type can be supplied to identify the species or type of the particle.</li>
+<li>live status: the particle can be considered "live" and thus active as part of the set of particles apprehended by the measurement device or dead/decayed/interacted and thus not to be considered as measurable by detection devices.</li>
+<li>parent: A parent particle or process, if any where from the particle originates.</li>
+<li>children: The particle can be a decaying particle that is decayed , an interaction that has produced children particles, or a nucleus with nucleons. Either way, it shall be known either as having or not having children. It shall also, optionally, hold a list of said children.</li>
+</ul>
+<p >This class features a number of methods to identify its nature, i.e., whether it represents an interaction (and which kind of interaction), an elementary particle (specified by its type), a nucleus (also identified by its type), or an interaction.</p>
+<p >The class features a number of helper methods to compute such properties as the distance to another particle (either in the transverse plane or in three dimensions).</p>
+<p >The particle can also hold a pointer to a "truth" particle or reference particle. This is used, in particular, in simple one-to-one simulation studies of the performance of a detection device (i.e., resolution and efficiency studies, closure test, etc). </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00024">24</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00050">50</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a40f4c7e248029d72e7714b7802d5e5e1" name="a40f4c7e248029d72e7714b7802d5e5e1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a40f4c7e248029d72e7714b7802d5e5e1">&#9670;&nbsp;</a></span>Particle() <span class="overload">[1/2]</span></h2>
@@ -351,13 +373,14 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >CTOR </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00024">24</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00020">20</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ad030d0fe7b88cf81744b127c99244ff4" name="ad030d0fe7b88cf81744b127c99244ff4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad030d0fe7b88cf81744b127c99244ff4">&#9670;&nbsp;</a></span>~Particle()</h2>
+<a id="a058b1abe765620e5c5bad2aad654e6bc" name="a058b1abe765620e5c5bad2aad654e6bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a058b1abe765620e5c5bad2aad654e6bc">&#9670;&nbsp;</a></span>~Particle()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -366,7 +389,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Particle::~Particle </td>
+          <td class="memname">virtual Particle::~Particle </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -374,12 +397,13 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >DTOR </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00039">39</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00062">62</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -398,8 +422,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Copy CTOR </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00042">42</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00035">35</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -419,8 +444,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Add the given particle as one of the children of this particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00324">324</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00317">317</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -439,8 +465,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Add the given the given array of particles as children of this particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00342">342</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00335">335</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -469,8 +496,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Add the given two given particles as children of this particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00329">329</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00322">322</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -505,8 +533,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Add the given three given particles as children of this particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00335">335</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00328">328</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -541,8 +570,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Boost the velocity of this particle according to the given components of a velocity 3-vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00196">196</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00189">189</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -561,8 +591,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Boost the velocity of this particle along the beam direction based on the given boost value. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00206">206</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00199">199</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -580,8 +611,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Clear all variables held by this particle </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00076">76</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00069">69</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -608,8 +640,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Compute and return the 2D transverse distance to the given particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00247">247</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00240">240</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -636,8 +669,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Compute and return the square of the 2D transverse distance to the given particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00240">240</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00233">233</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -664,8 +698,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Compute and return the 3D distance to the given particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00234">234</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00227">227</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -692,8 +727,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Compute and return the square of the 3D distance to the given particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00226">226</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00219">219</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -720,8 +756,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return a pointer to the child at the given index. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00169">169</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00489">489</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -747,8 +784,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get an immutable array of children produced by this particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00177">177</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00500">500</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -775,7 +813,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00254">254</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00247">247</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -801,8 +839,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get a changeable reference to the 4-momentum vector of this particle (as a TLorentzVector reference) </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00059">59</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00172">172</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -828,8 +867,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the 4-momentum of this particle (as a TLorentzVector reference) </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00058">58</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00167">167</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -855,8 +895,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the name of this particle (object) </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00124">124</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00414">414</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -882,8 +923,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return the number of children this particle has spawned. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00164">164</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00481">481</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -909,8 +951,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get a neutron object singleton </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00398">398</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00391">391</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -936,8 +979,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the number of parents this particle has... </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00132">132</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00425">425</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -964,8 +1008,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the parent particle (object) at the given index value. Note: Array boundaries are NOT checked so be careful when calling this function. Otherwise your code could "segfault" </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00137">137</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00434">434</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -991,8 +1036,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get a constant array of the parents of this particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00145">145</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00445">445</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1018,8 +1064,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the PID of this particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00081">81</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00250">250</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1045,8 +1092,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the 4-position vector of this particle as a changeable TLorentzVector object </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00065">65</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00193">193</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1072,8 +1120,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the 4-position vector of this particle as a read only TLorentzVector object </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00066">66</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00198">198</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1099,8 +1148,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get a proton object singleton </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00391">391</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00384">384</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -1126,8 +1176,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the index of the source of this particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00094">94</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00310">310</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1153,8 +1204,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the true particle this particle is mimicing. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00193">193</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00554">554</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1180,8 +1232,36 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the <a class="el" href="class_particle_type.html">ParticleType</a> of this particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00038">38</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00100">100</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4990eb03942889dc432b3537a49759ea" name="a4990eb03942889dc432b3537a49759ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4990eb03942889dc432b3537a49759ea">&#9670;&nbsp;</a></span>getTypePtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_particle_type.html">ParticleType</a> * Particle::getTypePtr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00102">102</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1207,8 +1287,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return true if this particle has children. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00159">159</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00473">473</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1234,8 +1315,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return "true" if this particle is considered to have interacted and is thus no longer measurable. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00088">88</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00289">289</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1261,8 +1343,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return true if this object instance has parents. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00119">119</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00406">406</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1288,8 +1371,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return true is this particle has a "parent" true particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00194">194</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00560">560</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1315,8 +1399,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return true if this particle is in fact a decay vertex. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00109">109</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00361">361</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1342,8 +1427,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return "true" if this particle has decayed. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00083">83</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00260">260</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1369,8 +1455,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return true if this particle is in fact an interaction </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00110">110</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00366">366</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1396,8 +1483,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return "true" if this particle is considered measurable. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00089">89</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00294">294</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1423,8 +1511,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return true if this object instance is either a neutron. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00116">116</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00396">396</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1442,8 +1531,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Return true if this particle is a neutron-neutron interaction. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00372">372</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00365">365</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -1469,8 +1559,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return true if this object instance is in fact a neutron-neutron interaction </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00113">113</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00381">381</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1496,8 +1587,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return true if this object instance is either a neutron or a proton (i.e., a nucleon) </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00114">114</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00386">386</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1515,8 +1607,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Return true if this particle is a nucleon-nucleon interaction. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00353">353</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00346">346</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -1534,8 +1627,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Return true if this particle is in fact a particle, as opposed to an interaction or source of particles... </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00405">405</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00398">398</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -1561,8 +1655,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return true if this object instance is either a photon. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00117">117</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00401">401</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1588,8 +1683,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return true if this object instance is in fact a proton-neutron interaction </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00112">112</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00376">376</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1615,8 +1711,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return true if this object instance is in fact a proton-proton interaction </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00111">111</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00371">371</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1634,8 +1731,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Return true if this particle is a primary particle (i.e., not produced by the decay of another particle). </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00416">416</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00409">409</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -1661,8 +1759,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return true if this object instance is either a proton. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00115">115</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00391">391</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1680,8 +1779,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Return true if this particle is a proton-neutroninteraction. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00381">381</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00374">374</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -1699,8 +1799,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Return true if this particle is a proton-proton interaction. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00363">363</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00356">356</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -1718,8 +1819,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Return true if this particle is a secondary particle (i.e., produced by the decay of another particle). </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00424">424</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00417">417</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -1745,8 +1847,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return "true" if this particle is stable for the intent and purpose of the simulation in progress </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00084">84</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00266">266</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1772,8 +1875,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Return "true" if this particle is considered wounded and is thus no longer measurable. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00087">87</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00284">284</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -1792,8 +1896,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Assignment operator. The properties of "other" are shallowed copied into the properties of this particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00057">57</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00050">50</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -1812,8 +1917,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Print the properties of this particle on the given output stream. The output properties do not include decay properties. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00145">145</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00138">138</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -1831,8 +1937,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Reset this particle </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00090">90</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00083">83</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -1859,7 +1966,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00264">264</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00257">257</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -1936,8 +2043,24 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Set the <a class="el" href="class_particle_type.html">ParticleType</a> of this particle, its 4-momentum and 4-position of origin, as well as whether the particle is live or "decayed"</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Pointer to the type of this particle (<a class="el" href="class_particle_type.html">ParticleType</a>) </td></tr>
+    <tr><td class="paramname">p_x</td><td>: momentum of the particle along the x-axis </td></tr>
+    <tr><td class="paramname">p_y</td><td>: momentum of the particle along the y-axis </td></tr>
+    <tr><td class="paramname">p_z</td><td>: momentum of the particle along the z-axis </td></tr>
+    <tr><td class="paramname">p_e</td><td>: energy of the particle </td></tr>
+    <tr><td class="paramname">x</td><td>: position of the origin of the particle along the x-axis </td></tr>
+    <tr><td class="paramname">y</td><td>: position of the origin of the particle along the y-axis </td></tr>
+    <tr><td class="paramname">z</td><td>: position of the origin of the particle along the z-axis </td></tr>
+    <tr><td class="paramname">t</td><td>: time when the particle was created/produced. </td></tr>
+    <tr><td class="paramname">live</td><td>whether the particle is considered "live" or "dead" (decayed) </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00103">103</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00096">96</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -1978,8 +2101,17 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Set the <a class="el" href="class_particle_type.html">ParticleType</a> of this particle, its 4-momentum and 4-position of origin, as well as whether the particle is live or "decayed" </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Pointer to the type of this particle (<a class="el" href="class_particle_type.html">ParticleType</a>) </td></tr>
+    <tr><td class="paramname">momentum</td><td>: 4-momentum of the particle </td></tr>
+    <tr><td class="paramname">position</td><td>: 4-position of the origin of the particle </td></tr>
+    <tr><td class="paramname">live</td><td>whether the particle is considered "live" or "dead" (decayed) </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00118">118</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00111">111</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -2020,8 +2152,18 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Set the <a class="el" href="class_particle_type.html">ParticleType</a> of this particle, its 4-momentum, an array of pointers to its parents, as well as a live or "decayed" status.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Pointer to the type of this particle (<a class="el" href="class_particle_type.html">ParticleType</a>) </td></tr>
+    <tr><td class="paramname">momentum</td><td>: 4-momentum of the particle </td></tr>
+    <tr><td class="paramname">parents</td><td>: array of pointer(s) to the parent particle of this particle. This can be a single particle that decayed or or a pair of particle that interacted, or an interaction object. </td></tr>
+    <tr><td class="paramname">live</td><td>whether the particle is considered "live" or "dead" (decayed) </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00130">130</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00123">123</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -2048,8 +2190,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Set the decayed (live status) of this particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00082">82</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00255">255</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2076,8 +2219,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Set this particle as "wounded", i.e., meaning that it has interacting and is thus removed from the pool of measurable particles. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00086">86</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00279">279</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2104,13 +2248,14 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Set the live status of this particle to true if it is considered measurable. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00090">90</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00299">299</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a2abb241197e821fdf0629716fdaf0385" name="a2abb241197e821fdf0629716fdaf0385"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2abb241197e821fdf0629716fdaf0385">&#9670;&nbsp;</a></span>setMomentum()</h2>
+<a id="a42b39ec4c4df8965795c93da9c0238fb" name="a42b39ec4c4df8965795c93da9c0238fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42b39ec4c4df8965795c93da9c0238fb">&#9670;&nbsp;</a></span>setMomentum()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2121,7 +2266,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Particle::setMomentum </td>
           <td>(</td>
-          <td class="paramtype">TLorentzVector &amp;&#160;</td>
+          <td class="paramtype">const TLorentzVector &amp;&#160;</td>
           <td class="paramname"><em>_momentum</em></td><td>)</td>
           <td></td>
         </tr>
@@ -2132,8 +2277,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Set the 4-momentum vector of this particle based on a TLorentzVector object </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00063">63</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00188">188</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2152,8 +2298,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Set a or the parent of this particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00272">272</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00265">265</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -2172,8 +2319,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Set the n parents that interacted to produce this particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00307">307</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00300">300</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -2202,8 +2350,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Set the two parents that interacted to produce this particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00282">282</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00275">275</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -2238,8 +2387,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Set the three parents that interacted to produce this particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00294">294</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00287">287</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -2266,8 +2416,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Set the PID of this particle according to the given identifier. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00080">80</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00244">244</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2314,8 +2465,19 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Set the pid of this particle and its 4-momentum components.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pid</td><td>The type id of this particle </td></tr>
+    <tr><td class="paramname">p_x</td><td>: momentum of the particle along the x-axis </td></tr>
+    <tr><td class="paramname">p_y</td><td>: momentum of the particle along the y-axis </td></tr>
+    <tr><td class="paramname">p_z</td><td>: momentum of the particle along the z-axis </td></tr>
+    <tr><td class="paramname">p_e</td><td>: energy of the particle </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00172">172</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00165">165</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -2342,13 +2504,43 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Set the 4-position vector of this particle based on the given TLorentzVector. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00069">69</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00213">213</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4dd10861dcd26a93e0f2dbda47ec4f93" name="a4dd10861dcd26a93e0f2dbda47ec4f93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dd10861dcd26a93e0f2dbda47ec4f93">&#9670;&nbsp;</a></span>setPxPyPzE() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Particle::setPxPyPzE </td>
+          <td>(</td>
+          <td class="paramtype">const TLorentzVector &amp;&#160;</td>
+          <td class="paramname"><em>_momentum</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Set the 4-momentum vector of this particle based on a TLorentzVector object </p>
+
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00183">183</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
 <a id="aec8818bc53cd79f67dbb1328ec877531" name="aec8818bc53cd79f67dbb1328ec877531"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec8818bc53cd79f67dbb1328ec877531">&#9670;&nbsp;</a></span>setPxPyPzE() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aec8818bc53cd79f67dbb1328ec877531">&#9670;&nbsp;</a></span>setPxPyPzE() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2392,36 +2584,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Set the 4-momentum vector of this particle based on its four components. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00060">60</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a07281d3e609667d030165706c444ecf9" name="a07281d3e609667d030165706c444ecf9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07281d3e609667d030165706c444ecf9">&#9670;&nbsp;</a></span>setPxPyPzE() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Particle::setPxPyPzE </td>
-          <td>(</td>
-          <td class="paramtype">TLorentzVector &amp;&#160;</td>
-          <td class="paramname"><em>_momentum</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00062">62</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00177">177</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2462,8 +2627,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Set the 4-position vector of this particle based on the given radius (distance from origin), cosine of the polar angle theta, azimuth phi and time t. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00187">187</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00180">180</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -2504,8 +2670,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Set the 4-position vector of this particle based on the given radius (distance from origin), polar angle theta, azimuth phi and time t. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00178">178</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8cpp_source.html#l00171">171</a> of file <a class="el" href="_particle_8cpp_source.html">Particle.cpp</a>.</p>
 
 </div>
 </div>
@@ -2532,8 +2699,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Set the index of the source of this particle to the given value. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00093">93</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00305">305</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2560,8 +2728,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Identify the true particle represented by this particle as the given particle. This is useful in simulations of the performance of a detection device. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00192">192</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00549">549</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2588,8 +2757,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Set the <a class="el" href="class_particle_type.html">ParticleType</a> of this particle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00037">37</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00094">94</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2616,8 +2786,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Set this particle as "wounded", i.e., meaning that it has interacting and is thus removed from the pool of measurable particles. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00085">85</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00273">273</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2644,8 +2815,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Set the 4-position vector of this particle based on the given TLorentzVector. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00068">68</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00208">208</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2694,8 +2866,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Set the 4-position vector of this particle based on its components x, y, z, and t. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00067">67</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00203">203</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2722,8 +2895,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Shift the 4-position coordinates of origin of this particle by the given (TLorentzVector) vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00072">72</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00230">230</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2772,8 +2946,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Shift the 4-position coordinates of origin of this particle by the four given components. </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00073">73</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00235">235</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2798,7 +2973,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00204">204</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p>array containing the children of this particle. </p>
+
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00568">568</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2822,7 +2999,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00215">215</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00579">579</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2846,7 +3023,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00214">214</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00578">578</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2862,7 +3039,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00211">211</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00575">575</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2878,7 +3055,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00211">211</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00575">575</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2902,7 +3079,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00206">206</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p>whether this particle is live or dead (measurable or not) </p>
+
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00570">570</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2926,7 +3105,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00200">200</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p>4-momentum of the particle </p>
+
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00564">564</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2950,7 +3131,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00203">203</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p>array containing the parents of this particle. </p>
+
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00567">567</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2974,7 +3157,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00207">207</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p>used defined identified used in some applications </p>
+
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00571">571</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -2998,7 +3183,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00201">201</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p>4-position of the particle </p>
+
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00565">565</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -3013,8 +3200,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Get a proton type object singleton </p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00222">222</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00596">596</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -3038,7 +3226,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00208">208</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p>source index used in some applications </p>
+
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00572">572</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -3062,7 +3252,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00205">205</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p>pointer to the truth particle corresponding to this particle. </p>
+
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00569">569</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>
@@ -3086,7 +3278,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00202">202</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
+<p>type of this particle </p>
+
+<p class="definition">Definition at line <a class="el" href="_particle_8hpp_source.html#l00566">566</a> of file <a class="el" href="_particle_8hpp_source.html">Particle.hpp</a>.</p>
 
 </div>
 </div>

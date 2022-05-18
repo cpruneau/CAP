@@ -2,75 +2,59 @@
 \label{_task_iterator_8hpp_source}\index{Base/TaskIterator.hpp@{Base/TaskIterator.hpp}}
 \mbox{\hyperlink{_task_iterator_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00010}00010 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#ifndef CAP\_\_TaskIterator}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#define CAP\_\_TaskIterator}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00014}00014 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00022}\mbox{\hyperlink{class_task_iterator}{00022}} \textcolor{keyword}{class }\mbox{\hyperlink{class_task_iterator}{TaskIterator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00023}00023 \{}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00024}00024 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00025}00025   }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00033}00033   \mbox{\hyperlink{class_task_iterator_a3882efad724cca77795af41d0a331e08}{TaskIterator}}(\textcolor{keyword}{const} TString \&         \_name = \textcolor{stringliteral}{"{}TaskIterator"{}},}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00034}00034                \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \&   \_configuration = \mbox{\hyperlink{class_configuration}{Configuration}}(),}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00035}00035                \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}} \_reportLevel = \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{MessageLogger::Info}});}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00036}00036 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00040}\mbox{\hyperlink{class_task_iterator_a09614f0874c5f4c0200157fd92968f48}{00040}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_task_iterator_a09614f0874c5f4c0200157fd92968f48}{\string~TaskIterator}}() \{\}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00041}00041   }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00045}00045   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_a8536aeba1c4465146062e72516c6a6b6}{setDefaultConfiguration}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00046}00046   }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00050}00050   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_ae7d75f8ef4ded05e349d16cc91c3cc79}{run}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00051}00051   }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00055}00055   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_af480b27e954098aaad2a0f3750940eaf}{execute}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00056}00056   }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00060}00060   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_a758cd9c023174494bbf7184d29403357}{subsampleAnalysis}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00061}00061   }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00065}\mbox{\hyperlink{class_task_iterator_aeab63ef531696d68920f63d2a54adad7}{00065}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_aeab63ef531696d68920f63d2a54adad7}{setNEventRequested}}(\textcolor{keywordtype}{long} \_nEventsRequested)    \{ \mbox{\hyperlink{class_task_iterator_afee9c319d9131ca3b60f3ae3dd1fae27}{nEventRequested}}    = \_nEventsRequested; \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00066}00066 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00070}\mbox{\hyperlink{class_task_iterator_a20e711f941e26c763f2860b00163d29f}{00070}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_a20e711f941e26c763f2860b00163d29f}{setNEventReported}}(\textcolor{keywordtype}{long} \_nEventsReported)      \{ \mbox{\hyperlink{class_task_iterator_ac1c0deb14b49d1a377d3077dcdfaf373}{nEventReported}}     = \_nEventsReported; \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00071}00071 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00075}\mbox{\hyperlink{class_task_iterator_a2ef80a0c5e980813dbabebf48d5d5578}{00075}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_a2ef80a0c5e980813dbabebf48d5d5578}{setNEventPartialSave}}(\textcolor{keywordtype}{long} \_nEventsPartialSave)\{ \mbox{\hyperlink{class_task_iterator_accd49cdab9517cdc6a49ae3549dfbad9}{nEventPartialSave}}  = \_nEventsPartialSave; \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00076}00076 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00080}\mbox{\hyperlink{class_task_iterator_a216949f75ce876276bb32fe44afb6033}{00080}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_a216949f75ce876276bb32fe44afb6033}{setPartialSave}}(\textcolor{keywordtype}{bool} \_doPartialSave)              \{ \mbox{\hyperlink{class_task_iterator_a1a9126109ce78d7f4cf1b61b7c8e6879}{doPartialSave}}         = \_doPartialSave; \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00081}00081 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00085}\mbox{\hyperlink{class_task_iterator_a99a9e22a7ef375a21b25278367a15354}{00085}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_a99a9e22a7ef375a21b25278367a15354}{setSubsampleAnalysis}}(\textcolor{keywordtype}{bool} \_doSubsampleAnalysis)  \{ \mbox{\hyperlink{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}{doSubsampleAnalysis}}   = \_doSubsampleAnalysis; \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00086}00086 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00090}\mbox{\hyperlink{class_task_iterator_aa4c367858c1988386f494a7f4e13a11e}{00090}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_task_iterator_aa4c367858c1988386f494a7f4e13a11e}{getNEventRequested}}()\textcolor{keyword}{ const   }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_task_iterator_afee9c319d9131ca3b60f3ae3dd1fae27}{nEventRequested}}; \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef CAP\_\_TaskIterator}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define CAP\_\_TaskIterator}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00023}\mbox{\hyperlink{class_task_iterator}{00023}} \textcolor{keyword}{class }\mbox{\hyperlink{class_task_iterator}{TaskIterator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00024}00024 \{}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00025}00025 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00026}00026   }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00034}00034   \mbox{\hyperlink{class_task_iterator_a3882efad724cca77795af41d0a331e08}{TaskIterator}}(\textcolor{keyword}{const} TString \&         \_name = \textcolor{stringliteral}{"{}TaskIterator"{}},}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00035}00035                \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \&   \_configuration = \mbox{\hyperlink{class_configuration}{Configuration}}(),}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00036}00036                \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}} \_reportLevel = \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{MessageLogger::Info}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00041}\mbox{\hyperlink{class_task_iterator_a09614f0874c5f4c0200157fd92968f48}{00041}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_task_iterator_a09614f0874c5f4c0200157fd92968f48}{\string~TaskIterator}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00042}00042   }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00046}00046   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_a8536aeba1c4465146062e72516c6a6b6}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00051}00051   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_addba47176021bbb821efb02497cf894d}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00057}00057   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_af480b27e954098aaad2a0f3750940eaf}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00062}00062   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_a321efa1ced57b46b537e89328a2ee241}{finalize}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00067}\mbox{\hyperlink{class_task_iterator_aec89fc8c3f1cad3d3467e90ce55a20ec}{00067}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_task_iterator_aec89fc8c3f1cad3d3467e90ce55a20ec}{getNIterationRequested}}()\textcolor{keyword}{ const   }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_task_iterator_a4deb3aa252eb940c528dcfd1f62a8025}{nIterationRequested}}; \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00072}\mbox{\hyperlink{class_task_iterator_ade76af9e4375e0e2d64ed0d9c16cdf58}{00072}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_task_iterator_ade76af9e4375e0e2d64ed0d9c16cdf58}{getNIterationReported}}()\textcolor{keyword}{ const    }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_task_iterator_a99e92b16dc668e72e016cfe277dfaef1}{nIterationReported}}; \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00077}\mbox{\hyperlink{class_task_iterator_a4cb4a997e403d4dc40311170ba14860e}{00077}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_task_iterator_a4cb4a997e403d4dc40311170ba14860e}{getNIterationPartialSave}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_task_iterator_a2c686a338c5d68682c5637d720a64f16}{nIterationPartialSave}}; \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00079}00079 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00081}\mbox{\hyperlink{class_task_iterator_a963f87cb3a5a83c51a804b2fa3947101}{00081}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_task_iterator_a963f87cb3a5a83c51a804b2fa3947101}{useParticles}};}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00082}\mbox{\hyperlink{class_task_iterator_a66bd722335f6b5e2b3a7a34c6bb7b3ce}{00082}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_task_iterator_a66bd722335f6b5e2b3a7a34c6bb7b3ce}{doPartialReports}};}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00083}\mbox{\hyperlink{class_task_iterator_a198e5d47ab63b828a58d3f1f21ae4cf5}{00083}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_task_iterator_a198e5d47ab63b828a58d3f1f21ae4cf5}{doPartialSaves}};}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00084}\mbox{\hyperlink{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}{00084}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}{doSubsampleAnalysis}};}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00085}\mbox{\hyperlink{class_task_iterator_a4deb3aa252eb940c528dcfd1f62a8025}{00085}}   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_task_iterator_a4deb3aa252eb940c528dcfd1f62a8025}{nIterationRequested}};}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00086}\mbox{\hyperlink{class_task_iterator_a99e92b16dc668e72e016cfe277dfaef1}{00086}}   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_task_iterator_a99e92b16dc668e72e016cfe277dfaef1}{nIterationReported}};}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00087}\mbox{\hyperlink{class_task_iterator_a2c686a338c5d68682c5637d720a64f16}{00087}}   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_task_iterator_a2c686a338c5d68682c5637d720a64f16}{nIterationPartialSave}};}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00089}00089   ClassDef(\mbox{\hyperlink{class_task_iterator}{TaskIterator}},0)}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00090}00090 \};}
 \DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00091}00091 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00095}\mbox{\hyperlink{class_task_iterator_a04cfb8e94252bc39bcf333199a389093}{00095}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_task_iterator_a04cfb8e94252bc39bcf333199a389093}{getNEventReported}}()\textcolor{keyword}{ const    }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_task_iterator_ac1c0deb14b49d1a377d3077dcdfaf373}{nEventReported}}; \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00096}00096 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00100}\mbox{\hyperlink{class_task_iterator_a5076574d40b9ca97cdd65ddfb7e928a9}{00100}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_task_iterator_a5076574d40b9ca97cdd65ddfb7e928a9}{getNEventPartialSave}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_task_iterator_accd49cdab9517cdc6a49ae3549dfbad9}{nEventPartialSave}}; \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00101}00101 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00102}\mbox{\hyperlink{class_task_iterator_ac453cf8fde54e25a5b10fe36de517af7}{00102}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_task_iterator_ac453cf8fde54e25a5b10fe36de517af7}{getPartialSave}}()\textcolor{keyword}{ const       }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_task_iterator_a1a9126109ce78d7f4cf1b61b7c8e6879}{doPartialSave}}; \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00103}\mbox{\hyperlink{class_task_iterator_aa357cbf72180fc27abc96d36c2b97062}{00103}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_task_iterator_aa357cbf72180fc27abc96d36c2b97062}{getSubsampleAnalysis}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}{doSubsampleAnalysis}}; \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00104}00104 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00105}00105 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00106}00106 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00107}\mbox{\hyperlink{class_task_iterator_a275b100f5bda69b0ce877d31e15671eb}{00107}}   \mbox{\hyperlink{class_timer}{Timer}} \mbox{\hyperlink{class_task_iterator_a275b100f5bda69b0ce877d31e15671eb}{timer}};}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00108}\mbox{\hyperlink{class_task_iterator_afee9c319d9131ca3b60f3ae3dd1fae27}{00108}}   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_task_iterator_afee9c319d9131ca3b60f3ae3dd1fae27}{nEventRequested}};}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00109}\mbox{\hyperlink{class_task_iterator_ac1c0deb14b49d1a377d3077dcdfaf373}{00109}}   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_task_iterator_ac1c0deb14b49d1a377d3077dcdfaf373}{nEventReported}};}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00110}\mbox{\hyperlink{class_task_iterator_accd49cdab9517cdc6a49ae3549dfbad9}{00110}}   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_task_iterator_accd49cdab9517cdc6a49ae3549dfbad9}{nEventPartialSave}};}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00111}\mbox{\hyperlink{class_task_iterator_ab2f92c9c93fe32548594ec632561b0c5}{00111}}   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_task_iterator_ab2f92c9c93fe32548594ec632561b0c5}{nEventProcessed}};}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00112}00112 \textcolor{comment}{//  int  nTotalGridJob;}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00113}00113 \textcolor{comment}{//  int  n}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00114}\mbox{\hyperlink{class_task_iterator_ad557dffcb312b3cd5226d96a75d7eca8}{00114}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_task_iterator_ad557dffcb312b3cd5226d96a75d7eca8}{gridJob}};}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00115}\mbox{\hyperlink{class_task_iterator_a86643668216a07f2d28e223bf95cd0a9}{00115}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_task_iterator_a86643668216a07f2d28e223bf95cd0a9}{processEvents}};}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00116}\mbox{\hyperlink{class_task_iterator_acbebd02db599cc93e5077c8b8a6d0890}{00116}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_task_iterator_acbebd02db599cc93e5077c8b8a6d0890}{createDerivedHistograms}};}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00117}\mbox{\hyperlink{class_task_iterator_a1a9126109ce78d7f4cf1b61b7c8e6879}{00117}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_task_iterator_a1a9126109ce78d7f4cf1b61b7c8e6879}{doPartialSave}};}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00118}\mbox{\hyperlink{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}{00118}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}{doSubsampleAnalysis}};}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00119}00119 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00120}00120   ClassDef(\mbox{\hyperlink{class_task_iterator}{TaskIterator}},0)}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00121}00121 \};}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00122}00122 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00123}00123 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_TaskIterator */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8hpp_source_l00092}00092 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_TaskIterator */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -16,7 +16,7 @@ FileTaskIterator::FileTaskIterator(const TString & _name,
                                    const Configuration & _configuration,
                                    MessageLogger::LogLevel _reportLevel)
 :
-Task(_name,_configuration,_reportLevel),
+TaskIterator(_name,_configuration,_reportLevel),
 selectedFileNames(),
 appendedString("_Derived")
 {
@@ -26,24 +26,12 @@ appendedString("_Derived")
   setConfiguration(_configuration);
 }
 
-//FileTaskIterator::FileTaskIterator(vector<TString> _selectedFileNames, const TString _appendedString)
-//:
-//Task(),
-//selectedFileNames(_selectedFileNames),
-//appendedString(_appendedString)
-//{
-//  setClassName("FileTaskIterator");
-//  setInstanceName("FileTaskIterator");
-//  setDefaultConfiguration();
-//}
-
 void FileTaskIterator::setDefaultConfiguration()
 {
   if (reportStart("FileTaskIterator",getName(),"setDefaultConfiguration()"))
     {
     }
   configuration.setName("FileTaskIterator Configuration");
-  configuration.setParameter("useParticles",false);
   configuration.addParameter("appendedString",TString("_Derived") );
 
   if (reportDebug("FileTaskIterator",getName(),"setDefaultConfiguration()"))
@@ -55,10 +43,14 @@ void FileTaskIterator::setDefaultConfiguration()
 
 
 
-void FileTaskIterator::run()
+void FileTaskIterator::execute()
 {
+  
+  if (reportStart(__FUNCTION__))
+    ;
   timer.start();
-  TString fct = "run()";
+  incrementTaskExecuted();
+  TString fct = "execute()";
   unsigned int nSelectedFiles = selectedFileNames.size();
 
   if (nSelectedFiles==0)
@@ -71,17 +63,17 @@ void FileTaskIterator::run()
   nSelectedFiles = selectedFileNames.size();
   if (nSelectedFiles<1)
     {
-    if (reportWarning(fct))
+    if (reportWarning(__FUNCTION__))
       {
       cout << "Attempting to execute file iterator with no selected files." << endl;
       cout << "====> Check your code! " <<  endl;
       }
     return;
     }
-  if (reportInfo(fct))
+  if (reportInfo(__FUNCTION__))
     {
     cout << "Running with ..." << endl;
-    cout << "            nTasks: " << getNSubtasks() << endl;
+    cout << "            nTasks: " << getNSubTasks() << endl;
     cout << "nselectedFileNames: " << nSelectedFiles << endl << endl;
     }
   postTaskOk();
@@ -89,15 +81,15 @@ void FileTaskIterator::run()
   currentFileIndex = 0;
   while (currentFileIndex<nSelectedFiles)
     {
-    if (reportDebug(fct))
+    if (reportDebug(__FUNCTION__))
       {
       cout << "Processing file index:" << currentFileIndex << endl;
       cout << "                named:" << selectedFileNames[currentFileIndex] << endl;
       }
-    initializeTasks();
+    initializeSubTasks();
     if (!isTaskOk())
       {
-      if (reportWarning(fct))
+      if (reportWarning(__FUNCTION__))
         {
         cout << "Initialization failed for file index:" << currentFileIndex << endl;
         cout << "                               named:" << selectedFileNames[currentFileIndex] << endl;
@@ -105,10 +97,10 @@ void FileTaskIterator::run()
         }
       return;
       }
-    executeTasks();
+    executeSubTasks();
     if (!isTaskOk())
       {
-      if (reportWarning(fct))
+      if (reportWarning(__FUNCTION__))
         {
         cout << "     Execution failed for file index:" << currentFileIndex << endl;
         cout << "                               named:" << selectedFileNames[currentFileIndex] << endl;
@@ -116,10 +108,10 @@ void FileTaskIterator::run()
         }
       return;
       }
-    finalizeTasks();
+    finalizeSubTasks();
     if (!isTaskOk())
       {
-      if (reportWarning(fct))
+      if (reportWarning(__FUNCTION__))
         {
         cout << "      Finalize failed for file index:" << currentFileIndex << endl;
         cout << "                               named:" << selectedFileNames[currentFileIndex] << endl;
@@ -127,10 +119,10 @@ void FileTaskIterator::run()
         }
       return;
       }
-    clearTasks();
+    clearSubTasks();
     if (!isTaskOk())
       {
-      if (reportWarning(fct))
+      if (reportWarning(__FUNCTION__))
         {
         cout << "      Finalize failed for file index:" << currentFileIndex << endl;
         cout << "                               named:" << selectedFileNames[currentFileIndex] << endl;
@@ -141,7 +133,7 @@ void FileTaskIterator::run()
     currentFileIndex++;
     }
   timer.stop();
-  if (reportInfo(fct))
+  if (reportInfo(__FUNCTION__))
     {
     cout << endl;
     cout << "  Completed with status : " << getTaskStatusName() << endl;
@@ -155,12 +147,12 @@ void FileTaskIterator::run()
 //!
 void FileTaskIterator::addFileNames(vector<TString> names)
 {
-  TString fct = "addFileNames(vector<TString> names)";
-  if (reportStart(fct))
-    { }
+  
+  if (reportStart(__FUNCTION__))
+    ;
   if (names.size()<1)
     {
-    if (reportWarning(fct))
+    if (reportWarning(__FUNCTION__))
       {
       cout << "Given vector<TString> names is empty." << endl;
       cout << "Check your code!!!!!" << endl << endl;
@@ -175,8 +167,8 @@ void FileTaskIterator::addFileNames(vector<TString> names)
       }
     selectedFileNames.push_back(names[k]);
     }
-  if (reportEnd(fct))
-    { }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 //!
@@ -184,12 +176,12 @@ void FileTaskIterator::addFileNames(vector<TString> names)
 //!
 void FileTaskIterator::addFileNames(unsigned int nNames, TString** names)
 {
-  TString fct = "addFileNames(unsigned int n, TString** names)";
-  if (reportStart(fct))
-    { }
+  
+  if (reportStart(__FUNCTION__))
+    ;
   if (nNames<1)
     {
-    if (reportWarning(fct))
+    if (reportWarning(__FUNCTION__))
       {
       cout << "Given number of names is null." << endl;
       cout << "Check your code!!!!!" << endl << endl;
@@ -197,8 +189,8 @@ void FileTaskIterator::addFileNames(unsigned int nNames, TString** names)
     return;
     }
   for (unsigned int k=0; k<nNames; k++)  selectedFileNames.push_back(*(names[k]));
-  if (reportEnd(fct))
-    { }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 //!
@@ -208,14 +200,19 @@ void FileTaskIterator::addFileNames(const TString pathName,
                                             vector<TString> includePatterns,
                                             vector<TString> excludePatterns)
 {
-  TString fct = "addFileNames(const TString pathName,vector<TString> includePatterns,vector<TString> excludePatterns)";
-  if (reportStart(fct))
-    { }
+  
+  if (reportStart(__FUNCTION__))
+    ;
   vector<TString> fileList = listFilesInDir(pathName,".root");
   unsigned int nNames = fileList.size();
-  cout << "      nNames:" << nNames << endl;
-  cout << "   nIncludes:" << includePatterns.size() << endl;
-  cout << "   nExcludes:" << excludePatterns.size() << endl;
+  if (reportDebug(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "      nNames:" << nNames << endl;
+    cout << "   nIncludes:" << includePatterns.size() << endl;
+    cout << "   nExcludes:" << excludePatterns.size() << endl;
+    }
+
   for (unsigned int k=0; k<fileList.size(); k++)
     {
     TString name = fileList[k];
@@ -248,47 +245,39 @@ void FileTaskIterator::addFileNames(const TString pathName,
           name.Remove(dot,len-dot);
           }
       TString check = pathName+name;
-      cout << " CHECK:::::: " << check << endl;
+      //cout << " CHECK:::::: " << check << endl;
         selectedFileNames.push_back(pathName+name);
       }
     }
-  if (reportEnd(fct))
-    { }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
-void FileTaskIterator::initializeTasks()
+void FileTaskIterator::initializeSubTasks()
 {
-  if (reportStart("Task",getName(),"initializeTasks()"))
-    { }
-  if (!isTaskOk()) return;
-  //initialize();
-  unsigned int nSubtasks = subtasks.size();
+  
+  if (reportStart(__FUNCTION__))
+    ;
+  unsigned int nSubtasks = getNSubTasks();
   if (nSubtasks>0)
     {
-    if (reportDebug("Task",getName(),"initializeTasks()"))
-      {
-      cout << "Initializing " << nSubtasks << " tasks." << endl;
-      }
+    if (reportDebug(__FUNCTION__)) cout << "Initializing " << nSubtasks << " tasks." << endl;
+
     for (unsigned int  iTask=0; iTask<nSubtasks; iTask++)
       {
+      Task * subTask = getSubTaskAt(iTask);
       if (!isTaskOk()) break;
-      if (reportDebug("Task",getName(),"initializeTasks()"))
-        {
-        cout << "Initializing task:" << subtasks[iTask]->getName() << endl;
-        }
+      if (reportDebug(__FUNCTION__))  cout << "Initializing task:" << subTask->getName() << endl;
       TString name = removeRootExtension(selectedFileNames[currentFileIndex]);
-      subtasks[iTask]->setHistogramFileNames(name,name+appendedString);
-      subtasks[iTask]->initializeTasks();
+      subTask->setHistogramFileNames(name,name+appendedString);
+      subTask->initialize();
       }
     }
   else
     {
-    if (reportDebug("Task",getName(),"initializeTasks()"))
-      {
-      cout << "No subtask to initialize. " <<   endl;
-      }
+    if (reportDebug(__FUNCTION__)) cout << "No subtask to initialize. " <<   endl;
     }
-  if (reportEnd("Task",getName(),"initializeTasks()"))
-    { }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 

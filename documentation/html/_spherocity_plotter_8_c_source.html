@@ -122,12 +122,12 @@ $(document).ready(function(){initNavTree('_spherocity_plotter_8_c_source.html','
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>          <span class="keyword">const</span> Char_t* outFileName,</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>          <span class="keyword">const</span> Int_t maxEvents=0000000){</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  TTree* tree = 0;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  TTree* <a class="code hl_class" href="classtree.html">tree</a> = 0;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="keywordflow">if</span>(strstr(inFileName, <span class="stringliteral">&quot;.dat&quot;</span>)) {</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    tree = ReadChainFromFile(inFileName, <span class="stringliteral">&quot;PIDTree&quot;</span>, 0);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    tree-&gt;SetBranchStatus(<span class="stringliteral">&quot;AnalysisV0Track*&quot;</span> , 0);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_class" href="classtree.html">tree</a> = ReadChainFromFile(inFileName, <span class="stringliteral">&quot;PIDTree&quot;</span>, 0);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_class" href="classtree.html">tree</a>-&gt;SetBranchStatus(<span class="stringliteral">&quot;AnalysisV0Track*&quot;</span> , 0);</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    TFile* inFile = TFile::Open(inFileName);</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">if</span>(!inFile)</div>
@@ -139,8 +139,8 @@ $(document).ready(function(){initNavTree('_spherocity_plotter_8_c_source.html','
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  TClonesArray* trackArray = 0;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  TClonesArray* GentrackArray = 0;</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  AliAnalysisPIDCascadeEvent* <span class="keyword">event</span> = 0;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  tree-&gt;SetBranchAddress(<span class="stringliteral">&quot;AnalysisEvent&quot;</span>, &amp;event);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  tree-&gt;SetBranchAddress(<span class="stringliteral">&quot;AnalysisTrack&quot;</span>, &amp;trackArray);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  <a class="code hl_class" href="classtree.html">tree</a>-&gt;SetBranchAddress(<span class="stringliteral">&quot;AnalysisEvent&quot;</span>, &amp;event);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <a class="code hl_class" href="classtree.html">tree</a>-&gt;SetBranchAddress(<span class="stringliteral">&quot;AnalysisTrack&quot;</span>, &amp;trackArray);</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  TFile* file = <span class="keyword">new</span> TFile(outFileName, <span class="stringliteral">&quot;RECREATE&quot;</span>);</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  file-&gt;cd();</div>
@@ -366,7 +366,7 @@ $(document).ready(function(){initNavTree('_spherocity_plotter_8_c_source.html','
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>  <span class="keyword">const</span> Int_t nV0signals = 64;</div>
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>  </div>
 <div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>  <span class="comment">//Event Loop</span></div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="comment"></span>  Int_t nEvents = tree-&gt;GetEntries();</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="comment"></span>  Int_t nEvents = <a class="code hl_class" href="classtree.html">tree</a>-&gt;GetEntries();</div>
 <div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>  cout &lt;&lt; <span class="stringliteral">&quot;Number of events: &quot;</span> &lt;&lt; nEvents &lt;&lt; endl;</div>
 <div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> <span class="keywordflow">if</span>(maxEvents&gt;0 &amp;&amp; maxEvents &lt; nEvents) {   </div>
 <div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    nEvents = maxEvents;</div>
@@ -377,7 +377,7 @@ $(document).ready(function(){initNavTree('_spherocity_plotter_8_c_source.html','
 <div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
 <div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>    Int_t multflag = 0;    </div>
 <div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span> </div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    tree-&gt;GetEntry(n);</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    <a class="code hl_class" href="classtree.html">tree</a>-&gt;<a class="code hl_function" href="classtree.html#ad43260e64412eb40327b9f356de6f089">GetEntry</a>(n);</div>
 <div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    <span class="keywordflow">if</span>((n+1)%100000==0)</div>
 <div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>      {</div>
 <div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    TTimeStamp* time = <span class="keyword">new</span> TTimeStamp();</div>
@@ -562,6 +562,8 @@ $(document).ready(function(){initNavTree('_spherocity_plotter_8_c_source.html','
 <div class="line"><a id="l00481" name="l00481"></a><span class="lineno">  481</span>}</div>
 <div class="ttc" id="a_spherocity_plotter_8_c_html_a1cbb440ff3b83ec70ffd69d56909ed5c"><div class="ttname"><a href="_spherocity_plotter_8_c.html#a1cbb440ff3b83ec70ffd69d56909ed5c">SpherPlotter</a></div><div class="ttdeci">void SpherPlotter(const Char_t *inFileName, const Char_t *outFileName, const Int_t maxEvents=0000000)</div><div class="ttdef"><b>Definition:</b> <a href="_spherocity_plotter_8_c_source.html#l00033">SpherocityPlotter.C:33</a></div></div>
 <div class="ttc" id="a_spherocity_plotter_8_c_html_a3d06f98a0ba894044adb314161a463f8"><div class="ttname"><a href="_spherocity_plotter_8_c.html#a3d06f98a0ba894044adb314161a463f8">GetDphi</a></div><div class="ttdeci">Double_t GetDphi(Double_t phi)</div></div>
+<div class="ttc" id="aclasstree_html"><div class="ttname"><a href="classtree.html">tree</a></div><div class="ttdef"><b>Definition:</b> <a href="tree_8h_source.html#l00016">tree.h:16</a></div></div>
+<div class="ttc" id="aclasstree_html_ad43260e64412eb40327b9f356de6f089"><div class="ttname"><a href="classtree.html#ad43260e64412eb40327b9f356de6f089">tree::GetEntry</a></div><div class="ttdeci">virtual Int_t GetEntry(Long64_t entry)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

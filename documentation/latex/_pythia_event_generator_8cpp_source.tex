@@ -1,79 +1,85 @@
 \hypertarget{_pythia_event_generator_8cpp_source}{}\doxysection{Pythia\+Event\+Generator.\+cpp}
-\label{_pythia_event_generator_8cpp_source}\index{WacPythia/PythiaEventGenerator.cpp@{WacPythia/PythiaEventGenerator.cpp}}
+\label{_pythia_event_generator_8cpp_source}\index{CAPPythia/PythiaEventGenerator.cpp@{CAPPythia/PythiaEventGenerator.cpp}}
 \mbox{\hyperlink{_pythia_event_generator_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00007}00007 \textcolor{comment}{ *}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_pythia_event_generator_8hpp}{PythiaEventGenerator.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00017}00017 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00018}\mbox{\hyperlink{_pythia_event_generator_8cpp_a99d2d38d1300d710612ae258b57aeab1}{00018}} \mbox{\hyperlink{_pythia_event_generator_8cpp_a99d2d38d1300d710612ae258b57aeab1}{ClassImp}}(\mbox{\hyperlink{class_pythia_event_generator}{PythiaEventGenerator}});}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00019}00019 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00020}\mbox{\hyperlink{class_pythia_event_generator_a7bc58042a1700b3fabe6477cdf73d661}{00020}} \mbox{\hyperlink{class_pythia_event_generator_a7bc58042a1700b3fabe6477cdf73d661}{PythiaEventGenerator::PythiaEventGenerator}}(\textcolor{keyword}{const} TString \&         \_name,}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00021}00021                                            \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \&   \_configuration,}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00022}00022                                            vector<EventFilter*>\&   \_eventFilters,}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00023}00023                                            vector<ParticleFilter*>\&\_particleFilters,}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00024}00024                                            \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                \_selectedLevel)}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00025}00025 :}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00026}00026 \mbox{\hyperlink{class_nucleon_nucleon_collision_generator}{NucleonNucleonCollisionGenerator}}(\_name, \_configuration, \_eventFilters, \_particleFilters, \_selectedLevel),}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00027}00027 pythia8(nullptr),}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00028}00028 nMaxClonesArray(10000),}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00029}00029 particles(nullptr),}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00030}00030 outputFile(nullptr),}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00031}00031 outputEvent(nullptr),}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00032}00032 outputTree(nullptr),}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00033}00033 standaloneMode(true)}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00034}00034 \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00035}00035   \mbox{\hyperlink{class_pythia_event_generator_ab3ffbd5da16039ca5793f75483772900}{setDefaultConfiguration}}();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00036}00036   \mbox{\hyperlink{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}{setConfiguration}}(\_configuration);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00037}00037 \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_pythia_event_generator_8hpp}{PythiaEventGenerator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00015}\mbox{\hyperlink{_pythia_event_generator_8cpp_a99d2d38d1300d710612ae258b57aeab1}{00015}} \mbox{\hyperlink{_pythia_event_generator_8cpp_a99d2d38d1300d710612ae258b57aeab1}{ClassImp}}(\mbox{\hyperlink{class_pythia_event_generator}{PythiaEventGenerator}});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00017}\mbox{\hyperlink{class_pythia_event_generator_a7bc58042a1700b3fabe6477cdf73d661}{00017}} \mbox{\hyperlink{class_pythia_event_generator_a7bc58042a1700b3fabe6477cdf73d661}{PythiaEventGenerator::PythiaEventGenerator}}(\textcolor{keyword}{const} TString \&         \_name,}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00018}00018                                            \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \&   \_configuration,}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00019}00019                                            vector<EventFilter*>\&   \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00020}00020                                            vector<ParticleFilter*>\&\_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00021}00021                                            \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                \_selectedLevel)}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00022}00022 :}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00023}00023 \mbox{\hyperlink{class_task}{Task}}(\_name, \_configuration, \_eventFilters, \_particleFilters, \_selectedLevel),}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00024}00024 pythia8(nullptr),}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00025}00025 nMaxClonesArray(10000),}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00026}00026 particles(nullptr),}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00027}00027 outputFile(nullptr),}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00028}00028 outputEvent(nullptr),}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00029}00029 outputTree(nullptr),}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00030}00030 standaloneMode(true)}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00031}00031 \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00032}00032   \mbox{\hyperlink{class_message_logger_a10182fcb56fb5fda0f998c89c4bbe4fb}{appendClassName}}(\textcolor{stringliteral}{"{}PythiaEventGenerator"{}});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00033}00033   \mbox{\hyperlink{class_message_logger_a62ee7a375e1aec16bfb767aec9fba906}{setInstanceName}}(\_name);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00034}00034   \mbox{\hyperlink{class_pythia_event_generator_ab3ffbd5da16039ca5793f75483772900}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00035}00035   \mbox{\hyperlink{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}{setConfiguration}}(\_configuration);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00036}00036 \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00037}00037 }
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00038}00038 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00039}00039 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00040}\mbox{\hyperlink{class_pythia_event_generator_ab3ffbd5da16039ca5793f75483772900}{00040}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_pythia_event_generator_ab3ffbd5da16039ca5793f75483772900}{PythiaEventGenerator::setDefaultConfiguration}}()}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00041}00041 \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00042}00042   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}PythiaEventGenerator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00043}00043     \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00044}00044     \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00045}00045   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8420b979e7d98bf6562ec2f6cc28d0d8}{setName}}(\textcolor{stringliteral}{"{}PythiaEventGenerator Configuration"{}});}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00046}00046   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}useParticles"{}},     \textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00047}00047   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}useEventStream0"{}},  \textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00048}00048   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}clonesArraySize"{}}, 10000);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00049}00049   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}removePhotons"{}},    \textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00050}00050   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}standaloneMode"{}},   \textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00051}00051   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ppOnly"{}},           \textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00052}00052   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}beam"{}},     2212);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00053}00053   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}target"{}},   2212);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00054}00054   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}energy"{}}, 2726.0);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00055}00055   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nMaxClonesArray"{}}, 10000);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00056}00056   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}dataOutputPath"{}}, \textcolor{stringliteral}{"{}./"{}});}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00057}00057   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}}, \textcolor{stringliteral}{"{}./"{}});}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00058}00058   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputFileName"{}},\textcolor{stringliteral}{"{}HistoOutputFile"{}});}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00059}00059   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}dataConversionToWac"{}},\textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00060}00060   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<30; k++)}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00061}00061     \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00062}00062     TString key = \textcolor{stringliteral}{"{}option"{}}; key += k;}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00063}00063     TString value = \textcolor{stringliteral}{"{}none"{}};}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00064}00064     \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(key, value);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00065}00065     \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00066}00066   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}PythiaEventGenerator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00067}00067     \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00068}00068     \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(cout);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00069}00069     \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00070}00070 \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00071}00071 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00076}\mbox{\hyperlink{class_pythia_event_generator_a550f4ec5d2289a8007af613ac1102faa}{00076}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_pythia_event_generator_a550f4ec5d2289a8007af613ac1102faa}{PythiaEventGenerator::initialize}}()}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00077}00077 \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00039}\mbox{\hyperlink{class_pythia_event_generator_ab3ffbd5da16039ca5793f75483772900}{00039}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_pythia_event_generator_ab3ffbd5da16039ca5793f75483772900}{PythiaEventGenerator::setDefaultConfiguration}}()}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00040}00040 \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00041}00041   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00042}00042     ;}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00043}00043   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8420b979e7d98bf6562ec2f6cc28d0d8}{setName}}(\textcolor{stringliteral}{"{}PythiaEventGenerator Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00044}00044   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}useParticles"{}},     \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00045}00045   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}useEventStream0"{}},  \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00046}00046   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}clonesArraySize"{}}, 10000);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00047}00047   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}removePhotons"{}},    \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00048}00048   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}standaloneMode"{}},   \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00049}00049   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}ppOnly"{}},           \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00050}00050   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}beam"{}},     2212);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00051}00051   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}target"{}},   2212);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00052}00052   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}energy"{}}, 2726.0);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00053}00053   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nMaxClonesArray"{}}, 10000);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00054}00054   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}dataOutputPath"{}}, \textcolor{stringliteral}{"{}./"{}});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00055}00055   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}}, \textcolor{stringliteral}{"{}./"{}});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00056}00056   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}histoOutputFileName"{}},\textcolor{stringliteral}{"{}HistoOutputFile"{}});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00057}00057   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}dataConversionToWac"{}},\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00058}00058   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<30; k++)}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00059}00059     \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00060}00060     TString key = \textcolor{stringliteral}{"{}option"{}}; key += k;}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00061}00061     TString value = \textcolor{stringliteral}{"{}none"{}};}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00062}00062     \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(key, value);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00063}00063     \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00064}00064   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00065}00065     \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00066}00066     \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(cout);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00067}00067     \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00068}00068 \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00074}\mbox{\hyperlink{class_pythia_event_generator_a550f4ec5d2289a8007af613ac1102faa}{00074}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_pythia_event_generator_a550f4ec5d2289a8007af613ac1102faa}{PythiaEventGenerator::initialize}}()}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00075}00075 \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00076}00076   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00077}00077     ;}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00078}00078   \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{Task::initialize}}();}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00079}00079   \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \& pc      = \mbox{\hyperlink{class_task_a1955cc87bd4885d8ca19435b3609443f}{getConfiguration}}();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00080}00080   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nEventFilters    = \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}.size();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00081}00081   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nParticleFilters = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}.size();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00082}00082   \mbox{\hyperlink{class_task_aa17c47f50a2c3106a874e64eac7cc30e}{nFilteredEventsAccepted}}.assign(nEventFilters,0.0);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00080}00080   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_task_a4945c81f84ef89b7cbaada8db879c58e}{nEventFilters}}    = \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00081}00081   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_task_a17ec6971289d4bac8e5bab5962683da2}{nParticleFilters}} = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}.size();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00082}00082   \mbox{\hyperlink{class_task_a353402df1e84aa6c4b16350cc3fc9a50}{initializeNEventsAccepted}}();}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00083}00083   \mbox{\hyperlink{class_pythia_event_generator_a2f891157f93c204d250e6b5597b7d3bc}{pythia8}} = \textcolor{keyword}{new} TPythia8();}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00084}00084   }
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00085}00085   \mbox{\hyperlink{class_pythia_event_generator_aea3643db84784a16a1a3a2848b2a88b0}{standaloneMode}} = pc.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}(\textcolor{stringliteral}{"{}standaloneMode"{}});}
@@ -99,17 +105,17 @@
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00105}00105   \mbox{\hyperlink{class_pythia_event_generator_a2f891157f93c204d250e6b5597b7d3bc}{pythia8}}-\/>Initialize(pc.\mbox{\hyperlink{class_configuration_ae0804e2d00ec6f41e98d908f37f0a50a}{getValueInt}}(\textcolor{stringliteral}{"{}beam"{}}),}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00106}00106                       pc.\mbox{\hyperlink{class_configuration_ae0804e2d00ec6f41e98d908f37f0a50a}{getValueInt}}(\textcolor{stringliteral}{"{}target"{}}),}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00107}00107                       pc.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(\textcolor{stringliteral}{"{}energy"{}}));}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00108}00108   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}PythiaEventGenerator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00108}00108   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_))}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00109}00109     \{}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00110}00110     \mbox{\hyperlink{class_pythia_event_generator_a2f891157f93c204d250e6b5597b7d3bc}{pythia8}}-\/>ListAll();}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00111}00111     \}}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00112}00112 }
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00113}00113   \textcolor{keywordflow}{if} (  \mbox{\hyperlink{class_pythia_event_generator_aa8b42ecbf22ee994153078c04ea9658c}{dataOutputUsed}} )}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00114}00114     \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00115}00115     TString \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} = pc.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}(\textcolor{stringliteral}{"{}dataOutputPath"{}});}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00116}00116     \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} += \textcolor{stringliteral}{"{}/"{}};}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00117}00117     \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} += pc.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}(\textcolor{stringliteral}{"{}dataOutputFileName"{}});}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00118}00118     \mbox{\hyperlink{class_pythia_event_generator_a57357218d4edf19ecbc430c2aeda6893}{outputFile}} = TFile::Open(\mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}},\textcolor{stringliteral}{"{}recreate"{}});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00115}00115     TString outputFileName = pc.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}(\textcolor{stringliteral}{"{}dataOutputPath"{}});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00116}00116     outputFileName += \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00117}00117     outputFileName += pc.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}(\textcolor{stringliteral}{"{}dataOutputFileName"{}});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00118}00118     \mbox{\hyperlink{class_pythia_event_generator_a57357218d4edf19ecbc430c2aeda6893}{outputFile}} = TFile::Open(outputFileName,\textcolor{stringliteral}{"{}recreate"{}});}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00119}00119     \textcolor{comment}{//outputEvent = \&pythia8-\/>Pythia8()-\/>event;}}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00120}00120     \mbox{\hyperlink{class_pythia_event_generator_aec3d828a505842c24d2214ef16fbcc09}{outputTree}}  = \textcolor{keyword}{new} TTree(pc.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}(\textcolor{stringliteral}{"{}dataOutputTreeName"{}}),\textcolor{stringliteral}{"{}PythiaEventTree"{}});}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00121}00121     \mbox{\hyperlink{class_pythia_event_generator_a831fc0b8662c4ed13ef58d51acdd5f74}{particles}} = (TClonesArray*) \mbox{\hyperlink{class_pythia_event_generator_a2f891157f93c204d250e6b5597b7d3bc}{pythia8}}-\/>GetListOfParticles();}
@@ -121,243 +127,247 @@
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00127}00127     \mbox{\hyperlink{class_pythia_event_generator_ad716fb98f1b1f5598eca05580c9a30ca}{nMaxClonesArray}} = pc.\mbox{\hyperlink{class_configuration_ae0804e2d00ec6f41e98d908f37f0a50a}{getValueInt}}(\textcolor{stringliteral}{"{}nMaxClonesArray"{}});}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00128}00128     \mbox{\hyperlink{class_pythia_event_generator_a831fc0b8662c4ed13ef58d51acdd5f74}{particles}} = \textcolor{keyword}{new} TClonesArray(\textcolor{stringliteral}{"{}TParticle"{}}, \mbox{\hyperlink{class_pythia_event_generator_ad716fb98f1b1f5598eca05580c9a30ca}{nMaxClonesArray}});}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00129}00129     \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00130}00130   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}PythiaEventGenerator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00130}00130   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\_\_FUNCTION\_\_))}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00131}00131     ;}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00132}00132 \}}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00133}00133 }
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00134}\mbox{\hyperlink{class_pythia_event_generator_a1ae36a189f187b202eb9c70a133a1be6}{00134}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_pythia_event_generator_a1ae36a189f187b202eb9c70a133a1be6}{PythiaEventGenerator::execute}}()}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00135}00135 \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00136}00136   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}PythiaEventGenerator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}}))}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00137}00137     ;}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00138}00138   \mbox{\hyperlink{class_task_a724ff83138229238fdc58566a0cd350f}{incrementEventProcessed}}();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00139}00139   \mbox{\hyperlink{class_event}{Event}} \& \textcolor{keyword}{event} = *\mbox{\hyperlink{class_task_a388f8e261c0d610bba89e9269309d11e}{getEventStream}}(0);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00140}00140   \mbox{\hyperlink{class_event_properties}{EventProperties}} \& ep = * \textcolor{keyword}{event}.getEventProperties();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00141}00141 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00142}00142   \mbox{\hyperlink{class_particle}{Particle}} * interaction;}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00143}00143   \mbox{\hyperlink{class_task_a829739fde1f6ee30d98de2163261fec2}{resetParticleCounters}}();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00144}00144   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_pythia_event_generator_aea3643db84784a16a1a3a2848b2a88b0}{standaloneMode}})}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00145}00145     \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00146}00146     \textcolor{comment}{// In this mode, we generate one PYTHIA (pp) collision per event. One interaction vertex is}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00147}00147     \textcolor{comment}{// inserted in the event stream and PYTHIA is called to carry out the particle generation.}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00148}00148     \textcolor{comment}{// factory and event resets done by the task iterator to avoid repetition.}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00149}00149     \textcolor{keyword}{event}.reset();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00150}00150     \mbox{\hyperlink{class_task_aca6dc827b61b440bf610bba393beb673}{particleFactory}}-\/>\mbox{\hyperlink{class_factory_a44b667d0976c27e6637ea63f72ba5cfc}{reset}}();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00151}00151     \mbox{\hyperlink{class_task_a829739fde1f6ee30d98de2163261fec2}{resetParticleCounters}}();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00152}00152     interaction = \mbox{\hyperlink{class_task_aca6dc827b61b440bf610bba393beb673}{particleFactory}}-\/>\mbox{\hyperlink{class_factory_a6f646ad85a0e516aa9a93f6f5db1d8d3}{getNextObject}}();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00153}00153     interaction-\/>\mbox{\hyperlink{class_particle_a0df75e7ca5475b07c67746d7a7f41e22}{reset}}();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00154}00154     interaction-\/>\mbox{\hyperlink{class_particle_aed911356f1efb3cd78986e1d387dd784}{setType}}( \mbox{\hyperlink{class_particle_type_a8ad843478cad8af8fb76733f925c2d15}{ParticleType::getInteractionType}}());}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00155}00155     interaction-\/>\mbox{\hyperlink{class_particle_aebc38b2384fe5d206762a373e242e1d9}{setXYZT}}(0.0, 0.0, 0.0, 0.0);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00156}00156     \textcolor{keyword}{event}.add(interaction);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00157}00157     \textcolor{keyword}{event}.setNucleusA(1.0,1.0);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00158}00158     \textcolor{keyword}{event}.setNucleusB(1.0,1.0);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00159}00159     \mbox{\hyperlink{class_pythia_event_generator_ad1cacc2d3f70494ec5f261b0675798f9}{generate}}(interaction);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00160}00160     ep.\mbox{\hyperlink{class_event_properties_acb8cd3f24cae79f1668318c04431ebfc}{zProjectile}}       = 1;     \textcolor{comment}{// atomic number projectile}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00161}00161     ep.\mbox{\hyperlink{class_event_properties_a63fb4bae6c7ec751554c7b4fca432fc8}{aProjectile}}       = 1;     \textcolor{comment}{// mass number projectile}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00162}00162     ep.\mbox{\hyperlink{class_event_properties_ac0923f4648e41371b4de055cf000156e}{nPartProjectile}}   = 1;     \textcolor{comment}{// number of participants  projectile}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00163}00163     ep.\mbox{\hyperlink{class_event_properties_a65a883b33d72a719f4b85db17e77034a}{zTarget}}           = 1;     \textcolor{comment}{// atomic number target}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00164}00164     ep.\mbox{\hyperlink{class_event_properties_acfaccab50080ae5be69e3694cf7e9a0e}{aTarget}}           = 1;     \textcolor{comment}{// mass number target}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00165}00165     ep.\mbox{\hyperlink{class_event_properties_a73a51e7e7b382deffd360dc1729e8cb5}{nPartTarget}}       = 1;     \textcolor{comment}{// number of participants  target}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00166}00166     ep.\mbox{\hyperlink{class_event_properties_a4389e68d942d7496c2a00c7b36a8e61f}{nPartTotal}}        = 2;     \textcolor{comment}{// total number of participants}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00167}00167     ep.\mbox{\hyperlink{class_event_properties_ac5352eb0963a382b518429323aef460f}{nBinaryTotal}}      = 1;     \textcolor{comment}{// total number of binary collisions}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00168}00168     ep.\mbox{\hyperlink{class_event_properties_a359effe83f1f43f0bf7c70cbe4df929b}{impactParameter}}   = -\/99999; \textcolor{comment}{// nucleus-\/nucleus center distance in fm}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00169}00169     ep.\mbox{\hyperlink{class_event_properties_ac7188544f82547d529eb089ccbe27b75}{centrality}}        = -\/99999; \textcolor{comment}{// fraction cross section value}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00170}00170     ep.\mbox{\hyperlink{class_event_properties_afa30ebb98e5c6a1bb95472e98c6c8774}{multiplicity}}      = \mbox{\hyperlink{class_task_a83fa7c91dfca588df2b7bc387109ecf6}{getNParticlesAccepted}}(); \textcolor{comment}{// nominal multiplicity in the reference range}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00171}00171     ep.\mbox{\hyperlink{class_event_properties_a548c3817af55f28f02a086d37ea463e7}{particlesCounted}}  = \mbox{\hyperlink{class_task_aa38e094d55acb90493a5fe3e2a9caf36}{getNParticlesCounted}}();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00172}00172     ep.\mbox{\hyperlink{class_event_properties_a13034097a0913972c8183556b3fabf4e}{particlesAccepted}} = \mbox{\hyperlink{class_task_a83fa7c91dfca588df2b7bc387109ecf6}{getNParticlesAccepted}}();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00173}00173     \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00174}00174   \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00175}00175     \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00176}00176     \textcolor{comment}{// In this mode, we generate several PYTHIA collisions per event. Interaction vertices and their locations}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00177}00177     \textcolor{comment}{// are assumed to be already loaded in the event stream and we produce as many PYTHIA events as there}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00178}00178     \textcolor{comment}{// are nucleon-\/nucleon interactions in the stream. Objects nucleusA and nucleusB are assumed defined by}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00179}00179     \textcolor{comment}{// an earlier task and the structure EventProperties is assumed filled by that earlier task.He we only fill the number of}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00180}00180     \textcolor{comment}{// particle generated and accepted (in addition to storing the generated particles in the event)}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00181}00181 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00182}00182     \textcolor{comment}{// May skip this event if it does not satisfy the event cut.}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00183}00183     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}[0]-\/>accept(event)) \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00184}00184     \textcolor{keywordflow}{if} (event.getParticleCount() < 1)}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00185}00185       \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00186}00186       \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00187}00187       \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00188}00188     vector<Particle*> interactions = \textcolor{keyword}{event}.getNucleonNucleonInteractions();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00189}00189 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00190}00190     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} n = interactions.size();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00191}00191 \textcolor{comment}{//    if (reportWarning("{}PythiaEventGenerator"{},getName(),"{}execute()"{}))}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00192}00192 \textcolor{comment}{//      cout << "{}Size of interactions:"{} <<  n << endl;}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00193}00193     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} kInter=0; kInter<n; kInter++)}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00194}00194       \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00195}00195       \mbox{\hyperlink{class_pythia_event_generator_ad1cacc2d3f70494ec5f261b0675798f9}{generate}}(interactions[kInter]);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00196}00196       \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00197}00197     ep.\mbox{\hyperlink{class_event_properties_afa30ebb98e5c6a1bb95472e98c6c8774}{multiplicity}}      = \mbox{\hyperlink{class_task_a83fa7c91dfca588df2b7bc387109ecf6}{getNParticlesAccepted}}(); \textcolor{comment}{// nominal multiplicity in the reference range}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00198}00198     ep.\mbox{\hyperlink{class_event_properties_a548c3817af55f28f02a086d37ea463e7}{particlesCounted}}  = \mbox{\hyperlink{class_task_aa38e094d55acb90493a5fe3e2a9caf36}{getNParticlesCounted}}();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00199}00199     ep.\mbox{\hyperlink{class_event_properties_a13034097a0913972c8183556b3fabf4e}{particlesAccepted}} = \mbox{\hyperlink{class_task_a83fa7c91dfca588df2b7bc387109ecf6}{getNParticlesAccepted}}();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00200}00200     \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00201}00201   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}PythiaEventGenerator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}}))}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00202}00202     \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00203}00203     ep.\mbox{\hyperlink{class_event_properties_a56f9e838407cdd868cf4974ffe13d969}{printProperties}}(cout);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00204}00204     \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00205}00205 \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00206}00206 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00207}\mbox{\hyperlink{class_pythia_event_generator_ad1cacc2d3f70494ec5f261b0675798f9}{00207}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_pythia_event_generator_ad1cacc2d3f70494ec5f261b0675798f9}{PythiaEventGenerator::generate}}(\mbox{\hyperlink{class_particle}{Particle}} * parentInteraction)}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00208}00208 \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00209}00209   \mbox{\hyperlink{class_particle}{Particle}} * particle;}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00210}00210   \textcolor{keywordtype}{int} nparts   = 0;}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00211}00211   \textcolor{keywordtype}{double} zero  = 0.0;}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00212}00212 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00213}00213   \textcolor{keywordtype}{bool} seekingEvent = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00214}00214   \textcolor{keywordflow}{while} (seekingEvent)}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00215}00215     \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00216}00216     \mbox{\hyperlink{class_pythia_event_generator_a2f891157f93c204d250e6b5597b7d3bc}{pythia8}}-\/>GenerateEvent();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00217}00217     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) \mbox{\hyperlink{class_pythia_event_generator_a2f891157f93c204d250e6b5597b7d3bc}{pythia8}}-\/>EventListing();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00218}00218     \mbox{\hyperlink{class_pythia_event_generator_a2f891157f93c204d250e6b5597b7d3bc}{pythia8}}-\/>ImportParticles(\mbox{\hyperlink{class_pythia_event_generator_a831fc0b8662c4ed13ef58d51acdd5f74}{particles}},\textcolor{stringliteral}{"{}Final"{}});}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00219}00219     nparts = \mbox{\hyperlink{class_pythia_event_generator_a831fc0b8662c4ed13ef58d51acdd5f74}{particles}}-\/>GetEntriesFast();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00220}00220     \textcolor{keywordflow}{if} (nparts>2) seekingEvent = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00221}00221     \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00222}00222   \textcolor{keywordflow}{if} (nparts>\mbox{\hyperlink{class_pythia_event_generator_ad716fb98f1b1f5598eca05580c9a30ca}{nMaxClonesArray}})}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00223}00223     \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00224}00224     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}()) cout << \textcolor{stringliteral}{"{} ARRAY TOO SMALL np>nMaxClonesArray; nparts:"{}} << nparts << \textcolor{stringliteral}{"{} nMax:"{}} << \mbox{\hyperlink{class_pythia_event_generator_ad716fb98f1b1f5598eca05580c9a30ca}{nMaxClonesArray}} << endl;}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00225}00225     \mbox{\hyperlink{class_message_logger_a21de642806f1c039f39a087e1e910984}{postTaskFatal}}();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00226}00226     exit(1);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00227}00227     \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00228}00228   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_pythia_event_generator_aa8b42ecbf22ee994153078c04ea9658c}{dataOutputUsed}})}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00229}00229     \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00230}00230     \mbox{\hyperlink{class_pythia_event_generator_aec3d828a505842c24d2214ef16fbcc09}{outputTree}}-\/>Fill();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00231}00231     \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00232}00232   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_pythia_event_generator_ae4e4ef3057a1c1474009564722220bdb}{dataConversionToWac}})}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00233}00233     \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00234}00234     TLorentzVector sourcePosition = parentInteraction-\/>\mbox{\hyperlink{class_particle_a045fe2f72de18ce20ad6d4a860564bfe}{getPosition}}();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00235}00235     \textcolor{keywordtype}{double} sourceX = sourcePosition.X();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00236}00236     \textcolor{keywordtype}{double} sourceY = sourcePosition.Y();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00237}00237     \textcolor{keywordtype}{double} sourceZ = sourcePosition.Z();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00238}00238     \textcolor{keywordtype}{double} sourceT = sourcePosition.T();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00239}00239     \mbox{\hyperlink{class_particle_type}{ParticleType}} * type;}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00240}00240     \mbox{\hyperlink{class_event}{Event}} \& \textcolor{keyword}{event} = * \mbox{\hyperlink{class_task_a02048625ac29f05812d5229348d36f2e}{eventStreams}}[0];}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00241}00241     \mbox{\hyperlink{class_particle_filter}{ParticleFilter}} \& particleFilter = * \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}[0];}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00242}00242     \textcolor{comment}{// load particles from TClone storage and copy into event.}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00243}00243     \textcolor{comment}{//if (reportDebug()) cout << "{}PythiaEventGenerator::execute() starting copy loop into event..."{} << endl;}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00244}00244     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iParticle = 0; iParticle < nparts; iParticle++)}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00245}00245       \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00246}00246       TParticle \& part = * (TParticle*) \mbox{\hyperlink{class_pythia_event_generator_a831fc0b8662c4ed13ef58d51acdd5f74}{particles}}-\/>At(iParticle);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00247}00247       \textcolor{keywordtype}{int} ist = part.GetStatusCode();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00248}00248       \textcolor{keywordflow}{if} (ist <= 0) \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00249}00249       \textcolor{keywordtype}{int} pdg = part.GetPdgCode();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00250}00250       \textcolor{keywordflow}{if} (pdg==22) \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00251}00251       \textcolor{comment}{//if (pdg==311 || pdg==-\/311 || pdg==3122|| pdg==-\/3122)}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00252}00252 \textcolor{comment}{//      if (pdg==3122|| pdg==-\/3122)}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00253}00253 \textcolor{comment}{//        \{}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00254}00254 \textcolor{comment}{//        cout << "{}pdg:"{} << pdg << endl;}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00255}00255 \textcolor{comment}{//        cout << "{}L are not decayed by PYTHIA"{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00136}00136 \textcolor{comment}{//  }}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00137}00137 \textcolor{comment}{//  if (reportStart(\_\_FUNCTION\_\_))}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00138}00138 \textcolor{comment}{//    ;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00139}00139   \mbox{\hyperlink{class_task_acb311e0eb8b72d684f8b228483bb96f5}{incrementTaskExecuted}}();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00140}00140   \mbox{\hyperlink{class_event}{Event}} \& \textcolor{keyword}{event} = *\mbox{\hyperlink{class_task_a388f8e261c0d610bba89e9269309d11e}{getEventStream}}(0);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00141}00141   \mbox{\hyperlink{class_event_properties}{EventProperties}} \& eventProperties = * \textcolor{keyword}{event}.getEventProperties();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00142}00142 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00143}00143   \mbox{\hyperlink{class_particle}{Particle}} * interaction;}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00144}00144   \textcolor{comment}{// resetParticleCounters();}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00145}00145   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_pythia_event_generator_aea3643db84784a16a1a3a2848b2a88b0}{standaloneMode}})}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00146}00146     \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00147}00147     \textcolor{comment}{// In this mode, we generate one PYTHIA (pp) collision per event. One interaction vertex is}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00148}00148     \textcolor{comment}{// inserted in the event stream and PYTHIA is called to carry out the particle generation.}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00149}00149     \textcolor{comment}{// factory and event resets done by the task iterator to avoid repetition.}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00150}00150     \textcolor{keyword}{event}.\mbox{\hyperlink{class_particle_a0df75e7ca5475b07c67746d7a7f41e22}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00151}00151     \mbox{\hyperlink{class_task_aca6dc827b61b440bf610bba393beb673}{particleFactory}}-\/>\mbox{\hyperlink{class_factory_a44b667d0976c27e6637ea63f72ba5cfc}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00152}00152     \textcolor{comment}{// resetParticleCounters();}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00153}00153     interaction = \mbox{\hyperlink{class_task_aca6dc827b61b440bf610bba393beb673}{particleFactory}}-\/>\mbox{\hyperlink{class_factory_a6f646ad85a0e516aa9a93f6f5db1d8d3}{getNextObject}}();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00154}00154     interaction-\/>\mbox{\hyperlink{class_particle_a0df75e7ca5475b07c67746d7a7f41e22}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00155}00155     interaction-\/>\mbox{\hyperlink{class_particle_aed911356f1efb3cd78986e1d387dd784}{setType}}( \mbox{\hyperlink{class_particle_type_a8ad843478cad8af8fb76733f925c2d15}{ParticleType::getInteractionType}}());}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00156}00156     interaction-\/>\mbox{\hyperlink{class_particle_aebc38b2384fe5d206762a373e242e1d9}{setXYZT}}(0.0, 0.0, 0.0, 0.0);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00157}00157     \textcolor{keyword}{event}.add(interaction);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00158}00158     \textcolor{keyword}{event}.setNucleusA(1.0,1.0);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00159}00159     \textcolor{keyword}{event}.setNucleusB(1.0,1.0);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00160}00160     \mbox{\hyperlink{class_pythia_event_generator_ad1cacc2d3f70494ec5f261b0675798f9}{generate}}(interaction);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00161}00161     eventProperties.\mbox{\hyperlink{class_event_properties_acb8cd3f24cae79f1668318c04431ebfc}{zProjectile}}        = 1;     \textcolor{comment}{// atomic number projectile}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00162}00162     eventProperties.\mbox{\hyperlink{class_event_properties_a63fb4bae6c7ec751554c7b4fca432fc8}{aProjectile}}        = 1;     \textcolor{comment}{// mass number projectile}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00163}00163     eventProperties.\mbox{\hyperlink{class_event_properties_ac0923f4648e41371b4de055cf000156e}{nPartProjectile}}    = 1;     \textcolor{comment}{// number of participants  projectile}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00164}00164     eventProperties.\mbox{\hyperlink{class_event_properties_a65a883b33d72a719f4b85db17e77034a}{zTarget}}            = 1;     \textcolor{comment}{// atomic number target}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00165}00165     eventProperties.\mbox{\hyperlink{class_event_properties_acfaccab50080ae5be69e3694cf7e9a0e}{aTarget}}            = 1;     \textcolor{comment}{// mass number target}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00166}00166     eventProperties.\mbox{\hyperlink{class_event_properties_a73a51e7e7b382deffd360dc1729e8cb5}{nPartTarget}}        = 1;     \textcolor{comment}{// number of participants  target}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00167}00167     eventProperties.\mbox{\hyperlink{class_event_properties_ad66ebcce1ea08e122a030570649e713e}{nParticipantsTotal}} = 2;     \textcolor{comment}{// total number of participants}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00168}00168     eventProperties.\mbox{\hyperlink{class_event_properties_ac5352eb0963a382b518429323aef460f}{nBinaryTotal}}       = 1;     \textcolor{comment}{// total number of binary collisions}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00169}00169     eventProperties.\mbox{\hyperlink{class_event_properties_a359effe83f1f43f0bf7c70cbe4df929b}{impactParameter}}       = -\/99999; \textcolor{comment}{// nucleus-\/nucleus center distance in fm}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00170}00170     eventProperties.\mbox{\hyperlink{class_event_properties_a9fd73f57e21d8bf5c73a6365629dc5fa}{fractionalXSection}}    = -\/99999; \textcolor{comment}{// fraction cross section value}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00171}00171 \textcolor{comment}{//    eventProperties.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00172}00172 \textcolor{comment}{//    eventProperties.particlesCounted      = getNParticlesCounted();}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00173}00173 \textcolor{comment}{//    eventProperties.particlesAccepted     = getNParticlesAccepted();}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00174}00174     \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00175}00175   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00176}00176     \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00177}00177     \textcolor{comment}{// In this mode, we generate several PYTHIA collisions per event. Interaction vertices and their locations}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00178}00178     \textcolor{comment}{// are assumed to be already loaded in the event stream and we produce as many PYTHIA events as there}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00179}00179     \textcolor{comment}{// are nucleon-\/nucleon interactions in the stream. Objects nucleusA and nucleusB are assumed defined by}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00180}00180     \textcolor{comment}{// an earlier task and the structure EventProperties is assumed filled by that earlier task.He we only fill the number of}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00181}00181     \textcolor{comment}{// particle generated and accepted (in addition to storing the generated particles in the event)}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00182}00182 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00183}00183     \textcolor{comment}{// May skip this event if it does not satisfy the event cut.}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00184}00184     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}[0]-\/>accept(event)) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00185}00185     \textcolor{keywordflow}{if} (event.getParticleCount() < 1)}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00186}00186       \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00187}00187       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00188}00188       \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00189}00189     vector<Particle*> interactions = \textcolor{keyword}{event}.getNucleonNucleonInteractions();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00190}00190 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00191}00191     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} n = interactions.size();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00192}00192 \textcolor{comment}{//    if (reportWarning("{}PythiaEventGenerator"{},getName(),"{}execute()"{}))}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00193}00193 \textcolor{comment}{//      cout << "{}Size of interactions:"{} <<  n << endl;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00194}00194     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} kInter=0; kInter<n; kInter++)}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00195}00195       \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00196}00196       \mbox{\hyperlink{class_pythia_event_generator_ad1cacc2d3f70494ec5f261b0675798f9}{generate}}(interactions[kInter]);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00197}00197       \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00198}00198 \textcolor{comment}{//    eventProperties.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00199}00199 \textcolor{comment}{//    eventProperties.particlesCounted      = getNParticlesCounted();}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00200}00200 \textcolor{comment}{//    eventProperties.particlesAccepted     = getNParticlesAccepted();}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00201}00201     \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00202}00202   \mbox{\hyperlink{class_task_aabce954619d743bdc24677981775c0c8}{incrementNEventsAccepted}}(0);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00203}00203   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_)) eventProperties.\mbox{\hyperlink{class_event_properties_a56f9e838407cdd868cf4974ffe13d969}{printProperties}}(cout);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00204}00204 \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00205}00205 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00206}\mbox{\hyperlink{class_pythia_event_generator_ad1cacc2d3f70494ec5f261b0675798f9}{00206}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_pythia_event_generator_ad1cacc2d3f70494ec5f261b0675798f9}{PythiaEventGenerator::generate}}(\mbox{\hyperlink{class_particle}{Particle}} * parentInteraction)}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00207}00207 \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00208}00208   \mbox{\hyperlink{class_particle}{Particle}} * particle;}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00209}00209   \textcolor{keywordtype}{int} nParticles   = 0;}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00210}00210   \textcolor{keywordtype}{double} zero  = 0.0;}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00211}00211 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00212}00212   \textcolor{keywordtype}{bool} seekingEvent = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00213}00213   \textcolor{keywordflow}{while} (seekingEvent)}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00214}00214     \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00215}00215     \mbox{\hyperlink{class_pythia_event_generator_a2f891157f93c204d250e6b5597b7d3bc}{pythia8}}-\/>GenerateEvent();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00216}00216     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_)) \mbox{\hyperlink{class_pythia_event_generator_a2f891157f93c204d250e6b5597b7d3bc}{pythia8}}-\/>EventListing();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00217}00217     \mbox{\hyperlink{class_pythia_event_generator_a2f891157f93c204d250e6b5597b7d3bc}{pythia8}}-\/>ImportParticles(\mbox{\hyperlink{class_pythia_event_generator_a831fc0b8662c4ed13ef58d51acdd5f74}{particles}},\textcolor{stringliteral}{"{}Final"{}});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00218}00218     nParticles = \mbox{\hyperlink{class_pythia_event_generator_a831fc0b8662c4ed13ef58d51acdd5f74}{particles}}-\/>GetEntriesFast();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00219}00219     \textcolor{keywordflow}{if} (nParticles>2) seekingEvent = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00220}00220     \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00221}00221   \textcolor{keywordflow}{if} (nParticles>\mbox{\hyperlink{class_pythia_event_generator_ad716fb98f1b1f5598eca05580c9a30ca}{nMaxClonesArray}})}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00222}00222     \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00223}00223     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{} ARRAY TOO SMALL np>nMaxClonesArray; nParticles:"{}} << nParticles << \textcolor{stringliteral}{"{} nMax:"{}} << \mbox{\hyperlink{class_pythia_event_generator_ad716fb98f1b1f5598eca05580c9a30ca}{nMaxClonesArray}} << endl;}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00224}00224     \mbox{\hyperlink{class_message_logger_a21de642806f1c039f39a087e1e910984}{postTaskFatal}}();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00225}00225     exit(1);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00226}00226     \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00227}00227   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_pythia_event_generator_aa8b42ecbf22ee994153078c04ea9658c}{dataOutputUsed}})}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00228}00228     \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00229}00229     \mbox{\hyperlink{class_pythia_event_generator_aec3d828a505842c24d2214ef16fbcc09}{outputTree}}-\/>Fill();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00230}00230     \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00231}00231   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_pythia_event_generator_ae4e4ef3057a1c1474009564722220bdb}{dataConversionToWac}})}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00232}00232     \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00233}00233     TLorentzVector sourcePosition = parentInteraction-\/>\mbox{\hyperlink{class_particle_a045fe2f72de18ce20ad6d4a860564bfe}{getPosition}}();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00234}00234     \textcolor{keywordtype}{double} sourceX = sourcePosition.X();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00235}00235     \textcolor{keywordtype}{double} sourceY = sourcePosition.Y();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00236}00236     \textcolor{keywordtype}{double} sourceZ = sourcePosition.Z();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00237}00237     \textcolor{keywordtype}{double} sourceT = sourcePosition.T();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00238}00238     \mbox{\hyperlink{class_particle_type}{ParticleType}} * type;}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00239}00239     \mbox{\hyperlink{class_event}{Event}} \& \textcolor{keyword}{event} = * \mbox{\hyperlink{class_task_a02048625ac29f05812d5229348d36f2e}{eventStreams}}[0];}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00240}00240     \mbox{\hyperlink{class_particle_filter}{ParticleFilter}} \& particleFilter = * \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}[0];}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00241}00241     \textcolor{comment}{// load particles from TClone storage and copy into event.}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00242}00242     \textcolor{comment}{//if (reportDebug(\_\_FUNCTION\_\_)) cout << "{}PythiaEventGenerator::execute() starting copy loop into event..."{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00243}00243 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00244}00244     \mbox{\hyperlink{class_task_abd62488be2dd1e92ab9af3b0fdb85d91}{resetNParticlesAcceptedEvent}}();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00245}00245     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iParticle = 0; iParticle < nParticles; iParticle++)}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00246}00246       \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00247}00247       TParticle \& part = * (TParticle*) \mbox{\hyperlink{class_pythia_event_generator_a831fc0b8662c4ed13ef58d51acdd5f74}{particles}}-\/>At(iParticle);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00248}00248       \textcolor{keywordtype}{int} ist = part.GetStatusCode();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00249}00249       \textcolor{keywordflow}{if} (ist <= 0) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00250}00250       \textcolor{keywordtype}{int} pdg = part.GetPdgCode();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00251}00251       \textcolor{keywordflow}{if} (pdg==22) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00252}00252       \textcolor{comment}{//if (pdg==311 || pdg==-\/311 || pdg==3122|| pdg==-\/3122)}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00253}00253 \textcolor{comment}{//      if (pdg==3122|| pdg==-\/3122)}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00254}00254 \textcolor{comment}{//        \{}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00255}00255 \textcolor{comment}{//        cout << "{}pdg:"{} << pdg << endl;}}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00256}00256 \textcolor{comment}{//        cout << "{}L are not decayed by PYTHIA"{} << endl;}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00257}00257 \textcolor{comment}{//        type = masterCollection-\/>findPdgCode(pdg);}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00258}00258 \textcolor{comment}{//        cout << "{}Name is: "{} << type-\/>getName() << endl;}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00259}00259 \textcolor{comment}{//        if (type==nullptr)}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00260}00260 \textcolor{comment}{//          \{}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00261}00261 \textcolor{comment}{//          cout << "{}But the type is not found in the list"{} << endl;}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00262}00262 \textcolor{comment}{//          exit(0);}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00263}00263 \textcolor{comment}{//          \}}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00264}00264 \textcolor{comment}{//        \}}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00265}00265 \textcolor{comment}{//      if (pdg==2212 || pdg==-\/2212 )}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00266}00266 \textcolor{comment}{//        \{}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00267}00267 \textcolor{comment}{//        if (part.GetMother(1)==3122 || part.GetMother(1)==-\/3122)}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00268}00268 \textcolor{comment}{//          \{}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00269}00269 \textcolor{comment}{//          cout << "{}K SHORT are decaed by PYTHIA"{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00257}00257 \textcolor{comment}{//        cout << "{}L are not decayed by PYTHIA"{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00258}00258 \textcolor{comment}{//        type = particleTypeCollection-\/>findPdgCode(pdg);}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00259}00259 \textcolor{comment}{//        cout << "{}Name is: "{} << type-\/>getName() << endl;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00260}00260 \textcolor{comment}{//        if (type==nullptr)}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00261}00261 \textcolor{comment}{//          \{}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00262}00262 \textcolor{comment}{//          cout << "{}But the type is not found in the list"{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00263}00263 \textcolor{comment}{//          exit(0);}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00264}00264 \textcolor{comment}{//          \}}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00265}00265 \textcolor{comment}{//        \}}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00266}00266 \textcolor{comment}{//      if (pdg==2212 || pdg==-\/2212 )}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00267}00267 \textcolor{comment}{//        \{}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00268}00268 \textcolor{comment}{//        if (part.GetMother(1)==3122 || part.GetMother(1)==-\/3122)}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00269}00269 \textcolor{comment}{//          \{}}
 \DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00270}00270 \textcolor{comment}{//          cout << "{}K SHORT are decaed by PYTHIA"{} << endl;}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00271}00271 \textcolor{comment}{//          exit(0);}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00272}00272 \textcolor{comment}{//          \}}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00273}00273 \textcolor{comment}{//        \}}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00274}00274 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00275}00275       type = \mbox{\hyperlink{class_task_ad6f45bd5d1e19d15e69276103dff287a}{masterCollection}}-\/>\mbox{\hyperlink{class_particle_type_collection_ac8ee25b3ed9077300626d6aa20768fd1}{findPdgCode}}(pdg);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00276}00276       \textcolor{keywordflow}{if} (type==\textcolor{keyword}{nullptr}) \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00277}00277       particle = \mbox{\hyperlink{class_task_aca6dc827b61b440bf610bba393beb673}{particleFactory}}-\/>\mbox{\hyperlink{class_factory_a6f646ad85a0e516aa9a93f6f5db1d8d3}{getNextObject}}();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00278}00278       particle-\/>\mbox{\hyperlink{class_particle_a894a96eb9fe6aa17f5eec14560bd2e05}{set}}(type,part.Px(),part.Py(),part.Pz(),part.Energy(),sourceX,sourceY,sourceZ,sourceT,\textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00279}00279       \mbox{\hyperlink{class_task_a8d4bb538429fda63b48bba2675fcac6d}{incrementParticlesCounted}}(); \textcolor{comment}{// photons are NOT included in this tally}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00280}00280       \textcolor{keywordflow}{if} (!particleFilter.\mbox{\hyperlink{class_particle_filter_a8d9135b8eecd5fcb90ac3ba6566c7fed}{accept}}(*particle)) \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00281}00281       \textcolor{keyword}{event}.add(particle);}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00282}00282       \mbox{\hyperlink{class_task_a6a2ecf82b74c1329bcabd4ef85dac0a8}{incrementParticlesAccepted}}();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00283}00283       \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00284}00284     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}PythiaEventGenerator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}}))}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00285}00285       \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00286}00286       cout << endl;}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00287}00287       cout << \textcolor{stringliteral}{"{}PythiaEventGenerator::execute() No of accepted particles : "{}}<< \mbox{\hyperlink{class_task_a83fa7c91dfca588df2b7bc387109ecf6}{getNParticlesAccepted}}() << endl;}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00288}00288       cout << \textcolor{stringliteral}{"{}PythiaEventGenerator::execute() No of counted particles : "{}} << \mbox{\hyperlink{class_task_aa38e094d55acb90493a5fe3e2a9caf36}{getNParticlesCounted}}()  << endl;}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00289}00289       \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00290}00290     \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00291}00291 \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00292}00292 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00293}\mbox{\hyperlink{class_pythia_event_generator_aa8650c8714e6fa13f5df4ff2ec96a1b3}{00293}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_pythia_event_generator_aa8650c8714e6fa13f5df4ff2ec96a1b3}{PythiaEventGenerator::finalize}}()}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00294}00294 \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00295}00295   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}PythiaEventGenerator::finalize() started"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00296}00296   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}()) \mbox{\hyperlink{class_pythia_event_generator_a2f891157f93c204d250e6b5597b7d3bc}{pythia8}}-\/>PrintStatistics();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00297}00297   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_pythia_event_generator_aa8b42ecbf22ee994153078c04ea9658c}{dataOutputUsed}})}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00298}00298     \{}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00299}00299     \mbox{\hyperlink{class_pythia_event_generator_aec3d828a505842c24d2214ef16fbcc09}{outputTree}}-\/>Print();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00300}00300     \mbox{\hyperlink{class_pythia_event_generator_aec3d828a505842c24d2214ef16fbcc09}{outputTree}}-\/>Write();}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00301}00301     \textcolor{keyword}{delete} \mbox{\hyperlink{class_pythia_event_generator_a57357218d4edf19ecbc430c2aeda6893}{outputFile}};}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00302}00302     \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00303}00303   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}PythiaEventGenerator::finalize() completed"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00304}00304 \}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00305}00305 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00306}00306 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00307}00307 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00308}00308 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00309}00309 \textcolor{comment}{//pythia8-\/>ReadString("{}Init:showChangedSettings = on"{});      // list changed settings}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00310}00310 \textcolor{comment}{//pythia8-\/>ReadString("{}Init:showChangedParticleData = off"{}); // list changed particle data}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00311}00311 \textcolor{comment}{//pythia8-\/>ReadString("{}Next:numberCount = 100000"{});            // print message every n events}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00312}00312 \textcolor{comment}{//pythia8-\/>ReadString("{}Next:numberShowInfo = 1"{});            // print event information n times}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00313}00313 \textcolor{comment}{//pythia8-\/>ReadString("{}Next:numberShowProcess = 0"{});         // print process record n times}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00314}00314 \textcolor{comment}{//pythia8-\/>ReadString("{}Next:numberShowEvent = 0"{});}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00315}00315 \textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00316}00316 \textcolor{comment}{//pythia8-\/>ReadString("{}SoftQCD:all = off"{});                   // Allow total sigma = elastic/SD/DD/ND}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00317}00317 \textcolor{comment}{//                                                           // Optionally only study one or a few processes at a time.}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00318}00318 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SoftQCD:elastic = on"{});               // Elastic}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00319}00319 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SoftQCD:singleDiffractive = on"{});     // Single diffractive}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00320}00320 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SoftQCD:doubleDiffractive = on"{});     // Double diffractive}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00321}00321 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SoftQCD:centralDiffractive = on"{});    // Central diffractive}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00322}00322 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SoftQCD:nonDiffractive = on"{});        // Nondiffractive (inelastic)}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00323}00323 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SoftQCD:inelastic = on"{});             // All inelastic}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00324}00324 \textcolor{comment}{//                                                           // Optionally switch on hand-\/set cross section and Coulomb term.}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00325}00325 \textcolor{comment}{//                                                           // Note: these values are illustrative only, not to be taken seriously.}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00326}00326 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SigmaTotal:setOwn = on"{});              // set your own total/elastic/diffr. sigma}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00327}00327 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SigmaTotal:sigmaTot = 106.0"{});         // total cross section (excluding Coulomb)}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00328}00328 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SigmaTotal:sigmaXX = 5.0"{});        // reduce double diffractive cross section}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00329}00329 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SigmaElastic:setOwn = on"{});        // suboption for Coulomb term in elastic}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00330}00330 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SigmaElastic:tAbsMin = 4e-\/5"{});        // divergence requires lower cutoff}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00331}00331 \textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00332}00332 \textcolor{comment}{//pythia8-\/>ReadString("{}HardQCD:all = on"{});}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00333}00333 \textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00334}00334 \textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00337}00337 \textcolor{comment}{}\textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00348}00348 \textcolor{comment}{}\textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00352}00352 \textcolor{comment}{}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00353}00353 }
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00354}00354 \textcolor{comment}{//for (int iParticle = 0; iParticle < nparts; iParticle++)}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00355}00355 \textcolor{comment}{//  \{}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00356}00356 \textcolor{comment}{//  TParticle \& part = * (TParticle*) particles-\/>At(iParticle);}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00357}00357 \textcolor{comment}{//  int ist = part.GetStatusCode();}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00358}00358 \textcolor{comment}{//  //if (reportDebug()) cout << "{}PythiaEventGenerator::execute() ist: "{} << ist << endl;}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00359}00359 \textcolor{comment}{//  if (ist <= 0) continue;}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00360}00360 \textcolor{comment}{//  int pdg = part.GetPdgCode();}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00361}00361 \textcolor{comment}{//  mass = TDatabasePDG::Instance()-\/>GetParticle(pdg)-\/>Mass();}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00362}00362 \textcolor{comment}{//  if (mass<0.002) continue;  // no photons, electrons...}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00363}00363 \textcolor{comment}{//  charge = TDatabasePDG::Instance()-\/>GetParticle(pdg)-\/>Charge();}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00364}00364 \textcolor{comment}{//  p\_x  = cosPhi*part.Px() -\/ sinPhi*part.Py();}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00365}00365 \textcolor{comment}{//  p\_y  = sinPhi*part.Px() + cosPhi*part.Py();}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00366}00366 \textcolor{comment}{//  p\_z  = part.Pz();}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00367}00367 \textcolor{comment}{//  p\_e  = part.Energy();}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00368}00368 \textcolor{comment}{//  aParticle.setPidPxPyPzE(pdg,p\_x,p\_y,p\_z,p\_e);}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00369}00369 \textcolor{comment}{//  //aParticle.printProperties(cout);}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00370}00370 \textcolor{comment}{//  //if (reportDebug()) cout << "{}PythiaEventGenerator::execute() calling filter "{} << endl;}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00371}00371 \textcolor{comment}{//  particleCounted++;}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00372}00372 \textcolor{comment}{//  if (!particleFilter-\/>accept(aParticle)) continue;}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00373}00373 \textcolor{comment}{//  particle = particleFactory-\/>getNextObject();}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00374}00374 \textcolor{comment}{//  *particle = aParticle;}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00375}00375 \textcolor{comment}{//  event-\/>add(particle);}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00376}00376 \textcolor{comment}{//  particleAccepted++;}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00377}00377 \textcolor{comment}{//  //    if (true)}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00378}00378 \textcolor{comment}{//  //      \{}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00379}00379 \textcolor{comment}{//  //      cout << "{}PythiaEventGenerator::execute() particle: "{} << iParticle << "{} / "{} << particleAccepted << endl;}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00380}00380 \textcolor{comment}{//  //      particle-\/>printProperties(cout);}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00381}00381 \textcolor{comment}{//  //      \}}}
-\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00382}00382 \textcolor{comment}{//  \}}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00271}00271 \textcolor{comment}{//          cout << "{}K SHORT are decaed by PYTHIA"{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00272}00272 \textcolor{comment}{//          exit(0);}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00273}00273 \textcolor{comment}{//          \}}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00274}00274 \textcolor{comment}{//        \}}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00275}00275 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00276}00276       type = \mbox{\hyperlink{class_task_a2f95d126a1702606a304b9682fccba90}{getParticleTypeCollection}}()-\/>\mbox{\hyperlink{class_particle_type_collection_ac8ee25b3ed9077300626d6aa20768fd1}{findPdgCode}}(pdg);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00277}00277       \textcolor{keywordflow}{if} (type==\textcolor{keyword}{nullptr}) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00278}00278       particle = \mbox{\hyperlink{class_task_aca6dc827b61b440bf610bba393beb673}{particleFactory}}-\/>\mbox{\hyperlink{class_factory_a6f646ad85a0e516aa9a93f6f5db1d8d3}{getNextObject}}();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00279}00279       particle-\/>\mbox{\hyperlink{class_particle_a894a96eb9fe6aa17f5eec14560bd2e05}{set}}(type,part.Px(),part.Py(),part.Pz(),part.Energy(),sourceX,sourceY,sourceZ,sourceT,\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00280}00280       \textcolor{comment}{//incrementParticlesCounted(0); // photons are NOT included in this tally}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00281}00281       \textcolor{keywordflow}{if} (!particleFilter.\mbox{\hyperlink{class_particle_filter_a8d9135b8eecd5fcb90ac3ba6566c7fed}{accept}}(*particle)) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00282}00282       \mbox{\hyperlink{class_task_a52769d28d3eed100e842b052e499f1c0}{incrementNParticlesAccepted}}();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00283}00283       \textcolor{keyword}{event}.add(particle);}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00284}00284       \textcolor{comment}{// // incrementParticlesAccepted();}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00285}00285       \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00286}00286 \textcolor{comment}{//    if (reportDebug("{}PythiaEventGenerator"{},getName(),"{}execute()"{}))}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00287}00287 \textcolor{comment}{//      \{}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00288}00288 \textcolor{comment}{//      cout << endl;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00289}00289 \textcolor{comment}{//      cout << "{}PythiaEventGenerator::execute() No of accepted particles : "{}<< getNParticlesAccepted() << endl;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00290}00290 \textcolor{comment}{//      cout << "{}PythiaEventGenerator::execute() No of counted particles : "{} << getNParticlesCounted()  << endl;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00291}00291 \textcolor{comment}{//      \}}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00292}00292     \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00293}00293 \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00294}00294 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00295}\mbox{\hyperlink{class_pythia_event_generator_aa8650c8714e6fa13f5df4ff2ec96a1b3}{00295}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_pythia_event_generator_aa8650c8714e6fa13f5df4ff2ec96a1b3}{PythiaEventGenerator::finalize}}()}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00296}00296 \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00297}00297   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00298}00298     ;}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00299}00299   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\_\_FUNCTION\_\_)) \mbox{\hyperlink{class_pythia_event_generator_a2f891157f93c204d250e6b5597b7d3bc}{pythia8}}-\/>PrintStatistics();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00300}00300   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_pythia_event_generator_aa8b42ecbf22ee994153078c04ea9658c}{dataOutputUsed}})}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00301}00301     \{}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00302}00302     \mbox{\hyperlink{class_pythia_event_generator_aec3d828a505842c24d2214ef16fbcc09}{outputTree}}-\/>Print();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00303}00303     \mbox{\hyperlink{class_pythia_event_generator_aec3d828a505842c24d2214ef16fbcc09}{outputTree}}-\/>Write();}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00304}00304     \textcolor{keyword}{delete} \mbox{\hyperlink{class_pythia_event_generator_a57357218d4edf19ecbc430c2aeda6893}{outputFile}};}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00305}00305     \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00306}00306   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00307}00307     ;}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00308}00308 \}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00309}00309 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00310}00310 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00311}00311 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00312}00312 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00313}00313 \textcolor{comment}{//pythia8-\/>ReadString("{}Init:showChangedSettings = on"{});      // list changed settings}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00314}00314 \textcolor{comment}{//pythia8-\/>ReadString("{}Init:showChangedParticleData = off"{}); // list changed particle data}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00315}00315 \textcolor{comment}{//pythia8-\/>ReadString("{}Next:numberCount = 100000"{});            // print message every n events}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00316}00316 \textcolor{comment}{//pythia8-\/>ReadString("{}Next:numberShowInfo = 1"{});            // print event information n times}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00317}00317 \textcolor{comment}{//pythia8-\/>ReadString("{}Next:numberShowProcess = 0"{});         // print process record n times}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00318}00318 \textcolor{comment}{//pythia8-\/>ReadString("{}Next:numberShowEvent = 0"{});}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00319}00319 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00320}00320 \textcolor{comment}{//pythia8-\/>ReadString("{}SoftQCD:all = off"{});                   // Allow total sigma = elastic/SD/DD/ND}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00321}00321 \textcolor{comment}{//                                                           // Optionally only study one or a few processes at a time.}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00322}00322 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SoftQCD:elastic = on"{});               // Elastic}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00323}00323 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SoftQCD:singleDiffractive = on"{});     // Single diffractive}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00324}00324 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SoftQCD:doubleDiffractive = on"{});     // Double diffractive}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00325}00325 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SoftQCD:centralDiffractive = on"{});    // Central diffractive}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00326}00326 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SoftQCD:nonDiffractive = on"{});        // Nondiffractive (inelastic)}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00327}00327 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SoftQCD:inelastic = on"{});             // All inelastic}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00328}00328 \textcolor{comment}{//                                                           // Optionally switch on hand-\/set cross section and Coulomb term.}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00329}00329 \textcolor{comment}{//                                                           // Note: these values are illustrative only, not to be taken seriously.}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00330}00330 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SigmaTotal:setOwn = on"{});              // set your own total/elastic/diffr. sigma}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00331}00331 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SigmaTotal:sigmaTot = 106.0"{});         // total cross section (excluding Coulomb)}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00332}00332 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SigmaTotal:sigmaXX = 5.0"{});        // reduce double diffractive cross section}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00333}00333 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SigmaElastic:setOwn = on"{});        // suboption for Coulomb term in elastic}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00334}00334 \textcolor{comment}{//                                                           //  pythia8-\/>ReadString("{}SigmaElastic:tAbsMin = 4e-\/5"{});        // divergence requires lower cutoff}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00335}00335 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00336}00336 \textcolor{comment}{//pythia8-\/>ReadString("{}HardQCD:all = on"{});}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00337}00337 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00338}00338 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00341}00341 \textcolor{comment}{}\textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00352}00352 \textcolor{comment}{}\textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00356}00356 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00357}00357 }
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00358}00358 \textcolor{comment}{//for (int iParticle = 0; iParticle < nParticles; iParticle++)}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00359}00359 \textcolor{comment}{//  \{}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00360}00360 \textcolor{comment}{//  TParticle \& part = * (TParticle*) particles-\/>At(iParticle);}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00361}00361 \textcolor{comment}{//  int ist = part.GetStatusCode();}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00362}00362 \textcolor{comment}{//  //if (reportDebug(\_\_FUNCTION\_\_)) cout << "{}PythiaEventGenerator::execute() ist: "{} << ist << endl;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00363}00363 \textcolor{comment}{//  if (ist <= 0) continue;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00364}00364 \textcolor{comment}{//  int pdg = part.GetPdgCode();}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00365}00365 \textcolor{comment}{//  mass = TDatabasePDG::Instance()-\/>GetParticle(pdg)-\/>Mass();}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00366}00366 \textcolor{comment}{//  if (mass<0.002) continue;  // no photons, electrons...}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00367}00367 \textcolor{comment}{//  charge = TDatabasePDG::Instance()-\/>GetParticle(pdg)-\/>Charge();}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00368}00368 \textcolor{comment}{//  p\_x  = cosPhi*part.Px() -\/ sinPhi*part.Py();}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00369}00369 \textcolor{comment}{//  p\_y  = sinPhi*part.Px() + cosPhi*part.Py();}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00370}00370 \textcolor{comment}{//  p\_z  = part.Pz();}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00371}00371 \textcolor{comment}{//  p\_e  = part.Energy();}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00372}00372 \textcolor{comment}{//  aParticle.setPidPxPyPzE(pdg,p\_x,p\_y,p\_z,p\_e);}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00373}00373 \textcolor{comment}{//  //aParticle.printProperties(cout);}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00374}00374 \textcolor{comment}{//  //if (reportDebug(\_\_FUNCTION\_\_)) cout << "{}PythiaEventGenerator::execute() calling filter "{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00375}00375 \textcolor{comment}{//  particleCounted++;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00376}00376 \textcolor{comment}{//  if (!particleFilter-\/>accept(aParticle)) continue;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00377}00377 \textcolor{comment}{//  particle = particleFactory-\/>getNextObject();}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00378}00378 \textcolor{comment}{//  *particle = aParticle;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00379}00379 \textcolor{comment}{//  event-\/>add(particle);}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00380}00380 \textcolor{comment}{//  particleAccepted++;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00381}00381 \textcolor{comment}{//  //    if (true)}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00382}00382 \textcolor{comment}{//  //      \{}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00383}00383 \textcolor{comment}{//  //      cout << "{}PythiaEventGenerator::execute() particle: "{} << iParticle << "{} / "{} << particleAccepted << endl;}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00384}00384 \textcolor{comment}{//  //      particle-\/>printProperties(cout);}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00385}00385 \textcolor{comment}{//  //      \}}}
+\DoxyCodeLine{\Hypertarget{_pythia_event_generator_8cpp_source_l00386}00386 \textcolor{comment}{//  \}}}
 
 \end{DoxyCode}

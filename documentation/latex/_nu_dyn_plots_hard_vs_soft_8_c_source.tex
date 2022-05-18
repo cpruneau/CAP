@@ -1,5 +1,5 @@
 \hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source}{}\doxysection{Nu\+Dyn\+Plots\+Hard\+Vs\+Soft.\+C}
-\label{_nu_dyn_plots_hard_vs_soft_8_c_source}\index{Macros/NuDynPlotsHardVsSoft.C@{Macros/NuDynPlotsHardVsSoft.C}}
+\label{_nu_dyn_plots_hard_vs_soft_8_c_source}\index{Misc/NuDynPlotsHardVsSoft.C@{Misc/NuDynPlotsHardVsSoft.C}}
 \mbox{\hyperlink{_nu_dyn_plots_hard_vs_soft_8_c}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00001}00001 }
@@ -59,8 +59,8 @@
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00055}00055     graphConfigurations[iGraph] = \textcolor{keyword}{new} \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}}(1,iGraph\%10);}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00056}00056     \}}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00057}00057 }
-\DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00058}00058   TString \mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}}  = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/NuDynStudies/"{}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00059}00059   TString \mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}} = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/NuDynStudies/"{}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00058}00058   TString inputPath  = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/NuDynStudies/"{}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00059}00059   TString outputPath = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/NuDynStudies/"{}};}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00060}00060 }
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00061}00061 }
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00062}00062   \textcolor{keywordtype}{int} nModels            = 2;}
@@ -110,7 +110,7 @@
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00106}00106       setNames[iFile]    = \textcolor{keyword}{new} TString(workString);}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00107}00107       setTitles[iFile]   = setBaseTitles[iSet];}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00108}00108       cout << \textcolor{stringliteral}{"{}iModel:"{}} << iModel << \textcolor{stringliteral}{"{} iSet:"{}} << iSet << \textcolor{stringliteral}{"{} Title:"{}} <<  *setTitles[iFile]  << endl;}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00109}00109       workString = \mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00109}00109       workString = inputPath;}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00110}00110       workString += *fileNames[iFile];}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00111}00111       workString += \textcolor{stringliteral}{"{}\_MB.root"{}};}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00112}00112       \mbox{\hyperlink{_plot_hep_data_8_c_a32be468b422ff3800be85388bcdce9d1}{inputFiles}}[iFile] = \textcolor{keyword}{new} TFile(workString,\textcolor{stringliteral}{"{}OLD"{}});}
@@ -243,7 +243,7 @@
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00239}00239            \textcolor{stringliteral}{"{}R\_\{2\}"{}}, -\/0.3, 1.5,}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00240}00240            hh,leg\_R2,}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00241}00241            0.6,0.5, 0.85, 0.85, 0.05);}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00242}00242    p-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00242}00242    p-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00243}00243 }
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00244}00244 }
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00245}00245   \textcolor{comment}{// R\_4}}
@@ -288,7 +288,7 @@
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00284}00284            \textcolor{stringliteral}{"{}R\_\{4\}"{}}, -\/1.0, 2.5,}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00285}00285            hh,leg\_R4,}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00286}00286            0.6,0.5, 0.85, 0.85, 0.05);}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00287}00287    p-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00287}00287    p-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00288}00288 }
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00289}00289 }
 \DoxyCodeLine{\Hypertarget{_nu_dyn_plots_hard_vs_soft_8_c_source_l00290}00290 \textcolor{keywordflow}{return} -\/666;}

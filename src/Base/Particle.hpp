@@ -99,6 +99,8 @@ public:
   //!
   ParticleType & getType() const     { return *type;   }
 
+  ParticleType * getTypePtr() const     { return type;   }
+
   
   //!
   //! Set the ParticleType of this particle, its 4-momentum and 4-position of origin, as well as whether the particle

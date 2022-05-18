@@ -134,59 +134,57 @@
 \DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00134}00134 \}}
 \DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00135}00135 }
 \DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00137}00137 \textcolor{comment}{// Print Canvases}}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00139}\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{00139}} \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{CanvasCollection::printAllCanvas}}(\textcolor{keyword}{const} TString \& \mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}}, \textcolor{keywordtype}{bool} printGif, \textcolor{keywordtype}{bool} printPdf, \textcolor{keywordtype}{bool} printSvg, \textcolor{keywordtype}{bool} printC)}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00139}\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{00139}} \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{CanvasCollection::printAllCanvas}}(\textcolor{keyword}{const} TString \& outputPath, \textcolor{keywordtype}{bool} printGif, \textcolor{keywordtype}{bool} printPdf, \textcolor{keywordtype}{bool} printSvg, \textcolor{keywordtype}{bool} printC)}
 \DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00140}00140 \{}
 \DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00141}00141   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<\mbox{\hyperlink{class_canvas_collection_adf59063221ed118f9b67983613ddaa93}{getNCanvas}}(); k++)}
 \DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00142}00142     \{}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00143}00143     \mbox{\hyperlink{class_canvas_collection_a8f4e4ec3f86764c2c2fb42d29a20a2eb}{printCanvas}}(\mbox{\hyperlink{class_collection_a0ca3ec89d72c391ce8529119c362b8d0}{getObjectAt}}(k),\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}},printGif,printPdf,printSvg,printC);}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00143}00143     \mbox{\hyperlink{class_canvas_collection_a8f4e4ec3f86764c2c2fb42d29a20a2eb}{printCanvas}}(\mbox{\hyperlink{class_collection_a0ca3ec89d72c391ce8529119c362b8d0}{getObjectAt}}(k),outputPath,printGif,printPdf,printSvg,printC);}
 \DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00144}00144     \}}
 \DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00145}00145 \}}
 \DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00146}00146 }
 \DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00148}00148 \textcolor{comment}{// Create a label within an existing pad}}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00150}\mbox{\hyperlink{class_canvas_collection_a80dd9c423b1d25620e64a206c9149ab0}{00150}} \textcolor{comment}{}TLatex * \mbox{\hyperlink{class_canvas_collection_a80dd9c423b1d25620e64a206c9149ab0}{CanvasCollection::createLabel}}(\textcolor{keywordtype}{double} x, \textcolor{keywordtype}{double} y, \textcolor{keywordtype}{int} color, \textcolor{keywordtype}{int} fontType, \textcolor{keywordtype}{double} fontSize, \textcolor{keyword}{const} TString \& text, \textcolor{keywordtype}{bool} doDraw)}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00150}\mbox{\hyperlink{class_canvas_collection_a80dd9c423b1d25620e64a206c9149ab0}{00150}} \textcolor{comment}{}TLatex * \mbox{\hyperlink{class_canvas_collection_a80dd9c423b1d25620e64a206c9149ab0}{CanvasCollection::createLabel}}(\textcolor{keywordtype}{double} x, \textcolor{keywordtype}{double} y, \textcolor{keywordtype}{int} color, \textcolor{keywordtype}{int} fontType \_\_attribute\_\_((unused)), \textcolor{keywordtype}{double} fontSize, \textcolor{keyword}{const} TString \& text, \textcolor{keywordtype}{bool} doDraw)}
 \DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00151}00151 \{}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00152}00152   fontType = 0; \textcolor{comment}{// not used now...}}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00153}00153   TLatex * label;}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00154}00154   label = \textcolor{keyword}{new} TLatex(x,y,text);}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00155}00155   label-\/>SetTextColor(color);}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00156}00156   \textcolor{comment}{//label-\/>SetTextFont(fontType);}}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00157}00157   label-\/>SetTextSize(fontSize);}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00158}00158   \textcolor{keywordflow}{if} (doDraw) label-\/>Draw();}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00159}00159   \textcolor{keywordflow}{return} label;}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00160}00160 \}}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00161}00161 }
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00163}00163 \textcolor{comment}{// Create standard legend}}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00165}\mbox{\hyperlink{class_canvas_collection_a888204550ffbcf4955effb5eb8932ec1}{00165}} \textcolor{comment}{}TLegend * \mbox{\hyperlink{class_canvas_collection_a888204550ffbcf4955effb5eb8932ec1}{CanvasCollection::createLegend}}(\textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{int} fontType, \textcolor{keywordtype}{float} fontSize)}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00166}00166 \{}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00167}00167   fontType = 0; \textcolor{comment}{// not used now...}}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00168}00168   TLegend *legend = \textcolor{keyword}{new} TLegend(x1,y1,x2,y2);}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00169}00169   \textcolor{comment}{//legend-\/>SetTextFont(fontType);}}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00170}00170   legend-\/>SetTextSize(fontSize);}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00171}00171   legend-\/>SetFillColor(0);}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00172}00172   legend-\/>SetBorderSize(0);}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00173}00173   \textcolor{keywordflow}{return} legend;}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00174}00174 \}}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00175}00175 }
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00177}00177 \textcolor{comment}{// Create simple line}}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00179}\mbox{\hyperlink{class_canvas_collection_ab118a8926dc00dd89baa845ce6f5360d}{00179}} \textcolor{comment}{}TLine * \mbox{\hyperlink{class_canvas_collection_ab118a8926dc00dd89baa845ce6f5360d}{CanvasCollection::createLine}}(\textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{int} style, \textcolor{keywordtype}{int} color, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{bool} doDraw)}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00180}00180 \{}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00181}00181   TLine *line = \textcolor{keyword}{new} TLine(x1,y1,x2,y2);}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00182}00182   line-\/>SetLineStyle(style);}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00183}00183   line-\/>SetLineColor(color);}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00184}00184   line-\/>SetLineWidth(width);}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00185}00185   \textcolor{keywordflow}{if} (doDraw) line-\/>Draw();}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00186}00186   \textcolor{keywordflow}{return} line;}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00187}00187 \}}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00188}00188 }
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00190}00190 \textcolor{comment}{// Create Arrow Line}}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00192}\mbox{\hyperlink{class_canvas_collection_a330a6f8247e9fe9afacec6a15fc66ecf}{00192}} \textcolor{comment}{}TArrow * \mbox{\hyperlink{class_canvas_collection_a330a6f8247e9fe9afacec6a15fc66ecf}{CanvasCollection::createArrow}}(\textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{float} arrowSize, Option\_t* option, \textcolor{keywordtype}{int} style, \textcolor{keywordtype}{int} color, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{bool} doDraw)}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00193}00193 \{}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00194}00194   TArrow *line = \textcolor{keyword}{new} TArrow(x1,y1,x2,y2,arrowSize,option);}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00195}00195   line-\/>SetLineStyle(style);}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00196}00196   line-\/>SetLineColor(color);}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00197}00197   line-\/>SetLineWidth(width);}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00198}00198   \textcolor{keywordflow}{if} (doDraw) line-\/>Draw();}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00199}00199   \textcolor{keywordflow}{return} line;}
-\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00200}00200 \}}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00152}00152   TLatex * label;}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00153}00153   label = \textcolor{keyword}{new} TLatex(x,y,text);}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00154}00154   label-\/>SetTextColor(color);}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00155}00155   \textcolor{comment}{//label-\/>SetTextFont(fontType);}}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00156}00156   label-\/>SetTextSize(fontSize);}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00157}00157   \textcolor{keywordflow}{if} (doDraw) label-\/>Draw();}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00158}00158   \textcolor{keywordflow}{return} label;}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00159}00159 \}}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00160}00160 }
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00162}00162 \textcolor{comment}{// Create standard legend}}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00164}\mbox{\hyperlink{class_canvas_collection_a888204550ffbcf4955effb5eb8932ec1}{00164}} \textcolor{comment}{}TLegend * \mbox{\hyperlink{class_canvas_collection_a888204550ffbcf4955effb5eb8932ec1}{CanvasCollection::createLegend}}(\textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{int} fontType \_\_attribute\_\_((unused)), \textcolor{keywordtype}{float} fontSize)}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00165}00165 \{}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00166}00166   TLegend *legend = \textcolor{keyword}{new} TLegend(x1,y1,x2,y2);}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00167}00167   \textcolor{comment}{//legend-\/>SetTextFont(fontType);}}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00168}00168   legend-\/>SetTextSize(fontSize);}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00169}00169   legend-\/>SetFillColor(0);}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00170}00170   legend-\/>SetBorderSize(0);}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00171}00171   \textcolor{keywordflow}{return} legend;}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00172}00172 \}}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00173}00173 }
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00175}00175 \textcolor{comment}{// Create simple line}}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00177}\mbox{\hyperlink{class_canvas_collection_ab118a8926dc00dd89baa845ce6f5360d}{00177}} \textcolor{comment}{}TLine * \mbox{\hyperlink{class_canvas_collection_ab118a8926dc00dd89baa845ce6f5360d}{CanvasCollection::createLine}}(\textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{int} style, \textcolor{keywordtype}{int} color, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{bool} doDraw)}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00178}00178 \{}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00179}00179   TLine *line = \textcolor{keyword}{new} TLine(x1,y1,x2,y2);}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00180}00180   line-\/>SetLineStyle(style);}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00181}00181   line-\/>SetLineColor(color);}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00182}00182   line-\/>SetLineWidth(width);}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00183}00183   \textcolor{keywordflow}{if} (doDraw) line-\/>Draw();}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00184}00184   \textcolor{keywordflow}{return} line;}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00185}00185 \}}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00186}00186 }
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00188}00188 \textcolor{comment}{// Create Arrow Line}}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00190}\mbox{\hyperlink{class_canvas_collection_a330a6f8247e9fe9afacec6a15fc66ecf}{00190}} \textcolor{comment}{}TArrow * \mbox{\hyperlink{class_canvas_collection_a330a6f8247e9fe9afacec6a15fc66ecf}{CanvasCollection::createArrow}}(\textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{float} arrowSize, Option\_t* option, \textcolor{keywordtype}{int} style, \textcolor{keywordtype}{int} color, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{bool} doDraw)}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00191}00191 \{}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00192}00192   TArrow *line = \textcolor{keyword}{new} TArrow(x1,y1,x2,y2,arrowSize,option);}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00193}00193   line-\/>SetLineStyle(style);}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00194}00194   line-\/>SetLineColor(color);}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00195}00195   line-\/>SetLineWidth(width);}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00196}00196   \textcolor{keywordflow}{if} (doDraw) line-\/>Draw();}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00197}00197   \textcolor{keywordflow}{return} line;}
+\DoxyCodeLine{\Hypertarget{_canvas_collection_8cpp_source_l00198}00198 \}}
 
 \end{DoxyCode}

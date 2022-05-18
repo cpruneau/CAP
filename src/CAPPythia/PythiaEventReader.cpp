@@ -39,11 +39,11 @@ void PythiaEventReader::setDefaultConfiguration()
 //!
 void PythiaEventReader::execute()
 {
-  if (reportStart("PythiaEventReader",getName(),"execute()"))
+  if (reportStart(__FUNCTION__))
     ;
   
   //cout << "eventStreams.size() : " << eventStreams.size() << endl;
-  
+  incrementTaskExecuted();
   Event & event = * eventStreams[0];
   event.reset();
   particleFactory->reset();
@@ -63,7 +63,7 @@ void PythiaEventReader::execute()
       return;
       }
     nb = rootInputTreeChain()->GetEntry(entryIndex);   nBytes += nb;
-    if (reportDebug("PythiaEventReader",getName(),"execute()")) cout << " nb:" << nb << " nParticles:" <<  nParticles << endl;
+    if (reportDebug(__FUNCTION__)) cout << " nb:" << nb << " nParticles:" <<  nParticles << endl;
     if (nParticles>2) seekingEvent = false;
     }
   
@@ -81,7 +81,7 @@ void PythiaEventReader::execute()
     int ist = particles_fStatusCode[iParticle];
     if (ist <= 0) continue;
     int pdg = particles_fPdgCode[iParticle];
-    type = masterCollection->findPdgCode(pdg);
+    type = particleTypeCollection->findPdgCode(pdg);
     if (type==nullptr) continue;
     mass = type->getMass();
     if (mass<0.002) continue;  // no photons, electrons...
@@ -96,16 +96,10 @@ void PythiaEventReader::execute()
     double sourceT = 0.0;
     particle = particleFactory->getNextObject();
     particle->set(type,px,py,pz,e,sourceX,sourceY,sourceZ,sourceT,true);
-    incrementParticlesCounted(); // photons are NOT included in this tally
+    // incrementParticlesCounted(); // photons are NOT included in this tally
     if (!particleFilters[0]->accept(*particle)) continue;
     event.add(particle);
-    incrementParticlesAccepted();
-    }
-  if (reportDebug("PythiaEventReader",getName(),"execute()"))
-    {
-    cout << endl;
-    cout << "PythiaEventGenerator::execute() No of accepted particles : "<< getNParticlesAccepted() << endl;
-    cout << "PythiaEventGenerator::execute() No of counted particles : " << getNParticlesCounted()  << endl;
+    // // incrementParticlesAccepted();
     }
 }
 

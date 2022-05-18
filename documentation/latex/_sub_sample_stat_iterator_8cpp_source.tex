@@ -1,0 +1,123 @@
+\hypertarget{_sub_sample_stat_iterator_8cpp_source}{}\doxysection{Sub\+Sample\+Stat\+Iterator.\+cpp}
+\label{_sub_sample_stat_iterator_8cpp_source}\index{SubSample/SubSampleStatIterator.cpp@{SubSample/SubSampleStatIterator.cpp}}
+\mbox{\hyperlink{_sub_sample_stat_iterator_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_histogram_collection_8hpp}{HistogramCollection.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_sub_sample_stat_iterator_8hpp}{SubSampleStatIterator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_sub_sample_stat_calculator_8hpp}{SubSampleStatCalculator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00016}\mbox{\hyperlink{_sub_sample_stat_iterator_8cpp_a8615bf8197c4acfa94d7713a1dc2fad6}{00016}} \mbox{\hyperlink{_sub_sample_stat_iterator_8cpp_a8615bf8197c4acfa94d7713a1dc2fad6}{ClassImp}}(\mbox{\hyperlink{class_sub_sample_stat_iterator}{SubSampleStatIterator}});}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00019}\mbox{\hyperlink{class_sub_sample_stat_iterator_adf0f179d6dd216882f7f7e7c8459d9c6}{00019}} \mbox{\hyperlink{class_sub_sample_stat_iterator_adf0f179d6dd216882f7f7e7c8459d9c6}{SubSampleStatIterator::SubSampleStatIterator}}(\textcolor{keyword}{const} TString \&       \_name,}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00020}00020                                                  \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \& \_configuration,}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00021}00021                                                  \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}} debugLevel)}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00022}00022 :}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00023}00023 \mbox{\hyperlink{class_task}{Task}}(\_name,\_configuration,debugLevel)}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00024}00024 \{}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00025}00025   \mbox{\hyperlink{class_message_logger_a10182fcb56fb5fda0f998c89c4bbe4fb}{appendClassName}}(\textcolor{stringliteral}{"{}SubSampleStatIterator"{}});}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00026}00026   \mbox{\hyperlink{class_message_logger_a62ee7a375e1aec16bfb767aec9fba906}{setInstanceName}}(\_name);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00027}00027   \mbox{\hyperlink{class_sub_sample_stat_iterator_a2931d7b09f9be58bd9815d5213ba1ad9}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00028}00028   \mbox{\hyperlink{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}{setConfiguration}}(\_configuration);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00029}00029 \}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00031}\mbox{\hyperlink{class_sub_sample_stat_iterator_a2931d7b09f9be58bd9815d5213ba1ad9}{00031}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sub_sample_stat_iterator_a2931d7b09f9be58bd9815d5213ba1ad9}{SubSampleStatIterator::setDefaultConfiguration}}()}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00032}00032 \{}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00033}00033   TString none  = \textcolor{stringliteral}{"{}none"{}};}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00034}00034   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}createHistograms"{}},       \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00035}00035   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}loadHistograms"{}},         \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00036}00036   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}saveHistograms"{}},         \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00037}00037   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}appendedString"{}},         TString(\textcolor{stringliteral}{"{}SubSampleSum\_"{}}));}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00038}00038   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}}, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00039}00039   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}defaultGroupSize"{}},         10);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00040}00040   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nInputFile"{}},                0);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00041}00041   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_afd1d139c5c51efcdab7188502a58bb4e}{generateKeyValuePairs}}(\textcolor{stringliteral}{"{}IncludedPattern"{}},none,20);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00042}00042   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_afd1d139c5c51efcdab7188502a58bb4e}{generateKeyValuePairs}}(\textcolor{stringliteral}{"{}ExcludedPattern"{}},none,20);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00043}00043   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_afd1d139c5c51efcdab7188502a58bb4e}{generateKeyValuePairs}}(\textcolor{stringliteral}{"{}InputFile"{}},none,100);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00044}00044   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00045}00045     \{}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00046}00046     \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(cout);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00047}00047     \}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00048}00048 \}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00051}\mbox{\hyperlink{class_sub_sample_stat_iterator_a1fd431f67eb8f3bc4e254720aaff3864}{00051}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sub_sample_stat_iterator_a1fd431f67eb8f3bc4e254720aaff3864}{SubSampleStatIterator::execute}}()}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00052}00052 \{}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00053}00053   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00054}00054     ;}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00055}00055   TString none  = \textcolor{stringliteral}{"{}none"{}};}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00056}00056   TString appendedString      = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}(\textcolor{stringliteral}{"{}appendedString"{}});}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00057}00057   \textcolor{keywordtype}{bool} forceHistogramsRewrite = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}});}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00058}00058   \textcolor{keywordtype}{int}  defaultGroupSize       = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ae0804e2d00ec6f41e98d908f37f0a50a}{getValueInt}}(\textcolor{stringliteral}{"{}defaultGroupSize"{}});}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00059}00059   TString histoInputPath      = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}(\textcolor{stringliteral}{"{}histoInputPath"{}});}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00060}00060   TString histoOutputPath     = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}(\textcolor{stringliteral}{"{}histoOutputPath"{}});}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00061}00061   TString histoOutputDataName = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}(\textcolor{stringliteral}{"{}histoOutputDataName"{}});}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00064}00064   \textcolor{comment}{//TString histoBaseName       = subTaskConfig.getValueString("{}histoBaseName"{});}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00066}00066   \textcolor{comment}{//int  nInputFile             = configuration.getValueInt("{}nInputFile"{}); // do not use yet...}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00067}00067   vector<TString> includedPatterns = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a856177a62a48f49d6167116f3cd3f8ca}{getSelectedValues}}(\textcolor{stringliteral}{"{}IncludedPattern"{}},none);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00068}00068   vector<TString> excludedPatterns = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a856177a62a48f49d6167116f3cd3f8ca}{getSelectedValues}}(\textcolor{stringliteral}{"{}ExcludedPattern"{}},none);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00070}00070   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nSubTasks = \mbox{\hyperlink{class_task_a4e7d331277b690abc787ffc6f8e3e18a}{subTasks}}.size();}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00071}00071   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}())  cout << \textcolor{stringliteral}{"{}SubTasks Count: "{}} << nSubTasks  << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00072}00072   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  iTask=0; iTask<nSubTasks; iTask++)}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00073}00073     \{}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00074}00074     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\_\_FUNCTION\_\_))  cout << \textcolor{stringliteral}{"{}SubTasks \#: "{}} << iTask  << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00075}00075     \mbox{\hyperlink{class_task}{Task}} \& subTask = *\mbox{\hyperlink{class_task_a4e7d331277b690abc787ffc6f8e3e18a}{subTasks}}[iTask];}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00076}00076     \mbox{\hyperlink{class_configuration}{Configuration}} \& subTaskConfig = subTask.\mbox{\hyperlink{class_task_a1955cc87bd4885d8ca19435b3609443f}{getConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00077}00077     TString \mbox{\hyperlink{class_task_a0aa96f5ba1ec134ff65d80740654d759}{taskName}}        = subTask.\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}();}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00078}00078     TString histoOutputAnalyzerName = subTaskConfig.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}(\textcolor{stringliteral}{"{}histoOutputAnalyzerName"{}});}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00080}00080     TString histoOutputFileName;}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00081}00081     histoOutputFileName = histoOutputDataName;}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00082}00082     histoOutputFileName += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00083}00083     histoOutputFileName += histoOutputAnalyzerName;}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00084}00084     \textcolor{comment}{//histoOutputFileName += "{}\_"{};}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00086}00086     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00087}00087       \{}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00088}00088       cout << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00089}00089       cout << \textcolor{stringliteral}{"{}            SubTask Name: "{}} << \mbox{\hyperlink{class_task_a0aa96f5ba1ec134ff65d80740654d759}{taskName}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00090}00090       cout << \textcolor{stringliteral}{"{}          histoInputPath: "{}} << histoInputPath  << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00091}00091       cout << \textcolor{stringliteral}{"{}         histoOutputPath: "{}} << histoOutputPath  << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00092}00092       cout << \textcolor{stringliteral}{"{}     histoOutputDataName: "{}} << histoOutputDataName  <<   endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00093}00093       cout << \textcolor{stringliteral}{"{} histoOutputAnalyzerName: "{}} << histoOutputAnalyzerName   << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00094}00094       cout << \textcolor{stringliteral}{"{}     histoOutputFileName: "{}} << histoOutputFileName  << endl;}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00095}00095       \}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00097}00097     \mbox{\hyperlink{class_configuration}{Configuration}} subsampleConfig;}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00098}00098     subsampleConfig.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}histoInputPath"{}}, histoInputPath);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00099}00099     subsampleConfig.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}histoOutputPath"{}},histoOutputPath);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00100}00100     subsampleConfig.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}histoBaseName"{}},  histoOutputFileName);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00101}00101     subsampleConfig.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}appendedString"{}},         appendedString);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00102}00102     subsampleConfig.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}}, forceHistogramsRewrite);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00103}00103     subsampleConfig.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}histoOutputDataName"{}},    histoOutputDataName);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00104}00104     subsampleConfig.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}histoOutputAnalyzerName"{}},histoOutputAnalyzerName);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00105}00105 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00106}00106     subsampleConfig.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}defaultGroupSize"{}},       defaultGroupSize);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00107}00107     subsampleConfig.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}IncludedPattern"{}},        \mbox{\hyperlink{class_task_a0aa96f5ba1ec134ff65d80740654d759}{taskName}});}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00109}00109     subsampleConfig.\mbox{\hyperlink{class_configuration_adcfe87268b9a59b29505946e8f6b7e8b}{addSelectedValues}}(\textcolor{stringliteral}{"{}IncludedPattern"{}}, \textcolor{stringliteral}{"{}none"{}}, includedPatterns);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00110}00110     subsampleConfig.\mbox{\hyperlink{class_configuration_adcfe87268b9a59b29505946e8f6b7e8b}{addSelectedValues}}(\textcolor{stringliteral}{"{}ExcludedPattern"{}}, \textcolor{stringliteral}{"{}none"{}}, excludedPatterns);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00111}00111     \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}} calculator(\textcolor{stringliteral}{"{}SubSampleAnalyzer"{}}, subsampleConfig, \mbox{\hyperlink{class_message_logger_aaa759a0af20793b7586bb33722463d22}{getReportLevel}}());}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00112}00112     calculator.\mbox{\hyperlink{class_sub_sample_stat_calculator_a6f6ca62a93799a4299b972da90879b3a}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00113}00113     \}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00114}00114   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00115}00115     \{ \}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00116}00116 \}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8cpp_source_l00117}00117 }
+
+\end{DoxyCode}

@@ -1,5 +1,5 @@
-<map id="Base/GlobalHistos.hpp" name="Base/GlobalHistos.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="2368,5,2524,32"/>
+<map id="Global/GlobalHistos.hpp" name="Global/GlobalHistos.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="2364,5,2527,32"/>
 <area shape="rect" id="node2" href="$_histograms_8hpp.html" title=" " alt="" coords="2388,80,2503,107"/>
 <area shape="rect" id="node35" href="$_configuration_8hpp.html" title=" " alt="" coords="1726,379,1850,405"/>
 <area shape="rect" id="node43" href="$_particle_filter_8hpp.html" title=" " alt="" coords="168,80,286,107"/>

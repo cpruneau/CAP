@@ -26,8 +26,8 @@
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00022}00022   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}BidimGaussFitter.hpp"{}});}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00023}00023   gSystem-\/>Load(\textcolor{stringliteral}{"{}libBase.dylib"{}});}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00024}00024 }
-\DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00025}00025   TString \mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}}  = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/WAC-\/DATA/InputFiles/PYTHIA\_pp\_7TeV\_softOnHardOff/Pairs/ByCentrality/Sums/"{}};}
-\DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00026}00026   TString \mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}} = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/WAC-\/DATA/OutputFiles/"{}};}
+\DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00025}00025   TString inputPath  = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/WAC-\/DATA/InputFiles/PYTHIA\_pp\_7TeV\_softOnHardOff/Pairs/ByCentrality/Sums/"{}};}
+\DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00026}00026   TString outputPath = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/WAC-\/DATA/OutputFiles/"{}};}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00027}00027 }
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00028}00028   \textcolor{keywordtype}{int} nFiles = 11;}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00029}00029   TString ** inputFileNames = \textcolor{keyword}{new} TString*[nFiles];}
@@ -36,7 +36,7 @@
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00032}00032   TH2     ** h2s            = \textcolor{keyword}{new} TH2    *[nFiles];}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00033}00033   \mbox{\hyperlink{class_bidim_gauss_fitter}{BidimGaussFitter}}           * fitter  = \textcolor{keyword}{new} \mbox{\hyperlink{class_bidim_gauss_fitter}{BidimGaussFitter}}(); \textcolor{comment}{//*[nFiles];}}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00034}00034   \mbox{\hyperlink{class_bidim_gauss_fit_configuration}{BidimGaussFitConfiguration}} * config  = \textcolor{keyword}{new} \mbox{\hyperlink{class_bidim_gauss_fit_configuration}{BidimGaussFitConfiguration}}();}
-\DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00035}00035   config-\/>\mbox{\hyperlink{class_bidim_gauss_fit_configuration_ad253fe0251cd33dcabea84d565ea3af1}{outputPath}} = \mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}};}
+\DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00035}00035   config-\/>\mbox{\hyperlink{class_bidim_gauss_fit_configuration_ad253fe0251cd33dcabea84d565ea3af1}{outputPath}} = outputPath;}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00036}00036   config-\/>\mbox{\hyperlink{class_bidim_gauss_fit_configuration_a7b731fafd5b17dfb135a890618f22ad9}{deltaEtaLimit}} = 1.3;}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00037}00037   config-\/>\mbox{\hyperlink{class_bidim_gauss_fit_configuration_a86af870feaf5b11afe59e9d035be6cdc}{deltaEtaOuterLimit}} = 1.5;}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00038}00038 }
@@ -98,7 +98,7 @@
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00094}00094   TString fileName;}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00095}00095   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iFile=0;iFile<11;iFile++)}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00096}00096   \{}
-\DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00097}00097   fileName = \mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}}+*inputFileNames[iFile];}
+\DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00097}00097   fileName = inputPath+*inputFileNames[iFile];}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00098}00098   \mbox{\hyperlink{_plot_hep_data_8_c_a32be468b422ff3800be85388bcdce9d1}{inputFiles}}[iFile] = \textcolor{keyword}{new} TFile(fileName,\textcolor{stringliteral}{"{}OLD"{}});}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00099}00099   \textcolor{keywordflow}{if} (\mbox{\hyperlink{_plot_hep_data_8_c_a32be468b422ff3800be85388bcdce9d1}{inputFiles}}[iFile])}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00100}00100     \{}
@@ -129,7 +129,7 @@
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00125}00125   chi2Ndf[iFile]     = fitter-\/>\mbox{\hyperlink{class_bidim_gauss_fitter_a822ccb7ebf9cdf33cd728d07b0e9c137}{fullFitResult}}.\mbox{\hyperlink{class_bidim_gauss_fit_result_a6206245f198ea1ee6e563edcbcba639e}{chi2Ndf}};}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00126}00126   \}}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00127}00127 }
-\DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00128}00128   fitter-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00128}00128   fitter-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00129}00129 }
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00130}00130   cout << \textcolor{stringliteral}{"{}================================================================================ "{}} << endl;}
 \DoxyCodeLine{\Hypertarget{_g2_width_8_c_source_l00131}00131   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iFile=0;iFile<1;iFile++)}

@@ -29,15 +29,13 @@ Collaboration diagram for File\+Task\+Iterator\+:\nopagebreak
 \item 
 virtual \mbox{\hyperlink{class_file_task_iterator_acbaa14a5b524307401320cdd07ed484c}{$\sim$\+File\+Task\+Iterator}} ()
 \item 
-virtual void \mbox{\hyperlink{class_file_task_iterator_a276d31f925e7bdad3e91e7b1c5528ea8}{initialize\+Tasks}} ()
+virtual void \mbox{\hyperlink{class_file_task_iterator_a63c734f93df987c27ced1b121036a172}{initialize\+Sub\+Tasks}} ()
 \item 
-virtual void \mbox{\hyperlink{class_file_task_iterator_ae8c7b50f678f1cc685b72f6ee0e9a540}{execute}} ()
+virtual void \mbox{\hyperlink{class_file_task_iterator_a98d21e2baf83d49ad2cb38872197463f}{execute}} ()
 \item 
 virtual void \mbox{\hyperlink{class_file_task_iterator_ac219f99c1e94002e00ff1c1ebc520326}{set\+Default\+Configuration}} ()
 \item 
-virtual void \mbox{\hyperlink{class_file_task_iterator_aa413681230c253b7287f5bc3e9bb647b}{run}} ()
-\item 
-unsigned int \mbox{\hyperlink{class_file_task_iterator_a7eb1651923d8331ebd500a1224cf0ebc}{get\+Nselected\+File\+Names}} () const
+unsigned int \mbox{\hyperlink{class_file_task_iterator_a5d20c2bb128782b52fc163e52e193b76}{get\+NSelected\+File\+Names}} () const
 \item 
 void \mbox{\hyperlink{class_file_task_iterator_aceb7d50a6f4e98037f09b708a11be48b}{add\+File\+Names}} (const TString name)
 \item 
@@ -90,7 +88,7 @@ Detailed CTOR
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_file_task_iterator_8cpp_source}{File\+Task\+Iterator.\+cpp}}.
+Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_file_task_iterator_8cpp_source}{File\+Task\+Iterator.\+cpp}}.
 
 \mbox{\Hypertarget{class_file_task_iterator_acbaa14a5b524307401320cdd07ed484c}\label{class_file_task_iterator_acbaa14a5b524307401320cdd07ed484c}} 
 \index{FileTaskIterator@{FileTaskIterator}!````~FileTaskIterator@{$\sim$FileTaskIterator}}
@@ -121,7 +119,7 @@ Add several file templates/names for use by this task iterator must contain the 
 
 Add several file templates for use by this task iterator 
 
-Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00237}{237}} of file \mbox{\hyperlink{_file_task_iterator_8cpp_source}{File\+Task\+Iterator.\+cpp}}.
+Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00199}{199}} of file \mbox{\hyperlink{_file_task_iterator_8cpp_source}{File\+Task\+Iterator.\+cpp}}.
 
 \mbox{\Hypertarget{class_file_task_iterator_acae93a121e8e99bb501033001b3de6d3}\label{class_file_task_iterator_acae93a121e8e99bb501033001b3de6d3}} 
 \index{FileTaskIterator@{FileTaskIterator}!addFileNames@{addFileNames}}
@@ -131,7 +129,7 @@ Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00237}{237}
 
 Add several file templates for use by this task iterator 
 
-Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00215}{215}} of file \mbox{\hyperlink{_file_task_iterator_8cpp_source}{File\+Task\+Iterator.\+cpp}}.
+Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00177}{177}} of file \mbox{\hyperlink{_file_task_iterator_8cpp_source}{File\+Task\+Iterator.\+cpp}}.
 
 \mbox{\Hypertarget{class_file_task_iterator_ace5567c1d21c085719b8d8f058d092ea}\label{class_file_task_iterator_ace5567c1d21c085719b8d8f058d092ea}} 
 \index{FileTaskIterator@{FileTaskIterator}!addFileNames@{addFileNames}}
@@ -141,21 +139,21 @@ Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00215}{215}
 
 Add several file templates for use by this task iterator 
 
-Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00186}{186}} of file \mbox{\hyperlink{_file_task_iterator_8cpp_source}{File\+Task\+Iterator.\+cpp}}.
+Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00148}{148}} of file \mbox{\hyperlink{_file_task_iterator_8cpp_source}{File\+Task\+Iterator.\+cpp}}.
 
-\mbox{\Hypertarget{class_file_task_iterator_ae8c7b50f678f1cc685b72f6ee0e9a540}\label{class_file_task_iterator_ae8c7b50f678f1cc685b72f6ee0e9a540}} 
+\mbox{\Hypertarget{class_file_task_iterator_a98d21e2baf83d49ad2cb38872197463f}\label{class_file_task_iterator_a98d21e2baf83d49ad2cb38872197463f}} 
 \index{FileTaskIterator@{FileTaskIterator}!execute@{execute}}
 \index{execute@{execute}!FileTaskIterator@{FileTaskIterator}}
 \doxysubsubsection{\texorpdfstring{execute()}{execute()}}
-{\footnotesize\ttfamily virtual void File\+Task\+Iterator\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void File\+Task\+Iterator\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 Execute this task based on the configuration and class variable specified at construction 
 
-Reimplemented from \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task}}.
+Reimplemented from \mbox{\hyperlink{class_task_iterator_af480b27e954098aaad2a0f3750940eaf}{Task\+Iterator}}.
 
 
 
-Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{_file_task_iterator_8hpp_source}{File\+Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{_file_task_iterator_8cpp_source}{File\+Task\+Iterator.\+cpp}}.
 
 \mbox{\Hypertarget{class_file_task_iterator_a9233dfd9ad3dbab639ca1b6943f75192}\label{class_file_task_iterator_a9233dfd9ad3dbab639ca1b6943f75192}} 
 \index{FileTaskIterator@{FileTaskIterator}!getCurrentFileIndex@{getCurrentFileIndex}}
@@ -165,17 +163,17 @@ Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00048}{48}}
 
 Get the index of the file currently being processed (in the file list submited to this task) 
 
-Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00096}{96}} of file \mbox{\hyperlink{_file_task_iterator_8hpp_source}{File\+Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00091}{91}} of file \mbox{\hyperlink{_file_task_iterator_8hpp_source}{File\+Task\+Iterator.\+hpp}}.
 
-\mbox{\Hypertarget{class_file_task_iterator_a7eb1651923d8331ebd500a1224cf0ebc}\label{class_file_task_iterator_a7eb1651923d8331ebd500a1224cf0ebc}} 
-\index{FileTaskIterator@{FileTaskIterator}!getNselectedFileNames@{getNselectedFileNames}}
-\index{getNselectedFileNames@{getNselectedFileNames}!FileTaskIterator@{FileTaskIterator}}
-\doxysubsubsection{\texorpdfstring{getNselectedFileNames()}{getNselectedFileNames()}}
-{\footnotesize\ttfamily unsigned int File\+Task\+Iterator\+::get\+Nselected\+File\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{class_file_task_iterator_a5d20c2bb128782b52fc163e52e193b76}\label{class_file_task_iterator_a5d20c2bb128782b52fc163e52e193b76}} 
+\index{FileTaskIterator@{FileTaskIterator}!getNSelectedFileNames@{getNSelectedFileNames}}
+\index{getNSelectedFileNames@{getNSelectedFileNames}!FileTaskIterator@{FileTaskIterator}}
+\doxysubsubsection{\texorpdfstring{getNSelectedFileNames()}{getNSelectedFileNames()}}
+{\footnotesize\ttfamily unsigned int File\+Task\+Iterator\+::get\+NSelected\+File\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 Returns the number of file templates used by this task iterator 
 
-Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{_file_task_iterator_8hpp_source}{File\+Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00058}{58}} of file \mbox{\hyperlink{_file_task_iterator_8hpp_source}{File\+Task\+Iterator.\+hpp}}.
 
 \mbox{\Hypertarget{class_file_task_iterator_a09d1e18abc144df3f02a56cac7c6b1f7}\label{class_file_task_iterator_a09d1e18abc144df3f02a56cac7c6b1f7}} 
 \index{FileTaskIterator@{FileTaskIterator}!getSelectedFileNames@{getSelectedFileNames}}
@@ -185,27 +183,17 @@ Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00063}{63}}
 
 Get array of file names to be processes by this iterator task. 
 
-Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00104}{104}} of file \mbox{\hyperlink{_file_task_iterator_8hpp_source}{File\+Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00099}{99}} of file \mbox{\hyperlink{_file_task_iterator_8hpp_source}{File\+Task\+Iterator.\+hpp}}.
 
-\mbox{\Hypertarget{class_file_task_iterator_a276d31f925e7bdad3e91e7b1c5528ea8}\label{class_file_task_iterator_a276d31f925e7bdad3e91e7b1c5528ea8}} 
-\index{FileTaskIterator@{FileTaskIterator}!initializeTasks@{initializeTasks}}
-\index{initializeTasks@{initializeTasks}!FileTaskIterator@{FileTaskIterator}}
-\doxysubsubsection{\texorpdfstring{initializeTasks()}{initializeTasks()}}
-{\footnotesize\ttfamily void File\+Task\+Iterator\+::initialize\+Tasks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+\mbox{\Hypertarget{class_file_task_iterator_a63c734f93df987c27ced1b121036a172}\label{class_file_task_iterator_a63c734f93df987c27ced1b121036a172}} 
+\index{FileTaskIterator@{FileTaskIterator}!initializeSubTasks@{initializeSubTasks}}
+\index{initializeSubTasks@{initializeSubTasks}!FileTaskIterator@{FileTaskIterator}}
+\doxysubsubsection{\texorpdfstring{initializeSubTasks()}{initializeSubTasks()}}
+{\footnotesize\ttfamily void File\+Task\+Iterator\+::initialize\+Sub\+Tasks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 Initialize this task and all its subtasks. This method handles the retrieval and passing of the files to be analyzed by the subtasks. 
 
-Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00289}{289}} of file \mbox{\hyperlink{_file_task_iterator_8cpp_source}{File\+Task\+Iterator.\+cpp}}.
-
-\mbox{\Hypertarget{class_file_task_iterator_aa413681230c253b7287f5bc3e9bb647b}\label{class_file_task_iterator_aa413681230c253b7287f5bc3e9bb647b}} 
-\index{FileTaskIterator@{FileTaskIterator}!run@{run}}
-\index{run@{run}!FileTaskIterator@{FileTaskIterator}}
-\doxysubsubsection{\texorpdfstring{run()}{run()}}
-{\footnotesize\ttfamily void File\+Task\+Iterator\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-Execute all the subtasks for all the file templates 
-
-Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{_file_task_iterator_8cpp_source}{File\+Task\+Iterator.\+cpp}}.
+Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00256}{256}} of file \mbox{\hyperlink{_file_task_iterator_8cpp_source}{File\+Task\+Iterator.\+cpp}}.
 
 \mbox{\Hypertarget{class_file_task_iterator_ac219f99c1e94002e00ff1c1ebc520326}\label{class_file_task_iterator_ac219f99c1e94002e00ff1c1ebc520326}} 
 \index{FileTaskIterator@{FileTaskIterator}!setDefaultConfiguration@{setDefaultConfiguration}}
@@ -215,7 +203,7 @@ Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00073}{73}}
 
 Set the default configuration of this task 
 
-Reimplemented from \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3}{Task}}.
+Reimplemented from \mbox{\hyperlink{class_task_iterator_a8536aeba1c4465146062e72516c6a6b6}{Task\+Iterator}}.
 
 
 
@@ -223,7 +211,7 @@ Reimplemented in \mbox{\hyperlink{class_derived_histogram_calculator_a81fd0a9a82
 
 
 
-Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{_file_task_iterator_8cpp_source}{File\+Task\+Iterator.\+cpp}}.
+Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{_file_task_iterator_8cpp_source}{File\+Task\+Iterator.\+cpp}}.
 
 
 
@@ -236,7 +224,7 @@ Definition at line \mbox{\hyperlink{_file_task_iterator_8cpp_source_l00045}{45}}
 
 Character string or name to be added to the file name (on output) being processed. 
 
-Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00119}{119}} of file \mbox{\hyperlink{_file_task_iterator_8hpp_source}{File\+Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00114}{114}} of file \mbox{\hyperlink{_file_task_iterator_8hpp_source}{File\+Task\+Iterator.\+hpp}}.
 
 \mbox{\Hypertarget{class_file_task_iterator_a2fa84b5a117d1d2672bfb2a0fa84a9ac}\label{class_file_task_iterator_a2fa84b5a117d1d2672bfb2a0fa84a9ac}} 
 \index{FileTaskIterator@{FileTaskIterator}!currentFileIndex@{currentFileIndex}}
@@ -246,7 +234,7 @@ Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00119}{119}
 
 Index of the file being processes. 
 
-Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00124}{124}} of file \mbox{\hyperlink{_file_task_iterator_8hpp_source}{File\+Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00119}{119}} of file \mbox{\hyperlink{_file_task_iterator_8hpp_source}{File\+Task\+Iterator.\+hpp}}.
 
 \mbox{\Hypertarget{class_file_task_iterator_a84a5642419b78fe124f3c63c7912a72d}\label{class_file_task_iterator_a84a5642419b78fe124f3c63c7912a72d}} 
 \index{FileTaskIterator@{FileTaskIterator}!selectedFileNames@{selectedFileNames}}
@@ -256,7 +244,7 @@ Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00124}{124}
 
 Array of file names to be processes by this iterator task. 
 
-Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00114}{114}} of file \mbox{\hyperlink{_file_task_iterator_8hpp_source}{File\+Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_file_task_iterator_8hpp_source_l00109}{109}} of file \mbox{\hyperlink{_file_task_iterator_8hpp_source}{File\+Task\+Iterator.\+hpp}}.
 
 
 

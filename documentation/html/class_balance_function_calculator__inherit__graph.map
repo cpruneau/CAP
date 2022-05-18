@@ -1,5 +1,5 @@
 <map id="BalanceFunctionCalculator" name="BalanceFunctionCalculator">
 <area shape="rect" id="node1" title=" " alt="" coords="5,155,184,181"/>
-<area shape="rect" id="node2" href="$class_task.html" title=" " alt="" coords="69,80,120,107"/>
+<area shape="rect" id="node2" href="$class_task.html" title="Base class defining the notion of light weight tasks for the generation and analysis of data." alt="" coords="69,80,120,107"/>
 <area shape="rect" id="node3" href="$class_message_logger.html" title=" " alt="" coords="37,5,152,32"/>
 </map>

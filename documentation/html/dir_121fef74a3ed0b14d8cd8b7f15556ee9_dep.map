@@ -1,7 +1,9 @@
 <map id="HadronGas" name="HadronGas">
-<area shape="rect" id="node1" href="dir_121fef74a3ed0b14d8cd8b7f15556ee9.html" title="HadronGas" alt="" coords="45,5,133,53"/>
+<area shape="rect" id="node1" href="dir_121fef74a3ed0b14d8cd8b7f15556ee9.html" title="HadronGas" alt="" coords="97,5,185,53"/>
 <area shape="rect" id="node2" href="dir_254030d25440c18e1129eeacde751eba.html" title="Cluster" alt="" coords="5,101,77,149"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000006_000004.html" title="4" alt="" coords="65,82,73,96"/>
-<area shape="rect" id="node3" href="dir_628593db0cdce5a76fb85526ae5aa762.html" title="Base" alt="" coords="101,101,173,149"/>
-<area shape="rect" id="edge2-headlabel" href="dir_000006_000001.html" title="8" alt="" coords="121,74,129,89"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000010_000006.html" title="4" alt="" coords="81,88,89,102"/>
+<area shape="rect" id="node3" href="dir_bd9caddfa8f0d7599e449d081a395bbc.html" title="CollGeom" alt="" coords="101,101,181,149"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000010_000007.html" title="1" alt="" coords="146,76,154,90"/>
+<area shape="rect" id="node4" href="dir_628593db0cdce5a76fb85526ae5aa762.html" title="Base" alt="" coords="205,101,277,149"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000010_000001.html" title="7" alt="" coords="205,75,213,90"/>
 </map>

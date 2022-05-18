@@ -29,6 +29,8 @@ outputEvent(nullptr),
 outputTree(nullptr),
 standaloneMode(true)
 {
+  appendClassName("PythiaEventGenerator");
+  setInstanceName(_name);
   setDefaultConfiguration();
   setConfiguration(_configuration);
 }
@@ -36,9 +38,8 @@ standaloneMode(true)
 
 void PythiaEventGenerator::setDefaultConfiguration()
 {
-  if (reportStart("PythiaEventGenerator",getName(),"setDefaultConfiguration()"))
-    {
-    }
+  if (reportStart(__FUNCTION__))
+    ;
   configuration.setName("PythiaEventGenerator Configuration");
   configuration.setParameter("useParticles",     true);
   configuration.setParameter("useEventStream0",  true);
@@ -60,7 +61,7 @@ void PythiaEventGenerator::setDefaultConfiguration()
     TString value = "none";
     configuration.addParameter(key, value);
     }
-  if (reportDebug("PythiaEventGenerator",getName(),"setDefaultConfiguration()"))
+  if (reportDebug(__FUNCTION__))
     {
     configuration.printConfiguration(cout);
     }
@@ -72,11 +73,13 @@ void PythiaEventGenerator::setDefaultConfiguration()
 //!
 void PythiaEventGenerator::initialize()
 {
+  if (reportStart(__FUNCTION__))
+    ;
   Task::initialize();
   const Configuration & pc      = getConfiguration();
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
-  nFilteredEventsAccepted.assign(nEventFilters,0.0);
+  initializeNEventsAccepted();
   pythia8 = new TPythia8();
   
   standaloneMode = pc.getValueBool("standaloneMode");
@@ -102,7 +105,7 @@ void PythiaEventGenerator::initialize()
   pythia8->Initialize(pc.getValueInt("beam"),
                       pc.getValueInt("target"),
                       pc.getValueDouble("energy"));
-  if (reportDebug("PythiaEventGenerator",getName(),"initialize()"))
+  if (reportDebug(__FUNCTION__))
     {
     pythia8->ListAll();
     }
@@ -124,20 +127,21 @@ void PythiaEventGenerator::initialize()
     nMaxClonesArray = pc.getValueInt("nMaxClonesArray");
     particles = new TClonesArray("TParticle", nMaxClonesArray);
     }
-  if (reportEnd("PythiaEventGenerator",getName(),"initialize()"))
+  if (reportEnd(__FUNCTION__))
     ;
 }
 
 void PythiaEventGenerator::execute()
 {
-  if (reportStart("PythiaEventGenerator",getName(),"execute()"))
-    ;
-  incrementEventProcessed();
+//  
+//  if (reportStart(__FUNCTION__))
+//    ;
+  incrementTaskExecuted();
   Event & event = *getEventStream(0);
   EventProperties & eventProperties = * event.getEventProperties();
 
   Particle * interaction;
-  resetParticleCounters();
+  // resetParticleCounters();
   if (standaloneMode)
     {
     // In this mode, we generate one PYTHIA (pp) collision per event. One interaction vertex is
@@ -145,7 +149,7 @@ void PythiaEventGenerator::execute()
     // factory and event resets done by the task iterator to avoid repetition.
     event.reset();
     particleFactory->reset();
-    resetParticleCounters();
+    // resetParticleCounters();
     interaction = particleFactory->getNextObject();
     interaction->reset();
     interaction->setType( ParticleType::getInteractionType());
@@ -164,9 +168,9 @@ void PythiaEventGenerator::execute()
     eventProperties.nBinaryTotal       = 1;     // total number of binary collisions
     eventProperties.impactParameter       = -99999; // nucleus-nucleus center distance in fm
     eventProperties.fractionalXSection    = -99999; // fraction cross section value
-    eventProperties.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
-    eventProperties.particlesCounted      = getNParticlesCounted();
-    eventProperties.particlesAccepted     = getNParticlesAccepted();
+//    eventProperties.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
+//    eventProperties.particlesCounted      = getNParticlesCounted();
+//    eventProperties.particlesAccepted     = getNParticlesAccepted();
     }
   else
     {
@@ -191,14 +195,12 @@ void PythiaEventGenerator::execute()
       {
       generate(interactions[kInter]);
       }
-    eventProperties.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
-    eventProperties.particlesCounted      = getNParticlesCounted();
-    eventProperties.particlesAccepted     = getNParticlesAccepted();
+//    eventProperties.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
+//    eventProperties.particlesCounted      = getNParticlesCounted();
+//    eventProperties.particlesAccepted     = getNParticlesAccepted();
     }
-  if (reportDebug("PythiaEventGenerator",getName(),"execute()"))
-    {
-    eventProperties.printProperties(cout);
-    }
+  incrementNEventsAccepted(0);
+  if (reportDebug(__FUNCTION__)) eventProperties.printProperties(cout);
 }
 
 void PythiaEventGenerator::generate(Particle * parentInteraction)
@@ -211,14 +213,14 @@ void PythiaEventGenerator::generate(Particle * parentInteraction)
   while (seekingEvent)
     {
     pythia8->GenerateEvent();
-    if (reportDebug()) pythia8->EventListing();
+    if (reportDebug(__FUNCTION__)) pythia8->EventListing();
     pythia8->ImportParticles(particles,"Final");
     nParticles = particles->GetEntriesFast();
     if (nParticles>2) seekingEvent = false;
     }
   if (nParticles>nMaxClonesArray)
     {
-    if (reportError()) cout << " ARRAY TOO SMALL np>nMaxClonesArray; nParticles:" << nParticles << " nMax:" << nMaxClonesArray << endl;
+    if (reportError(__FUNCTION__)) cout << " ARRAY TOO SMALL np>nMaxClonesArray; nParticles:" << nParticles << " nMax:" << nMaxClonesArray << endl;
     postTaskFatal();
     exit(1);
     }
@@ -237,7 +239,9 @@ void PythiaEventGenerator::generate(Particle * parentInteraction)
     Event & event = * eventStreams[0];
     ParticleFilter & particleFilter = * particleFilters[0];
     // load particles from TClone storage and copy into event.
-    //if (reportDebug()) cout << "PythiaEventGenerator::execute() starting copy loop into event..." << endl;
+    //if (reportDebug(__FUNCTION__)) cout << "PythiaEventGenerator::execute() starting copy loop into event..." << endl;
+
+    resetNParticlesAcceptedEvent();
     for (int iParticle = 0; iParticle < nParticles; iParticle++)
       {
       TParticle & part = * (TParticle*) particles->At(iParticle);
@@ -251,7 +255,7 @@ void PythiaEventGenerator::generate(Particle * parentInteraction)
 //        cout << "pdg:" << pdg << endl;
 //        cout << "L are not decayed by PYTHIA" << endl;
 //        cout << "L are not decayed by PYTHIA" << endl;
-//        type = masterCollection->findPdgCode(pdg);
+//        type = particleTypeCollection->findPdgCode(pdg);
 //        cout << "Name is: " << type->getName() << endl;
 //        if (type==nullptr)
 //          {
@@ -269,35 +273,38 @@ void PythiaEventGenerator::generate(Particle * parentInteraction)
 //          }
 //        }
 
-      type = masterCollection->findPdgCode(pdg);
+      type = getParticleTypeCollection()->findPdgCode(pdg);
       if (type==nullptr) continue;
       particle = particleFactory->getNextObject();
       particle->set(type,part.Px(),part.Py(),part.Pz(),part.Energy(),sourceX,sourceY,sourceZ,sourceT,true);
-      incrementParticlesCounted(); // photons are NOT included in this tally
+      //incrementParticlesCounted(0); // photons are NOT included in this tally
       if (!particleFilter.accept(*particle)) continue;
+      incrementNParticlesAccepted();
       event.add(particle);
-      incrementParticlesAccepted();
+      // // incrementParticlesAccepted();
       }
-    if (reportDebug("PythiaEventGenerator",getName(),"execute()"))
-      {
-      cout << endl;
-      cout << "PythiaEventGenerator::execute() No of accepted particles : "<< getNParticlesAccepted() << endl;
-      cout << "PythiaEventGenerator::execute() No of counted particles : " << getNParticlesCounted()  << endl;
-      }
+//    if (reportDebug("PythiaEventGenerator",getName(),"execute()"))
+//      {
+//      cout << endl;
+//      cout << "PythiaEventGenerator::execute() No of accepted particles : "<< getNParticlesAccepted() << endl;
+//      cout << "PythiaEventGenerator::execute() No of counted particles : " << getNParticlesCounted()  << endl;
+//      }
     }
 }
 
 void PythiaEventGenerator::finalize()
 {
-  if (reportDebug()) cout << "PythiaEventGenerator::finalize() started" << endl;
-  if (reportInfo()) pythia8->PrintStatistics();
+  if (reportStart(__FUNCTION__))
+    ;
+  if (reportInfo(__FUNCTION__)) pythia8->PrintStatistics();
   if (dataOutputUsed)
     {
     outputTree->Print();
     outputTree->Write();
     delete outputFile;
     }
-  if (reportDebug()) cout << "PythiaEventGenerator::finalize() completed" << endl;
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 
@@ -352,7 +359,7 @@ void PythiaEventGenerator::finalize()
 //  {
 //  TParticle & part = * (TParticle*) particles->At(iParticle);
 //  int ist = part.GetStatusCode();
-//  //if (reportDebug()) cout << "PythiaEventGenerator::execute() ist: " << ist << endl;
+//  //if (reportDebug(__FUNCTION__)) cout << "PythiaEventGenerator::execute() ist: " << ist << endl;
 //  if (ist <= 0) continue;
 //  int pdg = part.GetPdgCode();
 //  mass = TDatabasePDG::Instance()->GetParticle(pdg)->Mass();
@@ -364,7 +371,7 @@ void PythiaEventGenerator::finalize()
 //  p_e  = part.Energy();
 //  aParticle.setPidPxPyPzE(pdg,p_x,p_y,p_z,p_e);
 //  //aParticle.printProperties(cout);
-//  //if (reportDebug()) cout << "PythiaEventGenerator::execute() calling filter " << endl;
+//  //if (reportDebug(__FUNCTION__)) cout << "PythiaEventGenerator::execute() calling filter " << endl;
 //  particleCounted++;
 //  if (!particleFilter->accept(aParticle)) continue;
 //  particle = particleFactory->getNextObject();

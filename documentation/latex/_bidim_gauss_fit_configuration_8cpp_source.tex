@@ -94,7 +94,7 @@
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00090}00090 xTitle (\textcolor{stringliteral}{"{}\#Delta\#eta"{}}),}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00091}00091 yTitle (\textcolor{stringliteral}{"{}\#Delta\#varphi"{}}),}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00092}00092 zTitle (\textcolor{stringliteral}{"{}G\_\{2\}"{}}),}
-\DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00093}00093 \mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}}(\textcolor{stringliteral}{"{}./"{}})}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00093}00093 outputPath(\textcolor{stringliteral}{"{}./"{}})}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00094}00094 \{}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00095}00095   \mbox{\hyperlink{class_bidim_gauss_fit_configuration_ae0c5ab8dbc3f5e78c4d57af4b43cd6ec}{parameterNames}}  = \textcolor{keyword}{new} TString*[\mbox{\hyperlink{class_bidim_gauss_fit_configuration_af5a3596e9f6657c1c6cd98454dd5af78}{nFitParameters}}];}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00096}00096   \mbox{\hyperlink{class_bidim_gauss_fit_configuration_a0191cd624fb6f2983190315e68d36aa5}{fixedParameters}} = \textcolor{keyword}{new} \textcolor{keywordtype}{bool}[\mbox{\hyperlink{class_bidim_gauss_fit_configuration_af5a3596e9f6657c1c6cd98454dd5af78}{nFitParameters}}];}
@@ -203,7 +203,7 @@
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00199}00199 xTitle (source.xTitle),}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00200}00200 yTitle (source.yTitle),}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00201}00201 zTitle (source.zTitle),}
-\DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00202}00202 \mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}}(source.\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}})}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00202}00202 outputPath(source.outputPath)}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00203}00203 \{}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00204}00204   \textcolor{comment}{// deep copy and ownership}}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00205}00205   \mbox{\hyperlink{class_bidim_gauss_fit_configuration_ae0c5ab8dbc3f5e78c4d57af4b43cd6ec}{parameterNames}}  = \textcolor{keyword}{new} TString*[\mbox{\hyperlink{class_bidim_gauss_fit_configuration_af5a3596e9f6657c1c6cd98454dd5af78}{nFitParameters}}];}
@@ -504,7 +504,7 @@
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00500}00500 \textcolor{comment}{// bidim gauss fit.}}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00501}00501 \textcolor{comment}{// If excludedBins[iCent] < 0, use the value of deltaEtaExclusionRegion to determine}}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00502}00502 \textcolor{comment}{// the bins to be excluded. Otherwise, use the number of bins specified in the}}
-\DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00503}00503 \textcolor{comment}{// array excludedBins for the given "{}centrality"{} class.}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00503}00503 \textcolor{comment}{// array excludedBins for the given "{}fractionalXSection"{} class.}}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00504}00504 \textcolor{comment}{// ==============================================================================}}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00505}\mbox{\hyperlink{class_bidim_gauss_fit_configuration_a8b3daab204763af6e6da7a1db227874b}{00505}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fit_configuration_a8b3daab204763af6e6da7a1db227874b}{BidimGaussFitConfiguration::excludedEtaBins}}(\textcolor{keywordtype}{double} deltaEtaExclusionRegion,}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00506}00506                                           \textcolor{keyword}{const} TH2 *hist,}
@@ -530,7 +530,7 @@
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00526}00526 \textcolor{comment}{// bidim gauss fit.}}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00527}00527 \textcolor{comment}{// If excludedBins[iCent] < 0, use the value of deltaEtaExclusionRegion to determine}}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00528}00528 \textcolor{comment}{// the bins to be excluded. Otherwise, use the number of bins specified in the}}
-\DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00529}00529 \textcolor{comment}{// array excludedBins for the given "{}centrality"{} class.}}
+\DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00529}00529 \textcolor{comment}{// array excludedBins for the given "{}fractionalXSection"{} class.}}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00530}00530 \textcolor{comment}{// ==============================================================================}}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00531}\mbox{\hyperlink{class_bidim_gauss_fit_configuration_a3c1f9e7bab367c2c18adb7b7127e1dcd}{00531}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bidim_gauss_fit_configuration_a3c1f9e7bab367c2c18adb7b7127e1dcd}{BidimGaussFitConfiguration::excludedPhiBins}}(\textcolor{keywordtype}{double} deltaEtaExclusionRegion,}
 \DoxyCodeLine{\Hypertarget{_bidim_gauss_fit_configuration_8cpp_source_l00532}00532                                           \textcolor{keyword}{const} TH2 *hist,}

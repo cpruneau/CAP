@@ -1,0 +1,121 @@
+\hypertarget{_root_tree_reader_8hpp_source}{}\doxysection{Root\+Tree\+Reader.\+hpp}
+\label{_root_tree_reader_8hpp_source}\index{Base/RootTreeReader.hpp@{Base/RootTreeReader.hpp}}
+\mbox{\hyperlink{_root_tree_reader_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef WAC\_RootTreeReader}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define WAC\_RootTreeReader}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}TChain.h"{}}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}TTree.h"{}}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}TBranch.h"{}}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00022}\mbox{\hyperlink{class_root_tree_reader}{00022}} \textcolor{keyword}{class }\mbox{\hyperlink{class_root_tree_reader}{RootTreeReader}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00023}00023 \{}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00024}00024 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00025}00025   }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00035}00035   \mbox{\hyperlink{class_root_tree_reader_a11d77f67dff29a150b2e8449e3cef33b}{RootTreeReader}}(\textcolor{keyword}{const} TString \&         \_name,}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00036}00036                  \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \&   \_configuration,}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00037}00037                  vector<EventFilter*>\&   \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00038}00038                  vector<ParticleFilter*>\&\_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00039}00039                  \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                \_selectedLevel);}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00040}00040   }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00044}00044   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_root_tree_reader_a96f49cb0e88e42dd236bf4f946b0fdfb}{\string~RootTreeReader}}();}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00045}00045   }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00049}00049   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_root_tree_reader_ae6ed558a3a2e0d5ae5a3feacbe686004}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00050}00050   }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00055}00055   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_root_tree_reader_adda9c904b32dc0374e867f9b8a1ccc80}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00056}00056   }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00062}00062   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_root_tree_reader_acb79329a5c02fb59ecfd8d0d1ab1ad7f}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00064}00064   }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00069}00069   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_root_tree_reader_a142b7591288035eb8193874e7607cbe9}{initInputTreeMapping}}();}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00074}\mbox{\hyperlink{class_root_tree_reader_adc7f0fa0d08ccdeb5ac7f696c45f9ed7}{00074}}   \textcolor{keyword}{inline} TChain  * \mbox{\hyperlink{class_root_tree_reader_adc7f0fa0d08ccdeb5ac7f696c45f9ed7}{rootInputTreeChain}}()}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00075}00075   \{}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00076}00076   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_root_tree_reader_ac5001344699a90aacb76570f9f6e7af7}{inputRootChain}};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00077}00077   \}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00080}\mbox{\hyperlink{class_root_tree_reader_aa5bc17a76e1b03b028229d03363943c3}{00080}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_root_tree_reader_aa5bc17a76e1b03b028229d03363943c3}{setInputRootTreeIndex}}(\textcolor{keywordtype}{int} value)}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00081}00081   \{}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00082}00082   \mbox{\hyperlink{class_root_tree_reader_aa74cca4b20a553259a69ca317edb669f}{inputRootTreeIndex}} = value;}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00083}00083   \}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00084}00084   }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00085}\mbox{\hyperlink{class_root_tree_reader_a0409c40b28ae275df83fa8e97cff1623}{00085}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_root_tree_reader_a0409c40b28ae275df83fa8e97cff1623}{getInputRootTreeIndex}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00086}00086 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00087}00087   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_root_tree_reader_aa74cca4b20a553259a69ca317edb669f}{inputRootTreeIndex}};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00088}00088   \}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00089}00089   }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00090}00090 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00091}00091   }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00092}00092  }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00093}\mbox{\hyperlink{class_root_tree_reader_a3dd67deb652d590ef69fe04cc59a04ee}{00093}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_root_tree_reader_a3dd67deb652d590ef69fe04cc59a04ee}{Show}}(Long64\_t entry)}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00094}00094   \{}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00095}00095     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_root_tree_reader_ac5001344699a90aacb76570f9f6e7af7}{inputRootChain}}) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00096}00096     \mbox{\hyperlink{class_root_tree_reader_ac5001344699a90aacb76570f9f6e7af7}{inputRootChain}}-\/>Show(entry);}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00097}00097   \}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00099}00099   Int\_t \mbox{\hyperlink{class_root_tree_reader_ab7fe30857d7ada2a04857b471f2183cc}{GetEntry}}(Long64\_t entry);}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00100}00100   Long64\_t \mbox{\hyperlink{class_root_tree_reader_af2bd7d6e2c257617d5b4fa71b21e834b}{LoadTree}}(Long64\_t entry);}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00102}\mbox{\hyperlink{class_root_tree_reader_a5f147b864c5cb2916610f5a292c1b303}{00102}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_root_tree_reader_a5f147b864c5cb2916610f5a292c1b303}{useRandomizeEventPlane}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00103}00103 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00104}00104   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_root_tree_reader_ac92c8b8c1f83e6797924cc94cbf8de70}{randomizeEventPlane}};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00105}00105   \}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00107}\mbox{\hyperlink{class_root_tree_reader_a2ce3f6724d6576cd022639489f6289d5}{00107}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_root_tree_reader_a2ce3f6724d6576cd022639489f6289d5}{setRandomizeEventPlane}}(\textcolor{keywordtype}{bool} value)}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00108}00108   \{}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00109}00109   \mbox{\hyperlink{class_root_tree_reader_ac92c8b8c1f83e6797924cc94cbf8de70}{randomizeEventPlane}} = value;}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00110}00110   \}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00111}00111   }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00112}\mbox{\hyperlink{class_root_tree_reader_a0f97d0ae6a437bbf1c4d9a6153f28b9e}{00112}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_root_tree_reader_a0f97d0ae6a437bbf1c4d9a6153f28b9e}{getRandomEventPlaneAngle}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00113}00113 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00114}00114   \textcolor{keywordflow}{return}  TMath::TwoPi() * gRandom-\/>Rndm();}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00115}00115   \}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00116}00116    }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00117}\mbox{\hyperlink{class_root_tree_reader_ae0a481dc2bf3885dec62f60ae8a0931b}{00117}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_root_tree_reader_ae0a481dc2bf3885dec62f60ae8a0931b}{getClonesMaxArraySize}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00118}00118 \textcolor{keyword}{  }\{}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00119}00119   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_root_tree_reader_a9c0b5535f3aa5f733b7d78f698c6668f}{clonesMaxArraySize}};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00120}00120   \}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00121}00121   }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00122}\mbox{\hyperlink{class_root_tree_reader_ac5a6f3868ea61cbc60fd9739a2b95c58}{00122}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_root_tree_reader_ac5a6f3868ea61cbc60fd9739a2b95c58}{getClonesMaxArraySize}}(\textcolor{keywordtype}{int} value)}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00123}00123   \{}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00124}00124   \mbox{\hyperlink{class_root_tree_reader_a9c0b5535f3aa5f733b7d78f698c6668f}{clonesMaxArraySize}} = value;}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00125}00125   \}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00126}00126 }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00127}00127   \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00128}00128   \textcolor{comment}{// Data members}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00129}00129   \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00130}\mbox{\hyperlink{class_root_tree_reader_a09cc8d9792f33ac1cdf93d6a5120a50c}{00130}}   TString \mbox{\hyperlink{class_root_tree_reader_a09cc8d9792f33ac1cdf93d6a5120a50c}{dataInputPath}};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00131}\mbox{\hyperlink{class_root_tree_reader_ae8f153a9acf715fa6d2b41ed1eead0a8}{00131}}   TString \mbox{\hyperlink{class_root_tree_reader_ae8f153a9acf715fa6d2b41ed1eead0a8}{dataInputFileName}};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00132}\mbox{\hyperlink{class_root_tree_reader_a842434a3a444f2115fb890f178442d94}{00132}}   TString \mbox{\hyperlink{class_root_tree_reader_a842434a3a444f2115fb890f178442d94}{dataInputTreeName}};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00133}\mbox{\hyperlink{class_root_tree_reader_a1f1309b255e550b38ee558cf3b783259}{00133}}   \textcolor{keywordtype}{int}  \mbox{\hyperlink{class_root_tree_reader_a1f1309b255e550b38ee558cf3b783259}{firstFile}};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00134}\mbox{\hyperlink{class_root_tree_reader_aeb9f20d3d20e179a46931bbe94976d70}{00134}}   \textcolor{keywordtype}{int}  \mbox{\hyperlink{class_root_tree_reader_aeb9f20d3d20e179a46931bbe94976d70}{lastFile}};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00135}\mbox{\hyperlink{class_root_tree_reader_a9c0b5535f3aa5f733b7d78f698c6668f}{00135}}   \textcolor{keywordtype}{int}  \mbox{\hyperlink{class_root_tree_reader_a9c0b5535f3aa5f733b7d78f698c6668f}{clonesMaxArraySize}};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00136}\mbox{\hyperlink{class_root_tree_reader_ac92c8b8c1f83e6797924cc94cbf8de70}{00136}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_root_tree_reader_ac92c8b8c1f83e6797924cc94cbf8de70}{randomizeEventPlane}};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00137}00137   }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00138}\mbox{\hyperlink{class_root_tree_reader_ac5001344699a90aacb76570f9f6e7af7}{00138}}   TChain  *\mbox{\hyperlink{class_root_tree_reader_ac5001344699a90aacb76570f9f6e7af7}{inputRootChain}};     }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00139}\mbox{\hyperlink{class_root_tree_reader_aa74cca4b20a553259a69ca317edb669f}{00139}}   Int\_t    \mbox{\hyperlink{class_root_tree_reader_aa74cca4b20a553259a69ca317edb669f}{inputRootTreeIndex}}; }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00140}\mbox{\hyperlink{class_root_tree_reader_ae4e81757819d68b97c0fd755c0f27da9}{00140}}   TFile   *\mbox{\hyperlink{class_root_tree_reader_ae4e81757819d68b97c0fd755c0f27da9}{inputDataFile}};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00141}\mbox{\hyperlink{class_root_tree_reader_ad7385b8e6ca88bf0f4c34bd567bfced7}{00141}}   Long64\_t \mbox{\hyperlink{class_root_tree_reader_ad7385b8e6ca88bf0f4c34bd567bfced7}{nEntries}}; }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00142}\mbox{\hyperlink{class_root_tree_reader_aeaa63312aa30928b1099f35fef253a61}{00142}}   Long64\_t \mbox{\hyperlink{class_root_tree_reader_aeaa63312aa30928b1099f35fef253a61}{nBytes}};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00143}\mbox{\hyperlink{class_root_tree_reader_a5e6ac8628959070e14c75b69bc65affe}{00143}}   Long64\_t \mbox{\hyperlink{class_root_tree_reader_a5e6ac8628959070e14c75b69bc65affe}{nb}};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00144}\mbox{\hyperlink{class_root_tree_reader_acff36c063ee066588291394f206917c9}{00144}}   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_root_tree_reader_acff36c063ee066588291394f206917c9}{entryIndex}};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00145}00145 }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00146}00146   ClassDef(\mbox{\hyperlink{class_root_tree_reader}{RootTreeReader}},0)}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00147}00147 \};}
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00148}00148 }
+\DoxyCodeLine{\Hypertarget{_root_tree_reader_8hpp_source_l00149}00149 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* WAC\_RootTreeReader */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

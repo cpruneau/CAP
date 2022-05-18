@@ -1,5 +1,5 @@
 <map id="Histograms" name="Histograms">
-<area shape="rect" id="node1" title=" " alt="" coords="533,629,623,656"/>
+<area shape="rect" id="node1" title=" " alt="" coords="533,579,623,605"/>
 <area shape="rect" id="node5" href="$class_cell_histos.html" title=" " alt="" coords="731,5,813,32"/>
 <area shape="rect" id="node6" href="$class_cluster_histos.html" title=" " alt="" coords="721,56,823,83"/>
 <area shape="rect" id="node7" href="$class_cluster_model_event_histos.html" title=" " alt="" coords="687,107,857,133"/>
@@ -18,10 +18,12 @@
 <area shape="rect" id="node20" href="$class_particle_pair_combined_histos.html" title=" " alt="" coords="679,781,865,808"/>
 <area shape="rect" id="node21" href="$class_particle_pair_derived_histos.html" title=" " alt="" coords="686,832,858,859"/>
 <area shape="rect" id="node22" href="$class_particle_pair_histos.html" title=" " alt="" coords="709,883,835,909"/>
-<area shape="rect" id="node23" href="$class_radial_boost_histos.html" title=" " alt="" coords="707,933,837,960"/>
-<area shape="rect" id="node24" href="$class_stat_study_histograms.html" title=" " alt="" coords="699,984,845,1011"/>
-<area shape="rect" id="node25" href="$class_transverse_spherocity_histos.html" title=" " alt="" coords="679,1035,865,1061"/>
-<area shape="rect" id="node2" href="$class_histogram_collection.html" title="using namespace std;" alt="" coords="345,629,485,656"/>
-<area shape="rect" id="node3" href="$class_collection.html" title=" " alt="" coords="168,629,297,656"/>
-<area shape="rect" id="node4" href="$class_message_logger.html" title=" " alt="" coords="5,629,120,656"/>
+<area shape="rect" id="node23" href="$class_particle_performance_histos.html" title=" " alt="" coords="683,933,861,960"/>
+<area shape="rect" id="node24" href="$class_particle_performance_simulator.html" title=" " alt="" coords="675,984,869,1011"/>
+<area shape="rect" id="node25" href="$class_radial_boost_histos.html" title=" " alt="" coords="707,1035,837,1061"/>
+<area shape="rect" id="node26" href="$class_stat_study_histograms.html" title=" " alt="" coords="699,1085,845,1112"/>
+<area shape="rect" id="node27" href="$class_transverse_spherocity_histos.html" title=" " alt="" coords="679,1136,865,1163"/>
+<area shape="rect" id="node2" href="$class_histogram_collection.html" title=" " alt="" coords="345,579,485,605"/>
+<area shape="rect" id="node3" href="$class_collection.html" title=" " alt="" coords="168,579,297,605"/>
+<area shape="rect" id="node4" href="$class_message_logger.html" title=" " alt="" coords="5,579,120,605"/>
 </map>

@@ -1,61 +1,52 @@
 \hypertarget{_particle_analyzer_8hpp_source}{}\doxysection{Particle\+Analyzer.\+hpp}
-\label{_particle_analyzer_8hpp_source}\index{Base/ParticleAnalyzer.hpp@{Base/ParticleAnalyzer.hpp}}
+\label{_particle_analyzer_8hpp_source}\index{Particle/ParticleAnalyzer.hpp@{Particle/ParticleAnalyzer.hpp}}
 \mbox{\hyperlink{_particle_analyzer_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00010}00010 }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#ifndef CAP\_\_ParticleAnalyzer}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#define CAP\_\_ParticleAnalyzer}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include <TParameter.h>}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}TFile.h"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}TList.h"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_event_8hpp}{Event.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_event_filter_8hpp}{EventFilter.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00019}00019 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_digit_8hpp}{ParticleDigit.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00020}00020 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_filter_8hpp}{ParticleFilter.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00021}00021 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_histos_8hpp}{ParticleHistos.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00022}00022 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_configuration_8hpp}{Configuration.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00023}00023 }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00024}00024 }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00062}00062 \textcolor{keyword}{class }\mbox{\hyperlink{class_particle_analyzer}{ParticleAnalyzer}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00063}00063 \{}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00064}00064 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00065}00065   }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00075}00075   \mbox{\hyperlink{class_particle_analyzer_a3569508e0c2fd02b5f43b83795c03478}{ParticleAnalyzer}}(\textcolor{keyword}{const} TString \&         \_name,}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00076}00076                    \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \&   \_configuration,}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00077}00077                    vector<EventFilter*>    \_eventFilters,}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00078}00078                    vector<ParticleFilter*> \_particleFilters,}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00079}00079                    \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                \_selectedLevel=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}});}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00080}00080   }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00084}\mbox{\hyperlink{class_particle_analyzer_a196085fe710f671c58b7b971153d4ab7}{00084}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_analyzer_a196085fe710f671c58b7b971153d4ab7}{\string~ParticleAnalyzer}}() \{\}}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00085}00085   }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00089}00089   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_analyzer_ad98ebec326aa434e1bc2f928bf33d908}{setDefaultConfiguration}}();}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00090}00090   }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00101}\mbox{\hyperlink{class_particle_analyzer_ab4f390fcfa8166fc6fb955890ba47ef0}{00101}}   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_analyzer_ab4f390fcfa8166fc6fb955890ba47ef0}{execute}}();}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00102}00102   }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00106}\mbox{\hyperlink{class_particle_analyzer_a39e398afa52ae32b976a4896cd0de67e}{00106}}   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_analyzer_a39e398afa52ae32b976a4896cd0de67e}{createHistograms}}();}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00107}00107 }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00111}\mbox{\hyperlink{class_particle_analyzer_a74cd8e2eef5ed3ff1de1e4215de48526}{00111}}   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_analyzer_a74cd8e2eef5ed3ff1de1e4215de48526}{loadHistograms}}(TFile * inputFile);}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00112}00112 }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00113}00113 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00114}00114   }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00115}\mbox{\hyperlink{class_particle_analyzer_acda7397fdd1bc417561dc1aa4778801a}{00115}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_analyzer_acda7397fdd1bc417561dc1aa4778801a}{fillEta}}; }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00116}\mbox{\hyperlink{class_particle_analyzer_adf0624de4140338da7f95b2bd1e3071a}{00116}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_analyzer_adf0624de4140338da7f95b2bd1e3071a}{fillY}};   }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00117}\mbox{\hyperlink{class_particle_analyzer_aa0253b4d1bf4cab539c41cf7f411ea71}{00117}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_analyzer_aa0253b4d1bf4cab539c41cf7f411ea71}{fillP2}};  }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00118}00118   }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00119}00119   ClassDef(\mbox{\hyperlink{class_particle_analyzer}{ParticleAnalyzer}},0)}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00120}00120 \};}
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00121}00121 }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00122}00122 }
-\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00123}00123 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_ParticleAnalyzer */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef CAP\_\_ParticleAnalyzer}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define CAP\_\_ParticleAnalyzer}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_histos_8hpp}{ParticleHistos.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00054}\mbox{\hyperlink{class_particle_analyzer}{00054}} \textcolor{keyword}{class }\mbox{\hyperlink{class_particle_analyzer}{ParticleAnalyzer}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00055}00055 \{}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00056}00056 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00057}00057   }
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00067}00067   \mbox{\hyperlink{class_particle_analyzer_a7ca62838ce654b5a539bccd96bfe4aa8}{ParticleAnalyzer}}(\textcolor{keyword}{const} TString \&         \_name,}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00068}00068                    \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \&   \_configuration,}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00069}00069                    vector<EventFilter*>    \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00070}00070                    vector<ParticleFilter*> \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00071}00071                    \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                \_selectedLevel=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}});}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00072}00072   }
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00076}\mbox{\hyperlink{class_particle_analyzer_a196085fe710f671c58b7b971153d4ab7}{00076}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_analyzer_a196085fe710f671c58b7b971153d4ab7}{\string~ParticleAnalyzer}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00077}00077   }
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00081}00081   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_analyzer_ad98ebec326aa434e1bc2f928bf33d908}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00082}00082   }
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00093}00093   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_analyzer_af1b7ae8d714b93dbc9f43418377d1aa5}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00094}00094   }
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00098}00098   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_analyzer_a3a0342baf13d5ce6f189de46a83d4858}{createHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00103}00103   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}{loadHistograms}}(TFile * inputFile);}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00105}00105 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00106}00106   }
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00107}\mbox{\hyperlink{class_particle_analyzer_acda7397fdd1bc417561dc1aa4778801a}{00107}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_analyzer_acda7397fdd1bc417561dc1aa4778801a}{fillEta}}; }
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00108}\mbox{\hyperlink{class_particle_analyzer_adf0624de4140338da7f95b2bd1e3071a}{00108}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_analyzer_adf0624de4140338da7f95b2bd1e3071a}{fillY}};   }
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00109}\mbox{\hyperlink{class_particle_analyzer_aa0253b4d1bf4cab539c41cf7f411ea71}{00109}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_analyzer_aa0253b4d1bf4cab539c41cf7f411ea71}{fillP2}};  }
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00110}00110   }
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00111}00111   ClassDef(\mbox{\hyperlink{class_particle_analyzer}{ParticleAnalyzer}},0)}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00112}00112 \};}
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{_particle_analyzer_8hpp_source_l00115}00115 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_ParticleAnalyzer */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -1,5 +1,5 @@
-<map id="Base/NuDynPlotter.hpp" name="Base/NuDynPlotter.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="159,5,318,32"/>
+<map id="NuDyn/NuDynPlotter.hpp" name="NuDyn/NuDynPlotter.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="153,5,324,32"/>
 <area shape="rect" id="node2" href="$_plotter_8hpp.html" title=" " alt="" coords="2554,304,2638,331"/>
 <area shape="rect" id="node35" href="$_nu_dyn_histos_8hpp.html" title=" " alt="" coords="97,155,223,181"/>
 <area shape="rect" id="node50" href="$_nu_dyn_derived_histos_8hpp.html" title=" " alt="" coords="31,80,201,107"/>

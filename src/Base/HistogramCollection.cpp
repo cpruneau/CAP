@@ -17,14 +17,15 @@ ClassImp(Collection<TH1>);
 
 ClassImp(HistogramCollection);
 
-HistogramCollection::HistogramCollection(const TString & name,LogLevel  debugLevel)
+HistogramCollection::HistogramCollection(const TString & _name,
+                                         LogLevel  _debugLevel)
 :
-Collection(name, true, debugLevel),
+Collection(_name, true, _debugLevel),
 randomGenerator(new TRandom())
 {
+
   setClassName("HistogramCollection");
-  setInstanceName(name);
-  setFunctionName("CTOR");
+  setInstanceName(_name);
 }
 
 HistogramCollection::HistogramCollection(const HistogramCollection & source)
@@ -35,7 +36,7 @@ randomGenerator(source.randomGenerator)
   for (unsigned int iObject=0; iObject<source.size(); iObject++)
     {
     TH1* h0 = (TH1*) source.objects[iObject];
-    if (!ptrExist("HistogramCollection::ctor()",h0)) return;
+    if (!ptrExist(__FUNCTION__,h0)) return;
     append( (TH1*) h0->Clone());
     }
 }
@@ -49,13 +50,16 @@ randomGenerator(source.randomGenerator)
 //!
 HistogramCollection & HistogramCollection::operator=(const HistogramCollection & source)
 {
+
+  if (reportStart(__FUNCTION__))
+    ;
   if (this!=&source)
     {
     Collection<TH1>::operator=(source);
     for (unsigned int iObject=0; iObject<source.size(); iObject++)
       {
       TH1* h0 = source.objects[iObject];
-      if (!ptrExist("HistogramCollection::operator=(const HistogramCollection & source)",h0)) return *this;
+      if (!ptrExist(__FUNCTION__,h0)) return *this;
       append( (TH1*) h0->Clone());
       }
     }
@@ -71,6 +75,9 @@ HistogramCollection::~HistogramCollection()
 //!
 void HistogramCollection::setDefaultOptions(bool color)
 {
+
+  if (reportStart(__FUNCTION__))
+    ;
   if (color)
     gStyle->SetPalette(1,0);
   else
@@ -80,7 +87,8 @@ void HistogramCollection::setDefaultOptions(bool color)
   gStyle->SetOptDate(0);
   gStyle->SetOptTitle(0);
   gStyle->SetPadBorderMode(0);
-
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 //!
@@ -88,7 +96,12 @@ void HistogramCollection::setDefaultOptions(bool color)
 //!
 void HistogramCollection::reset()
 {
+
+  if (reportStart(__FUNCTION__))
+    ;
   for (unsigned int iObject=0; iObject<size(); iObject++) objects[iObject]->Reset();
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 //!
@@ -99,8 +112,8 @@ TH1 * HistogramCollection::createHistogram(const TString &  name,
                                            const TString &  title_x,
                                            const TString &  title_y)
 {
-  TString fct = "createHistogram(...)";
-  if (reportDebug(fct))
+
+  if (reportDebug(__FUNCTION__))
     cout << "Creating  1D histo " << name << " nBins:" << n << " min_x:" << min_x << " max_x:" << max_x << endl;
   TH1 * h = new TH1F(name,name,n,min_x,max_x);
   if (title_x.Sizeof()>0)  h->GetXaxis()->SetTitle(title_x);
@@ -118,8 +131,8 @@ TH1 * HistogramCollection::createHistogram(const TString &  name,
                                            const TString &  title_x,
                                            const TString &  title_y)
 {
-  TString fct = "createHistogram(...)";
-  if (reportDebug(fct)) cout << "Creating  1D histo " << name << " with " << n << " non uniform nBins:" << endl;
+
+  if (reportDebug(__FUNCTION__)) cout << "Creating  1D histo " << name << " with " << n << " non uniform nBins:" << endl;
   TH1 * h = new TH1F(name,name,n,bins);
   if (title_x.Sizeof()>0)  h->GetXaxis()->SetTitle(title_x);
   if (title_y.Sizeof()>0)  h->GetYaxis()->SetTitle(title_y);
@@ -139,8 +152,8 @@ TH2 * HistogramCollection::createHistogram(const TString &  name,
                                            const TString &  title_y,
                                            const TString &  title_z )
 {
-  TString fct = "createHistogram(...)";
-  if (reportDebug(fct))
+
+  if (reportDebug(__FUNCTION__))
     cout << "Creating  2D histo " << name << " n_x:" << n_x << " min_x:" << min_x << " max_x:" << max_x << " n_y:" << n_y << " min_y:" << min_y << " max_y:" << max_y<< endl;
   TH2 * h;
   h = new TH2F(name,name,n_x,min_x,max_x,n_y,min_y,max_y);
@@ -161,8 +174,8 @@ TH2 * HistogramCollection::createHistogram(const TString &  name,
                                            const TString &  title_z)
 
 {
-  TString fct = "createHistogram(...)";
-  if (reportDebug(fct))
+
+  if (reportDebug(__FUNCTION__))
     cout << "Creating  2D histo " << name << " with " << n_x << " vs " << n_y << " non uniform nBins:" << endl;
   TH2 * h;
   h = new TH2F(name,name,n_x,xbins,n_y,min_y,max_y);
@@ -187,8 +200,8 @@ TH3 * HistogramCollection::createHistogram(const TString &  name,
                                            const TString &  title_w = "w")
 
 {
-  TString fct = "createHistogram(...)";
-  if (reportDebug(fct))
+
+  if (reportDebug(__FUNCTION__))
     cout << "Creating  3D histo " << name
     << " n_x:" << n_x << " min_x:" << min_x << " max_x:" << max_x << " X:" << title_x
     << " n_y:" << n_y << " min_y:" << min_y << " max_y:" << max_y << " Y:" << title_y
@@ -212,8 +225,8 @@ TProfile * HistogramCollection::createProfile(const TString & name,
                                               const TString &  title_x,
                                               const TString &  title_y)
 {
-  TString fct = "createProfile(...)";
-  if (reportDebug(fct)) cout << "Creating  1D profile " << name << " n_x:" << n_x << " min_x:" << min_x << " max_x:" << max_x << endl;
+
+  if (reportDebug(__FUNCTION__)) cout << "Creating  1D profile " << name << " n_x:" << n_x << " min_x:" << min_x << " max_x:" << max_x << endl;
   TProfile * h = new TProfile(name,name,n_x,min_x,max_x);
   if (title_x.Sizeof()>0)  h->GetXaxis()->SetTitle(title_x);
   if (title_y.Sizeof()>0)  h->GetYaxis()->SetTitle(title_y);
@@ -229,8 +242,8 @@ TProfile * HistogramCollection::createProfile(const TString &  name,
                                               const TString &  title_x,
                                               const TString &  title_y)
 {
-  TString fct = "createProfile(...)";
-  if (reportDebug(fct))
+
+  if (reportDebug(__FUNCTION__))
     cout << "Creating  1D profile " << name << " w/ variabe size bins" << endl;
   TProfile * h = new TProfile(name,name,n_x,bins);
   if (title_x.Sizeof()>0)  h->GetXaxis()->SetTitle(title_x);
@@ -249,8 +262,8 @@ TProfile2D * HistogramCollection::createProfile(const TString &  name,
                                                 const TString &  title_y,
                                                 const TString &  title_z)
 {
-  TString fct = "createProfile(...)";
-  if (reportDebug(fct))
+
+  if (reportDebug(__FUNCTION__))
     cout << "Creating  2D profile " << name
     << " n_x:" << n_x << " min_x:" << min_x << " max_x:" << max_x
     << " n_y:" << n_y << " min_y:" << min_y << " max_y:" << max_y
@@ -268,13 +281,13 @@ TProfile2D * HistogramCollection::createProfile(const TString &  name,
 //!
 void HistogramCollection::addHistogramsToExtList(TList *list)
 {
-  TString fct = "addHistogramsToExtList(TList *list)";
-  if (reportDebug(fct))
+
+  if (reportDebug(__FUNCTION__))
     cout << "Adding histo to external list"  << endl;
   for (unsigned int iObject=0; iObject<size(); iObject++) list->Add(objects[iObject]);
   /* the instance stops the histograms ownership */
   setOwnership(false);
-  if (reportEnd(fct))
+  if (reportEnd(__FUNCTION__))
     { }
 }
 
@@ -283,15 +296,17 @@ void HistogramCollection::addHistogramsToExtList(TList *list)
 //!
 void HistogramCollection::saveHistograms(TFile * outputFile)
 {
-  TString fct = "saveHistograms(TFile * outputFile, bool saveAll)";
-  if (reportDebug(fct)) cout << " Saving (selected) histograms to file: " << outputFile->GetName()  << endl;
+
+  if (reportDebug(__FUNCTION__)) cout << " Saving (selected) histograms to file: " << outputFile->GetName()  << endl;
   outputFile->cd();
+  if (reportDebug(__FUNCTION__)) cout << " Number of histograms to save: " <<  size() << endl;
+
   for (unsigned int iObject=0; iObject<size(); iObject++)
     {
-    if (reportDebug(fct)) cout << " Saving iObject: " << iObject << " named: " <<  objects[iObject]->GetName() << endl;
+    if (reportDebug(__FUNCTION__)) cout << " Saving iObject: " << iObject << " named: " <<  objects[iObject]->GetName() << endl;
     objects[iObject]->Write();
     }
-  if (reportEnd(fct))
+  if (reportEnd(__FUNCTION__))
     { }
 }
 
@@ -301,14 +316,14 @@ void HistogramCollection::saveHistograms(TFile * outputFile)
 //!
 void HistogramCollection::scale(double factor)
 {
-  TString fct = "scale(double factor)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     { }
   for (unsigned int iObject=0; iObject<size(); iObject++)
     {
     objects[iObject]->Scale(factor);
     }
-  if (reportEnd(fct))
+  if (reportEnd(__FUNCTION__))
     { }
 }
 
@@ -323,7 +338,7 @@ void HistogramCollection::scale(double factor)
 //                                         GraphConfiguration  & gc2D)
 //{
 //  TString fct = "plotHistograms(...)";
-//  if (reportDebug(fct))
+//  if (reportDebug(__FUNCTION__))
 //    cout << endl << "Plot histograms of collection: " << getName() << " started  w/ getNHistograms() =" << size() << endl;
 //
 //  canvasCollection.createDirectory(outputPath);
@@ -339,7 +354,7 @@ void HistogramCollection::scale(double factor)
 //          h->IsA() == TH1F::Class() ||
 //          h->IsA() == TH1D::Class())
 //        {
-//        if (reportDebug(fct)) cout << "Plotting 1D histo #" << iHisto << " named " << h->GetTitle() << endl;
+//        if (reportDebug(__FUNCTION__)) cout << "Plotting 1D histo #" << iHisto << " named " << h->GetTitle() << endl;
 //        canvas = canvasCollection.createCanvas(canvasName,cc1d, 30);
 //        setHistoProperties(h,gc1D);
 //        h->Draw(gc1D.plotOption);
@@ -352,23 +367,23 @@ void HistogramCollection::scale(double factor)
 //        int ny = h->GetNbinsY();
 //        if (nx*ny<=10000)
 //          {
-//          if (reportDebug(fct)) cout << "Plotting 2D histo #" << iHisto << " named " << h->GetTitle() << endl;
+//          if (reportDebug(__FUNCTION__)) cout << "Plotting 2D histo #" << iHisto << " named " << h->GetTitle() << endl;
 //          canvas = canvasCollection.createCanvas(canvasName,cc2d, 30);
 //          setHistoProperties(h,gc2D);
 //          h->Draw(gc2D.plotOption);
 //          }
 //        else
 //          {
-//          if (reportDebug(fct)) cout << "Skipping 2D histo #" << iHisto << " named " << h->GetTitle() << endl;
+//          if (reportDebug(__FUNCTION__)) cout << "Skipping 2D histo #" << iHisto << " named " << h->GetTitle() << endl;
 //          }
 //        }
 //      else if (h->IsA() == TH3::Class())
 //        {
-//        if (reportDebug(fct)) cout << "Skipping 3D histo called " << h->GetTitle() << endl;
+//        if (reportDebug(__FUNCTION__)) cout << "Skipping 3D histo called " << h->GetTitle() << endl;
 //        }
 //      else
 //        {
-//        if (reportDebug(fct)) cout << "Skipping histo #" << iHisto << " of unfamiliar type named " << h->GetTitle() << endl;
+//        if (reportDebug(__FUNCTION__)) cout << "Skipping histo #" << iHisto << " of unfamiliar type named " << h->GetTitle() << endl;
 //        }
 //
 //      if (isPrinted(options[iHisto]) )
@@ -376,10 +391,10 @@ void HistogramCollection::scale(double factor)
 //      }
 //    else
 //      {
-//      if (reportDebug(fct)) cout << "Skipping histo #" << iHisto << " named " << h->GetTitle() << endl;
+//      if (reportDebug(__FUNCTION__)) cout << "Skipping histo #" << iHisto << " named " << h->GetTitle() << endl;
 //      }
 //    }
-//  if (reportEnd(fct))
+//  if (reportEnd(__FUNCTION__))
 //    ;
 //}
 
@@ -388,8 +403,8 @@ void HistogramCollection::scale(double factor)
 ////////////////////////////////////////////////////////////////////////
 void HistogramCollection::setHistoProperties(TH1 * h, const GraphConfiguration & graphConfiguration)
 {
-  TString fct = "setHistoProperties(TH1 * h, const GraphConfiguration & graphConfiguration)";
-  if (reportDebug(fct))
+
+  if (reportDebug(__FUNCTION__))
     cout << "Setting properties of histo: " << h->GetTitle() << endl;
   h->SetLineColor(graphConfiguration.lineColor);
   h->SetLineStyle(graphConfiguration.lineStyle);
@@ -410,7 +425,7 @@ void HistogramCollection::setHistoProperties(TH1 * h, const GraphConfiguration &
   //yAxis->SetTitle(graphConfiguration.yTitle);
   if (h->IsA() == TH2::Class()  || h->IsA() == TH2F::Class() || h->IsA() == TH2F::Class() )
     {
-    if (reportDebug(fct)) cout << "Setting options as 2D histo: " << h->GetTitle() << endl;
+    if (reportDebug(__FUNCTION__)) cout << "Setting options as 2D histo: " << h->GetTitle() << endl;
     TAxis * zAxis = (TAxis *) h->GetZaxis();
     zAxis->SetNdivisions(graphConfiguration.nZDivisions);
     zAxis->SetTitleSize(graphConfiguration.zTitleSize);
@@ -422,8 +437,8 @@ void HistogramCollection::setHistoProperties(TH1 * h, const GraphConfiguration &
 
 void HistogramCollection::setHistoProperties(TH2 * h, const GraphConfiguration & graphConfiguration)
 {
-  TString fct = "setHistoProperties(TH2 * h, const GraphConfiguration & graphConfiguration)";
-  if (reportDebug(fct))
+
+  if (reportDebug(__FUNCTION__))
     cout << endl << "Setting options of 2D histo: " << h->GetTitle() << endl;
   h->SetLineColor(graphConfiguration.lineColor);
   h->SetLineStyle(graphConfiguration.lineStyle);
@@ -454,8 +469,8 @@ void HistogramCollection::setHistoProperties(TH2 * h, const GraphConfiguration &
 
 void HistogramCollection::setHistoProperties(TH1 * h, const GraphConfiguration & graphConfiguration, const TString & xTitle, const TString & yTitle)
 {
-  TString fct = "setHistoProperties(TH1 * h, const GraphConfiguration & graphConfiguration, const TString & xTitle, const TString & yTitle)";
-  if (reportDebug(fct))
+
+  if (reportDebug(__FUNCTION__))
     cout << endl << "Setting options of histo: " << h->GetTitle() << endl;
   h->SetLineColor(graphConfiguration.lineColor);
   h->SetLineStyle(graphConfiguration.lineStyle);
@@ -478,8 +493,8 @@ void HistogramCollection::setHistoProperties(TH1 * h, const GraphConfiguration &
 
 void HistogramCollection::setHistoProperties(TH2 * h, const GraphConfiguration & graphConfiguration, const TString & xTitle, const TString & yTitle, const TString & zTitle)
 {
-  TString fct = "setHistoProperties(TH2 * h, const GraphConfiguration & graphConfiguration, const TString & xTitle, const TString & yTitle, const TString & zTitle)";
-  if (reportDebug(fct))
+
+  if (reportDebug(__FUNCTION__))
     cout << endl << "Setting options of histo: " << h->GetTitle() << endl;
   TAxis * xAxis = (TAxis *) h->GetXaxis();
   xAxis->SetNdivisions(graphConfiguration.nXDivisions);
@@ -506,10 +521,10 @@ void HistogramCollection::setHistoProperties(TH2 * h, const GraphConfiguration &
 
 int  HistogramCollection::loadCollection(TFile * inputFile)
 {
-  TString fct = "loadCollection(TFile * inputFile)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrFileExist(fct,inputFile)) return -1;
+  if (!ptrFileExist(inputFile)) return -1;
   TIter keyList(inputFile->GetListOfKeys());
   TKey *key;
   while ((key = (TKey*)keyList()))
@@ -519,7 +534,7 @@ int  HistogramCollection::loadCollection(TFile * inputFile)
     TH1 *h = (TH1*)key->ReadObj();
     append(h);
     }
-  if (reportEnd(fct))
+  if (reportEnd(__FUNCTION__))
     ;
   return 0;
 }
@@ -530,14 +545,13 @@ int  HistogramCollection::loadCollection(TFile * inputFile)
 //! ==========================
 HistogramCollection * HistogramCollection::clone() const
 {
-  TString fct = "loadCollection(TFile * inputFile)";
-  if (reportStart(fct))
+  if (reportStart(__FUNCTION__))
     ;
   HistogramCollection * newCollection = new HistogramCollection(getInstanceName(), getReportLevel());
   for (unsigned int iObject=0; iObject<size(); iObject++)
     {
     TH1* h0 = objects[iObject];
-    if (!ptrExist(fct,h0)) return nullptr;
+    if (!ptrExist(__FUNCTION__,h0)) return nullptr;
     TH1* h1 = (TH1*) h0->Clone();
     newCollection->append(h1);
     }
@@ -550,13 +564,14 @@ HistogramCollection * HistogramCollection::clone() const
 //! ==========================
 void HistogramCollection::add(const HistogramCollection & c1, double a1)
 {
-  TString fct = "add(const HistogramCollection & c1, double a1)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
   if (!sameSizeAs(c1))
     {
-    if (reportError(fct) )
+    if (reportError() )
       {
+      cout << endl;
       cout << "Invalid operation on collections -- incompatible sizes:"  << endl;
       cout << "       this: " << getName()    << " contains " << size() << " histograms" << endl;
       cout << "         c1: " << c1.getName() << " contains " << c1.size() << " histograms" << endl;
@@ -569,15 +584,16 @@ void HistogramCollection::add(const HistogramCollection & c1, double a1)
     TH1* h1 = c1.objects[iObject];
     if (!h0 || !h1 )
       {
-      if (reportError(fct) )
+      if (reportError() )
         {
+        cout << endl;
         cout << " Null pointer detected at iObject:" << iObject << endl;
-        cout << "this: " << getName()    << " histogram ptr: " << h0 << endl;
-        cout << "  c1: " << c1.getName() << " histogram ptr: " << h1  << endl;
+        cout << " this: " << getName()    << " histogram ptr: " << h0 << endl;
+        cout << "   c1: " << c1.getName() << " histogram ptr: " << h1  << endl;
         }
       return;
       }
-    if (!sameDimensions(fct,h0,h1))
+    if (!sameDimensions(__FUNCTION__,h0,h1))
       {
       if (reportWarning(getClassName(), getInstanceName(), "add(...)" ) )
         {
@@ -587,7 +603,7 @@ void HistogramCollection::add(const HistogramCollection & c1, double a1)
         }
       return;
       }
-    if (reportDebug(getClassName(), getInstanceName(), "add(...)" ) )
+    if (reportDebug() )
       {
       cout << "At iObject:" << iObject << " Adding histogram " << h0->GetName() << " and histogram " << h1->GetName() << endl;
       }
@@ -600,12 +616,12 @@ void HistogramCollection::add(const HistogramCollection & c1, double a1)
 //! ==========================
 void HistogramCollection::add(const HistogramCollection & c1, const HistogramCollection & c2, double a1, double a2)
 {
-  TString fct = "add(const HistogramCollection & c1, const HistogramCollection & c2, double a1, double a2)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
   if (!sameSizeAs(c1) || !sameSizeAs(c2))
     {
-    if (reportError(fct) )
+    if (reportError() )
       {
       cout << endl;
       cout << "Invalid operation on collections -- incompatible sizes:"  << endl;
@@ -622,7 +638,7 @@ void HistogramCollection::add(const HistogramCollection & c1, const HistogramCol
     TH1* h2 = c2.objects[iObject];
     if (!h0 || !h1 || !h2)
       {
-      if (reportError(getClassName(), getInstanceName(), "add(...)" ) )
+      if (reportError() )
         {
         cout << endl;
         cout << " Null pointer detected at iObject:" << iObject << endl;
@@ -632,9 +648,9 @@ void HistogramCollection::add(const HistogramCollection & c1, const HistogramCol
         }
       return;
       }
-    if (!sameDimensions(fct,h0,h1)  || !sameDimensions(fct,h0,h2))
+    if (!sameDimensions(__FUNCTION__,h0,h1)  || !sameDimensions(__FUNCTION__,h0,h2))
       {
-      if (reportWarning(getClassName(), getInstanceName(), "add(...)" ) )
+      if (reportWarning() )
         {
         cout << endl;
         cout << " Incompatible histogram sizes at iObject:" << iObject << endl;
@@ -656,12 +672,12 @@ void HistogramCollection::add(const HistogramCollection & c1,
                               const HistogramCollection & c3,
                               double a1, double a2, double a3)
 {
-  TString fct = "add(const HistogramCollection & c1, const HistogramCollection & c2, const HistogramCollection & c3,  double a1, double a2, double a3)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
   if (!sameSizeAs(c1) || !sameSizeAs(c2) || !sameSizeAs(c3))
     {
-    if (reportError(fct) )
+    if (reportError() )
       {
       cout << endl;
       cout << "Invalid operation on collections -- incompatible sizes:"  << endl;
@@ -680,7 +696,7 @@ void HistogramCollection::add(const HistogramCollection & c1,
     TH1* h3 = c3.objects[iObject];
     if (!h0 || !h1 || !h2 || !h3)
       {
-      if (reportError(fct) )
+      if (reportError() )
         {
         cout << endl;
         cout << " Null pointer detected at iObject:" << iObject << endl;
@@ -691,9 +707,9 @@ void HistogramCollection::add(const HistogramCollection & c1,
         }
       return;
       }
-    if (!sameDimensions(fct,h0,h1)  || !sameDimensions(fct,h0,h2) || !sameDimensions(fct,h0,h3))
+    if (!sameDimensions(__FUNCTION__,h0,h1)  || !sameDimensions(__FUNCTION__,h0,h2) || !sameDimensions(__FUNCTION__,h0,h3))
       {
-      if (reportWarning(getClassName(), getInstanceName(), "add(...)" ) )
+      if (reportWarning(__FUNCTION__))
         {
         cout << endl;
         cout << " Incompatible histogram sizes at iObject:" << iObject << endl;
@@ -705,7 +721,7 @@ void HistogramCollection::add(const HistogramCollection & c1,
       return;
       }
 
-    if (reportDebug(getClassName(), getInstanceName(), "add(...)" ) )
+    if (reportDebug(__FUNCTION__))
       {
       cout << "At iObject:" << iObject << " Adding histograms " << h1->GetName() << " histogram " << h2->GetName()  << " and histogram " << h3->GetName() << endl;
       }
@@ -723,12 +739,12 @@ void HistogramCollection::add(const HistogramCollection & c1,
                               const HistogramCollection & c4,
                               double a1, double a2, double a3, double a4)
 {
-  TString fct = "add(...)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
   if (!sameSizeAs(c1) || !sameSizeAs(c2) || !sameSizeAs(c3) || !sameSizeAs(c4))
     {
-    if (reportError(fct) )
+    if (reportError() )
       {
       cout << endl;
       cout << "Invalid operation on collections -- incompatible sizes:"  << endl;
@@ -749,7 +765,7 @@ void HistogramCollection::add(const HistogramCollection & c1,
     TH1* h4 = c4.objects[iObject];
     if (!h0 || !h1 || !h2 || !h3|| !h4)
       {
-      if (reportError(getClassName(), getInstanceName(), "add(...)" ) )
+      if (reportError(__FUNCTION__))
         {
         cout << endl;
         cout << " Null pointer detected at iObject:" << iObject << endl;
@@ -761,9 +777,9 @@ void HistogramCollection::add(const HistogramCollection & c1,
         }
       return;
       }
-    if (!sameDimensions(fct,h0,h1)  || !sameDimensions(fct,h0,h2) || !sameDimensions(fct,h0,h3) || !sameDimensions(fct,h0,h4))
+    if (!sameDimensions(__FUNCTION__,h0,h1)  || !sameDimensions(__FUNCTION__,h0,h2) || !sameDimensions(__FUNCTION__,h0,h3) || !sameDimensions(__FUNCTION__,h0,h4))
       {
-      if (reportWarning(getClassName(), getInstanceName(), "add(...)" ) )
+      if (reportWarning(__FUNCTION__))
         {
         cout << endl;
         cout << " Incompatible histogram sizes at iObject:" << iObject << endl;
@@ -775,7 +791,7 @@ void HistogramCollection::add(const HistogramCollection & c1,
         }
       return;
       }
-    if (reportDebug(getClassName(), getInstanceName(), "add(...)" ) )
+    if (reportDebug(__FUNCTION__))
       {
       cout << "At iObject:" << iObject << " Adding histogram " << h1->GetName() << " histogram " << h2->GetName()  << " histogram " << h3->GetName()  << " and histogram " << h4->GetName()  << endl;
       }
@@ -790,12 +806,12 @@ void HistogramCollection::add(const HistogramCollection & c1,
 //! ==========================
 void HistogramCollection::divide(const HistogramCollection & c1)
 {
-  TString fct = "divide(const HistogramCollection & c1)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
   if (!sameSizeAs(c1))
     {
-    if (reportError(fct) )
+    if (reportError() )
       {
       cout << endl;
       cout << "Invalid operation on collections -- incompatible sizes:"  << endl;
@@ -810,7 +826,7 @@ void HistogramCollection::divide(const HistogramCollection & c1)
     TH1* h1 = c1.objects[iObject];
     if (!h0 || !h1)
       {
-      if (reportError(fct) )
+      if (reportError() )
         {
         cout << endl;
         cout << " Null pointer detected at iObject:" << iObject << endl;
@@ -819,9 +835,9 @@ void HistogramCollection::divide(const HistogramCollection & c1)
         }
       return;
       }
-    if (!sameDimensions(fct,h0,h1))
+    if (!sameDimensions(__FUNCTION__,h0,h1))
       {
-      if (reportWarning(fct) )
+      if (reportWarning() )
         {
         cout << endl;
         cout << " Incompatible histogram sizes at iObject:" << iObject << endl;
@@ -830,7 +846,7 @@ void HistogramCollection::divide(const HistogramCollection & c1)
         }
       return;
       }
-    if (reportDebug(fct) )
+    if (reportDebug() )
       {
       cout << "At iObject:" << iObject << " divide histogram " << h0->GetName() << " by histogram " << h1->GetName() << endl;
       }
@@ -845,12 +861,12 @@ void HistogramCollection::divide(const HistogramCollection & c1)
 void HistogramCollection::divide(const HistogramCollection & c1,
                                  const HistogramCollection & c2)
 {
-  TString fct = "divide(const HistogramCollection & c1,const HistogramCollection & c2)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
   if (!sameSizeAs(c1) || !sameSizeAs(c2))
     {
-    if (reportError(getClassName(), getInstanceName(), "divide(...)" ) )
+    if (reportError(__FUNCTION__))
       {
       cout << endl;
       cout << "Invalid operation on collections -- incompatible sizes:"  << endl;
@@ -867,7 +883,7 @@ void HistogramCollection::divide(const HistogramCollection & c1,
     TH1* h2 = c2.objects[iObject];
     if (!h0 || !h1 || !h2)
       {
-      if (reportError(getClassName(), getInstanceName(), "add(...)" ) )
+      if (reportError(__FUNCTION__))
         {
         cout << " Null pointer detected at iObject:" << iObject << endl;
         cout << "this: " << getName()    << " histogram ptr: " << h0 << endl;
@@ -876,9 +892,9 @@ void HistogramCollection::divide(const HistogramCollection & c1,
         }
       return;
       }
-    if (!sameDimensions(fct,h0,h1)  || !sameDimensions(fct,h0,h2))
+    if (!sameDimensions(__FUNCTION__,h0,h1)  || !sameDimensions(__FUNCTION__,h0,h2))
       {
-      if (reportWarning(getClassName(), getInstanceName(), "add(...)" ) )
+      if (reportWarning() )
         {
         cout << " Incompatible histogram sizes at iObject:" << iObject << endl;
         cout << "this: " << getName()    << " histogram named: " << h0->GetName() << endl;
@@ -891,64 +907,133 @@ void HistogramCollection::divide(const HistogramCollection & c1,
     }
 }
 
+void HistogramCollection::differenceCollection(const HistogramCollection & collection, const HistogramCollection & refCollection, bool correlatedUncertainties)
+{
 
-//! ==========================
-// Calculate square difference (bin by bin) of all  histograms of the other  collection relative to the
-// reference collection and store the result in the histograms of  this collection.
-// TProfile histograms have to be handled differently
-// This function is used for sub-sample analyses...
-// double sumWeights: sum of the weights of the n-1 collection accumulated in this collection
-//     double weight: weight of the current n-th collection.
-// The means are store in the BinContent
-// The rms are store in the BinError parts of the histograms.
-//! ==========================
+  if (reportStart(__FUNCTION__))
+    ;
+  if (!collection.sameSizeAs(refCollection))
+    {
+    if (reportError() )
+      {
+      cout << "Invalid operation on collections:"  << endl;
+      cout << "Attempting to calculate a difference of  collection " << collection.getName() << " containing " << collection.size() << " histograms" << endl;
+      cout << "with a collection named " << refCollection.getName() << " containing " << refCollection.size() << " histograms" << endl;
+      return;
+      }
+    }
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << "Number of objects to calculate:" <<  collection.size() << endl;
+    }
+  for (unsigned int iObject=0; iObject<collection.size(); iObject++)
+    {
+    TH1* h     = collection.objects[iObject];
+    TH1* hRef  = refCollection.objects[iObject];
+    if (!ptrExist(__FUNCTION__,h,hRef)) return;
+    if (!sameDimensions(__FUNCTION__,h,hRef)) return;
+    TH1* hDiff = (TH1*) h->Clone();
+    if (reportDebug(__FUNCTION__))
+      {
+      cout << "At iObject:" << iObject << " Computing  difference of  histogram " << h->GetName() << " and histogram " << hRef->GetName() << endl;
+      }
+    differenceHistos(h,hRef,hDiff,correlatedUncertainties);
+    append(hDiff);
+    }
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
+void HistogramCollection::ratioCollection(const HistogramCollection & collection, const HistogramCollection & refCollection, bool correlatedUncertainties)
+{
+
+  if (reportStart(__FUNCTION__))
+    ;
+  if (!collection.sameSizeAs(refCollection))
+    {
+    if (reportError(__FUNCTION__))
+      {
+      cout << "Invalid operation on collections:"  << endl;
+      cout << "Attempting to calculate a ratio of  collection " << collection.getName() << " containing " << collection.size() << " histograms" << endl;
+      cout << "with a collection named " << refCollection.getName() << " containing " << refCollection.size() << " histograms" << endl;
+      return;
+      }
+    }
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << "Number of objects to calculate:" <<  collection.size() << endl;
+    }
+  for (unsigned int iObject=0; iObject<collection.size(); iObject++)
+    {
+    TH1* h     = collection.objects[iObject];
+    TH1* hRef  = refCollection.objects[iObject];
+    if (!ptrExist(__FUNCTION__,h,hRef)) return;
+    if (!sameDimensions(__FUNCTION__,h,hRef)) return;
+    TH1* hRatio = (TH1*)  h->Clone();
+    if (reportDebug(__FUNCTION__))
+      {
+      cout << "At iObject:" << iObject << " Computing ratio of " << h->GetName() << " by " << hRef->GetName() << endl;
+      }
+    ratioHistos(h,hRef,hRatio,correlatedUncertainties);
+    append(hRatio);
+    }
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
+//!
+//! Calculate square difference (bin by bin) of all  histograms of the other  collection relative to the
+//! reference collection and store the result in the histograms of  this collection.
+//! TProfile histograms have to be handled differently
+//! This function is used for sub-sample analyses...
+//! double sumWeights: sum of the weights of the n-1 collection accumulated in this collection
+//!     double weight: weight of the current n-th collection.
+//! The means are store in the BinContent
+//! The rms are store in the BinError parts of the histograms.
+//!
 void HistogramCollection::squareDifferenceCollection(const HistogramCollection & collection, double sumWeights, double weight, int n)
 {
-  TString fct = "squareDifferenceCollection(const HistogramCollection & collection, double sumWeights, double weight, int n)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
   if (!sameSizeAs(collection))
     {
-    if (reportError(getClassName(), getInstanceName(), "squareDifferenceCollection(...)" ) )
+    if (reportError() )
       {
       cout << "Invalid operation on collections:"  << endl;
       cout << "Attempting to add collection named " << getName() << " containing " << size() << " histograms" << endl;
       cout << "with collection named " << collection.getName() << " containing " << collection.size() << " histograms" << endl;
-      return;
       }
+    return;
     }
-
   for (unsigned int iObject=0; iObject<size(); iObject++)
     {
     TH1* hAvg = objects[iObject];
     TH1* h    = collection.objects[iObject];
-
     if (!hAvg || !h)
       {
-      if (reportWarning(getClassName(), getInstanceName(), "squareDifferenceCollection(...)" ) )
+      if (reportWarning() )
         cout << " Histogram null pointers detected at iObject:" << iObject << endl;
       continue;
       }
-    if (!sameDimensions(fct,hAvg,h)) return;
-    if (reportDebug(getClassName(), getInstanceName(), "squareDifferenceCollection(...)" ) )
+    if (!sameDimensions(__FUNCTION__,hAvg,h)) return;
+    if (reportDebug() )
       {
       cout << "At iObject:" << iObject << " Computing square difference of  histogram " << hAvg->GetName() << " and histogram " << h->GetName() << endl;
       }
     squareDifferenceHistos(hAvg, h, sumWeights, weight, n);
     }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 
-// for each bin, compute the difference between histo "h" and the reference "href", and increment the value
-// stored in hstore. Histograms are assumed to have compatible sizes. Checs must be done by the caller.
-// hAvg: used to store the average, with weight equal to sumWeights
-//   h1: new data with weight equal to weight
 void HistogramCollection::squareDifferenceHistos(TH1 *hAvg, TH1 *h, double sumWeights, double weight, int n)
 {
-  TString fct = "squareDifferenceHistos(TH1 *hAvg, TH1 *h, double sumWeights, double weight, int n)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,hAvg,h)) return;
+  if (!ptrExist(__FUNCTION__,hAvg,h)) return;
   double vAvg, evAvg, evSqAvg;
   double v,  dv;
   double sum = weight + sumWeights;
@@ -960,9 +1045,9 @@ void HistogramCollection::squareDifferenceHistos(TH1 *hAvg, TH1 *h, double sumWe
     int nx = hAvg->GetNbinsX();
     for (int ix=1; ix<=nx; ix++)
       {
-      vAvg  = hAvg->GetBinContent(ix);
-      evAvg = hAvg->GetBinError(ix);
-      v     = h->GetBinContent(ix);
+      vAvg    = hAvg->GetBinContent(ix);
+      evAvg   = hAvg->GetBinError(ix);
+      v       = h->GetBinContent(ix);
       evSqAvg = evAvg*evAvg;
       dv      = v - vAvg;
       vAvg    += rwn*dv;
@@ -980,9 +1065,9 @@ void HistogramCollection::squareDifferenceHistos(TH1 *hAvg, TH1 *h, double sumWe
       {
       for (int ix=1; ix<=nx; ix++)
         {
-        vAvg  = hAvg->GetBinContent(ix,iy);
-        evAvg = hAvg->GetBinError(ix,iy);
-        v     = h->GetBinContent(ix,iy);
+        vAvg    = hAvg->GetBinContent(ix,iy);
+        evAvg   = hAvg->GetBinError(ix,iy);
+        v       = h->GetBinContent(ix,iy);
         evSqAvg = evAvg*evAvg;
         dv      = v - vAvg;
         vAvg    += rwn*dv;
@@ -990,7 +1075,7 @@ void HistogramCollection::squareDifferenceHistos(TH1 *hAvg, TH1 *h, double sumWe
         evAvg   = n>0 ? sqrt(evSqAvg)/sqrtN : sqrt(evSqAvg);
         hAvg->SetBinContent(ix,iy, vAvg);
         hAvg->SetBinError(ix,iy,evAvg);
-        } // G2_DyDphi_shft
+        }
       }
     }
   else if (h->IsA()==TH3::Class() || h->IsA()==TH3F::Class() || h->IsA()==TH3D::Class() || h->IsA()==TH3I::Class() )
@@ -1004,9 +1089,9 @@ void HistogramCollection::squareDifferenceHistos(TH1 *hAvg, TH1 *h, double sumWe
         {
         for (int ix=1; ix<=nx; ix++)
           {
-          vAvg  = hAvg->GetBinContent(ix,iy,iz);
-          evAvg = hAvg->GetBinError(ix,iy,iz);
-          v     = h->GetBinContent(ix,iy,iz);
+          vAvg    = hAvg->GetBinContent(ix,iy,iz);
+          evAvg   = hAvg->GetBinError(ix,iy,iz);
+          v       = h->GetBinContent(ix,iy,iz);
           evSqAvg = evAvg*evAvg;
           dv      = v - vAvg;
           vAvg    += rwn*dv;
@@ -1059,13 +1144,263 @@ void HistogramCollection::squareDifferenceHistos(TH1 *hAvg, TH1 *h, double sumWe
         }
       }
     }
-  if (reportEnd(fct) )
+  if (reportEnd() )
     ;
 }
 
-////////////////////////////////////////////////////////////////////////
-// Histogram Operations
-////////////////////////////////////////////////////////////////////////
+
+void HistogramCollection::differenceHistos(TH1 *h, TH1 *hRef, TH1 *hDiff, bool correlatedUncertainties)
+{
+
+  if (reportStart(__FUNCTION__))
+    ;
+  if (!ptrExist(__FUNCTION__,h,hRef,hDiff)) return;
+  
+  double v,  ev;
+  double vRef,  evRef;
+  double vDiff, evDiff, evDiffSq;
+  
+  if (h->IsA()==TH1::Class() || h->IsA()==TH1F::Class() || h->IsA()==TH1D::Class() || h->IsA()==TH1I::Class() )
+    {
+    int nx = h->GetNbinsX();
+    for (int ix=1; ix<=nx; ix++)
+      {
+      v        = h->GetBinContent(ix);
+      ev       = h->GetBinError(ix);
+      vRef     = hRef->GetBinContent(ix);
+      evRef    = hRef->GetBinError(ix);
+      vDiff    = v - vRef;
+      evDiffSq = correlatedUncertainties ?  TMath::Abs(ev*ev - evRef*evRef) : ev*ev + evRef*evRef;
+      evDiff   = TMath::Sqrt(evDiffSq);
+      hDiff->SetBinContent(ix, vDiff);
+      hDiff->SetBinError(ix, evDiff);
+      }
+    }
+  else if (h->IsA()==TH2::Class() || h->IsA()==TH2F::Class() || h->IsA()==TH2D::Class() || h->IsA()==TH2I::Class() )
+    {
+    int nx = h->GetNbinsX();
+    int ny = h->GetNbinsY();
+    for (int iy=1; iy<=ny; iy++)
+      {
+      for (int ix=1; ix<=nx; ix++)
+        {
+        v        = h->GetBinContent(ix,iy);
+        ev       = h->GetBinError(ix,iy);
+        vRef     = hRef->GetBinContent(ix,iy);
+        evRef    = hRef->GetBinError(ix,iy);
+        vDiff    = v - vRef;
+        evDiffSq = correlatedUncertainties ?  TMath::Abs(ev*ev - evRef*evRef) : ev*ev + evRef*evRef;
+        evDiff   = TMath::Sqrt(evDiffSq);
+        hDiff->SetBinContent(ix,iy, vDiff);
+        hDiff->SetBinError(ix,iy, evDiff);
+        }
+      }
+    }
+  else if (h->IsA()==TH3::Class() || h->IsA()==TH3F::Class() || h->IsA()==TH3D::Class() || h->IsA()==TH3I::Class() )
+    {
+    int nx = h->GetNbinsX();
+    int ny = h->GetNbinsY();
+    int nz = h->GetNbinsZ();
+    for (int iz=1; iz<=nz; iz++)
+      {
+      for (int iy=1; iy<=ny; iy++)
+        {
+        for (int ix=1; ix<=nx; ix++)
+          {
+          v        = h->GetBinContent(ix,iy,iz);
+          ev       = h->GetBinError(ix,iy,iz);
+          vRef     = hRef->GetBinContent(ix,iy,iz);
+          evRef    = hRef->GetBinError(ix,iy,iz);
+          vDiff    = v - vRef;
+          evDiffSq = correlatedUncertainties ?  TMath::Abs(ev*ev - evRef*evRef) : ev*ev + evRef*evRef;
+          evDiff   = TMath::Sqrt(evDiffSq);
+          hDiff->SetBinContent(ix,iy,iz, vDiff);
+          hDiff->SetBinError(ix,iy,iz, evDiff);
+          }
+        }
+      }
+    }
+  else if (h->IsA()==TProfile::Class() )
+    {
+    int nx = h->GetNbinsX();
+    for (int ix=1; ix<=nx; ix++)
+      {
+      v        = h->GetBinContent(ix);
+      ev       = h->GetBinError(ix);
+      vRef     = hRef->GetBinContent(ix);
+      evRef    = hRef->GetBinError(ix);
+      vDiff    = v - vRef;
+      evDiffSq = correlatedUncertainties ?  TMath::Abs(ev*ev - evRef*evRef) : ev*ev + evRef*evRef;
+      evDiff   = TMath::Sqrt(evDiffSq);
+      hDiff->SetBinContent(ix, vDiff);
+      hDiff->SetBinError(ix, evDiff);
+      ((TProfile*)hDiff)->SetBinEntries(ix, 1.0);
+      }
+    }
+  else if (h->IsA()==TProfile2D::Class()  )
+    {
+    int nx = h->GetNbinsX();
+    int ny = h->GetNbinsY();
+    for (int iy=1; iy<=ny; iy++)
+      {
+      for (int ix=1; ix<=nx; ix++)
+        {
+        v        = h->GetBinContent(ix,iy);
+        ev       = h->GetBinError(ix,iy);
+        vRef     = hRef->GetBinContent(ix,iy);
+        evRef    = hRef->GetBinError(ix,iy);
+        vDiff    = v - vRef;
+        evDiffSq = correlatedUncertainties ?  TMath::Abs(ev*ev - evRef*evRef) : ev*ev + evRef*evRef;
+        evDiff   = TMath::Sqrt(evDiffSq);
+        hDiff->SetBinContent(ix,iy, vDiff);
+        hDiff->SetBinError(ix,iy, evDiff);
+        //((TProfile*)hDiff)->SetBinEntries(ix,iy, 1.0);
+        }
+      }
+    }
+  if (reportEnd() )
+    ;
+}
+
+
+void HistogramCollection::ratioHistos(TH1 *h, TH1 *hRef, TH1 *hRatio, bool correlatedUncertainties)
+{
+
+  if (!ptrExist(__FUNCTION__,h,hRef,hRatio)) return;
+  
+  double v,  ev, rev;
+  double vRef,  evRef, revRef;
+  double vRatio, evRatio, revRatio, revRatioSq;
+  
+  if (h->IsA()==TH1::Class() || h->IsA()==TH1F::Class() || h->IsA()==TH1D::Class() || h->IsA()==TH1I::Class() )
+    {
+    int nx = h->GetNbinsX();
+    for (int ix=1; ix<=nx; ix++)
+      {
+      v        = h->GetBinContent(ix);
+      ev       = h->GetBinError(ix);
+      rev      = (v!=0) ? ev/v : 0.0;
+      vRef     = hRef->GetBinContent(ix);
+      evRef    = hRef->GetBinError(ix);
+      revRef   = (vRef!=0) ? evRef/vRef : 0.0;
+      if (vRef)
+        {
+        vRatio     = v/vRef;
+        revRatioSq = correlatedUncertainties ? TMath::Abs(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
+        revRatio   = TMath::Sqrt(revRatioSq);
+        evRatio    = revRatio*vRatio;
+        hRatio->SetBinContent(ix, vRatio);
+        hRatio->SetBinError(ix, evRatio);
+        }
+      }
+    }
+  else if (h->IsA()==TH2::Class() || h->IsA()==TH2F::Class() || h->IsA()==TH2D::Class() || h->IsA()==TH2I::Class() )
+    {
+    int nx = h->GetNbinsX();
+    int ny = h->GetNbinsY();
+    for (int iy=1; iy<=ny; iy++)
+      {
+      for (int ix=1; ix<=nx; ix++)
+        {
+        v        = h->GetBinContent(ix);
+        ev       = h->GetBinError(ix);
+        rev      = (v!=0) ? ev/v : 0.0;
+        vRef     = hRef->GetBinContent(ix);
+        evRef    = hRef->GetBinError(ix);
+        revRef   = (vRef!=0) ? evRef/vRef : 0.0;
+        if (vRef)
+          {
+          vRatio     = v/vRef;
+          revRatioSq = correlatedUncertainties ? TMath::Abs(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
+          revRatio   = TMath::Sqrt(revRatioSq);
+          evRatio    = revRatio*vRatio;
+          hRatio->SetBinContent(ix, vRatio);
+          hRatio->SetBinError(ix, evRatio);
+          }
+        }
+      }
+    }
+  else if (h->IsA()==TH3::Class() || h->IsA()==TH3F::Class() || h->IsA()==TH3D::Class() || h->IsA()==TH3I::Class() )
+    {
+    int nx = h->GetNbinsX();
+    int ny = h->GetNbinsY();
+    int nz = h->GetNbinsZ();
+    for (int iz=1; iz<=nz; iz++)
+      {
+      for (int iy=1; iy<=ny; iy++)
+        {
+        for (int ix=1; ix<=nx; ix++)
+          {
+          v        = h->GetBinContent(ix);
+          ev       = h->GetBinError(ix);
+          rev      = (v!=0) ? ev/v : 0.0;
+          vRef     = hRef->GetBinContent(ix);
+          evRef    = hRef->GetBinError(ix);
+          revRef   = (vRef!=0) ? evRef/vRef : 0.0;
+          if (vRef)
+            {
+            vRatio     = v/vRef;
+            revRatioSq = correlatedUncertainties ? TMath::Abs(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
+            revRatio   = TMath::Sqrt(revRatioSq);
+            evRatio    = revRatio*vRatio;
+            hRatio->SetBinContent(ix, vRatio);
+            hRatio->SetBinError(ix, evRatio);
+            }
+          }
+        }
+      }
+    }
+  else if (h->IsA()==TProfile::Class() )
+    {
+    int nx = h->GetNbinsX();
+    for (int ix=1; ix<=nx; ix++)
+      {
+      v        = h->GetBinContent(ix);
+      ev       = h->GetBinError(ix);
+      rev      = (v!=0) ? ev/v : 0.0;
+      vRef     = hRef->GetBinContent(ix);
+      evRef    = hRef->GetBinError(ix);
+      revRef   = (vRef!=0) ? evRef/vRef : 0.0;
+      if (vRef)
+        {
+        vRatio     = v/vRef;
+        revRatioSq = correlatedUncertainties ? TMath::Abs(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
+        revRatio   = TMath::Sqrt(revRatioSq);
+        evRatio    = revRatio*vRatio;
+        hRatio->SetBinContent(ix, vRatio);
+        hRatio->SetBinError(ix, evRatio);
+        ((TProfile*)hRatio)->SetBinEntries(ix, 1.0);
+        }
+      }
+    }
+  else if (h->IsA()==TProfile2D::Class()  )
+    {
+    int nx = h->GetNbinsX();
+    int ny = h->GetNbinsY();
+    for (int iy=1; iy<=ny; iy++)
+      {
+      for (int ix=1; ix<=nx; ix++)
+        {
+        v        = h->GetBinContent(ix,iy);
+        ev       = h->GetBinError(ix,iy);
+        rev      = (v!=0) ? ev/v : 0.0;
+        vRef     = hRef->GetBinContent(ix,iy);
+        evRef    = hRef->GetBinError(ix,iy);
+        revRef   = (vRef!=0) ? evRef/vRef : 0.0;
+        if (vRef)
+          {
+          vRatio     = v/vRef;
+          revRatioSq = correlatedUncertainties ? TMath::Abs(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
+          revRatio   = TMath::Sqrt(revRatioSq);
+          evRatio    = revRatio*vRatio;
+          hRatio->SetBinContent(ix, vRatio);
+          hRatio->SetBinError(ix, evRatio);
+          //((TProfile*)hRatio)->SetBinEntries(ix,iy, 1.0);
+          }
+        }
+      }
+    }
+}
 
 
 //Calculate External Product h_1 x h_2 and store into n1n1_12
@@ -1073,16 +1408,16 @@ void HistogramCollection::squareDifferenceHistos(TH1 *hAvg, TH1 *h, double sumWe
 //The output is a 1D histogram packed according to the size of h_1 and h_2.
 double HistogramCollection::calculateN1N1(const TH1 * h_1, const TH1 * h_2, TH1 * h_12, double a1, double a2)
 {
-  TString fct = "calculateN1N1(const TH1 * h_1, const TH1 * h_2, TH1 * h_12, double a1, double a2)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h_1,h_2,h_12)) return -1.0;
+  if (!ptrExist(__FUNCTION__,h_1,h_2,h_12)) return -1.0;
   int n1  = h_1->GetNbinsX();
   int n2  = h_2->GetNbinsX();
   int n3  = h_12->GetNbinsX();
   if (n3 != n1*n2 )
     {
-    if (reportDebug(fct))
+    if (reportDebug(__FUNCTION__))
       {
       cout << "Incompatible histogram dimensions" << endl;
       cout << "H1: " << h_1->GetName()  << " nBins:" << n1 << endl;
@@ -1127,10 +1462,10 @@ double HistogramCollection::calculateN1N1(const TH1 * h_1, const TH1 * h_2, TH1 
 //Calculate External Product n1_1 x n1_2 and store into n1n1_12
 double HistogramCollection::calculateN1N1_H1H1H2(const TH1 * h_1, const TH1 * h_2, TH2 * h_12, double a1, double a2)
 {
-  TString fct = "calculateN1N1_H1H1H2(const TH1 * h_1, const TH1 * h_2, TH2 * h_12, double a1, double a2)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h_1,h_2,h_12)) return -1.0;
+  if (!ptrExist(__FUNCTION__,h_1,h_2,h_12)) return -1.0;
   int n1   = h_1->GetNbinsX();
   int n2   = h_2->GetNbinsX();
   int n3x  = h_12->GetNbinsX();
@@ -1138,14 +1473,14 @@ double HistogramCollection::calculateN1N1_H1H1H2(const TH1 * h_1, const TH1 * h_
 
   if (n3x!=n1 || n3y!=n2)
     {
-    if (reportDebug(fct))
+    if (reportDebug(__FUNCTION__))
       {
       cout << endl;
       cout << "Incompatible histo dimensions" << endl;
       cout << "H1: " << h_1->GetName()    << " nBins:" << n1 << endl;
       cout << "H2: " << h_2->GetName()    << " nBins:" << n2 << endl;
       cout << "H3: " << h_12->GetName()   << " nBins_x:" << n3x << " nBins_y:" << n3y << endl;
-      return -1.;
+      return -1.0;
       }
     }
   double v1,ev1,v2,ev2,v,ev, r1,r2;
@@ -1181,10 +1516,10 @@ double HistogramCollection::calculateN1N1_H1H1H2(const TH1 * h_1, const TH1 * h_
 //Calculate External Product n1_1 x n1_2 and store into n1n1_12
 double HistogramCollection::calculateN1N1_H2H2H2(const TH2 *h_1, const TH2 * h_2, TH2 * h_12, double a1, double a2)
 {
-  TString fct = "calculateN1N1_H2H2H2(const TH2 *h_1, const TH2 * h_2, TH2 * h_12, double a1, double a2)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h_1,h_2,h_12)) return -1.0;
+  if (!ptrExist(__FUNCTION__,h_1,h_2,h_12)) return -1.0;
   int n1x = h_1->GetNbinsX();
   int n1y = h_1->GetNbinsY();
   int n2x = h_2->GetNbinsX();
@@ -1193,7 +1528,7 @@ double HistogramCollection::calculateN1N1_H2H2H2(const TH2 *h_1, const TH2 * h_2
   int n3y = h_12->GetNbinsY();
   if (n3x!=(n1x*n1y) || n3y!=(n2x*n2y) )
     {
-    if (reportDebug(fct))
+    if (reportDebug(__FUNCTION__))
       {
       cout << endl;
       cout << "Incompatible histo dimensions" << endl;
@@ -1245,10 +1580,10 @@ double HistogramCollection::calculateN1N1_H2H2H2(const TH2 *h_1, const TH2 * h_2
 //External Product N1N1N1
 double HistogramCollection::calculateN1N1N1(const TH1 * h_1, const TH1 * h_2, const TH1 * h_3, TH1 * h_123)
 {
-  TString fct = "calculateN1N1N1(const TH1 * h_1, const TH1 * h_2, const TH1 * h_3, TH1 * h_123)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h_1,h_2,h_3,h_123)) return -1.0;
+  if (!ptrExist(__FUNCTION__,h_1,h_2,h_3,h_123)) return -1.0;
   int n = h_1->GetNbinsX();
   double v1,ev1,v2,ev2,v3,ev3,v,ev,r1,r2,r3;
   double sum = 0.;
@@ -1290,10 +1625,10 @@ double HistogramCollection::calculateN1N1N1(const TH1 * h_1, const TH1 * h_2, co
 //External Product N1N1N1
 double HistogramCollection::calculateN1N1N1(const TH1 * h_1, const TH1 * h_2, const TH1 * h_3, TH3 * h_123)
 {
-  TString fct = "calculateN1N1N1(const TH1 * h_1, const TH1 * h_2, const TH1 * h_3, TH3 * h_123)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h_1,h_2,h_3,h_123)) return -1.0;
+  if (!ptrExist(__FUNCTION__,h_1,h_2,h_3,h_123)) return -1.0;
   int n = h_1->GetNbinsX();
   double v1,ev1,v2,ev2,v3,ev3,v,ev,r1,r2,r3;
   double sum = 0.;
@@ -1331,10 +1666,10 @@ double HistogramCollection::calculateN1N1N1(const TH1 * h_1, const TH1 * h_2, co
 
 void HistogramCollection::calculateN2N1(const TH2 * s2, const TH1* s1, TH2 * target, int single)
 {
-  TString fct = "calculateN2N1(const TH2 * s2, const TH1* s1, TH2 * target, int single)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,s2,s1,target)) return;
+  if (!ptrExist(__FUNCTION__,s2,s1,target)) return;
   int n = s2->GetNbinsX();
   double v1,v2,v3,ev1,ev2,ev3,v,ev,r1,r2;
   int dPhi_xy;
@@ -1391,10 +1726,10 @@ void HistogramCollection::calculateN2N1(const TH2 * s2, const TH1* s1, TH2 * tar
 //!
 void HistogramCollection::calculateN2N1x(const TH2 * s2, const TH1* s1, TH3 * target, int single)
 {
-  TString fct = "calculateN2N1x(const TH2 * s2, const TH1* s1, TH3 * target, int single)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,s2,s1,target)) return;
+  if (!ptrExist(__FUNCTION__,s2,s1,target)) return;
   int n = s2->GetNbinsX();
   double v1,v2,v3,ev1,ev2,ev3,v,ev,r1,r2;
   for (int i_x=0;i_x<n; ++i_x)
@@ -1455,7 +1790,7 @@ void HistogramCollection::calculateN2N1x(const TH2 * s2, const TH1* s1, TH3 * ta
             target->SetBinContent(iz1,i_x1,i_y1,v);
             target->SetBinError(iz1,i_x1,i_y1,ev);
             break;
-            default: if (reportDebug(fct)) cout << endl << "invalid argument"<< endl; return;
+            default: if (reportDebug(__FUNCTION__)) cout << endl << "invalid argument"<< endl; return;
           }
         }
       }
@@ -1468,8 +1803,7 @@ void HistogramCollection::calculateN2N1x(const TH2 * s2, const TH1* s1, TH3 * ta
 //!
 int   HistogramCollection::getDimension(const TH1* h) const
 {
-  TString fct = "getDimension(const TH1* h)";
-  if (!ptrExist(fct,h)) return -1;
+  if (!ptrExist(__FUNCTION__,h)) return -1;
   int nDim = 0;
   if (h->IsA()==TH1::Class() || h->IsA()==TH1F::Class() || h->IsA()==TH1D::Class() || h->IsA()==TH1I::Class() )
     {
@@ -1550,7 +1884,7 @@ bool  HistogramCollection::sameDimensions(const TString & caller, const TH1* h1,
   int nDim3 =  getDimension(h3);
   if ( (nDim1 != nDim2) ||  (nDim1 != nDim3) )
     {
-    if (reportWarning("sameDimensions(fct,const TH1* h1, const TH1* h2, const TH1* h3)"))
+    if (reportWarning(caller))
       {
       cout << endl;
       cout << "h1: " << h1->GetName() << " nDim:" << nDim1 << endl;
@@ -1561,7 +1895,7 @@ bool  HistogramCollection::sameDimensions(const TString & caller, const TH1* h1,
     }
   if ( (h1->GetNbinsX()!=h2->GetNbinsX()) || (h1->GetNbinsX()!=h3->GetNbinsX()) )
     {
-    if (reportWarning("sameDimensions(fct,const TH1* h1, const TH1* h2, const TH1* h3)"))
+    if (reportWarning(caller))
       {
       cout << endl;
       cout << "h1: " << h1->GetName() << " nx:" << h1->GetNbinsX() << endl;
@@ -1572,7 +1906,7 @@ bool  HistogramCollection::sameDimensions(const TString & caller, const TH1* h1,
     }
   if (nDim1>1 && ( (h1->GetNbinsY()!=h2->GetNbinsY()) || (h1->GetNbinsY()!=h3->GetNbinsY()) ) )
     {
-    if (reportWarning("sameDimensions(fct,const TH1* h1, const TH1* h2, const TH1* h3)"))
+    if (reportWarning(caller))
       {
       cout << endl;
       cout << "h1: " << h1->GetName() << " nx:" << h1->GetNbinsX() << " ny:" << h1->GetNbinsY() << endl;
@@ -1583,7 +1917,7 @@ bool  HistogramCollection::sameDimensions(const TString & caller, const TH1* h1,
     }
   if (nDim1 > 2 && ( (h1->GetNbinsZ()!=h2->GetNbinsZ()) || (h1->GetNbinsZ()!=h3->GetNbinsZ()) ) )
     {
-    if (reportDebug("sameDimensions(fct,const TH1* h1, const TH1* h2, const TH1* h3)"))
+    if (reportDebug(caller))
       {
       cout << endl;
       cout << "h1: " << h1->GetName() << " nx:" << h1->GetNbinsX() << " ny:" << h1->GetNbinsY() << " nz:" << h1->GetNbinsZ() << endl;
@@ -1608,7 +1942,7 @@ bool  HistogramCollection::sameDimensions(const TString & caller, const TH1* h1,
   int nDim4 =  getDimension(h4);
   if ( (nDim1 != nDim2) ||  (nDim1 != nDim3) ||  (nDim1 != nDim4) )
     {
-    if (reportWarning("sameDimensions(fct,const TH1* h1, const TH1* h2, const TH1* h3, const TH1* h4)"))
+    if (reportWarning(caller))
       {
       cout << endl;
       cout << "h1: " << h1->GetName() << " nDim:" << nDim1 << endl;
@@ -1620,7 +1954,7 @@ bool  HistogramCollection::sameDimensions(const TString & caller, const TH1* h1,
     }
   if ( (h1->GetNbinsX()!=h2->GetNbinsX()) || (h1->GetNbinsX()!=h3->GetNbinsX()) || (h1->GetNbinsX()!=h4->GetNbinsX()) )
     {
-    if (reportWarning("sameDimensions(fct,const TH1* h1, const TH1* h2, const TH1* h3, const TH1* h4)"))
+    if (reportWarning(caller))
       {
       cout << endl;
       cout << "h1: " << h1->GetName() << " nx:" << h1->GetNbinsX() << endl;
@@ -1632,7 +1966,7 @@ bool  HistogramCollection::sameDimensions(const TString & caller, const TH1* h1,
     }
   if (nDim1>1 && ( (h1->GetNbinsY()!=h2->GetNbinsY()) || (h1->GetNbinsY()!=h3->GetNbinsY()) || (h1->GetNbinsY()!=h4->GetNbinsY()) ) )
     {
-    if (reportWarning("sameDimensions(fct,const TH1* h1, const TH1* h2, const TH1* h3, const TH1* h4)"))
+    if (reportWarning(caller))
       {
       cout << endl;
       cout << "h1: " << h1->GetName() << " nx:" << h1->GetNbinsX() << " ny:" << h1->GetNbinsY() << endl;
@@ -1644,7 +1978,7 @@ bool  HistogramCollection::sameDimensions(const TString & caller, const TH1* h1,
     }
   if (nDim1 > 2 && ( (h1->GetNbinsZ()!=h2->GetNbinsZ()) || (h1->GetNbinsZ()!=h3->GetNbinsZ()) || (h1->GetNbinsZ()!=h4->GetNbinsZ()) ) )
     {
-    if (reportDebug("sameDimensions(fct,const TH1* h1, const TH1* h2, const TH1* h3, const TH1* h4)"))
+    if (reportDebug(caller))
       {
       cout << endl;
       cout << "h1: " << h1->GetName() << " nx:" << h1->GetNbinsX() << " ny:" << h1->GetNbinsY() << " nz:" << h1->GetNbinsZ() << endl;
@@ -1731,12 +2065,12 @@ void HistogramCollection::calculateDptDpt(const TH2 * spp, const TH2 * spn, cons
                                           const TH2 * avgp1, const TH2 * avgp2,  TH2 * s2dptdpt,  TH2 * dptdpt,
                                           bool ijNormalization, int nEta, int nPhi)
 {
-  TString fct = "calculateDptDpt(...)";
-  if (reportStart(fct))
-    ;
-  if (!ptrExist(fct,spp,spn,snp,snn,avgp1,avgp2,s2dptdpt,dptdpt)) return;
 
-  if (!sameDimensions(fct,spp,spn) || !sameDimensions(fct,spp,snp) || !sameDimensions(fct,spp,snn)) return;
+  if (reportStart(__FUNCTION__))
+    ;
+  if (!ptrExist(__FUNCTION__,spp,spn,snp,snn,avgp1,avgp2,s2dptdpt,dptdpt)) return;
+
+  if (!sameDimensions(__FUNCTION__,spp,spn) || !sameDimensions(__FUNCTION__,spp,snp) || !sameDimensions(__FUNCTION__,spp,snn)) return;
   int nEtaPhi = nEta*nPhi;
 
   double sumPt1 = 0;
@@ -1818,12 +2152,12 @@ void HistogramCollection::calculateDptDpt(const TH2 * spp, const TH2 * spn, cons
                                           TH2 * dptdpt,
                                           bool ijNormalization, int nBins)
 {
-  TString fct = "calculateDptDpt(--2--)";
-  if (reportStart(fct))
-    ;
-  if (!ptrExist(fct,spp,spn,snp,snn,avgp1,avgp2,dptdpt)) return;
 
-  if (!sameDimensions(fct,spp,spn) || !sameDimensions(fct,spp,snp) || !sameDimensions(fct,spp,snn)) return;
+  if (reportStart(__FUNCTION__))
+    ;
+  if (!ptrExist(__FUNCTION__,spp,spn,snp,snn,avgp1,avgp2,dptdpt)) return;
+
+  if (!sameDimensions(__FUNCTION__,spp,spn) || !sameDimensions(__FUNCTION__,spp,snp) || !sameDimensions(__FUNCTION__,spp,snn)) return;
   
   double v1,v2,v3,v4,v5,v6,p1,p2;
   double ev4,ev5,ev6;
@@ -1868,19 +2202,20 @@ void HistogramCollection::calculateDptDpt(const TH2 * spp, const TH2 * spn, cons
 
 void HistogramCollection::calculateSc(const TH1 * spp, const TH1 * n1n1, const TH1 * pt1pt1, TH1 * g2, bool ijNormalization)
 {
-  TString fct = "calculateSc()";
-  if (reportStart(fct))
-    ;
-  if (!ptrExist(fct,spp,n1n1,pt1pt1,g2)) return;
 
-  if (!sameDimensions(fct,spp,n1n1) || !sameDimensions(fct,spp,pt1pt1) || !sameDimensions(fct,spp,g2)) return;
+  if (reportStart(__FUNCTION__))
+    ;
+  if (!ptrExist(__FUNCTION__,spp,n1n1,pt1pt1,g2)) return;
+
+  if (!sameDimensions(__FUNCTION__,spp,n1n1) || !sameDimensions(__FUNCTION__,spp,pt1pt1) || !sameDimensions(__FUNCTION__,spp,g2)) return;
   int n1 = spp->GetNbinsX();
-  double v1,ev1,v2,ev2,v3,ev3,v4,ev4;
+  double v1,v2,v3,v4;
+  double ev1,ev4;
   for (int i1=1;i1<=n1;++i1)
     {
     v1  = spp->GetBinContent(i1);    ev1 = spp->GetBinError(i1);
-    v2  = n1n1->GetBinContent(i1);   ev2 = n1n1->GetBinError(i1);
-    v3  = pt1pt1->GetBinContent(i1); ev3 = pt1pt1->GetBinError(i1);
+    v2  = n1n1->GetBinContent(i1);   //ev2 = n1n1->GetBinError(i1);
+    v3  = pt1pt1->GetBinContent(i1); //ev3 = pt1pt1->GetBinError(i1);
     if (v2>0)
       {
       if (ijNormalization)
@@ -1899,22 +2234,23 @@ void HistogramCollection::calculateSc(const TH1 * spp, const TH1 * n1n1, const T
 
 void HistogramCollection::calculateG2_H2H2H2H2(const TH2 * spp, const TH2 * n1n1, const TH2 * pt1pt1, TH2 * g2, bool ijNormalization, double a1, double a2)
 {
-  TString fct = "calculateG2_H2H2H2H2(...)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,spp,n1n1,pt1pt1,g2)) return;
-  if (!sameDimensions(fct,spp,n1n1,pt1pt1,g2)) return;
+  if (!ptrExist(__FUNCTION__,spp,n1n1,pt1pt1,g2)) return;
+  if (!sameDimensions(__FUNCTION__,spp,n1n1,pt1pt1,g2)) return;
 
   int n2x = n1n1->GetNbinsX();
   int n2y = n1n1->GetNbinsY();
-  double v1,ev1,v2,ev2,v3,ev3,v4,ev4;
+  double v1,v2,v3,v4;
+  double ev1,ev4;
   for (int i1=1;i1<=n2x;++i1)
     {
     for (int i2=1;i2<=n2y;++i2)
       {
       v1  = a1*spp->GetBinContent(i1,i2);       ev1 = a1*spp->GetBinError(i1,i2);
-      v2  = a2*n1n1->GetBinContent(i1,i2);      ev2 = a2*n1n1->GetBinError(i1,i2);
-      v3  = pt1pt1->GetBinContent(i1,i2);       ev3 = pt1pt1->GetBinError(i1,i2);
+      v2  = a2*n1n1->GetBinContent(i1,i2);      //ev2 = a2*n1n1->GetBinError(i1,i2);
+      v3  = pt1pt1->GetBinContent(i1,i2);       //ev3 = pt1pt1->GetBinError(i1,i2);
       if (v2>0)
         {
         if (ijNormalization)
@@ -1936,12 +2272,12 @@ void HistogramCollection::calculateG2_H2H2H2H2(const TH2 * spp, const TH2 * n1n1
 /* independent of R2, two components are alway computed, for LS they will match but don't for US */
 void HistogramCollection::calculateBf(const TH2 *n2, const TH2 *n1_1, const TH2 *n1_2, TH2 *bf_12, TH2 *bf_21)
 {
-  TString fct = "calculateBf()";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,n2,n1_1,n1_2,bf_12,bf_21)) return;
-  if (!sameDimensions(fct,n1_1,n1_2)) return;
-  if (!sameDimensions(fct,n2,bf_12,bf_21)) return;
+  if (!ptrExist(__FUNCTION__,n2,n1_1,n1_2,bf_12,bf_21)) return;
+  if (!sameDimensions(__FUNCTION__,n1_1,n1_2)) return;
+  if (!sameDimensions(__FUNCTION__,n2,bf_12,bf_21)) return;
   int nbinsx = n2->GetNbinsX();
   int nbinsy = n2->GetNbinsY();
 
@@ -1979,14 +2315,11 @@ void HistogramCollection::calculateBf(const TH2 *n2, const TH2 *n1_1, const TH2 
 
 void HistogramCollection::calculateSean_H1H2H2H2(const TH1 * spp, const TH2 * n1n1, const TH2 * pt1pt1, TH2 * g2, bool ijNormalization, double a1, double a2)
 {
-  TString fct = "calculateSean_H1H2H2H2(...)";
-  if (reportStart(fct))
-    ;
-  if (!ptrExist(fct,spp,n1n1,pt1pt1,g2)) return;
-  if (!sameDimensions(fct,n1n1,pt1pt1,g2)) return;
 
-  if (reportStart(fct))
+  if (reportStart(__FUNCTION__))
     ;
+  if (!ptrExist(__FUNCTION__,spp,n1n1,pt1pt1,g2)) return;
+  if (!sameDimensions(__FUNCTION__,n1n1,pt1pt1,g2)) return;
   int n1  = spp->GetNbinsX();
   int n2x = n1n1->GetNbinsX();
   int n2y = n1n1->GetNbinsY();
@@ -1996,7 +2329,7 @@ void HistogramCollection::calculateSean_H1H2H2H2(const TH1 * spp, const TH2 * n1
   int n4y = g2->GetNbinsY();
   if (n1!=n2x*n2y || n2x!=n3x || n2x!=n4x)
     {
-    if (reportError(fct))
+    if (reportError(__FUNCTION__))
       {
       cout << endl;
       cout << "Incompatible histogram sizes." << endl;
@@ -2037,7 +2370,7 @@ void HistogramCollection::calculateSean_H1H2H2H2(const TH1 * spp, const TH2 * n1
       index++;
       }
     }
-  if (reportEnd(fct))
+  if (reportEnd(__FUNCTION__))
     ;
 }
 
@@ -2046,8 +2379,8 @@ int  HistogramCollection::calculateQ3DwPtPhiEta(double pt1, double phi1, double 
                                                 double pt2, double phi2, double eta2,
                                                 double & Qlong, double & Qout, double & Qside)
 {
-  TString fct = "calculateQ3DwPtPhiEta(...)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
   TLorentzVector p1;
   TLorentzVector p2;
@@ -2106,8 +2439,8 @@ int  HistogramCollection::calculateQ3DwPtPhiY(double pt1, double phi1, double y1
                                               double pt2, double phi2, double y2,
                                               double & Qlong, double & Qout, double & Qside)
 {
-  TString fct = "calculateQ3DwPtPhiY(...)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
   TLorentzVector p1;
   TLorentzVector p2;
@@ -2171,16 +2504,14 @@ int  HistogramCollection::calculateQ3DwPtPhiY(double pt1, double phi1, double y1
 
 
 // Calculate n1n1 Q3D based on h2(y,pt) x h2(y,pt)
-void HistogramCollection::calculateN1N1H2H2_Q3D_MCY(TH2 * n1_1, TH2 * n1_2, TH3 * n1n1_Q3D, double a1, double a2)
+void HistogramCollection::calculateN1N1H2H2_Q3D_MCY(TH2 * n1_1, TH2 * n1_2, TH3 * n1n1_Q3D, double a1 __attribute__((unused)), double a2 __attribute__((unused)))
 {
-  TString fct = "calculateN1N1H2H2_Q3D_MCY(TH2 * n1_1, TH2 * n1_2, TH3 * n1n1_Q3D, double a1, double a2)";
-  if (reportStart(fct))
-    ;
-  if (!ptrExist(fct,n1_1,n1_2,n1n1_Q3D)) return;
-  if (!sameDimensions(fct,n1_1,n1_2)) return;
 
-  a1 = 0;
-  a2 = 0; // stop warnings for now
+  if (reportStart(__FUNCTION__))
+    ;
+  if (!ptrExist(__FUNCTION__,n1_1,n1_2,n1n1_Q3D)) return;
+  if (!sameDimensions(__FUNCTION__,n1_1,n1_2)) return;
+
   double Qlong, Qout, Qside;
   double pt1, phi1, y1;
   double pt2, phi2, y2;
@@ -2190,7 +2521,7 @@ void HistogramCollection::calculateN1N1H2H2_Q3D_MCY(TH2 * n1_1, TH2 * n1_2, TH3 
   double avgN1 = n1_1->Integral();
   double avgN2 = n1_2->Integral();
 
-  if (reportDebug(fct))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "   avgN1: " << avgN1 << endl;
@@ -2215,16 +2546,14 @@ void HistogramCollection::calculateN1N1H2H2_Q3D_MCY(TH2 * n1_1, TH2 * n1_2, TH3 
 }
 
 // Calculate n1n1 Q3D based on h2(eta,pt) x h2(eta,pt)
-void HistogramCollection::calculateN1N1H2H2_Q3D_MCEta(TH2 * n1_1, TH2 * n1_2, TH3 * n1n1_Q3D, double a1, double a2)
+void HistogramCollection::calculateN1N1H2H2_Q3D_MCEta(TH2 * n1_1, TH2 * n1_2, TH3 * n1n1_Q3D, double a1 __attribute__((unused)), double a2 __attribute__((unused)))
 {
-  TString fct = "calculateN1N1H2H2_Q3D_MCY(TH2 * n1_1, TH2 * n1_2, TH3 * n1n1_Q3D, double a1, double a2)";
-  if (reportStart(fct))
-    ;
-  if (!ptrExist(fct,n1_1,n1_2,n1n1_Q3D)) return;
-  if (!sameDimensions(fct,n1_1,n1_2)) return;
 
-  a1 = 0;
-  a2 = 0; // stop warnings for now
+  if (reportStart(__FUNCTION__))
+    ;
+  if (!ptrExist(__FUNCTION__,n1_1,n1_2,n1n1_Q3D)) return;
+  if (!sameDimensions(__FUNCTION__,n1_1,n1_2)) return;
+
   double Qlong, Qout, Qside;
   double pt1, phi1, eta1;
   double pt2, phi2, eta2;
@@ -2232,7 +2561,7 @@ void HistogramCollection::calculateN1N1H2H2_Q3D_MCEta(TH2 * n1_1, TH2 * n1_2, TH
 
   double avgN1 = n1_1->Integral();
   double avgN2 = n1_2->Integral();
-  if (reportDebug(fct))
+  if (reportDebug(__FUNCTION__))
     {
     cout << "   avgN1: " << avgN1 << endl;
     cout << "   avgN2: " << avgN2 << endl;
@@ -2255,13 +2584,13 @@ void HistogramCollection::calculateN1N1H2H2_Q3D_MCEta(TH2 * n1_1, TH2 * n1_2, TH
 }
 
 // Calculate n1n1 Q3D based on h2(eta,pt) x h2(eta,pt)
-void HistogramCollection::calculateN1N1H2H2_Q3D(const TH2 * n1_1, const TH2 * n1_2, TH3 * n1n1_Q3D, double a1, double a2)
+void HistogramCollection::calculateN1N1H2H2_Q3D(const TH2 * n1_1, const TH2 * n1_2, TH3 * n1n1_Q3D, double a1 __attribute__((unused)), double a2 __attribute__((unused)))
 {
-  TString fct = "calculateN1N1H2H2_Q3D(const TH2 * n1_1, const TH2 * n1_2, TH3 * n1n1_Q3D, double a1, double a2)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,n1_1,n1_2,n1n1_Q3D)) return;
-  if (!sameDimensions(fct,n1_1,n1_2)) return;
+  if (!ptrExist(__FUNCTION__,n1_1,n1_2,n1n1_Q3D)) return;
+  if (!sameDimensions(__FUNCTION__,n1_1,n1_2)) return;
   int nx = n1_1->GetNbinsX();
   int ny = n1_1->GetNbinsY();
   double v1;
@@ -2310,11 +2639,11 @@ void HistogramCollection::calculateN1N1H2H2_Q3D(const TH2 * n1_1, const TH2 * n1
 
 void HistogramCollection::calculateN1N1H3H3_Q3D(const TH3 * n1_1, const TH3 * n1_2, TH3 * n1n1_Q3D, double a1, double a2)
 {
-  TString fct = "calculateN1N1H3H3_Q3D(const TH3 * n1_1, const TH3 * n1_2, TH3 * n1n1_Q3D, double a1, double a2)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,n1_1,n1_2,n1n1_Q3D)) return;
-  if (!sameDimensions(fct,n1_1,n1_2)) return;
+  if (!ptrExist(__FUNCTION__,n1_1,n1_2,n1n1_Q3D)) return;
+  if (!sameDimensions(__FUNCTION__,n1_1,n1_2)) return;
   int nx = n1_1->GetNbinsX();
   int ny = n1_1->GetNbinsY();
   int nz = n1_1->GetNbinsX();
@@ -2373,11 +2702,11 @@ void HistogramCollection::calculateN1N1H3H3_Q3D(const TH3 * n1_1, const TH3 * n1
 
 void HistogramCollection::calculateR2_Q3D(const TH3 * n2_Q3D, const TH3 * n1n1_Q3D, TH3 * R2_Q3D, double a1, double a2)
 {
-  TString fct = "calculateR2_Q3D(const TH3 * n2_Q3D, const TH3 * n1n1_Q3D, TH3 * R2_Q3D, double a1, double a2)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,n2_Q3D,n1n1_Q3D,R2_Q3D)) return;
-  if (!sameDimensions(fct,n2_Q3D,n1n1_Q3D)) return;
+  if (!ptrExist(__FUNCTION__,n2_Q3D,n1n1_Q3D,R2_Q3D)) return;
+  if (!sameDimensions(__FUNCTION__,n2_Q3D,n1n1_Q3D)) return;
   int nx = n2_Q3D->GetNbinsX();
   int ny = n2_Q3D->GetNbinsY();
   int nz = n2_Q3D->GetNbinsX();
@@ -2394,8 +2723,14 @@ void HistogramCollection::calculateR2_Q3D(const TH3 * n2_Q3D, const TH3 * n1n1_Q
         v2  = a2*n1n1_Q3D->GetBinContent(i1,i2,i3); ev2 = a2*n1n1_Q3D->GetBinError(i1,i2,i3);
         if (v1>0 && v2>0)
           {
-          er1 = 0;//ev1/v1;
-          er2 = 0;//ev2/v2;
+          if (v1)
+            er1 = ev1/v1;
+          else
+            er1 = 0;
+          if (v2)
+            er2 = ev2/v2;
+          else
+            er2 = 0;
           if (er1< 0.5 && er2<0.5)
             {
             v3  = v1/v2 - 1;
@@ -2422,15 +2757,16 @@ void HistogramCollection::calculateR2_Q3D(const TH3 * n2_Q3D, const TH3 * n1n1_Q
 // Return the average bin content of the given 1D histogram
 double HistogramCollection::avgValue(TH1 * h)
 {
-  TString fct = "avgValue(TH1 * h)";
-  if (reportStart(fct))
+
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h)) return -1;
+  if (!ptrExist(__FUNCTION__,h)) return -1;
 
   int nx = h->GetNbinsX();
   if (nx<1)
     {
-    if (reportWarning(fct))
+    if (reportWarning(__FUNCTION__))
       {
       cout << endl << "Given histogram has <1 bins." << endl;
       }
@@ -2451,10 +2787,10 @@ double HistogramCollection::avgValue(TH1 * h)
 //!
 void HistogramCollection::setHistogram(TH1 * h, double v, double ev)
 {
-  TString fct = "setHistogram(TH1 * h, double v, double ev)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h)) return;
+  if (!ptrExist(__FUNCTION__,h)) return;
   int n = h->GetNbinsX();
   for (int i1=1;i1<=n;++i1)
     {
@@ -2468,10 +2804,10 @@ void HistogramCollection::setHistogram(TH1 * h, double v, double ev)
 //!
 void HistogramCollection::setHistogram(TH2 * h, double v, double ev)
 {
-  TString fct = "setHistogram(TH2 * h, double v, double ev)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h)) return;
+  if (!ptrExist(__FUNCTION__,h)) return;
   int n_x = h->GetNbinsX();
   int n_y = h->GetNbinsY();
   for (int i1=1;i1<=n_x;++i1)
@@ -2489,10 +2825,10 @@ void HistogramCollection::setHistogram(TH2 * h, double v, double ev)
 //!
 void HistogramCollection::setHistogram(TH3 * h, double v, double ev)
 {
-  TString fct = "setHistogram(TH3 * h, double v, double ev)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h)) return;
+  if (!ptrExist(__FUNCTION__,h)) return;
   int n_x = h->GetNbinsX();
   int n_y = h->GetNbinsY();
   int n_z = h->GetNbinsZ();
@@ -2511,17 +2847,17 @@ void HistogramCollection::setHistogram(TH3 * h, double v, double ev)
 
 TH1 * HistogramCollection::loadH1(TFile * inputFile,const TString & histoName)
 {
-  TString fct = "loadH1(TFile * inputFile,const TString & histoName)";
-  if (!ptrFileExist(fct,inputFile)) return nullptr;
+
+  if (!ptrFileExist(inputFile)) return nullptr;
   TH1* h = (TH1*) inputFile->Get(histoName);
   if (!h)
     {
-    if (reportError(fct)) cout << "Could not load histogram: " << histoName << endl;
+    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << histoName << endl;
     return nullptr;
     }
   else
     {
-    if (reportDebug(fct)) cout << "Loaded histogram named: "  << histoName << endl;
+    if (reportDebug(__FUNCTION__)) cout << "Loaded histogram named: "  << histoName << endl;
     }
   append(h);
   return h;
@@ -2532,17 +2868,17 @@ TH1 * HistogramCollection::loadH1(TFile * inputFile,const TString & histoName)
 
 TH2 * HistogramCollection::loadH2(TFile * inputFile,const TString & histoName)
 {
-  TString fct = "loadH2(TFile * inputFile,const TString & histoName)";
-  if (!ptrFileExist(fct,inputFile)) return nullptr;
+
+  if (!ptrFileExist(inputFile)) return nullptr;
   TH2* h = (TH2*) inputFile->Get(histoName);
   if (!h)
     {
-    if (reportError(fct)) cout << "Could not load histogram: " << histoName << endl;
+    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << histoName << endl;
     return nullptr;
     }
   else
     {
-    if (reportDebug(fct)) cout << "Loaded histogram named: "  << histoName << endl;
+    if (reportDebug(__FUNCTION__)) cout << "Loaded histogram named: "  << histoName << endl;
     }
   append(h);
   return h;
@@ -2552,17 +2888,17 @@ TH2 * HistogramCollection::loadH2(TFile * inputFile,const TString & histoName)
 ///No test is //done to verify that the file is properly opened.
 TH3 * HistogramCollection::loadH3(TFile * inputFile, const TString & histoName)
 {
-  TString fct = "loadH3(TFile * inputFile,const TString & histoName)";
-  if (!ptrFileExist(fct,inputFile)) return nullptr;
+
+  if (!ptrFileExist(inputFile)) return nullptr;
   TH3* h = (TH3*) inputFile->Get(histoName);
   if (!h)
     {
-    if (reportError(fct)) cout << "Could not load histogram: " << histoName << endl;
+    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << histoName << endl;
     return nullptr;
     }
   else
     {
-    if (reportDebug(fct)) cout << "Loaded histogram named: "  << histoName << endl;
+    if (reportDebug(__FUNCTION__)) cout << "Loaded histogram named: "  << histoName << endl;
     }
   append(h);
   return h;
@@ -2572,17 +2908,17 @@ TH3 * HistogramCollection::loadH3(TFile * inputFile, const TString & histoName)
 ///No test is //done to verify that the file is properly opened.
 TProfile * HistogramCollection::loadProfile(TFile * inputFile, const TString & histoName)
 {
-  TString fct = "loadProfile(TFile * inputFile, const TString & histoName)";
-  if (!ptrFileExist(fct,inputFile)) return nullptr;
+
+  if (!ptrFileExist(inputFile)) return nullptr;
   TProfile* h = (TProfile*) inputFile->Get(histoName);
   if (!h)
     {
-    if (reportError(fct)) cout << "Could not load histogram: " << histoName << endl;
+    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << histoName << endl;
     return nullptr;
     }
   else
     {
-    if (reportDebug(fct)) cout << "Loaded histogram named: "  << histoName << endl;
+    if (reportDebug(__FUNCTION__)) cout << "Loaded histogram named: "  << histoName << endl;
     }
   append(h);
   return h;
@@ -2590,8 +2926,8 @@ TProfile * HistogramCollection::loadProfile(TFile * inputFile, const TString & h
 
 void HistogramCollection::loadHistosInList(TFile * inputFile, HistogramCollection * collection)
 {
-  TString fct = "loadHistosInList(TFile * inputFile, HistogramCollection * collection)";
-  if (!ptrFileExist(fct,inputFile)) return;
+
+  if (!ptrFileExist(inputFile)) return;
   int nHistos = collection->getNHistograms();
   TString histoName;
   for (int iHisto=0; iHisto<nHistos; iHisto++)
@@ -2600,12 +2936,12 @@ void HistogramCollection::loadHistosInList(TFile * inputFile, HistogramCollectio
     TH1 * h = (TH1*) inputFile->Get(histoName);
     if (!h)
       {
-      if (reportError(fct)) cout << "Could not load histogram: " << histoName << endl;
+      if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << histoName << endl;
       return;
       }
     else
       {
-      if (reportDebug(fct)) cout << "Loaded histogram named: "  << histoName << endl;
+      if (reportDebug(__FUNCTION__)) cout << "Loaded histogram named: "  << histoName << endl;
       }
     append(h);
     }
@@ -2616,17 +2952,17 @@ void HistogramCollection::loadHistosInList(TFile * inputFile, HistogramCollectio
 /////throws a HistogramException if the histogram does not exist (null pointer).
 TH1 * HistogramCollection::clone(const TH1 * h1, const TString & histoName)
 {
-  TString fct = "clone(const TH1 * h1, const TString & histoName)";
-  if (!ptrExist(fct,h1)) return nullptr;
+
+  if (!ptrExist(__FUNCTION__,h1)) return nullptr;
   TH1 * h = (TH1*) h1->Clone();
   if (!h)
     {
-    if (reportError(fct)) cout << "Could not clone histogram "<< h1->GetName() << endl;
+    if (reportError(__FUNCTION__)) cout << "Could not clone histogram "<< h1->GetName() << endl;
     return nullptr;
     }
   else
     {
-    if (reportDebug(fct)) cout << "Successfully cloned histogram named: "  << histoName << endl;
+    if (reportDebug(__FUNCTION__)) cout << "Successfully cloned histogram named: "  << histoName << endl;
     }
   h->SetName(histoName);
   return h;
@@ -2634,8 +2970,8 @@ TH1 * HistogramCollection::clone(const TH1 * h1, const TString & histoName)
 
 void HistogramCollection::findMaximum(TH1 * h, int xFirstBin, int xLastBin, int & xMaxValueBin, double & xMaxValue)
 {
-  TString fct = "findMaximum(TH1 * h, int xFirstBin, int xLastBin, int & xMaxValueBin, double & xMaxValue)";
-  if (!ptrExist(fct,h)) return;
+
+  if (!ptrExist(__FUNCTION__,h)) return;
   int    n   = h->GetNbinsX();
   if (xFirstBin<1) xFirstBin = 1;
   if (xLastBin>n)  xLastBin = n;
@@ -2648,7 +2984,7 @@ void HistogramCollection::findMaximum(TH1 * h, int xFirstBin, int xLastBin, int 
       xMaxValue = v;
       }
     }
-  if (reportDebug(fct))
+  if (reportDebug(__FUNCTION__))
     cout << endl << "  xMaxValueBin: "<< xMaxValueBin
     << endl << "     xMaxValue: "<< xMaxValue<< endl;
 
@@ -2656,8 +2992,8 @@ void HistogramCollection::findMaximum(TH1 * h, int xFirstBin, int xLastBin, int 
 
 void HistogramCollection::findMinimum(TH1 * h, int xFirstBin, int xLastBin, int & xMinValueBin, double  & xMinValue)
 {
-  TString fct = "findMinimum(TH1 * h, int xFirstBin, int xLastBin, int & xMinValueBin, double  & xMinValue)";
-  if (!ptrExist(fct,h)) return;
+
+  if (!ptrExist(__FUNCTION__,h)) return;
   int    n   = h->GetNbinsX();
   if (xFirstBin<1) xFirstBin = 1;
   if (xLastBin>n)  xLastBin = n;
@@ -2670,17 +3006,17 @@ void HistogramCollection::findMinimum(TH1 * h, int xFirstBin, int xLastBin, int 
       xMinValue = v;
       }
     }
-  if (reportDebug(fct))
+  if (reportDebug(__FUNCTION__))
     cout << endl << "  xMinValueBin: "<< xMinValueBin
     << endl << "     xMinValue: "<< xMinValue << endl;
 }
 
 void HistogramCollection::scaleByBinWidth1D(TH1 * h, double scale)
 {
-  TString fct = "scaleByBinWidth1D(TH1 * h, double scale)";
-  if (!ptrExist(fct,h)) return;
 
-  if (reportDebug(fct))
+  if (!ptrExist(__FUNCTION__,h)) return;
+
+  if (reportDebug(__FUNCTION__))
     cout << endl
     << "   1D histogram " << h->GetName() << " will be scaled by a common scale of " << scale
     << " and bin width " << h->GetBinWidth(1) << endl;
@@ -2699,12 +3035,12 @@ void HistogramCollection::scaleByBinWidth1D(TH1 * h, double scale)
 
 void HistogramCollection::scaleByBinWidth2D(TH2 * h, double scale)
 {
-  TString fct = "scaleByBinWidth2D(TH2 * h, double scale)";
-  if (!ptrExist(fct,h)) return;
+
+  if (!ptrExist(__FUNCTION__,h)) return;
 
   TAxis * xAxis = h->GetXaxis();
   TAxis * yAxis = h->GetYaxis();
-  if (reportDebug(fct))
+  if (reportDebug(__FUNCTION__))
     cout << endl
     << "   2D histogram " << h->GetName() << " will be scaled by a common scale of " << scale
     << " bin width_x " << xAxis->GetBinWidth(1) << " bin width_y " << yAxis->GetBinWidth(1) << endl;
@@ -2729,13 +3065,13 @@ void HistogramCollection::scaleByBinWidth2D(TH2 * h, double scale)
 
 void HistogramCollection::scaleByBinWidth3D(TH3 * h, double scale)
 {
-  TString fct = "scaleByBinWidth3D(TH3 * h, double scale)";
-  if (!ptrExist(fct,h)) return;
+
+  if (!ptrExist(__FUNCTION__,h)) return;
 
   TAxis * xAxis = h->GetXaxis();
   TAxis * yAxis = h->GetYaxis();
   TAxis * zAxis = h->GetZaxis();
-  if (reportDebug(fct))
+  if (reportDebug(__FUNCTION__))
     cout << endl
     << "   3D histogram " << h->GetName() << " will be scaled by a common scale of " << scale
     << " bin width_x " << xAxis->GetBinWidth(1) << " bin width_y " << yAxis->GetBinWidth(1) << " bin width_z " << zAxis->GetBinWidth(1) << endl;
@@ -2765,46 +3101,46 @@ void HistogramCollection::scaleByBinWidth3D(TH3 * h, double scale)
 
 void HistogramCollection::scaleByBinWidth(TH1 * h, double scale)
 {
-  TString fct = "scaleByBinWidth(TH1 * h, double scale)";
-  if (!ptrExist(fct,h)) return;
+
+  if (!ptrExist(__FUNCTION__,h)) return;
 
   TClass * c = h->IsA();
   if (c == TProfile::Class())
     {
     //TProfile are not to be scaled
-    if (reportDebug(fct)) cout << "1D Profile named:" << h->GetName() << " will NOT be scaled." << endl;
+    if (reportDebug(__FUNCTION__)) cout << "1D Profile named:" << h->GetName() << " will NOT be scaled." << endl;
     }
   else if (c == TH1F::Class() || c == TH1D::Class())
     {
-    if (reportDebug(fct)) cout << "1D Histo named:" << h->GetName() << " will  be scaled by binwidth and given scale " << scale << endl;
+    if (reportDebug(__FUNCTION__)) cout << "1D Histo named:" << h->GetName() << " will  be scaled by binwidth and given scale " << scale << endl;
     scaleByBinWidth1D(h, scale);
     }
   else if (c == TH2F::Class() || c == TH2D::Class())
     {
-    if (reportDebug(fct)) cout << "2D Histo named:" << h->GetName() << " will  be scaled by binwidth and given scale " << scale  << endl;
+    if (reportDebug(__FUNCTION__)) cout << "2D Histo named:" << h->GetName() << " will  be scaled by binwidth and given scale " << scale  << endl;
     TH2 * h2 = (TH2*) h;
     scaleByBinWidth2D(h2, scale);
     }
   else if (c == TH3F::Class() || c == TH3D::Class())
     {
-    if (reportDebug(fct)) cout << "3D Histo named:" << h->GetName() << " will  be scaled by binwidth and given scale " << scale  << endl;
+    if (reportDebug(__FUNCTION__)) cout << "3D Histo named:" << h->GetName() << " will  be scaled by binwidth and given scale " << scale  << endl;
     TH3 * h3 = (TH3*) h;
     scaleByBinWidth3D(h3, scale);
     }
   else if (c == TProfile2D::Class())
     {
-    if (reportDebug(fct)) cout << "2D Profile named:" << h->GetName() << " will NOT be scaled." << endl;
+    if (reportDebug(__FUNCTION__)) cout << "2D Profile named:" << h->GetName() << " will NOT be scaled." << endl;
     }
   else
     {
-    if (reportError(fct))  cout << h->GetName() << " of unrecognized type will NOT be scaled." << endl;
+    if (reportError(__FUNCTION__))  cout << h->GetName() << " of unrecognized type will NOT be scaled." << endl;
     }
 }
 
 
 void HistogramCollection::scaleAllHistoByBinWidth(double scale)
 {
-  TString fct = "scaleAllHistoByBinWidth(double scale)";
+
   TH1 * h;
   for (int i=0; i<getNHistograms(); ++i)
     {
@@ -2813,22 +3149,22 @@ void HistogramCollection::scaleAllHistoByBinWidth(double scale)
     if (c == TProfile::Class())
       {
       //TProfile are not to be scaled
-      if (reportDebug(fct)) cout << "1D Profile named:" << h->GetName() << " will NOT be scaled." << endl;
+      if (reportDebug(__FUNCTION__)) cout << "1D Profile named:" << h->GetName() << " will NOT be scaled." << endl;
       }
     else if (c == TH1F::Class() || c == TH1D::Class())
       {
-      if (reportDebug(fct)) cout << "1D Histo named:" << h->GetName() << " will  be scaled by binwidth and given scale " << scale << endl;
+      if (reportDebug(__FUNCTION__)) cout << "1D Histo named:" << h->GetName() << " will  be scaled by binwidth and given scale " << scale << endl;
       scaleByBinWidth1D(h, scale);
       }
     else if (c == TH2F::Class() || c == TH2D::Class())
       {
-      if (reportDebug(fct)) cout << "2D Histo named:" << h->GetName() << " will  be scaled by binwidth and given scale " << scale  << endl;
+      if (reportDebug(__FUNCTION__)) cout << "2D Histo named:" << h->GetName() << " will  be scaled by binwidth and given scale " << scale  << endl;
       TH2 * h2 = (TH2*) h;
       scaleByBinWidth2D(h2, scale);
       }
     else if (c == TProfile2D::Class())
       {
-      if (reportDebug(fct)) cout << "2D Profile named:" << h->GetName() << " will NOT be scaled." << endl;
+      if (reportDebug(__FUNCTION__)) cout << "2D Profile named:" << h->GetName() << " will NOT be scaled." << endl;
       }
     }
 }
@@ -2836,7 +3172,7 @@ void HistogramCollection::scaleAllHistoByBinWidth(double scale)
 
 void HistogramCollection::sumw2All()
 {
-  TString fct = "sumw2All()";
+
   TH1 * h;
   for (int i=0; i<getNHistograms(); ++i)
     {
@@ -2844,11 +3180,11 @@ void HistogramCollection::sumw2All()
     TClass * c = h->IsA();
     if (c==TProfile::Class() )
       {
-      if (reportDebug(fct)) cout << "Profile named:" << h->GetName() << " will not be sumw2" << endl;
+      if (reportDebug(__FUNCTION__)) cout << "Profile named:" << h->GetName() << " will not be sumw2" << endl;
       }
     else
       {
-      if (reportDebug(fct)) cout << "Histo named:" << h->GetName() << " will  be sumw2" << endl;
+      if (reportDebug(__FUNCTION__)) cout << "Histo named:" << h->GetName() << " will  be sumw2" << endl;
       if (h->GetEntries()>0)
         h->Sumw2();
       }
@@ -2859,11 +3195,11 @@ void HistogramCollection::sumw2All()
 
 void HistogramCollection::unpack_vsXY_to_vsXVsY(const TH1 * source, TH2 * target)
 {
-  TString fct = "unpack_vsXY_to_vsXVsY(const TH1 * source, TH2 * target)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
 
-  if (!ptrExist(fct,source)) return;
+  if (!ptrExist(__FUNCTION__,source)) return;
 
 
   // Unpack 1D source histogram into a 2D histogram
@@ -2874,7 +3210,7 @@ void HistogramCollection::unpack_vsXY_to_vsXVsY(const TH1 * source, TH2 * target
   int n_y = target->GetNbinsY();
   if (n!=n_x*n_y)
     {
-    if (reportError(fct))
+    if (reportError(__FUNCTION__))
       {
       cout << endl;
       cout << "    unpack_vsXY_to_vsXVsY(...)  Incompatible histogram dimensions" << endl;
@@ -2900,10 +3236,10 @@ void HistogramCollection::unpack_vsXY_to_vsXVsY(const TH1 * source, TH2 * target
 
 void HistogramCollection::correctMerging(TH1 * h, int nEta, int nPhi, bool reverse)
 {
-  TString fct = "correctMerging(TH1 * h, int nEta, int nPhi, bool reverse)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h)) return;
+  if (!ptrExist(__FUNCTION__,h)) return;
 
   double v, ev;
   int iEta, iPhi, iDphi, iPhiA, iPhiB;
@@ -2986,11 +3322,11 @@ void HistogramCollection::correctMerging(TH1 * h, int nEta, int nPhi, bool rever
 //!
 void HistogramCollection::calculateAvgH2H2(const TH2 * source, TH2 * target, double scaleFactor)
 {
-  TString fct = "calculateAvgH2H2(const TH2 * h_1, TH2 * h_2)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,source,target)) return;
-  if (!sameDimensions(fct,source,target)) return;
+  if (!ptrExist(__FUNCTION__,source,target)) return;
+  if (!sameDimensions(__FUNCTION__,source,target)) return;
   int nDeta = source->GetNbinsX();
   int nDphi = source->GetNbinsY();
   vector<double> denominator(nDeta,0.0);
@@ -3022,17 +3358,17 @@ void HistogramCollection::calculateAvgH2H2(const TH2 * source, TH2 * target, dou
 ///Calculate R2 = binCorrection*N2/N1/N1 - 1
 void HistogramCollection::calculateR2_H1H1H1(const TH1 * n2_12, const TH1 * n1n1_12, TH1 * r2_12, bool ijNormalization, double a1, double a2)
 {
-  TString fct = "calculateR2_H1H1H1(const TH1 * n2_12, const TH1 * n1n1_12, TH1 * r2_12, bool ijNormalization, double a1, double a2)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,n2_12,n1n1_12,r2_12)) return;
+  if (!ptrExist(__FUNCTION__,n2_12,n1n1_12,r2_12)) return;
 
   int n2_12_n_x    = n2_12->GetNbinsX();
   int n1n1_12_n_x  = n1n1_12->GetNbinsX();
   int r2_12_n_x    = r2_12->GetNbinsX();
   if (n2_12_n_x!=n1n1_12_n_x || n2_12_n_x!=r2_12_n_x )
     {
-    if (reportError(fct))
+    if (reportError(__FUNCTION__))
       {
       cout << endl;cout << "Incompatible histo dimensions" << endl;
       cout << "H1: " << n2_12->GetName()   << " n_x:" << n2_12_n_x   << endl;
@@ -3053,18 +3389,18 @@ void HistogramCollection::calculateR2_H1H1H1(const TH1 * n2_12, const TH1 * n1n1
       if (ijNormalization) //account for the fact only half the pairs were counted
         {
         v   = 2*v1/v2;
-        if (i1<20) if (reportDebug(fct)) cout << "normalized v:" << v << endl;
+        if (i1<20) if (reportDebug(__FUNCTION__)) cout << "normalized v:" << v << endl;
         }
       else // all pairs counted - no need to multiply by 2
         {
         v   = v1/v2;
-        if (i1<20) if (reportDebug(fct)) cout << "NOT normalized v:" << v << endl;
+        if (i1<20) if (reportDebug(__FUNCTION__)) cout << "NOT normalized v:" << v << endl;
         }
       re1 = ev1/v1;
       re2 = ev2/v2;
       ev  = v*sqrt(re1*re1+re2*re2);
       v   -= 1.;
-      //if (i1<20) if (reportDebug(fct)) cout << "-1:" << v << endl;
+      //if (i1<20) if (reportDebug(__FUNCTION__)) cout << "-1:" << v << endl;
 
       }
     else
@@ -3079,12 +3415,12 @@ void HistogramCollection::calculateR2_H1H1H1(const TH1 * n2_12, const TH1 * n1n1
 //Calculate R2 = N2/N1/N1 - 1
 void HistogramCollection::calculateR2_H2H2H2(const TH2 * n2_12, const TH2 * n1n1_12, TH2 * r2_12, bool ijNormalization, double a1, double a2)
 {
-  TString fct = "calculateR2_H2H2H2(const TH2 * n2_12, const TH2 * n1n1_12, TH2 * r2_12, bool ijNormalization, double a1, double a2)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
 
-  if (!ptrExist(fct,n2_12,n1n1_12,r2_12)) return;
-  if (!sameDimensions(fct,n2_12,n1n1_12,r2_12)) return;
+  if (!ptrExist(__FUNCTION__,n2_12,n1n1_12,r2_12)) return;
+  if (!sameDimensions(__FUNCTION__,n2_12,n1n1_12,r2_12)) return;
   int n2_12_n_x = n2_12->GetNbinsX();
   int n2_12_n_y = n2_12->GetNbinsY();
 
@@ -3119,10 +3455,10 @@ void HistogramCollection::calculateR2_H2H2H2(const TH2 * n2_12, const TH2 * n1n1
 //Calculate R2 = N2/N1/N1 - 1
 void HistogramCollection::calculateR2_H1H2H2(const TH1 * n2_12, const TH2 * n1n1_12, TH2 * r2_12, bool ijNormalization, double a1, double a2)
 {
-  TString fct = "calculateR2_H1H2H2(const TH1 * n2_12, const TH2 * n1n1_12, TH2 * r2_12, bool ijNormalization, double a1, double a2)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,n2_12,n1n1_12,r2_12)) return;
+  if (!ptrExist(__FUNCTION__,n2_12,n1n1_12,r2_12)) return;
 
   int n2_12_n_x    = n2_12->GetNbinsX();
   int n1n1_12_n_x  = n1n1_12->GetNbinsX();
@@ -3131,7 +3467,7 @@ void HistogramCollection::calculateR2_H1H2H2(const TH1 * n2_12, const TH2 * n1n1
   int r2_12_n_y    = r2_12->GetNbinsY();
   if (n2_12_n_x!=(n1n1_12_n_x*n1n1_12_n_y) || n1n1_12_n_x!=r2_12_n_x || n1n1_12_n_y!=r2_12_n_y )
     {
-    if (reportError(fct))
+    if (reportError(__FUNCTION__))
       {
       cout << endl;
       cout << "Incompatible histo dimensions" << endl;
@@ -3177,10 +3513,10 @@ void HistogramCollection::calculateR2_H1H2H2(const TH1 * n2_12, const TH2 * n1n1
 
 void HistogramCollection::calculateR2VsM(const TProfile * h1, const TProfile * h2, const TProfile * h12, TH1 * r2VsM, TH1 * intR2, bool sameFilter)
 {
-  TString fct = "calculateR2VsM(const TProfile * h1, const TProfile * h2, const TProfile * h12, TH1 * r2VsM, TH1 * intR2, bool sameFilter)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h1,h2,h12,r2VsM,intR2)) return;
+  if (!ptrExist(__FUNCTION__,h1,h2,h12,r2VsM,intR2)) return;
 
   int n1, n2, n3, n4, n5;
   n1   = h1->GetNbinsX();
@@ -3190,7 +3526,7 @@ void HistogramCollection::calculateR2VsM(const TProfile * h1, const TProfile * h
   n5   = intR2->GetNbinsX();
   if (n1!=n2 || n1!=n3 || n1!=n4 || n5!=1)
     {
-    if (reportError(fct)) cout << endl << "Incompatible histogram dimensions" << endl;
+    if (reportError(__FUNCTION__)) cout << endl << "Incompatible histogram dimensions" << endl;
     return;
     }
   double n, nSum, vSum, v1,ev1,v2,v12,ev2,ev12, r, er;
@@ -3220,7 +3556,7 @@ void HistogramCollection::calculateR2VsM(const TProfile * h1, const TProfile * h
       r  = 1;
       er = 0;
       }
-    //if (reportDebug(fct)) cout << "calculateR2VsM: :" << i << " v1:" << v1 << " v2:" << v2 << " v12:" << v12 << " r:" << r << " nSum:" << nSum << " vSum:" << vSum << endl;
+    //if (reportDebug(__FUNCTION__)) cout << "calculateR2VsM: :" << i << " v1:" << v1 << " v2:" << v2 << " v12:" << v12 << " r:" << r << " nSum:" << nSum << " vSum:" << vSum << endl;
     r2VsM->SetBinContent(i,r);
     r2VsM->SetBinError(i,er);
     }
@@ -3238,10 +3574,10 @@ void HistogramCollection::calculateR2VsM(const TProfile * h1, const TProfile * h
 
 void HistogramCollection::calculateBinCorr(const TProfile * h1, const TProfile * h2, TH1 * intBinCorrVsM1, bool sameFilter)
 {
-  TString fct = "calculateBinCorr(const TProfile * h1, const TProfile * h2, TH1 * intBinCorrVsM1, bool sameFilter)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h1,h2,intBinCorrVsM1)) return;
+  if (!ptrExist(__FUNCTION__,h1,h2,intBinCorrVsM1)) return;
 
   int n1, n2, n3;
   n1   = h1->GetNbinsX();
@@ -3249,7 +3585,7 @@ void HistogramCollection::calculateBinCorr(const TProfile * h1, const TProfile *
   n3   = intBinCorrVsM1->GetNbinsX();
   if (n1!=n2 || n3!=1)
     {
-    if (reportError(fct)) cout << endl << "Incompatible histogram dimensions" << endl;
+    if (reportError(__FUNCTION__)) cout << endl << "Incompatible histogram dimensions" << endl;
     return;
     }
   double n, nSum, sum1, sum2, sum12, v1,v2;
@@ -3259,7 +3595,7 @@ void HistogramCollection::calculateBinCorr(const TProfile * h1, const TProfile *
     n    = h1->GetBinEntries(i);
     v1   = h1->GetBinContent(i);
     if (sameFilter) v2 = v1; else v2 = h2->GetBinContent(i);
-    //if (reportDebug(fct)) cout << "calculateBinCorr: i:" << i << " v1:" << v1 << " v2:" << v2 << " n:" << n << endl;
+    //if (reportDebug(__FUNCTION__)) cout << "calculateBinCorr: i:" << i << " v1:" << v1 << " v2:" << v2 << " n:" << n << endl;
     if (n>0)
       {
       nSum += n;
@@ -3293,8 +3629,9 @@ void HistogramCollection::calculateBinCorr(const TProfile * h1, const TProfile *
 //!
 void HistogramCollection::calculateAverage(TH1* h, double & avgDensity, double & eAvgDensity)
 {
-  if ( reportStart("HistogramCollection",getName(),"calculateAverage(TH1* h, double & avgDensity, double & eAvgDensity"))
-    { }
+
+  if (reportStart(__FUNCTION__))
+    ;
   int n = h->GetNbinsX();
   double v, ev, width, sum, esum, avgValue;
   sum  = 0.0;
@@ -3323,8 +3660,9 @@ void HistogramCollection::calculateAverage(TH1* h, double & avgDensity, double &
 
 void HistogramCollection::calculateIntegral(TH1 * h, double  & integral, double & error)
 {
-  if ( reportStart("HistogramCollection",getName(),"calculateIntegral(TH1 * h, double  & integral, double error)"))
-    { }
+
+  if (reportStart(__FUNCTION__))
+    ;
 
   double check;
   int n = h->GetNbinsX();
@@ -3346,7 +3684,7 @@ void HistogramCollection::calculateIntegral(TH1 * h, double  & integral, double 
     }
   integral = sum;
   error    = sqrt(esum);
-  if ( reportInfo("HistogramCollection",getName(),"calculateIntegral(TH1 * h, double  & integral, double error)"))
+  if ( reportInfo(__FUNCTION__))
     {
     cout << "     Name: " << h->GetName() << endl;
     cout << "    check: " << check << endl;
@@ -3356,8 +3694,9 @@ void HistogramCollection::calculateIntegral(TH1 * h, double  & integral, double 
 
 void HistogramCollection::calculateIntegral(TH2 * h, double  & integral, double & error)
 {
-  if ( reportStart("HistogramCollection",getName(),"calculateIntegral(TH2 * h, double  & integral, double & error)"))
-    { }
+
+  if (reportStart(__FUNCTION__))
+    ;
   double check;
   int nx = h->GetNbinsX();
   int ny = h->GetNbinsY();
@@ -3368,7 +3707,7 @@ void HistogramCollection::calculateIntegral(TH2 * h, double  & integral, double 
 
   check = h->Integral(xFirst,xLast,yFirst,yLast,"WIDTH");
   integral = h->IntegralAndError(xFirst,xLast,yFirst,yLast,error,"WIDTH");
-  if ( reportInfo("HistogramCollection",getName(),"calculateIntegral(TH1 * h, double  & integral, double error)"))
+  if ( reportInfo(__FUNCTION__))
     {
     cout << endl << endl;
     cout << "=============================================" << endl;
@@ -3384,11 +3723,11 @@ void HistogramCollection::calculateIntegral(TH2 * h, double  & integral, double 
 
 void HistogramCollection::calculateAveragePt(const TH1 * h1, const TH1 * h2, TH1 * h3)
 {
-  TString fct = "calculateAveragePt(const TH1 * h1, const TH1 * h2, TH1 * h3)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h1,h2,h3)) return;
-  if (!sameDimensions(fct,h1,h2,h3)) return;
+  if (!ptrExist(__FUNCTION__,h1,h2,h3)) return;
+  if (!sameDimensions(__FUNCTION__,h1,h2,h3)) return;
 
   int n1 = h1->GetNbinsX();
   double v1,ev1,v2,ev2,v,ev, re1,re2;
@@ -3416,11 +3755,11 @@ void HistogramCollection::calculateAveragePt(const TH1 * h1, const TH1 * h2, TH1
 
 void HistogramCollection::calculateAveragePtH2(const TH2 * h1, const TH2 * h2, TH2 * h3)
 {
-  TString fct = "calculateAveragePtH2(const TH2 * h1, const TH2 * h2, TH2 * h3)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h1,h2,h3)) return;
-  if (!sameDimensions(fct,h1,h2,h3)) return;
+  if (!ptrExist(__FUNCTION__,h1,h2,h3)) return;
+  if (!sameDimensions(__FUNCTION__,h1,h2,h3)) return;
 
 
   int n1x   = h1->GetNbinsX();
@@ -3451,11 +3790,11 @@ void HistogramCollection::calculateAveragePtH2(const TH2 * h1, const TH2 * h2, T
 
 void HistogramCollection::calculateAveragePtH1H2(const TH1 * h1, const TH1 * h2, TH2 * h3)
 {
-  TString fct = "calculateAveragePtH1H2(const TH1 * h1, const TH1 * h2, TH2 * h3)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h1,h2,h3)) return;
-  if (!sameDimensions(fct,h1,h2)) return;
+  if (!ptrExist(__FUNCTION__,h1,h2,h3)) return;
+  if (!sameDimensions(__FUNCTION__,h1,h2)) return;
 
   //Calculate average pt by dividing sPt contained in h1 by n1 contained in h2. Store in h3.
   int n3x  = h3->GetNbinsX();
@@ -3488,11 +3827,11 @@ void HistogramCollection::calculateAveragePtH1H2(const TH1 * h1, const TH1 * h2,
 
 void HistogramCollection::calculateAveragePt(const TProfile * h1, const TProfile * h2, TH1 * h3)
 {
-  TString fct = "calculateAveragePt(const TProfile * h1, const TProfile * h2, TH1 * h3)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h1,h2,h3)) return;
-  if (!sameDimensions(fct,h1,h2,h3)) return;
+  if (!ptrExist(__FUNCTION__,h1,h2,h3)) return;
+  if (!sameDimensions(__FUNCTION__,h1,h2,h3)) return;
   double v1,ev1,v2,ev2,v,ev, re1,re2;
   int n1 = h1->GetNbinsX();
   for (int i1=1;i1<=n1;++i1)
@@ -3517,14 +3856,14 @@ void HistogramCollection::calculateAveragePt(const TProfile * h1, const TProfile
 
 void HistogramCollection::symmetrize3D(TH3* h)
 {
-  TString fct = "symmetrize3D(TH3* h)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h)) return;
+  if (!ptrExist(__FUNCTION__,h)) return;
   int n = h->GetNbinsX();
   int nc = n/2;
   int nf = nc + 1;
-  if (reportDebug(fct))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "     n  = " << n << endl;
@@ -3575,25 +3914,25 @@ void HistogramCollection::symmetrize3D(TH3* h)
 // y axis is DeltaPhi. It must have an even number of bins
 void HistogramCollection::symmetrizeDeltaEtaDeltaPhi(TH2 * h, bool ijNormalization)
 {
-  TString fct = "symmetrizeDeltaEtaDeltaPhi(TH2 * h, bool ijNormalization)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h)) return;
+  if (!ptrExist(__FUNCTION__,h)) return;
 
   double v1, v2, v3, v4;
   double ev1, ev2, ev3, ev4;
   double sv, esv;
   int nEta = h->GetNbinsX(); //DeltaEta
   int nPhi = h->GetNbinsY(); //DeltaPhi
-                             //if (reportDebug(fct)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) Will symmetrize histo:" << h->GetName() << endl;
-                             //if (reportDebug(fct)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) nEta:" << nEta << endl;
-                             //if (reportDebug(fct)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) nPhi:" << nPhi << endl;
+                             //if (reportDebug(__FUNCTION__)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) Will symmetrize histo:" << h->GetName() << endl;
+                             //if (reportDebug(__FUNCTION__)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) nEta:" << nEta << endl;
+                             //if (reportDebug(__FUNCTION__)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) nPhi:" << nPhi << endl;
   int nEtaHalf = (nEta-1)/2;
   int nPhiHalf = (nPhi-2)/2;
   int iEta, iPhi, iPhi1, iEta1;
   double * v = new double[nEta*nPhi];
   double * ev = new double[nEta*nPhi];
-  //if (reportDebug(fct)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) Arrays created" << endl;
+  //if (reportDebug(__FUNCTION__)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) Arrays created" << endl;
   for (int iPhi=0;iPhi<nPhi;iPhi++)
     {
     for (int iEta=0;iEta<nEta;iEta++)
@@ -3604,7 +3943,7 @@ void HistogramCollection::symmetrizeDeltaEtaDeltaPhi(TH2 * h, bool ijNormalizati
       ev[iEta+iPhi*nEta]  = h->GetBinError(  iEta1,iPhi1);
       }
     }
-  //if (reportDebug(fct)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) Arrays copied" << endl;
+  //if (reportDebug(__FUNCTION__)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) Arrays copied" << endl;
   for (iEta=0;iEta<nEtaHalf;iEta++)
     {
     iEta1 = iEta+1;
@@ -3639,7 +3978,7 @@ void HistogramCollection::symmetrizeDeltaEtaDeltaPhi(TH2 * h, bool ijNormalizati
       h->SetBinError(       iEta1,   iPhi1+1, esv);
       }
     }
-  //if (reportDebug(fct)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) Part 1 Done" << endl;
+  //if (reportDebug(__FUNCTION__)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) Part 1 Done" << endl;
   iEta  = nEtaHalf;
   iEta1 = iEta+1;
   for (iPhi=0; iPhi<nPhiHalf;iPhi++) // iEta center bin
@@ -3664,7 +4003,7 @@ void HistogramCollection::symmetrizeDeltaEtaDeltaPhi(TH2 * h, bool ijNormalizati
     h->SetBinError(       iEta1, nPhi-iPhi, esv);
     h->SetBinError(       iEta1,   iPhi1+1, esv);
     }
-  //if (reportDebug(fct)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) Part 2 Done" << endl;
+  //if (reportDebug(__FUNCTION__)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) Part 2 Done" << endl;
 
   iPhi = 0;
   iPhi1 = iPhi+1;
@@ -3712,18 +4051,18 @@ void HistogramCollection::symmetrizeDeltaEtaDeltaPhi(TH2 * h, bool ijNormalizati
     h->SetBinError(       iEta1, iPhi1, esv);
 
     }
-  //if (reportDebug(fct)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) All Done now delete" << endl;
+  //if (reportDebug(__FUNCTION__)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) All Done now delete" << endl;
   delete[] v;
-  //if (reportDebug(fct)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) Really All Done" << endl;
+  //if (reportDebug(__FUNCTION__)) cout << "symmetrizeDeltaEtaDeltaPhi(TH2 * h) Really All Done" << endl;
 
 }
 
 void HistogramCollection::symmetrizeXX(TH2 * h, bool ijNormalization)
 {
-  TString fct = "symmetrizeXX(TH2 * h, bool ijNormalization)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h)) return;
+  if (!ptrExist(__FUNCTION__,h)) return;
 
   double v1, v2;
   double ev1, ev2;
@@ -3774,7 +4113,7 @@ void HistogramCollection::symmetrizeXX(TH2 * h, bool ijNormalization)
 
 //  void reduce_n2xEtaPhi_n2DetaDphi(const TH1 * source, TH2 * target,int nEtaBins,int nPhiBins)
 //  {
-//  //if (reportDebug(fct)) cout << "reduce_n2xEtaPhi_n2DetaDphi() +++++++++++++ New Version  from TH1" << endl;
+//  //if (reportDebug(__FUNCTION__)) cout << "reduce_n2xEtaPhi_n2DetaDphi() +++++++++++++ New Version  from TH1" << endl;
 //  double v1,v2,ev1;
 //  int dPhi,dEta, iPhi,iEta,jPhi,jEta, i, j;
 //  int nBins = nEtaBins*nPhiBins;
@@ -3827,7 +4166,7 @@ void HistogramCollection::symmetrizeXX(TH2 * h, bool ijNormalization)
 //      v1    = numerator[index];
 //      ev1   = numeratorErr[index];
 //      v2    = denominator[index];
-//      if (v2<=0) if (reportDebug(fct)) cout << "miserable idiot!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+//      if (v2<=0) if (reportDebug(__FUNCTION__)) cout << "miserable idiot!!!!!!!!!!!!!!!!!!!!!!!" << endl;
 //      target->SetBinContent(dEta+1,dPhi+1,v1/v2);
 //      target->SetBinError(  dEta+1,dPhi+1,sqrt(ev1)/v2);
 //      }
@@ -3839,12 +4178,12 @@ void HistogramCollection::symmetrizeXX(TH2 * h, bool ijNormalization)
 
 void HistogramCollection::reduce_n2xEtaPhi_n2DetaDphi(const TH2 * source, TH2 * target,int nEtaBins,int nPhiBins)
 {
-  TString fct = "reduce_n2xEtaPhi_n2DetaDphi(const TH2 * source, TH2 * target,int nEtaBins,int nPhiBins)";
-  if (reportStart(fct))
-    ;
-  if (!ptrExist(fct,source,target)) return;
 
-  //if (reportDebug(fct)) cout << "reduce_n2xEtaPhi_n2DetaDphi() ==============  New Version From TH2" << endl;
+  if (reportStart(__FUNCTION__))
+    ;
+  if (!ptrExist(__FUNCTION__,source,target)) return;
+
+  //if (reportDebug(__FUNCTION__)) cout << "reduce_n2xEtaPhi_n2DetaDphi() ==============  New Version From TH2" << endl;
   double v1,v2,ev1;
   int dPhi,dEta, iPhi,iEta,jPhi,jEta, i, j;
   //int nBins = nEtaBins*nPhiBins;
@@ -3897,7 +4236,7 @@ void HistogramCollection::reduce_n2xEtaPhi_n2DetaDphi(const TH2 * source, TH2 * 
       v1    = numerator[index];
       ev1   = numeratorErr[index];
       v2    = denominator[index];
-      if (v2<=0) if (reportDebug(fct)) cout << endl << "HistogramCollection::reduce_n2xEtaPhi_n2DetaDphi() Elements of denominator are negative." << endl;
+      if (v2<=0) if (reportDebug(__FUNCTION__)) cout << endl << "HistogramCollection::reduce_n2xEtaPhi_n2DetaDphi() Elements of denominator are negative." << endl;
       target->SetBinContent(dEta+1,dPhi+1,v1/v2);
       target->SetBinError(  dEta+1,dPhi+1,sqrt(ev1)/v2);
       }
@@ -3906,9 +4245,9 @@ void HistogramCollection::reduce_n2xEtaPhi_n2DetaDphi(const TH2 * source, TH2 * 
   // double a1m = target->GetBinContent(nEtaBins-1,1);
   // double a1  = target->GetBinContent(nEtaBins,1);
   // double a1p = target->GetBinContent(nEtaBins+1,1);
-  // if (reportDebug(fct)) cout << " a1m:" << a1m << endl;
-  // if (reportDebug(fct)) cout << " a1 :" << a1 << endl;
-  // if (reportDebug(fct)) cout << " a1p:" << a1p << endl;
+  // if (reportDebug(__FUNCTION__)) cout << " a1m:" << a1m << endl;
+  // if (reportDebug(__FUNCTION__)) cout << " a1 :" << a1 << endl;
+  // if (reportDebug(__FUNCTION__)) cout << " a1p:" << a1p << endl;
   // target->SetBinContent(nEtaBins,1,0.5*(a1m+a1p));
 
 
@@ -3925,11 +4264,11 @@ void HistogramCollection::reduce_n2xEtaPhi_n2DetaDphi(const TH2 * source, TH2 * 
 //!
 void HistogramCollection::reduce_n1EtaPhiN1EtaPhiOntoN1N1DetaDphi(const TH2 * h_1, TH2 * h_2, TH2 * h_12, int nDeta,int nDphi)
 {
-  TString fct = "reduce_n1EtaPhiN1EtaPhiOntoN1N1DetaDphi(const TH2 * h_1, TH2 * h_2, TH2 * h_12,int nDeta,int nDphi)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h_1,h_2,h_12)) return;
-  if (!sameDimensions(fct,h_1,h_2)) return;
+  if (!ptrExist(__FUNCTION__,h_1,h_2,h_12)) return;
+  if (!sameDimensions(__FUNCTION__,h_1,h_2)) return;
 
   vector<double> numerator(nDeta*nDphi,0.0);
   vector<double> denominator(nDeta*nDphi,0.0);
@@ -3937,7 +4276,7 @@ void HistogramCollection::reduce_n1EtaPhiN1EtaPhiOntoN1N1DetaDphi(const TH2 * h_
   int nPhi = h_1->GetNbinsY();
   int index;
 
-  if (reportDebug(fct))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "         nEta:" << nEta << endl;
@@ -3980,7 +4319,7 @@ void HistogramCollection::reduce_n1EtaPhiN1EtaPhiOntoN1N1DetaDphi(const TH2 * h_
         }
       }
     }
-  if (reportDebug(fct)) cout << "Compute ratio and fill target histogram." << endl;
+  if (reportDebug(__FUNCTION__)) cout << "Compute ratio and fill target histogram." << endl;
   double zero = 0.0;
   for (iDphi=0; iDphi<nDphi; iDphi++)
     {
@@ -3997,17 +4336,17 @@ void HistogramCollection::reduce_n1EtaPhiN1EtaPhiOntoN1N1DetaDphi(const TH2 * h_
       h_12->SetBinError(iDeta+1,iDphi+1,zero);
       }
     }
-  if (reportEnd(fct))
+  if (reportEnd(__FUNCTION__))
     ;
 }
 
 
 void HistogramCollection::reduce_n2xEtaPhi_n2EtaEta(const TH1 * source, TH2 * target,int nEtaBins,int nPhiBins)
 {
-  TString fct = "reduce_n2xEtaPhi_n2EtaEta(const TH1 * source, TH2 * target,int nEtaBins,int nPhiBins)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,source,target)) return;
+  if (!ptrExist(__FUNCTION__,source,target)) return;
 
   double v1,v2,ev1,ev2,v,ev;
   int iPhi,iEta,jPhi,jEta, i, j;
@@ -4067,10 +4406,10 @@ void HistogramCollection::reduce_n2xEtaPhi_n2EtaEta(const TH1 * source, TH2 * ta
 
 void HistogramCollection::project_n2XYXY_n2XX(const TH2 * source, TH2 * target,int nXBins,int nYBins)
 {
-  TString fct = "project_n2XYXY_n2XX(const TH2 * source, TH2 * target,int nXBins,int nYBins)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,source,target)) return;
+  if (!ptrExist(__FUNCTION__,source,target)) return;
 
   double v1,v2,ev1,ev2,v,ev;
 
@@ -4080,7 +4419,7 @@ void HistogramCollection::project_n2XYXY_n2XX(const TH2 * source, TH2 * target,i
       or (target->GetNbinsX() != nXBins)
       or (target->GetNbinsY() != nXBins))
     {
-    if (reportError(fct)) cout << endl << "Inconsistent indexes for histogram " << source->GetName() << endl;
+    if (reportError(__FUNCTION__)) cout << endl << "Inconsistent indexes for histogram " << source->GetName() << endl;
     return;
     }
 
@@ -4115,10 +4454,10 @@ void HistogramCollection::project_n2XYXY_n2XX(const TH2 * source, TH2 * target,i
 
 void HistogramCollection::project_n2XYXY_n2YY(const TH2 * source, TH2 * target,int nXBins,int nYBins)
 {
-  TString fct = "project_n2XYXY_n2YY(const TH2 * source, TH2 * target,int nXBins,int nYBins)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,source,target)) return;
+  if (!ptrExist(__FUNCTION__,source,target)) return;
 
   double v1,v2,ev1,ev2,v,ev;
 
@@ -4127,7 +4466,7 @@ void HistogramCollection::project_n2XYXY_n2YY(const TH2 * source, TH2 * target,i
       or (source->GetNbinsY() != nXBins*nYBins)
       or (target->GetNbinsX() != nYBins)
       or (target->GetNbinsY() != nYBins)) {
-    if (reportError(fct))  cout << endl << "Inconsistent indexes for histogram " << source->GetName() << endl;
+    if (reportError(__FUNCTION__))  cout << endl << "Inconsistent indexes for histogram " << source->GetName() << endl;
     return;
   }
 
@@ -4163,18 +4502,18 @@ void HistogramCollection::project_n2XYXY_n2YY(const TH2 * source, TH2 * target,i
 //! Depracated--dont use...
 TH2* HistogramCollection::symmetrize(TH2* h)
 {
-  TString fct = "symmetrize(TH2* h)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h)) return nullptr;
+  if (!ptrExist(__FUNCTION__,h)) return nullptr;
   return h;
 }
 
 ///shift the given source to the target vertically by nbins
 void HistogramCollection::shiftY(const TH2 & source, TH2 & target, int nbins)
 {
-  TString fct = "shiftY(const TH2 & source, TH2 & target, int nbins)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
 
   int i_x, i_y;
@@ -4651,10 +4990,10 @@ int HistogramCollection::index4(int i1, int i2, int i3, int i4)
 
 void HistogramCollection::calculateF2R2(TH1* h_f1_1, TH1* h_f1_2, TH1* h_f2_12, TH1* h_F2_12, TH1* h_R2_12)
 {
-  TString fct = "calculateF2R2(TH1* h_f1_1, TH1* h_f1_2, TH1* h_f2_12, TH1* h_F2_12, TH1* h_R2_12)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h_f1_1, h_f1_2, h_f2_12, h_F2_12, h_R2_12)) return;
+  if (!ptrExist(__FUNCTION__,h_f1_1, h_f1_2, h_f2_12, h_F2_12, h_R2_12)) return;
 
   double f1_1, ef1_1, f1_2, ef1_2;
   double f2_12, ef2_12;
@@ -4675,10 +5014,10 @@ void HistogramCollection::calculateF2R2(TH1* h_f1_1, TH1* h_f1_2, TH1* h_f2_12, 
 
 void HistogramCollection::calculateNudyn(TH1* h_R2_11, TH1* h_R2_12, TH1* h_R2_22, TH1* h_nudyn_12)
 {
-  TString fct = "calculateNudyn(TH1* h_R2_11, TH1* h_R2_12, TH1* h_R2_22, TH1* h_nudyn_12)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h_R2_11, h_R2_12, h_R2_22, h_nudyn_12)) return;
+  if (!ptrExist(__FUNCTION__,h_R2_11, h_R2_12, h_R2_22, h_nudyn_12)) return;
 
   double R2_11, eR2_11, R2_12, eR2_12, R2_22, eR2_22, nudyn, enudyn;
   int nBins = h_R2_11->GetNbinsX();
@@ -4699,10 +5038,10 @@ void HistogramCollection::calculateF3R3(TH1* h_f1_1, TH1* h_f1_2, TH1* h_f1_3,
                                         TH1* h_f3_123,
                                         TH1* h_F3_123, TH1* h_R3_123)
 {
-  TString fct = "calculateF3R3(...)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h_f1_1, h_f1_2, h_f1_3, h_f2_12, h_f2_13, h_f2_23, h_f3_123, h_F3_123, h_R3_123)) return;
+  if (!ptrExist(__FUNCTION__,h_f1_1, h_f1_2, h_f1_3, h_f2_12, h_f2_13, h_f2_23, h_f3_123, h_F3_123, h_R3_123)) return;
 
   double f1_1, ef1_1, f1_2, ef1_2, f1_3, ef1_3;
   double f2_12, ef2_12, f2_13, ef2_13, f2_23, ef2_23;
@@ -4736,12 +5075,12 @@ void HistogramCollection::calculateF4R4(TH1* h_f1_1, TH1* h_f1_2, TH1* h_f1_3, T
                                         TH1* h_f4_1234,
                                         TH1* h_F4_1234, TH1* h_R4_1234)
 {
-  TString fct = "calculateF4R4(...)";
-  if (reportStart(fct))
+
+  if (reportStart(__FUNCTION__))
     ;
-  if (!ptrExist(fct,h_f1_1, h_f1_2, h_f1_3, h_f1_4, h_f2_12,  h_f2_13,  h_f2_14)) return;
-  if (!ptrExist(fct,h_f2_23,h_f2_24,h_f2_34,h_f3_123,h_f3_124,h_f3_134,h_f3_234)) return;
-  if (!ptrExist(fct,h_f4_1234,h_F4_1234,h_R4_1234)) return;
+  if (!ptrExist(__FUNCTION__,h_f1_1, h_f1_2, h_f1_3, h_f1_4, h_f2_12,  h_f2_13,  h_f2_14)) return;
+  if (!ptrExist(__FUNCTION__,h_f2_23,h_f2_24,h_f2_34,h_f3_123,h_f3_124,h_f3_134,h_f3_234)) return;
+  if (!ptrExist(__FUNCTION__,h_f4_1234,h_F4_1234,h_R4_1234)) return;
 
   double f1_1, ef1_1, f1_2, ef1_2, f1_3, ef1_3, f1_4, ef1_4;
   double f2_12, ef2_12, f2_13, ef2_13, f2_14, ef2_14, f2_23, ef2_23, f2_24, ef2_24, f2_34, ef2_34;
@@ -4783,9 +5122,9 @@ void HistogramCollection::calculateF4R4(TH1* h_f1_1, TH1* h_f1_2, TH1* h_f1_3, T
 void HistogramCollection::calculateF2R2(double f1_1,double ef1_1,double f1_2,double ef1_2, double f2_12,double ef2_12,
                                         double & F2_12,double & eF2_12, double &  R2_12,double & eR2_12)
 {
-  // calculate  F2_12 = f2_12 - f1_1*f1_2  and R2 = f2/f1_1/f1_2 - 1
-  // errors are calculated assuming there are no correlations
 
+  if (reportStart(__FUNCTION__))
+    ;
   double ref1_1, ref1_2, ref2_12;
   if (f1_1<1E-20 || f1_2<1E-20)
     {
@@ -4812,9 +5151,9 @@ void HistogramCollection::calculateF3R3(double f1_1,double ef1_1,double f1_2,dou
                                         double f3_123, double ef3_123,
                                         double & F3_123,double & eF3_123, double &  R3_123,double & eR3_123)
 {
-  // calculate  F2_12 = f2_12 - f1_1*f1_2  and R2 = f2/f1_1/f1_2 - 1
-  // errors are calculated assuming there are no correlations
 
+  if (reportStart(__FUNCTION__))
+    ;
   double ref1_1, ref1_2, ref1_3, ref2_12, ref2_13, ref2_23, reF3_123;
   if (f1_1<1E-20 || f1_2<1E-20 || f1_3<1E-20)
     {
@@ -4851,8 +5190,9 @@ void HistogramCollection::calculateF4R4(double f1_1,double ef1_1,double f1_2,dou
                                         double f4_1234, double ef4_1234,
                                         double &F4_1234,double &eF4_1234, double &  R4_1234,double & eR4_1234)
 {
-  // calculate  F2_12 = f2_12 - f1_1*f1_2  and R2 = f2/f1_1/f1_2 - 1
-  // errors are calculated assuming there are no correlations
+
+  if (reportStart(__FUNCTION__))
+    ;
 
   double ref1_1,  ref1_2,  ref1_3,  ref1_4;
   double ref2_12, ref2_13, ref2_14, ref2_23, ref2_24, ref2_34;
@@ -4908,6 +5248,9 @@ void HistogramCollection::calculateF4R4(double f1_1,double ef1_1,double f1_2,dou
 
 void HistogramCollection::calculateNudyn(double r2_11,double er2_11,double r2_12,double er2_12,double r2_22,double er2_22,double & nudyn,double & enudyn)
 {
+
+  if (reportStart(__FUNCTION__))
+    ;
   nudyn = r2_11 + r2_22 - 2.0*r2_12;
   enudyn = sqrt(er2_11*er2_11 + er2_22*er2_22 + 4.0*er2_12*er2_12);
 }

@@ -17,7 +17,7 @@
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00013}00013 :}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00014}00014 \mbox{\hyperlink{class_cluster_model_event_generator}{ClusterModelEventGenerator}}(name,configuration,event)}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00015}00015 \{}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00016}00016   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}())  cout << \textcolor{stringliteral}{"{}ClusterModelEventGenerator2::ClusterModelEventGenerator2(...) No ops."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00016}00016   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_))  cout << \textcolor{stringliteral}{"{}ClusterModelEventGenerator2::ClusterModelEventGenerator2(...) No ops."{}} << endl;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00017}00017 \}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00018}00018 }
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00020}00020 \textcolor{comment}{// DTOR}}
@@ -28,8 +28,8 @@
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00027}00027 \textcolor{comment}{// Generate an event}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00029}\mbox{\hyperlink{class_cluster_model_event_generator2_aa3f1d8cf7e6074cc6e253f49df3c1b9c}{00029}} \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{class_cluster_model_event_generator2_aa3f1d8cf7e6074cc6e253f49df3c1b9c}{ClusterModelEventGenerator2::execute}}()}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00030}00030 \{}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00031}00031   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterModelEventGenerator2::execute() Started"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00031}00031   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}ClusterModelEventGenerator2::execute() Started"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00032}00032   \mbox{\hyperlink{class_task_acb311e0eb8b72d684f8b228483bb96f5}{incrementTaskExecuted}}();}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00033}00033   \textcolor{keywordtype}{double} cluster\_theta;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00034}00034   \textcolor{keywordtype}{double} cluster\_phi;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00035}00035   \textcolor{keywordtype}{double} cluster\_ax;}
@@ -68,7 +68,7 @@
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00069}00069 }
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00070}00070 }
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00071}00071 }
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00072}00072 \textcolor{comment}{//  if (reportDebug())  cout << "{}ClusterModelEventGenerator2::execute() extracting configuration"{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00072}00072 \textcolor{comment}{//  if (reportDebug(\_\_FUNCTION\_\_))  cout << "{}ClusterModelEventGenerator2::execute() extracting configuration"{} << endl;}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00073}00073 \textcolor{comment}{//  ClusterModelConfiguration * configuration = (ClusterModelConfiguration * ) getTaskConfiguration();}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00074}00074 \textcolor{comment}{//  if (!configuration)}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00075}00075 \textcolor{comment}{//    \{}}
@@ -79,26 +79,26 @@
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00080}00080   \textcolor{comment}{// Generate cells}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00081}00081   \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00082}00082   \textcolor{keywordtype}{int} nCells = \mbox{\hyperlink{class_cluster_model_event_generator_aabcc49dd70cca2f86b314b866fd78bef}{cellMultiplicityGenerator}}-\/>\mbox{\hyperlink{class_scalar_int_random_generator_a99fb927b78f3ce418df0280f0c6f17f7}{generate}}();}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00083}00083   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}())  cout << \textcolor{stringliteral}{"{}ClusterModelEventGenerator::execute() nCells : "{}} << nCells << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00083}00083   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_))  cout << \textcolor{stringliteral}{"{}ClusterModelEventGenerator::execute() nCells : "{}} << nCells << endl;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00084}00084   \textcolor{keywordflow}{if} (nCells>\mbox{\hyperlink{class_cluster_model_event_a1d9e0166b6a98dfcdf90ffe81649fded}{ClusterModelEvent::nCellsMax}})}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00085}00085     \{}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00086}00086     nCells = \mbox{\hyperlink{class_cluster_model_event_a1d9e0166b6a98dfcdf90ffe81649fded}{ClusterModelEvent::nCellsMax}};}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00087}00087     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}())  cout << \textcolor{stringliteral}{"{}ClusterModelEventGenerator::execute() nCells exceeds maximum. Was set to "{}} << nCells << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00087}00087     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\_\_FUNCTION\_\_))  cout << \textcolor{stringliteral}{"{}ClusterModelEventGenerator::execute() nCells exceeds maximum. Was set to "{}} << nCells << endl;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00088}00088     \}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00089}00089 }
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00090}00090   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} kCell=0; kCell<nCells; kCell++)}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00091}00091     \{}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00092}00092     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterModelEventGenerator2::execute() generate kCell:"{}} << kCell << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00092}00092     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}ClusterModelEventGenerator2::execute() generate kCell:"{}} << kCell << endl;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00093}00093     \mbox{\hyperlink{class_cell}{Cell}} * cell = \mbox{\hyperlink{class_cell_ac11ed1217989fdd997e4344d8ff64363}{Cell::getFactory}}()-\/>\mbox{\hyperlink{class_factory_a6f646ad85a0e516aa9a93f6f5db1d8d3}{getNextObject}}();}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00094}00094     \textcolor{keywordflow}{if} (!cell)}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00095}00095       \{}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00096}00096       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}()) cout << \textcolor{stringliteral}{"{}ClusterModelEventGenerator2::execute() cell is a null pointer."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00096}00096       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}ClusterModelEventGenerator2::execute() cell is a null pointer."{}} << endl;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00097}00097       \textcolor{keywordflow}{return};}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00098}00098       \}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00099}00099     cell-\/>\mbox{\hyperlink{class_cell_afbc65512fb26ca43bd7b0aae85f2366e}{reset}}();}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00100}00100     cell-\/>\mbox{\hyperlink{class_cell_aefeffb0de37f25138d82c247dab6677e}{beta}}       = \mbox{\hyperlink{class_cluster_model_event_generator_abfbca8e8f7282be8591e975b9341e217}{cellBetaGenerator}}-\/>\mbox{\hyperlink{class_scalar_double_random_generator_a6e7f6d8d2043b5395fca4a5264131a94}{generate}}();}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00101}00101     cell-\/>\mbox{\hyperlink{class_cell_a91a46927ed8ac859ae323bb12a4dc759}{phi}}        = \mbox{\hyperlink{class_cluster_model_event_generator_a344f36c29e77a79343dfb09ef3cf88bf}{cellPhiGenerator}}-\/>\mbox{\hyperlink{class_scalar_double_random_generator_a6e7f6d8d2043b5395fca4a5264131a94}{generate}}();}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00102}00102 \textcolor{comment}{//    if (reportInfo())}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00102}00102 \textcolor{comment}{//    if (reportInfo(\_\_FUNCTION\_\_))}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00103}00103 \textcolor{comment}{//      \{}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00104}00104 \textcolor{comment}{//      cout}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00105}00105 \textcolor{comment}{//      << "{}ClusterModelEventGenerator2::execute() cell-\/>beta: "{} << cell-\/>beta << endl}}
@@ -109,26 +109,26 @@
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00110}00110     \textcolor{comment}{// Generate clusters}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00111}00111     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00112}00112     \textcolor{keywordtype}{int} nClusters = \mbox{\hyperlink{class_cluster_model_event_generator_aed70f2244ee3f8fb83d56d9653bfc0e0}{clusterMultiplicityGenerator}}-\/>\mbox{\hyperlink{class_scalar_int_random_generator_a99fb927b78f3ce418df0280f0c6f17f7}{generate}}();}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00113}00113     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}CellGenerator2::execute() nClusters: "{}} << nClusters << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00113}00113     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}CellGenerator2::execute() nClusters: "{}} << nClusters << endl;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00114}00114     \textcolor{keywordflow}{if} (nClusters > \mbox{\hyperlink{class_cell_a3818b6d5e1d88693f8237bd06b440615}{Cell::nClustersMax}})}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00115}00115       \{}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00116}00116       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}()) cout << \textcolor{stringliteral}{"{}CellGenerator2::execute() nClusters exceeds maximum: "{}} << \mbox{\hyperlink{class_cell_a3818b6d5e1d88693f8237bd06b440615}{Cell::nClustersMax}} << \textcolor{stringliteral}{"{} will be set to that value."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00116}00116       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}CellGenerator2::execute() nClusters exceeds maximum: "{}} << \mbox{\hyperlink{class_cell_a3818b6d5e1d88693f8237bd06b440615}{Cell::nClustersMax}} << \textcolor{stringliteral}{"{} will be set to that value."{}} << endl;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00117}00117       nClusters = \mbox{\hyperlink{class_cell_a3818b6d5e1d88693f8237bd06b440615}{Cell::nClustersMax}};}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00118}00118       \}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00119}00119 }
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00120}00120     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} kCluster=0; kCluster<nClusters; kCluster++)}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00121}00121       \{}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00122}00122       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}CellGenerator2::execute() kCluster: "{}} << kCluster << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00122}00122       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}CellGenerator2::execute() kCluster: "{}} << kCluster << endl;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00123}00123       \mbox{\hyperlink{class_cluster}{Cluster}} * cluster = \mbox{\hyperlink{class_cluster_a016d4bc2d4f3472e63489a6e052ca309}{Cluster::getFactory}}()-\/>\mbox{\hyperlink{class_factory_a6f646ad85a0e516aa9a93f6f5db1d8d3}{getNextObject}}();}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00124}00124       \textcolor{keywordflow}{if} (!cluster)}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00125}00125         \{}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00126}00126         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}()) cout << \textcolor{stringliteral}{"{}CellGenerator2::execute() cluster pointer is null."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00126}00126         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}CellGenerator2::execute() cluster pointer is null."{}} << endl;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00127}00127         \textcolor{keywordflow}{return};}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00128}00128         \}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00129}00129       cluster-\/>\mbox{\hyperlink{class_cluster_a7a02a3e447a7b47f26ca341b1d01b99b}{reset}}();}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00130}00130 }
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00131}00131       \textcolor{keywordtype}{int} nParticles   = \mbox{\hyperlink{class_cluster_model_event_generator_a97698c9c1777904963d2e4658f0185fd}{particleMultiplicityGenerator}}-\/>\mbox{\hyperlink{class_scalar_int_random_generator_a99fb927b78f3ce418df0280f0c6f17f7}{generate}}();}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00132}00132       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterGenerator::execute() nParticles: "{}} << nParticles << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00132}00132       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}ClusterGenerator::execute() nParticles: "{}} << nParticles << endl;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00133}00133       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iPart=0; iPart<nParticles; ++iPart)}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00134}00134         \{}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00135}00135           \mbox{\hyperlink{class_particle}{Particle}} * particle = \mbox{\hyperlink{class_particle_aea48229b90fe17f83263e98348857102}{Particle::getFactory}}()-\/>\mbox{\hyperlink{class_factory_a6f646ad85a0e516aa9a93f6f5db1d8d3}{getNextObject}}();}
@@ -142,7 +142,7 @@
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00143}00143         particle\_px   = particle\_p * particle\_ax;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00144}00144         particle\_py   = particle\_p * particle\_ay;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00145}00145         particle\_pz   = particle\_p * particle\_az;}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00146}00146         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}())}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00146}00146         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_))}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00147}00147           \{}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00148}00148           cout << \textcolor{stringliteral}{"{}ClusterGenerator2::execute()  "{}} << endl}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00149}00149           << \textcolor{stringliteral}{"{}         particle mass:"{}} << sqrt(\mbox{\hyperlink{class_cluster_model_event_generator_a00d519d9a217b8c02c6d882dadf2cd93}{massesSq}}[0]) << endl}
@@ -174,7 +174,7 @@
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00175}00175         cluster\_e    = sqrt(cluster\_mass*cluster\_mass + cluster\_p*cluster\_p);}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00176}00176         cluster\_beta = cluster\_p/cluster\_e;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00177}00177 }
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00178}00178         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}())}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00178}00178         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_))}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00179}00179           \{}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00180}00180           cluster\_px = cluster\_p*cluster\_ax;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00181}00181           cluster\_py = cluster\_p*cluster\_ay;}
@@ -195,7 +195,7 @@
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00196}00196         \}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00197}00197       \textcolor{keywordflow}{else}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00198}00198         \{}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00199}00199         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}()) cout << \textcolor{stringliteral}{"{}ClusterGenerator::execute() invalid cluster\_p."{}} << cluster\_p << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00199}00199         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}ClusterGenerator::execute() invalid cluster\_p."{}} << cluster\_p << endl;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00200}00200         \textcolor{keywordflow}{return};}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00201}00201         \}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00202}00202 }
@@ -217,13 +217,13 @@
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00218}00218         cluster-\/>\mbox{\hyperlink{class_cluster_a2998461226eb1ee7da0821498f52b233}{boostZ}}(cluster\_boost);}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00219}00219         \}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00220}00220       cell-\/>\mbox{\hyperlink{class_cell_adb29f401cd9a946dfcc9417f055c9e01}{add}}(cluster);}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00221}00221       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterGenerator::execute() Cluster completed!"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00221}00221       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}ClusterGenerator::execute() Cluster completed!"{}} << endl;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00222}00222       \}}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00223}00223     \mbox{\hyperlink{class_cluster_model_event_generator_ad47b7df0f2202fa6a0acf1ff6d5ca329}{cmEvent}}-\/>\mbox{\hyperlink{class_cluster_model_event_a922302ee74304869d95613eda9fd4387}{add}}(cell);}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00224}00224     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterGenerator::execute() Cell completed!"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00224}00224     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}ClusterGenerator::execute() Cell completed!"{}} << endl;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00225}00225     \}}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00226}00226   \textcolor{comment}{//if (reportDebug()) cmEvent-\/>printProperties(cout);}}
-\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00227}00227   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}ClusterModelEventGenerator2::execute() Event completed!"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00226}00226   \textcolor{comment}{//if (reportDebug(\_\_FUNCTION\_\_)) cmEvent-\/>printProperties(cout);}}
+\DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00227}00227   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}ClusterModelEventGenerator2::execute() Event completed!"{}} << endl;}
 \DoxyCodeLine{\Hypertarget{_cluster_model_event_generator2_8cpp_source_l00228}00228 \}}
 
 \end{DoxyCode}

@@ -1,5 +1,5 @@
-<map id="Base/RapidityGenerator.hpp" name="Base/RapidityGenerator.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,191,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="11,80,81,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="105,80,195,107"/>
+<map id="BasicGen/RapidityGenerator.hpp" name="BasicGen/RapidityGenerator.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,217,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="25,80,94,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="118,80,209,107"/>
 </map>

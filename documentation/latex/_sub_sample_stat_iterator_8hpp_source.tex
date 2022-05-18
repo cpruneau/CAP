@@ -1,0 +1,39 @@
+\hypertarget{_sub_sample_stat_iterator_8hpp_source}{}\doxysection{Sub\+Sample\+Stat\+Iterator.\+hpp}
+\label{_sub_sample_stat_iterator_8hpp_source}\index{SubSample/SubSampleStatIterator.hpp@{SubSample/SubSampleStatIterator.hpp}}
+\mbox{\hyperlink{_sub_sample_stat_iterator_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef CAP\_\_SubSampleStatIterator}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define CAP\_\_SubSampleStatIterator}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00023}\mbox{\hyperlink{class_sub_sample_stat_iterator}{00023}} \textcolor{keyword}{class }\mbox{\hyperlink{class_sub_sample_stat_iterator}{SubSampleStatIterator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00024}00024 \{}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00025}00025 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00026}00026   }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00034}00034   \mbox{\hyperlink{class_sub_sample_stat_iterator_adf0f179d6dd216882f7f7e7c8459d9c6}{SubSampleStatIterator}}(\textcolor{keyword}{const} TString \&       \_name,}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00035}00035                         \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \& \_configuration,}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00036}00036                         \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}} debugLevel);}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00037}00037   }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00041}\mbox{\hyperlink{class_sub_sample_stat_iterator_a90340da4f2eef7ae6569848574bedd97}{00041}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_sub_sample_stat_iterator_a90340da4f2eef7ae6569848574bedd97}{\string~SubSampleStatIterator}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00042}00042   }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00047}00047   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sub_sample_stat_iterator_a2931d7b09f9be58bd9815d5213ba1ad9}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00052}00052   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sub_sample_stat_iterator_a1fd431f67eb8f3bc4e254720aaff3864}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00054}00054   ClassDef(\mbox{\hyperlink{class_sub_sample_stat_iterator}{SubSampleStatIterator}},0)}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00055}00055 \};}
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{_sub_sample_stat_iterator_8hpp_source_l00057}00057 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_SubSampleStatIterator */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

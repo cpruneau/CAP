@@ -20,9 +20,9 @@ particles(),
 eventProperties(new EventProperties() ),
 //b(-9999.0),
 nucleusA(new Nucleus()),
-nucleusB(new Nucleus()),
-binaryMoments(new CollisionGeometryMoments()),
-participantMoments(new CollisionGeometryMoments())
+nucleusB(new Nucleus())
+//binaryMoments(new CollisionGeometryMoments()),
+//participantMoments(new CollisionGeometryMoments())
 {
  // no ops
 }
@@ -37,8 +37,8 @@ Event::~Event()
   delete eventProperties;
   delete nucleusA;
   delete nucleusB;
-  delete binaryMoments;
-  delete participantMoments;
+//  delete binaryMoments;
+//  delete participantMoments;
 }
 
 // ====================================================
@@ -52,8 +52,8 @@ void Event::clear()
   particles.clear();
   if (nucleusA) nucleusA->clear();
   if (nucleusB) nucleusB->clear();
-  if (binaryMoments) binaryMoments->reset();
-  if (participantMoments) participantMoments->reset();
+//  if (binaryMoments) binaryMoments->reset();
+//  if (participantMoments) participantMoments->reset();
   if (eventProperties) eventProperties->reset();
   //Particle::getFactory()->reset();
 }
@@ -69,8 +69,8 @@ void Event::reset()
   particles.clear();
   if (nucleusA) nucleusA->reset();
   if (nucleusB) nucleusB->reset();
-  if (binaryMoments) binaryMoments->reset();
-  if (participantMoments) participantMoments->reset();
+//  if (binaryMoments) binaryMoments->reset();
+//  if (participantMoments) participantMoments->reset();
   if (eventProperties) eventProperties->reset();
 }
 

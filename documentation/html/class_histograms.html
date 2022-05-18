@@ -97,7 +97,7 @@ Inheritance diagram for Histograms:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_histograms__inherit__graph.png" border="0" usemap="#a_histograms_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_histograms_inherit__map" id="a_histograms_inherit__map">
-<area shape="rect" title=" " alt="" coords="533,629,623,656"/>
+<area shape="rect" title=" " alt="" coords="533,579,623,605"/>
 <area shape="rect" href="class_cell_histos.html" title=" " alt="" coords="731,5,813,32"/>
 <area shape="rect" href="class_cluster_histos.html" title=" " alt="" coords="721,56,823,83"/>
 <area shape="rect" href="class_cluster_model_event_histos.html" title=" " alt="" coords="687,107,857,133"/>
@@ -116,12 +116,14 @@ Inheritance diagram for Histograms:</div>
 <area shape="rect" href="class_particle_pair_combined_histos.html" title=" " alt="" coords="679,781,865,808"/>
 <area shape="rect" href="class_particle_pair_derived_histos.html" title=" " alt="" coords="686,832,858,859"/>
 <area shape="rect" href="class_particle_pair_histos.html" title=" " alt="" coords="709,883,835,909"/>
-<area shape="rect" href="class_radial_boost_histos.html" title=" " alt="" coords="707,933,837,960"/>
-<area shape="rect" href="class_stat_study_histograms.html" title=" " alt="" coords="699,984,845,1011"/>
-<area shape="rect" href="class_transverse_spherocity_histos.html" title=" " alt="" coords="679,1035,865,1061"/>
-<area shape="rect" href="class_histogram_collection.html" title="using namespace std;" alt="" coords="345,629,485,656"/>
-<area shape="rect" href="class_collection.html" title=" " alt="" coords="168,629,297,656"/>
-<area shape="rect" href="class_message_logger.html" title=" " alt="" coords="5,629,120,656"/>
+<area shape="rect" href="class_particle_performance_histos.html" title=" " alt="" coords="683,933,861,960"/>
+<area shape="rect" href="class_particle_performance_simulator.html" title=" " alt="" coords="675,984,869,1011"/>
+<area shape="rect" href="class_radial_boost_histos.html" title=" " alt="" coords="707,1035,837,1061"/>
+<area shape="rect" href="class_stat_study_histograms.html" title=" " alt="" coords="699,1085,845,1112"/>
+<area shape="rect" href="class_transverse_spherocity_histos.html" title=" " alt="" coords="679,1136,865,1163"/>
+<area shape="rect" href="class_histogram_collection.html" title=" " alt="" coords="345,579,485,605"/>
+<area shape="rect" href="class_collection.html" title=" " alt="" coords="168,579,297,605"/>
+<area shape="rect" href="class_message_logger.html" title=" " alt="" coords="5,579,120,605"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -130,7 +132,7 @@ Collaboration diagram for Histograms:</div>
 <div class="center"><img src="class_histograms__coll__graph.png" border="0" usemap="#a_histograms_coll__map" alt="Collaboration graph"/></div>
 <map name="a_histograms_coll__map" id="a_histograms_coll__map">
 <area shape="rect" title=" " alt="" coords="101,247,191,273"/>
-<area shape="rect" href="class_histogram_collection.html" title="using namespace std;" alt="" coords="5,157,145,184"/>
+<area shape="rect" href="class_histogram_collection.html" title=" " alt="" coords="5,157,145,184"/>
 <area shape="rect" href="class_collection.html" title=" " alt="" coords="11,81,140,108"/>
 <area shape="rect" href="class_message_logger.html" title=" " alt="" coords="18,5,133,32"/>
 <area shape="rect" href="class_configuration.html" title=" " alt="" coords="170,157,269,184"/>
@@ -402,11 +404,18 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ada0ef58bd3a3391d464ee2efb763fda1 inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab138594e92e2fe1a0c3559a5a42a93e4 inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#ab138594e92e2fe1a0c3559a5a42a93e4">calculateNudyn</a> (double r2_11, double er2_11, double r2_12, double er2_12, double r2_22, double er2_22, double &amp;nudyn, double &amp;enudyn)</td></tr>
 <tr class="separator:ab138594e92e2fe1a0c3559a5a42a93e4 inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a284d9d7d904166062ce2a6fa6e981894 inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#a284d9d7d904166062ce2a6fa6e981894">differenceCollection</a> (const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;collection, const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;refCollection, bool correlatedUncertainties)</td></tr>
+<tr class="separator:a284d9d7d904166062ce2a6fa6e981894 inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab38f556aa46f58406cd66b06f919b111 inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#ab38f556aa46f58406cd66b06f919b111">ratioCollection</a> (const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;collection, const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;refCollection, bool correlatedUncertainties)</td></tr>
+<tr class="separator:ab38f556aa46f58406cd66b06f919b111 inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9164c0d68cbfdf4d7144cc24927323e0 inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#a9164c0d68cbfdf4d7144cc24927323e0">squareDifferenceCollection</a> (const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;collection, double sumWeights, double weight, int n)</td></tr>
-<tr class="memdesc:a9164c0d68cbfdf4d7144cc24927323e0 inherit pub_methods_class_histogram_collection"><td class="mdescLeft">&#160;</td><td class="mdescRight">==========================  <a href="class_histogram_collection.html#a9164c0d68cbfdf4d7144cc24927323e0">More...</a><br /></td></tr>
 <tr class="separator:a9164c0d68cbfdf4d7144cc24927323e0 inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e733dffcda9455836e149168383ea08 inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#a2e733dffcda9455836e149168383ea08">squareDifferenceHistos</a> (TH1 *hAvg, TH1 *h, double sumWeights, double weight, int n)</td></tr>
 <tr class="separator:a2e733dffcda9455836e149168383ea08 inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd3280954a328454392bfd79fbbe7e26 inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#abd3280954a328454392bfd79fbbe7e26">differenceHistos</a> (TH1 *h, TH1 *hRef, TH1 *hDiff, bool correlatedUncertainties)</td></tr>
+<tr class="separator:abd3280954a328454392bfd79fbbe7e26 inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a64114121ec8db86de2f333c77e26ed inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#a0a64114121ec8db86de2f333c77e26ed">ratioHistos</a> (TH1 *h, TH1 *hRef, TH1 *hDiff, bool correlatedUncertainties)</td></tr>
+<tr class="separator:a0a64114121ec8db86de2f333c77e26ed inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9d44ee3539c54ce3fa243669c3d24bc inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#af9d44ee3539c54ce3fa243669c3d24bc">getDimension</a> (const TH1 *h) const</td></tr>
 <tr class="separator:af9d44ee3539c54ce3fa243669c3d24bc inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf3b1178ad2c6fc18aa413faededed68 inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#adf3b1178ad2c6fc18aa413faededed68">sameDimensions</a> (const TString &amp;caller, const TH1 *h1, const TH1 *h2) const</td></tr>
@@ -456,8 +465,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a95959d6b2893d4642152be63ccac9de4 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afda08ec642d84dbe4b3c3365a5ab5197 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">TH1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#afda08ec642d84dbe4b3c3365a5ab5197">back</a> ()</td></tr>
 <tr class="separator:afda08ec642d84dbe4b3c3365a5ab5197 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2f7148ab6bd9771cf4c12f12d42f9c2 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#aa2f7148ab6bd9771cf4c12f12d42f9c2">sameSizeAs</a> (const <a class="el" href="class_collection.html">Collection</a>&lt; TH1 &gt; &amp;other)</td></tr>
-<tr class="separator:aa2f7148ab6bd9771cf4c12f12d42f9c2 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01fd386118d7e2cd605b1c12b1fa1435 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#a01fd386118d7e2cd605b1c12b1fa1435">sameSizeAs</a> (const <a class="el" href="class_collection.html">Collection</a>&lt; TH1 &gt; &amp;other) const</td></tr>
+<tr class="separator:a01fd386118d7e2cd605b1c12b1fa1435 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a085e9375f7fb9c8a50fa8019b8e1906e inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#a085e9375f7fb9c8a50fa8019b8e1906e">copy</a> (long n, TH1 **source)</td></tr>
 <tr class="separator:a085e9375f7fb9c8a50fa8019b8e1906e inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4a2e034fe55fbf5c4f7a185d26ff840 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#ad4a2e034fe55fbf5c4f7a185d26ff840">deepCopy</a> (long n, TH1 **source)</td></tr>
@@ -567,6 +576,32 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1c9b286039a61ef843025b7a0dfb63a9 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a581047e4ae03db23a186bfce95606baf inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a581047e4ae03db23a186bfce95606baf">ptrExist</a> (const TString &amp;caller, const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10, const TH1 *h11, const TH1 *h12) const</td></tr>
 <tr class="separator:a581047e4ae03db23a186bfce95606baf inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a31c4cfdd07e56dc3f94eac4a827df7 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a7a31c4cfdd07e56dc3f94eac4a827df7">ptrFileExist</a> (const TFile *f) const</td></tr>
+<tr class="separator:a7a31c4cfdd07e56dc3f94eac4a827df7 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5236ff7f69cec4fd0c9f082d7616e02 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#ae5236ff7f69cec4fd0c9f082d7616e02">ptrExist</a> (const TH1 *h1) const</td></tr>
+<tr class="separator:ae5236ff7f69cec4fd0c9f082d7616e02 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07482048b4e3fb14255389cb2346d8ef inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a07482048b4e3fb14255389cb2346d8ef">ptrExist</a> (const TH1 *h1, const TH1 *h2) const</td></tr>
+<tr class="separator:a07482048b4e3fb14255389cb2346d8ef inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b987c3662fe2f4ac74d5b53d9b1ee1d inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a1b987c3662fe2f4ac74d5b53d9b1ee1d">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3) const</td></tr>
+<tr class="separator:a1b987c3662fe2f4ac74d5b53d9b1ee1d inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27063875dd1665c09408acbfff2daa05 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a27063875dd1665c09408acbfff2daa05">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4) const</td></tr>
+<tr class="separator:a27063875dd1665c09408acbfff2daa05 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea9d67b89990c83b3bc4a8938882d706 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#aea9d67b89990c83b3bc4a8938882d706">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5) const</td></tr>
+<tr class="separator:aea9d67b89990c83b3bc4a8938882d706 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad225f291276ce9d336050b4c96a6b0ef inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#ad225f291276ce9d336050b4c96a6b0ef">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6) const</td></tr>
+<tr class="separator:ad225f291276ce9d336050b4c96a6b0ef inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a733f19dc797606d918c5ac395bfad1a1 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a733f19dc797606d918c5ac395bfad1a1">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7) const</td></tr>
+<tr class="separator:a733f19dc797606d918c5ac395bfad1a1 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83d7f51337ef3f93ffebb2e162e17594 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a83d7f51337ef3f93ffebb2e162e17594">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8) const</td></tr>
+<tr class="separator:a83d7f51337ef3f93ffebb2e162e17594 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cc7c585795abe114309cc66f90f23f3 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a5cc7c585795abe114309cc66f90f23f3">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9) const</td></tr>
+<tr class="separator:a5cc7c585795abe114309cc66f90f23f3 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a888b9c9627ebb6430ba0cde1ae73ffce inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a888b9c9627ebb6430ba0cde1ae73ffce">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10) const</td></tr>
+<tr class="separator:a888b9c9627ebb6430ba0cde1ae73ffce inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ad9af50d1fcbc9ec9038d1b8deb3404 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a4ad9af50d1fcbc9ec9038d1b8deb3404">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10, const TH1 *h11) const</td></tr>
+<tr class="separator:a4ad9af50d1fcbc9ec9038d1b8deb3404 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a771a1200285aa43589deaa082b0ac076 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a771a1200285aa43589deaa082b0ac076">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10, const TH1 *h11, const TH1 *h12) const</td></tr>
+<tr class="separator:a771a1200285aa43589deaa082b0ac076 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -666,7 +701,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_histograms_8hpp_source.html#l00015">15</a> of file <a class="el" href="_histograms_8hpp_source.html">Histograms.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8hpp_source.html#l00017">17</a> of file <a class="el" href="_histograms_8hpp_source.html">Histograms.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a205436da20370cb7d252b701ef851470" name="a205436da20370cb7d252b701ef851470"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a205436da20370cb7d252b701ef851470">&#9670;&nbsp;</a></span>Histograms()</h2>
@@ -700,7 +735,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00020">20</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00016">16</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
 
 </div>
 </div>
@@ -727,7 +762,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8hpp_source.html#l00026">26</a> of file <a class="el" href="_histograms_8hpp_source.html">Histograms.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8hpp_source.html#l00028">28</a> of file <a class="el" href="_histograms_8hpp_source.html">Histograms.hpp</a>.</p>
 
 </div>
 </div>
@@ -758,7 +793,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_collision_geometry_histograms.html#ac8c8a892aca1cd637f6fca24c6c0c20c">CollisionGeometryHistograms</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00069">69</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00066">66</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
 
 </div>
 </div>
@@ -812,9 +847,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Overload this class to create histograms. </p>
 
-<p>Reimplemented in <a class="el" href="class_collision_geometry_gradient_histograms.html#a04df7411b487d2b2a0cdeeef133f128e">CollisionGeometryGradientHistograms</a>, <a class="el" href="class_collision_geometry_histograms.html#a9d506bb5f49bd39c1af50290915fc387">CollisionGeometryHistograms</a>, <a class="el" href="class_event_count_histos.html#a24f3399fc1ac2977cfac9bc4cf72e2fe">EventCountHistos</a>, <a class="el" href="class_global_histos.html#a038346972d971c6c842e6ec26b7d2aef">GlobalHistos</a>, <a class="el" href="class_nu_dyn_derived_histos.html#a74c164de9c00f0103444bdf86cd261d3">NuDynDerivedHistos</a>, <a class="el" href="class_nu_dyn_histos.html#a35248aba580801d35dd48564fbdae87f">NuDynHistos</a>, <a class="el" href="class_particle_histos.html#ab43319a25b232db90ccfe3d4f1576387">ParticleHistos</a>, <a class="el" href="class_particle_pair_combined_histos.html#a38c52be4d9f5bfb843ab4f12e269e741">ParticlePairCombinedHistos</a>, <a class="el" href="class_particle_pair_derived_histos.html#a9871e19d9e1a23cbfac07206c481999e">ParticlePairDerivedHistos</a>, <a class="el" href="class_particle_pair_histos.html#a8dc723757efd1c5083c14620c08dbae9">ParticlePairHistos</a>, <a class="el" href="class_particle_derived_histos.html#aa932e18231f28247218e558e4f1b46d4">ParticleDerivedHistos</a>, <a class="el" href="class_particle_histos.html#aa258e45100571e549fca767ac552fec6">ParticleHistos</a>, <a class="el" href="class_particle_pair_b_f_histos.html#ac26d95f411e221167ad8f2bf85d8c081">ParticlePairBFHistos</a>, <a class="el" href="class_particle_pair_combined_histos.html#a434ec42f44c110bc43b28e5d08bcdecc">ParticlePairCombinedHistos</a>, <a class="el" href="class_particle_pair_derived_histos.html#aaf89f9e45db2f6aa741ed1a2d2f0da04">ParticlePairDerivedHistos</a>, <a class="el" href="class_particle_pair_histos.html#aed4af4a3c245ec41bd849bd13bd534b2">ParticlePairHistos</a>, <a class="el" href="class_p_t_histos.html#aa4381a0d50ad238845e5f650118127ac">PTHistos</a>, <a class="el" href="class_radial_boost_histos.html#af6d1c41a97cd766333cccdf5ba7f30c2">RadialBoostHistos</a>, <a class="el" href="class_stat_study_histograms.html#a68138d71a717dfd0be907e7fae1100e6">StatStudyHistograms</a>, <a class="el" href="class_transverse_spherocity_histos.html#aa69f757bb6bc420c711b453f074a937c">TransverseSpherocityHistos</a>, <a class="el" href="class_cluster_histos.html#ab4b31a52456da5d1d2dd031e1db2366b">ClusterHistos</a>, <a class="el" href="class_hadron_gas_histograms.html#a1218b3bf3171460f4dba4617deb424dd">HadronGasHistograms</a>, and <a class="el" href="class_hadron_gas_vs_temp_histograms.html#aa79dd0065f43332ecc812ce2d817b0cc">HadronGasVsTempHistograms</a>.</p>
+<p>Reimplemented in <a class="el" href="class_event_count_histos.html#a24f3399fc1ac2977cfac9bc4cf72e2fe">EventCountHistos</a>, <a class="el" href="class_radial_boost_histos.html#af6d1c41a97cd766333cccdf5ba7f30c2">RadialBoostHistos</a>, <a class="el" href="class_cluster_histos.html#ab4b31a52456da5d1d2dd031e1db2366b">ClusterHistos</a>, <a class="el" href="class_collision_geometry_gradient_histograms.html#a04df7411b487d2b2a0cdeeef133f128e">CollisionGeometryGradientHistograms</a>, <a class="el" href="class_collision_geometry_histograms.html#a9d506bb5f49bd39c1af50290915fc387">CollisionGeometryHistograms</a>, <a class="el" href="class_global_histos.html#a038346972d971c6c842e6ec26b7d2aef">GlobalHistos</a>, <a class="el" href="class_transverse_spherocity_histos.html#aa69f757bb6bc420c711b453f074a937c">TransverseSpherocityHistos</a>, <a class="el" href="class_hadron_gas_histograms.html#a1218b3bf3171460f4dba4617deb424dd">HadronGasHistograms</a>, <a class="el" href="class_hadron_gas_vs_temp_histograms.html#aa79dd0065f43332ecc812ce2d817b0cc">HadronGasVsTempHistograms</a>, <a class="el" href="class_nu_dyn_derived_histos.html#a74c164de9c00f0103444bdf86cd261d3">NuDynDerivedHistos</a>, <a class="el" href="class_nu_dyn_histos.html#a35248aba580801d35dd48564fbdae87f">NuDynHistos</a>, <a class="el" href="class_particle_pair_b_f_histos.html#ac26d95f411e221167ad8f2bf85d8c081">ParticlePairBFHistos</a>, <a class="el" href="class_particle_pair_combined_histos.html#a38c52be4d9f5bfb843ab4f12e269e741">ParticlePairCombinedHistos</a>, <a class="el" href="class_particle_pair_derived_histos.html#a9871e19d9e1a23cbfac07206c481999e">ParticlePairDerivedHistos</a>, <a class="el" href="class_particle_pair_histos.html#a8dc723757efd1c5083c14620c08dbae9">ParticlePairHistos</a>, <a class="el" href="class_particle_derived_histos.html#aa932e18231f28247218e558e4f1b46d4">ParticleDerivedHistos</a>, <a class="el" href="class_particle_histos.html#ab43319a25b232db90ccfe3d4f1576387">ParticleHistos</a>, <a class="el" href="class_particle_performance_histos.html#aa5c700d41b4ddd91df76290ce6637be1">ParticlePerformanceHistos</a>, <a class="el" href="class_stat_study_histograms.html#a68138d71a717dfd0be907e7fae1100e6">StatStudyHistograms</a>, and <a class="el" href="class_p_t_histos.html#aa4381a0d50ad238845e5f650118127ac">PTHistos</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00039">39</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00036">36</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
 
 </div>
 </div>
@@ -842,7 +877,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Returns the configuration of this histogram set </p>
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8hpp_source.html#l00045">45</a> of file <a class="el" href="_histograms_8hpp_source.html">Histograms.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8hpp_source.html#l00047">47</a> of file <a class="el" href="_histograms_8hpp_source.html">Histograms.hpp</a>.</p>
 
 </div>
 </div>
@@ -870,7 +905,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Returns the configuration of this histogram set </p>
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8hpp_source.html#l00037">37</a> of file <a class="el" href="_histograms_8hpp_source.html">Histograms.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8hpp_source.html#l00039">39</a> of file <a class="el" href="_histograms_8hpp_source.html">Histograms.hpp</a>.</p>
 
 </div>
 </div>
@@ -897,7 +932,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00056">56</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00053">53</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
 
 </div>
 </div>
@@ -926,9 +961,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Overload this class to load histograms. </p>
 
-<p>Reimplemented in <a class="el" href="class_collision_geometry_gradient_histograms.html#a82f970fe779b2b96b6b1ee0f4e68897e">CollisionGeometryGradientHistograms</a>, <a class="el" href="class_collision_geometry_histograms.html#a4cf150823a16ffe111febe345503d35d">CollisionGeometryHistograms</a>, <a class="el" href="class_event_count_histos.html#a28661f4eb3e55c5515ba61710486f6f7">EventCountHistos</a>, <a class="el" href="class_global_histos.html#a374ee6683ba6c25af5e53bfa9debe0f9">GlobalHistos</a>, <a class="el" href="class_nu_dyn_derived_histos.html#a73c7a05aa3662029cdf5519b0d8d8d79">NuDynDerivedHistos</a>, <a class="el" href="class_nu_dyn_histos.html#a3b613cfca560d5c187f38ba4064ba440">NuDynHistos</a>, <a class="el" href="class_particle_histos.html#ade0541fea8cd433404afb5c76bfc083a">ParticleHistos</a>, <a class="el" href="class_particle_pair_combined_histos.html#a01479d810470e5501fffa1469cddff9e">ParticlePairCombinedHistos</a>, <a class="el" href="class_particle_pair_derived_histos.html#ab934bb262ce0979e9cd245a3aa1e5573">ParticlePairDerivedHistos</a>, <a class="el" href="class_particle_pair_histos.html#aa2d83cd88f492c29503e53366dfa59bd">ParticlePairHistos</a>, <a class="el" href="class_particle_derived_histos.html#a540dd1793d9d80e6bec1fe7bac34c742">ParticleDerivedHistos</a>, <a class="el" href="class_particle_histos.html#ac2baec89d691bbe0c7ac041b0a8d091f">ParticleHistos</a>, <a class="el" href="class_particle_pair_b_f_histos.html#a903c82c6d08a543abfe98e348cda7d40">ParticlePairBFHistos</a>, <a class="el" href="class_particle_pair_combined_histos.html#ab8bbab719f6408db744a9fe3b44345a6">ParticlePairCombinedHistos</a>, <a class="el" href="class_particle_pair_derived_histos.html#a0908ace1b24c42bf533229875341664d">ParticlePairDerivedHistos</a>, <a class="el" href="class_particle_pair_histos.html#adfc5e619944d818076c011e7c8d4aeab">ParticlePairHistos</a>, <a class="el" href="class_p_t_histos.html#a7aba54b46050c5ba011b7d24b7a65cf6">PTHistos</a>, <a class="el" href="class_radial_boost_histos.html#a3833657ed3122c7d5330ef14ebd9d172">RadialBoostHistos</a>, <a class="el" href="class_stat_study_histograms.html#a4070ac931114ed2db0382ca5706b03a6">StatStudyHistograms</a>, <a class="el" href="class_transverse_spherocity_histos.html#a1a90cda3bec8b81acf97b972df3438fc">TransverseSpherocityHistos</a>, <a class="el" href="class_cell_histos.html#ad6d925de4c097ea7a75c623cdf4d5ebb">CellHistos</a>, <a class="el" href="class_cluster_histos.html#ab5001305375fc5d09338a241dcc68c2a">ClusterHistos</a>, <a class="el" href="class_cluster_model_event_histos.html#a5c7efe15b8514fb6866cec7b000e55c0">ClusterModelEventHistos</a>, <a class="el" href="class_hadron_gas_histograms.html#a4b23a15181f017fbf2105abe54cec7e7">HadronGasHistograms</a>, and <a class="el" href="class_hadron_gas_vs_temp_histograms.html#ae28a86641227085949b489a9c7bf1ae8">HadronGasVsTempHistograms</a>.</p>
+<p>Reimplemented in <a class="el" href="class_event_count_histos.html#a28661f4eb3e55c5515ba61710486f6f7">EventCountHistos</a>, <a class="el" href="class_radial_boost_histos.html#a3833657ed3122c7d5330ef14ebd9d172">RadialBoostHistos</a>, <a class="el" href="class_cell_histos.html#ad6d925de4c097ea7a75c623cdf4d5ebb">CellHistos</a>, <a class="el" href="class_cluster_histos.html#ab5001305375fc5d09338a241dcc68c2a">ClusterHistos</a>, <a class="el" href="class_cluster_model_event_histos.html#a5c7efe15b8514fb6866cec7b000e55c0">ClusterModelEventHistos</a>, <a class="el" href="class_collision_geometry_gradient_histograms.html#a82f970fe779b2b96b6b1ee0f4e68897e">CollisionGeometryGradientHistograms</a>, <a class="el" href="class_collision_geometry_histograms.html#a4cf150823a16ffe111febe345503d35d">CollisionGeometryHistograms</a>, <a class="el" href="class_global_histos.html#a374ee6683ba6c25af5e53bfa9debe0f9">GlobalHistos</a>, <a class="el" href="class_transverse_spherocity_histos.html#a1a90cda3bec8b81acf97b972df3438fc">TransverseSpherocityHistos</a>, <a class="el" href="class_hadron_gas_histograms.html#a4b23a15181f017fbf2105abe54cec7e7">HadronGasHistograms</a>, <a class="el" href="class_hadron_gas_vs_temp_histograms.html#ae28a86641227085949b489a9c7bf1ae8">HadronGasVsTempHistograms</a>, <a class="el" href="class_nu_dyn_derived_histos.html#a73c7a05aa3662029cdf5519b0d8d8d79">NuDynDerivedHistos</a>, <a class="el" href="class_nu_dyn_histos.html#a3b613cfca560d5c187f38ba4064ba440">NuDynHistos</a>, <a class="el" href="class_particle_pair_b_f_histos.html#a903c82c6d08a543abfe98e348cda7d40">ParticlePairBFHistos</a>, <a class="el" href="class_particle_pair_combined_histos.html#a01479d810470e5501fffa1469cddff9e">ParticlePairCombinedHistos</a>, <a class="el" href="class_particle_pair_derived_histos.html#ab934bb262ce0979e9cd245a3aa1e5573">ParticlePairDerivedHistos</a>, <a class="el" href="class_particle_pair_histos.html#aa2d83cd88f492c29503e53366dfa59bd">ParticlePairHistos</a>, <a class="el" href="class_particle_derived_histos.html#a540dd1793d9d80e6bec1fe7bac34c742">ParticleDerivedHistos</a>, <a class="el" href="class_particle_histos.html#ade0541fea8cd433404afb5c76bfc083a">ParticleHistos</a>, <a class="el" href="class_particle_performance_histos.html#aea2898ed3048a216e395aaac7d645ee0">ParticlePerformanceHistos</a>, <a class="el" href="class_particle_performance_simulator.html#acda8a39812deedb312028af47398fd7d">ParticlePerformanceSimulator</a>, <a class="el" href="class_stat_study_histograms.html#a4070ac931114ed2db0382ca5706b03a6">StatStudyHistograms</a>, and <a class="el" href="class_p_t_histos.html#a7aba54b46050c5ba011b7d24b7a65cf6">PTHistos</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00048">48</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00045">45</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
 
 </div>
 </div>
@@ -958,7 +993,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00084">84</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00081">81</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
 
 </div>
 </div>
@@ -994,7 +1029,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00092">92</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00089">89</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
 
 </div>
 </div>
@@ -1042,7 +1077,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00103">103</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00100">100</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
 
 </div>
 </div>
@@ -1078,7 +1113,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00117">117</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00114">114</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
 
 </div>
 </div>
@@ -1120,7 +1155,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00125">125</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00122">122</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
 
 </div>
 </div>
@@ -1168,7 +1203,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00134">134</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00131">131</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
 
 </div>
 </div>
@@ -1222,7 +1257,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00144">144</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8cpp_source.html#l00141">141</a> of file <a class="el" href="_histograms_8cpp_source.html">Histograms.cpp</a>.</p>
 
 </div>
 </div>
@@ -1251,7 +1286,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Sets the configuration of this task instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8hpp_source.html#l00053">53</a> of file <a class="el" href="_histograms_8hpp_source.html">Histograms.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8hpp_source.html#l00055">55</a> of file <a class="el" href="_histograms_8hpp_source.html">Histograms.hpp</a>.</p>
 
 </div>
 </div>
@@ -1276,7 +1311,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histograms_8hpp_source.html#l00071">71</a> of file <a class="el" href="_histograms_8hpp_source.html">Histograms.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histograms_8hpp_source.html#l00073">73</a> of file <a class="el" href="_histograms_8hpp_source.html">Histograms.hpp</a>.</p>
 
 </div>
 </div>

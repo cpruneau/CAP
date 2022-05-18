@@ -25,46 +25,22 @@ Collaboration diagram for Ampt\+Event\+Reader\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_ampt_event_reader_a3dd79bd01ad0e2a2be06c0d11123f10f}{Ampt\+Event\+Reader}} (const TString \&name, Task\+Configuration $\ast$\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}, \mbox{\hyperlink{class_event}{Event}} $\ast$event, \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ef, \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$pf)
+\mbox{\hyperlink{class_ampt_event_reader_a07c88ddf556acae3a1db0952138b79e4}{Ampt\+Event\+Reader}} (const TString \&\+\_\+name, \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&\+\_\+event\+Filters, vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&\+\_\+particle\+Filters, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \+\_\+selected\+Level=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}})
 \item 
-virtual \mbox{\hyperlink{class_ampt_event_reader_a954b0dda465f962a77f096b8c97cc623}{$\sim$\+Ampt\+Event\+Reader}} ()
+virtual \mbox{\hyperlink{class_ampt_event_reader_a68b97d2fd55c3cd5a5d97507c09abbe6}{$\sim$\+Ampt\+Event\+Reader}} ()
 \item 
-virtual void \mbox{\hyperlink{class_ampt_event_reader_a867dddecce4553f5827d1803f275a519}{initialize}} ()
-\item 
-virtual void \mbox{\hyperlink{class_ampt_event_reader_a6b9d79b1d61649052db6692d78aae5a8}{reset}} ()
+void \mbox{\hyperlink{class_ampt_event_reader_adb48fceda7b32145c894a8c71cd0a344}{set\+Default\+Configuration}} ()
 \item 
 void \mbox{\hyperlink{class_ampt_event_reader_ae2b398efc100acb62e1c22304de012b6}{execute}} ()
 \item 
-Int\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_a13f08000a0a9bda93a211d9db5297f65}{Get\+Entry}} (Long64\+\_\+t entry)
-\item 
-Long64\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_a850cf7831107072a87cefc7e57f85f66}{Load\+Tree}} (Long64\+\_\+t entry)
-\item 
-void \mbox{\hyperlink{class_ampt_event_reader_aae38956be9c121dbb6e21a5a548a86b3}{Init}} (TTree $\ast$tree)
-\item 
-Bool\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_a5addbc8b6fb13bb8ec4bfa4e1c14678d}{Notify}} ()
-\item 
-void \mbox{\hyperlink{class_ampt_event_reader_a9032d8ccebba4c23754b9e1a4ae2020e}{Show}} (Long64\+\_\+t entry)
-\item 
-Int\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_a41f79401f9d3c1535ca975063cff87e5}{Cut}} (Long64\+\_\+t entry)
+virtual void \mbox{\hyperlink{class_ampt_event_reader_a45128260eb7ffec19b5bba95f7d52b1d}{init\+Input\+Tree\+Mapping}} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
-\item 
-TTree $\ast$ \mbox{\hyperlink{class_ampt_event_reader_a5ed4b09d9556afdc640a1443d17c5c11}{f\+Chain}}
-\item 
-Int\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_a20117f35ab1f5bd9b9f2b543574636b5}{f\+Current}}
-\begin{DoxyCompactList}\small\item\em pointer to the analyzed TTree or TChain \end{DoxyCompactList}\item 
-Long64\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_a3336fadfaa2a2c18d79966131eef1f1b}{nentries}}
-\begin{DoxyCompactList}\small\item\em current Tree number in a TChain \end{DoxyCompactList}\item 
-Long64\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_aed238d476da979931bc1cd580fe9f67b}{nbytes}}
-\item 
-Long64\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_a5a27788da4778feef7fe5b16aab721ad}{nb}}
-\item 
-long \mbox{\hyperlink{class_ampt_event_reader_a12aef5bddec7c255c1527fc7b4c0e4bf}{jentry}}
 \item 
 Int\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_aaa376441822eafee4aa0f29e80f80e29}{event\+No}}
 \item 
-Int\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_acb17ce94fbf04444fa9fa07f4fd800ff}{mult}}
+Int\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_a42dabb4a1b7ed6f00260f2be2e1b66f1}{n\+Particles}}
 \item 
 Int\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_aaec749e00568e6af438546a11aff47c4}{Nproj}}
 \item 
@@ -72,7 +48,7 @@ Int\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_a5be2280d966bd3b797e989323ef
 \item 
 Float\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_a2534c17df91002b55095fd8ff6b9eaaa}{impact}}
 \item 
-Int\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_a866a6714af8b1a2f06e05d934c932f0d}{Nparttotal}}
+Int\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_a705ddb152b42422e7136b65a9d3a4771}{n\+Part\+Total}}
 \item 
 Int\+\_\+t \mbox{\hyperlink{class_ampt_event_reader_ae795428aeb0fd5929e1c78989669edbf}{pid}} \mbox{[}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}}\mbox{]}
 \item 
@@ -98,7 +74,7 @@ TBranch $\ast$ \mbox{\hyperlink{class_ampt_event_reader_af1309359c87e5da058fa54b
 \item 
 TBranch $\ast$ \mbox{\hyperlink{class_ampt_event_reader_aa6e44f075d4555f508e6f293049e49cd}{b\+\_\+impact}}
 \item 
-TBranch $\ast$ \mbox{\hyperlink{class_ampt_event_reader_a24e4e4b2cdb888e42e5913e7858f4359}{b\+\_\+\+Nparttotal}}
+TBranch $\ast$ \mbox{\hyperlink{class_ampt_event_reader_adc87b07e309bad2b7e6a9a064b08926d}{b\+\_\+n\+Part\+Total}}
 \item 
 TBranch $\ast$ \mbox{\hyperlink{class_ampt_event_reader_ae4d33138b27fe9359865d79e9c61af3c}{b\+\_\+pid}}
 \item 
@@ -113,151 +89,102 @@ TBranch $\ast$ \mbox{\hyperlink{class_ampt_event_reader_a636313e0855c8b0272ddbfa
 TBranch $\ast$ \mbox{\hyperlink{class_ampt_event_reader_acbac68afbaa407347a56e0417e3355c4}{b\+\_\+\+Nx}}
 \item 
 TBranch $\ast$ \mbox{\hyperlink{class_ampt_event_reader_a8d4196d7685ebcbb672e2775061639e1}{b\+\_\+\+Ny}}
-\item 
-\mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ \mbox{\hyperlink{class_ampt_event_reader_a3c8eb64b5de2d47d4bee7beb017703da}{event\+Filter}}
-\item 
-\mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ \mbox{\hyperlink{class_ampt_event_reader_a63bf41ad6e397f54134998743fe20480}{particle\+Filter}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Static Public Attributes}
+\doxysubsection*{Static Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static const int \mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}} = 30000
+static const int \mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}} = 50000
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
+This class defines tasks capable of reading Ampt data file. 
 
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00019}{19}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00020}{20}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
 
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_ampt_event_reader_a3dd79bd01ad0e2a2be06c0d11123f10f}\label{class_ampt_event_reader_a3dd79bd01ad0e2a2be06c0d11123f10f}} 
+\mbox{\Hypertarget{class_ampt_event_reader_a07c88ddf556acae3a1db0952138b79e4}\label{class_ampt_event_reader_a07c88ddf556acae3a1db0952138b79e4}} 
 \index{AmptEventReader@{AmptEventReader}!AmptEventReader@{AmptEventReader}}
 \index{AmptEventReader@{AmptEventReader}!AmptEventReader@{AmptEventReader}}
 \doxysubsubsection{\texorpdfstring{AmptEventReader()}{AmptEventReader()}}
-{\footnotesize\ttfamily Ampt\+Event\+Reader\+::\+Ampt\+Event\+Reader (\begin{DoxyParamCaption}\item[{const TString \&}]{name,  }\item[{Task\+Configuration $\ast$}]{configuration,  }\item[{\mbox{\hyperlink{class_event}{Event}} $\ast$}]{event,  }\item[{\mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$}]{ef,  }\item[{\mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$}]{pf }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Ampt\+Event\+Reader\+::\+Ampt\+Event\+Reader (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{\mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&}]{\+\_\+event\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&}]{\+\_\+particle\+Filters,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{\+\_\+selected\+Level = {\ttfamily \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}}} }\end{DoxyParamCaption})}
+
+Detailed CTOR
 
 
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+name} & Name given to task instance \\
+\hline
+{\em \+\_\+configuration} & \mbox{\hyperlink{class_configuration}{Configuration}} used to run this task \\
+\hline
+{\em \+\_\+event\+Filters} & Array of event filters to be used by this task \\
+\hline
+{\em \+\_\+particle\+Filters} & Array of particle filters to be used by this task \\
+\hline
+{\em \+\_\+report\+Level} & Message log level to be used by this task. \\
+\hline
+\end{DoxyParams}
 
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_ampt_event_reader_8cpp_source}{Ampt\+Event\+Reader.\+cpp}}.
 
-\mbox{\Hypertarget{class_ampt_event_reader_a954b0dda465f962a77f096b8c97cc623}\label{class_ampt_event_reader_a954b0dda465f962a77f096b8c97cc623}} 
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_ampt_event_reader_8cpp_source}{Ampt\+Event\+Reader.\+cpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_a68b97d2fd55c3cd5a5d97507c09abbe6}\label{class_ampt_event_reader_a68b97d2fd55c3cd5a5d97507c09abbe6}} 
 \index{AmptEventReader@{AmptEventReader}!````~AmptEventReader@{$\sim$AmptEventReader}}
 \index{````~AmptEventReader@{$\sim$AmptEventReader}!AmptEventReader@{AmptEventReader}}
 \doxysubsubsection{\texorpdfstring{$\sim$AmptEventReader()}{~AmptEventReader()}}
-{\footnotesize\ttfamily Ampt\+Event\+Reader\+::$\sim$\+Ampt\+Event\+Reader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily virtual Ampt\+Event\+Reader\+::$\sim$\+Ampt\+Event\+Reader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
 
+DTOR 
 
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{_ampt_event_reader_8cpp_source}{Ampt\+Event\+Reader.\+cpp}}.
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00042}{42}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
 
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_ampt_event_reader_a41f79401f9d3c1535ca975063cff87e5}\label{class_ampt_event_reader_a41f79401f9d3c1535ca975063cff87e5}} 
-\index{AmptEventReader@{AmptEventReader}!Cut@{Cut}}
-\index{Cut@{Cut}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{Cut()}{Cut()}}
-{\footnotesize\ttfamily Int\+\_\+t Ampt\+Event\+Reader\+::\+Cut (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8cpp_source_l00242}{242}} of file \mbox{\hyperlink{_ampt_event_reader_8cpp_source}{Ampt\+Event\+Reader.\+cpp}}.
-
 \mbox{\Hypertarget{class_ampt_event_reader_ae2b398efc100acb62e1c22304de012b6}\label{class_ampt_event_reader_ae2b398efc100acb62e1c22304de012b6}} 
 \index{AmptEventReader@{AmptEventReader}!execute@{execute}}
 \index{execute@{execute}!AmptEventReader@{AmptEventReader}}
 \doxysubsubsection{\texorpdfstring{execute()}{execute()}}
 {\footnotesize\ttfamily void Ampt\+Event\+Reader\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
-Execute this task instance. This base class implementation only increments the counters n\+Event\+Processed and n\+Event\+Accepted. Implement this method in derived class to achieve the actual task of interest. Note\+: You can increase the counters n\+Event\+Processed and n\+Event\+Accepted indiscrimately by a call to \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task\+::execute()}}. However, in general, you may wish to count all events looked and only count as accepted those that passed one of the event filters used by this task. To achive this, use calls to the methods \mbox{\hyperlink{class_task_a724ff83138229238fdc58566a0cd350f}{increment\+Event\+Processed()}} and \mbox{\hyperlink{class_task_a01762aa4383b0931850efb56b697a856}{increment\+Event\+Accepted()}} rather than explicitly incrementing the variable n\+Event\+Processed and n\+Event\+Accepted. These are currently protected but may defined as private in a future release. 
+Read one AMPT event and insert it in the CAP event stream. 
 
-Reimplemented from \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task}}.
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{_ampt_event_reader_8cpp_source}{Ampt\+Event\+Reader.\+cpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a13f08000a0a9bda93a211d9db5297f65}\label{class_ampt_event_reader_a13f08000a0a9bda93a211d9db5297f65}} 
-\index{AmptEventReader@{AmptEventReader}!GetEntry@{GetEntry}}
-\index{GetEntry@{GetEntry}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{GetEntry()}{GetEntry()}}
-{\footnotesize\ttfamily Int\+\_\+t Ampt\+Event\+Reader\+::\+Get\+Entry (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})}
+Reimplemented from \mbox{\hyperlink{class_root_tree_reader_acb79329a5c02fb59ecfd8d0d1ab1ad7f}{Root\+Tree\+Reader}}.
 
 
 
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8cpp_source_l00185}{185}} of file \mbox{\hyperlink{_ampt_event_reader_8cpp_source}{Ampt\+Event\+Reader.\+cpp}}.
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_ampt_event_reader_8cpp_source}{Ampt\+Event\+Reader.\+cpp}}.
 
-\mbox{\Hypertarget{class_ampt_event_reader_aae38956be9c121dbb6e21a5a548a86b3}\label{class_ampt_event_reader_aae38956be9c121dbb6e21a5a548a86b3}} 
-\index{AmptEventReader@{AmptEventReader}!Init@{Init}}
-\index{Init@{Init}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
-{\footnotesize\ttfamily void Ampt\+Event\+Reader\+::\+Init (\begin{DoxyParamCaption}\item[{TTree $\ast$}]{tree }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_ampt_event_reader_a45128260eb7ffec19b5bba95f7d52b1d}\label{class_ampt_event_reader_a45128260eb7ffec19b5bba95f7d52b1d}} 
+\index{AmptEventReader@{AmptEventReader}!initInputTreeMapping@{initInputTreeMapping}}
+\index{initInputTreeMapping@{initInputTreeMapping}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{initInputTreeMapping()}{initInputTreeMapping()}}
+{\footnotesize\ttfamily void Ampt\+Event\+Reader\+::init\+Input\+Tree\+Mapping (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
+Initialize the mapping between the branches and the storage variables used in Ampt data files. 
 
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8cpp_source_l00205}{205}} of file \mbox{\hyperlink{_ampt_event_reader_8cpp_source}{Ampt\+Event\+Reader.\+cpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a867dddecce4553f5827d1803f275a519}\label{class_ampt_event_reader_a867dddecce4553f5827d1803f275a519}} 
-\index{AmptEventReader@{AmptEventReader}!initialize@{initialize}}
-\index{initialize@{initialize}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
-{\footnotesize\ttfamily void Ampt\+Event\+Reader\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-Initialize this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient. 
-
-Reimplemented from \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{Task}}.
+Reimplemented from \mbox{\hyperlink{class_root_tree_reader_a142b7591288035eb8193874e7607cbe9}{Root\+Tree\+Reader}}.
 
 
 
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{_ampt_event_reader_8cpp_source}{Ampt\+Event\+Reader.\+cpp}}.
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8cpp_source_l00137}{137}} of file \mbox{\hyperlink{_ampt_event_reader_8cpp_source}{Ampt\+Event\+Reader.\+cpp}}.
 
-\mbox{\Hypertarget{class_ampt_event_reader_a850cf7831107072a87cefc7e57f85f66}\label{class_ampt_event_reader_a850cf7831107072a87cefc7e57f85f66}} 
-\index{AmptEventReader@{AmptEventReader}!LoadTree@{LoadTree}}
-\index{LoadTree@{LoadTree}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{LoadTree()}{LoadTree()}}
-{\footnotesize\ttfamily Long64\+\_\+t Ampt\+Event\+Reader\+::\+Load\+Tree (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_ampt_event_reader_adb48fceda7b32145c894a8c71cd0a344}\label{class_ampt_event_reader_adb48fceda7b32145c894a8c71cd0a344}} 
+\index{AmptEventReader@{AmptEventReader}!setDefaultConfiguration@{setDefaultConfiguration}}
+\index{setDefaultConfiguration@{setDefaultConfiguration}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{setDefaultConfiguration()}{setDefaultConfiguration()}}
+{\footnotesize\ttfamily void Ampt\+Event\+Reader\+::set\+Default\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
+Sets the default values of the configuration parameters used by this task 
 
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8cpp_source_l00192}{192}} of file \mbox{\hyperlink{_ampt_event_reader_8cpp_source}{Ampt\+Event\+Reader.\+cpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a5addbc8b6fb13bb8ec4bfa4e1c14678d}\label{class_ampt_event_reader_a5addbc8b6fb13bb8ec4bfa4e1c14678d}} 
-\index{AmptEventReader@{AmptEventReader}!Notify@{Notify}}
-\index{Notify@{Notify}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{Notify()}{Notify()}}
-{\footnotesize\ttfamily Bool\+\_\+t Ampt\+Event\+Reader\+::\+Notify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+Reimplemented from \mbox{\hyperlink{class_root_tree_reader_ae6ed558a3a2e0d5ae5a3feacbe686004}{Root\+Tree\+Reader}}.
 
 
 
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8cpp_source_l00231}{231}} of file \mbox{\hyperlink{_ampt_event_reader_8cpp_source}{Ampt\+Event\+Reader.\+cpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a6b9d79b1d61649052db6692d78aae5a8}\label{class_ampt_event_reader_a6b9d79b1d61649052db6692d78aae5a8}} 
-\index{AmptEventReader@{AmptEventReader}!reset@{reset}}
-\index{reset@{reset}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
-{\footnotesize\ttfamily void Ampt\+Event\+Reader\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-Reset this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient. 
-
-Reimplemented from \mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{Task}}.
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{_ampt_event_reader_8cpp_source}{Ampt\+Event\+Reader.\+cpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a9032d8ccebba4c23754b9e1a4ae2020e}\label{class_ampt_event_reader_a9032d8ccebba4c23754b9e1a4ae2020e}} 
-\index{AmptEventReader@{AmptEventReader}!Show@{Show}}
-\index{Show@{Show}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{Show()}{Show()}}
-{\footnotesize\ttfamily void Ampt\+Event\+Reader\+::\+Show (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8cpp_source_l00236}{236}} of file \mbox{\hyperlink{_ampt_event_reader_8cpp_source}{Ampt\+Event\+Reader.\+cpp}}.
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{_ampt_event_reader_8cpp_source}{Ampt\+Event\+Reader.\+cpp}}.
 
 
 
@@ -266,359 +193,271 @@ Definition at line \mbox{\hyperlink{_ampt_event_reader_8cpp_source_l00236}{236}}
 \index{AmptEventReader@{AmptEventReader}!arraySize@{arraySize}}
 \index{arraySize@{arraySize}!AmptEventReader@{AmptEventReader}}
 \doxysubsubsection{\texorpdfstring{arraySize}{arraySize}}
-{\footnotesize\ttfamily const int Ampt\+Event\+Reader\+::array\+Size = 30000\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_aaa34555f7deed324ebb1cdc082e7f5d1}\label{class_ampt_event_reader_aaa34555f7deed324ebb1cdc082e7f5d1}} 
-\index{AmptEventReader@{AmptEventReader}!b\_eventNo@{b\_eventNo}}
-\index{b\_eventNo@{b\_eventNo}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_eventNo}{b\_eventNo}}
-{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+event\+No}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_aa6e44f075d4555f508e6f293049e49cd}\label{class_ampt_event_reader_aa6e44f075d4555f508e6f293049e49cd}} 
-\index{AmptEventReader@{AmptEventReader}!b\_impact@{b\_impact}}
-\index{b\_impact@{b\_impact}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_impact}{b\_impact}}
-{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+impact}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00074}{74}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a636313e0855c8b0272ddbfafe94eec0d}\label{class_ampt_event_reader_a636313e0855c8b0272ddbfafe94eec0d}} 
-\index{AmptEventReader@{AmptEventReader}!b\_m@{b\_m}}
-\index{b\_m@{b\_m}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_m}{b\_m}}
-{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+m}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00080}{80}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_abbff7ba5f064d68bfd04941999e4e6d3}\label{class_ampt_event_reader_abbff7ba5f064d68bfd04941999e4e6d3}} 
-\index{AmptEventReader@{AmptEventReader}!b\_mult@{b\_mult}}
-\index{b\_mult@{b\_mult}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_mult}{b\_mult}}
-{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+mult}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a24e4e4b2cdb888e42e5913e7858f4359}\label{class_ampt_event_reader_a24e4e4b2cdb888e42e5913e7858f4359}} 
-\index{AmptEventReader@{AmptEventReader}!b\_Nparttotal@{b\_Nparttotal}}
-\index{b\_Nparttotal@{b\_Nparttotal}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_Nparttotal}{b\_Nparttotal}}
-{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+\+Nparttotal}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00075}{75}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a8ec498c7b83dc5bf3056de49c39fc788}\label{class_ampt_event_reader_a8ec498c7b83dc5bf3056de49c39fc788}} 
-\index{AmptEventReader@{AmptEventReader}!b\_Nproj@{b\_Nproj}}
-\index{b\_Nproj@{b\_Nproj}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_Nproj}{b\_Nproj}}
-{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+\+Nproj}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_af1309359c87e5da058fa54bcff76666f}\label{class_ampt_event_reader_af1309359c87e5da058fa54bcff76666f}} 
-\index{AmptEventReader@{AmptEventReader}!b\_Ntarg@{b\_Ntarg}}
-\index{b\_Ntarg@{b\_Ntarg}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_Ntarg}{b\_Ntarg}}
-{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+\+Ntarg}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_acbac68afbaa407347a56e0417e3355c4}\label{class_ampt_event_reader_acbac68afbaa407347a56e0417e3355c4}} 
-\index{AmptEventReader@{AmptEventReader}!b\_Nx@{b\_Nx}}
-\index{b\_Nx@{b\_Nx}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_Nx}{b\_Nx}}
-{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+\+Nx}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a8d4196d7685ebcbb672e2775061639e1}\label{class_ampt_event_reader_a8d4196d7685ebcbb672e2775061639e1}} 
-\index{AmptEventReader@{AmptEventReader}!b\_Ny@{b\_Ny}}
-\index{b\_Ny@{b\_Ny}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_Ny}{b\_Ny}}
-{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+\+Ny}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00082}{82}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_ae4d33138b27fe9359865d79e9c61af3c}\label{class_ampt_event_reader_ae4d33138b27fe9359865d79e9c61af3c}} 
-\index{AmptEventReader@{AmptEventReader}!b\_pid@{b\_pid}}
-\index{b\_pid@{b\_pid}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_pid}{b\_pid}}
-{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+pid}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a3019d18c3b557bdcbd022ae1f05d2e73}\label{class_ampt_event_reader_a3019d18c3b557bdcbd022ae1f05d2e73}} 
-\index{AmptEventReader@{AmptEventReader}!b\_px@{b\_px}}
-\index{b\_px@{b\_px}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_px}{b\_px}}
-{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+px}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a56841a9482e327bb4d3f5cf491637554}\label{class_ampt_event_reader_a56841a9482e327bb4d3f5cf491637554}} 
-\index{AmptEventReader@{AmptEventReader}!b\_py@{b\_py}}
-\index{b\_py@{b\_py}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_py}{b\_py}}
-{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+py}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a0725f42dd7f9bb49ae6ffcc1909b621f}\label{class_ampt_event_reader_a0725f42dd7f9bb49ae6ffcc1909b621f}} 
-\index{AmptEventReader@{AmptEventReader}!b\_pz@{b\_pz}}
-\index{b\_pz@{b\_pz}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_pz}{b\_pz}}
-{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+pz}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00079}{79}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a3c8eb64b5de2d47d4bee7beb017703da}\label{class_ampt_event_reader_a3c8eb64b5de2d47d4bee7beb017703da}} 
-\index{AmptEventReader@{AmptEventReader}!eventFilter@{eventFilter}}
-\index{eventFilter@{eventFilter}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{eventFilter}{eventFilter}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_event_filter}{Event\+Filter}}$\ast$ Ampt\+Event\+Reader\+::event\+Filter}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_aaa376441822eafee4aa0f29e80f80e29}\label{class_ampt_event_reader_aaa376441822eafee4aa0f29e80f80e29}} 
-\index{AmptEventReader@{AmptEventReader}!eventNo@{eventNo}}
-\index{eventNo@{eventNo}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{eventNo}{eventNo}}
-{\footnotesize\ttfamily Int\+\_\+t Ampt\+Event\+Reader\+::event\+No}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00055}{55}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a5ed4b09d9556afdc640a1443d17c5c11}\label{class_ampt_event_reader_a5ed4b09d9556afdc640a1443d17c5c11}} 
-\index{AmptEventReader@{AmptEventReader}!fChain@{fChain}}
-\index{fChain@{fChain}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{fChain}{fChain}}
-{\footnotesize\ttfamily TTree$\ast$ Ampt\+Event\+Reader\+::f\+Chain}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a20117f35ab1f5bd9b9f2b543574636b5}\label{class_ampt_event_reader_a20117f35ab1f5bd9b9f2b543574636b5}} 
-\index{AmptEventReader@{AmptEventReader}!fCurrent@{fCurrent}}
-\index{fCurrent@{fCurrent}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{fCurrent}{fCurrent}}
-{\footnotesize\ttfamily Int\+\_\+t Ampt\+Event\+Reader\+::f\+Current}
-
-
-
-pointer to the analyzed TTree or TChain 
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00044}{44}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a2534c17df91002b55095fd8ff6b9eaaa}\label{class_ampt_event_reader_a2534c17df91002b55095fd8ff6b9eaaa}} 
-\index{AmptEventReader@{AmptEventReader}!impact@{impact}}
-\index{impact@{impact}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{impact}{impact}}
-{\footnotesize\ttfamily Float\+\_\+t Ampt\+Event\+Reader\+::impact}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a12aef5bddec7c255c1527fc7b4c0e4bf}\label{class_ampt_event_reader_a12aef5bddec7c255c1527fc7b4c0e4bf}} 
-\index{AmptEventReader@{AmptEventReader}!jentry@{jentry}}
-\index{jentry@{jentry}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{jentry}{jentry}}
-{\footnotesize\ttfamily long Ampt\+Event\+Reader\+::jentry}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00050}{50}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_acae6f93ea246002bf47d8b0b70e188e1}\label{class_ampt_event_reader_acae6f93ea246002bf47d8b0b70e188e1}} 
-\index{AmptEventReader@{AmptEventReader}!m@{m}}
-\index{m@{m}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{m}{m}}
-{\footnotesize\ttfamily Float\+\_\+t Ampt\+Event\+Reader\+::m\mbox{[}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}}\mbox{]}}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_acb17ce94fbf04444fa9fa07f4fd800ff}\label{class_ampt_event_reader_acb17ce94fbf04444fa9fa07f4fd800ff}} 
-\index{AmptEventReader@{AmptEventReader}!mult@{mult}}
-\index{mult@{mult}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{mult}{mult}}
-{\footnotesize\ttfamily Int\+\_\+t Ampt\+Event\+Reader\+::mult}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00056}{56}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a5a27788da4778feef7fe5b16aab721ad}\label{class_ampt_event_reader_a5a27788da4778feef7fe5b16aab721ad}} 
-\index{AmptEventReader@{AmptEventReader}!nb@{nb}}
-\index{nb@{nb}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{nb}{nb}}
-{\footnotesize\ttfamily Long64\+\_\+t Ampt\+Event\+Reader\+::nb}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_aed238d476da979931bc1cd580fe9f67b}\label{class_ampt_event_reader_aed238d476da979931bc1cd580fe9f67b}} 
-\index{AmptEventReader@{AmptEventReader}!nbytes@{nbytes}}
-\index{nbytes@{nbytes}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{nbytes}{nbytes}}
-{\footnotesize\ttfamily Long64\+\_\+t Ampt\+Event\+Reader\+::nbytes}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a3336fadfaa2a2c18d79966131eef1f1b}\label{class_ampt_event_reader_a3336fadfaa2a2c18d79966131eef1f1b}} 
-\index{AmptEventReader@{AmptEventReader}!nentries@{nentries}}
-\index{nentries@{nentries}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{nentries}{nentries}}
-{\footnotesize\ttfamily Long64\+\_\+t Ampt\+Event\+Reader\+::nentries}
-
-
-
-current Tree number in a TChain 
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a866a6714af8b1a2f06e05d934c932f0d}\label{class_ampt_event_reader_a866a6714af8b1a2f06e05d934c932f0d}} 
-\index{AmptEventReader@{AmptEventReader}!Nparttotal@{Nparttotal}}
-\index{Nparttotal@{Nparttotal}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{Nparttotal}{Nparttotal}}
-{\footnotesize\ttfamily Int\+\_\+t Ampt\+Event\+Reader\+::\+Nparttotal}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_aaec749e00568e6af438546a11aff47c4}\label{class_ampt_event_reader_aaec749e00568e6af438546a11aff47c4}} 
-\index{AmptEventReader@{AmptEventReader}!Nproj@{Nproj}}
-\index{Nproj@{Nproj}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{Nproj}{Nproj}}
-{\footnotesize\ttfamily Int\+\_\+t Ampt\+Event\+Reader\+::\+Nproj}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a5be2280d966bd3b797e989323efc5533}\label{class_ampt_event_reader_a5be2280d966bd3b797e989323efc5533}} 
-\index{AmptEventReader@{AmptEventReader}!Ntarg@{Ntarg}}
-\index{Ntarg@{Ntarg}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{Ntarg}{Ntarg}}
-{\footnotesize\ttfamily Int\+\_\+t Ampt\+Event\+Reader\+::\+Ntarg}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00058}{58}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a579cddd3b5d423a894efece718ca5b51}\label{class_ampt_event_reader_a579cddd3b5d423a894efece718ca5b51}} 
-\index{AmptEventReader@{AmptEventReader}!Nx@{Nx}}
-\index{Nx@{Nx}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{Nx}{Nx}}
-{\footnotesize\ttfamily Float\+\_\+t Ampt\+Event\+Reader\+::\+Nx\mbox{[}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}}\mbox{]}}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a030cdfb0f7d1e7c325601371ca2c959c}\label{class_ampt_event_reader_a030cdfb0f7d1e7c325601371ca2c959c}} 
-\index{AmptEventReader@{AmptEventReader}!Ny@{Ny}}
-\index{Ny@{Ny}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{Ny}{Ny}}
-{\footnotesize\ttfamily Float\+\_\+t Ampt\+Event\+Reader\+::\+Ny\mbox{[}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}}\mbox{]}}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_a63bf41ad6e397f54134998743fe20480}\label{class_ampt_event_reader_a63bf41ad6e397f54134998743fe20480}} 
-\index{AmptEventReader@{AmptEventReader}!particleFilter@{particleFilter}}
-\index{particleFilter@{particleFilter}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{particleFilter}{particleFilter}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}}$\ast$ Ampt\+Event\+Reader\+::particle\+Filter}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_ae795428aeb0fd5929e1c78989669edbf}\label{class_ampt_event_reader_ae795428aeb0fd5929e1c78989669edbf}} 
-\index{AmptEventReader@{AmptEventReader}!pid@{pid}}
-\index{pid@{pid}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{pid}{pid}}
-{\footnotesize\ttfamily Int\+\_\+t Ampt\+Event\+Reader\+::pid\mbox{[}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}}\mbox{]}}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00061}{61}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_aa88d573fa141ed3cf98227da1b493494}\label{class_ampt_event_reader_aa88d573fa141ed3cf98227da1b493494}} 
-\index{AmptEventReader@{AmptEventReader}!px@{px}}
-\index{px@{px}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{px}{px}}
-{\footnotesize\ttfamily Float\+\_\+t Ampt\+Event\+Reader\+::px\mbox{[}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}}\mbox{]}}
-
-
-
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00062}{62}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_ampt_event_reader_abdc1e8aaf1ce053535a0286faa6d45fa}\label{class_ampt_event_reader_abdc1e8aaf1ce053535a0286faa6d45fa}} 
-\index{AmptEventReader@{AmptEventReader}!py@{py}}
-\index{py@{py}!AmptEventReader@{AmptEventReader}}
-\doxysubsubsection{\texorpdfstring{py}{py}}
-{\footnotesize\ttfamily Float\+\_\+t Ampt\+Event\+Reader\+::py\mbox{[}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}}\mbox{]}}
+{\footnotesize\ttfamily const int Ampt\+Event\+Reader\+::array\+Size = 50000\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
 
 
 
 Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
 
+\mbox{\Hypertarget{class_ampt_event_reader_aaa34555f7deed324ebb1cdc082e7f5d1}\label{class_ampt_event_reader_aaa34555f7deed324ebb1cdc082e7f5d1}} 
+\index{AmptEventReader@{AmptEventReader}!b\_eventNo@{b\_eventNo}}
+\index{b\_eventNo@{b\_eventNo}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_eventNo}{b\_eventNo}}
+{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+event\+No\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_aa6e44f075d4555f508e6f293049e49cd}\label{class_ampt_event_reader_aa6e44f075d4555f508e6f293049e49cd}} 
+\index{AmptEventReader@{AmptEventReader}!b\_impact@{b\_impact}}
+\index{b\_impact@{b\_impact}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_impact}{b\_impact}}
+{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+impact\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_a636313e0855c8b0272ddbfafe94eec0d}\label{class_ampt_event_reader_a636313e0855c8b0272ddbfafe94eec0d}} 
+\index{AmptEventReader@{AmptEventReader}!b\_m@{b\_m}}
+\index{b\_m@{b\_m}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_m}{b\_m}}
+{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+m\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00091}{91}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_abbff7ba5f064d68bfd04941999e4e6d3}\label{class_ampt_event_reader_abbff7ba5f064d68bfd04941999e4e6d3}} 
+\index{AmptEventReader@{AmptEventReader}!b\_mult@{b\_mult}}
+\index{b\_mult@{b\_mult}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_mult}{b\_mult}}
+{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+mult\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00082}{82}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_adc87b07e309bad2b7e6a9a064b08926d}\label{class_ampt_event_reader_adc87b07e309bad2b7e6a9a064b08926d}} 
+\index{AmptEventReader@{AmptEventReader}!b\_nPartTotal@{b\_nPartTotal}}
+\index{b\_nPartTotal@{b\_nPartTotal}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_nPartTotal}{b\_nPartTotal}}
+{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+n\+Part\+Total\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00086}{86}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_a8ec498c7b83dc5bf3056de49c39fc788}\label{class_ampt_event_reader_a8ec498c7b83dc5bf3056de49c39fc788}} 
+\index{AmptEventReader@{AmptEventReader}!b\_Nproj@{b\_Nproj}}
+\index{b\_Nproj@{b\_Nproj}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_Nproj}{b\_Nproj}}
+{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+\+Nproj\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00083}{83}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_af1309359c87e5da058fa54bcff76666f}\label{class_ampt_event_reader_af1309359c87e5da058fa54bcff76666f}} 
+\index{AmptEventReader@{AmptEventReader}!b\_Ntarg@{b\_Ntarg}}
+\index{b\_Ntarg@{b\_Ntarg}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_Ntarg}{b\_Ntarg}}
+{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+\+Ntarg\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_acbac68afbaa407347a56e0417e3355c4}\label{class_ampt_event_reader_acbac68afbaa407347a56e0417e3355c4}} 
+\index{AmptEventReader@{AmptEventReader}!b\_Nx@{b\_Nx}}
+\index{b\_Nx@{b\_Nx}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_Nx}{b\_Nx}}
+{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+\+Nx\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00092}{92}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_a8d4196d7685ebcbb672e2775061639e1}\label{class_ampt_event_reader_a8d4196d7685ebcbb672e2775061639e1}} 
+\index{AmptEventReader@{AmptEventReader}!b\_Ny@{b\_Ny}}
+\index{b\_Ny@{b\_Ny}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_Ny}{b\_Ny}}
+{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+\+Ny\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00093}{93}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_ae4d33138b27fe9359865d79e9c61af3c}\label{class_ampt_event_reader_ae4d33138b27fe9359865d79e9c61af3c}} 
+\index{AmptEventReader@{AmptEventReader}!b\_pid@{b\_pid}}
+\index{b\_pid@{b\_pid}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_pid}{b\_pid}}
+{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+pid\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_a3019d18c3b557bdcbd022ae1f05d2e73}\label{class_ampt_event_reader_a3019d18c3b557bdcbd022ae1f05d2e73}} 
+\index{AmptEventReader@{AmptEventReader}!b\_px@{b\_px}}
+\index{b\_px@{b\_px}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_px}{b\_px}}
+{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+px\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_a56841a9482e327bb4d3f5cf491637554}\label{class_ampt_event_reader_a56841a9482e327bb4d3f5cf491637554}} 
+\index{AmptEventReader@{AmptEventReader}!b\_py@{b\_py}}
+\index{b\_py@{b\_py}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_py}{b\_py}}
+{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+py\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00089}{89}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_a0725f42dd7f9bb49ae6ffcc1909b621f}\label{class_ampt_event_reader_a0725f42dd7f9bb49ae6ffcc1909b621f}} 
+\index{AmptEventReader@{AmptEventReader}!b\_pz@{b\_pz}}
+\index{b\_pz@{b\_pz}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_pz}{b\_pz}}
+{\footnotesize\ttfamily TBranch$\ast$ Ampt\+Event\+Reader\+::b\+\_\+pz\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00090}{90}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_aaa376441822eafee4aa0f29e80f80e29}\label{class_ampt_event_reader_aaa376441822eafee4aa0f29e80f80e29}} 
+\index{AmptEventReader@{AmptEventReader}!eventNo@{eventNo}}
+\index{eventNo@{eventNo}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{eventNo}{eventNo}}
+{\footnotesize\ttfamily Int\+\_\+t Ampt\+Event\+Reader\+::event\+No\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_a2534c17df91002b55095fd8ff6b9eaaa}\label{class_ampt_event_reader_a2534c17df91002b55095fd8ff6b9eaaa}} 
+\index{AmptEventReader@{AmptEventReader}!impact@{impact}}
+\index{impact@{impact}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{impact}{impact}}
+{\footnotesize\ttfamily Float\+\_\+t Ampt\+Event\+Reader\+::impact\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_acae6f93ea246002bf47d8b0b70e188e1}\label{class_ampt_event_reader_acae6f93ea246002bf47d8b0b70e188e1}} 
+\index{AmptEventReader@{AmptEventReader}!m@{m}}
+\index{m@{m}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{m}{m}}
+{\footnotesize\ttfamily Float\+\_\+t Ampt\+Event\+Reader\+::m\mbox{[}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_a42dabb4a1b7ed6f00260f2be2e1b66f1}\label{class_ampt_event_reader_a42dabb4a1b7ed6f00260f2be2e1b66f1}} 
+\index{AmptEventReader@{AmptEventReader}!nParticles@{nParticles}}
+\index{nParticles@{nParticles}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{nParticles}{nParticles}}
+{\footnotesize\ttfamily Int\+\_\+t Ampt\+Event\+Reader\+::n\+Particles\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_a705ddb152b42422e7136b65a9d3a4771}\label{class_ampt_event_reader_a705ddb152b42422e7136b65a9d3a4771}} 
+\index{AmptEventReader@{AmptEventReader}!nPartTotal@{nPartTotal}}
+\index{nPartTotal@{nPartTotal}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{nPartTotal}{nPartTotal}}
+{\footnotesize\ttfamily Int\+\_\+t Ampt\+Event\+Reader\+::n\+Part\+Total\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_aaec749e00568e6af438546a11aff47c4}\label{class_ampt_event_reader_aaec749e00568e6af438546a11aff47c4}} 
+\index{AmptEventReader@{AmptEventReader}!Nproj@{Nproj}}
+\index{Nproj@{Nproj}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{Nproj}{Nproj}}
+{\footnotesize\ttfamily Int\+\_\+t Ampt\+Event\+Reader\+::\+Nproj\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_a5be2280d966bd3b797e989323efc5533}\label{class_ampt_event_reader_a5be2280d966bd3b797e989323efc5533}} 
+\index{AmptEventReader@{AmptEventReader}!Ntarg@{Ntarg}}
+\index{Ntarg@{Ntarg}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{Ntarg}{Ntarg}}
+{\footnotesize\ttfamily Int\+\_\+t Ampt\+Event\+Reader\+::\+Ntarg\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00069}{69}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_a579cddd3b5d423a894efece718ca5b51}\label{class_ampt_event_reader_a579cddd3b5d423a894efece718ca5b51}} 
+\index{AmptEventReader@{AmptEventReader}!Nx@{Nx}}
+\index{Nx@{Nx}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{Nx}{Nx}}
+{\footnotesize\ttfamily Float\+\_\+t Ampt\+Event\+Reader\+::\+Nx\mbox{[}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_a030cdfb0f7d1e7c325601371ca2c959c}\label{class_ampt_event_reader_a030cdfb0f7d1e7c325601371ca2c959c}} 
+\index{AmptEventReader@{AmptEventReader}!Ny@{Ny}}
+\index{Ny@{Ny}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{Ny}{Ny}}
+{\footnotesize\ttfamily Float\+\_\+t Ampt\+Event\+Reader\+::\+Ny\mbox{[}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_ae795428aeb0fd5929e1c78989669edbf}\label{class_ampt_event_reader_ae795428aeb0fd5929e1c78989669edbf}} 
+\index{AmptEventReader@{AmptEventReader}!pid@{pid}}
+\index{pid@{pid}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{pid}{pid}}
+{\footnotesize\ttfamily Int\+\_\+t Ampt\+Event\+Reader\+::pid\mbox{[}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_aa88d573fa141ed3cf98227da1b493494}\label{class_ampt_event_reader_aa88d573fa141ed3cf98227da1b493494}} 
+\index{AmptEventReader@{AmptEventReader}!px@{px}}
+\index{px@{px}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{px}{px}}
+{\footnotesize\ttfamily Float\+\_\+t Ampt\+Event\+Reader\+::px\mbox{[}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_ampt_event_reader_abdc1e8aaf1ce053535a0286faa6d45fa}\label{class_ampt_event_reader_abdc1e8aaf1ce053535a0286faa6d45fa}} 
+\index{AmptEventReader@{AmptEventReader}!py@{py}}
+\index{py@{py}!AmptEventReader@{AmptEventReader}}
+\doxysubsubsection{\texorpdfstring{py}{py}}
+{\footnotesize\ttfamily Float\+\_\+t Ampt\+Event\+Reader\+::py\mbox{[}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00074}{74}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+
 \mbox{\Hypertarget{class_ampt_event_reader_a7d74fce0c970a9e98e0f119513f76dcd}\label{class_ampt_event_reader_a7d74fce0c970a9e98e0f119513f76dcd}} 
 \index{AmptEventReader@{AmptEventReader}!pz@{pz}}
 \index{pz@{pz}!AmptEventReader@{AmptEventReader}}
 \doxysubsubsection{\texorpdfstring{pz}{pz}}
-{\footnotesize\ttfamily Float\+\_\+t Ampt\+Event\+Reader\+::pz\mbox{[}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}}\mbox{]}}
+{\footnotesize\ttfamily Float\+\_\+t Ampt\+Event\+Reader\+::pz\mbox{[}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{array\+Size}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00064}{64}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_ampt_event_reader_8hpp_source_l00075}{75}} of file \mbox{\hyperlink{_ampt_event_reader_8hpp_source}{Ampt\+Event\+Reader.\+hpp}}.
 
 
 

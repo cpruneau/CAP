@@ -91,19 +91,16 @@ $(document).ready(function(){initNavTree('class_histogram_collection.html',''); 
 </div><!--header-->
 <div class="contents">
 
-<p>using namespace std;  
- <a href="class_histogram_collection.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="_histogram_collection_8hpp_source.html">HistogramCollection.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for HistogramCollection:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_histogram_collection__inherit__graph.png" border="0" usemap="#a_histogram_collection_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_histogram_collection_inherit__map" id="a_histogram_collection_inherit__map">
-<area shape="rect" title="using namespace std;" alt="" coords="345,629,485,656"/>
-<area shape="rect" href="class_histograms.html" title=" " alt="" coords="533,629,623,656"/>
-<area shape="rect" href="class_collection.html" title=" " alt="" coords="168,629,297,656"/>
-<area shape="rect" href="class_message_logger.html" title=" " alt="" coords="5,629,120,656"/>
+<area shape="rect" title=" " alt="" coords="345,579,485,605"/>
+<area shape="rect" href="class_histograms.html" title=" " alt="" coords="533,579,623,605"/>
+<area shape="rect" href="class_collection.html" title=" " alt="" coords="168,579,297,605"/>
+<area shape="rect" href="class_message_logger.html" title=" " alt="" coords="5,579,120,605"/>
 <area shape="rect" href="class_cell_histos.html" title=" " alt="" coords="731,5,813,32"/>
 <area shape="rect" href="class_cluster_histos.html" title=" " alt="" coords="721,56,823,83"/>
 <area shape="rect" href="class_cluster_model_event_histos.html" title=" " alt="" coords="687,107,857,133"/>
@@ -122,9 +119,11 @@ Inheritance diagram for HistogramCollection:</div>
 <area shape="rect" href="class_particle_pair_combined_histos.html" title=" " alt="" coords="679,781,865,808"/>
 <area shape="rect" href="class_particle_pair_derived_histos.html" title=" " alt="" coords="686,832,858,859"/>
 <area shape="rect" href="class_particle_pair_histos.html" title=" " alt="" coords="709,883,835,909"/>
-<area shape="rect" href="class_radial_boost_histos.html" title=" " alt="" coords="707,933,837,960"/>
-<area shape="rect" href="class_stat_study_histograms.html" title=" " alt="" coords="699,984,845,1011"/>
-<area shape="rect" href="class_transverse_spherocity_histos.html" title=" " alt="" coords="679,1035,865,1061"/>
+<area shape="rect" href="class_particle_performance_histos.html" title=" " alt="" coords="683,933,861,960"/>
+<area shape="rect" href="class_particle_performance_simulator.html" title=" " alt="" coords="675,984,869,1011"/>
+<area shape="rect" href="class_radial_boost_histos.html" title=" " alt="" coords="707,1035,837,1061"/>
+<area shape="rect" href="class_stat_study_histograms.html" title=" " alt="" coords="699,1085,845,1112"/>
+<area shape="rect" href="class_transverse_spherocity_histos.html" title=" " alt="" coords="679,1136,865,1163"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -132,7 +131,7 @@ Collaboration diagram for HistogramCollection:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_histogram_collection__coll__graph.png" border="0" usemap="#a_histogram_collection_coll__map" alt="Collaboration graph"/></div>
 <map name="a_histogram_collection_coll__map" id="a_histogram_collection_coll__map">
-<area shape="rect" title="using namespace std;" alt="" coords="5,155,145,181"/>
+<area shape="rect" title=" " alt="" coords="5,155,145,181"/>
 <area shape="rect" href="class_collection.html" title=" " alt="" coords="11,80,140,107"/>
 <area shape="rect" href="class_message_logger.html" title=" " alt="" coords="18,5,133,32"/>
 </map>
@@ -367,11 +366,18 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ada0ef58bd3a3391d464ee2efb763fda1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab138594e92e2fe1a0c3559a5a42a93e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#ab138594e92e2fe1a0c3559a5a42a93e4">calculateNudyn</a> (double r2_11, double er2_11, double r2_12, double er2_12, double r2_22, double er2_22, double &amp;nudyn, double &amp;enudyn)</td></tr>
 <tr class="separator:ab138594e92e2fe1a0c3559a5a42a93e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a284d9d7d904166062ce2a6fa6e981894"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#a284d9d7d904166062ce2a6fa6e981894">differenceCollection</a> (const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;collection, const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;refCollection, bool correlatedUncertainties)</td></tr>
+<tr class="separator:a284d9d7d904166062ce2a6fa6e981894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab38f556aa46f58406cd66b06f919b111"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#ab38f556aa46f58406cd66b06f919b111">ratioCollection</a> (const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;collection, const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;refCollection, bool correlatedUncertainties)</td></tr>
+<tr class="separator:ab38f556aa46f58406cd66b06f919b111"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9164c0d68cbfdf4d7144cc24927323e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#a9164c0d68cbfdf4d7144cc24927323e0">squareDifferenceCollection</a> (const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;collection, double sumWeights, double weight, int n)</td></tr>
-<tr class="memdesc:a9164c0d68cbfdf4d7144cc24927323e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">==========================  <a href="class_histogram_collection.html#a9164c0d68cbfdf4d7144cc24927323e0">More...</a><br /></td></tr>
 <tr class="separator:a9164c0d68cbfdf4d7144cc24927323e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e733dffcda9455836e149168383ea08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#a2e733dffcda9455836e149168383ea08">squareDifferenceHistos</a> (TH1 *hAvg, TH1 *h, double sumWeights, double weight, int n)</td></tr>
 <tr class="separator:a2e733dffcda9455836e149168383ea08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd3280954a328454392bfd79fbbe7e26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#abd3280954a328454392bfd79fbbe7e26">differenceHistos</a> (TH1 *h, TH1 *hRef, TH1 *hDiff, bool correlatedUncertainties)</td></tr>
+<tr class="separator:abd3280954a328454392bfd79fbbe7e26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a64114121ec8db86de2f333c77e26ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#a0a64114121ec8db86de2f333c77e26ed">ratioHistos</a> (TH1 *h, TH1 *hRef, TH1 *hDiff, bool correlatedUncertainties)</td></tr>
+<tr class="separator:a0a64114121ec8db86de2f333c77e26ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9d44ee3539c54ce3fa243669c3d24bc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#af9d44ee3539c54ce3fa243669c3d24bc">getDimension</a> (const TH1 *h) const</td></tr>
 <tr class="separator:af9d44ee3539c54ce3fa243669c3d24bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf3b1178ad2c6fc18aa413faededed68"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#adf3b1178ad2c6fc18aa413faededed68">sameDimensions</a> (const TString &amp;caller, const TH1 *h1, const TH1 *h2) const</td></tr>
@@ -421,8 +427,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a95959d6b2893d4642152be63ccac9de4 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afda08ec642d84dbe4b3c3365a5ab5197 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">TH1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#afda08ec642d84dbe4b3c3365a5ab5197">back</a> ()</td></tr>
 <tr class="separator:afda08ec642d84dbe4b3c3365a5ab5197 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2f7148ab6bd9771cf4c12f12d42f9c2 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#aa2f7148ab6bd9771cf4c12f12d42f9c2">sameSizeAs</a> (const <a class="el" href="class_collection.html">Collection</a>&lt; TH1 &gt; &amp;other)</td></tr>
-<tr class="separator:aa2f7148ab6bd9771cf4c12f12d42f9c2 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01fd386118d7e2cd605b1c12b1fa1435 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#a01fd386118d7e2cd605b1c12b1fa1435">sameSizeAs</a> (const <a class="el" href="class_collection.html">Collection</a>&lt; TH1 &gt; &amp;other) const</td></tr>
+<tr class="separator:a01fd386118d7e2cd605b1c12b1fa1435 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a085e9375f7fb9c8a50fa8019b8e1906e inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#a085e9375f7fb9c8a50fa8019b8e1906e">copy</a> (long n, TH1 **source)</td></tr>
 <tr class="separator:a085e9375f7fb9c8a50fa8019b8e1906e inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4a2e034fe55fbf5c4f7a185d26ff840 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#ad4a2e034fe55fbf5c4f7a185d26ff840">deepCopy</a> (long n, TH1 **source)</td></tr>
@@ -532,6 +538,32 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1c9b286039a61ef843025b7a0dfb63a9 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a581047e4ae03db23a186bfce95606baf inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a581047e4ae03db23a186bfce95606baf">ptrExist</a> (const TString &amp;caller, const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10, const TH1 *h11, const TH1 *h12) const</td></tr>
 <tr class="separator:a581047e4ae03db23a186bfce95606baf inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a31c4cfdd07e56dc3f94eac4a827df7 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a7a31c4cfdd07e56dc3f94eac4a827df7">ptrFileExist</a> (const TFile *f) const</td></tr>
+<tr class="separator:a7a31c4cfdd07e56dc3f94eac4a827df7 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5236ff7f69cec4fd0c9f082d7616e02 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#ae5236ff7f69cec4fd0c9f082d7616e02">ptrExist</a> (const TH1 *h1) const</td></tr>
+<tr class="separator:ae5236ff7f69cec4fd0c9f082d7616e02 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07482048b4e3fb14255389cb2346d8ef inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a07482048b4e3fb14255389cb2346d8ef">ptrExist</a> (const TH1 *h1, const TH1 *h2) const</td></tr>
+<tr class="separator:a07482048b4e3fb14255389cb2346d8ef inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b987c3662fe2f4ac74d5b53d9b1ee1d inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a1b987c3662fe2f4ac74d5b53d9b1ee1d">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3) const</td></tr>
+<tr class="separator:a1b987c3662fe2f4ac74d5b53d9b1ee1d inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27063875dd1665c09408acbfff2daa05 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a27063875dd1665c09408acbfff2daa05">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4) const</td></tr>
+<tr class="separator:a27063875dd1665c09408acbfff2daa05 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea9d67b89990c83b3bc4a8938882d706 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#aea9d67b89990c83b3bc4a8938882d706">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5) const</td></tr>
+<tr class="separator:aea9d67b89990c83b3bc4a8938882d706 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad225f291276ce9d336050b4c96a6b0ef inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#ad225f291276ce9d336050b4c96a6b0ef">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6) const</td></tr>
+<tr class="separator:ad225f291276ce9d336050b4c96a6b0ef inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a733f19dc797606d918c5ac395bfad1a1 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a733f19dc797606d918c5ac395bfad1a1">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7) const</td></tr>
+<tr class="separator:a733f19dc797606d918c5ac395bfad1a1 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83d7f51337ef3f93ffebb2e162e17594 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a83d7f51337ef3f93ffebb2e162e17594">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8) const</td></tr>
+<tr class="separator:a83d7f51337ef3f93ffebb2e162e17594 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cc7c585795abe114309cc66f90f23f3 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a5cc7c585795abe114309cc66f90f23f3">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9) const</td></tr>
+<tr class="separator:a5cc7c585795abe114309cc66f90f23f3 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a888b9c9627ebb6430ba0cde1ae73ffce inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a888b9c9627ebb6430ba0cde1ae73ffce">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10) const</td></tr>
+<tr class="separator:a888b9c9627ebb6430ba0cde1ae73ffce inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ad9af50d1fcbc9ec9038d1b8deb3404 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a4ad9af50d1fcbc9ec9038d1b8deb3404">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10, const TH1 *h11) const</td></tr>
+<tr class="separator:a4ad9af50d1fcbc9ec9038d1b8deb3404 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a771a1200285aa43589deaa082b0ac076 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a771a1200285aa43589deaa082b0ac076">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10, const TH1 *h11, const TH1 *h12) const</td></tr>
+<tr class="separator:a771a1200285aa43589deaa082b0ac076 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -627,9 +659,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a5c730635992bdce01329c77bdcb21608 inherit pro_attribs_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >using namespace std; </p>
-
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8hpp_source.html#l00045">45</a> of file <a class="el" href="_histogram_collection_8hpp_source.html">HistogramCollection.hpp</a>.</p>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8hpp_source.html#l00046">46</a> of file <a class="el" href="_histogram_collection_8hpp_source.html">HistogramCollection.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae22e875c97b3de71028397b6bdb9403d" name="ae22e875c97b3de71028397b6bdb9403d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae22e875c97b3de71028397b6bdb9403d">&#9670;&nbsp;</a></span>HistogramCollection() <span class="overload">[1/2]</span></h2>
@@ -657,7 +688,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00017">17</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00020">20</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -677,7 +708,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00027">27</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00031">31</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -704,7 +735,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00062">62</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00069">69</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -774,7 +805,7 @@ Additional Inherited Members</h2></td></tr>
 <p>========================== </p>
 <p >========================== </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00717">717</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00736">736</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -831,7 +862,7 @@ Additional Inherited Members</h2></td></tr>
 <p>========================== </p>
 <p >========================== </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00651">651</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00670">670</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -876,7 +907,7 @@ Additional Inherited Members</h2></td></tr>
 <p>========================== </p>
 <p >========================== </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00598">598</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00617">617</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -909,7 +940,7 @@ Additional Inherited Members</h2></td></tr>
 <p>========================== </p>
 <p >========================== </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00548">548</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00565">565</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -929,7 +960,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00266">266</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00282">282</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -949,7 +980,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02420">2420</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02758">2758</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -994,7 +1025,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Compute the average density of particles based on the given dN/dx histogram. The histogram is assumed to be a yield per event per bin vs. eta The average value is thus divided by the bin width to make it into a density. This yields a density integrated over 2pi. So to use this number, one must also divide by 2pi. </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03291">3291</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03630">3630</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -1030,7 +1061,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03382">3382</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03724">3724</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -1066,7 +1097,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03486">3486</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03828">3828</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -1102,7 +1133,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03449">3449</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03791">3791</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -1138,7 +1169,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03414">3414</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03756">3756</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -1175,7 +1206,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Calculate the 'triangle' normalization target will be divided by bin widths and scaleFactor </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02984">2984</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03323">3323</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -1223,7 +1254,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01934">1934</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02273">2273</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -1265,7 +1296,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03236">3236</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03575">3575</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -1338,7 +1369,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Calculate the G2 observable based on the given components </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01813">1813</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02150">2150</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -1423,7 +1454,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Calculate the G2 observable based on the given components </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01727">1727</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02064">2064</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -1501,7 +1532,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04780">4780</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l05122">5122</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -1549,7 +1580,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04649">4649</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04991">4991</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -1675,7 +1706,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04807">4807</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l05149">5149</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -1747,7 +1778,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04694">4694</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l05036">5036</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -1969,7 +2000,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04844">4844</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l05186">5186</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2089,7 +2120,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04729">4729</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l05071">5071</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2149,7 +2180,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01897">1897</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02235">2235</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2193,7 +2224,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03321">3321</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03661">3661</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2237,7 +2268,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03354">3354</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03695">3695</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2285,7 +2316,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01071">1071</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01409">1409</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2333,7 +2364,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01125">1125</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01463">1463</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2381,7 +2412,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01179">1179</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01517">1517</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2429,7 +2460,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02255">2255</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02587">2587</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2477,7 +2508,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02215">2215</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02549">2549</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2525,7 +2556,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02171">2171</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02507">2507</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2573,7 +2604,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02308">2308</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02640">2640</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2615,7 +2646,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01243">1243</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01581">1581</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2657,7 +2688,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01288">1288</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01626">1626</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2699,7 +2730,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01329">1329</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01667">1667</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2742,7 +2773,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Fold s2 and s1 into target </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01389">1389</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01727">1727</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2808,7 +2839,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04906">4906</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l05249">5249</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2850,7 +2881,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04673">4673</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l05015">5015</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2922,7 +2953,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02042">2042</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02378">2378</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -2994,7 +3025,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02102">2102</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02438">2438</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3050,7 +3081,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Calculate R2 = binCorrection*N2/N1/N1 - 1. </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03020">3020</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03359">3359</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3104,7 +3135,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03117">3117</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03456">3456</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3158,7 +3189,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03077">3077</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03416">3416</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3206,7 +3237,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02371">2371</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02703">2703</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3260,7 +3291,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03175">3175</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03514">3514</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3308,7 +3339,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01866">1866</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02203">2203</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3368,7 +3399,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01977">1977</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02316">2316</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3418,7 +3449,7 @@ Additional Inherited Members</h2></td></tr>
 <p>========================== </p>
 <p >========================== </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00528">528</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00546">546</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3450,7 +3481,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Clone the given histogram, and set the clone's name to the given name. //throws a HistogramException if the histogram does not exist (null pointer). </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02614">2614</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02953">2953</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3492,7 +3523,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02898">2898</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03237">3237</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3541,7 +3572,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Create 1D histogram </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00113">113</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00129">129</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3596,7 +3627,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Create 1D histogram </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00094">94</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00110">110</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3668,7 +3699,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00154">154</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00170">170</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3746,7 +3777,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00132">132</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00148">148</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3848,7 +3879,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00177">177</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00193">193</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3896,7 +3927,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00224">224</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00240">240</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -3950,7 +3981,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00207">207</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00223">223</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4028,7 +4059,104 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00242">242</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00258">258</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a284d9d7d904166062ce2a6fa6e981894" name="a284d9d7d904166062ce2a6fa6e981894"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a284d9d7d904166062ce2a6fa6e981894">&#9670;&nbsp;</a></span>differenceCollection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HistogramCollection::differenceCollection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;&#160;</td>
+          <td class="paramname"><em>collection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;&#160;</td>
+          <td class="paramname"><em>refCollection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>correlatedUncertainties</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Span all histograms of the two given collections and span each of their histograms bin by bin to compute differences and store the content difference in this collection. The collections must exactly the same number of histograms, in the same order, and with the same exact dimensions. <a class="el" href="class_histograms.html">Histograms</a> may be profiles. Uncertainties on the differences are computed as sum of square of uncertainties if correlatedUncertainties==0 and as a difference of square of uncertainties if correlatedUncertainties==1.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">collection</td><td><a class="el" href="class_collection.html">Collection</a> of histograms to be compared to those of the reference collection. </td></tr>
+    <tr><td class="paramname">refCollection</td><td>Reference collection of histograms </td></tr>
+    <tr><td class="paramname">correlatedUncertainties</td><td>Whether the uncertainties of the given and reference collection histograms are correlated. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00910">910</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+
+</div>
+</div>
+<a id="abd3280954a328454392bfd79fbbe7e26" name="abd3280954a328454392bfd79fbbe7e26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd3280954a328454392bfd79fbbe7e26">&#9670;&nbsp;</a></span>differenceHistos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HistogramCollection::differenceHistos </td>
+          <td>(</td>
+          <td class="paramtype">TH1 *&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TH1 *&#160;</td>
+          <td class="paramname"><em>hRef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TH1 *&#160;</td>
+          <td class="paramname"><em>hDiff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>correlatedUncertainties</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Span all bins of h and href and calculate the content difference (and the uncertainty) and store the difference in hDiff. All three given histograms must have the same exact dimensions. The histogram h and hRef may be profiles. Uncertainties on the difference hDiff are computed as sum of square of uncertainties on h and href if correlatedUncertainties==0 and as a difference of square of uncertainties if correlatedUncertainties==1.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>Histogram to be tested against the reference Histogram </td></tr>
+    <tr><td class="paramname">hRef</td><td>Reference Histogram </td></tr>
+    <tr><td class="paramname">hDiff</td><td>Difference histogram produced on output </td></tr>
+    <tr><td class="paramname">correlatedUncertainties</td><td>Whether the uncertainties of h and href are correlated: true if they are, false if they are not. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01152">1152</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4051,7 +4179,7 @@ Additional Inherited Members</h2></td></tr>
 <p>========================== </p>
 <p >========================== </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00788">788</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00807">807</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4084,7 +4212,7 @@ Additional Inherited Members</h2></td></tr>
 <p>========================== </p>
 <p >========================== </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00842">842</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00861">861</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4132,7 +4260,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02632">2632</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02971">2971</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4180,7 +4308,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02654">2654</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02993">2993</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4201,7 +4329,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Check whether the given histograms have the same dimension and size. </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01466">1466</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01804">1804</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4232,7 +4360,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Allocate an array of type double with n values Initialize the array to the given value</p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04213">4213</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04555">4555</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4263,7 +4391,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Allocate an array of type float with n values Initialize the array to the given value</p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04202">4202</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04544">4544</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4291,7 +4419,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8hpp_source.html#l00062">62</a> of file <a class="el" href="_histogram_collection_8hpp_source.html">HistogramCollection.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8hpp_source.html#l00063">63</a> of file <a class="el" href="_histogram_collection_8hpp_source.html">HistogramCollection.hpp</a>.</p>
 
 </div>
 </div>
@@ -4318,7 +4446,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8hpp_source.html#l00056">56</a> of file <a class="el" href="_histogram_collection_8hpp_source.html">HistogramCollection.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8hpp_source.html#l00057">57</a> of file <a class="el" href="_histogram_collection_8hpp_source.html">HistogramCollection.hpp</a>.</p>
 
 </div>
 </div>
@@ -4348,7 +4476,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04235">4235</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04577">4577</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4384,7 +4512,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04282">4282</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04624">4624</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4426,7 +4554,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04399">4399</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04741">4741</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4446,7 +4574,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00504">504</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00522">522</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4476,7 +4604,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02509">2509</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02848">2848</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4507,7 +4635,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Load the given 1D histogram (name) from the given TFile No test is //done to verify that the file is properly opened. </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02530">2530</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02869">2869</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4538,7 +4666,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Load the given 3D histogram (name) from the given TFile No test is //done to verify that the file is properly opened. </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02550">2550</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02889">2889</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4568,7 +4696,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02588">2588</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02927">2927</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4599,7 +4727,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Load the given 3D histogram (name) from the given TFile No test is //done to verify that the file is properly opened. </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02570">2570</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02909">2909</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4619,7 +4747,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00047">47</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00051">51</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4661,7 +4789,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04065">4065</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04407">4407</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4703,7 +4831,104 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04113">4113</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04455">4455</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab38f556aa46f58406cd66b06f919b111" name="ab38f556aa46f58406cd66b06f919b111"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab38f556aa46f58406cd66b06f919b111">&#9670;&nbsp;</a></span>ratioCollection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HistogramCollection::ratioCollection </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;&#160;</td>
+          <td class="paramname"><em>collection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;&#160;</td>
+          <td class="paramname"><em>refCollection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>correlatedUncertainties</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Span all histograms of the two given collections and span each of their histograms bin by bin to compute ratios and store the content ratio in this collection. The collections must exactly the same number of histograms, in the same order, and with the same exact dimensions. <a class="el" href="class_histograms.html">Histograms</a> may be profiles. Uncertainties on the differences are computed as sum of square of uncertainties if correlatedUncertainties==0 and as a difference of square of uncertainties if correlatedUncertainties==1.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">collection</td><td><a class="el" href="class_collection.html">Collection</a> of histograms to be compared to those of the reference collection. </td></tr>
+    <tr><td class="paramname">refCollection</td><td>Reference collection of histograms </td></tr>
+    <tr><td class="paramname">correlatedUncertainties</td><td>Whether the uncertainties of the given and reference collection histograms are correlated. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00947">947</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a0a64114121ec8db86de2f333c77e26ed" name="a0a64114121ec8db86de2f333c77e26ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a64114121ec8db86de2f333c77e26ed">&#9670;&nbsp;</a></span>ratioHistos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HistogramCollection::ratioHistos </td>
+          <td>(</td>
+          <td class="paramtype">TH1 *&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TH1 *&#160;</td>
+          <td class="paramname"><em>hRef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TH1 *&#160;</td>
+          <td class="paramname"><em>hDiff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>correlatedUncertainties</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Span all bins of h and href and calculate the content ratio (and the uncertainty) and store the ratio in hRatio. All three given histograms must have the same exact dimensions. The histogram h and hRef may be profiles. Uncertainties on the difference hRatio are computed as sum of square of uncertainties on h and href if correlatedUncertainties==0 and as a difference of square of uncertainties if correlatedUncertainties==1.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>Histogram to be tested against the reference Histogram </td></tr>
+    <tr><td class="paramname">hRef</td><td>Reference Histogram </td></tr>
+    <tr><td class="paramname">hDiff</td><td>Ratio histogram produced on output </td></tr>
+    <tr><td class="paramname">correlatedUncertainties</td><td>Whether the uncertainties of h and href are correlated: true if they are, false if they are not. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01266">1266</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4752,7 +4977,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Calculate the external product of n_1(eta,phi) by n_2(eta,phi) and project onto n1n1_12(Deta,Dphi) First create a 4D external product of h_1 and h_2 using a 1D vector than project it onto DeltaEta(x-axis) DeltaPhi (y-axis) Errors are neglected and must be accounted for using a sub-sample analysis. </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03923">3923</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04265">4265</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4794,7 +5019,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03837">3837</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04179">4179</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4836,7 +5061,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04002">4002</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04344">4344</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4864,7 +5089,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Reset all histograms of this collection </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00086">86</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00097">97</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4901,7 +5126,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Set all n values of the given array to the given value</p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04223">4223</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04565">4565</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4938,7 +5163,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Check whether the given histograms have the same dimension and size. </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01490">1490</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01827">1827</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -4981,7 +5206,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Check whether the given histograms have the same dimension and size. </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01542">1542</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01879">1879</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5030,7 +5255,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Check whether the given histograms have the same dimension and size. </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01599">1599</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01936">1936</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5085,7 +5310,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Check whether the given histograms have the same dimension and size. </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01660">1660</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01997">1997</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5105,7 +5330,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00281">281</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00297">297</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5125,7 +5350,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00299">299</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00317">317</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5145,7 +5370,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02802">2802</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03141">3141</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5175,7 +5400,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02763">2763</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03102">3102</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5205,7 +5430,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02675">2675</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03014">3014</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5235,7 +5460,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02697">2697</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03036">3036</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5265,7 +5490,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02727">2727</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03066">3066</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5285,7 +5510,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00069">69</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00076">76</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5322,7 +5547,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Set all bins of the given histogram to the given value and error. </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02449">2449</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02788">2788</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5359,7 +5584,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Set all bins of the given histogram to the given value and error. </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02466">2466</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02805">2805</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5396,7 +5621,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Set all bins of the given histogram to the given value and error. </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02487">2487</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02826">2826</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5426,7 +5651,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00386">386</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00404">404</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5468,7 +5693,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00452">452</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00470">470</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5498,7 +5723,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00420">420</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00438">438</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5546,7 +5771,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00476">476</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00494">494</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5584,7 +5809,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>shift the given source to the target vertically by nbins </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04171">4171</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04513">4513</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5625,11 +5850,9 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Calculate square difference (bin by bin) of all histograms of the other collection relative to the reference collection and store the result in the histograms of this collection. TProfile histograms have to be handled differently This function is used for sub-sample analyses... double sumWeights: sum of the weights of the n-1 collection accumulated in this collection double weight: weight of the current n-th collection. The means are store in the BinContent The rms are store in the BinError parts of the histograms. </p>
 
-<p>========================== </p>
-<p >========================== </p>
-
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00902">902</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00994">994</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5676,8 +5899,19 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Span all bins of hAvg and h and compute the difference between histo "h" and the reference "havg", and increment the value havg accordingly. <a class="el" href="class_histograms.html">Histograms</a> must have the same exact dimensions. The histograms may be profiles.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hAvg</td><td>Histogram containing the running average </td></tr>
+    <tr><td class="paramname">h</td><td>Histogram to be compared to hAvg and use to update the average and the uncertainties. </td></tr>
+    <tr><td class="paramname">sumWeights</td><td>Cumulated sum of weights </td></tr>
+    <tr><td class="paramname">weight</td><td>Weight given to histogram h. </td></tr>
+    <tr><td class="paramname">n</td><td>Index of file being processed. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l00943">943</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l01031">1031</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5696,7 +5930,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02834">2834</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03173">3173</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5718,7 +5952,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Depracated&ndash;dont use... </p>
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04161">4161</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04503">4503</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5738,7 +5972,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03515">3515</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03857">3857</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5768,7 +6002,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03573">3573</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03915">3915</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5798,7 +6032,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03718">3718</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l04060">4060</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5828,7 +6062,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l02857">2857</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8cpp_source.html#l03196">3196</a> of file <a class="el" href="_histogram_collection_8cpp_source.html">HistogramCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -5845,7 +6079,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_histogram_collection_8hpp_source.html#l00258">258</a> of file <a class="el" href="_histogram_collection_8hpp_source.html">HistogramCollection.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_histogram_collection_8hpp_source.html#l00319">319</a> of file <a class="el" href="_histogram_collection_8hpp_source.html">HistogramCollection.hpp</a>.</p>
 
 </div>
 </div>

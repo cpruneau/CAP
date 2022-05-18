@@ -86,40 +86,42 @@ $(document).ready(function(){initNavTree('_event_filter_8hpp_source.html',''); i
   <div class="headertitle"><div class="title">EventFilter.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_event_filter_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Author: Claude Pruneau   09/25/2019</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">/***********************************************************************</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (C) 2019, Claude Pruneau.</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * All rights reserved.</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * Based on the ROOT package and environment</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * For the licensing terms see LICENSE.</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> **********************************************************************/</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifndef CAP__EventFilter</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define CAP__EventFilter</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="_event_8hpp.html">Event.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="_filter_8hpp.html">Filter.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_event_filter.html">   15</a></span><span class="keyword">class </span><a class="code hl_class" href="class_event_filter.html">EventFilter</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_filter.html">Filter</a>&lt;Event&gt;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  <a class="code hl_function" href="class_event_filter.html#a3cb946d06e5cb42e0ff74f12acd5e586">EventFilter</a>();</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  <span class="keyword">virtual</span> <a class="code hl_function" href="class_event_filter.html#a7edc6dd2901804205220f4ced3520cea">~EventFilter</a>();</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_event_filter.html#aa4632706bbb44971f52ccdec125f97e6">accept</a>(<span class="keyword">const</span> <a class="code hl_class" href="class_event.html">Event</a> &amp; event);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  ClassDef(<a class="code hl_class" href="class_event_filter.html">EventFilter</a>,0)</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>};</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#endif </span><span class="comment">/* CAP__EventFilter */</span><span class="preprocessor"></span></div>
+<a href="_event_filter_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* **********************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * Copyright (C) 2019-2022, Claude Pruneau, Victor Gonzalez, Sumit Basu</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * All rights reserved.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * Based on the ROOT package and environment</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * For the licensing terms see LICENSE.</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * Author: Claude Pruneau,   04/01/2022</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * *********************************************************************/</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef CAP__EventFilter</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define CAP__EventFilter</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="_event_8hpp.html">Event.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="_filter_8hpp.html">Filter.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="class_event_filter.html">   17</a></span><span class="keyword">class </span><a class="code hl_class" href="class_event_filter.html">EventFilter</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_filter.html">Filter</a>&lt;Event&gt;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <a class="code hl_function" href="class_event_filter.html#a3cb946d06e5cb42e0ff74f12acd5e586">EventFilter</a>();</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keyword">virtual</span> <a class="code hl_function" href="class_event_filter.html#a7edc6dd2901804205220f4ced3520cea">~EventFilter</a>();</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_event_filter.html#aa4632706bbb44971f52ccdec125f97e6">accept</a>(<span class="keyword">const</span> <a class="code hl_class" href="class_event.html">Event</a> &amp; event);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  ClassDef(<a class="code hl_class" href="class_event_filter.html">EventFilter</a>,0)</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>};</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif </span><span class="comment">/* CAP__EventFilter */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="a_event_8hpp_html"><div class="ttname"><a href="_event_8hpp.html">Event.hpp</a></div></div>
 <div class="ttc" id="a_filter_8hpp_html"><div class="ttname"><a href="_filter_8hpp.html">Filter.hpp</a></div></div>
-<div class="ttc" id="aclass_event_filter_html"><div class="ttname"><a href="class_event_filter.html">EventFilter</a></div><div class="ttdef"><b>Definition:</b> <a href="_event_filter_8hpp_source.html#l00015">EventFilter.hpp:16</a></div></div>
-<div class="ttc" id="aclass_event_filter_html_a3cb946d06e5cb42e0ff74f12acd5e586"><div class="ttname"><a href="class_event_filter.html#a3cb946d06e5cb42e0ff74f12acd5e586">EventFilter::EventFilter</a></div><div class="ttdeci">EventFilter()</div><div class="ttdef"><b>Definition:</b> <a href="_event_filter_8cpp_source.html#l00018">EventFilter.cpp:18</a></div></div>
-<div class="ttc" id="aclass_event_filter_html_a7edc6dd2901804205220f4ced3520cea"><div class="ttname"><a href="class_event_filter.html#a7edc6dd2901804205220f4ced3520cea">EventFilter::~EventFilter</a></div><div class="ttdeci">virtual ~EventFilter()</div><div class="ttdef"><b>Definition:</b> <a href="_event_filter_8cpp_source.html#l00029">EventFilter.cpp:29</a></div></div>
-<div class="ttc" id="aclass_event_filter_html_aa4632706bbb44971f52ccdec125f97e6"><div class="ttname"><a href="class_event_filter.html#aa4632706bbb44971f52ccdec125f97e6">EventFilter::accept</a></div><div class="ttdeci">virtual bool accept(const Event &amp;event)</div><div class="ttdef"><b>Definition:</b> <a href="_event_filter_8cpp_source.html#l00037">EventFilter.cpp:37</a></div></div>
-<div class="ttc" id="aclass_event_html"><div class="ttname"><a href="class_event.html">Event</a></div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00021">Event.hpp:22</a></div></div>
-<div class="ttc" id="aclass_filter_html"><div class="ttname"><a href="class_filter.html">Filter</a></div><div class="ttdef"><b>Definition:</b> <a href="_filter_8hpp_source.html#l00135">Filter.hpp:136</a></div></div>
+<div class="ttc" id="aclass_event_filter_html"><div class="ttname"><a href="class_event_filter.html">EventFilter</a></div><div class="ttdef"><b>Definition:</b> <a href="_event_filter_8hpp_source.html#l00017">EventFilter.hpp:18</a></div></div>
+<div class="ttc" id="aclass_event_filter_html_a3cb946d06e5cb42e0ff74f12acd5e586"><div class="ttname"><a href="class_event_filter.html#a3cb946d06e5cb42e0ff74f12acd5e586">EventFilter::EventFilter</a></div><div class="ttdeci">EventFilter()</div><div class="ttdef"><b>Definition:</b> <a href="_event_filter_8cpp_source.html#l00021">EventFilter.cpp:21</a></div></div>
+<div class="ttc" id="aclass_event_filter_html_a7edc6dd2901804205220f4ced3520cea"><div class="ttname"><a href="class_event_filter.html#a7edc6dd2901804205220f4ced3520cea">EventFilter::~EventFilter</a></div><div class="ttdeci">virtual ~EventFilter()</div><div class="ttdef"><b>Definition:</b> <a href="_event_filter_8cpp_source.html#l00032">EventFilter.cpp:32</a></div></div>
+<div class="ttc" id="aclass_event_filter_html_aa4632706bbb44971f52ccdec125f97e6"><div class="ttname"><a href="class_event_filter.html#aa4632706bbb44971f52ccdec125f97e6">EventFilter::accept</a></div><div class="ttdeci">virtual bool accept(const Event &amp;event)</div><div class="ttdef"><b>Definition:</b> <a href="_event_filter_8cpp_source.html#l00040">EventFilter.cpp:40</a></div></div>
+<div class="ttc" id="aclass_event_html"><div class="ttname"><a href="class_event.html">Event</a></div><div class="ttdef"><b>Definition:</b> <a href="_event_8hpp_source.html#l00023">Event.hpp:24</a></div></div>
+<div class="ttc" id="aclass_filter_html"><div class="ttname"><a href="class_filter.html">Filter</a></div><div class="ttdef"><b>Definition:</b> <a href="_filter_8hpp_source.html#l00137">Filter.hpp:138</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

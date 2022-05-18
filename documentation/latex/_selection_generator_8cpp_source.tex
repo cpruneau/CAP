@@ -2,48 +2,50 @@
 \label{_selection_generator_8cpp_source}\index{Base/SelectionGenerator.cpp@{Base/SelectionGenerator.cpp}}
 \mbox{\hyperlink{_selection_generator_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00003}00003 \textcolor{comment}{/*************************************************************************}}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.                                   *}}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.                                                  *}}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment                             *}}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00007}00007 \textcolor{comment}{ *                                                                       *}}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.                                  *}}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00009}00009 \textcolor{comment}{ *************************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00016}00016 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_selection_generator_8hpp}{SelectionGenerator.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00019}\mbox{\hyperlink{_selection_generator_8cpp_aa3a4aafa5c47bbc074f39002a63a7218}{00019}} \mbox{\hyperlink{_selection_generator_8cpp_aa3a4aafa5c47bbc074f39002a63a7218}{ClassImp}}(\mbox{\hyperlink{class_selection_generator}{SelectionGenerator}});}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00020}00020 }
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00021}\mbox{\hyperlink{class_selection_generator_a750b0f298999879256bc4edafae89048}{00021}} \mbox{\hyperlink{class_selection_generator_a750b0f298999879256bc4edafae89048}{SelectionGenerator::SelectionGenerator}}(std::vector<double> probabilities)}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00022}00022 :}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00023}00023 cProbs()}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00024}00024 \{}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00025}00025   \textcolor{keywordtype}{int} n = probabilities.size();}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00026}00026   \textcolor{keywordtype}{double} sum = 0.0;}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00027}00027   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<n; k++)}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00028}00028   \{}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00029}00029   sum += probabilities[k];}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00030}00030   \}}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00031}00031   \textcolor{keywordtype}{double} prob = 0.0;}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00032}00032   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<n; k++)}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00033}00033   \{}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00034}00034   prob += probabilities[k]/sum;}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00035}00035   \mbox{\hyperlink{class_selection_generator_a302e676ee19cfed40cbd7d6037e6161a}{cProbs}}.push\_back(prob);}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00036}00036   \}}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00037}00037 \}}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00038}00038 }
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00039}\mbox{\hyperlink{class_selection_generator_a55988d965291874319f16f6a65915afd}{00039}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_selection_generator_a55988d965291874319f16f6a65915afd}{SelectionGenerator::generate}}()}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00040}00040 \{}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00041}00041   \textcolor{keywordtype}{double} v = gRandom-\/>Rndm();}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00042}00042   \textcolor{keywordtype}{int} n = \mbox{\hyperlink{class_selection_generator_a302e676ee19cfed40cbd7d6037e6161a}{cProbs}}.size();}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00043}00043   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<n; k++)}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00044}00044   \{}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00045}00045   \textcolor{keywordflow}{if} (v <= \mbox{\hyperlink{class_selection_generator_a302e676ee19cfed40cbd7d6037e6161a}{cProbs}}[k]) \textcolor{keywordflow}{return} k;}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00046}00046   \}}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00047}00047   \textcolor{keywordflow}{return} n-\/1;}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00048}00048 \}}
-\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_selection_generator_8hpp}{SelectionGenerator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00015}\mbox{\hyperlink{_selection_generator_8cpp_aa3a4aafa5c47bbc074f39002a63a7218}{00015}} \mbox{\hyperlink{_selection_generator_8cpp_aa3a4aafa5c47bbc074f39002a63a7218}{ClassImp}}(\mbox{\hyperlink{class_selection_generator}{SelectionGenerator}});}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00017}\mbox{\hyperlink{class_selection_generator_a750b0f298999879256bc4edafae89048}{00017}} \mbox{\hyperlink{class_selection_generator_a750b0f298999879256bc4edafae89048}{SelectionGenerator::SelectionGenerator}}(std::vector<double> probabilities)}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00018}00018 :}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00019}00019 cProbs()}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00020}00020 \{}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00021}00021   \textcolor{keywordtype}{int} n = probabilities.size();}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00022}00022   \textcolor{keywordtype}{double} sum = 0.0;}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00023}00023   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<n; k++)}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00024}00024   \{}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00025}00025   sum += probabilities[k];}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00026}00026   \}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00027}00027   \textcolor{keywordtype}{double} prob = 0.0;}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00028}00028   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<n; k++)}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00029}00029   \{}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00030}00030   prob += probabilities[k]/sum;}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00031}00031   \mbox{\hyperlink{class_selection_generator_a302e676ee19cfed40cbd7d6037e6161a}{cProbs}}.push\_back(prob);}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00032}00032   \}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00033}00033 \}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00035}\mbox{\hyperlink{class_selection_generator_a55988d965291874319f16f6a65915afd}{00035}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_selection_generator_a55988d965291874319f16f6a65915afd}{SelectionGenerator::generate}}()}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00036}00036 \{}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00037}00037   \textcolor{keywordtype}{double} v = gRandom-\/>Rndm();}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00038}00038   \textcolor{keywordtype}{int} n = \mbox{\hyperlink{class_selection_generator_a302e676ee19cfed40cbd7d6037e6161a}{cProbs}}.size();}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00039}00039   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<n; k++)}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00040}00040   \{}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00041}00041   \textcolor{keywordflow}{if} (v <= \mbox{\hyperlink{class_selection_generator_a302e676ee19cfed40cbd7d6037e6161a}{cProbs}}[k]) \textcolor{keywordflow}{return} k;}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00042}00042   \}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00043}00043   \textcolor{keywordflow}{return} n-\/1;}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00044}00044 \}}
+\DoxyCodeLine{\Hypertarget{_selection_generator_8cpp_source_l00045}00045 }
 
 \end{DoxyCode}

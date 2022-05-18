@@ -99,6 +99,8 @@ public:
 
   void clear()
   {
+  
+  if (reportInfo(__FUNCTION__)) cout << " Has ownership? " << ownership << endl;
   if (ownership)
     {
     for (unsigned long k=0;k<objects.size();k++)
@@ -108,6 +110,7 @@ public:
     }
   objects.clear();
   name = "";
+  if (reportInfo(__FUNCTION__)) cout << " Completed!!!!!! " << endl;
   }
 
 
@@ -153,7 +156,7 @@ public:
   return objects.back();
   }
 
-  bool sameSizeAs(const Collection<T> & other)
+  bool sameSizeAs(const Collection<T> & other) const
   {
   return objects.size() == other.objects.size();
   }

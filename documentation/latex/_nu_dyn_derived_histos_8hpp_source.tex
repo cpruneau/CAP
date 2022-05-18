@@ -1,66 +1,68 @@
 \hypertarget{_nu_dyn_derived_histos_8hpp_source}{}\doxysection{Nu\+Dyn\+Derived\+Histos.\+hpp}
-\label{_nu_dyn_derived_histos_8hpp_source}\index{Base/NuDynDerivedHistos.hpp@{Base/NuDynDerivedHistos.hpp}}
+\label{_nu_dyn_derived_histos_8hpp_source}\index{NuDyn/NuDynDerivedHistos.hpp@{NuDyn/NuDynDerivedHistos.hpp}}
 \mbox{\hyperlink{_nu_dyn_derived_histos_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef CAP\_\_NuDynDerivedHistos}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define CAP\_\_NuDynDerivedHistos}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_histograms_8hpp}{Histograms.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_nu_dyn_histos_8hpp}{NuDynHistos.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00014}00014 }
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00015}00015 }
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00016}\mbox{\hyperlink{class_nu_dyn_derived_histos}{00016}} \textcolor{keyword}{class }\mbox{\hyperlink{class_nu_dyn_derived_histos}{NuDynDerivedHistos}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_histograms}{Histograms}}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00017}00017 \{}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00018}00018 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00019}00019 }
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00020}00020   \mbox{\hyperlink{class_nu_dyn_derived_histos_ae4683a5d05bfae67ccbbb72cabe831b6}{NuDynDerivedHistos}}(\textcolor{keyword}{const} TString \& \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}},}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00021}00021                      \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \& \mbox{\hyperlink{class_histograms_a045df45b0d1e815891b73274958e8cb4}{configuration}},}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00022}00022                      \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}  debugLevel);}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00023}\mbox{\hyperlink{class_nu_dyn_derived_histos_a6670f3474273ffa9dc10e121f40ca6f7}{00023}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_nu_dyn_derived_histos_a6670f3474273ffa9dc10e121f40ca6f7}{\string~NuDynDerivedHistos}}() \{\} }
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00024}00024   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nu_dyn_derived_histos_a74c164de9c00f0103444bdf86cd261d3}{createHistograms}}();}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00025}00025   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nu_dyn_derived_histos_a73c7a05aa3662029cdf5519b0d8d8d79}{loadHistograms}}(TFile * inputFile);}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00026}00026   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nu_dyn_derived_histos_a058a7c3512bd578e252c98dc7a4d4429}{calculateDerivedHistograms}}(\mbox{\hyperlink{class_nu_dyn_histos}{NuDynHistos}}* baseHistos);}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00027}00027 }
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00029}00029   \textcolor{comment}{// Data Members -\/ Histograms}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00031}00031 \textcolor{comment}{}  \textcolor{comment}{// n1 number of particles satisfying filter 1}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00032}00032   \textcolor{comment}{// n2 number of particles satisfying filter 2}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00033}00033   \textcolor{comment}{// h\_Fj  = cumulants of order "{}j"{}}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00034}00034   \textcolor{comment}{// h\_Rj  = normalized cumulants of order "{}j"{}}}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00035}00035 }
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00036}\mbox{\hyperlink{class_nu_dyn_derived_histos_a2789a97e4cd8956dc3eac007deaaa261}{00036}}   \textcolor{keywordtype}{int}  \mbox{\hyperlink{class_nu_dyn_derived_histos_a2789a97e4cd8956dc3eac007deaaa261}{nFilters}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00037}\mbox{\hyperlink{class_nu_dyn_derived_histos_a81ce40e91562d9a1127a52fb6ee2ea73}{00037}}   \textcolor{keywordtype}{int}  \mbox{\hyperlink{class_nu_dyn_derived_histos_a81ce40e91562d9a1127a52fb6ee2ea73}{multiplicityType}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00038}\mbox{\hyperlink{class_nu_dyn_derived_histos_a1a3df03ad3efc337149c86a4d5f35753}{00038}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_nu_dyn_derived_histos_a1a3df03ad3efc337149c86a4d5f35753}{pairOnly}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00039}00039 }
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00040}\mbox{\hyperlink{class_nu_dyn_derived_histos_a5c28269260f2236fa389459dc4b4bae9}{00040}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a5c28269260f2236fa389459dc4b4bae9}{h\_F2}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00041}\mbox{\hyperlink{class_nu_dyn_derived_histos_a46b6c51e37a02b1520bef69a5c76c189}{00041}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a46b6c51e37a02b1520bef69a5c76c189}{h\_F3}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00042}\mbox{\hyperlink{class_nu_dyn_derived_histos_ac4405a672138cd4bba1fcb99e6c32f52}{00042}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_ac4405a672138cd4bba1fcb99e6c32f52}{h\_F4}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00043}\mbox{\hyperlink{class_nu_dyn_derived_histos_af78e1ab79b78ae198c23d69d79528316}{00043}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_af78e1ab79b78ae198c23d69d79528316}{h\_R2}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00044}\mbox{\hyperlink{class_nu_dyn_derived_histos_a40ed4e890b1cc4711141828c66226515}{00044}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a40ed4e890b1cc4711141828c66226515}{h\_R3}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00045}\mbox{\hyperlink{class_nu_dyn_derived_histos_a81b32a8090fcab698cca732231f4b1be}{00045}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a81b32a8090fcab698cca732231f4b1be}{h\_R4}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00046}\mbox{\hyperlink{class_nu_dyn_derived_histos_a20d0b51d762bc38857a5582631466a92}{00046}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a20d0b51d762bc38857a5582631466a92}{h\_nudyn}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00047}00047 }
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00048}\mbox{\hyperlink{class_nu_dyn_derived_histos_a7f77056f82fe609d8643ae7033cfaa4a}{00048}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a7f77056f82fe609d8643ae7033cfaa4a}{h\_F2\_vsMult}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00049}\mbox{\hyperlink{class_nu_dyn_derived_histos_a4f34957b07ea2986d98ac3bf67c9c0a8}{00049}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a4f34957b07ea2986d98ac3bf67c9c0a8}{h\_F3\_vsMult}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00050}\mbox{\hyperlink{class_nu_dyn_derived_histos_ac6b6cd58c5411b657d8244ccdb7a082d}{00050}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_ac6b6cd58c5411b657d8244ccdb7a082d}{h\_F4\_vsMult}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00051}\mbox{\hyperlink{class_nu_dyn_derived_histos_adabbde2cec1c1b7be64fe281e9685c78}{00051}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_adabbde2cec1c1b7be64fe281e9685c78}{h\_R2\_vsMult}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00052}\mbox{\hyperlink{class_nu_dyn_derived_histos_a2c4118661e973d467328be244545ec3d}{00052}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a2c4118661e973d467328be244545ec3d}{h\_R3\_vsMult}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00053}\mbox{\hyperlink{class_nu_dyn_derived_histos_a11dc84a1a0d63c1c49ea072cee742d91}{00053}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a11dc84a1a0d63c1c49ea072cee742d91}{h\_R4\_vsMult}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00054}\mbox{\hyperlink{class_nu_dyn_derived_histos_ae8ffd1b94e96edf61aa4c6e9eeea2fe6}{00054}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_ae8ffd1b94e96edf61aa4c6e9eeea2fe6}{h\_nudyn\_vsMult}};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00055}00055 }
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00056}00056   \mbox{\hyperlink{class_histogram_collection_a8ac292967dc3381d557d3eb2f5730b38}{ClassDef}}(\mbox{\hyperlink{class_nu_dyn_derived_histos}{NuDynDerivedHistos}},0)}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00057}00057 \};}
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00058}00058 }
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00059}00059 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_NuDynDerivedHistos  */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef CAP\_\_NuDynDerivedHistos}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define CAP\_\_NuDynDerivedHistos}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_histograms_8hpp}{Histograms.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_nu_dyn_histos_8hpp}{NuDynHistos.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00018}\mbox{\hyperlink{class_nu_dyn_derived_histos}{00018}} \textcolor{keyword}{class }\mbox{\hyperlink{class_nu_dyn_derived_histos}{NuDynDerivedHistos}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_histograms}{Histograms}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00019}00019 \{}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00020}00020 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00022}00022   \mbox{\hyperlink{class_nu_dyn_derived_histos_ae4683a5d05bfae67ccbbb72cabe831b6}{NuDynDerivedHistos}}(\textcolor{keyword}{const} TString \& \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}},}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00023}00023                      \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \& \mbox{\hyperlink{class_histograms_a045df45b0d1e815891b73274958e8cb4}{configuration}},}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00024}00024                      \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}  debugLevel);}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00025}\mbox{\hyperlink{class_nu_dyn_derived_histos_a6670f3474273ffa9dc10e121f40ca6f7}{00025}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_nu_dyn_derived_histos_a6670f3474273ffa9dc10e121f40ca6f7}{\string~NuDynDerivedHistos}}() \{\} }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00026}00026   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nu_dyn_derived_histos_a74c164de9c00f0103444bdf86cd261d3}{createHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00027}00027   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nu_dyn_derived_histos_a73c7a05aa3662029cdf5519b0d8d8d79}{loadHistograms}}(TFile * inputFile);}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00028}00028   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nu_dyn_derived_histos_a058a7c3512bd578e252c98dc7a4d4429}{calculateDerivedHistograms}}(\mbox{\hyperlink{class_nu_dyn_histos}{NuDynHistos}}* baseHistos);}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00031}00031   \textcolor{comment}{// Data Members -\/ Histograms}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00033}00033 \textcolor{comment}{}  \textcolor{comment}{// n1 number of particles satisfying filter 1}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00034}00034   \textcolor{comment}{// n2 number of particles satisfying filter 2}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00035}00035   \textcolor{comment}{// h\_Fj  = cumulants of order "{}j"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00036}00036   \textcolor{comment}{// h\_Rj  = normalized cumulants of order "{}j"{}}}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00038}\mbox{\hyperlink{class_nu_dyn_derived_histos_a2789a97e4cd8956dc3eac007deaaa261}{00038}}   \textcolor{keywordtype}{int}  \mbox{\hyperlink{class_nu_dyn_derived_histos_a2789a97e4cd8956dc3eac007deaaa261}{nFilters}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00039}\mbox{\hyperlink{class_nu_dyn_derived_histos_a81ce40e91562d9a1127a52fb6ee2ea73}{00039}}   \textcolor{keywordtype}{int}  \mbox{\hyperlink{class_nu_dyn_derived_histos_a81ce40e91562d9a1127a52fb6ee2ea73}{multiplicityType}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00040}\mbox{\hyperlink{class_nu_dyn_derived_histos_a1a3df03ad3efc337149c86a4d5f35753}{00040}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_nu_dyn_derived_histos_a1a3df03ad3efc337149c86a4d5f35753}{pairOnly}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00042}\mbox{\hyperlink{class_nu_dyn_derived_histos_a5c28269260f2236fa389459dc4b4bae9}{00042}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a5c28269260f2236fa389459dc4b4bae9}{h\_F2}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00043}\mbox{\hyperlink{class_nu_dyn_derived_histos_a46b6c51e37a02b1520bef69a5c76c189}{00043}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a46b6c51e37a02b1520bef69a5c76c189}{h\_F3}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00044}\mbox{\hyperlink{class_nu_dyn_derived_histos_ac4405a672138cd4bba1fcb99e6c32f52}{00044}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_ac4405a672138cd4bba1fcb99e6c32f52}{h\_F4}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00045}\mbox{\hyperlink{class_nu_dyn_derived_histos_af78e1ab79b78ae198c23d69d79528316}{00045}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_af78e1ab79b78ae198c23d69d79528316}{h\_R2}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00046}\mbox{\hyperlink{class_nu_dyn_derived_histos_a40ed4e890b1cc4711141828c66226515}{00046}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a40ed4e890b1cc4711141828c66226515}{h\_R3}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00047}\mbox{\hyperlink{class_nu_dyn_derived_histos_a81b32a8090fcab698cca732231f4b1be}{00047}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a81b32a8090fcab698cca732231f4b1be}{h\_R4}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00048}\mbox{\hyperlink{class_nu_dyn_derived_histos_a20d0b51d762bc38857a5582631466a92}{00048}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a20d0b51d762bc38857a5582631466a92}{h\_nudyn}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00050}\mbox{\hyperlink{class_nu_dyn_derived_histos_a7f77056f82fe609d8643ae7033cfaa4a}{00050}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a7f77056f82fe609d8643ae7033cfaa4a}{h\_F2\_vsMult}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00051}\mbox{\hyperlink{class_nu_dyn_derived_histos_a4f34957b07ea2986d98ac3bf67c9c0a8}{00051}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a4f34957b07ea2986d98ac3bf67c9c0a8}{h\_F3\_vsMult}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00052}\mbox{\hyperlink{class_nu_dyn_derived_histos_ac6b6cd58c5411b657d8244ccdb7a082d}{00052}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_ac6b6cd58c5411b657d8244ccdb7a082d}{h\_F4\_vsMult}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00053}\mbox{\hyperlink{class_nu_dyn_derived_histos_adabbde2cec1c1b7be64fe281e9685c78}{00053}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_adabbde2cec1c1b7be64fe281e9685c78}{h\_R2\_vsMult}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00054}\mbox{\hyperlink{class_nu_dyn_derived_histos_a2c4118661e973d467328be244545ec3d}{00054}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a2c4118661e973d467328be244545ec3d}{h\_R3\_vsMult}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00055}\mbox{\hyperlink{class_nu_dyn_derived_histos_a11dc84a1a0d63c1c49ea072cee742d91}{00055}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_a11dc84a1a0d63c1c49ea072cee742d91}{h\_R4\_vsMult}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00056}\mbox{\hyperlink{class_nu_dyn_derived_histos_ae8ffd1b94e96edf61aa4c6e9eeea2fe6}{00056}}   vector<TH1 *> \mbox{\hyperlink{class_nu_dyn_derived_histos_ae8ffd1b94e96edf61aa4c6e9eeea2fe6}{h\_nudyn\_vsMult}};}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00058}00058   \mbox{\hyperlink{class_histogram_collection_a8ac292967dc3381d557d3eb2f5730b38}{ClassDef}}(\mbox{\hyperlink{class_nu_dyn_derived_histos}{NuDynDerivedHistos}},0)}
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00059}00059 \};}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00060}00060 }
-\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00061}00061 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_NuDynDerivedHistos  */}\textcolor{preprocessor}{}}
 \DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{_nu_dyn_derived_histos_8hpp_source_l00064}00064 }
 
 \end{DoxyCode}

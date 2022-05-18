@@ -24,7 +24,7 @@ HadronGasGeneratorTask::HadronGasGeneratorTask(const TString  &        _name,
                                                vector<ParticleFilter*>&_particleFilters,
                                                LogLevel                _selectedLevel)
 :
-NucleonNucleonCollisionGenerator(_name,_configuration,_eventFilters,_particleFilters, _selectedLevel),
+Task(_name,_configuration,_eventFilters,_particleFilters, _selectedLevel),
 particleTypes(nullptr),
 stableParticleTypes(nullptr),
 hadronGases(),
@@ -37,12 +37,17 @@ minY(-1),
 maxY(1),
 rangeY(2)
 {
-
+  appendClassName("HadronGasGeneratorTask");
+  setInstanceName(_name);
+  setDefaultConfiguration();
+  setConfiguration(_configuration);
 }
 
 void HadronGasGeneratorTask::setDefaultConfiguration()
 {
-  NucleonNucleonCollisionGenerator::setDefaultConfiguration();
+  
+  if (reportStart(__FUNCTION__))
+    ;
   Configuration config = getConfiguration();
   config.addParameter("useParticles", true);
   config.addParameter("useEventStream0",true);
@@ -90,8 +95,9 @@ void HadronGasGeneratorTask::setDefaultConfiguration()
 
 void HadronGasGeneratorTask::initialize()
 {
-  if (reportStart("HadronGasGeneratorTask",getName(),"initialize()"))
-    {}
+  
+  if (reportStart(__FUNCTION__))
+    ;
   Task::initialize();
   const Configuration & config = getConfiguration();
   standaloneMode = config.getValueBool("standaloneMode");
@@ -160,7 +166,7 @@ void HadronGasGeneratorTask::initialize()
       parameters.push_back(10.0);
       break;
     }
-  if (reportDebug("HadronGasGeneratorTask",getName(),"initialize()"))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "           Momentum generator type selected: " << generatorType << endl;
@@ -172,10 +178,7 @@ void HadronGasGeneratorTask::initialize()
     }
 
   unsigned int nSpecies = particleTypes->size();
-  if (reportDebug("HadronGasGeneratorTask",getName(),"initialize()"))
-    {
-    cout << " Setting the momentum generators for : " << nSpecies <<  " particle species."  << endl;
-    }
+  if (reportDebug(__FUNCTION__)) cout << " Setting the momentum generators for : " << nSpecies <<  " particle species."  << endl;
   for (unsigned int k=0; k<nSpecies; k++)
     {
     ParticleType * particleType = particleTypes->getParticleType(k);
@@ -184,7 +187,7 @@ void HadronGasGeneratorTask::initialize()
     momentumGenerators.push_back(gen);
     }
 
-  if (reportDebug("HadronGasGeneratorTask",getName(),"initialize()"))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << " Filling abundance histograms."  << endl;
@@ -206,18 +209,19 @@ void HadronGasGeneratorTask::initialize()
   relativeAbundancesGas->SetBinContent(k, d[k-1]);
   relativeAbundancesGas->SetBinError(k, 0.0);
   }
-  if (reportEnd("HadronGasGeneratorTask",getName(),"initialize()"))
+  if (reportEnd(__FUNCTION__))
     ;
 }
 
 void HadronGasGeneratorTask::execute()
 {
-  if (reportNoOps("HadronGasGeneratorTask",getName(),"execute()"))
+  
+  if (reportStart(__FUNCTION__))
     ;
-  incrementEventProcessed();
+  incrementTaskExecuted();
   Event & event = *eventStreams[0];
   Particle * interaction;
-  resetParticleCounters();
+  //// resetParticleCounters();
 
   if (standaloneMode)
     {
@@ -225,7 +229,6 @@ void HadronGasGeneratorTask::execute()
     // inserted in the event stream and generate is called to carry out the particle generation.
     particleFactory->reset();
     event.reset();
-    resetParticleCounters();
     interaction = particleFactory->getNextObject();
     interaction->reset();
     interaction->setType( ParticleType::getInteractionType());
@@ -246,9 +249,9 @@ void HadronGasGeneratorTask::execute()
     ep.nBinaryTotal      = 1;     // total number of binary collisions
     ep.impactParameter   = -99999; // nucleus-nucleus center distance in fm
     ep.fractionalXSection= -99999; // fraction cross section value
-    ep.referenceMultiplicity = eventStreams[0]->getNParticles();// nominal multiplicity in the reference range
-    ep.particlesCounted  = getNParticlesCounted();
-    ep.particlesAccepted = getNParticlesAccepted();
+//    ep.referenceMultiplicity = eventStreams[0]->getNParticles();// nominal multiplicity in the reference range
+//    ep.particlesCounted  = getNParticlesCounted();
+//    ep.particlesAccepted = getNParticlesAccepted();
     }
   else
     {
@@ -273,16 +276,17 @@ void HadronGasGeneratorTask::execute()
       {
       generate(interactions[kInter]);
       }
-    EventProperties & ep = * event.getEventProperties();
-    ep.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
-    ep.particlesCounted      = getNParticlesCounted();
-    ep.particlesAccepted     = getNParticlesAccepted();
+//    EventProperties & ep = * event.getEventProperties();
+//    ep.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
+//    ep.particlesCounted      = getNParticlesCounted();
+//    ep.particlesAccepted     = getNParticlesAccepted();
     }
 }
 
 void HadronGasGeneratorTask::generate(Particle * parent)
 {
-  if (reportStart("HadronGasGeneratorTask",getName(),"generate(Particle * parent)"))
+  
+  if (reportStart(__FUNCTION__))
     ;
   Event & event = * eventStreams[0];
   int multiplicity = minTotalMult + double(rangeTotalMult)*gRandom->Rndm();
@@ -298,7 +302,7 @@ void HadronGasGeneratorTask::generate(Particle * parent)
     relativeAbundances->Fill(rindex);
     if (index<0)
       {
-      if (reportFatal("HadronGasGeneratorTask",getName(),"execute()"))
+      if (reportFatal())
         {
         cout << "hadron index=" << index << endl;
         }
@@ -307,10 +311,7 @@ void HadronGasGeneratorTask::generate(Particle * parent)
     ParticleType * type = particleTypes->getParticleType(index);
     if (type==nullptr)
       {
-      if (reportError("HadronGasGeneratorTask",getName(),"execute()"))
-        {
-        cout << "HadronGas::generateRandomHadron() return null pointer. Post task error." << endl;
-        }
+      if (reportError(__FUNCTION__)) cout << "HadronGas::generateRandomHadron() return null pointer. Post task error." << endl;
       postTaskError();
       exit(1);
       return;
@@ -321,15 +322,9 @@ void HadronGasGeneratorTask::generate(Particle * parent)
     particle->setParent(parent);
     particle->set(type, momentum, parentPosition,true);
     //particle->printProperties(cout);
-    incrementParticlesCounted(); // photons are NOT included in this tally
+    //incrementParticlesCounted(); // photons are NOT included in this tally
     //if (!particleFilter.accept(*particle)) continue; // no filter for now...
     event.add(particle);
-    incrementParticlesAccepted();
-    }
-  if (reportDebug("HadronGasGeneratorTask",getName(),"execute()"))
-    {
-    cout << endl;
-    cout << "HadronGasGeneratorTask::execute() No of accepted particles : "<< getNParticlesAccepted() << endl;
-    cout << "HadronGasGeneratorTask::execute() No of counted particles : " << getNParticlesCounted()  << endl;
+    // // incrementParticlesAccepted();
     }
 }

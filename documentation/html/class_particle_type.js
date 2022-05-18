@@ -1,7 +1,7 @@
 var class_particle_type =
 [
     [ "ParticleType", "class_particle_type.html#a034cb7cfd02cb12089b039be9666e074", null ],
-    [ "ParticleType", "class_particle_type.html#adb57d15a5b4001732dfc22d32ae38d49", null ],
+    [ "ParticleType", "class_particle_type.html#ab690540bc8047ce74e1f53b4de12d1bd", null ],
     [ "ParticleType", "class_particle_type.html#a71bb573814bf3405dafdd82b7b5623e2", null ],
     [ "~ParticleType", "class_particle_type.html#a9711b1b94092b1367dae7b449202c45c", null ],
     [ "addDecayMode", "class_particle_type.html#aa41aa11d87ff0da72bcb2f065c3f0edf", null ],

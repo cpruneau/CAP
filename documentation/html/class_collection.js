@@ -17,7 +17,7 @@ var class_collection =
     [ "operator=", "class_collection.html#a31b1949265604b805b10b0fb4c107a7c", null ],
     [ "operator[]", "class_collection.html#a68f8526c85f392b40280a33c3f29ab7c", null ],
     [ "push_back", "class_collection.html#aa30145e7c4162758ae55bf73d3f4ea48", null ],
-    [ "sameSizeAs", "class_collection.html#aa2f7148ab6bd9771cf4c12f12d42f9c2", null ],
+    [ "sameSizeAs", "class_collection.html#a01fd386118d7e2cd605b1c12b1fa1435", null ],
     [ "setName", "class_collection.html#a4240b3a7e25d7ddce96e757bed4d23e4", null ],
     [ "setOwnership", "class_collection.html#a53171739ab8ad75c86285a35b43cdab2", null ],
     [ "size", "class_collection.html#accaed765a35af099fe1644bfc89ec373", null ],

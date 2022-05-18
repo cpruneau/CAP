@@ -44,79 +44,47 @@ public:
   //! Sets the default  values of the configuration parameters used by this task
   //!
   virtual void setDefaultConfiguration();
-  
+
   //!
-  //! Run this iterator task.
+  //! Initialize the subtasks
   //!
-  virtual void run();
-  
+  virtual void initialize();
+
+
   //!
-  //! Execute the subtasks on one event
+  //! Execute the subtasks
   //!
   virtual void execute();
-  
-  //!
-  //! Perform a subsample analysis on the output of this iterator task.
-  //!
-  virtual void subsampleAnalysis();
-  
-  //!
-  //! Externally sets the number of event requested in the analysis. Deprecated: Use the configuration of the task to set this value.
-  //!
-  inline void setNEventRequested(long _nEventsRequested)    { nEventRequested    = _nEventsRequested; }
 
   //!
-  //! Externally sets the number of reported events. Deprecated: Use the configuration of the task to set this value.
+  //! Finalize the subtasks
   //!
-  inline void setNEventReported(long _nEventsReported)      { nEventReported     = _nEventsReported; }
-
-  //!
-  //! Externally sets the number of events required to produce a partial save. Deprecated: Use the configuration of the task to set this value.
-  //!
-  inline void setNEventPartialSave(long _nEventsPartialSave){ nEventPartialSave  = _nEventsPartialSave; }
-
-  //!
-  //! Externally sets whether partial saves should be performed.  Deprecated: Use the configuration of the task to set this value.
-  //!
-  inline void setPartialSave(bool _doPartialSave)              { doPartialSave         = _doPartialSave; }
-
-  //!
-  //! Externally sets whether a subsample analysis should be performed at the end of the job.  Deprecated: Use the configuration of the task to set this value.
-  //!
-  inline void setSubsampleAnalysis(bool _doSubsampleAnalysis)  { doSubsampleAnalysis   = _doSubsampleAnalysis; }
+  virtual void finalize();
 
   //!
   //! Get the number of events requested
   //!
-  inline long getNEventRequested() const   { return nEventRequested; }
+  inline long getNIterationRequested() const   { return nIterationRequested; }
 
   //!
   //! Get the number of events reported period
   //!
-  inline long getNEventReported() const    { return nEventReported; }
+  inline long getNIterationReported() const    { return nIterationReported; }
 
   //!
   //! Get the number of events required to produce a partial save.
   //!
-  inline long getNEventPartialSave() const { return nEventPartialSave; }
-
-  inline bool getPartialSave() const       { return doPartialSave; }
-  inline bool getSubsampleAnalysis() const { return doSubsampleAnalysis; }
+  inline long getNIterationPartialSave() const { return nIterationPartialSave; }
 
 protected:
 
-  Timer timer;
-  long nEventRequested;
-  long nEventReported;
-  long nEventPartialSave;
-  long nEventProcessed;
-//  int  nTotalGridJob;
-//  int  n
-  bool gridJob;
-  bool processEvents;
-  bool createDerivedHistograms;
-  bool doPartialSave;
+  bool useParticles;
+  bool doPartialReports;
+  bool doPartialSaves;
   bool doSubsampleAnalysis;
+  long nIterationRequested;
+  long nIterationReported;
+  long nIterationPartialSave;
 
   ClassDef(TaskIterator,0)
 };

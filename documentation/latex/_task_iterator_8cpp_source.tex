@@ -2,123 +2,147 @@
 \label{_task_iterator_8cpp_source}\index{Base/TaskIterator.cpp@{Base/TaskIterator.cpp}}
 \mbox{\hyperlink{_task_iterator_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00007}00007 \textcolor{comment}{ *}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_iterator_8hpp}{TaskIterator.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00018}\mbox{\hyperlink{_task_iterator_8cpp_a34d4afa2e83df4cb4f1a916cd325899c}{00018}} \mbox{\hyperlink{_task_iterator_8cpp_a34d4afa2e83df4cb4f1a916cd325899c}{ClassImp}}(\mbox{\hyperlink{class_task_iterator}{TaskIterator}});}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00019}00019 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00020}\mbox{\hyperlink{class_task_iterator_a3882efad724cca77795af41d0a331e08}{00020}} \mbox{\hyperlink{class_task_iterator_a3882efad724cca77795af41d0a331e08}{TaskIterator::TaskIterator}}(\textcolor{keyword}{const} TString \& \_name,}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00021}00021                            \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \& \_configuration,}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00022}00022                            \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}} \_reportLevel)}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00023}00023 :}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00024}00024 \mbox{\hyperlink{class_task}{Task}}(\_name,\_configuration,\_reportLevel),}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00025}00025 timer(),}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00026}00026 nEventRequested(1),}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00027}00027 nEventReported(1),}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00028}00028 nEventPartialSave(10),}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00029}00029 nEventProcessed(0),}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00030}00030 doPartialSave(0),}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00031}00031 doSubsampleAnalysis(0)}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00032}00032 \{}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00033}00033   \mbox{\hyperlink{class_message_logger_a10182fcb56fb5fda0f998c89c4bbe4fb}{appendClassName}}(\textcolor{stringliteral}{"{}TaskIterator"{}});}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00034}00034   \mbox{\hyperlink{class_task_iterator_a8536aeba1c4465146062e72516c6a6b6}{setDefaultConfiguration}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00035}00035   \mbox{\hyperlink{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}{setConfiguration}}(\_configuration);}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00036}00036 \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00037}00037 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00038}\mbox{\hyperlink{class_task_iterator_a8536aeba1c4465146062e72516c6a6b6}{00038}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_a8536aeba1c4465146062e72516c6a6b6}{TaskIterator::setDefaultConfiguration}}()}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00039}00039 \{}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00040}00040   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}TaskIterator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00041}00041     \{ \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00042}00042   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}nEventsRequested"{}},   \mbox{\hyperlink{class_task_iterator_afee9c319d9131ca3b60f3ae3dd1fae27}{nEventRequested}});}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00043}00043   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}nEventReported"{}},     \mbox{\hyperlink{class_task_iterator_ac1c0deb14b49d1a377d3077dcdfaf373}{nEventReported}});}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00044}00044   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}nEventPartialSave"{}},  \mbox{\hyperlink{class_task_iterator_accd49cdab9517cdc6a49ae3549dfbad9}{nEventPartialSave}});}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00045}00045   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}doPartialSave"{}},      \mbox{\hyperlink{class_task_iterator_a1a9126109ce78d7f4cf1b61b7c8e6879}{doPartialSave}});}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00046}00046   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}doSubsampleAnalysis"{}},\mbox{\hyperlink{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}{doSubsampleAnalysis}});}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00047}00047   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}TaskIterator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00048}00048     \{}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00049}00049     \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(cout);}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00050}00050     \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00051}00051 \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00052}00052 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00053}\mbox{\hyperlink{class_task_iterator_ae7d75f8ef4ded05e349d16cc91c3cc79}{00053}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_ae7d75f8ef4ded05e349d16cc91c3cc79}{TaskIterator::run}}()}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00054}00054 \{}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00055}00055   \mbox{\hyperlink{class_task_iterator_a275b100f5bda69b0ce877d31e15671eb}{timer}}.\mbox{\hyperlink{class_timer_a3a8b5272198d029779dc9302a54305a8}{start}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00056}00056   \mbox{\hyperlink{class_task_iterator_afee9c319d9131ca3b60f3ae3dd1fae27}{nEventRequested}}     = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a6f456438de35b0a8e53d9885852541d9}{getValueLong}}( \textcolor{stringliteral}{"{}nEventsRequested"{}}   );}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00057}00057   \mbox{\hyperlink{class_task_iterator_ac1c0deb14b49d1a377d3077dcdfaf373}{nEventReported}}      = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a6f456438de35b0a8e53d9885852541d9}{getValueLong}}( \textcolor{stringliteral}{"{}nEventReported"{}}     );}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00058}00058   \mbox{\hyperlink{class_task_iterator_accd49cdab9517cdc6a49ae3549dfbad9}{nEventPartialSave}}   = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a6f456438de35b0a8e53d9885852541d9}{getValueLong}}( \textcolor{stringliteral}{"{}nEventPartialSave"{}}  );}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00059}00059   \mbox{\hyperlink{class_task_iterator_a1a9126109ce78d7f4cf1b61b7c8e6879}{doPartialSave}}       = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}doPartialSave"{}}      );}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00060}00060   \mbox{\hyperlink{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}{doSubsampleAnalysis}} = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}doSubsampleAnalysis"{}});}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00061}00061 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00062}00062   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}TaskIterator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}run(...)"{}})) cout << \textcolor{stringliteral}{"{}Running for nEvent: "{}} << \mbox{\hyperlink{class_task_iterator_afee9c319d9131ca3b60f3ae3dd1fae27}{nEventRequested}} << endl;}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00063}00063   \mbox{\hyperlink{class_message_logger_a70146a9f8c113e63290020af9491576f}{postTaskOk}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00064}00064   \mbox{\hyperlink{class_task_a79deeef6e5d1fd7d0eb04158ee9a1e32}{initializeTasks}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00065}00065   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}())}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00066}00066     \{}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00067}00067     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}(\textcolor{stringliteral}{"{}TaskIterator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}run(...)"{}})) cout << \textcolor{stringliteral}{"{}Initialization failed. Abort."{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00068}00068     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00069}00069     \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00070}00070   \mbox{\hyperlink{class_task_iterator_ab2f92c9c93fe32548594ec632561b0c5}{nEventProcessed}} = 0;}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00071}00071   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}TaskIterator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}run(...)"{}})) cout << \textcolor{stringliteral}{"{}Starting with nEventRequested:"{}} << \mbox{\hyperlink{class_task_iterator_afee9c319d9131ca3b60f3ae3dd1fae27}{nEventRequested}} << endl;}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00072}00072   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{long} iEvent=1; iEvent<=\mbox{\hyperlink{class_task_iterator_afee9c319d9131ca3b60f3ae3dd1fae27}{nEventRequested}}; iEvent++)}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00073}00073     \{}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00074}00074     \mbox{\hyperlink{class_task_a60cbc524d9e983cfaefea47f4b2355d3}{executeTasks}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00075}00075     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}())}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00076}00076       \{}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00077}00077       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}(\textcolor{stringliteral}{"{}TaskIterator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}run(...)"{}})) cout << \textcolor{stringliteral}{"{}Error detected after event:"{}} << iEvent << endl;}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00078}00078       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00079}00079       \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00080}00080     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_iterator_ab2f92c9c93fe32548594ec632561b0c5}{nEventProcessed}}\%\mbox{\hyperlink{class_task_iterator_ac1c0deb14b49d1a377d3077dcdfaf373}{nEventReported}}==0 )}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00081}00081       \{}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00082}00082       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}TaskIterator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}run(...)"{}})) cout << \textcolor{stringliteral}{"{}Completed event \# "{}} << iEvent << endl;}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00083}00083       \mbox{\hyperlink{class_task_iterator_a275b100f5bda69b0ce877d31e15671eb}{timer}}.\mbox{\hyperlink{class_timer_a63f0eb44b27402196590a03781515dba}{stop}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00084}00084       \mbox{\hyperlink{class_task_iterator_a275b100f5bda69b0ce877d31e15671eb}{timer}}.\mbox{\hyperlink{class_timer_a339d329357b3ad0ad8f9b2ed2224c53e}{print}}(cout);}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00085}00085       \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00086}00086     \textcolor{keywordflow}{if} ( (\mbox{\hyperlink{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}{doSubsampleAnalysis}}||\mbox{\hyperlink{class_task_iterator_a1a9126109ce78d7f4cf1b61b7c8e6879}{doPartialSave}}) \&\& \mbox{\hyperlink{class_task_iterator_ab2f92c9c93fe32548594ec632561b0c5}{nEventProcessed}}\%\mbox{\hyperlink{class_task_iterator_accd49cdab9517cdc6a49ae3549dfbad9}{nEventPartialSave}}==0)}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00087}00087       \{}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00088}00088       \mbox{\hyperlink{class_task_a8c001f1dd731687d350378645d5a5dc2}{savePartialTasks}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00089}00089       \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00090}00090       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}{doSubsampleAnalysis}}) \mbox{\hyperlink{class_task_aed29732410a89a401b9ffe34ab6ec95a}{resetTasks}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00091}00091       \mbox{\hyperlink{class_message_logger_a70146a9f8c113e63290020af9491576f}{postTaskOk}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00092}00092       \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00093}00093     \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00094}00094   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \mbox{\hyperlink{class_task_a9ad18a77cb084d62faa79f1cb6a9779b}{finalizeTasks}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00095}00095 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00096}00096   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}() \&\& \mbox{\hyperlink{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}{doSubsampleAnalysis}})}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00097}00097     \{}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00098}00098     \mbox{\hyperlink{class_task_a33764b29a625d6a820297dc8f558b0cc}{subsampleAnalysisTasks}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00099}00099     \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00100}00100 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00101}00101   \mbox{\hyperlink{class_task_iterator_a275b100f5bda69b0ce877d31e15671eb}{timer}}.\mbox{\hyperlink{class_timer_a63f0eb44b27402196590a03781515dba}{stop}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00102}00102   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\textcolor{stringliteral}{"{}TaskIterator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}run(...)"{}}))}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00103}00103     \{}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00104}00104     cout << endl;}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00105}00105     cout << \textcolor{stringliteral}{"{}  Completed with status : "{}} << \mbox{\hyperlink{class_message_logger_a61406bc0c87bcf0da414197a2bb474e5}{getTaskStatusName}}() << endl;}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00106}00106     cout << \textcolor{stringliteral}{"{}       Completed Events : "{}} << \mbox{\hyperlink{class_task_iterator_ab2f92c9c93fe32548594ec632561b0c5}{nEventProcessed}} << endl;}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00107}00107     cout << \textcolor{stringliteral}{"{}       Requested Events : "{}} << \mbox{\hyperlink{class_task_iterator_afee9c319d9131ca3b60f3ae3dd1fae27}{nEventRequested}} << endl;}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00108}00108     cout << \textcolor{stringliteral}{"{}            "{}}; \mbox{\hyperlink{class_task_iterator_a275b100f5bda69b0ce877d31e15671eb}{timer}}.\mbox{\hyperlink{class_timer_a339d329357b3ad0ad8f9b2ed2224c53e}{print}}(cout);}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00109}00109     cout << endl << endl<< endl << endl;}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00110}00110     \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00111}00111 \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_iterator_8hpp}{TaskIterator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00013}\mbox{\hyperlink{_task_iterator_8cpp_a34d4afa2e83df4cb4f1a916cd325899c}{00013}} \mbox{\hyperlink{_task_iterator_8cpp_a34d4afa2e83df4cb4f1a916cd325899c}{ClassImp}}(\mbox{\hyperlink{class_task_iterator}{TaskIterator}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00015}\mbox{\hyperlink{class_task_iterator_a3882efad724cca77795af41d0a331e08}{00015}} \mbox{\hyperlink{class_task_iterator_a3882efad724cca77795af41d0a331e08}{TaskIterator::TaskIterator}}(\textcolor{keyword}{const} TString \& \_name,}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00016}00016                            \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \& \_configuration,}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00017}00017                            \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}} \_reportLevel)}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00018}00018 :}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00019}00019 \mbox{\hyperlink{class_task}{Task}}(\_name,\_configuration,\_reportLevel),}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00020}00020 useParticles(false),}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00021}00021 doPartialReports(false),}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00022}00022 doPartialSaves(false),}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00023}00023 doSubsampleAnalysis(false),}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00024}00024 nIterationRequested(1),}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00025}00025 nIterationReported(10000),}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00026}00026 nIterationPartialSave(10000)}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00027}00027 \{}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00028}00028   \mbox{\hyperlink{class_message_logger_a10182fcb56fb5fda0f998c89c4bbe4fb}{appendClassName}}(\textcolor{stringliteral}{"{}TaskIterator"{}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00029}00029   \mbox{\hyperlink{class_message_logger_a62ee7a375e1aec16bfb767aec9fba906}{setInstanceName}}(\_name);}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00030}00030   \mbox{\hyperlink{class_task_iterator_a8536aeba1c4465146062e72516c6a6b6}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00031}00031   \mbox{\hyperlink{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}{setConfiguration}}(\_configuration);}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00032}00032 \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00034}\mbox{\hyperlink{class_task_iterator_a8536aeba1c4465146062e72516c6a6b6}{00034}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_a8536aeba1c4465146062e72516c6a6b6}{TaskIterator::setDefaultConfiguration}}()}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00035}00035 \{}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00036}00036   }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00037}00037   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00038}00038     ;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00039}00039   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}useParticles"{}},          \mbox{\hyperlink{class_task_iterator_a963f87cb3a5a83c51a804b2fa3947101}{useParticles}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00040}00040   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}doPartialReports"{}},      \mbox{\hyperlink{class_task_iterator_a66bd722335f6b5e2b3a7a34c6bb7b3ce}{doPartialReports}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00041}00041   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}doPartialSaves"{}},        \mbox{\hyperlink{class_task_iterator_a198e5d47ab63b828a58d3f1f21ae4cf5}{doPartialSaves}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00042}00042   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}doSubsampleAnalysis"{}},   \mbox{\hyperlink{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}{doSubsampleAnalysis}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00043}00043   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}nIterationRequested"{}},   \mbox{\hyperlink{class_task_iterator_a4deb3aa252eb940c528dcfd1f62a8025}{nIterationRequested}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00044}00044   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}nIterationReported"{}},    \mbox{\hyperlink{class_task_iterator_a99e92b16dc668e72e016cfe277dfaef1}{nIterationReported}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00045}00045   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}nIterationPartialSave"{}}, \mbox{\hyperlink{class_task_iterator_a2c686a338c5d68682c5637d720a64f16}{nIterationPartialSave}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00046}00046   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}TaskIterator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00047}00047     \{}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00048}00048     \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(cout);}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00049}00049     \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00050}00050 \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00052}\mbox{\hyperlink{class_task_iterator_addba47176021bbb821efb02497cf894d}{00052}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_addba47176021bbb821efb02497cf894d}{TaskIterator::initialize}}()}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00053}00053 \{}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00054}00054   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00055}00055     ;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00056}00056   \mbox{\hyperlink{class_message_logger_a70146a9f8c113e63290020af9491576f}{postTaskOk}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00057}00057   \mbox{\hyperlink{class_task_iterator_a963f87cb3a5a83c51a804b2fa3947101}{useParticles}}           = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}useParticles"{}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00058}00058   \mbox{\hyperlink{class_task_iterator_a66bd722335f6b5e2b3a7a34c6bb7b3ce}{doPartialReports}}       = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}doPartialReports"{}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00059}00059   \mbox{\hyperlink{class_task_iterator_a198e5d47ab63b828a58d3f1f21ae4cf5}{doPartialSaves}}         = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}doPartialSaves"{}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00060}00060   \mbox{\hyperlink{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}{doSubsampleAnalysis}}    = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}( \textcolor{stringliteral}{"{}doSubsampleAnalysis"{}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00061}00061   \mbox{\hyperlink{class_task_iterator_a4deb3aa252eb940c528dcfd1f62a8025}{nIterationRequested}}    = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a6f456438de35b0a8e53d9885852541d9}{getValueLong}}( \textcolor{stringliteral}{"{}nIterationRequested"{}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00062}00062   \mbox{\hyperlink{class_task_iterator_a99e92b16dc668e72e016cfe277dfaef1}{nIterationReported}}     = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a6f456438de35b0a8e53d9885852541d9}{getValueLong}}( \textcolor{stringliteral}{"{}nIterationReported"{}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00063}00063   \mbox{\hyperlink{class_task_iterator_a2c686a338c5d68682c5637d720a64f16}{nIterationPartialSave}}  = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a6f456438de35b0a8e53d9885852541d9}{getValueLong}}( \textcolor{stringliteral}{"{}nIterationPartialSave"{}});}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00065}00065   \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{Task::initialize}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00066}00066   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00067}00067     \{}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00068}00068     cout << endl  << endl << endl << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00069}00069     cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ "{}} <<   endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00070}00070     cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ "{}} <<   endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00071}00071     cout << \textcolor{stringliteral}{"{}                               Task named : "{}} << \mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00072}00072     cout << \textcolor{stringliteral}{"{}                      nIterationRequested : "{}} << \mbox{\hyperlink{class_task_iterator_a4deb3aa252eb940c528dcfd1f62a8025}{nIterationRequested}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00073}00073     cout << \textcolor{stringliteral}{"{}                                nSubTasks : "{}} << \mbox{\hyperlink{class_task_a996b86b84e31288a35eb646dfebf4aab}{getNSubTasks}}() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00074}00074     cout << \textcolor{stringliteral}{"{}                         doPartialReports : "{}} << \mbox{\hyperlink{class_task_iterator_a66bd722335f6b5e2b3a7a34c6bb7b3ce}{doPartialReports}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00075}00075     cout << \textcolor{stringliteral}{"{}                           doPartialSaves : "{}} << \mbox{\hyperlink{class_task_iterator_a198e5d47ab63b828a58d3f1f21ae4cf5}{doPartialSaves}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00076}00076     cout << \textcolor{stringliteral}{"{}                      nIterationRequested : "{}} << \mbox{\hyperlink{class_task_iterator_a4deb3aa252eb940c528dcfd1f62a8025}{nIterationRequested}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00077}00077     cout << \textcolor{stringliteral}{"{}                       nIterationReported : "{}} << \mbox{\hyperlink{class_task_iterator_a99e92b16dc668e72e016cfe277dfaef1}{nIterationReported}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00078}00078     cout << \textcolor{stringliteral}{"{}                    nIterationPartialSave : "{}} << \mbox{\hyperlink{class_task_iterator_a2c686a338c5d68682c5637d720a64f16}{nIterationPartialSave}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00079}00079     cout << \textcolor{stringliteral}{"{}                              Task status : "{}} << \mbox{\hyperlink{class_message_logger_a61406bc0c87bcf0da414197a2bb474e5}{getTaskStatusName}}() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00080}00080     cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ "{}} <<   endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00081}00081     cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ "{}} <<   endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00082}00082     \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00083}00083   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}())}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00084}00084     \{}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00085}00085     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}Initialization failed. Abort."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00086}00086     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00087}00087     \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00088}00088   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00089}00089     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00090}00090 \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00092}\mbox{\hyperlink{class_task_iterator_af480b27e954098aaad2a0f3750940eaf}{00092}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_af480b27e954098aaad2a0f3750940eaf}{TaskIterator::execute}}()}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00093}00093 \{}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00094}00094   \mbox{\hyperlink{class_task_a5991a0a3e31cec492a994b034e258aa6}{timer}}.\mbox{\hyperlink{class_timer_a3a8b5272198d029779dc9302a54305a8}{start}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00095}00095   \mbox{\hyperlink{class_task_iterator_addba47176021bbb821efb02497cf894d}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00096}00096   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_message_logger_a073bfe849a2832cbb78b2d98f8dbc730}{isTaskOk}}()) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00097}00097   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{long} iter=0; iter<\mbox{\hyperlink{class_task_iterator_a4deb3aa252eb940c528dcfd1f62a8025}{nIterationRequested}}; iter++)}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00098}00098     \{}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00099}00099     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_iterator_a963f87cb3a5a83c51a804b2fa3947101}{useParticles}})}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00100}00100       \{}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00101}00101       \mbox{\hyperlink{class_particle_ae18bf71ba995b64c7da88d5549dba1ba}{Particle::resetFactory}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00102}00102       \mbox{\hyperlink{class_event_af76973eb3e6e0070333d5120b26044a3}{Event::resetEventStreams}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00103}00103       \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00104}00104     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nSubTasks = \mbox{\hyperlink{class_task_a4e7d331277b690abc787ffc6f8e3e18a}{subTasks}}.size();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00105}00105     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  iTask=0; iTask<nSubTasks; iTask++) \mbox{\hyperlink{class_task_a4e7d331277b690abc787ffc6f8e3e18a}{subTasks}}[iTask]-\/>\mbox{\hyperlink{class_task_iterator_af480b27e954098aaad2a0f3750940eaf}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00106}00106     \mbox{\hyperlink{class_task_acb311e0eb8b72d684f8b228483bb96f5}{incrementTaskExecuted}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00107}00107     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_iterator_a66bd722335f6b5e2b3a7a34c6bb7b3ce}{doPartialReports}}  \&\& \mbox{\hyperlink{class_task_abd5752f69b59df4167f1301bbec443bf}{getNTaskExecutedReset}}()\%\mbox{\hyperlink{class_task_iterator_a99e92b16dc668e72e016cfe277dfaef1}{nIterationReported}}==0) cout << \textcolor{stringliteral}{"{}Completed iteration \# "{}} << iter << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00108}00108     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_iterator_a198e5d47ab63b828a58d3f1f21ae4cf5}{doPartialSaves}}    \&\& \mbox{\hyperlink{class_task_abd5752f69b59df4167f1301bbec443bf}{getNTaskExecutedReset}}()\%\mbox{\hyperlink{class_task_iterator_a2c686a338c5d68682c5637d720a64f16}{nIterationPartialSave}}==0 )}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00109}00109       \{}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00110}00110       \mbox{\hyperlink{class_task_a23dad2af569b74e50abcd9241e03af3e}{savePartial}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00111}00111       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}{doSubsampleAnalysis}}) \mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00112}00112       \}}
 \DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00113}00113 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00114}\mbox{\hyperlink{class_task_iterator_af480b27e954098aaad2a0f3750940eaf}{00114}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_af480b27e954098aaad2a0f3750940eaf}{TaskIterator::execute}}()}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00115}00115 \{}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00116}00116   ++\mbox{\hyperlink{class_task_iterator_ab2f92c9c93fe32548594ec632561b0c5}{nEventProcessed}};}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00117}00117   ++\mbox{\hyperlink{class_task_aa8a0d1fbb21cfb200e74bb3b38118fa0}{nEventAccepted}};}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00118}00118   \mbox{\hyperlink{class_particle_ae18bf71ba995b64c7da88d5549dba1ba}{Particle::resetFactory}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00119}00119   \mbox{\hyperlink{class_event_af76973eb3e6e0070333d5120b26044a3}{Event::resetEventStreams}}();}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00120}00120 \}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00121}00121 }
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00122}\mbox{\hyperlink{class_task_iterator_a758cd9c023174494bbf7184d29403357}{00122}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_a758cd9c023174494bbf7184d29403357}{TaskIterator::subsampleAnalysis}}()}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00123}00123 \{}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00124}00124   \textcolor{comment}{// the master has no subsample to analyze...}}
-\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00125}00125 \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00114}00114     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_task_a39c576422ec3a28b16c44ee23e22fcd7}{getNTaskExecuted}}() >= \mbox{\hyperlink{class_task_iterator_a4deb3aa252eb940c528dcfd1f62a8025}{nIterationRequested}} ) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00115}00115     \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00116}00116   \mbox{\hyperlink{class_task_a5991a0a3e31cec492a994b034e258aa6}{timer}}.\mbox{\hyperlink{class_timer_a63f0eb44b27402196590a03781515dba}{stop}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00117}00117   \mbox{\hyperlink{class_task_iterator_a321efa1ced57b46b537e89328a2ee241}{finalize}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00118}00118 \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00121}\mbox{\hyperlink{class_task_iterator_a321efa1ced57b46b537e89328a2ee241}{00121}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_iterator_a321efa1ced57b46b537e89328a2ee241}{TaskIterator::finalize}}()}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00122}00122 \{}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00123}00123   \mbox{\hyperlink{class_task_a4c6d92e8b5d1329e36e0da78bb72dcde}{finalizeSubTasks}}();}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00124}00124   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00125}00125     \{}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00126}00126     cout << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00127}00127     cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ "{}} <<   endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00128}00128     cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ "{}} <<   endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00129}00129     cout << \textcolor{stringliteral}{"{}                               Task named : "{}} << \mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}()<< endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00130}00130     cout << \textcolor{stringliteral}{"{}                    Completed with status : "{}} << \mbox{\hyperlink{class_message_logger_a61406bc0c87bcf0da414197a2bb474e5}{getTaskStatusName}}() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00131}00131     cout << \textcolor{stringliteral}{"{}                     Completed iterations : "{}} << \mbox{\hyperlink{class_task_a39c576422ec3a28b16c44ee23e22fcd7}{getNTaskExecuted}}() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00132}00132     cout << \textcolor{stringliteral}{"{}  Completed iterations since partial save : "{}} << \mbox{\hyperlink{class_task_abd5752f69b59df4167f1301bbec443bf}{getNTaskExecutedReset}}() << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00133}00133     \mbox{\hyperlink{class_task_a5991a0a3e31cec492a994b034e258aa6}{timer}}.\mbox{\hyperlink{class_timer_a339d329357b3ad0ad8f9b2ed2224c53e}{print}}(cout);}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00134}00134     cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ "{}} <<   endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00135}00135     cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ "{}} <<   endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00136}00136     cout << endl << endl<< endl << endl;}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00137}00137     \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00138}00138   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00139}00139     \{ \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00140}00140 \}}
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{_task_iterator_8cpp_source_l00142}00142 }
 
 \end{DoxyCode}

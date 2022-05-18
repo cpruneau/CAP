@@ -1,0 +1,481 @@
+\hypertarget{class_root_tree_reader}{}\doxysection{Root\+Tree\+Reader Class Reference}
+\label{class_root_tree_reader}\index{RootTreeReader@{RootTreeReader}}
+
+
+{\ttfamily \#include $<$Root\+Tree\+Reader.\+hpp$>$}
+
+
+
+Inheritance diagram for Root\+Tree\+Reader\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_root_tree_reader__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Root\+Tree\+Reader\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_root_tree_reader__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_root_tree_reader_a11d77f67dff29a150b2e8449e3cef33b}{Root\+Tree\+Reader}} (const TString \&\+\_\+name, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&\+\_\+event\+Filters, vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&\+\_\+particle\+Filters, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \+\_\+selected\+Level)
+\item 
+virtual \mbox{\hyperlink{class_root_tree_reader_a96f49cb0e88e42dd236bf4f946b0fdfb}{$\sim$\+Root\+Tree\+Reader}} ()
+\item 
+virtual void \mbox{\hyperlink{class_root_tree_reader_ae6ed558a3a2e0d5ae5a3feacbe686004}{set\+Default\+Configuration}} ()
+\item 
+virtual void \mbox{\hyperlink{class_root_tree_reader_adda9c904b32dc0374e867f9b8a1ccc80}{initialize}} ()
+\item 
+virtual void \mbox{\hyperlink{class_root_tree_reader_acb79329a5c02fb59ecfd8d0d1ab1ad7f}{execute}} ()
+\item 
+virtual void \mbox{\hyperlink{class_root_tree_reader_a142b7591288035eb8193874e7607cbe9}{init\+Input\+Tree\+Mapping}} ()
+\item 
+TChain $\ast$ \mbox{\hyperlink{class_root_tree_reader_adc7f0fa0d08ccdeb5ac7f696c45f9ed7}{root\+Input\+Tree\+Chain}} ()
+\item 
+void \mbox{\hyperlink{class_root_tree_reader_aa5bc17a76e1b03b028229d03363943c3}{set\+Input\+Root\+Tree\+Index}} (int value)
+\item 
+int \mbox{\hyperlink{class_root_tree_reader_a0409c40b28ae275df83fa8e97cff1623}{get\+Input\+Root\+Tree\+Index}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_root_tree_reader_a3dd67deb652d590ef69fe04cc59a04ee}{Show}} (Long64\+\_\+t entry)
+\item 
+Int\+\_\+t \mbox{\hyperlink{class_root_tree_reader_ab7fe30857d7ada2a04857b471f2183cc}{Get\+Entry}} (Long64\+\_\+t entry)
+\item 
+Long64\+\_\+t \mbox{\hyperlink{class_root_tree_reader_af2bd7d6e2c257617d5b4fa71b21e834b}{Load\+Tree}} (Long64\+\_\+t entry)
+\item 
+bool \mbox{\hyperlink{class_root_tree_reader_a5f147b864c5cb2916610f5a292c1b303}{use\+Randomize\+Event\+Plane}} () const
+\item 
+void \mbox{\hyperlink{class_root_tree_reader_a2ce3f6724d6576cd022639489f6289d5}{set\+Randomize\+Event\+Plane}} (bool value)
+\item 
+double \mbox{\hyperlink{class_root_tree_reader_a0f97d0ae6a437bbf1c4d9a6153f28b9e}{get\+Random\+Event\+Plane\+Angle}} () const
+\item 
+int \mbox{\hyperlink{class_root_tree_reader_ae0a481dc2bf3885dec62f60ae8a0931b}{get\+Clones\+Max\+Array\+Size}} () const
+\item 
+void \mbox{\hyperlink{class_root_tree_reader_ac5a6f3868ea61cbc60fd9739a2b95c58}{get\+Clones\+Max\+Array\+Size}} (int value)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TString \mbox{\hyperlink{class_root_tree_reader_a09cc8d9792f33ac1cdf93d6a5120a50c}{data\+Input\+Path}}
+\item 
+TString \mbox{\hyperlink{class_root_tree_reader_ae8f153a9acf715fa6d2b41ed1eead0a8}{data\+Input\+File\+Name}}
+\item 
+TString \mbox{\hyperlink{class_root_tree_reader_a842434a3a444f2115fb890f178442d94}{data\+Input\+Tree\+Name}}
+\item 
+int \mbox{\hyperlink{class_root_tree_reader_a1f1309b255e550b38ee558cf3b783259}{first\+File}}
+\item 
+int \mbox{\hyperlink{class_root_tree_reader_aeb9f20d3d20e179a46931bbe94976d70}{last\+File}}
+\item 
+int \mbox{\hyperlink{class_root_tree_reader_a9c0b5535f3aa5f733b7d78f698c6668f}{clones\+Max\+Array\+Size}}
+\item 
+bool \mbox{\hyperlink{class_root_tree_reader_ac92c8b8c1f83e6797924cc94cbf8de70}{randomize\+Event\+Plane}}
+\item 
+TChain $\ast$ \mbox{\hyperlink{class_root_tree_reader_ac5001344699a90aacb76570f9f6e7af7}{input\+Root\+Chain}}
+\item 
+Int\+\_\+t \mbox{\hyperlink{class_root_tree_reader_aa74cca4b20a553259a69ca317edb669f}{input\+Root\+Tree\+Index}}
+\begin{DoxyCompactList}\small\item\em pointer to the analyzed (input) TTree or TChain \end{DoxyCompactList}\item 
+TFile $\ast$ \mbox{\hyperlink{class_root_tree_reader_ae4e81757819d68b97c0fd755c0f27da9}{input\+Data\+File}}
+\begin{DoxyCompactList}\small\item\em current Tree number in an input TChain \end{DoxyCompactList}\item 
+Long64\+\_\+t \mbox{\hyperlink{class_root_tree_reader_ad7385b8e6ca88bf0f4c34bd567bfced7}{n\+Entries}}
+\item 
+Long64\+\_\+t \mbox{\hyperlink{class_root_tree_reader_aeaa63312aa30928b1099f35fef253a61}{n\+Bytes}}
+\begin{DoxyCompactList}\small\item\em number of entries in an input TTree or TChain \end{DoxyCompactList}\item 
+Long64\+\_\+t \mbox{\hyperlink{class_root_tree_reader_a5e6ac8628959070e14c75b69bc65affe}{nb}}
+\item 
+long \mbox{\hyperlink{class_root_tree_reader_acff36c063ee066588291394f206917c9}{entry\+Index}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class defining a ROOT Tree reader. Subclass this class to read any ROOT tree. 
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00022}{22}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_root_tree_reader_a11d77f67dff29a150b2e8449e3cef33b}\label{class_root_tree_reader_a11d77f67dff29a150b2e8449e3cef33b}} 
+\index{RootTreeReader@{RootTreeReader}!RootTreeReader@{RootTreeReader}}
+\index{RootTreeReader@{RootTreeReader}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{RootTreeReader()}{RootTreeReader()}}
+{\footnotesize\ttfamily Root\+Tree\+Reader\+::\+Root\+Tree\+Reader (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&}]{\+\_\+event\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&}]{\+\_\+particle\+Filters,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{\+\_\+selected\+Level }\end{DoxyParamCaption})}
+
+Detailed CTOR
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+name} & Name given to task instance \\
+\hline
+{\em \+\_\+configuration} & \mbox{\hyperlink{class_configuration}{Configuration}} used to run this task \\
+\hline
+{\em \+\_\+event\+Filters} & Array of event filters to be used by this task \\
+\hline
+{\em \+\_\+particle\+Filters} & Array of particle filters to be used by this task \\
+\hline
+{\em \+\_\+report\+Level} & Message log level to be used by this task. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{_root_tree_reader_8cpp_source}{Root\+Tree\+Reader.\+cpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_a96f49cb0e88e42dd236bf4f946b0fdfb}\label{class_root_tree_reader_a96f49cb0e88e42dd236bf4f946b0fdfb}} 
+\index{RootTreeReader@{RootTreeReader}!````~RootTreeReader@{$\sim$RootTreeReader}}
+\index{````~RootTreeReader@{$\sim$RootTreeReader}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{$\sim$RootTreeReader()}{~RootTreeReader()}}
+{\footnotesize\ttfamily Root\+Tree\+Reader\+::$\sim$\+Root\+Tree\+Reader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+DTOR 
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{_root_tree_reader_8cpp_source}{Root\+Tree\+Reader.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_root_tree_reader_acb79329a5c02fb59ecfd8d0d1ab1ad7f}\label{class_root_tree_reader_acb79329a5c02fb59ecfd8d0d1ab1ad7f}} 
+\index{RootTreeReader@{RootTreeReader}!execute@{execute}}
+\index{execute@{execute}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Root\+Tree\+Reader\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Execute this task based on the configuration and class variable specified at construction This involves reading events from the input tree and filling CAP event streams based on the event and particle filters providing at construction.
+
+Subclass this method to read an event for a tree and copy into CAP event streams. 
+
+Reimplemented from \mbox{\hyperlink{class_task_ade38031c3ed134ec20cbbcd58e575745}{Task}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_ampt_event_reader_ae2b398efc100acb62e1c22304de012b6}{Ampt\+Event\+Reader}}, \mbox{\hyperlink{class_pythia_event_reader_a5f5ed7fbdbd672eb750ed3c457e2fa76}{Pythia\+Event\+Reader}}, \mbox{\hyperlink{class_epos_event_reader_ab7169b7517f3b93a1982c7d6527f6c47}{Epos\+Event\+Reader}}, and \mbox{\hyperlink{class_urqmd_event_reader_af3faa10b2ba94b64860be2bd6900dcc9}{Urqmd\+Event\+Reader}}.
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8cpp_source_l00160}{160}} of file \mbox{\hyperlink{_root_tree_reader_8cpp_source}{Root\+Tree\+Reader.\+cpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_ae0a481dc2bf3885dec62f60ae8a0931b}\label{class_root_tree_reader_ae0a481dc2bf3885dec62f60ae8a0931b}} 
+\index{RootTreeReader@{RootTreeReader}!getClonesMaxArraySize@{getClonesMaxArraySize}}
+\index{getClonesMaxArraySize@{getClonesMaxArraySize}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{getClonesMaxArraySize()}{getClonesMaxArraySize()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int Root\+Tree\+Reader\+::get\+Clones\+Max\+Array\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00117}{117}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_ac5a6f3868ea61cbc60fd9739a2b95c58}\label{class_root_tree_reader_ac5a6f3868ea61cbc60fd9739a2b95c58}} 
+\index{RootTreeReader@{RootTreeReader}!getClonesMaxArraySize@{getClonesMaxArraySize}}
+\index{getClonesMaxArraySize@{getClonesMaxArraySize}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{getClonesMaxArraySize()}{getClonesMaxArraySize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Root\+Tree\+Reader\+::get\+Clones\+Max\+Array\+Size (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00122}{122}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_ab7fe30857d7ada2a04857b471f2183cc}\label{class_root_tree_reader_ab7fe30857d7ada2a04857b471f2183cc}} 
+\index{RootTreeReader@{RootTreeReader}!GetEntry@{GetEntry}}
+\index{GetEntry@{GetEntry}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{GetEntry()}{GetEntry()}}
+{\footnotesize\ttfamily Int\+\_\+t Root\+Tree\+Reader\+::\+Get\+Entry (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Read contents of entry. 
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8cpp_source_l00170}{170}} of file \mbox{\hyperlink{_root_tree_reader_8cpp_source}{Root\+Tree\+Reader.\+cpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_a0409c40b28ae275df83fa8e97cff1623}\label{class_root_tree_reader_a0409c40b28ae275df83fa8e97cff1623}} 
+\index{RootTreeReader@{RootTreeReader}!getInputRootTreeIndex@{getInputRootTreeIndex}}
+\index{getInputRootTreeIndex@{getInputRootTreeIndex}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{getInputRootTreeIndex()}{getInputRootTreeIndex()}}
+{\footnotesize\ttfamily int Root\+Tree\+Reader\+::get\+Input\+Root\+Tree\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_a0f97d0ae6a437bbf1c4d9a6153f28b9e}\label{class_root_tree_reader_a0f97d0ae6a437bbf1c4d9a6153f28b9e}} 
+\index{RootTreeReader@{RootTreeReader}!getRandomEventPlaneAngle@{getRandomEventPlaneAngle}}
+\index{getRandomEventPlaneAngle@{getRandomEventPlaneAngle}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{getRandomEventPlaneAngle()}{getRandomEventPlaneAngle()}}
+{\footnotesize\ttfamily double Root\+Tree\+Reader\+::get\+Random\+Event\+Plane\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00112}{112}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_adda9c904b32dc0374e867f9b8a1ccc80}\label{class_root_tree_reader_adda9c904b32dc0374e867f9b8a1ccc80}} 
+\index{RootTreeReader@{RootTreeReader}!initialize@{initialize}}
+\index{initialize@{initialize}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Root\+Tree\+Reader\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Generic initializer of the root reader class. It opens the necessary files and calls other functions to complete the initialization of the task. 
+
+Reimplemented from \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8cpp_source_l00078}{78}} of file \mbox{\hyperlink{_root_tree_reader_8cpp_source}{Root\+Tree\+Reader.\+cpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_a142b7591288035eb8193874e7607cbe9}\label{class_root_tree_reader_a142b7591288035eb8193874e7607cbe9}} 
+\index{RootTreeReader@{RootTreeReader}!initInputTreeMapping@{initInputTreeMapping}}
+\index{initInputTreeMapping@{initInputTreeMapping}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{initInputTreeMapping()}{initInputTreeMapping()}}
+{\footnotesize\ttfamily void Root\+Tree\+Reader\+::init\+Input\+Tree\+Mapping (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Initialize the input tree chain by mapping branches onto specific variables. This method must be implemented in a sub class of the \mbox{\hyperlink{class_root_tree_reader}{Root\+Tree\+Reader}} class. 
+
+Reimplemented in \mbox{\hyperlink{class_ampt_event_reader_a45128260eb7ffec19b5bba95f7d52b1d}{Ampt\+Event\+Reader}}, \mbox{\hyperlink{class_pythia_event_reader_af97e122c11aecfc0f60672a1a418be2a}{Pythia\+Event\+Reader}}, \mbox{\hyperlink{class_epos_event_reader_a978bcc3301d0b4b85d54701a8ae53ae1}{Epos\+Event\+Reader}}, and \mbox{\hyperlink{class_urqmd_event_reader_a14ad18251f9aa07c126899607d922266}{Urqmd\+Event\+Reader}}.
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8cpp_source_l00194}{194}} of file \mbox{\hyperlink{_root_tree_reader_8cpp_source}{Root\+Tree\+Reader.\+cpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_af2bd7d6e2c257617d5b4fa71b21e834b}\label{class_root_tree_reader_af2bd7d6e2c257617d5b4fa71b21e834b}} 
+\index{RootTreeReader@{RootTreeReader}!LoadTree@{LoadTree}}
+\index{LoadTree@{LoadTree}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{LoadTree()}{LoadTree()}}
+{\footnotesize\ttfamily Long64\+\_\+t Root\+Tree\+Reader\+::\+Load\+Tree (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Set the environment to read one entry from the tree. Load the tree Return the number of entries in the tree 
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8cpp_source_l00181}{181}} of file \mbox{\hyperlink{_root_tree_reader_8cpp_source}{Root\+Tree\+Reader.\+cpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_adc7f0fa0d08ccdeb5ac7f696c45f9ed7}\label{class_root_tree_reader_adc7f0fa0d08ccdeb5ac7f696c45f9ed7}} 
+\index{RootTreeReader@{RootTreeReader}!rootInputTreeChain@{rootInputTreeChain}}
+\index{rootInputTreeChain@{rootInputTreeChain}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{rootInputTreeChain()}{rootInputTreeChain()}}
+{\footnotesize\ttfamily TChain $\ast$ Root\+Tree\+Reader\+::root\+Input\+Tree\+Chain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get pointer to the root input chain 
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00074}{74}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_ae6ed558a3a2e0d5ae5a3feacbe686004}\label{class_root_tree_reader_ae6ed558a3a2e0d5ae5a3feacbe686004}} 
+\index{RootTreeReader@{RootTreeReader}!setDefaultConfiguration@{setDefaultConfiguration}}
+\index{setDefaultConfiguration@{setDefaultConfiguration}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{setDefaultConfiguration()}{setDefaultConfiguration()}}
+{\footnotesize\ttfamily void Root\+Tree\+Reader\+::set\+Default\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Sets the default values of the configuration parameters used by this task 
+
+Reimplemented from \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3}{Task}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_ampt_event_reader_adb48fceda7b32145c894a8c71cd0a344}{Ampt\+Event\+Reader}}, \mbox{\hyperlink{class_pythia_event_reader_a37a9ae51e4555b7d03b248da675c0020}{Pythia\+Event\+Reader}}, \mbox{\hyperlink{class_epos_event_reader_aede5e7310b69d964211986d470c6912b}{Epos\+Event\+Reader}}, and \mbox{\hyperlink{class_urqmd_event_reader_ae820a99a0e6c4d6d7a8b2045f724863d}{Urqmd\+Event\+Reader}}.
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_root_tree_reader_8cpp_source}{Root\+Tree\+Reader.\+cpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_aa5bc17a76e1b03b028229d03363943c3}\label{class_root_tree_reader_aa5bc17a76e1b03b028229d03363943c3}} 
+\index{RootTreeReader@{RootTreeReader}!setInputRootTreeIndex@{setInputRootTreeIndex}}
+\index{setInputRootTreeIndex@{setInputRootTreeIndex}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{setInputRootTreeIndex()}{setInputRootTreeIndex()}}
+{\footnotesize\ttfamily void Root\+Tree\+Reader\+::set\+Input\+Root\+Tree\+Index (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00080}{80}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_a2ce3f6724d6576cd022639489f6289d5}\label{class_root_tree_reader_a2ce3f6724d6576cd022639489f6289d5}} 
+\index{RootTreeReader@{RootTreeReader}!setRandomizeEventPlane@{setRandomizeEventPlane}}
+\index{setRandomizeEventPlane@{setRandomizeEventPlane}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{setRandomizeEventPlane()}{setRandomizeEventPlane()}}
+{\footnotesize\ttfamily void Root\+Tree\+Reader\+::set\+Randomize\+Event\+Plane (\begin{DoxyParamCaption}\item[{bool}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00107}{107}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_a3dd67deb652d590ef69fe04cc59a04ee}\label{class_root_tree_reader_a3dd67deb652d590ef69fe04cc59a04ee}} 
+\index{RootTreeReader@{RootTreeReader}!Show@{Show}}
+\index{Show@{Show}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{Show()}{Show()}}
+{\footnotesize\ttfamily void Root\+Tree\+Reader\+::\+Show (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00093}{93}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_a5f147b864c5cb2916610f5a292c1b303}\label{class_root_tree_reader_a5f147b864c5cb2916610f5a292c1b303}} 
+\index{RootTreeReader@{RootTreeReader}!useRandomizeEventPlane@{useRandomizeEventPlane}}
+\index{useRandomizeEventPlane@{useRandomizeEventPlane}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{useRandomizeEventPlane()}{useRandomizeEventPlane()}}
+{\footnotesize\ttfamily bool Root\+Tree\+Reader\+::use\+Randomize\+Event\+Plane (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00102}{102}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_root_tree_reader_a9c0b5535f3aa5f733b7d78f698c6668f}\label{class_root_tree_reader_a9c0b5535f3aa5f733b7d78f698c6668f}} 
+\index{RootTreeReader@{RootTreeReader}!clonesMaxArraySize@{clonesMaxArraySize}}
+\index{clonesMaxArraySize@{clonesMaxArraySize}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{clonesMaxArraySize}{clonesMaxArraySize}}
+{\footnotesize\ttfamily int Root\+Tree\+Reader\+::clones\+Max\+Array\+Size\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00135}{135}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_ae8f153a9acf715fa6d2b41ed1eead0a8}\label{class_root_tree_reader_ae8f153a9acf715fa6d2b41ed1eead0a8}} 
+\index{RootTreeReader@{RootTreeReader}!dataInputFileName@{dataInputFileName}}
+\index{dataInputFileName@{dataInputFileName}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{dataInputFileName}{dataInputFileName}}
+{\footnotesize\ttfamily TString Root\+Tree\+Reader\+::data\+Input\+File\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00131}{131}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_a09cc8d9792f33ac1cdf93d6a5120a50c}\label{class_root_tree_reader_a09cc8d9792f33ac1cdf93d6a5120a50c}} 
+\index{RootTreeReader@{RootTreeReader}!dataInputPath@{dataInputPath}}
+\index{dataInputPath@{dataInputPath}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{dataInputPath}{dataInputPath}}
+{\footnotesize\ttfamily TString Root\+Tree\+Reader\+::data\+Input\+Path\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00130}{130}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_a842434a3a444f2115fb890f178442d94}\label{class_root_tree_reader_a842434a3a444f2115fb890f178442d94}} 
+\index{RootTreeReader@{RootTreeReader}!dataInputTreeName@{dataInputTreeName}}
+\index{dataInputTreeName@{dataInputTreeName}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{dataInputTreeName}{dataInputTreeName}}
+{\footnotesize\ttfamily TString Root\+Tree\+Reader\+::data\+Input\+Tree\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00132}{132}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_acff36c063ee066588291394f206917c9}\label{class_root_tree_reader_acff36c063ee066588291394f206917c9}} 
+\index{RootTreeReader@{RootTreeReader}!entryIndex@{entryIndex}}
+\index{entryIndex@{entryIndex}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{entryIndex}{entryIndex}}
+{\footnotesize\ttfamily long Root\+Tree\+Reader\+::entry\+Index\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00144}{144}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_a1f1309b255e550b38ee558cf3b783259}\label{class_root_tree_reader_a1f1309b255e550b38ee558cf3b783259}} 
+\index{RootTreeReader@{RootTreeReader}!firstFile@{firstFile}}
+\index{firstFile@{firstFile}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{firstFile}{firstFile}}
+{\footnotesize\ttfamily int Root\+Tree\+Reader\+::first\+File\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00133}{133}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_ae4e81757819d68b97c0fd755c0f27da9}\label{class_root_tree_reader_ae4e81757819d68b97c0fd755c0f27da9}} 
+\index{RootTreeReader@{RootTreeReader}!inputDataFile@{inputDataFile}}
+\index{inputDataFile@{inputDataFile}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{inputDataFile}{inputDataFile}}
+{\footnotesize\ttfamily TFile$\ast$ Root\+Tree\+Reader\+::input\+Data\+File\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+current Tree number in an input TChain 
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00140}{140}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_ac5001344699a90aacb76570f9f6e7af7}\label{class_root_tree_reader_ac5001344699a90aacb76570f9f6e7af7}} 
+\index{RootTreeReader@{RootTreeReader}!inputRootChain@{inputRootChain}}
+\index{inputRootChain@{inputRootChain}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{inputRootChain}{inputRootChain}}
+{\footnotesize\ttfamily TChain$\ast$ Root\+Tree\+Reader\+::input\+Root\+Chain\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00138}{138}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_aa74cca4b20a553259a69ca317edb669f}\label{class_root_tree_reader_aa74cca4b20a553259a69ca317edb669f}} 
+\index{RootTreeReader@{RootTreeReader}!inputRootTreeIndex@{inputRootTreeIndex}}
+\index{inputRootTreeIndex@{inputRootTreeIndex}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{inputRootTreeIndex}{inputRootTreeIndex}}
+{\footnotesize\ttfamily Int\+\_\+t Root\+Tree\+Reader\+::input\+Root\+Tree\+Index\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+pointer to the analyzed (input) TTree or TChain 
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00139}{139}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_aeb9f20d3d20e179a46931bbe94976d70}\label{class_root_tree_reader_aeb9f20d3d20e179a46931bbe94976d70}} 
+\index{RootTreeReader@{RootTreeReader}!lastFile@{lastFile}}
+\index{lastFile@{lastFile}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{lastFile}{lastFile}}
+{\footnotesize\ttfamily int Root\+Tree\+Reader\+::last\+File\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00134}{134}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_a5e6ac8628959070e14c75b69bc65affe}\label{class_root_tree_reader_a5e6ac8628959070e14c75b69bc65affe}} 
+\index{RootTreeReader@{RootTreeReader}!nb@{nb}}
+\index{nb@{nb}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{nb}{nb}}
+{\footnotesize\ttfamily Long64\+\_\+t Root\+Tree\+Reader\+::nb\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00143}{143}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_aeaa63312aa30928b1099f35fef253a61}\label{class_root_tree_reader_aeaa63312aa30928b1099f35fef253a61}} 
+\index{RootTreeReader@{RootTreeReader}!nBytes@{nBytes}}
+\index{nBytes@{nBytes}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{nBytes}{nBytes}}
+{\footnotesize\ttfamily Long64\+\_\+t Root\+Tree\+Reader\+::n\+Bytes\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+number of entries in an input TTree or TChain 
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00142}{142}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_ad7385b8e6ca88bf0f4c34bd567bfced7}\label{class_root_tree_reader_ad7385b8e6ca88bf0f4c34bd567bfced7}} 
+\index{RootTreeReader@{RootTreeReader}!nEntries@{nEntries}}
+\index{nEntries@{nEntries}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{nEntries}{nEntries}}
+{\footnotesize\ttfamily Long64\+\_\+t Root\+Tree\+Reader\+::n\+Entries\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00141}{141}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_root_tree_reader_ac92c8b8c1f83e6797924cc94cbf8de70}\label{class_root_tree_reader_ac92c8b8c1f83e6797924cc94cbf8de70}} 
+\index{RootTreeReader@{RootTreeReader}!randomizeEventPlane@{randomizeEventPlane}}
+\index{randomizeEventPlane@{randomizeEventPlane}!RootTreeReader@{RootTreeReader}}
+\doxysubsubsection{\texorpdfstring{randomizeEventPlane}{randomizeEventPlane}}
+{\footnotesize\ttfamily bool Root\+Tree\+Reader\+::randomize\+Event\+Plane\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_root_tree_reader_8hpp_source_l00136}{136}} of file \mbox{\hyperlink{_root_tree_reader_8hpp_source}{Root\+Tree\+Reader.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base/\mbox{\hyperlink{_root_tree_reader_8hpp}{Root\+Tree\+Reader.\+hpp}}\item 
+Base/\mbox{\hyperlink{_root_tree_reader_8cpp}{Root\+Tree\+Reader.\+cpp}}\end{DoxyCompactItemize}

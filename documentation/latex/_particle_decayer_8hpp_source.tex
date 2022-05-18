@@ -2,89 +2,100 @@
 \label{_particle_decayer_8hpp_source}\index{Base/ParticleDecayer.hpp@{Base/ParticleDecayer.hpp}}
 \mbox{\hyperlink{_particle_decayer_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef CAP\_\_ParticleDecayer}}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define CAP\_\_ParticleDecayer}}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00003}00003 \textcolor{preprocessor}{\#include <iostream>}}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <iomanip>}}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include "{}TRandom3.h"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}TLorentzVector.h"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_8hpp}{Particle.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00008}00008 }
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00009}00009 \textcolor{keyword}{using namespace }std;}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00010}00010 }
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00011}\mbox{\hyperlink{class_particle_decayer}{00011}} \textcolor{keyword}{class }\mbox{\hyperlink{class_particle_decayer}{ParticleDecayer}}}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00012}00012 \{}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00013}00013 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00014}00014   \mbox{\hyperlink{class_particle_decayer_adea7e6f3b8a6cd57591ee2b30732059f}{ParticleDecayer}}();}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00015}\mbox{\hyperlink{class_particle_decayer_a837da559f42ac750dca958884c9d98d6}{00015}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_decayer_a837da559f42ac750dca958884c9d98d6}{\string~ParticleDecayer}}() \{\}}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00016}\mbox{\hyperlink{class_particle_decayer_a589836eb7aceb1601533f32340c1dd5a}{00016}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_decayer_a589836eb7aceb1601533f32340c1dd5a}{setRandomGenerator}}(TRandom * \_random) \{ \mbox{\hyperlink{class_particle_decayer_a3e54b49fe004f39e5413cea5344d7b4a}{random}} = \_random; \}}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00017}\mbox{\hyperlink{class_particle_decayer_ab3e47e2bdeec034c5c3df4dd69bf769b}{00017}}   TRandom * \mbox{\hyperlink{class_particle_decayer_ab3e47e2bdeec034c5c3df4dd69bf769b}{getRandomGenerator}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_decayer_a3e54b49fe004f39e5413cea5344d7b4a}{random}}; \}}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00019}00019   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_decayer_a93e6e526bd7d0f8fd0e13848f64427ad}{decay2}}(\mbox{\hyperlink{class_particle_type}{ParticleType}}   \& parentType,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00020}00020               TLorentzVector \& parentMomentum,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00021}00021               TLorentzVector \& parentPosition,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00022}00022               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType1,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00023}00023               TLorentzVector \& p1,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00024}00024               TLorentzVector \& r1,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00025}00025               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType2,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00026}00026               TLorentzVector \& p2,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00027}00027               TLorentzVector \& r2);}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00028}00028 }
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00029}00029   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_decayer_a860dce0de0797a1c8c64fa758ce56b9d}{decay3}}(\mbox{\hyperlink{class_particle_type}{ParticleType}}   \& parentType,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00030}00030               TLorentzVector \& parentMomentum,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00031}00031               TLorentzVector \& parentPosition,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00032}00032               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType1,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00033}00033               TLorentzVector \& p1,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00034}00034               TLorentzVector \& r1,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00035}00035               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType2,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00036}00036               TLorentzVector \& p2,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00037}00037               TLorentzVector \& r2,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00038}00038               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType3,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00039}00039               TLorentzVector \& p3,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00040}00040               TLorentzVector \& r3);}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00041}00041 }
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00042}00042   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_decayer_ab6d19085468a22aa187cab8bd3554568}{decay4}}(\mbox{\hyperlink{class_particle_type}{ParticleType}}   \& parentType,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00043}00043               TLorentzVector \& parentMomentum,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00044}00044               TLorentzVector \& parentPosition,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00045}00045               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType1,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00046}00046               TLorentzVector \& p1,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00047}00047               TLorentzVector \& r1,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00048}00048               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType2,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00049}00049               TLorentzVector \& p2,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00050}00050               TLorentzVector \& r2,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00051}00051               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType3,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00052}00052               TLorentzVector \& p3,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00053}00053               TLorentzVector \& r3,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00054}00054               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType4,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00055}00055               TLorentzVector \& p4,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00056}00056               TLorentzVector \& r4}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00057}00057               );}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00058}00058 }
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00059}00059   \textcolor{keywordtype}{void}  \mbox{\hyperlink{class_particle_decayer_a93e6e526bd7d0f8fd0e13848f64427ad}{decay2}}(\mbox{\hyperlink{class_particle}{Particle}} \& parent,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00060}00060                \mbox{\hyperlink{class_particle}{Particle}} \& child1,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00061}00061                \mbox{\hyperlink{class_particle}{Particle}} \& child2);}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00062}00062   \textcolor{keywordtype}{void}  \mbox{\hyperlink{class_particle_decayer_a860dce0de0797a1c8c64fa758ce56b9d}{decay3}}(\mbox{\hyperlink{class_particle}{Particle}} \& parent,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00063}00063                \mbox{\hyperlink{class_particle}{Particle}} \& child1,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00064}00064                \mbox{\hyperlink{class_particle}{Particle}} \& child2,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00065}00065                \mbox{\hyperlink{class_particle}{Particle}} \& child3);}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00066}00066   \textcolor{keywordtype}{void}  \mbox{\hyperlink{class_particle_decayer_ab6d19085468a22aa187cab8bd3554568}{decay4}}(\mbox{\hyperlink{class_particle}{Particle}} \& parent,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00067}00067                \mbox{\hyperlink{class_particle}{Particle}} \& child1,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00068}00068                \mbox{\hyperlink{class_particle}{Particle}} \& child2,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00069}00069                \mbox{\hyperlink{class_particle}{Particle}} \& child3,}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00070}00070                \mbox{\hyperlink{class_particle}{Particle}} \& child4);}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00071}00071 }
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00072}00072 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00073}00073 }
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00074}\mbox{\hyperlink{class_particle_decayer_a7095a50ae811bb356ca831d5dd25cef3}{00074}}   \textcolor{keyword}{static} \textcolor{keywordtype}{double}   \mbox{\hyperlink{class_particle_decayer_a7095a50ae811bb356ca831d5dd25cef3}{twoPi}};}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00075}00075 }
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00076}\mbox{\hyperlink{class_particle_decayer_a3e54b49fe004f39e5413cea5344d7b4a}{00076}}   TRandom * \mbox{\hyperlink{class_particle_decayer_a3e54b49fe004f39e5413cea5344d7b4a}{random}};}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00077}00077 }
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00078}00078 }
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00079}00079 }
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00080}00080   ClassDef(\mbox{\hyperlink{class_particle_decayer}{ParticleDecayer}},0)}
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00081}00081 \};}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef CAP\_\_ParticleDecayer}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define CAP\_\_ParticleDecayer}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include <iomanip>}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}TRandom3.h"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}TLorentzVector.h"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_8hpp}{Particle.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00020}00020 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00022}\mbox{\hyperlink{class_particle_decayer}{00022}} \textcolor{keyword}{class }\mbox{\hyperlink{class_particle_decayer}{ParticleDecayer}}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00023}00023 \{}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00024}00024 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00025}00025   \mbox{\hyperlink{class_particle_decayer_adea7e6f3b8a6cd57591ee2b30732059f}{ParticleDecayer}}();}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00026}\mbox{\hyperlink{class_particle_decayer_a837da559f42ac750dca958884c9d98d6}{00026}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_decayer_a837da559f42ac750dca958884c9d98d6}{\string~ParticleDecayer}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00027}\mbox{\hyperlink{class_particle_decayer_a589836eb7aceb1601533f32340c1dd5a}{00027}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_decayer_a589836eb7aceb1601533f32340c1dd5a}{setRandomGenerator}}(TRandom * \_random) \{ \mbox{\hyperlink{class_particle_decayer_a3e54b49fe004f39e5413cea5344d7b4a}{random}} = \_random; \}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00028}\mbox{\hyperlink{class_particle_decayer_ab3e47e2bdeec034c5c3df4dd69bf769b}{00028}}   TRandom * \mbox{\hyperlink{class_particle_decayer_ab3e47e2bdeec034c5c3df4dd69bf769b}{getRandomGenerator}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_decayer_a3e54b49fe004f39e5413cea5344d7b4a}{random}}; \}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00030}00030   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_decayer_a93e6e526bd7d0f8fd0e13848f64427ad}{decay2}}(\mbox{\hyperlink{class_particle_type}{ParticleType}}   \& parentType,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00031}00031               TLorentzVector \& parentMomentum,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00032}00032               TLorentzVector \& parentPosition,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00033}00033               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType1,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00034}00034               TLorentzVector \& p1,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00035}00035               TLorentzVector \& r1,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00036}00036               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType2,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00037}00037               TLorentzVector \& p2,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00038}00038               TLorentzVector \& r2);}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00040}00040   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_decayer_a860dce0de0797a1c8c64fa758ce56b9d}{decay3}}(\mbox{\hyperlink{class_particle_type}{ParticleType}}   \& parentType,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00041}00041               TLorentzVector \& parentMomentum,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00042}00042               TLorentzVector \& parentPosition,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00043}00043               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType1,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00044}00044               TLorentzVector \& p1,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00045}00045               TLorentzVector \& r1,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00046}00046               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType2,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00047}00047               TLorentzVector \& p2,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00048}00048               TLorentzVector \& r2,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00049}00049               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType3,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00050}00050               TLorentzVector \& p3,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00051}00051               TLorentzVector \& r3);}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00053}00053   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_decayer_ab6d19085468a22aa187cab8bd3554568}{decay4}}(\mbox{\hyperlink{class_particle_type}{ParticleType}}   \& parentType,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00054}00054               TLorentzVector \& parentMomentum,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00055}00055               TLorentzVector \& parentPosition,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00056}00056               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType1,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00057}00057               TLorentzVector \& p1,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00058}00058               TLorentzVector \& r1,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00059}00059               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType2,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00060}00060               TLorentzVector \& p2,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00061}00061               TLorentzVector \& r2,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00062}00062               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType3,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00063}00063               TLorentzVector \& p3,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00064}00064               TLorentzVector \& r3,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00065}00065               \mbox{\hyperlink{class_particle_type}{ParticleType}}   \& childType4,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00066}00066               TLorentzVector \& p4,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00067}00067               TLorentzVector \& r4}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00068}00068               );}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00070}00070   \textcolor{keywordtype}{void}  \mbox{\hyperlink{class_particle_decayer_a93e6e526bd7d0f8fd0e13848f64427ad}{decay2}}(\mbox{\hyperlink{class_particle}{Particle}} \& parent,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00071}00071                \mbox{\hyperlink{class_particle}{Particle}} \& child1,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00072}00072                \mbox{\hyperlink{class_particle}{Particle}} \& child2);}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00073}00073   \textcolor{keywordtype}{void}  \mbox{\hyperlink{class_particle_decayer_a860dce0de0797a1c8c64fa758ce56b9d}{decay3}}(\mbox{\hyperlink{class_particle}{Particle}} \& parent,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00074}00074                \mbox{\hyperlink{class_particle}{Particle}} \& child1,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00075}00075                \mbox{\hyperlink{class_particle}{Particle}} \& child2,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00076}00076                \mbox{\hyperlink{class_particle}{Particle}} \& child3);}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00077}00077   \textcolor{keywordtype}{void}  \mbox{\hyperlink{class_particle_decayer_ab6d19085468a22aa187cab8bd3554568}{decay4}}(\mbox{\hyperlink{class_particle}{Particle}} \& parent,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00078}00078                \mbox{\hyperlink{class_particle}{Particle}} \& child1,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00079}00079                \mbox{\hyperlink{class_particle}{Particle}} \& child2,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00080}00080                \mbox{\hyperlink{class_particle}{Particle}} \& child3,}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00081}00081                \mbox{\hyperlink{class_particle}{Particle}} \& child4);}
 \DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00082}00082 }
-\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00083}00083 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// ParticleDecayer}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00083}00083 \textcolor{keyword}{protected}:}
 \DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00085}\mbox{\hyperlink{class_particle_decayer_a7095a50ae811bb356ca831d5dd25cef3}{00085}}   \textcolor{keyword}{static} \textcolor{keywordtype}{double}   \mbox{\hyperlink{class_particle_decayer_a7095a50ae811bb356ca831d5dd25cef3}{twoPi}};}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00087}\mbox{\hyperlink{class_particle_decayer_a3e54b49fe004f39e5413cea5344d7b4a}{00087}}   TRandom * \mbox{\hyperlink{class_particle_decayer_a3e54b49fe004f39e5413cea5344d7b4a}{random}};}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00091}00091   ClassDef(\mbox{\hyperlink{class_particle_decayer}{ParticleDecayer}},0)}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00092}00092 \};}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00094}00094 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// ParticleDecayer}}
+\DoxyCodeLine{\Hypertarget{_particle_decayer_8hpp_source_l00095}00095 }
 
 \end{DoxyCode}

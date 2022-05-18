@@ -10,6 +10,7 @@ var hierarchy =
     [ "Condition", "class_condition.html", [
       [ "ConditionOr", "class_condition_or.html", null ]
     ] ],
+    [ "EfficiencyFunction", "class_efficiency_function.html", null ],
     [ "Eos", "class_eos.html", [
       [ "EosHadronGas", "class_eos_hadron_gas.html", null ]
     ] ],
@@ -17,9 +18,7 @@ var hierarchy =
       [ "ClusterModelEvent", "class_cluster_model_event.html", null ]
     ] ],
     [ "EventGenerator", null, [
-      [ "EposEventReader", "class_epos_event_reader.html", null ],
-      [ "LamdaEventReader", "class_lamda_event_reader.html", null ],
-      [ "UrqmdEventReader", "class_urqmd_event_reader.html", null ]
+      [ "LamdaEventReader", "class_lamda_event_reader.html", null ]
     ] ],
     [ "EventProperties", "class_event_properties.html", null ],
     [ "Filter< T >", "class_filter.html", null ],
@@ -32,13 +31,11 @@ var hierarchy =
       [ "ParticleFilter", "class_particle_filter.html", [
         [ "ParticleFilterAliceV0", "class_particle_filter_alice_v0.html", null ]
       ] ],
-      [ "ParticleFilterEfficiency", "class_particle_filter_efficiency.html", null ],
       [ "ParticlePairFilter", "class_particle_pair_filter.html", null ]
     ] ],
     [ "GeneratorConfiguration", null, [
       [ "ClusterModelConfiguration", "class_cluster_model_configuration.html", null ]
     ] ],
-    [ "GenericEventAnalyzer", "class_generic_event_analyzer.html", null ],
     [ "GraphConfig", "class_graph_config.html", null ],
     [ "HadronType", "class_hadron_type.html", null ],
     [ "MessageLogger", "class_message_logger.html", [
@@ -72,14 +69,12 @@ var hierarchy =
             [ "PTHistos", "class_p_t_histos.html", null ],
             [ "ParticleDerivedHistos", "class_particle_derived_histos.html", null ],
             [ "ParticleHistos", "class_particle_histos.html", null ],
-            [ "ParticleHistos", "class_particle_histos.html", null ],
             [ "ParticlePairBFHistos", "class_particle_pair_b_f_histos.html", null ],
             [ "ParticlePairCombinedHistos", "class_particle_pair_combined_histos.html", null ],
-            [ "ParticlePairCombinedHistos", "class_particle_pair_combined_histos.html", null ],
-            [ "ParticlePairDerivedHistos", "class_particle_pair_derived_histos.html", null ],
             [ "ParticlePairDerivedHistos", "class_particle_pair_derived_histos.html", null ],
             [ "ParticlePairHistos", "class_particle_pair_histos.html", null ],
-            [ "ParticlePairHistos", "class_particle_pair_histos.html", null ],
+            [ "ParticlePerformanceHistos", "class_particle_performance_histos.html", null ],
+            [ "ParticlePerformanceSimulator", "class_particle_performance_simulator.html", null ],
             [ "RadialBoostHistos", "class_radial_boost_histos.html", null ],
             [ "StatStudyHistograms", "class_stat_study_histograms.html", null ],
             [ "TransverseSpherocityHistos", "class_transverse_spherocity_histos.html", null ]
@@ -93,7 +88,6 @@ var hierarchy =
       [ "HadronGas", "class_hadron_gas.html", null ],
       [ "Task", "class_task.html", [
         [ "AACollisionGenerator", "class_a_a_collision_generator.html", null ],
-        [ "AmptEventReader", "class_ampt_event_reader.html", null ],
         [ "BWModelEventGenerator", "class_b_w_model_event_generator.html", null ],
         [ "BalanceFunctionCalculator", "class_balance_function_calculator.html", null ],
         [ "ClosureTest", "class_closure_test.html", null ],
@@ -103,34 +97,40 @@ var hierarchy =
         ] ],
         [ "CollisionGeometryAnalyzer", "class_collision_geometry_analyzer.html", null ],
         [ "CollisionGeometryGenerator", "class_collision_geometry_generator.html", null ],
-        [ "DetectorFastSimulatorTask", "class_detector_fast_simulator_task.html", null ],
-        [ "EposEventReader", "class_epos_event_reader.html", null ],
         [ "EventPlaneRandomizerTask", "class_event_plane_randomizer_task.html", null ],
         [ "EventVertexRandomizerTask", "class_event_vertex_randomizer_task.html", null ],
-        [ "FileTaskIterator", "class_file_task_iterator.html", [
-          [ "DerivedHistogramCalculator", "class_derived_histogram_calculator.html", null ]
-        ] ],
         [ "GaussianGeneratorTask", "class_gaussian_generator_task.html", null ],
         [ "GlobalAnalyzer", "class_global_analyzer.html", null ],
+        [ "HadronGasGeneratorTask", "class_hadron_gas_generator_task.html", null ],
+        [ "MeasurementPerformanceSimulator", "class_measurement_performance_simulator.html", null ],
         [ "NuDynAnalyzer", "class_nu_dyn_analyzer.html", null ],
         [ "NuDynDerivedHistogramCalculator", "class_nu_dyn_derived_histogram_calculator.html", null ],
-        [ "NucleonNucleonCollisionGenerator", "class_nucleon_nucleon_collision_generator.html", [
-          [ "HadronGasGeneratorTask", "class_hadron_gas_generator_task.html", null ],
-          [ "PythiaEventGenerator", "class_pythia_event_generator.html", null ],
-          [ "PythiaEventReader", "class_pythia_event_reader.html", null ],
-          [ "ResonanceGenerator", "class_resonance_generator.html", null ]
-        ] ],
-        [ "ParticleAnalyzer", "class_particle_analyzer.html", null ],
+        [ "NucleonNucleonCollisionGenerator", "class_nucleon_nucleon_collision_generator.html", null ],
+        [ "NucleusGenerator", "class_nucleus_generator.html", null ],
         [ "ParticleAnalyzer", "class_particle_analyzer.html", null ],
         [ "ParticleDecayerTask", "class_particle_decayer_task.html", null ],
         [ "ParticleDerivedHistogramCalculator", "class_particle_derived_histogram_calculator.html", null ],
         [ "ParticlePairAnalyzer", "class_particle_pair_analyzer.html", null ],
-        [ "ParticlePairAnalyzer", "class_particle_pair_analyzer.html", null ],
         [ "ParticlePairCombinedHistogramCalculator", "class_particle_pair_combined_histogram_calculator.html", null ],
         [ "ParticlePairDerivedHistogramCalculator", "class_particle_pair_derived_histogram_calculator.html", null ],
+        [ "ParticlePerformanceAnalyzer", "class_particle_performance_analyzer.html", null ],
+        [ "ParticleTypeTableLoader", "class_particle_type_table_loader.html", null ],
+        [ "PythiaEventGenerator", "class_pythia_event_generator.html", null ],
         [ "RadialBoostTask", "class_radial_boost_task.html", null ],
+        [ "ResonanceGenerator", "class_resonance_generator.html", null ],
+        [ "RootTreeReader", "class_root_tree_reader.html", [
+          [ "AmptEventReader", "class_ampt_event_reader.html", null ],
+          [ "EposEventReader", "class_epos_event_reader.html", null ],
+          [ "PythiaEventReader", "class_pythia_event_reader.html", null ],
+          [ "UrqmdEventReader", "class_urqmd_event_reader.html", null ]
+        ] ],
         [ "SubSampleStatCalculator", "class_sub_sample_stat_calculator.html", null ],
-        [ "TaskIterator", "class_task_iterator.html", null ],
+        [ "SubSampleStatIterator", "class_sub_sample_stat_iterator.html", null ],
+        [ "TaskIterator", "class_task_iterator.html", [
+          [ "FileTaskIterator", "class_file_task_iterator.html", [
+            [ "DerivedHistogramCalculator", "class_derived_histogram_calculator.html", null ]
+          ] ]
+        ] ],
         [ "TransverseSpherocityAnalyzer", "class_transverse_spherocity_analyzer.html", null ]
       ] ]
     ] ],
@@ -141,7 +141,6 @@ var hierarchy =
     [ "ParticleDecayer", "class_particle_decayer.html", null ],
     [ "ParticleDecayMode", "class_particle_decay_mode.html", null ],
     [ "ParticleDigit", "class_particle_digit.html", null ],
-    [ "ParticleSmearer", "class_particle_smearer.html", null ],
     [ "ParticleType", "class_particle_type.html", null ],
     [ "PartitionCalculator", "class_partition_calculator.html", null ],
     [ "RandomGenerator", "class_random_generator.html", [
@@ -157,10 +156,9 @@ var hierarchy =
       ] ],
       [ "VectorRandomGenerator", "class_vector_random_generator.html", null ]
     ] ],
-    [ "RandomGenerators", "class_random_generators.html", null ],
     [ "RapidityGenerator", "class_rapidity_generator.html", null ],
+    [ "ResolutionFunction", "class_resolution_function.html", null ],
     [ "SelectionGenerator", "class_selection_generator.html", null ],
-    [ "SelectionGenerators", "class_selection_generators.html", null ],
     [ "StatStudyModel", "class_stat_study_model.html", null ],
     [ "Table2D", "class_table2_d.html", null ],
     [ "TestConfiguration", "class_test_configuration.html", null ],
@@ -182,12 +180,12 @@ var hierarchy =
       [ "Factory< T >", "class_factory.html", [
         [ "ClusterFactory", "class_cluster_factory.html", null ]
       ] ],
-      [ "NucleusGenerator", "class_nucleus_generator.html", null ],
       [ "Parameter< T >", "class_parameter.html", null ],
       [ "TotalXsection", "class_total_xsection.html", null ],
       [ "UrQMDEvent", "class_ur_q_m_d_event.html", null ],
       [ "UrQMDEvent", "class_ur_q_m_d_event.html", null ],
       [ "UrQMDParticle", "class_ur_q_m_d_particle.html", null ],
       [ "UrQMDParticle", "class_ur_q_m_d_particle.html", null ]
-    ] ]
+    ] ],
+    [ "tree", "classtree.html", null ]
 ];

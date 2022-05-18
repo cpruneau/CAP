@@ -1,67 +1,69 @@
 \hypertarget{_collision_geometry_generator_8hpp_source}{}\doxysection{Collision\+Geometry\+Generator.\+hpp}
-\label{_collision_geometry_generator_8hpp_source}\index{Base/CollisionGeometryGenerator.hpp@{Base/CollisionGeometryGenerator.hpp}}
+\label{_collision_geometry_generator_8hpp_source}\index{CollGeom/CollisionGeometryGenerator.hpp@{CollGeom/CollisionGeometryGenerator.hpp}}
 \mbox{\hyperlink{_collision_geometry_generator_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef CAP\_\_CollisionGeometryGenerator}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define CAP\_\_CollisionGeometryGenerator}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_configuration_8hpp}{Configuration.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_nucleus_generator_8hpp}{NucleusGenerator.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00015}00015 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00021}\mbox{\hyperlink{class_collision_geometry_generator}{00021}} \textcolor{keyword}{class }\mbox{\hyperlink{class_collision_geometry_generator}{CollisionGeometryGenerator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00022}00022 \{}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00023}00023 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00024}00024 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00034}00034   \mbox{\hyperlink{class_collision_geometry_generator_ae6e3ebb96c07c399af3c6e37261316c4}{CollisionGeometryGenerator}}(\textcolor{keyword}{const} TString \&          \_name,}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00035}00035                              \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}}  \&   \_configuration,}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00036}00036                              vector<EventFilter*> \&   \_eventFilters,}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00037}00037                              vector<ParticleFilter*>  \_particleFilters,}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00038}00038                              \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}}  \_reportLevel=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}});}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00039}00039   }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00043}00043   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_collision_geometry_generator_ab38061774026e353e7560821c5e72219}{\string~CollisionGeometryGenerator}}();}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00044}00044 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00048}00048   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_collision_geometry_generator_ae693d4c8c9e874e890ccaf5ef7018dbf}{setDefaultConfiguration}}();}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00049}00049 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00053}00053   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_collision_geometry_generator_a5c607ce039ce8fdc8ade782e4b8fab3c}{initialize}}();}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00054}00054   }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00058}00058   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_collision_geometry_generator_ac868e7fa6e17a1a56da8214750a959a5}{clear}}();}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00059}00059 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00063}00063   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_collision_geometry_generator_a10d8096a95211c1be478692721639a98}{reset}}();}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00064}00064 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00068}00068   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_collision_geometry_generator_ac38e7bd4560739e11302e600856280e3}{execute}}();}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00069}00069 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00073}\mbox{\hyperlink{class_collision_geometry_generator_a76aadf263a1372c6aaaea24d1271888a}{00073}}   \mbox{\hyperlink{class_nucleus}{Nucleus}} \& \mbox{\hyperlink{class_collision_geometry_generator_a76aadf263a1372c6aaaea24d1271888a}{getNucleusA}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_task_a02048625ac29f05812d5229348d36f2e}{eventStreams}}[0]-\/>getNucleusA(); \}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00074}00074 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00078}\mbox{\hyperlink{class_collision_geometry_generator_a8da9b522b12994ca2ccc3d5438a0a2d9}{00078}}   \mbox{\hyperlink{class_nucleus}{Nucleus}} \& \mbox{\hyperlink{class_collision_geometry_generator_a8da9b522b12994ca2ccc3d5438a0a2d9}{getNucleusB}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_task_a02048625ac29f05812d5229348d36f2e}{eventStreams}}[0]-\/>getNucleusB(); \}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00079}00079   }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00083}\mbox{\hyperlink{class_collision_geometry_generator_aa4dab9cc6cd95345996dde69d5025076}{00083}}   \mbox{\hyperlink{class_nucleus_generator}{NucleusGenerator}}  * \mbox{\hyperlink{class_collision_geometry_generator_aa4dab9cc6cd95345996dde69d5025076}{getNucleusGeneratorA}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collision_geometry_generator_ab69b344e93659748b01c7e4efbfa0171}{nucleusGeneratorA}}; \}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00084}00084 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00088}\mbox{\hyperlink{class_collision_geometry_generator_a09f52784ba8ffcdfcc3fa0b7c33e5c47}{00088}}   \mbox{\hyperlink{class_nucleus_generator}{NucleusGenerator}}  * \mbox{\hyperlink{class_collision_geometry_generator_a09f52784ba8ffcdfcc3fa0b7c33e5c47}{getNucleusGeneratorB}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collision_geometry_generator_a5b816fdd7faec3b66ea23cd76a15268c}{nucleusGeneratorB}}; \}}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00089}00089 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00090}00090 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef CAP\_\_CollisionGeometryGenerator}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define CAP\_\_CollisionGeometryGenerator}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_configuration_8hpp}{Configuration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_nucleus_generator_8hpp}{NucleusGenerator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00023}\mbox{\hyperlink{class_collision_geometry_generator}{00023}} \textcolor{keyword}{class }\mbox{\hyperlink{class_collision_geometry_generator}{CollisionGeometryGenerator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00024}00024 \{}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00025}00025 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00036}00036   \mbox{\hyperlink{class_collision_geometry_generator_ae6e3ebb96c07c399af3c6e37261316c4}{CollisionGeometryGenerator}}(\textcolor{keyword}{const} TString \&          \_name,}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00037}00037                              \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}}  \&   \_configuration,}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00038}00038                              vector<EventFilter*> \&   \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00039}00039                              vector<ParticleFilter*>  \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00040}00040                              \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}}  \_reportLevel=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00041}00041   }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00045}00045   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_collision_geometry_generator_ab38061774026e353e7560821c5e72219}{\string~CollisionGeometryGenerator}}();}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00050}00050   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_collision_geometry_generator_ae693d4c8c9e874e890ccaf5ef7018dbf}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00055}00055   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_collision_geometry_generator_a5c607ce039ce8fdc8ade782e4b8fab3c}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00056}00056   }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00060}00060   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_collision_geometry_generator_ac868e7fa6e17a1a56da8214750a959a5}{clear}}();}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00065}00065   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_collision_geometry_generator_a10d8096a95211c1be478692721639a98}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00070}00070   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_collision_geometry_generator_ac38e7bd4560739e11302e600856280e3}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00075}\mbox{\hyperlink{class_collision_geometry_generator_a76aadf263a1372c6aaaea24d1271888a}{00075}}   \mbox{\hyperlink{class_nucleus}{Nucleus}} \& \mbox{\hyperlink{class_collision_geometry_generator_a76aadf263a1372c6aaaea24d1271888a}{getNucleusA}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_task_a02048625ac29f05812d5229348d36f2e}{eventStreams}}[0]-\/>getNucleusA(); \}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00080}\mbox{\hyperlink{class_collision_geometry_generator_a8da9b522b12994ca2ccc3d5438a0a2d9}{00080}}   \mbox{\hyperlink{class_nucleus}{Nucleus}} \& \mbox{\hyperlink{class_collision_geometry_generator_a8da9b522b12994ca2ccc3d5438a0a2d9}{getNucleusB}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_task_a02048625ac29f05812d5229348d36f2e}{eventStreams}}[0]-\/>getNucleusB(); \}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00081}00081   }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00085}\mbox{\hyperlink{class_collision_geometry_generator_aa4dab9cc6cd95345996dde69d5025076}{00085}}   \mbox{\hyperlink{class_nucleus_generator}{NucleusGenerator}}  * \mbox{\hyperlink{class_collision_geometry_generator_aa4dab9cc6cd95345996dde69d5025076}{getNucleusGeneratorA}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collision_geometry_generator_ab69b344e93659748b01c7e4efbfa0171}{nucleusGeneratorA}}; \}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00090}\mbox{\hyperlink{class_collision_geometry_generator_a09f52784ba8ffcdfcc3fa0b7c33e5c47}{00090}}   \mbox{\hyperlink{class_nucleus_generator}{NucleusGenerator}}  * \mbox{\hyperlink{class_collision_geometry_generator_a09f52784ba8ffcdfcc3fa0b7c33e5c47}{getNucleusGeneratorB}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collision_geometry_generator_a5b816fdd7faec3b66ea23cd76a15268c}{nucleusGeneratorB}}; \}}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00091}00091 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00095}\mbox{\hyperlink{class_collision_geometry_generator_ab69b344e93659748b01c7e4efbfa0171}{00095}}   \mbox{\hyperlink{class_nucleus_generator}{NucleusGenerator}}  * \mbox{\hyperlink{class_collision_geometry_generator_ab69b344e93659748b01c7e4efbfa0171}{nucleusGeneratorA}};}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00096}00096 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00100}\mbox{\hyperlink{class_collision_geometry_generator_a5b816fdd7faec3b66ea23cd76a15268c}{00100}}   \mbox{\hyperlink{class_nucleus_generator}{NucleusGenerator}}  * \mbox{\hyperlink{class_collision_geometry_generator_a5b816fdd7faec3b66ea23cd76a15268c}{nucleusGeneratorB}};}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00101}00101   }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00105}\mbox{\hyperlink{class_collision_geometry_generator_a46e533c863cdc2bc1d4430ead6b4c33a}{00105}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_collision_geometry_generator_a82d33bc7c0362c3954386860d9a93b09}{minB}}, \mbox{\hyperlink{class_collision_geometry_generator_ab64c7889ed25ae6b7201fc16b1af6f95}{minBSq}}, \mbox{\hyperlink{class_collision_geometry_generator_a46e533c863cdc2bc1d4430ead6b4c33a}{maxB}}, \mbox{\hyperlink{class_collision_geometry_generator_ac87d1fe85acd3ea5aaa3ca522bdae14a}{maxBSq}};}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00106}00106   }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00110}\mbox{\hyperlink{class_collision_geometry_generator_ab2ca20481d95d076ba7d1ed1c27d78ff}{00110}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_collision_geometry_generator_ab2ca20481d95d076ba7d1ed1c27d78ff}{nnCrossSection}};}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00111}00111 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00115}\mbox{\hyperlink{class_collision_geometry_generator_a96128b684930ccdbf43acdb951a6ec3b}{00115}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_collision_geometry_generator_a96128b684930ccdbf43acdb951a6ec3b}{maxNNDistanceSq}};}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00116}00116 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00117}00117   ClassDef(\mbox{\hyperlink{class_collision_geometry_generator}{CollisionGeometryGenerator}},0)}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00118}00118 \};}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00119}00119 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00120}00120 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_CollisionGeometryGenerator */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00092}00092 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00097}\mbox{\hyperlink{class_collision_geometry_generator_ab69b344e93659748b01c7e4efbfa0171}{00097}}   \mbox{\hyperlink{class_nucleus_generator}{NucleusGenerator}}  * \mbox{\hyperlink{class_collision_geometry_generator_ab69b344e93659748b01c7e4efbfa0171}{nucleusGeneratorA}};}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00102}\mbox{\hyperlink{class_collision_geometry_generator_a5b816fdd7faec3b66ea23cd76a15268c}{00102}}   \mbox{\hyperlink{class_nucleus_generator}{NucleusGenerator}}  * \mbox{\hyperlink{class_collision_geometry_generator_a5b816fdd7faec3b66ea23cd76a15268c}{nucleusGeneratorB}};}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00103}00103   }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00107}\mbox{\hyperlink{class_collision_geometry_generator_a46e533c863cdc2bc1d4430ead6b4c33a}{00107}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_collision_geometry_generator_a82d33bc7c0362c3954386860d9a93b09}{minB}}, \mbox{\hyperlink{class_collision_geometry_generator_ab64c7889ed25ae6b7201fc16b1af6f95}{minBSq}}, \mbox{\hyperlink{class_collision_geometry_generator_a46e533c863cdc2bc1d4430ead6b4c33a}{maxB}}, \mbox{\hyperlink{class_collision_geometry_generator_ac87d1fe85acd3ea5aaa3ca522bdae14a}{maxBSq}};}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00108}00108   }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00112}\mbox{\hyperlink{class_collision_geometry_generator_ab2ca20481d95d076ba7d1ed1c27d78ff}{00112}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_collision_geometry_generator_ab2ca20481d95d076ba7d1ed1c27d78ff}{nnCrossSection}};}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00117}\mbox{\hyperlink{class_collision_geometry_generator_a96128b684930ccdbf43acdb951a6ec3b}{00117}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_collision_geometry_generator_a96128b684930ccdbf43acdb951a6ec3b}{maxNNDistanceSq}};}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00119}00119   ClassDef(\mbox{\hyperlink{class_collision_geometry_generator}{CollisionGeometryGenerator}},0)}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00120}00120 \};}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{_collision_geometry_generator_8hpp_source_l00122}00122 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_CollisionGeometryGenerator */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

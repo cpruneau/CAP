@@ -1,5 +1,5 @@
-<map id="Base/CollisionGeometryMoments.cpp" name="Base/CollisionGeometryMoments.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,248,32"/>
-<area shape="rect" id="node2" href="$_collision_geometry_moments_8hpp.html" title=" " alt="" coords="23,80,231,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="89,155,164,181"/>
+<map id="CollGeom/CollisionGeometryMoments.cpp" name="CollGeom/CollisionGeometryMoments.cpp">
+<area shape="rect" id="node1" title=" " alt="" coords="14,5,205,47"/>
+<area shape="rect" id="node2" href="$_collision_geometry_moments_8hpp.html" title=" " alt="" coords="5,95,213,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="72,169,147,196"/>
 </map>

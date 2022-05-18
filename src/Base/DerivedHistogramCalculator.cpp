@@ -20,14 +20,17 @@ DerivedHistogramCalculator::DerivedHistogramCalculator(const TString &          
 :
 Task(_name,_configuration,_eventFilters,_particleFilters, _reportLevel)
 {
-  setInstanceName("DerivedHistogramCalculator");
-  appendClassName(_name);
+  appendClassName("DerivedHistogramCalculator");
+  setInstanceName(_name);
   setDefaultConfiguration();
   setConfiguration(_configuration);
 }
 
 void DerivedHistogramCalculator::setDefaultConfiguration()
 {
+  
+  if (reportStart(__FUNCTION__))
+    ;
   Configuration & configuration = getConfiguration();
   configuration.addParameter("inputPath", "InputPathUndefined");
   configuration.addParameter("inputFileNameBase", "");
@@ -44,8 +47,11 @@ void DerivedHistogramCalculator::setDefaultConfiguration()
 }
 
 
-void DerivedHistogramCalculator::run()
+void DerivedHistogramCalculator::execute()
 {
+  
+  if (reportStart(__FUNCTION__))
+    ;
   timer.start();
   postTaskOk();
 

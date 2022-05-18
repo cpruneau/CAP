@@ -22,17 +22,7 @@ Filter<Particle>()
   // no ops
 }
 
-//!
-//!DTOR
-//!
-ParticlePairFilter::~ParticlePairFilter()
-{
-  // no ops
-}
 
-//!
-//!Accept/reject the given pair of particles
-//!
 bool ParticlePairFilter::accept(const Particle & particle1, const Particle &  particle2)
 {
 //  ParticleType & type1 = particle1.getType();

@@ -20,6 +20,7 @@
 #include "TH2F.h"
 #include "TH3D.h"
 #include "TH3F.h"
+#include "TParameter.h"
 #include "TProfile.h"
 #include "TProfile2D.h"
 #include "TFile.h"
@@ -44,7 +45,6 @@
 #include "Event.hpp"
 #include "EventFilter.hpp"
 #include "ParticleFilter.hpp"
-#include "ParticleSmearer.hpp"
 #include "Histograms.hpp"
 #include "ParticleTypeCollection.hpp"
 #include "EventCountHistos.hpp"
@@ -54,6 +54,146 @@
 using namespace std;
 
 //!
+//!\mainpage Correlation Analysis package
+//!
+//!\section Introduction
+//!
+//!blablablabla
+//!blablablabla
+//!
+//!\section prelims Download, Installation/Configuration, Building, Usage
+//!
+//!\subsection prereqs Prerequisites
+//!
+//!The correlation analysis package (CAP) consists of several modules and classes designed for use within the [root] data analysis framework.
+//!Depending on your needs, it may be sufficient to have a binary installation of "root", but if you require the generation of collision data with, e.g.,  the [PYTHIA] model (PYTHIA8),
+//!you may need to install and build root from source. Evidently, to use such generators as Pythia8, you will additionally have to download, install, and build PYTHIA8 on your own
+//!machine.
+//!CAP is orgainzed into several modules that you may not readily need in your analysis. The package thus use CMake to build and maintain the libraries associated with
+//!each module. Instructions to configure and compile the basic CAP package are provided in sec. XXXXX. You may optionally download the DOXYGEN documentation framework
+//!if you plan to add and document modules and packages.
+//!
+//!## Dependencies
+//!- cmake
+//! + Main website: [https://cmake.org/](https://cmake.org/ "cmake" )
+//! + Download : [https://cmake.org/download/](https://cmake.org/download/)
+//!- root
+//! + Main website : [https://root.cern/](https://root.cern/)
+//! + Installing : [https://root.cern/install/](https://root.cern/install/)
+//!- PYTHIA  : [https://pythia.org ](https://pythia.org  "PYTHIA")
+//!- DOXYGEN : [https://www.doxygen.nl](https://www.doxygen.nl)
+//!
+//!
+//!\subsection download Downloading CAP
+//!
+//!
+//!\subsection installation Installation/Configuration
+//!
+//!In its current version, CAP does include or provide for the building of binary executables (although it is easy to setup if you are proficient with CMAKE).
+//!Its uses thus relies entirely on a generic version of root and root loads of relevant CAP (root compatible) libraries.
+//!The building, compilation,  and use of the CAP package is determined by few environment varibles which can be efficiently setup and assigned by
+//!sourcing the SETUP_CAP configuration file.
+//!
+//!\verbatim
+//!cd SOMEPATH/CAP;
+//!source Setup_CAP
+//!\endverbatim
+//!
+//!Prior to sourcing this setup file, however, you must edit the file to choose appropriate valeues  to the following lines that assigne environment variables
+//!\verbatim
+//!export ROOT_SELECTED_VERSION="/Users/YourName/rootdirectory/"
+//!export CAP_LARGE_DATA="/Volumes/SomeHardDiskOfYourChoice/CAP-DATA/"
+//!\endverbatim
+//!
+//!The Setup_CAP script will assign default values for the location in binary and library files produced when build the libraries. You can evidently modify these to your liking.
+//!
+//!\subsection building Building
+//!
+//!
+//!\subsection usage Examples
+//!
+//!\section model Object Model
+//!
+//!blablablabla
+//!blablablabla
+//!blablablabla
+//!blablablabla
+//!
+//!
+//!\section modules Modules and Components
+//!
+//!\subsection base Base
+//!blablablabla
+//!
+//!\subsection generators Event Readers and Event Generators
+//!
+//!\subsubsection basicgen Basic Generators (Basicgen)
+//!blablablabla
+//!
+//!\subsubsection collgeom Collision Geometry  Generators (CollGeom)
+//!blablablabla
+
+//!
+//!\subsubsection hadrongas Hadron Gas (HadronGas)
+//!blablablabla
+//!
+//!\subsubsection pythia CAPPythia
+//!blablablabla
+//!
+//!\subsubsection ampt AMPT
+//!blablablabla
+//!
+//!\subsubsection epos EPOS
+//!blablablabla
+//!\subsubsection urqmd UrQMD
+//!blablablabla
+//!\subsubsection blastwave Blastwave
+//!blablablabla
+
+//!
+//!\subsection analyzers Analysis Modules
+//!
+//!CAP currently features the following analysis modules:
+//!- Global : Study of global event observables
+//!- Particle : Study of single particle spectra
+//!- Pair: Study of differential (long range) correlation functions R2, P2, and G2
+//!- Nudyn: Study of integral correlation functions, moments, factorial moments, cumulants, and factorial cumulants
+//!- SubSample : Calculation of statistical errors using the sub sample method.
+//!- Performance : Study of the performance of   measurements of basic observables based on fast simulators
+//!- Tools: Misc. additional analysis tools included in CAP.
+//!
+//!Each of these modules are described in some detail in the following sub-sections.
+//!
+//!\subsubsection global Global -- Study of global event observables
+//!
+//!\subsubsection particle Particle  --  Study of single particle spectra
+//!
+//!\subsubsection pair Pair  --  Study of differential (long range) correlation functions R2, P2, and G2
+//!
+//!\subsubsection nudyn Nudyn  --  Study of integral correlation functions, moments, factorial moments, cumulants, and factorial cumulants
+//!
+//!\subsubsection subsample SubSample --  Calculation of statistical errors using the sub sample method.
+//!
+//!\subsubsection performance  Performance --  Study of the performance of   measurements of basic observables based on fast simulators
+//!
+//!\subsubsection tools Tools
+//!
+//!\subsection macros  Macros and Examples
+//!blablablabla
+//!blablablabla
+//!blablablabla
+//!
+
+//!\class Task
+//!\brief Base class defining the notion of light weight tasks for the generation and analysis of data
+//!
+//!\details
+//!# SubSampleStatCalculator
+//!
+//!\author C. Pruneau
+//!\version 1.0
+//!\date May 18, 2022
+//!
 //! <H1>Task</h1>
 //!
 //! The Task class is a base class used to define data analysis tasks and provide some of the basic resources required for the generation and analysis of data.
@@ -62,24 +202,24 @@ using namespace std;
 //! basic methods needed for the analysis of data and the management of files, histograms, etc. Tasks are typically data centric and require access to one or more event
 //! streams. Event streams used for i/o by a particular tasks are identified with boolean flags in the task configuration used by a speficific task instance. While most tasks
 //! only required one stream (turned on with the useStream0 flag), it is also possible to use as many as 10 streams. This can be of interest, for instance, for tasks that
-//! convert data or modify data (e.g., class ParticleSmearer).
+//! convert data or modify data (e.g., class ParticlePerformanceSimulator).
 //!
 //! <H2>Task/subtask(s)</H2>
 //!
-//! The Task class is defined to be recursive, i.e., a task can have one or many subtasks. An example of class having one or many subtasks is the TaskIterator class designed
+//! The Task class is defined to be recursive, i.e., a task can have one or many subTasks. An example of class having one or many subTasks is the TaskIterator class designed
 //! control the analysis of data sets consisting of large numbers of events and requiring calls to different types of classes to carry out several types of operations. Typically
 //! an analysis job using the TaskIterator class would use a task to generate or read data from file (e.g., WacPythia/PythiaEventGenerator), and one or more tasks to fill
-//! histograms. To add a sub-task to a task, use the addSubtask method.
+//! histograms. To add a sub-task to a task, use the addSubTask method.
 //!
 //! The task class provides several methods (functions) used to carry out specific tasks, such as task initialization,, task execution,
 //! task finilization, and basic operations related to histograms such as histogram creation, histogram scaling at the end of analysis (to carry normalization e.g.,
-//! per event analyzed, histgram saving to file, calculations of 'derived' histograms, etc. Given a task can have one or many subtasks, a mechanism is required to
-//! enable a task to automatically invoke its subtasks. Generic methods thus have two levels of invocation. For instance, to carry out the action for which a specific subclass
-//! is designed, call its "execute()" method. However, if the class instance has subtasks and you wish to call the class "execute" as well as the execute methods
-//! of all its subtasks, use the "executeTasks()" method. Similarly, methods to clear, reset, initialize, finalize tasks and their subtasks shall be called "clearTasks()",
-//! "resetTasks()", etc,  in general "xxxxxTasks()".  Note, that the operation "xxxxx" is first called for the parent and next invoked for the subtasks. Actually, since
-//! tasks can have subtasks recursively, it is this the "xxxxxTasks()" operation which is called on the subtasks. This method in turn calls the "xxxxxx()" on the subtask
-//! and next all of its subtasks, if any, recursively.
+//! per event analyzed, histgram saving to file, calculations of 'derived' histograms, etc. Given a task can have one or many subTasks, a mechanism is required to
+//! enable a task to automatically invoke its subTasks. Generic methods thus have two levels of invocation. For instance, to carry out the action for which a specific subclass
+//! is designed, call its "execute()" method. However, if the class instance has subTasks and you wish to call the class "execute" as well as the execute methods
+//! of all its subTasks, use the "executeSubTasks()" method. Similarly, methods to clear, reset, initialize, finalize tasks and their subTasks shall be called "clearSubTasks()",
+//! "resetSubTasks()", etc,  in general "xxxxxTasks()".  Note, that the operation "xxxxx" is first called for the parent and next invoked for the subTasks. Actually, since
+//! tasks can have subTasks recursively, it is this the "xxxxxTasks()" operation which is called on the subTasks. This method in turn calls the "xxxxxx()" on the subtask
+//! and next all of its subTasks, if any, recursively.
 //!
 //! <H2>Operations/Methods</H2>
 //!
@@ -155,11 +295,6 @@ using namespace std;
 //!
 //!
 
-
-
-
-
-
 class Task : public MessageLogger
 {
 protected:
@@ -174,11 +309,8 @@ protected:
   //! Pointer to a TaskConfiguation class which defines the behavior of this instance of the class Task and/or its derived class instances.
   //!
   Configuration configuration;
-  //!
-  //! Pointer to a random number generator of the class TRandom. This variable is set to "gRandom" by default and thus does not need
-  //!   to be explictly by the user/developer.
-  //!
-  TRandom * taskRandomGenerator;
+
+  
   //!
   //! Pointer to a factory of entities of type Particle.
   //!
@@ -187,6 +319,17 @@ protected:
   //! Array of pointers to streams (potentially) used by this task.
   //!
   vector<Event*>           eventStreams;
+
+  //!
+  //! number of EventFilter objects used by this class... This is a convenience variable used to avoid calling size() repeatedly
+  //!
+  int nEventFilters;
+
+  //!
+  //! number of EventFilter objects used by this class... This is a convenience variable used to avoid calling size() repeatedly
+  //!
+  int nParticleFilters;
+
   //!
   //! Array of pointers to event filters (class EventFilter) used by this task instance.
   //!
@@ -195,11 +338,7 @@ protected:
   //! Array of pointers to particle filters (class ParticleFilter)  used by this task.
   //!
   vector<ParticleFilter*>  particleFilters;
-  //!
-  //! Array of pointers to particle smearers (class ParticleSmearer)  used by this task.
-  //!
-  vector<ParticleSmearer*> particleSmearers;
-  //!
+
   //! Pointer to an object of the class EventCountHistos. An instance of the EventCountHistos is used to keep track of the number of events
   //!  accepted by this task for each of its event filters.
   //!
@@ -246,48 +385,54 @@ protected:
   //!
   vector< vector<ParticleDigit*> > filteredParticles;
 
+  //!
+  //! Number of times this task was executed (excute called)
+  //!
+  long nTaskExecuted;
 
   //!
-  vector<double>           nFilteredEventsAccepted;
+  //! Number of times this task was executed (excute called) since last reset
   //!
-  //! Number of events processed by this task instance.
-  //!
-  long nEventProcessed;
-  //!
-  //! Number of events accepted for analysis by this task instance. Note that this number is actually the sum of the number of events accepted
-  //! by the event filters used by this task.
-  //!
-  long nEventAccepted;
+  long nTaskExecutedReset;
 
   //!
-  //! Number of particles counted by this task instance in a given event.
+  //!Number of events accepted by event filters used by this task since last reset (partial save)
   //!
-  unsigned int particlesCounted;    // read or generated multiplicity (before filter cut)
+  vector<long> nEventsAcceptedReset;
 
   //!
-  //! Number of particles accepted by particle filters associated with this task instance in a given event.
+  //!Total number of events accepted by event filters used by this task since last reset (partial save)
   //!
-  unsigned int particlesAccepted;   // accepted multiplicity by one or many particle filters.
-
-
-
+  vector<long> nEventsAcceptedTotal;
 
   //!
-  //! Index to be tagged to the name of histogram files produced by this task on output. These tags are used to keep track of the sub-samples of events used
-  //! in a particular data analysis. The files can then be read in by SubSampleStatCalculator task to compute estimate of the statitical errors of all histograms
-  //! of all histogram group owned/managed by this task.
+  //!Number of particles accepted in the last event for each of the event filters and particle filters used by this task...
   //!
-  int  subSampleIndex;
+  vector<long> nParticlesAcceptedEvent;
+
   //!
-  //! Array of pointers to subtasks called by this task instance, once per event analyzed (or iteration generated by TaskIterator task). If this instance carries out
-  //! initialize, finalize, execute type operations, these are performed BEFORE the corresponding operations by the subtasks.
+  //!Number of particles accepted per each of  event filters and particle filters used by this task since last reset
   //!
-  vector<Task*> subtasks;
+  vector<long> nParticlesAcceptedReset;
+
+  //!
+  //!Number of particles accepted per each of  event filters and particle filters used by this task
+  //!
+  vector<long> nParticlesAcceptedTotal;
+
+  //!
+  //! Array of pointers to subTasks called by this task instance, once per event analyzed (or iteration generated by TaskIterator task). If this instance carries out
+  //! initialize, finalize, execute type operations, these are performed BEFORE the corresponding operations by the subTasks.
+  //!
+  vector<Task*> subTasks;
+
+
   //!
   //! Pointer to a singleton of the class ParticleTypeCollection possibly used by this task instance for particle type identification and classification purposes.
   //!
-  ParticleTypeCollection * masterCollection;
+  ParticleTypeCollection * particleTypeCollection;
 
+  int subSampleIndex;
 
 public:
 
@@ -316,17 +461,6 @@ public:
        MessageLogger::LogLevel  _reportLevel);
 
   //!
-  //! Longer constructor. It allocates resources but DOES NOT initialize the task. Task initialization can be performed by a call to the initializationTask() and/or
-  //!  initialization() methods.
-  //!
-  Task(const TString &           _name,
-       const Configuration  &    _configuration,
-       vector<EventFilter*> &    _eventFilters,
-       vector<ParticleFilter*>&  _particleFilters,
-       vector<ParticleSmearer*>& _particleSmearer,
-       MessageLogger::LogLevel   _reportLevel);
-
-  //!
   //! dtor
   virtual ~Task() {}
   
@@ -341,100 +475,98 @@ public:
   void setConfiguration(const Configuration & config);
   
   //!
-  //! Method called for the initialization of this task instance and  its subtasks. This method first calls the iniatilize() method implemented by this class or  one of its derived classes.
-  //! It next calls the initializeTasks() method of each  of the  subtasks of this instance, if any.
+  //! Method called for the initialization of this task instance and  its subTasks. This method first calls the iniatilize() method implemented by this class or  one of its derived classes.
+  //! It next calls the initializeSubTasks() method of each  of the  subTasks of this instance, if any.
   //!
-  void initializeTasks();
+  void initializeSubTasks();
   //!
-  //! Method called to execute this task instance and  its subtasks. This method first calls the execute() method implemented by this class or  one of its derived classes.
-  //! It next calls the executeTasks() method of each  of the  subtasks of this instance, if any.
+  //! Method called to execute this task instance and  its subTasks. This method first calls the execute() method implemented by this class or  one of its derived classes.
+  //! It next calls the executeSubTasks() method of each  of the  subTasks of this instance, if any.
   //!
-  void executeTasks();
+  void executeSubTasks();
   //!
-  //! Method called to finalize this task instance and  its subtasks. This method first calls the finalize() method implemented by this class or  one of its derived classes.
-  //! It next calls the finalizeTasks() method of each  of the  subtasks of this instance, if any.
+  //! Method called to finalize this task instance and  its subTasks. This method first calls the finalize() method implemented by this class or  one of its derived classes.
+  //! It next calls the finalizeSubTasks() method of each  of the  subTasks of this instance, if any.
   //!
-  void finalizeTasks();
+  void finalizeSubTasks();
   //!
-  //! Method called to rest this task instance and its subtasks. This method first calls the reset() method implemented by this class or  one of its derived classes.
-  //! It next calls the resetTasks() method of each  of the  subtasks of this instance, if any. See the class documentation for the definition of task "reset".
+  //! Method called to rest this task instance and its subTasks. This method first calls the reset() method implemented by this class or  one of its derived classes.
+  //! It next calls the resetSubTasks() method of each  of the  subTasks of this instance, if any. See the class documentation for the definition of task "reset".
   //!
-  void resetTasks();
+  void resetSubTasks();
   //!
-  //! Method called to clear  this task instance and its subtasks. This method first calls the clear() method implemented by this class or  one of its derived classes.
-  //! It next calls the resetTasks() method of each  of the  subtasks of this instance, if any. See the class documentation for the definition of task "clear".
+  //! Method called to clear  this task instance and its subTasks. This method first calls the clear() method implemented by this class or  one of its derived classes.
+  //! It next calls the resetSubTasks() method of each  of the  subTasks of this instance, if any. See the class documentation for the definition of task "clear".
   //!
-  void clearTasks();
+  void clearSubTasks();
 
   //!
-  //! Method called to save the histogram objects handled  this task instance and its subtasks. This method first calls the savePartial() method implemented by this class or  one of its derived classes.
-  //! It next calls the savePartialTasks() method of each  of the  subtasks of this instance, if any. See the class documentation to figure out how to generate partial saves.
+  //! Method called to save the histogram objects handled  this task instance and its subTasks. This method first calls the savePartial() method implemented by this class or  one of its derived classes.
+  //! It next calls the savePartialSubTasks() method of each  of the  subTasks of this instance, if any. See the class documentation to figure out how to generate partial saves.
   //!
-  void savePartialTasks();
-
-
-  //!
-  //! Carry out a sub-sample analysis to compute the statistical uncertainties of the histograms of this task and its subtasks.
-  //!
-  void subsampleAnalysisTasks();
-
+  void savePartialSubTasks();
 
   //!
-  //! Method called to print  the configuration of  this task instance and its subtasks. This method first calls the printConfiguration() method implemented by this class or  one of its derived classes.
-  //! It next calls the printConfigurationTasks() method of each  of the  subtasks of this instance, if any. The output is sent to the ostream identified by the argument "output".
+  //! Method called to print  the configuration of  this task instance and its subTasks. This method first calls the printConfiguration() method implemented by this class or  one of its derived classes.
+  //! It next calls the printConfigurationTasks() method of each  of the  subTasks of this instance, if any. The output is sent to the ostream identified by the argument "output".
   //!
-  void printConfigurationTasks(ostream & output);
+  void printConfigurationSubTasks(ostream & output);
+
   //!
-  //! Returns a boolean (true) is this task instance has subtasks.
+  //! Returns a boolean (true) is this task instance has subTasks.
   //!
-  bool hasSubtasks()  const
+  bool hasSubTasks()  const
   {
-  return subtasks.size()>0;
+  return subTasks.size()>0;
   }
+
   //!
-  //! Returns the number of subtasks held by this task instance.
+  //! Returns the number of subTasks held by this task instance.
   //!
-  unsigned int getNSubtasks() const
+  unsigned int getNSubTasks() const
   {
-  return subtasks.size();
+  return subTasks.size();
   }
+
   //!
   //! Returns a pointer to the subtask at the given index. The current implementation of the code does not checl whether the index might be larger
-  //! than the actual number of subtasks held by this instance. As such, a call with a value of index in excess of the number of subtasks will yield
+  //! than the actual number of subTasks held by this instance. As such, a call with a value of index in excess of the number of subTasks will yield
   //!  an exception (segmentation fault).
   //!
-  Task * getSubtaskAt(unsigned int index)
+  Task * getSubTaskAt(unsigned int index)
   {
-  return subtasks[index];
+  return subTasks[index];
   }
+
   //!
   //! Adds the given taks a subtask of this task instance.
   //!
-  Task *  addSubtask(Task * task);
+  Task *  addSubTask(Task * task);
+
   //!
   //! Initialize this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient.
   //!
   virtual void initialize();
+
   //!
   //! Execute this task instance. This base class implementation only increments the counters nEventProcessed and nEventAccepted. Implement this method in
   //! derived class to achieve the actual task of interest. Note: You can increase the counters nEventProcessed and nEventAccepted indiscrimately
   //! by a call to Task::execute(). However, in general, you may wish to count all events looked and only count as accepted those that passed one of the event
-  //! filters used by this task. To achive this, use calls to the methods incrementEventProcessed() and incrementEventAccepted() rather than explicitly incrementing
+  //! filters used by this task. To achive this, use calls to the methods incrementTaskExecuted()() and incrementNEventsAccepted() rather than explicitly incrementing
   //! the variable nEventProcessed and nEventAccepted. These are currently protected  but may defined as private in a future release.
   //!
-  virtual void execute()
-  {
-    ++nEventProcessed;
-    ++nEventAccepted;
-  }
+  virtual void execute();
+
   //!
   //! Finalize this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient.
   //!
   virtual void finalize();
+
   //!
   //! Reset this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient.
   //!
   virtual void reset();
+
   //!
   //! Clear this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient.
   //!
@@ -444,10 +576,7 @@ public:
   //! Save histogram groups owned by this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient.
   //!
   virtual void savePartial();
-  //!
-  //! Print event statistics on standard output.
-  //!
-  virtual void printEventCount() const;
+
   //!
   //! Print this class instance configuration. This is typically achieved by a clas to the printProperties of the task configuration  (Configuration) instance
   //! used to control the behavior of this class.
@@ -500,13 +629,6 @@ public:
   //! methods of the histogram groups owned by this instance.
   //!
   virtual void saveHistograms();
-
-  //!
-  //! Carry out a sub-sample analysis to compute the statistical uncertainties of the histograms of this task and its subtasks.
-  //!
-  virtual void subsampleAnalysis();
-
-
 
   //!
   //! Add the histograms of this task to the given TList.
@@ -569,7 +691,16 @@ public:
     return configuration;
   }
 
-  
+  inline ParticleTypeCollection * getParticleTypeCollection() const
+  {
+  return particleTypeCollection;
+  }
+
+  inline ParticleTypeCollection * getParticleTypeCollection()
+  {
+  return particleTypeCollection;
+  }
+
   //!
   //! Return the name of this task instance.
   //! @return name of this task instance.
@@ -582,126 +713,185 @@ public:
   //!
   //! Set the name of this task instance.
   //!
-  inline void setName(const TString & name)
+  inline void setName(const TString & _name)
   {
-    taskName = name;
+    taskName = _name;
   }
 
-  //!
-  //! Return a pointer to the random generator used by this task instance.
-  //!
-  inline TRandom * getRandomGenerator()
+  inline void incrementTaskExecuted()
   {
-  return taskRandomGenerator;
+  nTaskExecuted++;
+  nTaskExecutedReset++;
   }
 
-  //!
-  //! Increment the number of event processed by this task instance.
-  //!
-  inline void incrementEventProcessed()
+  inline void initializeTaskExecuted()
   {
-    ++nEventProcessed;
+  nTaskExecuted = 0;
+  nTaskExecutedReset = 0;
   }
 
-  //!
-  //! Increment the number of event accepted (and used, say, to increment/fill histograms) by this task instance.
-  //!
-  inline void incrementEventAccepted(unsigned int eventFilterIndex)
+  inline void resetTaskExecuted()
   {
-    ++nEventAccepted;
-    if (nFilteredEventsAccepted.size()>0) nFilteredEventsAccepted[eventFilterIndex] += 1;
+  nTaskExecutedReset = 0;
   }
 
-  //!
-  //! Return the number of event processed by this task instance.
-  //!
-  inline long getNEventProcessed() const
+  inline void clearTaskExecuted()
   {
-  return nEventProcessed;
+  nTaskExecuted = 0;
+  nTaskExecutedReset = 0;
   }
 
-  //!
-  //! Return the number of event accepted (and used, say, to increment/fill histograms) by this task instance.
-  //!
-  inline long getNEventAccepted() const
+  inline long getNTaskExecuted()
   {
-  return nEventAccepted;
+  return nTaskExecuted;
   }
 
-  //!
-  //! Return the current value of the file (and event subset) index.
-  //!
-  inline long getSubSampleIndex() const
+
+  inline long getNTaskExecutedReset()
   {
-  return subSampleIndex;
+  return nTaskExecutedReset;
   }
+
+  inline void initializeNEventsAccepted()
+  {
+  nEventsAcceptedReset.assign(nEventFilters,0);
+  nEventsAcceptedTotal.assign(nEventFilters,0);
+  }
+
+  inline void incrementNEventsAccepted(int iEventFilter=0)
+  {
+  nEventsAcceptedReset[iEventFilter]++;
+  nEventsAcceptedTotal[iEventFilter]++;
+  }
+
+  inline void resetNEventsAccepted()
+  {
+  nEventsAcceptedReset.assign(nEventFilters,0);
+  }
+
+  inline void clearNEventsAccepted()
+  {
+  nEventsAcceptedReset.assign(nEventFilters,0);
+  nEventsAcceptedTotal.assign(nEventFilters,0);
+  }
+
+  inline int getNEventsAcceptedReset(int iEventFilter=0) const
+  {
+  if (iEventFilter<0 || iEventFilter>=nEventFilters)
+    return -1;
+  else
+    return nEventsAcceptedReset[iEventFilter];
+  }
+
+  inline int getNEventsAcceptedTotal(int iEventFilter=0) const
+  {
+  if (iEventFilter<0 || iEventFilter>=nEventFilters)
+    return -1;
+  else
+    return nEventsAcceptedTotal[iEventFilter];
+  }
+
+  void writeNEexecutedTask(TFile * outputFile);
+  long loadNEexecutedTask(TFile * inputFile);
+  void writeNEventsAccepted(TFile * outputFile);
+  void loadNEventsAccepted(TFile * outputFile);
+
+  vector<long> nParticleAcceptedEvent;
+  vector<long> nParticleAcceptedReset;
+  vector<long> nParticleAcceptedTotal;
+
+  inline void initializeNParticlesAccepted()
+  {
+  int n = nEventFilters*nParticleFilters;
+  nParticleAcceptedEvent.assign(n,0);
+  nParticleAcceptedReset.assign(n,0);
+  nParticleAcceptedTotal.assign(n,0);
+  }
+
+  inline void incrementNParticlesAccepted(int iEventFilter=0, int iParticleFilter=0)
+  {
+  int index = iEventFilter*nParticleFilters+iParticleFilter;
+  nParticleAcceptedEvent[index]++;
+  nParticleAcceptedReset[index]++;
+  nParticleAcceptedTotal[index]++;
+  }
+
+  inline void resetNParticlesAcceptedEvent()
+  {
+  int n = nEventFilters*nParticleFilters;
+  nParticleAcceptedEvent.assign(n,0);
+  }
+
+  inline void resetNParticlesAccepted()
+  {
+  int n = nEventFilters*nParticleFilters;
+  nParticleAcceptedEvent.assign(n,0);
+  nParticleAcceptedReset.assign(n,0);
+  }
+
+  inline void clearNParticlesAccepted()
+  {
+  int n = nEventFilters*nParticleFilters;
+  nParticleAcceptedEvent.assign(n,0);
+  nParticleAcceptedReset.assign(n,0);
+  nParticleAcceptedTotal.assign(n,0);
+  }
+
+  inline int getNParticlesAcceptedEvent(int iEventFilter=0, int iParticleFilter=0)  const
+  {
+  if (iEventFilter<0 || iEventFilter>=nEventFilters)
+    return -1;
+  else
+    {
+    if (iParticleFilter<0 || iParticleFilter>=nParticleFilters)
+      return -1;
+    else
+      return nParticleAcceptedEvent[iEventFilter*nParticleFilters+iParticleFilter];
+    }
+  }
+
+  inline int getNParticlesAcceptedReset(int iEventFilter=0, int iParticleFilter=0) const
+  {
+  if (iEventFilter<0 || iEventFilter>=nEventFilters)
+    return -1;
+  else
+    {
+    if (iParticleFilter<0 || iParticleFilter>=nParticleFilters)
+      return -1;
+    else
+      return nParticleAcceptedReset[iEventFilter*nParticleFilters+iParticleFilter];
+    }
+  }
+
+  inline int getNParticlesAcceptedTotal(int iEventFilter=0, int iParticleFilter=0) const
+  {
+  if (iEventFilter<0 || iEventFilter>=nEventFilters)
+    return -1;
+  else
+    {
+    if (iParticleFilter<0 || iParticleFilter>=nParticleFilters)
+      return -1;
+    else
+      return nParticleAcceptedTotal[iEventFilter*nParticleFilters+iParticleFilter];
+    }
+  }
+
+
+  void printEventStatistics() const;
+
+
+  void createEventCountHistograms();
+  void loadEventCountHistograms(TFile * inputFile);
+  void fillEventCountHistograms();
+  void saveEventCountHistograms(TFile * outputFile);
+  void resetEventCountHistograms();
+  void clearEventCountHistograms();
+
 
   //!
   //! Save the given (long) value with the given name in the given output file.
   //!
   void writeParameter(TFile * outputFile, const TString parameterName, long value);
-
-  //!
-  //! Save the number of event processed by this task instance to the given TFile output.
-  //!
-  void saveNEventProcessed(TFile * outputFile);
-  //!
-  //! Save the number of event accepted by this task instance to the given TFile output.
-  //!
-  void saveNEventAccepted(TFile * outputFile);
-
-  //!
-  //! Save the number of event accepted by each event filter own by this task instance to the given TFile output.
-  //!
-  void saveNFilteredEventsAccepted(TFile * outputFile, vector<unsigned int> & nFilteredEventsAccepted);
-
-  //!
-  //! Load the number of event processed by a previous  task instance from the given TFile.
-  //!
-  void loadNEventProcessed(TFile * inputFile);
-
-  //!
-  //! Load the number of event accepted by a previous   task instance from the given TFile.
-  //!
-  void loadNEventAccepted(TFile * inputFile);
-  //!
-  //! Load the number of event accepted for each event filter by a previous   task instance from the given TFile.
-  //!
-  void loadNFilteredEventsAccepted(TFile * inputFile, vector<unsigned int> & nFilteredEventsAccepted);
-
-  //!
-  //! Reset to zero the particle counters associated with this task instance
-  //!
-  inline void resetParticleCounters()
-  {
-  particlesCounted  = 0;
-  particlesAccepted = 0;
-  }
-
-  //!
-  //! Increment by one unit the number of particles "seen" by this task in a given event.
-  //!
-  inline void incrementParticlesCounted()      { particlesCounted++; }
-
-  //!
-  //! Increment by one unit the number of particles accepted by this task in a given event.
-  //!
-  inline void incrementParticlesAccepted()     { particlesAccepted++; }
-
-  //!
-  //! Return the number of particles "seen" by this task in a given event.
-  //!
-  inline unsigned int getNParticlesCounted() const   { return particlesCounted; }
-
-  //!
-  //! Return the number of particles accepted by this task in a given event.
-  //!
-  inline unsigned int getNParticlesAccepted() const  { return particlesAccepted; }
-
-  //!
-  //! Set the random number generator used by this task instance.
-  //!
-  void setRandomGenerator(TRandom * randomGenerator);
 
   //!
   //! Clear the event filters used by this task instance.
@@ -783,39 +973,6 @@ public:
   return particleFilters;
   }
 
-  
-  //!
-  //! Clear the particle smearer used by this task instance.
-  //!
-  void clearParticleSmearer()
-  {
-  particleSmearers.clear();
-  }
-
-  //!
-  //! Set particle  smearers  used by this task instance.
-  //!
-  void setParticleSmearers(vector<ParticleSmearer*> _particleSmearers)
-  {
-  particleSmearers = _particleSmearers;
-  }
-
-  //!
-  //! Add a particle  smearer to those  used by this task instance.
-  //!
-  void addParticleSmearer(ParticleSmearer*  _particleSmearer)
-  {
-  particleSmearers.push_back(_particleSmearer);
-  }
-
-  //!
-  //! Return particle  smearers   used by this task instance.
-  //!
-  vector<ParticleSmearer*> getParticleSmearer()
-  {
-   return particleSmearers;
-  }
-
   inline unsigned int getNHistograms() const              { return histograms.size();   }
   inline unsigned int getNBaseSingleHistograms() const    { return baseSingleHistograms.size();   }
   inline unsigned int getNBasePairHistograms() const      { return basePairHistograms.size();     }
@@ -852,9 +1009,9 @@ public:
   configuration.setParameter("histogramOuputFileName", outputName);
   }
   
-  static vector<TString> listFilesInDir(const TString & dirname,
+  vector<TString> listFilesInDir(const TString & dirname,
                                         const TString ext=".root");
-  static vector<TString> listFilesInDir(const TString & pathName,
+  vector<TString> listFilesInDir(const TString & pathName,
                                         vector<TString> includePatterns,
                                         vector<TString> excludePatterns);
 
@@ -866,7 +1023,15 @@ public:
   //!
   vector<TString> getSelectedFileNamesFrom(const TString & folder);
   
-  static TString removeRootExtension(const TString fileName);
+
+  //!
+  //!Removes the ".root" ending of the given string if it has this ending.
+  //!This function is used in the management of file names for subsampling analyses and
+  //!the calculatioin of derived histograms.
+  //!
+  TString removeRootExtension(const TString fileName);
+
+ 
 
   ClassDef(Task,0)
 };

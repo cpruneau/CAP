@@ -152,37 +152,37 @@ protected:
   static unsigned int getNEventStreams();
   static void resetEventStreams();
 
-  //!
-  //! Return the participant moments of the current event
-  //!
-  CollisionGeometryMoments & getParticipantMoments()
-  {
-  return *participantMoments;
-  }
-
-  //!
-  //! Return the participant moments of the current event
-  //!
-  const CollisionGeometryMoments & getParticipantMoments() const
-  {
-  return *participantMoments;
-  }
-
-  //!
-  //! Return the binary moments of the current event
-  //!
-  CollisionGeometryMoments & getBinaryMoments()
-  {
-  return *binaryMoments;
-  }
-
-  //!
-  //! Return the binary moments of the current event
-  //!
-  const CollisionGeometryMoments & getBinaryMoments() const
-  {
-  return *binaryMoments;
-  }
+//  //!
+//  //! Return the participant moments of the current event
+//  //!
+//  CollisionGeometryMoments & getParticipantMoments()
+//  {
+//  return *participantMoments;
+//  }
+//
+//  //!
+//  //! Return the participant moments of the current event
+//  //!
+//  const CollisionGeometryMoments & getParticipantMoments() const
+//  {
+//  return *participantMoments;
+//  }
+//
+//  //!
+//  //! Return the binary moments of the current event
+//  //!
+//  CollisionGeometryMoments & getBinaryMoments()
+//  {
+//  return *binaryMoments;
+//  }
+//
+//  //!
+//  //! Return the binary moments of the current event
+//  //!
+//  const CollisionGeometryMoments & getBinaryMoments() const
+//  {
+//  return *binaryMoments;
+//  }
 
   void setStreamIndex(unsigned int index)
   {
@@ -205,8 +205,8 @@ protected:
   //double b;
   Nucleus * nucleusA;
   Nucleus * nucleusB;
-  CollisionGeometryMoments * binaryMoments;
-  CollisionGeometryMoments * participantMoments;
+  //CollisionGeometryMoments * binaryMoments;
+  //CollisionGeometryMoments * participantMoments;
 
   static vector<Event*> eventStreamsStore;
 

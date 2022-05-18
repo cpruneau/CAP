@@ -1,5 +1,5 @@
 <map id="ParticlePairCombinedHistogramCalculator" name="ParticlePairCombinedHistogramCalculator">
 <area shape="rect" id="node1" title=" " alt="" coords="5,155,213,196"/>
-<area shape="rect" id="node2" href="$class_task.html" title=" " alt="" coords="84,80,135,107"/>
+<area shape="rect" id="node2" href="$class_task.html" title="Base class defining the notion of light weight tasks for the generation and analysis of data." alt="" coords="84,80,135,107"/>
 <area shape="rect" id="node3" href="$class_message_logger.html" title=" " alt="" coords="52,5,167,32"/>
 </map>

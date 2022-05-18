@@ -27,9 +27,9 @@ Task(_name,_configuration,_selectedLevel)
 
 void ParticleTypeTableLoader::setDefaultConfiguration()
 {
-  if (reportStart("ParticleTypeTableLoader",getName(),"setDefaultConfiguration()"))
-    {
-    }
+  
+  if (reportStart(__FUNCTION__))
+    ;
   Configuration & configuration = getConfiguration();
   configuration.setName("ParticleTypeTableLoader Configuration");
   configuration.setParameter("useParticles",      true);
@@ -47,9 +47,10 @@ void ParticleTypeTableLoader::setDefaultConfiguration()
 
 void ParticleTypeTableLoader::execute()
 {
-  if (reportStart("ParticleTypeTableLoader",getName(),"execute()"))
+  
+  if (reportStart(__FUNCTION__))
     ;
-
+  incrementTaskExecuted();
   bool    dataInputUsed      = configuration.getValueBool("dataInputUsed");
   TString dataInputPath      = configuration.getValueString("dataInputPath");
   TString dataInputFileName  = configuration.getValueString("dataInputFileName");
@@ -77,6 +78,6 @@ void ParticleTypeTableLoader::execute()
     particles->writeToFile(pdgDataFileName);
     }
  
-  if (reportEnd("ParticleTypeTableLoader",getName(),"execute()"))
+  if (reportEnd(__FUNCTION__))
     ;
 }

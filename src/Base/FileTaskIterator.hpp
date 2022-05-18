@@ -11,13 +11,12 @@
  * *********************************************************************/
 #ifndef CAP__FileTaskIterator
 #define CAP__FileTaskIterator
-#include "Task.hpp"
-#include "Timer.hpp"
+#include "TaskIterator.hpp"
 
 //!
 //! Task Iterator designed to repeat the same series of tasks on many files/directories
 //!
-class FileTaskIterator : public Task
+class FileTaskIterator : public TaskIterator
 {
 public:
   
@@ -41,12 +40,12 @@ public:
   //!
   //! Initialize this task and all its subtasks. This method handles the retrieval and passing of the files to be analyzed by the subtasks.
   //!
-  virtual void initializeTasks();
+  virtual void initializeSubTasks();
 
   //!
   //! Execute this task based on the configuration and class variable specified at construction
   //!
-  virtual void execute(){}
+  virtual void execute();
 
   //!
   //! Set the default configuration of this task
@@ -54,14 +53,9 @@ public:
   virtual void setDefaultConfiguration();
   
   //!
-  //! Execute all the subtasks for all the file  templates
-  //!
-  virtual void run();
-
-  //!
   //! Returns the number of  file  templates used by this task iterator
   //!
-  inline unsigned int getNselectedFileNames() const
+  inline unsigned int getNSelectedFileNames() const
   {
   return selectedFileNames.size();
   }

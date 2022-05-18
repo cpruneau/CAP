@@ -1,6 +1,7 @@
 <map id="FileTaskIterator" name="FileTaskIterator">
-<area shape="rect" id="node1" title=" " alt="" coords="43,155,155,181"/>
-<area shape="rect" id="node4" href="$class_derived_histogram_calculator.html" title=" " alt="" coords="5,229,192,256"/>
-<area shape="rect" id="node2" href="$class_task.html" title=" " alt="" coords="73,80,124,107"/>
-<area shape="rect" id="node3" href="$class_message_logger.html" title=" " alt="" coords="41,5,156,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="43,229,155,256"/>
+<area shape="rect" id="node5" href="$class_derived_histogram_calculator.html" title=" " alt="" coords="5,304,192,331"/>
+<area shape="rect" id="node2" href="$class_task_iterator.html" title=" " alt="" coords="53,155,144,181"/>
+<area shape="rect" id="node3" href="$class_task.html" title="Base class defining the notion of light weight tasks for the generation and analysis of data." alt="" coords="73,80,124,107"/>
+<area shape="rect" id="node4" href="$class_message_logger.html" title=" " alt="" coords="41,5,156,32"/>
 </map>

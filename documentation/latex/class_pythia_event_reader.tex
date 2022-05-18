@@ -10,7 +10,7 @@ Inheritance diagram for Pythia\+Event\+Reader\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=249pt]{class_pythia_event_reader__inherit__graph}
+\includegraphics[width=181pt]{class_pythia_event_reader__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -27,44 +27,18 @@ Collaboration diagram for Pythia\+Event\+Reader\+:\nopagebreak
 \item 
 \mbox{\hyperlink{class_pythia_event_reader_ae1d4a9474fe0b74055ba7903b281852a}{Pythia\+Event\+Reader}} (const TString \&\+\_\+name, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&\+\_\+event\+Filters, vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&\+\_\+particle\+Filters, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \+\_\+selected\+Level)
 \item 
-virtual \mbox{\hyperlink{class_pythia_event_reader_a7b8c68f6e2ba76323b5aa52632112f25}{$\sim$\+Pythia\+Event\+Reader}} ()
+virtual \mbox{\hyperlink{class_pythia_event_reader_a4576163b45ab2bea79c946b92bb21c41}{$\sim$\+Pythia\+Event\+Reader}} ()
 \item 
 virtual void \mbox{\hyperlink{class_pythia_event_reader_a37a9ae51e4555b7d03b248da675c0020}{set\+Default\+Configuration}} ()
 \item 
-virtual void \mbox{\hyperlink{class_pythia_event_reader_a295ed726efbed04e9de349e9c508e3e9}{initialize}} ()
-\item 
 virtual void \mbox{\hyperlink{class_pythia_event_reader_a5f5ed7fbdbd672eb750ed3c457e2fa76}{execute}} ()
 \item 
-Int\+\_\+t \mbox{\hyperlink{class_pythia_event_reader_a0a015d6773c1faa756eb65aaa5ba61f0}{Get\+Entry}} (Long64\+\_\+t entry)
-\item 
-Long64\+\_\+t \mbox{\hyperlink{class_pythia_event_reader_a153325cf19a98e0f72df494851892290}{Load\+Tree}} (Long64\+\_\+t entry)
-\item 
-void \mbox{\hyperlink{class_pythia_event_reader_a845d8260ee71c6fae08c67f7908c4610}{Init}} (TTree $\ast$tree)
-\item 
-Bool\+\_\+t \mbox{\hyperlink{class_pythia_event_reader_a055c816a2ed550f75693457f4e92c1aa}{Notify}} ()
-\item 
-void \mbox{\hyperlink{class_pythia_event_reader_adb9650caeb0d4f539f1c18de408c9b0c}{Show}} (Long64\+\_\+t entry)
-\item 
-Int\+\_\+t \mbox{\hyperlink{class_pythia_event_reader_ac8e6fc9b3d126d56ff8684988d0e8bbb}{Cut}} (Long64\+\_\+t entry)
+virtual void \mbox{\hyperlink{class_pythia_event_reader_af97e122c11aecfc0f60672a1a418be2a}{init\+Input\+Tree\+Mapping}} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-TTree $\ast$ \mbox{\hyperlink{class_pythia_event_reader_a0b12dfc411e5e9dbef279216860a27b2}{f\+Chain}}
-\item 
-Int\+\_\+t \mbox{\hyperlink{class_pythia_event_reader_a9c7f1411c5fe41c38c159538005f527d}{f\+Current}}
-\begin{DoxyCompactList}\small\item\em pointer to the analyzed TTree or TChain \end{DoxyCompactList}\item 
-TFile $\ast$ \mbox{\hyperlink{class_pythia_event_reader_a6c8dd46f26756cad652fcef396bd2309}{input\+Data\+File}}
-\begin{DoxyCompactList}\small\item\em current Tree number in a TChain \end{DoxyCompactList}\item 
-Long64\+\_\+t \mbox{\hyperlink{class_pythia_event_reader_a70768fbfaa86ff05b04c996fef53e2c1}{nentries}}
-\item 
-Long64\+\_\+t \mbox{\hyperlink{class_pythia_event_reader_af3df275865796d546380029ea0447c11}{nbytes}}
-\item 
-Long64\+\_\+t \mbox{\hyperlink{class_pythia_event_reader_a2ed3777dd860b0df6d808e44a60f479a}{nb}}
-\item 
-long \mbox{\hyperlink{class_pythia_event_reader_ac1f45b2c31e19d53c9aedc9519e09975}{jentry}}
-\item 
-Int\+\_\+t \mbox{\hyperlink{class_pythia_event_reader_a8f0f9f65ccb7c2c28e5fcaa222b75710}{particles\+\_\+}}
+Int\+\_\+t \mbox{\hyperlink{class_pythia_event_reader_a4cdf77a30c5b6e5f2a306e01a1ba907c}{n\+Particles}}
 \item 
 UInt\+\_\+t \mbox{\hyperlink{class_pythia_event_reader_a432596757f53e34ba4de0f541ed33624}{particles\+\_\+f\+Unique\+ID}} \mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}
 \item 
@@ -151,23 +125,19 @@ TBranch $\ast$ \mbox{\hyperlink{class_pythia_event_reader_a97a91bc9ed8941d90de0c
 TBranch $\ast$ \mbox{\hyperlink{class_pythia_event_reader_a58e639b6ea0daa98987c95e755912e66}{b\+\_\+particles\+\_\+f\+Polar\+Theta}}
 \item 
 TBranch $\ast$ \mbox{\hyperlink{class_pythia_event_reader_aa04d97fe6a497e374d81c645f96b52b6}{b\+\_\+particles\+\_\+f\+Polar\+Phi}}
-\item 
-\mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ \mbox{\hyperlink{class_pythia_event_reader_aa8eb52be94e02ee8ded845919b6ad583}{event\+Filter}}
-\item 
-\mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ \mbox{\hyperlink{class_pythia_event_reader_aea24298638ad7b5c78d62b83f49a89ed}{particle\+Filter}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Static Public Attributes}
+\doxysubsection*{Static Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static const int \mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}} = 2000
+static const int \mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}} = 10000
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
+Class defining a ROOT Tree reader for PYTHIA events produced by Pythia8. The Init() method maps the tree branch onto variables used by this reader Particles may be copied into a CAP event stream for analysis. 
 
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00017}{17}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
 
 
@@ -178,100 +148,67 @@ Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00017}{17}
 \doxysubsubsection{\texorpdfstring{PythiaEventReader()}{PythiaEventReader()}}
 {\footnotesize\ttfamily Pythia\+Event\+Reader\+::\+Pythia\+Event\+Reader (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&}]{\+\_\+event\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&}]{\+\_\+particle\+Filters,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{\+\_\+selected\+Level }\end{DoxyParamCaption})}
 
+Detailed CTOR
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_pythia_event_reader_8cpp_source}{Pythia\+Event\+Reader.\+cpp}}.
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+name} & Name given to task instance \\
+\hline
+{\em \+\_\+configuration} & \mbox{\hyperlink{class_configuration}{Configuration}} used to run this task \\
+\hline
+{\em \+\_\+event\+Filters} & Array of event filters to be used by this task \\
+\hline
+{\em \+\_\+particle\+Filters} & Array of particle filters to be used by this task \\
+\hline
+{\em \+\_\+report\+Level} & Message log level to be used by this task. \\
+\hline
+\end{DoxyParams}
 
-\mbox{\Hypertarget{class_pythia_event_reader_a7b8c68f6e2ba76323b5aa52632112f25}\label{class_pythia_event_reader_a7b8c68f6e2ba76323b5aa52632112f25}} 
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_pythia_event_reader_8cpp_source}{Pythia\+Event\+Reader.\+cpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a4576163b45ab2bea79c946b92bb21c41}\label{class_pythia_event_reader_a4576163b45ab2bea79c946b92bb21c41}} 
 \index{PythiaEventReader@{PythiaEventReader}!````~PythiaEventReader@{$\sim$PythiaEventReader}}
 \index{````~PythiaEventReader@{$\sim$PythiaEventReader}!PythiaEventReader@{PythiaEventReader}}
 \doxysubsubsection{\texorpdfstring{$\sim$PythiaEventReader()}{~PythiaEventReader()}}
-{\footnotesize\ttfamily Pythia\+Event\+Reader\+::$\sim$\+Pythia\+Event\+Reader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily virtual Pythia\+Event\+Reader\+::$\sim$\+Pythia\+Event\+Reader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
 
+DTOR 
 
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{_pythia_event_reader_8cpp_source}{Pythia\+Event\+Reader.\+cpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_pythia_event_reader_ac8e6fc9b3d126d56ff8684988d0e8bbb}\label{class_pythia_event_reader_ac8e6fc9b3d126d56ff8684988d0e8bbb}} 
-\index{PythiaEventReader@{PythiaEventReader}!Cut@{Cut}}
-\index{Cut@{Cut}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{Cut()}{Cut()}}
-{\footnotesize\ttfamily Int\+\_\+t Pythia\+Event\+Reader\+::\+Cut (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00249}{249}} of file \mbox{\hyperlink{_pythia_event_reader_8cpp_source}{Pythia\+Event\+Reader.\+cpp}}.
-
 \mbox{\Hypertarget{class_pythia_event_reader_a5f5ed7fbdbd672eb750ed3c457e2fa76}\label{class_pythia_event_reader_a5f5ed7fbdbd672eb750ed3c457e2fa76}} 
 \index{PythiaEventReader@{PythiaEventReader}!execute@{execute}}
 \index{execute@{execute}!PythiaEventReader@{PythiaEventReader}}
 \doxysubsubsection{\texorpdfstring{execute()}{execute()}}
 {\footnotesize\ttfamily void Pythia\+Event\+Reader\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
-Read an ampt event from file Copy the event into \mbox{\hyperlink{class_event}{Event}} for convenience... 
+Read in one PYTHIA event from file.
 
-Reimplemented from \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task}}.
+Read a PYTHIA event from file Copy the event into \mbox{\hyperlink{class_event}{Event}} for convenience... 
 
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00104}{104}} of file \mbox{\hyperlink{_pythia_event_reader_8cpp_source}{Pythia\+Event\+Reader.\+cpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a0a015d6773c1faa756eb65aaa5ba61f0}\label{class_pythia_event_reader_a0a015d6773c1faa756eb65aaa5ba61f0}} 
-\index{PythiaEventReader@{PythiaEventReader}!GetEntry@{GetEntry}}
-\index{GetEntry@{GetEntry}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{GetEntry()}{GetEntry()}}
-{\footnotesize\ttfamily Int\+\_\+t Pythia\+Event\+Reader\+::\+Get\+Entry (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})}
+Reimplemented from \mbox{\hyperlink{class_root_tree_reader_acb79329a5c02fb59ecfd8d0d1ab1ad7f}{Root\+Tree\+Reader}}.
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00183}{183}} of file \mbox{\hyperlink{_pythia_event_reader_8cpp_source}{Pythia\+Event\+Reader.\+cpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{_pythia_event_reader_8cpp_source}{Pythia\+Event\+Reader.\+cpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a845d8260ee71c6fae08c67f7908c4610}\label{class_pythia_event_reader_a845d8260ee71c6fae08c67f7908c4610}} 
-\index{PythiaEventReader@{PythiaEventReader}!Init@{Init}}
-\index{Init@{Init}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
-{\footnotesize\ttfamily void Pythia\+Event\+Reader\+::\+Init (\begin{DoxyParamCaption}\item[{TTree $\ast$}]{tree }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_pythia_event_reader_af97e122c11aecfc0f60672a1a418be2a}\label{class_pythia_event_reader_af97e122c11aecfc0f60672a1a418be2a}} 
+\index{PythiaEventReader@{PythiaEventReader}!initInputTreeMapping@{initInputTreeMapping}}
+\index{initInputTreeMapping@{initInputTreeMapping}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{initInputTreeMapping()}{initInputTreeMapping()}}
+{\footnotesize\ttfamily void Pythia\+Event\+Reader\+::init\+Input\+Tree\+Mapping (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
+Initialize the mapping of Root Tree Branches onto local variables.. 
 
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00203}{203}} of file \mbox{\hyperlink{_pythia_event_reader_8cpp_source}{Pythia\+Event\+Reader.\+cpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a295ed726efbed04e9de349e9c508e3e9}\label{class_pythia_event_reader_a295ed726efbed04e9de349e9c508e3e9}} 
-\index{PythiaEventReader@{PythiaEventReader}!initialize@{initialize}}
-\index{initialize@{initialize}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
-{\footnotesize\ttfamily void Pythia\+Event\+Reader\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-Initialize this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient. 
-
-Reimplemented from \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{Task}}.
+Reimplemented from \mbox{\hyperlink{class_root_tree_reader_a142b7591288035eb8193874e7607cbe9}{Root\+Tree\+Reader}}.
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{_pythia_event_reader_8cpp_source}{Pythia\+Event\+Reader.\+cpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a153325cf19a98e0f72df494851892290}\label{class_pythia_event_reader_a153325cf19a98e0f72df494851892290}} 
-\index{PythiaEventReader@{PythiaEventReader}!LoadTree@{LoadTree}}
-\index{LoadTree@{LoadTree}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{LoadTree()}{LoadTree()}}
-{\footnotesize\ttfamily Long64\+\_\+t Pythia\+Event\+Reader\+::\+Load\+Tree (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00190}{190}} of file \mbox{\hyperlink{_pythia_event_reader_8cpp_source}{Pythia\+Event\+Reader.\+cpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a055c816a2ed550f75693457f4e92c1aa}\label{class_pythia_event_reader_a055c816a2ed550f75693457f4e92c1aa}} 
-\index{PythiaEventReader@{PythiaEventReader}!Notify@{Notify}}
-\index{Notify@{Notify}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{Notify()}{Notify()}}
-{\footnotesize\ttfamily Bool\+\_\+t Pythia\+Event\+Reader\+::\+Notify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00238}{238}} of file \mbox{\hyperlink{_pythia_event_reader_8cpp_source}{Pythia\+Event\+Reader.\+cpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00106}{106}} of file \mbox{\hyperlink{_pythia_event_reader_8cpp_source}{Pythia\+Event\+Reader.\+cpp}}.
 
 \mbox{\Hypertarget{class_pythia_event_reader_a37a9ae51e4555b7d03b248da675c0020}\label{class_pythia_event_reader_a37a9ae51e4555b7d03b248da675c0020}} 
 \index{PythiaEventReader@{PythiaEventReader}!setDefaultConfiguration@{setDefaultConfiguration}}
@@ -279,23 +216,13 @@ Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00238}{238
 \doxysubsubsection{\texorpdfstring{setDefaultConfiguration()}{setDefaultConfiguration()}}
 {\footnotesize\ttfamily void Pythia\+Event\+Reader\+::set\+Default\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
-Initialize the configuration parameter of the task to their default value; 
+Sets the default values of the configuration parameters used by this task 
 
-Reimplemented from \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3}{Task}}.
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{_pythia_event_reader_8cpp_source}{Pythia\+Event\+Reader.\+cpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_adb9650caeb0d4f539f1c18de408c9b0c}\label{class_pythia_event_reader_adb9650caeb0d4f539f1c18de408c9b0c}} 
-\index{PythiaEventReader@{PythiaEventReader}!Show@{Show}}
-\index{Show@{Show}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{Show()}{Show()}}
-{\footnotesize\ttfamily void Pythia\+Event\+Reader\+::\+Show (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})}
+Reimplemented from \mbox{\hyperlink{class_root_tree_reader_ae6ed558a3a2e0d5ae5a3feacbe686004}{Root\+Tree\+Reader}}.
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00243}{243}} of file \mbox{\hyperlink{_pythia_event_reader_8cpp_source}{Pythia\+Event\+Reader.\+cpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{_pythia_event_reader_8cpp_source}{Pythia\+Event\+Reader.\+cpp}}.
 
 
 
@@ -304,553 +231,455 @@ Definition at line \mbox{\hyperlink{_pythia_event_reader_8cpp_source_l00243}{243
 \index{PythiaEventReader@{PythiaEventReader}!b\_particles\_@{b\_particles\_}}
 \index{b\_particles\_@{b\_particles\_}!PythiaEventReader@{PythiaEventReader}}
 \doxysubsubsection{\texorpdfstring{b\_particles\_}{b\_particles\_}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a3b560f7729c7be3cff9a3052f3f859ae}\label{class_pythia_event_reader_a3b560f7729c7be3cff9a3052f3f859ae}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fBits@{b\_particles\_fBits}}
-\index{b\_particles\_fBits@{b\_particles\_fBits}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fBits}{b\_particles\_fBits}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Bits}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a35343a4f30f8ba8f31dc89e7e31627e1}\label{class_pythia_event_reader_a35343a4f30f8ba8f31dc89e7e31627e1}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fCalcMass@{b\_particles\_fCalcMass}}
-\index{b\_particles\_fCalcMass@{b\_particles\_fCalcMass}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fCalcMass}{b\_particles\_fCalcMass}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Calc\+Mass}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a84d252509b69002008a4fe556ba491e6}\label{class_pythia_event_reader_a84d252509b69002008a4fe556ba491e6}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fDaughter@{b\_particles\_fDaughter}}
-\index{b\_particles\_fDaughter@{b\_particles\_fDaughter}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fDaughter}{b\_particles\_fDaughter}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Daughter}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a1a15bf4221462fcce30ab25f41751737}\label{class_pythia_event_reader_a1a15bf4221462fcce30ab25f41751737}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fE@{b\_particles\_fE}}
-\index{b\_particles\_fE@{b\_particles\_fE}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fE}{b\_particles\_fE}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+fE}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00091}{91}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a8a57b2f369952ce9b0ffc497a5489a3c}\label{class_pythia_event_reader_a8a57b2f369952ce9b0ffc497a5489a3c}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fLineColor@{b\_particles\_fLineColor}}
-\index{b\_particles\_fLineColor@{b\_particles\_fLineColor}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fLineColor}{b\_particles\_fLineColor}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Line\+Color}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00079}{79}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a0bca7b3624db7cd1d42e93a7dbd5b412}\label{class_pythia_event_reader_a0bca7b3624db7cd1d42e93a7dbd5b412}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fLineStyle@{b\_particles\_fLineStyle}}
-\index{b\_particles\_fLineStyle@{b\_particles\_fLineStyle}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fLineStyle}{b\_particles\_fLineStyle}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Line\+Style}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00080}{80}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_aacaf9d01214b8d24c707634bfe0da865}\label{class_pythia_event_reader_aacaf9d01214b8d24c707634bfe0da865}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fLineWidth@{b\_particles\_fLineWidth}}
-\index{b\_particles\_fLineWidth@{b\_particles\_fLineWidth}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fLineWidth}{b\_particles\_fLineWidth}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Line\+Width}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a6bdd4097b352866df05aea60a722f7c1}\label{class_pythia_event_reader_a6bdd4097b352866df05aea60a722f7c1}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fMother@{b\_particles\_fMother}}
-\index{b\_particles\_fMother@{b\_particles\_fMother}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fMother}{b\_particles\_fMother}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Mother}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a131bca2c236dc5dd8bdca9197a42af7b}\label{class_pythia_event_reader_a131bca2c236dc5dd8bdca9197a42af7b}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fPdgCode@{b\_particles\_fPdgCode}}
-\index{b\_particles\_fPdgCode@{b\_particles\_fPdgCode}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fPdgCode}{b\_particles\_fPdgCode}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Pdg\+Code}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00082}{82}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_aa04d97fe6a497e374d81c645f96b52b6}\label{class_pythia_event_reader_aa04d97fe6a497e374d81c645f96b52b6}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fPolarPhi@{b\_particles\_fPolarPhi}}
-\index{b\_particles\_fPolarPhi@{b\_particles\_fPolarPhi}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fPolarPhi}{b\_particles\_fPolarPhi}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Polar\+Phi}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00097}{97}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a58e639b6ea0daa98987c95e755912e66}\label{class_pythia_event_reader_a58e639b6ea0daa98987c95e755912e66}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fPolarTheta@{b\_particles\_fPolarTheta}}
-\index{b\_particles\_fPolarTheta@{b\_particles\_fPolarTheta}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fPolarTheta}{b\_particles\_fPolarTheta}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Polar\+Theta}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00096}{96}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a980aa55558a9a8c06b58a636298e480e}\label{class_pythia_event_reader_a980aa55558a9a8c06b58a636298e480e}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fPx@{b\_particles\_fPx}}
-\index{b\_particles\_fPx@{b\_particles\_fPx}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fPx}{b\_particles\_fPx}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Px}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_af292e8981f2c01224cd2e0aa56b47522}\label{class_pythia_event_reader_af292e8981f2c01224cd2e0aa56b47522}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fPy@{b\_particles\_fPy}}
-\index{b\_particles\_fPy@{b\_particles\_fPy}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fPy}{b\_particles\_fPy}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Py}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
 Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00089}{89}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a68b41854190d1722ea8896c130a66875}\label{class_pythia_event_reader_a68b41854190d1722ea8896c130a66875}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fPz@{b\_particles\_fPz}}
-\index{b\_particles\_fPz@{b\_particles\_fPz}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fPz}{b\_particles\_fPz}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Pz}
+\mbox{\Hypertarget{class_pythia_event_reader_a3b560f7729c7be3cff9a3052f3f859ae}\label{class_pythia_event_reader_a3b560f7729c7be3cff9a3052f3f859ae}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fBits@{b\_particles\_fBits}}
+\index{b\_particles\_fBits@{b\_particles\_fBits}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fBits}{b\_particles\_fBits}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Bits\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00090}{90}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00091}{91}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a9f3b92225c73fcf11c5f55659b21f452}\label{class_pythia_event_reader_a9f3b92225c73fcf11c5f55659b21f452}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fStatusCode@{b\_particles\_fStatusCode}}
-\index{b\_particles\_fStatusCode@{b\_particles\_fStatusCode}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fStatusCode}{b\_particles\_fStatusCode}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Status\+Code}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00083}{83}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a96cb4bdf244818096ba9036d7a4720d1}\label{class_pythia_event_reader_a96cb4bdf244818096ba9036d7a4720d1}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fUniqueID@{b\_particles\_fUniqueID}}
-\index{b\_particles\_fUniqueID@{b\_particles\_fUniqueID}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fUniqueID}{b\_particles\_fUniqueID}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Unique\+ID}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a97a91bc9ed8941d90de0c3c8c5baad4d}\label{class_pythia_event_reader_a97a91bc9ed8941d90de0c3c8c5baad4d}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fVt@{b\_particles\_fVt}}
-\index{b\_particles\_fVt@{b\_particles\_fVt}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fVt}{b\_particles\_fVt}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Vt}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00095}{95}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a39e3fd89d3ce5a2ed2010e81f3965588}\label{class_pythia_event_reader_a39e3fd89d3ce5a2ed2010e81f3965588}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fVx@{b\_particles\_fVx}}
-\index{b\_particles\_fVx@{b\_particles\_fVx}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fVx}{b\_particles\_fVx}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Vx}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00092}{92}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a202f988852ab7613d19f61c8963af220}\label{class_pythia_event_reader_a202f988852ab7613d19f61c8963af220}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fVy@{b\_particles\_fVy}}
-\index{b\_particles\_fVy@{b\_particles\_fVy}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fVy}{b\_particles\_fVy}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Vy}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00093}{93}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_adad8966e6762fa726948a2700886dc58}\label{class_pythia_event_reader_adad8966e6762fa726948a2700886dc58}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fVz@{b\_particles\_fVz}}
-\index{b\_particles\_fVz@{b\_particles\_fVz}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fVz}{b\_particles\_fVz}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Vz}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00094}{94}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a3e6ad25cb8a1ab5a120e5c2126a72a0b}\label{class_pythia_event_reader_a3e6ad25cb8a1ab5a120e5c2126a72a0b}} 
-\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fWeight@{b\_particles\_fWeight}}
-\index{b\_particles\_fWeight@{b\_particles\_fWeight}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_particles\_fWeight}{b\_particles\_fWeight}}
-{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Weight}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00086}{86}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_aa8eb52be94e02ee8ded845919b6ad583}\label{class_pythia_event_reader_aa8eb52be94e02ee8ded845919b6ad583}} 
-\index{PythiaEventReader@{PythiaEventReader}!eventFilter@{eventFilter}}
-\index{eventFilter@{eventFilter}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{eventFilter}{eventFilter}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_event_filter}{Event\+Filter}}$\ast$ Pythia\+Event\+Reader\+::event\+Filter}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00099}{99}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a0b12dfc411e5e9dbef279216860a27b2}\label{class_pythia_event_reader_a0b12dfc411e5e9dbef279216860a27b2}} 
-\index{PythiaEventReader@{PythiaEventReader}!fChain@{fChain}}
-\index{fChain@{fChain}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{fChain}{fChain}}
-{\footnotesize\ttfamily TTree$\ast$ Pythia\+Event\+Reader\+::f\+Chain}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a9c7f1411c5fe41c38c159538005f527d}\label{class_pythia_event_reader_a9c7f1411c5fe41c38c159538005f527d}} 
-\index{PythiaEventReader@{PythiaEventReader}!fCurrent@{fCurrent}}
-\index{fCurrent@{fCurrent}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{fCurrent}{fCurrent}}
-{\footnotesize\ttfamily Int\+\_\+t Pythia\+Event\+Reader\+::f\+Current}
-
-
-
-pointer to the analyzed TTree or TChain 
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00042}{42}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a6c8dd46f26756cad652fcef396bd2309}\label{class_pythia_event_reader_a6c8dd46f26756cad652fcef396bd2309}} 
-\index{PythiaEventReader@{PythiaEventReader}!inputDataFile@{inputDataFile}}
-\index{inputDataFile@{inputDataFile}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{inputDataFile}{inputDataFile}}
-{\footnotesize\ttfamily TFile$\ast$ Pythia\+Event\+Reader\+::input\+Data\+File}
-
-
-
-current Tree number in a TChain 
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_ac1f45b2c31e19d53c9aedc9519e09975}\label{class_pythia_event_reader_ac1f45b2c31e19d53c9aedc9519e09975}} 
-\index{PythiaEventReader@{PythiaEventReader}!jentry@{jentry}}
-\index{jentry@{jentry}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{jentry}{jentry}}
-{\footnotesize\ttfamily long Pythia\+Event\+Reader\+::jentry}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}\label{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}} 
-\index{PythiaEventReader@{PythiaEventReader}!kMaxparticles@{kMaxparticles}}
-\index{kMaxparticles@{kMaxparticles}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{kMaxparticles}{kMaxparticles}}
-{\footnotesize\ttfamily const int Pythia\+Event\+Reader\+::k\+Maxparticles = 2000\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00049}{49}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a2ed3777dd860b0df6d808e44a60f479a}\label{class_pythia_event_reader_a2ed3777dd860b0df6d808e44a60f479a}} 
-\index{PythiaEventReader@{PythiaEventReader}!nb@{nb}}
-\index{nb@{nb}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{nb}{nb}}
-{\footnotesize\ttfamily Long64\+\_\+t Pythia\+Event\+Reader\+::nb}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_af3df275865796d546380029ea0447c11}\label{class_pythia_event_reader_af3df275865796d546380029ea0447c11}} 
-\index{PythiaEventReader@{PythiaEventReader}!nbytes@{nbytes}}
-\index{nbytes@{nbytes}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{nbytes}{nbytes}}
-{\footnotesize\ttfamily Long64\+\_\+t Pythia\+Event\+Reader\+::nbytes}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a70768fbfaa86ff05b04c996fef53e2c1}\label{class_pythia_event_reader_a70768fbfaa86ff05b04c996fef53e2c1}} 
-\index{PythiaEventReader@{PythiaEventReader}!nentries@{nentries}}
-\index{nentries@{nentries}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{nentries}{nentries}}
-{\footnotesize\ttfamily Long64\+\_\+t Pythia\+Event\+Reader\+::nentries}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00044}{44}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_aea24298638ad7b5c78d62b83f49a89ed}\label{class_pythia_event_reader_aea24298638ad7b5c78d62b83f49a89ed}} 
-\index{PythiaEventReader@{PythiaEventReader}!particleFilter@{particleFilter}}
-\index{particleFilter@{particleFilter}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particleFilter}{particleFilter}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}}$\ast$ Pythia\+Event\+Reader\+::particle\+Filter}
+\mbox{\Hypertarget{class_pythia_event_reader_a35343a4f30f8ba8f31dc89e7e31627e1}\label{class_pythia_event_reader_a35343a4f30f8ba8f31dc89e7e31627e1}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fCalcMass@{b\_particles\_fCalcMass}}
+\index{b\_particles\_fCalcMass@{b\_particles\_fCalcMass}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fCalcMass}{b\_particles\_fCalcMass}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Calc\+Mass\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
 Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00100}{100}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a8f0f9f65ccb7c2c28e5fcaa222b75710}\label{class_pythia_event_reader_a8f0f9f65ccb7c2c28e5fcaa222b75710}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_@{particles\_}}
-\index{particles\_@{particles\_}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_}{particles\_}}
-{\footnotesize\ttfamily Int\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+}
+\mbox{\Hypertarget{class_pythia_event_reader_a84d252509b69002008a4fe556ba491e6}\label{class_pythia_event_reader_a84d252509b69002008a4fe556ba491e6}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fDaughter@{b\_particles\_fDaughter}}
+\index{b\_particles\_fDaughter@{b\_particles\_fDaughter}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fDaughter}{b\_particles\_fDaughter}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Daughter\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00098}{98}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a5dcb5dae985647799a363a40c9b801a4}\label{class_pythia_event_reader_a5dcb5dae985647799a363a40c9b801a4}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fBits@{particles\_fBits}}
-\index{particles\_fBits@{particles\_fBits}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fBits}{particles\_fBits}}
-{\footnotesize\ttfamily UInt\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Bits\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_a1a15bf4221462fcce30ab25f41751737}\label{class_pythia_event_reader_a1a15bf4221462fcce30ab25f41751737}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fE@{b\_particles\_fE}}
+\index{b\_particles\_fE@{b\_particles\_fE}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fE}{b\_particles\_fE}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+fE\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00054}{54}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00104}{104}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a78897eb496570ba65c19425c5dcbda14}\label{class_pythia_event_reader_a78897eb496570ba65c19425c5dcbda14}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fCalcMass@{particles\_fCalcMass}}
-\index{particles\_fCalcMass@{particles\_fCalcMass}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fCalcMass}{particles\_fCalcMass}}
-{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Calc\+Mass\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_a8a57b2f369952ce9b0ffc497a5489a3c}\label{class_pythia_event_reader_a8a57b2f369952ce9b0ffc497a5489a3c}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fLineColor@{b\_particles\_fLineColor}}
+\index{b\_particles\_fLineColor@{b\_particles\_fLineColor}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fLineColor}{b\_particles\_fLineColor}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Line\+Color\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00092}{92}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a3341e6527401ebfabdc774de8953adf6}\label{class_pythia_event_reader_a3341e6527401ebfabdc774de8953adf6}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fDaughter@{particles\_fDaughter}}
-\index{particles\_fDaughter@{particles\_fDaughter}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fDaughter}{particles\_fDaughter}}
-{\footnotesize\ttfamily Int\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Daughter\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\mbox{[}2\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_a0bca7b3624db7cd1d42e93a7dbd5b412}\label{class_pythia_event_reader_a0bca7b3624db7cd1d42e93a7dbd5b412}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fLineStyle@{b\_particles\_fLineStyle}}
+\index{b\_particles\_fLineStyle@{b\_particles\_fLineStyle}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fLineStyle}{b\_particles\_fLineStyle}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Line\+Style\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00061}{61}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00093}{93}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a5e893d9229b6be75fb3338a6759feda2}\label{class_pythia_event_reader_a5e893d9229b6be75fb3338a6759feda2}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fE@{particles\_fE}}
-\index{particles\_fE@{particles\_fE}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fE}{particles\_fE}}
-{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+fE\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_aacaf9d01214b8d24c707634bfe0da865}\label{class_pythia_event_reader_aacaf9d01214b8d24c707634bfe0da865}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fLineWidth@{b\_particles\_fLineWidth}}
+\index{b\_particles\_fLineWidth@{b\_particles\_fLineWidth}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fLineWidth}{b\_particles\_fLineWidth}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Line\+Width\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00094}{94}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a06875d66fcf5fdebaba2a91f2d0c5541}\label{class_pythia_event_reader_a06875d66fcf5fdebaba2a91f2d0c5541}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fLineColor@{particles\_fLineColor}}
-\index{particles\_fLineColor@{particles\_fLineColor}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fLineColor}{particles\_fLineColor}}
-{\footnotesize\ttfamily Short\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Line\+Color\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_a6bdd4097b352866df05aea60a722f7c1}\label{class_pythia_event_reader_a6bdd4097b352866df05aea60a722f7c1}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fMother@{b\_particles\_fMother}}
+\index{b\_particles\_fMother@{b\_particles\_fMother}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fMother}{b\_particles\_fMother}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Mother\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00055}{55}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00097}{97}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a96977e817c17e05ee998ec74a017b27b}\label{class_pythia_event_reader_a96977e817c17e05ee998ec74a017b27b}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fLineStyle@{particles\_fLineStyle}}
-\index{particles\_fLineStyle@{particles\_fLineStyle}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fLineStyle}{particles\_fLineStyle}}
-{\footnotesize\ttfamily Short\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Line\+Style\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_a131bca2c236dc5dd8bdca9197a42af7b}\label{class_pythia_event_reader_a131bca2c236dc5dd8bdca9197a42af7b}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fPdgCode@{b\_particles\_fPdgCode}}
+\index{b\_particles\_fPdgCode@{b\_particles\_fPdgCode}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fPdgCode}{b\_particles\_fPdgCode}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Pdg\+Code\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00056}{56}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00095}{95}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a4fcfba0cf74d10be09750e285a3a4b58}\label{class_pythia_event_reader_a4fcfba0cf74d10be09750e285a3a4b58}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fLineWidth@{particles\_fLineWidth}}
-\index{particles\_fLineWidth@{particles\_fLineWidth}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fLineWidth}{particles\_fLineWidth}}
-{\footnotesize\ttfamily Short\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Line\+Width\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_aa04d97fe6a497e374d81c645f96b52b6}\label{class_pythia_event_reader_aa04d97fe6a497e374d81c645f96b52b6}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fPolarPhi@{b\_particles\_fPolarPhi}}
+\index{b\_particles\_fPolarPhi@{b\_particles\_fPolarPhi}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fPolarPhi}{b\_particles\_fPolarPhi}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Polar\+Phi\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00110}{110}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_afafa1651866e0a1518a0bf7502838eda}\label{class_pythia_event_reader_afafa1651866e0a1518a0bf7502838eda}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fMother@{particles\_fMother}}
-\index{particles\_fMother@{particles\_fMother}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fMother}{particles\_fMother}}
-{\footnotesize\ttfamily Int\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Mother\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\mbox{[}2\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_a58e639b6ea0daa98987c95e755912e66}\label{class_pythia_event_reader_a58e639b6ea0daa98987c95e755912e66}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fPolarTheta@{b\_particles\_fPolarTheta}}
+\index{b\_particles\_fPolarTheta@{b\_particles\_fPolarTheta}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fPolarTheta}{b\_particles\_fPolarTheta}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Polar\+Theta\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00109}{109}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_aa05af37ba7b56ce7c31c763927da2970}\label{class_pythia_event_reader_aa05af37ba7b56ce7c31c763927da2970}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fPdgCode@{particles\_fPdgCode}}
-\index{particles\_fPdgCode@{particles\_fPdgCode}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fPdgCode}{particles\_fPdgCode}}
-{\footnotesize\ttfamily Int\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Pdg\+Code\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_a980aa55558a9a8c06b58a636298e480e}\label{class_pythia_event_reader_a980aa55558a9a8c06b58a636298e480e}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fPx@{b\_particles\_fPx}}
+\index{b\_particles\_fPx@{b\_particles\_fPx}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fPx}{b\_particles\_fPx}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Px\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00058}{58}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00101}{101}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a23e290d627b938f19c5eb0a59d4b4614}\label{class_pythia_event_reader_a23e290d627b938f19c5eb0a59d4b4614}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fPolarPhi@{particles\_fPolarPhi}}
-\index{particles\_fPolarPhi@{particles\_fPolarPhi}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fPolarPhi}{particles\_fPolarPhi}}
-{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Polar\+Phi\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_af292e8981f2c01224cd2e0aa56b47522}\label{class_pythia_event_reader_af292e8981f2c01224cd2e0aa56b47522}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fPy@{b\_particles\_fPy}}
+\index{b\_particles\_fPy@{b\_particles\_fPy}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fPy}{b\_particles\_fPy}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Py\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00102}{102}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a67a8a025b0bd9b7504021ab545756ae4}\label{class_pythia_event_reader_a67a8a025b0bd9b7504021ab545756ae4}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fPolarTheta@{particles\_fPolarTheta}}
-\index{particles\_fPolarTheta@{particles\_fPolarTheta}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fPolarTheta}{particles\_fPolarTheta}}
-{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Polar\+Theta\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_a68b41854190d1722ea8896c130a66875}\label{class_pythia_event_reader_a68b41854190d1722ea8896c130a66875}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fPz@{b\_particles\_fPz}}
+\index{b\_particles\_fPz@{b\_particles\_fPz}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fPz}{b\_particles\_fPz}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Pz\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00103}{103}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a1cade8e41662a1069807512fa735ac4c}\label{class_pythia_event_reader_a1cade8e41662a1069807512fa735ac4c}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fPx@{particles\_fPx}}
-\index{particles\_fPx@{particles\_fPx}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fPx}{particles\_fPx}}
-{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Px\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_a9f3b92225c73fcf11c5f55659b21f452}\label{class_pythia_event_reader_a9f3b92225c73fcf11c5f55659b21f452}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fStatusCode@{b\_particles\_fStatusCode}}
+\index{b\_particles\_fStatusCode@{b\_particles\_fStatusCode}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fStatusCode}{b\_particles\_fStatusCode}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Status\+Code\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00064}{64}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00096}{96}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a1b6f9eb339059d368e8e675b69ea2a50}\label{class_pythia_event_reader_a1b6f9eb339059d368e8e675b69ea2a50}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fPy@{particles\_fPy}}
-\index{particles\_fPy@{particles\_fPy}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fPy}{particles\_fPy}}
-{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Py\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_a96cb4bdf244818096ba9036d7a4720d1}\label{class_pythia_event_reader_a96cb4bdf244818096ba9036d7a4720d1}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fUniqueID@{b\_particles\_fUniqueID}}
+\index{b\_particles\_fUniqueID@{b\_particles\_fUniqueID}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fUniqueID}{b\_particles\_fUniqueID}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Unique\+ID\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00090}{90}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a13cbfcbfe24b309df55fca6016f77887}\label{class_pythia_event_reader_a13cbfcbfe24b309df55fca6016f77887}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fPz@{particles\_fPz}}
-\index{particles\_fPz@{particles\_fPz}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fPz}{particles\_fPz}}
-{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Pz\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_a97a91bc9ed8941d90de0c3c8c5baad4d}\label{class_pythia_event_reader_a97a91bc9ed8941d90de0c3c8c5baad4d}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fVt@{b\_particles\_fVt}}
+\index{b\_particles\_fVt@{b\_particles\_fVt}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fVt}{b\_particles\_fVt}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Vt\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00108}{108}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a681df17af221a5a93c274bb4c1925ff4}\label{class_pythia_event_reader_a681df17af221a5a93c274bb4c1925ff4}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fStatusCode@{particles\_fStatusCode}}
-\index{particles\_fStatusCode@{particles\_fStatusCode}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fStatusCode}{particles\_fStatusCode}}
-{\footnotesize\ttfamily Int\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Status\+Code\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_a39e3fd89d3ce5a2ed2010e81f3965588}\label{class_pythia_event_reader_a39e3fd89d3ce5a2ed2010e81f3965588}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fVx@{b\_particles\_fVx}}
+\index{b\_particles\_fVx@{b\_particles\_fVx}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fVx}{b\_particles\_fVx}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Vx\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00105}{105}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a432596757f53e34ba4de0f541ed33624}\label{class_pythia_event_reader_a432596757f53e34ba4de0f541ed33624}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fUniqueID@{particles\_fUniqueID}}
-\index{particles\_fUniqueID@{particles\_fUniqueID}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fUniqueID}{particles\_fUniqueID}}
-{\footnotesize\ttfamily UInt\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Unique\+ID\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_a202f988852ab7613d19f61c8963af220}\label{class_pythia_event_reader_a202f988852ab7613d19f61c8963af220}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fVy@{b\_particles\_fVy}}
+\index{b\_particles\_fVy@{b\_particles\_fVy}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fVy}{b\_particles\_fVy}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Vy\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00053}{53}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00106}{106}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a9ade8afcb7195959e32815af0ec905a5}\label{class_pythia_event_reader_a9ade8afcb7195959e32815af0ec905a5}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fVt@{particles\_fVt}}
-\index{particles\_fVt@{particles\_fVt}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fVt}{particles\_fVt}}
-{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Vt\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_adad8966e6762fa726948a2700886dc58}\label{class_pythia_event_reader_adad8966e6762fa726948a2700886dc58}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fVz@{b\_particles\_fVz}}
+\index{b\_particles\_fVz@{b\_particles\_fVz}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fVz}{b\_particles\_fVz}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Vz\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00107}{107}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_ab3570b62682301c9e86d7ef57d3930b4}\label{class_pythia_event_reader_ab3570b62682301c9e86d7ef57d3930b4}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fVx@{particles\_fVx}}
-\index{particles\_fVx@{particles\_fVx}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fVx}{particles\_fVx}}
-{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Vx\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_a3e6ad25cb8a1ab5a120e5c2126a72a0b}\label{class_pythia_event_reader_a3e6ad25cb8a1ab5a120e5c2126a72a0b}} 
+\index{PythiaEventReader@{PythiaEventReader}!b\_particles\_fWeight@{b\_particles\_fWeight}}
+\index{b\_particles\_fWeight@{b\_particles\_fWeight}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_particles\_fWeight}{b\_particles\_fWeight}}
+{\footnotesize\ttfamily TBranch$\ast$ Pythia\+Event\+Reader\+::b\+\_\+particles\+\_\+f\+Weight\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00099}{99}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_pythia_event_reader_a42b93704445cd401f9db70e2c21ea164}\label{class_pythia_event_reader_a42b93704445cd401f9db70e2c21ea164}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fVy@{particles\_fVy}}
-\index{particles\_fVy@{particles\_fVy}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fVy}{particles\_fVy}}
-{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Vy\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00069}{69}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a5be2dd07c55b3ae06577513a21c5fca8}\label{class_pythia_event_reader_a5be2dd07c55b3ae06577513a21c5fca8}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fVz@{particles\_fVz}}
-\index{particles\_fVz@{particles\_fVz}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fVz}{particles\_fVz}}
-{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Vz\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
-
-
-
-Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_pythia_event_reader_a314456569845c35a9722e0d543cea7ec}\label{class_pythia_event_reader_a314456569845c35a9722e0d543cea7ec}} 
-\index{PythiaEventReader@{PythiaEventReader}!particles\_fWeight@{particles\_fWeight}}
-\index{particles\_fWeight@{particles\_fWeight}!PythiaEventReader@{PythiaEventReader}}
-\doxysubsubsection{\texorpdfstring{particles\_fWeight}{particles\_fWeight}}
-{\footnotesize\ttfamily Float\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Weight\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}}
+\mbox{\Hypertarget{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}\label{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}} 
+\index{PythiaEventReader@{PythiaEventReader}!kMaxparticles@{kMaxparticles}}
+\index{kMaxparticles@{kMaxparticles}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{kMaxparticles}{kMaxparticles}}
+{\footnotesize\ttfamily const int Pythia\+Event\+Reader\+::k\+Maxparticles = 10000\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
 
 
 
 Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00062}{62}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
 
+\mbox{\Hypertarget{class_pythia_event_reader_a4cdf77a30c5b6e5f2a306e01a1ba907c}\label{class_pythia_event_reader_a4cdf77a30c5b6e5f2a306e01a1ba907c}} 
+\index{PythiaEventReader@{PythiaEventReader}!nParticles@{nParticles}}
+\index{nParticles@{nParticles}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{nParticles}{nParticles}}
+{\footnotesize\ttfamily Int\+\_\+t Pythia\+Event\+Reader\+::n\+Particles\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a5dcb5dae985647799a363a40c9b801a4}\label{class_pythia_event_reader_a5dcb5dae985647799a363a40c9b801a4}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fBits@{particles\_fBits}}
+\index{particles\_fBits@{particles\_fBits}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fBits}{particles\_fBits}}
+{\footnotesize\ttfamily UInt\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Bits\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a78897eb496570ba65c19425c5dcbda14}\label{class_pythia_event_reader_a78897eb496570ba65c19425c5dcbda14}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fCalcMass@{particles\_fCalcMass}}
+\index{particles\_fCalcMass@{particles\_fCalcMass}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fCalcMass}{particles\_fCalcMass}}
+{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Calc\+Mass\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a3341e6527401ebfabdc774de8953adf6}\label{class_pythia_event_reader_a3341e6527401ebfabdc774de8953adf6}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fDaughter@{particles\_fDaughter}}
+\index{particles\_fDaughter@{particles\_fDaughter}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fDaughter}{particles\_fDaughter}}
+{\footnotesize\ttfamily Int\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Daughter\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00074}{74}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a5e893d9229b6be75fb3338a6759feda2}\label{class_pythia_event_reader_a5e893d9229b6be75fb3338a6759feda2}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fE@{particles\_fE}}
+\index{particles\_fE@{particles\_fE}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fE}{particles\_fE}}
+{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+fE\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00080}{80}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a06875d66fcf5fdebaba2a91f2d0c5541}\label{class_pythia_event_reader_a06875d66fcf5fdebaba2a91f2d0c5541}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fLineColor@{particles\_fLineColor}}
+\index{particles\_fLineColor@{particles\_fLineColor}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fLineColor}{particles\_fLineColor}}
+{\footnotesize\ttfamily Short\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Line\+Color\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a96977e817c17e05ee998ec74a017b27b}\label{class_pythia_event_reader_a96977e817c17e05ee998ec74a017b27b}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fLineStyle@{particles\_fLineStyle}}
+\index{particles\_fLineStyle@{particles\_fLineStyle}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fLineStyle}{particles\_fLineStyle}}
+{\footnotesize\ttfamily Short\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Line\+Style\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00069}{69}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a4fcfba0cf74d10be09750e285a3a4b58}\label{class_pythia_event_reader_a4fcfba0cf74d10be09750e285a3a4b58}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fLineWidth@{particles\_fLineWidth}}
+\index{particles\_fLineWidth@{particles\_fLineWidth}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fLineWidth}{particles\_fLineWidth}}
+{\footnotesize\ttfamily Short\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Line\+Width\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_afafa1651866e0a1518a0bf7502838eda}\label{class_pythia_event_reader_afafa1651866e0a1518a0bf7502838eda}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fMother@{particles\_fMother}}
+\index{particles\_fMother@{particles\_fMother}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fMother}{particles\_fMother}}
+{\footnotesize\ttfamily Int\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Mother\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_aa05af37ba7b56ce7c31c763927da2970}\label{class_pythia_event_reader_aa05af37ba7b56ce7c31c763927da2970}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fPdgCode@{particles\_fPdgCode}}
+\index{particles\_fPdgCode@{particles\_fPdgCode}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fPdgCode}{particles\_fPdgCode}}
+{\footnotesize\ttfamily Int\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Pdg\+Code\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a23e290d627b938f19c5eb0a59d4b4614}\label{class_pythia_event_reader_a23e290d627b938f19c5eb0a59d4b4614}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fPolarPhi@{particles\_fPolarPhi}}
+\index{particles\_fPolarPhi@{particles\_fPolarPhi}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fPolarPhi}{particles\_fPolarPhi}}
+{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Polar\+Phi\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00086}{86}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a67a8a025b0bd9b7504021ab545756ae4}\label{class_pythia_event_reader_a67a8a025b0bd9b7504021ab545756ae4}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fPolarTheta@{particles\_fPolarTheta}}
+\index{particles\_fPolarTheta@{particles\_fPolarTheta}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fPolarTheta}{particles\_fPolarTheta}}
+{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Polar\+Theta\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a1cade8e41662a1069807512fa735ac4c}\label{class_pythia_event_reader_a1cade8e41662a1069807512fa735ac4c}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fPx@{particles\_fPx}}
+\index{particles\_fPx@{particles\_fPx}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fPx}{particles\_fPx}}
+{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Px\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a1b6f9eb339059d368e8e675b69ea2a50}\label{class_pythia_event_reader_a1b6f9eb339059d368e8e675b69ea2a50}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fPy@{particles\_fPy}}
+\index{particles\_fPy@{particles\_fPy}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fPy}{particles\_fPy}}
+{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Py\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a13cbfcbfe24b309df55fca6016f77887}\label{class_pythia_event_reader_a13cbfcbfe24b309df55fca6016f77887}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fPz@{particles\_fPz}}
+\index{particles\_fPz@{particles\_fPz}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fPz}{particles\_fPz}}
+{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Pz\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00079}{79}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a681df17af221a5a93c274bb4c1925ff4}\label{class_pythia_event_reader_a681df17af221a5a93c274bb4c1925ff4}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fStatusCode@{particles\_fStatusCode}}
+\index{particles\_fStatusCode@{particles\_fStatusCode}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fStatusCode}{particles\_fStatusCode}}
+{\footnotesize\ttfamily Int\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Status\+Code\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a432596757f53e34ba4de0f541ed33624}\label{class_pythia_event_reader_a432596757f53e34ba4de0f541ed33624}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fUniqueID@{particles\_fUniqueID}}
+\index{particles\_fUniqueID@{particles\_fUniqueID}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fUniqueID}{particles\_fUniqueID}}
+{\footnotesize\ttfamily UInt\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Unique\+ID\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a9ade8afcb7195959e32815af0ec905a5}\label{class_pythia_event_reader_a9ade8afcb7195959e32815af0ec905a5}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fVt@{particles\_fVt}}
+\index{particles\_fVt@{particles\_fVt}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fVt}{particles\_fVt}}
+{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Vt\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_ab3570b62682301c9e86d7ef57d3930b4}\label{class_pythia_event_reader_ab3570b62682301c9e86d7ef57d3930b4}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fVx@{particles\_fVx}}
+\index{particles\_fVx@{particles\_fVx}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fVx}{particles\_fVx}}
+{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Vx\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a42b93704445cd401f9db70e2c21ea164}\label{class_pythia_event_reader_a42b93704445cd401f9db70e2c21ea164}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fVy@{particles\_fVy}}
+\index{particles\_fVy@{particles\_fVy}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fVy}{particles\_fVy}}
+{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Vy\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00082}{82}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a5be2dd07c55b3ae06577513a21c5fca8}\label{class_pythia_event_reader_a5be2dd07c55b3ae06577513a21c5fca8}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fVz@{particles\_fVz}}
+\index{particles\_fVz@{particles\_fVz}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fVz}{particles\_fVz}}
+{\footnotesize\ttfamily Double\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Vz\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00083}{83}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_pythia_event_reader_a314456569845c35a9722e0d543cea7ec}\label{class_pythia_event_reader_a314456569845c35a9722e0d543cea7ec}} 
+\index{PythiaEventReader@{PythiaEventReader}!particles\_fWeight@{particles\_fWeight}}
+\index{particles\_fWeight@{particles\_fWeight}!PythiaEventReader@{PythiaEventReader}}
+\doxysubsubsection{\texorpdfstring{particles\_fWeight}{particles\_fWeight}}
+{\footnotesize\ttfamily Float\+\_\+t Pythia\+Event\+Reader\+::particles\+\_\+f\+Weight\mbox{[}\mbox{\hyperlink{class_pythia_event_reader_a8576924931095b02d8179553d11f2aa7}{k\+Maxparticles}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_pythia_event_reader_8hpp_source_l00075}{75}} of file \mbox{\hyperlink{_pythia_event_reader_8hpp_source}{Pythia\+Event\+Reader.\+hpp}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Wac\+Pythia/\mbox{\hyperlink{_pythia_event_reader_8hpp}{Pythia\+Event\+Reader.\+hpp}}\item 
-Wac\+Pythia/\mbox{\hyperlink{_pythia_event_reader_8cpp}{Pythia\+Event\+Reader.\+cpp}}\end{DoxyCompactItemize}
+CAPPythia/\mbox{\hyperlink{_pythia_event_reader_8hpp}{Pythia\+Event\+Reader.\+hpp}}\item 
+CAPPythia/\mbox{\hyperlink{_pythia_event_reader_8cpp}{Pythia\+Event\+Reader.\+cpp}}\end{DoxyCompactItemize}

@@ -17,104 +17,126 @@ TaskIterator::TaskIterator(const TString & _name,
                            MessageLogger::LogLevel _reportLevel)
 :
 Task(_name,_configuration,_reportLevel),
-timer(),
-nEventRequested(1),
-nEventReported(1),
-nEventPartialSave(10),
-nEventProcessed(0),
-doPartialSave(0),
-doSubsampleAnalysis(0)
+useParticles(false),
+doPartialReports(false),
+doPartialSaves(false),
+doSubsampleAnalysis(false),
+nIterationRequested(1),
+nIterationReported(10000),
+nIterationPartialSave(10000)
 {
   appendClassName("TaskIterator");
+  setInstanceName(_name);
   setDefaultConfiguration();
   setConfiguration(_configuration);
 }
 
 void TaskIterator::setDefaultConfiguration()
 {
-  if (reportStart("TaskIterator",getName(),"setDefaultConfiguration()"))
-    { }
-  configuration.addParameter( "nEventsRequested",   nEventRequested);
-  configuration.addParameter( "nEventReported",     nEventReported);
-  configuration.addParameter( "nEventPartialSave",  nEventPartialSave);
-  configuration.addParameter( "doPartialSave",      doPartialSave);
-  configuration.addParameter( "doSubsampleAnalysis",doSubsampleAnalysis);
+  
+  if (reportStart(__FUNCTION__))
+    ;
+  configuration.addParameter( "useParticles",          useParticles);
+  configuration.addParameter( "doPartialReports",      doPartialReports);
+  configuration.addParameter( "doPartialSaves",        doPartialSaves);
+  configuration.addParameter( "doSubsampleAnalysis",   doSubsampleAnalysis);
+  configuration.addParameter( "nIterationRequested",   nIterationRequested);
+  configuration.addParameter( "nIterationReported",    nIterationReported);
+  configuration.addParameter( "nIterationPartialSave", nIterationPartialSave);
   if (reportEnd("TaskIterator",getName(),"setDefaultConfiguration()"))
     {
     configuration.printConfiguration(cout);
     }
 }
 
-void TaskIterator::run()
+void TaskIterator::initialize()
 {
-  timer.start();
-  nEventRequested     = configuration.getValueLong( "nEventsRequested"   );
-  nEventReported      = configuration.getValueLong( "nEventReported"     );
-  nEventPartialSave   = configuration.getValueLong( "nEventPartialSave"  );
-  doPartialSave       = configuration.getValueBool( "doPartialSave"      );
-  doSubsampleAnalysis = configuration.getValueBool( "doSubsampleAnalysis");
-
-  if (reportInfo("TaskIterator",getName(),"run(...)")) cout << "Running for nEvent: " << nEventRequested << endl;
+  if (reportStart(__FUNCTION__))
+    ;
   postTaskOk();
-  initializeTasks();
+  useParticles           = configuration.getValueBool( "useParticles");
+  doPartialReports       = configuration.getValueBool( "doPartialReports");
+  doPartialSaves         = configuration.getValueBool( "doPartialSaves");
+  doSubsampleAnalysis    = configuration.getValueBool( "doSubsampleAnalysis");
+  nIterationRequested    = configuration.getValueLong( "nIterationRequested");
+  nIterationReported     = configuration.getValueLong( "nIterationReported");
+  nIterationPartialSave  = configuration.getValueLong( "nIterationPartialSave");
+
+  Task::initialize();
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl  << endl << endl << endl;
+    cout << "---------------------------------------------------------------------------------------- " <<   endl;
+    cout << "---------------------------------------------------------------------------------------- " <<   endl;
+    cout << "                               Task named : " << getName() << endl;
+    cout << "                      nIterationRequested : " << nIterationRequested << endl;
+    cout << "                                nSubTasks : " << getNSubTasks() << endl;
+    cout << "                         doPartialReports : " << doPartialReports << endl;
+    cout << "                           doPartialSaves : " << doPartialSaves  << endl;
+    cout << "                      nIterationRequested : " << nIterationRequested  << endl;
+    cout << "                       nIterationReported : " << nIterationReported  << endl;
+    cout << "                    nIterationPartialSave : " << nIterationPartialSave  << endl;
+    cout << "                              Task status : " << getTaskStatusName() << endl;
+    cout << "---------------------------------------------------------------------------------------- " <<   endl;
+    cout << "---------------------------------------------------------------------------------------- " <<   endl;
+    }
   if (!isTaskOk())
     {
-    if (reportWarning("TaskIterator",getName(),"run(...)")) cout << "Initialization failed. Abort." << endl;
+    if (reportWarning(__FUNCTION__)) cout << "Initialization failed. Abort." << endl;
     return;
     }
-  nEventProcessed = 0;
-  if (reportInfo("TaskIterator",getName(),"run(...)")) cout << "Starting with nEventRequested:" << nEventRequested << endl;
-  for (long iEvent=1; iEvent<=nEventRequested; iEvent++)
-    {
-    executeTasks();
-    if (!isTaskOk())
-      {
-      if (reportWarning("TaskIterator",getName(),"run(...)")) cout << "Error detected after event:" << iEvent << endl;
-      break;
-      }
-    if (nEventProcessed%nEventReported==0 )
-      {
-      if (reportInfo("TaskIterator",getName(),"run(...)")) cout << "Completed event # " << iEvent << endl;
-      timer.stop();
-      timer.print(cout);
-      }
-    if ( (doSubsampleAnalysis||doPartialSave) && nEventProcessed%nEventPartialSave==0)
-      {
-      savePartialTasks();
-      if (!isTaskOk()) break;
-      if (doSubsampleAnalysis) resetTasks();
-      postTaskOk();
-      }
-    }
-  if (isTaskOk()) finalizeTasks();
-
-  if (isTaskOk() && doSubsampleAnalysis)
-    {
-    subsampleAnalysisTasks();
-    }
-
-  timer.stop();
-  if (reportInfo("TaskIterator",getName(),"run(...)"))
-    {
-    cout << endl;
-    cout << "  Completed with status : " << getTaskStatusName() << endl;
-    cout << "       Completed Events : " << nEventProcessed << endl;
-    cout << "       Requested Events : " << nEventRequested << endl;
-    cout << "            "; timer.print(cout);
-    cout << endl << endl<< endl << endl;
-    }
+  if (reportEnd(__FUNCTION__))
+    { }
 }
-
 
 void TaskIterator::execute()
 {
-  ++nEventProcessed;
-  ++nEventAccepted;
-  Particle::resetFactory();
-  Event::resetEventStreams();
+  timer.start();
+  initialize();
+  if (!isTaskOk()) return;
+  for (long iter=0; iter<nIterationRequested; iter++)
+    {
+    if (useParticles)
+      {
+      Particle::resetFactory();
+      Event::resetEventStreams();
+      }
+    unsigned int nSubTasks = subTasks.size();
+    for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->execute();
+    incrementTaskExecuted();
+    if (doPartialReports  && getNTaskExecutedReset()%nIterationReported==0) cout << "Completed iteration # " << iter << endl;
+    if (doPartialSaves    && getNTaskExecutedReset()%nIterationPartialSave==0 )
+      {
+      savePartial();
+      if (doSubsampleAnalysis) reset();
+      }
+
+    if (getNTaskExecuted() >= nIterationRequested ) break;
+    }
+  timer.stop();
+  finalize();
 }
 
-void TaskIterator::subsampleAnalysis()
+
+void TaskIterator::finalize()
 {
-  // the master has no subsample to analyze...
+  finalizeSubTasks();
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "---------------------------------------------------------------------------------------- " <<   endl;
+    cout << "---------------------------------------------------------------------------------------- " <<   endl;
+    cout << "                               Task named : " << getName()<< endl;
+    cout << "                    Completed with status : " << getTaskStatusName() << endl;
+    cout << "                     Completed iterations : " << getNTaskExecuted() << endl;
+    cout << "  Completed iterations since partial save : " << getNTaskExecutedReset() << endl;
+    timer.print(cout);
+    cout << "---------------------------------------------------------------------------------------- " <<   endl;
+    cout << "---------------------------------------------------------------------------------------- " <<   endl;
+    cout << endl << endl<< endl << endl;
+    }
+  if (reportEnd(__FUNCTION__))
+    { }
 }
+
+

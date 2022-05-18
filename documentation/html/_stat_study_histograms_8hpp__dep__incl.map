@@ -1,7 +1,6 @@
-<map id="Base/StatStudyHistograms.hpp" name="Base/StatStudyHistograms.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="221,5,428,32"/>
-<area shape="rect" id="node2" href="$_stat_study_histograms_8cpp.html" title=" " alt="" coords="5,80,212,107"/>
-<area shape="rect" id="node3" href="$_stat_study_plotter_8hpp.html" title=" " alt="" coords="237,80,413,107"/>
-<area shape="rect" id="node5" href="$_stat_c_d_study_8cpp.html" title=" " alt="" coords="437,80,631,107"/>
-<area shape="rect" id="node4" href="$_stat_study_plotter_8cpp.html" title=" " alt="" coords="237,155,413,181"/>
+<map id="Performance/StatStudyHistograms.hpp" name="Performance/StatStudyHistograms.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="133,5,384,32"/>
+<area shape="rect" id="node2" href="$_stat_study_histograms_8cpp.html" title=" " alt="" coords="5,80,256,107"/>
+<area shape="rect" id="node3" href="$_stat_study_plotter_8hpp.html" title=" " alt="" coords="281,80,495,107"/>
+<area shape="rect" id="node4" href="$_stat_study_plotter_8cpp.html" title=" " alt="" coords="281,155,495,181"/>
 </map>

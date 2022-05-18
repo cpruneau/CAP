@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Correlation Analysis Package: Main Page</title>
+<title>Correlation Analysis Package: Correlation Analysis package</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,10 +82,65 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </iframe>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">Correlation Analysis Package Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Correlation Analysis package </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><h1><a class="anchor" id="Introduction"></a>
+Introduction</h1>
+<p >blablablabla blablablabla</p>
+<h1><a class="anchor" id="prelims"></a>
+Download, Installation/Configuration, Building, Usage</h1>
+<h2><a class="anchor" id="prereqs"></a>
+Prerequisites</h2>
+<p >The correlation analysis package (CAP) consists of several modules and classes designed for use within the [root] data analysis framework. Depending on your needs, it may be sufficient to have a binary installation of "root", but if you require the generation of collision data with, e.g., the [PYTHIA] model (PYTHIA8), you may need to install and build root from source. Evidently, to use such generators as Pythia8, you will additionally have to download, install, and build PYTHIA8 on your own machine. CAP is orgainzed into several modules that you may not readily need in your analysis. The package thus use CMake to build and maintain the libraries associated with each module. Instructions to configure and compile the basic CAP package are provided in sec. XXXXX. You may optionally download the DOXYGEN documentation framework if you plan to add and document modules and packages.</p>
+<h2><a class="anchor" id="autotoc_md0"></a>
+Dependencies</h2>
+<ul>
+<li>cmake<ul>
+<li>Main website: <a href="https://cmake.org/" title="cmake">https://cmake.org/</a></li>
+<li>Download : <a href="https://cmake.org/download/">https://cmake.org/download/</a></li>
+</ul>
+</li>
+<li>root<ul>
+<li>Main website : <a href="https://root.cern/">https://root.cern/</a></li>
+<li>Installing : <a href="https://root.cern/install/">https://root.cern/install/</a></li>
+</ul>
+</li>
+<li>PYTHIA : <a href="https://pythia.org" title="PYTHIA">https://pythia.org</a></li>
+<li>DOXYGEN : <a href="https://www.doxygen.nl">https://www.doxygen.nl</a></li>
+</ul>
+<h2><a class="anchor" id="download"></a>
+Downloading CAP</h2>
+<h2><a class="anchor" id="installation"></a>
+Installation/Configuration</h2>
+<p >In its current version, CAP does include or provide for the building of binary executables (although it is easy to setup if you are proficient with CMAKE). Its uses thus relies entirely on a generic version of root and root loads of relevant CAP (root compatible) libraries. The building, compilation, and use of the CAP package is determined by few environment varibles which can be efficiently setup and assigned by sourcing the SETUP_CAP configuration file.</p>
+<pre class="fragment">* cd SOMEPATH/CAP;
+* source Setup_CAP
+* </pre><p >Prior to sourcing this setup file, however, you must edit the file to choose appropriate valeues to the following lines that assigne environment variables </p><pre class="fragment">* export ROOT_SELECTED_VERSION="/Users/YourName/rootdirectory/"
+* export CAP_LARGE_DATA="/Volumes/SomeHardDiskOfYourChoice/CAP-DATA/"
+* </pre><p >The Setup_CAP script will assign default values for the location in binary and library files produced when build the libraries. You can evidently modify these to your liking.</p>
+<h2><a class="anchor" id="building"></a>
+Building</h2>
+<h2><a class="anchor" id="usage"></a>
+Examples</h2>
+<h1><a class="anchor" id="model"></a>
+Object Model</h1>
+<p >blablablabla blablablabla blablablabla blablablabla</p>
+<h1><a class="anchor" id="modules"></a>
+Modules and Components</h1>
+<h2><a class="anchor" id="base"></a>
+Base</h2>
+<p >blablablabla</p>
+<h2><a class="anchor" id="generators"></a>
+Event Readers and Event Generators</h2>
+<h3><a class="anchor" id="basicgen"></a>
+Basic Generators (Basicgen)</h3>
+<p >blablablabla</p>
+<h3><a class="anchor" id="collgeom"></a>
+Collision Geometry  Generators (CollGeom)</h3>
+<p >blablablabla </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

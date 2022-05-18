@@ -1,66 +1,67 @@
 \hypertarget{_nucleus_generator_8hpp_source}{}\doxysection{Nucleus\+Generator.\+hpp}
-\label{_nucleus_generator_8hpp_source}\index{Base/NucleusGenerator.hpp@{Base/NucleusGenerator.hpp}}
+\label{_nucleus_generator_8hpp_source}\index{CollGeom/NucleusGenerator.hpp@{CollGeom/NucleusGenerator.hpp}}
 \mbox{\hyperlink{_nucleus_generator_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   05/08/2020}}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau}}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef CAP\_\_NucleusGenerator}}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define CAP\_\_NucleusGenerator}}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}TRandom.h"{}}}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}TMath.h"{}}}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}TH1.h"{}}}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_nucleus_8hpp}{Nucleus.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00017}00017 }
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00028}\mbox{\hyperlink{class_nucleus_generator}{00028}} \textcolor{keyword}{class }\mbox{\hyperlink{class_nucleus_generator}{NucleusGenerator}}  : \textcolor{keyword}{public}  TObject}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00029}00029 \{}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00030}00030 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00031}00031 }
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00032}\mbox{\hyperlink{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7add60b5d799fbdc0d4be2024d108e0a81}{00032}}   \textcolor{keyword}{enum} \mbox{\hyperlink{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7}{GeneratorType}}   \{ \mbox{\hyperlink{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7a014755ab7523eefa475a08cead5ef832}{Uniform}}, \mbox{\hyperlink{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7a2f600647e410be1740077ea955da472b}{WoodsSaxon}}, \mbox{\hyperlink{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7a1705057b0a58158c873d24b4b27213fd}{Exponential}}, \mbox{\hyperlink{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7a4d2921ee07d8ee135a617d1d8ebd35e5}{Gaussian}}, \mbox{\hyperlink{class_nucleus_generator_ae1bbf0a0098396e60d02755c601a2bd7add60b5d799fbdc0d4be2024d108e0a81}{DoubleGaussian}} \};}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00033}00033 }
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00034}\mbox{\hyperlink{class_nucleus_generator_a94c47cf001eec29dee79f98d58c9b08f}{00034}}   TString \mbox{\hyperlink{class_nucleus_generator_a94c47cf001eec29dee79f98d58c9b08f}{generatorTypeName}};}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00035}\mbox{\hyperlink{class_nucleus_generator_a319f82df3b133d64cbe666a6fe5f1e40}{00035}}   \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_nucleus_generator_a319f82df3b133d64cbe666a6fe5f1e40}{generatorType}};}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00036}\mbox{\hyperlink{class_nucleus_generator_aca2f91a0c651841f6ef164bd03b9918a}{00036}}   \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_nucleus_generator_aca2f91a0c651841f6ef164bd03b9918a}{nR}};}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00037}\mbox{\hyperlink{class_nucleus_generator_adea4227002230ed9c00730b99427d8f7}{00037}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_nucleus_generator_a13a300ecc8794b339966820fd2fd682e}{minR}}, \mbox{\hyperlink{class_nucleus_generator_adea4227002230ed9c00730b99427d8f7}{maxR}};}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00038}\mbox{\hyperlink{class_nucleus_generator_a6f2df3305cbdfd9ecbabef6cbaefd324}{00038}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_nucleus_generator_a6f2df3305cbdfd9ecbabef6cbaefd324}{parA}};}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00039}\mbox{\hyperlink{class_nucleus_generator_a35cc2fd6386c944edce0ac8f51c764cf}{00039}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_nucleus_generator_a35cc2fd6386c944edce0ac8f51c764cf}{parB}};}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00040}\mbox{\hyperlink{class_nucleus_generator_a2859f3d5105f6df40523c66fa812efff}{00040}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_nucleus_generator_a2859f3d5105f6df40523c66fa812efff}{parC}};}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00041}\mbox{\hyperlink{class_nucleus_generator_a1dce9594d513cd4bdc927784f5206fe6}{00041}}   TH1 * \mbox{\hyperlink{class_nucleus_generator_a1dce9594d513cd4bdc927784f5206fe6}{rDensity}};}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00042}\mbox{\hyperlink{class_nucleus_generator_a0dcd32fc6ed6c8d1635c2f4cfcef5083}{00042}}   TH1 * \mbox{\hyperlink{class_nucleus_generator_a0dcd32fc6ed6c8d1635c2f4cfcef5083}{rProfile}};}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00043}\mbox{\hyperlink{class_nucleus_generator_a7b678e73791caaab2780e1d4c5ea82fd}{00043}}   TH1 * \mbox{\hyperlink{class_nucleus_generator_a7b678e73791caaab2780e1d4c5ea82fd}{rProfileGen}};}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00044}00044 }
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00045}\mbox{\hyperlink{class_nucleus_generator_a517edcd5176dce27c1f28903193f9235}{00045}}   \textcolor{keywordtype}{bool}   \mbox{\hyperlink{class_nucleus_generator_a517edcd5176dce27c1f28903193f9235}{useRecentering}};}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00046}\mbox{\hyperlink{class_nucleus_generator_a143b8fd61ed18bad714dd48b460950c8}{00046}}   \textcolor{keywordtype}{bool}   \mbox{\hyperlink{class_nucleus_generator_a143b8fd61ed18bad714dd48b460950c8}{useNucleonExclusion}};}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00047}\mbox{\hyperlink{class_nucleus_generator_a2344fe68e02e8f7d9bd95c7541f84741}{00047}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_nucleus_generator_a2344fe68e02e8f7d9bd95c7541f84741}{exclusionRadius}};}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00048}\mbox{\hyperlink{class_nucleus_generator_a54c29f672fae7fe4dab46df661b5da4d}{00048}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_nucleus_generator_a54c29f672fae7fe4dab46df661b5da4d}{exclusionRadiusSq}};}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00049}00049 }
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00050}00050 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef CAP\_\_NucleusGenerator}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define CAP\_\_NucleusGenerator}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_nucleus_8hpp}{Nucleus.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00034}\mbox{\hyperlink{class_nucleus_generator}{00034}} \textcolor{keyword}{class }\mbox{\hyperlink{class_nucleus_generator}{NucleusGenerator}}  : \textcolor{keyword}{public}  \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00035}00035 \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00037}00037 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00048}00048   \mbox{\hyperlink{class_nucleus_generator_a045531bf80ad66c90b50cfb1fadc59a4}{NucleusGenerator}}(\textcolor{keyword}{const} TString \& \_name,}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00049}00049                    \mbox{\hyperlink{class_configuration}{Configuration}} \& \_configuration,}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00050}00050                    \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}} \_selectedLevel=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}});}
 \DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00051}00051 }
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00052}00052   \mbox{\hyperlink{class_nucleus_generator_aa1641f7b97d2ed4ee1e83b44f4a52dde}{NucleusGenerator}}();}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00053}00053   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_nucleus_generator_a036813af06db1683a986f511376afbd4}{\string~NucleusGenerator}}();}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00054}00054 }
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00055}00055   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_generator_a85ffaa558cd04ec5bc9e3f7571e3ab9b}{initialize}}(\textcolor{keyword}{const} TString \& \_generatorTypeName,}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00056}00056                           \textcolor{keywordtype}{int}  \_generatorType,}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00057}00057                           \textcolor{keywordtype}{double} \_parA, \textcolor{keywordtype}{double} \_parB, \textcolor{keywordtype}{double} \_parC,}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00058}00058                           \textcolor{keywordtype}{int} \_nR, \textcolor{keywordtype}{double} \_minR, \textcolor{keywordtype}{double} \_maxR,}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00059}00059                           \textcolor{keywordtype}{bool} \_useRecentering,}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00060}00060                           \textcolor{keywordtype}{bool} \_useNucleonExclusion,}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00061}00061                           \textcolor{keywordtype}{double} \_exclusionRadius);}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00062}00062   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_generator_ad31d842377505a838d08de5c51c421dc}{generate}}(\mbox{\hyperlink{class_nucleus}{Nucleus}} \& nucleus, \textcolor{keywordtype}{double} xShift);}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00063}00063   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_generator_ad31d842377505a838d08de5c51c421dc}{generate}}(\textcolor{keywordtype}{double} \& r, \textcolor{keywordtype}{double} \& cosTheta, \textcolor{keywordtype}{double} \& phi);}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00064}00064   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_generator_add2f5eb34249100d3767cb0ffa512cb8}{saveHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00052}00052   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_nucleus_generator_a036813af06db1683a986f511376afbd4}{\string~NucleusGenerator}}();}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00058}00058   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_generator_aacb78f7422eb9a157e5fe3147356e627}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00064}00064   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_generator_a82254891f469e75da78204c434f4b292}{initialize}}();}
 \DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00065}00065 }
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00066}00066   ClassDef(\mbox{\hyperlink{class_nucleus_generator}{NucleusGenerator}},0)}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00067}00067   }
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00068}00068 \};}
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00069}00069 }
-\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00070}00070 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* NucleusGenerator\_hpp */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00066}00066   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_generator_a9b4f2d182d2e164ec3dd73818a8db90f}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00068}00068   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_generator_ad31d842377505a838d08de5c51c421dc}{generate}}(\mbox{\hyperlink{class_nucleus}{Nucleus}} \& nucleus, \textcolor{keywordtype}{double} xShift);}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00069}00069   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_generator_ad31d842377505a838d08de5c51c421dc}{generate}}(\textcolor{keywordtype}{double} \& r, \textcolor{keywordtype}{double} \& cosTheta, \textcolor{keywordtype}{double} \& phi);}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00070}00070   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_generator_add2f5eb34249100d3767cb0ffa512cb8}{saveHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00072}00072 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00074}\mbox{\hyperlink{class_nucleus_generator_a28319533d7a82a6e74cf86a067a6fbb2}{00074}}   \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_nucleus_generator_a28319533d7a82a6e74cf86a067a6fbb2}{gType}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00075}\mbox{\hyperlink{class_nucleus_generator_aca2f91a0c651841f6ef164bd03b9918a}{00075}}   \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_nucleus_generator_aca2f91a0c651841f6ef164bd03b9918a}{nR}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00076}\mbox{\hyperlink{class_nucleus_generator_a13a300ecc8794b339966820fd2fd682e}{00076}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_nucleus_generator_a13a300ecc8794b339966820fd2fd682e}{minR}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00077}\mbox{\hyperlink{class_nucleus_generator_adea4227002230ed9c00730b99427d8f7}{00077}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_nucleus_generator_adea4227002230ed9c00730b99427d8f7}{maxR}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00078}\mbox{\hyperlink{class_nucleus_generator_a6f2df3305cbdfd9ecbabef6cbaefd324}{00078}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_nucleus_generator_a6f2df3305cbdfd9ecbabef6cbaefd324}{parA}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00079}\mbox{\hyperlink{class_nucleus_generator_a35cc2fd6386c944edce0ac8f51c764cf}{00079}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_nucleus_generator_a35cc2fd6386c944edce0ac8f51c764cf}{parB}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00080}\mbox{\hyperlink{class_nucleus_generator_a2859f3d5105f6df40523c66fa812efff}{00080}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_nucleus_generator_a2859f3d5105f6df40523c66fa812efff}{parC}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00081}\mbox{\hyperlink{class_nucleus_generator_a517edcd5176dce27c1f28903193f9235}{00081}}   \textcolor{keywordtype}{bool}   \mbox{\hyperlink{class_nucleus_generator_a517edcd5176dce27c1f28903193f9235}{useRecentering}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00082}\mbox{\hyperlink{class_nucleus_generator_a143b8fd61ed18bad714dd48b460950c8}{00082}}   \textcolor{keywordtype}{bool}   \mbox{\hyperlink{class_nucleus_generator_a143b8fd61ed18bad714dd48b460950c8}{useNucleonExclusion}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00083}\mbox{\hyperlink{class_nucleus_generator_a2344fe68e02e8f7d9bd95c7541f84741}{00083}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_nucleus_generator_a2344fe68e02e8f7d9bd95c7541f84741}{exclusionRadius}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00084}\mbox{\hyperlink{class_nucleus_generator_a54c29f672fae7fe4dab46df661b5da4d}{00084}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_nucleus_generator_a54c29f672fae7fe4dab46df661b5da4d}{exclusionRadiusSq}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00086}\mbox{\hyperlink{class_nucleus_generator_a1dce9594d513cd4bdc927784f5206fe6}{00086}}   TH1 * \mbox{\hyperlink{class_nucleus_generator_a1dce9594d513cd4bdc927784f5206fe6}{rDensity}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00087}\mbox{\hyperlink{class_nucleus_generator_a0dcd32fc6ed6c8d1635c2f4cfcef5083}{00087}}   TH1 * \mbox{\hyperlink{class_nucleus_generator_a0dcd32fc6ed6c8d1635c2f4cfcef5083}{rProfile}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00088}\mbox{\hyperlink{class_nucleus_generator_a7b678e73791caaab2780e1d4c5ea82fd}{00088}}   TH1 * \mbox{\hyperlink{class_nucleus_generator_a7b678e73791caaab2780e1d4c5ea82fd}{rProfileGen}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00091}00091   ClassDef(\mbox{\hyperlink{class_nucleus_generator}{NucleusGenerator}},0)}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00092}00092   }
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00093}00093 \};}
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{_nucleus_generator_8hpp_source_l00095}00095 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* NucleusGenerator\_hpp */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

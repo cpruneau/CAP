@@ -2,112 +2,114 @@
 \label{_particle_digit_8cpp_source}\index{Base/ParticleDigit.cpp@{Base/ParticleDigit.cpp}}
 \mbox{\hyperlink{_particle_digit_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00007}00007 \textcolor{comment}{ *}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00016}00016 \textcolor{preprocessor}{\#include <ostream>}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_digit_8hpp}{ParticleDigit.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_factory_8hpp}{Factory.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include <ostream>}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_digit_8hpp}{ParticleDigit.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_factory_8hpp}{Factory.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00017}\mbox{\hyperlink{_particle_digit_8cpp_a7ec1bed5180a83e3c583084139a10c6d}{00017}} \mbox{\hyperlink{_particle_digit_8cpp_a7ec1bed5180a83e3c583084139a10c6d}{ClassImp}}(\mbox{\hyperlink{class_factory}{Factory<ParticleDigit>}});}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00019}\mbox{\hyperlink{_particle_digit_8cpp_aa466af91e8a965cb40329f5b57695eae}{00019}} \mbox{\hyperlink{_particle_digit_8cpp_a7ec1bed5180a83e3c583084139a10c6d}{ClassImp}}(\mbox{\hyperlink{class_particle_digit}{ParticleDigit}});}
 \DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00020}00020 }
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00021}\mbox{\hyperlink{_particle_digit_8cpp_a7ec1bed5180a83e3c583084139a10c6d}{00021}} \mbox{\hyperlink{_particle_digit_8cpp_a7ec1bed5180a83e3c583084139a10c6d}{ClassImp}}(\mbox{\hyperlink{class_factory}{Factory<ParticleDigit>}});}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00022}00022 }
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00023}\mbox{\hyperlink{_particle_digit_8cpp_aa466af91e8a965cb40329f5b57695eae}{00023}} \mbox{\hyperlink{_particle_digit_8cpp_a7ec1bed5180a83e3c583084139a10c6d}{ClassImp}}(\mbox{\hyperlink{class_particle_digit}{ParticleDigit}});}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00024}00024 }
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00025}\mbox{\hyperlink{class_particle_digit_ab5a95ace687803aa273b32be3a4674db}{00025}} \mbox{\hyperlink{class_particle_digit_ab5a95ace687803aa273b32be3a4674db}{ParticleDigit::ParticleDigit}}()}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00026}00026 :}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00027}00027 iY(0),}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00028}00028 iEta(0),}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00029}00029 iPhi(0),}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00030}00030 iPt(0),}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00031}00031 pt(0),}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00032}00032 e(0)}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00033}00033 \{  \}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00034}00034 }
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00035}\mbox{\hyperlink{class_particle_digit_a22f7ba4d98fa88b0d09299571cc60d86}{00035}} \mbox{\hyperlink{class_particle_digit_ab5a95ace687803aa273b32be3a4674db}{ParticleDigit::ParticleDigit}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \_iY,}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00036}00036                              \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \_iEta,}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00037}00037                              \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \_iPhi,}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00038}00038                              \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \_iPt,}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00039}00039                              \textcolor{keywordtype}{double}       \_pt,}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00040}00040                              \textcolor{keywordtype}{double}       \_e)}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00041}00041 :}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00042}00042 iY(\_iY),}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00043}00043 iEta(\_iEta),}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00044}00044 iPhi(\_iPhi),}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00045}00045 iPt(\_iPt),}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00046}00046 pt(\_pt),}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00047}00047 e(\_e)}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00048}00048 \{  \}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00049}00049 }
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00050}\mbox{\hyperlink{class_particle_digit_a3a4e9e87c2be17e9869292b478e9bf07}{00050}} \mbox{\hyperlink{class_particle_digit_a3a4e9e87c2be17e9869292b478e9bf07}{ParticleDigit::\string~ParticleDigit}}()}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00051}00051 \{  \}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00052}00052 }
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00053}\mbox{\hyperlink{class_particle_digit_a40c5bedc2ee80ad8c3068fb6ef423b9b}{00053}} \mbox{\hyperlink{class_particle_digit_ab5a95ace687803aa273b32be3a4674db}{ParticleDigit::ParticleDigit}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_particle_digit}{ParticleDigit}}\& other)}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00054}00054 :}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00055}00055 iY(other.iY),}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00056}00056 iEta(other.iEta),}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00057}00057 iPhi(other.iPhi),}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00058}00058 iPt(other.iPt),}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00059}00059 pt(other.pt),}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00060}00060 e(other.e)}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00061}00061 \{  \}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00062}00062 }
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00063}\mbox{\hyperlink{class_particle_digit_af1d24224a2992879fa8d9b09f27901e5}{00063}} \mbox{\hyperlink{class_particle_digit}{ParticleDigit}} \& \mbox{\hyperlink{class_particle_digit_af1d24224a2992879fa8d9b09f27901e5}{ParticleDigit::operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_particle_digit}{ParticleDigit}} \& other)}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00064}00064 \{}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00065}00065   \textcolor{keywordflow}{if} (\&other != \textcolor{keyword}{this})}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00066}00066     \{}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00067}00067     \mbox{\hyperlink{class_particle_digit_a11a69cbc6e5943c87e11edd94e51ee29}{iY}}   = other.\mbox{\hyperlink{class_particle_digit_a11a69cbc6e5943c87e11edd94e51ee29}{iY}};}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00068}00068     \mbox{\hyperlink{class_particle_digit_a6014dc6b5e9a29c309856196fb500e44}{iEta}} = other.\mbox{\hyperlink{class_particle_digit_a6014dc6b5e9a29c309856196fb500e44}{iEta}};}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00069}00069     \mbox{\hyperlink{class_particle_digit_a34a378dd2bbf6db23d85755591db6b52}{iPhi}} = other.\mbox{\hyperlink{class_particle_digit_a34a378dd2bbf6db23d85755591db6b52}{iPhi}};}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00070}00070     \mbox{\hyperlink{class_particle_digit_aefe3e3bcfe51739e4f21db29dd8397ef}{iPt}}  = other.\mbox{\hyperlink{class_particle_digit_aefe3e3bcfe51739e4f21db29dd8397ef}{iPt}};}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00071}00071     \mbox{\hyperlink{class_particle_digit_a449e14bed9721f6c59166de14ec253ca}{pt}}   = other.\mbox{\hyperlink{class_particle_digit_a449e14bed9721f6c59166de14ec253ca}{pt}};}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00072}00072     \mbox{\hyperlink{class_particle_digit_a80176da50276fb29b323106f93229e19}{e}}    = other.\mbox{\hyperlink{class_particle_digit_a80176da50276fb29b323106f93229e19}{e}};}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00073}00073     \}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00074}00074   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00075}00075 \}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00076}00076 }
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00077}00077 }
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00078}00078 }
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00079}\mbox{\hyperlink{class_particle_digit_a73aadcabac65f316174b113e5f774350}{00079}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_digit_a73aadcabac65f316174b113e5f774350}{ParticleDigit::reset}}()}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00080}00080 \{}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00081}00081   \mbox{\hyperlink{class_particle_digit_a11a69cbc6e5943c87e11edd94e51ee29}{iY}}   = 0;}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00082}00082   \mbox{\hyperlink{class_particle_digit_a6014dc6b5e9a29c309856196fb500e44}{iEta}} = 0;}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00083}00083   \mbox{\hyperlink{class_particle_digit_a34a378dd2bbf6db23d85755591db6b52}{iPhi}} = 0;}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00084}00084   \mbox{\hyperlink{class_particle_digit_aefe3e3bcfe51739e4f21db29dd8397ef}{iPt}}  = 0;}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00085}00085   \mbox{\hyperlink{class_particle_digit_a449e14bed9721f6c59166de14ec253ca}{pt}}   = 0.0;}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00086}00086   \mbox{\hyperlink{class_particle_digit_a80176da50276fb29b323106f93229e19}{e}}    = 0.0;}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00087}00087 \}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00088}00088 }
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00089}00089 }
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00090}00090 }
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00094}\mbox{\hyperlink{class_particle_digit_a26fdf2ba3480901825d80059b120a1a0}{00094}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_digit_a26fdf2ba3480901825d80059b120a1a0}{ParticleDigit::printProperties}}(ostream \& output)}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00095}00095 \{}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00096}00096   output << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00097}00097   output << \textcolor{stringliteral}{"{}              iY: "{}} << \mbox{\hyperlink{class_particle_digit_a11a69cbc6e5943c87e11edd94e51ee29}{iY}} << endl;}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00098}00098   output << \textcolor{stringliteral}{"{}            iEta: "{}} << \mbox{\hyperlink{class_particle_digit_a6014dc6b5e9a29c309856196fb500e44}{iEta}} << endl;}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00099}00099   output << \textcolor{stringliteral}{"{}            iPhi: "{}} << \mbox{\hyperlink{class_particle_digit_a34a378dd2bbf6db23d85755591db6b52}{iPhi}} << endl;}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00100}00100   output << \textcolor{stringliteral}{"{}             iPt: "{}} << \mbox{\hyperlink{class_particle_digit_aefe3e3bcfe51739e4f21db29dd8397ef}{iPt}} << endl;}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00101}00101   output << \textcolor{stringliteral}{"{}              pt: "{}} << \mbox{\hyperlink{class_particle_digit_a449e14bed9721f6c59166de14ec253ca}{pt}} << endl;}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00102}00102   output << \textcolor{stringliteral}{"{}               e: "{}} << \mbox{\hyperlink{class_particle_digit_a80176da50276fb29b323106f93229e19}{e}}  << endl;}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00103}00103 \}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00104}00104 }
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00105}00105 }
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00106}00106 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_particle_digit_a9e5589d9c96f01b4235b7c67ea51c422}{ParticleDigit::factorySize}} = 5000;}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00107}00107 \mbox{\hyperlink{class_factory}{Factory<ParticleDigit>}} * \mbox{\hyperlink{class_particle_digit_a35c5305a833737e0ec0166127426b8ac}{ParticleDigit::factory}} = 0;}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00108}\mbox{\hyperlink{class_particle_digit_aa4d6d428590cb0cb6eaad66089061dd0}{00108}} \mbox{\hyperlink{class_factory}{Factory<ParticleDigit>}} * \mbox{\hyperlink{class_particle_digit_aa4d6d428590cb0cb6eaad66089061dd0}{ParticleDigit::getFactory}}()}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00109}00109 \{}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00110}00110   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_particle_digit_a35c5305a833737e0ec0166127426b8ac}{factory}})}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00111}00111     \{}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00112}00112     \mbox{\hyperlink{class_particle_digit_a35c5305a833737e0ec0166127426b8ac}{factory}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_factory}{Factory<ParticleDigit>}}();}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00113}00113     \mbox{\hyperlink{class_particle_digit_a35c5305a833737e0ec0166127426b8ac}{factory}}-\/>\mbox{\hyperlink{class_factory_a93bb6d06d547e5ef951340d530946bb1}{initialize}}(\mbox{\hyperlink{class_particle_digit_a9e5589d9c96f01b4235b7c67ea51c422}{factorySize}});}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00114}00114     \}}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00115}00115   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_digit_a35c5305a833737e0ec0166127426b8ac}{factory}};}
-\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00116}00116 \}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00021}\mbox{\hyperlink{class_particle_digit_ab5a95ace687803aa273b32be3a4674db}{00021}} \mbox{\hyperlink{class_particle_digit_ab5a95ace687803aa273b32be3a4674db}{ParticleDigit::ParticleDigit}}()}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00022}00022 :}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00023}00023 iY(0),}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00024}00024 iEta(0),}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00025}00025 iPhi(0),}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00026}00026 iPt(0),}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00027}00027 pt(0),}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00028}00028 e(0)}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00029}00029 \{  \}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00031}\mbox{\hyperlink{class_particle_digit_a22f7ba4d98fa88b0d09299571cc60d86}{00031}} \mbox{\hyperlink{class_particle_digit_ab5a95ace687803aa273b32be3a4674db}{ParticleDigit::ParticleDigit}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \_iY,}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00032}00032                              \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \_iEta,}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00033}00033                              \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \_iPhi,}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00034}00034                              \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \_iPt,}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00035}00035                              \textcolor{keywordtype}{double}       \_pt,}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00036}00036                              \textcolor{keywordtype}{double}       \_e)}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00037}00037 :}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00038}00038 iY(\_iY),}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00039}00039 iEta(\_iEta),}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00040}00040 iPhi(\_iPhi),}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00041}00041 iPt(\_iPt),}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00042}00042 pt(\_pt),}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00043}00043 e(\_e)}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00044}00044 \{  \}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00046}\mbox{\hyperlink{class_particle_digit_a3a4e9e87c2be17e9869292b478e9bf07}{00046}} \mbox{\hyperlink{class_particle_digit_a3a4e9e87c2be17e9869292b478e9bf07}{ParticleDigit::\string~ParticleDigit}}()}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00047}00047 \{  \}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00049}\mbox{\hyperlink{class_particle_digit_a40c5bedc2ee80ad8c3068fb6ef423b9b}{00049}} \mbox{\hyperlink{class_particle_digit_ab5a95ace687803aa273b32be3a4674db}{ParticleDigit::ParticleDigit}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_particle_digit}{ParticleDigit}}\& other)}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00050}00050 :}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00051}00051 iY(other.iY),}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00052}00052 iEta(other.iEta),}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00053}00053 iPhi(other.iPhi),}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00054}00054 iPt(other.iPt),}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00055}00055 pt(other.pt),}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00056}00056 e(other.e)}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00057}00057 \{  \}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00059}\mbox{\hyperlink{class_particle_digit_af1d24224a2992879fa8d9b09f27901e5}{00059}} \mbox{\hyperlink{class_particle_digit}{ParticleDigit}} \& \mbox{\hyperlink{class_particle_digit_af1d24224a2992879fa8d9b09f27901e5}{ParticleDigit::operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_particle_digit}{ParticleDigit}} \& other)}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00060}00060 \{}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00061}00061   \textcolor{keywordflow}{if} (\&other != \textcolor{keyword}{this})}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00062}00062     \{}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00063}00063     \mbox{\hyperlink{class_particle_digit_a11a69cbc6e5943c87e11edd94e51ee29}{iY}}   = other.\mbox{\hyperlink{class_particle_digit_a11a69cbc6e5943c87e11edd94e51ee29}{iY}};}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00064}00064     \mbox{\hyperlink{class_particle_digit_a6014dc6b5e9a29c309856196fb500e44}{iEta}} = other.\mbox{\hyperlink{class_particle_digit_a6014dc6b5e9a29c309856196fb500e44}{iEta}};}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00065}00065     \mbox{\hyperlink{class_particle_digit_a34a378dd2bbf6db23d85755591db6b52}{iPhi}} = other.\mbox{\hyperlink{class_particle_digit_a34a378dd2bbf6db23d85755591db6b52}{iPhi}};}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00066}00066     \mbox{\hyperlink{class_particle_digit_aefe3e3bcfe51739e4f21db29dd8397ef}{iPt}}  = other.\mbox{\hyperlink{class_particle_digit_aefe3e3bcfe51739e4f21db29dd8397ef}{iPt}};}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00067}00067     \mbox{\hyperlink{class_particle_digit_a449e14bed9721f6c59166de14ec253ca}{pt}}   = other.\mbox{\hyperlink{class_particle_digit_a449e14bed9721f6c59166de14ec253ca}{pt}};}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00068}00068     \mbox{\hyperlink{class_particle_digit_a80176da50276fb29b323106f93229e19}{e}}    = other.\mbox{\hyperlink{class_particle_digit_a80176da50276fb29b323106f93229e19}{e}};}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00069}00069     \}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00070}00070   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00071}00071 \}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00075}\mbox{\hyperlink{class_particle_digit_a73aadcabac65f316174b113e5f774350}{00075}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_digit_a73aadcabac65f316174b113e5f774350}{ParticleDigit::reset}}()}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00076}00076 \{}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00077}00077   \mbox{\hyperlink{class_particle_digit_a11a69cbc6e5943c87e11edd94e51ee29}{iY}}   = 0;}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00078}00078   \mbox{\hyperlink{class_particle_digit_a6014dc6b5e9a29c309856196fb500e44}{iEta}} = 0;}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00079}00079   \mbox{\hyperlink{class_particle_digit_a34a378dd2bbf6db23d85755591db6b52}{iPhi}} = 0;}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00080}00080   \mbox{\hyperlink{class_particle_digit_aefe3e3bcfe51739e4f21db29dd8397ef}{iPt}}  = 0;}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00081}00081   \mbox{\hyperlink{class_particle_digit_a449e14bed9721f6c59166de14ec253ca}{pt}}   = 0.0;}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00082}00082   \mbox{\hyperlink{class_particle_digit_a80176da50276fb29b323106f93229e19}{e}}    = 0.0;}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00083}00083 \}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00090}\mbox{\hyperlink{class_particle_digit_a26fdf2ba3480901825d80059b120a1a0}{00090}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_digit_a26fdf2ba3480901825d80059b120a1a0}{ParticleDigit::printProperties}}(ostream \& output)}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00091}00091 \{}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00092}00092   output << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00093}00093   output << \textcolor{stringliteral}{"{}              iY: "{}} << \mbox{\hyperlink{class_particle_digit_a11a69cbc6e5943c87e11edd94e51ee29}{iY}} << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00094}00094   output << \textcolor{stringliteral}{"{}            iEta: "{}} << \mbox{\hyperlink{class_particle_digit_a6014dc6b5e9a29c309856196fb500e44}{iEta}} << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00095}00095   output << \textcolor{stringliteral}{"{}            iPhi: "{}} << \mbox{\hyperlink{class_particle_digit_a34a378dd2bbf6db23d85755591db6b52}{iPhi}} << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00096}00096   output << \textcolor{stringliteral}{"{}             iPt: "{}} << \mbox{\hyperlink{class_particle_digit_aefe3e3bcfe51739e4f21db29dd8397ef}{iPt}} << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00097}00097   output << \textcolor{stringliteral}{"{}              pt: "{}} << \mbox{\hyperlink{class_particle_digit_a449e14bed9721f6c59166de14ec253ca}{pt}} << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00098}00098   output << \textcolor{stringliteral}{"{}               e: "{}} << \mbox{\hyperlink{class_particle_digit_a80176da50276fb29b323106f93229e19}{e}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00099}00099 \}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00102}00102 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_particle_digit_a9e5589d9c96f01b4235b7c67ea51c422}{ParticleDigit::factorySize}} = 5000;}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00103}00103 \mbox{\hyperlink{class_factory}{Factory<ParticleDigit>}} * \mbox{\hyperlink{class_particle_digit_a35c5305a833737e0ec0166127426b8ac}{ParticleDigit::factory}} = 0;}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00104}\mbox{\hyperlink{class_particle_digit_aa4d6d428590cb0cb6eaad66089061dd0}{00104}} \mbox{\hyperlink{class_factory}{Factory<ParticleDigit>}} * \mbox{\hyperlink{class_particle_digit_aa4d6d428590cb0cb6eaad66089061dd0}{ParticleDigit::getFactory}}()}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00105}00105 \{}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00106}00106   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_particle_digit_a35c5305a833737e0ec0166127426b8ac}{factory}})}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00107}00107     \{}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00108}00108     \mbox{\hyperlink{class_particle_digit_a35c5305a833737e0ec0166127426b8ac}{factory}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_factory}{Factory<ParticleDigit>}}();}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00109}00109     \mbox{\hyperlink{class_particle_digit_a35c5305a833737e0ec0166127426b8ac}{factory}}-\/>\mbox{\hyperlink{class_factory_a93bb6d06d547e5ef951340d530946bb1}{initialize}}(\mbox{\hyperlink{class_particle_digit_a9e5589d9c96f01b4235b7c67ea51c422}{factorySize}});}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00110}00110     \}}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00111}00111   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_particle_digit_a35c5305a833737e0ec0166127426b8ac}{factory}};}
+\DoxyCodeLine{\Hypertarget{_particle_digit_8cpp_source_l00112}00112 \}}
 
 \end{DoxyCode}

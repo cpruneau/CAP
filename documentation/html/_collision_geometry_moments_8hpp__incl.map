@@ -1,4 +1,4 @@
-<map id="Base/CollisionGeometryMoments.hpp" name="Base/CollisionGeometryMoments.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,248,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="89,80,164,107"/>
+<map id="CollGeom/CollisionGeometryMoments.hpp" name="CollGeom/CollisionGeometryMoments.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,196,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="63,95,138,121"/>
 </map>

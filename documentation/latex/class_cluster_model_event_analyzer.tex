@@ -108,9 +108,9 @@ Definition at line \mbox{\hyperlink{_cluster_model_event_analyzer_8cpp_source_l0
 \doxysubsubsection{\texorpdfstring{execute()}{execute()}}
 {\footnotesize\ttfamily void Cluster\+Model\+Event\+Analyzer\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
-Execute this task instance. This base class implementation only increments the counters n\+Event\+Processed and n\+Event\+Accepted. Implement this method in derived class to achieve the actual task of interest. Note\+: You can increase the counters n\+Event\+Processed and n\+Event\+Accepted indiscrimately by a call to \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task\+::execute()}}. However, in general, you may wish to count all events looked and only count as accepted those that passed one of the event filters used by this task. To achive this, use calls to the methods \mbox{\hyperlink{class_task_a724ff83138229238fdc58566a0cd350f}{increment\+Event\+Processed()}} and \mbox{\hyperlink{class_task_a01762aa4383b0931850efb56b697a856}{increment\+Event\+Accepted()}} rather than explicitly incrementing the variable n\+Event\+Processed and n\+Event\+Accepted. These are currently protected but may defined as private in a future release. 
+Execute this task instance. This base class implementation only increments the counters n\+Event\+Processed and n\+Event\+Accepted. Implement this method in derived class to achieve the actual task of interest. Note\+: You can increase the counters n\+Event\+Processed and n\+Event\+Accepted indiscrimately by a call to \mbox{\hyperlink{class_task_ade38031c3ed134ec20cbbcd58e575745}{Task\+::execute()}}. However, in general, you may wish to count all events looked and only count as accepted those that passed one of the event filters used by this task. To achive this, use calls to the methods \mbox{\hyperlink{class_task_acb311e0eb8b72d684f8b228483bb96f5}{increment\+Task\+Executed()}}() and \mbox{\hyperlink{class_task_aabce954619d743bdc24677981775c0c8}{increment\+NEvents\+Accepted()}} rather than explicitly incrementing the variable n\+Event\+Processed and n\+Event\+Accepted. These are currently protected but may defined as private in a future release. 
 
-Reimplemented from \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task}}.
+Reimplemented from \mbox{\hyperlink{class_task_ade38031c3ed134ec20cbbcd58e575745}{Task}}.
 
 
 
@@ -124,7 +124,7 @@ Definition at line \mbox{\hyperlink{_cluster_model_event_analyzer_8cpp_source_l0
 
 
 
-Definition at line \mbox{\hyperlink{_cluster_model_event_analyzer_8cpp_source_l00125}{125}} of file \mbox{\hyperlink{_cluster_model_event_analyzer_8cpp_source}{Cluster\+Model\+Event\+Analyzer.\+cpp}}.
+Definition at line \mbox{\hyperlink{_cluster_model_event_analyzer_8cpp_source_l00126}{126}} of file \mbox{\hyperlink{_cluster_model_event_analyzer_8cpp_source}{Cluster\+Model\+Event\+Analyzer.\+cpp}}.
 
 \mbox{\Hypertarget{class_cluster_model_event_analyzer_ae5c8c64535a8adf555a57aada6e0bf7a}\label{class_cluster_model_event_analyzer_ae5c8c64535a8adf555a57aada6e0bf7a}} 
 \index{ClusterModelEventAnalyzer@{ClusterModelEventAnalyzer}!loadHistograms@{loadHistograms}}
@@ -158,7 +158,7 @@ Definition at line \mbox{\hyperlink{_cluster_model_event_analyzer_8cpp_source_l0
 
 
 
-Definition at line \mbox{\hyperlink{_cluster_model_event_analyzer_8cpp_source_l00117}{117}} of file \mbox{\hyperlink{_cluster_model_event_analyzer_8cpp_source}{Cluster\+Model\+Event\+Analyzer.\+cpp}}.
+Definition at line \mbox{\hyperlink{_cluster_model_event_analyzer_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{_cluster_model_event_analyzer_8cpp_source}{Cluster\+Model\+Event\+Analyzer.\+cpp}}.
 
 
 

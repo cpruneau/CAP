@@ -25,12 +25,15 @@ public:
   //! CTOR
   //!
   ParticlePairFilter();
-  virtual ~ParticlePairFilter();
+  virtual ~ParticlePairFilter(){}
+  
+  //!
+  //!Accept/reject the given pair of particles
+  //!
   virtual bool accept(const Particle & particle1, const Particle &  particle2);
 
-  //////////////////////////////////////////////////////////////////////////////////////////
-  // Data Members
-  //////////////////////////////////////////////////////////////////////////////////////////
+protected:
+  
   double min_dpt;
   double max_dpt;
   double min_dphi;

@@ -2,62 +2,64 @@
 \label{_function_collection_8hpp_source}\index{Base/FunctionCollection.hpp@{Base/FunctionCollection.hpp}}
 \mbox{\hyperlink{_function_collection_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.                                 *}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.                                                *}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment                           *}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00007}00007 \textcolor{comment}{ *                                                                     *}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.                                *}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00010}00010 }
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#ifndef CAP\_\_FunctionCollection}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#define CAP\_\_FunctionCollection}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include <stdio.h>}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}TClass.h"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}TFile.h"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}TAxis.h"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}TSystem.h"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}TStyle.h"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00019}00019 \textcolor{preprocessor}{\#include "{}TMath.h"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00020}00020 \textcolor{preprocessor}{\#include "{}TPad.h"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00021}00021 \textcolor{preprocessor}{\#include "{}TF1.h"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00022}00022 \textcolor{preprocessor}{\#include "{}TF2.h"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00023}00023 \textcolor{preprocessor}{\#include "{}TRandom.h"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00024}00024 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00025}00025 \textcolor{preprocessor}{\#include "{}TLatex.h"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00026}00026 \textcolor{preprocessor}{\#include "{}TLine.h"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00027}00027 \textcolor{preprocessor}{\#include "{}TArrow.h"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00028}00028 \textcolor{preprocessor}{\#include "{}TLegend.h"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00029}00029 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_graph_configuration_8hpp}{GraphConfiguration.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00030}00030 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_canvas_configuration_8hpp}{CanvasConfiguration.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00031}00031 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_canvas_collection_8hpp}{CanvasCollection.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00032}00032 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_collection_8hpp}{Collection.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00033}00033 \textcolor{keyword}{using namespace }std;}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00034}00034 }
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00035}\mbox{\hyperlink{class_function_collection}{00035}} \textcolor{keyword}{class }\mbox{\hyperlink{class_function_collection}{FunctionCollection}}  : \textcolor{keyword}{public} \mbox{\hyperlink{class_collection}{Collection}}<TF1>}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00036}00036 \{}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00037}00037 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00038}00038   }
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00040}00040   \textcolor{comment}{// Member functions}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00042}00042 \textcolor{comment}{}  \mbox{\hyperlink{class_function_collection_a455183306039f5d2ef667db28a2a2ba4}{FunctionCollection}}(\textcolor{keyword}{const} TString\& \_name=\textcolor{stringliteral}{"{}"{}},\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}} logLevel=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}});}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00043}00043   \mbox{\hyperlink{class_function_collection_a455183306039f5d2ef667db28a2a2ba4}{FunctionCollection}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_function_collection}{FunctionCollection}} \& source);}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00044}00044   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_function_collection_a2e179a76d19cbdeac682c9a720c19a87}{\string~FunctionCollection}}();}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00045}00045   \mbox{\hyperlink{class_function_collection}{FunctionCollection}} \& \mbox{\hyperlink{class_function_collection_a0680933f26fc2379722810f102f061d9}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_function_collection}{FunctionCollection}} \& source);}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00046}00046 }
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00047}\mbox{\hyperlink{class_function_collection_afa5646ee70c18a5c857db44bc2314294}{00047}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_function_collection_afa5646ee70c18a5c857db44bc2314294}{getNFunction}}()}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00048}00048   \{}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00049}00049   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collection_afdf4799b9e4a8b4dbb446de2f0cec6e1}{getCollectionSize}}();}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00050}00050   \}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00051}00051 }
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00052}00052   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_function_collection_ae880111d23be25340112d1995129e4e2}{setDefaultOptions}}(\textcolor{keywordtype}{bool} color=0);}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00053}00053   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_function_collection_a3b90a4c95b194e00ea84c732a714c68e}{setFunctionProperties}}(TF1 * f, \textcolor{keyword}{const} \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}} \& graphConfiguration);}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00054}00054   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_function_collection_a23a25c5dc3a09fd4c835affa199df402}{plotAllFunctions}}(\textcolor{keyword}{const} TString \& \mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}}, \textcolor{keywordtype}{bool} doPrint=\textcolor{keyword}{false});}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00055}00055 }
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00056}00056   ClassDef(\mbox{\hyperlink{class_function_collection}{FunctionCollection}},0)}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00057}00057 \}; \textcolor{comment}{// FunctionCollection}}
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00058}00058 }
-\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00059}00059 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* FunctionCollection\_hpp */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#ifndef CAP\_\_FunctionCollection}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#define CAP\_\_FunctionCollection}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}TClass.h"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}TFile.h"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}TAxis.h"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00019}00019 \textcolor{preprocessor}{\#include "{}TSystem.h"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00020}00020 \textcolor{preprocessor}{\#include "{}TStyle.h"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00021}00021 \textcolor{preprocessor}{\#include "{}TMath.h"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00022}00022 \textcolor{preprocessor}{\#include "{}TPad.h"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00023}00023 \textcolor{preprocessor}{\#include "{}TF1.h"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00024}00024 \textcolor{preprocessor}{\#include "{}TF2.h"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00025}00025 \textcolor{preprocessor}{\#include "{}TRandom.h"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00026}00026 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00027}00027 \textcolor{preprocessor}{\#include "{}TLatex.h"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00028}00028 \textcolor{preprocessor}{\#include "{}TLine.h"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00029}00029 \textcolor{preprocessor}{\#include "{}TArrow.h"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00030}00030 \textcolor{preprocessor}{\#include "{}TLegend.h"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00031}00031 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_graph_configuration_8hpp}{GraphConfiguration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00032}00032 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_canvas_configuration_8hpp}{CanvasConfiguration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00033}00033 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_canvas_collection_8hpp}{CanvasCollection.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00034}00034 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_collection_8hpp}{Collection.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00035}00035 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00037}\mbox{\hyperlink{class_function_collection}{00037}} \textcolor{keyword}{class }\mbox{\hyperlink{class_function_collection}{FunctionCollection}}  : \textcolor{keyword}{public} \mbox{\hyperlink{class_collection}{Collection}}<TF1>}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00038}00038 \{}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00039}00039 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00040}00040   }
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00042}00042   \textcolor{comment}{// Member functions}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00044}00044 \textcolor{comment}{}  \mbox{\hyperlink{class_function_collection_a455183306039f5d2ef667db28a2a2ba4}{FunctionCollection}}(\textcolor{keyword}{const} TString\& \_name=\textcolor{stringliteral}{"{}"{}},\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}} logLevel=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}});}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00045}00045   \mbox{\hyperlink{class_function_collection_a455183306039f5d2ef667db28a2a2ba4}{FunctionCollection}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_function_collection}{FunctionCollection}} \& source);}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00046}00046   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_function_collection_a2e179a76d19cbdeac682c9a720c19a87}{\string~FunctionCollection}}();}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00047}00047   \mbox{\hyperlink{class_function_collection}{FunctionCollection}} \& \mbox{\hyperlink{class_function_collection_a0680933f26fc2379722810f102f061d9}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_function_collection}{FunctionCollection}} \& source);}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00049}\mbox{\hyperlink{class_function_collection_afa5646ee70c18a5c857db44bc2314294}{00049}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_function_collection_afa5646ee70c18a5c857db44bc2314294}{getNFunction}}()}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00050}00050   \{}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00051}00051   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collection_afdf4799b9e4a8b4dbb446de2f0cec6e1}{getCollectionSize}}();}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00052}00052   \}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00054}00054   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_function_collection_ae880111d23be25340112d1995129e4e2}{setDefaultOptions}}(\textcolor{keywordtype}{bool} color=0);}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00055}00055   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_function_collection_a3b90a4c95b194e00ea84c732a714c68e}{setFunctionProperties}}(TF1 * f, \textcolor{keyword}{const} \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}} \& graphConfiguration);}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00056}00056   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_function_collection_a23a25c5dc3a09fd4c835affa199df402}{plotAllFunctions}}(\textcolor{keyword}{const} TString \& outputPath, \textcolor{keywordtype}{bool} doPrint=\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00058}00058   ClassDef(\mbox{\hyperlink{class_function_collection}{FunctionCollection}},0)}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00059}00059 \}; \textcolor{comment}{// FunctionCollection}}
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{_function_collection_8hpp_source_l00061}00061 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* FunctionCollection\_hpp */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

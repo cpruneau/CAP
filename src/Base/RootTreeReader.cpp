@@ -37,13 +37,16 @@ nb(0),
 entryIndex(0)
 {
   appendClassName("RootTreeReader");
+  setInstanceName(_name);
   setDefaultConfiguration();
   setConfiguration(_configuration);
 }
 
 RootTreeReader::~RootTreeReader()
 {
-  cout << "RootTreeReader::~RootTreeReader(...)" << endl;
+  
+  if (reportStart(__FUNCTION__))
+    ;
   if (inputDataFile)
     {
     inputDataFile->Close();
@@ -53,7 +56,9 @@ RootTreeReader::~RootTreeReader()
 
 void RootTreeReader::setDefaultConfiguration()
 {
-  Task::setDefaultConfiguration();
+  
+  if (reportStart(__FUNCTION__))
+    ;
   Configuration & config = getConfiguration();
   config.setParameter("useParticles",          true);
   config.setParameter("useEventStream0",       true);
@@ -72,6 +77,9 @@ void RootTreeReader::setDefaultConfiguration()
 
 void RootTreeReader::initialize()
 {
+  
+  if (reportStart(__FUNCTION__))
+    ;
   Task::initialize();
   if (reportStart("RootTreeReader",getName(),"initialize()"))
     ;
@@ -88,7 +96,7 @@ void RootTreeReader::initialize()
   inputRootChain = new TChain(dataInputTreeName);
   if (!inputRootChain)
     {
-    if (reportFatal("RootTreeReader",getName(),"initialize()")) cout << "Chain is a null pointer" << endl;
+    if (reportFatal()) cout << "Chain is a null pointer" << endl;
     postTaskFatal();
     return;
     }
@@ -108,7 +116,7 @@ void RootTreeReader::initialize()
     }
   if (selectedFileNames.size()<1)
     {
-    if (reportError("RootTreeReader",getName(),"initialize()")) cout << "No root data file selected for input" << endl;
+    if (reportError(__FUNCTION__)) cout << "No root data file selected for input" << endl;
     postTaskError();
     return;
     }
@@ -122,8 +130,7 @@ void RootTreeReader::initialize()
     {
     TString fileName = selectedFileNames[iFile];
     if (!fileName.EndsWith(".root")) fileName += ".root";
-    if (reportInfo("RootTreeReader",getName(),"initialize()"))
-      cout << "Adding input file:" << fileName << endl;
+    if (reportInfo(__FUNCTION__)) cout << "Adding input file:" << fileName << endl;
     inputRootChain->Add(fileName);
     }
   initInputTreeMapping();
@@ -132,19 +139,17 @@ void RootTreeReader::initialize()
   nEntries = inputRootChain->GetEntriesFast();
   if (nEntries < 1)
     {
-    if (reportError("RootTreeReader",getName(),"initialize()"))
-      cout << "No data found: nEntries < 1. Abort job!" << endl;
+    if (reportError(__FUNCTION__)) cout << "No data found: nEntries < 1. Abort job!" << endl;
     postTaskFatal();
     return;
     }
   else
     {
-    if (reportInfo("RootTreeReader",getName(),"initialize()"))
-      cout << "nEntries: " << nEntries << endl;
+    if (reportInfo(__FUNCTION__)) cout << "nEntries: " << nEntries << endl;
     }
   nBytes = 0;
   nb = 0;
-  if (reportEnd("RootTreeReader",getName(),"initialize()"))
+  if (reportEnd(__FUNCTION__))
     ;
 }
 
@@ -154,7 +159,8 @@ void RootTreeReader::initialize()
 //!
 void RootTreeReader::execute()
 {
-  if (reportStart("RootTreeReader",getName(),"execute()"))
+  
+  if (reportStart(__FUNCTION__))
     ;
 }
 

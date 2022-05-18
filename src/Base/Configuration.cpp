@@ -154,8 +154,7 @@ void Configuration::setParameter(const TString & name, bool value)
     }
   else
     {
-    std::cout  << "Configuration::setParameter(bool) No parameter named " << name << " stored in this configuration." << std::endl;
-    std::cout  << "Configuration::setParameter(bool) operation ignored." << std::endl;
+    boolMap[name] = value;
     }
 }
 
@@ -169,8 +168,7 @@ void Configuration::setParameter(const TString & name, int value)
     }
   else
     {
-    std::cout  << "Configuration::setParameter(int) No parameter named " << name << " stored in this configuration." << std::endl;
-    std::cout  << "Configuration::setParameter(int) operation ignored." << std::endl;
+    intMap[name] = value;
     }
 }
 
@@ -184,8 +182,7 @@ void Configuration::setParameter(const TString & name, long value)
     }
   else
     {
-    std::cout  << "Configuration::setParameter(long) No parameter named " << name << " stored in this configuration." << std::endl;
-    std::cout  << "Configuration::setParameter(long) operation ignored." << std::endl;
+    longMap[name] = value;
     }
 }
 
@@ -200,8 +197,7 @@ void Configuration::setParameter(const TString & name, double value)
     }
   else
     {
-    std::cout  << "Configuration::setParameter(double) No parameter named " << name << " stored in this configuration." << std::endl;
-    std::cout  << "Configuration::setParameter(double) operation ignored." << std::endl;
+    doubleMap[name] = value;
     }
 }
 
@@ -215,8 +211,7 @@ void Configuration::setParameter(const TString & name, const TString &  value)
     }
   else
     {
-    std::cout  << "Configuration::setParameter(TString) No parameter named " << name << " stored in this configuration." << std::endl;
-    std::cout  << "Configuration::setParameter(TString) setParameter() operation ignored." << std::endl;
+    stringMap[name] = value;
     }
 }
 
@@ -348,6 +343,57 @@ int Configuration::getNParameters()
 }
 
 
+void Configuration::generateKeyValuePairs(const TString keyBaseName, const TString defaultValue, int nKeysToGenerate)
+{
+  TString key;
+  for (int k=0; k<nKeysToGenerate; k++)
+    {
+    key = keyBaseName; key += k;
+    addParameter(key,defaultValue);
+    }
+}
+
+vector<TString> Configuration::getSelectedValues(const TString keyBaseName, const TString defaultValue) const 
+{
+  vector<TString> selectedValues;
+  for (std::map<TString,TString>::const_iterator it=stringMap.cbegin(); it!=stringMap.cend(); ++it)
+    {
+    if (it->first.Contains(keyBaseName) && !it->second.Contains(defaultValue) ) selectedValues.push_back(it->second);
+    }
+  return selectedValues;
+}
+
+int Configuration::getNPossibleValues(const TString keyBaseName)  const
+{
+  int nPossible = 0;
+  for (std::map<TString,TString>::const_iterator it=stringMap.cbegin(); it!=stringMap.cend(); ++it)
+    {
+    if (it->first.Contains(keyBaseName)) nPossible++;
+    }
+  return nPossible;
+}
+
+int Configuration::getNSelectedValues(const TString keyBaseName, const TString defaultValue)  const
+{
+  int nSelected = 0;
+  for (std::map<TString,TString>::const_iterator it=stringMap.cbegin(); it!=stringMap.cend(); ++it)
+    {
+    if (it->first.Contains(keyBaseName) && !it->second.Contains(defaultValue) ) nSelected++;
+    }
+  return nSelected;
+}
+
+
+void Configuration::addSelectedValues(const TString keyBaseName, const TString defaultValue, const vector<TString> & selectedValues)
+{
+  TString key;
+  int nSelected = getNSelectedValues(keyBaseName,defaultValue);
+  for (unsigned int k=0; k<selectedValues.size(); k++)
+    {
+    TString key = keyBaseName+(int(nSelected)+k);
+    setParameter(key,selectedValues[k]);
+    }
+}
 
 void Configuration::printConfiguration(ostream & os)
 {
@@ -366,7 +412,7 @@ void Configuration::printConfiguration(ostream & os)
     {
     std::cout << "     " << it->first << " == " << it->second << endl;
     }
- 
+
   for (std::map<TString,long>::const_iterator it=longMap.cbegin(); it!=longMap.cend(); ++it)
     {
     std::cout << "     " << it->first << " == " << it->second << endl;

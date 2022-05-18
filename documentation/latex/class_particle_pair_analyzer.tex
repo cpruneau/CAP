@@ -25,42 +25,22 @@ Collaboration diagram for Particle\+Pair\+Analyzer\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_particle_pair_analyzer_a5ec263c124d5aaed0c51f32721aea6c6}{Particle\+Pair\+Analyzer}} (const TString \&\+\_\+name, Particle\+Analyzer\+Configuration $\ast$\+\_\+configuration, vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \+\_\+event\+Filters, vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \+\_\+particle\+Filters, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \+\_\+selected\+Level)
-\item 
-virtual \mbox{\hyperlink{class_particle_pair_analyzer_af253174a01a9b03f261c93e995164b0a}{$\sim$\+Particle\+Pair\+Analyzer}} ()
-\item 
-virtual void \mbox{\hyperlink{class_particle_pair_analyzer_a07c253b3ce32d0558c7c4e191fa9b397}{execute}} ()
-\item 
-virtual void \mbox{\hyperlink{class_particle_pair_analyzer_aeb8c90149e72545e826cdb7c844d8d01}{create\+Histograms}} ()
-\item 
-virtual void \mbox{\hyperlink{class_particle_pair_analyzer_af113ac14916f00ce33fad79121085bfb}{create\+Derived\+Histograms}} ()
-\item 
-virtual void \mbox{\hyperlink{class_particle_pair_analyzer_a0468843ba108ab3ab61d7fd68f82907a}{load\+Histograms}} (TFile $\ast$input\+File)
-\item 
-virtual void \mbox{\hyperlink{class_particle_pair_analyzer_a005d808be2b730897411c461e32f6898}{scale\+Histograms}} ()
-\item 
 \mbox{\hyperlink{class_particle_pair_analyzer_ac943e1d5bc442b83a4fa242300b9d78d}{Particle\+Pair\+Analyzer}} (const TString \&\+\_\+name, const \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&\+\_\+event\+Filters, vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&\+\_\+particle\+Filters, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \+\_\+selected\+Level)
 \item 
 virtual \mbox{\hyperlink{class_particle_pair_analyzer_af253174a01a9b03f261c93e995164b0a}{$\sim$\+Particle\+Pair\+Analyzer}} ()
 \item 
 virtual void \mbox{\hyperlink{class_particle_pair_analyzer_a5d4c749524c9a018c438253532e04ce8}{set\+Default\+Configuration}} ()
 \item 
-virtual void \mbox{\hyperlink{class_particle_pair_analyzer_afc930f499ff8cbe6b34175d4cee5f7ec}{execute}} ()
+virtual void \mbox{\hyperlink{class_particle_pair_analyzer_a07c253b3ce32d0558c7c4e191fa9b397}{execute}} ()
 \item 
-virtual void \mbox{\hyperlink{class_particle_pair_analyzer_ad94a55650db616ed545a54ca7dfca567}{create\+Histograms}} ()
+virtual void \mbox{\hyperlink{class_particle_pair_analyzer_aeb8c90149e72545e826cdb7c844d8d01}{create\+Histograms}} ()
 \item 
-virtual void \mbox{\hyperlink{class_particle_pair_analyzer_a5199c0848f6e113c914837f112953c8d}{load\+Histograms}} (TFile $\ast$input\+File)
+virtual void \mbox{\hyperlink{class_particle_pair_analyzer_a0468843ba108ab3ab61d7fd68f82907a}{load\+Histograms}} (TFile $\ast$input\+File)
 \item 
-virtual void \mbox{\hyperlink{class_particle_pair_analyzer_a93c1adb796add41931da15a337cb6606}{scale\+Histograms}} ()
+virtual void \mbox{\hyperlink{class_particle_pair_analyzer_a005d808be2b730897411c461e32f6898}{scale\+Histograms}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
-\item 
-unsigned int \mbox{\hyperlink{class_particle_pair_analyzer_a28108d54ff135c2a7bb57e14bb9cfee4}{n\+Histos}}
-\item 
-unsigned int \mbox{\hyperlink{class_particle_pair_analyzer_ab55053a9a053fe4e0de477d522cf1715}{n\+Derived\+Histos}}
-\item 
-unsigned int \mbox{\hyperlink{class_particle_pair_analyzer_ab7843093de6424852bb218d09c756e23}{n\+Combined\+Histos}}
 \item 
 bool \mbox{\hyperlink{class_particle_pair_analyzer_aa52ab8637f7eab8ced2c0451b4aa5aa3}{fill\+Eta}}
 \begin{DoxyCompactList}\small\item\em whether to fill pseudorapidity histograms (set from configuration at initialization) \end{DoxyCompactList}\item 
@@ -117,35 +97,15 @@ The following parameters specify the configuration of histograms filled by this 
 \end{DoxyItemize}
 \end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8hpp_source_l00027}{27}} of file \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8hpp_source}{Particle\+Pair\+Analyzer.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source}{Particle\+Pair\+Analyzer.\+hpp}}.
 
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_particle_pair_analyzer_a5ec263c124d5aaed0c51f32721aea6c6}\label{class_particle_pair_analyzer_a5ec263c124d5aaed0c51f32721aea6c6}} 
-\index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\doxysubsubsection{\texorpdfstring{ParticlePairAnalyzer()}{ParticlePairAnalyzer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Particle\+Pair\+Analyzer\+::\+Particle\+Pair\+Analyzer (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{Particle\+Analyzer\+Configuration $\ast$}]{\+\_\+configuration,  }\item[{vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$}]{\+\_\+event\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$}]{\+\_\+particle\+Filters,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{\+\_\+selected\+Level }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8cpp_source}{Particle\+Pair\+Analyzer.\+cpp}}.
-
-\mbox{\Hypertarget{class_particle_pair_analyzer_af253174a01a9b03f261c93e995164b0a}\label{class_particle_pair_analyzer_af253174a01a9b03f261c93e995164b0a}} 
-\index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!````~ParticlePairAnalyzer@{$\sim$ParticlePairAnalyzer}}
-\index{````~ParticlePairAnalyzer@{$\sim$ParticlePairAnalyzer}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\doxysubsubsection{\texorpdfstring{$\sim$ParticlePairAnalyzer()}{~ParticlePairAnalyzer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily virtual Particle\+Pair\+Analyzer\+::$\sim$\+Particle\+Pair\+Analyzer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
-
-
-
-Definition at line \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8hpp_source}{Particle\+Pair\+Analyzer.\+hpp}}.
-
 \mbox{\Hypertarget{class_particle_pair_analyzer_ac943e1d5bc442b83a4fa242300b9d78d}\label{class_particle_pair_analyzer_ac943e1d5bc442b83a4fa242300b9d78d}} 
 \index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
 \index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\doxysubsubsection{\texorpdfstring{ParticlePairAnalyzer()}{ParticlePairAnalyzer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{ParticlePairAnalyzer()}{ParticlePairAnalyzer()}}
 {\footnotesize\ttfamily Particle\+Pair\+Analyzer\+::\+Particle\+Pair\+Analyzer (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{const \mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&}]{\+\_\+event\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&}]{\+\_\+particle\+Filters,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{\+\_\+selected\+Level }\end{DoxyParamCaption})}
 
 Detailed CTOR
@@ -165,118 +125,72 @@ Detailed CTOR
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_particle_pair_analyzer_8cpp_source}{Particle\+Pair\+Analyzer.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{_particle_pair_analyzer_8cpp_source}{Particle\+Pair\+Analyzer.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_pair_analyzer_af253174a01a9b03f261c93e995164b0a}\label{class_particle_pair_analyzer_af253174a01a9b03f261c93e995164b0a}} 
 \index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!````~ParticlePairAnalyzer@{$\sim$ParticlePairAnalyzer}}
 \index{````~ParticlePairAnalyzer@{$\sim$ParticlePairAnalyzer}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\doxysubsubsection{\texorpdfstring{$\sim$ParticlePairAnalyzer()}{~ParticlePairAnalyzer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{$\sim$ParticlePairAnalyzer()}{~ParticlePairAnalyzer()}}
 {\footnotesize\ttfamily virtual Particle\+Pair\+Analyzer\+::$\sim$\+Particle\+Pair\+Analyzer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
 
 DTOR 
 
-Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source}{Particle\+Pair\+Analyzer.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source}{Particle\+Pair\+Analyzer.\+hpp}}.
 
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_particle_pair_analyzer_af113ac14916f00ce33fad79121085bfb}\label{class_particle_pair_analyzer_af113ac14916f00ce33fad79121085bfb}} 
-\index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!createDerivedHistograms@{createDerivedHistograms}}
-\index{createDerivedHistograms@{createDerivedHistograms}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\doxysubsubsection{\texorpdfstring{createDerivedHistograms()}{createDerivedHistograms()}}
-{\footnotesize\ttfamily void Particle\+Pair\+Analyzer\+::create\+Derived\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Definition at line \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8cpp_source_l00294}{294}} of file \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8cpp_source}{Particle\+Pair\+Analyzer.\+cpp}}.
-
 \mbox{\Hypertarget{class_particle_pair_analyzer_aeb8c90149e72545e826cdb7c844d8d01}\label{class_particle_pair_analyzer_aeb8c90149e72545e826cdb7c844d8d01}} 
 \index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!createHistograms@{createHistograms}}
 \index{createHistograms@{createHistograms}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\doxysubsubsection{\texorpdfstring{createHistograms()}{createHistograms()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{createHistograms()}{createHistograms()}}
 {\footnotesize\ttfamily void Particle\+Pair\+Analyzer\+::create\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-Nominally creates histogram groups used by this task. The method of this based class does not perform any histogram instantiation and must be overiden in a derived class to achieve the desited behavior. 
-
-Reimplemented from \mbox{\hyperlink{class_task_a709903c615030cd84122df73f2ea6c4f}{Task}}.
-
-
-
-Definition at line \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8cpp_source}{Particle\+Pair\+Analyzer.\+cpp}}.
-
-\mbox{\Hypertarget{class_particle_pair_analyzer_ad94a55650db616ed545a54ca7dfca567}\label{class_particle_pair_analyzer_ad94a55650db616ed545a54ca7dfca567}} 
-\index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!createHistograms@{createHistograms}}
-\index{createHistograms@{createHistograms}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\doxysubsubsection{\texorpdfstring{createHistograms()}{createHistograms()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily virtual void Particle\+Pair\+Analyzer\+::create\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 Creates the histograms filled by this task at execution 
 
 Reimplemented from \mbox{\hyperlink{class_task_a709903c615030cd84122df73f2ea6c4f}{Task}}.
 
+
+
+Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8cpp_source_l00115}{115}} of file \mbox{\hyperlink{_particle_pair_analyzer_8cpp_source}{Particle\+Pair\+Analyzer.\+cpp}}.
+
 \mbox{\Hypertarget{class_particle_pair_analyzer_a07c253b3ce32d0558c7c4e191fa9b397}\label{class_particle_pair_analyzer_a07c253b3ce32d0558c7c4e191fa9b397}} 
 \index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!execute@{execute}}
 \index{execute@{execute}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\doxysubsubsection{\texorpdfstring{execute()}{execute()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
 {\footnotesize\ttfamily void Particle\+Pair\+Analyzer\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-Execute this task instance. This base class implementation only increments the counters n\+Event\+Processed and n\+Event\+Accepted. Implement this method in derived class to achieve the actual task of interest. Note\+: You can increase the counters n\+Event\+Processed and n\+Event\+Accepted indiscrimately by a call to \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task\+::execute()}}. However, in general, you may wish to count all events looked and only count as accepted those that passed one of the event filters used by this task. To achive this, use calls to the methods \mbox{\hyperlink{class_task_a724ff83138229238fdc58566a0cd350f}{increment\+Event\+Processed()}} and \mbox{\hyperlink{class_task_a01762aa4383b0931850efb56b697a856}{increment\+Event\+Accepted()}} rather than explicitly incrementing the variable n\+Event\+Processed and n\+Event\+Accepted. These are currently protected but may defined as private in a future release. 
-
-Reimplemented from \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task}}.
-
-
-
-Definition at line \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8cpp_source_l00204}{204}} of file \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8cpp_source}{Particle\+Pair\+Analyzer.\+cpp}}.
-
-\mbox{\Hypertarget{class_particle_pair_analyzer_afc930f499ff8cbe6b34175d4cee5f7ec}\label{class_particle_pair_analyzer_afc930f499ff8cbe6b34175d4cee5f7ec}} 
-\index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!execute@{execute}}
-\index{execute@{execute}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\doxysubsubsection{\texorpdfstring{execute()}{execute()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily virtual void Particle\+Pair\+Analyzer\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 Executes this task based on the configuration and class variable specified at construction 
 
-Reimplemented from \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task}}.
+Reimplemented from \mbox{\hyperlink{class_task_ade38031c3ed134ec20cbbcd58e575745}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8cpp_source_l00229}{229}} of file \mbox{\hyperlink{_particle_pair_analyzer_8cpp_source}{Particle\+Pair\+Analyzer.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_pair_analyzer_a0468843ba108ab3ab61d7fd68f82907a}\label{class_particle_pair_analyzer_a0468843ba108ab3ab61d7fd68f82907a}} 
 \index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!loadHistograms@{loadHistograms}}
 \index{loadHistograms@{loadHistograms}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\doxysubsubsection{\texorpdfstring{loadHistograms()}{loadHistograms()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{loadHistograms()}{loadHistograms()}}
 {\footnotesize\ttfamily void Particle\+Pair\+Analyzer\+::load\+Histograms (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{input\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
+Loads the histograms required by this task at execution 
 
+Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8cpp_source_l00173}{173}} of file \mbox{\hyperlink{_particle_pair_analyzer_8cpp_source}{Particle\+Pair\+Analyzer.\+cpp}}.
 
-Definition at line \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8cpp_source_l00195}{195}} of file \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8cpp_source}{Particle\+Pair\+Analyzer.\+cpp}}.
-
-\mbox{\Hypertarget{class_particle_pair_analyzer_a5199c0848f6e113c914837f112953c8d}\label{class_particle_pair_analyzer_a5199c0848f6e113c914837f112953c8d}} 
-\index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!loadHistograms@{loadHistograms}}
-\index{loadHistograms@{loadHistograms}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\doxysubsubsection{\texorpdfstring{loadHistograms()}{loadHistograms()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily virtual void Particle\+Pair\+Analyzer\+::load\+Histograms (\begin{DoxyParamCaption}\item[{TFile $\ast$}]{input\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-Loads the histograms required by this task at execution \mbox{\Hypertarget{class_particle_pair_analyzer_a005d808be2b730897411c461e32f6898}\label{class_particle_pair_analyzer_a005d808be2b730897411c461e32f6898}} 
+\mbox{\Hypertarget{class_particle_pair_analyzer_a005d808be2b730897411c461e32f6898}\label{class_particle_pair_analyzer_a005d808be2b730897411c461e32f6898}} 
 \index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!scaleHistograms@{scaleHistograms}}
 \index{scaleHistograms@{scaleHistograms}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\doxysubsubsection{\texorpdfstring{scaleHistograms()}{scaleHistograms()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{scaleHistograms()}{scaleHistograms()}}
 {\footnotesize\ttfamily void Particle\+Pair\+Analyzer\+::scale\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-Scale (all) the histograms held in all the histogram groups owned by this task instance. This operation is executed automatically within the \mbox{\hyperlink{class_task_aab4bc670089cc073247542c3a26da5aa}{finalize()}} method call if and only if the scale\+Histograms parameter of the \mbox{\hyperlink{class_configuration}{Configuration}} instance controlling this task is set to \char`\"{}true\char`\"{}. 
-
-Reimplemented from \mbox{\hyperlink{class_task_af6b2f71e156a8fc092b46fda1c79fb59}{Task}}.
-
-
-
-Definition at line \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8cpp_source_l00457}{457}} of file \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8cpp_source}{Particle\+Pair\+Analyzer.\+cpp}}.
-
-\mbox{\Hypertarget{class_particle_pair_analyzer_a93c1adb796add41931da15a337cb6606}\label{class_particle_pair_analyzer_a93c1adb796add41931da15a337cb6606}} 
-\index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!scaleHistograms@{scaleHistograms}}
-\index{scaleHistograms@{scaleHistograms}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\doxysubsubsection{\texorpdfstring{scaleHistograms()}{scaleHistograms()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily virtual void Particle\+Pair\+Analyzer\+::scale\+Histograms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 Scales the pair histograms by the number of events accepted in each event filter category. 
 
 Reimplemented from \mbox{\hyperlink{class_task_af6b2f71e156a8fc092b46fda1c79fb59}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8cpp_source_l00372}{372}} of file \mbox{\hyperlink{_particle_pair_analyzer_8cpp_source}{Particle\+Pair\+Analyzer.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_pair_analyzer_a5d4c749524c9a018c438253532e04ce8}\label{class_particle_pair_analyzer_a5d4c749524c9a018c438253532e04ce8}} 
 \index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!setDefaultConfiguration@{setDefaultConfiguration}}
@@ -290,7 +204,7 @@ Reimplemented from \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3
 
 
 
-Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_particle_pair_analyzer_8cpp_source}{Particle\+Pair\+Analyzer.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{_particle_pair_analyzer_8cpp_source}{Particle\+Pair\+Analyzer.\+cpp}}.
 
 
 
@@ -307,7 +221,7 @@ whether to fill pseudorapidity histograms (set from configuration at initializat
 
 
 
-Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source_l00100}{100}} of file \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source}{Particle\+Pair\+Analyzer.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source_l00102}{102}} of file \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source}{Particle\+Pair\+Analyzer.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_pair_analyzer_a814a193e0548474f62a600c11befe4ea}\label{class_particle_pair_analyzer_a814a193e0548474f62a600c11befe4ea}} 
 \index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!fillP2@{fillP2}}
@@ -321,7 +235,7 @@ whether to fill P2 and G2 related histograms (set from configuration at initiali
 
 
 
-Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source_l00102}{102}} of file \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source}{Particle\+Pair\+Analyzer.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source_l00104}{104}} of file \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source}{Particle\+Pair\+Analyzer.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_pair_analyzer_a678df2596348a5b37f695358906932b9}\label{class_particle_pair_analyzer_a678df2596348a5b37f695358906932b9}} 
 \index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!fillY@{fillY}}
@@ -335,43 +249,11 @@ whether to fill rapidity histograms (set from configuration at initialization)
 
 
 
-Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source_l00101}{101}} of file \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source}{Particle\+Pair\+Analyzer.\+hpp}}.
-
-\mbox{\Hypertarget{class_particle_pair_analyzer_ab7843093de6424852bb218d09c756e23}\label{class_particle_pair_analyzer_ab7843093de6424852bb218d09c756e23}} 
-\index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!nCombinedHistos@{nCombinedHistos}}
-\index{nCombinedHistos@{nCombinedHistos}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\doxysubsubsection{\texorpdfstring{nCombinedHistos}{nCombinedHistos}}
-{\footnotesize\ttfamily unsigned int Particle\+Pair\+Analyzer\+::n\+Combined\+Histos\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-Definition at line \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8hpp_source_l00049}{49}} of file \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8hpp_source}{Particle\+Pair\+Analyzer.\+hpp}}.
-
-\mbox{\Hypertarget{class_particle_pair_analyzer_ab55053a9a053fe4e0de477d522cf1715}\label{class_particle_pair_analyzer_ab55053a9a053fe4e0de477d522cf1715}} 
-\index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!nDerivedHistos@{nDerivedHistos}}
-\index{nDerivedHistos@{nDerivedHistos}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\doxysubsubsection{\texorpdfstring{nDerivedHistos}{nDerivedHistos}}
-{\footnotesize\ttfamily unsigned int Particle\+Pair\+Analyzer\+::n\+Derived\+Histos\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-Definition at line \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8hpp_source}{Particle\+Pair\+Analyzer.\+hpp}}.
-
-\mbox{\Hypertarget{class_particle_pair_analyzer_a28108d54ff135c2a7bb57e14bb9cfee4}\label{class_particle_pair_analyzer_a28108d54ff135c2a7bb57e14bb9cfee4}} 
-\index{ParticlePairAnalyzer@{ParticlePairAnalyzer}!nHistos@{nHistos}}
-\index{nHistos@{nHistos}!ParticlePairAnalyzer@{ParticlePairAnalyzer}}
-\doxysubsubsection{\texorpdfstring{nHistos}{nHistos}}
-{\footnotesize\ttfamily unsigned int Particle\+Pair\+Analyzer\+::n\+Histos\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-Definition at line \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8hpp_source}{Particle\+Pair\+Analyzer.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source_l00103}{103}} of file \mbox{\hyperlink{_particle_pair_analyzer_8hpp_source}{Particle\+Pair\+Analyzer.\+hpp}}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Base/obsolete/\mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8hpp}{Particle\+Pair\+Analyzer.\+hpp}}\item 
-Base/\mbox{\hyperlink{_particle_pair_analyzer_8hpp}{Particle\+Pair\+Analyzer.\+hpp}}\item 
-Base/obsolete/\mbox{\hyperlink{obsolete_2_particle_pair_analyzer_8cpp}{Particle\+Pair\+Analyzer.\+cpp}}\item 
-Base/\mbox{\hyperlink{_particle_pair_analyzer_8cpp}{Particle\+Pair\+Analyzer.\+cpp}}\end{DoxyCompactItemize}
+Pair/\mbox{\hyperlink{_particle_pair_analyzer_8hpp}{Particle\+Pair\+Analyzer.\+hpp}}\item 
+Pair/\mbox{\hyperlink{_particle_pair_analyzer_8cpp}{Particle\+Pair\+Analyzer.\+cpp}}\end{DoxyCompactItemize}

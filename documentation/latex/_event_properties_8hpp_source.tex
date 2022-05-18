@@ -2,82 +2,87 @@
 \label{_event_properties_8hpp_source}\index{Base/EventProperties.hpp@{Base/EventProperties.hpp}}
 \mbox{\hyperlink{_event_properties_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00003}00003 \textcolor{comment}{/*************************************************************************}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00009}00009 \textcolor{comment}{ *************************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00010}00010 }
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#ifndef EventProperties\_hpp}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#define EventProperties\_hpp}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_8hpp}{Particle.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00015}00015 }
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00016}\mbox{\hyperlink{class_event_properties}{00016}} \textcolor{keyword}{class }\mbox{\hyperlink{class_event_properties}{EventProperties}}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00017}00017 \{}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00018}00018 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00019}00019 }
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00020}00020   \mbox{\hyperlink{class_event_properties_aaa06e2482f7b01ac40e25e676a06ac04}{EventProperties}}();}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00021}00021   \mbox{\hyperlink{class_event_properties_aaa06e2482f7b01ac40e25e676a06ac04}{EventProperties}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_event_properties}{EventProperties}} \& source);}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00022}00022   \mbox{\hyperlink{class_event_properties}{EventProperties}} \& \mbox{\hyperlink{class_event_properties_aac9bfce90e9a44f337d6ae9b312f08b9}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_event_properties}{EventProperties}} \& source);}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00023}\mbox{\hyperlink{class_event_properties_a635e4e4c6f64233bf1522c01ffea8de1}{00023}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_event_properties_a635e4e4c6f64233bf1522c01ffea8de1}{\string~EventProperties}}() \{\}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00024}00024   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_properties_a45d48e28f1e6d757df15900bb4a89d01}{clear}}();}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00025}00025   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_properties_a1a0628894564a9b1f6983ebf1256b9db}{reset}}();}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00026}00026   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_properties_a56f9e838407cdd868cf4974ffe13d969}{printProperties}}(ostream \& output);}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00027}00027 }
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00028}00028   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_properties_a96cf73b3052c214bda2e412c6110ffb7}{fill}}(vector<double> \& \mbox{\hyperlink{class_event_properties_a64e0b4dd397f2fe04a79e10b5331099a}{nFiltered}},  \textcolor{comment}{// number of particles accepted by filter \#i}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00029}00029                     vector<double> \& \mbox{\hyperlink{class_event_properties_a2c6eb11439417e72555202aae20d7ec3}{eFiltered}},  \textcolor{comment}{// total energy of particles accepted by filter \#i}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00030}00030                     vector<double> \& \mbox{\hyperlink{class_event_properties_a748f013da0e9a3ddbb238e4114aa9c22}{qFiltered}},  \textcolor{comment}{// total charge of particles accepted by filter \#i}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00031}00031                     vector<double> \& \mbox{\hyperlink{class_event_properties_ad82bb6bbd8c778f3ffbbd4c4dc314a86}{sFiltered}},  \textcolor{comment}{// total strangeness of particles accepted by filter \#i}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00032}00032                     vector<double> \& \mbox{\hyperlink{class_event_properties_afb2574a82a5b558fdb8ea65999b5a9f7}{bFiltered}});}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00033}00033 }
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00034}00034   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_properties_a71715614db0565826ec31638a57443ec}{fillSpherocity}}(vector<double> \& s0,}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00035}00035                               vector<double> \& s1);}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00036}00036   }
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00037}00037   \textcolor{comment}{// ================================================}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00038}00038   \textcolor{comment}{// Data Members}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00039}00039   \textcolor{comment}{// ================================================}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00040}\mbox{\hyperlink{class_event_properties_acb8cd3f24cae79f1668318c04431ebfc}{00040}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_acb8cd3f24cae79f1668318c04431ebfc}{zProjectile}};     \textcolor{comment}{// atomic number projectile}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00041}\mbox{\hyperlink{class_event_properties_a63fb4bae6c7ec751554c7b4fca432fc8}{00041}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_a63fb4bae6c7ec751554c7b4fca432fc8}{aProjectile}};     \textcolor{comment}{// mass number projectile}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00042}\mbox{\hyperlink{class_event_properties_ac0923f4648e41371b4de055cf000156e}{00042}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_ac0923f4648e41371b4de055cf000156e}{nPartProjectile}}; \textcolor{comment}{// number of participants  projectile}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00043}\mbox{\hyperlink{class_event_properties_a65a883b33d72a719f4b85db17e77034a}{00043}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_a65a883b33d72a719f4b85db17e77034a}{zTarget}};         \textcolor{comment}{// atomic number target}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00044}\mbox{\hyperlink{class_event_properties_acfaccab50080ae5be69e3694cf7e9a0e}{00044}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_acfaccab50080ae5be69e3694cf7e9a0e}{aTarget}};         \textcolor{comment}{// mass number target}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00045}\mbox{\hyperlink{class_event_properties_a73a51e7e7b382deffd360dc1729e8cb5}{00045}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_a73a51e7e7b382deffd360dc1729e8cb5}{nPartTarget}};     \textcolor{comment}{// number of participants  target}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00046}\mbox{\hyperlink{class_event_properties_a4389e68d942d7496c2a00c7b36a8e61f}{00046}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_a4389e68d942d7496c2a00c7b36a8e61f}{nPartTotal}};      \textcolor{comment}{// total number of participants}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00047}\mbox{\hyperlink{class_event_properties_ac5352eb0963a382b518429323aef460f}{00047}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_ac5352eb0963a382b518429323aef460f}{nBinaryTotal}};    \textcolor{comment}{// total number of binary collisions}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00048}\mbox{\hyperlink{class_event_properties_a359effe83f1f43f0bf7c70cbe4df929b}{00048}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_event_properties_a359effe83f1f43f0bf7c70cbe4df929b}{impactParameter}}; \textcolor{comment}{// nucleus-\/nucleus center distance in fm}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00049}\mbox{\hyperlink{class_event_properties_ac7188544f82547d529eb089ccbe27b75}{00049}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_event_properties_ac7188544f82547d529eb089ccbe27b75}{centrality}};      \textcolor{comment}{// fraction cross section value}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00050}\mbox{\hyperlink{class_event_properties_afa30ebb98e5c6a1bb95472e98c6c8774}{00050}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_event_properties_afa30ebb98e5c6a1bb95472e98c6c8774}{multiplicity}};    \textcolor{comment}{// nominal multiplicity in the reference range}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00051}\mbox{\hyperlink{class_event_properties_a865fe552cb9461c6e1d61fd785288456}{00051}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_event_properties_a865fe552cb9461c6e1d61fd785288456}{other}};           \textcolor{comment}{// other value of interest}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00052}\mbox{\hyperlink{class_event_properties_a548c3817af55f28f02a086d37ea463e7}{00052}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_a548c3817af55f28f02a086d37ea463e7}{particlesCounted}};   \textcolor{comment}{// number of particles provided internally by event generator/reader}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00053}\mbox{\hyperlink{class_event_properties_a13034097a0913972c8183556b3fabf4e}{00053}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_a13034097a0913972c8183556b3fabf4e}{particlesAccepted}};  \textcolor{comment}{// number of particles accepted by event generator/reader's particle filter}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00054}00054 }
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00055}00055   \textcolor{comment}{// From Model}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00056}\mbox{\hyperlink{class_event_properties_a54a66cc0d64d0a182ece11f0873611df}{00056}}   vector<double> \mbox{\hyperlink{class_event_properties_a54a66cc0d64d0a182ece11f0873611df}{modelParameters}};}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00057}00057 }
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00058}00058   \textcolor{comment}{// From GlobalAnalyzer}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00059}\mbox{\hyperlink{class_event_properties_a5e19cf5013ac872ffa5ee3091058a1d4}{00059}}   \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_a5e19cf5013ac872ffa5ee3091058a1d4}{nFilters}};}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00060}\mbox{\hyperlink{class_event_properties_a64e0b4dd397f2fe04a79e10b5331099a}{00060}}   vector<double> \mbox{\hyperlink{class_event_properties_a64e0b4dd397f2fe04a79e10b5331099a}{nFiltered}};  \textcolor{comment}{// number of particles accepted by filter \#i}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00061}\mbox{\hyperlink{class_event_properties_a2c6eb11439417e72555202aae20d7ec3}{00061}}   vector<double> \mbox{\hyperlink{class_event_properties_a2c6eb11439417e72555202aae20d7ec3}{eFiltered}};  \textcolor{comment}{// total energy of particles accepted by filter \#i}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00062}\mbox{\hyperlink{class_event_properties_a748f013da0e9a3ddbb238e4114aa9c22}{00062}}   vector<double> \mbox{\hyperlink{class_event_properties_a748f013da0e9a3ddbb238e4114aa9c22}{qFiltered}};  \textcolor{comment}{// total charge of particles accepted by filter \#i}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00063}\mbox{\hyperlink{class_event_properties_ad82bb6bbd8c778f3ffbbd4c4dc314a86}{00063}}   vector<double> \mbox{\hyperlink{class_event_properties_ad82bb6bbd8c778f3ffbbd4c4dc314a86}{sFiltered}};  \textcolor{comment}{// total strangeness of particles accepted by filter \#i}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00064}\mbox{\hyperlink{class_event_properties_afb2574a82a5b558fdb8ea65999b5a9f7}{00064}}   vector<double> \mbox{\hyperlink{class_event_properties_afb2574a82a5b558fdb8ea65999b5a9f7}{bFiltered}};  \textcolor{comment}{// total baryon number of particles accepted by filter \#i}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00065}00065   }
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00066}00066   \textcolor{comment}{// From TransverseSpherocityAnalyzer}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00067}\mbox{\hyperlink{class_event_properties_a384456ca151a4e3942dc5421470f61b2}{00067}}   vector<double> \mbox{\hyperlink{class_event_properties_a384456ca151a4e3942dc5421470f61b2}{s0Filtered}};  \textcolor{comment}{// transverse spherocity}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00068}\mbox{\hyperlink{class_event_properties_adb1849f8c7063463d01bbc73931518c3}{00068}}   vector<double> \mbox{\hyperlink{class_event_properties_adb1849f8c7063463d01bbc73931518c3}{s1Filtered}};  \textcolor{comment}{// transverse spherocity w/ unig vector}}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00069}00069 }
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00070}00070   ClassDef(\mbox{\hyperlink{class_event_properties}{EventProperties}},0)}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00071}00071 }
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00072}00072 \};}
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#ifndef EventProperties\_hpp}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#define EventProperties\_hpp}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_8hpp}{Particle.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_type_8hpp}{ParticleType.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00019}\mbox{\hyperlink{class_event_properties}{00019}} \textcolor{keyword}{class }\mbox{\hyperlink{class_event_properties}{EventProperties}}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00020}00020 \{}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00021}00021 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00023}00023   \mbox{\hyperlink{class_event_properties_aaa06e2482f7b01ac40e25e676a06ac04}{EventProperties}}();}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00024}00024   \mbox{\hyperlink{class_event_properties_aaa06e2482f7b01ac40e25e676a06ac04}{EventProperties}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_event_properties}{EventProperties}} \& source);}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00025}00025   \mbox{\hyperlink{class_event_properties}{EventProperties}} \& \mbox{\hyperlink{class_event_properties_aac9bfce90e9a44f337d6ae9b312f08b9}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_event_properties}{EventProperties}} \& source);}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00026}\mbox{\hyperlink{class_event_properties_a635e4e4c6f64233bf1522c01ffea8de1}{00026}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_event_properties_a635e4e4c6f64233bf1522c01ffea8de1}{\string~EventProperties}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00027}00027   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_properties_a45d48e28f1e6d757df15900bb4a89d01}{clear}}();}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00028}00028   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_properties_a1a0628894564a9b1f6983ebf1256b9db}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00029}00029   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_properties_a56f9e838407cdd868cf4974ffe13d969}{printProperties}}(ostream \& output);}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00031}00031   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_properties_a96cf73b3052c214bda2e412c6110ffb7}{fill}}(vector<double> \& \mbox{\hyperlink{class_event_properties_a64e0b4dd397f2fe04a79e10b5331099a}{nFiltered}},  \textcolor{comment}{// number of particles accepted by filter \#i}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00032}00032                     vector<double> \& \mbox{\hyperlink{class_event_properties_a2c6eb11439417e72555202aae20d7ec3}{eFiltered}},  \textcolor{comment}{// total energy of particles accepted by filter \#i}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00033}00033                     vector<double> \& \mbox{\hyperlink{class_event_properties_a748f013da0e9a3ddbb238e4114aa9c22}{qFiltered}},  \textcolor{comment}{// total charge of particles accepted by filter \#i}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00034}00034                     vector<double> \& \mbox{\hyperlink{class_event_properties_ad82bb6bbd8c778f3ffbbd4c4dc314a86}{sFiltered}},  \textcolor{comment}{// total strangeness of particles accepted by filter \#i}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00035}00035                     vector<double> \& \mbox{\hyperlink{class_event_properties_afb2574a82a5b558fdb8ea65999b5a9f7}{bFiltered}});}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00037}00037   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_event_properties_a71715614db0565826ec31638a57443ec}{fillSpherocity}}(vector<double> \& s0,}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00038}00038                               vector<double> \& s1);}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00039}00039   }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00040}00040   \textcolor{comment}{// ================================================}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00041}00041   \textcolor{comment}{// Data Members}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00042}00042   \textcolor{comment}{// ================================================}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00043}\mbox{\hyperlink{class_event_properties_ace91b0c0e863ce20d2119f5eabe2dce4}{00043}}   \mbox{\hyperlink{class_particle_type}{ParticleType}}  * \mbox{\hyperlink{class_event_properties_ace91b0c0e863ce20d2119f5eabe2dce4}{projectileType}};    }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00044}\mbox{\hyperlink{class_event_properties_a4a38411432eb5670113eb116cc6f9e7d}{00044}}   \mbox{\hyperlink{class_particle_type}{ParticleType}}  * \mbox{\hyperlink{class_event_properties_a4a38411432eb5670113eb116cc6f9e7d}{targetType}};        }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00045}\mbox{\hyperlink{class_event_properties_acb8cd3f24cae79f1668318c04431ebfc}{00045}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_acb8cd3f24cae79f1668318c04431ebfc}{zProjectile}};       }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00046}\mbox{\hyperlink{class_event_properties_a63fb4bae6c7ec751554c7b4fca432fc8}{00046}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_a63fb4bae6c7ec751554c7b4fca432fc8}{aProjectile}};       }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00047}\mbox{\hyperlink{class_event_properties_ac0923f4648e41371b4de055cf000156e}{00047}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_ac0923f4648e41371b4de055cf000156e}{nPartProjectile}};   }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00048}\mbox{\hyperlink{class_event_properties_a65a883b33d72a719f4b85db17e77034a}{00048}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_a65a883b33d72a719f4b85db17e77034a}{zTarget}};           }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00049}\mbox{\hyperlink{class_event_properties_acfaccab50080ae5be69e3694cf7e9a0e}{00049}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_acfaccab50080ae5be69e3694cf7e9a0e}{aTarget}};           }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00050}\mbox{\hyperlink{class_event_properties_a73a51e7e7b382deffd360dc1729e8cb5}{00050}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_a73a51e7e7b382deffd360dc1729e8cb5}{nPartTarget}};       }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00051}\mbox{\hyperlink{class_event_properties_ad66ebcce1ea08e122a030570649e713e}{00051}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_ad66ebcce1ea08e122a030570649e713e}{nParticipantsTotal}}; }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00052}\mbox{\hyperlink{class_event_properties_ac5352eb0963a382b518429323aef460f}{00052}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_ac5352eb0963a382b518429323aef460f}{nBinaryTotal}};       }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00053}\mbox{\hyperlink{class_event_properties_a359effe83f1f43f0bf7c70cbe4df929b}{00053}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_event_properties_a359effe83f1f43f0bf7c70cbe4df929b}{impactParameter}};             }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00054}\mbox{\hyperlink{class_event_properties_a9fd73f57e21d8bf5c73a6365629dc5fa}{00054}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_event_properties_a9fd73f57e21d8bf5c73a6365629dc5fa}{fractionalXSection}};          }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00055}\mbox{\hyperlink{class_event_properties_a931861c3171a3c1de316c8cd63bd56b6}{00055}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_event_properties_a931861c3171a3c1de316c8cd63bd56b6}{referenceMultiplicity}};       }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00056}\mbox{\hyperlink{class_event_properties_a865fe552cb9461c6e1d61fd785288456}{00056}}   \textcolor{keywordtype}{double} \mbox{\hyperlink{class_event_properties_a865fe552cb9461c6e1d61fd785288456}{other}};                       }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00057}\mbox{\hyperlink{class_event_properties_a548c3817af55f28f02a086d37ea463e7}{00057}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_a548c3817af55f28f02a086d37ea463e7}{particlesCounted}};   }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00058}\mbox{\hyperlink{class_event_properties_a13034097a0913972c8183556b3fabf4e}{00058}}   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_a13034097a0913972c8183556b3fabf4e}{particlesAccepted}};  }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00060}00060   \textcolor{comment}{// From Model}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00061}\mbox{\hyperlink{class_event_properties_a54a66cc0d64d0a182ece11f0873611df}{00061}}   vector<double> \mbox{\hyperlink{class_event_properties_a54a66cc0d64d0a182ece11f0873611df}{modelParameters}};}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00063}00063   \textcolor{comment}{// From GlobalAnalyzer}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00064}\mbox{\hyperlink{class_event_properties_a5e19cf5013ac872ffa5ee3091058a1d4}{00064}}   \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_event_properties_a5e19cf5013ac872ffa5ee3091058a1d4}{nFilters}};}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00065}\mbox{\hyperlink{class_event_properties_a64e0b4dd397f2fe04a79e10b5331099a}{00065}}   vector<double> \mbox{\hyperlink{class_event_properties_a64e0b4dd397f2fe04a79e10b5331099a}{nFiltered}};  \textcolor{comment}{// number of particles accepted by filter \#i}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00066}\mbox{\hyperlink{class_event_properties_a2c6eb11439417e72555202aae20d7ec3}{00066}}   vector<double> \mbox{\hyperlink{class_event_properties_a2c6eb11439417e72555202aae20d7ec3}{eFiltered}};  \textcolor{comment}{// total energy of particles accepted by filter \#i}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00067}\mbox{\hyperlink{class_event_properties_a748f013da0e9a3ddbb238e4114aa9c22}{00067}}   vector<double> \mbox{\hyperlink{class_event_properties_a748f013da0e9a3ddbb238e4114aa9c22}{qFiltered}};  \textcolor{comment}{// total charge of particles accepted by filter \#i}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00068}\mbox{\hyperlink{class_event_properties_ad82bb6bbd8c778f3ffbbd4c4dc314a86}{00068}}   vector<double> \mbox{\hyperlink{class_event_properties_ad82bb6bbd8c778f3ffbbd4c4dc314a86}{sFiltered}};  \textcolor{comment}{// total strangeness of particles accepted by filter \#i}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00069}\mbox{\hyperlink{class_event_properties_afb2574a82a5b558fdb8ea65999b5a9f7}{00069}}   vector<double> \mbox{\hyperlink{class_event_properties_afb2574a82a5b558fdb8ea65999b5a9f7}{bFiltered}};  \textcolor{comment}{// total baryon number of particles accepted by filter \#i}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00070}00070   }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00071}00071   \textcolor{comment}{// From TransverseSpherocityAnalyzer}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00072}\mbox{\hyperlink{class_event_properties_a384456ca151a4e3942dc5421470f61b2}{00072}}   vector<double> \mbox{\hyperlink{class_event_properties_a384456ca151a4e3942dc5421470f61b2}{s0Filtered}};  \textcolor{comment}{// transverse spherocity}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00073}\mbox{\hyperlink{class_event_properties_adb1849f8c7063463d01bbc73931518c3}{00073}}   vector<double> \mbox{\hyperlink{class_event_properties_adb1849f8c7063463d01bbc73931518c3}{s1Filtered}};  \textcolor{comment}{// transverse spherocity w/ unig vector}}
 \DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00074}00074 }
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00075}00075   ClassDef(\mbox{\hyperlink{class_event_properties}{EventProperties}},0)}
 \DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00076}00076 }
-\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00077}00077 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* EventProperties\_hpp */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00077}00077 \};}
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{_event_properties_8hpp_source_l00082}00082 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* EventProperties\_hpp */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

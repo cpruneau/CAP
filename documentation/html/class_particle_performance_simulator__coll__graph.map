@@ -1,0 +1,11 @@
+<map id="ParticlePerformanceSimulator" name="ParticlePerformanceSimulator">
+<area shape="rect" id="node1" title=" " alt="" coords="207,383,402,409"/>
+<area shape="rect" id="node2" href="$class_histograms.html" title=" " alt="" coords="161,285,251,311"/>
+<area shape="rect" id="node3" href="$class_histogram_collection.html" title=" " alt="" coords="5,157,145,184"/>
+<area shape="rect" id="node4" href="$class_collection.html" title=" " alt="" coords="11,81,140,108"/>
+<area shape="rect" id="node5" href="$class_message_logger.html" title=" " alt="" coords="18,5,133,32"/>
+<area shape="rect" id="node6" href="$class_configuration.html" title=" " alt="" coords="170,157,269,184"/>
+<area shape="rect" id="node7" title=" " alt="" coords="185,81,253,108"/>
+<area shape="rect" id="node8" href="$class_resolution_function.html" title=" " alt="" coords="293,157,428,184"/>
+<area shape="rect" id="node9" href="$class_efficiency_function.html" title=" " alt="" coords="402,285,533,311"/>
+</map>

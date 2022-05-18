@@ -2,7 +2,7 @@
 \label{class_epos_event_reader}\index{EposEventReader@{EposEventReader}}
 
 
-{\ttfamily \#include $<$Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp$>$}
+{\ttfamily \#include $<$Epos\+Event\+Reader.\+hpp$>$}
 
 
 
@@ -10,7 +10,7 @@ Inheritance diagram for Epos\+Event\+Reader\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=246pt]{class_epos_event_reader__inherit__graph}
+\includegraphics[width=176pt]{class_epos_event_reader__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -25,100 +25,22 @@ Collaboration diagram for Epos\+Event\+Reader\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_epos_event_reader_a3b6d4599a313cae1197864001c4e653f}{Epos\+Event\+Reader}} (\mbox{\hyperlink{class_event}{Event}} $\ast$event, Generator\+Configuration $\ast$\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}, TRandom $\ast$random\+Generator, bool debug\+Level)
-\item 
-virtual \mbox{\hyperlink{class_epos_event_reader_afa9e7de659d506bab2f84630e81fb213}{$\sim$\+Epos\+Event\+Reader}} ()
-\item 
-virtual void \mbox{\hyperlink{class_epos_event_reader_a0d76305be21ef617009d53ea04671cfa}{initialize}} ()
-\item 
-virtual void \mbox{\hyperlink{class_epos_event_reader_afc1f7193d664915f83c2400291537068}{reset}} ()
-\item 
-\mbox{\hyperlink{class_event}{Event}} $\ast$ \mbox{\hyperlink{class_epos_event_reader_a1e9fa3c6ddb1044741e4d24719d8e236}{generate}} ()
-\item 
-Int\+\_\+t \mbox{\hyperlink{class_epos_event_reader_a5ed3c75eec512d374f63451a1170b144}{Get\+Entry}} (Long64\+\_\+t entry)
-\item 
-Long64\+\_\+t \mbox{\hyperlink{class_epos_event_reader_ad85463bdc313327218d1462df45d1bf2}{Load\+Tree}} (Long64\+\_\+t entry)
-\item 
-void \mbox{\hyperlink{class_epos_event_reader_a1f09cba329ef31dbe18091d189a213dc}{Init}} (TTree $\ast$tree)
-\item 
-Bool\+\_\+t \mbox{\hyperlink{class_epos_event_reader_a3c0c2164a0f7b882e68e31a319500beb}{Notify}} ()
-\item 
-void \mbox{\hyperlink{class_epos_event_reader_a4f33ea50f49e44b02cdf1732d122f3bb}{Show}} (Long64\+\_\+t entry)
-\item 
-Int\+\_\+t \mbox{\hyperlink{class_epos_event_reader_abc60e8e7602558c92cbd544889d694ef}{Cut}} (Long64\+\_\+t entry)
-\item 
-\mbox{\hyperlink{class_epos_event_reader_abfcb59f6b7f600260482e15fb59d026e}{Epos\+Event\+Reader}} (const TString \&name, Task\+Configuration $\ast$\mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}, \mbox{\hyperlink{class_event}{Event}} $\ast$event, \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ef, \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$pf)
+\mbox{\hyperlink{class_epos_event_reader_aca144825b368b2db9ef4597a121f9f14}{Epos\+Event\+Reader}} (const TString \&\+\_\+name, \mbox{\hyperlink{class_configuration}{Configuration}} \&\+\_\+configuration, vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&\+\_\+event\+Filters, vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&\+\_\+particle\+Filters, \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}} \+\_\+selected\+Level=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}})
 \item 
 virtual \mbox{\hyperlink{class_epos_event_reader_a233d0355238939c58ebfd5bcb991e249}{$\sim$\+Epos\+Event\+Reader}} ()
 \item 
-virtual void \mbox{\hyperlink{class_epos_event_reader_a6385c728405a49748f8c31950d784789}{initialize}} ()
-\item 
-virtual void \mbox{\hyperlink{class_epos_event_reader_a2dd41fac8728994add291b8342944a73}{reset}} ()
+void \mbox{\hyperlink{class_epos_event_reader_aede5e7310b69d964211986d470c6912b}{set\+Default\+Configuration}} ()
 \item 
 void \mbox{\hyperlink{class_epos_event_reader_ab7169b7517f3b93a1982c7d6527f6c47}{execute}} ()
 \item 
-Int\+\_\+t \mbox{\hyperlink{class_epos_event_reader_a5ed3c75eec512d374f63451a1170b144}{Get\+Entry}} (Long64\+\_\+t entry)
-\item 
-Long64\+\_\+t \mbox{\hyperlink{class_epos_event_reader_ad85463bdc313327218d1462df45d1bf2}{Load\+Tree}} (Long64\+\_\+t entry)
-\item 
-void \mbox{\hyperlink{class_epos_event_reader_a1f09cba329ef31dbe18091d189a213dc}{Init}} (TTree $\ast$tree)
-\item 
-Bool\+\_\+t \mbox{\hyperlink{class_epos_event_reader_a3c0c2164a0f7b882e68e31a319500beb}{Notify}} ()
-\item 
-void \mbox{\hyperlink{class_epos_event_reader_a4f33ea50f49e44b02cdf1732d122f3bb}{Show}} (Long64\+\_\+t entry)
-\item 
-Int\+\_\+t \mbox{\hyperlink{class_epos_event_reader_abc60e8e7602558c92cbd544889d694ef}{Cut}} (Long64\+\_\+t entry)
+virtual void \mbox{\hyperlink{class_epos_event_reader_a978bcc3301d0b4b85d54701a8ae53ae1}{init\+Input\+Tree\+Mapping}} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
-\item 
-TTree $\ast$ \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{f\+Chain}}
-\item 
-Int\+\_\+t \mbox{\hyperlink{class_epos_event_reader_afd54acff3e63cb73ebaeeccade2814f6}{f\+Current}}
-\begin{DoxyCompactList}\small\item\em pointer to the analyzed TTree or TChain \end{DoxyCompactList}\item 
-Long64\+\_\+t \mbox{\hyperlink{class_epos_event_reader_ae198255e73b5a442a74fe2abe8029f08}{nentries}}
-\begin{DoxyCompactList}\small\item\em current Tree number in a TChain \end{DoxyCompactList}\item 
-Long64\+\_\+t \mbox{\hyperlink{class_epos_event_reader_af81aa687420d09564ae8901689f854b1}{nbytes}}
-\item 
-Long64\+\_\+t \mbox{\hyperlink{class_epos_event_reader_affe0243fd48ab9f86ef1c6091a0b2f58}{nb}}
-\item 
-long \mbox{\hyperlink{class_epos_event_reader_a4192accf897e56c181f23af68e451ea6}{jentry}}
-\item 
-Int\+\_\+t \mbox{\hyperlink{class_epos_event_reader_a23a7ed8919b9f7e2f8a3fa7cc1743e70}{Events}}
-\item 
-Int\+\_\+t \mbox{\hyperlink{class_epos_event_reader_a180b873ee0c007cf9bd67a3adfc895f9}{Mult}}
-\item 
-Float\+\_\+t \mbox{\hyperlink{class_epos_event_reader_a30ac7f0599e636c34f500327392a8212}{Impact}}
-\item 
-Int\+\_\+t \mbox{\hyperlink{class_epos_event_reader_ab37ef04b26fcff1b11eaad900b297bfa}{PID}} \mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac5b2d758e2418f289db91e594a63f09d}{arr}}\mbox{]}
-\item 
-Float\+\_\+t \mbox{\hyperlink{class_epos_event_reader_a5dba535e8de1e56dd285c54cd93f5ba9}{Px}} \mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac5b2d758e2418f289db91e594a63f09d}{arr}}\mbox{]}
-\item 
-Float\+\_\+t \mbox{\hyperlink{class_epos_event_reader_a24a0cb98905c0992e9a16b226e534cbf}{Py}} \mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac5b2d758e2418f289db91e594a63f09d}{arr}}\mbox{]}
-\item 
-Float\+\_\+t \mbox{\hyperlink{class_epos_event_reader_a7b2dab102412a11f2dcc450202a7bbc7}{Pz}} \mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac5b2d758e2418f289db91e594a63f09d}{arr}}\mbox{]}
-\item 
-Float\+\_\+t \mbox{\hyperlink{class_epos_event_reader_ae244e1597713d8c561445d487e5d771c}{E}} \mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac5b2d758e2418f289db91e594a63f09d}{arr}}\mbox{]}
-\item 
-TBranch $\ast$ \mbox{\hyperlink{class_epos_event_reader_aae4cc1fc27ee8eca3d7805c349d1bff7}{b\+\_\+\+Events}}
-\item 
-TBranch $\ast$ \mbox{\hyperlink{class_epos_event_reader_a8c2c9f893b94b0f23895475fa8b4d3e9}{b\+\_\+\+Mult}}
-\item 
-TBranch $\ast$ \mbox{\hyperlink{class_epos_event_reader_ad95987c9be9ae2232054a2d1149b368e}{b\+\_\+\+Impact}}
-\item 
-TBranch $\ast$ \mbox{\hyperlink{class_epos_event_reader_aa238ee93bf3b8efccba6fea8bb4a0515}{b\+\_\+\+PID}}
-\item 
-TBranch $\ast$ \mbox{\hyperlink{class_epos_event_reader_a25de43eaa1ff4a4408206b39c1e2fc5d}{b\+\_\+\+Px}}
-\item 
-TBranch $\ast$ \mbox{\hyperlink{class_epos_event_reader_ad2965b726ee449874ff45364f202166b}{b\+\_\+\+Py}}
-\item 
-TBranch $\ast$ \mbox{\hyperlink{class_epos_event_reader_a65a3ac847d20bb000c1dc35fafb1fe1c}{b\+\_\+\+Pz}}
-\item 
-TBranch $\ast$ \mbox{\hyperlink{class_epos_event_reader_aacf55ecabc6b3847b8db3e60e5b3216d}{b\+\_\+E}}
 \item 
 Int\+\_\+t \mbox{\hyperlink{class_epos_event_reader_a367b3f9175004086133dc55519c759c5}{events}}
 \item 
-Int\+\_\+t \mbox{\hyperlink{class_epos_event_reader_abfa9639e2100661d94f20b6a2aabf012}{mult}}
+Int\+\_\+t \mbox{\hyperlink{class_epos_event_reader_a0907d1d1e9077a68feeb03fed4c75bcd}{n\+Particles}}
 \item 
 Float\+\_\+t \mbox{\hyperlink{class_epos_event_reader_a2d74c695355b8c70e7941a09822eb2da}{impact}}
 \item 
@@ -132,590 +54,294 @@ Float\+\_\+t \mbox{\hyperlink{class_epos_event_reader_a651951ae21047a2e5496d49ed
 \item 
 Float\+\_\+t \mbox{\hyperlink{class_epos_event_reader_a5c01927f8d001f0f66ca91b9e324b629}{e}} \mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{array\+Size}}\mbox{]}
 \item 
-\mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ \mbox{\hyperlink{class_epos_event_reader_a35e4f13c870dfa771deef7b15a4c1017}{event\+Filter}}
+TBranch $\ast$ \mbox{\hyperlink{class_epos_event_reader_ae45e101e01274537617aa9a8395d7c24}{b\+\_\+\+Events}}
 \item 
-\mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ \mbox{\hyperlink{class_epos_event_reader_aaf6ce483ef7f0da9576370b030c7cdc0}{particle\+Filter}}
+TBranch $\ast$ \mbox{\hyperlink{class_epos_event_reader_a6cd2a9cd8811c5c064157af73af936eb}{b\+\_\+\+Mult}}
+\item 
+TBranch $\ast$ \mbox{\hyperlink{class_epos_event_reader_af616790b43ad242bac2053b8d4dbd0d7}{b\+\_\+\+Impact}}
+\item 
+TBranch $\ast$ \mbox{\hyperlink{class_epos_event_reader_a03c2332361439cadff2c7d53c4cba189}{b\+\_\+\+PID}}
+\item 
+TBranch $\ast$ \mbox{\hyperlink{class_epos_event_reader_af37b01b65e68301e6732998c69bce04d}{b\+\_\+\+Px}}
+\item 
+TBranch $\ast$ \mbox{\hyperlink{class_epos_event_reader_a3a644a37b28f9b784c91750fb996ef0e}{b\+\_\+\+Py}}
+\item 
+TBranch $\ast$ \mbox{\hyperlink{class_epos_event_reader_a1c0495b4a39ced5c2cc67e5af92da499}{b\+\_\+\+Pz}}
+\item 
+TBranch $\ast$ \mbox{\hyperlink{class_epos_event_reader_aeb91b6cf5d467de2703436e33aed6b11}{b\+\_\+E}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Static Public Attributes}
+\doxysubsection*{Static Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static const int \mbox{\hyperlink{class_epos_event_reader_ac5b2d758e2418f289db91e594a63f09d}{arr}} = 22000
-\item 
-static const int \mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{array\+Size}} = 22000
+static const int \mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{array\+Size}} = 40000
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_task}{Task}} to compute to read EPOS events and make them available for analysis in CAP. . 
 
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00017}{17}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00020}{20}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
 
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_epos_event_reader_a3b6d4599a313cae1197864001c4e653f}\label{class_epos_event_reader_a3b6d4599a313cae1197864001c4e653f}} 
+\mbox{\Hypertarget{class_epos_event_reader_aca144825b368b2db9ef4597a121f9f14}\label{class_epos_event_reader_aca144825b368b2db9ef4597a121f9f14}} 
 \index{EposEventReader@{EposEventReader}!EposEventReader@{EposEventReader}}
 \index{EposEventReader@{EposEventReader}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{EposEventReader()}{EposEventReader()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Epos\+Event\+Reader\+::\+Epos\+Event\+Reader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_event}{Event}} $\ast$}]{event,  }\item[{Generator\+Configuration $\ast$}]{configuration,  }\item[{TRandom $\ast$}]{random\+Generator,  }\item[{bool}]{debug\+Level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\doxysubsubsection{\texorpdfstring{EposEventReader()}{EposEventReader()}}
+{\footnotesize\ttfamily Epos\+Event\+Reader\+::\+Epos\+Event\+Reader (\begin{DoxyParamCaption}\item[{const TString \&}]{\+\_\+name,  }\item[{\mbox{\hyperlink{class_configuration}{Configuration}} \&}]{\+\_\+configuration,  }\item[{vector$<$ \mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$ $>$ \&}]{\+\_\+event\+Filters,  }\item[{vector$<$ \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$ $>$ \&}]{\+\_\+particle\+Filters,  }\item[{\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{Log\+Level}}}]{\+\_\+selected\+Level = {\ttfamily \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}}} }\end{DoxyParamCaption})}
+
+Detailed CTOR
 
 
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_afa9e7de659d506bab2f84630e81fb213}\label{class_epos_event_reader_afa9e7de659d506bab2f84630e81fb213}} 
-\index{EposEventReader@{EposEventReader}!````~EposEventReader@{$\sim$EposEventReader}}
-\index{````~EposEventReader@{$\sim$EposEventReader}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{$\sim$EposEventReader()}{~EposEventReader()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Epos\+Event\+Reader\+::$\sim$\+Epos\+Event\+Reader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00038}{38}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_abfcb59f6b7f600260482e15fb59d026e}\label{class_epos_event_reader_abfcb59f6b7f600260482e15fb59d026e}} 
-\index{EposEventReader@{EposEventReader}!EposEventReader@{EposEventReader}}
-\index{EposEventReader@{EposEventReader}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{EposEventReader()}{EposEventReader()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Epos\+Event\+Reader\+::\+Epos\+Event\+Reader (\begin{DoxyParamCaption}\item[{const TString \&}]{name,  }\item[{Task\+Configuration $\ast$}]{configuration,  }\item[{\mbox{\hyperlink{class_event}{Event}} $\ast$}]{event,  }\item[{\mbox{\hyperlink{class_event_filter}{Event\+Filter}} $\ast$}]{ef,  }\item[{\mbox{\hyperlink{class_particle_filter}{Particle\+Filter}} $\ast$}]{pf }\end{DoxyParamCaption})}
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+name} & Name given to task instance \\
+\hline
+{\em \+\_\+configuration} & \mbox{\hyperlink{class_configuration}{Configuration}} used to run this task \\
+\hline
+{\em \+\_\+event\+Filters} & Array of event filters to be used by this task (currently a placeholder not used) \\
+\hline
+{\em \+\_\+particle\+Filters} & Array of particle filters to be used by this task -- use this filter to limit the range of particles read into CAP arrays. \\
+\hline
+{\em \+\_\+report\+Level} & Message log level to be used by this task. \\
+\hline
+\end{DoxyParams}
 
 
-
-Definition at line \mbox{\hyperlink{_epos_event_reader_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_epos_event_reader_8cpp_source}{Epos\+Event\+Reader.\+cpp}}.
+Definition at line \mbox{\hyperlink{_epos_event_reader_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_epos_event_reader_8cpp_source}{Epos\+Event\+Reader.\+cpp}}.
 
 \mbox{\Hypertarget{class_epos_event_reader_a233d0355238939c58ebfd5bcb991e249}\label{class_epos_event_reader_a233d0355238939c58ebfd5bcb991e249}} 
 \index{EposEventReader@{EposEventReader}!````~EposEventReader@{$\sim$EposEventReader}}
 \index{````~EposEventReader@{$\sim$EposEventReader}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{$\sim$EposEventReader()}{~EposEventReader()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily virtual Epos\+Event\+Reader\+::$\sim$\+Epos\+Event\+Reader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+\doxysubsubsection{\texorpdfstring{$\sim$EposEventReader()}{~EposEventReader()}}
+{\footnotesize\ttfamily virtual Epos\+Event\+Reader\+::$\sim$\+Epos\+Event\+Reader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+DTOR 
+
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00042}{42}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
 
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_epos_event_reader_abc60e8e7602558c92cbd544889d694ef}\label{class_epos_event_reader_abc60e8e7602558c92cbd544889d694ef}} 
-\index{EposEventReader@{EposEventReader}!Cut@{Cut}}
-\index{Cut@{Cut}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{Cut()}{Cut()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Int\+\_\+t Epos\+Event\+Reader\+::\+Cut (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00225}{225}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_abc60e8e7602558c92cbd544889d694ef}\label{class_epos_event_reader_abc60e8e7602558c92cbd544889d694ef}} 
-\index{EposEventReader@{EposEventReader}!Cut@{Cut}}
-\index{Cut@{Cut}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{Cut()}{Cut()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Int\+\_\+t Epos\+Event\+Reader\+::\+Cut (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_epos_event_reader_ab7169b7517f3b93a1982c7d6527f6c47}\label{class_epos_event_reader_ab7169b7517f3b93a1982c7d6527f6c47}} 
 \index{EposEventReader@{EposEventReader}!execute@{execute}}
 \index{execute@{execute}!EposEventReader@{EposEventReader}}
 \doxysubsubsection{\texorpdfstring{execute()}{execute()}}
 {\footnotesize\ttfamily void Epos\+Event\+Reader\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
-Execute this task instance. This base class implementation only increments the counters n\+Event\+Processed and n\+Event\+Accepted. Implement this method in derived class to achieve the actual task of interest. Note\+: You can increase the counters n\+Event\+Processed and n\+Event\+Accepted indiscrimately by a call to \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task\+::execute()}}. However, in general, you may wish to count all events looked and only count as accepted those that passed one of the event filters used by this task. To achive this, use calls to the methods \mbox{\hyperlink{class_task_a724ff83138229238fdc58566a0cd350f}{increment\+Event\+Processed()}} and \mbox{\hyperlink{class_task_a01762aa4383b0931850efb56b697a856}{increment\+Event\+Accepted()}} rather than explicitly incrementing the variable n\+Event\+Processed and n\+Event\+Accepted. These are currently protected but may defined as private in a future release. 
+Read one AMPT event and insert it in the CAP event stream. 
 
-Reimplemented from \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task}}.
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{_epos_event_reader_8cpp_source}{Epos\+Event\+Reader.\+cpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a1e9fa3c6ddb1044741e4d24719d8e236}\label{class_epos_event_reader_a1e9fa3c6ddb1044741e4d24719d8e236}} 
-\index{EposEventReader@{EposEventReader}!generate@{generate}}
-\index{generate@{generate}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{generate()}{generate()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_event}{Event}} $\ast$ Epos\+Event\+Reader\+::generate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+Reimplemented from \mbox{\hyperlink{class_root_tree_reader_acb79329a5c02fb59ecfd8d0d1ab1ad7f}{Root\+Tree\+Reader}}.
 
 
 
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00090}{90}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_epos_event_reader_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{_epos_event_reader_8cpp_source}{Epos\+Event\+Reader.\+cpp}}.
 
-\mbox{\Hypertarget{class_epos_event_reader_a5ed3c75eec512d374f63451a1170b144}\label{class_epos_event_reader_a5ed3c75eec512d374f63451a1170b144}} 
-\index{EposEventReader@{EposEventReader}!GetEntry@{GetEntry}}
-\index{GetEntry@{GetEntry}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{GetEntry()}{GetEntry()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Int\+\_\+t Epos\+Event\+Reader\+::\+Get\+Entry (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{class_epos_event_reader_a978bcc3301d0b4b85d54701a8ae53ae1}\label{class_epos_event_reader_a978bcc3301d0b4b85d54701a8ae53ae1}} 
+\index{EposEventReader@{EposEventReader}!initInputTreeMapping@{initInputTreeMapping}}
+\index{initInputTreeMapping@{initInputTreeMapping}!EposEventReader@{EposEventReader}}
+\doxysubsubsection{\texorpdfstring{initInputTreeMapping()}{initInputTreeMapping()}}
+{\footnotesize\ttfamily void Epos\+Event\+Reader\+::init\+Input\+Tree\+Mapping (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
+Initialize the mapping between the branches and the storage variables used in EPOS data files. 
 
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00168}{168}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a5ed3c75eec512d374f63451a1170b144}\label{class_epos_event_reader_a5ed3c75eec512d374f63451a1170b144}} 
-\index{EposEventReader@{EposEventReader}!GetEntry@{GetEntry}}
-\index{GetEntry@{GetEntry}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{GetEntry()}{GetEntry()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Int\+\_\+t Epos\+Event\+Reader\+::\+Get\+Entry (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_epos_event_reader_a1f09cba329ef31dbe18091d189a213dc}\label{class_epos_event_reader_a1f09cba329ef31dbe18091d189a213dc}} 
-\index{EposEventReader@{EposEventReader}!Init@{Init}}
-\index{Init@{Init}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{Init()}{Init()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void Epos\+Event\+Reader\+::\+Init (\begin{DoxyParamCaption}\item[{TTree $\ast$}]{tree }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+Reimplemented from \mbox{\hyperlink{class_root_tree_reader_a142b7591288035eb8193874e7607cbe9}{Root\+Tree\+Reader}}.
 
 
 
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00188}{188}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_epos_event_reader_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{_epos_event_reader_8cpp_source}{Epos\+Event\+Reader.\+cpp}}.
 
-\mbox{\Hypertarget{class_epos_event_reader_a1f09cba329ef31dbe18091d189a213dc}\label{class_epos_event_reader_a1f09cba329ef31dbe18091d189a213dc}} 
-\index{EposEventReader@{EposEventReader}!Init@{Init}}
-\index{Init@{Init}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{Init()}{Init()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Epos\+Event\+Reader\+::\+Init (\begin{DoxyParamCaption}\item[{TTree $\ast$}]{tree }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_epos_event_reader_aede5e7310b69d964211986d470c6912b}\label{class_epos_event_reader_aede5e7310b69d964211986d470c6912b}} 
+\index{EposEventReader@{EposEventReader}!setDefaultConfiguration@{setDefaultConfiguration}}
+\index{setDefaultConfiguration@{setDefaultConfiguration}!EposEventReader@{EposEventReader}}
+\doxysubsubsection{\texorpdfstring{setDefaultConfiguration()}{setDefaultConfiguration()}}
+{\footnotesize\ttfamily void Epos\+Event\+Reader\+::set\+Default\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
-\mbox{\Hypertarget{class_epos_event_reader_a0d76305be21ef617009d53ea04671cfa}\label{class_epos_event_reader_a0d76305be21ef617009d53ea04671cfa}} 
-\index{EposEventReader@{EposEventReader}!initialize@{initialize}}
-\index{initialize@{initialize}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void Epos\+Event\+Reader\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+Sets the default values of the configuration parameters used by this task 
 
-Initialize this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient. 
-
-Reimplemented from \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{Task}}.
+Reimplemented from \mbox{\hyperlink{class_root_tree_reader_ae6ed558a3a2e0d5ae5a3feacbe686004}{Root\+Tree\+Reader}}.
 
 
 
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a6385c728405a49748f8c31950d784789}\label{class_epos_event_reader_a6385c728405a49748f8c31950d784789}} 
-\index{EposEventReader@{EposEventReader}!initialize@{initialize}}
-\index{initialize@{initialize}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily virtual void Epos\+Event\+Reader\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-Initialize this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient. 
-
-Reimplemented from \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{Task}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_ad85463bdc313327218d1462df45d1bf2}\label{class_epos_event_reader_ad85463bdc313327218d1462df45d1bf2}} 
-\index{EposEventReader@{EposEventReader}!LoadTree@{LoadTree}}
-\index{LoadTree@{LoadTree}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{LoadTree()}{LoadTree()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Long64\+\_\+t Epos\+Event\+Reader\+::\+Load\+Tree (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00175}{175}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_ad85463bdc313327218d1462df45d1bf2}\label{class_epos_event_reader_ad85463bdc313327218d1462df45d1bf2}} 
-\index{EposEventReader@{EposEventReader}!LoadTree@{LoadTree}}
-\index{LoadTree@{LoadTree}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{LoadTree()}{LoadTree()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Long64\+\_\+t Epos\+Event\+Reader\+::\+Load\+Tree (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_epos_event_reader_a3c0c2164a0f7b882e68e31a319500beb}\label{class_epos_event_reader_a3c0c2164a0f7b882e68e31a319500beb}} 
-\index{EposEventReader@{EposEventReader}!Notify@{Notify}}
-\index{Notify@{Notify}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{Notify()}{Notify()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Bool\+\_\+t Epos\+Event\+Reader\+::\+Notify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00212}{212}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a3c0c2164a0f7b882e68e31a319500beb}\label{class_epos_event_reader_a3c0c2164a0f7b882e68e31a319500beb}} 
-\index{EposEventReader@{EposEventReader}!Notify@{Notify}}
-\index{Notify@{Notify}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{Notify()}{Notify()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Bool\+\_\+t Epos\+Event\+Reader\+::\+Notify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_epos_event_reader_afc1f7193d664915f83c2400291537068}\label{class_epos_event_reader_afc1f7193d664915f83c2400291537068}} 
-\index{EposEventReader@{EposEventReader}!reset@{reset}}
-\index{reset@{reset}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void Epos\+Event\+Reader\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
-
-Reset this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient. 
-
-Reimplemented from \mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{Task}}.
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a2dd41fac8728994add291b8342944a73}\label{class_epos_event_reader_a2dd41fac8728994add291b8342944a73}} 
-\index{EposEventReader@{EposEventReader}!reset@{reset}}
-\index{reset@{reset}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily virtual void Epos\+Event\+Reader\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-Reset this task instance. Implement this method in a derived class if the functionality provided in this base class is insufficient. 
-
-Reimplemented from \mbox{\hyperlink{class_task_aa3a2b2bf899730aa64e1cf3c1d868b47}{Task}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a4f33ea50f49e44b02cdf1732d122f3bb}\label{class_epos_event_reader_a4f33ea50f49e44b02cdf1732d122f3bb}} 
-\index{EposEventReader@{EposEventReader}!Show@{Show}}
-\index{Show@{Show}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{Show()}{Show()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void Epos\+Event\+Reader\+::\+Show (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00219}{219}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a4f33ea50f49e44b02cdf1732d122f3bb}\label{class_epos_event_reader_a4f33ea50f49e44b02cdf1732d122f3bb}} 
-\index{EposEventReader@{EposEventReader}!Show@{Show}}
-\index{Show@{Show}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{Show()}{Show()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Epos\+Event\+Reader\+::\+Show (\begin{DoxyParamCaption}\item[{Long64\+\_\+t}]{entry }\end{DoxyParamCaption})}
+Definition at line \mbox{\hyperlink{_epos_event_reader_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{_epos_event_reader_8cpp_source}{Epos\+Event\+Reader.\+cpp}}.
 
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_epos_event_reader_ac5b2d758e2418f289db91e594a63f09d}\label{class_epos_event_reader_ac5b2d758e2418f289db91e594a63f09d}} 
-\index{EposEventReader@{EposEventReader}!arr@{arr}}
-\index{arr@{arr}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{arr}{arr}}
-{\footnotesize\ttfamily const int Epos\+Event\+Reader\+::arr = 22000\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00245}{245}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
 \mbox{\Hypertarget{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}\label{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}} 
 \index{EposEventReader@{EposEventReader}!arraySize@{arraySize}}
 \index{arraySize@{arraySize}!EposEventReader@{EposEventReader}}
 \doxysubsubsection{\texorpdfstring{arraySize}{arraySize}}
-{\footnotesize\ttfamily const int Epos\+Event\+Reader\+::array\+Size = 22000\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_aacf55ecabc6b3847b8db3e60e5b3216d}\label{class_epos_event_reader_aacf55ecabc6b3847b8db3e60e5b3216d}} 
-\index{EposEventReader@{EposEventReader}!b\_E@{b\_E}}
-\index{b\_E@{b\_E}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_E}{b\_E}}
-{\footnotesize\ttfamily TBranch $\ast$ Epos\+Event\+Reader\+::b\+\_\+E}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00265}{265}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_aae4cc1fc27ee8eca3d7805c349d1bff7}\label{class_epos_event_reader_aae4cc1fc27ee8eca3d7805c349d1bff7}} 
-\index{EposEventReader@{EposEventReader}!b\_Events@{b\_Events}}
-\index{b\_Events@{b\_Events}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_Events}{b\_Events}}
-{\footnotesize\ttfamily TBranch $\ast$ Epos\+Event\+Reader\+::b\+\_\+\+Events}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00258}{258}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_ad95987c9be9ae2232054a2d1149b368e}\label{class_epos_event_reader_ad95987c9be9ae2232054a2d1149b368e}} 
-\index{EposEventReader@{EposEventReader}!b\_Impact@{b\_Impact}}
-\index{b\_Impact@{b\_Impact}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_Impact}{b\_Impact}}
-{\footnotesize\ttfamily TBranch $\ast$ Epos\+Event\+Reader\+::b\+\_\+\+Impact}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00260}{260}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a8c2c9f893b94b0f23895475fa8b4d3e9}\label{class_epos_event_reader_a8c2c9f893b94b0f23895475fa8b4d3e9}} 
-\index{EposEventReader@{EposEventReader}!b\_Mult@{b\_Mult}}
-\index{b\_Mult@{b\_Mult}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_Mult}{b\_Mult}}
-{\footnotesize\ttfamily TBranch $\ast$ Epos\+Event\+Reader\+::b\+\_\+\+Mult}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00259}{259}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_aa238ee93bf3b8efccba6fea8bb4a0515}\label{class_epos_event_reader_aa238ee93bf3b8efccba6fea8bb4a0515}} 
-\index{EposEventReader@{EposEventReader}!b\_PID@{b\_PID}}
-\index{b\_PID@{b\_PID}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_PID}{b\_PID}}
-{\footnotesize\ttfamily TBranch $\ast$ Epos\+Event\+Reader\+::b\+\_\+\+PID}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00261}{261}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a25de43eaa1ff4a4408206b39c1e2fc5d}\label{class_epos_event_reader_a25de43eaa1ff4a4408206b39c1e2fc5d}} 
-\index{EposEventReader@{EposEventReader}!b\_Px@{b\_Px}}
-\index{b\_Px@{b\_Px}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_Px}{b\_Px}}
-{\footnotesize\ttfamily TBranch $\ast$ Epos\+Event\+Reader\+::b\+\_\+\+Px}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00262}{262}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_ad2965b726ee449874ff45364f202166b}\label{class_epos_event_reader_ad2965b726ee449874ff45364f202166b}} 
-\index{EposEventReader@{EposEventReader}!b\_Py@{b\_Py}}
-\index{b\_Py@{b\_Py}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_Py}{b\_Py}}
-{\footnotesize\ttfamily TBranch $\ast$ Epos\+Event\+Reader\+::b\+\_\+\+Py}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00263}{263}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a65a3ac847d20bb000c1dc35fafb1fe1c}\label{class_epos_event_reader_a65a3ac847d20bb000c1dc35fafb1fe1c}} 
-\index{EposEventReader@{EposEventReader}!b\_Pz@{b\_Pz}}
-\index{b\_Pz@{b\_Pz}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{b\_Pz}{b\_Pz}}
-{\footnotesize\ttfamily TBranch $\ast$ Epos\+Event\+Reader\+::b\+\_\+\+Pz}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00264}{264}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_ae244e1597713d8c561445d487e5d771c}\label{class_epos_event_reader_ae244e1597713d8c561445d487e5d771c}} 
-\index{EposEventReader@{EposEventReader}!E@{E}}
-\index{E@{E}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{E}{E}}
-{\footnotesize\ttfamily Float\+\_\+t Epos\+Event\+Reader\+::E\mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac5b2d758e2418f289db91e594a63f09d}{arr}}\mbox{]}}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00255}{255}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a5c01927f8d001f0f66ca91b9e324b629}\label{class_epos_event_reader_a5c01927f8d001f0f66ca91b9e324b629}} 
-\index{EposEventReader@{EposEventReader}!e@{e}}
-\index{e@{e}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{e}{e}}
-{\footnotesize\ttfamily Float\+\_\+t Epos\+Event\+Reader\+::e\mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{array\+Size}}\mbox{]}}
+{\footnotesize\ttfamily const int Epos\+Event\+Reader\+::array\+Size = 40000\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
 
 
 
 Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00062}{62}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_epos_event_reader_a35e4f13c870dfa771deef7b15a4c1017}\label{class_epos_event_reader_a35e4f13c870dfa771deef7b15a4c1017}} 
-\index{EposEventReader@{EposEventReader}!eventFilter@{eventFilter}}
-\index{eventFilter@{eventFilter}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{eventFilter}{eventFilter}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_event_filter}{Event\+Filter}}$\ast$ Epos\+Event\+Reader\+::event\+Filter}
+\mbox{\Hypertarget{class_epos_event_reader_aeb91b6cf5d467de2703436e33aed6b11}\label{class_epos_event_reader_aeb91b6cf5d467de2703436e33aed6b11}} 
+\index{EposEventReader@{EposEventReader}!b\_E@{b\_E}}
+\index{b\_E@{b\_E}!EposEventReader@{EposEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_E}{b\_E}}
+{\footnotesize\ttfamily TBranch$\ast$ Epos\+Event\+Reader\+::b\+\_\+E\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00082}{82}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_epos_event_reader_a23a7ed8919b9f7e2f8a3fa7cc1743e70}\label{class_epos_event_reader_a23a7ed8919b9f7e2f8a3fa7cc1743e70}} 
-\index{EposEventReader@{EposEventReader}!Events@{Events}}
-\index{Events@{Events}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{Events}{Events}}
-{\footnotesize\ttfamily Int\+\_\+t Epos\+Event\+Reader\+::\+Events}
+\mbox{\Hypertarget{class_epos_event_reader_ae45e101e01274537617aa9a8395d7c24}\label{class_epos_event_reader_ae45e101e01274537617aa9a8395d7c24}} 
+\index{EposEventReader@{EposEventReader}!b\_Events@{b\_Events}}
+\index{b\_Events@{b\_Events}!EposEventReader@{EposEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_Events}{b\_Events}}
+{\footnotesize\ttfamily TBranch$\ast$ Epos\+Event\+Reader\+::b\+\_\+\+Events\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00248}{248}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00075}{75}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_epos_event_reader_af616790b43ad242bac2053b8d4dbd0d7}\label{class_epos_event_reader_af616790b43ad242bac2053b8d4dbd0d7}} 
+\index{EposEventReader@{EposEventReader}!b\_Impact@{b\_Impact}}
+\index{b\_Impact@{b\_Impact}!EposEventReader@{EposEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_Impact}{b\_Impact}}
+{\footnotesize\ttfamily TBranch$\ast$ Epos\+Event\+Reader\+::b\+\_\+\+Impact\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_epos_event_reader_a6cd2a9cd8811c5c064157af73af936eb}\label{class_epos_event_reader_a6cd2a9cd8811c5c064157af73af936eb}} 
+\index{EposEventReader@{EposEventReader}!b\_Mult@{b\_Mult}}
+\index{b\_Mult@{b\_Mult}!EposEventReader@{EposEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_Mult}{b\_Mult}}
+{\footnotesize\ttfamily TBranch$\ast$ Epos\+Event\+Reader\+::b\+\_\+\+Mult\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_epos_event_reader_a03c2332361439cadff2c7d53c4cba189}\label{class_epos_event_reader_a03c2332361439cadff2c7d53c4cba189}} 
+\index{EposEventReader@{EposEventReader}!b\_PID@{b\_PID}}
+\index{b\_PID@{b\_PID}!EposEventReader@{EposEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_PID}{b\_PID}}
+{\footnotesize\ttfamily TBranch$\ast$ Epos\+Event\+Reader\+::b\+\_\+\+PID\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_epos_event_reader_af37b01b65e68301e6732998c69bce04d}\label{class_epos_event_reader_af37b01b65e68301e6732998c69bce04d}} 
+\index{EposEventReader@{EposEventReader}!b\_Px@{b\_Px}}
+\index{b\_Px@{b\_Px}!EposEventReader@{EposEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_Px}{b\_Px}}
+{\footnotesize\ttfamily TBranch$\ast$ Epos\+Event\+Reader\+::b\+\_\+\+Px\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00079}{79}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_epos_event_reader_a3a644a37b28f9b784c91750fb996ef0e}\label{class_epos_event_reader_a3a644a37b28f9b784c91750fb996ef0e}} 
+\index{EposEventReader@{EposEventReader}!b\_Py@{b\_Py}}
+\index{b\_Py@{b\_Py}!EposEventReader@{EposEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_Py}{b\_Py}}
+{\footnotesize\ttfamily TBranch$\ast$ Epos\+Event\+Reader\+::b\+\_\+\+Py\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00080}{80}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_epos_event_reader_a1c0495b4a39ced5c2cc67e5af92da499}\label{class_epos_event_reader_a1c0495b4a39ced5c2cc67e5af92da499}} 
+\index{EposEventReader@{EposEventReader}!b\_Pz@{b\_Pz}}
+\index{b\_Pz@{b\_Pz}!EposEventReader@{EposEventReader}}
+\doxysubsubsection{\texorpdfstring{b\_Pz}{b\_Pz}}
+{\footnotesize\ttfamily TBranch$\ast$ Epos\+Event\+Reader\+::b\+\_\+\+Pz\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
+
+\mbox{\Hypertarget{class_epos_event_reader_a5c01927f8d001f0f66ca91b9e324b629}\label{class_epos_event_reader_a5c01927f8d001f0f66ca91b9e324b629}} 
+\index{EposEventReader@{EposEventReader}!e@{e}}
+\index{e@{e}!EposEventReader@{EposEventReader}}
+\doxysubsubsection{\texorpdfstring{e}{e}}
+{\footnotesize\ttfamily Float\+\_\+t Epos\+Event\+Reader\+::e\mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{array\+Size}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
 
 \mbox{\Hypertarget{class_epos_event_reader_a367b3f9175004086133dc55519c759c5}\label{class_epos_event_reader_a367b3f9175004086133dc55519c759c5}} 
 \index{EposEventReader@{EposEventReader}!events@{events}}
 \index{events@{events}!EposEventReader@{EposEventReader}}
 \doxysubsubsection{\texorpdfstring{events}{events}}
-{\footnotesize\ttfamily Int\+\_\+t Epos\+Event\+Reader\+::events}
+{\footnotesize\ttfamily Int\+\_\+t Epos\+Event\+Reader\+::events\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00055}{55}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}\label{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}} 
-\index{EposEventReader@{EposEventReader}!fChain@{fChain}}
-\index{fChain@{fChain}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{fChain}{fChain}}
-{\footnotesize\ttfamily TTree $\ast$ Epos\+Event\+Reader\+::f\+Chain}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00236}{236}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_afd54acff3e63cb73ebaeeccade2814f6}\label{class_epos_event_reader_afd54acff3e63cb73ebaeeccade2814f6}} 
-\index{EposEventReader@{EposEventReader}!fCurrent@{fCurrent}}
-\index{fCurrent@{fCurrent}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{fCurrent}{fCurrent}}
-{\footnotesize\ttfamily Int\+\_\+t Epos\+Event\+Reader\+::f\+Current}
-
-
-
-pointer to the analyzed TTree or TChain 
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00237}{237}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a30ac7f0599e636c34f500327392a8212}\label{class_epos_event_reader_a30ac7f0599e636c34f500327392a8212}} 
-\index{EposEventReader@{EposEventReader}!Impact@{Impact}}
-\index{Impact@{Impact}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{Impact}{Impact}}
-{\footnotesize\ttfamily Float\+\_\+t Epos\+Event\+Reader\+::\+Impact}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00250}{250}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
 
 \mbox{\Hypertarget{class_epos_event_reader_a2d74c695355b8c70e7941a09822eb2da}\label{class_epos_event_reader_a2d74c695355b8c70e7941a09822eb2da}} 
 \index{EposEventReader@{EposEventReader}!impact@{impact}}
 \index{impact@{impact}!EposEventReader@{EposEventReader}}
 \doxysubsubsection{\texorpdfstring{impact}{impact}}
-{\footnotesize\ttfamily Float\+\_\+t Epos\+Event\+Reader\+::impact}
+{\footnotesize\ttfamily Float\+\_\+t Epos\+Event\+Reader\+::impact\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
 
-\mbox{\Hypertarget{class_epos_event_reader_a4192accf897e56c181f23af68e451ea6}\label{class_epos_event_reader_a4192accf897e56c181f23af68e451ea6}} 
-\index{EposEventReader@{EposEventReader}!jentry@{jentry}}
-\index{jentry@{jentry}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{jentry}{jentry}}
-{\footnotesize\ttfamily long Epos\+Event\+Reader\+::jentry}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00243}{243}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a180b873ee0c007cf9bd67a3adfc895f9}\label{class_epos_event_reader_a180b873ee0c007cf9bd67a3adfc895f9}} 
-\index{EposEventReader@{EposEventReader}!Mult@{Mult}}
-\index{Mult@{Mult}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{Mult}{Mult}}
-{\footnotesize\ttfamily Int\+\_\+t Epos\+Event\+Reader\+::\+Mult}
+\mbox{\Hypertarget{class_epos_event_reader_a0907d1d1e9077a68feeb03fed4c75bcd}\label{class_epos_event_reader_a0907d1d1e9077a68feeb03fed4c75bcd}} 
+\index{EposEventReader@{EposEventReader}!nParticles@{nParticles}}
+\index{nParticles@{nParticles}!EposEventReader@{EposEventReader}}
+\doxysubsubsection{\texorpdfstring{nParticles}{nParticles}}
+{\footnotesize\ttfamily Int\+\_\+t Epos\+Event\+Reader\+::n\+Particles\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00249}{249}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_abfa9639e2100661d94f20b6a2aabf012}\label{class_epos_event_reader_abfa9639e2100661d94f20b6a2aabf012}} 
-\index{EposEventReader@{EposEventReader}!mult@{mult}}
-\index{mult@{mult}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{mult}{mult}}
-{\footnotesize\ttfamily Int\+\_\+t Epos\+Event\+Reader\+::mult}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00056}{56}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_affe0243fd48ab9f86ef1c6091a0b2f58}\label{class_epos_event_reader_affe0243fd48ab9f86ef1c6091a0b2f58}} 
-\index{EposEventReader@{EposEventReader}!nb@{nb}}
-\index{nb@{nb}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{nb}{nb}}
-{\footnotesize\ttfamily Long64\+\_\+t Epos\+Event\+Reader\+::nb}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00241}{241}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_af81aa687420d09564ae8901689f854b1}\label{class_epos_event_reader_af81aa687420d09564ae8901689f854b1}} 
-\index{EposEventReader@{EposEventReader}!nbytes@{nbytes}}
-\index{nbytes@{nbytes}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{nbytes}{nbytes}}
-{\footnotesize\ttfamily Long64\+\_\+t Epos\+Event\+Reader\+::nbytes}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00240}{240}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_ae198255e73b5a442a74fe2abe8029f08}\label{class_epos_event_reader_ae198255e73b5a442a74fe2abe8029f08}} 
-\index{EposEventReader@{EposEventReader}!nentries@{nentries}}
-\index{nentries@{nentries}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{nentries}{nentries}}
-{\footnotesize\ttfamily Long64\+\_\+t Epos\+Event\+Reader\+::nentries}
-
-
-
-current Tree number in a TChain 
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00239}{239}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_aaf6ce483ef7f0da9576370b030c7cdc0}\label{class_epos_event_reader_aaf6ce483ef7f0da9576370b030c7cdc0}} 
-\index{EposEventReader@{EposEventReader}!particleFilter@{particleFilter}}
-\index{particleFilter@{particleFilter}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{particleFilter}{particleFilter}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_filter}{Particle\+Filter}}$\ast$ Epos\+Event\+Reader\+::particle\+Filter}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00074}{74}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_ab37ef04b26fcff1b11eaad900b297bfa}\label{class_epos_event_reader_ab37ef04b26fcff1b11eaad900b297bfa}} 
-\index{EposEventReader@{EposEventReader}!PID@{PID}}
-\index{PID@{PID}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{PID}{PID}}
-{\footnotesize\ttfamily Int\+\_\+t Epos\+Event\+Reader\+::\+PID\mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac5b2d758e2418f289db91e594a63f09d}{arr}}\mbox{]}}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00251}{251}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
 
 \mbox{\Hypertarget{class_epos_event_reader_a7a414e63738a819ffc1af4c280bf539d}\label{class_epos_event_reader_a7a414e63738a819ffc1af4c280bf539d}} 
 \index{EposEventReader@{EposEventReader}!pid@{pid}}
 \index{pid@{pid}!EposEventReader@{EposEventReader}}
 \doxysubsubsection{\texorpdfstring{pid}{pid}}
-{\footnotesize\ttfamily Int\+\_\+t Epos\+Event\+Reader\+::pid\mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{array\+Size}}\mbox{]}}
+{\footnotesize\ttfamily Int\+\_\+t Epos\+Event\+Reader\+::pid\mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{array\+Size}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00058}{58}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a5dba535e8de1e56dd285c54cd93f5ba9}\label{class_epos_event_reader_a5dba535e8de1e56dd285c54cd93f5ba9}} 
-\index{EposEventReader@{EposEventReader}!Px@{Px}}
-\index{Px@{Px}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{Px}{Px}}
-{\footnotesize\ttfamily Float\+\_\+t Epos\+Event\+Reader\+::\+Px\mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac5b2d758e2418f289db91e594a63f09d}{arr}}\mbox{]}}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00252}{252}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
 
 \mbox{\Hypertarget{class_epos_event_reader_a73785b32ef4260bc72726a8ad8838fc8}\label{class_epos_event_reader_a73785b32ef4260bc72726a8ad8838fc8}} 
 \index{EposEventReader@{EposEventReader}!px@{px}}
 \index{px@{px}!EposEventReader@{EposEventReader}}
 \doxysubsubsection{\texorpdfstring{px}{px}}
-{\footnotesize\ttfamily Float\+\_\+t Epos\+Event\+Reader\+::px\mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{array\+Size}}\mbox{]}}
+{\footnotesize\ttfamily Float\+\_\+t Epos\+Event\+Reader\+::px\mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{array\+Size}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a24a0cb98905c0992e9a16b226e534cbf}\label{class_epos_event_reader_a24a0cb98905c0992e9a16b226e534cbf}} 
-\index{EposEventReader@{EposEventReader}!Py@{Py}}
-\index{Py@{Py}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{Py}{Py}}
-{\footnotesize\ttfamily Float\+\_\+t Epos\+Event\+Reader\+::\+Py\mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac5b2d758e2418f289db91e594a63f09d}{arr}}\mbox{]}}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00253}{253}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00069}{69}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
 
 \mbox{\Hypertarget{class_epos_event_reader_a50081a677f7506559db4208de2b9273d}\label{class_epos_event_reader_a50081a677f7506559db4208de2b9273d}} 
 \index{EposEventReader@{EposEventReader}!py@{py}}
 \index{py@{py}!EposEventReader@{EposEventReader}}
 \doxysubsubsection{\texorpdfstring{py}{py}}
-{\footnotesize\ttfamily Float\+\_\+t Epos\+Event\+Reader\+::py\mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{array\+Size}}\mbox{]}}
+{\footnotesize\ttfamily Float\+\_\+t Epos\+Event\+Reader\+::py\mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{array\+Size}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
-
-\mbox{\Hypertarget{class_epos_event_reader_a7b2dab102412a11f2dcc450202a7bbc7}\label{class_epos_event_reader_a7b2dab102412a11f2dcc450202a7bbc7}} 
-\index{EposEventReader@{EposEventReader}!Pz@{Pz}}
-\index{Pz@{Pz}!EposEventReader@{EposEventReader}}
-\doxysubsubsection{\texorpdfstring{Pz}{Pz}}
-{\footnotesize\ttfamily Float\+\_\+t Epos\+Event\+Reader\+::\+Pz\mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac5b2d758e2418f289db91e594a63f09d}{arr}}\mbox{]}}
-
-
-
-Definition at line \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source_l00254}{254}} of file \mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp_source}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
 
 \mbox{\Hypertarget{class_epos_event_reader_a651951ae21047a2e5496d49ed2037f7e}\label{class_epos_event_reader_a651951ae21047a2e5496d49ed2037f7e}} 
 \index{EposEventReader@{EposEventReader}!pz@{pz}}
 \index{pz@{pz}!EposEventReader@{EposEventReader}}
 \doxysubsubsection{\texorpdfstring{pz}{pz}}
-{\footnotesize\ttfamily Float\+\_\+t Epos\+Event\+Reader\+::pz\mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{array\+Size}}\mbox{]}}
+{\footnotesize\ttfamily Float\+\_\+t Epos\+Event\+Reader\+::pz\mbox{[}\mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{array\+Size}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00061}{61}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
+Definition at line \mbox{\hyperlink{_epos_event_reader_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{_epos_event_reader_8hpp_source}{Epos\+Event\+Reader.\+hpp}}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Epos/\mbox{\hyperlink{_epos_event_reader-_old_reader_8hpp}{Epos\+Event\+Reader-\/\+Old\+Reader.\+hpp}}\item 
 Epos/\mbox{\hyperlink{_epos_event_reader_8hpp}{Epos\+Event\+Reader.\+hpp}}\item 
 Epos/\mbox{\hyperlink{_epos_event_reader_8cpp}{Epos\+Event\+Reader.\+cpp}}\end{DoxyCompactItemize}

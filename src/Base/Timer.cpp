@@ -53,8 +53,8 @@ void Timer::stop()
 
 void Timer::print(ostream & os)
 {
-  os << "          Time since start : " << days << " days, "<< hours << " hours, " << minutes << " minutes, " << seconds << " seconds." << endl;
-  os << "             Time interval : " << deltaDays << " days, "<< deltaHours << " hours, " << deltaMinutes << " minutes, " << deltaSeconds << " seconds." << endl;
+  os << "             Time since start : " << days << " days, "<< hours << " hours, " << minutes << " minutes, " << seconds << " seconds." << endl;
+  os << "                Time interval : " << deltaDays << " days, "<< deltaHours << " hours, " << deltaMinutes << " minutes, " << deltaSeconds << " seconds." << endl;
 }
 
 

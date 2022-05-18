@@ -2,40 +2,42 @@
 \label{_derived_histogram_calculator_8hpp_source}\index{Base/DerivedHistogramCalculator.hpp@{Base/DerivedHistogramCalculator.hpp}}
 \mbox{\hyperlink{_derived_histogram_calculator_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef CAP\_\_DerivedHistogramCalculator}}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define CAP\_\_DerivedHistogramCalculator}}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_file_task_iterator_8hpp}{FileTaskIterator.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00013}00013 \textcolor{keyword}{using namespace }std;}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00014}00014 }
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00015}\mbox{\hyperlink{class_derived_histogram_calculator}{00015}} \textcolor{keyword}{class }\mbox{\hyperlink{class_derived_histogram_calculator}{DerivedHistogramCalculator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_file_task_iterator}{FileTaskIterator}}}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00016}00016 \{}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00017}00017 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00018}00018   }
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00028}00028   \mbox{\hyperlink{class_derived_histogram_calculator_a5e3f98ccaa86d40c0622f6c045ca5551}{DerivedHistogramCalculator}}(\textcolor{keyword}{const} TString \&          \_name,}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00029}00029                              \mbox{\hyperlink{class_configuration}{Configuration}} \&          \_configuration,}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00030}00030                              vector<EventFilter*>     \_eventFilters,}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00031}00031                              vector<ParticleFilter*>  \_particleFilters,}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00032}00032                              \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                 \_selectedLevel);}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00033}00033   }
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00037}\mbox{\hyperlink{class_derived_histogram_calculator_ab4889d9316dd315e085321e7ce936c09}{00037}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_derived_histogram_calculator_ab4889d9316dd315e085321e7ce936c09}{\string~DerivedHistogramCalculator}}() \{\}}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00038}00038   }
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00042}00042   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_derived_histogram_calculator_a81fd0a9a823289ae5099e01577e73f99}{setDefaultConfiguration}}()}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00043}00043   }
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00044}00044   }
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00047}00047   virtual \textcolor{keywordtype}{void} \mbox{\hyperlink{class_file_task_iterator_aa413681230c253b7287f5bc3e9bb647b}{run}}();}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00048}00048 }
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00049}00049   ClassDef(\mbox{\hyperlink{class_derived_histogram_calculator}{DerivedHistogramCalculator}},0)}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00050}00050 \};}
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00051}00051 }
-\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00052}00052 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_DerivedHistogramCalculator */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef CAP\_\_DerivedHistogramCalculator}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define CAP\_\_DerivedHistogramCalculator}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_file_task_iterator_8hpp}{FileTaskIterator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00015}00015 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00017}\mbox{\hyperlink{class_derived_histogram_calculator}{00017}} \textcolor{keyword}{class }\mbox{\hyperlink{class_derived_histogram_calculator}{DerivedHistogramCalculator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_file_task_iterator}{FileTaskIterator}}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00018}00018 \{}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00019}00019 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00020}00020   }
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00030}00030   \mbox{\hyperlink{class_derived_histogram_calculator_a5e3f98ccaa86d40c0622f6c045ca5551}{DerivedHistogramCalculator}}(\textcolor{keyword}{const} TString \&          \_name,}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00031}00031                              \mbox{\hyperlink{class_configuration}{Configuration}} \&          \_configuration,}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00032}00032                              vector<EventFilter*>     \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00033}00033                              vector<ParticleFilter*>  \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00034}00034                              \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                 \_selectedLevel);}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00035}00035   }
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00039}\mbox{\hyperlink{class_derived_histogram_calculator_ab4889d9316dd315e085321e7ce936c09}{00039}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_derived_histogram_calculator_ab4889d9316dd315e085321e7ce936c09}{\string~DerivedHistogramCalculator}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00040}00040   }
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00044}00044   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_derived_histogram_calculator_a81fd0a9a823289ae5099e01577e73f99}{setDefaultConfiguration}}()}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00045}00045   }
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00046}00046   }
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00049}00049   virtual \textcolor{keywordtype}{void} run();}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00051}00051   ClassDef(\mbox{\hyperlink{class_derived_histogram_calculator}{DerivedHistogramCalculator}},0)}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00052}00052 \};}
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_derived_histogram_calculator_8hpp_source_l00054}00054 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_DerivedHistogramCalculator */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

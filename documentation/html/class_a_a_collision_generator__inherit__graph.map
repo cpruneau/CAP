@@ -1,5 +1,5 @@
 <map id="AACollisionGenerator" name="AACollisionGenerator">
 <area shape="rect" id="node1" title="MC generator producing AA collisions as superpositions of nBinary nucleon&#45;nucleon collisions." alt="" coords="5,155,152,181"/>
-<area shape="rect" id="node2" href="$class_task.html" title=" " alt="" coords="53,80,104,107"/>
+<area shape="rect" id="node2" href="$class_task.html" title="Base class defining the notion of light weight tasks for the generation and analysis of data." alt="" coords="53,80,104,107"/>
 <area shape="rect" id="node3" href="$class_message_logger.html" title=" " alt="" coords="21,5,136,32"/>
 </map>

@@ -545,7 +545,7 @@ void Plotter::setProperties(TH1 * h, const GraphConfiguration & graphConfigurati
   yAxis->SetLabelOffset(graphConfiguration.yLabelOffset);
   if (h->IsA() == TH2::Class()  || h->IsA() == TH2F::Class() || h->IsA() == TH2F::Class() )
     {
-    if (reportDebug()) cout << "Setting properties as 2D histo: " << h->GetTitle() << endl;
+    if (reportDebug(__FUNCTION__)) cout << "Setting properties as 2D histo: " << h->GetTitle() << endl;
     TAxis * zAxis = (TAxis *) h->GetZaxis();
     zAxis->SetNdivisions(graphConfiguration.nZDivisions);
     zAxis->SetTitleSize(graphConfiguration.zTitleSize);
@@ -608,7 +608,7 @@ void Plotter::setProperties(TGraph * g, const GraphConfiguration & graphConfigur
    cout << "Setting properties of graph " << g->GetTitle() << endl;
    }
   setProperties(g,graphConfiguration);
-  if (reportDebug()) cout << "Setting properties of histo: " << g->GetTitle() << endl;
+  if (reportDebug(__FUNCTION__)) cout << "Setting properties of histo: " << g->GetTitle() << endl;
   TAxis * xAxis = (TAxis *) g->GetXaxis();
   xAxis->SetTitle(xTitle);
   TAxis * yAxis = (TAxis *) g->GetYaxis();

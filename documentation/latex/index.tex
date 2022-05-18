@@ -1,0 +1,41 @@
+\hypertarget{index_Introduction}{}\doxysection{Introduction}\label{index_Introduction}
+blablablabla blablablabla\hypertarget{index_prelims}{}\doxysection{Download, Installation/\+Configuration, Building, Usage}\label{index_prelims}
+\hypertarget{index_prereqs}{}\doxysubsection{Prerequisites}\label{index_prereqs}
+The correlation analysis package (CAP) consists of several modules and classes designed for use within the \mbox{[}root\mbox{]} data analysis framework. Depending on your needs, it may be sufficient to have a binary installation of \char`\"{}root\char`\"{}, but if you require the generation of collision data with, e.\+g., the \mbox{[}PYTHIA\mbox{]} model (PYTHIA8), you may need to install and build root from source. Evidently, to use such generators as Pythia8, you will additionally have to download, install, and build PYTHIA8 on your own machine. CAP is orgainzed into several modules that you may not readily need in your analysis. The package thus use CMake to build and maintain the libraries associated with each module. Instructions to configure and compile the basic CAP package are provided in sec. XXXXX. You may optionally download the DOXYGEN documentation framework if you plan to add and document modules and packages.\hypertarget{index_autotoc_md0}{}\doxysubsection{Dependencies}\label{index_autotoc_md0}
+
+\begin{DoxyItemize}
+\item cmake
+\begin{DoxyItemize}
+\item Main website\+: \href{https://cmake.org/}{\texttt{ https\+://cmake.\+org/}}
+\item Download \+: \href{https://cmake.org/download/}{\texttt{ https\+://cmake.\+org/download/}}
+\end{DoxyItemize}
+\item root
+\begin{DoxyItemize}
+\item Main website \+: \href{https://root.cern/}{\texttt{ https\+://root.\+cern/}}
+\item Installing \+: \href{https://root.cern/install/}{\texttt{ https\+://root.\+cern/install/}}
+\end{DoxyItemize}
+\item PYTHIA \+: \href{https://pythia.org}{\texttt{ https\+://pythia.\+org}}
+\item DOXYGEN \+: \href{https://www.doxygen.nl}{\texttt{ https\+://www.\+doxygen.\+nl}}
+\end{DoxyItemize}\hypertarget{index_download}{}\doxysubsection{Downloading CAP}\label{index_download}
+\hypertarget{index_installation}{}\doxysubsection{Installation/\+Configuration}\label{index_installation}
+In its current version, CAP does include or provide for the building of binary executables (although it is easy to setup if you are proficient with CMAKE). Its uses thus relies entirely on a generic version of root and root loads of relevant CAP (root compatible) libraries. The building, compilation, and use of the CAP package is determined by few environment varibles which can be efficiently setup and assigned by sourcing the SETUP\+\_\+\+CAP configuration file.
+
+\begin{DoxyVerb}* cd SOMEPATH/CAP;
+* source Setup_CAP
+* \end{DoxyVerb}
+
+
+Prior to sourcing this setup file, however, you must edit the file to choose appropriate valeues to the following lines that assigne environment variables \begin{DoxyVerb}* export ROOT_SELECTED_VERSION="/Users/YourName/rootdirectory/"
+* export CAP_LARGE_DATA="/Volumes/SomeHardDiskOfYourChoice/CAP-DATA/"
+* \end{DoxyVerb}
+
+
+The Setup\+\_\+\+CAP script will assign default values for the location in binary and library files produced when build the libraries. You can evidently modify these to your liking.\hypertarget{index_building}{}\doxysubsection{Building}\label{index_building}
+\hypertarget{index_usage}{}\doxysubsection{Examples}\label{index_usage}
+\hypertarget{index_model}{}\doxysection{Object Model}\label{index_model}
+blablablabla blablablabla blablablabla blablablabla\hypertarget{index_modules}{}\doxysection{Modules and Components}\label{index_modules}
+\hypertarget{index_base}{}\doxysubsection{Base}\label{index_base}
+blablablabla\hypertarget{index_generators}{}\doxysubsection{Event Readers and Event Generators}\label{index_generators}
+\hypertarget{index_basicgen}{}\doxysubsubsection{Basic Generators (\+Basicgen)}\label{index_basicgen}
+blablablabla\hypertarget{index_collgeom}{}\doxysubsubsection{Collision Geometry  Generators (\+Coll\+Geom)}\label{index_collgeom}
+blablablabla 

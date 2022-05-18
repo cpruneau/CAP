@@ -1,45 +1,46 @@
 \hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source}{}\doxysection{Particle\+Pair\+Combined\+Histogram\+Calculator.\+hpp}
-\label{_particle_pair_combined_histogram_calculator_8hpp_source}\index{Base/ParticlePairCombinedHistogramCalculator.hpp@{Base/ParticlePairCombinedHistogramCalculator.hpp}}
+\label{_particle_pair_combined_histogram_calculator_8hpp_source}\index{Pair/ParticlePairCombinedHistogramCalculator.hpp@{Pair/ParticlePairCombinedHistogramCalculator.hpp}}
 \mbox{\hyperlink{_particle_pair_combined_histogram_calculator_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00010}00010 }
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#ifndef CAP\_\_ParticlePairCombinedHistogramCalculator}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#define CAP\_\_ParticlePairCombinedHistogramCalculator}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_histos_8hpp}{ParticleHistos.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_pair_histos_8hpp}{ParticlePairHistos.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_pair_derived_histos_8hpp}{ParticlePairDerivedHistos.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_pair_combined_histos_8hpp}{ParticlePairCombinedHistos.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00019}\mbox{\hyperlink{class_particle_pair_combined_histogram_calculator}{00019}} \textcolor{keyword}{class }\mbox{\hyperlink{class_particle_pair_combined_histogram_calculator}{ParticlePairCombinedHistogramCalculator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00020}00020 \{}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00021}00021 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00022}00022 }
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00023}00023   \mbox{\hyperlink{class_particle_pair_combined_histogram_calculator_a173b56efb4e768b782b1901c8a01c360}{ParticlePairCombinedHistogramCalculator}}(\textcolor{keyword}{const} TString \&         \_name,}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00024}00024                                           \mbox{\hyperlink{class_configuration}{Configuration}} \&         \_configuration,}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00025}00025                                           vector<EventFilter*>    \_eventFilters,}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00026}00026                                           vector<ParticleFilter*> \_particleFilters,}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00027}00027                                           \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                \_selectedLevel);}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00028}\mbox{\hyperlink{class_particle_pair_combined_histogram_calculator_a2c678bc40c39d2fd78d5e1bf6cf7f3b4}{00028}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_pair_combined_histogram_calculator_a2c678bc40c39d2fd78d5e1bf6cf7f3b4}{\string~ParticlePairCombinedHistogramCalculator}}() \{\}}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00029}00029   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_pair_combined_histogram_calculator_a806d12f77d5cc74563942ae18f4f5aa5}{createHistograms}}();}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00030}00030   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}{loadHistograms}}(TFile * inputFile);}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00031}00031   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_pair_combined_histogram_calculator_aafc1a86d027076c02d9c6007f425ed03}{calculateCombinedHistograms}}(\mbox{\hyperlink{class_particle_pair_derived_histos}{ParticlePairDerivedHistos}} * derivedHistos);}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00032}00032 }
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00033}00033 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00034}00034 }
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00035}00035    ClassDef(\mbox{\hyperlink{class_particle_pair_combined_histogram_calculator}{ParticlePairCombinedHistogramCalculator}},0)}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00036}00036 \};}
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef CAP\_\_ParticlePairCombinedHistogramCalculator}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define CAP\_\_ParticlePairCombinedHistogramCalculator}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_histos_8hpp}{ParticleHistos.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_pair_histos_8hpp}{ParticlePairHistos.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_pair_derived_histos_8hpp}{ParticlePairDerivedHistos.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_pair_combined_histos_8hpp}{ParticlePairCombinedHistos.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00020}\mbox{\hyperlink{class_particle_pair_combined_histogram_calculator}{00020}} \textcolor{keyword}{class }\mbox{\hyperlink{class_particle_pair_combined_histogram_calculator}{ParticlePairCombinedHistogramCalculator}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00021}00021 \{}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00022}00022 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00024}00024   \mbox{\hyperlink{class_particle_pair_combined_histogram_calculator_a173b56efb4e768b782b1901c8a01c360}{ParticlePairCombinedHistogramCalculator}}(\textcolor{keyword}{const} TString \&         \_name,}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00025}00025                                           \mbox{\hyperlink{class_configuration}{Configuration}} \&         \_configuration,}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00026}00026                                           vector<EventFilter*>    \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00027}00027                                           vector<ParticleFilter*> \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00028}00028                                           \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                \_selectedLevel);}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00029}\mbox{\hyperlink{class_particle_pair_combined_histogram_calculator_a2c678bc40c39d2fd78d5e1bf6cf7f3b4}{00029}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_pair_combined_histogram_calculator_a2c678bc40c39d2fd78d5e1bf6cf7f3b4}{\string~ParticlePairCombinedHistogramCalculator}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00030}00030   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_pair_combined_histogram_calculator_a806d12f77d5cc74563942ae18f4f5aa5}{createHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00031}00031   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}{loadHistograms}}(TFile * inputFile);}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00032}00032   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_pair_combined_histogram_calculator_aafc1a86d027076c02d9c6007f425ed03}{calculateCombinedHistograms}}(\mbox{\hyperlink{class_particle_pair_derived_histos}{ParticlePairDerivedHistos}} * derivedHistos);}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00034}00034 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00036}00036    ClassDef(\mbox{\hyperlink{class_particle_pair_combined_histogram_calculator}{ParticlePairCombinedHistogramCalculator}},0)}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00037}00037 \};}
 \DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00038}00038 }
-\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00039}00039 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_ParticlePairCombinedHistogramCalculator */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_particle_pair_combined_histogram_calculator_8hpp_source_l00040}00040 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_ParticlePairCombinedHistogramCalculator */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

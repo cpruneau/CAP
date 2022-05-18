@@ -38,12 +38,12 @@
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00034}00034           \textcolor{keyword}{const} Char\_t* outFileName,}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00035}00035           \textcolor{keyword}{const} Int\_t maxEvents=0000000)\{}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00036}00036  }
-\DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00037}00037   TTree* tree = 0;}
+\DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00037}00037   TTree* \mbox{\hyperlink{classtree}{tree}} = 0;}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00038}00038   }
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00039}00039   \textcolor{keywordflow}{if}(strstr(inFileName, \textcolor{stringliteral}{"{}.dat"{}})) \{}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00040}00040     }
-\DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00041}00041     tree = ReadChainFromFile(inFileName, \textcolor{stringliteral}{"{}PIDTree"{}}, 0);}
-\DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00042}00042     tree-\/>SetBranchStatus(\textcolor{stringliteral}{"{}AnalysisV0Track*"{}} , 0);}
+\DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00041}00041     \mbox{\hyperlink{classtree}{tree}} = ReadChainFromFile(inFileName, \textcolor{stringliteral}{"{}PIDTree"{}}, 0);}
+\DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00042}00042     \mbox{\hyperlink{classtree}{tree}}-\/>SetBranchStatus(\textcolor{stringliteral}{"{}AnalysisV0Track*"{}} , 0);}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00043}00043   \} \textcolor{keywordflow}{else} \{}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00044}00044     TFile* inFile = TFile::Open(inFileName);}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00045}00045     \textcolor{keywordflow}{if}(!inFile)}
@@ -55,8 +55,8 @@
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00051}00051   TClonesArray* trackArray = 0;}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00052}00052   TClonesArray* GentrackArray = 0;}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00053}00053   AliAnalysisPIDCascadeEvent* \textcolor{keyword}{event} = 0;}
-\DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00054}00054   tree-\/>SetBranchAddress(\textcolor{stringliteral}{"{}AnalysisEvent"{}}, \&event);}
-\DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00055}00055   tree-\/>SetBranchAddress(\textcolor{stringliteral}{"{}AnalysisTrack"{}}, \&trackArray);}
+\DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00054}00054   \mbox{\hyperlink{classtree}{tree}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}AnalysisEvent"{}}, \&event);}
+\DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00055}00055   \mbox{\hyperlink{classtree}{tree}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}AnalysisTrack"{}}, \&trackArray);}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00056}00056 }
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00057}00057   TFile* file = \textcolor{keyword}{new} TFile(outFileName, \textcolor{stringliteral}{"{}RECREATE"{}});}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00058}00058   file-\/>cd();}
@@ -282,7 +282,7 @@
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00282}00282   \textcolor{keyword}{const} Int\_t nV0signals = 64;}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00283}00283   }
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00285}00285   \textcolor{comment}{//Event Loop}}
-\DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00287}00287 \textcolor{comment}{}  Int\_t nEvents = tree-\/>GetEntries();}
+\DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00287}00287 \textcolor{comment}{}  Int\_t nEvents = \mbox{\hyperlink{classtree}{tree}}-\/>GetEntries();}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00288}00288   cout << \textcolor{stringliteral}{"{}Number of events: "{}} << nEvents << endl;}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00289}00289  \textcolor{keywordflow}{if}(maxEvents>0 \&\& maxEvents < nEvents) \{   }
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00290}00290     nEvents = maxEvents;}
@@ -293,7 +293,7 @@
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00295}00295 }
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00296}00296     Int\_t multflag = 0;    }
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00297}00297 }
-\DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00298}00298     tree-\/>GetEntry(n);}
+\DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00298}00298     \mbox{\hyperlink{classtree}{tree}}-\/>\mbox{\hyperlink{classtree_ad43260e64412eb40327b9f356de6f089}{GetEntry}}(n);}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00299}00299     \textcolor{keywordflow}{if}((n+1)\%100000==0)}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00300}00300       \{}
 \DoxyCodeLine{\Hypertarget{_spherocity_plotter_8_c_source_l00301}00301     TTimeStamp* time = \textcolor{keyword}{new} TTimeStamp();}

@@ -21,20 +21,28 @@ class EventCountHistos : public Histograms
 {
 public:
 
-  EventCountHistos(const TString & _collectionName,
+  EventCountHistos(const TString & _name,
                    Configuration & _configuration,
-                   LogLevel        _debugLevel);
+                   int _nEventFilters,
+                   int _nParticleFilters,
+                   LogLevel _debugLevel);
   virtual ~EventCountHistos(){}
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);
-  virtual void fill(vector<double> eventCounts);
+  virtual void fill(long nTaskExecutedReset,
+                    vector<long> & nEventsAcceptedReset,
+                    vector<long> & nParticleAcceptedReset);
 
-  // //////////////////////////////////////////////////////////////////////////
-  // Data Members - Histograms
-  // //////////////////////////////////////////////////////////////////////////
-  TH1 * h_eventCounts;
+protected:
 
-    ClassDef(EventCountHistos,0)
+  int nEventFilters;
+  int nParticleFilters;
+
+  TH1 * h_taskExecutedReset;
+  TH1 * h_eventAcceptedReset;
+  TH1 * h_partilceAcceptedReset;
+
+  ClassDef(EventCountHistos,0)
 
 };
 

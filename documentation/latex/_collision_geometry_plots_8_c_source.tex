@@ -74,8 +74,8 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00070}00070   graphConfigurations[iGraph]-\/>\mbox{\hyperlink{class_graph_configuration_a70e487f523387ba98fc5470a1a039144}{plotOption}} = \textcolor{stringliteral}{"{}E0"{}};}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00071}00071   \}}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00072}00072 }
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00073}00073   TString \mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}}  = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/GeometryStudies/"{}};}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00074}00074   TString \mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}} = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/GeometryStudies/"{}};}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00073}00073   TString inputPath  = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/GeometryStudies/"{}};}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00074}00074   TString outputPath = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/GeometryStudies/"{}};}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00075}00075 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00076}00076 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00077}00077   \textcolor{keywordtype}{int} nFiles            = 3;}
@@ -91,7 +91,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00087}00087   TFile ** \mbox{\hyperlink{_plot_hep_data_8_c_a32be468b422ff3800be85388bcdce9d1}{inputFiles}}  = \textcolor{keyword}{new} TFile* [nFiles];}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00088}00088   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iFile=0;iFile<nFiles;iFile++)}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00089}00089   \{}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00090}00090   fileName = \mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}}+*fileNames[iFile];}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00090}00090   fileName = inputPath+*fileNames[iFile];}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00091}00091   \mbox{\hyperlink{_plot_hep_data_8_c_a32be468b422ff3800be85388bcdce9d1}{inputFiles}}[iFile] = \textcolor{keyword}{new} TFile(fileName,\textcolor{stringliteral}{"{}OLD"{}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00092}00092   \textcolor{keywordflow}{if} (\mbox{\hyperlink{_plot_hep_data_8_c_a32be468b422ff3800be85388bcdce9d1}{inputFiles}}[iFile])}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00093}00093     \{}
@@ -154,7 +154,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00150}00150                         \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 24.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00151}00151                         \textcolor{stringliteral}{"{}Rel. Freq. (a.u.)"{}}, 1.0E-\/6, 0.03,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00152}00152                         histograms,titles,0.25, 0.65, 0.35, 0.85, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00153}00153   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00153}00153   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00154}00154 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00155}00155   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65ab06aef94aa1805e40340d8098cadfcaf}{CanvasConfiguration::LogY}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00156}00156   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nPart"{}};}
@@ -172,7 +172,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00168}00168                         \textcolor{stringliteral}{"{}N\_\{part\}"{}}, 0.0, 460.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00169}00169                         \textcolor{stringliteral}{"{}Rel. Freq. (a.u.)"{}}, 1.0E-\/6, 1.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00170}00170                         histograms,titles,0.25, 0.25, 0.45, 0.45, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00171}00171   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00171}00171   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00172}00172 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00173}00173   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65ab06aef94aa1805e40340d8098cadfcaf}{CanvasConfiguration::LogY}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00174}00174   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nBinary"{}};}
@@ -190,7 +190,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00186}00186                                \textcolor{stringliteral}{"{}N\_\{bin\}"{}}, 0.0, 2400.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00187}00187                                \textcolor{stringliteral}{"{}Rel. Freq. (a.u.)"{}}, 1.0E-\/6, 1.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00188}00188                         histograms,titles,0.55, 0.75, 0.8, 0.9, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00189}00189   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00189}00189   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00190}00190 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00191}00191   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00192}00192   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nPartVsB\_Prof"{}};}
@@ -202,7 +202,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00198}00198                         \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00199}00199                         \textcolor{stringliteral}{"{}<N\_\{part\}>"{}}, 0.0, 450,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00200}00200                         histograms,titles,0.65, 0.65, 0.8, 0.85, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00201}00201   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00201}00201   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00202}00202 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00203}00203   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00204}00204   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nBinaryVsB\_Prof"{}};}
@@ -214,7 +214,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00210}00210                         \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00211}00211                         \textcolor{stringliteral}{"{}<N\_\{bin\}>"{}}, 0.0, 2500.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00212}00212                         histograms,titles,0.65, 0.65, 0.8, 0.85, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00213}00213   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00213}00213   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00214}00214 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00215}00215 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00216}00216 }
@@ -228,7 +228,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00224}00224                         \textcolor{stringliteral}{"{}N\_\{part\}"{}}, 0.0, 450.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00225}00225                         \textcolor{stringliteral}{"{}<N\_\{bin\}>"{}}, 0.0, 2500.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00226}00226                         histograms,titles,0.25, 0.55, 0.45, 0.75, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00227}00227   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00227}00227   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00228}00228 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00229}00229 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00230}00230   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
@@ -241,7 +241,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00237}00237                         \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00238}00238                         \textcolor{stringliteral}{"{}RMS[N\_\{part\}]"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00239}00239                         histograms,titles,0.65, 0.65, 0.8, 0.85, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00240}00240   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00240}00240   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00241}00241 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00242}00242 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00243}00243   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
@@ -254,7 +254,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00250}00250                         \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00251}00251                         \textcolor{stringliteral}{"{}RMS[N\_\{bin\}]"{}}, 0.0, 120.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00252}00252                         histograms,titles,0.65, 0.65, 0.8, 0.85, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00253}00253   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00253}00253   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00254}00254 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00255}00255   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00256}00256   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nPartRmsVsXsect"{}};}
@@ -266,7 +266,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00262}00262                                \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00263}00263                                \textcolor{stringliteral}{"{}RMS(N\_\{part\})"{}},  0.0, 30.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00264}00264                                histograms,titles,0.75, 0.65, 0.85, 0.85, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00265}00265   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00265}00265   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00266}00266 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00267}00267 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00268}00268   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
@@ -279,7 +279,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00275}00275                                \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00276}00276                                \textcolor{stringliteral}{"{}RMS(N\_\{bin\})"{}},  0.0, 200.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00277}00277                                histograms,titles,0.75, 0.65, 0.85, 0.85, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00278}00278   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00278}00278   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00279}00279 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00280}00280 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00281}00281   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
@@ -291,7 +291,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00287}00287                         \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 24.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00288}00288                         \textcolor{stringliteral}{"{}RMS[N\_\{part\}]"{}}, 0.0, 30.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00289}00289                         histograms,titles,0.65, 0.65, 0.8, 0.85, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00290}00290   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00290}00290   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00291}00291 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00292}00292   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00293}00293   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nBinaryRmsVsBOverlay"{}};}
@@ -302,7 +302,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00298}00298                         \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 24.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00299}00299                         \textcolor{stringliteral}{"{}RMS[N\_\{Bin\}]"{}}, 0.0, 200.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00300}00300                         histograms,titles,0.65, 0.65, 0.8, 0.85, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00301}00301   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00301}00301   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00302}00302 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00303}00303   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00304}00304   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nPartOmegaVsBOverlay"{}};}
@@ -322,7 +322,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00318}00318   compPlotters[iPlotter]-\/>\mbox{\hyperlink{class_plotter_a9917d5248166be185f748c7fc17ce4fb}{createLabel}}(11.8, 3.5, 90.0, 1, 1, 0.04, \textcolor{stringliteral}{"{}50-\/60\%"{}}, \textcolor{keyword}{true});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00319}00319   compPlotters[iPlotter]-\/>\mbox{\hyperlink{class_plotter_a9917d5248166be185f748c7fc17ce4fb}{createLabel}}(12.8, 4.0, 90.0, 1, 1, 0.04, \textcolor{stringliteral}{"{}60-\/70\%"{}}, \textcolor{keyword}{true});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00320}00320   compPlotters[iPlotter]-\/>\mbox{\hyperlink{class_plotter_a9917d5248166be185f748c7fc17ce4fb}{createLabel}}(14.0, 3.9, 90.0, 1, 1, 0.04, \textcolor{stringliteral}{"{}70-\/80\%"{}}, \textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00321}00321   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00321}00321   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00322}00322 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00323}00323   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00324}00324   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nBinaryOmegaVsBOverlay"{}};}
@@ -342,7 +342,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00338}00338   compPlotters[iPlotter]-\/>\mbox{\hyperlink{class_plotter_a9917d5248166be185f748c7fc17ce4fb}{createLabel}}(12.0, 12.0, 90.0, 1, 1, 0.04, \textcolor{stringliteral}{"{}50-\/60\%"{}}, \textcolor{keyword}{true});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00339}00339   compPlotters[iPlotter]-\/>\mbox{\hyperlink{class_plotter_a9917d5248166be185f748c7fc17ce4fb}{createLabel}}(13.0, 11.0, 90.0, 1, 1, 0.04, \textcolor{stringliteral}{"{}60-\/70\%"{}}, \textcolor{keyword}{true});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00340}00340   compPlotters[iPlotter]-\/>\mbox{\hyperlink{class_plotter_a9917d5248166be185f748c7fc17ce4fb}{createLabel}}(14.0, 10.0, 90.0, 1, 1, 0.04, \textcolor{stringliteral}{"{}70-\/80\%"{}}, \textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00341}00341   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00341}00341   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00342}00342 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00343}00343 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00344}00344 }
@@ -359,7 +359,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00355}00355                         \textcolor{stringliteral}{"{}N\_\{part\}"{}}, 0.0, 440.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00356}00356                         \textcolor{stringliteral}{"{}RMS[N\_\{bin\}]"{}}, 0.0, 120.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00357}00357                         histograms,titles,0.25, 0.65, 0.45, 0.85, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00358}00358   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00358}00358   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00359}00359 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00360}00360   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00361}00361   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nPartOmegaVsB"{}};}
@@ -371,7 +371,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00367}00367                         \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00368}00368                         \textcolor{stringliteral}{"{}\#omega[N\_\{Part\}]"{}}, 0.0, 4.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00369}00369                         histograms,titles,0.25, 0.65, 0.45, 0.85, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00370}00370   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00370}00370   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00371}00371 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00372}00372 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00373}00373   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
@@ -384,7 +384,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00380}00380                         \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00381}00381                         \textcolor{stringliteral}{"{}\#omega[N\_\{bin\}]"{}}, 0.0, 5.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00382}00382                         histograms,titles,0.25, 0.65, 0.45, 0.85, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00383}00383   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00383}00383   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00384}00384 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00385}00385   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00386}00386   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nBinaryOmegaVsNPart"{}};}
@@ -396,7 +396,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00392}00392                         \textcolor{stringliteral}{"{}N\_\{part\}"{}}, 0.0, 440.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00393}00393                         \textcolor{stringliteral}{"{}\#omega[N\_\{bin\}]"{}}, 0.0, 15.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00394}00394                         histograms,titles,0.25, 0.65, 0.45, 0.85, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00395}00395   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00395}00395   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00396}00396 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00397}00397 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00398}00398   \textcolor{keywordtype}{int} nCoarseBins = geomHistos[0]-\/>\mbox{\hyperlink{class_collision_geometry_histograms_acccbf98c93f6d35a41c3652444f64a2c}{h\_nPartVsXsect\_Prof}}-\/>GetNbinsX();}
@@ -476,7 +476,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00472}00472   nPartRmsVsAvgNpart0-\/>Draw(\textcolor{stringliteral}{"{}PE"{}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00473}00473   nPartRmsVsAvgNpart1-\/>Draw(\textcolor{stringliteral}{"{}PE"{}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00474}00474   nPartRmsVsAvgNpart2-\/>Draw(\textcolor{stringliteral}{"{}PE"{}});}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00475}00475   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00475}00475   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00476}00476 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00477}00477   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00478}00478   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nPartOmegaVsAvgNPart"{}};}
@@ -505,7 +505,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00501}00501   compPlotters[iPlotter]-\/>\mbox{\hyperlink{class_plotter_a9917d5248166be185f748c7fc17ce4fb}{createLabel}}(nPartAvg1[6], nPartOmega1[6]+off, 90.0, 1, 1, 0.04, \textcolor{stringliteral}{"{}50-\/60\%"{}}, \textcolor{keyword}{true});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00502}00502   compPlotters[iPlotter]-\/>\mbox{\hyperlink{class_plotter_a9917d5248166be185f748c7fc17ce4fb}{createLabel}}(nPartAvg1[7], nPartOmega1[7]+off, 90.0, 1, 1, 0.04, \textcolor{stringliteral}{"{}60-\/70\%"{}}, \textcolor{keyword}{true});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00503}00503   compPlotters[iPlotter]-\/>\mbox{\hyperlink{class_plotter_a9917d5248166be185f748c7fc17ce4fb}{createLabel}}(nPartAvg1[8], nPartOmega1[8]+off, 90.0, 1, 1, 0.04, \textcolor{stringliteral}{"{}70-\/80\%"{}}, \textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00504}00504   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00504}00504   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00505}00505 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00506}00506 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00507}00507   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
@@ -524,7 +524,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00520}00520   nBinaryRmsVsAvgNpart0-\/>Draw(\textcolor{stringliteral}{"{}PE"{}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00521}00521   nBinaryRmsVsAvgNpart1-\/>Draw(\textcolor{stringliteral}{"{}PE"{}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00522}00522   nBinaryRmsVsAvgNpart2-\/>Draw(\textcolor{stringliteral}{"{}PE"{}});}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00523}00523   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00523}00523   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00524}00524 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00525}00525   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00526}00526   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nBinaryOmegaVsAvgNPart"{}};}
@@ -552,7 +552,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00548}00548   compPlotters[iPlotter]-\/>\mbox{\hyperlink{class_plotter_a9917d5248166be185f748c7fc17ce4fb}{createLabel}}(nPartAvg1[6], nBinaryOmega1[6]+off, 90.0, 1, 1, 0.04, \textcolor{stringliteral}{"{}50-\/60\%"{}}, \textcolor{keyword}{true});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00549}00549   compPlotters[iPlotter]-\/>\mbox{\hyperlink{class_plotter_a9917d5248166be185f748c7fc17ce4fb}{createLabel}}(nPartAvg1[7], nBinaryOmega1[7]+off, 90.0, 1, 1, 0.04, \textcolor{stringliteral}{"{}60-\/70\%"{}}, \textcolor{keyword}{true});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00550}00550   compPlotters[iPlotter]-\/>\mbox{\hyperlink{class_plotter_a9917d5248166be185f748c7fc17ce4fb}{createLabel}}(nPartAvg1[8], nBinaryOmega1[8]+off, 90.0, 1, 1, 0.04, \textcolor{stringliteral}{"{}70-\/80\%"{}}, \textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00551}00551   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00551}00551   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00552}00552 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00553}00553   \textcolor{keywordflow}{return} -\/10;}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00554}00554 }
@@ -566,7 +566,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00562}00562                         \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00563}00563                         \textcolor{stringliteral}{"{}R\_\{2\}[N\_\{part\}]"{}}, -\/0.7, 0.4,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00564}00564                         histograms,titles,0.35, 0.35, 0.5, 0.45, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00565}00565   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00565}00565   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00566}00566 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00567}00567 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00568}00568   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
@@ -579,7 +579,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00575}00575                         \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00576}00576                         \textcolor{stringliteral}{"{}R\_\{2\}[N\_\{bin\}]"{}},  -\/0.7, 0.7,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00577}00577                         histograms,titles,0.35, 0.65, 0.5, 0.85, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00578}00578   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00578}00578   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00579}00579 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00580}00580    canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00581}00581   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nBinaryR2VsNPart"{}};}
@@ -591,7 +591,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00587}00587                         \textcolor{stringliteral}{"{}N\_\{part\}"{}}, 0.0, 440.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00588}00588                         \textcolor{stringliteral}{"{}R\_\{2\}[N\_\{bin\}]"{}},  -\/0.05, 0.05,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00589}00589                         histograms,titles,0.35, 0.35, 0.5, 0.55, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00590}00590   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00590}00590   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00591}00591 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00592}00592   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00593}00593   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nPartVsXsect\_Prof"{}};}
@@ -603,7 +603,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00599}00599                                \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00600}00600                                \textcolor{stringliteral}{"{}<N\_\{part\}>"{}},  0.0, 440.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00601}00601                                histograms,titles,0.65, 0.55, 0.75, 0.75, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00602}00602   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00602}00602   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00603}00603 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00604}00604 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00605}00605   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
@@ -616,7 +616,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00612}00612                                \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00613}00613                                \textcolor{stringliteral}{"{}<N\_\{bin\}>"{}},  0.0, 2400.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00614}00614                                histograms,titles,0.65, 0.55, 0.75, 0.75, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00615}00615   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00615}00615   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00616}00616 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00617}00617   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00618}00618   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nPartOmegaVsXsect"{}};}
@@ -628,7 +628,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00624}00624                                \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00625}00625                                \textcolor{stringliteral}{"{}\#omega(N\_\{part\})"{}},  0.0, 5.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00626}00626                                histograms,titles,0.25, 0.65, 0.45, 0.85, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00627}00627   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00627}00627   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00628}00628 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00629}00629   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00630}00630   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nBinaryOmegaVsXsect"{}};}
@@ -640,7 +640,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00636}00636                                \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00637}00637                                \textcolor{stringliteral}{"{}\#omega(N\_\{bin\})"{}},  0.0, 50.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00638}00638                                histograms,titles,0.25, 0.55, 0.45, 0.75, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00639}00639   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00639}00639   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00640}00640 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00641}00641     canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00642}00642     canvasName = \textcolor{stringliteral}{"{}ModelComp\_nPartR2VsXsect"{}};}
@@ -652,7 +652,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00648}00648                                  \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00649}00649                                  \textcolor{stringliteral}{"{}R\_\{2\}(N\_\{part\})"{}},  -\/0.5, 0.5,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00650}00650                                  histograms,titles,0.25, 0.25, 0.45, 0.45, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00651}00651     compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00651}00651     compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00652}00652 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00653}00653     canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00654}00654     canvasName = \textcolor{stringliteral}{"{}ModelComp\_nBinaryR2VsXsect"{}};}
@@ -664,7 +664,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00660}00660                                  \textcolor{stringliteral}{"{}b (fm)"{}}, 0.0, 20.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00661}00661                                  \textcolor{stringliteral}{"{}R\_\{2\}(N\_\{bin\})"{}},  -\/1.0, 1.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00662}00662                                  histograms,titles,0.25, 0.25, 0.45, 0.45, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00663}00663     compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00663}00663     compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00664}00664 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00665}00665   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65ab06aef94aa1805e40340d8098cadfcaf}{CanvasConfiguration::LogY}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00666}00666   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nPartVsCent"{}};}
@@ -698,7 +698,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00694}00694                         \textcolor{stringliteral}{"{}N\_\{part\}"{}}, 0.0, 460.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00695}00695                         \textcolor{stringliteral}{"{}Rel. Freq. (a.u.)"{}}, 1.0E-\/6, 10.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00696}00696                         histograms,titles,0.45, 0.62, 0.6, 0.92, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00697}00697   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00697}00697   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00698}00698 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00700}00700   canvasConfiguration-\/>\mbox{\hyperlink{class_canvas_configuration_a97dc6b2a1222a03c5fa2e268eebcfcc3}{setAxes}}(\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65ab06aef94aa1805e40340d8098cadfcaf}{CanvasConfiguration::LogY}});}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00701}00701   canvasName = \textcolor{stringliteral}{"{}ModelComp\_nBinaryVsCent"{}};}
@@ -732,7 +732,7 @@
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00729}00729                         \textcolor{stringliteral}{"{}N\_\{Bin\}"{}}, 0.0, 2400.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00730}00730                         \textcolor{stringliteral}{"{}Rel. Freq. (a.u.)"{}}, 1.0E-\/6, 10.0,}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00731}00731                         histograms,titles,0.45, 0.62, 0.6, 0.92, 0.04);}
-\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00732}00732   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00732}00732   compPlotters[iPlotter++]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00733}00733 }
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00734}00734 \textcolor{comment}{// rms vs}}
 \DoxyCodeLine{\Hypertarget{_collision_geometry_plots_8_c_source_l00735}00735 }

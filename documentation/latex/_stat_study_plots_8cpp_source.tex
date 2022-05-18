@@ -321,8 +321,8 @@
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00322}00322     graphConfigurations[iGraph] = \textcolor{keyword}{new} \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}}(1,iGraph);}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00323}00323     \}}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00324}00324 }
-\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00325}00325   TString \mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}} = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/StatStudy/"{}};}
-\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00326}00326   TString \mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}} = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/StatStudy/"{}};}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00325}00325   TString inputPath = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/StatStudy/"{}};}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00326}00326   TString outputPath = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/StatStudy/"{}};}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00327}00327   \textcolor{keywordtype}{int} nModels            = 5;}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00328}00328   TFile ** \mbox{\hyperlink{_plot_hep_data_8_c_a32be468b422ff3800be85388bcdce9d1}{inputFiles}} = \textcolor{keyword}{new} TFile* [nModels];}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00329}00329   \mbox{\hyperlink{class_stat_study_histograms}{StatStudyHistograms}} ** statStudy = \textcolor{keyword}{new} \mbox{\hyperlink{class_stat_study_histograms}{StatStudyHistograms}}*[nModels];}
@@ -345,23 +345,23 @@
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00346}00346     title += iModel;}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00347}00347 }
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00348}00348     modelTitle[iModel]  = \textcolor{keyword}{new} TString(title);}
-\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00349}00349     \mbox{\hyperlink{_plot_hep_data_8_c_a32be468b422ff3800be85388bcdce9d1}{inputFiles}}[iModel] = \textcolor{keyword}{new} TFile(\mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}}+name+\textcolor{stringliteral}{"{}.root"{}},\textcolor{stringliteral}{"{}OLD"{}});;}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00349}00349     \mbox{\hyperlink{_plot_hep_data_8_c_a32be468b422ff3800be85388bcdce9d1}{inputFiles}}[iModel] = \textcolor{keyword}{new} TFile(inputPath+name+\textcolor{stringliteral}{"{}.root"{}},\textcolor{stringliteral}{"{}OLD"{}});;}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00350}00350     statStudy[iModel]  = \textcolor{keyword}{new} \mbox{\hyperlink{class_stat_study_histograms}{StatStudyHistograms}}(\mbox{\hyperlink{_plot_hep_data_8_c_a32be468b422ff3800be85388bcdce9d1}{inputFiles}}[iModel], name ,\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa5f1f5d604d1a1e53af3b330224db4986}{MessageLogger::Debug}});}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00351}00351     plotter[iModel]    = \textcolor{keyword}{new} \mbox{\hyperlink{class_stat_study_plotter}{StatStudyPlotter}}();}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00352}00352     \textcolor{comment}{//plotter[iModel]-\/>makePlots(*modelName[iModel],statStudy[iModel],canvasConfiguration,graphConfigurations);}}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00353}00353     plotter[iModel]-\/>\mbox{\hyperlink{class_stat_study_plotter_ada2cb0c70c04b68d0a8a72ec9a99cdc6}{makePlots}}(canvasNameBase,statStudy[iModel],canvasConfiguration,graphConfigurations);}
-\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00354}00354     plotter[iModel]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00354}00354     plotter[iModel]-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00355}00355     \}}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00356}00356 }
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00357}00357   \mbox{\hyperlink{class_stat_study_plotter}{StatStudyPlotter}} * compPlotter = \textcolor{keyword}{new} \mbox{\hyperlink{class_stat_study_plotter}{StatStudyPlotter}}();}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00358}00358   compPlotter-\/>\mbox{\hyperlink{class_stat_study_plotter_a42722c4387ef37a10b4de4488e82f75e}{makeComparisonPlots}}(\textcolor{stringliteral}{"{}ModelComparisonSampleSize\_"{}}, canvasConfiguration,3,statStudy,modelTitle,graphConfigurations);}
-\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00359}00359   compPlotter-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00359}00359   compPlotter-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00360}00360 }
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00361}00361   \mbox{\hyperlink{class_stat_study_plotter}{StatStudyPlotter}} * compPlotter2 = \textcolor{keyword}{new} \mbox{\hyperlink{class_stat_study_plotter}{StatStudyPlotter}}();}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00362}00362   statStudy++;statStudy++;}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00363}00363   modelTitle++;modelTitle++;}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00364}00364    compPlotter2-\/>\mbox{\hyperlink{class_stat_study_plotter_a42722c4387ef37a10b4de4488e82f75e}{makeComparisonPlots}}(\textcolor{stringliteral}{"{}ModelComparisonPartMult\_"{}}, canvasConfiguration,3,statStudy,modelTitle,graphConfigurations);}
-\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00365}00365    compPlotter2-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00365}00365    compPlotter2-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00366}00366 }
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00367}00367   \textcolor{keywordflow}{return} 0;}
 \DoxyCodeLine{\Hypertarget{_stat_study_plots_8cpp_source_l00368}00368 \}}

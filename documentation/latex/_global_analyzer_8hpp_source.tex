@@ -1,64 +1,66 @@
 \hypertarget{_global_analyzer_8hpp_source}{}\doxysection{Global\+Analyzer.\+hpp}
-\label{_global_analyzer_8hpp_source}\index{Base/GlobalAnalyzer.hpp@{Base/GlobalAnalyzer.hpp}}
+\label{_global_analyzer_8hpp_source}\index{Global/GlobalAnalyzer.hpp@{Global/GlobalAnalyzer.hpp}}
 \mbox{\hyperlink{_global_analyzer_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00010}00010 }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#ifndef CAP\_\_GlobalAnalyzer}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#define CAP\_\_GlobalAnalyzer}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include <TParameter.h>}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}TFile.h"{}}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}TList.h"{}}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_event_8hpp}{Event.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_event_filter_8hpp}{EventFilter.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00019}00019 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_filter_8hpp}{ParticleFilter.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00020}00020 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_global_histos_8hpp}{GlobalHistos.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00021}00021 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_configuration_8hpp}{Configuration.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00022}00022 }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00034}\mbox{\hyperlink{class_global_analyzer}{00034}} \textcolor{keyword}{class }\mbox{\hyperlink{class_global_analyzer}{GlobalAnalyzer}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00035}00035 \{}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00036}00036 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00037}00037 }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00047}00047   \mbox{\hyperlink{class_global_analyzer_aa215511647880074a8162207e11b80ab}{GlobalAnalyzer}}(\textcolor{keyword}{const} TString           \& \_name,}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00048}00048                  \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}}     \& \_configuration,}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00049}00049                  vector<EventFilter*>    \& \_eventFilters,}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00050}00050                  vector<ParticleFilter*> \& \_particleFilters,}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00051}00051                  \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                  \_requiredLevel=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}});}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00052}00052   }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00056}\mbox{\hyperlink{class_global_analyzer_a35329d87b880640b1ad6dad77f6fdfba}{00056}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_global_analyzer_a35329d87b880640b1ad6dad77f6fdfba}{\string~GlobalAnalyzer}}() \{\}}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00057}00057   }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00061}00061   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_global_analyzer_a3d1397698628cfdcec6b12672e5c8926}{setDefaultConfiguration}}();}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00062}00062   }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00066}00066   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_global_analyzer_ac53f215ccbf04bf8c4ff33820f7edff8}{initialize}}();}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00067}00067   }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00072}00072   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_global_analyzer_a121a1469ca3935657410aece6865629c}{execute}}();}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00073}00073   }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00077}00077   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_global_analyzer_a15a2ca1de8bda49cc1dde4f618b5be25}{createHistograms}}();}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00078}00078   }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00082}00082   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}{loadHistograms}}(TFile * inputFile);}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00083}00083  }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00084}00084 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00085}00085   }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00086}\mbox{\hyperlink{class_global_analyzer_ae678de2b9e3fb0efa84274005a82ded2}{00086}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_global_analyzer_ae678de2b9e3fb0efa84274005a82ded2}{setEvent}};   }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00087}\mbox{\hyperlink{class_global_analyzer_a459401d6668c90f4175dafadcc978909}{00087}}   vector<double> \mbox{\hyperlink{class_global_analyzer_a459401d6668c90f4175dafadcc978909}{n}}; }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00088}\mbox{\hyperlink{class_global_analyzer_a10f99e3b7d7227dc43af893bc67df623}{00088}}   vector<double> \mbox{\hyperlink{class_global_analyzer_a10f99e3b7d7227dc43af893bc67df623}{e}}; }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00089}\mbox{\hyperlink{class_global_analyzer_aa2f901ea94cc526f51d71bf62f015130}{00089}}   vector<double> \mbox{\hyperlink{class_global_analyzer_aa2f901ea94cc526f51d71bf62f015130}{q}}; }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00090}\mbox{\hyperlink{class_global_analyzer_a0f3fcffaeb0004a7fbd8f9668655183b}{00090}}   vector<double> \mbox{\hyperlink{class_global_analyzer_a0f3fcffaeb0004a7fbd8f9668655183b}{s}}; }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00091}\mbox{\hyperlink{class_global_analyzer_a6d061bc2428b5f372c9cf7324f1e319f}{00091}}   vector<double> \mbox{\hyperlink{class_global_analyzer_a6d061bc2428b5f372c9cf7324f1e319f}{b}}; }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00092}00092 }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00093}00093   ClassDef(\mbox{\hyperlink{class_global_analyzer}{GlobalAnalyzer}},0)}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00094}00094 \};}
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00095}00095 }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00096}00096 }
-\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00097}00097 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_GlobalAnalyzer */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#ifndef CAP\_\_GlobalAnalyzer}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#define CAP\_\_GlobalAnalyzer}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include <TParameter.h>}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}TFile.h"{}}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}TList.h"{}}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00019}00019 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_event_8hpp}{Event.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00020}00020 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_event_filter_8hpp}{EventFilter.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00021}00021 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_filter_8hpp}{ParticleFilter.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00022}00022 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_global_histos_8hpp}{GlobalHistos.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00023}00023 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_configuration_8hpp}{Configuration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00036}\mbox{\hyperlink{class_global_analyzer}{00036}} \textcolor{keyword}{class }\mbox{\hyperlink{class_global_analyzer}{GlobalAnalyzer}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00037}00037 \{}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00038}00038 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00049}00049   \mbox{\hyperlink{class_global_analyzer_aa215511647880074a8162207e11b80ab}{GlobalAnalyzer}}(\textcolor{keyword}{const} TString           \& \_name,}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00050}00050                  \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}}     \& \_configuration,}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00051}00051                  vector<EventFilter*>    \& \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00052}00052                  vector<ParticleFilter*> \& \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00053}00053                  \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                  \_requiredLevel=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}});}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00054}00054   }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00058}\mbox{\hyperlink{class_global_analyzer_a35329d87b880640b1ad6dad77f6fdfba}{00058}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_global_analyzer_a35329d87b880640b1ad6dad77f6fdfba}{\string~GlobalAnalyzer}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00059}00059   }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00063}00063   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_global_analyzer_a3d1397698628cfdcec6b12672e5c8926}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00064}00064   }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00068}00068   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_global_analyzer_ac53f215ccbf04bf8c4ff33820f7edff8}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00069}00069   }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00074}00074   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_global_analyzer_a121a1469ca3935657410aece6865629c}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00075}00075   }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00079}00079   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_global_analyzer_a15a2ca1de8bda49cc1dde4f618b5be25}{createHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00080}00080   }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00084}00084   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_ac5e8107ae37d2037d96eee63ae4b47ef}{loadHistograms}}(TFile * inputFile);}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00085}00085  }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00086}00086 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00087}00087   }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00088}\mbox{\hyperlink{class_global_analyzer_ae678de2b9e3fb0efa84274005a82ded2}{00088}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_global_analyzer_ae678de2b9e3fb0efa84274005a82ded2}{setEvent}};   }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00089}\mbox{\hyperlink{class_global_analyzer_a459401d6668c90f4175dafadcc978909}{00089}}   vector<double> \mbox{\hyperlink{class_global_analyzer_a459401d6668c90f4175dafadcc978909}{n}}; }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00090}\mbox{\hyperlink{class_global_analyzer_a10f99e3b7d7227dc43af893bc67df623}{00090}}   vector<double> \mbox{\hyperlink{class_global_analyzer_a10f99e3b7d7227dc43af893bc67df623}{e}}; }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00091}\mbox{\hyperlink{class_global_analyzer_aa2f901ea94cc526f51d71bf62f015130}{00091}}   vector<double> \mbox{\hyperlink{class_global_analyzer_aa2f901ea94cc526f51d71bf62f015130}{q}}; }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00092}\mbox{\hyperlink{class_global_analyzer_a0f3fcffaeb0004a7fbd8f9668655183b}{00092}}   vector<double> \mbox{\hyperlink{class_global_analyzer_a0f3fcffaeb0004a7fbd8f9668655183b}{s}}; }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00093}\mbox{\hyperlink{class_global_analyzer_a6d061bc2428b5f372c9cf7324f1e319f}{00093}}   vector<double> \mbox{\hyperlink{class_global_analyzer_a6d061bc2428b5f372c9cf7324f1e319f}{b}}; }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00095}00095   ClassDef(\mbox{\hyperlink{class_global_analyzer}{GlobalAnalyzer}},0)}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00096}00096 \};}
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{_global_analyzer_8hpp_source_l00099}00099 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_GlobalAnalyzer */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -1,6 +1,5 @@
 <map id="ResonanceGenerator" name="ResonanceGenerator">
-<area shape="rect" id="node1" title=" " alt="" coords="45,229,191,256"/>
-<area shape="rect" id="node2" href="$class_nucleon_nucleon_collision_generator.html" title=" " alt="" coords="5,155,231,181"/>
-<area shape="rect" id="node3" href="$class_task.html" title=" " alt="" coords="93,80,143,107"/>
-<area shape="rect" id="node4" href="$class_message_logger.html" title=" " alt="" coords="61,5,175,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,155,151,181"/>
+<area shape="rect" id="node2" href="$class_task.html" title="Base class defining the notion of light weight tasks for the generation and analysis of data." alt="" coords="53,80,103,107"/>
+<area shape="rect" id="node3" href="$class_message_logger.html" title=" " alt="" coords="21,5,135,32"/>
 </map>

@@ -22,8 +22,8 @@
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00018}00018   \textcolor{comment}{//gSystem-\/>Load("{}libBase.dylib"{});}}
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00019}00019   gSystem-\/>Load(\textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/WAC/lib/libBase.dylib"{}});}
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00020}00020 }
-\DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00021}00021   TString \mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}}      = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/StatStudy/"{}};}
-\DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00022}00022   TString \mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}}     = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/StatStudy/"{}};}
+\DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00021}00021   TString inputPath      = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/StatStudy/"{}};}
+\DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00022}00022   TString outputPath     = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/StatStudy/"{}};}
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00023}00023   TString studyName      = \textcolor{stringliteral}{"{}StatStudySet"{}};}
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00024}00024   \textcolor{keywordtype}{int} nSubSamples        = 1000;}
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00025}00025   \textcolor{keywordtype}{int} nModels            = 5;}
@@ -62,8 +62,8 @@
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00058}00058     \}}
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00059}00059 }
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00060}00060   TFile * outputFile;}
-\DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00061}00061   TString outputFileNameBase = \mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}}+studyName;}
-\DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00062}00062   TString \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}};}
+\DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00061}00061   TString outputFileNameBase = outputPath+studyName;}
+\DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00062}00062   TString outputFileName;}
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00063}00063   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iModel=0;iModel<nModels;iModel++)}
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00064}00064      \{}
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00065}00065      \textcolor{keywordtype}{double} scalingFactor1 = 1.0/double(model[iModel]-\/>nEvents*nSubSamples);}
@@ -71,10 +71,10 @@
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00067}00067 }
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00068}00068      statStudy[iModel]-\/>\mbox{\hyperlink{class_stat_study_histograms_a4bc36e608135612b7a809576bbd25387}{computeDerivedHistograms}}();}
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00069}00069      statStudy[iModel]-\/>\mbox{\hyperlink{class_stat_study_histograms_a4b7c5476d6453b07cb610b4ca03670da}{scaleHistograms}}(scalingFactor1,scalingFactor2);}
-\DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00070}00070      \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} = outputFileNameBase;}
-\DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00071}00071      \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} += iModel;}
-\DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00072}00072      \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} += \textcolor{stringliteral}{"{}.root"{}};}
-\DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00073}00073      outputFile = \textcolor{keyword}{new} TFile(\mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}},\textcolor{stringliteral}{"{}RECREATE"{}});}
+\DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00070}00070      outputFileName = outputFileNameBase;}
+\DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00071}00071      outputFileName += iModel;}
+\DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00072}00072      outputFileName += \textcolor{stringliteral}{"{}.root"{}};}
+\DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00073}00073      outputFile = \textcolor{keyword}{new} TFile(outputFileName,\textcolor{stringliteral}{"{}RECREATE"{}});}
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00074}00074      statStudy[iModel]-\/>\mbox{\hyperlink{class_stat_study_histograms_a99e024ece153e2c2a6ede4ef17d40565}{saveHistograms}}(outputFile);}
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00075}00075      outputFile-\/>Close();}
 \DoxyCodeLine{\Hypertarget{_stat_c_d_study_8cpp_source_l00076}00076      \}}

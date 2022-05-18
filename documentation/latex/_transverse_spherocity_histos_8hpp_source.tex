@@ -1,40 +1,52 @@
 \hypertarget{_transverse_spherocity_histos_8hpp_source}{}\doxysection{Transverse\+Spherocity\+Histos.\+hpp}
-\label{_transverse_spherocity_histos_8hpp_source}\index{Base/TransverseSpherocityHistos.hpp@{Base/TransverseSpherocityHistos.hpp}}
+\label{_transverse_spherocity_histos_8hpp_source}\index{Global/TransverseSpherocityHistos.hpp@{Global/TransverseSpherocityHistos.hpp}}
 \mbox{\hyperlink{_transverse_spherocity_histos_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef CAP\_\_TransverseSpherocityHistos}}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define CAP\_\_TransverseSpherocityHistos}}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00003}00003 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_histograms_8hpp}{Histograms.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_configuration_8hpp}{Configuration.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_filter_8hpp}{ParticleFilter.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00006}00006 }
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00007}\mbox{\hyperlink{class_transverse_spherocity_histos}{00007}} \textcolor{keyword}{class }\mbox{\hyperlink{class_transverse_spherocity_histos}{TransverseSpherocityHistos}}: \textcolor{keyword}{public} \mbox{\hyperlink{class_histograms}{Histograms}}}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00008}00008 \{}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00009}00009 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00010}00010   \mbox{\hyperlink{class_transverse_spherocity_histos_a3e38dff7da9d08cb28e19a891a99df96}{TransverseSpherocityHistos}}(\textcolor{keyword}{const} TString           \& \_name,}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00011}00011                              \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}}     \& \_configuration,}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00012}00012                              vector<ParticleFilter*> \& \_particleFilters,}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00013}00013                              \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                  \_debugLevel);}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00014}\mbox{\hyperlink{class_transverse_spherocity_histos_a4a443592f74596a89fdecd50a74210ec}{00014}}   \mbox{\hyperlink{class_transverse_spherocity_histos_a4a443592f74596a89fdecd50a74210ec}{\string~TransverseSpherocityHistos}}() \{\}}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00015}00015   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_transverse_spherocity_histos_aa69f757bb6bc420c711b453f074a937c}{createHistograms}}();}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00016}00016   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_transverse_spherocity_histos_a1a90cda3bec8b81acf97b972df3438fc}{loadHistograms}}(TFile * inputFile);}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00017}00017   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_transverse_spherocity_histos_a968380c1504104ac14c4afa52799fde8}{fill}}(vector<double> \& s0, vector<double> \& s1, \textcolor{keywordtype}{double} weight);}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00018}00018   }
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00019}00019 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00020}\mbox{\hyperlink{class_transverse_spherocity_histos_a33d364132bba460d2ca3a20f06d0da82}{00020}}   \textcolor{keywordtype}{bool}   \mbox{\hyperlink{class_transverse_spherocity_histos_a33d364132bba460d2ca3a20f06d0da82}{fillS0}};}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00021}\mbox{\hyperlink{class_transverse_spherocity_histos_a5427da0199d7f784c494f144cc280aaa}{00021}}   \textcolor{keywordtype}{bool}   \mbox{\hyperlink{class_transverse_spherocity_histos_a5427da0199d7f784c494f144cc280aaa}{fillS1}};}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00022}\mbox{\hyperlink{class_transverse_spherocity_histos_a479f6a130b4da6a66d63e19cea5a9c23}{00022}}   \textcolor{keywordtype}{bool}   \mbox{\hyperlink{class_transverse_spherocity_histos_a479f6a130b4da6a66d63e19cea5a9c23}{fillS1VsS0}};}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00023}\mbox{\hyperlink{class_transverse_spherocity_histos_a5a9871fd01ae67780aafb3e1606d4035}{00023}}   \textcolor{keywordtype}{bool}   \mbox{\hyperlink{class_transverse_spherocity_histos_a5a9871fd01ae67780aafb3e1606d4035}{fillCorrelationHistos}};}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00024}\mbox{\hyperlink{class_transverse_spherocity_histos_ade79e5121bba5f45af707ce18006c654}{00024}}   \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_transverse_spherocity_histos_ade79e5121bba5f45af707ce18006c654}{nParticleFilters}};}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00025}\mbox{\hyperlink{class_transverse_spherocity_histos_af91786ca467ffe266cdf571099a2854d}{00025}}   vector<ParticleFilter*> \mbox{\hyperlink{class_transverse_spherocity_histos_af91786ca467ffe266cdf571099a2854d}{particleFilters}};}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00026}\mbox{\hyperlink{class_transverse_spherocity_histos_a95f68ff77926c4f01d87f9c027aab87b}{00026}}   vector<TH1 *> \mbox{\hyperlink{class_transverse_spherocity_histos_a95f68ff77926c4f01d87f9c027aab87b}{h\_s0}};}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00027}\mbox{\hyperlink{class_transverse_spherocity_histos_a4f9fc80f135c3ba69c823a4e5508a527}{00027}}   vector<TH1 *> \mbox{\hyperlink{class_transverse_spherocity_histos_a4f9fc80f135c3ba69c823a4e5508a527}{h\_s1}};}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00028}\mbox{\hyperlink{class_transverse_spherocity_histos_afc0f24d4e88fad5852df0b44b0378893}{00028}}   vector<TH2 *> \mbox{\hyperlink{class_transverse_spherocity_histos_afc0f24d4e88fad5852df0b44b0378893}{h\_s1VsS0}};}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00029}\mbox{\hyperlink{class_transverse_spherocity_histos_a7f8e5f103a991d8362ab63c5e6f13d4f}{00029}}   vector<TH2 *> \mbox{\hyperlink{class_transverse_spherocity_histos_a7f8e5f103a991d8362ab63c5e6f13d4f}{h\_s0VsS0}};}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#ifndef CAP\_\_TransverseSpherocityHistos}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#define CAP\_\_TransverseSpherocityHistos}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_histograms_8hpp}{Histograms.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_configuration_8hpp}{Configuration.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_filter_8hpp}{ParticleFilter.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00019}\mbox{\hyperlink{class_transverse_spherocity_histos}{00019}} \textcolor{keyword}{class }\mbox{\hyperlink{class_transverse_spherocity_histos}{TransverseSpherocityHistos}}: \textcolor{keyword}{public} \mbox{\hyperlink{class_histograms}{Histograms}}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00020}00020 \{}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00021}00021 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00022}00022   \mbox{\hyperlink{class_transverse_spherocity_histos_a3e38dff7da9d08cb28e19a891a99df96}{TransverseSpherocityHistos}}(\textcolor{keyword}{const} TString           \& \_name,}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00023}00023                              \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}}     \& \_configuration,}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00024}00024                              vector<ParticleFilter*> \& \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00025}00025                              \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                  \_debugLevel);}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00026}\mbox{\hyperlink{class_transverse_spherocity_histos_a4a443592f74596a89fdecd50a74210ec}{00026}}   \mbox{\hyperlink{class_transverse_spherocity_histos_a4a443592f74596a89fdecd50a74210ec}{\string~TransverseSpherocityHistos}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00027}00027   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_transverse_spherocity_histos_aa69f757bb6bc420c711b453f074a937c}{createHistograms}}();}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00028}00028   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_transverse_spherocity_histos_a1a90cda3bec8b81acf97b972df3438fc}{loadHistograms}}(TFile * inputFile);}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00029}00029   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_transverse_spherocity_histos_a968380c1504104ac14c4afa52799fde8}{fill}}(vector<double> \& s0, vector<double> \& s1, \textcolor{keywordtype}{double} weight);}
 \DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00030}00030   }
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00031}\mbox{\hyperlink{class_transverse_spherocity_histos_aeacc319e9cf6bbc6a58f32bf3408b440}{00031}}   \mbox{\hyperlink{class_transverse_spherocity_histos_aeacc319e9cf6bbc6a58f32bf3408b440}{ClassDef}}(\mbox{\hyperlink{class_transverse_spherocity_histos}{TransverseSpherocityHistos}}, 1);}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00032}00032 \};}
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00033}00033 }
-\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00034}00034 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00031}00031 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00032}\mbox{\hyperlink{class_transverse_spherocity_histos_a33d364132bba460d2ca3a20f06d0da82}{00032}}   \textcolor{keywordtype}{bool}   \mbox{\hyperlink{class_transverse_spherocity_histos_a33d364132bba460d2ca3a20f06d0da82}{fillS0}};}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00033}\mbox{\hyperlink{class_transverse_spherocity_histos_a5427da0199d7f784c494f144cc280aaa}{00033}}   \textcolor{keywordtype}{bool}   \mbox{\hyperlink{class_transverse_spherocity_histos_a5427da0199d7f784c494f144cc280aaa}{fillS1}};}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00034}\mbox{\hyperlink{class_transverse_spherocity_histos_a479f6a130b4da6a66d63e19cea5a9c23}{00034}}   \textcolor{keywordtype}{bool}   \mbox{\hyperlink{class_transverse_spherocity_histos_a479f6a130b4da6a66d63e19cea5a9c23}{fillS1VsS0}};}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00035}\mbox{\hyperlink{class_transverse_spherocity_histos_a5a9871fd01ae67780aafb3e1606d4035}{00035}}   \textcolor{keywordtype}{bool}   \mbox{\hyperlink{class_transverse_spherocity_histos_a5a9871fd01ae67780aafb3e1606d4035}{fillCorrelationHistos}};}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00036}\mbox{\hyperlink{class_transverse_spherocity_histos_ade79e5121bba5f45af707ce18006c654}{00036}}   \textcolor{keywordtype}{int}    \mbox{\hyperlink{class_transverse_spherocity_histos_ade79e5121bba5f45af707ce18006c654}{nParticleFilters}};}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00037}\mbox{\hyperlink{class_transverse_spherocity_histos_af91786ca467ffe266cdf571099a2854d}{00037}}   vector<ParticleFilter*> \mbox{\hyperlink{class_transverse_spherocity_histos_af91786ca467ffe266cdf571099a2854d}{particleFilters}};}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00038}\mbox{\hyperlink{class_transverse_spherocity_histos_a95f68ff77926c4f01d87f9c027aab87b}{00038}}   vector<TH1 *> \mbox{\hyperlink{class_transverse_spherocity_histos_a95f68ff77926c4f01d87f9c027aab87b}{h\_s0}};}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00039}\mbox{\hyperlink{class_transverse_spherocity_histos_a4f9fc80f135c3ba69c823a4e5508a527}{00039}}   vector<TH1 *> \mbox{\hyperlink{class_transverse_spherocity_histos_a4f9fc80f135c3ba69c823a4e5508a527}{h\_s1}};}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00040}\mbox{\hyperlink{class_transverse_spherocity_histos_afc0f24d4e88fad5852df0b44b0378893}{00040}}   vector<TH2 *> \mbox{\hyperlink{class_transverse_spherocity_histos_afc0f24d4e88fad5852df0b44b0378893}{h\_s1VsS0}};}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00041}\mbox{\hyperlink{class_transverse_spherocity_histos_a7f8e5f103a991d8362ab63c5e6f13d4f}{00041}}   vector<TH2 *> \mbox{\hyperlink{class_transverse_spherocity_histos_a7f8e5f103a991d8362ab63c5e6f13d4f}{h\_s0VsS0}};}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00042}00042   }
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00043}\mbox{\hyperlink{class_transverse_spherocity_histos_aeacc319e9cf6bbc6a58f32bf3408b440}{00043}}   \mbox{\hyperlink{class_transverse_spherocity_histos_aeacc319e9cf6bbc6a58f32bf3408b440}{ClassDef}}(\mbox{\hyperlink{class_transverse_spherocity_histos}{TransverseSpherocityHistos}}, 1);}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00044}00044 \};}
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_transverse_spherocity_histos_8hpp_source_l00046}00046 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

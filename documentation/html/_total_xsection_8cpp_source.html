@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Correlation Analysis Package: Base/TotalXsection.cpp Source File</title>
+<title>Correlation Analysis Package: Tools/TotalXsection.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,197 +86,199 @@ $(document).ready(function(){initNavTree('_total_xsection_8cpp_source.html','');
   <div class="headertitle"><div class="title">TotalXsection.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_total_xsection_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Author: Claude Pruneau   09/25/2019</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">/*************************************************************************</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (C) 2019, Claude Pruneau.                                   *</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * All rights reserved.                                                  *</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * Based on the ROOT package and environment                             *</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *                                                                       *</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * For the licensing terms see LICENSE.                                  *</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *************************************************************************/</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="_total_xsection_8hpp.html">TotalXsection.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;TMath.h&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">// Compute Total Xsect vs sqrt(s)</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">// x[0] : sqrt(s)</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">// Gauron parameterization is &quot;s&quot;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">   23</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">GauronModelF1</a>(<span class="keywordtype">double</span> *xx, <span class="keywordtype">double</span> *pp)</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <span class="keywordtype">double</span> s   = xx[0]*xx[0];</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  <span class="keywordtype">double</span> Z   = pp[0];</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keywordtype">double</span> X   = pp[1];</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keywordtype">double</span> eps = pp[2];</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <span class="keywordtype">double</span> Y1  = pp[3];</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <span class="keywordtype">double</span> Y2  = pp[4];</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keywordtype">double</span> alpha = pp[5]-1.0;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keywordflow">return</span> Z + X*TMath::Power(s,eps) + (Y1 - Y2)*TMath::Power(s,alpha);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="_total_xsection_8cpp.html#af5fe993ab47051e2877b0f889789faec">   35</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_total_xsection_8cpp.html#af5fe993ab47051e2877b0f889789faec">GauronGammaModelF1</a>(<span class="keywordtype">double</span> *xx, <span class="keywordtype">double</span> *pp)</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <span class="keywordtype">double</span> s     = xx[0]*xx[0];</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="keywordtype">double</span> delta = pp[0];</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="keywordtype">double</span> Z     = pp[1];</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <span class="keywordtype">double</span> X     = pp[2];</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <span class="keywordtype">double</span> eps   = pp[3];</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <span class="keywordtype">double</span> Y1    = pp[4];</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  <span class="keywordtype">double</span> alpha = pp[5]-1;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="keywordflow">return</span> delta*Z + delta*X*TMath::Power(s,eps) + Y1*TMath::Power(s,alpha);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<a href="_total_xsection_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* **********************************************************************</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * Copyright (C) 2019-2022, Claude Pruneau, Victor Gonzalez, Sumit Basu</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * All rights reserved.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * Based on the ROOT package and environment</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * For the licensing terms see LICENSE.</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * Author: Claude Pruneau,   04/01/2022</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * *********************************************************************/</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="_total_xsection_8hpp.html">TotalXsection.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;TMath.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// Compute Total Xsect vs sqrt(s)</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// x[0] : sqrt(s)</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">// Gauron parameterization is &quot;s&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">   18</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">GauronModelF1</a>(<span class="keywordtype">double</span> *xx, <span class="keywordtype">double</span> *pp)</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  <span class="keywordtype">double</span> s   = xx[0]*xx[0];</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <span class="keywordtype">double</span> Z   = pp[0];</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keywordtype">double</span> X   = pp[1];</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="keywordtype">double</span> eps = pp[2];</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <span class="keywordtype">double</span> Y1  = pp[3];</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <span class="keywordtype">double</span> Y2  = pp[4];</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  <span class="keywordtype">double</span> alpha = pp[5]-1.0;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keywordflow">return</span> Z + X*TMath::Power(s,eps) + (Y1 - Y2)*TMath::Power(s,alpha);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="_total_xsection_8cpp.html#af5fe993ab47051e2877b0f889789faec">   30</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_total_xsection_8cpp.html#af5fe993ab47051e2877b0f889789faec">GauronGammaModelF1</a>(<span class="keywordtype">double</span> *xx, <span class="keywordtype">double</span> *pp)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keywordtype">double</span> s     = xx[0]*xx[0];</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <span class="keywordtype">double</span> delta = pp[0];</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="keywordtype">double</span> Z     = pp[1];</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <span class="keywordtype">double</span> X     = pp[2];</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  <span class="keywordtype">double</span> eps   = pp[3];</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <span class="keywordtype">double</span> Y1    = pp[4];</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="keywordtype">double</span> alpha = pp[5]-1;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="keywordflow">return</span> delta*Z + delta*X*TMath::Power(s,eps) + Y1*TMath::Power(s,alpha);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>}</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="_total_xsection_8cpp.html#a9573a43288f5f9f4689cb1b9a6f2c85b">   44</a></span><a class="code hl_function" href="_total_xsection_8cpp.html#a9573a43288f5f9f4689cb1b9a6f2c85b">ClassImp</a>(<a class="code hl_class" href="class_total_xsection.html">TotalXsection</a>);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">//double TotalXsection::radius = 1.2;</span></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="_total_xsection_8cpp.html#a9573a43288f5f9f4689cb1b9a6f2c85b">   49</a></span><a class="code hl_function" href="_total_xsection_8cpp.html#a9573a43288f5f9f4689cb1b9a6f2c85b">ClassImp</a>(<a class="code hl_class" href="class_total_xsection.html">TotalXsection</a>);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">//double TotalXsection::radius = 1.2;</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="class_total_xsection.html#a032bbccbec56710ce23c8b5069dab9a9">   48</a></span><a class="code hl_function" href="class_total_xsection.html#a032bbccbec56710ce23c8b5069dab9a9">TotalXsection::TotalXsection</a>()</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>{</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="class_total_xsection.html#a032bbccbec56710ce23c8b5069dab9a9">   53</a></span><a class="code hl_function" href="class_total_xsection.html#a032bbccbec56710ce23c8b5069dab9a9">TotalXsection::TotalXsection</a>()</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>{</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="class_total_xsection.html#adccc32ac07a8e004a1c08e214a580c88">   58</a></span>TF1 * <a class="code hl_function" href="class_total_xsection.html#adccc32ac07a8e004a1c08e214a580c88">TotalXsection::getFunctionTotalXsectionVsSqrtS</a>(<a class="code hl_enumeration" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40">TotalXsectionSystem</a> selectedSystem,</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                                                     <a class="code hl_enumeration" href="class_total_xsection.html#addd6529e281d94e85e8f6fc20f2ad8af">TotalXsectionModel</a> selectedModel,</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                                                     <span class="keywordtype">double</span> minSqrtS,</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                                                     <span class="keywordtype">double</span> maxSqrtS)</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>{</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  TF1 * function;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  TString functionName;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keywordflow">switch</span> (selectedModel)</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    {</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#addd6529e281d94e85e8f6fc20f2ad8afa904ad3967be01ce659ec6f648a3c94e3">GauronModel</a>:</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>      <span class="comment">//      double s   = xx[0]*xx[0];</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>      <span class="comment">//      double Z   = pp[0];</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>      <span class="comment">//      double X   = pp[1];</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>      <span class="comment">//      double eps = pp[2];</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>      <span class="comment">//      double Y1  = pp[3];</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>      <span class="comment">//      double Y2  = pp[4];</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      <span class="comment">//      double alpha = pp[5]-1;</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>      <span class="keywordflow">switch</span> (selectedSystem)</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40aa80652d45dd1a8c267baf36033852d97">PPCollisions</a>:</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>          functionName = <span class="stringliteral">&quot;GauronPPCollisions&quot;</span>;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>          function = <span class="keyword">new</span> TF1(functionName,<a class="code hl_function" href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">GauronModelF1</a>, minSqrtS, maxSqrtS, 6);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>          function-&gt;SetParameter(0,20.251); <span class="comment">// Z</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>          function-&gt;SetParameter(1,7.572); <span class="comment">// X</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>          function-&gt;SetParameter(2,0.132); <span class="comment">// eps</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>          function-&gt;SetParameter(3,74.811); <span class="comment">// Y1</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>          function-&gt;SetParameter(4,29.918); <span class="comment">// Y2</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>          function-&gt;SetParameter(5,0.48); <span class="comment">// alpha0</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>          <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40ad0f8cd9b92d5d7245dbf765c5d6fff79">PPbarCollisions</a>:</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>          functionName = <span class="stringliteral">&quot;GauronPPbarCollisions&quot;</span>;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>          function = <span class="keyword">new</span> TF1(functionName,<a class="code hl_function" href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">GauronModelF1</a>, minSqrtS, maxSqrtS, 6);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>          function-&gt;SetParameter(0,20.251); <span class="comment">// Z</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>          function-&gt;SetParameter(1,7.572); <span class="comment">// X</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>          function-&gt;SetParameter(2,0.132); <span class="comment">// eps</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>          function-&gt;SetParameter(3,74.811); <span class="comment">// Y1</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>          function-&gt;SetParameter(4,-29.918); <span class="comment">// Y2</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>          function-&gt;SetParameter(5,0.48); <span class="comment">// alpha0</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>          <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40aa95ae9f1d35f8387f0d230342a9adff1">PiPlusPCollisions</a>:</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>          functionName = <span class="stringliteral">&quot;GauronPiPlusPCollisions&quot;</span>;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>          function = <span class="keyword">new</span> TF1(functionName,<a class="code hl_function" href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">GauronModelF1</a>, minSqrtS, maxSqrtS, 6);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>          function-&gt;SetParameter(0,5.283); <span class="comment">// Z</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>          function-&gt;SetParameter(1,7.572); <span class="comment">// X</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>          function-&gt;SetParameter(2,0.132); <span class="comment">// eps</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>          function-&gt;SetParameter(3,48.972); <span class="comment">// Y1</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>          function-&gt;SetParameter(4,6.028); <span class="comment">// Y2</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>          function-&gt;SetParameter(5,0.48); <span class="comment">// alpha0</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>          <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40af3f25c701ce2d925b9db84e60eef4d1a">PiMinusPCollisions</a>:</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>          functionName = <span class="stringliteral">&quot;GauronPiMinusPCollisions&quot;</span>;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>          function = <span class="keyword">new</span> TF1(functionName,<a class="code hl_function" href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">GauronModelF1</a>, minSqrtS, maxSqrtS, 6);</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>          function-&gt;SetParameter(0,5.283); <span class="comment">// Z</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>          function-&gt;SetParameter(1,7.572); <span class="comment">// X</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>          function-&gt;SetParameter(2,0.132); <span class="comment">// eps</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>          function-&gt;SetParameter(3,48.972); <span class="comment">// Y1</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>          function-&gt;SetParameter(4,-6.028); <span class="comment">// Y2</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>          function-&gt;SetParameter(5,0.48); <span class="comment">// alpha0</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>          <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40a42780cec4716afc0818d688c4a954966">KPlusPCollisions</a>:</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>          functionName = <span class="stringliteral">&quot;GauronKPlusPCollisions&quot;</span>;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>          function = <span class="keyword">new</span> TF1(functionName,<a class="code hl_function" href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">GauronModelF1</a>, minSqrtS, maxSqrtS, 6);</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>          function-&gt;SetParameter(0,2.208); <span class="comment">// Z</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>          function-&gt;SetParameter(1,7.572); <span class="comment">// X</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>          function-&gt;SetParameter(2,0.132); <span class="comment">// eps</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>          function-&gt;SetParameter(3,34.483); <span class="comment">// Y1</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>          function-&gt;SetParameter(4,11.935); <span class="comment">// Y2</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>          function-&gt;SetParameter(5,0.48); <span class="comment">// alpha0</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>          <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40ad6e614d89a82b9e7f5833bbd2d4aee55">KMinusPCollisions</a>:</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>          functionName = <span class="stringliteral">&quot;GauronKMinusPCollisions&quot;</span>;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>          function = <span class="keyword">new</span> TF1(functionName,<a class="code hl_function" href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">GauronModelF1</a>, minSqrtS, maxSqrtS, 6);</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>          function-&gt;SetParameter(0,2.208); <span class="comment">// Z</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>          function-&gt;SetParameter(1,7.572); <span class="comment">// X</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>          function-&gt;SetParameter(2,0.132); <span class="comment">// eps</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>          function-&gt;SetParameter(3,34.483); <span class="comment">// Y1</span></div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>          function-&gt;SetParameter(4,-11.935); <span class="comment">// Y2</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>          function-&gt;SetParameter(5,0.48); <span class="comment">// alpha0</span></div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>          <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40a7131a447f3a1ca09ffb1759b45e4db29">GammaPCollisions</a>:</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>          <span class="comment">//          double delta = pp[0];</span></div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>          <span class="comment">//          double Z     = pp[1];</span></div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>          <span class="comment">//          double X     = pp[2];</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>          <span class="comment">//          double eps   = pp[3];</span></div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>          <span class="comment">//          double Y1    = pp[4];</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>          <span class="comment">//          double alpha = pp[5]-1;</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>          functionName = <span class="stringliteral">&quot;GauronGammaPCollisions&quot;</span>;</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>          function = <span class="keyword">new</span> TF1(functionName,<a class="code hl_function" href="_total_xsection_8cpp.html#af5fe993ab47051e2877b0f889789faec">GauronGammaModelF1</a>, minSqrtS, maxSqrtS, 6);</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>          function-&gt;SetParameter(0,0.303E-2); <span class="comment">// delta</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>          function-&gt;SetParameter(1,20.251);    <span class="comment">// Z</span></div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>          function-&gt;SetParameter(2,7.572);    <span class="comment">// X</span></div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>          function-&gt;SetParameter(3,0.132);   <span class="comment">// eps</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>          function-&gt;SetParameter(4,0.121);   <span class="comment">// Y1</span></div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>          function-&gt;SetParameter(5,0.48);   <span class="comment">// alpha0</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>          <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40a60cf3addd9059133edc78c348c06bf5e">GammaGammaCollisions</a>:</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>          functionName = <span class="stringliteral">&quot;GauronGammaGammaCollisions&quot;</span>;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>          function = <span class="keyword">new</span> TF1(functionName,<a class="code hl_function" href="_total_xsection_8cpp.html#af5fe993ab47051e2877b0f889789faec">GauronGammaModelF1</a>, minSqrtS, maxSqrtS, 6);</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>          function-&gt;SetParameter(0,0.303E-2*0.303E-2); <span class="comment">// delta^2</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>          function-&gt;SetParameter(1,20.251);    <span class="comment">// Z</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>          function-&gt;SetParameter(2,7.572);    <span class="comment">// X</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>          function-&gt;SetParameter(3,0.132);   <span class="comment">// eps</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>          function-&gt;SetParameter(4,0.0);   <span class="comment">// Y1</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>          function-&gt;SetParameter(5,0.48);   <span class="comment">// alpha0</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>          <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        }</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>      <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#addd6529e281d94e85e8f6fc20f2ad8afac72c3a9f285a3c2afeadabcb2f8b4240">XModel</a>: function =  <span class="keyword">nullptr</span>; <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#addd6529e281d94e85e8f6fc20f2ad8afa14212dab454a5d2ab26d178bc8bbc786">YModel</a>:  function =  <span class="keyword">nullptr</span>; <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    }</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  <span class="keywordflow">return</span> function;</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>}</div>
-<div class="ttc" id="a_total_xsection_8cpp_html_a3518c7aee3a8186aaf3198365c066aa4"><div class="ttname"><a href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">GauronModelF1</a></div><div class="ttdeci">double GauronModelF1(double *xx, double *pp)</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8cpp_source.html#l00023">TotalXsection.cpp:23</a></div></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="class_total_xsection.html#adccc32ac07a8e004a1c08e214a580c88">   53</a></span>TF1 * <a class="code hl_function" href="class_total_xsection.html#adccc32ac07a8e004a1c08e214a580c88">TotalXsection::getFunctionTotalXsectionVsSqrtS</a>(<a class="code hl_enumeration" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40">TotalXsectionSystem</a> selectedSystem,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                                                     <a class="code hl_enumeration" href="class_total_xsection.html#addd6529e281d94e85e8f6fc20f2ad8af">TotalXsectionModel</a> selectedModel,</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                                                     <span class="keywordtype">double</span> minSqrtS,</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                                                     <span class="keywordtype">double</span> maxSqrtS)</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>{</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  TF1 * function;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  TString functionName;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keywordflow">switch</span> (selectedModel)</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#addd6529e281d94e85e8f6fc20f2ad8afa904ad3967be01ce659ec6f648a3c94e3">GauronModel</a>:</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>      <span class="comment">//      double s   = xx[0]*xx[0];</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>      <span class="comment">//      double Z   = pp[0];</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>      <span class="comment">//      double X   = pp[1];</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      <span class="comment">//      double eps = pp[2];</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>      <span class="comment">//      double Y1  = pp[3];</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>      <span class="comment">//      double Y2  = pp[4];</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>      <span class="comment">//      double alpha = pp[5]-1;</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>      <span class="keywordflow">switch</span> (selectedSystem)</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40aa80652d45dd1a8c267baf36033852d97">PPCollisions</a>:</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>          functionName = <span class="stringliteral">&quot;GauronPPCollisions&quot;</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>          function = <span class="keyword">new</span> TF1(functionName,<a class="code hl_function" href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">GauronModelF1</a>, minSqrtS, maxSqrtS, 6);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>          function-&gt;SetParameter(0,20.251); <span class="comment">// Z</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>          function-&gt;SetParameter(1,7.572); <span class="comment">// X</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>          function-&gt;SetParameter(2,0.132); <span class="comment">// eps</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>          function-&gt;SetParameter(3,74.811); <span class="comment">// Y1</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>          function-&gt;SetParameter(4,29.918); <span class="comment">// Y2</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>          function-&gt;SetParameter(5,0.48); <span class="comment">// alpha0</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>          <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40ad0f8cd9b92d5d7245dbf765c5d6fff79">PPbarCollisions</a>:</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>          functionName = <span class="stringliteral">&quot;GauronPPbarCollisions&quot;</span>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>          function = <span class="keyword">new</span> TF1(functionName,<a class="code hl_function" href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">GauronModelF1</a>, minSqrtS, maxSqrtS, 6);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>          function-&gt;SetParameter(0,20.251); <span class="comment">// Z</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>          function-&gt;SetParameter(1,7.572); <span class="comment">// X</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>          function-&gt;SetParameter(2,0.132); <span class="comment">// eps</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>          function-&gt;SetParameter(3,74.811); <span class="comment">// Y1</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>          function-&gt;SetParameter(4,-29.918); <span class="comment">// Y2</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>          function-&gt;SetParameter(5,0.48); <span class="comment">// alpha0</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>          <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40aa95ae9f1d35f8387f0d230342a9adff1">PiPlusPCollisions</a>:</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>          functionName = <span class="stringliteral">&quot;GauronPiPlusPCollisions&quot;</span>;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>          function = <span class="keyword">new</span> TF1(functionName,<a class="code hl_function" href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">GauronModelF1</a>, minSqrtS, maxSqrtS, 6);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>          function-&gt;SetParameter(0,5.283); <span class="comment">// Z</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>          function-&gt;SetParameter(1,7.572); <span class="comment">// X</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>          function-&gt;SetParameter(2,0.132); <span class="comment">// eps</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>          function-&gt;SetParameter(3,48.972); <span class="comment">// Y1</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>          function-&gt;SetParameter(4,6.028); <span class="comment">// Y2</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>          function-&gt;SetParameter(5,0.48); <span class="comment">// alpha0</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>          <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40af3f25c701ce2d925b9db84e60eef4d1a">PiMinusPCollisions</a>:</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>          functionName = <span class="stringliteral">&quot;GauronPiMinusPCollisions&quot;</span>;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>          function = <span class="keyword">new</span> TF1(functionName,<a class="code hl_function" href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">GauronModelF1</a>, minSqrtS, maxSqrtS, 6);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>          function-&gt;SetParameter(0,5.283); <span class="comment">// Z</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>          function-&gt;SetParameter(1,7.572); <span class="comment">// X</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>          function-&gt;SetParameter(2,0.132); <span class="comment">// eps</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>          function-&gt;SetParameter(3,48.972); <span class="comment">// Y1</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>          function-&gt;SetParameter(4,-6.028); <span class="comment">// Y2</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>          function-&gt;SetParameter(5,0.48); <span class="comment">// alpha0</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>          <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40a42780cec4716afc0818d688c4a954966">KPlusPCollisions</a>:</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>          functionName = <span class="stringliteral">&quot;GauronKPlusPCollisions&quot;</span>;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>          function = <span class="keyword">new</span> TF1(functionName,<a class="code hl_function" href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">GauronModelF1</a>, minSqrtS, maxSqrtS, 6);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>          function-&gt;SetParameter(0,2.208); <span class="comment">// Z</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>          function-&gt;SetParameter(1,7.572); <span class="comment">// X</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>          function-&gt;SetParameter(2,0.132); <span class="comment">// eps</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>          function-&gt;SetParameter(3,34.483); <span class="comment">// Y1</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>          function-&gt;SetParameter(4,11.935); <span class="comment">// Y2</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>          function-&gt;SetParameter(5,0.48); <span class="comment">// alpha0</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>          <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40ad6e614d89a82b9e7f5833bbd2d4aee55">KMinusPCollisions</a>:</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>          functionName = <span class="stringliteral">&quot;GauronKMinusPCollisions&quot;</span>;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>          function = <span class="keyword">new</span> TF1(functionName,<a class="code hl_function" href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">GauronModelF1</a>, minSqrtS, maxSqrtS, 6);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>          function-&gt;SetParameter(0,2.208); <span class="comment">// Z</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>          function-&gt;SetParameter(1,7.572); <span class="comment">// X</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>          function-&gt;SetParameter(2,0.132); <span class="comment">// eps</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>          function-&gt;SetParameter(3,34.483); <span class="comment">// Y1</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>          function-&gt;SetParameter(4,-11.935); <span class="comment">// Y2</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>          function-&gt;SetParameter(5,0.48); <span class="comment">// alpha0</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>          <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40a7131a447f3a1ca09ffb1759b45e4db29">GammaPCollisions</a>:</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>          <span class="comment">//          double delta = pp[0];</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>          <span class="comment">//          double Z     = pp[1];</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>          <span class="comment">//          double X     = pp[2];</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>          <span class="comment">//          double eps   = pp[3];</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>          <span class="comment">//          double Y1    = pp[4];</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>          <span class="comment">//          double alpha = pp[5]-1;</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>          functionName = <span class="stringliteral">&quot;GauronGammaPCollisions&quot;</span>;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>          function = <span class="keyword">new</span> TF1(functionName,<a class="code hl_function" href="_total_xsection_8cpp.html#af5fe993ab47051e2877b0f889789faec">GauronGammaModelF1</a>, minSqrtS, maxSqrtS, 6);</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>          function-&gt;SetParameter(0,0.303E-2); <span class="comment">// delta</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>          function-&gt;SetParameter(1,20.251);    <span class="comment">// Z</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>          function-&gt;SetParameter(2,7.572);    <span class="comment">// X</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>          function-&gt;SetParameter(3,0.132);   <span class="comment">// eps</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>          function-&gt;SetParameter(4,0.121);   <span class="comment">// Y1</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>          function-&gt;SetParameter(5,0.48);   <span class="comment">// alpha0</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>          <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40a60cf3addd9059133edc78c348c06bf5e">GammaGammaCollisions</a>:</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>          functionName = <span class="stringliteral">&quot;GauronGammaGammaCollisions&quot;</span>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>          function = <span class="keyword">new</span> TF1(functionName,<a class="code hl_function" href="_total_xsection_8cpp.html#af5fe993ab47051e2877b0f889789faec">GauronGammaModelF1</a>, minSqrtS, maxSqrtS, 6);</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>          function-&gt;SetParameter(0,0.303E-2*0.303E-2); <span class="comment">// delta^2</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>          function-&gt;SetParameter(1,20.251);    <span class="comment">// Z</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>          function-&gt;SetParameter(2,7.572);    <span class="comment">// X</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>          function-&gt;SetParameter(3,0.132);   <span class="comment">// eps</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>          function-&gt;SetParameter(4,0.0);   <span class="comment">// Y1</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>          function-&gt;SetParameter(5,0.48);   <span class="comment">// alpha0</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>          <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        }</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>      <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#addd6529e281d94e85e8f6fc20f2ad8afac72c3a9f285a3c2afeadabcb2f8b4240">XModel</a>: function =  <span class="keyword">nullptr</span>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="class_total_xsection.html#addd6529e281d94e85e8f6fc20f2ad8afa14212dab454a5d2ab26d178bc8bbc786">YModel</a>:  function =  <span class="keyword">nullptr</span>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    }</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>  <span class="keywordflow">return</span> function;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>}</div>
+<div class="ttc" id="a_total_xsection_8cpp_html_a3518c7aee3a8186aaf3198365c066aa4"><div class="ttname"><a href="_total_xsection_8cpp.html#a3518c7aee3a8186aaf3198365c066aa4">GauronModelF1</a></div><div class="ttdeci">double GauronModelF1(double *xx, double *pp)</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8cpp_source.html#l00018">TotalXsection.cpp:18</a></div></div>
 <div class="ttc" id="a_total_xsection_8cpp_html_a9573a43288f5f9f4689cb1b9a6f2c85b"><div class="ttname"><a href="_total_xsection_8cpp.html#a9573a43288f5f9f4689cb1b9a6f2c85b">ClassImp</a></div><div class="ttdeci">ClassImp(TotalXsection)</div></div>
-<div class="ttc" id="a_total_xsection_8cpp_html_af5fe993ab47051e2877b0f889789faec"><div class="ttname"><a href="_total_xsection_8cpp.html#af5fe993ab47051e2877b0f889789faec">GauronGammaModelF1</a></div><div class="ttdeci">double GauronGammaModelF1(double *xx, double *pp)</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8cpp_source.html#l00035">TotalXsection.cpp:35</a></div></div>
+<div class="ttc" id="a_total_xsection_8cpp_html_af5fe993ab47051e2877b0f889789faec"><div class="ttname"><a href="_total_xsection_8cpp.html#af5fe993ab47051e2877b0f889789faec">GauronGammaModelF1</a></div><div class="ttdeci">double GauronGammaModelF1(double *xx, double *pp)</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8cpp_source.html#l00030">TotalXsection.cpp:30</a></div></div>
 <div class="ttc" id="a_total_xsection_8hpp_html"><div class="ttname"><a href="_total_xsection_8hpp.html">TotalXsection.hpp</a></div></div>
-<div class="ttc" id="aclass_total_xsection_html"><div class="ttname"><a href="class_total_xsection.html">TotalXsection</a></div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00027">TotalXsection.hpp:28</a></div></div>
-<div class="ttc" id="aclass_total_xsection_html_a032bbccbec56710ce23c8b5069dab9a9"><div class="ttname"><a href="class_total_xsection.html#a032bbccbec56710ce23c8b5069dab9a9">TotalXsection::TotalXsection</a></div><div class="ttdeci">TotalXsection()</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8cpp_source.html#l00053">TotalXsection.cpp:53</a></div></div>
-<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40">TotalXsection::TotalXsectionSystem</a></div><div class="ttdeci">TotalXsectionSystem</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00032">TotalXsection.hpp:32</a></div></div>
-<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40a42780cec4716afc0818d688c4a954966"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40a42780cec4716afc0818d688c4a954966">TotalXsection::KPlusPCollisions</a></div><div class="ttdeci">@ KPlusPCollisions</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00033">TotalXsection.hpp:33</a></div></div>
-<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40a60cf3addd9059133edc78c348c06bf5e"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40a60cf3addd9059133edc78c348c06bf5e">TotalXsection::GammaGammaCollisions</a></div><div class="ttdeci">@ GammaGammaCollisions</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00033">TotalXsection.hpp:33</a></div></div>
-<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40a7131a447f3a1ca09ffb1759b45e4db29"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40a7131a447f3a1ca09ffb1759b45e4db29">TotalXsection::GammaPCollisions</a></div><div class="ttdeci">@ GammaPCollisions</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00033">TotalXsection.hpp:33</a></div></div>
-<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40aa80652d45dd1a8c267baf36033852d97"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40aa80652d45dd1a8c267baf36033852d97">TotalXsection::PPCollisions</a></div><div class="ttdeci">@ PPCollisions</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00032">TotalXsection.hpp:32</a></div></div>
-<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40aa95ae9f1d35f8387f0d230342a9adff1"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40aa95ae9f1d35f8387f0d230342a9adff1">TotalXsection::PiPlusPCollisions</a></div><div class="ttdeci">@ PiPlusPCollisions</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00032">TotalXsection.hpp:32</a></div></div>
-<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40ad0f8cd9b92d5d7245dbf765c5d6fff79"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40ad0f8cd9b92d5d7245dbf765c5d6fff79">TotalXsection::PPbarCollisions</a></div><div class="ttdeci">@ PPbarCollisions</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00032">TotalXsection.hpp:32</a></div></div>
-<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40ad6e614d89a82b9e7f5833bbd2d4aee55"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40ad6e614d89a82b9e7f5833bbd2d4aee55">TotalXsection::KMinusPCollisions</a></div><div class="ttdeci">@ KMinusPCollisions</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00033">TotalXsection.hpp:33</a></div></div>
-<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40af3f25c701ce2d925b9db84e60eef4d1a"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40af3f25c701ce2d925b9db84e60eef4d1a">TotalXsection::PiMinusPCollisions</a></div><div class="ttdeci">@ PiMinusPCollisions</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00033">TotalXsection.hpp:33</a></div></div>
-<div class="ttc" id="aclass_total_xsection_html_adccc32ac07a8e004a1c08e214a580c88"><div class="ttname"><a href="class_total_xsection.html#adccc32ac07a8e004a1c08e214a580c88">TotalXsection::getFunctionTotalXsectionVsSqrtS</a></div><div class="ttdeci">TF1 * getFunctionTotalXsectionVsSqrtS(TotalXsectionSystem selectedSystem, TotalXsectionModel selectedModel, double minSqrtS, double maxSqrtS)</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8cpp_source.html#l00058">TotalXsection.cpp:58</a></div></div>
-<div class="ttc" id="aclass_total_xsection_html_addd6529e281d94e85e8f6fc20f2ad8af"><div class="ttname"><a href="class_total_xsection.html#addd6529e281d94e85e8f6fc20f2ad8af">TotalXsection::TotalXsectionModel</a></div><div class="ttdeci">TotalXsectionModel</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00031">TotalXsection.hpp:31</a></div></div>
-<div class="ttc" id="aclass_total_xsection_html_addd6529e281d94e85e8f6fc20f2ad8afa14212dab454a5d2ab26d178bc8bbc786"><div class="ttname"><a href="class_total_xsection.html#addd6529e281d94e85e8f6fc20f2ad8afa14212dab454a5d2ab26d178bc8bbc786">TotalXsection::YModel</a></div><div class="ttdeci">@ YModel</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00031">TotalXsection.hpp:31</a></div></div>
-<div class="ttc" id="aclass_total_xsection_html_addd6529e281d94e85e8f6fc20f2ad8afa904ad3967be01ce659ec6f648a3c94e3"><div class="ttname"><a href="class_total_xsection.html#addd6529e281d94e85e8f6fc20f2ad8afa904ad3967be01ce659ec6f648a3c94e3">TotalXsection::GauronModel</a></div><div class="ttdeci">@ GauronModel</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00031">TotalXsection.hpp:31</a></div></div>
-<div class="ttc" id="aclass_total_xsection_html_addd6529e281d94e85e8f6fc20f2ad8afac72c3a9f285a3c2afeadabcb2f8b4240"><div class="ttname"><a href="class_total_xsection.html#addd6529e281d94e85e8f6fc20f2ad8afac72c3a9f285a3c2afeadabcb2f8b4240">TotalXsection::XModel</a></div><div class="ttdeci">@ XModel</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00031">TotalXsection.hpp:31</a></div></div>
+<div class="ttc" id="aclass_total_xsection_html"><div class="ttname"><a href="class_total_xsection.html">TotalXsection</a></div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00029">TotalXsection.hpp:30</a></div></div>
+<div class="ttc" id="aclass_total_xsection_html_a032bbccbec56710ce23c8b5069dab9a9"><div class="ttname"><a href="class_total_xsection.html#a032bbccbec56710ce23c8b5069dab9a9">TotalXsection::TotalXsection</a></div><div class="ttdeci">TotalXsection()</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8cpp_source.html#l00048">TotalXsection.cpp:48</a></div></div>
+<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40">TotalXsection::TotalXsectionSystem</a></div><div class="ttdeci">TotalXsectionSystem</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00034">TotalXsection.hpp:34</a></div></div>
+<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40a42780cec4716afc0818d688c4a954966"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40a42780cec4716afc0818d688c4a954966">TotalXsection::KPlusPCollisions</a></div><div class="ttdeci">@ KPlusPCollisions</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00035">TotalXsection.hpp:35</a></div></div>
+<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40a60cf3addd9059133edc78c348c06bf5e"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40a60cf3addd9059133edc78c348c06bf5e">TotalXsection::GammaGammaCollisions</a></div><div class="ttdeci">@ GammaGammaCollisions</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00035">TotalXsection.hpp:35</a></div></div>
+<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40a7131a447f3a1ca09ffb1759b45e4db29"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40a7131a447f3a1ca09ffb1759b45e4db29">TotalXsection::GammaPCollisions</a></div><div class="ttdeci">@ GammaPCollisions</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00035">TotalXsection.hpp:35</a></div></div>
+<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40aa80652d45dd1a8c267baf36033852d97"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40aa80652d45dd1a8c267baf36033852d97">TotalXsection::PPCollisions</a></div><div class="ttdeci">@ PPCollisions</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00034">TotalXsection.hpp:34</a></div></div>
+<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40aa95ae9f1d35f8387f0d230342a9adff1"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40aa95ae9f1d35f8387f0d230342a9adff1">TotalXsection::PiPlusPCollisions</a></div><div class="ttdeci">@ PiPlusPCollisions</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00034">TotalXsection.hpp:34</a></div></div>
+<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40ad0f8cd9b92d5d7245dbf765c5d6fff79"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40ad0f8cd9b92d5d7245dbf765c5d6fff79">TotalXsection::PPbarCollisions</a></div><div class="ttdeci">@ PPbarCollisions</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00034">TotalXsection.hpp:34</a></div></div>
+<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40ad6e614d89a82b9e7f5833bbd2d4aee55"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40ad6e614d89a82b9e7f5833bbd2d4aee55">TotalXsection::KMinusPCollisions</a></div><div class="ttdeci">@ KMinusPCollisions</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00035">TotalXsection.hpp:35</a></div></div>
+<div class="ttc" id="aclass_total_xsection_html_a68c74a6d9fd78194af3e4ac3689f2e40af3f25c701ce2d925b9db84e60eef4d1a"><div class="ttname"><a href="class_total_xsection.html#a68c74a6d9fd78194af3e4ac3689f2e40af3f25c701ce2d925b9db84e60eef4d1a">TotalXsection::PiMinusPCollisions</a></div><div class="ttdeci">@ PiMinusPCollisions</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00035">TotalXsection.hpp:35</a></div></div>
+<div class="ttc" id="aclass_total_xsection_html_adccc32ac07a8e004a1c08e214a580c88"><div class="ttname"><a href="class_total_xsection.html#adccc32ac07a8e004a1c08e214a580c88">TotalXsection::getFunctionTotalXsectionVsSqrtS</a></div><div class="ttdeci">TF1 * getFunctionTotalXsectionVsSqrtS(TotalXsectionSystem selectedSystem, TotalXsectionModel selectedModel, double minSqrtS, double maxSqrtS)</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8cpp_source.html#l00053">TotalXsection.cpp:53</a></div></div>
+<div class="ttc" id="aclass_total_xsection_html_addd6529e281d94e85e8f6fc20f2ad8af"><div class="ttname"><a href="class_total_xsection.html#addd6529e281d94e85e8f6fc20f2ad8af">TotalXsection::TotalXsectionModel</a></div><div class="ttdeci">TotalXsectionModel</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00033">TotalXsection.hpp:33</a></div></div>
+<div class="ttc" id="aclass_total_xsection_html_addd6529e281d94e85e8f6fc20f2ad8afa14212dab454a5d2ab26d178bc8bbc786"><div class="ttname"><a href="class_total_xsection.html#addd6529e281d94e85e8f6fc20f2ad8afa14212dab454a5d2ab26d178bc8bbc786">TotalXsection::YModel</a></div><div class="ttdeci">@ YModel</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00033">TotalXsection.hpp:33</a></div></div>
+<div class="ttc" id="aclass_total_xsection_html_addd6529e281d94e85e8f6fc20f2ad8afa904ad3967be01ce659ec6f648a3c94e3"><div class="ttname"><a href="class_total_xsection.html#addd6529e281d94e85e8f6fc20f2ad8afa904ad3967be01ce659ec6f648a3c94e3">TotalXsection::GauronModel</a></div><div class="ttdeci">@ GauronModel</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00033">TotalXsection.hpp:33</a></div></div>
+<div class="ttc" id="aclass_total_xsection_html_addd6529e281d94e85e8f6fc20f2ad8afac72c3a9f285a3c2afeadabcb2f8b4240"><div class="ttname"><a href="class_total_xsection.html#addd6529e281d94e85e8f6fc20f2ad8afac72c3a9f285a3c2afeadabcb2f8b4240">TotalXsection::XModel</a></div><div class="ttdeci">@ XModel</div><div class="ttdef"><b>Definition:</b> <a href="_total_xsection_8hpp_source.html#l00033">TotalXsection.hpp:33</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_628593db0cdce5a76fb85526ae5aa762.html">Base</a></li><li class="navelem"><a class="el" href="_total_xsection_8cpp.html">TotalXsection.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_7e461070e7b716e896e0d97cd6a82321.html">Tools</a></li><li class="navelem"><a class="el" href="_total_xsection_8cpp.html">TotalXsection.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>

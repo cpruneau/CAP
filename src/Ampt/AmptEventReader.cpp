@@ -20,28 +20,30 @@ AmptEventReader::AmptEventReader(const TString &          _name,
 :
 RootTreeReader(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel)
 {
+  setFunctionName(__FILE__);
   appendClassName("AmptEventReader");
+  setInstanceName(_name);
   setDefaultConfiguration();
   setConfiguration(_configuration);
 }
 
 void AmptEventReader::setDefaultConfiguration()
 {
-  RootTreeReader::setDefaultConfiguration();
+  //RootTreeReader::setDefaultConfiguration();
 }
 
 void AmptEventReader::execute()
 {
-//  if (reportDebug("AmptEventReader",getName(),"execute()"))
-//    ;
-
+  //  if (reportDebug("AmptEventReader",getName(),"execute()"))
+  //    ;
+  incrementTaskExecuted();
   EventFilter & eventFilter = * eventFilters[0];
   ParticleFilter & particleFilter = * particleFilters[0];
-  incrementEventProcessed();
+  incrementTaskExecuted();
   Event & event = * eventStreams[0];
   event.reset();
   particleFactory->reset();
-  resetParticleCounters();
+  // resetParticleCounters();
   Particle * parentInteraction;
   parentInteraction = particleFactory->getNextObject();
   parentInteraction->reset();
@@ -83,7 +85,7 @@ void AmptEventReader::execute()
   for (int iParticle=0; iParticle<nParticles; iParticle++)
     {
     int pdgCode = pid[iParticle];
-    type = masterCollection->findPdgCode(pdgCode);
+    type = particleTypeCollection->findPdgCode(pdgCode);
     if (type==nullptr)
       {
       if (reportWarning("AmptEventReader",getName(),"execute()")) cout << "Encountered unknown pdgCode: " << pdgCode << " Particle not added to event." << endl;
@@ -105,10 +107,9 @@ void AmptEventReader::execute()
     mass = m[iParticle];
     p_e  =sqrt(p_x*p_x + p_y*p_y + p_z*p_z + mass*mass);
     particle->set(type,p_x,p_y,p_z,p_e,r_x,r_y,r_z,r_t,true);
-    incrementParticlesCounted(); // photons are NOT included in this tally
     if (!particleFilter.accept(*particle)) continue;
     event.add(particle);
-    incrementParticlesAccepted();
+    incrementNParticlesAccepted();
     }
   event.setEventNumber(eventNo);
   EventProperties & eventProperties = * event.getEventProperties();
@@ -122,19 +123,22 @@ void AmptEventReader::execute()
   eventProperties.nBinaryTotal          = 0;
   eventProperties.impactParameter       = impact;
   eventProperties.fractionalXSection    = -99999;
-  eventProperties.referenceMultiplicity = getNParticlesAccepted();
-  eventProperties.particlesCounted      = getNParticlesCounted();
-  eventProperties.particlesAccepted     = getNParticlesAccepted();
-  incrementEventAccepted(0);
-//  if (reportDebug("AmptEventReader",getName(),"execute()"))
-//    {
-//    eventProperties.printProperties(cout);
-//    cout << "AmptEventReader::execute() event completed!" << endl;
-//    }
+  //  eventProperties.referenceMultiplicity = getNParticlesAccepted();
+  //  eventProperties.particlesCounted      = getNParticlesCounted();
+  //  eventProperties.particlesAccepted     = getNParticlesAccepted();
+  incrementNEventsAccepted(0);
+  //  if (reportDebug("AmptEventReader",getName(),"execute()"))
+  //    {
+  //    eventProperties.printProperties(cout);
+  //    cout << "AmptEventReader::execute() event completed!" << endl;
+  //    }
 }
 
 void AmptEventReader::initInputTreeMapping()
 {
+  
+  if (reportStart(__FUNCTION__))
+    ;
   TTree * tree = rootInputTreeChain();
   tree->SetMakeClass(1);
   tree->SetBranchAddress("eventNo", &eventNo, &b_eventNo);
@@ -150,5 +154,7 @@ void AmptEventReader::initInputTreeMapping()
   tree->SetBranchAddress("m", m, &b_m);
   tree->SetBranchAddress("Nx", Nx, &b_Nx);
   tree->SetBranchAddress("Ny", Ny, &b_Ny);
-  }
+  if (reportEnd(__FUNCTION__))
+    ;
+}
 

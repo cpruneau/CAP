@@ -23,6 +23,7 @@ Task(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel),
 decayer()
 {
   appendClassName("ParticleDecayerTask");
+  setInstanceName(_name);
   setDefaultConfiguration();
   setConfiguration(_configuration);
  }
@@ -43,17 +44,17 @@ void ParticleDecayerTask::setDefaultConfiguration()
 // ====================================================================
 void ParticleDecayerTask::execute()
 {
-  if (reportDebug("ParticleDecayerTask",getName(),"execute()"))
+  
+  if (reportStart(__FUNCTION__))
     ;
-  incrementEventProcessed();
+  incrementTaskExecuted();
   Event & event = * eventStreams[0];
   int nParticles = event.getNParticles();
 //  if (reportInfo("ParticleDecayerTask",getName(),"execute()"))
 //    cout << "     nParticles : " << nParticles << endl;
   if (nParticles< 1)
     {
-    if (reportWarning("ParticleDecayerTask",getName(),"execute()"))
-      cout << "Skipping empty event." << endl;
+    if (reportWarning(__FUNCTION__)) cout << "Skipping empty event." << endl;
     return;
     }
 
@@ -76,8 +77,7 @@ void ParticleDecayerTask::execute()
       switch (nChildren)
         {
           case 1:
-          if (reportInfo("ParticleDecayerTask",getName(),"execute()"))
-            cout << "case 1  parentType==" << parent.getName() << endl;
+          if (reportInfo(__FUNCTION__)) cout << "case 1  parentType==" << parent.getName() << endl;
           break;
           case 2:
           {
@@ -201,10 +201,6 @@ void ParticleDecayerTask::execute()
     done = (iParticle >= event.getNParticles());
     }
   nParticles = event.getNParticles();
-//  if (reportInfo("ParticleDecayerTask",getName(),"execute()"))
-//    cout << "     nParticles : " << nParticles << endl;
-
- // cout << "ParticleDecayerTask::execute() DONE" << endl;
 }
 
 

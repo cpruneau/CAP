@@ -11,7 +11,9 @@ var searchData=
   ['useflowinfit_8',['useFlowInFit',['../class_bidim_gauss_fit_configuration.html#a62c132855279b2e7e10810790162da5a',1,'BidimGaussFitConfiguration']]],
   ['usefullazimuthalflow_9',['useFullAzimuthalFlow',['../class_bidim_gauss_fit_configuration.html#aeaa0865d6e36e3567f75a40b94c98a11',1,'BidimGaussFitConfiguration']]],
   ['usenucleonexclusion_10',['useNucleonExclusion',['../class_nucleus_generator.html#a143b8fd61ed18bad714dd48b460950c8',1,'NucleusGenerator']]],
-  ['userecentering_11',['useRecentering',['../class_nucleus_generator.html#a517edcd5176dce27c1f28903193f9235',1,'NucleusGenerator']]],
-  ['usescaling_12',['useScaling',['../class_bidim_gauss_fit_configuration.html#a7e9922eafa3bd0e9430194584b7ca16b',1,'BidimGaussFitConfiguration']]],
-  ['usesinglecanvas_13',['useSingleCanvas',['../class_bidim_gauss_fit_configuration.html#ab086aca7e0e7c127b7b28d343bf65ff4',1,'BidimGaussFitConfiguration']]]
+  ['useparticles_11',['useParticles',['../class_task_iterator.html#a963f87cb3a5a83c51a804b2fa3947101',1,'TaskIterator']]],
+  ['userecentering_12',['useRecentering',['../class_nucleus_generator.html#a517edcd5176dce27c1f28903193f9235',1,'NucleusGenerator']]],
+  ['usesamesetforall_13',['useSameSetForAll',['../class_particle_performance_simulator.html#a91dc5501673eb4d2a64a461ebfff105d',1,'ParticlePerformanceSimulator::useSameSetForAll()'],['../class_resolution_function.html#a281705e39bdf08bf177ec9fb62c69547',1,'ResolutionFunction::useSameSetForAll()']]],
+  ['usescaling_14',['useScaling',['../class_bidim_gauss_fit_configuration.html#a7e9922eafa3bd0e9430194584b7ca16b',1,'BidimGaussFitConfiguration']]],
+  ['usesinglecanvas_15',['useSingleCanvas',['../class_bidim_gauss_fit_configuration.html#ab086aca7e0e7c127b7b28d343bf65ff4',1,'BidimGaussFitConfiguration']]]
 ];

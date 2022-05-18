@@ -15,10 +15,16 @@ ClassImp(EventCountHistos);
 
 EventCountHistos::EventCountHistos(const TString & _name,
                                    Configuration & _configuration,
-                                   LogLevel        _debugLevel)
+                                   int _nEventFilters,
+                                   int _nParticleFilters,
+                                   LogLevel _debugLevel)
 :
 Histograms(_name,_configuration,_debugLevel),
-h_eventCounts(nullptr)
+nEventFilters(_nEventFilters),
+nParticleFilters(_nParticleFilters),
+h_taskExecutedReset(nullptr),
+h_eventAcceptedReset(nullptr),
+h_partilceAcceptedReset(nullptr)
 {
   // no ops
 }
@@ -26,37 +32,68 @@ h_eventCounts(nullptr)
 // for now use the same boundaries for eta and y histogram
 void EventCountHistos::createHistograms()
 {
+  
+  if (reportStart(__FUNCTION__))
+    ;
   TString bn = getHistoBaseName();
-  h_eventCounts = createHistogram(bn+TString("eventCount"),100,  0.0,  100.0,  "FilterIndex","EventCount");
+  TString histoName;
+  histoName = bn+TString("_taskExecuted");
+  h_taskExecutedReset = createHistogram(histoName,1,-0.5, 0.5, "taskExecuted", "Count") ;
+  histoName = bn+TString("_eventAccepted");
+  h_eventAcceptedReset = createHistogram(histoName,nEventFilters,-0.5, -0.5+double(nEventFilters), "event filter", "Count");
+  histoName = bn+TString("_partilceAccepted");
+  int n = nEventFilters*nParticleFilters;
+  h_partilceAcceptedReset = createHistogram(histoName,n,-0.5, -0.5+double(n), "event x particle filter", "Count");
+  if (reportEnd(__FUNCTION__))
+    ;
  }
 
 //________________________________________________________________________
 void EventCountHistos::loadHistograms(TFile * inputFile)
 {
+  
+  if (reportStart(__FUNCTION__))
+    ;
   if (!inputFile)
     {
     if (reportFatal()) cout << "Attempting to load EventCountHistos from an invalid file pointer" << endl;
     return;
     }
   TString bn = getHistoBaseName();
-  TString histoName = bn+TString("eventCount");
-  h_eventCounts = loadH1(inputFile,histoName);
-  if (!h_eventCounts)
-    {
-    if (reportError()) cout << "Could not load histogram: " << histoName << endl;
-    return;
-    }
+  TString histoName;
+
+  histoName = bn+TString("taskExecuted");
+  h_taskExecutedReset = loadH1(inputFile,histoName);
+  if (!h_taskExecutedReset && reportError()) cout << "Could not load histogram: " << histoName << endl;
+  histoName = bn+TString("eventAccepted");
+  h_eventAcceptedReset = loadH1(inputFile,histoName);
+  if (!h_eventAcceptedReset && reportError()) cout << "Could not load histogram: " << histoName << endl;
+  histoName = bn+TString("partilceAccepted");
+  h_partilceAcceptedReset = loadH1(inputFile,histoName);
+  if (!h_partilceAcceptedReset && reportError()) cout << "Could not load histogram: " << histoName << endl;
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
-// This fills the event count histogram. It should be called only
-// once per event or once per histo file save.
-void EventCountHistos::fill(vector<double> eventCounts)
+// This fills the event count histogram. Should be called once per histo file save.
+void EventCountHistos::fill(long nTaskExecutedReset,
+                            vector<long> & nEventsAcceptedReset,
+                            vector<long> & nParticleAcceptedReset)
 {
-  double x = 0.5;
-  for (unsigned int k=0; k<eventCounts.size(); k++)
+  
+  if (reportStart(__FUNCTION__))
+    ;
+  h_taskExecutedReset->Fill(0.0, double(nTaskExecutedReset));
+  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++)
     {
-    h_eventCounts->Fill(x,eventCounts[k]);
-    x += 1.0;
+    h_eventAcceptedReset->Fill(double(iEventFilter),double(nEventsAcceptedReset[iEventFilter]));
+    for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++)
+      {
+      int index = iEventFilter*nParticleFilters + iParticleFilter;
+      h_partilceAcceptedReset->Fill(double(index),double(nParticleAcceptedReset[index]));
+      }
     }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 

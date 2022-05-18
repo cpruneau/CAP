@@ -1,5 +1,5 @@
 \hypertarget{_hadron_levels_8_c_source}{}\doxysection{Hadron\+Levels.\+C}
-\label{_hadron_levels_8_c_source}\index{Macros/HadronLevels.C@{Macros/HadronLevels.C}}
+\label{_hadron_levels_8_c_source}\index{Misc/HadronLevels.C@{Misc/HadronLevels.C}}
 \mbox{\hyperlink{_hadron_levels_8_c}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00001}00001 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
@@ -33,8 +33,8 @@
 \DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00029}00029     \{}
 \DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00030}00030     graphConfigurations[iGraph] = \textcolor{keyword}{new} \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}}(1,iGraph\%10);}
 \DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00031}00031     \}}
-\DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00032}00032   TString \mbox{\hyperlink{_closure_test_8cpp_a8e151543ace9cc9b23469a507dfbf503}{inputPath}}  = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/PythiaStudies/"{}};}
-\DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00033}00033   TString \mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}} = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/WAC-\/DATA/OutputFiles/"{}};}
+\DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00032}00032   TString inputPath  = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/run/PythiaStudies/"{}};}
+\DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00033}00033   TString outputPath = \textcolor{stringliteral}{"{}/Users/claudeapruneau/Documents/GitHub/WAC-\/DATA/OutputFiles/"{}};}
 \DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00034}00034 }
 \DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00035}00035   TString fileBaseName  = \textcolor{stringliteral}{"{}HadronLevels\_"{}};}
 \DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00036}00036   TString histoName, histoTitle;}
@@ -86,7 +86,7 @@
 \DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00082}00082   \mbox{\hyperlink{_hadron_levels_8_c_a01569d648d1c2de98ed631c9703b7018}{drawLevels}}(5, nd, 4.0, 4.5, dataStyle,dataColor,dataWidth);}
 \DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00083}00083   \mbox{\hyperlink{_hadron_levels_8_c_a01569d648d1c2de98ed631c9703b7018}{drawLevels}}(5, nm, 4.5, 5.0, modelStyle,modelColor,modelWidth);}
 \DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00084}00084 }
-\DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00085}00085   plotter-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(\mbox{\hyperlink{_closure_test_8cpp_a9a8178cf87264ac75ba4fdce8656b5a6}{outputPath}});}
+\DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00085}00085   plotter-\/>\mbox{\hyperlink{class_canvas_collection_a3464f63d2ef7a321c15b4de89c4519e2}{printAllCanvas}}(outputPath);}
 \DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00086}00086 }
 \DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00087}00087   \textcolor{keywordflow}{return} 0;}
 \DoxyCodeLine{\Hypertarget{_hadron_levels_8_c_source_l00088}00088 \}}

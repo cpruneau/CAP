@@ -2,122 +2,124 @@
 \label{_nucleus_8cpp_source}\index{Base/Nucleus.cpp@{Base/Nucleus.cpp}}
 \mbox{\hyperlink{_nucleus_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00003}00003 \textcolor{comment}{/*************************************************************************}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.                                   *}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.                                                  *}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment                             *}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00007}00007 \textcolor{comment}{ *                                                                       *}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.                                  *}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00009}00009 \textcolor{comment}{ *************************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_nucleus_8hpp}{Nucleus.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00019}\mbox{\hyperlink{_nucleus_8cpp_a3a301a425ce42f3266a4a4074ed10f3f}{00019}} \mbox{\hyperlink{_nucleus_8cpp_a3a301a425ce42f3266a4a4074ed10f3f}{ClassImp}}(\mbox{\hyperlink{class_nucleus}{Nucleus}});}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00020}00020 }
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00021}\mbox{\hyperlink{class_nucleus_ac1dc2e47269ccacfb55b1f27d39596af}{00021}} \mbox{\hyperlink{class_nucleus_ac1dc2e47269ccacfb55b1f27d39596af}{Nucleus::Nucleus}}()}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00022}00022 :}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00023}00023 \mbox{\hyperlink{class_particle}{Particle}}(),}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00024}00024 nProtons(0),}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00025}00025 nNeutrons(0)}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00026}00026 \{}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00027}00027   \mbox{\hyperlink{class_particle_a249d17234d8475ce38f76a40a104b843}{type}} = \mbox{\hyperlink{class_particle_type_ad35795548f6c363605979c5e35505def}{ParticleType::getNucleusType}}();}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00028}00028   \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}.push\_back(\mbox{\hyperlink{class_particle_a192e9c0fac3b26fa0fd529037c7c5ac1}{Particle::getProton}}());}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00029}00029   \mbox{\hyperlink{class_nucleus_a2063f09f434983d1776cc58b1bd9ee3c}{nProtons}}  = 1;}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00030}00030   \mbox{\hyperlink{class_nucleus_aee0421461de1a4caece4ea5373a357f1}{nNeutrons}} = 0;}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00031}00031   \mbox{\hyperlink{class_particle_a2244f1b8544823239c4bf1a5a940d526}{live}}      = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00032}00032 \}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00033}00033 }
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00034}\mbox{\hyperlink{class_nucleus_ad275cb615e5a86a17f402d5206429b57}{00034}} \mbox{\hyperlink{class_nucleus_ac1dc2e47269ccacfb55b1f27d39596af}{Nucleus::Nucleus}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_nucleus}{Nucleus}} \& otherNucleus)}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00035}00035 :}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00036}00036 \mbox{\hyperlink{class_particle}{Particle}}(otherNucleus),}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00037}00037 nProtons(otherNucleus.nProtons),}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00038}00038 nNeutrons(otherNucleus.nNeutrons)}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00039}00039 \{}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00040}00040  \textcolor{comment}{// no ops}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00041}00041 \}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00042}00042 }
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00043}\mbox{\hyperlink{class_nucleus_a00d84fe76da8d39ffebd2453059b19a4}{00043}} \mbox{\hyperlink{class_nucleus}{Nucleus}} \& \mbox{\hyperlink{class_nucleus_a00d84fe76da8d39ffebd2453059b19a4}{Nucleus::operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_nucleus}{Nucleus}} \& otherNucleus)}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00044}00044 \{}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00045}00045   \textcolor{keywordflow}{if} (\&otherNucleus != \textcolor{keyword}{this})}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00046}00046     \{}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00047}00047     \mbox{\hyperlink{class_particle_a70adc57286f9c07626fc7a1bb8a51ca0}{Particle::operator=}}(otherNucleus);}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00048}00048     \mbox{\hyperlink{class_nucleus_a2063f09f434983d1776cc58b1bd9ee3c}{nProtons}}  = otherNucleus.\mbox{\hyperlink{class_nucleus_a2063f09f434983d1776cc58b1bd9ee3c}{nProtons}};}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00049}00049     \mbox{\hyperlink{class_nucleus_aee0421461de1a4caece4ea5373a357f1}{nNeutrons}} = otherNucleus.\mbox{\hyperlink{class_nucleus_aee0421461de1a4caece4ea5373a357f1}{nNeutrons}};}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00050}00050     \}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00051}00051   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00052}00052 \}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00053}00053 }
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00054}00054 \textcolor{comment}{// create the container but do not assign any positions or properties.}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00055}\mbox{\hyperlink{class_nucleus_a4de2a89183995f36361cb9c774ec8391}{00055}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_a4de2a89183995f36361cb9c774ec8391}{Nucleus::defineAs}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} z, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} a)}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00056}00056 \{}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00057}00057 \textcolor{comment}{//  cout << "{}Nucleus::defineAs(unsigned int z, unsigned int a)"{} << endl;}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00058}00058 \textcolor{comment}{//  cout << "{} z = "{} << z << endl;}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00059}00059 \textcolor{comment}{//  cout << "{} a = "{} << z << endl;}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00060}00060   \mbox{\hyperlink{class_particle_a2244f1b8544823239c4bf1a5a940d526}{live}}       = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00061}00061   \mbox{\hyperlink{class_particle_ac7ca57ecb691687b4c7ad13f803a7c0c}{pid}}        = -\/1;}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00062}00062   \mbox{\hyperlink{class_particle_a01664cac57724ee342f84cd4bc3c4e5f}{ixEtaPhi}}   = -\/1;}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00063}00063   \mbox{\hyperlink{class_particle_a5723970b173d0948d1dc25753917658f}{ixYPhi}}     = -\/1;}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00064}00064   \mbox{\hyperlink{class_particle_a5ed4c9627f9efa6bfd34d1e77b2dada3}{momentum}}.SetPxPyPzE (0.0,0.0,0.0,0.0);}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00065}00065   \mbox{\hyperlink{class_particle_a61d849f8f519c82ba916bbaea10b18dd}{position}}.SetXYZT    (0.0,0.0,0.0,0.0);}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00066}00066   \mbox{\hyperlink{class_particle_a0a95e4ab8d0bbc51e4ab6034d108f68e}{truth}} = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00067}00067   \mbox{\hyperlink{class_particle_a249d17234d8475ce38f76a40a104b843}{type}} = \mbox{\hyperlink{class_particle_type_ad35795548f6c363605979c5e35505def}{ParticleType::getNucleusType}}();}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00068}00068   \mbox{\hyperlink{class_nucleus_a2063f09f434983d1776cc58b1bd9ee3c}{nProtons}}  = 0;}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00069}00069   \mbox{\hyperlink{class_nucleus_aee0421461de1a4caece4ea5373a357f1}{nNeutrons}} = 0;}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00070}00070   \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}.clear();}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00071}00071   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iNucleon=0; iNucleon<z; iNucleon++)}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00072}00072     \{}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00073}00073     \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}.push\_back(\mbox{\hyperlink{class_particle_a192e9c0fac3b26fa0fd529037c7c5ac1}{Particle::getProton}}()); \mbox{\hyperlink{class_nucleus_a2063f09f434983d1776cc58b1bd9ee3c}{nProtons}}++;}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00074}00074     \}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00075}00075   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iNucleon=0; iNucleon<(a-\/z); iNucleon++)}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00076}00076     \{}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00077}00077     \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}.push\_back(\mbox{\hyperlink{class_particle_a24abe36e721a127651fe8f79ef1d705b}{Particle::getNeutron}}()); \mbox{\hyperlink{class_nucleus_aee0421461de1a4caece4ea5373a357f1}{nNeutrons}}++;}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00078}00078     \}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00079}00079 \}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00080}00080 }
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00081}\mbox{\hyperlink{class_nucleus_ad255489b68b67e3e6a0d60da0eeab830}{00081}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_ad255489b68b67e3e6a0d60da0eeab830}{Nucleus::clear}}()}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00082}00082 \{}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00083}00083   \mbox{\hyperlink{class_particle_ab0eea4368ee797652c528949ab4ac563}{Particle::clear}}();}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00084}00084   \mbox{\hyperlink{class_nucleus_a2063f09f434983d1776cc58b1bd9ee3c}{nProtons}}  = 0;}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00085}00085   \mbox{\hyperlink{class_nucleus_aee0421461de1a4caece4ea5373a357f1}{nNeutrons}} = 0;}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00086}00086 \}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00087}00087 }
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00088}00088 \textcolor{comment}{// Keeps the nucleus defined but resets all the positions.}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00089}\mbox{\hyperlink{class_nucleus_a5be4ea2b5719dfd1c511f81ef6915181}{00089}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_a5be4ea2b5719dfd1c511f81ef6915181}{Nucleus::reset}}()}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00090}00090 \{}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00091}00091   \mbox{\hyperlink{class_particle_a5ed4c9627f9efa6bfd34d1e77b2dada3}{momentum}}.SetPxPyPzE (0.0,0.0,0.0,0.0);}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00092}00092   \mbox{\hyperlink{class_particle_a61d849f8f519c82ba916bbaea10b18dd}{position}}.SetXYZT    (0.0,0.0,0.0,0.0);}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00093}00093   \mbox{\hyperlink{class_particle_a748ba9fdcb18bbe3b3cbaf22247adad5}{parents}}.clear();}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00094}00094 }
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00095}00095   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iNucleon=0; iNucleon<\mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}.size(); iNucleon++)}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00096}00096     \{}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00097}00097     \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}[iNucleon]-\/>reset();}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00098}00098     \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}[iNucleon]-\/>setWounded(\textcolor{keyword}{false});;}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00099}00099     \}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00100}00100   \mbox{\hyperlink{class_particle_a2244f1b8544823239c4bf1a5a940d526}{live}} = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00101}00101 \}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00102}00102 }
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00103}\mbox{\hyperlink{class_nucleus_a2fccaa6a9d3e44ff5b5f4bf15cd811b7}{00103}} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_nucleus_a2fccaa6a9d3e44ff5b5f4bf15cd811b7}{Nucleus::countWounded}}()}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00104}00104 \{}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00105}00105   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} wounded = 0;}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00106}00106   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iNucleon=0; iNucleon<\mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}.size(); iNucleon++)}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00107}00107     \{}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00108}00108     wounded += \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}[iNucleon]-\/>isWounded();}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00109}00109     \}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00110}00110   \textcolor{keywordflow}{return} wounded;}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00111}00111 \}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00112}00112 }
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00113}\mbox{\hyperlink{class_nucleus_ad59c01de57ee8f12141bd5e62bc2b520}{00113}} vector<Particle*> \mbox{\hyperlink{class_nucleus_ad59c01de57ee8f12141bd5e62bc2b520}{Nucleus::getWoundedNucleons}}()}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00114}00114 \{}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00115}00115   vector<Particle*> woundedNucleons;}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00116}00116   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iNucleon=0; iNucleon<\mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}.size(); iNucleon++)}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00117}00117     \{}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00118}00118     \mbox{\hyperlink{class_particle}{Particle}} * nucleon = \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}[iNucleon];}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00119}00119      \textcolor{keywordflow}{if} (nucleon-\/>\mbox{\hyperlink{class_particle_ada110e9a49c2910bffd27c6037863d5b}{isWounded}}())}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00120}00120        \{}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00121}00121        woundedNucleons.push\_back(nucleon);}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00122}00122        \}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00123}00123     \}}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00124}00124   \textcolor{keywordflow}{return} woundedNucleons;}
-\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00125}00125 \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_nucleus_8hpp}{Nucleus.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00013}\mbox{\hyperlink{_nucleus_8cpp_a3a301a425ce42f3266a4a4074ed10f3f}{00013}} \mbox{\hyperlink{_nucleus_8cpp_a3a301a425ce42f3266a4a4074ed10f3f}{ClassImp}}(\mbox{\hyperlink{class_nucleus}{Nucleus}});}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00015}\mbox{\hyperlink{class_nucleus_ac1dc2e47269ccacfb55b1f27d39596af}{00015}} \mbox{\hyperlink{class_nucleus_ac1dc2e47269ccacfb55b1f27d39596af}{Nucleus::Nucleus}}()}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00016}00016 :}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00017}00017 \mbox{\hyperlink{class_particle}{Particle}}(),}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00018}00018 nProtons(0),}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00019}00019 nNeutrons(0)}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00020}00020 \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00021}00021   \mbox{\hyperlink{class_particle_a249d17234d8475ce38f76a40a104b843}{type}} = \mbox{\hyperlink{class_particle_type_ad35795548f6c363605979c5e35505def}{ParticleType::getNucleusType}}();}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00022}00022   \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}.push\_back(\mbox{\hyperlink{class_particle_a192e9c0fac3b26fa0fd529037c7c5ac1}{Particle::getProton}}());}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00023}00023   \mbox{\hyperlink{class_nucleus_a2063f09f434983d1776cc58b1bd9ee3c}{nProtons}}  = 1;}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00024}00024   \mbox{\hyperlink{class_nucleus_aee0421461de1a4caece4ea5373a357f1}{nNeutrons}} = 0;}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00025}00025   \mbox{\hyperlink{class_particle_a2244f1b8544823239c4bf1a5a940d526}{live}}      = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00026}00026 \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00028}\mbox{\hyperlink{class_nucleus_ad275cb615e5a86a17f402d5206429b57}{00028}} \mbox{\hyperlink{class_nucleus_ac1dc2e47269ccacfb55b1f27d39596af}{Nucleus::Nucleus}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_nucleus}{Nucleus}} \& otherNucleus)}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00029}00029 :}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00030}00030 \mbox{\hyperlink{class_particle}{Particle}}(otherNucleus),}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00031}00031 nProtons(otherNucleus.nProtons),}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00032}00032 nNeutrons(otherNucleus.nNeutrons)}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00033}00033 \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00034}00034  \textcolor{comment}{// no ops}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00035}00035 \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00037}\mbox{\hyperlink{class_nucleus_a00d84fe76da8d39ffebd2453059b19a4}{00037}} \mbox{\hyperlink{class_nucleus}{Nucleus}} \& \mbox{\hyperlink{class_nucleus_a00d84fe76da8d39ffebd2453059b19a4}{Nucleus::operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_nucleus}{Nucleus}} \& otherNucleus)}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00038}00038 \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00039}00039   \textcolor{keywordflow}{if} (\&otherNucleus != \textcolor{keyword}{this})}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00040}00040     \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00041}00041     \mbox{\hyperlink{class_particle_a70adc57286f9c07626fc7a1bb8a51ca0}{Particle::operator=}}(otherNucleus);}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00042}00042     \mbox{\hyperlink{class_nucleus_a2063f09f434983d1776cc58b1bd9ee3c}{nProtons}}  = otherNucleus.\mbox{\hyperlink{class_nucleus_a2063f09f434983d1776cc58b1bd9ee3c}{nProtons}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00043}00043     \mbox{\hyperlink{class_nucleus_aee0421461de1a4caece4ea5373a357f1}{nNeutrons}} = otherNucleus.\mbox{\hyperlink{class_nucleus_aee0421461de1a4caece4ea5373a357f1}{nNeutrons}};}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00044}00044     \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00045}00045   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00046}00046 \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00048}00048 \textcolor{comment}{// create the container but do not assign any positions or properties.}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00049}\mbox{\hyperlink{class_nucleus_a4de2a89183995f36361cb9c774ec8391}{00049}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_a4de2a89183995f36361cb9c774ec8391}{Nucleus::defineAs}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} z, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} a)}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00050}00050 \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00051}00051 \textcolor{comment}{//  cout << "{}Nucleus::defineAs(unsigned int z, unsigned int a)"{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00052}00052 \textcolor{comment}{//  cout << "{} z = "{} << z << endl;}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00053}00053 \textcolor{comment}{//  cout << "{} a = "{} << z << endl;}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00054}00054   \mbox{\hyperlink{class_particle_a2244f1b8544823239c4bf1a5a940d526}{live}}       = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00055}00055   \mbox{\hyperlink{class_particle_ac7ca57ecb691687b4c7ad13f803a7c0c}{pid}}        = -\/1;}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00056}00056   \mbox{\hyperlink{class_particle_a01664cac57724ee342f84cd4bc3c4e5f}{ixEtaPhi}}   = -\/1;}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00057}00057   \mbox{\hyperlink{class_particle_a5723970b173d0948d1dc25753917658f}{ixYPhi}}     = -\/1;}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00058}00058   \mbox{\hyperlink{class_particle_a5ed4c9627f9efa6bfd34d1e77b2dada3}{momentum}}.SetPxPyPzE (0.0,0.0,0.0,0.0);}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00059}00059   \mbox{\hyperlink{class_particle_a61d849f8f519c82ba916bbaea10b18dd}{position}}.SetXYZT    (0.0,0.0,0.0,0.0);}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00060}00060   \mbox{\hyperlink{class_particle_a0a95e4ab8d0bbc51e4ab6034d108f68e}{truth}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00061}00061   \mbox{\hyperlink{class_particle_a249d17234d8475ce38f76a40a104b843}{type}} = \mbox{\hyperlink{class_particle_type_ad35795548f6c363605979c5e35505def}{ParticleType::getNucleusType}}();}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00062}00062   \mbox{\hyperlink{class_nucleus_a2063f09f434983d1776cc58b1bd9ee3c}{nProtons}}  = 0;}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00063}00063   \mbox{\hyperlink{class_nucleus_aee0421461de1a4caece4ea5373a357f1}{nNeutrons}} = 0;}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00064}00064   \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}.clear();}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00065}00065   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iNucleon=0; iNucleon<z; iNucleon++)}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00066}00066     \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00067}00067     \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}.push\_back(\mbox{\hyperlink{class_particle_a192e9c0fac3b26fa0fd529037c7c5ac1}{Particle::getProton}}()); \mbox{\hyperlink{class_nucleus_a2063f09f434983d1776cc58b1bd9ee3c}{nProtons}}++;}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00068}00068     \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00069}00069   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iNucleon=0; iNucleon<(a-\/z); iNucleon++)}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00070}00070     \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00071}00071     \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}.push\_back(\mbox{\hyperlink{class_particle_a24abe36e721a127651fe8f79ef1d705b}{Particle::getNeutron}}()); \mbox{\hyperlink{class_nucleus_aee0421461de1a4caece4ea5373a357f1}{nNeutrons}}++;}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00072}00072     \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00073}00073 \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00075}\mbox{\hyperlink{class_nucleus_ad255489b68b67e3e6a0d60da0eeab830}{00075}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_ad255489b68b67e3e6a0d60da0eeab830}{Nucleus::clear}}()}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00076}00076 \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00077}00077   \mbox{\hyperlink{class_particle_ab0eea4368ee797652c528949ab4ac563}{Particle::clear}}();}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00078}00078   \mbox{\hyperlink{class_nucleus_a2063f09f434983d1776cc58b1bd9ee3c}{nProtons}}  = 0;}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00079}00079   \mbox{\hyperlink{class_nucleus_aee0421461de1a4caece4ea5373a357f1}{nNeutrons}} = 0;}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00080}00080 \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00082}00082 \textcolor{comment}{// Keeps the nucleus defined but resets all the positions.}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00083}\mbox{\hyperlink{class_nucleus_a5be4ea2b5719dfd1c511f81ef6915181}{00083}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_nucleus_a5be4ea2b5719dfd1c511f81ef6915181}{Nucleus::reset}}()}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00084}00084 \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00085}00085   \mbox{\hyperlink{class_particle_a5ed4c9627f9efa6bfd34d1e77b2dada3}{momentum}}.SetPxPyPzE (0.0,0.0,0.0,0.0);}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00086}00086   \mbox{\hyperlink{class_particle_a61d849f8f519c82ba916bbaea10b18dd}{position}}.SetXYZT    (0.0,0.0,0.0,0.0);}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00087}00087   \mbox{\hyperlink{class_particle_a748ba9fdcb18bbe3b3cbaf22247adad5}{parents}}.clear();}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00089}00089   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iNucleon=0; iNucleon<\mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}.size(); iNucleon++)}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00090}00090     \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00091}00091     \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}[iNucleon]-\/>reset();}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00092}00092     \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}[iNucleon]-\/>setWounded(\textcolor{keyword}{false});;}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00093}00093     \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00094}00094   \mbox{\hyperlink{class_particle_a2244f1b8544823239c4bf1a5a940d526}{live}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00095}00095 \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00097}\mbox{\hyperlink{class_nucleus_a2fccaa6a9d3e44ff5b5f4bf15cd811b7}{00097}} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_nucleus_a2fccaa6a9d3e44ff5b5f4bf15cd811b7}{Nucleus::countWounded}}()}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00098}00098 \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00099}00099   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} wounded = 0;}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00100}00100   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iNucleon=0; iNucleon<\mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}.size(); iNucleon++)}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00101}00101     \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00102}00102     wounded += \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}[iNucleon]-\/>isWounded();}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00103}00103     \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00104}00104   \textcolor{keywordflow}{return} wounded;}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00105}00105 \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00107}\mbox{\hyperlink{class_nucleus_ad59c01de57ee8f12141bd5e62bc2b520}{00107}} vector<Particle*> \mbox{\hyperlink{class_nucleus_ad59c01de57ee8f12141bd5e62bc2b520}{Nucleus::getWoundedNucleons}}()}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00108}00108 \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00109}00109   vector<Particle*> woundedNucleons;}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00110}00110   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iNucleon=0; iNucleon<\mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}.size(); iNucleon++)}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00111}00111     \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00112}00112     \mbox{\hyperlink{class_particle}{Particle}} * nucleon = \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}[iNucleon];}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00113}00113      \textcolor{keywordflow}{if} (nucleon-\/>\mbox{\hyperlink{class_particle_ada110e9a49c2910bffd27c6037863d5b}{isWounded}}())}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00114}00114        \{}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00115}00115        woundedNucleons.push\_back(nucleon);}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00116}00116        \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00117}00117     \}}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00118}00118   \textcolor{keywordflow}{return} woundedNucleons;}
+\DoxyCodeLine{\Hypertarget{_nucleus_8cpp_source_l00119}00119 \}}
 
 \end{DoxyCode}

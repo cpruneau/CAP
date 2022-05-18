@@ -2,93 +2,77 @@
 \label{_ampt_event_reader_8hpp_source}\index{Ampt/AmptEventReader.hpp@{Ampt/AmptEventReader.hpp}}
 \mbox{\hyperlink{_ampt_event_reader_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef WAC\_AmptEventReader}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define WAC\_AmptEventReader}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}TChain.h"{}}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}TTree.h"{}}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}TBranch.h"{}}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_event_filter_8hpp}{EventFilter.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_filter_8hpp}{ParticleFilter.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00019}\mbox{\hyperlink{class_ampt_event_reader}{00019}} \textcolor{keyword}{class }\mbox{\hyperlink{class_ampt_event_reader}{AmptEventReader}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00020}00020 \{}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00021}00021 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00022}00022 }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00023}00023   \mbox{\hyperlink{class_ampt_event_reader_a3dd79bd01ad0e2a2be06c0d11123f10f}{AmptEventReader}}(\textcolor{keyword}{const} TString \& name,}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00024}00024                   TaskConfiguration * \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}},}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00025}00025                   \mbox{\hyperlink{class_event}{Event}} * event,}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00026}00026                   \mbox{\hyperlink{class_event_filter}{EventFilter}} * ef,}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00027}00027                   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}} * pf);}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00028}00028   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_ampt_event_reader_a954b0dda465f962a77f096b8c97cc623}{\string~AmptEventReader}}();}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00029}00029   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ampt_event_reader_a867dddecce4553f5827d1803f275a519}{initialize}}();}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00030}00030   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ampt_event_reader_a6b9d79b1d61649052db6692d78aae5a8}{reset}}();}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00031}00031   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ampt_event_reader_ae2b398efc100acb62e1c22304de012b6}{execute}}();}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00032}00032 }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00033}00033   Int\_t \mbox{\hyperlink{class_ampt_event_reader_a13f08000a0a9bda93a211d9db5297f65}{GetEntry}}(Long64\_t entry);}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00034}00034   Long64\_t \mbox{\hyperlink{class_ampt_event_reader_a850cf7831107072a87cefc7e57f85f66}{LoadTree}}(Long64\_t entry);}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00035}00035   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ampt_event_reader_aae38956be9c121dbb6e21a5a548a86b3}{Init}}(TTree *tree);}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00036}00036   Bool\_t \mbox{\hyperlink{class_ampt_event_reader_a5addbc8b6fb13bb8ec4bfa4e1c14678d}{Notify}}();}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00037}00037   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ampt_event_reader_a9032d8ccebba4c23754b9e1a4ae2020e}{Show}}(Long64\_t entry);}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00038}00038   Int\_t \mbox{\hyperlink{class_ampt_event_reader_a41f79401f9d3c1535ca975063cff87e5}{Cut}}(Long64\_t entry);}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00039}00039 }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00041}00041   \textcolor{comment}{// Data members}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00043}\mbox{\hyperlink{class_ampt_event_reader_a5ed4b09d9556afdc640a1443d17c5c11}{00043}} \textcolor{comment}{}  TTree          *\mbox{\hyperlink{class_ampt_event_reader_a5ed4b09d9556afdc640a1443d17c5c11}{fChain}};   }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00044}\mbox{\hyperlink{class_ampt_event_reader_a20117f35ab1f5bd9b9f2b543574636b5}{00044}}   Int\_t           \mbox{\hyperlink{class_ampt_event_reader_a20117f35ab1f5bd9b9f2b543574636b5}{fCurrent}}; }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00045}00045 }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00046}\mbox{\hyperlink{class_ampt_event_reader_a3336fadfaa2a2c18d79966131eef1f1b}{00046}}   Long64\_t \mbox{\hyperlink{class_ampt_event_reader_a3336fadfaa2a2c18d79966131eef1f1b}{nentries}};}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00047}\mbox{\hyperlink{class_ampt_event_reader_aed238d476da979931bc1cd580fe9f67b}{00047}}   Long64\_t \mbox{\hyperlink{class_ampt_event_reader_aed238d476da979931bc1cd580fe9f67b}{nbytes}};}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00048}\mbox{\hyperlink{class_ampt_event_reader_a5a27788da4778feef7fe5b16aab721ad}{00048}}   Long64\_t \mbox{\hyperlink{class_ampt_event_reader_a5a27788da4778feef7fe5b16aab721ad}{nb}};}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00049}00049 }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00050}\mbox{\hyperlink{class_ampt_event_reader_a12aef5bddec7c255c1527fc7b4c0e4bf}{00050}}   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_ampt_event_reader_a12aef5bddec7c255c1527fc7b4c0e4bf}{jentry}};}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00051}00051 }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00052}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{00052}}   \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{arraySize}} = 30000;}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef CAP\_\_AmptEventReader}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define CAP\_\_AmptEventReader}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_root_tree_reader_8hpp}{RootTreeReader.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00020}\mbox{\hyperlink{class_ampt_event_reader}{00020}} \textcolor{keyword}{class }\mbox{\hyperlink{class_ampt_event_reader}{AmptEventReader}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_root_tree_reader}{RootTreeReader}}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00021}00021 \{}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00022}00022 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00033}00033   \mbox{\hyperlink{class_ampt_event_reader_a07c88ddf556acae3a1db0952138b79e4}{AmptEventReader}}(\textcolor{keyword}{const} TString \&          \_name,}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00034}00034                   \mbox{\hyperlink{class_configuration}{Configuration}} \&          \_configuration,}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00035}00035                   vector<EventFilter*>   \& \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00036}00036                   vector<ParticleFilter*>\& \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00037}00037                   \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                 \_selectedLevel=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}});}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00038}00038   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00042}\mbox{\hyperlink{class_ampt_event_reader_a68b97d2fd55c3cd5a5d97507c09abbe6}{00042}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_ampt_event_reader_a68b97d2fd55c3cd5a5d97507c09abbe6}{\string~AmptEventReader}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00043}00043   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00047}00047   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ampt_event_reader_adb48fceda7b32145c894a8c71cd0a344}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00048}00048   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00052}00052   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ampt_event_reader_ae2b398efc100acb62e1c22304de012b6}{execute}}();}
 \DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00053}00053 }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00054}00054   \textcolor{comment}{// Declaration of leaf types}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00055}\mbox{\hyperlink{class_ampt_event_reader_aaa376441822eafee4aa0f29e80f80e29}{00055}}   Int\_t           \mbox{\hyperlink{class_ampt_event_reader_aaa376441822eafee4aa0f29e80f80e29}{eventNo}};}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00056}\mbox{\hyperlink{class_ampt_event_reader_acb17ce94fbf04444fa9fa07f4fd800ff}{00056}}   Int\_t           \mbox{\hyperlink{class_ampt_event_reader_acb17ce94fbf04444fa9fa07f4fd800ff}{mult}};}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00057}\mbox{\hyperlink{class_ampt_event_reader_aaec749e00568e6af438546a11aff47c4}{00057}}   Int\_t           \mbox{\hyperlink{class_ampt_event_reader_aaec749e00568e6af438546a11aff47c4}{Nproj}};}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00058}\mbox{\hyperlink{class_ampt_event_reader_a5be2280d966bd3b797e989323efc5533}{00058}}   Int\_t           \mbox{\hyperlink{class_ampt_event_reader_a5be2280d966bd3b797e989323efc5533}{Ntarg}};}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00059}\mbox{\hyperlink{class_ampt_event_reader_a2534c17df91002b55095fd8ff6b9eaaa}{00059}}   Float\_t         \mbox{\hyperlink{class_ampt_event_reader_a2534c17df91002b55095fd8ff6b9eaaa}{impact}};}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00060}\mbox{\hyperlink{class_ampt_event_reader_a866a6714af8b1a2f06e05d934c932f0d}{00060}}   Int\_t           \mbox{\hyperlink{class_ampt_event_reader_a866a6714af8b1a2f06e05d934c932f0d}{Nparttotal}};}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00061}\mbox{\hyperlink{class_ampt_event_reader_ae795428aeb0fd5929e1c78989669edbf}{00061}}   Int\_t           \mbox{\hyperlink{class_ampt_event_reader_ae795428aeb0fd5929e1c78989669edbf}{pid}}[\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{arraySize}}];   \textcolor{comment}{//[Mult]}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00062}\mbox{\hyperlink{class_ampt_event_reader_aa88d573fa141ed3cf98227da1b493494}{00062}}   Float\_t         \mbox{\hyperlink{class_ampt_event_reader_aa88d573fa141ed3cf98227da1b493494}{px}}[\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{arraySize}}];   \textcolor{comment}{//[Mult]}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00063}\mbox{\hyperlink{class_ampt_event_reader_abdc1e8aaf1ce053535a0286faa6d45fa}{00063}}   Float\_t         \mbox{\hyperlink{class_ampt_event_reader_abdc1e8aaf1ce053535a0286faa6d45fa}{py}}[\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{arraySize}}];   \textcolor{comment}{//[Mult]}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00064}\mbox{\hyperlink{class_ampt_event_reader_a7d74fce0c970a9e98e0f119513f76dcd}{00064}}   Float\_t         \mbox{\hyperlink{class_ampt_event_reader_a7d74fce0c970a9e98e0f119513f76dcd}{pz}}[\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{arraySize}}];   \textcolor{comment}{//[Mult]}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00065}\mbox{\hyperlink{class_ampt_event_reader_acae6f93ea246002bf47d8b0b70e188e1}{00065}}   Float\_t         \mbox{\hyperlink{class_ampt_event_reader_acae6f93ea246002bf47d8b0b70e188e1}{m}}[\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{arraySize}}];   \textcolor{comment}{//[Mult]}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00066}\mbox{\hyperlink{class_ampt_event_reader_a579cddd3b5d423a894efece718ca5b51}{00066}}   Float\_t         \mbox{\hyperlink{class_ampt_event_reader_a579cddd3b5d423a894efece718ca5b51}{Nx}}[\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{arraySize}}];   \textcolor{comment}{//[Mult]}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00067}\mbox{\hyperlink{class_ampt_event_reader_a030cdfb0f7d1e7c325601371ca2c959c}{00067}}   Float\_t         \mbox{\hyperlink{class_ampt_event_reader_a030cdfb0f7d1e7c325601371ca2c959c}{Ny}}[\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{arraySize}}];   \textcolor{comment}{//[Mult]}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00068}00068 }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00069}00069   \textcolor{comment}{// List of branches}}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00070}\mbox{\hyperlink{class_ampt_event_reader_aaa34555f7deed324ebb1cdc082e7f5d1}{00070}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_aaa34555f7deed324ebb1cdc082e7f5d1}{b\_eventNo}};   }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00071}\mbox{\hyperlink{class_ampt_event_reader_abbff7ba5f064d68bfd04941999e4e6d3}{00071}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_abbff7ba5f064d68bfd04941999e4e6d3}{b\_mult}};   }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00072}\mbox{\hyperlink{class_ampt_event_reader_a8ec498c7b83dc5bf3056de49c39fc788}{00072}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_a8ec498c7b83dc5bf3056de49c39fc788}{b\_Nproj}};   }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00073}\mbox{\hyperlink{class_ampt_event_reader_af1309359c87e5da058fa54bcff76666f}{00073}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_af1309359c87e5da058fa54bcff76666f}{b\_Ntarg}};   }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00074}\mbox{\hyperlink{class_ampt_event_reader_aa6e44f075d4555f508e6f293049e49cd}{00074}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_aa6e44f075d4555f508e6f293049e49cd}{b\_impact}};   }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00075}\mbox{\hyperlink{class_ampt_event_reader_a24e4e4b2cdb888e42e5913e7858f4359}{00075}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_a24e4e4b2cdb888e42e5913e7858f4359}{b\_Nparttotal}};   }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00076}\mbox{\hyperlink{class_ampt_event_reader_ae4d33138b27fe9359865d79e9c61af3c}{00076}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_ae4d33138b27fe9359865d79e9c61af3c}{b\_pid}};   }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00077}\mbox{\hyperlink{class_ampt_event_reader_a3019d18c3b557bdcbd022ae1f05d2e73}{00077}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_a3019d18c3b557bdcbd022ae1f05d2e73}{b\_px}};   }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00078}\mbox{\hyperlink{class_ampt_event_reader_a56841a9482e327bb4d3f5cf491637554}{00078}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_a56841a9482e327bb4d3f5cf491637554}{b\_py}};   }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00079}\mbox{\hyperlink{class_ampt_event_reader_a0725f42dd7f9bb49ae6ffcc1909b621f}{00079}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_a0725f42dd7f9bb49ae6ffcc1909b621f}{b\_pz}};   }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00080}\mbox{\hyperlink{class_ampt_event_reader_a636313e0855c8b0272ddbfafe94eec0d}{00080}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_a636313e0855c8b0272ddbfafe94eec0d}{b\_m}};   }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00081}\mbox{\hyperlink{class_ampt_event_reader_acbac68afbaa407347a56e0417e3355c4}{00081}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_acbac68afbaa407347a56e0417e3355c4}{b\_Nx}};   }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00082}\mbox{\hyperlink{class_ampt_event_reader_a8d4196d7685ebcbb672e2775061639e1}{00082}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_a8d4196d7685ebcbb672e2775061639e1}{b\_Ny}};   }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00083}00083 }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00084}\mbox{\hyperlink{class_ampt_event_reader_a3c8eb64b5de2d47d4bee7beb017703da}{00084}}   \mbox{\hyperlink{class_event_filter}{EventFilter}} * \mbox{\hyperlink{class_ampt_event_reader_a3c8eb64b5de2d47d4bee7beb017703da}{eventFilter}};}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00085}\mbox{\hyperlink{class_ampt_event_reader_a63bf41ad6e397f54134998743fe20480}{00085}}   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}} * \mbox{\hyperlink{class_ampt_event_reader_a63bf41ad6e397f54134998743fe20480}{particleFilter}};}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00086}00086 }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00087}00087   ClassDef(\mbox{\hyperlink{class_ampt_event_reader}{AmptEventReader}},0)}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00088}00088 \};}
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00089}00089 }
-\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00090}00090 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* WAC\_AmptEventReader */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00058}00058   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_ampt_event_reader_a45128260eb7ffec19b5bba95f7d52b1d}{initInputTreeMapping}}();}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00060}00060 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00061}00061   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00063}\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{00063}}   \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{arraySize}} = 50000;}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00064}00064   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00065}00065   \textcolor{comment}{// Declaration of leaf types}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00066}\mbox{\hyperlink{class_ampt_event_reader_aaa376441822eafee4aa0f29e80f80e29}{00066}}   Int\_t           \mbox{\hyperlink{class_ampt_event_reader_aaa376441822eafee4aa0f29e80f80e29}{eventNo}};}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00067}\mbox{\hyperlink{class_ampt_event_reader_a42dabb4a1b7ed6f00260f2be2e1b66f1}{00067}}   Int\_t           \mbox{\hyperlink{class_ampt_event_reader_a42dabb4a1b7ed6f00260f2be2e1b66f1}{nParticles}};}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00068}\mbox{\hyperlink{class_ampt_event_reader_aaec749e00568e6af438546a11aff47c4}{00068}}   Int\_t           \mbox{\hyperlink{class_ampt_event_reader_aaec749e00568e6af438546a11aff47c4}{Nproj}};}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00069}\mbox{\hyperlink{class_ampt_event_reader_a5be2280d966bd3b797e989323efc5533}{00069}}   Int\_t           \mbox{\hyperlink{class_ampt_event_reader_a5be2280d966bd3b797e989323efc5533}{Ntarg}};}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00070}\mbox{\hyperlink{class_ampt_event_reader_a2534c17df91002b55095fd8ff6b9eaaa}{00070}}   Float\_t         \mbox{\hyperlink{class_ampt_event_reader_a2534c17df91002b55095fd8ff6b9eaaa}{impact}};}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00071}\mbox{\hyperlink{class_ampt_event_reader_a705ddb152b42422e7136b65a9d3a4771}{00071}}   Int\_t           \mbox{\hyperlink{class_ampt_event_reader_a705ddb152b42422e7136b65a9d3a4771}{nPartTotal}};}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00072}\mbox{\hyperlink{class_ampt_event_reader_ae795428aeb0fd5929e1c78989669edbf}{00072}}   Int\_t           \mbox{\hyperlink{class_ampt_event_reader_ae795428aeb0fd5929e1c78989669edbf}{pid}}[\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{arraySize}}];   \textcolor{comment}{//[Mult]}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00073}\mbox{\hyperlink{class_ampt_event_reader_aa88d573fa141ed3cf98227da1b493494}{00073}}   Float\_t         \mbox{\hyperlink{class_ampt_event_reader_aa88d573fa141ed3cf98227da1b493494}{px}}[\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{arraySize}}];   \textcolor{comment}{//[Mult]}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00074}\mbox{\hyperlink{class_ampt_event_reader_abdc1e8aaf1ce053535a0286faa6d45fa}{00074}}   Float\_t         \mbox{\hyperlink{class_ampt_event_reader_abdc1e8aaf1ce053535a0286faa6d45fa}{py}}[\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{arraySize}}];   \textcolor{comment}{//[Mult]}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00075}\mbox{\hyperlink{class_ampt_event_reader_a7d74fce0c970a9e98e0f119513f76dcd}{00075}}   Float\_t         \mbox{\hyperlink{class_ampt_event_reader_a7d74fce0c970a9e98e0f119513f76dcd}{pz}}[\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{arraySize}}];   \textcolor{comment}{//[Mult]}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00076}\mbox{\hyperlink{class_ampt_event_reader_acae6f93ea246002bf47d8b0b70e188e1}{00076}}   Float\_t         \mbox{\hyperlink{class_ampt_event_reader_acae6f93ea246002bf47d8b0b70e188e1}{m}}[\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{arraySize}}];   \textcolor{comment}{//[Mult]}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00077}\mbox{\hyperlink{class_ampt_event_reader_a579cddd3b5d423a894efece718ca5b51}{00077}}   Float\_t         \mbox{\hyperlink{class_ampt_event_reader_a579cddd3b5d423a894efece718ca5b51}{Nx}}[\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{arraySize}}];   \textcolor{comment}{//[Mult]}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00078}\mbox{\hyperlink{class_ampt_event_reader_a030cdfb0f7d1e7c325601371ca2c959c}{00078}}   Float\_t         \mbox{\hyperlink{class_ampt_event_reader_a030cdfb0f7d1e7c325601371ca2c959c}{Ny}}[\mbox{\hyperlink{class_ampt_event_reader_ae4dde2f37f4a6d235f5404d48414979a}{arraySize}}];   \textcolor{comment}{//[Mult]}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00080}00080   \textcolor{comment}{// List of branches}}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00081}\mbox{\hyperlink{class_ampt_event_reader_aaa34555f7deed324ebb1cdc082e7f5d1}{00081}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_aaa34555f7deed324ebb1cdc082e7f5d1}{b\_eventNo}};   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00082}\mbox{\hyperlink{class_ampt_event_reader_abbff7ba5f064d68bfd04941999e4e6d3}{00082}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_abbff7ba5f064d68bfd04941999e4e6d3}{b\_mult}};   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00083}\mbox{\hyperlink{class_ampt_event_reader_a8ec498c7b83dc5bf3056de49c39fc788}{00083}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_a8ec498c7b83dc5bf3056de49c39fc788}{b\_Nproj}};   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00084}\mbox{\hyperlink{class_ampt_event_reader_af1309359c87e5da058fa54bcff76666f}{00084}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_af1309359c87e5da058fa54bcff76666f}{b\_Ntarg}};   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00085}\mbox{\hyperlink{class_ampt_event_reader_aa6e44f075d4555f508e6f293049e49cd}{00085}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_aa6e44f075d4555f508e6f293049e49cd}{b\_impact}};   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00086}\mbox{\hyperlink{class_ampt_event_reader_adc87b07e309bad2b7e6a9a064b08926d}{00086}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_adc87b07e309bad2b7e6a9a064b08926d}{b\_nPartTotal}};   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00087}\mbox{\hyperlink{class_ampt_event_reader_ae4d33138b27fe9359865d79e9c61af3c}{00087}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_ae4d33138b27fe9359865d79e9c61af3c}{b\_pid}};   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00088}\mbox{\hyperlink{class_ampt_event_reader_a3019d18c3b557bdcbd022ae1f05d2e73}{00088}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_a3019d18c3b557bdcbd022ae1f05d2e73}{b\_px}};   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00089}\mbox{\hyperlink{class_ampt_event_reader_a56841a9482e327bb4d3f5cf491637554}{00089}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_a56841a9482e327bb4d3f5cf491637554}{b\_py}};   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00090}\mbox{\hyperlink{class_ampt_event_reader_a0725f42dd7f9bb49ae6ffcc1909b621f}{00090}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_a0725f42dd7f9bb49ae6ffcc1909b621f}{b\_pz}};   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00091}\mbox{\hyperlink{class_ampt_event_reader_a636313e0855c8b0272ddbfafe94eec0d}{00091}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_a636313e0855c8b0272ddbfafe94eec0d}{b\_m}};   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00092}\mbox{\hyperlink{class_ampt_event_reader_acbac68afbaa407347a56e0417e3355c4}{00092}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_acbac68afbaa407347a56e0417e3355c4}{b\_Nx}};   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00093}\mbox{\hyperlink{class_ampt_event_reader_a8d4196d7685ebcbb672e2775061639e1}{00093}}   TBranch        *\mbox{\hyperlink{class_ampt_event_reader_a8d4196d7685ebcbb672e2775061639e1}{b\_Ny}};   }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00095}00095   ClassDef(\mbox{\hyperlink{class_ampt_event_reader}{AmptEventReader}},0)}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00096}00096 \};}
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{_ampt_event_reader_8hpp_source_l00098}00098 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* WAC\_AmptEventReader */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

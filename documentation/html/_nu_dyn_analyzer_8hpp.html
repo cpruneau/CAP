@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Correlation Analysis Package: Base/NuDynAnalyzer.hpp File Reference</title>
+<title>Correlation Analysis Package: NuDyn/NuDynAnalyzer.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -88,80 +88,73 @@ $(document).ready(function(){initNavTree('_nu_dyn_analyzer_8hpp.html',''); initR
   <div class="headertitle"><div class="title">NuDynAnalyzer.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;TParameter.h&gt;</code><br />
-<code>#include &quot;TFile.h&quot;</code><br />
-<code>#include &quot;TList.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="_task_8hpp_source.html">Task.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_event_8hpp_source.html">Event.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_event_filter_8hpp_source.html">EventFilter.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="_task_8hpp_source.html">Task.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_nu_dyn_histos_8hpp_source.html">NuDynHistos.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_nu_dyn_derived_histos_8hpp_source.html">NuDynDerivedHistos.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_configuration_8hpp_source.html">Configuration.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_particle_filter_8hpp_source.html">ParticleFilter.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for NuDynAnalyzer.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="_nu_dyn_analyzer_8hpp__incl.png" border="0" usemap="#a_base_2_nu_dyn_analyzer_8hpp" alt=""/></div>
-<map name="a_base_2_nu_dyn_analyzer_8hpp" id="a_base_2_nu_dyn_analyzer_8hpp">
-<area shape="rect" title=" " alt="" coords="437,5,609,32"/>
-<area shape="rect" title=" " alt="" coords="125,80,225,107"/>
-<area shape="rect" title=" " alt="" coords="791,229,854,256"/>
-<area shape="rect" title=" " alt="" coords="402,155,465,181"/>
-<area shape="rect" href="_task_8hpp.html" title=" " alt="" coords="1720,80,1795,107"/>
-<area shape="rect" href="_configuration_8hpp.html" title=" " alt="" coords="3165,304,3289,331"/>
-<area shape="rect" href="_event_8hpp.html" title=" " alt="" coords="334,229,415,256"/>
-<area shape="rect" href="_event_filter_8hpp.html" title=" " alt="" coords="217,155,327,181"/>
-<area shape="rect" href="_particle_filter_8hpp.html" title=" " alt="" coords="74,155,193,181"/>
-<area shape="rect" href="_nu_dyn_histos_8hpp.html" title=" " alt="" coords="3514,155,3641,181"/>
-<area shape="rect" href="_nu_dyn_derived_histos_8hpp.html" title=" " alt="" coords="3369,80,3540,107"/>
-<area shape="rect" title=" " alt="" coords="3191,528,3263,555"/>
-<area shape="rect" title=" " alt="" coords="224,528,283,555"/>
-<area shape="rect" title=" " alt="" coords="1119,229,1193,256"/>
-<area shape="rect" title=" " alt="" coords="1119,155,1187,181"/>
-<area shape="rect" title=" " alt="" coords="1212,155,1276,181"/>
-<area shape="rect" title=" " alt="" coords="1301,155,1369,181"/>
-<area shape="rect" title=" " alt="" coords="1393,155,1457,181"/>
-<area shape="rect" title=" " alt="" coords="1482,155,1550,181"/>
-<area shape="rect" title=" " alt="" coords="1575,155,1639,181"/>
-<area shape="rect" title=" " alt="" coords="1663,155,1742,181"/>
-<area shape="rect" title=" " alt="" coords="1766,155,1861,181"/>
-<area shape="rect" title=" " alt="" coords="1885,155,1952,181"/>
-<area shape="rect" title=" " alt="" coords="1977,155,2063,181"/>
-<area shape="rect" title=" " alt="" coords="2087,155,2158,181"/>
-<area shape="rect" title=" " alt="" coords="667,528,741,555"/>
-<area shape="rect" title=" " alt="" coords="2182,155,2253,181"/>
-<area shape="rect" title=" " alt="" coords="2277,155,2341,181"/>
-<area shape="rect" title=" " alt="" coords="2365,155,2421,181"/>
-<area shape="rect" title=" " alt="" coords="2445,155,2501,181"/>
-<area shape="rect" title=" " alt="" coords="2525,155,2616,181"/>
-<area shape="rect" title=" " alt="" coords="2641,155,2714,181"/>
-<area shape="rect" title=" " alt="" coords="2738,155,2803,181"/>
-<area shape="rect" title=" " alt="" coords="2828,155,2900,181"/>
-<area shape="rect" title=" " alt="" coords="2924,155,3007,181"/>
-<area shape="rect" href="_message_logger_8hpp.html" title=" " alt="" coords="905,155,1044,181"/>
-<area shape="rect" href="_particle_type_collection_8hpp.html" title=" " alt="" coords="551,453,729,480"/>
-<area shape="rect" href="_particle_smearer_8hpp.html" title=" " alt="" coords="692,155,831,181"/>
-<area shape="rect" href="_histograms_8hpp.html" title=" " alt="" coords="3247,229,3361,256"/>
-<area shape="rect" href="_event_count_histos_8hpp.html" title=" " alt="" coords="3081,155,3236,181"/>
-<area shape="rect" href="_particle_digit_8hpp.html" title=" " alt="" coords="1017,453,1135,480"/>
-<area shape="rect" href="_timer_8hpp.html" title=" " alt="" coords="3342,304,3421,331"/>
-<area shape="rect" title=" " alt="" coords="3142,379,3189,405"/>
-<area shape="rect" title=" " alt="" coords="3265,379,3343,405"/>
-<area shape="rect" title=" " alt="" coords="879,229,937,256"/>
-<area shape="rect" href="_particle_8hpp.html" title=" " alt="" coords="535,379,625,405"/>
-<area shape="rect" href="_nucleus_8hpp.html" title=" " alt="" coords="533,304,627,331"/>
-<area shape="rect" href="_event_properties_8hpp.html" title=" " alt="" coords="317,304,457,331"/>
-<area shape="rect" href="_collision_geometry_moments_8hpp.html" title=" " alt="" coords="317,453,525,480"/>
-<area shape="rect" href="_filter_8hpp.html" title=" " alt="" coords="93,229,168,256"/>
+<div class="center"><img src="_nu_dyn_analyzer_8hpp__incl.png" border="0" usemap="#a_nu_dyn_2_nu_dyn_analyzer_8hpp" alt=""/></div>
+<map name="a_nu_dyn_2_nu_dyn_analyzer_8hpp" id="a_nu_dyn_2_nu_dyn_analyzer_8hpp">
+<area shape="rect" title=" " alt="" coords="333,5,516,32"/>
+<area shape="rect" href="_task_8hpp.html" title=" " alt="" coords="1616,80,1691,107"/>
+<area shape="rect" href="_nu_dyn_histos_8hpp.html" title=" " alt="" coords="249,155,376,181"/>
+<area shape="rect" href="_nu_dyn_derived_histos_8hpp.html" title=" " alt="" coords="339,80,510,107"/>
+<area shape="rect" title=" " alt="" coords="154,528,226,555"/>
+<area shape="rect" title=" " alt="" coords="3267,528,3326,555"/>
+<area shape="rect" title=" " alt="" coords="1246,453,1320,480"/>
+<area shape="rect" title=" " alt="" coords="401,379,469,405"/>
+<area shape="rect" title=" " alt="" coords="494,379,558,405"/>
+<area shape="rect" title=" " alt="" coords="582,379,650,405"/>
+<area shape="rect" title=" " alt="" coords="675,379,739,405"/>
+<area shape="rect" title=" " alt="" coords="764,379,832,405"/>
+<area shape="rect" title=" " alt="" coords="856,379,920,405"/>
+<area shape="rect" title=" " alt="" coords="1717,155,1817,181"/>
+<area shape="rect" title=" " alt="" coords="945,379,1024,405"/>
+<area shape="rect" title=" " alt="" coords="1048,379,1142,405"/>
+<area shape="rect" title=" " alt="" coords="1914,453,1977,480"/>
+<area shape="rect" title=" " alt="" coords="1166,379,1229,405"/>
+<area shape="rect" title=" " alt="" coords="1254,379,1320,405"/>
+<area shape="rect" title=" " alt="" coords="1446,379,1533,405"/>
+<area shape="rect" title=" " alt="" coords="1557,379,1628,405"/>
+<area shape="rect" title=" " alt="" coords="2867,528,2942,555"/>
+<area shape="rect" title=" " alt="" coords="1652,379,1722,405"/>
+<area shape="rect" title=" " alt="" coords="1960,379,2024,405"/>
+<area shape="rect" title=" " alt="" coords="2048,379,2104,405"/>
+<area shape="rect" title=" " alt="" coords="2128,379,2184,405"/>
+<area shape="rect" title=" " alt="" coords="2208,379,2299,405"/>
+<area shape="rect" title=" " alt="" coords="2324,379,2397,405"/>
+<area shape="rect" title=" " alt="" coords="2421,379,2486,405"/>
+<area shape="rect" title=" " alt="" coords="2511,379,2583,405"/>
+<area shape="rect" title=" " alt="" coords="2607,379,2690,405"/>
+<area shape="rect" href="_configuration_8hpp.html" title=" " alt="" coords="250,304,374,331"/>
+<area shape="rect" href="_message_logger_8hpp.html" title=" " alt="" coords="1747,379,1886,405"/>
+<area shape="rect" href="_event_8hpp.html" title=" " alt="" coords="2752,229,2833,256"/>
+<area shape="rect" href="_particle_type_collection_8hpp.html" title=" " alt="" coords="2993,453,3170,480"/>
+<area shape="rect" href="_event_filter_8hpp.html" title=" " alt="" coords="2646,155,2755,181"/>
+<area shape="rect" href="_particle_filter_8hpp.html" title=" " alt="" coords="2913,304,3032,331"/>
+<area shape="rect" href="_histograms_8hpp.html" title=" " alt="" coords="490,229,604,256"/>
+<area shape="rect" href="_event_count_histos_8hpp.html" title=" " alt="" coords="564,155,719,181"/>
+<area shape="rect" href="_particle_digit_8hpp.html" title=" " alt="" coords="3229,229,3348,256"/>
+<area shape="rect" href="_timer_8hpp.html" title=" " alt="" coords="22,304,101,331"/>
+<area shape="rect" title=" " alt="" coords="228,379,274,405"/>
+<area shape="rect" title=" " alt="" coords="22,379,101,405"/>
+<area shape="rect" title=" " alt="" coords="1831,453,1890,480"/>
+<area shape="rect" href="_particle_8hpp.html" title=" " alt="" coords="2914,379,3004,405"/>
+<area shape="rect" href="_nucleus_8hpp.html" title=" " alt="" coords="2742,304,2837,331"/>
+<area shape="rect" href="_event_properties_8hpp.html" title=" " alt="" coords="3056,304,3196,331"/>
+<area shape="rect" href="_collision_geometry_moments_8hpp.html" title=" " alt="" coords="2659,453,2867,480"/>
+<area shape="rect" href="_filter_8hpp.html" title=" " alt="" coords="2815,379,2890,405"/>
+<area shape="rect" href="_histogram_collection_8hpp.html" title=" " alt="" coords="1324,304,1490,331"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="_nu_dyn_analyzer_8hpp__dep__incl.png" border="0" usemap="#a_base_2_nu_dyn_analyzer_8hppdep" alt=""/></div>
-<map name="a_base_2_nu_dyn_analyzer_8hppdep" id="a_base_2_nu_dyn_analyzer_8hppdep">
-<area shape="rect" title=" " alt="" coords="5,5,177,32"/>
-<area shape="rect" href="_nu_dyn_analyzer_8cpp.html" title=" " alt="" coords="5,80,177,107"/>
+<div class="center"><img src="_nu_dyn_analyzer_8hpp__dep__incl.png" border="0" usemap="#a_nu_dyn_2_nu_dyn_analyzer_8hppdep" alt=""/></div>
+<map name="a_nu_dyn_2_nu_dyn_analyzer_8hppdep" id="a_nu_dyn_2_nu_dyn_analyzer_8hppdep">
+<area shape="rect" title=" " alt="" coords="5,5,188,32"/>
+<area shape="rect" href="_nu_dyn_analyzer_8cpp.html" title=" " alt="" coords="5,80,188,107"/>
 </map>
 </div>
 </div>
@@ -177,7 +170,7 @@ Classes</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_628593db0cdce5a76fb85526ae5aa762.html">Base</a></li><li class="navelem"><a class="el" href="_nu_dyn_analyzer_8hpp.html">NuDynAnalyzer.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_4534f15298c52d2426c4b9ad59293724.html">NuDyn</a></li><li class="navelem"><a class="el" href="_nu_dyn_analyzer_8hpp.html">NuDynAnalyzer.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>

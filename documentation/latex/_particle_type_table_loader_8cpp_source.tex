@@ -1,0 +1,89 @@
+\hypertarget{_particle_type_table_loader_8cpp_source}{}\doxysection{Particle\+Type\+Table\+Loader.\+cpp}
+\label{_particle_type_table_loader_8cpp_source}\index{Base/ParticleTypeTableLoader.cpp@{Base/ParticleTypeTableLoader.cpp}}
+\mbox{\hyperlink{_particle_type_table_loader_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_type_table_loader_8hpp}{ParticleTypeTableLoader.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00014}\mbox{\hyperlink{_particle_type_table_loader_8cpp_adbd1d28e55cac5bc149c4be037d9f610}{00014}} \mbox{\hyperlink{_particle_type_table_loader_8cpp_adbd1d28e55cac5bc149c4be037d9f610}{ClassImp}}(\mbox{\hyperlink{class_particle_type_table_loader}{ParticleTypeTableLoader}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00016}\mbox{\hyperlink{class_particle_type_table_loader_a1ee2579038fecaaab64ea9a1f96172a3}{00016}} \mbox{\hyperlink{class_particle_type_table_loader_a1ee2579038fecaaab64ea9a1f96172a3}{ParticleTypeTableLoader:: ParticleTypeTableLoader}}(\textcolor{keyword}{const} TString \&         \_name,}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00017}00017                                                   \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \&   \_configuration,}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00018}00018                                                   \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                \_selectedLevel)}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00019}00019 :}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00020}00020 \mbox{\hyperlink{class_task}{Task}}(\_name,\_configuration,\_selectedLevel)}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00021}00021 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00022}00022   \mbox{\hyperlink{class_message_logger_a10182fcb56fb5fda0f998c89c4bbe4fb}{appendClassName}}(\textcolor{stringliteral}{"{}ParticleTypeTableLoader"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00023}00023   \mbox{\hyperlink{class_message_logger_a62ee7a375e1aec16bfb767aec9fba906}{setInstanceName}}(\_name);}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00024}00024   \mbox{\hyperlink{class_particle_type_table_loader_aaca78fc6c5eb4ab2b2fb374b6a431690}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00025}00025   \mbox{\hyperlink{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}{setConfiguration}}(\_configuration);}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00026}00026 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00028}\mbox{\hyperlink{class_particle_type_table_loader_aaca78fc6c5eb4ab2b2fb374b6a431690}{00028}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_type_table_loader_aaca78fc6c5eb4ab2b2fb374b6a431690}{ParticleTypeTableLoader::setDefaultConfiguration}}()}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00029}00029 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00030}00030   }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00031}00031   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00032}00032     ;}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00033}00033   \mbox{\hyperlink{class_configuration}{Configuration}} \& \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}} = \mbox{\hyperlink{class_task_a1955cc87bd4885d8ca19435b3609443f}{getConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00034}00034   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8420b979e7d98bf6562ec2f6cc28d0d8}{setName}}(\textcolor{stringliteral}{"{}ParticleTypeTableLoader Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00035}00035   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}useParticles"{}},      \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00036}00036   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}dataInputUsed"{}},     \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00037}00037   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}dataInputPath"{}},     TString(getenv(\textcolor{stringliteral}{"{}CAP\_DATA"{}})));}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00038}00038   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}dataInputFileName"{}}, TString(\textcolor{stringliteral}{"{}ParticleTypeData.dat"{}}));}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00039}00039   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}dataOutputUsed"{}},    \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00040}00040   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}dataOutputPath"{}},    TString(getenv(\textcolor{stringliteral}{"{}CAP\_DATA"{}})));}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00041}00041   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}(\textcolor{stringliteral}{"{}dataOutputFileName"{}},TString(\textcolor{stringliteral}{"{}NewParticleTypeData.dat"{}}));}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00042}00042   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}ParticleTypeTableLoader"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00043}00043     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00044}00044     \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(cout);}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00045}00045     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00046}00046 \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00048}\mbox{\hyperlink{class_particle_type_table_loader_a519a5e3326363abdc52e40687f0cc112}{00048}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_type_table_loader_a519a5e3326363abdc52e40687f0cc112}{ParticleTypeTableLoader::execute}}()}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00049}00049 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00050}00050   }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00051}00051   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00052}00052     ;}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00053}00053   \mbox{\hyperlink{class_task_acb311e0eb8b72d684f8b228483bb96f5}{incrementTaskExecuted}}();}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00054}00054   \textcolor{keywordtype}{bool}    dataInputUsed      = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}(\textcolor{stringliteral}{"{}dataInputUsed"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00055}00055   TString dataInputPath      = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}(\textcolor{stringliteral}{"{}dataInputPath"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00056}00056   TString dataInputFileName  = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}(\textcolor{stringliteral}{"{}dataInputFileName"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00057}00057   \textcolor{keywordtype}{bool}    dataOutputUsed     = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}(\textcolor{stringliteral}{"{}dataOutputUsed"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00058}00058   TString dataOutputPath     = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}(\textcolor{stringliteral}{"{}dataOutputPath"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00059}00059   TString dataOutputFileName = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}(\textcolor{stringliteral}{"{}dataOutputFileName"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00061}00061   TString pdgDataFileName;}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00062}00062   }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00063}00063   \textcolor{keywordflow}{if} (dataInputUsed)}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00064}00064     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00065}00065     pdgDataFileName =  dataInputPath;}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00066}00066     pdgDataFileName += dataInputFileName;}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00067}00067     \mbox{\hyperlink{class_particle_type_collection}{ParticleTypeCollection}} * particles = \mbox{\hyperlink{class_particle_type_collection_a278cbb74300003089d2d4e8fd4f1dc02}{ParticleTypeCollection::getMasterParticleCollection}}();}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00068}00068     particles-\/>\mbox{\hyperlink{class_particle_type_collection_a047c28d219ddb27d9814ffbfeeb1fbcc}{readFromFile}}(pdgDataFileName);}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00069}00069     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}ParticleTypeTableLoader"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}}))}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00070}00070       particles-\/>\mbox{\hyperlink{class_particle_type_collection_a95ab1788116ad26fd02db3539e7cd33a}{printProperties}}(std::cout);}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00071}00071     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00073}00073   \textcolor{keywordflow}{if} (dataOutputUsed)}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00074}00074     \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00075}00075     pdgDataFileName =  dataOutputPath;}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00076}00076     pdgDataFileName += dataOutputFileName;}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00077}00077     \mbox{\hyperlink{class_particle_type_collection}{ParticleTypeCollection}} * particles = \mbox{\hyperlink{class_particle_type_collection_a278cbb74300003089d2d4e8fd4f1dc02}{ParticleTypeCollection::getMasterParticleCollection}}();}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00078}00078     particles-\/>\mbox{\hyperlink{class_particle_type_collection_a3dfb1e1eda60621f1cd300c4dae323f5}{writeToFile}}(pdgDataFileName);}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00079}00079     \}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00080}00080  }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00081}00081   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00082}00082     ;}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8cpp_source_l00083}00083 \}}
+
+\end{DoxyCode}

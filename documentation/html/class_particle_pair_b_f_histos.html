@@ -99,7 +99,7 @@ Inheritance diagram for ParticlePairBFHistos:</div>
 <map name="a_particle_pair_b_f_histos_inherit__map" id="a_particle_pair_b_f_histos_inherit__map">
 <area shape="rect" title=" " alt="" coords="5,304,149,331"/>
 <area shape="rect" href="class_histograms.html" title=" " alt="" coords="33,229,122,256"/>
-<area shape="rect" href="class_histogram_collection.html" title="using namespace std;" alt="" coords="7,155,147,181"/>
+<area shape="rect" href="class_histogram_collection.html" title=" " alt="" coords="7,155,147,181"/>
 <area shape="rect" href="class_collection.html" title=" " alt="" coords="13,80,142,107"/>
 <area shape="rect" href="class_message_logger.html" title=" " alt="" coords="20,5,135,32"/>
 </map>
@@ -111,7 +111,7 @@ Collaboration diagram for ParticlePairBFHistos:</div>
 <map name="a_particle_pair_b_f_histos_coll__map" id="a_particle_pair_b_f_histos_coll__map">
 <area shape="rect" title=" " alt="" coords="74,323,218,349"/>
 <area shape="rect" href="class_histograms.html" title=" " alt="" coords="101,247,191,273"/>
-<area shape="rect" href="class_histogram_collection.html" title="using namespace std;" alt="" coords="5,157,145,184"/>
+<area shape="rect" href="class_histogram_collection.html" title=" " alt="" coords="5,157,145,184"/>
 <area shape="rect" href="class_collection.html" title=" " alt="" coords="11,81,140,108"/>
 <area shape="rect" href="class_message_logger.html" title=" " alt="" coords="18,5,133,32"/>
 <area shape="rect" href="class_configuration.html" title=" " alt="" coords="170,157,269,184"/>
@@ -394,11 +394,18 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ada0ef58bd3a3391d464ee2efb763fda1 inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab138594e92e2fe1a0c3559a5a42a93e4 inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#ab138594e92e2fe1a0c3559a5a42a93e4">calculateNudyn</a> (double r2_11, double er2_11, double r2_12, double er2_12, double r2_22, double er2_22, double &amp;nudyn, double &amp;enudyn)</td></tr>
 <tr class="separator:ab138594e92e2fe1a0c3559a5a42a93e4 inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a284d9d7d904166062ce2a6fa6e981894 inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#a284d9d7d904166062ce2a6fa6e981894">differenceCollection</a> (const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;collection, const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;refCollection, bool correlatedUncertainties)</td></tr>
+<tr class="separator:a284d9d7d904166062ce2a6fa6e981894 inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab38f556aa46f58406cd66b06f919b111 inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#ab38f556aa46f58406cd66b06f919b111">ratioCollection</a> (const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;collection, const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;refCollection, bool correlatedUncertainties)</td></tr>
+<tr class="separator:ab38f556aa46f58406cd66b06f919b111 inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9164c0d68cbfdf4d7144cc24927323e0 inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#a9164c0d68cbfdf4d7144cc24927323e0">squareDifferenceCollection</a> (const <a class="el" href="class_histogram_collection.html">HistogramCollection</a> &amp;collection, double sumWeights, double weight, int n)</td></tr>
-<tr class="memdesc:a9164c0d68cbfdf4d7144cc24927323e0 inherit pub_methods_class_histogram_collection"><td class="mdescLeft">&#160;</td><td class="mdescRight">==========================  <a href="class_histogram_collection.html#a9164c0d68cbfdf4d7144cc24927323e0">More...</a><br /></td></tr>
 <tr class="separator:a9164c0d68cbfdf4d7144cc24927323e0 inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e733dffcda9455836e149168383ea08 inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#a2e733dffcda9455836e149168383ea08">squareDifferenceHistos</a> (TH1 *hAvg, TH1 *h, double sumWeights, double weight, int n)</td></tr>
 <tr class="separator:a2e733dffcda9455836e149168383ea08 inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd3280954a328454392bfd79fbbe7e26 inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#abd3280954a328454392bfd79fbbe7e26">differenceHistos</a> (TH1 *h, TH1 *hRef, TH1 *hDiff, bool correlatedUncertainties)</td></tr>
+<tr class="separator:abd3280954a328454392bfd79fbbe7e26 inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a64114121ec8db86de2f333c77e26ed inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#a0a64114121ec8db86de2f333c77e26ed">ratioHistos</a> (TH1 *h, TH1 *hRef, TH1 *hDiff, bool correlatedUncertainties)</td></tr>
+<tr class="separator:a0a64114121ec8db86de2f333c77e26ed inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9d44ee3539c54ce3fa243669c3d24bc inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#af9d44ee3539c54ce3fa243669c3d24bc">getDimension</a> (const TH1 *h) const</td></tr>
 <tr class="separator:af9d44ee3539c54ce3fa243669c3d24bc inherit pub_methods_class_histogram_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf3b1178ad2c6fc18aa413faededed68 inherit pub_methods_class_histogram_collection"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_histogram_collection.html#adf3b1178ad2c6fc18aa413faededed68">sameDimensions</a> (const TString &amp;caller, const TH1 *h1, const TH1 *h2) const</td></tr>
@@ -448,8 +455,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a95959d6b2893d4642152be63ccac9de4 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afda08ec642d84dbe4b3c3365a5ab5197 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">TH1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#afda08ec642d84dbe4b3c3365a5ab5197">back</a> ()</td></tr>
 <tr class="separator:afda08ec642d84dbe4b3c3365a5ab5197 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2f7148ab6bd9771cf4c12f12d42f9c2 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#aa2f7148ab6bd9771cf4c12f12d42f9c2">sameSizeAs</a> (const <a class="el" href="class_collection.html">Collection</a>&lt; TH1 &gt; &amp;other)</td></tr>
-<tr class="separator:aa2f7148ab6bd9771cf4c12f12d42f9c2 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01fd386118d7e2cd605b1c12b1fa1435 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#a01fd386118d7e2cd605b1c12b1fa1435">sameSizeAs</a> (const <a class="el" href="class_collection.html">Collection</a>&lt; TH1 &gt; &amp;other) const</td></tr>
+<tr class="separator:a01fd386118d7e2cd605b1c12b1fa1435 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a085e9375f7fb9c8a50fa8019b8e1906e inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#a085e9375f7fb9c8a50fa8019b8e1906e">copy</a> (long n, TH1 **source)</td></tr>
 <tr class="separator:a085e9375f7fb9c8a50fa8019b8e1906e inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4a2e034fe55fbf5c4f7a185d26ff840 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#ad4a2e034fe55fbf5c4f7a185d26ff840">deepCopy</a> (long n, TH1 **source)</td></tr>
@@ -559,6 +566,32 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1c9b286039a61ef843025b7a0dfb63a9 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a581047e4ae03db23a186bfce95606baf inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a581047e4ae03db23a186bfce95606baf">ptrExist</a> (const TString &amp;caller, const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10, const TH1 *h11, const TH1 *h12) const</td></tr>
 <tr class="separator:a581047e4ae03db23a186bfce95606baf inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a31c4cfdd07e56dc3f94eac4a827df7 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a7a31c4cfdd07e56dc3f94eac4a827df7">ptrFileExist</a> (const TFile *f) const</td></tr>
+<tr class="separator:a7a31c4cfdd07e56dc3f94eac4a827df7 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5236ff7f69cec4fd0c9f082d7616e02 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#ae5236ff7f69cec4fd0c9f082d7616e02">ptrExist</a> (const TH1 *h1) const</td></tr>
+<tr class="separator:ae5236ff7f69cec4fd0c9f082d7616e02 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07482048b4e3fb14255389cb2346d8ef inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a07482048b4e3fb14255389cb2346d8ef">ptrExist</a> (const TH1 *h1, const TH1 *h2) const</td></tr>
+<tr class="separator:a07482048b4e3fb14255389cb2346d8ef inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b987c3662fe2f4ac74d5b53d9b1ee1d inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a1b987c3662fe2f4ac74d5b53d9b1ee1d">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3) const</td></tr>
+<tr class="separator:a1b987c3662fe2f4ac74d5b53d9b1ee1d inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27063875dd1665c09408acbfff2daa05 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a27063875dd1665c09408acbfff2daa05">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4) const</td></tr>
+<tr class="separator:a27063875dd1665c09408acbfff2daa05 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea9d67b89990c83b3bc4a8938882d706 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#aea9d67b89990c83b3bc4a8938882d706">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5) const</td></tr>
+<tr class="separator:aea9d67b89990c83b3bc4a8938882d706 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad225f291276ce9d336050b4c96a6b0ef inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#ad225f291276ce9d336050b4c96a6b0ef">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6) const</td></tr>
+<tr class="separator:ad225f291276ce9d336050b4c96a6b0ef inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a733f19dc797606d918c5ac395bfad1a1 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a733f19dc797606d918c5ac395bfad1a1">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7) const</td></tr>
+<tr class="separator:a733f19dc797606d918c5ac395bfad1a1 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83d7f51337ef3f93ffebb2e162e17594 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a83d7f51337ef3f93ffebb2e162e17594">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8) const</td></tr>
+<tr class="separator:a83d7f51337ef3f93ffebb2e162e17594 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cc7c585795abe114309cc66f90f23f3 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a5cc7c585795abe114309cc66f90f23f3">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9) const</td></tr>
+<tr class="separator:a5cc7c585795abe114309cc66f90f23f3 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a888b9c9627ebb6430ba0cde1ae73ffce inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a888b9c9627ebb6430ba0cde1ae73ffce">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10) const</td></tr>
+<tr class="separator:a888b9c9627ebb6430ba0cde1ae73ffce inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ad9af50d1fcbc9ec9038d1b8deb3404 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a4ad9af50d1fcbc9ec9038d1b8deb3404">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10, const TH1 *h11) const</td></tr>
+<tr class="separator:a4ad9af50d1fcbc9ec9038d1b8deb3404 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a771a1200285aa43589deaa082b0ac076 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a771a1200285aa43589deaa082b0ac076">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10, const TH1 *h11, const TH1 *h12) const</td></tr>
+<tr class="separator:a771a1200285aa43589deaa082b0ac076 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -765,7 +798,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00024">24</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00019">19</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aebf35a70ab6ba1f28ce093c253e2a127" name="aebf35a70ab6ba1f28ce093c253e2a127"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aebf35a70ab6ba1f28ce093c253e2a127">&#9670;&nbsp;</a></span>ParticlePairBFHistos()</h2>
@@ -799,7 +832,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8cpp_source.html#l00021">21</a> of file <a class="el" href="_particle_pair_b_f_histos_8cpp_source.html">ParticlePairBFHistos.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8cpp_source.html#l00016">16</a> of file <a class="el" href="_particle_pair_b_f_histos_8cpp_source.html">ParticlePairBFHistos.cpp</a>.</p>
 
 </div>
 </div>
@@ -826,7 +859,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8cpp_source.html#l00092">92</a> of file <a class="el" href="_particle_pair_b_f_histos_8cpp_source.html">ParticlePairBFHistos.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8cpp_source.html#l00087">87</a> of file <a class="el" href="_particle_pair_b_f_histos_8cpp_source.html">ParticlePairBFHistos.cpp</a>.</p>
 
 </div>
 </div>
@@ -882,7 +915,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_histograms.html#ae6197b40e3cb970716aa4fc8a8eaffb2">Histograms</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8cpp_source.html#l00097">97</a> of file <a class="el" href="_particle_pair_b_f_histos_8cpp_source.html">ParticlePairBFHistos.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8cpp_source.html#l00092">92</a> of file <a class="el" href="_particle_pair_b_f_histos_8cpp_source.html">ParticlePairBFHistos.cpp</a>.</p>
 
 </div>
 </div>
@@ -913,7 +946,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_histograms.html#a20ca1f616c8af6d3261e6ca3127ecd9d">Histograms</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8cpp_source.html#l00113">113</a> of file <a class="el" href="_particle_pair_b_f_histos_8cpp_source.html">ParticlePairBFHistos.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8cpp_source.html#l00108">108</a> of file <a class="el" href="_particle_pair_b_f_histos_8cpp_source.html">ParticlePairBFHistos.cpp</a>.</p>
 
 </div>
 </div>
@@ -938,7 +971,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00086">86</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00081">81</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -962,7 +995,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00087">87</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00082">82</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -986,7 +1019,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00091">91</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00086">86</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1010,7 +1043,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00038">38</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00033">33</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1034,7 +1067,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00040">40</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00035">35</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1058,7 +1091,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00039">39</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00034">34</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1082,7 +1115,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00088">88</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00083">83</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1106,7 +1139,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00089">89</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00084">84</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1130,7 +1163,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00065">65</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00060">60</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1154,7 +1187,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00062">62</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00057">57</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1178,7 +1211,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00069">69</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00064">64</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1202,7 +1235,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00054">54</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00049">49</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1226,7 +1259,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00043">43</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00038">38</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1250,7 +1283,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00050">50</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00045">45</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1274,7 +1307,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00046">46</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00041">41</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1298,7 +1331,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00058">58</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00053">53</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1322,7 +1355,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00064">64</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00059">59</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1346,7 +1379,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00061">61</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00056">56</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1370,7 +1403,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00068">68</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00063">63</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1394,7 +1427,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00053">53</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00048">48</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1418,7 +1451,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00042">42</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00037">37</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1442,7 +1475,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00049">49</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00044">44</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1466,7 +1499,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00045">45</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00040">40</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1490,7 +1523,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00057">57</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00052">52</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1514,7 +1547,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00063">63</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00058">58</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1538,7 +1571,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00060">60</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00055">55</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1562,7 +1595,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00067">67</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00062">62</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1586,7 +1619,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00052">52</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00047">47</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1610,7 +1643,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00041">41</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00036">36</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1634,7 +1667,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00048">48</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00043">43</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1658,7 +1691,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00044">44</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00039">39</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1682,7 +1715,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00056">56</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00051">51</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1706,7 +1739,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00080">80</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00075">75</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1730,7 +1763,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00082">82</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00077">77</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1754,7 +1787,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00081">81</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00076">76</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1778,7 +1811,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00083">83</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00078">78</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1802,7 +1835,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00085">85</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00080">80</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1826,7 +1859,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00084">84</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00079">79</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1850,7 +1883,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00090">90</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00085">85</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1874,7 +1907,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00066">66</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00061">61</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1898,7 +1931,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00070">70</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00065">65</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1922,7 +1955,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00055">55</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00050">50</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1946,7 +1979,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00051">51</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00046">46</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1970,7 +2003,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00047">47</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00042">42</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -1994,7 +2027,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00059">59</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00054">54</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -2018,7 +2051,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00072">72</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00067">67</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -2042,7 +2075,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00076">76</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00071">71</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -2066,7 +2099,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00073">73</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00068">68</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -2090,7 +2123,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00077">77</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00072">72</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -2114,7 +2147,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00074">74</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00069">69</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -2138,7 +2171,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00078">78</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00073">73</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -2162,7 +2195,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00075">75</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00070">70</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
@@ -2186,13 +2219,13 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00079">79</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html#l00074">74</a> of file <a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>Base/<a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a></li>
-<li>Base/<a class="el" href="_particle_pair_b_f_histos_8cpp_source.html">ParticlePairBFHistos.cpp</a></li>
+<li>Pair/<a class="el" href="_particle_pair_b_f_histos_8hpp_source.html">ParticlePairBFHistos.hpp</a></li>
+<li>Pair/<a class="el" href="_particle_pair_b_f_histos_8cpp_source.html">ParticlePairBFHistos.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

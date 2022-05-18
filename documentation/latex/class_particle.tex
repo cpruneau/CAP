@@ -27,7 +27,7 @@ Collaboration diagram for Particle\+:\nopagebreak
 \item 
 \mbox{\hyperlink{class_particle_a40f4c7e248029d72e7714b7802d5e5e1}{Particle}} ()
 \item 
-virtual \mbox{\hyperlink{class_particle_ad030d0fe7b88cf81744b127c99244ff4}{$\sim$\+Particle}} ()
+virtual \mbox{\hyperlink{class_particle_a058b1abe765620e5c5bad2aad654e6bc}{$\sim$\+Particle}} ()
 \item 
 \mbox{\hyperlink{class_particle_a24b04cb7c6f7ea4242d25c410f44ae56}{Particle}} (const \mbox{\hyperlink{class_particle}{Particle}} \&other)
 \item 
@@ -43,6 +43,8 @@ void \mbox{\hyperlink{class_particle_aed911356f1efb3cd78986e1d387dd784}{set\+Typ
 \item 
 \mbox{\hyperlink{class_particle_type}{Particle\+Type}} \& \mbox{\hyperlink{class_particle_a9880b1e61532e7a6871179423afb9a02}{get\+Type}} () const
 \item 
+\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ \mbox{\hyperlink{class_particle_a4990eb03942889dc432b3537a49759ea}{get\+Type\+Ptr}} () const
+\item 
 void \mbox{\hyperlink{class_particle_a894a96eb9fe6aa17f5eec14560bd2e05}{set}} (\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$\mbox{\hyperlink{class_particle_a249d17234d8475ce38f76a40a104b843}{type}}, double p\+\_\+x, double p\+\_\+y, double p\+\_\+z, double p\+\_\+e, double x, double y, double z, double t, bool \mbox{\hyperlink{class_particle_a2244f1b8544823239c4bf1a5a940d526}{live}}=true)
 \item 
 void \mbox{\hyperlink{class_particle_adafdcd1c59b277b74d20cff34d58b070}{set}} (\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$\mbox{\hyperlink{class_particle_a249d17234d8475ce38f76a40a104b843}{type}}, TLorentz\+Vector \&\mbox{\hyperlink{class_particle_a5ed4c9627f9efa6bfd34d1e77b2dada3}{momentum}}, TLorentz\+Vector \&\mbox{\hyperlink{class_particle_a61d849f8f519c82ba916bbaea10b18dd}{position}}, bool \mbox{\hyperlink{class_particle_a2244f1b8544823239c4bf1a5a940d526}{live}}=true)
@@ -57,9 +59,9 @@ TLorentz\+Vector \& \mbox{\hyperlink{class_particle_a336367bdbce5e5cfdca68850870
 \item 
 void \mbox{\hyperlink{class_particle_aec8818bc53cd79f67dbb1328ec877531}{set\+Px\+Py\+PzE}} (double p\+\_\+x, double p\+\_\+y, double p\+\_\+z, double p\+\_\+e)
 \item 
-void \mbox{\hyperlink{class_particle_a07281d3e609667d030165706c444ecf9}{set\+Px\+Py\+PzE}} (TLorentz\+Vector \&\+\_\+momentum)
+void \mbox{\hyperlink{class_particle_a4dd10861dcd26a93e0f2dbda47ec4f93}{set\+Px\+Py\+PzE}} (const TLorentz\+Vector \&\+\_\+momentum)
 \item 
-void \mbox{\hyperlink{class_particle_a2abb241197e821fdf0629716fdaf0385}{set\+Momentum}} (TLorentz\+Vector \&\+\_\+momentum)
+void \mbox{\hyperlink{class_particle_a42b39ec4c4df8965795c93da9c0238fb}{set\+Momentum}} (const TLorentz\+Vector \&\+\_\+momentum)
 \item 
 TLorentz\+Vector \& \mbox{\hyperlink{class_particle_a045fe2f72de18ce20ad6d4a860564bfe}{get\+Position}} ()
 \item 
@@ -220,29 +222,45 @@ static \mbox{\hyperlink{class_factory}{Factory}}$<$ \mbox{\hyperlink{class_parti
 \begin{DoxyCompactItemize}
 \item 
 TLorentz\+Vector \mbox{\hyperlink{class_particle_a5ed4c9627f9efa6bfd34d1e77b2dada3}{momentum}}
-\item 
+\begin{DoxyCompactList}\small\item\em 4-\/momentum of the particle \end{DoxyCompactList}\item 
 TLorentz\+Vector \mbox{\hyperlink{class_particle_a61d849f8f519c82ba916bbaea10b18dd}{position}}
-\item 
+\begin{DoxyCompactList}\small\item\em 4-\/position of the particle \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ \mbox{\hyperlink{class_particle_a249d17234d8475ce38f76a40a104b843}{type}}
-\item 
+\begin{DoxyCompactList}\small\item\em type of this particle \end{DoxyCompactList}\item 
 vector$<$ \mbox{\hyperlink{class_particle}{Particle}} $\ast$ $>$ \mbox{\hyperlink{class_particle_a748ba9fdcb18bbe3b3cbaf22247adad5}{parents}}
-\item 
+\begin{DoxyCompactList}\small\item\em array containing the parents of this particle. \end{DoxyCompactList}\item 
 vector$<$ \mbox{\hyperlink{class_particle}{Particle}} $\ast$ $>$ \mbox{\hyperlink{class_particle_a84d1f55c7f17aa62787f6d31e7c62955}{children}}
-\item 
+\begin{DoxyCompactList}\small\item\em array containing the children of this particle. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_particle}{Particle}} $\ast$ \mbox{\hyperlink{class_particle_a0a95e4ab8d0bbc51e4ab6034d108f68e}{truth}}
-\item 
+\begin{DoxyCompactList}\small\item\em pointer to the truth particle corresponding to this particle. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_particle_a2244f1b8544823239c4bf1a5a940d526}{live}}
-\item 
+\begin{DoxyCompactList}\small\item\em whether this particle is live or dead (measurable or not) \end{DoxyCompactList}\item 
 long \mbox{\hyperlink{class_particle_ac7ca57ecb691687b4c7ad13f803a7c0c}{pid}}
-\item 
+\begin{DoxyCompactList}\small\item\em used defined identified used in some applications \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_particle_afef798a229b67c215d202e675c5c2d2b}{source\+Index}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em source index used in some applications \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Class defining \mbox{\hyperlink{class_particle}{Particle}} 
+This class encapsualtes the notion of particles as encounted in particle and nuclear physics simulations of elementary particle collisions or nucleus-\/nucleus collisions. \mbox{\hyperlink{class_particle}{Particle}} object can be created and handled on their own or in small aggregates but they are better handled based on a particle factory that keeps track and handle the memory used for the storage of particles.
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+\mbox{\hyperlink{class_particle}{Particle}} described by this class have the following properties and attributes\+:
+\begin{DoxyItemize}
+\item type \+: A pointer to a Particle\+Ty\mbox{[}e object that described the type of this particle,
+\item position\+: The position implemented as TLorent\+Vector where this particle originates from. The position can be chosen to be a macroscopic vertex position or the microscopic location, within the emitting system, where it was produced. The usage depends on the speficities of the simulations.
+\item momentum\+: The momentum of the particle in the reference frame of interest (usually the laboratory frame of reference). -\/user type\+: optionally, a user type can be supplied to identify the species or type of the particle.
+\item live status\+: the particle can be considered \char`\"{}live\char`\"{} and thus active as part of the set of particles apprehended by the measurement device or dead/decayed/interacted and thus not to be considered as measurable by detection devices.
+\item parent\+: A parent particle or process, if any where from the particle originates.
+\item children\+: The particle can be a decaying particle that is decayed , an interaction that has produced children particles, or a nucleus with nucleons. Either way, it shall be known either as having or not having children. It shall also, optionally, hold a list of said children.
+\end{DoxyItemize}
+
+This class features a number of methods to identify its nature, i.\+e., whether it represents an interaction (and which kind of interaction), an elementary particle (specified by its type), a nucleus (also identified by its type), or an interaction.
+
+The class features a number of helper methods to compute such properties as the distance to another particle (either in the transverse plane or in three dimensions).
+
+The particle can also hold a pointer to a \char`\"{}truth\char`\"{} particle or reference particle. This is used, in particular, in simple one-\/to-\/one simulation studies of the performance of a detection device (i.\+e., resolution and efficiency studies, closure test, etc). 
+
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00050}{50}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 
 
@@ -253,19 +271,19 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00024}{24}} of file \
 \doxysubsubsection{\texorpdfstring{Particle()}{Particle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Particle\+::\+Particle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+CTOR 
 
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
-
-\mbox{\Hypertarget{class_particle_ad030d0fe7b88cf81744b127c99244ff4}\label{class_particle_ad030d0fe7b88cf81744b127c99244ff4}} 
+\mbox{\Hypertarget{class_particle_a058b1abe765620e5c5bad2aad654e6bc}\label{class_particle_a058b1abe765620e5c5bad2aad654e6bc}} 
 \index{Particle@{Particle}!````~Particle@{$\sim$Particle}}
 \index{````~Particle@{$\sim$Particle}!Particle@{Particle}}
 \doxysubsubsection{\texorpdfstring{$\sim$Particle()}{~Particle()}}
-{\footnotesize\ttfamily Particle\+::$\sim$\+Particle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily virtual Particle\+::$\sim$\+Particle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
 
+DTOR 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00062}{62}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a24b04cb7c6f7ea4242d25c410f44ae56}\label{class_particle_a24b04cb7c6f7ea4242d25c410f44ae56}} 
 \index{Particle@{Particle}!Particle@{Particle}}
@@ -273,9 +291,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00039}{39}} of file \
 \doxysubsubsection{\texorpdfstring{Particle()}{Particle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Particle\+::\+Particle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_particle}{Particle}} \&}]{other }\end{DoxyParamCaption})}
 
+Copy CTOR 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00042}{42}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 
 
@@ -286,9 +304,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00042}{42}} of file \
 \doxysubsubsection{\texorpdfstring{addChild()}{addChild()}}
 {\footnotesize\ttfamily void Particle\+::add\+Child (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{child }\end{DoxyParamCaption})}
 
+Add the given particle as one of the children of this particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00324}{324}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00317}{317}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_af1bbacc5ce3bd55f18af2a31b5de1ea4}\label{class_particle_af1bbacc5ce3bd55f18af2a31b5de1ea4}} 
 \index{Particle@{Particle}!addChildren@{addChildren}}
@@ -296,9 +314,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00324}{324}} of file 
 \doxysubsubsection{\texorpdfstring{addChildren()}{addChildren()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily void Particle\+::add\+Children (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_particle}{Particle}} $\ast$ $>$ \&}]{children }\end{DoxyParamCaption})}
 
+Add the given the given array of particles as children of this particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00342}{342}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00335}{335}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_ac1fc973a6ab1b24f5a544e59a54b4075}\label{class_particle_ac1fc973a6ab1b24f5a544e59a54b4075}} 
 \index{Particle@{Particle}!addChildren@{addChildren}}
@@ -306,9 +324,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00342}{342}} of file 
 \doxysubsubsection{\texorpdfstring{addChildren()}{addChildren()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily void Particle\+::add\+Children (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{child1,  }\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{child2 }\end{DoxyParamCaption})}
 
+Add the given two given particles as children of this particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00329}{329}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00322}{322}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a5640fd8ae2eea5f83ab2f3b43742cb4d}\label{class_particle_a5640fd8ae2eea5f83ab2f3b43742cb4d}} 
 \index{Particle@{Particle}!addChildren@{addChildren}}
@@ -316,9 +334,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00329}{329}} of file 
 \doxysubsubsection{\texorpdfstring{addChildren()}{addChildren()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily void Particle\+::add\+Children (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{child1,  }\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{child2,  }\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{child3 }\end{DoxyParamCaption})}
 
+Add the given three given particles as children of this particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00335}{335}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00328}{328}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_ae5c4a6610dc075ce4156a2fe9a622af7}\label{class_particle_ae5c4a6610dc075ce4156a2fe9a622af7}} 
 \index{Particle@{Particle}!boost@{boost}}
@@ -326,9 +344,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00335}{335}} of file 
 \doxysubsubsection{\texorpdfstring{boost()}{boost()}}
 {\footnotesize\ttfamily void Particle\+::boost (\begin{DoxyParamCaption}\item[{double}]{ax,  }\item[{double}]{ay,  }\item[{double}]{az }\end{DoxyParamCaption})}
 
+Boost the velocity of this particle according to the given components of a velocity 3-\/vector. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00196}{196}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00189}{189}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_ae36701f6ca8744f9b7e5d4849df6e7a9}\label{class_particle_ae36701f6ca8744f9b7e5d4849df6e7a9}} 
 \index{Particle@{Particle}!boostRapidity@{boostRapidity}}
@@ -336,9 +354,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00196}{196}} of file 
 \doxysubsubsection{\texorpdfstring{boostRapidity()}{boostRapidity()}}
 {\footnotesize\ttfamily void Particle\+::boost\+Rapidity (\begin{DoxyParamCaption}\item[{double}]{boost }\end{DoxyParamCaption})}
 
+Boost the velocity of this particle along the beam direction based on the given boost value. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00206}{206}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00199}{199}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_ab0eea4368ee797652c528949ab4ac563}\label{class_particle_ab0eea4368ee797652c528949ab4ac563}} 
 \index{Particle@{Particle}!clear@{clear}}
@@ -346,9 +364,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00206}{206}} of file 
 \doxysubsubsection{\texorpdfstring{clear()}{clear()}}
 {\footnotesize\ttfamily void Particle\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Clear all variables held by this particle 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_adf89c60fd43262a52b1e0b541467bb41}\label{class_particle_adf89c60fd43262a52b1e0b541467bb41}} 
 \index{Particle@{Particle}!distanceXY@{distanceXY}}
@@ -356,9 +374,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00076}{76}} of file \
 \doxysubsubsection{\texorpdfstring{distanceXY()}{distanceXY()}}
 {\footnotesize\ttfamily double Particle\+::distance\+XY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{other\+Particle }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
+Compute and return the 2D transverse distance to the given particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00247}{247}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00240}{240}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_add002101b95e270982589d8f3a3cd030}\label{class_particle_add002101b95e270982589d8f3a3cd030}} 
 \index{Particle@{Particle}!distanceXYSq@{distanceXYSq}}
@@ -366,9 +384,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00247}{247}} of file 
 \doxysubsubsection{\texorpdfstring{distanceXYSq()}{distanceXYSq()}}
 {\footnotesize\ttfamily double Particle\+::distance\+XYSq (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{other\+Particle }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
+Compute and return the square of the 2D transverse distance to the given particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00240}{240}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00233}{233}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a371d03e383776c5d52b95fe5949b49e7}\label{class_particle_a371d03e383776c5d52b95fe5949b49e7}} 
 \index{Particle@{Particle}!distanceXYZ@{distanceXYZ}}
@@ -376,9 +394,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00240}{240}} of file 
 \doxysubsubsection{\texorpdfstring{distanceXYZ()}{distanceXYZ()}}
 {\footnotesize\ttfamily double Particle\+::distance\+XYZ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{other\+Particle }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
+Compute and return the 3D distance to the given particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00234}{234}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00227}{227}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a3e76e0f02ebd04ab9ea32a138a9098f3}\label{class_particle_a3e76e0f02ebd04ab9ea32a138a9098f3}} 
 \index{Particle@{Particle}!distanceXYZSq@{distanceXYZSq}}
@@ -386,9 +404,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00234}{234}} of file 
 \doxysubsubsection{\texorpdfstring{distanceXYZSq()}{distanceXYZSq()}}
 {\footnotesize\ttfamily double Particle\+::distance\+XYZSq (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{other\+Particle }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
+Compute and return the square of the 3D distance to the given particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00226}{226}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00219}{219}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_ab1e616244232b451d5b92f2baad4f311}\label{class_particle_ab1e616244232b451d5b92f2baad4f311}} 
 \index{Particle@{Particle}!getChildAt@{getChildAt}}
@@ -396,9 +414,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00226}{226}} of file 
 \doxysubsubsection{\texorpdfstring{getChildAt()}{getChildAt()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_particle}{Particle}} $\ast$ Particle\+::get\+Child\+At (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return a pointer to the child at the given index. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00169}{169}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00489}{489}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_af717b82c709f4ed03522827887e2b94b}\label{class_particle_af717b82c709f4ed03522827887e2b94b}} 
 \index{Particle@{Particle}!getChildren@{getChildren}}
@@ -406,9 +424,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00169}{169}} of file 
 \doxysubsubsection{\texorpdfstring{getChildren()}{getChildren()}}
 {\footnotesize\ttfamily const vector$<$ \mbox{\hyperlink{class_particle}{Particle}} $\ast$ $>$ \& Particle\+::get\+Children (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Get an immutable array of children produced by this particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00177}{177}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00500}{500}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_aea48229b90fe17f83263e98348857102}\label{class_particle_aea48229b90fe17f83263e98348857102}} 
 \index{Particle@{Particle}!getFactory@{getFactory}}
@@ -418,7 +436,7 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00177}{177}} of file 
 
 
 
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00254}{254}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00247}{247}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a336367bdbce5e5cfdca68850870fca52}\label{class_particle_a336367bdbce5e5cfdca68850870fca52}} 
 \index{Particle@{Particle}!getMomentum@{getMomentum}}
@@ -426,9 +444,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00254}{254}} of file 
 \doxysubsubsection{\texorpdfstring{getMomentum()}{getMomentum()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily TLorentz\+Vector \& Particle\+::get\+Momentum (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Get a changeable reference to the 4-\/momentum vector of this particle (as a TLorentz\+Vector reference) 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00172}{172}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a562fcf06a3f5e28ca666b2ff8276b531}\label{class_particle_a562fcf06a3f5e28ca666b2ff8276b531}} 
 \index{Particle@{Particle}!getMomentum@{getMomentum}}
@@ -436,9 +454,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00059}{59}} of file \
 \doxysubsubsection{\texorpdfstring{getMomentum()}{getMomentum()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily const TLorentz\+Vector \& Particle\+::get\+Momentum (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Get the 4-\/momentum of this particle (as a TLorentz\+Vector reference) 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00058}{58}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00167}{167}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a4464dfaf6991b8b1a001466f88ba36cf}\label{class_particle_a4464dfaf6991b8b1a001466f88ba36cf}} 
 \index{Particle@{Particle}!getName@{getName}}
@@ -446,9 +464,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00058}{58}} of file \
 \doxysubsubsection{\texorpdfstring{getName()}{getName()}}
 {\footnotesize\ttfamily TString Particle\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Get the name of this particle (object) 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00124}{124}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00414}{414}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a59377346ac2650169446a9b52c5ad0fc}\label{class_particle_a59377346ac2650169446a9b52c5ad0fc}} 
 \index{Particle@{Particle}!getNChildren@{getNChildren}}
@@ -456,9 +474,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00124}{124}} of file 
 \doxysubsubsection{\texorpdfstring{getNChildren()}{getNChildren()}}
 {\footnotesize\ttfamily unsigned int Particle\+::get\+NChildren (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return the number of children this particle has spawned. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00164}{164}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00481}{481}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a24abe36e721a127651fe8f79ef1d705b}\label{class_particle_a24abe36e721a127651fe8f79ef1d705b}} 
 \index{Particle@{Particle}!getNeutron@{getNeutron}}
@@ -466,9 +484,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00164}{164}} of file 
 \doxysubsubsection{\texorpdfstring{getNeutron()}{getNeutron()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_particle}{Particle}} $\ast$ Particle\+::get\+Neutron (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+Get a neutron object singleton 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00398}{398}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00391}{391}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a2f87bbe7ed8f22709013d8a871095e5f}\label{class_particle_a2f87bbe7ed8f22709013d8a871095e5f}} 
 \index{Particle@{Particle}!getNParents@{getNParents}}
@@ -476,9 +494,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00398}{398}} of file 
 \doxysubsubsection{\texorpdfstring{getNParents()}{getNParents()}}
 {\footnotesize\ttfamily unsigned int Particle\+::get\+NParents (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Get the number of parents this particle has... 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00132}{132}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00425}{425}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a5023510b4eebf20942891be21b20395f}\label{class_particle_a5023510b4eebf20942891be21b20395f}} 
 \index{Particle@{Particle}!getParentAt@{getParentAt}}
@@ -486,9 +504,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00132}{132}} of file 
 \doxysubsubsection{\texorpdfstring{getParentAt()}{getParentAt()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_particle}{Particle}} $\ast$ Particle\+::get\+Parent\+At (\begin{DoxyParamCaption}\item[{unsigned int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Get the parent particle (object) at the given index value. Note\+: Array boundaries are NOT checked so be careful when calling this function. Otherwise your code could \char`\"{}segfault\char`\"{} 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00137}{137}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00434}{434}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_ad00a995ff86228c0d779ceccca31e5ba}\label{class_particle_ad00a995ff86228c0d779ceccca31e5ba}} 
 \index{Particle@{Particle}!getParents@{getParents}}
@@ -496,9 +514,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00137}{137}} of file 
 \doxysubsubsection{\texorpdfstring{getParents()}{getParents()}}
 {\footnotesize\ttfamily const vector$<$ \mbox{\hyperlink{class_particle}{Particle}} $\ast$ $>$ \& Particle\+::get\+Parents (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Get a constant array of the parents of this particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00145}{145}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00445}{445}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a53a28ba74fdc2e8acc61d315834c795e}\label{class_particle_a53a28ba74fdc2e8acc61d315834c795e}} 
 \index{Particle@{Particle}!getPid@{getPid}}
@@ -506,9 +524,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00145}{145}} of file 
 \doxysubsubsection{\texorpdfstring{getPid()}{getPid()}}
 {\footnotesize\ttfamily long Particle\+::get\+Pid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Get the PID of this particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00250}{250}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a045fe2f72de18ce20ad6d4a860564bfe}\label{class_particle_a045fe2f72de18ce20ad6d4a860564bfe}} 
 \index{Particle@{Particle}!getPosition@{getPosition}}
@@ -516,9 +534,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00081}{81}} of file \
 \doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily TLorentz\+Vector \& Particle\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Get the 4-\/position vector of this particle as a changeable TLorentz\+Vector object 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00193}{193}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a822001a538d94f64b518f094c8f5b3a1}\label{class_particle_a822001a538d94f64b518f094c8f5b3a1}} 
 \index{Particle@{Particle}!getPosition@{getPosition}}
@@ -526,9 +544,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00065}{65}} of file \
 \doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily const TLorentz\+Vector \& Particle\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Get the 4-\/position vector of this particle as a read only TLorentz\+Vector object 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00198}{198}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a192e9c0fac3b26fa0fd529037c7c5ac1}\label{class_particle_a192e9c0fac3b26fa0fd529037c7c5ac1}} 
 \index{Particle@{Particle}!getProton@{getProton}}
@@ -536,9 +554,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00066}{66}} of file \
 \doxysubsubsection{\texorpdfstring{getProton()}{getProton()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_particle}{Particle}} $\ast$ Particle\+::get\+Proton (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+Get a proton object singleton 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00391}{391}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00384}{384}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a0a39bc2182185a1b80bc7ccf1e50603b}\label{class_particle_a0a39bc2182185a1b80bc7ccf1e50603b}} 
 \index{Particle@{Particle}!getSourceIndex@{getSourceIndex}}
@@ -546,9 +564,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00391}{391}} of file 
 \doxysubsubsection{\texorpdfstring{getSourceIndex()}{getSourceIndex()}}
 {\footnotesize\ttfamily int Particle\+::get\+Source\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Get the index of the source of this particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00094}{94}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00310}{310}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a2a10a1c88d5e5fba50aa5721098f183a}\label{class_particle_a2a10a1c88d5e5fba50aa5721098f183a}} 
 \index{Particle@{Particle}!getTruth@{getTruth}}
@@ -556,9 +574,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00094}{94}} of file \
 \doxysubsubsection{\texorpdfstring{getTruth()}{getTruth()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_particle}{Particle}} $\ast$ Particle\+::get\+Truth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Get the true particle this particle is mimicing. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00193}{193}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00554}{554}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a9880b1e61532e7a6871179423afb9a02}\label{class_particle_a9880b1e61532e7a6871179423afb9a02}} 
 \index{Particle@{Particle}!getType@{getType}}
@@ -566,9 +584,19 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00193}{193}} of file 
 \doxysubsubsection{\texorpdfstring{getType()}{getType()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type}{Particle\+Type}} \& Particle\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Get the \mbox{\hyperlink{class_particle_type}{Particle\+Type}} of this particle. 
+
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00100}{100}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+
+\mbox{\Hypertarget{class_particle_a4990eb03942889dc432b3537a49759ea}\label{class_particle_a4990eb03942889dc432b3537a49759ea}} 
+\index{Particle@{Particle}!getTypePtr@{getTypePtr}}
+\index{getTypePtr@{getTypePtr}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{getTypePtr()}{getTypePtr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ Particle\+::get\+Type\+Ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00038}{38}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00102}{102}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_aa76746a3c457cc743fc4786929192b3c}\label{class_particle_aa76746a3c457cc743fc4786929192b3c}} 
 \index{Particle@{Particle}!hasChildren@{hasChildren}}
@@ -576,9 +604,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00038}{38}} of file \
 \doxysubsubsection{\texorpdfstring{hasChildren()}{hasChildren()}}
 {\footnotesize\ttfamily bool Particle\+::has\+Children (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return true if this particle has children. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00159}{159}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00473}{473}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a4ff1fcfd45e428d96d48c9ac620204b9}\label{class_particle_a4ff1fcfd45e428d96d48c9ac620204b9}} 
 \index{Particle@{Particle}!hasInteracted@{hasInteracted}}
@@ -586,9 +614,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00159}{159}} of file 
 \doxysubsubsection{\texorpdfstring{hasInteracted()}{hasInteracted()}}
 {\footnotesize\ttfamily bool Particle\+::has\+Interacted (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return \char`\"{}true\char`\"{} if this particle is considered to have interacted and is thus no longer measurable. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00289}{289}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_af065ed9270e8c8c7592cb85493d89089}\label{class_particle_af065ed9270e8c8c7592cb85493d89089}} 
 \index{Particle@{Particle}!hasParents@{hasParents}}
@@ -596,9 +624,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00088}{88}} of file \
 \doxysubsubsection{\texorpdfstring{hasParents()}{hasParents()}}
 {\footnotesize\ttfamily bool Particle\+::has\+Parents (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return true if this object instance has parents. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00119}{119}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00406}{406}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a522f882cbd9f12166337bca63946a1bc}\label{class_particle_a522f882cbd9f12166337bca63946a1bc}} 
 \index{Particle@{Particle}!hasTruth@{hasTruth}}
@@ -606,9 +634,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00119}{119}} of file 
 \doxysubsubsection{\texorpdfstring{hasTruth()}{hasTruth()}}
 {\footnotesize\ttfamily bool Particle\+::has\+Truth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return true is this particle has a \char`\"{}parent\char`\"{} true particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00194}{194}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00560}{560}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a3b1e3507221549717305b53e6625071b}\label{class_particle_a3b1e3507221549717305b53e6625071b}} 
 \index{Particle@{Particle}!isDecay@{isDecay}}
@@ -616,9 +644,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00194}{194}} of file 
 \doxysubsubsection{\texorpdfstring{isDecay()}{isDecay()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Decay (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return true if this particle is in fact a decay vertex. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00109}{109}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00361}{361}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a859118cd0e726c50cffb894933335a70}\label{class_particle_a859118cd0e726c50cffb894933335a70}} 
 \index{Particle@{Particle}!isDecayed@{isDecayed}}
@@ -626,9 +654,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00109}{109}} of file 
 \doxysubsubsection{\texorpdfstring{isDecayed()}{isDecayed()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Decayed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return \char`\"{}true\char`\"{} if this particle has decayed. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00083}{83}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00260}{260}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a7e4bb0aaf83fc5f8be557258ef29a6e4}\label{class_particle_a7e4bb0aaf83fc5f8be557258ef29a6e4}} 
 \index{Particle@{Particle}!isInteraction@{isInteraction}}
@@ -636,9 +664,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00083}{83}} of file \
 \doxysubsubsection{\texorpdfstring{isInteraction()}{isInteraction()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Interaction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return true if this particle is in fact an interaction 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00110}{110}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00366}{366}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_afce9e4959bcef7d62736023036d40e3d}\label{class_particle_afce9e4959bcef7d62736023036d40e3d}} 
 \index{Particle@{Particle}!isLive@{isLive}}
@@ -646,9 +674,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00110}{110}} of file 
 \doxysubsubsection{\texorpdfstring{isLive()}{isLive()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Live (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return \char`\"{}true\char`\"{} if this particle is considered measurable. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00089}{89}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00294}{294}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a41b4dada7f94fc350e2569cbd2b2e4cd}\label{class_particle_a41b4dada7f94fc350e2569cbd2b2e4cd}} 
 \index{Particle@{Particle}!isNeutron@{isNeutron}}
@@ -656,9 +684,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00089}{89}} of file \
 \doxysubsubsection{\texorpdfstring{isNeutron()}{isNeutron()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Neutron (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return true if this object instance is either a neutron. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00116}{116}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00396}{396}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a97411c969a18c6d5fa25510aed1e8c6b}\label{class_particle_a97411c969a18c6d5fa25510aed1e8c6b}} 
 \index{Particle@{Particle}!isNeutronNeutron@{isNeutronNeutron}}
@@ -666,9 +694,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00116}{116}} of file 
 \doxysubsubsection{\texorpdfstring{isNeutronNeutron()}{isNeutronNeutron()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Neutron\+Neutron (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+Return true if this particle is a neutron-\/neutron interaction. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00372}{372}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00365}{365}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_af002819a4e7c31dc9b90764fb4d2a239}\label{class_particle_af002819a4e7c31dc9b90764fb4d2a239}} 
 \index{Particle@{Particle}!isNNInteraction@{isNNInteraction}}
@@ -676,9 +704,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00372}{372}} of file 
 \doxysubsubsection{\texorpdfstring{isNNInteraction()}{isNNInteraction()}}
 {\footnotesize\ttfamily bool Particle\+::is\+NNInteraction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return true if this object instance is in fact a neutron-\/neutron interaction 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00113}{113}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00381}{381}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a80b7ddb9b0816984290301bb6e9d9a59}\label{class_particle_a80b7ddb9b0816984290301bb6e9d9a59}} 
 \index{Particle@{Particle}!isNucleon@{isNucleon}}
@@ -686,9 +714,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00113}{113}} of file 
 \doxysubsubsection{\texorpdfstring{isNucleon()}{isNucleon()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Nucleon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return true if this object instance is either a neutron or a proton (i.\+e., a nucleon) 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00114}{114}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00386}{386}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a35a325c7022b5498e9e43cff619d7c2b}\label{class_particle_a35a325c7022b5498e9e43cff619d7c2b}} 
 \index{Particle@{Particle}!isNucleonNucleonInteraction@{isNucleonNucleonInteraction}}
@@ -696,9 +724,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00114}{114}} of file 
 \doxysubsubsection{\texorpdfstring{isNucleonNucleonInteraction()}{isNucleonNucleonInteraction()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Nucleon\+Nucleon\+Interaction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+Return true if this particle is a nucleon-\/nucleon interaction. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00353}{353}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00346}{346}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a66df85a9573888ae3d6d839abeb39d10}\label{class_particle_a66df85a9573888ae3d6d839abeb39d10}} 
 \index{Particle@{Particle}!isParticle@{isParticle}}
@@ -706,9 +734,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00353}{353}} of file 
 \doxysubsubsection{\texorpdfstring{isParticle()}{isParticle()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Particle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+Return true if this particle is in fact a particle, as opposed to an interaction or source of particles... 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00405}{405}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00398}{398}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a83d5af5a73406ee7fa068dac5989c303}\label{class_particle_a83d5af5a73406ee7fa068dac5989c303}} 
 \index{Particle@{Particle}!isPhoton@{isPhoton}}
@@ -716,9 +744,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00405}{405}} of file 
 \doxysubsubsection{\texorpdfstring{isPhoton()}{isPhoton()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Photon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return true if this object instance is either a photon. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00117}{117}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00401}{401}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a561d11f1639932e5d57eb7a405bf1775}\label{class_particle_a561d11f1639932e5d57eb7a405bf1775}} 
 \index{Particle@{Particle}!isPNInteraction@{isPNInteraction}}
@@ -726,9 +754,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00117}{117}} of file 
 \doxysubsubsection{\texorpdfstring{isPNInteraction()}{isPNInteraction()}}
 {\footnotesize\ttfamily bool Particle\+::is\+PNInteraction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return true if this object instance is in fact a proton-\/neutron interaction 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00112}{112}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00376}{376}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a303644cf3a590c137f55523c9d07f395}\label{class_particle_a303644cf3a590c137f55523c9d07f395}} 
 \index{Particle@{Particle}!isPPInteraction@{isPPInteraction}}
@@ -736,9 +764,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00112}{112}} of file 
 \doxysubsubsection{\texorpdfstring{isPPInteraction()}{isPPInteraction()}}
 {\footnotesize\ttfamily bool Particle\+::is\+PPInteraction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return true if this object instance is in fact a proton-\/proton interaction 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00111}{111}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00371}{371}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a3afdcc5affe8c5843bc51619b250d8c5}\label{class_particle_a3afdcc5affe8c5843bc51619b250d8c5}} 
 \index{Particle@{Particle}!isPrimary@{isPrimary}}
@@ -746,9 +774,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00111}{111}} of file 
 \doxysubsubsection{\texorpdfstring{isPrimary()}{isPrimary()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Primary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+Return true if this particle is a primary particle (i.\+e., not produced by the decay of another particle). 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00416}{416}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00409}{409}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a3db9c033bed4df7d27440d752a6e07e9}\label{class_particle_a3db9c033bed4df7d27440d752a6e07e9}} 
 \index{Particle@{Particle}!isProton@{isProton}}
@@ -756,9 +784,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00416}{416}} of file 
 \doxysubsubsection{\texorpdfstring{isProton()}{isProton()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Proton (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return true if this object instance is either a proton. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00115}{115}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00391}{391}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_af5748f7aff7ed8f8644e3b52d6032f1e}\label{class_particle_af5748f7aff7ed8f8644e3b52d6032f1e}} 
 \index{Particle@{Particle}!isProtonNeutron@{isProtonNeutron}}
@@ -766,9 +794,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00115}{115}} of file 
 \doxysubsubsection{\texorpdfstring{isProtonNeutron()}{isProtonNeutron()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Proton\+Neutron (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+Return true if this particle is a proton-\/neutroninteraction. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00381}{381}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00374}{374}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a3b636e8cfb1438607dcf61658abb1641}\label{class_particle_a3b636e8cfb1438607dcf61658abb1641}} 
 \index{Particle@{Particle}!isProtonProton@{isProtonProton}}
@@ -776,9 +804,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00381}{381}} of file 
 \doxysubsubsection{\texorpdfstring{isProtonProton()}{isProtonProton()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Proton\+Proton (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+Return true if this particle is a proton-\/proton interaction. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00363}{363}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00356}{356}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a7f8d9777984c0af857327d805c6cd26c}\label{class_particle_a7f8d9777984c0af857327d805c6cd26c}} 
 \index{Particle@{Particle}!isSecondary@{isSecondary}}
@@ -786,9 +814,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00363}{363}} of file 
 \doxysubsubsection{\texorpdfstring{isSecondary()}{isSecondary()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Secondary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+Return true if this particle is a secondary particle (i.\+e., produced by the decay of another particle). 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00424}{424}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00417}{417}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_ac2db9f456598cbc03f00f4df75ddad6d}\label{class_particle_ac2db9f456598cbc03f00f4df75ddad6d}} 
 \index{Particle@{Particle}!isStable@{isStable}}
@@ -796,9 +824,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00424}{424}} of file 
 \doxysubsubsection{\texorpdfstring{isStable()}{isStable()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Stable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return \char`\"{}true\char`\"{} if this particle is stable for the intent and purpose of the simulation in progress 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00266}{266}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_ada110e9a49c2910bffd27c6037863d5b}\label{class_particle_ada110e9a49c2910bffd27c6037863d5b}} 
 \index{Particle@{Particle}!isWounded@{isWounded}}
@@ -806,9 +834,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00084}{84}} of file \
 \doxysubsubsection{\texorpdfstring{isWounded()}{isWounded()}}
 {\footnotesize\ttfamily bool Particle\+::is\+Wounded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+Return \char`\"{}true\char`\"{} if this particle is considered wounded and is thus no longer measurable. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00284}{284}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a70adc57286f9c07626fc7a1bb8a51ca0}\label{class_particle_a70adc57286f9c07626fc7a1bb8a51ca0}} 
 \index{Particle@{Particle}!operator=@{operator=}}
@@ -816,9 +844,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00087}{87}} of file \
 \doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_particle}{Particle}} \& Particle\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_particle}{Particle}} \&}]{other }\end{DoxyParamCaption})}
 
+Assignment operator. The properties of \char`\"{}other\char`\"{} are shallowed copied into the properties of this particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a36f86cf24657c46aba1164cb247e64c9}\label{class_particle_a36f86cf24657c46aba1164cb247e64c9}} 
 \index{Particle@{Particle}!printProperties@{printProperties}}
@@ -826,9 +854,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00057}{57}} of file \
 \doxysubsubsection{\texorpdfstring{printProperties()}{printProperties()}}
 {\footnotesize\ttfamily void Particle\+::print\+Properties (\begin{DoxyParamCaption}\item[{ostream \&}]{output }\end{DoxyParamCaption})}
 
+Print the properties of this particle on the given output stream. The output properties do not include decay properties. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00145}{145}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a0df75e7ca5475b07c67746d7a7f41e22}\label{class_particle_a0df75e7ca5475b07c67746d7a7f41e22}} 
 \index{Particle@{Particle}!reset@{reset}}
@@ -836,9 +864,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00145}{145}} of file 
 \doxysubsubsection{\texorpdfstring{reset()}{reset()}}
 {\footnotesize\ttfamily void Particle\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Reset this particle 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00083}{83}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_ae18bf71ba995b64c7da88d5549dba1ba}\label{class_particle_ae18bf71ba995b64c7da88d5549dba1ba}} 
 \index{Particle@{Particle}!resetFactory@{resetFactory}}
@@ -848,7 +876,7 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00090}{90}} of file \
 
 
 
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00264}{264}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00257}{257}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a894a96eb9fe6aa17f5eec14560bd2e05}\label{class_particle_a894a96eb9fe6aa17f5eec14560bd2e05}} 
 \index{Particle@{Particle}!set@{set}}
@@ -856,9 +884,34 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00264}{264}} of file 
 \doxysubsubsection{\texorpdfstring{set()}{set()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily void Particle\+::set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$}]{type,  }\item[{double}]{p\+\_\+x,  }\item[{double}]{p\+\_\+y,  }\item[{double}]{p\+\_\+z,  }\item[{double}]{p\+\_\+e,  }\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{z,  }\item[{double}]{t,  }\item[{bool}]{live = {\ttfamily true} }\end{DoxyParamCaption})}
 
+Set the \mbox{\hyperlink{class_particle_type}{Particle\+Type}} of this particle, its 4-\/momentum and 4-\/position of origin, as well as whether the particle is live or \char`\"{}decayed\char`\"{}
 
 
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+\begin{DoxyParams}{Parameters}
+{\em type} & Pointer to the type of this particle (\mbox{\hyperlink{class_particle_type}{Particle\+Type}}) \\
+\hline
+{\em p\+\_\+x} & \+: momentum of the particle along the x-\/axis \\
+\hline
+{\em p\+\_\+y} & \+: momentum of the particle along the y-\/axis \\
+\hline
+{\em p\+\_\+z} & \+: momentum of the particle along the z-\/axis \\
+\hline
+{\em p\+\_\+e} & \+: energy of the particle \\
+\hline
+{\em x} & \+: position of the origin of the particle along the x-\/axis \\
+\hline
+{\em y} & \+: position of the origin of the particle along the y-\/axis \\
+\hline
+{\em z} & \+: position of the origin of the particle along the z-\/axis \\
+\hline
+{\em t} & \+: time when the particle was created/produced. \\
+\hline
+{\em live} & whether the particle is considered \char`\"{}live\char`\"{} or \char`\"{}dead\char`\"{} (decayed) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00096}{96}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_adafdcd1c59b277b74d20cff34d58b070}\label{class_particle_adafdcd1c59b277b74d20cff34d58b070}} 
 \index{Particle@{Particle}!set@{set}}
@@ -866,9 +919,20 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00103}{103}} of file 
 \doxysubsubsection{\texorpdfstring{set()}{set()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily void Particle\+::set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$}]{type,  }\item[{TLorentz\+Vector \&}]{momentum,  }\item[{TLorentz\+Vector \&}]{position,  }\item[{bool}]{live = {\ttfamily true} }\end{DoxyParamCaption})}
 
+Set the \mbox{\hyperlink{class_particle_type}{Particle\+Type}} of this particle, its 4-\/momentum and 4-\/position of origin, as well as whether the particle is live or \char`\"{}decayed\char`\"{} 
+\begin{DoxyParams}{Parameters}
+{\em type} & Pointer to the type of this particle (\mbox{\hyperlink{class_particle_type}{Particle\+Type}}) \\
+\hline
+{\em momentum} & \+: 4-\/momentum of the particle \\
+\hline
+{\em position} & \+: 4-\/position of the origin of the particle \\
+\hline
+{\em live} & whether the particle is considered \char`\"{}live\char`\"{} or \char`\"{}dead\char`\"{} (decayed) \\
+\hline
+\end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00111}{111}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_ab8bfcdae6e4dbfc5aacf39e4974b1acd}\label{class_particle_ab8bfcdae6e4dbfc5aacf39e4974b1acd}} 
 \index{Particle@{Particle}!set@{set}}
@@ -876,9 +940,22 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00118}{118}} of file 
 \doxysubsubsection{\texorpdfstring{set()}{set()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily void Particle\+::set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$}]{type,  }\item[{TLorentz\+Vector \&}]{momentum,  }\item[{vector$<$ \mbox{\hyperlink{class_particle}{Particle}} $\ast$ $>$}]{parents,  }\item[{bool}]{live = {\ttfamily true} }\end{DoxyParamCaption})}
 
+Set the \mbox{\hyperlink{class_particle_type}{Particle\+Type}} of this particle, its 4-\/momentum, an array of pointers to its parents, as well as a live or \char`\"{}decayed\char`\"{} status.
 
 
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00130}{130}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+\begin{DoxyParams}{Parameters}
+{\em type} & Pointer to the type of this particle (\mbox{\hyperlink{class_particle_type}{Particle\+Type}}) \\
+\hline
+{\em momentum} & \+: 4-\/momentum of the particle \\
+\hline
+{\em parents} & \+: array of pointer(s) to the parent particle of this particle. This can be a single particle that decayed or or a pair of particle that interacted, or an interaction object. \\
+\hline
+{\em live} & whether the particle is considered \char`\"{}live\char`\"{} or \char`\"{}dead\char`\"{} (decayed) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00123}{123}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a468471d2f32d34e9a1f0bf90ec3e6d13}\label{class_particle_a468471d2f32d34e9a1f0bf90ec3e6d13}} 
 \index{Particle@{Particle}!setDecayed@{setDecayed}}
@@ -886,9 +963,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00130}{130}} of file 
 \doxysubsubsection{\texorpdfstring{setDecayed()}{setDecayed()}}
 {\footnotesize\ttfamily void Particle\+::set\+Decayed (\begin{DoxyParamCaption}\item[{bool}]{decayed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Set the decayed (live status) of this particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00082}{82}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00255}{255}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a60bd3e3cf58deef4e94dc93e369dbc47}\label{class_particle_a60bd3e3cf58deef4e94dc93e369dbc47}} 
 \index{Particle@{Particle}!setInteracted@{setInteracted}}
@@ -896,9 +973,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00082}{82}} of file \
 \doxysubsubsection{\texorpdfstring{setInteracted()}{setInteracted()}}
 {\footnotesize\ttfamily void Particle\+::set\+Interacted (\begin{DoxyParamCaption}\item[{bool}]{interacted }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Set this particle as \char`\"{}wounded\char`\"{}, i.\+e., meaning that it has interacting and is thus removed from the pool of measurable particles. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00086}{86}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00279}{279}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a67b099a8c11615f65fcfaba094e4550e}\label{class_particle_a67b099a8c11615f65fcfaba094e4550e}} 
 \index{Particle@{Particle}!setLive@{setLive}}
@@ -906,19 +983,19 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00086}{86}} of file \
 \doxysubsubsection{\texorpdfstring{setLive()}{setLive()}}
 {\footnotesize\ttfamily void Particle\+::set\+Live (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+live }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Set the live status of this particle to true if it is considered measurable. 
 
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00299}{299}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00090}{90}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
-
-\mbox{\Hypertarget{class_particle_a2abb241197e821fdf0629716fdaf0385}\label{class_particle_a2abb241197e821fdf0629716fdaf0385}} 
+\mbox{\Hypertarget{class_particle_a42b39ec4c4df8965795c93da9c0238fb}\label{class_particle_a42b39ec4c4df8965795c93da9c0238fb}} 
 \index{Particle@{Particle}!setMomentum@{setMomentum}}
 \index{setMomentum@{setMomentum}!Particle@{Particle}}
 \doxysubsubsection{\texorpdfstring{setMomentum()}{setMomentum()}}
-{\footnotesize\ttfamily void Particle\+::set\+Momentum (\begin{DoxyParamCaption}\item[{TLorentz\+Vector \&}]{\+\_\+momentum }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Particle\+::set\+Momentum (\begin{DoxyParamCaption}\item[{const TLorentz\+Vector \&}]{\+\_\+momentum }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Set the 4-\/momentum vector of this particle based on a TLorentz\+Vector object 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00188}{188}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_af82b452fc7fcbd09843cf98b993a4cb2}\label{class_particle_af82b452fc7fcbd09843cf98b993a4cb2}} 
 \index{Particle@{Particle}!setParent@{setParent}}
@@ -926,9 +1003,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00063}{63}} of file \
 \doxysubsubsection{\texorpdfstring{setParent()}{setParent()}}
 {\footnotesize\ttfamily void Particle\+::set\+Parent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{parent }\end{DoxyParamCaption})}
 
+Set a or the parent of this particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00272}{272}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00265}{265}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_ae5d2f88a08a12919e11d64d99dd81db3}\label{class_particle_ae5d2f88a08a12919e11d64d99dd81db3}} 
 \index{Particle@{Particle}!setParents@{setParents}}
@@ -936,9 +1013,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00272}{272}} of file 
 \doxysubsubsection{\texorpdfstring{setParents()}{setParents()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily void Particle\+::set\+Parents (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_particle}{Particle}} $\ast$ $>$ \&}]{parents }\end{DoxyParamCaption})}
 
+Set the n parents that interacted to produce this particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00307}{307}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00300}{300}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_af52e0cb899fafce995f82cb636c94708}\label{class_particle_af52e0cb899fafce995f82cb636c94708}} 
 \index{Particle@{Particle}!setParents@{setParents}}
@@ -946,9 +1023,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00307}{307}} of file 
 \doxysubsubsection{\texorpdfstring{setParents()}{setParents()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily void Particle\+::set\+Parents (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{parent1,  }\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{parent2 }\end{DoxyParamCaption})}
 
+Set the two parents that interacted to produce this particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00282}{282}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00275}{275}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a47340350151196c1bb0a0aa6c7cf3c1b}\label{class_particle_a47340350151196c1bb0a0aa6c7cf3c1b}} 
 \index{Particle@{Particle}!setParents@{setParents}}
@@ -956,9 +1033,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00282}{282}} of file 
 \doxysubsubsection{\texorpdfstring{setParents()}{setParents()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily void Particle\+::set\+Parents (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{parent1,  }\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{parent2,  }\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{parent3 }\end{DoxyParamCaption})}
 
+Set the three parents that interacted to produce this particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00294}{294}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00287}{287}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a71237e8655c835f314800b7516c368cc}\label{class_particle_a71237e8655c835f314800b7516c368cc}} 
 \index{Particle@{Particle}!setPid@{setPid}}
@@ -966,9 +1043,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00294}{294}} of file 
 \doxysubsubsection{\texorpdfstring{setPid()}{setPid()}}
 {\footnotesize\ttfamily void Particle\+::set\+Pid (\begin{DoxyParamCaption}\item[{long}]{\+\_\+pid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Set the PID of this particle according to the given identifier. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00080}{80}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00244}{244}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_afcfe88e23ed90274623b6ad6e78f6807}\label{class_particle_afcfe88e23ed90274623b6ad6e78f6807}} 
 \index{Particle@{Particle}!setPidPxPyPzE@{setPidPxPyPzE}}
@@ -976,9 +1053,24 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00080}{80}} of file \
 \doxysubsubsection{\texorpdfstring{setPidPxPyPzE()}{setPidPxPyPzE()}}
 {\footnotesize\ttfamily void Particle\+::set\+Pid\+Px\+Py\+PzE (\begin{DoxyParamCaption}\item[{long}]{\+\_\+\+Pid,  }\item[{double}]{p\+\_\+x,  }\item[{double}]{p\+\_\+y,  }\item[{double}]{p\+\_\+z,  }\item[{double}]{p\+\_\+e }\end{DoxyParamCaption})}
 
+Set the pid of this particle and its 4-\/momentum components.
 
 
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00172}{172}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+\begin{DoxyParams}{Parameters}
+{\em pid} & The type id of this particle \\
+\hline
+{\em p\+\_\+x} & \+: momentum of the particle along the x-\/axis \\
+\hline
+{\em p\+\_\+y} & \+: momentum of the particle along the y-\/axis \\
+\hline
+{\em p\+\_\+z} & \+: momentum of the particle along the z-\/axis \\
+\hline
+{\em p\+\_\+e} & \+: energy of the particle \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00165}{165}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a977478f6a81f292ffda524c2d0eba3c9}\label{class_particle_a977478f6a81f292ffda524c2d0eba3c9}} 
 \index{Particle@{Particle}!setPosition@{setPosition}}
@@ -986,29 +1078,29 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00172}{172}} of file 
 \doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
 {\footnotesize\ttfamily void Particle\+::set\+Position (\begin{DoxyParamCaption}\item[{const TLorentz\+Vector \&}]{\+\_\+position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Set the 4-\/position vector of this particle based on the given TLorentz\+Vector. 
 
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00213}{213}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00069}{69}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+\mbox{\Hypertarget{class_particle_a4dd10861dcd26a93e0f2dbda47ec4f93}\label{class_particle_a4dd10861dcd26a93e0f2dbda47ec4f93}} 
+\index{Particle@{Particle}!setPxPyPzE@{setPxPyPzE}}
+\index{setPxPyPzE@{setPxPyPzE}!Particle@{Particle}}
+\doxysubsubsection{\texorpdfstring{setPxPyPzE()}{setPxPyPzE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Particle\+::set\+Px\+Py\+PzE (\begin{DoxyParamCaption}\item[{const TLorentz\+Vector \&}]{\+\_\+momentum }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the 4-\/momentum vector of this particle based on a TLorentz\+Vector object 
+
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00183}{183}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_aec8818bc53cd79f67dbb1328ec877531}\label{class_particle_aec8818bc53cd79f67dbb1328ec877531}} 
 \index{Particle@{Particle}!setPxPyPzE@{setPxPyPzE}}
 \index{setPxPyPzE@{setPxPyPzE}!Particle@{Particle}}
-\doxysubsubsection{\texorpdfstring{setPxPyPzE()}{setPxPyPzE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{setPxPyPzE()}{setPxPyPzE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily void Particle\+::set\+Px\+Py\+PzE (\begin{DoxyParamCaption}\item[{double}]{p\+\_\+x,  }\item[{double}]{p\+\_\+y,  }\item[{double}]{p\+\_\+z,  }\item[{double}]{p\+\_\+e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Set the 4-\/momentum vector of this particle based on its four components. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
-
-\mbox{\Hypertarget{class_particle_a07281d3e609667d030165706c444ecf9}\label{class_particle_a07281d3e609667d030165706c444ecf9}} 
-\index{Particle@{Particle}!setPxPyPzE@{setPxPyPzE}}
-\index{setPxPyPzE@{setPxPyPzE}!Particle@{Particle}}
-\doxysubsubsection{\texorpdfstring{setPxPyPzE()}{setPxPyPzE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Particle\+::set\+Px\+Py\+PzE (\begin{DoxyParamCaption}\item[{TLorentz\+Vector \&}]{\+\_\+momentum }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00062}{62}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00177}{177}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_adb12141551168ca6e1314abc2b1615e0}\label{class_particle_adb12141551168ca6e1314abc2b1615e0}} 
 \index{Particle@{Particle}!setRCosThetaPhiT@{setRCosThetaPhiT}}
@@ -1016,9 +1108,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00062}{62}} of file \
 \doxysubsubsection{\texorpdfstring{setRCosThetaPhiT()}{setRCosThetaPhiT()}}
 {\footnotesize\ttfamily void Particle\+::set\+RCos\+Theta\+PhiT (\begin{DoxyParamCaption}\item[{double}]{\+\_\+r,  }\item[{double}]{\+\_\+cos\+Theta,  }\item[{double}]{\+\_\+phi,  }\item[{double}]{\+\_\+t }\end{DoxyParamCaption})}
 
+Set the 4-\/position vector of this particle based on the given radius (distance from origin), cosine of the polar angle theta, azimuth phi and time t. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00187}{187}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00180}{180}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_ab93588b035e3e6aba53384652d81b52d}\label{class_particle_ab93588b035e3e6aba53384652d81b52d}} 
 \index{Particle@{Particle}!setRThetaPhiT@{setRThetaPhiT}}
@@ -1026,9 +1118,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00187}{187}} of file 
 \doxysubsubsection{\texorpdfstring{setRThetaPhiT()}{setRThetaPhiT()}}
 {\footnotesize\ttfamily void Particle\+::set\+RTheta\+PhiT (\begin{DoxyParamCaption}\item[{double}]{\+\_\+r,  }\item[{double}]{\+\_\+theta,  }\item[{double}]{\+\_\+phi,  }\item[{double}]{\+\_\+t }\end{DoxyParamCaption})}
 
+Set the 4-\/position vector of this particle based on the given radius (distance from origin), polar angle theta, azimuth phi and time t. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00178}{178}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
+Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00171}{171}} of file \mbox{\hyperlink{_particle_8cpp_source}{Particle.\+cpp}}.
 
 \mbox{\Hypertarget{class_particle_a1b0e20709cbeb996ad72ad39b673a90d}\label{class_particle_a1b0e20709cbeb996ad72ad39b673a90d}} 
 \index{Particle@{Particle}!setSourceIndex@{setSourceIndex}}
@@ -1036,9 +1128,9 @@ Definition at line \mbox{\hyperlink{_particle_8cpp_source_l00178}{178}} of file 
 \doxysubsubsection{\texorpdfstring{setSourceIndex()}{setSourceIndex()}}
 {\footnotesize\ttfamily void Particle\+::set\+Source\+Index (\begin{DoxyParamCaption}\item[{int}]{\+\_\+source\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Set the index of the source of this particle to the given value. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00093}{93}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00305}{305}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a70cc5a533f063fbcdaaada1ff1ee703d}\label{class_particle_a70cc5a533f063fbcdaaada1ff1ee703d}} 
 \index{Particle@{Particle}!setTruth@{setTruth}}
@@ -1046,9 +1138,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00093}{93}} of file \
 \doxysubsubsection{\texorpdfstring{setTruth()}{setTruth()}}
 {\footnotesize\ttfamily void Particle\+::set\+Truth (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle}{Particle}} $\ast$}]{\+\_\+truth }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Identify the true particle represented by this particle as the given particle. This is useful in simulations of the performance of a detection device. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00192}{192}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00549}{549}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_aed911356f1efb3cd78986e1d387dd784}\label{class_particle_aed911356f1efb3cd78986e1d387dd784}} 
 \index{Particle@{Particle}!setType@{setType}}
@@ -1056,9 +1148,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00192}{192}} of file 
 \doxysubsubsection{\texorpdfstring{setType()}{setType()}}
 {\footnotesize\ttfamily void Particle\+::set\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$}]{\+\_\+type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Set the \mbox{\hyperlink{class_particle_type}{Particle\+Type}} of this particle. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00037}{37}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00094}{94}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_aca77053e0ed4cc7aa8fbc0f638883c7b}\label{class_particle_aca77053e0ed4cc7aa8fbc0f638883c7b}} 
 \index{Particle@{Particle}!setWounded@{setWounded}}
@@ -1066,9 +1158,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00037}{37}} of file \
 \doxysubsubsection{\texorpdfstring{setWounded()}{setWounded()}}
 {\footnotesize\ttfamily void Particle\+::set\+Wounded (\begin{DoxyParamCaption}\item[{bool}]{wounded }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Set this particle as \char`\"{}wounded\char`\"{}, i.\+e., meaning that it has interacting and is thus removed from the pool of measurable particles. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00273}{273}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a2950e21af8b79b929a9202121e331e3f}\label{class_particle_a2950e21af8b79b929a9202121e331e3f}} 
 \index{Particle@{Particle}!setXYZT@{setXYZT}}
@@ -1076,9 +1168,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00085}{85}} of file \
 \doxysubsubsection{\texorpdfstring{setXYZT()}{setXYZT()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily void Particle\+::set\+XYZT (\begin{DoxyParamCaption}\item[{const TLorentz\+Vector \&}]{\+\_\+position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Set the 4-\/position vector of this particle based on the given TLorentz\+Vector. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00208}{208}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_aebc38b2384fe5d206762a373e242e1d9}\label{class_particle_aebc38b2384fe5d206762a373e242e1d9}} 
 \index{Particle@{Particle}!setXYZT@{setXYZT}}
@@ -1086,9 +1178,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00068}{68}} of file \
 \doxysubsubsection{\texorpdfstring{setXYZT()}{setXYZT()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily void Particle\+::set\+XYZT (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{z,  }\item[{double}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Set the 4-\/position vector of this particle based on its components x, y, z, and t. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00203}{203}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a7c0d177e295ad3fc748bf86a7f0c7cfa}\label{class_particle_a7c0d177e295ad3fc748bf86a7f0c7cfa}} 
 \index{Particle@{Particle}!shift@{shift}}
@@ -1096,9 +1188,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00067}{67}} of file \
 \doxysubsubsection{\texorpdfstring{shift()}{shift()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily void Particle\+::shift (\begin{DoxyParamCaption}\item[{const TLorentz\+Vector \&}]{dX }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Shift the 4-\/position coordinates of origin of this particle by the given (TLorentz\+Vector) vector. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00230}{230}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_aaab7d423bc2b91ce7819013a018f88c3}\label{class_particle_aaab7d423bc2b91ce7819013a018f88c3}} 
 \index{Particle@{Particle}!shift@{shift}}
@@ -1106,9 +1198,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00072}{72}} of file \
 \doxysubsubsection{\texorpdfstring{shift()}{shift()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily void Particle\+::shift (\begin{DoxyParamCaption}\item[{double}]{dx,  }\item[{double}]{dy,  }\item[{double}]{dz,  }\item[{double}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Shift the 4-\/position coordinates of origin of this particle by the four given components. 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00235}{235}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 
 
@@ -1121,7 +1213,11 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00073}{73}} of file \
 
 
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00204}{204}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+array containing the children of this particle. 
+
+
+
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00568}{568}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_ae6b3ca96b93647bb0e620d99d6985284}\label{class_particle_ae6b3ca96b93647bb0e620d99d6985284}} 
 \index{Particle@{Particle}!factory@{factory}}
@@ -1131,7 +1227,7 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00204}{204}} of file 
 
 
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00215}{215}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00579}{579}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a367f91d74d8e0a5c50566b1666debc4a}\label{class_particle_a367f91d74d8e0a5c50566b1666debc4a}} 
 \index{Particle@{Particle}!factorySize@{factorySize}}
@@ -1141,7 +1237,7 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00215}{215}} of file 
 
 
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00214}{214}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00578}{578}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a01664cac57724ee342f84cd4bc3c4e5f}\label{class_particle_a01664cac57724ee342f84cd4bc3c4e5f}} 
 \index{Particle@{Particle}!ixEtaPhi@{ixEtaPhi}}
@@ -1151,7 +1247,7 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00214}{214}} of file 
 
 
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00211}{211}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00575}{575}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a5723970b173d0948d1dc25753917658f}\label{class_particle_a5723970b173d0948d1dc25753917658f}} 
 \index{Particle@{Particle}!ixYPhi@{ixYPhi}}
@@ -1161,7 +1257,7 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00211}{211}} of file 
 
 
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00211}{211}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00575}{575}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a2244f1b8544823239c4bf1a5a940d526}\label{class_particle_a2244f1b8544823239c4bf1a5a940d526}} 
 \index{Particle@{Particle}!live@{live}}
@@ -1171,7 +1267,11 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00211}{211}} of file 
 
 
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00206}{206}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+whether this particle is live or dead (measurable or not) 
+
+
+
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00570}{570}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a5ed4c9627f9efa6bfd34d1e77b2dada3}\label{class_particle_a5ed4c9627f9efa6bfd34d1e77b2dada3}} 
 \index{Particle@{Particle}!momentum@{momentum}}
@@ -1181,7 +1281,11 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00206}{206}} of file 
 
 
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00200}{200}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+4-\/momentum of the particle 
+
+
+
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00564}{564}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a748ba9fdcb18bbe3b3cbaf22247adad5}\label{class_particle_a748ba9fdcb18bbe3b3cbaf22247adad5}} 
 \index{Particle@{Particle}!parents@{parents}}
@@ -1191,7 +1295,11 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00200}{200}} of file 
 
 
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00203}{203}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+array containing the parents of this particle. 
+
+
+
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00567}{567}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_ac7ca57ecb691687b4c7ad13f803a7c0c}\label{class_particle_ac7ca57ecb691687b4c7ad13f803a7c0c}} 
 \index{Particle@{Particle}!pid@{pid}}
@@ -1201,7 +1309,11 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00203}{203}} of file 
 
 
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00207}{207}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+used defined identified used in some applications 
+
+
+
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00571}{571}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a61d849f8f519c82ba916bbaea10b18dd}\label{class_particle_a61d849f8f519c82ba916bbaea10b18dd}} 
 \index{Particle@{Particle}!position@{position}}
@@ -1211,7 +1323,11 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00207}{207}} of file 
 
 
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00201}{201}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+4-\/position of the particle 
+
+
+
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00565}{565}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_acb7c523fb76e556f893556e4b191715d}\label{class_particle_acb7c523fb76e556f893556e4b191715d}} 
 \index{Particle@{Particle}!protonType@{protonType}}
@@ -1219,9 +1335,9 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00201}{201}} of file 
 \doxysubsubsection{\texorpdfstring{protonType}{protonType}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type}{Particle\+Type}}$\ast$ Particle\+::proton\+Type = \mbox{\hyperlink{class_particle_type_ab6a8a8aaec80cf744f0fde2ab9bf9ce6}{Particle\+Type\+::get\+Proton\+Type}}()}
 
+Get a proton type object singleton 
 
-
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00222}{222}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00596}{596}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_afef798a229b67c215d202e675c5c2d2b}\label{class_particle_afef798a229b67c215d202e675c5c2d2b}} 
 \index{Particle@{Particle}!sourceIndex@{sourceIndex}}
@@ -1231,7 +1347,11 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00222}{222}} of file 
 
 
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00208}{208}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+source index used in some applications 
+
+
+
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00572}{572}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a0a95e4ab8d0bbc51e4ab6034d108f68e}\label{class_particle_a0a95e4ab8d0bbc51e4ab6034d108f68e}} 
 \index{Particle@{Particle}!truth@{truth}}
@@ -1241,7 +1361,11 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00208}{208}} of file 
 
 
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00205}{205}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+pointer to the truth particle corresponding to this particle. 
+
+
+
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00569}{569}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 \mbox{\Hypertarget{class_particle_a249d17234d8475ce38f76a40a104b843}\label{class_particle_a249d17234d8475ce38f76a40a104b843}} 
 \index{Particle@{Particle}!type@{type}}
@@ -1251,7 +1375,11 @@ Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00205}{205}} of file 
 
 
 
-Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00202}{202}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
+type of this particle 
+
+
+
+Definition at line \mbox{\hyperlink{_particle_8hpp_source_l00566}{566}} of file \mbox{\hyperlink{_particle_8hpp_source}{Particle.\+hpp}}.
 
 
 

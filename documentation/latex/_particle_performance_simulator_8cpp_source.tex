@@ -1,0 +1,409 @@
+\hypertarget{_particle_performance_simulator_8cpp_source}{}\doxysection{Particle\+Performance\+Simulator.\+cpp}
+\label{_particle_performance_simulator_8cpp_source}\index{Performance/ParticlePerformanceSimulator.cpp@{Performance/ParticlePerformanceSimulator.cpp}}
+\mbox{\hyperlink{_particle_performance_simulator_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include <TMath.h>}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_performance_simulator_8hpp}{ParticlePerformanceSimulator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00015}\mbox{\hyperlink{_particle_performance_simulator_8cpp_a3bd47a33979ff9fc11538e5f8fe4fb4c}{00015}} \mbox{\hyperlink{_particle_performance_simulator_8cpp_a3bd47a33979ff9fc11538e5f8fe4fb4c}{ClassImp}}(\mbox{\hyperlink{class_particle_performance_simulator}{ParticlePerformanceSimulator}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00017}\mbox{\hyperlink{class_particle_performance_simulator_abd24fbe23bbe609f96bf5a644d3d4778}{00017}} \mbox{\hyperlink{class_particle_performance_simulator_abd24fbe23bbe609f96bf5a644d3d4778}{ParticlePerformanceSimulator::ParticlePerformanceSimulator}}(\textcolor{keywordtype}{int} \_filterIndex,}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00018}00018                                                            \textcolor{keyword}{const} TString \& \_name,}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00019}00019                                                            \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \& \_configuration,}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00020}00020                                                            \textcolor{keyword}{const} \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}} \_selectedLevel)}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00021}00021 :}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00022}00022 \mbox{\hyperlink{class_histograms}{Histograms}}(\_name,\_configuration,\_selectedLevel),}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00023}00023 filterIndex(\_filterIndex),}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00024}00024 useSameSetForAll(true),}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00025}00025 resolutionOption(0),}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00026}00026 efficiencyOption(0),}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00027}00027 biasPtHistogram(),}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00028}00028 rmsPtHistogram(),}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00029}00029 biasEtaHistogram(),}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00030}00030 rmsEtaHistogram(),}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00031}00031 biasPhiHistogram(),}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00032}00032 rmsPhiHistogram(),}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00033}00033 ptFunction(),}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00034}00034 etaFunction(),}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00035}00035 phiFunction()}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00036}00036 \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00037}00037   \textcolor{comment}{//  initialize();}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00038}00038 \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00040}\mbox{\hyperlink{class_particle_performance_simulator_aba2cd5163a7d5e61eef45879ee7b83b7}{00040}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_performance_simulator_aba2cd5163a7d5e61eef45879ee7b83b7}{ParticlePerformanceSimulator::initialize}}()}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00041}00041 \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00042}00042   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}ParticlePerformanceSimulator"{}},\mbox{\hyperlink{class_collection_a559e2c06e36b204e5a8e6ee2c2aedc37}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00043}00043     ;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00044}00044   \mbox{\hyperlink{class_configuration}{Configuration}} \& config = \mbox{\hyperlink{class_histograms_a832145197a059f198fddd24b39613a13}{getConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00045}00045   \mbox{\hyperlink{class_particle_performance_simulator_a91dc5501673eb4d2a64a461ebfff105d}{useSameSetForAll}} = config.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}(\textcolor{stringliteral}{"{}useSameSetForAll"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00046}00046   \mbox{\hyperlink{class_particle_performance_simulator_aba1b5d3bcfad0a4ab4ebb9ba53594552}{resolutionOption}} = config.\mbox{\hyperlink{class_configuration_ae0804e2d00ec6f41e98d908f37f0a50a}{getValueInt}}(\textcolor{stringliteral}{"{}resolutionOption"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00047}00047   \mbox{\hyperlink{class_particle_performance_simulator_a619aaa30a3a1a5646a52b902a366a92b}{efficiencyOption}} = config.\mbox{\hyperlink{class_configuration_ae0804e2d00ec6f41e98d908f37f0a50a}{getValueInt}}(\textcolor{stringliteral}{"{}efficiencyOption"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00048}00048   }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00049}00049   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}ParticlePerformanceSimulator"{}},\mbox{\hyperlink{class_collection_a559e2c06e36b204e5a8e6ee2c2aedc37}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00050}00050     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00051}00051     cout << \textcolor{stringliteral}{"{}  useSameSetForAll: "{}} << \mbox{\hyperlink{class_particle_performance_simulator_a91dc5501673eb4d2a64a461ebfff105d}{useSameSetForAll}} << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00052}00052     cout << \textcolor{stringliteral}{"{}  resolutionOption: "{}} << \mbox{\hyperlink{class_particle_performance_simulator_aba1b5d3bcfad0a4ab4ebb9ba53594552}{resolutionOption}} << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00053}00053     cout << \textcolor{stringliteral}{"{}  efficiencyOption: "{}} << \mbox{\hyperlink{class_particle_performance_simulator_a619aaa30a3a1a5646a52b902a366a92b}{efficiencyOption}} << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00054}00054     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00055}00055   }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00056}00056   \textcolor{keywordtype}{double} biasAinv;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00057}00057   \textcolor{keywordtype}{double} biasA0;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00058}00058   \textcolor{keywordtype}{double} biasA1;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00059}00059   \textcolor{keywordtype}{double} biasA2;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00060}00060   \textcolor{keywordtype}{double} rmsAinv;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00061}00061   \textcolor{keywordtype}{double} rmsA0;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00062}00062   \textcolor{keywordtype}{double} rmsA1;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00063}00063   \textcolor{keywordtype}{double} rmsA2;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00064}00064   TString baseName = \textcolor{stringliteral}{"{}Filter"{}};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00065}00065   baseName += \mbox{\hyperlink{class_particle_performance_simulator_afdb76988a1a9102e89937d12a6742c58}{filterIndex}};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00066}00066   }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00067}00067   \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_particle_performance_simulator_aba1b5d3bcfad0a4ab4ebb9ba53594552}{resolutionOption}})}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00068}00068     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00069}00069       \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00070}00070       \mbox{\hyperlink{class_particle_performance_simulator_a64565ae101bc39c0bda6858a5a6c2b03}{ptFunction}}  = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00071}00071       \mbox{\hyperlink{class_particle_performance_simulator_a52e336c88516b53593dc1b60ff8daed0}{etaFunction}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00072}00072       \mbox{\hyperlink{class_particle_performance_simulator_a77af2a6cd7a5bec271f1ff27e6c0088e}{phiFunction}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00073}00073       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00074}00074       }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00075}00075       \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00076}00076       biasAinv = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_PtBiasAinv"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00077}00077       biasA0   = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_PtBiasA0"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00078}00078       biasA1   = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_PtBiasA1"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00079}00079       biasA2   = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_PtBiasA2"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00080}00080       rmsAinv  = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_PtRmsAinv"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00081}00081       rmsA0    = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_PtRmsA0"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00082}00082       rmsA1    = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_PtRmsA1"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00083}00083       rmsA2    = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_PtRmsA2"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00084}00084       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}ParticlePerformanceSimulator"{}},\mbox{\hyperlink{class_collection_a559e2c06e36b204e5a8e6ee2c2aedc37}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00085}00085         \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00086}00086         cout << \textcolor{stringliteral}{"{} pT smearer:"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00087}00087         cout << \textcolor{stringliteral}{"{}   biasAinv: "{}} << biasAinv << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00088}00088         cout << \textcolor{stringliteral}{"{}     biasA0: "{}} << biasA0 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00089}00089         cout << \textcolor{stringliteral}{"{}     biasA1: "{}} << biasA1 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00090}00090         cout << \textcolor{stringliteral}{"{}     biasA2: "{}} << biasA2 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00091}00091         cout << \textcolor{stringliteral}{"{}    rmsAinv: "{}} << rmsAinv << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00092}00092         cout << \textcolor{stringliteral}{"{}      rmsA0: "{}} << rmsA0 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00093}00093         cout << \textcolor{stringliteral}{"{}      rmsA1: "{}} << rmsA1 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00094}00094         cout << \textcolor{stringliteral}{"{}      rmsA2: "{}} << rmsA2 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00095}00095         \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00096}00096       \mbox{\hyperlink{class_particle_performance_simulator_a64565ae101bc39c0bda6858a5a6c2b03}{ptFunction}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_resolution_function}{ResolutionFunction}}(0,biasAinv,biasA0,biasA1,biasA2,rmsAinv,rmsA0,rmsA1,rmsA2);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00097}00097       }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00098}00098       biasAinv = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_EtaBiasAinv"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00099}00099       biasA0   = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_EtaBiasA0"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00100}00100       biasA1   = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_EtaBiasA1"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00101}00101       biasA2   = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_EtaBiasA2"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00102}00102       rmsAinv  = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_EtaRmsAinv"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00103}00103       rmsA0    = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_EtaRmsA0"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00104}00104       rmsA1    = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_EtaRmsA1"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00105}00105       rmsA2    = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_EtaRmsA2"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00106}00106       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}ParticlePerformanceSimulator"{}},\mbox{\hyperlink{class_collection_a559e2c06e36b204e5a8e6ee2c2aedc37}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00107}00107         \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00108}00108         cout << \textcolor{stringliteral}{"{} eta smearer:"{}}<< endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00109}00109         cout << \textcolor{stringliteral}{"{}   biasAinv: "{}} << biasAinv << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00110}00110         cout << \textcolor{stringliteral}{"{}     biasA0: "{}} << biasA0 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00111}00111         cout << \textcolor{stringliteral}{"{}     biasA1: "{}} << biasA1 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00112}00112         cout << \textcolor{stringliteral}{"{}     biasA2: "{}} << biasA2 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00113}00113         cout << \textcolor{stringliteral}{"{}    rmsAinv: "{}} << rmsAinv << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00114}00114         cout << \textcolor{stringliteral}{"{}      rmsA0: "{}} << rmsA0 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00115}00115         cout << \textcolor{stringliteral}{"{}      rmsA1: "{}} << rmsA1 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00116}00116         cout << \textcolor{stringliteral}{"{}      rmsA2: "{}} << rmsA2 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00117}00117         \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00118}00118       \mbox{\hyperlink{class_particle_performance_simulator_a52e336c88516b53593dc1b60ff8daed0}{etaFunction}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_resolution_function}{ResolutionFunction}}(1,biasAinv,biasA0,biasA1,biasA2,rmsAinv,rmsA0,rmsA1,rmsA2);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00119}00119       }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00120}00120       biasAinv = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_PhiBiasAinv"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00121}00121       biasA0   = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_PhiBiasA0"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00122}00122       biasA1   = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_PhiBiasA1"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00123}00123       biasA2   = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_PhiBiasA2"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00124}00124       rmsAinv  = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_PhiRmsAinv"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00125}00125       rmsA0    = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_PhiRmsA0"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00126}00126       rmsA1    = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_PhiRmsA1"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00127}00127       rmsA2    = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_PhiRmsA2"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00128}00128       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}ParticlePerformanceSimulator"{}},\mbox{\hyperlink{class_collection_a559e2c06e36b204e5a8e6ee2c2aedc37}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00129}00129         \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00130}00130         cout << \textcolor{stringliteral}{"{} phi smearer:"{}}<< endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00131}00131         cout << \textcolor{stringliteral}{"{}   biasAinv: "{}} << biasAinv << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00132}00132         cout << \textcolor{stringliteral}{"{}     biasA0: "{}} << biasA0 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00133}00133         cout << \textcolor{stringliteral}{"{}     biasA1: "{}} << biasA1 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00134}00134         cout << \textcolor{stringliteral}{"{}     biasA2: "{}} << biasA2 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00135}00135         cout << \textcolor{stringliteral}{"{}    rmsAinv: "{}} << rmsAinv << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00136}00136         cout << \textcolor{stringliteral}{"{}      rmsA0: "{}} << rmsA0 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00137}00137         cout << \textcolor{stringliteral}{"{}      rmsA1: "{}} << rmsA1 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00138}00138         cout << \textcolor{stringliteral}{"{}      rmsA2: "{}} << rmsA2 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00139}00139         \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00140}00140       \mbox{\hyperlink{class_particle_performance_simulator_a77af2a6cd7a5bec271f1ff27e6c0088e}{phiFunction}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_resolution_function}{ResolutionFunction}}(0,biasAinv,biasA0,biasA1,biasA2,rmsAinv,rmsA0,rmsA1,rmsA2);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00141}00141       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00142}00142       }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00143}00143       \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00144}00144       \mbox{\hyperlink{class_particle_performance_simulator_a64565ae101bc39c0bda6858a5a6c2b03}{ptFunction}}  = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00145}00145       \mbox{\hyperlink{class_particle_performance_simulator_a52e336c88516b53593dc1b60ff8daed0}{etaFunction}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00146}00146       \mbox{\hyperlink{class_particle_performance_simulator_a77af2a6cd7a5bec271f1ff27e6c0088e}{phiFunction}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00147}00147       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00148}00148     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00149}00149   }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00150}00150   \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_particle_performance_simulator_a619aaa30a3a1a5646a52b902a366a92b}{efficiencyOption}})}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00151}00151     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00152}00152       \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00153}00153       \mbox{\hyperlink{class_particle_performance_simulator_aa86b650bd94ff189f030340359c02398}{efficiencyFunction}}  = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00154}00154       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00155}00155       }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00156}00156       \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00157}00157       \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00158}00158       \textcolor{keywordtype}{double} effPeakAmp = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_EffPeakAmp"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00159}00159       \textcolor{keywordtype}{double} effPeakPt  = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_EffPeakPt"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00160}00160       \textcolor{keywordtype}{double} effPeakRms = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_EffPeakRms"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00161}00161       \textcolor{keywordtype}{double} effA1      = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_EffA1"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00162}00162       \textcolor{keywordtype}{double} effA2      = config.\mbox{\hyperlink{class_configuration_ab81a59cad34473c8282c4b75f50dfeb9}{getValueDouble}}(baseName+\textcolor{stringliteral}{"{}\_EffA2"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00163}00163       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}ParticlePerformanceSimulator"{}},\mbox{\hyperlink{class_collection_a559e2c06e36b204e5a8e6ee2c2aedc37}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00164}00164         \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00165}00165         cout << \textcolor{stringliteral}{"{} efficiency:"{}}  << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00166}00166         cout << \textcolor{stringliteral}{"{}   effPeakAmp: "{}} << effPeakAmp << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00167}00167         cout << \textcolor{stringliteral}{"{}    effPeakPt: "{}} << effPeakPt << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00168}00168         cout << \textcolor{stringliteral}{"{}   effPeakRms: "{}} << effPeakRms << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00169}00169         cout << \textcolor{stringliteral}{"{}        effA1: "{}} << effA1 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00170}00170         cout << \textcolor{stringliteral}{"{}        effA2: "{}} << effA2 << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00171}00171         \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00172}00172       \mbox{\hyperlink{class_particle_performance_simulator_aa86b650bd94ff189f030340359c02398}{efficiencyFunction}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_efficiency_function}{EfficiencyFunction}}(effPeakAmp,effPeakPt,effPeakRms,effA1,effA2);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00173}00173       \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00174}00174       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00175}00175       }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00176}00176       \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00177}00177       \mbox{\hyperlink{class_particle_performance_simulator_a64565ae101bc39c0bda6858a5a6c2b03}{ptFunction}}  = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00178}00178       \mbox{\hyperlink{class_particle_performance_simulator_a52e336c88516b53593dc1b60ff8daed0}{etaFunction}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00179}00179       \mbox{\hyperlink{class_particle_performance_simulator_a77af2a6cd7a5bec271f1ff27e6c0088e}{phiFunction}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00180}00180       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00181}00181     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00182}00182 \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00183}00183 }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00184}\mbox{\hyperlink{class_particle_performance_simulator_acda8a39812deedb312028af47398fd7d}{00184}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_performance_simulator_acda8a39812deedb312028af47398fd7d}{ParticlePerformanceSimulator::loadHistograms}}(TFile * inputFile)}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00185}00185 \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00186}00186   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}ParticlePerformanceSimulator"{}},\mbox{\hyperlink{class_collection_a559e2c06e36b204e5a8e6ee2c2aedc37}{getName}}(),\textcolor{stringliteral}{"{}loadHistograms(TFile * inputFile)"{}}))}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00187}00187     ;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00188}00188   \mbox{\hyperlink{class_configuration}{Configuration}} \& config = \mbox{\hyperlink{class_histograms_a832145197a059f198fddd24b39613a13}{getConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00189}00189   \mbox{\hyperlink{class_particle_performance_simulator_a91dc5501673eb4d2a64a461ebfff105d}{useSameSetForAll}} = config.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}(\textcolor{stringliteral}{"{}useSameSetForAll"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00190}00190   \mbox{\hyperlink{class_particle_performance_simulator_aba1b5d3bcfad0a4ab4ebb9ba53594552}{resolutionOption}} = config.\mbox{\hyperlink{class_configuration_ae0804e2d00ec6f41e98d908f37f0a50a}{getValueInt}}(\textcolor{stringliteral}{"{}resolutionOption"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00191}00191   \mbox{\hyperlink{class_particle_performance_simulator_a619aaa30a3a1a5646a52b902a366a92b}{efficiencyOption}} = config.\mbox{\hyperlink{class_configuration_ae0804e2d00ec6f41e98d908f37f0a50a}{getValueInt}}(\textcolor{stringliteral}{"{}efficiencyOption"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00192}00192 }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00193}00193   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}ParticlePerformanceSimulator"{}},\mbox{\hyperlink{class_collection_a559e2c06e36b204e5a8e6ee2c2aedc37}{getName}}(),\textcolor{stringliteral}{"{}initialize()"{}}))}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00194}00194     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00195}00195     cout << \textcolor{stringliteral}{"{}  useSameSetForAll: "{}} << \mbox{\hyperlink{class_particle_performance_simulator_a91dc5501673eb4d2a64a461ebfff105d}{useSameSetForAll}} << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00196}00196     cout << \textcolor{stringliteral}{"{}  resolutionOption: "{}} << \mbox{\hyperlink{class_particle_performance_simulator_aba1b5d3bcfad0a4ab4ebb9ba53594552}{resolutionOption}} << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00197}00197     cout << \textcolor{stringliteral}{"{}  efficiencyOption: "{}} << \mbox{\hyperlink{class_particle_performance_simulator_a619aaa30a3a1a5646a52b902a366a92b}{efficiencyOption}} << endl;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00198}00198     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00199}00199   }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00200}00200   TString baseName = \textcolor{stringliteral}{"{}Filter"{}};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00201}00201   baseName += \mbox{\hyperlink{class_particle_performance_simulator_afdb76988a1a9102e89937d12a6742c58}{filterIndex}};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00202}00202   }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00203}00203   \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_particle_performance_simulator_aba1b5d3bcfad0a4ab4ebb9ba53594552}{resolutionOption}})}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00204}00204     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00205}00205       \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00206}00206       \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00207}00207       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00208}00208       }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00209}00209       \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00210}00210       \mbox{\hyperlink{class_particle_performance_simulator_a8db8cb9d55d88235c008a3010d92d404}{biasPtHistogram}}  = \mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,baseName+\textcolor{stringliteral}{"{}\_PtBias"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00211}00211       \mbox{\hyperlink{class_particle_performance_simulator_aa7e52f1c4be13433ca9bebfbb4009bdc}{rmsPtHistogram}}   = \mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,baseName+\textcolor{stringliteral}{"{}\_PtRms"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00212}00212       \mbox{\hyperlink{class_particle_performance_simulator_af555383f373a8db355e413714d972329}{biasEtaHistogram}} = \mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,baseName+\textcolor{stringliteral}{"{}\_EtaBias"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00213}00213       \mbox{\hyperlink{class_particle_performance_simulator_a97e3ca8980f0e7a622da90dd4c15e83f}{rmsEtaHistogram}}  = \mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,baseName+\textcolor{stringliteral}{"{}\_EtaRms"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00214}00214       \mbox{\hyperlink{class_particle_performance_simulator_a5cced60d7615328bea45139608203bca}{biasPhiHistogram}} = \mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,baseName+\textcolor{stringliteral}{"{}\_PhiBias"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00215}00215       \mbox{\hyperlink{class_particle_performance_simulator_a0c1890a3ca0aceecb35a544edb433678}{rmsPhiHistogram}}  = \mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,baseName+\textcolor{stringliteral}{"{}\_PhiRms"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00216}00216       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00217}00217     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00218}00218   }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00219}00219   \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_particle_performance_simulator_a619aaa30a3a1a5646a52b902a366a92b}{efficiencyOption}})}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00220}00220     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00221}00221       \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00222}00222       \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00223}00223       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00224}00224       }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00225}00225       \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00226}00226       \mbox{\hyperlink{class_particle_performance_simulator_ab757eb150b1f9d5c8969d74635f801fe}{efficienyHistogram}}   = \mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,baseName+\textcolor{stringliteral}{"{}\_Eff"{}});}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00227}00227       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00228}00228     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00229}00229 \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00230}00230 }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00231}\mbox{\hyperlink{class_particle_performance_simulator_acca3c810157c7aa3f2a7bff9b9f79e02}{00231}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_performance_simulator_acca3c810157c7aa3f2a7bff9b9f79e02}{ParticlePerformanceSimulator::smearMomentum}}(\textcolor{keyword}{const} TLorentzVector \&in, TLorentzVector \& out)}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00232}00232 \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00233}00233   \textcolor{keywordtype}{double} smearedPt  = 0.0;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00234}00234   \textcolor{keywordtype}{double} smearedEta = 0.0;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00235}00235   \textcolor{keywordtype}{double} smearedPhi = 0.0;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00236}00236   \textcolor{keywordtype}{double} pt   = in.Pt();}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00237}00237   \textcolor{keywordtype}{double} phi  = in.Phi();}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00238}00238   \textcolor{keywordtype}{double} eta  = in.Eta();}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00239}00239   \textcolor{keywordtype}{double} mass = in.M();}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00240}00240   \mbox{\hyperlink{class_particle_performance_simulator_acca3c810157c7aa3f2a7bff9b9f79e02}{smearMomentum}}(pt,eta,phi,smearedPt,smearedEta,smearedPhi);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00241}00241   out.SetPtEtaPhiM(smearedPt,smearedEta,smearedPhi,mass);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00242}00242 \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00243}00243 }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00244}\mbox{\hyperlink{class_particle_performance_simulator_a051a16ac2e5aacb7a63cca75632558e3}{00244}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_performance_simulator_acca3c810157c7aa3f2a7bff9b9f79e02}{ParticlePerformanceSimulator::smearMomentum}}(\textcolor{keywordtype}{double} pt, \textcolor{keywordtype}{double} eta, \textcolor{keywordtype}{double} phi,}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00245}00245                                                  \textcolor{keywordtype}{double} \&smearedPt, \textcolor{keywordtype}{double} \&smearedEta, \textcolor{keywordtype}{double} \&smearedPhi)}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00246}00246 \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00247}00247   \textcolor{keywordtype}{double} bias;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00248}00248   \textcolor{keywordtype}{double} rms;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00249}00249   \textcolor{keywordtype}{double} zeroRms = 0.0001;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00250}00250   }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00251}00251   \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_particle_performance_simulator_aba1b5d3bcfad0a4ab4ebb9ba53594552}{resolutionOption}})}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00252}00252     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00253}00253       \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00254}00254       \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00255}00255       bias = 0.0;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00256}00256       rms  = zeroRms;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00257}00257       smearedPt  = pt;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00258}00258       smearedEta = eta;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00259}00259       smearedPhi = phi;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00260}00260       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00261}00261       }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00262}00262       \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00263}00263       \mbox{\hyperlink{class_particle_performance_simulator_abfac7aca031b13349267f2106af68d7d}{smearFromFunction}}(pt, eta, phi, \mbox{\hyperlink{class_particle_performance_simulator_a64565ae101bc39c0bda6858a5a6c2b03}{ptFunction}}, bias, rms);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00264}00264       smearedPt  = gRandom-\/>Gaus(pt+bias,rms);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00265}00265       \textcolor{comment}{//cout << "{}pt:"{}<< pt<< "{} eta:"{} << eta << "{} phi:"{} << phi << "{} bias:"{} << bias << "{} rms:"{} << rms << "{} smearedPt"{} << smearedPt << endl;}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00266}00266       \mbox{\hyperlink{class_particle_performance_simulator_abfac7aca031b13349267f2106af68d7d}{smearFromFunction}}(pt, eta, phi, \mbox{\hyperlink{class_particle_performance_simulator_a52e336c88516b53593dc1b60ff8daed0}{etaFunction}}, bias, rms);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00267}00267       smearedEta = gRandom-\/>Gaus(eta+bias,rms);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00268}00268       \mbox{\hyperlink{class_particle_performance_simulator_abfac7aca031b13349267f2106af68d7d}{smearFromFunction}}(pt, eta, phi, \mbox{\hyperlink{class_particle_performance_simulator_a77af2a6cd7a5bec271f1ff27e6c0088e}{phiFunction}}, bias, rms);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00269}00269       smearedPhi = gRandom-\/>Gaus(phi+bias,rms);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00270}00270       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00271}00271       }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00272}00272       \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00273}00273       \mbox{\hyperlink{class_particle_performance_simulator_ac0d26e6ec7c3cc9239f46f74d59e881f}{smearFromHisto}}(pt, eta, phi, \mbox{\hyperlink{class_particle_performance_simulator_a8db8cb9d55d88235c008a3010d92d404}{biasPtHistogram}}, \mbox{\hyperlink{class_particle_performance_simulator_aa7e52f1c4be13433ca9bebfbb4009bdc}{rmsPtHistogram}}, bias, rms);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00274}00274       smearedPt = gRandom-\/>Gaus(pt+bias,rms);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00275}00275       \mbox{\hyperlink{class_particle_performance_simulator_ac0d26e6ec7c3cc9239f46f74d59e881f}{smearFromHisto}}(pt, eta, phi, \mbox{\hyperlink{class_particle_performance_simulator_af555383f373a8db355e413714d972329}{biasEtaHistogram}}, \mbox{\hyperlink{class_particle_performance_simulator_a97e3ca8980f0e7a622da90dd4c15e83f}{rmsEtaHistogram}}, bias, rms);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00276}00276       smearedEta = gRandom-\/>Gaus(eta+bias,rms);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00277}00277       \mbox{\hyperlink{class_particle_performance_simulator_ac0d26e6ec7c3cc9239f46f74d59e881f}{smearFromHisto}}(pt, eta, phi, \mbox{\hyperlink{class_particle_performance_simulator_a5cced60d7615328bea45139608203bca}{biasPhiHistogram}}, \mbox{\hyperlink{class_particle_performance_simulator_a0c1890a3ca0aceecb35a544edb433678}{rmsPhiHistogram}}, bias, rms);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00278}00278       smearedPhi = gRandom-\/>Gaus(phi+bias,rms);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00279}00279       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00280}00280     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00281}00281 \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00282}00282 }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00283}\mbox{\hyperlink{class_particle_performance_simulator_ac0d26e6ec7c3cc9239f46f74d59e881f}{00283}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_performance_simulator_ac0d26e6ec7c3cc9239f46f74d59e881f}{ParticlePerformanceSimulator::smearFromHisto}}(\textcolor{keywordtype}{double} pt, \textcolor{keywordtype}{double} eta, \textcolor{keywordtype}{double} phi,}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00284}00284                                                   TH1 * biasHisto, TH1 * rmsHisto,}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00285}00285                                                   \textcolor{keywordtype}{double} \& bias, \textcolor{keywordtype}{double} \& rms)}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00286}00286 \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00287}00287   \textcolor{keywordtype}{int} bin;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00288}00288   \textcolor{keywordflow}{if} (biasHisto-\/>IsA() == TH1::Class())}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00289}00289     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00290}00290     bin = biasHisto-\/>FindBin(pt);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00291}00291     bias = biasHisto-\/>GetBinContent(bin);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00292}00292     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00293}00293   \textcolor{keywordflow}{else}  \textcolor{keywordflow}{if} (biasHisto-\/>IsA() == TH2::Class())}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00294}00294     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00295}00295     bin = biasHisto-\/>FindBin(pt,eta);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00296}00296     bias = biasHisto-\/>GetBinContent(bin);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00297}00297     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00298}00298   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (biasHisto-\/>IsA() == TH3::Class())}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00299}00299     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00300}00300     bin = biasHisto-\/>FindBin(pt,eta,phi);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00301}00301     bias = biasHisto-\/>GetBinContent(bin);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00302}00302     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00303}00303   \textcolor{keywordflow}{if} (rmsHisto-\/>IsA() == TH1::Class())}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00304}00304     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00305}00305     bin = rmsHisto-\/>FindBin(pt);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00306}00306     rms = rmsHisto-\/>GetBinContent(bin);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00307}00307     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00308}00308   \textcolor{keywordflow}{else}  \textcolor{keywordflow}{if} (rmsHisto-\/>IsA() == TH2::Class())}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00309}00309     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00310}00310     bin = rmsHisto-\/>FindBin(pt,eta);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00311}00311     rms = rmsHisto-\/>GetBinContent(bin);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00312}00312     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00313}00313   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (rmsHisto-\/>IsA() == TH3::Class())}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00314}00314     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00315}00315     bin = rmsHisto-\/>FindBin(pt,eta,phi);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00316}00316     rms = rmsHisto-\/>GetBinContent(bin);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00317}00317     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00318}00318 \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00319}00319 }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00320}\mbox{\hyperlink{class_particle_performance_simulator_abfac7aca031b13349267f2106af68d7d}{00320}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_performance_simulator_abfac7aca031b13349267f2106af68d7d}{ParticlePerformanceSimulator::smearFromFunction}}(\textcolor{keywordtype}{double} pt, \textcolor{keywordtype}{double} eta, \textcolor{keywordtype}{double} phi,}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00321}00321                                                      \mbox{\hyperlink{class_resolution_function}{ResolutionFunction}}* f,}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00322}00322                                                      \textcolor{keywordtype}{double} \& bias, \textcolor{keywordtype}{double} \& rms)}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00323}00323 \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00324}00324   bias = f-\/>\mbox{\hyperlink{class_resolution_function_a24479f83c46b6a5b202f8e7381e42064}{getBias}}(pt,eta,phi);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00325}00325   rms  = f-\/>\mbox{\hyperlink{class_resolution_function_ab270c55d4abb13115967c9abc8d2e143}{getRms}}(pt,eta,phi);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00326}00326 \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00327}00327 }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00328}00328 }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00329}\mbox{\hyperlink{class_particle_performance_simulator_a637500e768ebab2bb789ff82bc18e6a3}{00329}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_performance_simulator_a637500e768ebab2bb789ff82bc18e6a3}{ParticlePerformanceSimulator::accept}}(\textcolor{keyword}{const} TLorentzVector\& momentum)}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00330}00330 \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00331}00331   \textcolor{keywordtype}{bool} accepting = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00332}00332   \textcolor{keywordtype}{double} pt  = momentum.Pt();}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00333}00333   \textcolor{keywordtype}{double} eta = momentum.Eta();}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00334}00334   \textcolor{keywordtype}{double} phi = momentum.Phi();}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00335}00335   \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_particle_performance_simulator_a619aaa30a3a1a5646a52b902a366a92b}{efficiencyOption}})}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00336}00336     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00337}00337       \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00338}00338       \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00339}00339       accepting = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00340}00340       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00341}00341       \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00342}00342       accepting = \mbox{\hyperlink{class_particle_performance_simulator_afa949b11ac4f66855c6aa478f5b0c017}{acceptFromFunction}}(pt, eta, phi);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00343}00343       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00344}00344       \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00345}00345       accepting = \mbox{\hyperlink{class_particle_performance_simulator_aee17c0ac4cf322b12796446af3e94020}{acceptFromHisto}}(pt, eta, phi);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00346}00346       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00347}00347     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00348}00348   \textcolor{keywordflow}{return} accepting;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00349}00349 \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00350}00350 }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00351}00351 }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00352}\mbox{\hyperlink{class_particle_performance_simulator_afac96a68531129b5e1ef5cfbf5586f32}{00352}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_performance_simulator_a637500e768ebab2bb789ff82bc18e6a3}{ParticlePerformanceSimulator::accept}}(\textcolor{keywordtype}{double} pt, \textcolor{keywordtype}{double} eta, \textcolor{keywordtype}{double} phi)}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00353}00353 \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00354}00354   \textcolor{keywordtype}{bool} accepting = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00355}00355   \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_particle_performance_simulator_a619aaa30a3a1a5646a52b902a366a92b}{efficiencyOption}})}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00356}00356     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00357}00357       \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00358}00358       \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00359}00359       accepting = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00360}00360       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00361}00361       \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00362}00362       accepting = \mbox{\hyperlink{class_particle_performance_simulator_afa949b11ac4f66855c6aa478f5b0c017}{acceptFromFunction}}(pt, eta, phi);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00363}00363       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00364}00364       \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00365}00365       accepting = \mbox{\hyperlink{class_particle_performance_simulator_aee17c0ac4cf322b12796446af3e94020}{acceptFromHisto}}(pt, eta, phi);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00366}00366       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00367}00367     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00368}00368   \textcolor{keywordflow}{return} accepting;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00369}00369 \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00370}00370 }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00371}\mbox{\hyperlink{class_particle_performance_simulator_aee17c0ac4cf322b12796446af3e94020}{00371}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_performance_simulator_aee17c0ac4cf322b12796446af3e94020}{ParticlePerformanceSimulator::acceptFromHisto}}(\textcolor{keywordtype}{double} pt, \textcolor{keywordtype}{double} eta, \textcolor{keywordtype}{double} phi)}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00372}00372 \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00373}00373   \textcolor{keywordtype}{int} bin;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00374}00374   \textcolor{keywordtype}{double} efficiency = 1.0;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00375}00375   \textcolor{keywordtype}{bool}   accepting  = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00376}00376   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_particle_performance_simulator_ab757eb150b1f9d5c8969d74635f801fe}{efficienyHistogram}}-\/>IsA() == TH1::Class())}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00377}00377     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00378}00378     bin = \mbox{\hyperlink{class_particle_performance_simulator_ab757eb150b1f9d5c8969d74635f801fe}{efficienyHistogram}}-\/>FindBin(pt);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00379}00379     efficiency = \mbox{\hyperlink{class_particle_performance_simulator_ab757eb150b1f9d5c8969d74635f801fe}{efficienyHistogram}}-\/>GetBinContent(bin);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00380}00380     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00381}00381   \textcolor{keywordflow}{else}  \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_particle_performance_simulator_ab757eb150b1f9d5c8969d74635f801fe}{efficienyHistogram}}-\/>IsA() == TH2::Class())}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00382}00382     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00383}00383     bin = \mbox{\hyperlink{class_particle_performance_simulator_ab757eb150b1f9d5c8969d74635f801fe}{efficienyHistogram}}-\/>FindBin(pt,eta);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00384}00384     efficiency = \mbox{\hyperlink{class_particle_performance_simulator_ab757eb150b1f9d5c8969d74635f801fe}{efficienyHistogram}}-\/>GetBinContent(bin);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00385}00385     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00386}00386   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_particle_performance_simulator_ab757eb150b1f9d5c8969d74635f801fe}{efficienyHistogram}}-\/>IsA() == TH3::Class())}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00387}00387     \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00388}00388     bin = \mbox{\hyperlink{class_particle_performance_simulator_ab757eb150b1f9d5c8969d74635f801fe}{efficienyHistogram}}-\/>FindBin(pt,eta,phi);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00389}00389     efficiency = \mbox{\hyperlink{class_particle_performance_simulator_ab757eb150b1f9d5c8969d74635f801fe}{efficienyHistogram}}-\/>GetBinContent(bin);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00390}00390     \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00391}00391   \textcolor{keywordflow}{if} (gRandom-\/>Rndm()<efficiency) accepting = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00392}00392   \textcolor{keywordflow}{return} accepting;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00393}00393 \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00394}00394 }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00395}\mbox{\hyperlink{class_particle_performance_simulator_afa949b11ac4f66855c6aa478f5b0c017}{00395}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_performance_simulator_afa949b11ac4f66855c6aa478f5b0c017}{ParticlePerformanceSimulator::acceptFromFunction}}(\textcolor{keywordtype}{double} pt, \textcolor{keywordtype}{double} eta, \textcolor{keywordtype}{double} phi)}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00396}00396 \{}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00397}00397   \textcolor{keywordtype}{bool}   accepting  = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00398}00398   \textcolor{keywordtype}{double} efficiency = \mbox{\hyperlink{class_particle_performance_simulator_aa86b650bd94ff189f030340359c02398}{efficiencyFunction}}-\/>\mbox{\hyperlink{class_efficiency_function_adfaf23ec46a2d76543704bdfaaba5bc7}{getEfficiency}}(pt,eta,phi);}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00399}00399   \textcolor{keywordflow}{if} (gRandom-\/>Rndm()<efficiency) accepting = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00400}00400   \textcolor{keywordflow}{return} accepting;}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00401}00401 \}}
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00402}00402 }
+\DoxyCodeLine{\Hypertarget{_particle_performance_simulator_8cpp_source_l00403}00403 }
+
+\end{DoxyCode}

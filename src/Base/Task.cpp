@@ -14,7 +14,6 @@
 #include "TSystemFile.h"
 #include "TParameter.h"
 #include "Task.hpp"
-#include "SubSampleStatCalculator.hpp"
 
 ClassImp(Task);
 
@@ -23,12 +22,12 @@ Task::Task()
 MessageLogger(Info),
 taskName                ( "Task" ),
 configuration           (),
-taskRandomGenerator     ( gRandom),
 particleFactory         ( nullptr),
 eventStreams            (),
+nEventFilters           (0),
+nParticleFilters        (0),
 eventFilters            (),
 particleFilters         (),
-particleSmearers        (),
 eventCountHistos        ( nullptr),
 inputHistograms         (),
 baseSingleHistograms    (),
@@ -36,12 +35,16 @@ basePairHistograms      (),
 derivedSingleHistograms (),
 derivedPairHistograms   (),
 combinedHistograms      (),
-nFilteredEventsAccepted (),
-nEventProcessed         ( 0 ),
-nEventAccepted          ( 0 ),
-subSampleIndex          ( 0 ),
-subtasks                (),
-masterCollection        (nullptr)
+filteredParticles       (),
+nTaskExecuted           (0),
+nTaskExecutedReset      (0),
+nEventsAcceptedTotal    (),
+nParticlesAcceptedEvent (),
+nParticlesAcceptedReset (),
+nParticlesAcceptedTotal (),
+subTasks                (),
+particleTypeCollection  (nullptr),
+subSampleIndex(0)
 {
   setClassName("Task");
   setInstanceName(taskName);
@@ -56,12 +59,12 @@ MessageLogger(_reportLevel),
 timer(),
 taskName                (_taskName),
 configuration           (),
-taskRandomGenerator     ( gRandom),
 particleFactory         ( nullptr),
 eventStreams            (),
+nEventFilters           (0),
+nParticleFilters        (0),
 eventFilters            (),
 particleFilters         (),
-particleSmearers        (),
 eventCountHistos        ( nullptr),
 inputHistograms         (),
 baseSingleHistograms    (),
@@ -69,20 +72,18 @@ basePairHistograms      (),
 derivedSingleHistograms (),
 derivedPairHistograms   (),
 combinedHistograms      (),
-nFilteredEventsAccepted (),
-nEventProcessed         ( 0 ),
-nEventAccepted          ( 0 ),
-subSampleIndex          ( 0 ),
-subtasks                (),
-masterCollection        (nullptr)
+particleTypeCollection  (nullptr),
+subSampleIndex(0)
 {
   setClassName("Task");
   setInstanceName(_taskName);
   setDefaultConfiguration();
+  setConfiguration(_configuration);
+
 }
 
 Task::Task(const TString &          _taskName,
-           const Configuration  &   _configuration __attribute__((unused)),
+           const Configuration  &   _configuration,
            vector<EventFilter*> &   _eventFilters,
            vector<ParticleFilter*>& _particleFilters,
            MessageLogger::LogLevel  _reportLevel)
@@ -90,12 +91,12 @@ Task::Task(const TString &          _taskName,
 MessageLogger(_reportLevel),
 taskName                (_taskName),
 configuration           (),
-taskRandomGenerator     ( gRandom),
 particleFactory         ( nullptr),
 eventStreams            (),
+nEventFilters           (_eventFilters.size()),
+nParticleFilters        (_particleFilters.size()),
 eventFilters            (_eventFilters),
 particleFilters         (_particleFilters),
-particleSmearers        (),
 eventCountHistos        ( nullptr),
 inputHistograms         (),
 baseSingleHistograms    (),
@@ -103,79 +104,44 @@ basePairHistograms      (),
 derivedSingleHistograms (),
 derivedPairHistograms   (),
 combinedHistograms      (),
-nFilteredEventsAccepted (),
-nEventProcessed         ( 0 ),
-nEventAccepted          ( 0 ),
-subSampleIndex          ( 0 ),
-subtasks                (),
-masterCollection        ( nullptr)
+particleTypeCollection  (nullptr),
+subSampleIndex(0)
 {
   setClassName("Task");
   setInstanceName(_taskName);
   setDefaultConfiguration();
+  setConfiguration(_configuration);
 }
-
-Task::Task(const TString &           _taskName,
-           const Configuration  &    _configuration  __attribute__((unused)),
-           vector<EventFilter*> &    _eventFilters,
-           vector<ParticleFilter*>&  _particleFilters,
-           vector<ParticleSmearer*>& _particleSmearer,
-           MessageLogger::LogLevel   _reportLevel)
-:
-MessageLogger           (_reportLevel),
-taskName                (_taskName),
-configuration           (),
-taskRandomGenerator     ( gRandom),
-particleFactory         ( nullptr),
-eventStreams            (),
-eventFilters            (_eventFilters),
-particleFilters         (_particleFilters),
-particleSmearers        (_particleSmearer),
-eventCountHistos        (nullptr),
-inputHistograms         (),
-baseSingleHistograms    (),
-basePairHistograms      (),
-derivedSingleHistograms (),
-derivedPairHistograms   (),
-combinedHistograms      (),
-nFilteredEventsAccepted (),
-nEventProcessed         ( 0 ),
-nEventAccepted          ( 0 ),
-subSampleIndex          ( 0 ),
-subtasks                (),
-masterCollection        ( nullptr)
-{
-  setClassName("Task");
-  setInstanceName(_taskName);
-  setDefaultConfiguration();
-}
-
 
 void Task::setDefaultConfiguration()
 {
-  if (reportStart("Task",getName(),"setDefaultConfiguration()"))
-    { }
-  configuration.addParameter( "useParticles",       false);
-  configuration.addParameter( "useEventStream0",    false);
-  configuration.addParameter( "useEventStream1",    false);
-  configuration.addParameter( "useEventStream2",    false);
-  configuration.addParameter( "useEventStream3",    false);
-  configuration.addParameter( "createHistograms",   false);
+  if (reportStart(__FUNCTION__))
+    ;
+  configuration.addParameter( "useEvents",               false);
+  configuration.addParameter( "useParticles",            false);
+  configuration.addParameter( "useEventStream0",         false);
+  configuration.addParameter( "useEventStream1",         false);
+  configuration.addParameter( "useEventStream2",         false);
+  configuration.addParameter( "useEventStream3",         false);
+  configuration.addParameter( "createHistograms",        false);
   configuration.addParameter( "createDerivedHistograms", false);
-  configuration.addParameter( "createCombinedHistograms", false);
-  configuration.addParameter( "loadHistograms",  false);
-  configuration.addParameter( "saveHistograms",  false);
-  configuration.addParameter( "resetHistograms", false);
-  configuration.addParameter( "clearHistograms", false);
-  configuration.addParameter( "scaleHistograms", false);
-  configuration.addParameter( "forceHistogramsRewrite", false);
-  configuration.addParameter( "doSubsampleAnalysis", false);
-  configuration.addParameter( "doPartialSave",       false);
-  configuration.addParameter( "histoInputPath",      TString("./")   );
-  configuration.addParameter( "histoInputFileName",  TString("") );
-  configuration.addParameter( "histoOutputPath",     TString("./")  );
-  configuration.addParameter( "histoOutputFileName", TString("./")  );
-  configuration.addParameter( "histoBaseName",       TString("BaseNameUndefined"));
+  configuration.addParameter( "createCombinedHistograms",false);
+  configuration.addParameter( "loadHistograms",          false);
+  configuration.addParameter( "saveHistograms",          false);
+  configuration.addParameter( "resetHistograms",         false);
+  configuration.addParameter( "clearHistograms",         false);
+  configuration.addParameter( "scaleHistograms",         false);
+  configuration.addParameter( "forceHistogramsRewrite",  false);
+  configuration.addParameter( "doSubsampleAnalysis",     false);
+  configuration.addParameter( "doPartialReports",        false);
+  configuration.addParameter( "doPartialSaves",          false);
+  configuration.addParameter( "histoInputPath",          TString("./")   );
+  configuration.addParameter( "histoInputFileName",      TString("") );
+  configuration.addParameter( "histoOutputPath",         TString("./")  );
+  configuration.addParameter( "histoOutputFileName",     TString("./")  ); // do not used
+  configuration.addParameter( "histoOutputDataName",     TString("./")  );
+  configuration.addParameter( "histoOutputAnalyzerName", TString("./")  );
+  configuration.addParameter( "histoBaseName",           TString("BaseNameUndefined"));
   
   configuration.addParameter( "dataInputUsed",       false);
   configuration.addParameter( "dataInputPath",       TString("./"));
@@ -190,11 +156,7 @@ void Task::setDefaultConfiguration()
   configuration.addParameter( "dataOutputTreeName", TString("tree"));
   
   configuration.addParameter( "dataConversionToWac", true);
-  
-  configuration.addParameter( "fileFromParent", false);
-  configuration.addParameter( "histogramInputFileName",TString("AlternateIn"));
-  configuration.addParameter( "histogramOuputFileName",TString("AlternateOut"));
-  
+
   for (int k=0; k<20; k++)
     {
     TString key("IncludedPattern"); key += k;
@@ -207,286 +169,270 @@ void Task::setDefaultConfiguration()
     TString value("none"); value += k;
     configuration.addParameter(key, value);
     }
-  
-  if (reportEnd("Task",getName(),"setDefaultConfiguration()"))
-    {
-    configuration.printConfiguration(cout);
-    }
+  if (reportDebug(__FUNCTION__))    configuration.printConfiguration(cout);
 }
 
 void Task::setConfiguration(const Configuration & _configuration)
 {
-  if (reportStart("Task",getName(),"setConfiguration(const Configuration & config)"))
-    { }
+   if (reportStart(__FUNCTION__))
+    ;
   configuration.setParameters(_configuration);
-  if (reportEnd("Task",getName(),"setConfiguration(const Configuration & config)"))
-    {
-    configuration.printConfiguration(cout);
-    }
+  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
+
 
 void Task::initialize()
 {
-  if (reportStart("Task",getName(),"initialize()"))
-    { }
-  if (isTaskOk() && configuration.getValueBool( "useParticles") )
+  if (reportStart(__FUNCTION__))
+    ;
+  bool useParticles     = configuration.getValueBool("useParticles");
+  bool createHistos     = configuration.getValueBool("createHistograms");
+  bool loadHistos       = configuration.getValueBool("loadHistograms");
+  bool useEventStream0  = configuration.getValueBool("useEventStream0");
+  bool useEventStream1  = configuration.getValueBool("useEventStream1");
+  bool useEventStream2  = configuration.getValueBool("useEventStream2");
+  bool useEventStream3  = configuration.getValueBool("useEventStream3");
+  initializeTaskExecuted();
+  if (useParticles)
     {
     particleFactory  = Particle::getFactory();
-    if (!particleFactory)
+    particleTypeCollection = ParticleTypeCollection::getMasterParticleCollection();
+    if (nParticleFilters>0 && nEventFilters>0)
       {
-      if (reportFatal("Task",getName(),"initialize()"))
-        {
-        cout << " Particle factory required but not available. Must abort." << endl;
-        }
-      postTaskFatal();
-      return;
+      initializeNEventsAccepted();
+      initializeNParticlesAccepted();
       }
-    masterCollection = ParticleTypeCollection::getMasterParticleCollection();
-    if (!masterCollection)
+    else
       {
-      if (reportFatal("Task",getName(),"initialize()"))
-        {
-        cout << " Particle master collection required but not available. Must abort." << endl;
-        }
-      postTaskFatal();
-      return;
+      if (reportWarning(__FUNCTION__)) cout << "useParticles==true but nParticleFilters=0 or nEventFilters==0." << endl;
       }
     }
-  if (!isTaskOk())
+  if (useEventStream0)  addEventStream(Event::getEventStream(0));
+  if (useEventStream1)  addEventStream(Event::getEventStream(1));
+  if (useEventStream2)  addEventStream(Event::getEventStream(2));
+  if (useEventStream3)  addEventStream(Event::getEventStream(3));
+  if (reportDebug(__FUNCTION__)) cout << " #event added streams: "  << getNEventStreams() << endl;
+  if (createHistos && isTaskOk())
     {
-    if (reportError("Task",getName(),"initialize()"))
-      {
-      cout << "Error posted - Abort immediately." << endl;
-      }
-    exit(1);
-    }
-  if (configuration.getValueBool( "useEventStream0") )  addEventStream(Event::getEventStream(0));
-  if (configuration.getValueBool( "useEventStream1") )  addEventStream(Event::getEventStream(1));
-  if (configuration.getValueBool( "useEventStream2") )  addEventStream(Event::getEventStream(2));
-  if (configuration.getValueBool( "useEventStream3") )  addEventStream(Event::getEventStream(3));
-  if (reportInfo("Task",getName(),"initialize()"))
-    {
-    cout << " #event added streams: "  << getNEventStreams() << endl;
-    }
-  if (configuration.getValueBool( "createHistograms") )
-    {
-    if (reportDebug("Task",getName(),"initialize()"))
-      cout << "Create EventCountHistograms" << endl;
-    unsigned int nEventFilters = eventFilters.size();
-    if (nEventFilters>0)  nFilteredEventsAccepted.assign(nEventFilters,0.0);
-    eventCountHistos = new EventCountHistos(getName(),configuration,getReportLevel());
-    eventCountHistos->createHistograms();
-    if (reportDebug("Task",getName(),"initialize()")) cout << "Done with EventCountHistograms" << endl;
+    createEventCountHistograms();
     createHistograms();
     }
-  nEventProcessed = 0;
-  nEventAccepted  = 0;
-  if (configuration.getValueBool( "loadHistograms") )
-    {
-    loadHistograms();
-    }
-  
-  if (reportEnd("Task",getName(),"initialize()"))
-    { }
+  if (loadHistos && isTaskOk())  loadHistograms();
+  if (hasSubTasks() && isTaskOk()) initializeSubTasks();
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
-
-void Task::finalize()
+void Task::execute()
 {
-  if (reportStart("Task",getName(),"finalize()"))
-    { }
-  if (nEventAccepted<1 || nEventProcessed<1)
-    {
-    if (reportWarning("Task",getName(),"finalize()")) printEventCount();
-    }
-  if (reportInfo("Task",getName(),"finalize()")) printEventCount();
-  if (isTaskOk() )
-    {
-    if (eventCountHistos) eventCountHistos->fill(nFilteredEventsAccepted);
-    }
-  if (isTaskOk() && configuration.getValueBool( "scaleHistograms") )  scaleHistograms();
-  if (isTaskOk() && configuration.getValueBool( "saveHistograms")  )  saveHistograms();
-  if (reportEnd("Task",getName(),"finalize()"))
-    { }
-}
-
-void Task::printEventCount() const
-{
-  cout << endl
-  << "    nEventProcessed:" << nEventProcessed << endl
-  << "     nEventAccepted:" << nEventAccepted << endl;
-  for (unsigned int k=0; k<nFilteredEventsAccepted.size(); k++)
-    {
-    cout << "      Event filter:" << k << "  nFiltered Events Accepted: " << nFilteredEventsAccepted[k] << endl;
-    }
+  if (reportStart(__FUNCTION__))
+    ;
+  incrementTaskExecuted();
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 void Task::savePartial()
 {
-  if (reportStart("Task",getName(),"savePartial()"))
-    { }
-  if (nEventAccepted<1 || nEventProcessed<1)
-    {
-    if (reportWarning("Task",getName(),"savePartial()")) printEventCount();
-    }
-  if (reportInfo("Task",getName(),"savePartial()")) printEventCount();
-  if (isTaskOk() )
-    {
-    if (eventCountHistos) eventCountHistos->fill(nFilteredEventsAccepted);
-    }
-  if (isTaskOk() && configuration.getValueBool( "scaleHistograms")  ) scaleHistograms();
-  if (isTaskOk() && configuration.getValueBool( "saveHistograms")   ) saveHistograms();
-  if (isTaskOk() && configuration.getValueBool( "createHistograms") ) resetHistograms();
-  if (reportEnd("Task",getName(),"savePartial()"))
-    { }
+  if (reportStart(__FUNCTION__))
+    ;
+  bool useParticles = configuration.getValueBool("useParticles");
+  bool scaleHistos  = configuration.getValueBool("scaleHistograms");
+  bool saveHistos   = configuration.getValueBool("saveHistograms");
+  if (useParticles  && reportInfo(__FUNCTION__)) printEventStatistics();
+  if (scaleHistos   && isTaskOk()) scaleHistograms();
+  if (saveHistos    && isTaskOk()) saveHistograms();
+  if (hasSubTasks() && isTaskOk()) savePartialSubTasks();
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
-void Task::subsampleAnalysis()
-{
-  if (reportStart("Task",getName(),"subsampleAnalysis()"))
-    { }
-  bool doSubsampleAnalysis = configuration.getValueBool(   "doSubsampleAnalysis");
-  TString inputPathName    = configuration.getValueString( "histoOutputPath"    ); // where files were saved
-  TString inputFileName    = configuration.getValueString( "histoOutputFileName"); // base name of files in a job
-  TString outputPathName   = inputPathName;     // where files were saved
-  TString outputFileName   = inputFileName;
-  int numberOfPartialSaves = getSubSampleIndex();                  // number of partial saves
 
-  
-  if (!doSubsampleAnalysis)
+
+void Task::finalize()
+{
+  if (reportStart(__FUNCTION__))
+    ;
+  bool useParticles = configuration.getValueBool("useParticles");
+  bool scaleHistos  = configuration.getValueBool("scaleHistograms");
+  bool saveHistos   = configuration.getValueBool("saveHistograms");
+
+  // if a partial save has been done and there are no additional
+  // new data, no point in saving again...
+  if (useParticles)
     {
-    if (reportInfo("Task",getName(),"subsampleAnalysis(...)"))
+    if (reportInfo(__FUNCTION__)) cout << "useParticles==true" << endl;
+    if (getNTaskExecutedReset()>0)
       {
-      cout << "No subsample analysis requested for task:" << getName() << endl;
+      if (reportInfo(__FUNCTION__)) cout << "getNTaskExecutedReset()>0" << endl;
+      if (reportInfo(__FUNCTION__)) printEventStatistics();
+      if (scaleHistos) scaleHistograms();
+      if (saveHistos) saveHistograms();
+      if (hasSubTasks() && isTaskOk()) finalizeSubTasks();
       }
-    return;
     }
   else
     {
-    if (reportInfo("Task",getName(),"subsampleAnalysis(...)"))
+    if (reportInfo(__FUNCTION__)) cout << "useParticles==false" << endl;
+    if (scaleHistos) scaleHistograms();
+    if (saveHistos) saveHistograms();
+    if (hasSubTasks() && isTaskOk()) finalizeSubTasks();
+    }
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
+void Task::printEventStatistics() const
+{
+  if (reportStart(__FUNCTION__))
+    ;
+  cout << endl;
+  cout << "Event Statistics : " << getName() <<  "/"  << getClassName()
+  << "       #calls after reset/total: " << nTaskExecutedReset << "/" << nTaskExecuted << " #EventFilters : " << nEventFilters << " #ParticleFilters : " << nParticleFilters << endl;
+  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++)
+    {
+    cout << "       Event filter : " << iEventFilter << " name : " << eventFilters[iEventFilter]->getName() << " #events after reset/total : " << getNEventsAcceptedReset(iEventFilter) << "/" << getNEventsAcceptedTotal(iEventFilter) << endl;
+    for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++)
       {
-      cout << "Subsample analysis requested for task:" << getName() << endl;
-      cout << "                        inputPathName:" << inputPathName << endl;
-      cout << "                        inputFileName:" << inputFileName << endl;
-      cout << "                 numberOfPartialSaves:" << numberOfPartialSaves << endl;
-      cout << "                       outputPathName:" << outputPathName << endl;
-      cout << "                       outputFileName:" << outputFileName << endl;
+      cout << "       Particle filter : " << iParticleFilter << " name : " << particleFilters[iParticleFilter]->getName() << " #particles last/after reset/total : " << getNParticlesAcceptedEvent(iEventFilter,iParticleFilter) << "/"
+      << getNParticlesAcceptedReset(iEventFilter,iParticleFilter) << "/" << getNParticlesAcceptedTotal(iEventFilter,iParticleFilter) << endl;
       }
     }
-  Configuration statConfig("subSampleConfig");
-  statConfig.addParameter( "forceHistogramsRewrite", true);
-  statConfig.addParameter( "nInputFile",          numberOfPartialSaves  );
-  statConfig.addParameter( "histoInputPath",      inputPathName         );
-  statConfig.addParameter( "histoOutputPath",     outputPathName        );
-  statConfig.addParameter( "histoOutputFileName", outputFileName+"_Sum" );
-  for (int k=0; k<=numberOfPartialSaves; k++  )
-    {
-    TString key("InputFile"); key += k;
-    TString name = inputFileName;
-    name += "_";
-    name += k;
-    cout << "   k: " << k << "    " << name << endl;
-    statConfig.addParameter(key,name);
-    }
-  SubSampleStatCalculator * subSampleStatCalculator = new SubSampleStatCalculator("DefaultSubSampleStatCalculator",statConfig,getReportLevel());
-  subSampleStatCalculator->execute();
-  delete subSampleStatCalculator;
-  if (reportEnd("Task",getName(),"subsampleAnalysis(...)"))
-    { }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
+
+
 
 void Task::reset()
 {
-  if (reportStart("Task",getName(),"reset(...)"))
-    { }
-  nEventProcessed = 0;
-  nEventAccepted  = 0;
-  for (unsigned int k=0; k<nFilteredEventsAccepted.size(); k++) nFilteredEventsAccepted[k] = 0;
-  if (isTaskOk())   resetHistograms();
-  if (reportEnd("Task",getName(),"reset(...)"))
-    { }
+
+  if (reportStart(__FUNCTION__))
+    ;
+  bool useParticles = configuration.getValueBool("useParticles");
+  bool createHistos = configuration.getValueBool("createHistograms");
+  resetTaskExecuted();
+  if (useParticles) resetNEventsAccepted();
+  if (useParticles) resetNParticlesAccepted();
+  if (useParticles  && createHistos) resetEventCountHistograms();
+  if (createHistos  && isTaskOk()) resetHistograms();
+  if (hasSubTasks() && isTaskOk()) resetSubTasks();
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 void Task::clear()
 {
-  if (reportStart("Task",getName(),"clear()"))
-    { }
-  
-  // we keep the filters as guidelines for what is done but everything else is wiped out for
-  // a clean start; i.e., all histograms...
-  nEventProcessed = 0;
-  nEventAccepted  = 0;
-  clearHistograms();
-  if (reportEnd("Task",getName(),"clear()"))
-    { }
-}
 
+  if (reportStart(__FUNCTION__))
+    ;
+  bool useParticles = configuration.getValueBool("useParticles");
+  bool createHistos = configuration.getValueBool("createHistograms");
+  if (useParticles) clearNEventsAccepted();
+  if (useParticles) clearNParticlesAccepted();
+  if (useParticles  && createHistos) clearEventCountHistograms();
+  if (createHistos  && isTaskOk()) clearHistograms();
+  if (hasSubTasks() && isTaskOk()) clearSubTasks();
+  if (reportEnd(__FUNCTION__))
+    ;
+}
 
 void Task::printConfiguration(ostream & output)
 {
   output << "Task Name : " << taskName <<  endl;
   configuration.printConfiguration(output);
+  if (hasSubTasks()) printConfigurationSubTasks(output);
 }
 
-void Task::setRandomGenerator(TRandom * randomGenerator)
-{
-  if (!randomGenerator)
-    {
-    taskRandomGenerator = randomGenerator;
-    if (reportDebug("Task",getName(),"setRandomGenerator(TRandom * randomGenerator)"))
-      {
-      cout << "Default random generator was changed." << endl;
-      }
-    }
-  else
-    {
-    postTaskWarning();
-    if (reportError("Task",getName(),"setConfiguration(...)"))
-      {
-      cout << "Null pointer. Random generator will not be set." << endl;
-      }
-    }
-}
+
 
 void Task::loadHistograms()
 {
-  if (reportStart("Task",getName(),"loadHistograms()"))
-    { }
-  TString inputFileName;
-  
-  if (configuration.getValueBool("fileFromParent") )
-    {
-    // this is used by the FileIterator to set the file name to be read
-    inputFileName = configuration.getValueString( "histogramInputFileName");
-    }
-  else
-    {
-    // this is used normally to identify the file name to be used to save or load from.
-    inputFileName = configuration.getValueString( "histoInputPath");
-    inputFileName += configuration.getValueString( "histoInputFileName");
-    }
-  TFile * inputFile = openRootFile("",inputFileName,"READ");
-  if (!inputFile)
-    {
-    if (reportError("Task",getName(),"loadHistograms()")) cout << "Could not open input file:"  << inputFileName << endl;
-    postTaskError();
-    return;
-    }
-  eventCountHistos = new EventCountHistos(getName(),configuration,getReportLevel());
-  eventCountHistos->loadHistograms(inputFile);
-  loadNEventProcessed(inputFile);
-  loadNEventAccepted(inputFile);
+
+  if (reportStart(__FUNCTION__))
+    ;
+  bool useParticles          = configuration.getValueBool("useParticles");
+  TString histoInputPath     = configuration.getValueString("histoInputPath");
+  TString histoInputFileName = configuration.getValueString("histoInputFileName");
+  TFile * inputFile          = openRootFile(histoInputPath,histoInputFileName,"READ");
+  if (!inputFile) return;
+  if (useParticles)  loadEventCountHistograms(inputFile);
+  if (useParticles)  loadNEventsAccepted(inputFile);
+  if (useParticles)  loadNEexecutedTask(inputFile);
   loadHistograms(inputFile);
-  if (reportEnd("Task",getName(),"loadHistograms()"))
-    { }
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
+void Task::createEventCountHistograms()
+{
+
+  if (reportStart(__FUNCTION__))
+    ;
+  eventCountHistos = new EventCountHistos(getName(),configuration,nEventFilters,nParticleFilters,getReportLevel());
+  eventCountHistos->createHistograms();
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 
+void Task::fillEventCountHistograms()
+{
+
+  if (reportStart(__FUNCTION__))
+    ;
+  eventCountHistos->fill(nTaskExecutedReset,nEventsAcceptedReset,nParticleAcceptedReset);
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
+void Task::loadEventCountHistograms(TFile * inputFile)
+{
+
+  if (reportStart(__FUNCTION__))
+    ;
+  eventCountHistos = new EventCountHistos(getName(),configuration,nEventFilters,nParticleFilters,getReportLevel());
+  eventCountHistos->loadHistograms(inputFile);
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
+void Task::saveEventCountHistograms(TFile * outputFile)
+{
+
+  if (reportStart(__FUNCTION__))
+    ;
+  eventCountHistos->saveHistograms(outputFile);
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
+void Task::resetEventCountHistograms()
+{
+
+  if (reportStart(__FUNCTION__))
+    ;
+  eventCountHistos->reset();
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
+void Task::clearEventCountHistograms()
+{
+
+  if (reportStart(__FUNCTION__))
+    ;
+  eventCountHistos->clear();
+  delete eventCountHistos;
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
 void Task::resetHistograms()
 {
-  if (reportStart("Task",getName(),"resetHistograms()"))
-    { }
-  if (eventCountHistos) eventCountHistos->reset();
+
+  if (reportStart(__FUNCTION__))
+    ;
   for (unsigned int iHisto=0; iHisto<inputHistograms.size();        iHisto++) inputHistograms[iHisto]->reset();
   for (unsigned int iHisto=0; iHisto<histograms.size();             iHisto++) histograms[iHisto]->reset();
   for (unsigned int iHisto=0; iHisto<baseSingleHistograms.size();   iHisto++) baseSingleHistograms[iHisto]->reset();
@@ -494,15 +440,15 @@ void Task::resetHistograms()
   for (unsigned int iHisto=0; iHisto<derivedSingleHistograms.size();iHisto++) derivedSingleHistograms[iHisto]->reset();
   for (unsigned int iHisto=0; iHisto<derivedPairHistograms.size();  iHisto++) derivedPairHistograms[iHisto]->reset();
   for (unsigned int iHisto=0; iHisto<combinedHistograms.size();     iHisto++) combinedHistograms[iHisto]->reset();
-  if (reportEnd("Task",getName(),"resetHistograms()"))
-    { }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 void Task::clearHistograms()
 {
-  if (reportStart("Task",getName(),"clearHistograms()"))
-    { }
-  if (eventCountHistos) delete eventCountHistos;
+
+  if (reportStart(__FUNCTION__))
+    ;
   for (unsigned int iHisto=0; iHisto<inputHistograms.size();        iHisto++) delete inputHistograms[iHisto];
   for (unsigned int iHisto=0; iHisto<histograms.size();             iHisto++) delete histograms[iHisto];
   for (unsigned int iHisto=0; iHisto<baseSingleHistograms.size();   iHisto++) delete baseSingleHistograms[iHisto];
@@ -517,66 +463,51 @@ void Task::clearHistograms()
   derivedSingleHistograms.clear();
   derivedPairHistograms.clear();
   combinedHistograms.clear();
-  if (reportEnd("Task",getName(),"clearHistograms()"))
-    { }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 void Task::scaleHistograms()
 {
-  if (reportStart("Task",getName(),"scaleHistograms()"))
-    { }
+  if (reportStart(__FUNCTION__))
+    ;
   double scalingFactor;
-  unsigned int nEventFilters    = eventFilters.size();
-  unsigned int nParticleFilters = particleFilters.size();
   int index;
-  if (reportInfo("Task",getName(),"scaleHistograms()"))
+  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    cout << endl;
-    cout << "              Accepted number of events: " <<  nEventAccepted << endl;
-    cout << "                          nEventFilters: " <<  nEventFilters << endl;
-    cout << "                       nParticleFilters: " <<  nParticleFilters << endl;
-    cout << "            baseSingleHistograms.size(): " <<  baseSingleHistograms.size() << endl;
-    cout << "              basePairHistograms.size(): " <<  basePairHistograms.size() << endl;
-    cout << "         derivedSingleHistograms.size(): " <<  derivedSingleHistograms.size() << endl;
-    cout << "           derivedPairHistograms.size(): " <<  derivedPairHistograms.size() << endl;
-    cout << "              combinedHistograms.size(): " <<  combinedHistograms.size() << endl;
-    cout << "--------------   Accumulated statistics: ----------------------------------" << endl;
-    printEventCount();
-    }
-  for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
-    {
-    if (nFilteredEventsAccepted[iEventFilter]>1)
+    long nEvents = nEventsAcceptedReset[iEventFilter];
+    if (nEvents>1)
       {
-      scalingFactor = 1.0/double(nFilteredEventsAccepted[iEventFilter]);
-      if (reportInfo("Task",getName(),"scaleHistograms()"))
+      scalingFactor = 1.0/double(nEvents);
+      if (reportInfo(__FUNCTION__))
         {
         cout << endl;
-        cout << "                                    iEventFilter: " <<  iEventFilter<< endl;
-        cout << "           nFilteredEventsAccepted[iEventFilter]: " <<  nFilteredEventsAccepted[iEventFilter]<< endl;
-        cout << "                                   scalingFactor: " <<  scalingFactor << endl;
+        cout << "                            iEventFilter: " <<  iEventFilter<< endl;
+        cout << "           nEventsAccepted[iEventFilter]: " <<  nEvents<< endl;
+        cout << "                           scalingFactor: " <<  scalingFactor << endl;
         }
       if (histograms.size()>0)
         {
-          if (reportInfo("Task",getName(),"scaleHistograms()")) cout <<  "Scaling group named " <<  histograms[iEventFilter]->getName() << endl;
+          if (reportInfo(__FUNCTION__)) cout <<  "Scaling group named " <<  histograms[iEventFilter]->getName() << endl;
           histograms[iEventFilter]->scale(scalingFactor);
         }
       if (baseSingleHistograms.size()>0)
         {
-        for (unsigned int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
+        for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
           {
           index = iEventFilter*nParticleFilters + iParticleFilter1;
-          if (reportInfo("Task",getName(),"scaleHistograms()"))cout <<  "Scaling group index:" << index << " named " <<  baseSingleHistograms[index]->getName() << endl;
+          if (reportInfo(__FUNCTION__))cout <<  "Scaling group index:" << index << " named " <<  baseSingleHistograms[index]->getName() << endl;
           baseSingleHistograms[index]->scale(scalingFactor);
           }
         }
       if (basePairHistograms.size()>0)
         {
-        for (unsigned int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
+        for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
           {
-          for (unsigned int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
+          for (int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
             {
             index = iEventFilter*nParticleFilters*nParticleFilters+iParticleFilter1*nParticleFilters+iParticleFilter2;
-            if (reportInfo("Task",getName(),"scaleHistograms()"))cout <<  "Scaling group index:" << index << " named " <<  baseSingleHistograms[index]->getName() << endl;
+            if (reportInfo(__FUNCTION__))cout <<  "Scaling group index:" << index << " named " <<  baseSingleHistograms[index]->getName() << endl;
             basePairHistograms[index]->scale(scalingFactor);
             }
           }
@@ -584,41 +515,34 @@ void Task::scaleHistograms()
       }
     else
       {
-      if (reportWarning("Task",getName(),"scaleHistograms()"))
+      if (reportWarning(__FUNCTION__))
         {
         cout << endl;
-        cout << "                                    iEventFilter: " <<  iEventFilter<< endl;
-        cout << "           nFilteredEventsAccepted[iEventFilter]: " <<  nFilteredEventsAccepted[iEventFilter]<< endl;
-        cout << "                            no scaling performed: " <<  endl;
+        cout << "                            iEventFilter: " <<  iEventFilter<< endl;
+        cout << "      nEventsAcceptedReset[iEventFilter]: " <<  nEventsAcceptedReset[iEventFilter]<< endl;
+        cout << "                    no scaling performed: " <<  endl;
         }
       }
     }
-  if (reportEnd("Task",getName(),"scaleHistograms()"))
-    { }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
-
 
 void Task::saveHistogramsAsText()
 {
-  if (reportNoOps("Task",getName(),"saveHistogramsAsText()"))
-    { }
+
+  if (reportStart(__FUNCTION__))
+    ;
 }
 
 
 void Task::saveHistograms(TFile * outputFile)
 {
-  TString fct = "saveHistograms(TFile * outputFile)";
-  if (reportStart("Task",getName(),fct))
-    {  }
+  if (reportStart(__FUNCTION__))
+    ;
   outputFile->cd();
-  saveNEventProcessed(outputFile);
-  saveNEventAccepted(outputFile);
-  if (eventCountHistos) eventCountHistos->saveHistograms(outputFile);
-  else
-    {
-    if (reportWarning("Task",getName(),fct)) cout << "eventCountHistos is not defined and thus not saved"<< endl;
-    }
-  if (reportInfo("Task",getName(),fct))
+
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "    base single histogram(s):"  << baseSingleHistograms.size() << endl;
@@ -629,159 +553,163 @@ void Task::saveHistograms(TFile * outputFile)
     }
   for (unsigned int iHisto=0; iHisto<histograms.size(); iHisto++)
     {
-    if (reportDebug("Task",getName(),fct)) cout << "Saving global histogram(s) group:" << iHisto << endl;
+    if (reportDebug(__FUNCTION__)) cout << "Saving global histogram(s) group:" << iHisto << endl;
     histograms[iHisto]->saveHistograms(outputFile);
     }
   for (unsigned int iHisto=0; iHisto<baseSingleHistograms.size(); iHisto++)
     {
-    if (reportDebug("Task",getName(),fct)) cout << "Saving single histogram(s) group:" << iHisto << endl;
+    if (reportDebug(__FUNCTION__)) cout << "Saving single histogram(s) group:" << iHisto << endl;
     baseSingleHistograms[iHisto]->saveHistograms(outputFile);
     }
   for (unsigned int iHisto=0; iHisto<basePairHistograms.size(); iHisto++)
     {
-    if (reportDebug("Task",getName(),fct)) cout << "Saving pair histogram(s) group:" << iHisto << endl;
+    if (reportDebug(__FUNCTION__)) cout << "Saving pair histogram(s) group:" << iHisto << endl;
     basePairHistograms[iHisto]->saveHistograms(outputFile);
     }
   for (unsigned int iHisto=0; iHisto<derivedSingleHistograms.size(); iHisto++)
     {
-    if (reportDebug("Task",getName(),fct)) cout << "Saving derived single histogram(s) group:" << iHisto  << endl;
+    if (reportDebug(__FUNCTION__)) cout << "Saving derived single histogram(s) group:" << iHisto  << endl;
     derivedSingleHistograms[iHisto]->saveHistograms(outputFile);
     }
   for (unsigned int iHisto=0; iHisto<derivedPairHistograms.size(); iHisto++)
     {
-    if (reportDebug("Task",getName(),fct)) cout << "Saving derived pair histogram(s) group:" << iHisto  << endl;
+    if (reportDebug(__FUNCTION__)) cout << "Saving derived pair histogram(s) group:" << iHisto  << endl;
     derivedPairHistograms[iHisto]->saveHistograms(outputFile);
     }
   for (unsigned int iHisto=0; iHisto<combinedHistograms.size(); iHisto++)
     {
-    if (reportDebug("Task",getName(),fct)) cout << "Saving combined histogram(s) group:" <<  iHisto << endl;
+    if (reportDebug(__FUNCTION__)) cout << "Saving combined histogram(s) group:" <<  iHisto << endl;
     combinedHistograms[iHisto]->saveHistograms(outputFile);
     }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 void Task::saveHistograms()
 {
-  TString fct = "saveHistograms()";
-  if (reportStart("Task",getName(),fct))
-    {  }
-  //TString outputPath;
-  TString outputFileName;
-  TFile * outputFile = nullptr;
-  
-  if (configuration.getValueBool("fileFromParent") )
+  if (reportStart(__FUNCTION__))
+    ;
+  bool useParticles               = configuration.getValueBool("useParticles");
+  bool doSubsampleAnalysis        = configuration.getValueBool("doSubsampleAnalysis");
+  bool doPartialSave              = configuration.getValueBool("doPartialSaves");
+  bool forceHistogramsRewrite     = configuration.getValueBool("forceHistogramsRewrite");
+  TString histoOutputPath         = configuration.getValueString("histoOutputPath");
+  TString histoOutputFileName     = configuration.getValueString("histoOutputFileName");
+  TString histoOutputDataName     = configuration.getValueString("histoOutputDataName");
+  TString histoOutputAnalyzerName = configuration.getValueString("histoOutputAnalyzerName");
+
+//  histoOutputFileName            = removeRootExtension(histoOutputFileName);
+
+  histoOutputFileName  = histoOutputDataName;
+  histoOutputFileName  += "_";
+  histoOutputFileName  += histoOutputAnalyzerName;
+  if (doSubsampleAnalysis || doPartialSave )
     {
-    // this is used by the FileIterator to set the file name to be read
-    outputFileName = configuration.getValueString("histogramOuputFileName");
+    histoOutputFileName += "_";
+    histoOutputFileName += subSampleIndex++;
     }
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  nTaskExecutedReset : " << nTaskExecutedReset  << endl;
+    cout << "       nTaskExecuted : " << nTaskExecuted  << endl;
+    cout << "     histoOutputPath : " << histoOutputPath  << endl;
+    cout << " histoOutputFileName : " << histoOutputFileName  << endl;
+    }
+  TFile * outputFile;
+  if (forceHistogramsRewrite)
+    outputFile = openRootFile(histoOutputPath,histoOutputFileName,"RECREATE");
   else
-    {
-    // this is used normally to identify the file name to be used to save or load from.
-    outputFileName = configuration.getValueString( "histoOutputPath");
-    outputFileName += configuration.getValueString( "histoOutputFileName");
-    }
-  
-  if (configuration.getValueBool( "doSubsampleAnalysis") || configuration.getValueBool( "doPartialSave") )
-    {
-    outputFileName += "_";
-    outputFileName += subSampleIndex++;
-    }
-  if (configuration.getValueBool( "forceHistogramsRewrite") || configuration.getValueBool("fileFromParent"))
-    {
-    if (reportInfo("Task",getName(),fct)) cout << "Opening output (RECREATE) file  " << outputFileName << endl;
-    outputFile = openRootFile("",outputFileName,"RECREATE");
-    if (!outputFile)
-      {
-      if (reportError("Task",getName(),"saveHistograms()")) cout << "Could not open (RECREATE) file:"  << outputFileName << endl;
-      postTaskError();
-      return;
-      }
-    }
-  else
-    {
-    if (reportInfo("Task",getName(),fct)) cout << "Opening  output (NEW) file  " << outputFileName << endl;
-    outputFile = openRootFile("",outputFileName,"NEW");
-    if (!outputFile)
-      {
-      if (reportError("Task",getName(),fct)) cout << "Could not open (NEW) file  " << outputFileName << endl;
-      postTaskWarning();
-      return;
-      }
-    }
+    outputFile = openRootFile(histoOutputPath,histoOutputFileName,"NEW");
+  if (!outputFile) return;
+  if (useParticles)  saveEventCountHistograms(outputFile);
+  if (useParticles)  writeNEventsAccepted(outputFile);
+  if (useParticles)  writeNEexecutedTask(outputFile);
   saveHistograms(outputFile);
   outputFile->Close();
-  if (reportEnd("Task",getName(),fct))
-    { }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
-void Task::saveNEventProcessed(TFile * outputFile)
+void Task::writeNEexecutedTask(TFile * outputFile)
 {
-  outputFile->cd();
-  TParameter<Long64_t>("EventProcessed",nEventProcessed,'+').Write();
+  if (reportStart(__FUNCTION__))
+    ;
+  TString name = "ExecutedTaskReset";
+  writeParameter(outputFile,name,nTaskExecutedReset);
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
-void Task::saveNEventAccepted(TFile * outputFile)
+long Task::loadNEexecutedTask(TFile * inputFile)
 {
-  outputFile->cd();
-  TParameter<Long64_t>("EventAccepted",nEventAccepted,'+').Write();
+  if (reportStart(__FUNCTION__))
+    ;
+  TString name = "ExecutedTaskReset";
+  nTaskExecutedReset = readParameter(inputFile,name);
+  if (reportEnd(__FUNCTION__))
+    ;
+  return nTaskExecutedReset;
+}
+
+void Task::writeNEventsAccepted(TFile * outputFile)
+{
+  if (reportStart(__FUNCTION__))
+    ;
+  for (int iFilter=0; iFilter<nEventFilters; iFilter++)
+    {
+    TString name = "EventFilter";
+    name += iFilter;
+    writeParameter(outputFile,name,nEventsAcceptedReset[iFilter]);
+    }
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
+void Task::loadNEventsAccepted(TFile * inputFile)
+{
+  if (reportStart(__FUNCTION__))
+    ;
+  for (int iFilter=0; iFilter<nEventFilters; iFilter++)
+    {
+    TString name = "EventFilter";
+    name += iFilter;
+    nEventsAcceptedReset[iFilter] = readParameter(inputFile,name);
+    }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 void Task::writeParameter(TFile * outputFile, const TString parameterName, long value)
 {
+
+  if (reportStart(__FUNCTION__))
+    ;
   outputFile->cd();
   TParameter<Long64_t>(parameterName,value,'+').Write();
 }
 
-
-void Task::saveNFilteredEventsAccepted(TFile * outputFile, vector<unsigned int> & nFilteredEventsAccepted)
-{
-  outputFile->cd();
-  for (unsigned int k=0; k<nFilteredEventsAccepted.size(); k++)
-    {
-    TString name = "nFilteredEventsAccepted_"; name += k;
-    TParameter<Long64_t>(name,nFilteredEventsAccepted[k],'+').Write();
-    }
-}
-
-
-void Task::loadNEventProcessed(TFile * inputFile)
-{
-  nEventProcessed = readParameter(inputFile,"EventProcessed");
-}
-
-void Task::loadNEventAccepted(TFile * inputFile)
-{
-  nEventAccepted = readParameter(inputFile,"EventAccepted");
-}
-
-void Task::loadNFilteredEventsAccepted(TFile * inputFile, vector<unsigned int> & nFilteredEventsAccepted)
-{
-  for (unsigned int k=0; k<nFilteredEventsAccepted.size(); k++)
-    {
-    TString name = "nFilteredEventsAccepted_"; name += k;
-    TParameter<Long64_t> *par = (TParameter<Long64_t> *) inputFile->Get(name);
-    nFilteredEventsAccepted[k] = par->GetVal();
-    delete par;
-    }
-}
-
 long Task::readParameter(TFile * inputFile, const TString & parameterName)
 {
-  if (reportInfo ("Task",getName(),"readParameter(...)")) cout << "Reading parameter: " << parameterName << endl;
+  if (reportStart(__FUNCTION__))
+    ;
   TParameter<Long64_t> *par = (TParameter<Long64_t> *) inputFile->Get(parameterName);
   if (!par)
     {
-    if (reportError("Task",getName(),"readParameter()")) cout << "Parameter not found." << endl;
+    if (reportError(__FUNCTION__)) cout << "Parameter not found." << endl;
     postTaskError();
     return 1.0;
     }
   double value = par->GetVal();
   delete par;
-  if (reportDebug ("Task",getName(),"readParameter(...)")) cout << "Parameter value : " << value << endl;
+  if (reportDebug(__FUNCTION__)) cout << "Parameter named " << parameterName << " has value : " << value << endl;
   return value;
 }
 
 TFile *  Task::openRootFile(const TString & inputPath, const TString & fileName, const TString & ioOption)
 {
+  if (reportStart(__FUNCTION__))
+    ;
   TString inputFileName = inputPath;
   
   // make sure that if an inputPath is given, it ends with '/'
@@ -795,12 +723,11 @@ TFile *  Task::openRootFile(const TString & inputPath, const TString & fileName,
   inputFileName += fileName;
   if (!inputFileName.Contains(".root")) inputFileName += ".root";
   
-  if (reportDebug ("Task",getName(),"openRootFile(...)"))
-    cout << "Opening file: " << inputFileName << " with option: " << ioOption << endl;
+  if (reportDebug (__FUNCTION__))  cout << "Opening file: " << inputFileName << " with option: " << ioOption << endl;
   TFile * inputFile = new TFile(inputFileName,ioOption);
   if (!inputFile)
     {
-    if (reportError("Task",getName(),"openRootFile()")) cout << "file: " << inputFileName << " not found." << endl;
+    if (reportError(__FUNCTION__)) cout << "File named " << inputFileName << " not found." << endl;
     postTaskError();
     return nullptr;
     }
@@ -808,311 +735,143 @@ TFile *  Task::openRootFile(const TString & inputPath, const TString & fileName,
     {
     if (!inputFile->IsOpen())
       {
-      if (reportError("Task",getName(),"openRootFile()")) cout << "file: " << inputFileName << " not found." << endl;
+      if (reportError(__FUNCTION__)) cout << "File named " << inputFileName << " not found." << endl;
       postTaskError();
       return nullptr;
       }
     else
       {
-      if (reportDebug ("Task",getName(),"openRootFile()")) cout << "file opened successfully." << endl;
+      if (reportDebug(__FUNCTION__)) cout << "File opened successfully." << endl;
       }
     }
   return inputFile;
 }
 
 
-void Task::initializeTasks()
+void Task::initializeSubTasks()
 {
-  if (reportStart("Task",getName(),"initializeTasks()"))
-    { }
-  if (!isTaskOk()) return;
-  initialize();
-  unsigned int nSubtasks = subtasks.size();
-  if (nSubtasks>0)
-    {
-    if (reportDebug("Task",getName(),"initializeTasks()"))
-      {
-      cout << "Initializing " << nSubtasks << " tasks." << endl;
-      }
-    for (unsigned int  iTask=0; iTask<nSubtasks; iTask++)
-      {
-      if (!isTaskOk()) break;
-      if (reportDebug("Task",getName(),"initializeTasks()"))
-        {
-        cout << "Initializing task:" << subtasks[iTask]->getName() << endl;
-        }
-      subtasks[iTask]->initializeTasks();
-      }
-    }
-  else
-    {
-    if (reportDebug("Task",getName(),"initializeTasks()"))
-      {
-      cout << "No subtask to initialize. " <<   endl;
-      }
-    }
-  if (reportEnd("Task",getName(),"initializeTasks()"))
+  if (reportStart(__FUNCTION__))
+    ;
+  unsigned int nSubTasks = subTasks.size();
+  if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
+  for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->initialize();
+  if (reportEnd(__FUNCTION__))
     { }
 }
 
-void Task::executeTasks()
+void Task::executeSubTasks()
 {
-  if (!isTaskOk()) return;
-  execute();
-  unsigned int nSubtasks = subtasks.size();
-  if (nSubtasks>0)
-    for (unsigned int  iTask=0; iTask<nSubtasks; iTask++)  { if (isTaskOk()) subtasks[iTask]->executeTasks(); }
+//
+//  if (reportStart(__FUNCTION__))
+//    ;
+  unsigned int nSubTasks = subTasks.size();
+  for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->execute();
 }
 
-void Task::finalizeTasks()
+void Task::finalizeSubTasks()
 {
-  if (reportStart("Task",getName(),"finalizeTasks()"))
-    { }
-  if (!isTaskOk()) return;
-  finalize();
-  unsigned int nSubtasks = subtasks.size();
-  if (nSubtasks>0)
-    {
-    if (reportDebug("Task",getName(),"finalizeTasks()"))
-      {
-      cout << "Finalizing " << nSubtasks << " tasks." << endl;
-      }
-    for (unsigned int  iTask=0; iTask<nSubtasks; iTask++)
-      {
-      if (!isTaskOk()) break;
-      if (reportDebug("Task",getName(),"finalizeTasks()"))
-        {
-        cout << "Finalizing task:" << subtasks[iTask]->getName() << endl;
-        }
-      subtasks[iTask]->finalizeTasks();
-      }
-    }
-  else
-    {
-    if (reportDebug("Task",getName(),"finalizeTasks()"))
-      {
-      cout << "No subtasks to finalize."  << endl;
-      }
-    }
-  if (reportEnd("Task",getName(),"finalizeTasks()"))
+  if (reportStart(__FUNCTION__))
+    ;
+  unsigned int nSubTasks = subTasks.size();
+  if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
+  for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->finalize();
+  if (reportEnd(__FUNCTION__))
     { }
 }
 
-void Task::resetTasks()
+void Task::resetSubTasks()
 {
-  if (reportStart("Task",getName(),"resetTasks()"))
-    { }
-  if (!isTaskOk()) return;
-  reset();
-  unsigned int nSubtasks = subtasks.size();
-  if (nSubtasks>0)
-    {
-    if (reportDebug("Task",getName(),"resetTasks()"))
-      {
-      cout << "Resetting " << nSubtasks << " tasks." << endl;
-      }
-    for (unsigned int  iTask=0; iTask<nSubtasks; iTask++)
-      {
-      if (!isTaskOk()) break;
-      if (reportDebug("Task",getName(),"resetTasks()"))
-        {
-        cout << "Resetting task:" << subtasks[iTask]->getName() << endl;
-        }
-      subtasks[iTask]->resetTasks();
-      }
-    }
-  else
-    {
-    if (reportDebug("Task",getName(),"resetTasks()"))
-      {
-      cout << "No subtasks to reset."  << endl;
-      }
-    }
-  if (reportEnd("Task",getName(),"resetTasks()"))
+  if (reportStart(__FUNCTION__))
+    ;
+  unsigned int nSubTasks = subTasks.size();
+  if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
+  for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->reset();
+  if (reportEnd(__FUNCTION__))
     { }
 }
 
-void Task::clearTasks()
+void Task::clearSubTasks()
 {
-  if (reportStart("Task",getName(),"clearTasks()"))
-    { }
-  if (!isTaskOk()) return;
-  clear();
-  unsigned int nSubtasks = subtasks.size();
-  if (nSubtasks>0)
-    {
-    if (reportDebug("Task",getName(),"clearTasks()"))
-      {
-      cout << "Clearing " << nSubtasks << " tasks." << endl;
-      }
-    for (unsigned int  iTask=0; iTask<nSubtasks; iTask++)
-      {
-      if (!isTaskOk()) break;
-      if (reportDebug("Task",getName(),"clearTasks()"))
-        {
-        cout << "Clearing task:" << subtasks[iTask]->getName() << endl;
-        }
-      subtasks[iTask]->clearTasks();
-      }
-    }
-  else
-    {
-    if (reportDebug("Task",getName(),"clearTasks()"))
-      {
-      cout << "No subtasks to clear."  << endl;
-      }
-    }
-  if (reportEnd("Task",getName(),"clearTasks()"))
+  if (reportStart(__FUNCTION__))
+    ;
+  unsigned int nSubTasks = subTasks.size();
+  if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
+  for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->clear();
+  if (reportEnd(__FUNCTION__))
     { }
 }
 
 
-void Task::savePartialTasks()
+void Task::savePartialSubTasks()
 {
-  if (reportStart("Task",getName(),"savePartialTasks()"))
-    { }
-  if (!isTaskOk()) return;
-  savePartial();
-  unsigned int nSubtasks = subtasks.size();
-  if (nSubtasks>0)
-    {
-    if (reportDebug("Task",getName(),"savePartialTasks()"))
-      {
-      cout << "Calling partial save for  " << nSubtasks << " tasks." << endl;
-      }
-    for (unsigned int  iTask=0; iTask<nSubtasks; iTask++)
-      {
-      if (!isTaskOk()) break;
-      if (reportDebug("Task",getName(),"savePartialTasks()"))
-        {
-        cout << "Calling partial  for  :" << subtasks[iTask]->getName() << endl;
-        }
-      subtasks[iTask]->savePartialTasks();
-      }
-    }
-  else
-    {
-    if (reportDebug("Task",getName(),"savePartialTasks()"))
-      {
-      cout << "No subtasks to partial save..."  << endl;
-      }
-    }
-  if (reportEnd("Task",getName(),"savePartialTasks()"))
+   if (reportStart(__FUNCTION__))
+    ;
+  unsigned int nSubTasks = subTasks.size();
+  if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
+  for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->savePartial();
+  if (reportEnd(__FUNCTION__))
     { }
 }
 
-void Task::subsampleAnalysisTasks()
+void Task::printConfigurationSubTasks(ostream & output)
 {
-  if (reportStart("Task",getName(),"subsampleAnalysisTasks()"))
-    { }
-  if (!isTaskOk()) return;
-  subsampleAnalysis();
-  unsigned int nSubtasks = subtasks.size();
-  if (nSubtasks>0)
-    {
-    if (reportDebug("Task",getName(),"subsampleAnalysisTasks()"))
-      {
-      cout << "Calling subsample analysis for  " << nSubtasks << " tasks." << endl;
-      }
-    for (unsigned int  iTask=0; iTask<nSubtasks; iTask++)
-      {
-      if (!isTaskOk()) break;
-      if (reportDebug("Task",getName(),"subsampleAnalysisTasks()"))
-        {
-        cout << "Calling subsample analysis for  :" << subtasks[iTask]->getName() << endl;
-        }
-      subtasks[iTask]->subsampleAnalysis();
-      }
-    }
-  else
-    {
-    if (reportDebug("Task",getName(),"subsampleAnalysisTasks()"))
-      {
-      cout << "No subtasks to carry out subsample analysis for..."  << endl;
-      }
-    }
-  if (reportEnd("Task",getName(),"subsampleAnalysisTasks()"))
-    { }
+  if (reportStart(__FUNCTION__))
+    ;
+  unsigned int nSubTasks = subTasks.size();
+  if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
+  for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->printConfiguration(output);
 }
 
 
-void Task::printConfigurationTasks(ostream & output)
+Task * Task::addSubTask(Task * task)
 {
-  if (!isTaskOk()) return;
-  printConfiguration(output);
-  unsigned int nSubtasks = subtasks.size();
-  if (nSubtasks>0)
-    {
-    if (reportDebug("Task",getName(),"printConfigurationTasks()"))
-      {
-      cout << "Printing configurations for  " << nSubtasks << " tasks." << endl;
-      }
-    for (unsigned int  iTask=0; iTask<nSubtasks; iTask++)
-      {
-      if (!isTaskOk()) break;
-      if (reportDebug("Task",getName(),"printConfigurationTasks()"))
-        {
-        cout << "Calling subsample analysis for  :" << subtasks[iTask]->getName() << endl;
-        }
-      subtasks[iTask]->printConfigurationTasks(output);
-      }
-    }
-  else
-    {
-    if (reportDebug("Task",getName(),"printConfigurationTasks()"))
-      {
-      cout << "No subtasks to print configuration for..."  << endl;
-      }
-    }
-}
-
-
-Task *  Task::addSubtask(Task * task)
-{
+  if (reportStart(__FUNCTION__))
+    ;
   if (!task)
     {
-    if (reportFatal("Task",getName(),"addSubtask(Task * task)")) cout << "Given task pointer is null. Abort." << endl;
+    if (reportFatal()) cout << "Given task pointer is null. Abort." << endl;
     postTaskFatal();
     return task;
     }
-  subtasks.push_back( task );
-  if (reportDebug("Task",getName(),"addSubtask(Task * task)")) cout << "Added task " << task->getName() << " to task " << getName() << endl;
+  subTasks.push_back( task );
+  if (reportDebug(__FUNCTION__)) cout << "Added task " << task->getName() << " to task " << getName() << endl;
   return task;
 }
 
-void Task::addHistogramsToExtList(TList *list)
+void Task::addHistogramsToExtList(TList *list __attribute__((unused)) )
 {
-  TString fctName = "addHistogramsToExtList(TList *list)";
-  if (reportStart("Task",getName(),fctName))
-    ;
-  if (!list)
-    {
-    if (reportError("Task",getName(),fctName))
-      {
-      cout << "Given list pointer is null." << endl;
-      }
-    postTaskWarning();
-    return;
-    }
-  list->Add(new TParameter<Long64_t>("nEventProcessed",getNEventProcessed(),'+'));
-  
-  for (unsigned int k=0; eventFilters.size(); k++)
-    {
-    TString name = "nFilteredEventsAccepted"; name += k;
-    list->Add(new TParameter<Long64_t>(name,nFilteredEventsAccepted[k],'+'));
-    }
-  for (unsigned int k=1; k<baseSingleHistograms.size(); k++)
-    {
-    baseSingleHistograms[k]->addHistogramsToExtList(list);
-    }
-  for (unsigned int k=1; k<basePairHistograms.size(); k++)
-    {
-    basePairHistograms[k]->addHistogramsToExtList(list);
-    }
-  for (unsigned int k=1; k<derivedPairHistograms.size(); k++)
-    {
-    derivedPairHistograms[k]->addHistogramsToExtList(list);
-    }
+//
+//  TString fctName = "addHistogramsToExtList(TList *list)";
+//  if (reportStart("Task",getName(),fctName))
+//    ;
+//  if (!list)
+//    {
+//    if (reportError("Task",getName(),fctName))
+//      {
+//      cout << "Given list pointer is null." << endl;
+//      }
+//    postTaskWarning();
+//    return;
+//    }
+//  list->Add(new TParameter<Long64_t>("nEventProcessed",getNEventProcessed(),'+'));
+//
+//  for (unsigned int k=0; eventFilters.size(); k++)
+//    {
+//    TString name = "nEventsAccepted"; name += k;
+//    list->Add(new TParameter<Long64_t>(name,nEventsAccepted[k],'+'));
+//    }
+//  for (unsigned int k=1; k<baseSingleHistograms.size(); k++)
+//    {
+//    baseSingleHistograms[k]->addHistogramsToExtList(list);
+//    }
+//  for (unsigned int k=1; k<basePairHistograms.size(); k++)
+//    {
+//    basePairHistograms[k]->addHistogramsToExtList(list);
+//    }
+//  for (unsigned int k=1; k<derivedPairHistograms.size(); k++)
+//    {
+//    derivedPairHistograms[k]->addHistogramsToExtList(list);
+//    }
 }
 
 const TString Task::createHistogramName(const TString & baseName,
@@ -1150,6 +909,9 @@ const TString Task::createPairHistogramName(const TString & baseName,
 vector<TString> Task::listFilesInDir(const TString & dirname,
                                      const TString ext)
 {
+
+  if (reportStart(__FUNCTION__))
+    ;
   TSystemDirectory dir(dirname, dirname);
   TList *files = dir.GetListOfFiles();
   vector<TString>  fileNames;
@@ -1180,13 +942,18 @@ vector<TString>  Task::listFilesInDir(const TString & pathName,
                                       vector<TString> includePatterns,
                                       vector<TString> excludePatterns)
 {
-  cout << "Task::addFileNames(const TString pathName,vector<TString> includePatterns,vector<TString> excludePatterns)" << endl;
+
+  if (reportStart(__FUNCTION__))
+    ;
   vector<TString> outputList;
   vector<TString> fileList = listFilesInDir(pathName,".root");
   unsigned int nNames = fileList.size();
-  cout << "      nNames:" << nNames << endl;
-  cout << "   nIncludes:" << includePatterns.size() << endl;
-  cout << "   nExcludes:" << excludePatterns.size() << endl;
+  if (reportDebug(__FUNCTION__))
+    {
+    cout << "      nNames:" << nNames << endl;
+    cout << "   nIncludes:" << includePatterns.size() << endl;
+    cout << "   nExcludes:" << excludePatterns.size() << endl;
+    }
   for (unsigned int k=0; k<fileList.size(); k++)
     {
     TString name = fileList[k];
@@ -1228,6 +995,9 @@ vector<TString>  Task::listFilesInDir(const TString & pathName,
 
 vector<TString> Task::getSelectedFileNamesFrom(const TString & folder)
 {
+
+  if (reportStart(__FUNCTION__))
+    ;
   vector<TString> includePatterns;
   vector<TString> excludePatterns;
   vector<TString> selectedNames;
@@ -1256,3 +1026,6 @@ TString Task::removeRootExtension(const TString fileName)
   if (dot==len-5 ) name.Remove(dot,len-dot);
   return name;
 }
+
+
+

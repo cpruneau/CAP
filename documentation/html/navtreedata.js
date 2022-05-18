@@ -25,6 +25,23 @@
 var NAVTREE =
 [
   [ "Correlation Analysis Package", "index.html", [
+    [ "Introduction", "index.html#Introduction", null ],
+    [ "Download, Installation/Configuration, Building, Usage", "index.html#prelims", [
+      [ "Prerequisites", "index.html#prereqs", null ],
+      [ "Dependencies", "index.html#autotoc_md0", null ],
+      [ "Downloading CAP", "index.html#download", null ],
+      [ "Installation/Configuration", "index.html#installation", null ],
+      [ "Building", "index.html#building", null ],
+      [ "Examples", "index.html#usage", null ]
+    ] ],
+    [ "Object Model", "index.html#model", null ],
+    [ "Modules and Components", "index.html#modules", [
+      [ "Base", "index.html#base", null ],
+      [ "Event Readers and Event Generators", "index.html#generators", [
+        [ "Basic Generators (Basicgen)", "index.html#basicgen", null ],
+        [ "Collision Geometry  Generators (CollGeom)", "index.html#collgeom", null ]
+      ] ]
+    ] ],
     [ "Bug List", "bug.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -53,24 +70,24 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_a_collision_generator_8cpp.html",
-"_collision_geometry_8hpp_source.html",
-"_nucleon_nucleon_collision_generator_8hpp_source.html",
-"_plotter_8hpp_source.html",
-"class_ampt_event_reader.html#aaa34555f7deed324ebb1cdc082e7f5d1",
-"class_bidim_gauss_fitter.html#a7c8c89cb8e79cccd2417c1d98136fe1b",
-"class_cluster_model_configuration.html#af9623a79d23c467ff3d763fad7ba0052",
-"class_collision_geometry_moments.html#a9c6d85394b1d4e6d3057b18181105fc6",
-"class_event.html#abe8f4def4a7e6566bf9939f9ae4956d4",
-"class_graph_configuration.html#a9e519180edfa6b9a418dc0d1cf5b28b0",
-"class_histogram_collection.html#a930792537e0bbec3aa539f90b14dc69a",
-"class_nu_dyn_histos.html#a35248aba580801d35dd48564fbdae87f",
-"class_particle_decay_mode.html#a9140910ee8111344aeb0b4172e411882",
-"class_particle_pair_b_f_histos.html#abe4adfdb0c2c82d7ab29ca6e40b07cc7",
-"class_particle_pair_histos.html#a04441ea3ec9881ab4e2faf43cbb1ffdb",
-"class_particle_type_collection.html#affb5f1726bb9e7885f490346f83a51df",
-"class_stat_study_histograms.html#a8d35fbceb0c03387466bd8049be2f900",
-"class_test_configuration.html#a2c1414ec0dad502f931378d621f0886b",
-"functions_vars_l.html"
+"_collision_geometry_analyzer_8cpp_source.html",
+"_nucleus_generator_8cpp.html",
+"_plot_pythia_results_c_r_o_n100_mevents_8_c_source.html",
+"class_b_w_model_event_generator.html",
+"class_bidim_gauss_fitter.html#a9c3e472b0e9024da7ede4d80b0336ceb",
+"class_cluster_model_event_analyzer.html#aa7f1678e852e98046598c0158a70b78f",
+"class_condition_or.html#a350bc8e9841afa4c4204149be258e71d",
+"class_event_properties.html#a865fe552cb9461c6e1d61fd785288456",
+"class_hadron_gas.html#a9c487bed44fbde68fbb847b52d916456",
+"class_histograms.html#a1d1a91dd0c36eff359d73330147978c0",
+"class_nucleus.html",
+"class_particle_derived_histos.html#a05e90ffcfc839da735bb07763b2c070e",
+"class_particle_pair_derived_histos.html#a18f96fbaac1161f974129a3ee682607b",
+"class_particle_type.html#a29bf42fe7ca5389d7d1d182f6dccdca8",
+"class_rapidity_generator.html#a273a05b52c1e80e8f2419ed0f0e5990a",
+"class_table2_d.html#ac50575ef775db615b77c697afedb9f9f",
+"class_transverse_spherocity_histos.html#a5a9871fd01ae67780aafb3e1606d4035",
+"functions_w.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,0 +1,81 @@
+\hypertarget{_plot_pythia_spherocity_8_c_source}{}\doxysection{Plot\+Pythia\+Spherocity.\+C}
+\label{_plot_pythia_spherocity_8_c_source}\index{Macros/PlotPythiaSpherocity.C@{Macros/PlotPythiaSpherocity.C}}
+\mbox{\hyperlink{_plot_pythia_spherocity_8_c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00002}00002 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00003}00003 \textcolor{preprocessor}{\#include "{}TRandom.h"{}}}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00005}\mbox{\hyperlink{_plot_pythia_spherocity_8_c_a18333179985d9075853b573a788e67db}{00005}} \textcolor{keywordtype}{int} \mbox{\hyperlink{_plot_pythia_spherocity_8_c_a18333179985d9075853b573a788e67db}{PlotPythiaSpherocity}}()}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00006}00006 \{}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00007}00007   TString includesPath = getenv(\textcolor{stringliteral}{"{}CAP\_SRC"{}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00008}00008   includesPath += \textcolor{stringliteral}{"{}/Base/"{}};}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00009}00009   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}CanvasCollection.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00010}00010   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}CanvasConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00011}00011   gSystem-\/>Load(includesPath+\textcolor{stringliteral}{"{}GraphConfiguration.hpp"{}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00012}00012   gSystem-\/>Load(\textcolor{stringliteral}{"{}libBase.dylib"{}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00014}00014   \textcolor{keywordtype}{bool} color = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00015}00015   \textcolor{keywordflow}{if} (color)}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00016}00016     gStyle-\/>SetPalette(1,0);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00017}00017   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00018}00018     gStyle-\/>SetPalette(7,0);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00019}00019   gStyle-\/>SetOptStat(0);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00020}00020   gStyle-\/>SetOptFit(0);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00021}00021   gStyle-\/>SetOptDate(0);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00022}00022   gStyle-\/>SetOptTitle(0);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00023}00023   gStyle-\/>SetPadBorderMode(0);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00025}00025   \mbox{\hyperlink{class_canvas_configuration}{CanvasConfiguration}} * landscapeLinear     = \textcolor{keyword}{new} \mbox{\hyperlink{class_canvas_configuration}{CanvasConfiguration}}(\mbox{\hyperlink{class_canvas_configuration_ac781dbabe064427d3c40da81c60d2149a498f4396efe651194bfa2699190568c6}{CanvasConfiguration::Landscape}},\mbox{\hyperlink{class_canvas_configuration_aa1eee3967c90b49a589da598826d5b65a6cc48893a8e81ecf198dfa4745c3f497}{CanvasConfiguration::Linear}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00026}00026   \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}} * gc = \textcolor{keyword}{new} \mbox{\hyperlink{class_graph_configuration}{GraphConfiguration}}(1,1);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00028}00028   TString inputPathName  = \textcolor{stringliteral}{"{}/Volumes/ClaudeDisc4/OutputFiles/PYTHIA\_/13000/"{}};}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00029}00029   TString outputPathName = \textcolor{stringliteral}{"{}/Volumes/ClaudeDisc4/OutputFiles/PYTHIA\_/13000/"{}};}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00030}00030   TString inputFileName  =  inputPathName;}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00031}00031   TString outputFileName;}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00033}00033   inputFileName  += \textcolor{stringliteral}{"{}PYTHIA\_S.root"{}};}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00034}00034   TFile * file = \textcolor{keyword}{new} TFile(inputFileName,\textcolor{stringliteral}{"{}OLD"{}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00036}00036   TH1 * S\_V0MB\_TpcAll\_S0 = (TH1 *) file-\/>Get(\textcolor{stringliteral}{"{}S\_V0MB\_TpcAll\_S0"{}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00037}00037   TH1 * S\_V0MB\_V0M\_S0    = (TH1 *) file-\/>Get(\textcolor{stringliteral}{"{}S\_V0MB\_V0M\_S0"{}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00038}00038   TH1 * S\_V0MB\_All\_S0    = (TH1 *) file-\/>Get(\textcolor{stringliteral}{"{}S\_V0MB\_All\_S0"{}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00039}00039   TH1 * S\_V0MB\_CH\_S0     = (TH1 *) file-\/>Get(\textcolor{stringliteral}{"{}S\_V0MB\_CH\_S0"{}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00040}00040   }
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00041}00041   TCanvas * c1 = \textcolor{keyword}{new} TCanvas();}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00042}00042   S\_V0MB\_All\_S0-\/>SetLineColor(2);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00043}00043   S\_V0MB\_All\_S0-\/>SetLineWidth(2);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00044}00044   S\_V0MB\_All\_S0-\/>SetMarkerStyle(20);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00045}00045   S\_V0MB\_All\_S0-\/>SetMarkerColor(2);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00046}00046   S\_V0MB\_All\_S0-\/>Draw();}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00047}00047   }
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00048}00048   S\_V0MB\_CH\_S0-\/>SetLineColor(4);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00049}00049   S\_V0MB\_CH\_S0-\/>SetLineWidth(4);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00050}00050   S\_V0MB\_CH\_S0-\/>SetMarkerStyle(21);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00051}00051   S\_V0MB\_CH\_S0-\/>SetMarkerColor(4);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00052}00052   S\_V0MB\_CH\_S0-\/>Draw(\textcolor{stringliteral}{"{}SAME"{}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00054}00054   S\_V0MB\_TpcAll\_S0-\/>SetLineColor(6);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00055}00055   S\_V0MB\_TpcAll\_S0-\/>SetLineWidth(6);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00056}00056   S\_V0MB\_TpcAll\_S0-\/>SetMarkerStyle(22);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00057}00057   S\_V0MB\_TpcAll\_S0-\/>SetMarkerColor(6);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00058}00058   S\_V0MB\_TpcAll\_S0-\/>Draw(\textcolor{stringliteral}{"{}SAME"{}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00060}00060   outputFileName = \textcolor{stringliteral}{"{}S0\_All\_CH\_TPConly\_MinBias.pdf"{}};}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00061}00061   c1-\/>Print(outputPathName+outputFileName);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00063}00063   TH2 * S\_V0MB\_TpcAllAll\_S0VsS0    = (TH2 *) file-\/>Get(\textcolor{stringliteral}{"{}S\_V0MB\_TpcAllAll\_S0VsS0"{}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00064}00064   S\_V0MB\_TpcAllAll\_S0VsS0-\/>Draw(\textcolor{stringliteral}{"{}ZCOL"{}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00065}00065   outputFileName = \textcolor{stringliteral}{"{}S\_V0MB\_TpcAllAll\_S0VsS0.pdf"{}};}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00066}00066   c1-\/>Print(outputPathName+outputFileName);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00068}00068   TH2 * S\_V0MB\_AllCH\_S0VsS0    = (TH2 *) file-\/>Get(\textcolor{stringliteral}{"{}S\_V0MB\_AllCH\_S0VsS0"{}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00069}00069   S\_V0MB\_AllCH\_S0VsS0-\/>Draw(\textcolor{stringliteral}{"{}ZCOL"{}});}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00070}00070   outputFileName = \textcolor{stringliteral}{"{}S\_V0MB\_AllCH\_S0VsS0.pdf"{}};}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00071}00071   c1-\/>Print(outputPathName+outputFileName);}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00073}00073   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00074}00074 \}}
+\DoxyCodeLine{\Hypertarget{_plot_pythia_spherocity_8_c_source_l00075}00075 }
+
+\end{DoxyCode}

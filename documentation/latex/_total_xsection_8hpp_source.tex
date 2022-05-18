@@ -1,57 +1,59 @@
 \hypertarget{_total_xsection_8hpp_source}{}\doxysection{Total\+Xsection.\+hpp}
-\label{_total_xsection_8hpp_source}\index{Base/TotalXsection.hpp@{Base/TotalXsection.hpp}}
+\label{_total_xsection_8hpp_source}\index{Tools/TotalXsection.hpp@{Tools/TotalXsection.hpp}}
 \mbox{\hyperlink{_total_xsection_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   05/08/2020}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.  }}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef CAP\_\_TotalXsection}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define CAP\_\_TotalXsection}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}TObject.h"{}}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}TF1.h"{}}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}TMath.h"{}}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00015}00015 }
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00016}00016 \textcolor{keywordtype}{double} \mbox{\hyperlink{_total_xsection_8hpp_a3518c7aee3a8186aaf3198365c066aa4}{GauronModelF1}}(\textcolor{keywordtype}{double} *xx, \textcolor{keywordtype}{double} *pp);}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00017}00017 \textcolor{keywordtype}{double} \mbox{\hyperlink{_total_xsection_8hpp_af5fe993ab47051e2877b0f889789faec}{GauronGammaModelF1}}(\textcolor{keywordtype}{double} *xx, \textcolor{keywordtype}{double} *pp);}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00019}00019 \textcolor{comment}{// ***************************************************************************}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00020}00020 \textcolor{comment}{// TotalXsection}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00021}00021 \textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00022}00022 \textcolor{comment}{// Gauron Model:}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00023}00023 \textcolor{comment}{// Pierre Gauron, Basarab Nicolescu, "{}A Possible Two-\/Component Structure of}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00024}00024 \textcolor{comment}{// the Non-\/Perturbative Pomeron"{}, Phys.Lett. B486 (2000) 71-\/76}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00025}00025 \textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00026}00026 \textcolor{comment}{// ***************************************************************************}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00027}\mbox{\hyperlink{class_total_xsection}{00027}} \textcolor{keyword}{class }\mbox{\hyperlink{class_total_xsection}{TotalXsection}} : \textcolor{keyword}{public}  TObject}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00028}00028 \{}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00029}00029 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00030}00030 }
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00031}\mbox{\hyperlink{class_total_xsection_addd6529e281d94e85e8f6fc20f2ad8afa904ad3967be01ce659ec6f648a3c94e3}{00031}}   \textcolor{keyword}{enum} \mbox{\hyperlink{class_total_xsection_addd6529e281d94e85e8f6fc20f2ad8af}{TotalXsectionModel}}   \{ \mbox{\hyperlink{class_total_xsection_addd6529e281d94e85e8f6fc20f2ad8afa904ad3967be01ce659ec6f648a3c94e3}{GauronModel}}, \mbox{\hyperlink{class_total_xsection_addd6529e281d94e85e8f6fc20f2ad8afac72c3a9f285a3c2afeadabcb2f8b4240}{XModel}}, \mbox{\hyperlink{class_total_xsection_addd6529e281d94e85e8f6fc20f2ad8afa14212dab454a5d2ab26d178bc8bbc786}{YModel}}\};}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00032}\mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40aa95ae9f1d35f8387f0d230342a9adff1}{00032}}   \textcolor{keyword}{enum} \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40}{TotalXsectionSystem}}  \{ \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40aa80652d45dd1a8c267baf36033852d97}{PPCollisions}}, \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40ad0f8cd9b92d5d7245dbf765c5d6fff79}{PPbarCollisions}}, \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40aa95ae9f1d35f8387f0d230342a9adff1}{PiPlusPCollisions}},}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00033}\mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40a60cf3addd9059133edc78c348c06bf5e}{00033}}       \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40af3f25c701ce2d925b9db84e60eef4d1a}{PiMinusPCollisions}}, \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40a42780cec4716afc0818d688c4a954966}{KPlusPCollisions}}, \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40ad6e614d89a82b9e7f5833bbd2d4aee55}{KMinusPCollisions}}, \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40a7131a447f3a1ca09ffb1759b45e4db29}{GammaPCollisions}}, \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40a60cf3addd9059133edc78c348c06bf5e}{GammaGammaCollisions}} \};}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00034}00034 }
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00035}00035   \mbox{\hyperlink{class_total_xsection_a032bbccbec56710ce23c8b5069dab9a9}{TotalXsection}}();}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00036}\mbox{\hyperlink{class_total_xsection_af6cf85ab5201de4704db70dc9f630bbc}{00036}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_total_xsection_af6cf85ab5201de4704db70dc9f630bbc}{\string~TotalXsection}}()}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00037}00037   \{}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00038}00038   \textcolor{comment}{// no ops.}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00039}00039   \}}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00040}00040 }
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00041}00041 }
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00042}00042   TF1 * \mbox{\hyperlink{class_total_xsection_adccc32ac07a8e004a1c08e214a580c88}{getFunctionTotalXsectionVsSqrtS}}(\mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40}{TotalXsectionSystem}} selectedSystem,}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00043}00043                                         \mbox{\hyperlink{class_total_xsection_addd6529e281d94e85e8f6fc20f2ad8af}{TotalXsectionModel}} selectedModel,}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00044}00044                                         \textcolor{keywordtype}{double} minSqrtS,}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00045}00045                                         \textcolor{keywordtype}{double} maxSqrtS);}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00046}00046 }
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00047}00047   ClassDef(\mbox{\hyperlink{class_total_xsection}{TotalXsection}},0)}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00048}00048   }
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00049}00049 \};}
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00050}00050 }
-\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00051}00051 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TotalXsection\_hpp */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef CAP\_\_TotalXsection}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define CAP\_\_TotalXsection}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}TObject.h"{}}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}TF1.h"{}}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}TMath.h"{}}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00018}00018 \textcolor{keywordtype}{double} \mbox{\hyperlink{_total_xsection_8hpp_a3518c7aee3a8186aaf3198365c066aa4}{GauronModelF1}}(\textcolor{keywordtype}{double} *xx, \textcolor{keywordtype}{double} *pp);}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00019}00019 \textcolor{keywordtype}{double} \mbox{\hyperlink{_total_xsection_8hpp_af5fe993ab47051e2877b0f889789faec}{GauronGammaModelF1}}(\textcolor{keywordtype}{double} *xx, \textcolor{keywordtype}{double} *pp);}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00021}00021 \textcolor{comment}{// ***************************************************************************}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00022}00022 \textcolor{comment}{// TotalXsection}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00023}00023 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00024}00024 \textcolor{comment}{// Gauron Model:}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00025}00025 \textcolor{comment}{// Pierre Gauron, Basarab Nicolescu, "{}A Possible Two-\/Component Structure of}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00026}00026 \textcolor{comment}{// the Non-\/Perturbative Pomeron"{}, Phys.Lett. B486 (2000) 71-\/76}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00027}00027 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00028}00028 \textcolor{comment}{// ***************************************************************************}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00029}\mbox{\hyperlink{class_total_xsection}{00029}} \textcolor{keyword}{class }\mbox{\hyperlink{class_total_xsection}{TotalXsection}} : \textcolor{keyword}{public}  TObject}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00030}00030 \{}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00031}00031 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00033}\mbox{\hyperlink{class_total_xsection_addd6529e281d94e85e8f6fc20f2ad8afa904ad3967be01ce659ec6f648a3c94e3}{00033}}   \textcolor{keyword}{enum} \mbox{\hyperlink{class_total_xsection_addd6529e281d94e85e8f6fc20f2ad8af}{TotalXsectionModel}}   \{ \mbox{\hyperlink{class_total_xsection_addd6529e281d94e85e8f6fc20f2ad8afa904ad3967be01ce659ec6f648a3c94e3}{GauronModel}}, \mbox{\hyperlink{class_total_xsection_addd6529e281d94e85e8f6fc20f2ad8afac72c3a9f285a3c2afeadabcb2f8b4240}{XModel}}, \mbox{\hyperlink{class_total_xsection_addd6529e281d94e85e8f6fc20f2ad8afa14212dab454a5d2ab26d178bc8bbc786}{YModel}}\};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00034}\mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40aa95ae9f1d35f8387f0d230342a9adff1}{00034}}   \textcolor{keyword}{enum} \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40}{TotalXsectionSystem}}  \{ \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40aa80652d45dd1a8c267baf36033852d97}{PPCollisions}}, \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40ad0f8cd9b92d5d7245dbf765c5d6fff79}{PPbarCollisions}}, \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40aa95ae9f1d35f8387f0d230342a9adff1}{PiPlusPCollisions}},}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00035}\mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40a60cf3addd9059133edc78c348c06bf5e}{00035}}       \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40af3f25c701ce2d925b9db84e60eef4d1a}{PiMinusPCollisions}}, \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40a42780cec4716afc0818d688c4a954966}{KPlusPCollisions}}, \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40ad6e614d89a82b9e7f5833bbd2d4aee55}{KMinusPCollisions}}, \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40a7131a447f3a1ca09ffb1759b45e4db29}{GammaPCollisions}}, \mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40a60cf3addd9059133edc78c348c06bf5e}{GammaGammaCollisions}} \};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00037}00037   \mbox{\hyperlink{class_total_xsection_a032bbccbec56710ce23c8b5069dab9a9}{TotalXsection}}();}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00038}\mbox{\hyperlink{class_total_xsection_af6cf85ab5201de4704db70dc9f630bbc}{00038}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_total_xsection_af6cf85ab5201de4704db70dc9f630bbc}{\string~TotalXsection}}()}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00039}00039   \{}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00040}00040   \textcolor{comment}{// no ops.}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00041}00041   \}}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00044}00044   TF1 * \mbox{\hyperlink{class_total_xsection_adccc32ac07a8e004a1c08e214a580c88}{getFunctionTotalXsectionVsSqrtS}}(\mbox{\hyperlink{class_total_xsection_a68c74a6d9fd78194af3e4ac3689f2e40}{TotalXsectionSystem}} selectedSystem,}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00045}00045                                         \mbox{\hyperlink{class_total_xsection_addd6529e281d94e85e8f6fc20f2ad8af}{TotalXsectionModel}} selectedModel,}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00046}00046                                         \textcolor{keywordtype}{double} minSqrtS,}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00047}00047                                         \textcolor{keywordtype}{double} maxSqrtS);}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00049}00049   ClassDef(\mbox{\hyperlink{class_total_xsection}{TotalXsection}},0)}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00050}00050   }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00051}00051 \};}
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{_total_xsection_8hpp_source_l00053}00053 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* TotalXsection\_hpp */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

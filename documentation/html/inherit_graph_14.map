@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_filter.html" title=" " alt="" coords="5,5,88,32"/>
+<area shape="rect" id="node1" href="$class_filter.html" title=" " alt="" coords="5,31,124,57"/>
+<area shape="rect" id="node2" href="$class_particle_filter.html" title=" " alt="" coords="184,5,279,32"/>
+<area shape="rect" id="node4" href="$class_particle_pair_filter.html" title=" " alt="" coords="172,56,291,83"/>
+<area shape="rect" id="node3" href="$class_particle_filter_alice_v0.html" title=" " alt="" coords="339,5,479,32"/>
 </map>

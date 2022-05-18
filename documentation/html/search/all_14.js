@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['uniform_0',['Uniform',['../_basic_functions_8_c.html#adfb4f94d8c41ab1b51540843ff24b911',1,'Uniform():&#160;BasicFunctions.C'],['../class_nucleus_generator.html#ae1bbf0a0098396e60d02755c601a2bd7a014755ab7523eefa475a08cead5ef832',1,'NucleusGenerator::Uniform()']]],
+  ['uniform_0',['Uniform',['../_basic_functions_8_c.html#adfb4f94d8c41ab1b51540843ff24b911',1,'BasicFunctions.C']]],
   ['unknown_1',['Unknown',['../class_message_logger.html#a1198794cb23cd903dcbc0072929a276aa8a70893101404064ee47b88b788fc7c4',1,'MessageLogger']]],
   ['unpack_5fvsxy_5fto_5fvsxvsy_2',['unpack_vsXY_to_vsXVsY',['../class_histogram_collection.html#a5dadb09d17725eddb66b3817fcc0726d',1,'HistogramCollection']]],
   ['upperlimit_3',['upperLimit',['../class_bidim_gauss_fit_configuration.html#a1cc194ca986cef63a48006eb5342de36',1,'BidimGaussFitConfiguration']]],
@@ -9,7 +9,7 @@ var searchData=
   ['urqmdevent_2ecxx_6',['UrQMDEvent.cxx',['../_ur_q_m_d_event_8cxx.html',1,'']]],
   ['urqmdevent_2eh_7',['UrQMDEvent.h',['../_ur_q_m_d_event_8h.html',1,'']]],
   ['urqmdevent_2ehpp_8',['UrQMDEvent.hpp',['../_ur_q_m_d_event_8hpp.html',1,'']]],
-  ['urqmdeventreader_9',['UrqmdEventReader',['../class_urqmd_event_reader.html',1,'UrqmdEventReader'],['../class_urqmd_event_reader.html#a57f6ab80b6c3cd715acf0964813b3a0d',1,'UrqmdEventReader::UrqmdEventReader()']]],
+  ['urqmdeventreader_9',['UrqmdEventReader',['../class_urqmd_event_reader.html',1,'UrqmdEventReader'],['../class_urqmd_event_reader.html#a47756a5fb3f5b2d51277e086ec76a040',1,'UrqmdEventReader::UrqmdEventReader()']]],
   ['urqmdeventreader_2ecpp_10',['UrqmdEventReader.cpp',['../_urqmd_event_reader_8cpp.html',1,'']]],
   ['urqmdeventreader_2ehpp_11',['UrqmdEventReader.hpp',['../_urqmd_event_reader_8hpp.html',1,'']]],
   ['urqmdparticle_12',['UrQMDParticle',['../class_ur_q_m_d_particle.html',1,'UrQMDParticle'],['../class_ur_q_m_d_particle.html#a8107ab8fd34ef590d9cbfea40cfc9521',1,'UrQMDParticle::UrQMDParticle()'],['../class_ur_q_m_d_particle.html#a6c6675a1531df48c21e49bba663dfdbc',1,'UrQMDParticle::UrQMDParticle(TObjArray *values)'],['../class_ur_q_m_d_particle.html#a8107ab8fd34ef590d9cbfea40cfc9521',1,'UrQMDParticle::UrQMDParticle()'],['../class_ur_q_m_d_particle.html#a6c6675a1531df48c21e49bba663dfdbc',1,'UrQMDParticle::UrQMDParticle(TObjArray *values)']]],
@@ -29,7 +29,10 @@ var searchData=
   ['useflowinfit_26',['useFlowInFit',['../class_bidim_gauss_fit_configuration.html#a62c132855279b2e7e10810790162da5a',1,'BidimGaussFitConfiguration']]],
   ['usefullazimuthalflow_27',['useFullAzimuthalFlow',['../class_bidim_gauss_fit_configuration.html#aeaa0865d6e36e3567f75a40b94c98a11',1,'BidimGaussFitConfiguration']]],
   ['usenucleonexclusion_28',['useNucleonExclusion',['../class_nucleus_generator.html#a143b8fd61ed18bad714dd48b460950c8',1,'NucleusGenerator']]],
-  ['userecentering_29',['useRecentering',['../class_nucleus_generator.html#a517edcd5176dce27c1f28903193f9235',1,'NucleusGenerator']]],
-  ['usescaling_30',['useScaling',['../class_bidim_gauss_fit_configuration.html#a7e9922eafa3bd0e9430194584b7ca16b',1,'BidimGaussFitConfiguration']]],
-  ['usesinglecanvas_31',['useSingleCanvas',['../class_bidim_gauss_fit_configuration.html#ab086aca7e0e7c127b7b28d343bf65ff4',1,'BidimGaussFitConfiguration']]]
+  ['useparticles_29',['useParticles',['../class_task_iterator.html#a963f87cb3a5a83c51a804b2fa3947101',1,'TaskIterator']]],
+  ['userandomizeeventplane_30',['useRandomizeEventPlane',['../class_root_tree_reader.html#a5f147b864c5cb2916610f5a292c1b303',1,'RootTreeReader']]],
+  ['userecentering_31',['useRecentering',['../class_nucleus_generator.html#a517edcd5176dce27c1f28903193f9235',1,'NucleusGenerator']]],
+  ['usesamesetforall_32',['useSameSetForAll',['../class_particle_performance_simulator.html#a91dc5501673eb4d2a64a461ebfff105d',1,'ParticlePerformanceSimulator::useSameSetForAll()'],['../class_resolution_function.html#a281705e39bdf08bf177ec9fb62c69547',1,'ResolutionFunction::useSameSetForAll()']]],
+  ['usescaling_33',['useScaling',['../class_bidim_gauss_fit_configuration.html#a7e9922eafa3bd0e9430194584b7ca16b',1,'BidimGaussFitConfiguration']]],
+  ['usesinglecanvas_34',['useSingleCanvas',['../class_bidim_gauss_fit_configuration.html#ab086aca7e0e7c127b7b28d343bf65ff4',1,'BidimGaussFitConfiguration']]]
 ];

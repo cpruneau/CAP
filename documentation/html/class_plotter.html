@@ -181,7 +181,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab7727cb6f5b92fde0cb096887e671d7f inherit pub_methods_class_canvas_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f4e4ec3f86764c2c2fb42d29a20a2eb inherit pub_methods_class_canvas_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_canvas_collection.html#a8f4e4ec3f86764c2c2fb42d29a20a2eb">printCanvas</a> (TCanvas *canvas, const TString &amp;directoryName=&quot;./&quot;, bool printGif=0, bool printPdf=1, bool printSvg=0, bool printC=0)</td></tr>
 <tr class="separator:a8f4e4ec3f86764c2c2fb42d29a20a2eb inherit pub_methods_class_canvas_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3464f63d2ef7a321c15b4de89c4519e2 inherit pub_methods_class_canvas_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_canvas_collection.html#a3464f63d2ef7a321c15b4de89c4519e2">printAllCanvas</a> (const TString &amp;<a class="el" href="_closure_test_8cpp.html#a9a8178cf87264ac75ba4fdce8656b5a6">outputPath</a>, bool printGif=0, bool printPdf=1, bool printSvg=0, bool printC=0)</td></tr>
+<tr class="memitem:a3464f63d2ef7a321c15b4de89c4519e2 inherit pub_methods_class_canvas_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_canvas_collection.html#a3464f63d2ef7a321c15b4de89c4519e2">printAllCanvas</a> (const TString &amp;outputPath, bool printGif=0, bool printPdf=1, bool printSvg=0, bool printC=0)</td></tr>
 <tr class="separator:a3464f63d2ef7a321c15b4de89c4519e2 inherit pub_methods_class_canvas_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80dd9c423b1d25620e64a206c9149ab0 inherit pub_methods_class_canvas_collection"><td class="memItemLeft" align="right" valign="top">TLatex *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_canvas_collection.html#a80dd9c423b1d25620e64a206c9149ab0">createLabel</a> (double x, double y, int color, int fontType, double fontSize, const TString &amp;text, bool doDraw=true)</td></tr>
 <tr class="separator:a80dd9c423b1d25620e64a206c9149ab0 inherit pub_methods_class_canvas_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -228,8 +228,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a95959d6b2893d4642152be63ccac9de4 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afda08ec642d84dbe4b3c3365a5ab5197 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">TCanvas *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#afda08ec642d84dbe4b3c3365a5ab5197">back</a> ()</td></tr>
 <tr class="separator:afda08ec642d84dbe4b3c3365a5ab5197 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2f7148ab6bd9771cf4c12f12d42f9c2 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#aa2f7148ab6bd9771cf4c12f12d42f9c2">sameSizeAs</a> (const <a class="el" href="class_collection.html">Collection</a>&lt; TCanvas &gt; &amp;other)</td></tr>
-<tr class="separator:aa2f7148ab6bd9771cf4c12f12d42f9c2 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01fd386118d7e2cd605b1c12b1fa1435 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#a01fd386118d7e2cd605b1c12b1fa1435">sameSizeAs</a> (const <a class="el" href="class_collection.html">Collection</a>&lt; TCanvas &gt; &amp;other) const</td></tr>
+<tr class="separator:a01fd386118d7e2cd605b1c12b1fa1435 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a085e9375f7fb9c8a50fa8019b8e1906e inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#a085e9375f7fb9c8a50fa8019b8e1906e">copy</a> (long n, TCanvas **source)</td></tr>
 <tr class="separator:a085e9375f7fb9c8a50fa8019b8e1906e inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4a2e034fe55fbf5c4f7a185d26ff840 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#ad4a2e034fe55fbf5c4f7a185d26ff840">deepCopy</a> (long n, TCanvas **source)</td></tr>
@@ -339,6 +339,32 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1c9b286039a61ef843025b7a0dfb63a9 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a581047e4ae03db23a186bfce95606baf inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a581047e4ae03db23a186bfce95606baf">ptrExist</a> (const TString &amp;caller, const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10, const TH1 *h11, const TH1 *h12) const</td></tr>
 <tr class="separator:a581047e4ae03db23a186bfce95606baf inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a31c4cfdd07e56dc3f94eac4a827df7 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a7a31c4cfdd07e56dc3f94eac4a827df7">ptrFileExist</a> (const TFile *f) const</td></tr>
+<tr class="separator:a7a31c4cfdd07e56dc3f94eac4a827df7 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5236ff7f69cec4fd0c9f082d7616e02 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#ae5236ff7f69cec4fd0c9f082d7616e02">ptrExist</a> (const TH1 *h1) const</td></tr>
+<tr class="separator:ae5236ff7f69cec4fd0c9f082d7616e02 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07482048b4e3fb14255389cb2346d8ef inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a07482048b4e3fb14255389cb2346d8ef">ptrExist</a> (const TH1 *h1, const TH1 *h2) const</td></tr>
+<tr class="separator:a07482048b4e3fb14255389cb2346d8ef inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b987c3662fe2f4ac74d5b53d9b1ee1d inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a1b987c3662fe2f4ac74d5b53d9b1ee1d">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3) const</td></tr>
+<tr class="separator:a1b987c3662fe2f4ac74d5b53d9b1ee1d inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27063875dd1665c09408acbfff2daa05 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a27063875dd1665c09408acbfff2daa05">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4) const</td></tr>
+<tr class="separator:a27063875dd1665c09408acbfff2daa05 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea9d67b89990c83b3bc4a8938882d706 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#aea9d67b89990c83b3bc4a8938882d706">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5) const</td></tr>
+<tr class="separator:aea9d67b89990c83b3bc4a8938882d706 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad225f291276ce9d336050b4c96a6b0ef inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#ad225f291276ce9d336050b4c96a6b0ef">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6) const</td></tr>
+<tr class="separator:ad225f291276ce9d336050b4c96a6b0ef inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a733f19dc797606d918c5ac395bfad1a1 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a733f19dc797606d918c5ac395bfad1a1">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7) const</td></tr>
+<tr class="separator:a733f19dc797606d918c5ac395bfad1a1 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83d7f51337ef3f93ffebb2e162e17594 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a83d7f51337ef3f93ffebb2e162e17594">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8) const</td></tr>
+<tr class="separator:a83d7f51337ef3f93ffebb2e162e17594 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cc7c585795abe114309cc66f90f23f3 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a5cc7c585795abe114309cc66f90f23f3">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9) const</td></tr>
+<tr class="separator:a5cc7c585795abe114309cc66f90f23f3 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a888b9c9627ebb6430ba0cde1ae73ffce inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a888b9c9627ebb6430ba0cde1ae73ffce">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10) const</td></tr>
+<tr class="separator:a888b9c9627ebb6430ba0cde1ae73ffce inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ad9af50d1fcbc9ec9038d1b8deb3404 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a4ad9af50d1fcbc9ec9038d1b8deb3404">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10, const TH1 *h11) const</td></tr>
+<tr class="separator:a4ad9af50d1fcbc9ec9038d1b8deb3404 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a771a1200285aa43589deaa082b0ac076 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a771a1200285aa43589deaa082b0ac076">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10, const TH1 *h11, const TH1 *h12) const</td></tr>
+<tr class="separator:a771a1200285aa43589deaa082b0ac076 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -430,7 +456,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_plotter_8hpp_source.html#l00030">30</a> of file <a class="el" href="_plotter_8hpp_source.html">Plotter.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8hpp_source.html#l00032">32</a> of file <a class="el" href="_plotter_8hpp_source.html">Plotter.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa78b072dc50292ab120d720319ae7fd8" name="aa78b072dc50292ab120d720319ae7fd8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa78b072dc50292ab120d720319ae7fd8">&#9670;&nbsp;</a></span>Plotter()</h2>
@@ -458,7 +484,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00020">20</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00015">15</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -485,7 +511,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00035">35</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00030">30</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -564,7 +590,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00510">510</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00505">505</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -630,7 +656,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00405">405</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00400">400</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -690,7 +716,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00391">391</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00386">386</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -744,7 +770,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00424">424</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00419">419</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -822,7 +848,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00448">448</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00443">443</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -894,7 +920,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00437">437</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00432">432</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -960,7 +986,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00478">478</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00473">473</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -1032,7 +1058,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00464">464</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00459">459</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -1098,7 +1124,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00495">495</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00490">490</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -1218,7 +1244,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00111">111</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00106">106</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -1332,7 +1358,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00041">41</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00036">36</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -1500,7 +1526,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00067">67</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00062">62</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -1603,7 +1629,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Function to plot n DataGraphs on a single canvas </p>
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00336">336</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00331">331</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -1790,7 +1816,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p >Function to plot nHists 1D histogram h : vector of nHists pointers to histograms legends : vector of nHists pointers to labels used as legends in the body of the plot </p>
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00217">217</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00212">212</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -1810,7 +1836,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00627">627</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00622">622</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -1840,7 +1866,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00582">582</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00577">577</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -1882,7 +1908,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00609">609</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00604">604</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -1912,7 +1938,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00526">526</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00521">521</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>
@@ -1960,7 +1986,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00563">563</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_plotter_8cpp_source.html#l00558">558</a> of file <a class="el" href="_plotter_8cpp_source.html">Plotter.cpp</a>.</p>
 
 </div>
 </div>

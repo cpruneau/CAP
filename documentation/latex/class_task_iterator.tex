@@ -10,7 +10,7 @@ Inheritance diagram for Task\+Iterator\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=166pt]{class_task_iterator__inherit__graph}
+\includegraphics[width=220pt]{class_task_iterator__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -31,54 +31,34 @@ virtual \mbox{\hyperlink{class_task_iterator_a09614f0874c5f4c0200157fd92968f48}{
 \item 
 virtual void \mbox{\hyperlink{class_task_iterator_a8536aeba1c4465146062e72516c6a6b6}{set\+Default\+Configuration}} ()
 \item 
-virtual void \mbox{\hyperlink{class_task_iterator_ae7d75f8ef4ded05e349d16cc91c3cc79}{run}} ()
+virtual void \mbox{\hyperlink{class_task_iterator_addba47176021bbb821efb02497cf894d}{initialize}} ()
 \item 
 virtual void \mbox{\hyperlink{class_task_iterator_af480b27e954098aaad2a0f3750940eaf}{execute}} ()
 \item 
-virtual void \mbox{\hyperlink{class_task_iterator_a758cd9c023174494bbf7184d29403357}{subsample\+Analysis}} ()
+virtual void \mbox{\hyperlink{class_task_iterator_a321efa1ced57b46b537e89328a2ee241}{finalize}} ()
 \item 
-void \mbox{\hyperlink{class_task_iterator_aeab63ef531696d68920f63d2a54adad7}{set\+NEvent\+Requested}} (long \+\_\+n\+Events\+Requested)
+long \mbox{\hyperlink{class_task_iterator_aec89fc8c3f1cad3d3467e90ce55a20ec}{get\+NIteration\+Requested}} () const
 \item 
-void \mbox{\hyperlink{class_task_iterator_a20e711f941e26c763f2860b00163d29f}{set\+NEvent\+Reported}} (long \+\_\+n\+Events\+Reported)
+long \mbox{\hyperlink{class_task_iterator_ade76af9e4375e0e2d64ed0d9c16cdf58}{get\+NIteration\+Reported}} () const
 \item 
-void \mbox{\hyperlink{class_task_iterator_a2ef80a0c5e980813dbabebf48d5d5578}{set\+NEvent\+Partial\+Save}} (long \+\_\+n\+Events\+Partial\+Save)
-\item 
-void \mbox{\hyperlink{class_task_iterator_a216949f75ce876276bb32fe44afb6033}{set\+Partial\+Save}} (bool \+\_\+do\+Partial\+Save)
-\item 
-void \mbox{\hyperlink{class_task_iterator_a99a9e22a7ef375a21b25278367a15354}{set\+Subsample\+Analysis}} (bool \+\_\+do\+Subsample\+Analysis)
-\item 
-long \mbox{\hyperlink{class_task_iterator_aa4c367858c1988386f494a7f4e13a11e}{get\+NEvent\+Requested}} () const
-\item 
-long \mbox{\hyperlink{class_task_iterator_a04cfb8e94252bc39bcf333199a389093}{get\+NEvent\+Reported}} () const
-\item 
-long \mbox{\hyperlink{class_task_iterator_a5076574d40b9ca97cdd65ddfb7e928a9}{get\+NEvent\+Partial\+Save}} () const
-\item 
-bool \mbox{\hyperlink{class_task_iterator_ac453cf8fde54e25a5b10fe36de517af7}{get\+Partial\+Save}} () const
-\item 
-bool \mbox{\hyperlink{class_task_iterator_aa357cbf72180fc27abc96d36c2b97062}{get\+Subsample\+Analysis}} () const
+long \mbox{\hyperlink{class_task_iterator_a4cb4a997e403d4dc40311170ba14860e}{get\+NIteration\+Partial\+Save}} () const
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_timer}{Timer}} \mbox{\hyperlink{class_task_iterator_a275b100f5bda69b0ce877d31e15671eb}{timer}}
+bool \mbox{\hyperlink{class_task_iterator_a963f87cb3a5a83c51a804b2fa3947101}{use\+Particles}}
 \item 
-long \mbox{\hyperlink{class_task_iterator_afee9c319d9131ca3b60f3ae3dd1fae27}{n\+Event\+Requested}}
+bool \mbox{\hyperlink{class_task_iterator_a66bd722335f6b5e2b3a7a34c6bb7b3ce}{do\+Partial\+Reports}}
 \item 
-long \mbox{\hyperlink{class_task_iterator_ac1c0deb14b49d1a377d3077dcdfaf373}{n\+Event\+Reported}}
-\item 
-long \mbox{\hyperlink{class_task_iterator_accd49cdab9517cdc6a49ae3549dfbad9}{n\+Event\+Partial\+Save}}
-\item 
-long \mbox{\hyperlink{class_task_iterator_ab2f92c9c93fe32548594ec632561b0c5}{n\+Event\+Processed}}
-\item 
-bool \mbox{\hyperlink{class_task_iterator_ad557dffcb312b3cd5226d96a75d7eca8}{grid\+Job}}
-\item 
-bool \mbox{\hyperlink{class_task_iterator_a86643668216a07f2d28e223bf95cd0a9}{process\+Events}}
-\item 
-bool \mbox{\hyperlink{class_task_iterator_acbebd02db599cc93e5077c8b8a6d0890}{create\+Derived\+Histograms}}
-\item 
-bool \mbox{\hyperlink{class_task_iterator_a1a9126109ce78d7f4cf1b61b7c8e6879}{do\+Partial\+Save}}
+bool \mbox{\hyperlink{class_task_iterator_a198e5d47ab63b828a58d3f1f21ae4cf5}{do\+Partial\+Saves}}
 \item 
 bool \mbox{\hyperlink{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}{do\+Subsample\+Analysis}}
+\item 
+long \mbox{\hyperlink{class_task_iterator_a4deb3aa252eb940c528dcfd1f62a8025}{n\+Iteration\+Requested}}
+\item 
+long \mbox{\hyperlink{class_task_iterator_a99e92b16dc668e72e016cfe277dfaef1}{n\+Iteration\+Reported}}
+\item 
+long \mbox{\hyperlink{class_task_iterator_a2c686a338c5d68682c5637d720a64f16}{n\+Iteration\+Partial\+Save}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
@@ -86,11 +66,9 @@ bool \mbox{\hyperlink{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}{do\
 \doxysubsection{Detailed Description}
 This class implements a task iterator task, i.\+e., a task that repeated calls other tasks (subtasks) to carry out the same operation(s) on a sequence of events (event stream). Use the \textquotesingle{}run\textquotesingle{} method to execute the job on all selected events. Internally, \textquotesingle{}run\textquotesingle{} calls the \textquotesingle{}execute\textquotesingle{} method repeatedly on each event in the event stream. Do not call the \textquotesingle{}execute\textquotesingle{} method of this class directly unless you know what you are doing...
 
-Optionally, the iterator may call a subsample\+Analysis method to carry out a sub-\/sample analysis of all the sub tasks operated by this iterator.
+Optionally, the iterator may call a subsample\+Analysis method to carry out a sub-\/sample analysis of all the sub tasks operated by this iterator. 
 
-Class used to define a generic object factory 
-
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00022}{22}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
 
 
 
@@ -114,7 +92,7 @@ Detailed CTOR
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_task_iterator_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_task_iterator_8cpp_source}{Task\+Iterator.\+cpp}}.
+Definition at line \mbox{\hyperlink{_task_iterator_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_task_iterator_8cpp_source}{Task\+Iterator.\+cpp}}.
 
 \mbox{\Hypertarget{class_task_iterator_a09614f0874c5f4c0200157fd92968f48}\label{class_task_iterator_a09614f0874c5f4c0200157fd92968f48}} 
 \index{TaskIterator@{TaskIterator}!````~TaskIterator@{$\sim$TaskIterator}}
@@ -124,7 +102,7 @@ Definition at line \mbox{\hyperlink{_task_iterator_8cpp_source_l00020}{20}} of f
 
 DTOR 
 
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00040}{40}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
 
 
 
@@ -135,73 +113,75 @@ Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00040}{40}} of f
 \doxysubsubsection{\texorpdfstring{execute()}{execute()}}
 {\footnotesize\ttfamily void Task\+Iterator\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
-Execute the subtasks on one event 
+Execute the subtasks 
 
-Reimplemented from \mbox{\hyperlink{class_task_a397650b67989fc33c6ba878c36d1c65d}{Task}}.
+Reimplemented from \mbox{\hyperlink{class_task_ade38031c3ed134ec20cbbcd58e575745}{Task}}.
 
 
 
-Definition at line \mbox{\hyperlink{_task_iterator_8cpp_source_l00114}{114}} of file \mbox{\hyperlink{_task_iterator_8cpp_source}{Task\+Iterator.\+cpp}}.
+Reimplemented in \mbox{\hyperlink{class_file_task_iterator_a98d21e2baf83d49ad2cb38872197463f}{File\+Task\+Iterator}}.
 
-\mbox{\Hypertarget{class_task_iterator_a5076574d40b9ca97cdd65ddfb7e928a9}\label{class_task_iterator_a5076574d40b9ca97cdd65ddfb7e928a9}} 
-\index{TaskIterator@{TaskIterator}!getNEventPartialSave@{getNEventPartialSave}}
-\index{getNEventPartialSave@{getNEventPartialSave}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{getNEventPartialSave()}{getNEventPartialSave()}}
-{\footnotesize\ttfamily long Task\+Iterator\+::get\+NEvent\+Partial\+Save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+Definition at line \mbox{\hyperlink{_task_iterator_8cpp_source_l00092}{92}} of file \mbox{\hyperlink{_task_iterator_8cpp_source}{Task\+Iterator.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_iterator_a321efa1ced57b46b537e89328a2ee241}\label{class_task_iterator_a321efa1ced57b46b537e89328a2ee241}} 
+\index{TaskIterator@{TaskIterator}!finalize@{finalize}}
+\index{finalize@{finalize}!TaskIterator@{TaskIterator}}
+\doxysubsubsection{\texorpdfstring{finalize()}{finalize()}}
+{\footnotesize\ttfamily void Task\+Iterator\+::finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Finalize the subtasks 
+
+Reimplemented from \mbox{\hyperlink{class_task_aab4bc670089cc073247542c3a26da5aa}{Task}}.
+
+
+
+Definition at line \mbox{\hyperlink{_task_iterator_8cpp_source_l00121}{121}} of file \mbox{\hyperlink{_task_iterator_8cpp_source}{Task\+Iterator.\+cpp}}.
+
+\mbox{\Hypertarget{class_task_iterator_a4cb4a997e403d4dc40311170ba14860e}\label{class_task_iterator_a4cb4a997e403d4dc40311170ba14860e}} 
+\index{TaskIterator@{TaskIterator}!getNIterationPartialSave@{getNIterationPartialSave}}
+\index{getNIterationPartialSave@{getNIterationPartialSave}!TaskIterator@{TaskIterator}}
+\doxysubsubsection{\texorpdfstring{getNIterationPartialSave()}{getNIterationPartialSave()}}
+{\footnotesize\ttfamily long Task\+Iterator\+::get\+NIteration\+Partial\+Save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 Get the number of events required to produce a partial save. 
 
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00100}{100}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
 
-\mbox{\Hypertarget{class_task_iterator_a04cfb8e94252bc39bcf333199a389093}\label{class_task_iterator_a04cfb8e94252bc39bcf333199a389093}} 
-\index{TaskIterator@{TaskIterator}!getNEventReported@{getNEventReported}}
-\index{getNEventReported@{getNEventReported}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{getNEventReported()}{getNEventReported()}}
-{\footnotesize\ttfamily long Task\+Iterator\+::get\+NEvent\+Reported (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{class_task_iterator_ade76af9e4375e0e2d64ed0d9c16cdf58}\label{class_task_iterator_ade76af9e4375e0e2d64ed0d9c16cdf58}} 
+\index{TaskIterator@{TaskIterator}!getNIterationReported@{getNIterationReported}}
+\index{getNIterationReported@{getNIterationReported}!TaskIterator@{TaskIterator}}
+\doxysubsubsection{\texorpdfstring{getNIterationReported()}{getNIterationReported()}}
+{\footnotesize\ttfamily long Task\+Iterator\+::get\+NIteration\+Reported (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 Get the number of events reported period 
 
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00095}{95}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
 
-\mbox{\Hypertarget{class_task_iterator_aa4c367858c1988386f494a7f4e13a11e}\label{class_task_iterator_aa4c367858c1988386f494a7f4e13a11e}} 
-\index{TaskIterator@{TaskIterator}!getNEventRequested@{getNEventRequested}}
-\index{getNEventRequested@{getNEventRequested}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{getNEventRequested()}{getNEventRequested()}}
-{\footnotesize\ttfamily long Task\+Iterator\+::get\+NEvent\+Requested (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{class_task_iterator_aec89fc8c3f1cad3d3467e90ce55a20ec}\label{class_task_iterator_aec89fc8c3f1cad3d3467e90ce55a20ec}} 
+\index{TaskIterator@{TaskIterator}!getNIterationRequested@{getNIterationRequested}}
+\index{getNIterationRequested@{getNIterationRequested}!TaskIterator@{TaskIterator}}
+\doxysubsubsection{\texorpdfstring{getNIterationRequested()}{getNIterationRequested()}}
+{\footnotesize\ttfamily long Task\+Iterator\+::get\+NIteration\+Requested (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 Get the number of events requested 
 
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00090}{90}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
 
-\mbox{\Hypertarget{class_task_iterator_ac453cf8fde54e25a5b10fe36de517af7}\label{class_task_iterator_ac453cf8fde54e25a5b10fe36de517af7}} 
-\index{TaskIterator@{TaskIterator}!getPartialSave@{getPartialSave}}
-\index{getPartialSave@{getPartialSave}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{getPartialSave()}{getPartialSave()}}
-{\footnotesize\ttfamily bool Task\+Iterator\+::get\+Partial\+Save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{class_task_iterator_addba47176021bbb821efb02497cf894d}\label{class_task_iterator_addba47176021bbb821efb02497cf894d}} 
+\index{TaskIterator@{TaskIterator}!initialize@{initialize}}
+\index{initialize@{initialize}!TaskIterator@{TaskIterator}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Task\+Iterator\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
+Initialize the subtasks 
 
-
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00102}{102}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
-
-\mbox{\Hypertarget{class_task_iterator_aa357cbf72180fc27abc96d36c2b97062}\label{class_task_iterator_aa357cbf72180fc27abc96d36c2b97062}} 
-\index{TaskIterator@{TaskIterator}!getSubsampleAnalysis@{getSubsampleAnalysis}}
-\index{getSubsampleAnalysis@{getSubsampleAnalysis}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{getSubsampleAnalysis()}{getSubsampleAnalysis()}}
-{\footnotesize\ttfamily bool Task\+Iterator\+::get\+Subsample\+Analysis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+Reimplemented from \mbox{\hyperlink{class_task_aea1a21cf98eb282ddff9754c18379fdf}{Task}}.
 
 
 
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00103}{103}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
-
-\mbox{\Hypertarget{class_task_iterator_ae7d75f8ef4ded05e349d16cc91c3cc79}\label{class_task_iterator_ae7d75f8ef4ded05e349d16cc91c3cc79}} 
-\index{TaskIterator@{TaskIterator}!run@{run}}
-\index{run@{run}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{run()}{run()}}
-{\footnotesize\ttfamily void Task\+Iterator\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-Run this iterator task. 
-
-Definition at line \mbox{\hyperlink{_task_iterator_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{_task_iterator_8cpp_source}{Task\+Iterator.\+cpp}}.
+Definition at line \mbox{\hyperlink{_task_iterator_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{_task_iterator_8cpp_source}{Task\+Iterator.\+cpp}}.
 
 \mbox{\Hypertarget{class_task_iterator_a8536aeba1c4465146062e72516c6a6b6}\label{class_task_iterator_a8536aeba1c4465146062e72516c6a6b6}} 
 \index{TaskIterator@{TaskIterator}!setDefaultConfiguration@{setDefaultConfiguration}}
@@ -215,94 +195,34 @@ Reimplemented from \mbox{\hyperlink{class_task_abe2c207184c049a2850a956e78ab6ab3
 
 
 
-Definition at line \mbox{\hyperlink{_task_iterator_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{_task_iterator_8cpp_source}{Task\+Iterator.\+cpp}}.
-
-\mbox{\Hypertarget{class_task_iterator_a2ef80a0c5e980813dbabebf48d5d5578}\label{class_task_iterator_a2ef80a0c5e980813dbabebf48d5d5578}} 
-\index{TaskIterator@{TaskIterator}!setNEventPartialSave@{setNEventPartialSave}}
-\index{setNEventPartialSave@{setNEventPartialSave}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{setNEventPartialSave()}{setNEventPartialSave()}}
-{\footnotesize\ttfamily void Task\+Iterator\+::set\+NEvent\+Partial\+Save (\begin{DoxyParamCaption}\item[{long}]{\+\_\+n\+Events\+Partial\+Save }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-Externally sets the number of events required to produce a partial save. Deprecated\+: Use the configuration of the task to set this value. 
-
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00075}{75}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
-
-\mbox{\Hypertarget{class_task_iterator_a20e711f941e26c763f2860b00163d29f}\label{class_task_iterator_a20e711f941e26c763f2860b00163d29f}} 
-\index{TaskIterator@{TaskIterator}!setNEventReported@{setNEventReported}}
-\index{setNEventReported@{setNEventReported}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{setNEventReported()}{setNEventReported()}}
-{\footnotesize\ttfamily void Task\+Iterator\+::set\+NEvent\+Reported (\begin{DoxyParamCaption}\item[{long}]{\+\_\+n\+Events\+Reported }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-Externally sets the number of reported events. Deprecated\+: Use the configuration of the task to set this value. 
-
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
-
-\mbox{\Hypertarget{class_task_iterator_aeab63ef531696d68920f63d2a54adad7}\label{class_task_iterator_aeab63ef531696d68920f63d2a54adad7}} 
-\index{TaskIterator@{TaskIterator}!setNEventRequested@{setNEventRequested}}
-\index{setNEventRequested@{setNEventRequested}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{setNEventRequested()}{setNEventRequested()}}
-{\footnotesize\ttfamily void Task\+Iterator\+::set\+NEvent\+Requested (\begin{DoxyParamCaption}\item[{long}]{\+\_\+n\+Events\+Requested }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-Externally sets the number of event requested in the analysis. Deprecated\+: Use the configuration of the task to set this value. 
-
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
-
-\mbox{\Hypertarget{class_task_iterator_a216949f75ce876276bb32fe44afb6033}\label{class_task_iterator_a216949f75ce876276bb32fe44afb6033}} 
-\index{TaskIterator@{TaskIterator}!setPartialSave@{setPartialSave}}
-\index{setPartialSave@{setPartialSave}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{setPartialSave()}{setPartialSave()}}
-{\footnotesize\ttfamily void Task\+Iterator\+::set\+Partial\+Save (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+do\+Partial\+Save }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-Externally sets whether partial saves should be performed. Deprecated\+: Use the configuration of the task to set this value. 
-
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00080}{80}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
-
-\mbox{\Hypertarget{class_task_iterator_a99a9e22a7ef375a21b25278367a15354}\label{class_task_iterator_a99a9e22a7ef375a21b25278367a15354}} 
-\index{TaskIterator@{TaskIterator}!setSubsampleAnalysis@{setSubsampleAnalysis}}
-\index{setSubsampleAnalysis@{setSubsampleAnalysis}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{setSubsampleAnalysis()}{setSubsampleAnalysis()}}
-{\footnotesize\ttfamily void Task\+Iterator\+::set\+Subsample\+Analysis (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+do\+Subsample\+Analysis }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-Externally sets whether a subsample analysis should be performed at the end of the job. Deprecated\+: Use the configuration of the task to set this value. 
-
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
-
-\mbox{\Hypertarget{class_task_iterator_a758cd9c023174494bbf7184d29403357}\label{class_task_iterator_a758cd9c023174494bbf7184d29403357}} 
-\index{TaskIterator@{TaskIterator}!subsampleAnalysis@{subsampleAnalysis}}
-\index{subsampleAnalysis@{subsampleAnalysis}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{subsampleAnalysis()}{subsampleAnalysis()}}
-{\footnotesize\ttfamily void Task\+Iterator\+::subsample\+Analysis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-Perform a subsample analysis on the output of this iterator task. 
-
-Reimplemented from \mbox{\hyperlink{class_task_a3ec28185c9df5e62f7c0723a8dd7a2b6}{Task}}.
+Reimplemented in \mbox{\hyperlink{class_file_task_iterator_ac219f99c1e94002e00ff1c1ebc520326}{File\+Task\+Iterator}}, and \mbox{\hyperlink{class_derived_histogram_calculator_a81fd0a9a823289ae5099e01577e73f99}{Derived\+Histogram\+Calculator}}.
 
 
 
-Definition at line \mbox{\hyperlink{_task_iterator_8cpp_source_l00122}{122}} of file \mbox{\hyperlink{_task_iterator_8cpp_source}{Task\+Iterator.\+cpp}}.
+Definition at line \mbox{\hyperlink{_task_iterator_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{_task_iterator_8cpp_source}{Task\+Iterator.\+cpp}}.
 
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_task_iterator_acbebd02db599cc93e5077c8b8a6d0890}\label{class_task_iterator_acbebd02db599cc93e5077c8b8a6d0890}} 
-\index{TaskIterator@{TaskIterator}!createDerivedHistograms@{createDerivedHistograms}}
-\index{createDerivedHistograms@{createDerivedHistograms}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{createDerivedHistograms}{createDerivedHistograms}}
-{\footnotesize\ttfamily bool Task\+Iterator\+::create\+Derived\+Histograms\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\Hypertarget{class_task_iterator_a66bd722335f6b5e2b3a7a34c6bb7b3ce}\label{class_task_iterator_a66bd722335f6b5e2b3a7a34c6bb7b3ce}} 
+\index{TaskIterator@{TaskIterator}!doPartialReports@{doPartialReports}}
+\index{doPartialReports@{doPartialReports}!TaskIterator@{TaskIterator}}
+\doxysubsubsection{\texorpdfstring{doPartialReports}{doPartialReports}}
+{\footnotesize\ttfamily bool Task\+Iterator\+::do\+Partial\+Reports\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00116}{116}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00082}{82}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
 
-\mbox{\Hypertarget{class_task_iterator_a1a9126109ce78d7f4cf1b61b7c8e6879}\label{class_task_iterator_a1a9126109ce78d7f4cf1b61b7c8e6879}} 
-\index{TaskIterator@{TaskIterator}!doPartialSave@{doPartialSave}}
-\index{doPartialSave@{doPartialSave}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{doPartialSave}{doPartialSave}}
-{\footnotesize\ttfamily bool Task\+Iterator\+::do\+Partial\+Save\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\Hypertarget{class_task_iterator_a198e5d47ab63b828a58d3f1f21ae4cf5}\label{class_task_iterator_a198e5d47ab63b828a58d3f1f21ae4cf5}} 
+\index{TaskIterator@{TaskIterator}!doPartialSaves@{doPartialSaves}}
+\index{doPartialSaves@{doPartialSaves}!TaskIterator@{TaskIterator}}
+\doxysubsubsection{\texorpdfstring{doPartialSaves}{doPartialSaves}}
+{\footnotesize\ttfamily bool Task\+Iterator\+::do\+Partial\+Saves\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00117}{117}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00083}{83}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
 
 \mbox{\Hypertarget{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}\label{class_task_iterator_aeee004c38cda5ed881f8d88e03c3de50}} 
 \index{TaskIterator@{TaskIterator}!doSubsampleAnalysis@{doSubsampleAnalysis}}
@@ -312,77 +232,47 @@ Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00117}{117}} of 
 
 
 
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00118}{118}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
 
-\mbox{\Hypertarget{class_task_iterator_ad557dffcb312b3cd5226d96a75d7eca8}\label{class_task_iterator_ad557dffcb312b3cd5226d96a75d7eca8}} 
-\index{TaskIterator@{TaskIterator}!gridJob@{gridJob}}
-\index{gridJob@{gridJob}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{gridJob}{gridJob}}
-{\footnotesize\ttfamily bool Task\+Iterator\+::grid\+Job\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00114}{114}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
-
-\mbox{\Hypertarget{class_task_iterator_accd49cdab9517cdc6a49ae3549dfbad9}\label{class_task_iterator_accd49cdab9517cdc6a49ae3549dfbad9}} 
-\index{TaskIterator@{TaskIterator}!nEventPartialSave@{nEventPartialSave}}
-\index{nEventPartialSave@{nEventPartialSave}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{nEventPartialSave}{nEventPartialSave}}
-{\footnotesize\ttfamily long Task\+Iterator\+::n\+Event\+Partial\+Save\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\Hypertarget{class_task_iterator_a2c686a338c5d68682c5637d720a64f16}\label{class_task_iterator_a2c686a338c5d68682c5637d720a64f16}} 
+\index{TaskIterator@{TaskIterator}!nIterationPartialSave@{nIterationPartialSave}}
+\index{nIterationPartialSave@{nIterationPartialSave}!TaskIterator@{TaskIterator}}
+\doxysubsubsection{\texorpdfstring{nIterationPartialSave}{nIterationPartialSave}}
+{\footnotesize\ttfamily long Task\+Iterator\+::n\+Iteration\+Partial\+Save\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00110}{110}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
 
-\mbox{\Hypertarget{class_task_iterator_ab2f92c9c93fe32548594ec632561b0c5}\label{class_task_iterator_ab2f92c9c93fe32548594ec632561b0c5}} 
-\index{TaskIterator@{TaskIterator}!nEventProcessed@{nEventProcessed}}
-\index{nEventProcessed@{nEventProcessed}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{nEventProcessed}{nEventProcessed}}
-{\footnotesize\ttfamily long Task\+Iterator\+::n\+Event\+Processed\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00111}{111}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
-
-\mbox{\Hypertarget{class_task_iterator_ac1c0deb14b49d1a377d3077dcdfaf373}\label{class_task_iterator_ac1c0deb14b49d1a377d3077dcdfaf373}} 
-\index{TaskIterator@{TaskIterator}!nEventReported@{nEventReported}}
-\index{nEventReported@{nEventReported}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{nEventReported}{nEventReported}}
-{\footnotesize\ttfamily long Task\+Iterator\+::n\+Event\+Reported\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\Hypertarget{class_task_iterator_a99e92b16dc668e72e016cfe277dfaef1}\label{class_task_iterator_a99e92b16dc668e72e016cfe277dfaef1}} 
+\index{TaskIterator@{TaskIterator}!nIterationReported@{nIterationReported}}
+\index{nIterationReported@{nIterationReported}!TaskIterator@{TaskIterator}}
+\doxysubsubsection{\texorpdfstring{nIterationReported}{nIterationReported}}
+{\footnotesize\ttfamily long Task\+Iterator\+::n\+Iteration\+Reported\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00109}{109}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00086}{86}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
 
-\mbox{\Hypertarget{class_task_iterator_afee9c319d9131ca3b60f3ae3dd1fae27}\label{class_task_iterator_afee9c319d9131ca3b60f3ae3dd1fae27}} 
-\index{TaskIterator@{TaskIterator}!nEventRequested@{nEventRequested}}
-\index{nEventRequested@{nEventRequested}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{nEventRequested}{nEventRequested}}
-{\footnotesize\ttfamily long Task\+Iterator\+::n\+Event\+Requested\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00108}{108}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
-
-\mbox{\Hypertarget{class_task_iterator_a86643668216a07f2d28e223bf95cd0a9}\label{class_task_iterator_a86643668216a07f2d28e223bf95cd0a9}} 
-\index{TaskIterator@{TaskIterator}!processEvents@{processEvents}}
-\index{processEvents@{processEvents}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{processEvents}{processEvents}}
-{\footnotesize\ttfamily bool Task\+Iterator\+::process\+Events\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\Hypertarget{class_task_iterator_a4deb3aa252eb940c528dcfd1f62a8025}\label{class_task_iterator_a4deb3aa252eb940c528dcfd1f62a8025}} 
+\index{TaskIterator@{TaskIterator}!nIterationRequested@{nIterationRequested}}
+\index{nIterationRequested@{nIterationRequested}!TaskIterator@{TaskIterator}}
+\doxysubsubsection{\texorpdfstring{nIterationRequested}{nIterationRequested}}
+{\footnotesize\ttfamily long Task\+Iterator\+::n\+Iteration\+Requested\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00115}{115}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
 
-\mbox{\Hypertarget{class_task_iterator_a275b100f5bda69b0ce877d31e15671eb}\label{class_task_iterator_a275b100f5bda69b0ce877d31e15671eb}} 
-\index{TaskIterator@{TaskIterator}!timer@{timer}}
-\index{timer@{timer}!TaskIterator@{TaskIterator}}
-\doxysubsubsection{\texorpdfstring{timer}{timer}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_timer}{Timer}} Task\+Iterator\+::timer\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\Hypertarget{class_task_iterator_a963f87cb3a5a83c51a804b2fa3947101}\label{class_task_iterator_a963f87cb3a5a83c51a804b2fa3947101}} 
+\index{TaskIterator@{TaskIterator}!useParticles@{useParticles}}
+\index{useParticles@{useParticles}!TaskIterator@{TaskIterator}}
+\doxysubsubsection{\texorpdfstring{useParticles}{useParticles}}
+{\footnotesize\ttfamily bool Task\+Iterator\+::use\+Particles\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00107}{107}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
+Definition at line \mbox{\hyperlink{_task_iterator_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{_task_iterator_8hpp_source}{Task\+Iterator.\+hpp}}.
 
 
 

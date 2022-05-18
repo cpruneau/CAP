@@ -10,7 +10,7 @@ Collaboration diagram for Event\+Properties\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=202pt]{class_event_properties__coll__graph}
+\includegraphics[width=350pt]{class_event_properties__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -37,34 +37,38 @@ virtual void \mbox{\hyperlink{class_event_properties_a71715614db0565826ec31638a5
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ \mbox{\hyperlink{class_event_properties_ace91b0c0e863ce20d2119f5eabe2dce4}{projectile\+Type}}
+\item 
+\mbox{\hyperlink{class_particle_type}{Particle\+Type}} $\ast$ \mbox{\hyperlink{class_event_properties_a4a38411432eb5670113eb116cc6f9e7d}{target\+Type}}
+\begin{DoxyCompactList}\small\item\em type of the projectile \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{class_event_properties_acb8cd3f24cae79f1668318c04431ebfc}{z\+Projectile}}
-\item 
+\begin{DoxyCompactList}\small\item\em type of the target \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{class_event_properties_a63fb4bae6c7ec751554c7b4fca432fc8}{a\+Projectile}}
-\item 
+\begin{DoxyCompactList}\small\item\em mass number projectile \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{class_event_properties_ac0923f4648e41371b4de055cf000156e}{n\+Part\+Projectile}}
-\item 
+\begin{DoxyCompactList}\small\item\em number of participants projectile \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{class_event_properties_a65a883b33d72a719f4b85db17e77034a}{z\+Target}}
-\item 
+\begin{DoxyCompactList}\small\item\em atomic number target \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{class_event_properties_acfaccab50080ae5be69e3694cf7e9a0e}{a\+Target}}
-\item 
+\begin{DoxyCompactList}\small\item\em mass number target \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{class_event_properties_a73a51e7e7b382deffd360dc1729e8cb5}{n\+Part\+Target}}
-\item 
-unsigned int \mbox{\hyperlink{class_event_properties_a4389e68d942d7496c2a00c7b36a8e61f}{n\+Part\+Total}}
-\item 
+\begin{DoxyCompactList}\small\item\em number of participants target \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_event_properties_ad66ebcce1ea08e122a030570649e713e}{n\+Participants\+Total}}
+\begin{DoxyCompactList}\small\item\em total number of participants \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{class_event_properties_ac5352eb0963a382b518429323aef460f}{n\+Binary\+Total}}
-\item 
+\begin{DoxyCompactList}\small\item\em total number of binary collisions \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_event_properties_a359effe83f1f43f0bf7c70cbe4df929b}{impact\+Parameter}}
-\item 
-double \mbox{\hyperlink{class_event_properties_ac7188544f82547d529eb089ccbe27b75}{centrality}}
-\item 
-double \mbox{\hyperlink{class_event_properties_afa30ebb98e5c6a1bb95472e98c6c8774}{multiplicity}}
-\item 
+\begin{DoxyCompactList}\small\item\em nucleus-\/nucleus center distance in fm \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_event_properties_a9fd73f57e21d8bf5c73a6365629dc5fa}{fractional\+XSection}}
+\begin{DoxyCompactList}\small\item\em fraction cross section value \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_event_properties_a931861c3171a3c1de316c8cd63bd56b6}{reference\+Multiplicity}}
+\begin{DoxyCompactList}\small\item\em nominal multiplicity in the reference range \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_event_properties_a865fe552cb9461c6e1d61fd785288456}{other}}
-\item 
+\begin{DoxyCompactList}\small\item\em other value of interest \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{class_event_properties_a548c3817af55f28f02a086d37ea463e7}{particles\+Counted}}
-\item 
+\begin{DoxyCompactList}\small\item\em number of particles provided internally by event generator/reader \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{class_event_properties_a13034097a0913972c8183556b3fabf4e}{particles\+Accepted}}
-\item 
+\begin{DoxyCompactList}\small\item\em number of particles accepted by event generator/reader\textquotesingle{}s particle filter \end{DoxyCompactList}\item 
 vector$<$ double $>$ \mbox{\hyperlink{class_event_properties_a54a66cc0d64d0a182ece11f0873611df}{model\+Parameters}}
 \item 
 int \mbox{\hyperlink{class_event_properties_a5e19cf5013ac872ffa5ee3091058a1d4}{n\+Filters}}
@@ -88,7 +92,7 @@ vector$<$ double $>$ \mbox{\hyperlink{class_event_properties_adb1849f8c7063463d0
 \doxysubsection{Detailed Description}
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00016}{16}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00019}{19}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 
 
@@ -101,7 +105,7 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00016}{16}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_event_properties_8cpp_source}{Event\+Properties.\+cpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{_event_properties_8cpp_source}{Event\+Properties.\+cpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a3bf0e91049480504f5641a97f557b1f8}\label{class_event_properties_a3bf0e91049480504f5641a97f557b1f8}} 
 \index{EventProperties@{EventProperties}!EventProperties@{EventProperties}}
@@ -111,7 +115,7 @@ Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00020}{20}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{_event_properties_8cpp_source}{Event\+Properties.\+cpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00042}{42}} of file \mbox{\hyperlink{_event_properties_8cpp_source}{Event\+Properties.\+cpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a635e4e4c6f64233bf1522c01ffea8de1}\label{class_event_properties_a635e4e4c6f64233bf1522c01ffea8de1}} 
 \index{EventProperties@{EventProperties}!````~EventProperties@{$\sim$EventProperties}}
@@ -121,7 +125,7 @@ Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00046}{46}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00026}{26}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 
 
@@ -134,7 +138,7 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00023}{23}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00100}{100}} of file \mbox{\hyperlink{_event_properties_8cpp_source}{Event\+Properties.\+cpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00096}{96}} of file \mbox{\hyperlink{_event_properties_8cpp_source}{Event\+Properties.\+cpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a96cf73b3052c214bda2e412c6110ffb7}\label{class_event_properties_a96cf73b3052c214bda2e412c6110ffb7}} 
 \index{EventProperties@{EventProperties}!fill@{fill}}
@@ -144,7 +148,7 @@ Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00100}{100}} 
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00148}{148}} of file \mbox{\hyperlink{_event_properties_8cpp_source}{Event\+Properties.\+cpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00144}{144}} of file \mbox{\hyperlink{_event_properties_8cpp_source}{Event\+Properties.\+cpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a71715614db0565826ec31638a57443ec}\label{class_event_properties_a71715614db0565826ec31638a57443ec}} 
 \index{EventProperties@{EventProperties}!fillSpherocity@{fillSpherocity}}
@@ -154,7 +158,7 @@ Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00148}{148}} 
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00165}{165}} of file \mbox{\hyperlink{_event_properties_8cpp_source}{Event\+Properties.\+cpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00161}{161}} of file \mbox{\hyperlink{_event_properties_8cpp_source}{Event\+Properties.\+cpp}}.
 
 \mbox{\Hypertarget{class_event_properties_aac9bfce90e9a44f337d6ae9b312f08b9}\label{class_event_properties_aac9bfce90e9a44f337d6ae9b312f08b9}} 
 \index{EventProperties@{EventProperties}!operator=@{operator=}}
@@ -164,7 +168,7 @@ Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00165}{165}} 
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{_event_properties_8cpp_source}{Event\+Properties.\+cpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00068}{68}} of file \mbox{\hyperlink{_event_properties_8cpp_source}{Event\+Properties.\+cpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a56f9e838407cdd868cf4974ffe13d969}\label{class_event_properties_a56f9e838407cdd868cf4974ffe13d969}} 
 \index{EventProperties@{EventProperties}!printProperties@{printProperties}}
@@ -174,7 +178,7 @@ Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00072}{72}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00172}{172}} of file \mbox{\hyperlink{_event_properties_8cpp_source}{Event\+Properties.\+cpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00168}{168}} of file \mbox{\hyperlink{_event_properties_8cpp_source}{Event\+Properties.\+cpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a1a0628894564a9b1f6983ebf1256b9db}\label{class_event_properties_a1a0628894564a9b1f6983ebf1256b9db}} 
 \index{EventProperties@{EventProperties}!reset@{reset}}
@@ -184,7 +188,7 @@ Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00172}{172}} 
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00124}{124}} of file \mbox{\hyperlink{_event_properties_8cpp_source}{Event\+Properties.\+cpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00120}{120}} of file \mbox{\hyperlink{_event_properties_8cpp_source}{Event\+Properties.\+cpp}}.
 
 
 
@@ -197,7 +201,11 @@ Definition at line \mbox{\hyperlink{_event_properties_8cpp_source_l00124}{124}} 
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+mass number projectile 
+
+
+
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_acfaccab50080ae5be69e3694cf7e9a0e}\label{class_event_properties_acfaccab50080ae5be69e3694cf7e9a0e}} 
 \index{EventProperties@{EventProperties}!aTarget@{aTarget}}
@@ -207,7 +215,11 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00041}{41}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00044}{44}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+mass number target 
+
+
+
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00049}{49}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_afb2574a82a5b558fdb8ea65999b5a9f7}\label{class_event_properties_afb2574a82a5b558fdb8ea65999b5a9f7}} 
 \index{EventProperties@{EventProperties}!bFiltered@{bFiltered}}
@@ -217,17 +229,7 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00044}{44}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00064}{64}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
-
-\mbox{\Hypertarget{class_event_properties_ac7188544f82547d529eb089ccbe27b75}\label{class_event_properties_ac7188544f82547d529eb089ccbe27b75}} 
-\index{EventProperties@{EventProperties}!centrality@{centrality}}
-\index{centrality@{centrality}!EventProperties@{EventProperties}}
-\doxysubsubsection{\texorpdfstring{centrality}{centrality}}
-{\footnotesize\ttfamily double Event\+Properties\+::centrality}
-
-
-
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00049}{49}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00069}{69}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a2c6eb11439417e72555202aae20d7ec3}\label{class_event_properties_a2c6eb11439417e72555202aae20d7ec3}} 
 \index{EventProperties@{EventProperties}!eFiltered@{eFiltered}}
@@ -237,7 +239,21 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00049}{49}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00061}{61}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_properties_a9fd73f57e21d8bf5c73a6365629dc5fa}\label{class_event_properties_a9fd73f57e21d8bf5c73a6365629dc5fa}} 
+\index{EventProperties@{EventProperties}!fractionalXSection@{fractionalXSection}}
+\index{fractionalXSection@{fractionalXSection}!EventProperties@{EventProperties}}
+\doxysubsubsection{\texorpdfstring{fractionalXSection}{fractionalXSection}}
+{\footnotesize\ttfamily double Event\+Properties\+::fractional\+XSection}
+
+
+
+fraction cross section value 
+
+
+
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00054}{54}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a359effe83f1f43f0bf7c70cbe4df929b}\label{class_event_properties_a359effe83f1f43f0bf7c70cbe4df929b}} 
 \index{EventProperties@{EventProperties}!impactParameter@{impactParameter}}
@@ -247,7 +263,11 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00061}{61}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+nucleus-\/nucleus center distance in fm 
+
+
+
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00053}{53}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a54a66cc0d64d0a182ece11f0873611df}\label{class_event_properties_a54a66cc0d64d0a182ece11f0873611df}} 
 \index{EventProperties@{EventProperties}!modelParameters@{modelParameters}}
@@ -257,17 +277,7 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00048}{48}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00056}{56}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
-
-\mbox{\Hypertarget{class_event_properties_afa30ebb98e5c6a1bb95472e98c6c8774}\label{class_event_properties_afa30ebb98e5c6a1bb95472e98c6c8774}} 
-\index{EventProperties@{EventProperties}!multiplicity@{multiplicity}}
-\index{multiplicity@{multiplicity}!EventProperties@{EventProperties}}
-\doxysubsubsection{\texorpdfstring{multiplicity}{multiplicity}}
-{\footnotesize\ttfamily double Event\+Properties\+::multiplicity}
-
-
-
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00050}{50}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00061}{61}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_ac5352eb0963a382b518429323aef460f}\label{class_event_properties_ac5352eb0963a382b518429323aef460f}} 
 \index{EventProperties@{EventProperties}!nBinaryTotal@{nBinaryTotal}}
@@ -277,7 +287,11 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00050}{50}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+total number of binary collisions 
+
+
+
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a64e0b4dd397f2fe04a79e10b5331099a}\label{class_event_properties_a64e0b4dd397f2fe04a79e10b5331099a}} 
 \index{EventProperties@{EventProperties}!nFiltered@{nFiltered}}
@@ -287,7 +301,7 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00047}{47}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a5e19cf5013ac872ffa5ee3091058a1d4}\label{class_event_properties_a5e19cf5013ac872ffa5ee3091058a1d4}} 
 \index{EventProperties@{EventProperties}!nFilters@{nFilters}}
@@ -297,7 +311,21 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00060}{60}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00064}{64}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_properties_ad66ebcce1ea08e122a030570649e713e}\label{class_event_properties_ad66ebcce1ea08e122a030570649e713e}} 
+\index{EventProperties@{EventProperties}!nParticipantsTotal@{nParticipantsTotal}}
+\index{nParticipantsTotal@{nParticipantsTotal}!EventProperties@{EventProperties}}
+\doxysubsubsection{\texorpdfstring{nParticipantsTotal}{nParticipantsTotal}}
+{\footnotesize\ttfamily unsigned int Event\+Properties\+::n\+Participants\+Total}
+
+
+
+total number of participants 
+
+
+
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_ac0923f4648e41371b4de055cf000156e}\label{class_event_properties_ac0923f4648e41371b4de055cf000156e}} 
 \index{EventProperties@{EventProperties}!nPartProjectile@{nPartProjectile}}
@@ -307,7 +335,11 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00059}{59}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00042}{42}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+number of participants projectile 
+
+
+
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a73a51e7e7b382deffd360dc1729e8cb5}\label{class_event_properties_a73a51e7e7b382deffd360dc1729e8cb5}} 
 \index{EventProperties@{EventProperties}!nPartTarget@{nPartTarget}}
@@ -317,17 +349,11 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00042}{42}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
-
-\mbox{\Hypertarget{class_event_properties_a4389e68d942d7496c2a00c7b36a8e61f}\label{class_event_properties_a4389e68d942d7496c2a00c7b36a8e61f}} 
-\index{EventProperties@{EventProperties}!nPartTotal@{nPartTotal}}
-\index{nPartTotal@{nPartTotal}!EventProperties@{EventProperties}}
-\doxysubsubsection{\texorpdfstring{nPartTotal}{nPartTotal}}
-{\footnotesize\ttfamily unsigned int Event\+Properties\+::n\+Part\+Total}
+number of participants target 
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00050}{50}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a865fe552cb9461c6e1d61fd785288456}\label{class_event_properties_a865fe552cb9461c6e1d61fd785288456}} 
 \index{EventProperties@{EventProperties}!other@{other}}
@@ -337,7 +363,11 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00046}{46}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+other value of interest 
+
+
+
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00056}{56}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a13034097a0913972c8183556b3fabf4e}\label{class_event_properties_a13034097a0913972c8183556b3fabf4e}} 
 \index{EventProperties@{EventProperties}!particlesAccepted@{particlesAccepted}}
@@ -347,7 +377,11 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00051}{51}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00053}{53}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+number of particles accepted by event generator/reader\textquotesingle{}s particle filter 
+
+
+
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00058}{58}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a548c3817af55f28f02a086d37ea463e7}\label{class_event_properties_a548c3817af55f28f02a086d37ea463e7}} 
 \index{EventProperties@{EventProperties}!particlesCounted@{particlesCounted}}
@@ -357,7 +391,21 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00053}{53}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+number of particles provided internally by event generator/reader 
+
+
+
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_properties_ace91b0c0e863ce20d2119f5eabe2dce4}\label{class_event_properties_ace91b0c0e863ce20d2119f5eabe2dce4}} 
+\index{EventProperties@{EventProperties}!projectileType@{projectileType}}
+\index{projectileType@{projectileType}!EventProperties@{EventProperties}}
+\doxysubsubsection{\texorpdfstring{projectileType}{projectileType}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type}{Particle\+Type}}$\ast$ Event\+Properties\+::projectile\+Type}
+
+
+
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a748f013da0e9a3ddbb238e4114aa9c22}\label{class_event_properties_a748f013da0e9a3ddbb238e4114aa9c22}} 
 \index{EventProperties@{EventProperties}!qFiltered@{qFiltered}}
@@ -367,7 +415,21 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00052}{52}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00062}{62}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_properties_a931861c3171a3c1de316c8cd63bd56b6}\label{class_event_properties_a931861c3171a3c1de316c8cd63bd56b6}} 
+\index{EventProperties@{EventProperties}!referenceMultiplicity@{referenceMultiplicity}}
+\index{referenceMultiplicity@{referenceMultiplicity}!EventProperties@{EventProperties}}
+\doxysubsubsection{\texorpdfstring{referenceMultiplicity}{referenceMultiplicity}}
+{\footnotesize\ttfamily double Event\+Properties\+::reference\+Multiplicity}
+
+
+
+nominal multiplicity in the reference range 
+
+
+
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00055}{55}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a384456ca151a4e3942dc5421470f61b2}\label{class_event_properties_a384456ca151a4e3942dc5421470f61b2}} 
 \index{EventProperties@{EventProperties}!s0Filtered@{s0Filtered}}
@@ -377,7 +439,7 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00062}{62}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_adb1849f8c7063463d01bbc73931518c3}\label{class_event_properties_adb1849f8c7063463d01bbc73931518c3}} 
 \index{EventProperties@{EventProperties}!s1Filtered@{s1Filtered}}
@@ -387,7 +449,7 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00067}{67}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_ad82bb6bbd8c778f3ffbbd4c4dc314a86}\label{class_event_properties_ad82bb6bbd8c778f3ffbbd4c4dc314a86}} 
 \index{EventProperties@{EventProperties}!sFiltered@{sFiltered}}
@@ -397,7 +459,21 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00068}{68}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+
+\mbox{\Hypertarget{class_event_properties_a4a38411432eb5670113eb116cc6f9e7d}\label{class_event_properties_a4a38411432eb5670113eb116cc6f9e7d}} 
+\index{EventProperties@{EventProperties}!targetType@{targetType}}
+\index{targetType@{targetType}!EventProperties@{EventProperties}}
+\doxysubsubsection{\texorpdfstring{targetType}{targetType}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_particle_type}{Particle\+Type}}$\ast$ Event\+Properties\+::target\+Type}
+
+
+
+type of the projectile 
+
+
+
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00044}{44}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_acb8cd3f24cae79f1668318c04431ebfc}\label{class_event_properties_acb8cd3f24cae79f1668318c04431ebfc}} 
 \index{EventProperties@{EventProperties}!zProjectile@{zProjectile}}
@@ -407,7 +483,11 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00063}{63}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00040}{40}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+type of the target 
+
+atomic number projectile 
+
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 \mbox{\Hypertarget{class_event_properties_a65a883b33d72a719f4b85db17e77034a}\label{class_event_properties_a65a883b33d72a719f4b85db17e77034a}} 
 \index{EventProperties@{EventProperties}!zTarget@{zTarget}}
@@ -417,7 +497,11 @@ Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00040}{40}} o
 
 
 
-Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
+atomic number target 
+
+
+
+Definition at line \mbox{\hyperlink{_event_properties_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{_event_properties_8hpp_source}{Event\+Properties.\+hpp}}.
 
 
 

@@ -2,11 +2,6 @@
 \label{class_histogram_collection}\index{HistogramCollection@{HistogramCollection}}
 
 
-using namespace std;  
-
-
-
-
 {\ttfamily \#include $<$Histogram\+Collection.\+hpp$>$}
 
 
@@ -246,9 +241,17 @@ void \mbox{\hyperlink{class_histogram_collection_ada0ef58bd3a3391d464ee2efb763fd
 \item 
 void \mbox{\hyperlink{class_histogram_collection_ab138594e92e2fe1a0c3559a5a42a93e4}{calculate\+Nudyn}} (double r2\+\_\+11, double er2\+\_\+11, double r2\+\_\+12, double er2\+\_\+12, double r2\+\_\+22, double er2\+\_\+22, double \&nudyn, double \&enudyn)
 \item 
+void \mbox{\hyperlink{class_histogram_collection_a284d9d7d904166062ce2a6fa6e981894}{difference\+Collection}} (const \mbox{\hyperlink{class_histogram_collection}{Histogram\+Collection}} \&collection, const \mbox{\hyperlink{class_histogram_collection}{Histogram\+Collection}} \&ref\+Collection, bool correlated\+Uncertainties)
+\item 
+void \mbox{\hyperlink{class_histogram_collection_ab38f556aa46f58406cd66b06f919b111}{ratio\+Collection}} (const \mbox{\hyperlink{class_histogram_collection}{Histogram\+Collection}} \&collection, const \mbox{\hyperlink{class_histogram_collection}{Histogram\+Collection}} \&ref\+Collection, bool correlated\+Uncertainties)
+\item 
 void \mbox{\hyperlink{class_histogram_collection_a9164c0d68cbfdf4d7144cc24927323e0}{square\+Difference\+Collection}} (const \mbox{\hyperlink{class_histogram_collection}{Histogram\+Collection}} \&collection, double sum\+Weights, double weight, int n)
-\begin{DoxyCompactList}\small\item\em ========================== \end{DoxyCompactList}\item 
+\item 
 void \mbox{\hyperlink{class_histogram_collection_a2e733dffcda9455836e149168383ea08}{square\+Difference\+Histos}} (TH1 $\ast$h\+Avg, TH1 $\ast$h, double sum\+Weights, double weight, int n)
+\item 
+void \mbox{\hyperlink{class_histogram_collection_abd3280954a328454392bfd79fbbe7e26}{difference\+Histos}} (TH1 $\ast$h, TH1 $\ast$h\+Ref, TH1 $\ast$h\+Diff, bool correlated\+Uncertainties)
+\item 
+void \mbox{\hyperlink{class_histogram_collection_a0a64114121ec8db86de2f333c77e26ed}{ratio\+Histos}} (TH1 $\ast$h, TH1 $\ast$h\+Ref, TH1 $\ast$h\+Diff, bool correlated\+Uncertainties)
 \item 
 int \mbox{\hyperlink{class_histogram_collection_af9d44ee3539c54ce3fa243669c3d24bc}{get\+Dimension}} (const TH1 $\ast$h) const
 \item 
@@ -271,9 +274,9 @@ TRandom $\ast$ \mbox{\hyperlink{class_histogram_collection_a016427fbf6bf467dc567
 
 
 \doxysubsection{Detailed Description}
-using namespace std; 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{_histogram_collection_8hpp_source}{Histogram\+Collection.\+hpp}}.
+
+Definition at line \mbox{\hyperlink{_histogram_collection_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{_histogram_collection_8hpp_source}{Histogram\+Collection.\+hpp}}.
 
 
 
@@ -286,7 +289,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8hpp_source_l00045}{45
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a43a0f58a026e1a9c3c07bdd8efbbb033}\label{class_histogram_collection_a43a0f58a026e1a9c3c07bdd8efbbb033}} 
 \index{HistogramCollection@{HistogramCollection}!HistogramCollection@{HistogramCollection}}
@@ -296,7 +299,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00017}{17
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a1151323b2a96e08f57ace06414f01b47}\label{class_histogram_collection_a1151323b2a96e08f57ace06414f01b47}} 
 \index{HistogramCollection@{HistogramCollection}!````~HistogramCollection@{$\sim$HistogramCollection}}
@@ -306,7 +309,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00027}{27
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 
 
@@ -323,7 +326,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00062}{62
 
 ========================== 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00717}{717}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00736}{736}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_ad2cb43c938f3962ce74e3e3bb52a4ec0}\label{class_histogram_collection_ad2cb43c938f3962ce74e3e3bb52a4ec0}} 
 \index{HistogramCollection@{HistogramCollection}!add@{add}}
@@ -337,7 +340,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00717}{71
 
 ========================== 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00651}{651}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00670}{670}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a84ddc5c3749b99d616c9d60c9e30e656}\label{class_histogram_collection_a84ddc5c3749b99d616c9d60c9e30e656}} 
 \index{HistogramCollection@{HistogramCollection}!add@{add}}
@@ -351,7 +354,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00651}{65
 
 ========================== 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00598}{598}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00617}{617}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a14256224a70b05e564ae4cc664692a7a}\label{class_histogram_collection_a14256224a70b05e564ae4cc664692a7a}} 
 \index{HistogramCollection@{HistogramCollection}!add@{add}}
@@ -365,7 +368,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00598}{59
 
 ========================== 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00548}{548}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00565}{565}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a75953b75d4a2dddc1a419038945fdf41}\label{class_histogram_collection_a75953b75d4a2dddc1a419038945fdf41}} 
 \index{HistogramCollection@{HistogramCollection}!addHistogramsToExtList@{addHistogramsToExtList}}
@@ -375,7 +378,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00548}{54
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00266}{266}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00282}{282}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a355069eef0085f5cd5f1ff83d9acc1e4}\label{class_histogram_collection_a355069eef0085f5cd5f1ff83d9acc1e4}} 
 \index{HistogramCollection@{HistogramCollection}!avgValue@{avgValue}}
@@ -385,7 +388,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00266}{26
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02420}{2420}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02758}{2758}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a33292347293b6d977815ab9848fa94f2}\label{class_histogram_collection_a33292347293b6d977815ab9848fa94f2}} 
 \index{HistogramCollection@{HistogramCollection}!calculateAverage@{calculateAverage}}
@@ -395,7 +398,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02420}{24
 
 Compute the average density of particles based on the given d\+N/dx histogram. The histogram is assumed to be a yield per event per bin vs. eta The average value is thus divided by the bin width to make it into a density. This yields a density integrated over 2pi. So to use this number, one must also divide by 2pi. 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03291}{3291}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03630}{3630}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_aeb4fab05c64aa1d04168958870fdbe5d}\label{class_histogram_collection_aeb4fab05c64aa1d04168958870fdbe5d}} 
 \index{HistogramCollection@{HistogramCollection}!calculateAveragePt@{calculateAveragePt}}
@@ -405,7 +408,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03291}{32
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03382}{3382}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03724}{3724}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a377f0b71c205221ec4e8bbf5252bf309}\label{class_histogram_collection_a377f0b71c205221ec4e8bbf5252bf309}} 
 \index{HistogramCollection@{HistogramCollection}!calculateAveragePt@{calculateAveragePt}}
@@ -415,7 +418,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03382}{33
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03486}{3486}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03828}{3828}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_ab16ca0fe97d57ccb9b62f1679b421513}\label{class_histogram_collection_ab16ca0fe97d57ccb9b62f1679b421513}} 
 \index{HistogramCollection@{HistogramCollection}!calculateAveragePtH1H2@{calculateAveragePtH1H2}}
@@ -425,7 +428,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03486}{34
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03449}{3449}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03791}{3791}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_ab8aade697771b9fecd2dea9635bf02bf}\label{class_histogram_collection_ab8aade697771b9fecd2dea9635bf02bf}} 
 \index{HistogramCollection@{HistogramCollection}!calculateAveragePtH2@{calculateAveragePtH2}}
@@ -435,7 +438,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03449}{34
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03414}{3414}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03756}{3756}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_ab1b19bc94f853ce7b78f54071c79dfb6}\label{class_histogram_collection_ab1b19bc94f853ce7b78f54071c79dfb6}} 
 \index{HistogramCollection@{HistogramCollection}!calculateAvgH2H2@{calculateAvgH2H2}}
@@ -445,7 +448,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03414}{34
 
 Calculate the \textquotesingle{}triangle\textquotesingle{} normalization target will be divided by bin widths and scale\+Factor 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02984}{2984}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03323}{3323}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a45e66e6d428ec573d372d5a80ec4c1ed}\label{class_histogram_collection_a45e66e6d428ec573d372d5a80ec4c1ed}} 
 \index{HistogramCollection@{HistogramCollection}!calculateBf@{calculateBf}}
@@ -455,7 +458,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02984}{29
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01934}{1934}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02273}{2273}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_aba39644ec588d4aee6b9526eef6f1da7}\label{class_histogram_collection_aba39644ec588d4aee6b9526eef6f1da7}} 
 \index{HistogramCollection@{HistogramCollection}!calculateBinCorr@{calculateBinCorr}}
@@ -465,7 +468,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01934}{19
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03236}{3236}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03575}{3575}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a35890a02be4560035d4463e9cb3c31c9}\label{class_histogram_collection_a35890a02be4560035d4463e9cb3c31c9}} 
 \index{HistogramCollection@{HistogramCollection}!calculateDptDpt@{calculateDptDpt}}
@@ -475,7 +478,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03236}{32
 
 Calculate the G2 observable based on the given components 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01813}{1813}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02150}{2150}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a615ebd3c9d410c0c45372b4d41fe486d}\label{class_histogram_collection_a615ebd3c9d410c0c45372b4d41fe486d}} 
 \index{HistogramCollection@{HistogramCollection}!calculateDptDpt@{calculateDptDpt}}
@@ -485,7 +488,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01813}{18
 
 Calculate the G2 observable based on the given components 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01727}{1727}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02064}{2064}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_ac415a8ac4fa64bb59b1d6b83fc651cd5}\label{class_histogram_collection_ac415a8ac4fa64bb59b1d6b83fc651cd5}} 
 \index{HistogramCollection@{HistogramCollection}!calculateF2R2@{calculateF2R2}}
@@ -495,7 +498,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01727}{17
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04780}{4780}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l05122}{5122}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_ae6d29e24a8560517b3f182aa12521938}\label{class_histogram_collection_ae6d29e24a8560517b3f182aa12521938}} 
 \index{HistogramCollection@{HistogramCollection}!calculateF2R2@{calculateF2R2}}
@@ -505,7 +508,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04780}{47
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04649}{4649}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04991}{4991}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a44dbcdf9ce0fd06db0ba7e267a7affad}\label{class_histogram_collection_a44dbcdf9ce0fd06db0ba7e267a7affad}} 
 \index{HistogramCollection@{HistogramCollection}!calculateF3R3@{calculateF3R3}}
@@ -515,7 +518,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04649}{46
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04807}{4807}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l05149}{5149}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_aa190b7b790c797e2ba4ee1520b29e60a}\label{class_histogram_collection_aa190b7b790c797e2ba4ee1520b29e60a}} 
 \index{HistogramCollection@{HistogramCollection}!calculateF3R3@{calculateF3R3}}
@@ -525,7 +528,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04807}{48
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04694}{4694}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l05036}{5036}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_ada0ef58bd3a3391d464ee2efb763fda1}\label{class_histogram_collection_ada0ef58bd3a3391d464ee2efb763fda1}} 
 \index{HistogramCollection@{HistogramCollection}!calculateF4R4@{calculateF4R4}}
@@ -535,7 +538,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04694}{46
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04844}{4844}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l05186}{5186}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a5647473ffae97bd91b98d570aa2de21e}\label{class_histogram_collection_a5647473ffae97bd91b98d570aa2de21e}} 
 \index{HistogramCollection@{HistogramCollection}!calculateF4R4@{calculateF4R4}}
@@ -545,7 +548,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04844}{48
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04729}{4729}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l05071}{5071}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a2c2802684652a51c83aab112f151268d}\label{class_histogram_collection_a2c2802684652a51c83aab112f151268d}} 
 \index{HistogramCollection@{HistogramCollection}!calculateG2\_H2H2H2H2@{calculateG2\_H2H2H2H2}}
@@ -555,7 +558,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04729}{47
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01897}{1897}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02235}{2235}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a6647abaf7991d3b77c83c7d3bbcf0639}\label{class_histogram_collection_a6647abaf7991d3b77c83c7d3bbcf0639}} 
 \index{HistogramCollection@{HistogramCollection}!calculateIntegral@{calculateIntegral}}
@@ -565,7 +568,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01897}{18
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03321}{3321}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03661}{3661}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_aa9cc5c2163ddaf3143d6d81fd814c909}\label{class_histogram_collection_aa9cc5c2163ddaf3143d6d81fd814c909}} 
 \index{HistogramCollection@{HistogramCollection}!calculateIntegral@{calculateIntegral}}
@@ -575,7 +578,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03321}{33
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03354}{3354}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03695}{3695}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a802f21b0b1f058f92f8703181d630ca7}\label{class_histogram_collection_a802f21b0b1f058f92f8703181d630ca7}} 
 \index{HistogramCollection@{HistogramCollection}!calculateN1N1@{calculateN1N1}}
@@ -585,7 +588,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03354}{33
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01071}{1071}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01409}{1409}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a083ba8d5054c1102ddaaeee065e40e8e}\label{class_histogram_collection_a083ba8d5054c1102ddaaeee065e40e8e}} 
 \index{HistogramCollection@{HistogramCollection}!calculateN1N1\_H1H1H2@{calculateN1N1\_H1H1H2}}
@@ -595,7 +598,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01071}{10
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01125}{1125}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01463}{1463}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a78c6383d8f5acafd045444a1269b4103}\label{class_histogram_collection_a78c6383d8f5acafd045444a1269b4103}} 
 \index{HistogramCollection@{HistogramCollection}!calculateN1N1\_H2H2H2@{calculateN1N1\_H2H2H2}}
@@ -605,7 +608,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01125}{11
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01179}{1179}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01517}{1517}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_ad4156c1fb77d2f0f238b58e8c48e7eab}\label{class_histogram_collection_ad4156c1fb77d2f0f238b58e8c48e7eab}} 
 \index{HistogramCollection@{HistogramCollection}!calculateN1N1H2H2\_Q3D@{calculateN1N1H2H2\_Q3D}}
@@ -615,7 +618,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01179}{11
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02255}{2255}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02587}{2587}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a0c9b40aeef2b7e06a8832d74ba8106a0}\label{class_histogram_collection_a0c9b40aeef2b7e06a8832d74ba8106a0}} 
 \index{HistogramCollection@{HistogramCollection}!calculateN1N1H2H2\_Q3D\_MCEta@{calculateN1N1H2H2\_Q3D\_MCEta}}
@@ -625,7 +628,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02255}{22
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02215}{2215}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02549}{2549}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_abd2974d8919b0e36865dcebe176804bd}\label{class_histogram_collection_abd2974d8919b0e36865dcebe176804bd}} 
 \index{HistogramCollection@{HistogramCollection}!calculateN1N1H2H2\_Q3D\_MCY@{calculateN1N1H2H2\_Q3D\_MCY}}
@@ -635,7 +638,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02215}{22
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02171}{2171}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02507}{2507}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a33f6b4817371eddbd9fbb0f73177cc61}\label{class_histogram_collection_a33f6b4817371eddbd9fbb0f73177cc61}} 
 \index{HistogramCollection@{HistogramCollection}!calculateN1N1H3H3\_Q3D@{calculateN1N1H3H3\_Q3D}}
@@ -645,7 +648,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02171}{21
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02308}{2308}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02640}{2640}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_aca3e40cb3fe6f8077d1f940d441cdb6f}\label{class_histogram_collection_aca3e40cb3fe6f8077d1f940d441cdb6f}} 
 \index{HistogramCollection@{HistogramCollection}!calculateN1N1N1@{calculateN1N1N1}}
@@ -655,7 +658,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02308}{23
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01243}{1243}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01581}{1581}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a675d9eb447b13781e6e86d62af75af15}\label{class_histogram_collection_a675d9eb447b13781e6e86d62af75af15}} 
 \index{HistogramCollection@{HistogramCollection}!calculateN1N1N1@{calculateN1N1N1}}
@@ -665,7 +668,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01243}{12
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01288}{1288}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01626}{1626}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_adf307d8a3d3044ae7030b8a3ebe89350}\label{class_histogram_collection_adf307d8a3d3044ae7030b8a3ebe89350}} 
 \index{HistogramCollection@{HistogramCollection}!calculateN2N1@{calculateN2N1}}
@@ -675,7 +678,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01288}{12
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01329}{1329}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01667}{1667}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a4b6e1dce8576763c1b7c90779c654f9f}\label{class_histogram_collection_a4b6e1dce8576763c1b7c90779c654f9f}} 
 \index{HistogramCollection@{HistogramCollection}!calculateN2N1x@{calculateN2N1x}}
@@ -685,7 +688,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01329}{13
 
 Fold s2 and s1 into target 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01389}{1389}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01727}{1727}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_ab138594e92e2fe1a0c3559a5a42a93e4}\label{class_histogram_collection_ab138594e92e2fe1a0c3559a5a42a93e4}} 
 \index{HistogramCollection@{HistogramCollection}!calculateNudyn@{calculateNudyn}}
@@ -695,7 +698,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01389}{13
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04906}{4906}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l05249}{5249}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a8c0a4ed23bd88c3efaa18027beb5d13e}\label{class_histogram_collection_a8c0a4ed23bd88c3efaa18027beb5d13e}} 
 \index{HistogramCollection@{HistogramCollection}!calculateNudyn@{calculateNudyn}}
@@ -705,7 +708,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04906}{49
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04673}{4673}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l05015}{5015}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a5c04c4d6adf8c4fad984176e06a97fae}\label{class_histogram_collection_a5c04c4d6adf8c4fad984176e06a97fae}} 
 \index{HistogramCollection@{HistogramCollection}!calculateQ3DwPtPhiEta@{calculateQ3DwPtPhiEta}}
@@ -715,7 +718,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04673}{46
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02042}{2042}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02378}{2378}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a221c4acccd5acac82373a7785b9c130a}\label{class_histogram_collection_a221c4acccd5acac82373a7785b9c130a}} 
 \index{HistogramCollection@{HistogramCollection}!calculateQ3DwPtPhiY@{calculateQ3DwPtPhiY}}
@@ -725,7 +728,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02042}{20
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02102}{2102}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02438}{2438}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a84b75cf0eb2bfb196b86a842bc5679c9}\label{class_histogram_collection_a84b75cf0eb2bfb196b86a842bc5679c9}} 
 \index{HistogramCollection@{HistogramCollection}!calculateR2\_H1H1H1@{calculateR2\_H1H1H1}}
@@ -739,7 +742,7 @@ Calculate R2 = bin\+Correction$\ast$\+N2/\+N1/\+N1 -\/ 1.
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03020}{3020}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03359}{3359}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_ae8a6acc748b9fd53afa3aaf105c9f934}\label{class_histogram_collection_ae8a6acc748b9fd53afa3aaf105c9f934}} 
 \index{HistogramCollection@{HistogramCollection}!calculateR2\_H1H2H2@{calculateR2\_H1H2H2}}
@@ -749,7 +752,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03020}{30
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03117}{3117}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03456}{3456}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_aac133ace5ab6830e0b280e6f9457f5b4}\label{class_histogram_collection_aac133ace5ab6830e0b280e6f9457f5b4}} 
 \index{HistogramCollection@{HistogramCollection}!calculateR2\_H2H2H2@{calculateR2\_H2H2H2}}
@@ -759,7 +762,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03117}{31
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03077}{3077}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03416}{3416}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a7d5a08ef38c7efc394904179cc7c8e88}\label{class_histogram_collection_a7d5a08ef38c7efc394904179cc7c8e88}} 
 \index{HistogramCollection@{HistogramCollection}!calculateR2\_Q3D@{calculateR2\_Q3D}}
@@ -769,7 +772,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03077}{30
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02371}{2371}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02703}{2703}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a60174f692a2d5779ab747cd855c802ee}\label{class_histogram_collection_a60174f692a2d5779ab747cd855c802ee}} 
 \index{HistogramCollection@{HistogramCollection}!calculateR2VsM@{calculateR2VsM}}
@@ -779,7 +782,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02371}{23
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03175}{3175}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03514}{3514}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_abb2f86f425e10f8a3cd712a3509885ba}\label{class_histogram_collection_abb2f86f425e10f8a3cd712a3509885ba}} 
 \index{HistogramCollection@{HistogramCollection}!calculateSc@{calculateSc}}
@@ -789,7 +792,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03175}{31
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01866}{1866}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02203}{2203}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a56afba5630f5f763e1951ade4d99b8a9}\label{class_histogram_collection_a56afba5630f5f763e1951ade4d99b8a9}} 
 \index{HistogramCollection@{HistogramCollection}!calculateSean\_H1H2H2H2@{calculateSean\_H1H2H2H2}}
@@ -799,7 +802,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01866}{18
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01977}{1977}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02316}{2316}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a8ac292967dc3381d557d3eb2f5730b38}\label{class_histogram_collection_a8ac292967dc3381d557d3eb2f5730b38}} 
 \index{HistogramCollection@{HistogramCollection}!ClassDef@{ClassDef}}
@@ -819,7 +822,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01977}{19
 
 ========================== 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00528}{528}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00546}{546}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a96e319a56a6343b54f0b47c173427e50}\label{class_histogram_collection_a96e319a56a6343b54f0b47c173427e50}} 
 \index{HistogramCollection@{HistogramCollection}!clone@{clone}}
@@ -833,7 +836,7 @@ Clone the given histogram, and set the clone\textquotesingle{}s name to the give
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02614}{2614}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02953}{2953}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_afbfbe90470d230f247c75bf3c3f7b18a}\label{class_histogram_collection_afbfbe90470d230f247c75bf3c3f7b18a}} 
 \index{HistogramCollection@{HistogramCollection}!correctMerging@{correctMerging}}
@@ -843,7 +846,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02614}{26
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02898}{2898}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03237}{3237}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_ad96e77089bb5881ab0919c2e7d072be5}\label{class_histogram_collection_ad96e77089bb5881ab0919c2e7d072be5}} 
 \index{HistogramCollection@{HistogramCollection}!createHistogram@{createHistogram}}
@@ -853,7 +856,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02898}{28
 
 Create 1D histogram 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00113}{113}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00129}{129}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a5f7de86232efa5df2a9cdf659834450e}\label{class_histogram_collection_a5f7de86232efa5df2a9cdf659834450e}} 
 \index{HistogramCollection@{HistogramCollection}!createHistogram@{createHistogram}}
@@ -863,7 +866,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00113}{11
 
 Create 1D histogram 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00094}{94}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a6b0ff3082121afee7ddd154f19445bc2}\label{class_histogram_collection_a6b0ff3082121afee7ddd154f19445bc2}} 
 \index{HistogramCollection@{HistogramCollection}!createHistogram@{createHistogram}}
@@ -873,7 +876,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00094}{94
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00154}{154}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00170}{170}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a50dc989ad7837d8189e3dc979de98ec2}\label{class_histogram_collection_a50dc989ad7837d8189e3dc979de98ec2}} 
 \index{HistogramCollection@{HistogramCollection}!createHistogram@{createHistogram}}
@@ -883,7 +886,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00154}{15
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00132}{132}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00148}{148}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a69c093a2c4888ffb1453d5cc86fae316}\label{class_histogram_collection_a69c093a2c4888ffb1453d5cc86fae316}} 
 \index{HistogramCollection@{HistogramCollection}!createHistogram@{createHistogram}}
@@ -893,7 +896,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00132}{13
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00177}{177}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00193}{193}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_ab229e7c126978da44354815938725a0c}\label{class_histogram_collection_ab229e7c126978da44354815938725a0c}} 
 \index{HistogramCollection@{HistogramCollection}!createProfile@{createProfile}}
@@ -903,7 +906,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00177}{17
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00224}{224}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00240}{240}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a4b64e86bb82fa06b4d1f40a0fd86dd30}\label{class_histogram_collection_a4b64e86bb82fa06b4d1f40a0fd86dd30}} 
 \index{HistogramCollection@{HistogramCollection}!createProfile@{createProfile}}
@@ -913,7 +916,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00224}{22
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00207}{207}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00223}{223}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_af7e36202aa9e3555e85361c93df4b18f}\label{class_histogram_collection_af7e36202aa9e3555e85361c93df4b18f}} 
 \index{HistogramCollection@{HistogramCollection}!createProfile@{createProfile}}
@@ -923,7 +926,51 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00207}{20
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00242}{242}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00258}{258}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_histogram_collection_a284d9d7d904166062ce2a6fa6e981894}\label{class_histogram_collection_a284d9d7d904166062ce2a6fa6e981894}} 
+\index{HistogramCollection@{HistogramCollection}!differenceCollection@{differenceCollection}}
+\index{differenceCollection@{differenceCollection}!HistogramCollection@{HistogramCollection}}
+\doxysubsubsection{\texorpdfstring{differenceCollection()}{differenceCollection()}}
+{\footnotesize\ttfamily void Histogram\+Collection\+::difference\+Collection (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_histogram_collection}{Histogram\+Collection}} \&}]{collection,  }\item[{const \mbox{\hyperlink{class_histogram_collection}{Histogram\+Collection}} \&}]{ref\+Collection,  }\item[{bool}]{correlated\+Uncertainties }\end{DoxyParamCaption})}
+
+Span all histograms of the two given collections and span each of their histograms bin by bin to compute differences and store the content difference in this collection. The collections must exactly the same number of histograms, in the same order, and with the same exact dimensions. \mbox{\hyperlink{class_histograms}{Histograms}} may be profiles. Uncertainties on the differences are computed as sum of square of uncertainties if correlated\+Uncertainties==0 and as a difference of square of uncertainties if correlated\+Uncertainties==1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em collection} & \mbox{\hyperlink{class_collection}{Collection}} of histograms to be compared to those of the reference collection. \\
+\hline
+{\em ref\+Collection} & Reference collection of histograms \\
+\hline
+{\em correlated\+Uncertainties} & Whether the uncertainties of the given and reference collection histograms are correlated. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00910}{910}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_histogram_collection_abd3280954a328454392bfd79fbbe7e26}\label{class_histogram_collection_abd3280954a328454392bfd79fbbe7e26}} 
+\index{HistogramCollection@{HistogramCollection}!differenceHistos@{differenceHistos}}
+\index{differenceHistos@{differenceHistos}!HistogramCollection@{HistogramCollection}}
+\doxysubsubsection{\texorpdfstring{differenceHistos()}{differenceHistos()}}
+{\footnotesize\ttfamily void Histogram\+Collection\+::difference\+Histos (\begin{DoxyParamCaption}\item[{TH1 $\ast$}]{h,  }\item[{TH1 $\ast$}]{h\+Ref,  }\item[{TH1 $\ast$}]{h\+Diff,  }\item[{bool}]{correlated\+Uncertainties }\end{DoxyParamCaption})}
+
+Span all bins of h and href and calculate the content difference (and the uncertainty) and store the difference in h\+Diff. All three given histograms must have the same exact dimensions. The histogram h and h\+Ref may be profiles. Uncertainties on the difference h\+Diff are computed as sum of square of uncertainties on h and href if correlated\+Uncertainties==0 and as a difference of square of uncertainties if correlated\+Uncertainties==1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & Histogram to be tested against the reference Histogram \\
+\hline
+{\em h\+Ref} & Reference Histogram \\
+\hline
+{\em h\+Diff} & Difference histogram produced on output \\
+\hline
+{\em correlated\+Uncertainties} & Whether the uncertainties of h and href are correlated\+: true if they are, false if they are not. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01152}{1152}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_aa841898535ec76b9207409f71193cfa5}\label{class_histogram_collection_aa841898535ec76b9207409f71193cfa5}} 
 \index{HistogramCollection@{HistogramCollection}!divide@{divide}}
@@ -937,7 +984,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00242}{24
 
 ========================== 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00788}{788}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00807}{807}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_af2314f1df5682aea2b7b0f2d9d489726}\label{class_histogram_collection_af2314f1df5682aea2b7b0f2d9d489726}} 
 \index{HistogramCollection@{HistogramCollection}!divide@{divide}}
@@ -951,7 +998,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00788}{78
 
 ========================== 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00842}{842}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00861}{861}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a6006c0b0e041cfda9e5df6d7e56e8ea7}\label{class_histogram_collection_a6006c0b0e041cfda9e5df6d7e56e8ea7}} 
 \index{HistogramCollection@{HistogramCollection}!findMaximum@{findMaximum}}
@@ -961,7 +1008,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00842}{84
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02632}{2632}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02971}{2971}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_afc89cb445424dab965a311dd2df66665}\label{class_histogram_collection_afc89cb445424dab965a311dd2df66665}} 
 \index{HistogramCollection@{HistogramCollection}!findMinimum@{findMinimum}}
@@ -971,7 +1018,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02632}{26
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02654}{2654}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02993}{2993}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_af9d44ee3539c54ce3fa243669c3d24bc}\label{class_histogram_collection_af9d44ee3539c54ce3fa243669c3d24bc}} 
 \index{HistogramCollection@{HistogramCollection}!getDimension@{getDimension}}
@@ -981,7 +1028,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02654}{26
 
 Check whether the given histograms have the same dimension and size. 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01466}{1466}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01804}{1804}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a68380e4e61d857db91681c3219c3bc46}\label{class_histogram_collection_a68380e4e61d857db91681c3219c3bc46}} 
 \index{HistogramCollection@{HistogramCollection}!getDoubleArray@{getDoubleArray}}
@@ -991,7 +1038,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01466}{14
 
 Allocate an array of type double with n values Initialize the array to the given value
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04213}{4213}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04555}{4555}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a4418a71f7549526830a4f777bfc2d31b}\label{class_histogram_collection_a4418a71f7549526830a4f777bfc2d31b}} 
 \index{HistogramCollection@{HistogramCollection}!getFloatArray@{getFloatArray}}
@@ -1001,7 +1048,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04213}{42
 
 Allocate an array of type float with n values Initialize the array to the given value
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04202}{4202}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04544}{4544}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a74aa74def9224725605402e4de8bb23b}\label{class_histogram_collection_a74aa74def9224725605402e4de8bb23b}} 
 \index{HistogramCollection@{HistogramCollection}!getHisto@{getHisto}}
@@ -1011,7 +1058,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04202}{42
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8hpp_source_l00062}{62}} of file \mbox{\hyperlink{_histogram_collection_8hpp_source}{Histogram\+Collection.\+hpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{_histogram_collection_8hpp_source}{Histogram\+Collection.\+hpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a930792537e0bbec3aa539f90b14dc69a}\label{class_histogram_collection_a930792537e0bbec3aa539f90b14dc69a}} 
 \index{HistogramCollection@{HistogramCollection}!getNHistograms@{getNHistograms}}
@@ -1021,7 +1068,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8hpp_source_l00062}{62
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8hpp_source_l00056}{56}} of file \mbox{\hyperlink{_histogram_collection_8hpp_source}{Histogram\+Collection.\+hpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{_histogram_collection_8hpp_source}{Histogram\+Collection.\+hpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_ab0529f7a9e2b78d8f48602f82b6653ca}\label{class_histogram_collection_ab0529f7a9e2b78d8f48602f82b6653ca}} 
 \index{HistogramCollection@{HistogramCollection}!index2@{index2}}
@@ -1031,7 +1078,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8hpp_source_l00056}{56
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04235}{4235}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04577}{4577}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_ae28290975f6f453c65f948fdfda7ee1f}\label{class_histogram_collection_ae28290975f6f453c65f948fdfda7ee1f}} 
 \index{HistogramCollection@{HistogramCollection}!index3@{index3}}
@@ -1041,7 +1088,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04235}{42
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04282}{4282}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04624}{4624}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_abcbaeda983a9af6c2d0ea8eb90de52b7}\label{class_histogram_collection_abcbaeda983a9af6c2d0ea8eb90de52b7}} 
 \index{HistogramCollection@{HistogramCollection}!index4@{index4}}
@@ -1051,7 +1098,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04282}{42
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04399}{4399}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04741}{4741}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a6744a60c1babf1709fb884f71e59b5dd}\label{class_histogram_collection_a6744a60c1babf1709fb884f71e59b5dd}} 
 \index{HistogramCollection@{HistogramCollection}!loadCollection@{loadCollection}}
@@ -1061,7 +1108,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04399}{43
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00504}{504}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00522}{522}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}\label{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}} 
 \index{HistogramCollection@{HistogramCollection}!loadH1@{loadH1}}
@@ -1071,7 +1118,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00504}{50
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02509}{2509}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02848}{2848}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a56ce4428bd4299734ea251838f96c0ed}\label{class_histogram_collection_a56ce4428bd4299734ea251838f96c0ed}} 
 \index{HistogramCollection@{HistogramCollection}!loadH2@{loadH2}}
@@ -1081,7 +1128,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02509}{25
 
 Load the given 1D histogram (name) from the given TFile No test is //done to verify that the file is properly opened. 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02530}{2530}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02869}{2869}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a78ed58678a634b8344e951378ca72e99}\label{class_histogram_collection_a78ed58678a634b8344e951378ca72e99}} 
 \index{HistogramCollection@{HistogramCollection}!loadH3@{loadH3}}
@@ -1091,7 +1138,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02530}{25
 
 Load the given 3D histogram (name) from the given TFile No test is //done to verify that the file is properly opened. 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02550}{2550}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02889}{2889}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a8ccc1d4548991696fa9c004056f01989}\label{class_histogram_collection_a8ccc1d4548991696fa9c004056f01989}} 
 \index{HistogramCollection@{HistogramCollection}!loadHistosInList@{loadHistosInList}}
@@ -1101,7 +1148,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02550}{25
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02588}{2588}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02927}{2927}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a1af48f1e8f795b43a71e4170036b08c8}\label{class_histogram_collection_a1af48f1e8f795b43a71e4170036b08c8}} 
 \index{HistogramCollection@{HistogramCollection}!loadProfile@{loadProfile}}
@@ -1111,7 +1158,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02588}{25
 
 Load the given 3D histogram (name) from the given TFile No test is //done to verify that the file is properly opened. 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02570}{2570}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02909}{2909}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a7c5a10e9793e9978c1ffcde7f9a61fd4}\label{class_histogram_collection_a7c5a10e9793e9978c1ffcde7f9a61fd4}} 
 \index{HistogramCollection@{HistogramCollection}!operator=@{operator=}}
@@ -1121,7 +1168,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02570}{25
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00051}{51}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_af9d773ee752c9ea628fa8dec1749675e}\label{class_histogram_collection_af9d773ee752c9ea628fa8dec1749675e}} 
 \index{HistogramCollection@{HistogramCollection}!project\_n2XYXY\_n2XX@{project\_n2XYXY\_n2XX}}
@@ -1131,7 +1178,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00047}{47
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04065}{4065}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04407}{4407}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a6ecce66c43089d9429535fa742444f14}\label{class_histogram_collection_a6ecce66c43089d9429535fa742444f14}} 
 \index{HistogramCollection@{HistogramCollection}!project\_n2XYXY\_n2YY@{project\_n2XYXY\_n2YY}}
@@ -1141,7 +1188,51 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04065}{40
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04113}{4113}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04455}{4455}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_histogram_collection_ab38f556aa46f58406cd66b06f919b111}\label{class_histogram_collection_ab38f556aa46f58406cd66b06f919b111}} 
+\index{HistogramCollection@{HistogramCollection}!ratioCollection@{ratioCollection}}
+\index{ratioCollection@{ratioCollection}!HistogramCollection@{HistogramCollection}}
+\doxysubsubsection{\texorpdfstring{ratioCollection()}{ratioCollection()}}
+{\footnotesize\ttfamily void Histogram\+Collection\+::ratio\+Collection (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_histogram_collection}{Histogram\+Collection}} \&}]{collection,  }\item[{const \mbox{\hyperlink{class_histogram_collection}{Histogram\+Collection}} \&}]{ref\+Collection,  }\item[{bool}]{correlated\+Uncertainties }\end{DoxyParamCaption})}
+
+Span all histograms of the two given collections and span each of their histograms bin by bin to compute ratios and store the content ratio in this collection. The collections must exactly the same number of histograms, in the same order, and with the same exact dimensions. \mbox{\hyperlink{class_histograms}{Histograms}} may be profiles. Uncertainties on the differences are computed as sum of square of uncertainties if correlated\+Uncertainties==0 and as a difference of square of uncertainties if correlated\+Uncertainties==1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em collection} & \mbox{\hyperlink{class_collection}{Collection}} of histograms to be compared to those of the reference collection. \\
+\hline
+{\em ref\+Collection} & Reference collection of histograms \\
+\hline
+{\em correlated\+Uncertainties} & Whether the uncertainties of the given and reference collection histograms are correlated. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00947}{947}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+
+\mbox{\Hypertarget{class_histogram_collection_a0a64114121ec8db86de2f333c77e26ed}\label{class_histogram_collection_a0a64114121ec8db86de2f333c77e26ed}} 
+\index{HistogramCollection@{HistogramCollection}!ratioHistos@{ratioHistos}}
+\index{ratioHistos@{ratioHistos}!HistogramCollection@{HistogramCollection}}
+\doxysubsubsection{\texorpdfstring{ratioHistos()}{ratioHistos()}}
+{\footnotesize\ttfamily void Histogram\+Collection\+::ratio\+Histos (\begin{DoxyParamCaption}\item[{TH1 $\ast$}]{h,  }\item[{TH1 $\ast$}]{h\+Ref,  }\item[{TH1 $\ast$}]{h\+Diff,  }\item[{bool}]{correlated\+Uncertainties }\end{DoxyParamCaption})}
+
+Span all bins of h and href and calculate the content ratio (and the uncertainty) and store the ratio in h\+Ratio. All three given histograms must have the same exact dimensions. The histogram h and h\+Ref may be profiles. Uncertainties on the difference h\+Ratio are computed as sum of square of uncertainties on h and href if correlated\+Uncertainties==0 and as a difference of square of uncertainties if correlated\+Uncertainties==1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & Histogram to be tested against the reference Histogram \\
+\hline
+{\em h\+Ref} & Reference Histogram \\
+\hline
+{\em h\+Diff} & Ratio histogram produced on output \\
+\hline
+{\em correlated\+Uncertainties} & Whether the uncertainties of h and href are correlated\+: true if they are, false if they are not. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01266}{1266}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_afd666cf587d7534a85e2cacbfa14ef79}\label{class_histogram_collection_afd666cf587d7534a85e2cacbfa14ef79}} 
 \index{HistogramCollection@{HistogramCollection}!reduce\_n1EtaPhiN1EtaPhiOntoN1N1DetaDphi@{reduce\_n1EtaPhiN1EtaPhiOntoN1N1DetaDphi}}
@@ -1151,7 +1242,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04113}{41
 
 Calculate the external product of n\+\_\+1(eta,phi) by n\+\_\+2(eta,phi) and project onto n1n1\+\_\+12(\+Deta,\+Dphi) First create a 4D external product of h\+\_\+1 and h\+\_\+2 using a 1D vector than project it onto Delta\+Eta(x-\/axis) Delta\+Phi (y-\/axis) Errors are neglected and must be accounted for using a sub-\/sample analysis. 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03923}{3923}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04265}{4265}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a24d4e327bc0d71c532af33fe9a8013a7}\label{class_histogram_collection_a24d4e327bc0d71c532af33fe9a8013a7}} 
 \index{HistogramCollection@{HistogramCollection}!reduce\_n2xEtaPhi\_n2DetaDphi@{reduce\_n2xEtaPhi\_n2DetaDphi}}
@@ -1161,7 +1252,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03923}{39
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03837}{3837}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04179}{4179}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a4892bfd266fd81263a8b83d60b6e1ebc}\label{class_histogram_collection_a4892bfd266fd81263a8b83d60b6e1ebc}} 
 \index{HistogramCollection@{HistogramCollection}!reduce\_n2xEtaPhi\_n2EtaEta@{reduce\_n2xEtaPhi\_n2EtaEta}}
@@ -1171,7 +1262,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03837}{38
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04002}{4002}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04344}{4344}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a0c283103076173f0d24d1ee1fb8d628d}\label{class_histogram_collection_a0c283103076173f0d24d1ee1fb8d628d}} 
 \index{HistogramCollection@{HistogramCollection}!reset@{reset}}
@@ -1181,7 +1272,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04002}{40
 
 Reset all histograms of this collection 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00086}{86}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00097}{97}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a7bb3f6e79a8be36aff0603d8d08563cf}\label{class_histogram_collection_a7bb3f6e79a8be36aff0603d8d08563cf}} 
 \index{HistogramCollection@{HistogramCollection}!resetDoubleArray@{resetDoubleArray}}
@@ -1191,7 +1282,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00086}{86
 
 Set all n values of the given array to the given value
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04223}{4223}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04565}{4565}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_adf3b1178ad2c6fc18aa413faededed68}\label{class_histogram_collection_adf3b1178ad2c6fc18aa413faededed68}} 
 \index{HistogramCollection@{HistogramCollection}!sameDimensions@{sameDimensions}}
@@ -1201,7 +1292,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04223}{42
 
 Check whether the given histograms have the same dimension and size. 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01490}{1490}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01827}{1827}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a8e538805778f2da595f592923e31e245}\label{class_histogram_collection_a8e538805778f2da595f592923e31e245}} 
 \index{HistogramCollection@{HistogramCollection}!sameDimensions@{sameDimensions}}
@@ -1211,7 +1302,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01490}{14
 
 Check whether the given histograms have the same dimension and size. 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01542}{1542}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01879}{1879}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a0481e403a42f94ce67dd307a4fd72291}\label{class_histogram_collection_a0481e403a42f94ce67dd307a4fd72291}} 
 \index{HistogramCollection@{HistogramCollection}!sameDimensions@{sameDimensions}}
@@ -1221,7 +1312,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01542}{15
 
 Check whether the given histograms have the same dimension and size. 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01599}{1599}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01936}{1936}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a6d4e8e3c78e0100bcfe17ec96bd346a8}\label{class_histogram_collection_a6d4e8e3c78e0100bcfe17ec96bd346a8}} 
 \index{HistogramCollection@{HistogramCollection}!sameDimensions@{sameDimensions}}
@@ -1231,7 +1322,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01599}{15
 
 Check whether the given histograms have the same dimension and size. 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01660}{1660}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01997}{1997}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_aafb8f5520ea580ef5735f8356e236c3f}\label{class_histogram_collection_aafb8f5520ea580ef5735f8356e236c3f}} 
 \index{HistogramCollection@{HistogramCollection}!saveHistograms@{saveHistograms}}
@@ -1241,7 +1332,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01660}{16
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00281}{281}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00297}{297}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_ac92279cb9665b6ee7b35bcdeba6ce1ab}\label{class_histogram_collection_ac92279cb9665b6ee7b35bcdeba6ce1ab}} 
 \index{HistogramCollection@{HistogramCollection}!scale@{scale}}
@@ -1251,7 +1342,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00281}{28
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00299}{299}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00317}{317}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_aa9b1e2e8824c8eb96b3d79ba0359b1e2}\label{class_histogram_collection_aa9b1e2e8824c8eb96b3d79ba0359b1e2}} 
 \index{HistogramCollection@{HistogramCollection}!scaleAllHistoByBinWidth@{scaleAllHistoByBinWidth}}
@@ -1261,7 +1352,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00299}{29
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02802}{2802}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03141}{3141}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a3333b3b89aaab395f6c36a7ae5f041ba}\label{class_histogram_collection_a3333b3b89aaab395f6c36a7ae5f041ba}} 
 \index{HistogramCollection@{HistogramCollection}!scaleByBinWidth@{scaleByBinWidth}}
@@ -1271,7 +1362,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02802}{28
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02763}{2763}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03102}{3102}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_aa9ddd630e94e69a761333d8f2e2de1ee}\label{class_histogram_collection_aa9ddd630e94e69a761333d8f2e2de1ee}} 
 \index{HistogramCollection@{HistogramCollection}!scaleByBinWidth1D@{scaleByBinWidth1D}}
@@ -1281,7 +1372,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02763}{27
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02675}{2675}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03014}{3014}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a4ab9a0e7a59e0b116b73641ebbd8eefd}\label{class_histogram_collection_a4ab9a0e7a59e0b116b73641ebbd8eefd}} 
 \index{HistogramCollection@{HistogramCollection}!scaleByBinWidth2D@{scaleByBinWidth2D}}
@@ -1291,7 +1382,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02675}{26
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02697}{2697}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03036}{3036}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a7152d1831ad784eb006c7bfc0a885335}\label{class_histogram_collection_a7152d1831ad784eb006c7bfc0a885335}} 
 \index{HistogramCollection@{HistogramCollection}!scaleByBinWidth3D@{scaleByBinWidth3D}}
@@ -1301,7 +1392,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02697}{26
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02727}{2727}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03066}{3066}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a4b4edb2784b2376e96665e4b224ba8f7}\label{class_histogram_collection_a4b4edb2784b2376e96665e4b224ba8f7}} 
 \index{HistogramCollection@{HistogramCollection}!setDefaultOptions@{setDefaultOptions}}
@@ -1311,7 +1402,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02727}{27
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a372f18cb5c5efa37b3b9c11dce853a5f}\label{class_histogram_collection_a372f18cb5c5efa37b3b9c11dce853a5f}} 
 \index{HistogramCollection@{HistogramCollection}!setHistogram@{setHistogram}}
@@ -1321,7 +1412,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00069}{69
 
 Set all bins of the given histogram to the given value and error. 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02449}{2449}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02788}{2788}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a398e3cffca15dfddda3d70d2ddffd7a1}\label{class_histogram_collection_a398e3cffca15dfddda3d70d2ddffd7a1}} 
 \index{HistogramCollection@{HistogramCollection}!setHistogram@{setHistogram}}
@@ -1331,7 +1422,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02449}{24
 
 Set all bins of the given histogram to the given value and error. 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02466}{2466}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02805}{2805}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a89826b6393810891e836e08edaaf09f6}\label{class_histogram_collection_a89826b6393810891e836e08edaaf09f6}} 
 \index{HistogramCollection@{HistogramCollection}!setHistogram@{setHistogram}}
@@ -1341,7 +1432,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02466}{24
 
 Set all bins of the given histogram to the given value and error. 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02487}{2487}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02826}{2826}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a60c28d123f762a55cf1bebfa5c15f741}\label{class_histogram_collection_a60c28d123f762a55cf1bebfa5c15f741}} 
 \index{HistogramCollection@{HistogramCollection}!setHistoProperties@{setHistoProperties}}
@@ -1351,7 +1442,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02487}{24
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00386}{386}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00404}{404}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a375bf6f9a5a348403ce1a08d6ab59ed4}\label{class_histogram_collection_a375bf6f9a5a348403ce1a08d6ab59ed4}} 
 \index{HistogramCollection@{HistogramCollection}!setHistoProperties@{setHistoProperties}}
@@ -1361,7 +1452,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00386}{38
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00452}{452}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00470}{470}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_af5a7f2144ae2ebf7e3d8a8d50375eb0e}\label{class_histogram_collection_af5a7f2144ae2ebf7e3d8a8d50375eb0e}} 
 \index{HistogramCollection@{HistogramCollection}!setHistoProperties@{setHistoProperties}}
@@ -1371,7 +1462,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00452}{45
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00420}{420}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00438}{438}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_add4216922829ae8fb9dbed825abf95b4}\label{class_histogram_collection_add4216922829ae8fb9dbed825abf95b4}} 
 \index{HistogramCollection@{HistogramCollection}!setHistoProperties@{setHistoProperties}}
@@ -1381,7 +1472,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00420}{42
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00476}{476}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00494}{494}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a69752d68f0e2c4544458ddc005816471}\label{class_histogram_collection_a69752d68f0e2c4544458ddc005816471}} 
 \index{HistogramCollection@{HistogramCollection}!shiftY@{shiftY}}
@@ -1395,7 +1486,7 @@ shift the given source to the target vertically by nbins
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04171}{4171}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04513}{4513}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a9164c0d68cbfdf4d7144cc24927323e0}\label{class_histogram_collection_a9164c0d68cbfdf4d7144cc24927323e0}} 
 \index{HistogramCollection@{HistogramCollection}!squareDifferenceCollection@{squareDifferenceCollection}}
@@ -1403,13 +1494,9 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04171}{41
 \doxysubsubsection{\texorpdfstring{squareDifferenceCollection()}{squareDifferenceCollection()}}
 {\footnotesize\ttfamily void Histogram\+Collection\+::square\+Difference\+Collection (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_histogram_collection}{Histogram\+Collection}} \&}]{collection,  }\item[{double}]{sum\+Weights,  }\item[{double}]{weight,  }\item[{int}]{n }\end{DoxyParamCaption})}
 
+Calculate square difference (bin by bin) of all histograms of the other collection relative to the reference collection and store the result in the histograms of this collection. TProfile histograms have to be handled differently This function is used for sub-\/sample analyses... double sum\+Weights\+: sum of the weights of the n-\/1 collection accumulated in this collection double weight\+: weight of the current n-\/th collection. The means are store in the Bin\+Content The rms are store in the Bin\+Error parts of the histograms. 
 
-
-========================== 
-
-========================== 
-
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00902}{902}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00994}{994}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a2e733dffcda9455836e149168383ea08}\label{class_histogram_collection_a2e733dffcda9455836e149168383ea08}} 
 \index{HistogramCollection@{HistogramCollection}!squareDifferenceHistos@{squareDifferenceHistos}}
@@ -1417,9 +1504,24 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00902}{90
 \doxysubsubsection{\texorpdfstring{squareDifferenceHistos()}{squareDifferenceHistos()}}
 {\footnotesize\ttfamily void Histogram\+Collection\+::square\+Difference\+Histos (\begin{DoxyParamCaption}\item[{TH1 $\ast$}]{h\+Avg,  }\item[{TH1 $\ast$}]{h,  }\item[{double}]{sum\+Weights,  }\item[{double}]{weight,  }\item[{int}]{n }\end{DoxyParamCaption})}
 
+Span all bins of h\+Avg and h and compute the difference between histo \char`\"{}h\char`\"{} and the reference \char`\"{}havg\char`\"{}, and increment the value havg accordingly. \mbox{\hyperlink{class_histograms}{Histograms}} must have the same exact dimensions. The histograms may be profiles.
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00943}{943}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+\begin{DoxyParams}{Parameters}
+{\em h\+Avg} & Histogram containing the running average \\
+\hline
+{\em h} & Histogram to be compared to h\+Avg and use to update the average and the uncertainties. \\
+\hline
+{\em sum\+Weights} & Cumulated sum of weights \\
+\hline
+{\em weight} & Weight given to histogram h. \\
+\hline
+{\em n} & Index of file being processed. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l01031}{1031}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a5fd55b7510527676c695a2994e617d3d}\label{class_histogram_collection_a5fd55b7510527676c695a2994e617d3d}} 
 \index{HistogramCollection@{HistogramCollection}!sumw2All@{sumw2All}}
@@ -1429,7 +1531,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l00943}{94
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02834}{2834}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03173}{3173}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_aad8148f8a3b9aac1366efc377e14b1e1}\label{class_histogram_collection_aad8148f8a3b9aac1366efc377e14b1e1}} 
 \index{HistogramCollection@{HistogramCollection}!symmetrize@{symmetrize}}
@@ -1443,7 +1545,7 @@ Depracated--dont use...
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04161}{4161}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04503}{4503}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a0c9c831f04f0668516665e56ca910d29}\label{class_histogram_collection_a0c9c831f04f0668516665e56ca910d29}} 
 \index{HistogramCollection@{HistogramCollection}!symmetrize3D@{symmetrize3D}}
@@ -1453,7 +1555,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04161}{41
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03515}{3515}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03857}{3857}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a7ce81cc5b4b454a579029dc08a5d5707}\label{class_histogram_collection_a7ce81cc5b4b454a579029dc08a5d5707}} 
 \index{HistogramCollection@{HistogramCollection}!symmetrizeDeltaEtaDeltaPhi@{symmetrizeDeltaEtaDeltaPhi}}
@@ -1463,7 +1565,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03515}{35
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03573}{3573}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03915}{3915}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a3929d8839fc485408c2e90b0f281e2c9}\label{class_histogram_collection_a3929d8839fc485408c2e90b0f281e2c9}} 
 \index{HistogramCollection@{HistogramCollection}!symmetrizeXX@{symmetrizeXX}}
@@ -1473,7 +1575,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03573}{35
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03718}{3718}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l04060}{4060}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 \mbox{\Hypertarget{class_histogram_collection_a5dadb09d17725eddb66b3817fcc0726d}\label{class_histogram_collection_a5dadb09d17725eddb66b3817fcc0726d}} 
 \index{HistogramCollection@{HistogramCollection}!unpack\_vsXY\_to\_vsXVsY@{unpack\_vsXY\_to\_vsXVsY}}
@@ -1483,7 +1585,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03718}{37
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02857}{2857}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l03196}{3196}} of file \mbox{\hyperlink{_histogram_collection_8cpp_source}{Histogram\+Collection.\+cpp}}.
 
 
 
@@ -1496,7 +1598,7 @@ Definition at line \mbox{\hyperlink{_histogram_collection_8cpp_source_l02857}{28
 
 
 
-Definition at line \mbox{\hyperlink{_histogram_collection_8hpp_source_l00258}{258}} of file \mbox{\hyperlink{_histogram_collection_8hpp_source}{Histogram\+Collection.\+hpp}}.
+Definition at line \mbox{\hyperlink{_histogram_collection_8hpp_source_l00319}{319}} of file \mbox{\hyperlink{_histogram_collection_8hpp_source}{Histogram\+Collection.\+hpp}}.
 
 
 

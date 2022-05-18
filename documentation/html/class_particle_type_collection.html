@@ -122,6 +122,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6aa651ad3c1ffc60c93d7b3ed9d29bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a047c28d219ddb27d9814ffbfeeb1fbcc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle_type_collection.html#a047c28d219ddb27d9814ffbfeeb1fbcc">readFromFile</a> (const TString &amp;inputFileName)</td></tr>
 <tr class="separator:a047c28d219ddb27d9814ffbfeeb1fbcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dfb1e1eda60621f1cd300c4dae323f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle_type_collection.html#a3dfb1e1eda60621f1cd300c4dae323f5">writeToFile</a> (const TString &amp;outputFileName, bool <a class="el" href="class_particle_type_collection.html#affb5f1726bb9e7885f490346f83a51df">printDecayProperties</a>=true)</td></tr>
+<tr class="separator:a3dfb1e1eda60621f1cd300c4dae323f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a718fdb07d54ab82f0c3ece944546b728"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle_type_collection.html#a718fdb07d54ab82f0c3ece944546b728">sortByMass</a> ()</td></tr>
 <tr class="separator:a718fdb07d54ab82f0c3ece944546b728"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9156cd0aff9cdfd0fa1b7f98236701d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_particle_type_collection.html">ParticleTypeCollection</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle_type_collection.html#ae9156cd0aff9cdfd0fa1b7f98236701d">extractCollection</a> (int option)</td></tr>
@@ -185,8 +187,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a95959d6b2893d4642152be63ccac9de4 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afda08ec642d84dbe4b3c3365a5ab5197 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_particle_type.html">ParticleType</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#afda08ec642d84dbe4b3c3365a5ab5197">back</a> ()</td></tr>
 <tr class="separator:afda08ec642d84dbe4b3c3365a5ab5197 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2f7148ab6bd9771cf4c12f12d42f9c2 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#aa2f7148ab6bd9771cf4c12f12d42f9c2">sameSizeAs</a> (const <a class="el" href="class_collection.html">Collection</a>&lt; <a class="el" href="class_particle_type.html">ParticleType</a> &gt; &amp;other)</td></tr>
-<tr class="separator:aa2f7148ab6bd9771cf4c12f12d42f9c2 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01fd386118d7e2cd605b1c12b1fa1435 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#a01fd386118d7e2cd605b1c12b1fa1435">sameSizeAs</a> (const <a class="el" href="class_collection.html">Collection</a>&lt; <a class="el" href="class_particle_type.html">ParticleType</a> &gt; &amp;other) const</td></tr>
+<tr class="separator:a01fd386118d7e2cd605b1c12b1fa1435 inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a085e9375f7fb9c8a50fa8019b8e1906e inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#a085e9375f7fb9c8a50fa8019b8e1906e">copy</a> (long n, <a class="el" href="class_particle_type.html">ParticleType</a> **source)</td></tr>
 <tr class="separator:a085e9375f7fb9c8a50fa8019b8e1906e inherit pub_methods_class_collection"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4a2e034fe55fbf5c4f7a185d26ff840 inherit pub_methods_class_collection"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collection.html#ad4a2e034fe55fbf5c4f7a185d26ff840">deepCopy</a> (long n, <a class="el" href="class_particle_type.html">ParticleType</a> **source)</td></tr>
@@ -296,6 +298,32 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1c9b286039a61ef843025b7a0dfb63a9 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a581047e4ae03db23a186bfce95606baf inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a581047e4ae03db23a186bfce95606baf">ptrExist</a> (const TString &amp;caller, const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10, const TH1 *h11, const TH1 *h12) const</td></tr>
 <tr class="separator:a581047e4ae03db23a186bfce95606baf inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a31c4cfdd07e56dc3f94eac4a827df7 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a7a31c4cfdd07e56dc3f94eac4a827df7">ptrFileExist</a> (const TFile *f) const</td></tr>
+<tr class="separator:a7a31c4cfdd07e56dc3f94eac4a827df7 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5236ff7f69cec4fd0c9f082d7616e02 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#ae5236ff7f69cec4fd0c9f082d7616e02">ptrExist</a> (const TH1 *h1) const</td></tr>
+<tr class="separator:ae5236ff7f69cec4fd0c9f082d7616e02 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07482048b4e3fb14255389cb2346d8ef inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a07482048b4e3fb14255389cb2346d8ef">ptrExist</a> (const TH1 *h1, const TH1 *h2) const</td></tr>
+<tr class="separator:a07482048b4e3fb14255389cb2346d8ef inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b987c3662fe2f4ac74d5b53d9b1ee1d inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a1b987c3662fe2f4ac74d5b53d9b1ee1d">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3) const</td></tr>
+<tr class="separator:a1b987c3662fe2f4ac74d5b53d9b1ee1d inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27063875dd1665c09408acbfff2daa05 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a27063875dd1665c09408acbfff2daa05">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4) const</td></tr>
+<tr class="separator:a27063875dd1665c09408acbfff2daa05 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea9d67b89990c83b3bc4a8938882d706 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#aea9d67b89990c83b3bc4a8938882d706">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5) const</td></tr>
+<tr class="separator:aea9d67b89990c83b3bc4a8938882d706 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad225f291276ce9d336050b4c96a6b0ef inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#ad225f291276ce9d336050b4c96a6b0ef">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6) const</td></tr>
+<tr class="separator:ad225f291276ce9d336050b4c96a6b0ef inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a733f19dc797606d918c5ac395bfad1a1 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a733f19dc797606d918c5ac395bfad1a1">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7) const</td></tr>
+<tr class="separator:a733f19dc797606d918c5ac395bfad1a1 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83d7f51337ef3f93ffebb2e162e17594 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a83d7f51337ef3f93ffebb2e162e17594">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8) const</td></tr>
+<tr class="separator:a83d7f51337ef3f93ffebb2e162e17594 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cc7c585795abe114309cc66f90f23f3 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a5cc7c585795abe114309cc66f90f23f3">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9) const</td></tr>
+<tr class="separator:a5cc7c585795abe114309cc66f90f23f3 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a888b9c9627ebb6430ba0cde1ae73ffce inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a888b9c9627ebb6430ba0cde1ae73ffce">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10) const</td></tr>
+<tr class="separator:a888b9c9627ebb6430ba0cde1ae73ffce inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ad9af50d1fcbc9ec9038d1b8deb3404 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a4ad9af50d1fcbc9ec9038d1b8deb3404">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10, const TH1 *h11) const</td></tr>
+<tr class="separator:a4ad9af50d1fcbc9ec9038d1b8deb3404 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a771a1200285aa43589deaa082b0ac076 inherit pub_methods_class_message_logger"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_message_logger.html#a771a1200285aa43589deaa082b0ac076">ptrExist</a> (const TH1 *h1, const TH1 *h2, const TH1 *h3, const TH1 *h4, const TH1 *h5, const TH1 *h6, const TH1 *h7, const TH1 *h8, const TH1 *h9, const TH1 *h10, const TH1 *h11, const TH1 *h12) const</td></tr>
+<tr class="separator:a771a1200285aa43589deaa082b0ac076 inherit pub_methods_class_message_logger"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -397,7 +425,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8hpp_source.html#l00016">16</a> of file <a class="el" href="_particle_type_collection_8hpp_source.html">ParticleTypeCollection.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8hpp_source.html#l00028">28</a> of file <a class="el" href="_particle_type_collection_8hpp_source.html">ParticleTypeCollection.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8b45aeea4552a5d5ba72ae995868807e" name="a8b45aeea4552a5d5ba72ae995868807e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8b45aeea4552a5d5ba72ae995868807e">&#9670;&nbsp;</a></span>ParticleTypeCollection()</h2>
@@ -414,7 +442,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00018">18</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00029">29</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -441,7 +469,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00024">24</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00035">35</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -462,7 +490,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00190">190</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00219">219</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -482,7 +510,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00213">213</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00242">242</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -502,7 +530,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00222">222</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00251">251</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -522,7 +550,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00231">231</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00260">260</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -542,7 +570,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00240">240</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00269">269</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -562,7 +590,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00258">258</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00287">287</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -581,7 +609,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00327">327</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00356">356</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -608,7 +636,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00317">317</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00346">346</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -636,7 +664,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8hpp_source.html#l00032">32</a> of file <a class="el" href="_particle_type_collection_8hpp_source.html">ParticleTypeCollection.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8hpp_source.html#l00046">46</a> of file <a class="el" href="_particle_type_collection_8hpp_source.html">ParticleTypeCollection.hpp</a>.</p>
 
 </div>
 </div>
@@ -664,7 +692,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8hpp_source.html#l00037">37</a> of file <a class="el" href="_particle_type_collection_8hpp_source.html">ParticleTypeCollection.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8hpp_source.html#l00051">51</a> of file <a class="el" href="_particle_type_collection_8hpp_source.html">ParticleTypeCollection.hpp</a>.</p>
 
 </div>
 </div>
@@ -684,7 +712,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00300">300</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00329">329</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -704,7 +732,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00269">269</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00298">298</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -724,7 +752,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00031">31</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00042">42</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -743,7 +771,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00160">160</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00189">189</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -762,7 +790,37 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00137">137</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00166">166</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3dfb1e1eda60621f1cd300c4dae323f5" name="a3dfb1e1eda60621f1cd300c4dae323f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dfb1e1eda60621f1cd300c4dae323f5">&#9670;&nbsp;</a></span>writeToFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParticleTypeCollection::writeToFile </td>
+          <td>(</td>
+          <td class="paramtype">const TString &amp;&#160;</td>
+          <td class="paramname"><em>outputFileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>printDecayProperties</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8cpp_source.html#l00148">148</a> of file <a class="el" href="_particle_type_collection_8cpp_source.html">ParticleTypeCollection.cpp</a>.</p>
 
 </div>
 </div>
@@ -787,7 +845,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8hpp_source.html#l00047">47</a> of file <a class="el" href="_particle_type_collection_8hpp_source.html">ParticleTypeCollection.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_particle_type_collection_8hpp_source.html#l00061">61</a> of file <a class="el" href="_particle_type_collection_8hpp_source.html">ParticleTypeCollection.hpp</a>.</p>
 
 </div>
 </div>

@@ -1,5 +1,5 @@
-<map id="Base/ParticlePairCombinedHistos.hpp" name="Base/ParticlePairCombinedHistos.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="2305,5,2487,47"/>
+<map id="Pair/ParticlePairCombinedHistos.hpp" name="Pair/ParticlePairCombinedHistos.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="2309,5,2483,47"/>
 <area shape="rect" id="node2" href="$_particle_pair_derived_histos_8hpp.html" title=" " alt="" coords="2297,95,2495,121"/>
 <area shape="rect" id="node3" href="$_particle_histos_8hpp.html" title=" " alt="" coords="2471,244,2601,271"/>
 <area shape="rect" id="node4" href="$_histograms_8hpp.html" title=" " alt="" coords="2240,319,2355,345"/>

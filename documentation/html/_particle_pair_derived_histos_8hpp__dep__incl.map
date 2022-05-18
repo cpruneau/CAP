@@ -1,10 +1,10 @@
-<map id="Base/ParticlePairDerivedHistos.hpp" name="Base/ParticlePairDerivedHistos.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="299,5,467,47"/>
-<area shape="rect" id="node2" href="$_particle_pair_combined_histogram_calculator_8hpp.html" title=" " alt="" coords="5,184,188,225"/>
-<area shape="rect" id="node4" href="$_particle_pair_combined_histos_8hpp.html" title=" " alt="" coords="192,95,375,136"/>
-<area shape="rect" id="node6" href="$_particle_pair_derived_histogram_calculator_8hpp.html" title=" " alt="" coords="399,95,567,136"/>
-<area shape="rect" id="node8" href="$_particle_pair_derived_histos_8cpp.html" title=" " alt="" coords="591,95,759,136"/>
-<area shape="rect" id="node3" href="$_particle_pair_combined_histogram_calculator_8cpp.html" title=" " alt="" coords="5,273,188,315"/>
-<area shape="rect" id="node5" href="$_particle_pair_combined_histos_8cpp.html" title=" " alt="" coords="212,184,395,225"/>
-<area shape="rect" id="node7" href="$_particle_pair_derived_histogram_calculator_8cpp.html" title=" " alt="" coords="419,184,587,225"/>
+<map id="Pair/ParticlePairDerivedHistos.hpp" name="Pair/ParticlePairDerivedHistos.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="289,5,451,47"/>
+<area shape="rect" id="node2" href="$_particle_pair_combined_histogram_calculator_8hpp.html" title=" " alt="" coords="5,184,180,225"/>
+<area shape="rect" id="node4" href="$_particle_pair_combined_histos_8hpp.html" title=" " alt="" coords="185,95,360,136"/>
+<area shape="rect" id="node6" href="$_particle_pair_derived_histogram_calculator_8hpp.html" title=" " alt="" coords="385,95,550,136"/>
+<area shape="rect" id="node8" href="$_particle_pair_derived_histos_8cpp.html" title=" " alt="" coords="575,95,736,136"/>
+<area shape="rect" id="node3" href="$_particle_pair_combined_histogram_calculator_8cpp.html" title=" " alt="" coords="5,273,180,315"/>
+<area shape="rect" id="node5" href="$_particle_pair_combined_histos_8cpp.html" title=" " alt="" coords="204,184,379,225"/>
+<area shape="rect" id="node7" href="$_particle_pair_derived_histogram_calculator_8cpp.html" title=" " alt="" coords="403,184,569,225"/>
 </map>

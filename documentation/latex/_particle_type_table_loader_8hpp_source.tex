@@ -1,0 +1,40 @@
+\hypertarget{_particle_type_table_loader_8hpp_source}{}\doxysection{Particle\+Type\+Table\+Loader.\+hpp}
+\label{_particle_type_table_loader_8hpp_source}\index{Base/ParticleTypeTableLoader.hpp@{Base/ParticleTypeTableLoader.hpp}}
+\mbox{\hyperlink{_particle_type_table_loader_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef CAP\_\_ParticleTypeTableLoader}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define CAP\_\_ParticleTypeTableLoader}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_task_8hpp}{Task.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_type_8hpp}{ParticleType.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00031}\mbox{\hyperlink{class_particle_type_table_loader}{00031}} \textcolor{keyword}{class }\mbox{\hyperlink{class_particle_type_table_loader}{ParticleTypeTableLoader}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00032}00032 \{}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00033}00033 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00034}00034   }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00042}00042   \mbox{\hyperlink{class_particle_type_table_loader_a1ee2579038fecaaab64ea9a1f96172a3}{ParticleTypeTableLoader}}(\textcolor{keyword}{const} TString \&         \_name,}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00043}00043                           \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \&   \_configuration,}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00044}00044                           \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                \_selectedLevel=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}});}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00045}00045   }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00049}\mbox{\hyperlink{class_particle_type_table_loader_ad906e541853349c16f2d27a5a6aa4905}{00049}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_type_table_loader_ad906e541853349c16f2d27a5a6aa4905}{\string~ParticleTypeTableLoader}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00050}00050   }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00063}00063   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_type_table_loader_aaca78fc6c5eb4ab2b2fb374b6a431690}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00064}00064   }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00068}00068   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_particle_type_table_loader_a519a5e3326363abdc52e40687f0cc112}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00069}00069   }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00070}00070   ClassDef(\mbox{\hyperlink{class_particle_type_table_loader}{ParticleTypeTableLoader}},0)}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00071}00071 \};}
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{_particle_type_table_loader_8hpp_source_l00074}00074 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_ParticleTypeTableLoader */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

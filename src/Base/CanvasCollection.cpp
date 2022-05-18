@@ -147,9 +147,8 @@ void CanvasCollection::printAllCanvas(const TString & outputPath, bool printGif,
 ////////////////////////////////////////////////////
 // Create a label within an existing pad
 ////////////////////////////////////////////////////
-TLatex * CanvasCollection::createLabel(double x, double y, int color, int fontType, double fontSize, const TString & text, bool doDraw)
+TLatex * CanvasCollection::createLabel(double x, double y, int color, int fontType __attribute__((unused)), double fontSize, const TString & text, bool doDraw)
 {
-  fontType = 0; // not used now...
   TLatex * label;
   label = new TLatex(x,y,text);
   label->SetTextColor(color);
@@ -162,9 +161,8 @@ TLatex * CanvasCollection::createLabel(double x, double y, int color, int fontTy
 ////////////////////////////////////////////////////
 // Create standard legend
 ////////////////////////////////////////////////////
-TLegend * CanvasCollection::createLegend(float x1, float y1, float x2, float y2, int fontType, float fontSize)
+TLegend * CanvasCollection::createLegend(float x1, float y1, float x2, float y2, int fontType __attribute__((unused)), float fontSize)
 {
-  fontType = 0; // not used now...
   TLegend *legend = new TLegend(x1,y1,x2,y2);
   //legend->SetTextFont(fontType);
   legend->SetTextSize(fontSize);

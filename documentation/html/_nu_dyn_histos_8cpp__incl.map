@@ -1,5 +1,5 @@
-<map id="Base/NuDynHistos.cpp" name="Base/NuDynHistos.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="2325,5,2485,32"/>
+<map id="NuDyn/NuDynHistos.cpp" name="NuDyn/NuDynHistos.cpp">
+<area shape="rect" id="node1" title=" " alt="" coords="2319,5,2490,32"/>
 <area shape="rect" id="node2" href="$_nu_dyn_histos_8hpp.html" title=" " alt="" coords="2341,80,2468,107"/>
 <area shape="rect" id="node3" href="$_histograms_8hpp.html" title=" " alt="" coords="2301,155,2415,181"/>
 <area shape="rect" id="node36" href="$_configuration_8hpp.html" title=" " alt="" coords="2163,453,2287,480"/>

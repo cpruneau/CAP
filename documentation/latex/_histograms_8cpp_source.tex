@@ -2,139 +2,143 @@
 \label{_histograms_8cpp_source}\index{Base/Histograms.cpp@{Base/Histograms.cpp}}
 \mbox{\hyperlink{_histograms_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00003}00003 \textcolor{comment}{/*************************************************************************}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.                                   *}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.                                                  *}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment                             *}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00007}00007 \textcolor{comment}{ *                                                                       *}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.                                  *}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00009}00009 \textcolor{comment}{ *************************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_histograms_8hpp}{Histograms.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00018}\mbox{\hyperlink{_histograms_8cpp_ac39029445e8969537a2b4f35ae9827da}{00018}} \mbox{\hyperlink{_histograms_8cpp_ac39029445e8969537a2b4f35ae9827da}{ClassImp}}(\mbox{\hyperlink{class_histograms}{Histograms}});}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00019}00019 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00020}\mbox{\hyperlink{class_histograms_a205436da20370cb7d252b701ef851470}{00020}} \mbox{\hyperlink{class_histograms_a205436da20370cb7d252b701ef851470}{Histograms::Histograms}}(\textcolor{keyword}{const} TString \&       \_name,}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00021}00021                        \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \& \_configuration,}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00022}00022                        \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}              \_debugLevel)}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00023}00023 :}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00024}00024 \mbox{\hyperlink{class_histogram_collection}{HistogramCollection}}(\_name,\_debugLevel),}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00025}00025 configuration(\_configuration)}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00026}00026 \{}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00027}00027   \mbox{\hyperlink{class_message_logger_a11c8121edbdb8bcbf2c985f8dd076df1}{setClassName}}(\textcolor{stringliteral}{"{}Histograms"{}});}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00028}00028   \mbox{\hyperlink{class_message_logger_a62ee7a375e1aec16bfb767aec9fba906}{setInstanceName}}(\mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}});}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00029}00029 \}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00030}00030 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00031}00031 \textcolor{comment}{//Histograms(TFile * inputFile,}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00032}00032 \textcolor{comment}{//           const TString \& name,}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00033}00033 \textcolor{comment}{//           const Configuration \& configuration,}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00034}00034 \textcolor{comment}{//           LogLevel  debugLevel);}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00035}00035 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00039}\mbox{\hyperlink{class_histograms_ae6197b40e3cb970716aa4fc8a8eaffb2}{00039}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_histograms_ae6197b40e3cb970716aa4fc8a8eaffb2}{Histograms::createHistograms}}()}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00040}00040 \{}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00041}00041   \mbox{\hyperlink{class_message_logger_aeb23907e8334ea59deeb54733ba36dac}{setFunctionName}}(\textcolor{stringliteral}{"{}createHistograms()"{}});}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00042}00042   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}()) cout << \textcolor{stringliteral}{"{}Implement derived class to create histograms."{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00043}00043 \}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00044}00044 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00048}\mbox{\hyperlink{class_histograms_a20ca1f616c8af6d3261e6ca3127ecd9d}{00048}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_histograms_a20ca1f616c8af6d3261e6ca3127ecd9d}{Histograms::loadHistograms}}(TFile * inputFile \_\_attribute\_\_((unused)))}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00049}00049 \{}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00050}00050   \mbox{\hyperlink{class_message_logger_aeb23907e8334ea59deeb54733ba36dac}{setFunctionName}}(\textcolor{stringliteral}{"{}loadHistograms(TFile * inputFile)"{}});}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00051}00051   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}()) cout << \textcolor{stringliteral}{"{}Implement derived class to load histograms."{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00052}00052 \}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00053}00053 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00054}00054 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00055}00055 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00056}\mbox{\hyperlink{class_histograms_aae59902c04cb1034e705f69545c9c1a9}{00056}} TString \mbox{\hyperlink{class_histograms_aae59902c04cb1034e705f69545c9c1a9}{Histograms::getHistoBaseName}}()\textcolor{keyword}{ const}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00057}00057 \textcolor{keyword}{}\{}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00058}00058 \textcolor{comment}{//  Configuration \& ac = *(Configuration*) getConfiguration();}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00059}00059   TString bn; \textcolor{comment}{//ac.histoBaseName;}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00060}00060 \textcolor{comment}{//  bn += "{}\_"{};}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00061}00061   bn = \mbox{\hyperlink{class_collection_a559e2c06e36b204e5a8e6ee2c2aedc37}{getName}}();}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00062}00062   bn += \textcolor{stringliteral}{"{}\_"{}};}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00063}00063   \textcolor{keywordflow}{return} bn;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00064}00064 \}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00065}00065 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00069}\mbox{\hyperlink{class_histograms_a600ac58287dd3f3b794be38a1da3727a}{00069}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_histograms_a600ac58287dd3f3b794be38a1da3727a}{Histograms::createDerivedHistograms}}()}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00070}00070 \{}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00071}00071   \mbox{\hyperlink{class_message_logger_aeb23907e8334ea59deeb54733ba36dac}{setFunctionName}}(\textcolor{stringliteral}{"{}createDerivedHistograms()"{}});}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00072}00072   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}()) cout << \textcolor{stringliteral}{"{}Implement derived class to calculate derived histograms."{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00073}00073 \}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00074}00074 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00078}00078 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_histograms_a600ac58287dd3f3b794be38a1da3727a}{Histograms::createDerivedHistograms}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_histograms}{Histograms}} \& histograms \_\_attribute\_\_((unused)))}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00079}00079 \{}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00080}00080   \mbox{\hyperlink{class_message_logger_aeb23907e8334ea59deeb54733ba36dac}{setFunctionName}}(\textcolor{stringliteral}{"{}createDerivedHistograms(const Histograms \& histograms)"{}});}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00081}00081   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}()) cout << \textcolor{stringliteral}{"{}Implement derived class to calculate derived histograms from external source..."{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00082}00082 \}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00083}00083 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00084}\mbox{\hyperlink{class_histograms_a4f45c028b3c3489ea5b349ac7b518e0a}{00084}} TString \mbox{\hyperlink{class_histograms_a4f45c028b3c3489ea5b349ac7b518e0a}{Histograms::makeName}}(\textcolor{keyword}{const} TString \& baseName,\textcolor{keyword}{const}  TString \& filterName1)}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00085}00085 \{}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00086}00086   TString \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} = baseName;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00087}00087   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += \textcolor{stringliteral}{"{}\_"{}};}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00088}00088   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += filterName1;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00089}00089   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}};}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00090}00090 \}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00091}00091 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00092}\mbox{\hyperlink{class_histograms_a3823351665900ed2a70b2f4438f80ebe}{00092}} TString \mbox{\hyperlink{class_histograms_a4f45c028b3c3489ea5b349ac7b518e0a}{Histograms::makeName}}(\textcolor{keyword}{const} TString \& baseName,\textcolor{keyword}{const}  TString \& filterName1,\textcolor{keyword}{const}  TString \& observableName1)}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00093}00093 \{}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00094}00094   TString \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} = baseName;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00095}00095   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += \textcolor{stringliteral}{"{}\_"{}};}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00096}00096   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += filterName1;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00097}00097   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += \textcolor{stringliteral}{"{}\_"{}};}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00098}00098   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += observableName1;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00099}00099   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}};}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00100}00100 \}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00101}00101 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00102}00102 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00103}\mbox{\hyperlink{class_histograms_add3da5d5a9a4e948e72570caf40604d7}{00103}} TString \mbox{\hyperlink{class_histograms_a4f45c028b3c3489ea5b349ac7b518e0a}{Histograms::makeName}}(\textcolor{keyword}{const} TString \& baseName,\textcolor{keyword}{const}  TString \& filterName1,\textcolor{keyword}{const}  TString \& observableName1,\textcolor{keyword}{const}  TString \& filterName2,\textcolor{keyword}{const}  TString \& observableName2)}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00104}00104 \{}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00105}00105   TString \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} = baseName;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00106}00106   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += \textcolor{stringliteral}{"{}\_"{}};}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00107}00107   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += filterName1;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00108}00108   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += \textcolor{stringliteral}{"{}\_"{}};}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00109}00109   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += observableName1;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00110}00110   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += \textcolor{stringliteral}{"{}\_"{}};}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00111}00111   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += filterName2;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00112}00112   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += \textcolor{stringliteral}{"{}\_"{}};}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00113}00113   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += observableName2;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00114}00114   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}};}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00115}00115 \}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00116}00116 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00117}\mbox{\hyperlink{class_histograms_a5bb5ef35a32051db5088f12a5c6f994a}{00117}} TString \mbox{\hyperlink{class_histograms_a4f45c028b3c3489ea5b349ac7b518e0a}{Histograms::makeName}}(\textcolor{keyword}{const} TString \& baseName, \textcolor{keywordtype}{int} i1, \textcolor{keyword}{const} TString suffix)}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00118}00118 \{}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00119}00119   TString \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} = baseName;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00120}00120   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i1;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00121}00121   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += suffix;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00122}00122   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}};}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00123}00123 \}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00124}00124 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00125}\mbox{\hyperlink{class_histograms_a1d1a91dd0c36eff359d73330147978c0}{00125}} TString \mbox{\hyperlink{class_histograms_a4f45c028b3c3489ea5b349ac7b518e0a}{Histograms::makeName}}(\textcolor{keyword}{const} TString \& baseName, \textcolor{keywordtype}{int} i1, \textcolor{keywordtype}{int} i2, \textcolor{keyword}{const} TString suffix)}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00126}00126 \{}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00127}00127   TString \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} = baseName;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00128}00128   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i1;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00129}00129   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i2;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00130}00130   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += suffix;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00131}00131   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}};}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00132}00132 \}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00133}00133 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00134}\mbox{\hyperlink{class_histograms_a97eedbffd02d776a7398fe6baf85a043}{00134}} TString \mbox{\hyperlink{class_histograms_a4f45c028b3c3489ea5b349ac7b518e0a}{Histograms::makeName}}(\textcolor{keyword}{const} TString \& baseName, \textcolor{keywordtype}{int} i1, \textcolor{keywordtype}{int} i2, \textcolor{keywordtype}{int} i3, \textcolor{keyword}{const} TString suffix)}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00135}00135 \{}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00136}00136   TString \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} = baseName;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00137}00137   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i1;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00138}00138   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i2;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00139}00139   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i3;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00140}00140   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += suffix;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00141}00141   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}};}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00142}00142 \}}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00143}00143 }
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00144}\mbox{\hyperlink{class_histograms_af4a59c872e5f603ddb2a28f9d78549c1}{00144}} TString \mbox{\hyperlink{class_histograms_a4f45c028b3c3489ea5b349ac7b518e0a}{Histograms::makeName}}(\textcolor{keyword}{const} TString \& baseName, \textcolor{keywordtype}{int} i1, \textcolor{keywordtype}{int} i2, \textcolor{keywordtype}{int} i3, \textcolor{keywordtype}{int} i4, \textcolor{keyword}{const} TString suffix)}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00145}00145 \{}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00146}00146   TString \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} = baseName;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00147}00147   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i1;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00148}00148   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i2;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00149}00149   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i3;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00150}00150   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i4;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00151}00151   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += suffix;}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00152}00152   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}};}
-\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00153}00153 \}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_histograms_8hpp}{Histograms.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00014}\mbox{\hyperlink{_histograms_8cpp_ac39029445e8969537a2b4f35ae9827da}{00014}} \mbox{\hyperlink{_histograms_8cpp_ac39029445e8969537a2b4f35ae9827da}{ClassImp}}(\mbox{\hyperlink{class_histograms}{Histograms}});}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00016}\mbox{\hyperlink{class_histograms_a205436da20370cb7d252b701ef851470}{00016}} \mbox{\hyperlink{class_histograms_a205436da20370cb7d252b701ef851470}{Histograms::Histograms}}(\textcolor{keyword}{const} TString \&       \_name,}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00017}00017                        \textcolor{keyword}{const} \mbox{\hyperlink{class_configuration}{Configuration}} \& \_configuration,}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00018}00018                        \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}              \_debugLevel)}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00019}00019 :}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00020}00020 \mbox{\hyperlink{class_histogram_collection}{HistogramCollection}}(\_name,\_debugLevel),}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00021}00021 configuration(\_configuration)}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00022}00022 \{}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00023}00023   }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00024}00024   \mbox{\hyperlink{class_message_logger_a10182fcb56fb5fda0f998c89c4bbe4fb}{appendClassName}}(\textcolor{stringliteral}{"{}Histograms"{}});}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00025}00025   \mbox{\hyperlink{class_message_logger_a62ee7a375e1aec16bfb767aec9fba906}{setInstanceName}}(\_name);}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00026}00026 \}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00028}00028 \textcolor{comment}{//Histograms(TFile * inputFile,}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00029}00029 \textcolor{comment}{//           const TString \& name,}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00030}00030 \textcolor{comment}{//           const Configuration \& configuration,}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00031}00031 \textcolor{comment}{//           LogLevel  debugLevel);}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00036}\mbox{\hyperlink{class_histograms_ae6197b40e3cb970716aa4fc8a8eaffb2}{00036}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_histograms_ae6197b40e3cb970716aa4fc8a8eaffb2}{Histograms::createHistograms}}()}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00037}00037 \{}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00038}00038   }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00039}00039   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}Implement derived class to create histograms."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00040}00040 \}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00045}\mbox{\hyperlink{class_histograms_a20ca1f616c8af6d3261e6ca3127ecd9d}{00045}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_histograms_a20ca1f616c8af6d3261e6ca3127ecd9d}{Histograms::loadHistograms}}(TFile * inputFile \_\_attribute\_\_((unused)))}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00046}00046 \{}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00047}00047   }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00048}00048   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}Implement derived class to load histograms."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00049}00049 \}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00053}\mbox{\hyperlink{class_histograms_aae59902c04cb1034e705f69545c9c1a9}{00053}} TString \mbox{\hyperlink{class_histograms_aae59902c04cb1034e705f69545c9c1a9}{Histograms::getHistoBaseName}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00054}00054 \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00055}00055 \textcolor{comment}{//  Configuration \& ac = *(Configuration*) getConfiguration();}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00056}00056   TString bn; \textcolor{comment}{//ac.histoBaseName;}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00057}00057 \textcolor{comment}{//  bn += "{}\_"{};}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00058}00058   bn = \mbox{\hyperlink{class_collection_a559e2c06e36b204e5a8e6ee2c2aedc37}{getName}}();}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00059}00059   bn += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00060}00060   \textcolor{keywordflow}{return} bn;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00061}00061 \}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00066}\mbox{\hyperlink{class_histograms_a600ac58287dd3f3b794be38a1da3727a}{00066}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_histograms_a600ac58287dd3f3b794be38a1da3727a}{Histograms::createDerivedHistograms}}()}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00067}00067 \{}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00068}00068   \mbox{\hyperlink{class_message_logger_aeb23907e8334ea59deeb54733ba36dac}{setFunctionName}}(\textcolor{stringliteral}{"{}createDerivedHistograms()"{}});}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00069}00069   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}Implement derived class to calculate derived histograms."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00070}00070 \}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00075}00075 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_histograms_a600ac58287dd3f3b794be38a1da3727a}{Histograms::createDerivedHistograms}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_histograms}{Histograms}} \& histograms \_\_attribute\_\_((unused)))}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00076}00076 \{}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00077}00077   \mbox{\hyperlink{class_message_logger_aeb23907e8334ea59deeb54733ba36dac}{setFunctionName}}(\textcolor{stringliteral}{"{}createDerivedHistograms(const Histograms \& histograms)"{}});}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00078}00078   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}(\_\_FUNCTION\_\_)) cout << \textcolor{stringliteral}{"{}Implement derived class to calculate derived histograms from external source..."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00079}00079 \}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00081}\mbox{\hyperlink{class_histograms_a4f45c028b3c3489ea5b349ac7b518e0a}{00081}} TString \mbox{\hyperlink{class_histograms_a4f45c028b3c3489ea5b349ac7b518e0a}{Histograms::makeName}}(\textcolor{keyword}{const} TString \& baseName,\textcolor{keyword}{const}  TString \& filterName1)}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00082}00082 \{}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00083}00083   TString \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} = baseName;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00084}00084   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00085}00085   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += filterName1;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00086}00086   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}};}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00087}00087 \}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00089}\mbox{\hyperlink{class_histograms_a3823351665900ed2a70b2f4438f80ebe}{00089}} TString \mbox{\hyperlink{class_histograms_a4f45c028b3c3489ea5b349ac7b518e0a}{Histograms::makeName}}(\textcolor{keyword}{const} TString \& baseName,\textcolor{keyword}{const}  TString \& filterName1,\textcolor{keyword}{const}  TString \& observableName1)}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00090}00090 \{}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00091}00091   TString \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} = baseName;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00092}00092   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00093}00093   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += filterName1;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00094}00094   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00095}00095   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += observableName1;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00096}00096   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}};}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00097}00097 \}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00100}\mbox{\hyperlink{class_histograms_add3da5d5a9a4e948e72570caf40604d7}{00100}} TString \mbox{\hyperlink{class_histograms_a4f45c028b3c3489ea5b349ac7b518e0a}{Histograms::makeName}}(\textcolor{keyword}{const} TString \& baseName,\textcolor{keyword}{const}  TString \& filterName1,\textcolor{keyword}{const}  TString \& observableName1,\textcolor{keyword}{const}  TString \& filterName2,\textcolor{keyword}{const}  TString \& observableName2)}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00101}00101 \{}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00102}00102   TString \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} = baseName;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00103}00103   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00104}00104   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += filterName1;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00105}00105   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00106}00106   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += observableName1;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00107}00107   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00108}00108   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += filterName2;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00109}00109   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00110}00110   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += observableName2;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00111}00111   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}};}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00112}00112 \}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00114}\mbox{\hyperlink{class_histograms_a5bb5ef35a32051db5088f12a5c6f994a}{00114}} TString \mbox{\hyperlink{class_histograms_a4f45c028b3c3489ea5b349ac7b518e0a}{Histograms::makeName}}(\textcolor{keyword}{const} TString \& baseName, \textcolor{keywordtype}{int} i1, \textcolor{keyword}{const} TString suffix)}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00115}00115 \{}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00116}00116   TString \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} = baseName;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00117}00117   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i1;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00118}00118   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += suffix;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00119}00119   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}};}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00120}00120 \}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00122}\mbox{\hyperlink{class_histograms_a1d1a91dd0c36eff359d73330147978c0}{00122}} TString \mbox{\hyperlink{class_histograms_a4f45c028b3c3489ea5b349ac7b518e0a}{Histograms::makeName}}(\textcolor{keyword}{const} TString \& baseName, \textcolor{keywordtype}{int} i1, \textcolor{keywordtype}{int} i2, \textcolor{keyword}{const} TString suffix)}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00123}00123 \{}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00124}00124   TString \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} = baseName;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00125}00125   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i1;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00126}00126   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i2;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00127}00127   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += suffix;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00128}00128   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}};}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00129}00129 \}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00131}\mbox{\hyperlink{class_histograms_a97eedbffd02d776a7398fe6baf85a043}{00131}} TString \mbox{\hyperlink{class_histograms_a4f45c028b3c3489ea5b349ac7b518e0a}{Histograms::makeName}}(\textcolor{keyword}{const} TString \& baseName, \textcolor{keywordtype}{int} i1, \textcolor{keywordtype}{int} i2, \textcolor{keywordtype}{int} i3, \textcolor{keyword}{const} TString suffix)}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00132}00132 \{}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00133}00133   TString \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} = baseName;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00134}00134   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i1;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00135}00135   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i2;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00136}00136   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i3;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00137}00137   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += suffix;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00138}00138   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}};}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00139}00139 \}}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00141}\mbox{\hyperlink{class_histograms_af4a59c872e5f603ddb2a28f9d78549c1}{00141}} TString \mbox{\hyperlink{class_histograms_a4f45c028b3c3489ea5b349ac7b518e0a}{Histograms::makeName}}(\textcolor{keyword}{const} TString \& baseName, \textcolor{keywordtype}{int} i1, \textcolor{keywordtype}{int} i2, \textcolor{keywordtype}{int} i3, \textcolor{keywordtype}{int} i4, \textcolor{keyword}{const} TString suffix)}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00142}00142 \{}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00143}00143   TString \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} = baseName;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00144}00144   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i1;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00145}00145   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i2;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00146}00146   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i3;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00147}00147   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += i4;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00148}00148   \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}} += suffix;}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00149}00149   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_collection_a5c730635992bdce01329c77bdcb21608}{name}};}
+\DoxyCodeLine{\Hypertarget{_histograms_8cpp_source_l00150}00150 \}}
 
 \end{DoxyCode}

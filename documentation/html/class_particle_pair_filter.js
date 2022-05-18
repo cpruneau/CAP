@@ -1,7 +1,7 @@
 var class_particle_pair_filter =
 [
     [ "ParticlePairFilter", "class_particle_pair_filter.html#a02eabe391b68ae90470ed0b1ac576fcd", null ],
-    [ "~ParticlePairFilter", "class_particle_pair_filter.html#a6ff6847a2f87802c9ecf806985901ae4", null ],
+    [ "~ParticlePairFilter", "class_particle_pair_filter.html#a2ed00251af365c0f7799c7c297e77298", null ],
     [ "accept", "class_particle_pair_filter.html#aef22d81cbbc203fd00e4bc6c7245231b", null ],
     [ "max_deta", "class_particle_pair_filter.html#acffc61391c062a066f4ead1e3d014c98", null ],
     [ "max_dphi", "class_particle_pair_filter.html#aeaf29af96f9cba1a33bd332be1af523b", null ],

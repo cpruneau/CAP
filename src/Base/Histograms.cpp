@@ -20,8 +20,9 @@ Histograms::Histograms(const TString &       _name,
 HistogramCollection(_name,_debugLevel),
 configuration(_configuration)
 {
-  setClassName("Histograms");
-  setInstanceName(name);
+  
+  appendClassName("Histograms");
+  setInstanceName(_name);
 }
 
 //Histograms(TFile * inputFile,
@@ -34,8 +35,8 @@ configuration(_configuration)
 //!
 void Histograms::createHistograms()
 {
-  setFunctionName("createHistograms()");
-  if (reportWarning()) cout << "Implement derived class to create histograms." << endl;
+  
+  if (reportWarning(__FUNCTION__)) cout << "Implement derived class to create histograms." << endl;
 }
 
 //!
@@ -43,8 +44,8 @@ void Histograms::createHistograms()
 //!
 void Histograms::loadHistograms(TFile * inputFile __attribute__((unused)))
 {
-  setFunctionName("loadHistograms(TFile * inputFile)");
-  if (reportWarning()) cout << "Implement derived class to load histograms." << endl;
+  
+  if (reportWarning(__FUNCTION__)) cout << "Implement derived class to load histograms." << endl;
 }
 
 
@@ -65,7 +66,7 @@ TString Histograms::getHistoBaseName() const
 void Histograms::createDerivedHistograms()
 {
   setFunctionName("createDerivedHistograms()");
-  if (reportWarning()) cout << "Implement derived class to calculate derived histograms." << endl;
+  if (reportWarning(__FUNCTION__)) cout << "Implement derived class to calculate derived histograms." << endl;
 }
 
 //!
@@ -74,7 +75,7 @@ void Histograms::createDerivedHistograms()
 void Histograms::createDerivedHistograms(const Histograms & histograms __attribute__((unused)))
 {
   setFunctionName("createDerivedHistograms(const Histograms & histograms)");
-  if (reportWarning()) cout << "Implement derived class to calculate derived histograms from external source..." << endl;
+  if (reportWarning(__FUNCTION__)) cout << "Implement derived class to calculate derived histograms from external source..." << endl;
 }
 
 TString Histograms::makeName(const TString & baseName,const  TString & filterName1)

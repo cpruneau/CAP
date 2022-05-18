@@ -283,6 +283,7 @@ void BWModelEventGenerator::reset()
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void BWModelEventGenerator::execute()
 {
+  incrementTaskExecuted();
   /* event multiplicity */
   int multiplicity = int(gRandom->Gaus(totalMultiplicityMean,totalMultiplicitySigma));
   int netcharge    = int(gRandom->Gaus(netChargeMean,netChargeSigma));
@@ -374,7 +375,7 @@ void BWModelEventGenerator::execute()
     particle->boost(0.0,0.0,(pz < 0) ? -lbeta : lbeta);
     event.add(particle);
     nGenerated++;
-    if (reportDebug()) particle->printProperties(cout);
+    if (reportDebug(__FUNCTION__)) particle->printProperties(cout);
   }
   if (reportDebug("BWModelEventGenerator",getName(),"execute()"))
     {

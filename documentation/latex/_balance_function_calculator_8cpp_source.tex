@@ -1,5 +1,5 @@
 \hypertarget{_balance_function_calculator_8cpp_source}{}\doxysection{Balance\+Function\+Calculator.\+cpp}
-\label{_balance_function_calculator_8cpp_source}\index{Base/BalanceFunctionCalculator.cpp@{Base/BalanceFunctionCalculator.cpp}}
+\label{_balance_function_calculator_8cpp_source}\index{Pair/BalanceFunctionCalculator.cpp@{Pair/BalanceFunctionCalculator.cpp}}
 \mbox{\hyperlink{_balance_function_calculator_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
@@ -34,447 +34,444 @@
 \DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00030}00030 sObservableNames(\_sObservableNames),}
 \DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00031}00031 pObservableNames(\_pObservableNames)}
 \DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00032}00032 \{}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00033}00033   \mbox{\hyperlink{class_message_logger_a10182fcb56fb5fda0f998c89c4bbe4fb}{appendClassName}}(\_name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00034}00034   \mbox{\hyperlink{class_balance_function_calculator_a79165399959bc4f68288699cdbab69e9}{setDefaultConfiguration}}();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00035}00035   \mbox{\hyperlink{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}{setConfiguration}}(\_configuration);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00036}00036 \}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00033}00033   \mbox{\hyperlink{class_message_logger_a10182fcb56fb5fda0f998c89c4bbe4fb}{appendClassName}}(\textcolor{stringliteral}{"{}BalanceFunctionCalculator"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00034}00034   \mbox{\hyperlink{class_message_logger_a62ee7a375e1aec16bfb767aec9fba906}{setInstanceName}}(\_name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00035}00035   \mbox{\hyperlink{class_balance_function_calculator_a79165399959bc4f68288699cdbab69e9}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00036}00036   \mbox{\hyperlink{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}{setConfiguration}}(\_configuration);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00037}00037 \}}
 \DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00038}00038 }
 \DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00039}00039 }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00040}\mbox{\hyperlink{class_balance_function_calculator_a79165399959bc4f68288699cdbab69e9}{00040}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_balance_function_calculator_a79165399959bc4f68288699cdbab69e9}{BalanceFunctionCalculator::setDefaultConfiguration}}()}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00041}00041 \{}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00042}00042   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\textcolor{stringliteral}{"{}BalanceFunctionCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00043}00043     ;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00044}00044   \mbox{\hyperlink{class_configuration}{Configuration}} \& \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}} = \mbox{\hyperlink{class_task_a1955cc87bd4885d8ca19435b3609443f}{getConfiguration}}();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00045}00045   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8420b979e7d98bf6562ec2f6cc28d0d8}{setName}}(\textcolor{stringliteral}{"{}BalanceFunctionCalculator Configuration"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00046}00046   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}( \textcolor{stringliteral}{"{}useParticles"{}},           \textcolor{keyword}{false});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00047}00047   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}( \textcolor{stringliteral}{"{}createHistograms"{}},       \textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00048}00048   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}( \textcolor{stringliteral}{"{}loadHistograms"{}},         \textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00049}00049   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}( \textcolor{stringliteral}{"{}saveHistograms"{}},         \textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00050}00050   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}( \textcolor{stringliteral}{"{}forceHistogramsRewrite"{}}, \textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00051}00051   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00052}00052   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00053}00053   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillEta"{}},  \textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00054}00054   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillY"{}},    \textcolor{keyword}{false});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00055}00055   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillP2"{}},   \textcolor{keyword}{false});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00056}00056   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00057}00057   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_n1"{}},  100);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00058}00058   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_n1"{}},    0.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00059}00059   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_n1"{}},  100.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00060}00060   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00061}00061   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_eTot"{}},  100);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00062}00062   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_eTot"{}},    0.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00063}00063   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_eTot"{}},  100.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00064}00064   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00065}00065   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_pt"{}},   18);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00066}00066   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_pt"{}},   0.20);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00067}00067   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_pt"{}},   2.00);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00068}00068   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00069}00069   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phi"{}},  72);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00070}00070   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_phi"{}},   0.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00071}00071   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_phi"{}}, TMath::TwoPi());}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00072}00072   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00073}00073   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_eta"{}},   20);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00074}00074   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_eta"{}},   -\/1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00075}00075   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_eta"{}},    1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00076}00076   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00077}00077   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_y"{}},     20);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00078}00078   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_y"{}},     -\/1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00079}00079   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_y"{}},      1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00080}00080   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00081}00081   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phiEta"{}},    720);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00082}00082   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phiEtaPt"{}},  7200);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00083}00083   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phiY"{}},      720);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00084}00084   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phiYPt"{}},    7200);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00085}00085   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00086}00086   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_n2"{}},          100);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00087}00087   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_n2"{}},            0.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00088}00088   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_n2"{}},         1000.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00089}00089   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_DeltaPlong"{}},   10);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00090}00090   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_DeltaPlong"{}},   -\/1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00091}00091   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_DeltaPlong"{}},    1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00092}00092   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_DeltaPside"{}},   10);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00093}00093   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_DeltaPside"{}},   -\/1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00094}00094   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_DeltaPside"{}},    1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00095}00095   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}range\_DeltaPside"{}},  2.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00096}00096   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_DeltaPout"{}},    10);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00097}00097   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_DeltaPout"{}},    -\/1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00098}00098   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_DeltaPout"{}},     1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00099}00099   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}range\_DeltaPout"{}},   2.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00100}00100   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_Dphi"{}},         36);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00101}00101   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_Dphi"{}},          0.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00102}00102   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_Dphi"{}},TMath::TwoPi());}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00103}00103   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}width\_Dphi"{}},TMath::TwoPi());}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00104}00104   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_Dphi\_shft"{}},    36);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00105}00105   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_Dphi\_shft"{}},     0.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00106}00106   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_Dphi\_shft"{}},     0.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00107}00107   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_Deta"{}},         39);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00108}00108   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_Deta"{}},         -\/2.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00109}00109   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_Deta"{}},          2.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00110}00110   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}width\_Deta"{}},   4.0/39.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00111}00111   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_Dy"{}},           39);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00112}00112   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_Dy"{}},           -\/2.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00113}00113   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_Dy"{}},            2.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00114}00114   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}width\_Dy"{}},     4.0/39.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00115}00115   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\textcolor{stringliteral}{"{}BalanceFunctionCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}setDefaultConfiguration()"{}}))}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00116}00116     \{}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00117}00117     \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(cout);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00118}00118     \}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00119}00119 \}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00120}00120 }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00121}00121 }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00125}\mbox{\hyperlink{class_balance_function_calculator_aebf45d55bc4aa1b059d32586c876ba5b}{00125}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_balance_function_calculator_aebf45d55bc4aa1b059d32586c876ba5b}{BalanceFunctionCalculator::execute}}()}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00126}00126 \{}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00127}00127   TString fct = \textcolor{stringliteral}{"{}execute()"{}};}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00128}00128   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(fct))}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00129}00129     \{ \}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00130}00130   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00131}00131   TString histoInputPath      = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histoInputPath"{}}      );}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00132}00132   TString histoInputFileName  = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histoInputFileName"{}}  );}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00133}00133   TString histoOutputPath     = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histoOutputPath"{}}     );}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00134}00134   TString histoOutputFileName = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histoOutputFileName"{}} );}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00135}00135   TString histoBaseName       = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histoBaseName"{}}       );}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00136}00136   \textcolor{keywordtype}{bool} forceHistogramsRewrite = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}} );}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00137}00137   histoOutputFileName += \textcolor{stringliteral}{"{}\_BF.root"{}};}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00138}00138   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00139}00139   \textcolor{keywordtype}{bool} calculateCI = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00140}00140   \textcolor{keywordtype}{bool} calculateCD = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00141}00141   \textcolor{keywordtype}{bool} calculateBFv1 = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00142}00142   \textcolor{keywordtype}{bool} calculateDiffs = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00143}00143   \textcolor{keywordtype}{bool} calculateBFv2 = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00144}00144 }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00145}00145   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}())}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00146}00146     \{}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00147}00147     cout << endl;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00148}00148     cout << \textcolor{stringliteral}{"{}         histoInputPath: "{}} << histoInputPath << endl;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00149}00149     cout << \textcolor{stringliteral}{"{}     histoInputFileName: "{}} << histoInputFileName<< endl;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00150}00150     cout << \textcolor{stringliteral}{"{}        histoOutputPath: "{}} << histoOutputPath << endl;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00151}00151     cout << \textcolor{stringliteral}{"{}    histoOutputFileName: "{}} << histoOutputFileName << endl;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00152}00152     cout << \textcolor{stringliteral}{"{}          histoBaseName: "{}} << histoBaseName << endl;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00153}00153     cout << \textcolor{stringliteral}{"{} forceHistogramsRewrite: "{}} << forceHistogramsRewrite << endl;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00154}00154     \}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00155}00155   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00156}00156   TFile * inputFile = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00157}00157   TFile * outputFile = \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00158}00158   inputFile = \mbox{\hyperlink{class_task_a4491c7a1e03958b1a67e51e387601695}{openRootFile}}(histoInputPath,histoInputFileName,\textcolor{stringliteral}{"{}OLD"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00159}00159   \textcolor{keywordflow}{if} (!inputFile) \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00160}00160   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00161}00161   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}( \textcolor{stringliteral}{"{}forceHistogramsRewrite"{}}, \textcolor{keyword}{false});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00162}00162   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00163}00163   \textcolor{keywordflow}{if} (forceHistogramsRewrite)}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00164}00164     outputFile = \mbox{\hyperlink{class_task_a4491c7a1e03958b1a67e51e387601695}{openRootFile}}(histoOutputPath, histoOutputFileName, \textcolor{stringliteral}{"{}RECREATE"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00165}00165   \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00166}00166     outputFile = \mbox{\hyperlink{class_task_a4491c7a1e03958b1a67e51e387601695}{openRootFile}}(histoOutputPath, histoOutputFileName, \textcolor{stringliteral}{"{}NEW"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00167}00167   \textcolor{keywordflow}{if} (!outputFile) \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00168}00168   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00169}00169   \textcolor{comment}{// Use hh as helper to load and calculate histograms, etc.}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00170}00170   \mbox{\hyperlink{class_histograms}{Histograms}} * hh = \textcolor{keyword}{new} \mbox{\hyperlink{class_histograms}{Histograms}}(\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(), \mbox{\hyperlink{class_task_a1955cc87bd4885d8ca19435b3609443f}{getConfiguration}}(), \mbox{\hyperlink{class_message_logger_a72f7d9f462862f08d76637cb904b7acd}{getLogLevel}}());}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00171}00171   hh-\/>\mbox{\hyperlink{class_collection_a53171739ab8ad75c86285a35b43cdab2}{setOwnership}}(\textcolor{keyword}{false});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00172}00172   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00173}00173   TH1 * rho1\_1;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00174}00174   TH1 * rho1\_1B;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00175}00175   TH1 * rho1\_2;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00176}00176   TH1 * rho1\_2B;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00177}00177   TH2 * rho1\_1\_phiY;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00178}00178   TH2 * rho1\_1B\_phiY;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00179}00179   TH2 * rho1\_2\_phiY;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00180}00180   TH2 * rho1\_2B\_phiY;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00181}00181   TH2 * r2\_12;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00182}00182   TH2 * r2\_1B2;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00183}00183   TH2 * r2\_12B;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00184}00184   TH2 * r2\_1B2B;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00185}00185   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00186}00186   TH2 * b2\_12;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00187}00187   TH2 * b2\_1B2;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00188}00188   TH2 * b2\_12B;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00189}00189   TH2 * b2\_1B2B;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00190}00190   TH2 * bf\_12B;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00191}00191   TH2 * bf\_1B2;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00192}00192   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00193}00193   TH2 * r2CI;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00194}00194   TH2 * r2CD;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00195}00195   TH2 * b12B;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00196}00196   TH2 * b1B2;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00197}00197   TH1 * h\_x;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00198}00198   TH1 * h\_y;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00199}00199   TH2 * r2Diff;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00200}00200   TH2 * b2Diff;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00201}00201   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00202}00202   \textcolor{keywordtype}{double} rho1Avg, erho1Avg;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00203}00203   \textcolor{keywordtype}{double} rho1BarAvg, erho1BarAvg;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00204}00204   \textcolor{keywordtype}{float} nx, ny, sum, width;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00205}00205   \textcolor{keywordtype}{double} integralBF12B, integralBF1B2;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00206}00206   \textcolor{keywordtype}{double} eIntegralBF12B, eIntegralBF1B2;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00207}00207   TString name;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00208}00208   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00209}00209   vector<double> integralsBF12B;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00210}00210   vector<double> integralsBF1B2;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00211}00211   vector<double> eIntegralsBF12B; \textcolor{comment}{// estimated errors}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00212}00212   vector<double> eIntegralsBF1B2; \textcolor{comment}{// estimated errors}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00213}00213   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_task_a66a48a46d707a69339ec8c03cf25556c}{nEventProcessed}} = \mbox{\hyperlink{class_task_a0bc0b2032fda7d3e208b0e15d00a970e}{readParameter}}(inputFile, \textcolor{stringliteral}{"{}EventProcessed"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00214}00214   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_task_aa8a0d1fbb21cfb200e74bb3b38118fa0}{nEventAccepted}}  = \mbox{\hyperlink{class_task_a0bc0b2032fda7d3e208b0e15d00a970e}{readParameter}}(inputFile, \textcolor{stringliteral}{"{}EventAccepted"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00215}00215   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nSpecies = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}.size()/2;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00216}00216   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iObservable = 0; iObservable<\mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}.size();iObservable++)}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00217}00217     \{}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00218}00218     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iPart1=0; iPart1<nSpecies; iPart1++)}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00219}00219       \{}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00220}00220       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iPart2=0; iPart2<nSpecies; iPart2++)}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00221}00221         \{}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00222}00222         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iEventClass = 0; iEventClass<\mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}.size();iEventClass++)}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00223}00223           \{}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00224}00224           \textcolor{comment}{// load histogram and compute derived files.}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00225}00225           TString eventClassName  = \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}[iEventClass]-\/>getName();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00226}00226           TString particleName1   = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}[iPart1]-\/>getName();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00227}00227           TString particleName1b  = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}[iPart1+nSpecies]-\/>getName();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00228}00228           TString particleName2   = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}[iPart2]-\/>getName();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00229}00229           TString particleName2b  = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}[iPart2+nSpecies]-\/>getName();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00230}00230           rho1\_1  = hh-\/>\mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,\mbox{\hyperlink{class_task_a1b6030e671b0670d448a859b0fb0a065}{createHistogramName}}(histoBaseName,eventClassName,particleName1, \mbox{\hyperlink{class_balance_function_calculator_a3d933931aba0292cca14aafc64613409}{sObservableNames}}[0]));}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00231}00231           rho1\_1B = hh-\/>\mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,\mbox{\hyperlink{class_task_a1b6030e671b0670d448a859b0fb0a065}{createHistogramName}}(histoBaseName,eventClassName,particleName1b,\mbox{\hyperlink{class_balance_function_calculator_a3d933931aba0292cca14aafc64613409}{sObservableNames}}[0]));}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00232}00232           rho1\_2  = hh-\/>\mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,\mbox{\hyperlink{class_task_a1b6030e671b0670d448a859b0fb0a065}{createHistogramName}}(histoBaseName,eventClassName,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a3d933931aba0292cca14aafc64613409}{sObservableNames}}[0]));}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00233}00233           rho1\_2B = hh-\/>\mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,\mbox{\hyperlink{class_task_a1b6030e671b0670d448a859b0fb0a065}{createHistogramName}}(histoBaseName,eventClassName,particleName2b,\mbox{\hyperlink{class_balance_function_calculator_a3d933931aba0292cca14aafc64613409}{sObservableNames}}[0]));}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00234}00234           \textcolor{keywordflow}{if} (!rho1\_1 || !rho1\_1B) \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00235}00235           hh-\/>\mbox{\hyperlink{class_histogram_collection_a33292347293b6d977815ab9848fa94f2}{calculateAverage}}(rho1\_1, rho1Avg,   erho1Avg);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00236}00236           hh-\/>\mbox{\hyperlink{class_histogram_collection_a33292347293b6d977815ab9848fa94f2}{calculateAverage}}(rho1\_1B,rho1BarAvg,erho1BarAvg);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00237}00237           \textcolor{keywordflow}{if} (!rho1\_2 || !rho1\_2B) \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00238}00238           r2\_12     = hh-\/>\mbox{\hyperlink{class_histogram_collection_a56ce4428bd4299734ea251838f96c0ed}{loadH2}}(inputFile,\mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1, particleName2,  \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable]));}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00239}00239           r2\_1B2    = hh-\/>\mbox{\hyperlink{class_histogram_collection_a56ce4428bd4299734ea251838f96c0ed}{loadH2}}(inputFile,\mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1b,particleName2,  \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable]));}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00240}00240           r2\_12B    = hh-\/>\mbox{\hyperlink{class_histogram_collection_a56ce4428bd4299734ea251838f96c0ed}{loadH2}}(inputFile,\mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1, particleName2b, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable]));}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00241}00241           r2\_1B2B   = hh-\/>\mbox{\hyperlink{class_histogram_collection_a56ce4428bd4299734ea251838f96c0ed}{loadH2}}(inputFile,\mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1b,particleName2b, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable]));}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00242}00242           \textcolor{keywordflow}{if} (!r2\_12 || !r2\_1B2 || !r2\_12B || !r2\_1B2B) \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00243}00243           }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00244}00244        }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00245}00245           }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00246}00246           \textcolor{keywordflow}{if} (calculateCI)}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00247}00247             \{}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00248}00248             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_CI"{}} );}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00249}00249             r2CI = (TH2*) r2\_1B2-\/>Clone();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00250}00250             r2CI-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00251}00251             r2CI-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00252}00252             r2CI-\/>Add(r2\_12B);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00253}00253             r2CI-\/>Add(r2\_12);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00254}00254             r2CI-\/>Add(r2\_1B2B);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00255}00255             r2CI-\/>Scale(0.25);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00256}00256             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(r2CI);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00257}00257             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00258}00258             nx = r2CI-\/>GetNbinsX();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00259}00259             ny = r2CI-\/>GetNbinsY();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00260}00260             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable],\textcolor{stringliteral}{"{}\_CI\_x"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00261}00261             h\_x = r2CI-\/>ProjectionX();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00262}00262             h\_x-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00263}00263             h\_x-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00264}00264             \textcolor{comment}{//h\_x-\/>Scale(1.0/ny);}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00265}00265             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_x);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00266}00266             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00267}00267             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable],\textcolor{stringliteral}{"{}\_CI\_y"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00268}00268             h\_y = r2CI-\/>ProjectionY();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00269}00269             h\_y-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00270}00270             h\_y-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00271}00271             \textcolor{comment}{//h\_y-\/>Scale(1.0/nx);}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00272}00272             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_y);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00273}00273             \}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00274}00274           }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00275}00275           \textcolor{keywordflow}{if} (calculateCD)}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00276}00276             \{}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00277}00277             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_CD"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00278}00278             r2CD = (TH2*) r2\_1B2-\/>Clone();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00279}00279             r2CD-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00280}00280             r2CD-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00281}00281             r2CD-\/>Add(r2\_12B);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00282}00282             r2CD-\/>Add(r2\_12, -\/1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00283}00283             r2CD-\/>Add(r2\_1B2B, -\/1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00284}00284             r2CD-\/>Scale(0.25);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00285}00285             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(r2CD);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00286}00286             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00287}00287             nx = r2CD-\/>GetNbinsX();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00288}00288             ny = r2CD-\/>GetNbinsY();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00289}00289             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_CD\_x"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00290}00290             h\_x = r2CD-\/>ProjectionX();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00291}00291             h\_x-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00292}00292             h\_x-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00293}00293             \textcolor{comment}{//h\_x-\/>Scale(1.0/ny);}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00294}00294             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_x);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00295}00295             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00296}00296             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_CD\_y"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00297}00297             h\_y = r2CD-\/>ProjectionY();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00298}00298             h\_y-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00299}00299             h\_y-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00300}00300             \textcolor{comment}{//h\_y-\/>Scale(1.0/nx);}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00301}00301             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_y);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00302}00302             \}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00303}00303           }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00304}00304           \textcolor{keywordflow}{if} (calculateBFv1)}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00305}00305             \{}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00306}00306             \textcolor{comment}{// =====}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00307}00307             \textcolor{comment}{// B12B}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00308}00308             \textcolor{comment}{// =====}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00309}00309             name  = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_B12B"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00310}00310             b12B = (TH2*) r2\_12B-\/>Clone();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00311}00311             b12B-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00312}00312             b12B-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00313}00313             b12B-\/>Scale(rho1Avg); \textcolor{comment}{// correct}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00314}00314             b12B-\/>Add(r2\_1B2B, -\/rho1BarAvg);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00315}00315             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00316}00316             hh-\/>\mbox{\hyperlink{class_histogram_collection_a6647abaf7991d3b77c83c7d3bbcf0639}{calculateIntegral}}(b12B,integralBF12B,eIntegralBF12B);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00317}00317             integralsBF12B.push\_back( integralBF12B );}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00318}00318             eIntegralsBF12B.push\_back( eIntegralBF12B );}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00319}00319             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(b12B);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00320}00320             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00321}00321             nx = b12B-\/>GetNbinsX();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00322}00322             ny = b12B-\/>GetNbinsY();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00323}00323             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_B12B\_x"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00324}00324             h\_x = b12B-\/>ProjectionX();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00325}00325             h\_x-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00326}00326             h\_x-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00327}00327             \textcolor{comment}{//h\_x-\/>Scale(TMath::TwoPi()/double(ny));}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00328}00328             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_x);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00329}00329             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00330}00330             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_B12B\_y"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00331}00331             h\_y = b12B-\/>ProjectionY();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00332}00332             h\_y-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00333}00333             h\_y-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00334}00334             \textcolor{comment}{//h\_y-\/>Scale(4.0/double(nx));}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00335}00335             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_y);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00336}00336             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00337}00337             \textcolor{comment}{// =====}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00338}00338             \textcolor{comment}{// B1B2}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00339}00339             \textcolor{comment}{// =====}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00340}00340             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_B1B2"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00341}00341             b1B2 = (TH2*) r2\_1B2-\/>Clone();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00342}00342             b1B2-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00343}00343             b1B2-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00344}00344             b1B2-\/>Scale(rho1BarAvg);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00345}00345             b1B2-\/>Add(r2\_1B2B, -\/rho1Avg);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00346}00346             \textcolor{comment}{//b1B2-\/>Add(r2\_1B2B, -\/rho1BarAvg);}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00347}00347             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00348}00348             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00349}00349             hh-\/>\mbox{\hyperlink{class_histogram_collection_a6647abaf7991d3b77c83c7d3bbcf0639}{calculateIntegral}}(b1B2,integralBF1B2,eIntegralBF1B2);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00350}00350             integralsBF1B2.push\_back( integralBF1B2 );}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00351}00351             eIntegralsBF1B2.push\_back( eIntegralBF1B2 );}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00352}00352             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(b1B2);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00353}00353             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00354}00354             nx = b1B2-\/>GetNbinsX();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00355}00355             ny = b1B2-\/>GetNbinsY();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00356}00356             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_B1B2\_x"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00357}00357             h\_x = b1B2-\/>ProjectionX();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00358}00358             h\_x-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00359}00359             h\_x-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00360}00360             \textcolor{comment}{//h\_x-\/>Scale(TMath::TwoPi()/ny);}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00361}00361             \textcolor{comment}{//calculateIntegral(h\_x);}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00362}00362             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_x);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00363}00363             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00364}00364             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_B1B2\_y"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00365}00365             h\_y = b1B2-\/>ProjectionY();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00366}00366             h\_y-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00367}00367             h\_y-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00368}00368             \textcolor{comment}{//h\_y-\/>Scale(4.0/nx);}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00369}00369             \textcolor{comment}{//calculateIntegral(h\_y);}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00370}00370             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_y);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00371}00371             \}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00372}00372           }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00373}00373           \textcolor{keywordflow}{if} (calculateDiffs)}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00374}00374             \{}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00375}00375             \textcolor{comment}{//b1B2-\/>Add(r2\_1B2B, -\/rho1Avg);}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00376}00376             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_R2US\_Diff"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00377}00377             r2Diff = (TH2*) r2\_1B2-\/>Clone();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00378}00378             r2Diff-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00379}00379             r2Diff-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00380}00380             r2Diff-\/>Add(r2\_12B, -\/1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00381}00381             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(r2Diff);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00382}00382             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00383}00383             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_R2LS\_Diff"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00384}00384             r2Diff = (TH2*) r2\_12-\/>Clone();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00385}00385             r2Diff-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00386}00386             r2Diff-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00387}00387             r2Diff-\/>Add(r2\_1B2B, -\/1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00388}00388             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(r2Diff);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00389}00389             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00390}00390             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_B2Diff"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00391}00391             b2Diff = (TH2*) b1B2-\/>Clone();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00392}00392             b2Diff-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00393}00393             b2Diff-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00394}00394             b2Diff-\/>Add(b12B, -\/1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00395}00395             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(b2Diff);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00396}00396             \}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00397}00397           }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00398}00398           \textcolor{keywordflow}{if} (calculateBFv2)}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00399}00399             \{}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00400}00400             \textcolor{comment}{// =====}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00401}00401             \textcolor{comment}{// bf\_12B}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00402}00402             \textcolor{comment}{// =====}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00041}\mbox{\hyperlink{class_balance_function_calculator_a79165399959bc4f68288699cdbab69e9}{00041}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_balance_function_calculator_a79165399959bc4f68288699cdbab69e9}{BalanceFunctionCalculator::setDefaultConfiguration}}()}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00042}00042 \{}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00043}00043   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00044}00044   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00045}00045     ;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00046}00046   \mbox{\hyperlink{class_configuration}{Configuration}} \& \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}} = \mbox{\hyperlink{class_task_a1955cc87bd4885d8ca19435b3609443f}{getConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00047}00047   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8420b979e7d98bf6562ec2f6cc28d0d8}{setName}}(\textcolor{stringliteral}{"{}BalanceFunctionCalculator Configuration"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00048}00048   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}( \textcolor{stringliteral}{"{}useParticles"{}},           \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00049}00049   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}( \textcolor{stringliteral}{"{}createHistograms"{}},       \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00050}00050   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}( \textcolor{stringliteral}{"{}loadHistograms"{}},         \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00051}00051   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}( \textcolor{stringliteral}{"{}saveHistograms"{}},         \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00052}00052   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1a297318ed8b8d8b0bd50d875477957b}{setParameter}}( \textcolor{stringliteral}{"{}forceHistogramsRewrite"{}}, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00054}00054   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillEta"{}},  \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00055}00055   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillY"{}},    \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00056}00056   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}fillP2"{}},   \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00057}00057   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00058}00058   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_n1"{}},  100);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00059}00059   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_n1"{}},    0.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00060}00060   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_n1"{}},  100.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00061}00061   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00062}00062   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_eTot"{}},  100);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00063}00063   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_eTot"{}},    0.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00064}00064   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_eTot"{}},  100.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00065}00065   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00066}00066   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_pt"{}},   18);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00067}00067   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_pt"{}},   0.20);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00068}00068   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_pt"{}},   2.00);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00069}00069   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00070}00070   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phi"{}},  72);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00071}00071   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_phi"{}},   0.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00072}00072   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_phi"{}}, TMath::TwoPi());}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00073}00073   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00074}00074   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_eta"{}},   20);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00075}00075   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_eta"{}},   -\/1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00076}00076   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_eta"{}},    1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00077}00077   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00078}00078   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_y"{}},     20);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00079}00079   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_y"{}},     -\/1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00080}00080   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_y"{}},      1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00081}00081   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00082}00082   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phiEta"{}},    720);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00083}00083   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phiEtaPt"{}},  7200);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00084}00084   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phiY"{}},      720);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00085}00085   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_phiYPt"{}},    7200);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00086}00086   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00087}00087   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_n2"{}},          100);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00088}00088   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_n2"{}},            0.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00089}00089   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_n2"{}},         1000.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00090}00090   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_DeltaPlong"{}},   10);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00091}00091   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_DeltaPlong"{}},   -\/1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00092}00092   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_DeltaPlong"{}},    1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00093}00093   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_DeltaPside"{}},   10);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00094}00094   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_DeltaPside"{}},   -\/1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00095}00095   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_DeltaPside"{}},    1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00096}00096   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}range\_DeltaPside"{}},  2.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00097}00097   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_DeltaPout"{}},    10);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00098}00098   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_DeltaPout"{}},    -\/1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00099}00099   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_DeltaPout"{}},     1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00100}00100   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}range\_DeltaPout"{}},   2.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00101}00101   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_Dphi"{}},         36);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00102}00102   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_Dphi"{}},          0.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00103}00103   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_Dphi"{}},TMath::TwoPi());}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00104}00104   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}width\_Dphi"{}},TMath::TwoPi());}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00105}00105   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_Dphi\_shft"{}},    36);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00106}00106   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_Dphi\_shft"{}},     0.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00107}00107   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_Dphi\_shft"{}},     0.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00108}00108   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_Deta"{}},         39);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00109}00109   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_Deta"{}},         -\/2.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00110}00110   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_Deta"{}},          2.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00111}00111   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}width\_Deta"{}},   4.0/39.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00112}00112   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}nBins\_Dy"{}},           39);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00113}00113   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}min\_Dy"{}},           -\/2.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00114}00114   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}max\_Dy"{}},            2.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00115}00115   \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a1659ea43ba2b364d5f36f97c3523f930}{addParameter}}(\textcolor{stringliteral}{"{}width\_Dy"{}},     4.0/39.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00116}00116   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_)) \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a8b19a94819ee67bf12fbab045cee329b}{printConfiguration}}(cout);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00117}00117 \}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00123}\mbox{\hyperlink{class_balance_function_calculator_aebf45d55bc4aa1b059d32586c876ba5b}{00123}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_balance_function_calculator_aebf45d55bc4aa1b059d32586c876ba5b}{BalanceFunctionCalculator::execute}}()}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00124}00124 \{}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00125}00125   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00126}00126   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a2212252d4b587b44586d23fb4418d088}{reportStart}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00127}00127     ;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00128}00128   \mbox{\hyperlink{class_task_acb311e0eb8b72d684f8b228483bb96f5}{incrementTaskExecuted}}();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00129}00129   TString histoInputPath      = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histoInputPath"{}}      );}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00130}00130   TString histoInputFileName  = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histoInputFileName"{}}  );}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00131}00131   TString histoOutputPath     = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histoOutputPath"{}}     );}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00132}00132   TString histoOutputFileName = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histoOutputFileName"{}} );}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00133}00133   TString histoBaseName       = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_ace156b503336e7c18e7fb830186dbb87}{getValueString}}( \textcolor{stringliteral}{"{}histoBaseName"{}}       );}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00134}00134   \textcolor{keywordtype}{bool} forceHistogramsRewrite = \mbox{\hyperlink{class_task_a674e9f776b29c02265731b543c6e32eb}{configuration}}.\mbox{\hyperlink{class_configuration_a70603fdb2508ba7cf7d7e6032e57e145}{getValueBool}}(\textcolor{stringliteral}{"{}forceHistogramsRewrite"{}} );}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00135}00135   histoOutputFileName += \textcolor{stringliteral}{"{}\_BF.root"{}};}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00136}00136   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00137}00137   \textcolor{keywordtype}{bool} calculateCI = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00138}00138   \textcolor{keywordtype}{bool} calculateCD = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00139}00139   \textcolor{keywordtype}{bool} calculateBFv1 = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00140}00140   \textcolor{keywordtype}{bool} calculateDiffs = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00141}00141   \textcolor{keywordtype}{bool} calculateBFv2 = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00142}00142 }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00143}00143   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}(\_\_FUNCTION\_\_))}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00144}00144     \{}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00145}00145     cout << endl;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00146}00146     cout << \textcolor{stringliteral}{"{}         histoInputPath: "{}} << histoInputPath << endl;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00147}00147     cout << \textcolor{stringliteral}{"{}     histoInputFileName: "{}} << histoInputFileName<< endl;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00148}00148     cout << \textcolor{stringliteral}{"{}        histoOutputPath: "{}} << histoOutputPath << endl;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00149}00149     cout << \textcolor{stringliteral}{"{}    histoOutputFileName: "{}} << histoOutputFileName << endl;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00150}00150     cout << \textcolor{stringliteral}{"{}          histoBaseName: "{}} << histoBaseName << endl;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00151}00151     cout << \textcolor{stringliteral}{"{} forceHistogramsRewrite: "{}} << forceHistogramsRewrite << endl;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00152}00152     \}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00153}00153   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00154}00154   TFile * inputFile = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00155}00155   TFile * outputFile = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00156}00156   inputFile = \mbox{\hyperlink{class_task_a4491c7a1e03958b1a67e51e387601695}{openRootFile}}(histoInputPath,histoInputFileName,\textcolor{stringliteral}{"{}OLD"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00157}00157   \textcolor{keywordflow}{if} (!inputFile) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00158}00158   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00159}00159 }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00160}00160   \textcolor{keywordflow}{if} (forceHistogramsRewrite)}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00161}00161     outputFile = \mbox{\hyperlink{class_task_a4491c7a1e03958b1a67e51e387601695}{openRootFile}}(histoOutputPath, histoOutputFileName, \textcolor{stringliteral}{"{}RECREATE"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00162}00162   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00163}00163     outputFile = \mbox{\hyperlink{class_task_a4491c7a1e03958b1a67e51e387601695}{openRootFile}}(histoOutputPath, histoOutputFileName, \textcolor{stringliteral}{"{}NEW"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00164}00164   \textcolor{keywordflow}{if} (!outputFile) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00165}00165   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00166}00166   \textcolor{comment}{// Use hh as helper to load and calculate histograms, etc.}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00167}00167   \mbox{\hyperlink{class_histograms}{Histograms}} * hh = \textcolor{keyword}{new} \mbox{\hyperlink{class_histograms}{Histograms}}(\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(), \mbox{\hyperlink{class_task_a1955cc87bd4885d8ca19435b3609443f}{getConfiguration}}(), \mbox{\hyperlink{class_message_logger_a72f7d9f462862f08d76637cb904b7acd}{getLogLevel}}());}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00168}00168   hh-\/>\mbox{\hyperlink{class_collection_a53171739ab8ad75c86285a35b43cdab2}{setOwnership}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00169}00169   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00170}00170   TH1 * rho1\_1;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00171}00171   TH1 * rho1\_1B;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00172}00172   TH1 * rho1\_2;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00173}00173   TH1 * rho1\_2B;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00174}00174   TH2 * rho1\_1\_phiY;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00175}00175   TH2 * rho1\_1B\_phiY;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00176}00176   TH2 * rho1\_2\_phiY;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00177}00177   TH2 * rho1\_2B\_phiY;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00178}00178   TH2 * r2\_12;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00179}00179   TH2 * r2\_1B2;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00180}00180   TH2 * r2\_12B;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00181}00181   TH2 * r2\_1B2B;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00182}00182   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00183}00183   TH2 * b2\_12;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00184}00184   TH2 * b2\_1B2;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00185}00185   TH2 * b2\_12B;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00186}00186   TH2 * b2\_1B2B;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00187}00187   TH2 * bf\_12B;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00188}00188   TH2 * bf\_1B2;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00189}00189   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00190}00190   TH2 * r2CI;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00191}00191   TH2 * r2CD;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00192}00192   TH2 * b12B;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00193}00193   TH2 * b1B2;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00194}00194   TH1 * h\_x;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00195}00195   TH1 * h\_y;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00196}00196   TH2 * r2Diff;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00197}00197   TH2 * b2Diff;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00198}00198   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00199}00199   \textcolor{keywordtype}{double} rho1Avg, erho1Avg;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00200}00200   \textcolor{keywordtype}{double} rho1BarAvg, erho1BarAvg;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00201}00201   \textcolor{keywordtype}{float} nx, ny, sum, width;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00202}00202   \textcolor{keywordtype}{double} integralBF12B, integralBF1B2;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00203}00203   \textcolor{keywordtype}{double} eIntegralBF12B, eIntegralBF1B2;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00204}00204   TString name;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00205}00205   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00206}00206   vector<double> integralsBF12B;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00207}00207   vector<double> integralsBF1B2;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00208}00208   vector<double> eIntegralsBF12B; \textcolor{comment}{// estimated errors}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00209}00209   vector<double> eIntegralsBF1B2; \textcolor{comment}{// estimated errors}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00210}00210   \textcolor{keywordtype}{long} nEventProcessed = \mbox{\hyperlink{class_task_a0bc0b2032fda7d3e208b0e15d00a970e}{readParameter}}(inputFile, \textcolor{stringliteral}{"{}EventProcessed"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00211}00211   \textcolor{keywordtype}{long} nEventAccepted  = \mbox{\hyperlink{class_task_a0bc0b2032fda7d3e208b0e15d00a970e}{readParameter}}(inputFile, \textcolor{stringliteral}{"{}EventAccepted"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00212}00212   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nSpecies = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}.size()/2;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00213}00213   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iObservable = 0; iObservable<\mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}.size();iObservable++)}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00214}00214     \{}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00215}00215     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iPart1=0; iPart1<nSpecies; iPart1++)}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00216}00216       \{}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00217}00217       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iPart2=0; iPart2<nSpecies; iPart2++)}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00218}00218         \{}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00219}00219         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} iEventClass = 0; iEventClass<\mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}.size();iEventClass++)}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00220}00220           \{}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00221}00221           \textcolor{comment}{// load histogram and compute derived files.}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00222}00222           TString eventClassName  = \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}[iEventClass]-\/>getName();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00223}00223           TString particleName1   = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}[iPart1]-\/>getName();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00224}00224           TString particleName1b  = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}[iPart1+nSpecies]-\/>getName();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00225}00225           TString particleName2   = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}[iPart2]-\/>getName();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00226}00226           TString particleName2b  = \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}[iPart2+nSpecies]-\/>getName();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00227}00227           rho1\_1  = hh-\/>\mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,\mbox{\hyperlink{class_task_a1b6030e671b0670d448a859b0fb0a065}{createHistogramName}}(histoBaseName,eventClassName,particleName1, \mbox{\hyperlink{class_balance_function_calculator_a3d933931aba0292cca14aafc64613409}{sObservableNames}}[0]));}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00228}00228           rho1\_1B = hh-\/>\mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,\mbox{\hyperlink{class_task_a1b6030e671b0670d448a859b0fb0a065}{createHistogramName}}(histoBaseName,eventClassName,particleName1b,\mbox{\hyperlink{class_balance_function_calculator_a3d933931aba0292cca14aafc64613409}{sObservableNames}}[0]));}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00229}00229           rho1\_2  = hh-\/>\mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,\mbox{\hyperlink{class_task_a1b6030e671b0670d448a859b0fb0a065}{createHistogramName}}(histoBaseName,eventClassName,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a3d933931aba0292cca14aafc64613409}{sObservableNames}}[0]));}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00230}00230           rho1\_2B = hh-\/>\mbox{\hyperlink{class_histogram_collection_ac92b236bcc046efd4df9b6eefd224089}{loadH1}}(inputFile,\mbox{\hyperlink{class_task_a1b6030e671b0670d448a859b0fb0a065}{createHistogramName}}(histoBaseName,eventClassName,particleName2b,\mbox{\hyperlink{class_balance_function_calculator_a3d933931aba0292cca14aafc64613409}{sObservableNames}}[0]));}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00231}00231           \textcolor{keywordflow}{if} (!rho1\_1 || !rho1\_1B) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00232}00232           hh-\/>\mbox{\hyperlink{class_histogram_collection_a33292347293b6d977815ab9848fa94f2}{calculateAverage}}(rho1\_1, rho1Avg,   erho1Avg);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00233}00233           hh-\/>\mbox{\hyperlink{class_histogram_collection_a33292347293b6d977815ab9848fa94f2}{calculateAverage}}(rho1\_1B,rho1BarAvg,erho1BarAvg);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00234}00234           \textcolor{keywordflow}{if} (!rho1\_2 || !rho1\_2B) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00235}00235           r2\_12     = hh-\/>\mbox{\hyperlink{class_histogram_collection_a56ce4428bd4299734ea251838f96c0ed}{loadH2}}(inputFile,\mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1, particleName2,  \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable]));}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00236}00236           r2\_1B2    = hh-\/>\mbox{\hyperlink{class_histogram_collection_a56ce4428bd4299734ea251838f96c0ed}{loadH2}}(inputFile,\mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1b,particleName2,  \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable]));}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00237}00237           r2\_12B    = hh-\/>\mbox{\hyperlink{class_histogram_collection_a56ce4428bd4299734ea251838f96c0ed}{loadH2}}(inputFile,\mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1, particleName2b, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable]));}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00238}00238           r2\_1B2B   = hh-\/>\mbox{\hyperlink{class_histogram_collection_a56ce4428bd4299734ea251838f96c0ed}{loadH2}}(inputFile,\mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1b,particleName2b, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable]));}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00239}00239           \textcolor{keywordflow}{if} (!r2\_12 || !r2\_1B2 || !r2\_12B || !r2\_1B2B) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00240}00240           }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00241}00241        }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00242}00242           }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00243}00243           \textcolor{keywordflow}{if} (calculateCI)}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00244}00244             \{}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00245}00245             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_CI"{}} );}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00246}00246             r2CI = (TH2*) r2\_1B2-\/>Clone();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00247}00247             r2CI-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00248}00248             r2CI-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00249}00249             r2CI-\/>Add(r2\_12B);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00250}00250             r2CI-\/>Add(r2\_12);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00251}00251             r2CI-\/>Add(r2\_1B2B);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00252}00252             r2CI-\/>Scale(0.25);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00253}00253             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(r2CI);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00254}00254             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00255}00255             nx = r2CI-\/>GetNbinsX();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00256}00256             ny = r2CI-\/>GetNbinsY();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00257}00257             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable],\textcolor{stringliteral}{"{}\_CI\_x"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00258}00258             h\_x = r2CI-\/>ProjectionX();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00259}00259             h\_x-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00260}00260             h\_x-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00261}00261             \textcolor{comment}{//h\_x-\/>Scale(1.0/ny);}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00262}00262             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_x);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00263}00263             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00264}00264             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable],\textcolor{stringliteral}{"{}\_CI\_y"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00265}00265             h\_y = r2CI-\/>ProjectionY();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00266}00266             h\_y-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00267}00267             h\_y-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00268}00268             \textcolor{comment}{//h\_y-\/>Scale(1.0/nx);}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00269}00269             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_y);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00270}00270             \}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00271}00271           }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00272}00272           \textcolor{keywordflow}{if} (calculateCD)}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00273}00273             \{}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00274}00274             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_CD"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00275}00275             r2CD = (TH2*) r2\_1B2-\/>Clone();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00276}00276             r2CD-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00277}00277             r2CD-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00278}00278             r2CD-\/>Add(r2\_12B);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00279}00279             r2CD-\/>Add(r2\_12, -\/1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00280}00280             r2CD-\/>Add(r2\_1B2B, -\/1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00281}00281             r2CD-\/>Scale(0.25);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00282}00282             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(r2CD);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00283}00283             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00284}00284             nx = r2CD-\/>GetNbinsX();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00285}00285             ny = r2CD-\/>GetNbinsY();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00286}00286             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_CD\_x"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00287}00287             h\_x = r2CD-\/>ProjectionX();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00288}00288             h\_x-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00289}00289             h\_x-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00290}00290             \textcolor{comment}{//h\_x-\/>Scale(1.0/ny);}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00291}00291             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_x);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00292}00292             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00293}00293             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_CD\_y"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00294}00294             h\_y = r2CD-\/>ProjectionY();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00295}00295             h\_y-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00296}00296             h\_y-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00297}00297             \textcolor{comment}{//h\_y-\/>Scale(1.0/nx);}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00298}00298             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_y);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00299}00299             \}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00300}00300           }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00301}00301           \textcolor{keywordflow}{if} (calculateBFv1)}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00302}00302             \{}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00303}00303             \textcolor{comment}{// =====}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00304}00304             \textcolor{comment}{// B12B}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00305}00305             \textcolor{comment}{// =====}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00306}00306             name  = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_B12B"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00307}00307             b12B = (TH2*) r2\_12B-\/>Clone();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00308}00308             b12B-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00309}00309             b12B-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00310}00310             b12B-\/>Scale(rho1Avg); \textcolor{comment}{// correct}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00311}00311             b12B-\/>Add(r2\_1B2B, -\/rho1BarAvg);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00312}00312             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00313}00313             hh-\/>\mbox{\hyperlink{class_histogram_collection_a6647abaf7991d3b77c83c7d3bbcf0639}{calculateIntegral}}(b12B,integralBF12B,eIntegralBF12B);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00314}00314             integralsBF12B.push\_back( integralBF12B );}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00315}00315             eIntegralsBF12B.push\_back( eIntegralBF12B );}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00316}00316             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(b12B);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00317}00317             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00318}00318             nx = b12B-\/>GetNbinsX();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00319}00319             ny = b12B-\/>GetNbinsY();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00320}00320             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_B12B\_x"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00321}00321             h\_x = b12B-\/>ProjectionX();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00322}00322             h\_x-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00323}00323             h\_x-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00324}00324             \textcolor{comment}{//h\_x-\/>Scale(TMath::TwoPi()/double(ny));}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00325}00325             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_x);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00326}00326             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00327}00327             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_B12B\_y"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00328}00328             h\_y = b12B-\/>ProjectionY();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00329}00329             h\_y-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00330}00330             h\_y-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00331}00331             \textcolor{comment}{//h\_y-\/>Scale(4.0/double(nx));}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00332}00332             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_y);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00333}00333             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00334}00334             \textcolor{comment}{// =====}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00335}00335             \textcolor{comment}{// B1B2}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00336}00336             \textcolor{comment}{// =====}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00337}00337             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_B1B2"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00338}00338             b1B2 = (TH2*) r2\_1B2-\/>Clone();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00339}00339             b1B2-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00340}00340             b1B2-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00341}00341             b1B2-\/>Scale(rho1BarAvg);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00342}00342             b1B2-\/>Add(r2\_1B2B, -\/rho1Avg);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00343}00343             \textcolor{comment}{//b1B2-\/>Add(r2\_1B2B, -\/rho1BarAvg);}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00344}00344             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00345}00345             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00346}00346             hh-\/>\mbox{\hyperlink{class_histogram_collection_a6647abaf7991d3b77c83c7d3bbcf0639}{calculateIntegral}}(b1B2,integralBF1B2,eIntegralBF1B2);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00347}00347             integralsBF1B2.push\_back( integralBF1B2 );}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00348}00348             eIntegralsBF1B2.push\_back( eIntegralBF1B2 );}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00349}00349             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(b1B2);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00350}00350             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00351}00351             nx = b1B2-\/>GetNbinsX();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00352}00352             ny = b1B2-\/>GetNbinsY();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00353}00353             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_B1B2\_x"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00354}00354             h\_x = b1B2-\/>ProjectionX();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00355}00355             h\_x-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00356}00356             h\_x-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00357}00357             \textcolor{comment}{//h\_x-\/>Scale(TMath::TwoPi()/ny);}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00358}00358             \textcolor{comment}{//calculateIntegral(h\_x);}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00359}00359             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_x);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00360}00360             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00361}00361             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_B1B2\_y"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00362}00362             h\_y = b1B2-\/>ProjectionY();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00363}00363             h\_y-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00364}00364             h\_y-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00365}00365             \textcolor{comment}{//h\_y-\/>Scale(4.0/nx);}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00366}00366             \textcolor{comment}{//calculateIntegral(h\_y);}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00367}00367             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_y);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00368}00368             \}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00369}00369           }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00370}00370           \textcolor{keywordflow}{if} (calculateDiffs)}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00371}00371             \{}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00372}00372             \textcolor{comment}{//b1B2-\/>Add(r2\_1B2B, -\/rho1Avg);}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00373}00373             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_R2US\_Diff"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00374}00374             r2Diff = (TH2*) r2\_1B2-\/>Clone();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00375}00375             r2Diff-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00376}00376             r2Diff-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00377}00377             r2Diff-\/>Add(r2\_12B, -\/1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00378}00378             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(r2Diff);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00379}00379             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00380}00380             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_R2LS\_Diff"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00381}00381             r2Diff = (TH2*) r2\_12-\/>Clone();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00382}00382             r2Diff-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00383}00383             r2Diff-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00384}00384             r2Diff-\/>Add(r2\_1B2B, -\/1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00385}00385             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(r2Diff);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00386}00386             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00387}00387             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_B2Diff"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00388}00388             b2Diff = (TH2*) b1B2-\/>Clone();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00389}00389             b2Diff-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00390}00390             b2Diff-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00391}00391             b2Diff-\/>Add(b12B, -\/1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00392}00392             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(b2Diff);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00393}00393             \}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00394}00394           }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00395}00395           \textcolor{keywordflow}{if} (calculateBFv2)}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00396}00396             \{}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00397}00397             \textcolor{comment}{// =====}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00398}00398             \textcolor{comment}{// bf\_12B}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00399}00399             \textcolor{comment}{// =====}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00400}00400             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00401}00401             \textcolor{keywordtype}{double} trigger2B = rho1\_2B-\/>Integral();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00402}00402             \textcolor{keywordflow}{if} (trigger2B <= 0.0 ) trigger2B = 1.0E-\/10;}
 \DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00403}00403             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00404}00404             \textcolor{keywordtype}{double} trigger2B = rho1\_2B-\/>Integral();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00405}00405             \textcolor{keywordflow}{if} (trigger2B <= 0.0 ) trigger2B = 1.0E-\/10;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00406}00406             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00407}00407             name  = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_BFct\_12B"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00408}00408             bf\_12B = (TH2*) r2\_12B-\/>Clone();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00409}00409             bf\_12B-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00410}00410             bf\_12B-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00411}00411             bf\_12B-\/>Add(r2\_1B2B, -\/1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00412}00412             \textcolor{comment}{//bf\_12B-\/>Scale(1.0/trigger2B);}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00413}00413             hh-\/>\mbox{\hyperlink{class_histogram_collection_a6647abaf7991d3b77c83c7d3bbcf0639}{calculateIntegral}}(bf\_12B,integralBF12B,eIntegralBF12B);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00414}00414             integralsBF12B.push\_back( integralBF12B );}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00415}00415             eIntegralsBF12B.push\_back( eIntegralBF12B );}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00416}00416             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(bf\_12B);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00417}00417             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00418}00418             nx = bf\_12B-\/>GetNbinsX();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00419}00419             ny = bf\_12B-\/>GetNbinsY();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00420}00420             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_BFct\_12B\_x"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00421}00421             h\_x = bf\_12B-\/>ProjectionX();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00422}00422             h\_x-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00423}00423             h\_x-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00424}00424             \textcolor{comment}{//h\_x-\/>Scale(TMath::TwoPi()/double(ny));}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00425}00425             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_x);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00426}00426             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_BFct\_12B\_y"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00427}00427             h\_y = bf\_12B-\/>ProjectionY();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00428}00428             h\_y-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00429}00429             h\_y-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00430}00430             \textcolor{comment}{//h\_y-\/>Scale(8.0/double(nx));}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00431}00431             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_y);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00432}00432             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00433}00433             \textcolor{comment}{// bf\_1B2}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00434}00434             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00435}00435             \textcolor{keywordtype}{double} trigger2 = rho1\_2-\/>Integral();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00436}00436             \textcolor{keywordflow}{if} (trigger2 <= 0.0 ) trigger2 = 1.0E-\/10;}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00437}00437             name  = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_BFct\_1B2"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00438}00438             bf\_1B2 = (TH2*) r2\_1B2-\/>Clone();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00439}00439             bf\_1B2-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00440}00440             bf\_1B2-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00441}00441             bf\_1B2-\/>Add(r2\_12, -\/1.0);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00442}00442             \textcolor{comment}{//bf\_1B2-\/>Scale(1.0/trigger2);}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00443}00443          }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00444}00444             hh-\/>\mbox{\hyperlink{class_histogram_collection_a6647abaf7991d3b77c83c7d3bbcf0639}{calculateIntegral}}(bf\_1B2,integralBF12B,eIntegralBF12B);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00445}00445             integralsBF12B.push\_back( integralBF12B );}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00446}00446             eIntegralsBF12B.push\_back( eIntegralBF12B );}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00447}00447             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(bf\_1B2);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00448}00448             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00449}00449             nx = bf\_1B2-\/>GetNbinsX();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00450}00450             ny = bf\_1B2-\/>GetNbinsY();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00451}00451             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_BFct\_1B2\_x"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00452}00452             h\_x = bf\_1B2-\/>ProjectionX();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00453}00453             h\_x-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00454}00454             h\_x-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00455}00455             \textcolor{comment}{//h\_x-\/>Scale(TMath::TwoPi()/double(ny));}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00456}00456             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_x);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00457}00457             }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00458}00458             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_BFct\_1B2\_y"{}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00459}00459             h\_y = bf\_1B2-\/>ProjectionY();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00460}00460             h\_y-\/>SetName(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00461}00461             h\_y-\/>SetTitle(name);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00462}00462             \textcolor{comment}{//h\_y-\/>Scale(8.0/double(nx));}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00463}00463             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_y);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00464}00464             \}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00465}00465           \}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00466}00466         \}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00467}00467       \}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00468}00468     \}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00469}00469   }
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00470}00470   outputFile-\/>cd();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00471}00471   hh-\/>\mbox{\hyperlink{class_histogram_collection_aafb8f5520ea580ef5735f8356e236c3f}{saveHistograms}}(outputFile);}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00472}00472   \mbox{\hyperlink{class_task_a0412ac2b34de1abd8a7a3a7339b1f50e}{writeParameter}}(outputFile, \textcolor{stringliteral}{"{}EventProcessed"{}},\mbox{\hyperlink{class_task_a66a48a46d707a69339ec8c03cf25556c}{nEventProcessed}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00473}00473   \mbox{\hyperlink{class_task_a0412ac2b34de1abd8a7a3a7339b1f50e}{writeParameter}}(outputFile, \textcolor{stringliteral}{"{}EventAccepted"{}}, \mbox{\hyperlink{class_task_aa8a0d1fbb21cfb200e74bb3b38118fa0}{nEventAccepted}});}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00474}00474   outputFile-\/>Close();}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00475}00475   \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}(\textcolor{stringliteral}{"{}BalanceFunctionCalculator"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute(...)"{}}))}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00476}00476     \{ \}}
-\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00477}00477 \}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00404}00404             name  = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_BFct\_12B"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00405}00405             bf\_12B = (TH2*) r2\_12B-\/>Clone();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00406}00406             bf\_12B-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00407}00407             bf\_12B-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00408}00408             bf\_12B-\/>Add(r2\_1B2B, -\/1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00409}00409             \textcolor{comment}{//bf\_12B-\/>Scale(1.0/trigger2B);}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00410}00410             hh-\/>\mbox{\hyperlink{class_histogram_collection_a6647abaf7991d3b77c83c7d3bbcf0639}{calculateIntegral}}(bf\_12B,integralBF12B,eIntegralBF12B);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00411}00411             integralsBF12B.push\_back( integralBF12B );}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00412}00412             eIntegralsBF12B.push\_back( eIntegralBF12B );}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00413}00413             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(bf\_12B);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00414}00414             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00415}00415             nx = bf\_12B-\/>GetNbinsX();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00416}00416             ny = bf\_12B-\/>GetNbinsY();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00417}00417             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_BFct\_12B\_x"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00418}00418             h\_x = bf\_12B-\/>ProjectionX();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00419}00419             h\_x-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00420}00420             h\_x-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00421}00421             \textcolor{comment}{//h\_x-\/>Scale(TMath::TwoPi()/double(ny));}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00422}00422             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_x);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00423}00423             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_BFct\_12B\_y"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00424}00424             h\_y = bf\_12B-\/>ProjectionY();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00425}00425             h\_y-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00426}00426             h\_y-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00427}00427             \textcolor{comment}{//h\_y-\/>Scale(8.0/double(nx));}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00428}00428             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_y);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00429}00429             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00430}00430             \textcolor{comment}{// bf\_1B2}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00431}00431             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00432}00432             \textcolor{keywordtype}{double} trigger2 = rho1\_2-\/>Integral();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00433}00433             \textcolor{keywordflow}{if} (trigger2 <= 0.0 ) trigger2 = 1.0E-\/10;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00434}00434             name  = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_BFct\_1B2"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00435}00435             bf\_1B2 = (TH2*) r2\_1B2-\/>Clone();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00436}00436             bf\_1B2-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00437}00437             bf\_1B2-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00438}00438             bf\_1B2-\/>Add(r2\_12, -\/1.0);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00439}00439             \textcolor{comment}{//bf\_1B2-\/>Scale(1.0/trigger2);}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00440}00440          }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00441}00441             hh-\/>\mbox{\hyperlink{class_histogram_collection_a6647abaf7991d3b77c83c7d3bbcf0639}{calculateIntegral}}(bf\_1B2,integralBF12B,eIntegralBF12B);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00442}00442             integralsBF12B.push\_back( integralBF12B );}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00443}00443             eIntegralsBF12B.push\_back( eIntegralBF12B );}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00444}00444             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(bf\_1B2);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00445}00445             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00446}00446             nx = bf\_1B2-\/>GetNbinsX();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00447}00447             ny = bf\_1B2-\/>GetNbinsY();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00448}00448             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_BFct\_1B2\_x"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00449}00449             h\_x = bf\_1B2-\/>ProjectionX();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00450}00450             h\_x-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00451}00451             h\_x-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00452}00452             \textcolor{comment}{//h\_x-\/>Scale(TMath::TwoPi()/double(ny));}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00453}00453             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_x);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00454}00454             }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00455}00455             name = \mbox{\hyperlink{class_task_a0daababd93a9eeebad919f44734f8243}{createPairHistogramName}}(histoBaseName,eventClassName,particleName1,particleName2, \mbox{\hyperlink{class_balance_function_calculator_a0a1243cacc3c7b4887c621524cc789b4}{pObservableNames}}[iObservable], \textcolor{stringliteral}{"{}\_BFct\_1B2\_y"{}});}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00456}00456             h\_y = bf\_1B2-\/>ProjectionY();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00457}00457             h\_y-\/>SetName(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00458}00458             h\_y-\/>SetTitle(name);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00459}00459             \textcolor{comment}{//h\_y-\/>Scale(8.0/double(nx));}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00460}00460             hh-\/>\mbox{\hyperlink{class_collection_a95959d6b2893d4642152be63ccac9de4}{append}}(h\_y);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00461}00461             \}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00462}00462           \}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00463}00463         \}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00464}00464       \}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00465}00465     \}}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00466}00466   }
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00467}00467   outputFile-\/>cd();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00468}00468   hh-\/>\mbox{\hyperlink{class_histogram_collection_aafb8f5520ea580ef5735f8356e236c3f}{saveHistograms}}(outputFile);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00469}00469   \mbox{\hyperlink{class_task_a0412ac2b34de1abd8a7a3a7339b1f50e}{writeParameter}}(outputFile, \textcolor{stringliteral}{"{}EventProcessed"{}},nEventProcessed);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00470}00470   \mbox{\hyperlink{class_task_a0412ac2b34de1abd8a7a3a7339b1f50e}{writeParameter}}(outputFile, \textcolor{stringliteral}{"{}EventAccepted"{}}, nEventAccepted);}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00471}00471   outputFile-\/>Close();}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00472}00472   \textcolor{keywordflow}{if} ( \mbox{\hyperlink{class_message_logger_a23a20f925d36be8d994a406d4f3270b1}{reportEnd}}())}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00473}00473     ;}
+\DoxyCodeLine{\Hypertarget{_balance_function_calculator_8cpp_source_l00474}00474 \}}
 
 \end{DoxyCode}

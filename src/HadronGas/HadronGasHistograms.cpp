@@ -297,7 +297,7 @@ void HadronGasHistograms::loadHistograms(TFile * inputFile)
   h_rho1All   = loadH1(inputFile,bn+TString("rho1All"));
   if (!h_rho1All)
     {
-    if (reportError()) cout << "Could not load histogram: " << bn+TString("allYields") << endl;
+    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << bn+TString("allYields") << endl;
     return;
     }
   h_rho1AllVsMass = loadProfile(inputFile,bn+TString("rho1AllVsMass"));

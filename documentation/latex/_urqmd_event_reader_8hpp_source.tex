@@ -2,277 +2,85 @@
 \label{_urqmd_event_reader_8hpp_source}\index{Urqmd/UrqmdEventReader.hpp@{Urqmd/UrqmdEventReader.hpp}}
 \mbox{\hyperlink{_urqmd_event_reader_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00001}00001 \textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00002}00002 \textcolor{comment}{//  UrqmdEventReader.hpp}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00003}00003 \textcolor{comment}{//  CodeV3}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00004}00004 \textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00005}00005 \textcolor{comment}{//  Created by Claude Pruneau on 8/18/17.}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00006}00006 \textcolor{comment}{//  Copyright © 2017 Claude Pruneau. All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00007}00007 \textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00008}00008 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00009}00009 \textcolor{preprocessor}{\#ifndef UrqmdEventReader\_hpp}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#define UrqmdEventReader\_hpp}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00011}00011 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include <stdio.h>}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}TTree.h"{}}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}TChain.h"{}}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_ur_q_m_d_event_8hpp}{UrQMDEvent.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}GeneratorConfiguration.hpp"{}}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}EventGenerator.hpp"{}}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00019}00019 \textcolor{keyword}{using} std::cout;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00020}00020 \textcolor{keyword}{using} std::endl;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00021}00021 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00022}\mbox{\hyperlink{class_urqmd_event_reader}{00022}} \textcolor{keyword}{class }\mbox{\hyperlink{class_urqmd_event_reader}{UrqmdEventReader}} : \textcolor{keyword}{public} EventGenerator}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00023}00023 \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00024}00024 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00025}00025 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00026}00026 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00028}00028   \textcolor{comment}{// CTOR}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00030}\mbox{\hyperlink{class_urqmd_event_reader_a57f6ab80b6c3cd715acf0964813b3a0d}{00030}} \textcolor{comment}{}  \mbox{\hyperlink{class_urqmd_event_reader_a57f6ab80b6c3cd715acf0964813b3a0d}{UrqmdEventReader}}(\mbox{\hyperlink{class_event}{Event}} * event,}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00031}00031       GeneratorConfiguration * configuration,}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00032}00032       TRandom * randomGenerator,}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00033}00033       \textcolor{keywordtype}{bool} debugLevel)}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00034}00034 :}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00035}00035   EventGenerator  (event, configuration, randomGenerator, debugLevel),}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00036}00036   \mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{fChain}}(NULL),}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00037}00037   \mbox{\hyperlink{class_urqmd_event_reader_a9c6bbaa825cfad94e8847d458534cae4}{fCurrent}}(-\/1),}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00038}00038   \mbox{\hyperlink{class_urqmd_event_reader_a3342ecb5ebbaafaa9d91f6bd4d3d6dda}{nentries}}(0),}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00039}00039   \mbox{\hyperlink{class_urqmd_event_reader_a91d787d265e7feb9142158203a9d480b}{nbytes}}(0),}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00040}00040   \mbox{\hyperlink{class_urqmd_event_reader_adce2c971e9582c250e2ad48ac810bcfc}{nb}}(0),}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00041}00041   \mbox{\hyperlink{class_urqmd_event_reader_aa6f52208496934cc231d6aa02f2a1646}{jentry}}(0),}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00042}00042   \mbox{\hyperlink{class_urqmd_event_reader_ac1b94928caa2918488c17e19b73bcabc}{anEvent}}(NULL),}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00043}00043   \mbox{\hyperlink{class_urqmd_event_reader_a7acc8b751169beed359db3127610601d}{nleptons}}(0L)}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00044}00044 \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00045}00045     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}-\/DEBUG-\/ UrqmdEventReader::CTOR(...) No ops"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00046}00046 \}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00047}00047 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00049}00049   \textcolor{comment}{// DTOR}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00051}\mbox{\hyperlink{class_urqmd_event_reader_a148b25aaccd343d378fce5fd06bd17f8}{00051}} \textcolor{comment}{}  \textcolor{keyword}{virtual} \mbox{\hyperlink{class_urqmd_event_reader_a148b25aaccd343d378fce5fd06bd17f8}{\string~UrqmdEventReader}}()}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00052}00052   \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00053}00053     \textcolor{keyword}{delete} \mbox{\hyperlink{class_urqmd_event_reader_ac1b94928caa2918488c17e19b73bcabc}{anEvent}};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00054}00054   \}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00055}00055 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00057}00057   \textcolor{comment}{// Initialize generator}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00059}\mbox{\hyperlink{class_urqmd_event_reader_a6dbdbe7827b32437e4e227693e6b34df}{00059}} \textcolor{comment}{}  \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_urqmd_event_reader_a6dbdbe7827b32437e4e227693e6b34df}{initialize}}()}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00060}00060   \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00061}00061     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}-\/DEBUG-\/ UrqmdEventReader::initialize() Started"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00062}00062 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00063}00063 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00064}00064     \textcolor{keyword}{event}           -\/>reset();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00065}00065     particleFactory -\/>reset();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00066}00066     \mbox{\hyperlink{class_urqmd_event_reader_ac1b94928caa2918488c17e19b73bcabc}{anEvent}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_ur_q_m_d_event}{UrQMDEvent}}(\textcolor{stringliteral}{"{}event"{}});}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00067}00067 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00068}00068 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00069}00069 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00070}00070     TChain *chain = \textcolor{keyword}{new} TChain(\textcolor{stringliteral}{"{}UrQMD\_event\_tree"{}},\textcolor{stringliteral}{"{} "{}});}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00071}00071     chain-\/>Add(generatorConfiguration-\/>eventsSource.Data());}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00072}00072 \textcolor{comment}{//    chain-\/>Add("{}/local/victor/PROJECTSTWO/TWOPARTICLECORRELATIONS/URQMDGEN/DATA/QMD201712261756/UrQMD\_generated.root"{});}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00073}00073 \textcolor{comment}{//    chain-\/>Add("{}/local/victor/PROJECTSTWO/TWOPARTICLECORRELATIONS/URQMDGEN/DATA/QMD201712261920/UrQMD\_generated.root"{});}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00074}00074 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00075}00075     \mbox{\hyperlink{class_urqmd_event_reader_a02102bbe491643300b6c37491aaf5094}{Init}}(chain);}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00076}00076     \mbox{\hyperlink{class_urqmd_event_reader_aa6f52208496934cc231d6aa02f2a1646}{jentry}} = 0;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00077}00077     \mbox{\hyperlink{class_urqmd_event_reader_a9c6bbaa825cfad94e8847d458534cae4}{fCurrent}} = -\/1;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00078}00078 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00079}00079     \mbox{\hyperlink{class_urqmd_event_reader_a3342ecb5ebbaafaa9d91f6bd4d3d6dda}{nentries}} = \mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{fChain}}-\/>GetEntries();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00080}00080     cout << \textcolor{stringliteral}{"{}-\/INFO-\/ initialize() nentries: "{}} << \mbox{\hyperlink{class_urqmd_event_reader_a3342ecb5ebbaafaa9d91f6bd4d3d6dda}{nentries}} << \textcolor{stringliteral}{"{} from "{}} << generatorConfiguration-\/>eventsSource << endl;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00081}00081     \mbox{\hyperlink{class_urqmd_event_reader_a91d787d265e7feb9142158203a9d480b}{nbytes}} = 0;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00082}00082     \mbox{\hyperlink{class_urqmd_event_reader_adce2c971e9582c250e2ad48ac810bcfc}{nb}} = 0;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00083}00083 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00084}00084 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00085}00085 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00086}00086     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}-\/DEBUG-\/ UrqmdEventReader::initialize() Completed"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00087}00087   \}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00088}00088 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00089}00089 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00091}00091   \textcolor{comment}{// Reset and Initialize the generator}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00093}\mbox{\hyperlink{class_urqmd_event_reader_adf496d7409a380effa05ee3018c3b30d}{00093}} \textcolor{comment}{}  \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_urqmd_event_reader_adf496d7409a380effa05ee3018c3b30d}{reset}}()}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00094}00094   \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00095}00095     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}-\/DEBUG-\/ UrqmdEventReader::reset() Started"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00096}00096     \textcolor{keyword}{event}-\/>reset();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00097}00097     particleFactory-\/>reset();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00098}00098     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}-\/DEBUG-\/ UrqmdEventReader::reset() Completed"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00099}00099 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00100}00100   \}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00101}00101 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00102}\mbox{\hyperlink{class_urqmd_event_reader_abab56018f0e5c4949f98eee6210ece67}{00102}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_urqmd_event_reader_abab56018f0e5c4949f98eee6210ece67}{acceptPID}}(\mbox{\hyperlink{class_particle}{Particle}} p)}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00103}00103   \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00104}00104     \textcolor{keywordtype}{bool} wrongPID = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00105}00105 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00106}00106     \textcolor{comment}{/* leptons check */}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00107}00107     wrongPID = (1010 < p.\mbox{\hyperlink{class_particle_ac7ca57ecb691687b4c7ad13f803a7c0c}{pid}}) \&\& (p.\mbox{\hyperlink{class_particle_ac7ca57ecb691687b4c7ad13f803a7c0c}{pid}} < 1019);}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00108}00108     \textcolor{keywordflow}{if} (wrongPID) \mbox{\hyperlink{class_urqmd_event_reader_a7acc8b751169beed359db3127610601d}{nleptons}}++;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00109}00109 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00110}00110     \textcolor{keywordflow}{return} !wrongPID;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00111}00111   \}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00112}00112 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00113}00113 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00115}00115   \textcolor{comment}{// Generate an event}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00117}\mbox{\hyperlink{class_urqmd_event_reader_a712b79102bfacbe97a1bc55664bc2785}{00117}} \textcolor{comment}{}  \mbox{\hyperlink{class_event}{Event}} * \mbox{\hyperlink{class_urqmd_event_reader_a712b79102bfacbe97a1bc55664bc2785}{generate}}()}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00118}00118   \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00119}00119     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}-\/DEBUG-\/ UrqmdEventReader::generate() Started"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00120}00120 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00121}00121     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{fChain}})}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00122}00122     \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00123}00123       cout << \textcolor{stringliteral}{"{}-\/FATAL-\/ UrqmdEventReader::generate() no TChain available"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00124}00124     \}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00125}00125 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00126}00126     \textcolor{keywordtype}{bool} seekingEvent = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00127}00127     \textcolor{keywordflow}{while} (seekingEvent)}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00128}00128     \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00129}00129       \textcolor{comment}{// load another event from the root file/TTree}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00130}00130       Long64\_t ientry = \mbox{\hyperlink{class_urqmd_event_reader_a89f46f8dd2a7e5a4c54c0d7a2b2e6337}{LoadTree}}(\mbox{\hyperlink{class_urqmd_event_reader_aa6f52208496934cc231d6aa02f2a1646}{jentry}});}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00131}00131 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00132}00132       \textcolor{comment}{// returning a null point is an indication that}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00133}00133       \textcolor{comment}{// there are no more events in the file or stack of files.}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00134}00134       \textcolor{keywordflow}{if} (ientry < 0) \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00135}00135 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00136}00136       \mbox{\hyperlink{class_urqmd_event_reader_adce2c971e9582c250e2ad48ac810bcfc}{nb}} = \mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{fChain}}-\/>GetEntry(\mbox{\hyperlink{class_urqmd_event_reader_aa6f52208496934cc231d6aa02f2a1646}{jentry}}++);   \mbox{\hyperlink{class_urqmd_event_reader_a91d787d265e7feb9142158203a9d480b}{nbytes}} += \mbox{\hyperlink{class_urqmd_event_reader_adce2c971e9582c250e2ad48ac810bcfc}{nb}};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00137}00137       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_urqmd_event_reader_adce2c971e9582c250e2ad48ac810bcfc}{nb}} == 0) \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00138}00138 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00139}00139       \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_urqmd_event_reader_ac1b94928caa2918488c17e19b73bcabc}{anEvent}}-\/>\mbox{\hyperlink{class_ur_q_m_d_event_a380de461af4eb1d609f9e3c3e4d5ffba}{GetImpactParameter}}() >  generatorConfiguration-\/>impactParameterMinimum \&\&}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00140}00140           \mbox{\hyperlink{class_urqmd_event_reader_ac1b94928caa2918488c17e19b73bcabc}{anEvent}}-\/>\mbox{\hyperlink{class_ur_q_m_d_event_a380de461af4eb1d609f9e3c3e4d5ffba}{GetImpactParameter}}() <= generatorConfiguration-\/>impactParameterMaximum) seekingEvent = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00141}00141     \}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00142}00142 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00143}00143     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}-\/DEBUG-\/ UrqmdEventReader::generate() new event b: "{}} << \mbox{\hyperlink{class_urqmd_event_reader_ac1b94928caa2918488c17e19b73bcabc}{anEvent}}-\/>\mbox{\hyperlink{class_ur_q_m_d_event_a380de461af4eb1d609f9e3c3e4d5ffba}{GetImpactParameter}}() << \textcolor{stringliteral}{"{},   ntracks: "{}} << \mbox{\hyperlink{class_urqmd_event_reader_ac1b94928caa2918488c17e19b73bcabc}{anEvent}}-\/>\mbox{\hyperlink{class_ur_q_m_d_event_a628f39660fbf8b4b49c5c767f2b40e28}{GetNtrack}}() << endl;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00144}00144 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00146}00146     \textcolor{keywordtype}{double} charge;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00147}00147 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00148}00148     \textcolor{keyword}{event}-\/>reset();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00149}00149     particleFactory-\/>reset();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00150}00150     \textcolor{keywordtype}{int} particleAccepted = 0;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00151}00151     \mbox{\hyperlink{class_urqmd_event_reader_a7acc8b751169beed359db3127610601d}{nleptons}} = 0L;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00152}00152     }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00153}00153     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Randomising the phi -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Starts}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00154}00154     \textcolor{keywordtype}{float} eventAngle=gRandom-\/>Uniform(0,3.14);}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00155}00155     \textcolor{comment}{//cout<< "{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/> "{}<<eventAngle <<endl;}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00156}00156     \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Randomising the phi -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Ends}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00157}00157       }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00158}00158   }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00159}00159     \textcolor{comment}{// load particles from TTree and copy those that are selected into event}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00160}00160     \mbox{\hyperlink{class_particle}{Particle}} aParticle; \textcolor{comment}{/* we use a particle object to extract angular information for indexes extraction */}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00161}00161     \mbox{\hyperlink{class_particle}{Particle}} *particle; \textcolor{comment}{/* this is the actual particle which will be stored */}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00162}00162     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iPart1=0; iPart1 < \mbox{\hyperlink{class_urqmd_event_reader_ac1b94928caa2918488c17e19b73bcabc}{anEvent}}-\/>\mbox{\hyperlink{class_ur_q_m_d_event_a628f39660fbf8b4b49c5c767f2b40e28}{GetNtrack}}(); iPart1++)}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00163}00163     \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00164}00164       \mbox{\hyperlink{class_ur_q_m_d_particle}{UrQMDParticle}} *aUrQMDParticle = (\mbox{\hyperlink{class_ur_q_m_d_particle}{UrQMDParticle}} *) \mbox{\hyperlink{class_urqmd_event_reader_ac1b94928caa2918488c17e19b73bcabc}{anEvent}}-\/>\mbox{\hyperlink{class_ur_q_m_d_event_aa0539d28244e42977e82e42aae2d9a79}{GetTracks}}()-\/>At(iPart1);}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00165}00165 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00166}00166       charge = aUrQMDParticle-\/>\mbox{\hyperlink{class_ur_q_m_d_particle_a616125a2ab0c64eac82b0ff6f5de79dd}{GetCharge}}();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00167}00167       \textcolor{keywordflow}{if} (charge==0) \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00168}00168 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00169}00169       \textcolor{keywordtype}{double} p\_x = aUrQMDParticle-\/>\mbox{\hyperlink{class_ur_q_m_d_particle_a2776534383575d85338507a507c3e626}{GetPx}}();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00170}00170       \textcolor{keywordtype}{double} p\_y = aUrQMDParticle-\/>\mbox{\hyperlink{class_ur_q_m_d_particle_ae6ae6b4adb2646946efb572964b39035}{GetPy}}();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00171}00171       \textcolor{keywordtype}{double} p\_z = aUrQMDParticle-\/>\mbox{\hyperlink{class_ur_q_m_d_particle_a43c25567825af892a2bb120666082f4f}{GetPz}}();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00172}00172       \textcolor{keywordtype}{double} p\_e = aUrQMDParticle-\/>\mbox{\hyperlink{class_ur_q_m_d_particle_a2f5590a3b61b01efa1c83cc616b72bdc}{GetE}}();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00173}00173 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00174}00174       aParticle.\mbox{\hyperlink{class_particle_ac7ca57ecb691687b4c7ad13f803a7c0c}{pid}} = aUrQMDParticle-\/>\mbox{\hyperlink{class_ur_q_m_d_particle_a3395b8609056c042f3081645b7a82bec}{GetItyp}}();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00175}00175       aParticle.charge = charge;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00176}00176       aParticle.\mbox{\hyperlink{class_particle_aec8818bc53cd79f67dbb1328ec877531}{setPxPyPzE}}(p\_x,p\_y,p\_z,p\_e);}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00177}00177       aParticle.\mbox{\hyperlink{class_particle_a01664cac57724ee342f84cd4bc3c4e5f}{ixEtaPhi}} = -\/1;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00178}00178       aParticle.\mbox{\hyperlink{class_particle_a5723970b173d0948d1dc25753917658f}{ixYPhi}} = -\/1;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00179}00179 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00180}00180       \textcolor{keywordflow}{if} (aParticle.pt<generatorConfiguration-\/>ptMinimum || aParticle.pt>generatorConfiguration-\/>ptMaximum) \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00181}00181       \textcolor{keywordflow}{if} (aParticle.y<generatorConfiguration-\/>yMinimum || aParticle.y>generatorConfiguration-\/>yMaximum) \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00182}00182       \textcolor{keywordflow}{if} (aParticle.eta<generatorConfiguration-\/>etaMinimum || aParticle.eta>generatorConfiguration-\/>etaMaximum) \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00183}00183       \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_urqmd_event_reader_abab56018f0e5c4949f98eee6210ece67}{acceptPID}}(aParticle)) \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00184}00184 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00185}00185       \textcolor{comment}{/* rotate according to the event plane angle */}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00186}00186       \textcolor{keywordtype}{double} phi\_new = (aParticle.phi-\/eventAngle);}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00187}00187       \textcolor{keywordtype}{double} p\_x\_new= aParticle.pt*TMath::Cos(phi\_new);}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00188}00188       \textcolor{keywordtype}{double} p\_y\_new= aParticle.pt*TMath::Sin(phi\_new);}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00189}00189       aParticle.\mbox{\hyperlink{class_particle_aec8818bc53cd79f67dbb1328ec877531}{setPxPyPzE}}(p\_x\_new,p\_y\_new,p\_z,p\_e);}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00190}00190 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00191}00191       particle = particleFactory-\/>getObject();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00192}00192       particle-\/>Copy(aParticle);}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00193}00193 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00194}00194       \textcolor{comment}{//particle-\/>printProperties(cout);}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00195}00195       particleAccepted++;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00196}00196     \}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00197}00197     \textcolor{keyword}{event}-\/>nParticles = particleAccepted;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00198}00198 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00199}00199     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}-\/DEBUG-\/ UrqmdEventReader::generate() No of accepted Particles: "{}}<<particleAccepted<<endl;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00200}00200     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}-\/DEBUG-\/ UrqmdEventReader::generate() No of rejected leptons: "{}} << \mbox{\hyperlink{class_urqmd_event_reader_a7acc8b751169beed359db3127610601d}{nleptons}} << endl;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00201}00201     \textcolor{comment}{//event-\/>printProperties(cout);}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00202}00202     \textcolor{keywordflow}{if} (debugLevel>0) cout << \textcolor{stringliteral}{"{}-\/DEBUG-\/ UrqmdEventReader::generate() event completed!"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00203}00203     \textcolor{keywordflow}{return} event;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00204}00204   \}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00205}00205 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00206}00206 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00207}\mbox{\hyperlink{class_urqmd_event_reader_a60c035d195a6b7db974dbfefafc885db}{00207}}   Int\_t \mbox{\hyperlink{class_urqmd_event_reader_a60c035d195a6b7db974dbfefafc885db}{GetEntry}}(Long64\_t entry)}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00208}00208   \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00209}00209     \textcolor{comment}{// Read contents of entry.}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00210}00210     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{fChain}}) \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00211}00211     \textcolor{keywordflow}{return} \mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{fChain}}-\/>GetEntry(entry);}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00212}00212   \}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00213}00213 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00214}\mbox{\hyperlink{class_urqmd_event_reader_a89f46f8dd2a7e5a4c54c0d7a2b2e6337}{00214}}   Long64\_t \mbox{\hyperlink{class_urqmd_event_reader_a89f46f8dd2a7e5a4c54c0d7a2b2e6337}{LoadTree}}(Long64\_t entry)}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00215}00215   \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00216}00216     \textcolor{comment}{// Set the environment to read one entry}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00217}00217     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{fChain}}) \textcolor{keywordflow}{return} -\/5;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00218}00218     Long64\_t centry = \mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{fChain}}-\/>LoadTree(entry);}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00219}00219     \textcolor{keywordflow}{if} (centry < 0) \textcolor{keywordflow}{return} centry;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00220}00220     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{fChain}}-\/>GetTreeNumber() != \mbox{\hyperlink{class_urqmd_event_reader_a9c6bbaa825cfad94e8847d458534cae4}{fCurrent}}) \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00221}00221       \mbox{\hyperlink{class_urqmd_event_reader_a9c6bbaa825cfad94e8847d458534cae4}{fCurrent}} = \mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{fChain}}-\/>GetTreeNumber();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00222}00222       \mbox{\hyperlink{class_urqmd_event_reader_a5f205ed721675b0567443c6336bb7c1d}{Notify}}();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00223}00223     \}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00224}00224     \textcolor{keywordflow}{return} centry;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00225}00225   \}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00226}00226 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00227}\mbox{\hyperlink{class_urqmd_event_reader_a02102bbe491643300b6c37491aaf5094}{00227}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_urqmd_event_reader_a02102bbe491643300b6c37491aaf5094}{Init}}(TTree *tree)}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00228}00228   \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00229}00229     \textcolor{keywordflow}{if} (!tree) \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00230}00230     \mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{fChain}} = tree;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00231}00231     \mbox{\hyperlink{class_urqmd_event_reader_a9c6bbaa825cfad94e8847d458534cae4}{fCurrent}} = -\/1;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00232}00232 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00233}00233     \mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}UrQMDEventBranch"{}},\&\mbox{\hyperlink{class_urqmd_event_reader_ac1b94928caa2918488c17e19b73bcabc}{anEvent}});}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00234}00234 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00235}00235     \mbox{\hyperlink{class_urqmd_event_reader_a5f205ed721675b0567443c6336bb7c1d}{Notify}}();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00236}00236 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00237}00237 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00238}00238     \mbox{\hyperlink{class_urqmd_event_reader_a3342ecb5ebbaafaa9d91f6bd4d3d6dda}{nentries}} = \mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{fChain}}-\/>GetEntriesFast();}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00239}00239     \mbox{\hyperlink{class_urqmd_event_reader_a91d787d265e7feb9142158203a9d480b}{nbytes}} = 0;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00240}00240     \mbox{\hyperlink{class_urqmd_event_reader_adce2c971e9582c250e2ad48ac810bcfc}{nb}} = 0;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00241}00241 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00242}00242   \}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00243}00243 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00244}\mbox{\hyperlink{class_urqmd_event_reader_a5f205ed721675b0567443c6336bb7c1d}{00244}}   Bool\_t \mbox{\hyperlink{class_urqmd_event_reader_a5f205ed721675b0567443c6336bb7c1d}{Notify}}()}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00245}00245   \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00246}00246 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00247}00247 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00248}00248     \textcolor{keywordflow}{return} kTRUE;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00249}00249   \}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00250}00250 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00251}\mbox{\hyperlink{class_urqmd_event_reader_a5ed0b86a11b6e9c0718108db48bfa642}{00251}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_urqmd_event_reader_a5ed0b86a11b6e9c0718108db48bfa642}{Show}}(Long64\_t entry)}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00252}00252   \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00253}00253 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00254}00254     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{fChain}}) \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00255}00255     \mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{fChain}}-\/>Show(entry);}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00256}00256   \}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00257}\mbox{\hyperlink{class_urqmd_event_reader_a7ef6414da3035a6fcc077c748d5a0350}{00257}}   Int\_t \mbox{\hyperlink{class_urqmd_event_reader_a7ef6414da3035a6fcc077c748d5a0350}{Cut}}(Long64\_t entry)}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00258}00258   \{}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00259}00259     \textcolor{keywordflow}{return} 1;}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00260}00260   \}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00261}00261 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00262}00262 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00263}00263 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00264}00264 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00266}00266   \textcolor{comment}{// Data members}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00268}\mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{00268}} \textcolor{comment}{}  TTree          *\mbox{\hyperlink{class_urqmd_event_reader_afaf6fbebd1253a8e7f93e3111cb72fca}{fChain}};   }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00269}\mbox{\hyperlink{class_urqmd_event_reader_a9c6bbaa825cfad94e8847d458534cae4}{00269}}   Int\_t           \mbox{\hyperlink{class_urqmd_event_reader_a9c6bbaa825cfad94e8847d458534cae4}{fCurrent}}; }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00270}00270 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00271}\mbox{\hyperlink{class_urqmd_event_reader_a3342ecb5ebbaafaa9d91f6bd4d3d6dda}{00271}}   Long64\_t \mbox{\hyperlink{class_urqmd_event_reader_a3342ecb5ebbaafaa9d91f6bd4d3d6dda}{nentries}};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00272}\mbox{\hyperlink{class_urqmd_event_reader_a91d787d265e7feb9142158203a9d480b}{00272}}   Long64\_t \mbox{\hyperlink{class_urqmd_event_reader_a91d787d265e7feb9142158203a9d480b}{nbytes}};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00273}\mbox{\hyperlink{class_urqmd_event_reader_adce2c971e9582c250e2ad48ac810bcfc}{00273}}   Long64\_t \mbox{\hyperlink{class_urqmd_event_reader_adce2c971e9582c250e2ad48ac810bcfc}{nb}};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00274}00274 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00275}\mbox{\hyperlink{class_urqmd_event_reader_aa6f52208496934cc231d6aa02f2a1646}{00275}}   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_urqmd_event_reader_aa6f52208496934cc231d6aa02f2a1646}{jentry}};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00276}00276 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00277}00277   \textcolor{comment}{/* the UrQMD event */}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00278}\mbox{\hyperlink{class_urqmd_event_reader_ac1b94928caa2918488c17e19b73bcabc}{00278}}   \mbox{\hyperlink{class_ur_q_m_d_event}{UrQMDEvent}} *\mbox{\hyperlink{class_urqmd_event_reader_ac1b94928caa2918488c17e19b73bcabc}{anEvent}};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00279}00279   \textcolor{comment}{/* the number of rejected leptons */}}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00280}\mbox{\hyperlink{class_urqmd_event_reader_a7acc8b751169beed359db3127610601d}{00280}}   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_urqmd_event_reader_a7acc8b751169beed359db3127610601d}{nleptons}};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00281}00281 \};}
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00282}00282 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00283}00283 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00284}00284 }
-\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00285}00285 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* UrqmdEventReader\_hpp */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef CAP\_\_UrqmdEventReader}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define CAP\_\_UrqmdEventReader}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_root_tree_reader_8hpp}{RootTreeReader.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00016}\mbox{\hyperlink{class_urqmd_event_reader}{00016}} \textcolor{keyword}{class }\mbox{\hyperlink{class_urqmd_event_reader}{UrqmdEventReader}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_root_tree_reader}{RootTreeReader}}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00017}00017 \{}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00018}00018 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00029}00029   \mbox{\hyperlink{class_urqmd_event_reader_a47756a5fb3f5b2d51277e086ec76a040}{UrqmdEventReader}}(\textcolor{keyword}{const} TString \&          \_name,}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00030}00030                   \mbox{\hyperlink{class_configuration}{Configuration}} \&          \_configuration,}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00031}00031                   vector<EventFilter*>   \& \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00032}00032                   vector<ParticleFilter*>\& \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00033}00033                   \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                 \_selectedLevel=\mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{Info}});}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00034}00034   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00038}\mbox{\hyperlink{class_urqmd_event_reader_a148b25aaccd343d378fce5fd06bd17f8}{00038}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_urqmd_event_reader_a148b25aaccd343d378fce5fd06bd17f8}{\string~UrqmdEventReader}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00043}00043   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_urqmd_event_reader_ae820a99a0e6c4d6d7a8b2045f724863d}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00044}00044   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00048}00048   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_urqmd_event_reader_af3faa10b2ba94b64860be2bd6900dcc9}{execute}}();}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00049}00049   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00054}00054   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_urqmd_event_reader_a14ad18251f9aa07c126899607d922266}{initInputTreeMapping}}();}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00055}00055   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00056}00056   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00058}00058 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00059}00059   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00060}\mbox{\hyperlink{class_urqmd_event_reader_a69c32529f8215b5053b72ee7227620af}{00060}}   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} Int\_t \mbox{\hyperlink{class_urqmd_event_reader_a69c32529f8215b5053b72ee7227620af}{kMaxfTracks}} = 50000;}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00062}00062   \textcolor{comment}{// Declaration of leaf types}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00063}00063 \textcolor{comment}{//UrQMDEvent      *UrQMDEventBranch;}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00064}\mbox{\hyperlink{class_urqmd_event_reader_ac50cf36eab6e53b51f44068d38819c21}{00064}}   UInt\_t          \mbox{\hyperlink{class_urqmd_event_reader_ac50cf36eab6e53b51f44068d38819c21}{fUniqueID}};}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00065}\mbox{\hyperlink{class_urqmd_event_reader_a2cb25b16f96e7a8e46b42815ea32f6df}{00065}}   UInt\_t          \mbox{\hyperlink{class_urqmd_event_reader_a2cb25b16f96e7a8e46b42815ea32f6df}{fBits}};}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00066}\mbox{\hyperlink{class_urqmd_event_reader_a81aba0eaba80a130917ef8857ef83b45}{00066}}   Int\_t           \mbox{\hyperlink{class_urqmd_event_reader_a81aba0eaba80a130917ef8857ef83b45}{fEvtNum}};}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00067}\mbox{\hyperlink{class_urqmd_event_reader_ae590bc874941cd210ba208af25d180cd}{00067}}   Float\_t         \mbox{\hyperlink{class_urqmd_event_reader_ae590bc874941cd210ba208af25d180cd}{fb}};}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00068}\mbox{\hyperlink{class_urqmd_event_reader_a948b54ae16b13e38c4ac114948f9968b}{00068}}   Int\_t           \mbox{\hyperlink{class_urqmd_event_reader_a948b54ae16b13e38c4ac114948f9968b}{fTracks\_}};}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00069}\mbox{\hyperlink{class_urqmd_event_reader_a58c9760512d68e861410d5e73b9788b7}{00069}}   UInt\_t          \mbox{\hyperlink{class_urqmd_event_reader_a58c9760512d68e861410d5e73b9788b7}{fTracks\_fUniqueID}}[\mbox{\hyperlink{class_urqmd_event_reader_a69c32529f8215b5053b72ee7227620af}{kMaxfTracks}}];   \textcolor{comment}{//[fTracks\_]}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00070}\mbox{\hyperlink{class_urqmd_event_reader_a66cf894a4d15f602f781b184e2ca86a1}{00070}}   UInt\_t          \mbox{\hyperlink{class_urqmd_event_reader_a66cf894a4d15f602f781b184e2ca86a1}{fTracks\_fBits}}[\mbox{\hyperlink{class_urqmd_event_reader_a69c32529f8215b5053b72ee7227620af}{kMaxfTracks}}];   \textcolor{comment}{//[fTracks\_]}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00071}\mbox{\hyperlink{class_urqmd_event_reader_aeb8b384a8faba1761cffc58afca0cfb8}{00071}}   Float\_t         \mbox{\hyperlink{class_urqmd_event_reader_aeb8b384a8faba1761cffc58afca0cfb8}{fTracks\_ft}}[\mbox{\hyperlink{class_urqmd_event_reader_a69c32529f8215b5053b72ee7227620af}{kMaxfTracks}}];   \textcolor{comment}{//[fTracks\_]}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00072}\mbox{\hyperlink{class_urqmd_event_reader_a03d3caca96aed491c057996144911a8e}{00072}}   Float\_t         \mbox{\hyperlink{class_urqmd_event_reader_a03d3caca96aed491c057996144911a8e}{fTracks\_fx}}[\mbox{\hyperlink{class_urqmd_event_reader_a69c32529f8215b5053b72ee7227620af}{kMaxfTracks}}];   \textcolor{comment}{//[fTracks\_]}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00073}\mbox{\hyperlink{class_urqmd_event_reader_abfe2c07a1b3c2ddabd68043441516869}{00073}}   Float\_t         \mbox{\hyperlink{class_urqmd_event_reader_abfe2c07a1b3c2ddabd68043441516869}{fTracks\_fy}}[\mbox{\hyperlink{class_urqmd_event_reader_a69c32529f8215b5053b72ee7227620af}{kMaxfTracks}}];   \textcolor{comment}{//[fTracks\_]}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00074}\mbox{\hyperlink{class_urqmd_event_reader_a332e8d9def4f702b87fc9d9b7620c4e4}{00074}}   Float\_t         \mbox{\hyperlink{class_urqmd_event_reader_a332e8d9def4f702b87fc9d9b7620c4e4}{fTracks\_fz}}[\mbox{\hyperlink{class_urqmd_event_reader_a69c32529f8215b5053b72ee7227620af}{kMaxfTracks}}];   \textcolor{comment}{//[fTracks\_]}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00075}\mbox{\hyperlink{class_urqmd_event_reader_ab21f1ab538b9492a51762958e9dab1d6}{00075}}   Float\_t         \mbox{\hyperlink{class_urqmd_event_reader_ab21f1ab538b9492a51762958e9dab1d6}{fTracks\_fE}}[\mbox{\hyperlink{class_urqmd_event_reader_a69c32529f8215b5053b72ee7227620af}{kMaxfTracks}}];   \textcolor{comment}{//[fTracks\_]}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00076}\mbox{\hyperlink{class_urqmd_event_reader_ab70ec13056da32630198dfdefeed8824}{00076}}   Float\_t         \mbox{\hyperlink{class_urqmd_event_reader_ab70ec13056da32630198dfdefeed8824}{fTracks\_fPx}}[\mbox{\hyperlink{class_urqmd_event_reader_a69c32529f8215b5053b72ee7227620af}{kMaxfTracks}}];   \textcolor{comment}{//[fTracks\_]}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00077}\mbox{\hyperlink{class_urqmd_event_reader_aae56e288c9ba38f69b9155d2f82e0c0f}{00077}}   Float\_t         \mbox{\hyperlink{class_urqmd_event_reader_aae56e288c9ba38f69b9155d2f82e0c0f}{fTracks\_fPy}}[\mbox{\hyperlink{class_urqmd_event_reader_a69c32529f8215b5053b72ee7227620af}{kMaxfTracks}}];   \textcolor{comment}{//[fTracks\_]}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00078}\mbox{\hyperlink{class_urqmd_event_reader_afe5dd940d51d309af63894f5646cb99f}{00078}}   Float\_t         \mbox{\hyperlink{class_urqmd_event_reader_afe5dd940d51d309af63894f5646cb99f}{fTracks\_fPz}}[\mbox{\hyperlink{class_urqmd_event_reader_a69c32529f8215b5053b72ee7227620af}{kMaxfTracks}}];   \textcolor{comment}{//[fTracks\_]}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00079}\mbox{\hyperlink{class_urqmd_event_reader_acf4435ee0ecbece9442f5452b839d638}{00079}}   Float\_t         \mbox{\hyperlink{class_urqmd_event_reader_acf4435ee0ecbece9442f5452b839d638}{fTracks\_fMass}}[\mbox{\hyperlink{class_urqmd_event_reader_a69c32529f8215b5053b72ee7227620af}{kMaxfTracks}}];   \textcolor{comment}{//[fTracks\_]}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00080}\mbox{\hyperlink{class_urqmd_event_reader_a2265009e458b4e660b6648c6f60c10f9}{00080}}   UInt\_t          \mbox{\hyperlink{class_urqmd_event_reader_a2265009e458b4e660b6648c6f60c10f9}{fTracks\_fChIso3Ityp}}[\mbox{\hyperlink{class_urqmd_event_reader_a69c32529f8215b5053b72ee7227620af}{kMaxfTracks}}];   \textcolor{comment}{//[fTracks\_]}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00082}00082   \textcolor{comment}{// List of branches}}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00083}\mbox{\hyperlink{class_urqmd_event_reader_a168521039561a42d341eda3b8e0fe30e}{00083}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_a168521039561a42d341eda3b8e0fe30e}{b\_UrQMDEventBranch\_fUniqueID}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00084}\mbox{\hyperlink{class_urqmd_event_reader_ac536958b68231cb9d433dfc9a70ac1c7}{00084}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_ac536958b68231cb9d433dfc9a70ac1c7}{b\_UrQMDEventBranch\_fBits}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00085}\mbox{\hyperlink{class_urqmd_event_reader_af6346e6b4faac0f447a3ea946360c545}{00085}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_af6346e6b4faac0f447a3ea946360c545}{b\_UrQMDEventBranch\_fEvtNum}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00086}\mbox{\hyperlink{class_urqmd_event_reader_a52036e6b375b9250ff096f21844dc593}{00086}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_a52036e6b375b9250ff096f21844dc593}{b\_UrQMDEventBranch\_fb}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00087}\mbox{\hyperlink{class_urqmd_event_reader_a9cd4dd464ee9586d2f513a9565a41516}{00087}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_a9cd4dd464ee9586d2f513a9565a41516}{b\_UrQMDEventBranch\_fTracks\_}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00088}\mbox{\hyperlink{class_urqmd_event_reader_a63dcbcd13999dfbf6114fd838c11408c}{00088}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_a63dcbcd13999dfbf6114fd838c11408c}{b\_fTracks\_fUniqueID}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00089}\mbox{\hyperlink{class_urqmd_event_reader_a86947cbead29ef79263efdd54985c259}{00089}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_a86947cbead29ef79263efdd54985c259}{b\_fTracks\_fBits}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00090}\mbox{\hyperlink{class_urqmd_event_reader_abe29932089470bcf2f61ce43b7ed3f7a}{00090}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_abe29932089470bcf2f61ce43b7ed3f7a}{b\_fTracks\_ft}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00091}\mbox{\hyperlink{class_urqmd_event_reader_ae7e62a65b3311899488bdb28876e9eb4}{00091}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_ae7e62a65b3311899488bdb28876e9eb4}{b\_fTracks\_fx}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00092}\mbox{\hyperlink{class_urqmd_event_reader_a379b975494eb1b0a6b0b525d1f996c3e}{00092}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_a379b975494eb1b0a6b0b525d1f996c3e}{b\_fTracks\_fy}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00093}\mbox{\hyperlink{class_urqmd_event_reader_a671506e473ed58dfa034232d346bf589}{00093}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_a671506e473ed58dfa034232d346bf589}{b\_fTracks\_fz}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00094}\mbox{\hyperlink{class_urqmd_event_reader_a94025a369ea6d0997b2ec82d79c33ab7}{00094}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_a94025a369ea6d0997b2ec82d79c33ab7}{b\_fTracks\_fE}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00095}\mbox{\hyperlink{class_urqmd_event_reader_afae067b743e8bb647b7214806797a406}{00095}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_afae067b743e8bb647b7214806797a406}{b\_fTracks\_fPx}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00096}\mbox{\hyperlink{class_urqmd_event_reader_ac90897a86cb442f0195168cd5d15b4ec}{00096}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_ac90897a86cb442f0195168cd5d15b4ec}{b\_fTracks\_fPy}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00097}\mbox{\hyperlink{class_urqmd_event_reader_abd68fe5c10f86aa03445a37ed26f103d}{00097}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_abd68fe5c10f86aa03445a37ed26f103d}{b\_fTracks\_fPz}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00098}\mbox{\hyperlink{class_urqmd_event_reader_a026b9684da73ede77d14cd539c3e5300}{00098}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_a026b9684da73ede77d14cd539c3e5300}{b\_fTracks\_fMass}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00099}\mbox{\hyperlink{class_urqmd_event_reader_acc6457b65b03a550af7ba7287b861a61}{00099}}   TBranch        *\mbox{\hyperlink{class_urqmd_event_reader_acc6457b65b03a550af7ba7287b861a61}{b\_fTracks\_fChIso3Ityp}};   }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00101}00101 \};}
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{_urqmd_event_reader_8hpp_source_l00103}00103 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_UrqmdEventReader */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -11,7 +11,7 @@
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00007}00007            \textcolor{keywordtype}{int} nFiles,}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00008}00008            \textcolor{keyword}{const} TString \& inputFileBaseName,}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00009}00009            \textcolor{keyword}{const} TString \& outputPathName,}
-\DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00010}00010            \textcolor{keyword}{const} TString \& \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}});}
+\DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00010}00010            \textcolor{keyword}{const} TString \& outputFileName);}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00011}00011 }
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00012}00012 }
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00013}\mbox{\hyperlink{_two_particle_subsample_analysis_8_c_a1617ff35b72729ebc230de15ccaaa2dd}{00013}} \textcolor{keywordtype}{int} \mbox{\hyperlink{_two_particle_subsample_analysis_8_c_a1617ff35b72729ebc230de15ccaaa2dd}{TwoParticleSubsampleAnalysis}}()}
@@ -107,14 +107,14 @@
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00103}00103            \textcolor{keywordtype}{int} nFiles,}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00104}00104            \textcolor{keyword}{const} TString \& inputFileBaseName,}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00105}00105            \textcolor{keyword}{const} TString \& outputPathName,}
-\DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00106}00106            \textcolor{keyword}{const} TString \& \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}})}
+\DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00106}00106            \textcolor{keyword}{const} TString \& outputFileName)}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00107}00107 \{}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00108}00108   \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{MessageLogger::LogLevel}}  debugLevel = \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276aa22438423e9929c14bd13547c6595be73}{MessageLogger::Info}};}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00109}00109   TString ** fileNames = \textcolor{keyword}{new} TString* [nFiles];}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00110}00110   cout << \textcolor{stringliteral}{"{}      input Path Name: "{}} << inputPathName << endl;}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00111}00111   cout << \textcolor{stringliteral}{"{} input File Base Name: "{}} << inputFileBaseName << endl;}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00112}00112   cout << \textcolor{stringliteral}{"{}     output Path Name: "{}} << outputPathName << endl;}
-\DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00113}00113   cout << \textcolor{stringliteral}{"{}     output File Name: "{}} << \mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}} << endl;}
+\DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00113}00113   cout << \textcolor{stringliteral}{"{}     output File Name: "{}} << outputFileName << endl;}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00114}00114   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iFile=0; iFile<nFiles; iFile++)}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00115}00115   \{}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00116}00116   TString  fName = inputFileBaseName;}
@@ -122,7 +122,7 @@
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00118}00118   fileNames[iFile] = \textcolor{keyword}{new} TString(fName);}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00119}00119   cout << \textcolor{stringliteral}{"{}   file Name ["{}} << iFile << \textcolor{stringliteral}{"{}]: "{}} << *fileNames[iFile] << endl;}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00120}00120   \}}
-\DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00121}00121   \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}} * calculator = \textcolor{keyword}{new} \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}}(inputPathName,nFiles,fileNames,outputPathName,\mbox{\hyperlink{_closure_test_8cpp_a3eee5431d54ff7fe47478c7587682a3f}{outputFileName}},debugLevel);}
+\DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00121}00121   \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}} * calculator = \textcolor{keyword}{new} \mbox{\hyperlink{class_sub_sample_stat_calculator}{SubSampleStatCalculator}}(inputPathName,nFiles,fileNames,outputPathName,outputFileName,debugLevel);}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00122}00122   calculator-\/>\mbox{\hyperlink{class_sub_sample_stat_calculator_a6f6ca62a93799a4299b972da90879b3a}{execute}}();}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00123}00123   \textcolor{keywordflow}{return} 0;}
 \DoxyCodeLine{\Hypertarget{_two_particle_subsample_analysis_8_c_source_l00124}00124 \textcolor{comment}{//  delete calculator;}}

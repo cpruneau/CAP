@@ -243,9 +243,69 @@ public:
                      double &F4_1234,double &eF4_1234, double &  R4_1234,double & eR4_1234);
   void calculateNudyn(double r2_11,double er2_11,double r2_12,double er2_12,double r2_22,double er2_22,double & nudyn,double & enudyn);
 
-  void squareDifferenceCollection(const HistogramCollection & collection, double sumWeights, double weight, int n);
-  void squareDifferenceHistos(TH1 * hAvg, TH1 * h, double sumWeights, double weight, int n);
+  //!
+  //! Span all histograms of the two given collections and span each of their histograms bin by bin to compute differences and store the content difference in this
+  //! collection.  The collections must exactly the same number of histograms, in the same order, and with the same exact dimensions.  Histograms may be profiles.
+  //! Uncertainties on the differences are computed as sum of square of uncertainties if correlatedUncertainties==0 and
+  //! as a difference of square of uncertainties if correlatedUncertainties==1.
+  //!
+  //! @param collection Collection of histograms to be compared to those of the reference collection.
+  //! @param refCollection Reference collection of histograms
+  //! @param correlatedUncertainties Whether the uncertainties of the given and reference collection histograms are correlated.
+  //!
+  void differenceCollection(const HistogramCollection & collection, const HistogramCollection & refCollection, bool correlatedUncertainties);
 
+  //!
+  //! Span all histograms of the two given collections and span each of their histograms bin by bin to compute ratios and store the content ratio in this
+  //! collection.  The collections must exactly the same number of histograms, in the same order, and with the same exact dimensions.  Histograms may be profiles.
+  //! Uncertainties on the differences are computed as sum of square of uncertainties if correlatedUncertainties==0 and
+  //! as a difference of square of uncertainties if correlatedUncertainties==1.
+  //!
+  //! @param collection Collection of histograms to be compared to those of the reference collection.
+  //! @param refCollection Reference collection of histograms
+  //! @param correlatedUncertainties Whether the uncertainties of the given and reference collection histograms are correlated.
+  //!
+  void ratioCollection(const HistogramCollection & collection, const HistogramCollection & refCollection, bool correlatedUncertainties);
+
+  void squareDifferenceCollection(const HistogramCollection & collection, double sumWeights, double weight, int n);
+
+  //!
+  //! Span all bins of hAvg and h and  compute the difference between histo "h" and the reference "havg", and increment the value
+  //! havg accordingly. Histograms must have the same exact dimensions. The histograms may be profiles.
+  //!
+  //!@param hAvg Histogram containing the running average
+  //!@param h  Histogram to be compared to hAvg and use to update the average and the uncertainties.
+  //!@param sumWeights Cumulated sum of weights
+  //!@param weight Weight given to histogram h.
+  //!@param n Index of file being processed. 
+  //!
+  void squareDifferenceHistos(TH1 * hAvg, TH1 * h, double sumWeights, double weight, int n);
+  
+  //!
+  //!Span all bins of h and href and calculate the content difference (and the uncertainty) and store the difference in hDiff.
+  //!All three given histograms must have the same exact dimensions. The histogram h and hRef may be profiles.
+  //!Uncertainties on the difference hDiff are computed as sum of square of uncertainties on h and href if correlatedUncertainties==0 and
+  //!as a difference of square of uncertainties if correlatedUncertainties==1.
+  //!
+  //!@param h Histogram to be tested against the reference Histogram
+  //!@param hRef Reference Histogram
+  //!@param hDiff Difference histogram produced on output
+  //!@param correlatedUncertainties Whether the uncertainties of h and href are correlated: true if they are, false if they are not.
+  //!
+  void differenceHistos(TH1 *h, TH1 *hRef, TH1 *hDiff, bool correlatedUncertainties);
+  
+  //!
+  //!Span all bins of h and href and calculate the content ratio (and the uncertainty) and store the ratio in hRatio.
+  //!All three given histograms must have the same exact dimensions. The histogram h and hRef may be profiles.
+  //!Uncertainties on the difference hRatio are computed as sum of square of uncertainties on h and href if correlatedUncertainties==0 and
+  //!as a difference of square of uncertainties if correlatedUncertainties==1.
+  //!
+  //!@param h Histogram to be tested against the reference Histogram
+  //!@param hRef Reference Histogram
+  //!@param hDiff Ratio histogram produced on output
+  //!@param correlatedUncertainties Whether the uncertainties of h and href are correlated: true if they are, false if they are not.
+  //!
+  void ratioHistos(TH1 *h, TH1 *hRef, TH1 *hDiff, bool correlatedUncertainties);
 
   int  getDimension(const TH1* h) const;
   bool sameDimensions(const TString & caller, const TH1* h1, const TH1* h2) const;

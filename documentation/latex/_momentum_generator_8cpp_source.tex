@@ -2,274 +2,280 @@
 \label{_momentum_generator_8cpp_source}\index{Base/MomentumGenerator.cpp@{Base/MomentumGenerator.cpp}}
 \mbox{\hyperlink{_momentum_generator_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00001}00001 \textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00002}00002 \textcolor{comment}{//  MomentumGenerator.hpp}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00003}00003 \textcolor{comment}{//  Created by Victor Gonzalez on 20190206 based in the work of Claude Pruneau and the ALICE AliPhysics SW framework}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00004}00004 \textcolor{comment}{//  Copyright © 2016-\/2019 Claude Pruneau. All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00005}00005 \textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_momentum_generator_8hpp}{MomentumGenerator.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00007}\mbox{\hyperlink{_momentum_generator_8cpp_af7b6c10be3d33e16a6427f6e5ade997a}{00007}} \mbox{\hyperlink{_momentum_generator_8cpp_af7b6c10be3d33e16a6427f6e5ade997a}{ClassImp}}(\mbox{\hyperlink{class_momentum_generator}{MomentumGenerator}});}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00008}00008 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00009}\mbox{\hyperlink{_momentum_generator_8cpp_af96cfa5b4699963ae6feed67046371a2}{00009}} \textcolor{keywordtype}{double} \mbox{\hyperlink{_momentum_generator_8cpp_af96cfa5b4699963ae6feed67046371a2}{probDensity}}(\textcolor{keywordtype}{double} p, \textcolor{keywordtype}{double} mass, \textcolor{keywordtype}{double} temperature, \textcolor{keywordtype}{double} mu, \textcolor{keywordtype}{double} stat)}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00010}00010 \{}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00011}00011   \textcolor{keywordtype}{double} e     = sqrt(p*p + mass*mass);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00012}00012   \textcolor{keywordtype}{double} beta  = 1.0/temperature;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00013}00013   \textcolor{keywordtype}{double} arg   = beta*(e-\/mu);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00014}00014   \textcolor{keywordtype}{double} density = p*p/(exp(arg)+stat);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00015}00015   \textcolor{keywordflow}{return} density;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00016}00016 \}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00017}00017 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00019}\mbox{\hyperlink{class_momentum_generator_ae079a7281827f0ad4ef676057feb4fdc}{00019}} \mbox{\hyperlink{class_momentum_generator_ae079a7281827f0ad4ef676057feb4fdc}{MomentumGenerator::MomentumGenerator}}(\textcolor{keywordtype}{int}  \_generatorType, \mbox{\hyperlink{class_particle_type}{ParticleType}} * \_particleType,}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00020}00020                                      vector<double> \_parameters, TRandom * \_selectedRandom)}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00021}00021 :}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00022}00022 generatorType(\_generatorType),}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00023}00023 particleType(\_particleType),}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00024}00024 mass(0),}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00025}00025 stat(0),}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00026}00026 parameters(\_parameters),}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00027}00027 histograms(),}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00028}00028 random(\_selectedRandom)}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00029}00029 \{}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00030}00030   \mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}} = \mbox{\hyperlink{class_momentum_generator_abd3b8959070c339a6be027aa8b9f0bcd}{particleType}}-\/>\mbox{\hyperlink{class_particle_type_a97683c737d37b41e4695c8040adf2806}{getMass}}();}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00031}00031   \mbox{\hyperlink{class_momentum_generator_aca08b40ca024d69f9dffbcd8b9235c7c}{stat}} = 0; \textcolor{comment}{//particleType-\/>getStat();}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00032}00032 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00033}00033   \textcolor{keywordtype}{bool} invalidSetup = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00034}00034   \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_momentum_generator_ab8a84822807228a3db41f43a1161398e}{generatorType}})}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00035}00035     \{}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00036}00036       \textcolor{keywordflow}{case} 0:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00037}00037       \textcolor{comment}{// generate isotropic distribution}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00038}00038       \textcolor{comment}{// momentum is Gaussian distributed}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00039}00039       \textcolor{comment}{// parameters[0] : gaussian width}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00040}00040       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()!=1) invalidSetup = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00041}00041       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00042}00042 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00043}00043       \textcolor{keywordflow}{case} 1:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00044}00044       \textcolor{comment}{// generate isotropic distribution}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00045}00045       \textcolor{comment}{// momentum is exponential distributed}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00046}00046       \textcolor{comment}{// parameters[0] : average momentum}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00047}00047       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()!=1) invalidSetup = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00048}00048       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00049}00049 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00050}00050       \textcolor{keywordflow}{case} 2:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00051}00051       \textcolor{comment}{// generate isotropic distribution}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00052}00052       \textcolor{comment}{// momentum is uniform distributed in range min -\/-\/ max}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00053}00053       \textcolor{comment}{// parameters[0] : minimum momentum}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00054}00054       \textcolor{comment}{// parameters[1] : maximum momentum}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00055}00055       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()!=2) invalidSetup = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00056}00056       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00057}00057 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00058}00058       \textcolor{keywordflow}{case} 3:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00059}00059       \textcolor{comment}{// generate isotropic distribution w/ uniform density}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00060}00060       \textcolor{comment}{// parameters[0] : minimum momentum}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00061}00061       \textcolor{comment}{// parameters[1] : maximum momentum}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00062}00062       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()!=2) invalidSetup = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00063}00063       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00064}00064 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00065}00065       \textcolor{keywordflow}{case} 4:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00066}00066       \textcolor{comment}{// generate isotropic Maxwell Boltzmann distribution}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00067}00067       \textcolor{comment}{// parameters[0] : temperature}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00068}00068       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()!=1) invalidSetup = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00009}00009 \textcolor{comment}{ * Author: Victor Gonzalez}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_momentum_generator_8hpp}{MomentumGenerator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00013}\mbox{\hyperlink{_momentum_generator_8cpp_af7b6c10be3d33e16a6427f6e5ade997a}{00013}} \mbox{\hyperlink{_momentum_generator_8cpp_af7b6c10be3d33e16a6427f6e5ade997a}{ClassImp}}(\mbox{\hyperlink{class_momentum_generator}{MomentumGenerator}});}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00015}\mbox{\hyperlink{_momentum_generator_8cpp_af96cfa5b4699963ae6feed67046371a2}{00015}} \textcolor{keywordtype}{double} \mbox{\hyperlink{_momentum_generator_8cpp_af96cfa5b4699963ae6feed67046371a2}{probDensity}}(\textcolor{keywordtype}{double} p, \textcolor{keywordtype}{double} mass, \textcolor{keywordtype}{double} temperature, \textcolor{keywordtype}{double} mu, \textcolor{keywordtype}{double} stat)}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00016}00016 \{}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00017}00017   \textcolor{keywordtype}{double} e     = sqrt(p*p + mass*mass);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00018}00018   \textcolor{keywordtype}{double} beta  = 1.0/temperature;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00019}00019   \textcolor{keywordtype}{double} arg   = beta*(e-\/mu);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00020}00020   \textcolor{keywordtype}{double} density = p*p/(exp(arg)+stat);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00021}00021   \textcolor{keywordflow}{return} density;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00022}00022 \}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00025}\mbox{\hyperlink{class_momentum_generator_ae079a7281827f0ad4ef676057feb4fdc}{00025}} \mbox{\hyperlink{class_momentum_generator_ae079a7281827f0ad4ef676057feb4fdc}{MomentumGenerator::MomentumGenerator}}(\textcolor{keywordtype}{int}  \_generatorType, \mbox{\hyperlink{class_particle_type}{ParticleType}} * \_particleType,}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00026}00026                                      vector<double> \_parameters, TRandom * \_selectedRandom)}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00027}00027 :}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00028}00028 generatorType(\_generatorType),}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00029}00029 particleType(\_particleType),}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00030}00030 mass(0),}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00031}00031 stat(0),}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00032}00032 parameters(\_parameters),}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00033}00033 histograms(),}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00034}00034 random(\_selectedRandom)}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00035}00035 \{}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00036}00036   \mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}} = \mbox{\hyperlink{class_momentum_generator_abd3b8959070c339a6be027aa8b9f0bcd}{particleType}}-\/>\mbox{\hyperlink{class_particle_type_a97683c737d37b41e4695c8040adf2806}{getMass}}();}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00037}00037   \mbox{\hyperlink{class_momentum_generator_aca08b40ca024d69f9dffbcd8b9235c7c}{stat}} = 0; \textcolor{comment}{//particleType-\/>getStat();}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00039}00039   \textcolor{keywordtype}{bool} invalidSetup = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00040}00040   \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_momentum_generator_ab8a84822807228a3db41f43a1161398e}{generatorType}})}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00041}00041     \{}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00042}00042       \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00043}00043       \textcolor{comment}{// generate isotropic distribution}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00044}00044       \textcolor{comment}{// momentum is Gaussian distributed}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00045}00045       \textcolor{comment}{// parameters[0] : gaussian width}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00046}00046       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()!=1) invalidSetup = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00047}00047       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00049}00049       \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00050}00050       \textcolor{comment}{// generate isotropic distribution}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00051}00051       \textcolor{comment}{// momentum is exponential distributed}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00052}00052       \textcolor{comment}{// parameters[0] : average momentum}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00053}00053       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()!=1) invalidSetup = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00054}00054       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00056}00056       \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00057}00057       \textcolor{comment}{// generate isotropic distribution}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00058}00058       \textcolor{comment}{// momentum is uniform distributed in range min -\/-\/ max}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00059}00059       \textcolor{comment}{// parameters[0] : minimum momentum}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00060}00060       \textcolor{comment}{// parameters[1] : maximum momentum}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00061}00061       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()!=2) invalidSetup = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00062}00062       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00064}00064       \textcolor{keywordflow}{case} 3:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00065}00065       \textcolor{comment}{// generate isotropic distribution w/ uniform density}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00066}00066       \textcolor{comment}{// parameters[0] : minimum momentum}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00067}00067       \textcolor{comment}{// parameters[1] : maximum momentum}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00068}00068       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()!=2) invalidSetup = \textcolor{keyword}{true};}
 \DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00069}00069       \textcolor{keywordflow}{break};}
 \DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00070}00070 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00071}00071       \textcolor{keywordflow}{case} 5:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00072}00072       \textcolor{comment}{// generate cylindrical distribution w/ pt gaussian distribution}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00073}00073       \textcolor{comment}{// parameters[0] : minimum rapidity}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00074}00074       \textcolor{comment}{// parameters[1] : width of rapidity window}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00075}00075       \textcolor{comment}{// parameters[2] : width of Gauss pt}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00076}00076       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()!=3) invalidSetup = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00077}00077       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00078}00078 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00079}00079       \textcolor{keywordflow}{case} 6:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00080}00080       \textcolor{comment}{// generate cylindrical distribution w/ pt exponential distribution}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00081}00081       \textcolor{comment}{// parameters[0] : minimum rapidity}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00082}00082       \textcolor{comment}{// parameters[1] : width of rapidity window}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00083}00083       \textcolor{comment}{// parameters[2] : exponential slope}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00084}00084       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()!=3) invalidSetup = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00085}00085       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00086}00086 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00087}00087       \textcolor{keywordflow}{case} 7:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00088}00088       \textcolor{comment}{// generate cylindrical distribution}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00089}00089       \textcolor{comment}{// parameters[0] : minimum rapidity}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00090}00090       \textcolor{comment}{// parameters[1] : width of rapidity window}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00091}00091       \textcolor{comment}{// parameters[2] : temperature (GeV)}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00092}00092       \textcolor{comment}{// parameters[3] : n bins in pT}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00093}00093       \textcolor{comment}{// parameters[4] : miniumum pT}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00094}00094       \textcolor{comment}{// parameters[5] : maxiumum pT}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00095}00095       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()!=6) invalidSetup = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00096}00096       \textcolor{keywordtype}{double} temp   = \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[2];}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00097}00097       \textcolor{keywordtype}{double} zero   = 0.0;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00098}00098       TString hName = \mbox{\hyperlink{class_momentum_generator_abd3b8959070c339a6be027aa8b9f0bcd}{particleType}}-\/>\mbox{\hyperlink{class_particle_type_adea8371492825f5eb08d63642bce02d5}{getName}}();}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00099}00099       hName += int(1000*temp);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00100}00100       hName += \textcolor{stringliteral}{"{}MeV"{}};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00101}00101       \textcolor{keywordtype}{double} mu     = 0.0;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00102}00102       \textcolor{keywordtype}{int} nBinsP    = int(\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[3]);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00103}00103       \textcolor{keywordtype}{double} minP   = \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[4];}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00104}00104       \textcolor{keywordtype}{double} maxP   = \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[5];}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00105}00105       \textcolor{keywordtype}{double} dp     = (maxP-\/minP)/\textcolor{keywordtype}{double}(nBinsP);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00106}00106       TH1 * h = \textcolor{keyword}{new} TH1D(hName,hName, nBinsP, minP, maxP);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00107}00107       \textcolor{keywordtype}{double} p = -\/dp;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00108}00108       \textcolor{keywordtype}{double} v;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00109}00109       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j=0; j<nBinsP; j++)}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00110}00110         \{}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00111}00111         p += dp;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00112}00112         v = \mbox{\hyperlink{_momentum_generator_8cpp_af96cfa5b4699963ae6feed67046371a2}{probDensity}}(p,\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}},temp,mu,\mbox{\hyperlink{class_momentum_generator_aca08b40ca024d69f9dffbcd8b9235c7c}{stat}});}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00113}00113         h-\/>SetBinContent(j,v);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00114}00114         h-\/>SetBinError(j,zero);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00115}00115         \}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00116}00116       \mbox{\hyperlink{class_momentum_generator_ab50a63ca21ffa88123687fa51d110ef1}{histograms}}.push\_back(h);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00117}00117       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00118}00118       \}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00119}00119   \textcolor{keywordflow}{if} (invalidSetup)}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00120}00120     \{}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00121}00121     cout << \textcolor{stringliteral}{"{}<F> MomentumGenerator(...)"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00122}00122     cout << \textcolor{stringliteral}{"{}           generatorType: "{}} << \mbox{\hyperlink{class_momentum_generator_ab8a84822807228a3db41f43a1161398e}{generatorType}}           << endl;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00123}00123     cout << \textcolor{stringliteral}{"{}            particleType: "{}} << \mbox{\hyperlink{class_momentum_generator_abd3b8959070c339a6be027aa8b9f0bcd}{particleType}}-\/>\mbox{\hyperlink{class_particle_type_adea8371492825f5eb08d63642bce02d5}{getName}}() << endl;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00124}00124     cout << \textcolor{stringliteral}{"{}       parameters.size(): "{}} << \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()       << endl;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00125}00125     cout << \textcolor{stringliteral}{"{}                ABORT!!!! "{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00126}00126     exit(1);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00127}00127     \}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00128}00128 \}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00129}00129 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00130}00130 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00131}\mbox{\hyperlink{class_momentum_generator_abe57a7396139c8ab4f4007dc1964d6bc}{00131}} \textcolor{keywordtype}{void}  \mbox{\hyperlink{class_momentum_generator_abe57a7396139c8ab4f4007dc1964d6bc}{MomentumGenerator::generate}}(TLorentzVector \& momentum)}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00132}00132 \{}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00133}00133   \textcolor{keywordtype}{double} px, py, pz, pt, mt, p, e, ptSq;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00134}00134   \textcolor{keywordtype}{double} phi, cosTh, y;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00135}00135   \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_momentum_generator_ab8a84822807228a3db41f43a1161398e}{generatorType}})}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00136}00136     \{}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00137}00137       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5acff4fdd2c5c3e21e84479ac028484e6a}{IsotropicGaussP}}:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00138}00138       \textcolor{comment}{// generate isotropic distribution}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00139}00139       \textcolor{comment}{// p is Gaussian distributed}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00140}00140       phi   = TMath::TwoPi()*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00141}00141       cosTh = -\/1.0 + 2.0*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00142}00142       p     = fabs(\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Gaus(0.0,\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0]));}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00143}00143       e     = sqrt(\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}*\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}} + p*p);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00144}00144       pt    = p*sqrt(1.0-\/cosTh*cosTh);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00145}00145       px    = pt*cos(phi);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00146}00146       py    = pt*sin(phi);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00147}00147       pz    = p*cosTh;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00148}00148       momentum.SetPxPyPzE (px,py,pz,e);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00149}00149       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00150}00150 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00151}00151       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5a146349c1754a5ce6e9c29eda9aebc55c}{IsotropicExpP}}:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00152}00152       \textcolor{comment}{// generate isotropic distribution}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00153}00153       \textcolor{comment}{// p is exponential distributed}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00154}00154       \textcolor{comment}{// exp( -\/t/tau )}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00155}00155       phi   = TMath::TwoPi()*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00156}00156       cosTh = -\/1.0 + 2.0*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00157}00157       p     = \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Exp(\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0]);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00158}00158       e     = sqrt(\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}*\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}} + p*p);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00159}00159       pt    = p*sqrt(1.0-\/cosTh*cosTh);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00160}00160       px    = pt*cos(phi);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00161}00161       py    = pt*sin(phi);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00162}00162       pz    = p*cosTh;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00163}00163       momentum.SetPxPyPzE (px,py,pz,e);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00164}00164       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00165}00165 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00166}00166       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5aedd576805bd854cc978b5a70b8b89ace}{IsotropicUniformP}}:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00167}00167       \textcolor{comment}{// generate isotropic distribution}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00168}00168       \textcolor{comment}{// p is uniform distributed}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00169}00169       phi   = TMath::TwoPi()*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00170}00170       cosTh = -\/1.0 + 2.0*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00171}00171       p     = \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0] + \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm()*\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[1];}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00172}00172       e     = sqrt(\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}*\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}} + p*p);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00173}00173       pt    = p*sqrt(1.0-\/cosTh*cosTh);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00174}00174       px    = pt*cos(phi);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00175}00175       py    = pt*sin(phi);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00176}00176       pz    = p*cosTh;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00177}00177       momentum.SetPxPyPzE (px,py,pz,e);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00178}00178       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00179}00179 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00180}00180       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5ab4f3c7abacaf0d23138303a4cfdb3490}{IsotropicUniformDensity}}:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00181}00181       \textcolor{comment}{// generate isotropic distribution}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00182}00182       \textcolor{comment}{// uniform density}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00183}00183       phi   = TMath::TwoPi()*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00184}00184       cosTh = -\/1.0 + 2.0*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00185}00185       p     = \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0] + \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm()*\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[1];}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00186}00186       e     = sqrt(\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}*\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}} + p*p);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00187}00187       pt    = p*sqrt(1.0-\/cosTh*cosTh);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00188}00188       px    = pt*cos(phi);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00189}00189       py    = pt*sin(phi);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00190}00190       pz    = p*cosTh;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00191}00191       momentum.SetPxPyPzE (px,py,pz,e);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00192}00192       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00193}00193 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00194}00194       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5af3d1d97a8b4a2d2ac3c74abc3e31d46f}{IsotropicMaxwellP}}:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00195}00195       \textcolor{comment}{// generate isotropic distribution}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00196}00196       \textcolor{comment}{// Maxwell Boltzmann}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00197}00197       px = \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Gaus(0.0,\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0] );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00198}00198       py = \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Gaus(0.0,\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0] );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00199}00199       pz = \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Gaus(0.0,\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0] );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00200}00200       e  = sqrt(\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}*\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}} + px*px + py*py + pz*pz);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00201}00201       momentum.SetPxPyPzE (px,py,pz,e);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00202}00202       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00203}00203 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00204}00204 \textcolor{comment}{//      case IsotropicHistoP:}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00205}00205 \textcolor{comment}{//      // generate isotropic distribution}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00206}00206 \textcolor{comment}{//      // p determined by histogram}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00207}00207 \textcolor{comment}{//      phi   = TMath::TwoPi()*random-\/>Rndm( );}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00208}00208 \textcolor{comment}{//      cosTh = -\/1.0 + 2.0*random-\/>Rndm( );}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00209}00209 \textcolor{comment}{//      p     = histogramP-\/>GetRandom();}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00210}00210 \textcolor{comment}{//      e     = sqrt(mass*mass + p*p);}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00211}00211 \textcolor{comment}{//      pt    = p*sqrt(1.0-\/cosTh*cosTh);}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00212}00212 \textcolor{comment}{//      px    = pt*cos(phi);}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00213}00213 \textcolor{comment}{//      py    = pt*sin(phi);}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00214}00214 \textcolor{comment}{//      pz    = p*cosTh;}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00215}00215 \textcolor{comment}{//      momentum.SetPxPyPzE (px,py,pz,e);}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00216}00216 \textcolor{comment}{//      break;}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00217}00217 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00218}00218       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5aac5053d6cb564fc3458913bc49d3a2c4}{CylindricalGaussPtUniformY}}:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00219}00219       \textcolor{comment}{// generate cylindrical distribution}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00220}00220       \textcolor{comment}{// parameters[0] : minimum rapidity}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00221}00221       \textcolor{comment}{// parameters[1] : width of rapidity window}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00222}00222       \textcolor{comment}{// parameters[2] : width of Gauss pt}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00223}00223       phi   = TMath::TwoPi()*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00224}00224       px    = \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Gaus(0.0,\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[2] );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00225}00225       py    = \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Gaus(0.0,\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[2] );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00226}00226       ptSq  = px*px + py*py;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00227}00227       pt    = sqrt(ptSq);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00228}00228       mt    = sqrt(\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}*\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}} + ptSq);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00229}00229       y     = \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[1]+\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[2]*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00230}00230       e     = mt*cosh(y);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00231}00231       pz    = mt*sinh(y);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00232}00232       px    = pt*cos(phi);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00233}00233       py    = pt*sin(phi);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00234}00234       momentum.SetPxPyPzE (px,py,pz,e);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00235}00235       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00236}00236 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00237}00237       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5a46f1446a3f30ab987fae3643071f6779}{CylindricalExpPtUniformY}}:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00238}00238       \textcolor{comment}{// generate cylindrical distribution}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00239}00239       \textcolor{comment}{// parameters[0] : minimum rapidity}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00240}00240       \textcolor{comment}{// parameters[1] : width of rapidity window}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00241}00241       \textcolor{comment}{// parameters[2] : exponential slope}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00242}00242       phi   = TMath::TwoPi()*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00243}00243       pt    = \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Exp(\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[2]);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00244}00244       mt    = sqrt(\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}*\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}} + pt*pt);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00245}00245       y     = \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0]+\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[1]*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00246}00246       e     = mt*cosh(y);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00247}00247       pz    = mt*sinh(y);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00248}00248       px    = pt*cos(phi);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00249}00249       py    = pt*sin(phi);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00250}00250       momentum.SetPxPyPzE (px,py,pz,e);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00251}00251       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00252}00252 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00253}00253       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5ac324dfaff7d218084c013e1db71bd779}{CylindricalMaxwellPtUniformY}}:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00254}00254       \textcolor{comment}{// generate cylindrical distribution}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00255}00255       \textcolor{comment}{// parameters[0] : minimum rapidity}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00256}00256       \textcolor{comment}{// parameters[1] : width of rapidity window}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00257}00257       \textcolor{comment}{// parameters[2] : Gauss Width}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00258}00258       pt    = \mbox{\hyperlink{class_momentum_generator_ab50a63ca21ffa88123687fa51d110ef1}{histograms}}[0]-\/>GetRandom();}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00259}00259       phi   = TMath::TwoPi()*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00260}00260       px    = pt*cos(phi);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00261}00261       py    = pt*sin(phi);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00262}00262       mt    = sqrt(\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}*\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}+pt*pt);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00263}00263       y     = \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0]+\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[1]*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00264}00264       e     = mt*cosh(y);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00265}00265       pz    = mt*sinh(y);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00266}00266       momentum.SetPxPyPzE (px,py,pz,e);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00267}00267       \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00268}00268     \}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00269}00269 \}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00071}00071       \textcolor{keywordflow}{case} 4:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00072}00072       \textcolor{comment}{// generate isotropic Maxwell Boltzmann distribution}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00073}00073       \textcolor{comment}{// parameters[0] : temperature}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00074}00074       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()!=1) invalidSetup = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00075}00075       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00077}00077       \textcolor{keywordflow}{case} 5:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00078}00078       \textcolor{comment}{// generate cylindrical distribution w/ pt gaussian distribution}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00079}00079       \textcolor{comment}{// parameters[0] : minimum rapidity}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00080}00080       \textcolor{comment}{// parameters[1] : width of rapidity window}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00081}00081       \textcolor{comment}{// parameters[2] : width of Gauss pt}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00082}00082       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()!=3) invalidSetup = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00083}00083       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00085}00085       \textcolor{keywordflow}{case} 6:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00086}00086       \textcolor{comment}{// generate cylindrical distribution w/ pt exponential distribution}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00087}00087       \textcolor{comment}{// parameters[0] : minimum rapidity}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00088}00088       \textcolor{comment}{// parameters[1] : width of rapidity window}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00089}00089       \textcolor{comment}{// parameters[2] : exponential slope}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00090}00090       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()!=3) invalidSetup = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00091}00091       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00093}00093       \textcolor{keywordflow}{case} 7:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00094}00094       \textcolor{comment}{// generate cylindrical distribution}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00095}00095       \textcolor{comment}{// parameters[0] : minimum rapidity}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00096}00096       \textcolor{comment}{// parameters[1] : width of rapidity window}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00097}00097       \textcolor{comment}{// parameters[2] : temperature (GeV)}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00098}00098       \textcolor{comment}{// parameters[3] : n bins in pT}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00099}00099       \textcolor{comment}{// parameters[4] : miniumum pT}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00100}00100       \textcolor{comment}{// parameters[5] : maxiumum pT}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00101}00101       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()!=6) invalidSetup = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00102}00102       \textcolor{keywordtype}{double} temp   = \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[2];}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00103}00103       \textcolor{keywordtype}{double} zero   = 0.0;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00104}00104       TString hName = \mbox{\hyperlink{class_momentum_generator_abd3b8959070c339a6be027aa8b9f0bcd}{particleType}}-\/>\mbox{\hyperlink{class_particle_type_adea8371492825f5eb08d63642bce02d5}{getName}}();}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00105}00105       hName += int(1000*temp);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00106}00106       hName += \textcolor{stringliteral}{"{}MeV"{}};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00107}00107       \textcolor{keywordtype}{double} mu     = 0.0;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00108}00108       \textcolor{keywordtype}{int} nBinsP    = int(\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[3]);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00109}00109       \textcolor{keywordtype}{double} minP   = \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[4];}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00110}00110       \textcolor{keywordtype}{double} maxP   = \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[5];}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00111}00111       \textcolor{keywordtype}{double} dp     = (maxP-\/minP)/\textcolor{keywordtype}{double}(nBinsP);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00112}00112       TH1 * h = \textcolor{keyword}{new} TH1D(hName,hName, nBinsP, minP, maxP);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00113}00113       \textcolor{keywordtype}{double} p = -\/dp;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00114}00114       \textcolor{keywordtype}{double} v;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00115}00115       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j=0; j<nBinsP; j++)}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00116}00116         \{}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00117}00117         p += dp;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00118}00118         v = \mbox{\hyperlink{_momentum_generator_8cpp_af96cfa5b4699963ae6feed67046371a2}{probDensity}}(p,\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}},temp,mu,\mbox{\hyperlink{class_momentum_generator_aca08b40ca024d69f9dffbcd8b9235c7c}{stat}});}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00119}00119         h-\/>SetBinContent(j,v);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00120}00120         h-\/>SetBinError(j,zero);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00121}00121         \}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00122}00122       \mbox{\hyperlink{class_momentum_generator_ab50a63ca21ffa88123687fa51d110ef1}{histograms}}.push\_back(h);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00123}00123       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00124}00124       \}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00125}00125   \textcolor{keywordflow}{if} (invalidSetup)}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00126}00126     \{}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00127}00127     cout << \textcolor{stringliteral}{"{}<F> MomentumGenerator(...)"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00128}00128     cout << \textcolor{stringliteral}{"{}           generatorType: "{}} << \mbox{\hyperlink{class_momentum_generator_ab8a84822807228a3db41f43a1161398e}{generatorType}}           << endl;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00129}00129     cout << \textcolor{stringliteral}{"{}            particleType: "{}} << \mbox{\hyperlink{class_momentum_generator_abd3b8959070c339a6be027aa8b9f0bcd}{particleType}}-\/>\mbox{\hyperlink{class_particle_type_adea8371492825f5eb08d63642bce02d5}{getName}}() << endl;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00130}00130     cout << \textcolor{stringliteral}{"{}       parameters.size(): "{}} << \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}.size()       << endl;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00131}00131     cout << \textcolor{stringliteral}{"{}                ABORT!!!! "{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00132}00132     exit(1);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00133}00133     \}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00134}00134 \}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00137}\mbox{\hyperlink{class_momentum_generator_abe57a7396139c8ab4f4007dc1964d6bc}{00137}} \textcolor{keywordtype}{void}  \mbox{\hyperlink{class_momentum_generator_abe57a7396139c8ab4f4007dc1964d6bc}{MomentumGenerator::generate}}(TLorentzVector \& momentum)}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00138}00138 \{}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00139}00139   \textcolor{keywordtype}{double} px, py, pz, pt, mt, p, e, ptSq;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00140}00140   \textcolor{keywordtype}{double} phi, cosTh, y;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00141}00141   \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_momentum_generator_ab8a84822807228a3db41f43a1161398e}{generatorType}})}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00142}00142     \{}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00143}00143       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5acff4fdd2c5c3e21e84479ac028484e6a}{IsotropicGaussP}}:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00144}00144       \textcolor{comment}{// generate isotropic distribution}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00145}00145       \textcolor{comment}{// p is Gaussian distributed}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00146}00146       phi   = TMath::TwoPi()*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00147}00147       cosTh = -\/1.0 + 2.0*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00148}00148       p     = fabs(\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Gaus(0.0,\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0]));}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00149}00149       e     = sqrt(\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}*\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}} + p*p);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00150}00150       pt    = p*sqrt(1.0-\/cosTh*cosTh);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00151}00151       px    = pt*cos(phi);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00152}00152       py    = pt*sin(phi);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00153}00153       pz    = p*cosTh;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00154}00154       momentum.SetPxPyPzE (px,py,pz,e);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00155}00155       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00157}00157       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5a146349c1754a5ce6e9c29eda9aebc55c}{IsotropicExpP}}:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00158}00158       \textcolor{comment}{// generate isotropic distribution}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00159}00159       \textcolor{comment}{// p is exponential distributed}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00160}00160       \textcolor{comment}{// exp( -\/t/tau )}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00161}00161       phi   = TMath::TwoPi()*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00162}00162       cosTh = -\/1.0 + 2.0*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00163}00163       p     = \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Exp(\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0]);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00164}00164       e     = sqrt(\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}*\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}} + p*p);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00165}00165       pt    = p*sqrt(1.0-\/cosTh*cosTh);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00166}00166       px    = pt*cos(phi);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00167}00167       py    = pt*sin(phi);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00168}00168       pz    = p*cosTh;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00169}00169       momentum.SetPxPyPzE (px,py,pz,e);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00170}00170       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00171}00171 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00172}00172       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5aedd576805bd854cc978b5a70b8b89ace}{IsotropicUniformP}}:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00173}00173       \textcolor{comment}{// generate isotropic distribution}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00174}00174       \textcolor{comment}{// p is uniform distributed}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00175}00175       phi   = TMath::TwoPi()*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00176}00176       cosTh = -\/1.0 + 2.0*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00177}00177       p     = \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0] + \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm()*\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[1];}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00178}00178       e     = sqrt(\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}*\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}} + p*p);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00179}00179       pt    = p*sqrt(1.0-\/cosTh*cosTh);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00180}00180       px    = pt*cos(phi);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00181}00181       py    = pt*sin(phi);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00182}00182       pz    = p*cosTh;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00183}00183       momentum.SetPxPyPzE (px,py,pz,e);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00184}00184       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00185}00185 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00186}00186       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5ab4f3c7abacaf0d23138303a4cfdb3490}{IsotropicUniformDensity}}:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00187}00187       \textcolor{comment}{// generate isotropic distribution}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00188}00188       \textcolor{comment}{// uniform density}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00189}00189       phi   = TMath::TwoPi()*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00190}00190       cosTh = -\/1.0 + 2.0*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00191}00191       p     = \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0] + \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm()*\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[1];}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00192}00192       e     = sqrt(\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}*\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}} + p*p);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00193}00193       pt    = p*sqrt(1.0-\/cosTh*cosTh);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00194}00194       px    = pt*cos(phi);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00195}00195       py    = pt*sin(phi);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00196}00196       pz    = p*cosTh;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00197}00197       momentum.SetPxPyPzE (px,py,pz,e);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00198}00198       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00199}00199 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00200}00200       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5af3d1d97a8b4a2d2ac3c74abc3e31d46f}{IsotropicMaxwellP}}:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00201}00201       \textcolor{comment}{// generate isotropic distribution}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00202}00202       \textcolor{comment}{// Maxwell Boltzmann}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00203}00203       px = \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Gaus(0.0,\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0] );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00204}00204       py = \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Gaus(0.0,\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0] );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00205}00205       pz = \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Gaus(0.0,\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0] );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00206}00206       e  = sqrt(\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}*\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}} + px*px + py*py + pz*pz);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00207}00207       momentum.SetPxPyPzE (px,py,pz,e);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00208}00208       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00209}00209 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00210}00210 \textcolor{comment}{//      case IsotropicHistoP:}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00211}00211 \textcolor{comment}{//      // generate isotropic distribution}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00212}00212 \textcolor{comment}{//      // p determined by histogram}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00213}00213 \textcolor{comment}{//      phi   = TMath::TwoPi()*random-\/>Rndm( );}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00214}00214 \textcolor{comment}{//      cosTh = -\/1.0 + 2.0*random-\/>Rndm( );}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00215}00215 \textcolor{comment}{//      p     = histogramP-\/>GetRandom();}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00216}00216 \textcolor{comment}{//      e     = sqrt(mass*mass + p*p);}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00217}00217 \textcolor{comment}{//      pt    = p*sqrt(1.0-\/cosTh*cosTh);}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00218}00218 \textcolor{comment}{//      px    = pt*cos(phi);}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00219}00219 \textcolor{comment}{//      py    = pt*sin(phi);}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00220}00220 \textcolor{comment}{//      pz    = p*cosTh;}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00221}00221 \textcolor{comment}{//      momentum.SetPxPyPzE (px,py,pz,e);}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00222}00222 \textcolor{comment}{//      break;}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00223}00223 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00224}00224       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5aac5053d6cb564fc3458913bc49d3a2c4}{CylindricalGaussPtUniformY}}:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00225}00225       \textcolor{comment}{// generate cylindrical distribution}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00226}00226       \textcolor{comment}{// parameters[0] : minimum rapidity}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00227}00227       \textcolor{comment}{// parameters[1] : width of rapidity window}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00228}00228       \textcolor{comment}{// parameters[2] : width of Gauss pt}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00229}00229       phi   = TMath::TwoPi()*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00230}00230       px    = \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Gaus(0.0,\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[2] );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00231}00231       py    = \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Gaus(0.0,\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[2] );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00232}00232       ptSq  = px*px + py*py;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00233}00233       pt    = sqrt(ptSq);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00234}00234       mt    = sqrt(\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}*\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}} + ptSq);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00235}00235       y     = \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[1]+\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[2]*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00236}00236       e     = mt*cosh(y);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00237}00237       pz    = mt*sinh(y);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00238}00238       px    = pt*cos(phi);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00239}00239       py    = pt*sin(phi);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00240}00240       momentum.SetPxPyPzE (px,py,pz,e);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00241}00241       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00242}00242 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00243}00243       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5a46f1446a3f30ab987fae3643071f6779}{CylindricalExpPtUniformY}}:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00244}00244       \textcolor{comment}{// generate cylindrical distribution}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00245}00245       \textcolor{comment}{// parameters[0] : minimum rapidity}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00246}00246       \textcolor{comment}{// parameters[1] : width of rapidity window}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00247}00247       \textcolor{comment}{// parameters[2] : exponential slope}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00248}00248       phi   = TMath::TwoPi()*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00249}00249       pt    = \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Exp(\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[2]);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00250}00250       mt    = sqrt(\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}*\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}} + pt*pt);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00251}00251       y     = \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0]+\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[1]*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00252}00252       e     = mt*cosh(y);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00253}00253       pz    = mt*sinh(y);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00254}00254       px    = pt*cos(phi);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00255}00255       py    = pt*sin(phi);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00256}00256       momentum.SetPxPyPzE (px,py,pz,e);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00257}00257       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00258}00258 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00259}00259       \textcolor{keywordflow}{case} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5ac324dfaff7d218084c013e1db71bd779}{CylindricalMaxwellPtUniformY}}:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00260}00260       \textcolor{comment}{// generate cylindrical distribution}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00261}00261       \textcolor{comment}{// parameters[0] : minimum rapidity}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00262}00262       \textcolor{comment}{// parameters[1] : width of rapidity window}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00263}00263       \textcolor{comment}{// parameters[2] : Gauss Width}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00264}00264       pt    = \mbox{\hyperlink{class_momentum_generator_ab50a63ca21ffa88123687fa51d110ef1}{histograms}}[0]-\/>GetRandom();}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00265}00265       phi   = TMath::TwoPi()*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00266}00266       px    = pt*cos(phi);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00267}00267       py    = pt*sin(phi);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00268}00268       mt    = sqrt(\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}*\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}}+pt*pt);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00269}00269       y     = \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[0]+\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}}[1]*\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}}-\/>Rndm( );}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00270}00270       e     = mt*cosh(y);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00271}00271       pz    = mt*sinh(y);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00272}00272       momentum.SetPxPyPzE (px,py,pz,e);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00273}00273       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00274}00274     \}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8cpp_source_l00275}00275 \}}
 
 \end{DoxyCode}

@@ -14,8 +14,9 @@ var searchData=
   ['nudynderivedhistos_2ehpp_11',['NuDynDerivedHistos.hpp',['../_nu_dyn_derived_histos_8hpp.html',1,'']]],
   ['nudynhistos_2ecpp_12',['NuDynHistos.cpp',['../_nu_dyn_histos_8cpp.html',1,'']]],
   ['nudynhistos_2ehpp_13',['NuDynHistos.hpp',['../_nu_dyn_histos_8hpp.html',1,'']]],
-  ['nudynplots_2ec_14',['NuDynPlots.C',['../_nu_dyn_plots_8_c.html',1,'']]],
-  ['nudynplotshardvssoft_2ec_15',['NuDynPlotsHardVsSoft.C',['../_nu_dyn_plots_hard_vs_soft_8_c.html',1,'']]],
-  ['nudynplotter_2ecpp_16',['NuDynPlotter.cpp',['../_nu_dyn_plotter_8cpp.html',1,'']]],
-  ['nudynplotter_2ehpp_17',['NuDynPlotter.hpp',['../_nu_dyn_plotter_8hpp.html',1,'']]]
+  ['nudynlinkdef_2eh_14',['NuDynLinkDef.h',['../_nu_dyn_link_def_8h.html',1,'']]],
+  ['nudynplots_2ec_15',['NuDynPlots.C',['../_nu_dyn_plots_8_c.html',1,'']]],
+  ['nudynplotshardvssoft_2ec_16',['NuDynPlotsHardVsSoft.C',['../_nu_dyn_plots_hard_vs_soft_8_c.html',1,'']]],
+  ['nudynplotter_2ecpp_17',['NuDynPlotter.cpp',['../_nu_dyn_plotter_8cpp.html',1,'']]],
+  ['nudynplotter_2ehpp_18',['NuDynPlotter.hpp',['../_nu_dyn_plotter_8hpp.html',1,'']]]
 ];

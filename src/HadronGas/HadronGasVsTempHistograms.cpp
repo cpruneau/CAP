@@ -71,7 +71,7 @@ void HadronGasVsTempHistograms::loadHistograms(TFile * inputFile)
   pressureVsT        = loadH1(inputFile,bn+TString("pressureVsT"));
   if (!numberDensityVsT)
     {
-    if (reportError()) cout << "Could not load histogram: " << bn+TString("numberDensityVsT") << endl;
+    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << bn+TString("numberDensityVsT") << endl;
     return;
     }
 }

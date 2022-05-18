@@ -2,50 +2,52 @@
 \label{_particle_filter_8hpp_source}\index{Base/ParticleFilter.hpp@{Base/ParticleFilter.hpp}}
 \mbox{\hyperlink{_particle_filter_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00007}00007 \textcolor{comment}{ *}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#ifndef CAP\_\_ParticleFilter}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#define CAP\_\_ParticleFilter}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_8hpp}{Particle.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_filter_8hpp}{Filter.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00015}00015 }
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00016}\mbox{\hyperlink{class_particle_filter}{00016}} \textcolor{keyword}{class }\mbox{\hyperlink{class_particle_filter}{ParticleFilter}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_filter}{Filter}}<Particle>}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00017}00017 \{}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00018}00018 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00019}00019 }
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00020}00020   \mbox{\hyperlink{class_particle_filter_ac5aeadcc4bf1f9f6a459562813e5b45f}{ParticleFilter}}();}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00021}00021   \mbox{\hyperlink{class_particle_filter_ac5aeadcc4bf1f9f6a459562813e5b45f}{ParticleFilter}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}} \& otherFilter);}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00022}00022   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}} \& \mbox{\hyperlink{class_particle_filter_abfba3c131ffee429072f15b8e70c75ef}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}} \& otherFilter);}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00023}\mbox{\hyperlink{class_particle_filter_a11af91aa05d952e4b0c93f3d14ffbf26}{00023}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_filter_a11af91aa05d952e4b0c93f3d14ffbf26}{\string~ParticleFilter}}() \{\}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00024}00024   \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_filter_a8d9135b8eecd5fcb90ac3ba6566c7fed}{accept}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_particle}{Particle}} \& particle);}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00025}00025 }
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00026}00026   \textcolor{keyword}{static} vector<ParticleFilter*> \mbox{\hyperlink{class_particle_filter_ab0958a5a13805f4b8c7f7b290276f89f}{createChargedHadronFilters}}(\textcolor{keywordtype}{bool} filteringOnPt,  \textcolor{keywordtype}{double} minPt,  \textcolor{keywordtype}{double} maxPt,}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00027}00027                                                             \textcolor{keywordtype}{bool} filteringOnEta, \textcolor{keywordtype}{double} minEta, \textcolor{keywordtype}{double} maxEta,}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00028}00028                                                             \textcolor{keywordtype}{bool} filteringOnY,   \textcolor{keywordtype}{double} minY,   \textcolor{keywordtype}{double} maxY);}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00029}00029   \textcolor{keyword}{static} vector<ParticleFilter*> \mbox{\hyperlink{class_particle_filter_a438da9d967a7c1bef4343afae70a17a4}{createPlusMinusHadronFilters}}(\textcolor{keywordtype}{bool} filteringOnPt,  \textcolor{keywordtype}{double} minPt,  \textcolor{keywordtype}{double} maxPt,}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00030}00030                                                               \textcolor{keywordtype}{bool} filteringOnEta, \textcolor{keywordtype}{double} minEta, \textcolor{keywordtype}{double} maxEta,}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00031}00031                                                               \textcolor{keywordtype}{bool} filteringOnY,   \textcolor{keywordtype}{double} minY,   \textcolor{keywordtype}{double} maxY);}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00032}00032 \textcolor{comment}{//  static vector<ParticleFilter*> createMultiplePdgFilters(bool filteringOnPt,  double minPt,  double maxPt,}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00033}00033 \textcolor{comment}{//                                                          bool filteringOnEta, double minEta, double maxEta,}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00034}00034 \textcolor{comment}{//                                                          bool filteringOnY,   double minY,   double maxY,}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00035}00035 \textcolor{comment}{//                                                          vector<int> \& pdgAccepted);}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00036}00036 \textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00037}00037 \textcolor{comment}{//  static vector<ParticleFilter*> createBaryonFilters(bool filteringOnPt,  double minPt,  double maxPt,}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00038}00038 \textcolor{comment}{//                                                     bool filteringOnEta, double minEta, double maxEta,}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00039}00039 \textcolor{comment}{//                                                     bool filteringOnY,   double minY,   double maxY);}}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00040}00040 }
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00041}00041   ClassDef(\mbox{\hyperlink{class_particle_filter}{ParticleFilter}},0)}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00042}00042 \};}
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00043}00043 }
-\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00044}00044 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_ParticleFilter */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#ifndef CAP\_\_ParticleFilter}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#define CAP\_\_ParticleFilter}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}TString.h"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_8hpp}{Particle.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_filter_8hpp}{Filter.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00018}\mbox{\hyperlink{class_particle_filter}{00018}} \textcolor{keyword}{class }\mbox{\hyperlink{class_particle_filter}{ParticleFilter}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_filter}{Filter}}<Particle>}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00019}00019 \{}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00020}00020 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00022}00022   \mbox{\hyperlink{class_particle_filter_ac5aeadcc4bf1f9f6a459562813e5b45f}{ParticleFilter}}();}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00023}00023   \mbox{\hyperlink{class_particle_filter_ac5aeadcc4bf1f9f6a459562813e5b45f}{ParticleFilter}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}} \& otherFilter);}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00024}00024   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}} \& \mbox{\hyperlink{class_particle_filter_abfba3c131ffee429072f15b8e70c75ef}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_particle_filter}{ParticleFilter}} \& otherFilter);}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00025}\mbox{\hyperlink{class_particle_filter_a11af91aa05d952e4b0c93f3d14ffbf26}{00025}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_particle_filter_a11af91aa05d952e4b0c93f3d14ffbf26}{\string~ParticleFilter}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00026}00026   \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_particle_filter_a8d9135b8eecd5fcb90ac3ba6566c7fed}{accept}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_particle}{Particle}} \& particle);}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00028}00028   \textcolor{keyword}{static} vector<ParticleFilter*> \mbox{\hyperlink{class_particle_filter_ab0958a5a13805f4b8c7f7b290276f89f}{createChargedHadronFilters}}(\textcolor{keywordtype}{bool} filteringOnPt,  \textcolor{keywordtype}{double} minPt,  \textcolor{keywordtype}{double} maxPt,}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00029}00029                                                             \textcolor{keywordtype}{bool} filteringOnEta, \textcolor{keywordtype}{double} minEta, \textcolor{keywordtype}{double} maxEta,}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00030}00030                                                             \textcolor{keywordtype}{bool} filteringOnY,   \textcolor{keywordtype}{double} minY,   \textcolor{keywordtype}{double} maxY);}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00031}00031   \textcolor{keyword}{static} vector<ParticleFilter*> \mbox{\hyperlink{class_particle_filter_a438da9d967a7c1bef4343afae70a17a4}{createPlusMinusHadronFilters}}(\textcolor{keywordtype}{bool} filteringOnPt,  \textcolor{keywordtype}{double} minPt,  \textcolor{keywordtype}{double} maxPt,}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00032}00032                                                               \textcolor{keywordtype}{bool} filteringOnEta, \textcolor{keywordtype}{double} minEta, \textcolor{keywordtype}{double} maxEta,}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00033}00033                                                               \textcolor{keywordtype}{bool} filteringOnY,   \textcolor{keywordtype}{double} minY,   \textcolor{keywordtype}{double} maxY);}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00034}00034 \textcolor{comment}{//  static vector<ParticleFilter*> createMultiplePdgFilters(bool filteringOnPt,  double minPt,  double maxPt,}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00035}00035 \textcolor{comment}{//                                                          bool filteringOnEta, double minEta, double maxEta,}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00036}00036 \textcolor{comment}{//                                                          bool filteringOnY,   double minY,   double maxY,}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00037}00037 \textcolor{comment}{//                                                          vector<int> \& pdgAccepted);}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00038}00038 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00039}00039 \textcolor{comment}{//  static vector<ParticleFilter*> createBaryonFilters(bool filteringOnPt,  double minPt,  double maxPt,}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00040}00040 \textcolor{comment}{//                                                     bool filteringOnEta, double minEta, double maxEta,}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00041}00041 \textcolor{comment}{//                                                     bool filteringOnY,   double minY,   double maxY);}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00043}00043   ClassDef(\mbox{\hyperlink{class_particle_filter}{ParticleFilter}},0)}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00044}00044 \};}
 \DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00046}00046 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_ParticleFilter */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_particle_filter_8hpp_source_l00047}00047 }
 
 \end{DoxyCode}

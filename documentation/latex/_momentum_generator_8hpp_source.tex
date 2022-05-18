@@ -2,53 +2,59 @@
 \label{_momentum_generator_8hpp_source}\index{Base/MomentumGenerator.hpp@{Base/MomentumGenerator.hpp}}
 \mbox{\hyperlink{_momentum_generator_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00001}00001 \textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00002}00002 \textcolor{comment}{//  MomentumGenerator.hpp}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00003}00003 \textcolor{comment}{//  Created by Victor Gonzalez on 20190206 based in the work of Claude Pruneau and the ALICE AliPhysics SW framework}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00004}00004 \textcolor{comment}{//  Copyright © 2016-\/2021 Claude Pruneau. All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00005}00005 \textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00006}00006 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#ifndef CAP\_\_MomentumGenerator}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00008}00008 \textcolor{preprocessor}{\#define CAP\_\_MomentumGenerator}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00009}00009 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#include <iostream>}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#include <TF1.h>}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include <TH1.h>}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include <TRandom.h>}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include <TLorentzVector.h>}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_type_8hpp}{ParticleType.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00016}00016 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00017}00017 \textcolor{keyword}{using} std::vector;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00018}00018 \textcolor{keyword}{using} std::cout;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00019}00019 \textcolor{keyword}{using} std::endl;}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00020}00020 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00021}\mbox{\hyperlink{class_momentum_generator}{00021}} \textcolor{keyword}{class }\mbox{\hyperlink{class_momentum_generator}{MomentumGenerator}}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00022}00022 \{}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00023}00023 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00024}00024 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00025}\mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5}{00025}}   \textcolor{keyword}{enum} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5}{GeneratorType}}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00026}00026   \{}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00027}\mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5a146349c1754a5ce6e9c29eda9aebc55c}{00027}}     \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5acff4fdd2c5c3e21e84479ac028484e6a}{IsotropicGaussP}}, \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5a146349c1754a5ce6e9c29eda9aebc55c}{IsotropicExpP}}, \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5aedd576805bd854cc978b5a70b8b89ace}{IsotropicUniformP}}, \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5ab4f3c7abacaf0d23138303a4cfdb3490}{IsotropicUniformDensity}}, \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5af3d1d97a8b4a2d2ac3c74abc3e31d46f}{IsotropicMaxwellP}},}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00028}\mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5a46f1446a3f30ab987fae3643071f6779}{00028}}     \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5aac5053d6cb564fc3458913bc49d3a2c4}{CylindricalGaussPtUniformY}}, \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5a46f1446a3f30ab987fae3643071f6779}{CylindricalExpPtUniformY}}, \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5ac324dfaff7d218084c013e1db71bd779}{CylindricalMaxwellPtUniformY}}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00029}\mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5ac324dfaff7d218084c013e1db71bd779}{00029}}   \};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00009}00009 \textcolor{comment}{ * Author: Victor Gonzalez}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#ifndef CAP\_\_MomentumGenerator}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#define CAP\_\_MomentumGenerator}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include <TF1.h>}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00018}00018 \textcolor{preprocessor}{\#include <TH1.h>}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00019}00019 \textcolor{preprocessor}{\#include <TRandom.h>}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00020}00020 \textcolor{preprocessor}{\#include <TLorentzVector.h>}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00021}00021 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_particle_type_8hpp}{ParticleType.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00023}00023 \textcolor{keyword}{using} std::vector;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00024}00024 \textcolor{keyword}{using} std::cout;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00025}00025 \textcolor{keyword}{using} std::endl;}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00027}\mbox{\hyperlink{class_momentum_generator}{00027}} \textcolor{keyword}{class }\mbox{\hyperlink{class_momentum_generator}{MomentumGenerator}}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00028}00028 \{}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00029}00029 \textcolor{keyword}{public}:}
 \DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00030}00030 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00033}00033   \mbox{\hyperlink{class_momentum_generator_ae079a7281827f0ad4ef676057feb4fdc}{MomentumGenerator}}(\textcolor{keywordtype}{int} \_generatorType, \mbox{\hyperlink{class_particle_type}{ParticleType}} * \_particleType, vector<double> \_parameters, TRandom * \_selectedRandom=gRandom);}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00034}\mbox{\hyperlink{class_momentum_generator_a6d32ed4aea831fd862657066edb0b323}{00034}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_momentum_generator_a6d32ed4aea831fd862657066edb0b323}{\string~MomentumGenerator}}() \{\}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00035}00035   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_momentum_generator_abe57a7396139c8ab4f4007dc1964d6bc}{generate}}(TLorentzVector \& momentum);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00031}\mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5}{00031}}   \textcolor{keyword}{enum} \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5}{GeneratorType}}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00032}00032   \{}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00033}\mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5a146349c1754a5ce6e9c29eda9aebc55c}{00033}}     \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5acff4fdd2c5c3e21e84479ac028484e6a}{IsotropicGaussP}}, \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5a146349c1754a5ce6e9c29eda9aebc55c}{IsotropicExpP}}, \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5aedd576805bd854cc978b5a70b8b89ace}{IsotropicUniformP}}, \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5ab4f3c7abacaf0d23138303a4cfdb3490}{IsotropicUniformDensity}}, \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5af3d1d97a8b4a2d2ac3c74abc3e31d46f}{IsotropicMaxwellP}},}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00034}\mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5a46f1446a3f30ab987fae3643071f6779}{00034}}     \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5aac5053d6cb564fc3458913bc49d3a2c4}{CylindricalGaussPtUniformY}}, \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5a46f1446a3f30ab987fae3643071f6779}{CylindricalExpPtUniformY}}, \mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5ac324dfaff7d218084c013e1db71bd779}{CylindricalMaxwellPtUniformY}}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00035}\mbox{\hyperlink{class_momentum_generator_ad809da633e9924e5ea712cab80abcaa5ac324dfaff7d218084c013e1db71bd779}{00035}}   \};}
 \DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00036}00036 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00037}00037 \textcolor{keyword}{protected}:}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00038}\mbox{\hyperlink{class_momentum_generator_ab8a84822807228a3db41f43a1161398e}{00038}}   \textcolor{keywordtype}{int}            \mbox{\hyperlink{class_momentum_generator_ab8a84822807228a3db41f43a1161398e}{generatorType}};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00039}\mbox{\hyperlink{class_momentum_generator_abd3b8959070c339a6be027aa8b9f0bcd}{00039}}   \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_momentum_generator_abd3b8959070c339a6be027aa8b9f0bcd}{particleType}};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00040}\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{00040}}   \textcolor{keywordtype}{double}         \mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00041}\mbox{\hyperlink{class_momentum_generator_aca08b40ca024d69f9dffbcd8b9235c7c}{00041}}   \textcolor{keywordtype}{double}         \mbox{\hyperlink{class_momentum_generator_aca08b40ca024d69f9dffbcd8b9235c7c}{stat}};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00042}\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{00042}}   vector<double> \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00043}\mbox{\hyperlink{class_momentum_generator_ab50a63ca21ffa88123687fa51d110ef1}{00043}}   vector<TH1*>   \mbox{\hyperlink{class_momentum_generator_ab50a63ca21ffa88123687fa51d110ef1}{histograms}};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00044}\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{00044}}   TRandom *      \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00045}00045 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00046}00046   ClassDef(\mbox{\hyperlink{class_momentum_generator}{MomentumGenerator}},0)}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00047}00047 \};}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00048}00048 }
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00049}00049 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_MomentumGenerator */}\textcolor{preprocessor}{}}
-\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00039}00039   \mbox{\hyperlink{class_momentum_generator_ae079a7281827f0ad4ef676057feb4fdc}{MomentumGenerator}}(\textcolor{keywordtype}{int} \_generatorType, \mbox{\hyperlink{class_particle_type}{ParticleType}} * \_particleType, vector<double> \_parameters, TRandom * \_selectedRandom=gRandom);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00040}\mbox{\hyperlink{class_momentum_generator_a6d32ed4aea831fd862657066edb0b323}{00040}}   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_momentum_generator_a6d32ed4aea831fd862657066edb0b323}{\string~MomentumGenerator}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00041}00041   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void}   \mbox{\hyperlink{class_momentum_generator_abe57a7396139c8ab4f4007dc1964d6bc}{generate}}(TLorentzVector \& momentum);}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00043}00043 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00044}\mbox{\hyperlink{class_momentum_generator_ab8a84822807228a3db41f43a1161398e}{00044}}   \textcolor{keywordtype}{int}            \mbox{\hyperlink{class_momentum_generator_ab8a84822807228a3db41f43a1161398e}{generatorType}};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00045}\mbox{\hyperlink{class_momentum_generator_abd3b8959070c339a6be027aa8b9f0bcd}{00045}}   \mbox{\hyperlink{class_particle_type}{ParticleType}} * \mbox{\hyperlink{class_momentum_generator_abd3b8959070c339a6be027aa8b9f0bcd}{particleType}};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00046}\mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{00046}}   \textcolor{keywordtype}{double}         \mbox{\hyperlink{class_momentum_generator_a562abece95d712837c9cd576b7a1a8a7}{mass}};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00047}\mbox{\hyperlink{class_momentum_generator_aca08b40ca024d69f9dffbcd8b9235c7c}{00047}}   \textcolor{keywordtype}{double}         \mbox{\hyperlink{class_momentum_generator_aca08b40ca024d69f9dffbcd8b9235c7c}{stat}};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00048}\mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{00048}}   vector<double> \mbox{\hyperlink{class_momentum_generator_a84fd738bbb905149ee11debe5f416919}{parameters}};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00049}\mbox{\hyperlink{class_momentum_generator_ab50a63ca21ffa88123687fa51d110ef1}{00049}}   vector<TH1*>   \mbox{\hyperlink{class_momentum_generator_ab50a63ca21ffa88123687fa51d110ef1}{histograms}};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00050}\mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{00050}}   TRandom *      \mbox{\hyperlink{class_momentum_generator_ac53553d525f0e305751aa3479b6cbbba}{random}};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00052}00052   ClassDef(\mbox{\hyperlink{class_momentum_generator}{MomentumGenerator}},0)}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00053}00053 \};}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00055}00055 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* CAP\_\_MomentumGenerator */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_momentum_generator_8hpp_source_l00056}00056 }
 
 \end{DoxyCode}

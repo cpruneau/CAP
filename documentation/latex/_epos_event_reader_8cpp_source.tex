@@ -2,249 +2,150 @@
 \label{_epos_event_reader_8cpp_source}\index{Epos/EposEventReader.cpp@{Epos/EposEventReader.cpp}}
 \mbox{\hyperlink{_epos_event_reader_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00003}00003 \textcolor{comment}{/***********************************************************************}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00007}00007 \textcolor{comment}{ *}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00009}00009 \textcolor{comment}{ **********************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_epos_event_reader_8hpp}{EposEventReader.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00017}\mbox{\hyperlink{_epos_event_reader_8cpp_a809edf68361af2140b6b527464c33679}{00017}} \mbox{\hyperlink{_epos_event_reader_8cpp_a809edf68361af2140b6b527464c33679}{ClassImp}}(\mbox{\hyperlink{class_epos_event_reader}{EposEventReader}});}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00019}\mbox{\hyperlink{class_epos_event_reader_abfcb59f6b7f600260482e15fb59d026e}{00019}} \mbox{\hyperlink{class_epos_event_reader_a3b6d4599a313cae1197864001c4e653f}{EposEventReader::EposEventReader}}(\textcolor{keyword}{const} TString \& name,}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00020}00020                                  TaskConfiguration * configuration,}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00021}00021                                  \mbox{\hyperlink{class_event}{Event}} * event,}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00022}00022                                  \mbox{\hyperlink{class_event_filter}{EventFilter}} * ef,}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00023}00023                                  \mbox{\hyperlink{class_particle_filter}{ParticleFilter}} * pf)}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00024}00024 :}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00025}00025 \mbox{\hyperlink{class_task}{Task}}(name, configuration, event),}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00026}00026 eventFilter(ef),}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00027}00027 particleFilter(pf)}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00028}00028 \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00029}00029   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}EposEventReader::EposEventReader(...) No ops"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00030}00030 \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00031}00031 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00032}00032 \mbox{\hyperlink{class_epos_event_reader_afa9e7de659d506bab2f84630e81fb213}{EposEventReader::\string~EposEventReader}}()}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00033}00033 \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00034}00034 \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}EposEventReader::\string~EposEventReader(...) No ops"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00035}00035 \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00036}00036 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00038}00038 \textcolor{comment}{// Initialize generator}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00040}00040 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{class_epos_event_reader_a0d76305be21ef617009d53ea04671cfa}{EposEventReader::initialize}}()}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00041}00041 \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00042}00042   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}EposEventReader::initialize() Started"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00043}00043 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00044}00044   TaskConfiguration * genConfig = getTaskConfiguration();}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00045}00045    \textcolor{keywordflow}{if} (!genConfig)}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00046}00046      \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00047}00047      \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a1dcf96590e2352f7410a6a1623414096}{reportFatal}}()) cout << \textcolor{stringliteral}{"{}EposEventReader::initialize() genConfig is a null pointer"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00048}00048      \mbox{\hyperlink{class_message_logger_a21de642806f1c039f39a087e1e910984}{postTaskFatal}}();}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00049}00049      \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00050}00050      \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00051}00051    TChain *chain = \textcolor{keyword}{new} TChain(genConfig-\/>dataInputTreeName,\textcolor{stringliteral}{"{} "{}});}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00052}00052    \textcolor{keywordflow}{if} (!chain)}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00053}00053       \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00054}00054       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a1dcf96590e2352f7410a6a1623414096}{reportFatal}}()) cout << \textcolor{stringliteral}{"{}EposEventReader::initialize() chain is a null pointer"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00055}00055       \mbox{\hyperlink{class_message_logger_a21de642806f1c039f39a087e1e910984}{postTaskFatal}}();}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00056}00056       \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00057}00057       \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00058}00058 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00059}00059    TString dataInputFileName = genConfig-\/>dataInputPath;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00060}00060    dataInputFileName += \textcolor{stringliteral}{"{}/"{}};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00061}00061    dataInputFileName += genConfig-\/>dataInputFileName;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00062}00062 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00063}00063    \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} ifl=genConfig-\/>dataInputFileMinIndex; ifl<genConfig-\/>dataInputFileMaxIndex; ifl++)}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00064}00064      \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00065}00065      \textcolor{comment}{//chain-\/>Add(Form("{}/local/victor/PROJECTS/EPOSWSU/DATA/epos\_pbpb\_urqmd\_on\_\%i.root"{},ifl+1));}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00066}00066      \textcolor{comment}{//chain-\/>Add(Form("{}/Users/sumit/Desktop/macros\_epos/root\_maker/epos\_pbpb\_urqmd\_on\_\%i.root"{},ifl+1));}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00067}00067      cout << \textcolor{stringliteral}{"{}EposEventReader::initialize() Form:"{}} << Form(dataInputFileName,ifl) << endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00068}00068      chain-\/>Add(Form(dataInputFileName,ifl));}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00069}00069      \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00070}00070   \mbox{\hyperlink{class_epos_event_reader_a1f09cba329ef31dbe18091d189a213dc}{Init}}(chain);}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00071}00071   \mbox{\hyperlink{class_epos_event_reader_a4192accf897e56c181f23af68e451ea6}{jentry}} = 0;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00072}00072 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00073}00073   \mbox{\hyperlink{class_epos_event_reader_ae198255e73b5a442a74fe2abe8029f08}{nentries}} = \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>GetEntries();}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00074}00074   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a77b4cbad1d87d2e249a6cac3ca58372f}{reportInfo}}()) cout << \textcolor{stringliteral}{"{}EposEventReader::initialize() nEntries: "{}} << \mbox{\hyperlink{class_epos_event_reader_ae198255e73b5a442a74fe2abe8029f08}{nentries}} << endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00075}00075   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_epos_event_reader_ae198255e73b5a442a74fe2abe8029f08}{nentries}} < 1)}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00076}00076     \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00077}00077     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}()) cout << \textcolor{stringliteral}{"{}EposEventReader::initialize() no data found. Abort."{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00078}00078     \mbox{\hyperlink{class_message_logger_a21de642806f1c039f39a087e1e910984}{postTaskFatal}}();}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00079}00079     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00080}00080     \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00081}00081   \mbox{\hyperlink{class_epos_event_reader_af81aa687420d09564ae8901689f854b1}{nbytes}} = 0;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00082}00082   \mbox{\hyperlink{class_epos_event_reader_affe0243fd48ab9f86ef1c6091a0b2f58}{nb}} = 0;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00083}00083   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}EposEventReader::initialize() Completed"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00084}00084 \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00085}00085 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00086}00086 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00088}00088 \textcolor{comment}{// Reset and Initialize the generator}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00090}00090 \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{class_epos_event_reader_afc1f7193d664915f83c2400291537068}{EposEventReader::reset}}()}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00091}00091 \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00092}00092   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}EposEventReader::reset() Started"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00093}00093   \textcolor{keyword}{event}-\/>reset();}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00094}00094   \mbox{\hyperlink{class_particle_aea48229b90fe17f83263e98348857102}{Particle::getFactory}}()-\/>\mbox{\hyperlink{class_factory_a44b667d0976c27e6637ea63f72ba5cfc}{reset}}();}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00095}00095   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}EposEventReader::reset() Completed"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00096}00096 \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00097}00097 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00098}00098 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00100}00100 \textcolor{comment}{// Read an ampt event from file}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00101}00101 \textcolor{comment}{// Copy the event into Event for convenience...}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00103}\mbox{\hyperlink{class_epos_event_reader_ab7169b7517f3b93a1982c7d6527f6c47}{00103}} \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{class_epos_event_reader_ab7169b7517f3b93a1982c7d6527f6c47}{EposEventReader::execute}}()}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00104}00104 \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00105}00105   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}EposEventReader::execute() Started"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00106}00106 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00107}00107   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}})}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00108}00108     \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00109}00109     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a1dcf96590e2352f7410a6a1623414096}{reportFatal}}()) cout << \textcolor{stringliteral}{"{} EposEventReader::execute() no TChain available"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00110}00110     \mbox{\hyperlink{class_message_logger_a21de642806f1c039f39a087e1e910984}{postTaskFatal}}();}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00111}00111     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_epos_event_reader_8hpp}{EposEventReader.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00013}\mbox{\hyperlink{_epos_event_reader_8cpp_a809edf68361af2140b6b527464c33679}{00013}} \mbox{\hyperlink{_epos_event_reader_8cpp_a809edf68361af2140b6b527464c33679}{ClassImp}}(\mbox{\hyperlink{class_epos_event_reader}{EposEventReader}});}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00015}\mbox{\hyperlink{class_epos_event_reader_aca144825b368b2db9ef4597a121f9f14}{00015}} \mbox{\hyperlink{class_epos_event_reader_aca144825b368b2db9ef4597a121f9f14}{EposEventReader::EposEventReader}}(\textcolor{keyword}{const} TString \&          \_name,}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00016}00016                                  \mbox{\hyperlink{class_configuration}{Configuration}} \&          \_configuration,}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00017}00017                                  vector<EventFilter*>   \& \_eventFilters,}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00018}00018                                  vector<ParticleFilter*>\& \_particleFilters,}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00019}00019                                  \mbox{\hyperlink{class_message_logger_a1198794cb23cd903dcbc0072929a276a}{LogLevel}}                 \_selectedLevel)}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00020}00020 :}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00021}00021 \mbox{\hyperlink{class_root_tree_reader}{RootTreeReader}}(\_name, \_configuration, \_eventFilters, \_particleFilters, \_selectedLevel)}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00022}00022 \{}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00023}00023   \mbox{\hyperlink{class_message_logger_a10182fcb56fb5fda0f998c89c4bbe4fb}{appendClassName}}(\textcolor{stringliteral}{"{}EposEventReader"{}});}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00024}00024   \mbox{\hyperlink{class_epos_event_reader_aede5e7310b69d964211986d470c6912b}{setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00025}00025   \mbox{\hyperlink{class_task_a49a0a3ea6fdd10ab2fd9689dee256223}{setConfiguration}}(\_configuration);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00026}00026 \}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00028}\mbox{\hyperlink{class_epos_event_reader_aede5e7310b69d964211986d470c6912b}{00028}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_epos_event_reader_aede5e7310b69d964211986d470c6912b}{EposEventReader::setDefaultConfiguration}}()}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00029}00029 \{}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00030}00030   \mbox{\hyperlink{class_root_tree_reader_ae6ed558a3a2e0d5ae5a3feacbe686004}{RootTreeReader::setDefaultConfiguration}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00031}00031 \}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00033}\mbox{\hyperlink{class_epos_event_reader_ab7169b7517f3b93a1982c7d6527f6c47}{00033}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_epos_event_reader_ab7169b7517f3b93a1982c7d6527f6c47}{EposEventReader::execute}}()}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00034}00034 \{}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00035}00035   \textcolor{comment}{//  if (reportDebug("{}EposEventReader"{},getName(),"{}execute()"{}))}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00036}00036   \textcolor{comment}{//    ;}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00037}00037   \mbox{\hyperlink{class_task_acb311e0eb8b72d684f8b228483bb96f5}{incrementTaskExecuted}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00038}00038   \mbox{\hyperlink{class_event_filter}{EventFilter}} \& eventFilter = * \mbox{\hyperlink{class_task_a7e1e84f85816f3b489b24b1dc9d1bd10}{eventFilters}}[0];}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00039}00039   \mbox{\hyperlink{class_particle_filter}{ParticleFilter}} \& particleFilter = * \mbox{\hyperlink{class_task_a058e07f3edced0cf8f68f9358c2ff86e}{particleFilters}}[0];}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00040}00040   \mbox{\hyperlink{class_task_acb311e0eb8b72d684f8b228483bb96f5}{incrementTaskExecuted}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00041}00041   \mbox{\hyperlink{class_event}{Event}} \& \textcolor{keyword}{event} = * \mbox{\hyperlink{class_task_a02048625ac29f05812d5229348d36f2e}{eventStreams}}[0];}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00042}00042   \textcolor{keyword}{event}.reset();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00043}00043   \mbox{\hyperlink{class_task_aca6dc827b61b440bf610bba393beb673}{particleFactory}}-\/>\mbox{\hyperlink{class_factory_a44b667d0976c27e6637ea63f72ba5cfc}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00044}00044   \textcolor{comment}{// resetParticleCounters();}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00045}00045   \mbox{\hyperlink{class_particle}{Particle}} * parentInteraction;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00046}00046   parentInteraction = \mbox{\hyperlink{class_task_aca6dc827b61b440bf610bba393beb673}{particleFactory}}-\/>\mbox{\hyperlink{class_factory_a6f646ad85a0e516aa9a93f6f5db1d8d3}{getNextObject}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00047}00047   parentInteraction-\/>\mbox{\hyperlink{class_particle_a0df75e7ca5475b07c67746d7a7f41e22}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00048}00048   parentInteraction-\/>\mbox{\hyperlink{class_particle_aed911356f1efb3cd78986e1d387dd784}{setType}}( \mbox{\hyperlink{class_particle_type_a8ad843478cad8af8fb76733f925c2d15}{ParticleType::getInteractionType}}());}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00049}00049   parentInteraction-\/>\mbox{\hyperlink{class_particle_aebc38b2384fe5d206762a373e242e1d9}{setXYZT}}(0.0, 0.0, 0.0, 0.0);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00050}00050   \textcolor{keyword}{event}.add(parentInteraction);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00051}00051   Long64\_t ientry = \mbox{\hyperlink{class_root_tree_reader_af2bd7d6e2c257617d5b4fa71b21e834b}{LoadTree}}(\mbox{\hyperlink{class_root_tree_reader_acff36c063ee066588291394f206917c9}{entryIndex}});}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00052}00052   \textcolor{keywordflow}{if} (ientry < 0)}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00053}00053     \{}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00054}00054     \mbox{\hyperlink{class_message_logger_aa8781e2ed12726ca70f8c0e87b7f2453}{postTaskEod}}();  \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00055}00055     \}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00056}00056   \mbox{\hyperlink{class_root_tree_reader_a5e6ac8628959070e14c75b69bc65affe}{nb}} = \mbox{\hyperlink{class_root_tree_reader_adc7f0fa0d08ccdeb5ac7f696c45f9ed7}{rootInputTreeChain}}()-\/>GetEntry(\mbox{\hyperlink{class_root_tree_reader_acff36c063ee066588291394f206917c9}{entryIndex}}++);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00057}00057   \mbox{\hyperlink{class_root_tree_reader_aeaa63312aa30928b1099f35fef253a61}{nBytes}} += \mbox{\hyperlink{class_root_tree_reader_a5e6ac8628959070e14c75b69bc65affe}{nb}};}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00058}00058   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_epos_event_reader_a0907d1d1e9077a68feeb03fed4c75bcd}{nParticles}} > \mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{arraySize}})}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00059}00059     \{}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00060}00060     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}(\textcolor{stringliteral}{"{}AmptEventReader"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}}))}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00061}00061       cout<< \textcolor{stringliteral}{"{}nParticles: "{}} << \mbox{\hyperlink{class_epos_event_reader_a0907d1d1e9077a68feeb03fed4c75bcd}{nParticles}} << \textcolor{stringliteral}{"{}  exceeds capacity "{}} << \mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{arraySize}} << endl;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00062}00062     \mbox{\hyperlink{class_message_logger_a21de642806f1c039f39a087e1e910984}{postTaskFatal}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00063}00063     exit(1);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00064}00064     \}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00065}00065   }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00066}00066   \textcolor{keywordtype}{double} eventPhi;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00067}00067   \textcolor{keywordtype}{double} cosPhi;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00068}00068   \textcolor{keywordtype}{double} sinPhi;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00069}00069   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_root_tree_reader_a5f147b864c5cb2916610f5a292c1b303}{useRandomizeEventPlane}}())}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00070}00070     \{}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00071}00071     eventPhi = \mbox{\hyperlink{class_root_tree_reader_a0f97d0ae6a437bbf1c4d9a6153f28b9e}{getRandomEventPlaneAngle}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00072}00072     cosPhi = cos(eventPhi);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00073}00073     sinPhi = sin(eventPhi);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00074}00074     \}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00075}00075   }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00076}00076   TLorentzVector \& sourcePosition = parentInteraction-\/>\mbox{\hyperlink{class_particle_a045fe2f72de18ce20ad6d4a860564bfe}{getPosition}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00077}00077   \textcolor{keywordtype}{double} r\_x = sourcePosition.X();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00078}00078   \textcolor{keywordtype}{double} r\_y = sourcePosition.Y();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00079}00079   \textcolor{keywordtype}{double} r\_z = sourcePosition.Z();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00080}00080   \textcolor{keywordtype}{double} r\_t = sourcePosition.T();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00081}00081   \mbox{\hyperlink{class_particle_type}{ParticleType}} * type;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00082}00082   }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00083}00083   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} iParticle=0; iParticle<\mbox{\hyperlink{class_epos_event_reader_a0907d1d1e9077a68feeb03fed4c75bcd}{nParticles}}; iParticle++)}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00084}00084     \{}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00085}00085     \textcolor{keywordtype}{int} pdgCode = \mbox{\hyperlink{class_epos_event_reader_a7a414e63738a819ffc1af4c280bf539d}{pid}}[iParticle];}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00086}00086     type = \mbox{\hyperlink{class_task_a7a739821423f609fa918d674818c1e80}{particleTypeCollection}}-\/>\mbox{\hyperlink{class_particle_type_collection_ac8ee25b3ed9077300626d6aa20768fd1}{findPdgCode}}(pdgCode);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00087}00087     \textcolor{keywordflow}{if} (type==\textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00088}00088       \{}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00089}00089       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a9ba15c420e5a8f5bcf74b91924201103}{reportWarning}}(\textcolor{stringliteral}{"{}AmptEventReader"{}},\mbox{\hyperlink{class_task_a37caaace682389f3dee73195362df1a2}{getName}}(),\textcolor{stringliteral}{"{}execute()"{}})) cout << \textcolor{stringliteral}{"{}Encountered unknown pdgCode: "{}} << pdgCode << \textcolor{stringliteral}{"{} Particle not added to event."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00090}00090       \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00091}00091       \}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00093}00093     \mbox{\hyperlink{class_particle}{Particle}} * particle = \mbox{\hyperlink{class_task_aca6dc827b61b440bf610bba393beb673}{particleFactory}}-\/>\mbox{\hyperlink{class_factory_a6f646ad85a0e516aa9a93f6f5db1d8d3}{getNextObject}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00094}00094     \textcolor{keywordtype}{double} p\_x, p\_y, p\_z, p\_e;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00095}00095     \textcolor{keywordtype}{double} mass = type-\/>\mbox{\hyperlink{class_particle_type_a97683c737d37b41e4695c8040adf2806}{getMass}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00096}00096     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_root_tree_reader_a5f147b864c5cb2916610f5a292c1b303}{useRandomizeEventPlane}}())}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00097}00097       \{}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00098}00098       p\_x  = cosPhi*\mbox{\hyperlink{class_epos_event_reader_a73785b32ef4260bc72726a8ad8838fc8}{px}}[iParticle] -\/ sinPhi*\mbox{\hyperlink{class_epos_event_reader_a50081a677f7506559db4208de2b9273d}{py}}[iParticle];}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00099}00099       p\_y  = sinPhi*\mbox{\hyperlink{class_epos_event_reader_a73785b32ef4260bc72726a8ad8838fc8}{px}}[iParticle] + cosPhi*\mbox{\hyperlink{class_epos_event_reader_a50081a677f7506559db4208de2b9273d}{py}}[iParticle];}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00100}00100       \}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00101}00101     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00102}00102       \{}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00103}00103       p\_x  = \mbox{\hyperlink{class_epos_event_reader_a73785b32ef4260bc72726a8ad8838fc8}{px}}[iParticle];}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00104}00104       p\_y  = \mbox{\hyperlink{class_epos_event_reader_a50081a677f7506559db4208de2b9273d}{py}}[iParticle];}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00105}00105       \}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00106}00106     p\_z  = \mbox{\hyperlink{class_epos_event_reader_a651951ae21047a2e5496d49ed2037f7e}{pz}}[iParticle];}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00107}00107     p\_e  = sqrt(p\_x*p\_x + p\_y*p\_y + p\_z*p\_z + mass*mass);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00108}00108     particle-\/>\mbox{\hyperlink{class_particle_a894a96eb9fe6aa17f5eec14560bd2e05}{set}}(type,p\_x,p\_y,p\_z,p\_e,r\_x,r\_y,r\_z,r\_t,\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00109}00109     \textcolor{keywordflow}{if} (!particleFilter.\mbox{\hyperlink{class_particle_filter_a8d9135b8eecd5fcb90ac3ba6566c7fed}{accept}}(*particle)) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00110}00110     \mbox{\hyperlink{class_task_a52769d28d3eed100e842b052e499f1c0}{incrementNParticlesAccepted}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00111}00111     \textcolor{keyword}{event}.add(particle);}
 \DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00112}00112     \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00113}00113 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00114}00114   \mbox{\hyperlink{class_factory}{Factory<Particle>}} * \mbox{\hyperlink{class_task_aca6dc827b61b440bf610bba393beb673}{particleFactory}} = \mbox{\hyperlink{class_particle_aea48229b90fe17f83263e98348857102}{Particle::getFactory}}();}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00115}00115 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00116}00116   \textcolor{keywordtype}{bool} seekingEvent = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00117}00117   \textcolor{keywordflow}{while} (seekingEvent)}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00118}00118     \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00119}00119     \textcolor{comment}{// load another event from the root file/TTree}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00120}00120     Long64\_t ientry = \mbox{\hyperlink{class_epos_event_reader_ad85463bdc313327218d1462df45d1bf2}{LoadTree}}(\mbox{\hyperlink{class_epos_event_reader_a4192accf897e56c181f23af68e451ea6}{jentry}}++);}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00121}00121 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00122}00122     \textcolor{comment}{// returning a null point is an indication that}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00123}00123     \textcolor{comment}{// there are no more events in the file or stack of files.}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00124}00124     \textcolor{keywordflow}{if} (ientry < 0)}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00125}00125       \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00126}00126       \mbox{\hyperlink{class_message_logger_aa8781e2ed12726ca70f8c0e87b7f2453}{postTaskEod}}(); \textcolor{comment}{// end of data}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00127}00127       \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00128}00128       \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00129}00129     \mbox{\hyperlink{class_epos_event_reader_affe0243fd48ab9f86ef1c6091a0b2f58}{nb}} = \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>GetEntry(\mbox{\hyperlink{class_epos_event_reader_a4192accf897e56c181f23af68e451ea6}{jentry}});   \mbox{\hyperlink{class_epos_event_reader_af81aa687420d09564ae8901689f854b1}{nbytes}} += \mbox{\hyperlink{class_epos_event_reader_affe0243fd48ab9f86ef1c6091a0b2f58}{nb}};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00130}00130     \textcolor{comment}{//cout<<"{}sumit : "{}<<Mult<<endl;}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00131}00131     \textcolor{comment}{// check if the event is acceptable.}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00132}00132     \textcolor{keyword}{event}-\/>impactParameter = \mbox{\hyperlink{class_epos_event_reader_a2d74c695355b8c70e7941a09822eb2da}{impact}};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00133}00133     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_epos_event_reader_a35e4f13c870dfa771deef7b15a4c1017}{eventFilter}}-\/>\mbox{\hyperlink{class_event_filter_aa4632706bbb44971f52ccdec125f97e6}{accept}}(*event)) seekingEvent = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00134}00134     \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00135}00135 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00136}00136   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_epos_event_reader_abfa9639e2100661d94f20b6a2aabf012}{mult}} > \mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{arraySize}})}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00137}00137     \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00138}00138     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a368595c75482e8e7024aa7e6fd30a96a}{reportError}}()) cout<< \textcolor{stringliteral}{"{}EposEventReader::execute() n particles is "{}} << \mbox{\hyperlink{class_epos_event_reader_abfa9639e2100661d94f20b6a2aabf012}{mult}} << \textcolor{stringliteral}{"{} and exceeds capacity "{}} << \mbox{\hyperlink{class_epos_event_reader_ac1017e869dfb192ce6fa3c32b7c7d233}{arraySize}} << endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00139}00139     \mbox{\hyperlink{class_message_logger_a0532494797013d9afcb82b5fcf442488}{postTaskError}}();}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00140}00140     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00141}00141     \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00142}00142   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}())  cout<< \textcolor{stringliteral}{"{}EposEventReader::execute() Impact par: "{}}<<\mbox{\hyperlink{class_epos_event_reader_a2d74c695355b8c70e7941a09822eb2da}{impact}}<<\textcolor{stringliteral}{"{}  "{}}<<\mbox{\hyperlink{class_epos_event_reader_abfa9639e2100661d94f20b6a2aabf012}{mult}}<<endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00143}00143 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00144}00144   \textcolor{keywordtype}{int} thePid;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00145}00145   \textcolor{keywordtype}{double} charge, p\_x, p\_y, p\_z, p\_e, mass;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00146}00146   \mbox{\hyperlink{class_particle}{Particle}} * particle;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00147}00147   \textcolor{keywordtype}{int} particleAccepted = 0;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00148}00148 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00149}00149   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Randomizing the particle phi -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Starts}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00150}00150   \textcolor{keywordtype}{double} eventAngle= TMath::TwoPi() * gRandom-\/>Rndm();}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00151}00151   \textcolor{keywordtype}{double} cosPhi = cos(eventAngle);}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00152}00152   \textcolor{keywordtype}{double} sinPhi = sin(eventAngle);}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00153}00153 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00154}00154   \textcolor{comment}{// load particles from TTree and copy those that are selected into}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00155}00155   \textcolor{comment}{// event}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00156}00156   \textcolor{keywordtype}{int} iParticle=0;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00157}00157   \textcolor{keywordtype}{bool} readingEvent = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00158}00158   \textcolor{keywordflow}{while} (readingEvent)}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00159}00159     \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00160}00160     particle = \mbox{\hyperlink{class_task_aca6dc827b61b440bf610bba393beb673}{particleFactory}}-\/>\mbox{\hyperlink{class_factory_a6f646ad85a0e516aa9a93f6f5db1d8d3}{getNextObject}}();}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00161}00161     \textcolor{keywordtype}{bool} seekParticle = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00162}00162     \textcolor{keywordflow}{while} (seekParticle)}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00163}00163       \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00164}00164       thePid = \mbox{\hyperlink{class_epos_event_reader_a7a414e63738a819ffc1af4c280bf539d}{pid}}[iParticle];}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00165}00165       \textcolor{keywordflow}{if} ( thePid == 211 || thePid == 321  || thePid ==2212 )}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00166}00166         charge = 1;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00167}00167       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (thePid ==-\/211 || thePid ==-\/321 || thePid==-\/2212)}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00168}00168         charge = -\/1;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00169}00169       \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00170}00170         charge = 0;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00171}00171       \textcolor{comment}{// only accept charged particles}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00172}00172       \textcolor{keywordflow}{if} (charge==0) \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00173}00173       p\_x  = cosPhi*\mbox{\hyperlink{class_epos_event_reader_a73785b32ef4260bc72726a8ad8838fc8}{px}}[iParticle] -\/ sinPhi*\mbox{\hyperlink{class_epos_event_reader_a50081a677f7506559db4208de2b9273d}{py}}[iParticle];}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00174}00174       p\_y  = sinPhi*\mbox{\hyperlink{class_epos_event_reader_a73785b32ef4260bc72726a8ad8838fc8}{px}}[iParticle] + cosPhi*\mbox{\hyperlink{class_epos_event_reader_a50081a677f7506559db4208de2b9273d}{py}}[iParticle];}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00175}00175       p\_z  = \mbox{\hyperlink{class_epos_event_reader_a651951ae21047a2e5496d49ed2037f7e}{pz}}[iParticle];}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00176}00176       p\_e  = \mbox{\hyperlink{class_epos_event_reader_a5c01927f8d001f0f66ca91b9e324b629}{e}}[iParticle];;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00177}00177       particle-\/>\mbox{\hyperlink{class_particle_afcfe88e23ed90274623b6ad6e78f6807}{setPidPxPyPzE}}(thePid, charge, p\_x,p\_y,p\_z,p\_e);}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00178}00178       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_epos_event_reader_aaf6ce483ef7f0da9576370b030c7cdc0}{particleFilter}}-\/>\mbox{\hyperlink{class_particle_filter_a8d9135b8eecd5fcb90ac3ba6566c7fed}{accept}}(*particle)) seekParticle = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00179}00179       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) particle-\/>\mbox{\hyperlink{class_particle_a36f86cf24657c46aba1164cb247e64c9}{printProperties}}(cout);}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00180}00180       particleAccepted++;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00181}00181       iParticle++;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00182}00182       \textcolor{keywordflow}{if} (iParticle>=\mbox{\hyperlink{class_epos_event_reader_abfa9639e2100661d94f20b6a2aabf012}{mult}})}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00183}00183         \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00184}00184         seekParticle = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00185}00185         readingEvent = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00186}00186         \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00187}00187       \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00188}00188     \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00189}00189   \textcolor{keyword}{event}-\/>nParticles = particleAccepted;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00190}00190   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}EposEventReader::execute() No of accepted Particles : "{}}<< particleAccepted<<endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00191}00191   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_message_logger_a3c62ebefe6cc36539e8ac33b5500c707}{reportDebug}}()) cout << \textcolor{stringliteral}{"{}EposEventReader::execute() event completed!"{}} << endl;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00192}00192 \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00193}00193 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00194}00194 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00195}00195 Int\_t \mbox{\hyperlink{class_epos_event_reader_a5ed3c75eec512d374f63451a1170b144}{EposEventReader::GetEntry}}(Long64\_t entry)}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00196}00196 \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00197}00197   \textcolor{comment}{// Read contents of entry.}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00198}00198   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}) \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00199}00199   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>GetEntry(entry);}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00200}00200 \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00201}00201 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00202}00202 Long64\_t \mbox{\hyperlink{class_epos_event_reader_ad85463bdc313327218d1462df45d1bf2}{EposEventReader::LoadTree}}(Long64\_t entry)}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00203}00203 \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00204}00204   \textcolor{comment}{// Set the environment to read one entry}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00205}00205   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}) \textcolor{keywordflow}{return} -\/5;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00206}00206   Long64\_t centry = \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>LoadTree(entry);}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00207}00207   \textcolor{keywordflow}{if} (centry < 0) \textcolor{keywordflow}{return} centry;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00208}00208   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>GetTreeNumber() != \mbox{\hyperlink{class_epos_event_reader_afd54acff3e63cb73ebaeeccade2814f6}{fCurrent}}) \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00209}00209     \mbox{\hyperlink{class_epos_event_reader_afd54acff3e63cb73ebaeeccade2814f6}{fCurrent}} = \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>GetTreeNumber();}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00210}00210     \mbox{\hyperlink{class_epos_event_reader_a3c0c2164a0f7b882e68e31a319500beb}{Notify}}();}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00211}00211   \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00212}00212   \textcolor{keywordflow}{return} centry;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00213}00213 \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00214}00214 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00215}00215 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_epos_event_reader_a1f09cba329ef31dbe18091d189a213dc}{EposEventReader::Init}}(TTree *tree)}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00216}00216  \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00217}00217    \textcolor{keywordflow}{if} (!tree) \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00218}00218    \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}} = tree;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00219}00219    \mbox{\hyperlink{class_epos_event_reader_afd54acff3e63cb73ebaeeccade2814f6}{fCurrent}} = -\/1;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00220}00220    \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>SetMakeClass(1);}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00221}00221 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00222}00222    \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}Events"{}}, \&\mbox{\hyperlink{class_epos_event_reader_a367b3f9175004086133dc55519c759c5}{events}}, \&\mbox{\hyperlink{class_epos_event_reader_aae4cc1fc27ee8eca3d7805c349d1bff7}{b\_Events}});}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00223}00223    \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}Mult"{}}, \&\mbox{\hyperlink{class_epos_event_reader_abfa9639e2100661d94f20b6a2aabf012}{mult}}, \&\mbox{\hyperlink{class_epos_event_reader_a8c2c9f893b94b0f23895475fa8b4d3e9}{b\_Mult}});}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00224}00224    \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}Impact"{}}, \&\mbox{\hyperlink{class_epos_event_reader_a2d74c695355b8c70e7941a09822eb2da}{impact}}, \&\mbox{\hyperlink{class_epos_event_reader_ad95987c9be9ae2232054a2d1149b368e}{b\_Impact}});}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00225}00225    \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}PID"{}}, \mbox{\hyperlink{class_epos_event_reader_a7a414e63738a819ffc1af4c280bf539d}{pid}}, \&\mbox{\hyperlink{class_epos_event_reader_aa238ee93bf3b8efccba6fea8bb4a0515}{b\_PID}});}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00226}00226    \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}Px"{}}, \mbox{\hyperlink{class_epos_event_reader_a73785b32ef4260bc72726a8ad8838fc8}{px}}, \&\mbox{\hyperlink{class_epos_event_reader_a25de43eaa1ff4a4408206b39c1e2fc5d}{b\_Px}});}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00227}00227    \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}Py"{}}, \mbox{\hyperlink{class_epos_event_reader_a50081a677f7506559db4208de2b9273d}{py}}, \&\mbox{\hyperlink{class_epos_event_reader_ad2965b726ee449874ff45364f202166b}{b\_Py}});}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00228}00228    \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}Pz"{}}, \mbox{\hyperlink{class_epos_event_reader_a651951ae21047a2e5496d49ed2037f7e}{pz}}, \&\mbox{\hyperlink{class_epos_event_reader_a65a3ac847d20bb000c1dc35fafb1fe1c}{b\_Pz}});}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00229}00229    \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}E"{}}, \mbox{\hyperlink{class_epos_event_reader_a5c01927f8d001f0f66ca91b9e324b629}{e}}, \&\mbox{\hyperlink{class_epos_event_reader_aacf55ecabc6b3847b8db3e60e5b3216d}{b\_E}});}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00230}00230    \mbox{\hyperlink{class_epos_event_reader_a3c0c2164a0f7b882e68e31a319500beb}{Notify}}();}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00231}00231 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00232}00232 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00233}00233    \mbox{\hyperlink{class_epos_event_reader_ae198255e73b5a442a74fe2abe8029f08}{nentries}} = \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>GetEntriesFast();}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00234}00234    \mbox{\hyperlink{class_epos_event_reader_af81aa687420d09564ae8901689f854b1}{nbytes}} = 0;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00235}00235    \mbox{\hyperlink{class_epos_event_reader_affe0243fd48ab9f86ef1c6091a0b2f58}{nb}} = 0;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00236}00236 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00237}00237  \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00238}00238 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00239}00239 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00240}00240 Bool\_t \mbox{\hyperlink{class_epos_event_reader_a3c0c2164a0f7b882e68e31a319500beb}{EposEventReader::Notify}}()}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00241}00241 \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00242}00242   \textcolor{keywordflow}{return} kTRUE;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00243}00243 \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00244}00244 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00245}00245 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_epos_event_reader_a4f33ea50f49e44b02cdf1732d122f3bb}{EposEventReader::Show}}(Long64\_t entry)}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00246}00246 \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00247}00247   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}) \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00248}00248   \mbox{\hyperlink{class_epos_event_reader_a416f387b367aa82b172ee3eadd1d8f81}{fChain}}-\/>Show(entry);}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00249}00249 \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00250}00250 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00251}00251 Int\_t \mbox{\hyperlink{class_epos_event_reader_abc60e8e7602558c92cbd544889d694ef}{EposEventReader::Cut}}(Long64\_t entry)}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00252}00252 \{}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00253}00253   \textcolor{keywordflow}{return} 1;}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00254}00254 \}}
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00255}00255 }
-\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00256}00256 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00113}00113   \textcolor{keyword}{event}.setEventNumber(\mbox{\hyperlink{class_epos_event_reader_a367b3f9175004086133dc55519c759c5}{events}});}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00114}00114   \mbox{\hyperlink{class_event_properties}{EventProperties}} \& eventProperties = * \textcolor{keyword}{event}.getEventProperties();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00115}00115   eventProperties.\mbox{\hyperlink{class_event_properties_acb8cd3f24cae79f1668318c04431ebfc}{zProjectile}}           = 0;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00116}00116   eventProperties.\mbox{\hyperlink{class_event_properties_a63fb4bae6c7ec751554c7b4fca432fc8}{aProjectile}}           = 0;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00117}00117   eventProperties.\mbox{\hyperlink{class_event_properties_ac0923f4648e41371b4de055cf000156e}{nPartProjectile}}       = 0;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00118}00118   eventProperties.\mbox{\hyperlink{class_event_properties_a65a883b33d72a719f4b85db17e77034a}{zTarget}}               = 0;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00119}00119   eventProperties.\mbox{\hyperlink{class_event_properties_acfaccab50080ae5be69e3694cf7e9a0e}{aTarget}}               = 0;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00120}00120   eventProperties.\mbox{\hyperlink{class_event_properties_a73a51e7e7b382deffd360dc1729e8cb5}{nPartTarget}}           = 0;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00121}00121   eventProperties.\mbox{\hyperlink{class_event_properties_ad66ebcce1ea08e122a030570649e713e}{nParticipantsTotal}}    = 0;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00122}00122   eventProperties.\mbox{\hyperlink{class_event_properties_ac5352eb0963a382b518429323aef460f}{nBinaryTotal}}          = 0;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00123}00123   eventProperties.\mbox{\hyperlink{class_event_properties_a359effe83f1f43f0bf7c70cbe4df929b}{impactParameter}}       = \mbox{\hyperlink{class_epos_event_reader_a2d74c695355b8c70e7941a09822eb2da}{impact}};}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00124}00124   eventProperties.\mbox{\hyperlink{class_event_properties_a9fd73f57e21d8bf5c73a6365629dc5fa}{fractionalXSection}}    = -\/99999;}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00125}00125 \textcolor{comment}{//  eventProperties.referenceMultiplicity = getNParticlesAccepted();}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00126}00126 \textcolor{comment}{//  eventProperties.particlesCounted      = getNParticlesCounted();}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00127}00127 \textcolor{comment}{//  eventProperties.particlesAccepted     = getNParticlesAccepted();}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00128}00128   \mbox{\hyperlink{class_task_aabce954619d743bdc24677981775c0c8}{incrementNEventsAccepted}}(0);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00129}00129 \}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00131}\mbox{\hyperlink{class_epos_event_reader_a978bcc3301d0b4b85d54701a8ae53ae1}{00131}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_epos_event_reader_a978bcc3301d0b4b85d54701a8ae53ae1}{EposEventReader::initInputTreeMapping}}()}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00132}00132 \{}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00133}00133   TTree * \mbox{\hyperlink{classtree}{tree}} = \mbox{\hyperlink{class_root_tree_reader_adc7f0fa0d08ccdeb5ac7f696c45f9ed7}{rootInputTreeChain}}();}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00134}00134   \mbox{\hyperlink{classtree}{tree}}-\/>SetMakeClass(1);}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00135}00135   \mbox{\hyperlink{classtree}{tree}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}Events"{}}, \&\mbox{\hyperlink{class_epos_event_reader_a367b3f9175004086133dc55519c759c5}{events}},   \&\mbox{\hyperlink{class_epos_event_reader_ae45e101e01274537617aa9a8395d7c24}{b\_Events}});}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00136}00136   \mbox{\hyperlink{classtree}{tree}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}Mult"{}}, \&\mbox{\hyperlink{class_epos_event_reader_a0907d1d1e9077a68feeb03fed4c75bcd}{nParticles}}, \&\mbox{\hyperlink{class_epos_event_reader_a6cd2a9cd8811c5c064157af73af936eb}{b\_Mult}});}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00137}00137   \mbox{\hyperlink{classtree}{tree}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}Impact"{}}, \&\mbox{\hyperlink{class_epos_event_reader_a2d74c695355b8c70e7941a09822eb2da}{impact}},   \&\mbox{\hyperlink{class_epos_event_reader_af616790b43ad242bac2053b8d4dbd0d7}{b\_Impact}});}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00138}00138   \mbox{\hyperlink{classtree}{tree}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}PID"{}}, \mbox{\hyperlink{class_epos_event_reader_a7a414e63738a819ffc1af4c280bf539d}{pid}}, \&\mbox{\hyperlink{class_epos_event_reader_a03c2332361439cadff2c7d53c4cba189}{b\_PID}});}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00139}00139   \mbox{\hyperlink{classtree}{tree}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}Px"{}}, \mbox{\hyperlink{class_epos_event_reader_a73785b32ef4260bc72726a8ad8838fc8}{px}}, \&\mbox{\hyperlink{class_epos_event_reader_af37b01b65e68301e6732998c69bce04d}{b\_Px}});}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00140}00140   \mbox{\hyperlink{classtree}{tree}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}Py"{}}, \mbox{\hyperlink{class_epos_event_reader_a50081a677f7506559db4208de2b9273d}{py}}, \&\mbox{\hyperlink{class_epos_event_reader_a3a644a37b28f9b784c91750fb996ef0e}{b\_Py}});}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00141}00141   \mbox{\hyperlink{classtree}{tree}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}Pz"{}}, \mbox{\hyperlink{class_epos_event_reader_a651951ae21047a2e5496d49ed2037f7e}{pz}}, \&\mbox{\hyperlink{class_epos_event_reader_a1c0495b4a39ced5c2cc67e5af92da499}{b\_Pz}});}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00142}00142   \mbox{\hyperlink{classtree}{tree}}-\/>SetBranchAddress(\textcolor{stringliteral}{"{}E"{}}, \mbox{\hyperlink{class_epos_event_reader_a5c01927f8d001f0f66ca91b9e324b629}{e}}, \&\mbox{\hyperlink{class_epos_event_reader_aeb91b6cf5d467de2703436e33aed6b11}{b\_E}});}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00143}00143 \}}
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00144}00144 }
+\DoxyCodeLine{\Hypertarget{_epos_event_reader_8cpp_source_l00145}00145 }
 
 \end{DoxyCode}

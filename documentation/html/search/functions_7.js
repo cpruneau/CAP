@@ -10,7 +10,7 @@ var searchData=
   ['hasinteracted_7',['hasInteracted',['../class_particle.html#a4ff1fcfd45e428d96d48c9ac620204b9',1,'Particle']]],
   ['hasownership_8',['hasOwnerShip',['../class_collection.html#ada16c328da6d4a51df1100b7c8029e1d',1,'Collection']]],
   ['hasparents_9',['hasParents',['../class_particle.html#af065ed9270e8c8c7592cb85493d89089',1,'Particle']]],
-  ['hassubtasks_10',['hasSubtasks',['../class_task.html#ae54e5d3edaf96aa69e657a7e267baafc',1,'Task']]],
+  ['hassubtasks_10',['hasSubTasks',['../class_task.html#adce482e28c2da99f52a935222199010f',1,'Task']]],
   ['hassystematics_11',['hasSystematics',['../class_data_graph.html#a585d96a4611ffa412e5e84a238d48ea5',1,'DataGraph']]],
   ['hastruth_12',['hasTruth',['../class_particle.html#a522f882cbd9f12166337bca63946a1bc',1,'Particle']]],
   ['histogramcollection_13',['HistogramCollection',['../class_histogram_collection.html#ae22e875c97b3de71028397b6bdb9403d',1,'HistogramCollection::HistogramCollection(const TString &amp;name, LogLevel debugLevel)'],['../class_histogram_collection.html#a43a0f58a026e1a9c3c07bdd8efbbb033',1,'HistogramCollection::HistogramCollection(const HistogramCollection &amp;source)']]],

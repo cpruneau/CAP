@@ -1,7 +1,7 @@
 var searchData=
 [
   ['table2d_0',['Table2D',['../class_table2_d.html#a1f71d5e3ff7e028404e64141709bc60d',1,'Table2D::Table2D()'],['../class_table2_d.html#a5576507b5dbd568a2e124051fab51b3b',1,'Table2D::Table2D(string)']]],
-  ['task_1',['Task',['../class_task.html#a0ca53354bdc006762a0fda68c64f7608',1,'Task::Task()'],['../class_task.html#ad0f94e3993c310c6954a6d2e20d92d5d',1,'Task::Task(const TString &amp;_name, const Configuration &amp;_configuration, MessageLogger::LogLevel _reportLevel)'],['../class_task.html#ae9f3e16bb665512b6d726be7cb6694ab',1,'Task::Task(const TString &amp;_name, const Configuration &amp;_configuration, vector&lt; EventFilter * &gt; &amp;_eventFilters, vector&lt; ParticleFilter * &gt; &amp;_particleFilters, MessageLogger::LogLevel _reportLevel)'],['../class_task.html#a3afb3fb8c6886b31326f476ea3a523ce',1,'Task::Task(const TString &amp;_name, const Configuration &amp;_configuration, vector&lt; EventFilter * &gt; &amp;_eventFilters, vector&lt; ParticleFilter * &gt; &amp;_particleFilters, vector&lt; ParticleSmearer * &gt; &amp;_particleSmearer, MessageLogger::LogLevel _reportLevel)']]],
+  ['task_1',['Task',['../class_task.html#a0ca53354bdc006762a0fda68c64f7608',1,'Task::Task()'],['../class_task.html#ad0f94e3993c310c6954a6d2e20d92d5d',1,'Task::Task(const TString &amp;_name, const Configuration &amp;_configuration, MessageLogger::LogLevel _reportLevel)'],['../class_task.html#ae9f3e16bb665512b6d726be7cb6694ab',1,'Task::Task(const TString &amp;_name, const Configuration &amp;_configuration, vector&lt; EventFilter * &gt; &amp;_eventFilters, vector&lt; ParticleFilter * &gt; &amp;_particleFilters, MessageLogger::LogLevel _reportLevel)']]],
   ['taskiterator_2',['TaskIterator',['../class_task_iterator.html#a3882efad724cca77795af41d0a331e08',1,'TaskIterator']]],
   ['test_3',['test',['../test_8_c.html#ac8da963855e09bf929c085486f4a3b47',1,'test.C']]],
   ['test2_4',['test2',['../test2_8_c.html#a3137bc70d6b2911bb9d32d9b27eb3c69',1,'test2.C']]],
@@ -12,8 +12,9 @@ var searchData=
   ['totalxsectvssplots_9',['TotalXsectVsSPlots',['../_total_xsect_vs_s_plots_8_c.html#a0627b2c84f08a098f36249a742eabfc4',1,'TotalXsectVsSPlots.C']]],
   ['transversespherocityanalyzer_10',['TransverseSpherocityAnalyzer',['../class_transverse_spherocity_analyzer.html#abfa071929a651c81915cd585672b94d4',1,'TransverseSpherocityAnalyzer']]],
   ['transversespherocityhistos_11',['TransverseSpherocityHistos',['../class_transverse_spherocity_histos.html#a3e38dff7da9d08cb28e19a891a99df96',1,'TransverseSpherocityHistos']]],
-  ['trim_12',['trim',['../_arsenal_8cpp.html#aa7cb820696f8a66d03330e091482020c',1,'trim(string str):&#160;Arsenal.cpp'],['../_arsenal_8hpp.html#aa7cb820696f8a66d03330e091482020c',1,'trim(string str):&#160;Arsenal.cpp']]],
-  ['tstudent_13',['tStudent',['../_basic_functions_8_c.html#a4b6c228aa2f7cf2d5c28998835282748',1,'BasicFunctions.C']]],
-  ['twodcubic_14',['TwoDCubic',['../_plot_gradients_8_c.html#a617c3aa2680d240a7511876f5a3f7d64',1,'PlotGradients.C']]],
-  ['twoparticlesubsampleanalysis_15',['TwoParticleSubsampleAnalysis',['../_two_particle_subsample_analysis_8_c.html#a1617ff35b72729ebc230de15ccaaa2dd',1,'TwoParticleSubsampleAnalysis.C']]]
+  ['tree_12',['tree',['../classtree.html#a15dcd3b43862577be848e698bba66d35',1,'tree']]],
+  ['trim_13',['trim',['../_arsenal_8cpp.html#aa7cb820696f8a66d03330e091482020c',1,'trim(string str):&#160;Arsenal.cpp'],['../_arsenal_8hpp.html#aa7cb820696f8a66d03330e091482020c',1,'trim(string str):&#160;Arsenal.cpp']]],
+  ['tstudent_14',['tStudent',['../_basic_functions_8_c.html#a4b6c228aa2f7cf2d5c28998835282748',1,'BasicFunctions.C']]],
+  ['twodcubic_15',['TwoDCubic',['../_plot_gradients_8_c.html#a617c3aa2680d240a7511876f5a3f7d64',1,'PlotGradients.C']]],
+  ['twoparticlesubsampleanalysis_16',['TwoParticleSubsampleAnalysis',['../_two_particle_subsample_analysis_8_c.html#a1617ff35b72729ebc230de15ccaaa2dd',1,'TwoParticleSubsampleAnalysis.C']]]
 ];

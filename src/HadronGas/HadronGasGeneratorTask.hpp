@@ -15,7 +15,7 @@
 #include "HadronGasHistograms.hpp"
 #include "MomentumGenerator.hpp"
 
-class HadronGasGeneratorTask : public NucleonNucleonCollisionGenerator
+class HadronGasGeneratorTask : public Task
 {
 public:
 

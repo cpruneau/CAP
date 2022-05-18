@@ -1,146 +1,148 @@
 \hypertarget{_rapidity_generator_8cpp_source}{}\doxysection{Rapidity\+Generator.\+cpp}
-\label{_rapidity_generator_8cpp_source}\index{Base/RapidityGenerator.cpp@{Base/RapidityGenerator.cpp}}
+\label{_rapidity_generator_8cpp_source}\index{BasicGen/RapidityGenerator.cpp@{BasicGen/RapidityGenerator.cpp}}
 \mbox{\hyperlink{_rapidity_generator_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00001}00001 \textcolor{comment}{// Author: Claude Pruneau   09/25/2019}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00002}00002 }
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00003}00003 \textcolor{comment}{/*************************************************************************}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00004}00004 \textcolor{comment}{ * Copyright (C) 2019, Claude Pruneau.                                   *}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00005}00005 \textcolor{comment}{ * All rights reserved.                                                  *}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00006}00006 \textcolor{comment}{ * Based on the ROOT package and environment                             *}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00007}00007 \textcolor{comment}{ *                                                                       *}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00008}00008 \textcolor{comment}{ * For the licensing terms see LICENSE.                                  *}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00009}00009 \textcolor{comment}{ *************************************************************************/}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_rapidity_generator_8hpp}{RapidityGenerator.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00019}\mbox{\hyperlink{_rapidity_generator_8cpp_a0f9dc5d86352aaceb5695c33606c762f}{00019}} \mbox{\hyperlink{_rapidity_generator_8cpp_a0f9dc5d86352aaceb5695c33606c762f}{ClassImp}}(\mbox{\hyperlink{class_rapidity_generator}{RapidityGenerator}});}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00020}00020 }
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00021}\mbox{\hyperlink{class_rapidity_generator_a273a05b52c1e80e8f2419ed0f0e5990a}{00021}} \mbox{\hyperlink{class_rapidity_generator_a273a05b52c1e80e8f2419ed0f0e5990a}{RapidityGenerator::RapidityGenerator}}(\textcolor{keywordtype}{int} opt, \textcolor{keywordtype}{int} pair, \textcolor{keywordtype}{double} max, \textcolor{keywordtype}{double} s, \textcolor{keywordtype}{double} minSep)}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00022}00022 :}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00023}00023 option(opt),}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00024}00024 pairMode(pair),}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00025}00025 maxRapidity(max),}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00026}00026 scale(s),}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00027}00027 minimumSeparation(minSep),}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00028}00028 nStored(0),}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00029}00029 pairRapidity(0),}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00030}00030 saveRapidity(0),}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00031}00031 rank(0)}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00032}00032 \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00033}00033   \mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}} = \textcolor{keyword}{new} TRandom();}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00034}00034 \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00001}00001 \textcolor{comment}{/* **********************************************************************}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00002}00002 \textcolor{comment}{ * Copyright (C) 2019-\/2022, Claude Pruneau, Victor Gonzalez, Sumit Basu}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00003}00003 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00005}00005 \textcolor{comment}{ * Based on the ROOT package and environment}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00007}00007 \textcolor{comment}{ * For the licensing terms see LICENSE.}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00008}00008 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00009}00009 \textcolor{comment}{ * Author: Claude Pruneau,   04/01/2022}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00011}00011 \textcolor{comment}{ * *********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_rapidity_generator_8hpp}{RapidityGenerator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00014}\mbox{\hyperlink{_rapidity_generator_8cpp_a0f9dc5d86352aaceb5695c33606c762f}{00014}} \mbox{\hyperlink{_rapidity_generator_8cpp_a0f9dc5d86352aaceb5695c33606c762f}{ClassImp}}(\mbox{\hyperlink{class_rapidity_generator}{RapidityGenerator}});}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00016}\mbox{\hyperlink{class_rapidity_generator_a273a05b52c1e80e8f2419ed0f0e5990a}{00016}} \mbox{\hyperlink{class_rapidity_generator_a273a05b52c1e80e8f2419ed0f0e5990a}{RapidityGenerator::RapidityGenerator}}(\textcolor{keywordtype}{int} opt, \textcolor{keywordtype}{int} pair, \textcolor{keywordtype}{double} max, \textcolor{keywordtype}{double} s, \textcolor{keywordtype}{double} minSep)}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00017}00017 :}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00018}00018 option(opt),}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00019}00019 pairMode(pair),}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00020}00020 maxRapidity(max),}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00021}00021 scale(s),}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00022}00022 minimumSeparation(minSep),}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00023}00023 nStored(0),}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00024}00024 pairRapidity(0),}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00025}00025 saveRapidity(0),}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00026}00026 rank(0)}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00027}00027 \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00028}00028   \mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}} = \textcolor{keyword}{new} TRandom();}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00029}00029 \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00032}\mbox{\hyperlink{class_rapidity_generator_a79b5ad22eea6f0d3de5f3c18060beabc}{00032}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_rapidity_generator_a79b5ad22eea6f0d3de5f3c18060beabc}{RapidityGenerator::reset}}()}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00033}00033 \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00034}00034   \mbox{\hyperlink{class_rapidity_generator_ad79e1e3281e4152b932215bcaf534575}{nStored}} = 0;}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00035}00035 \}}
 \DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00036}00036 }
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00037}\mbox{\hyperlink{class_rapidity_generator_a79b5ad22eea6f0d3de5f3c18060beabc}{00037}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_rapidity_generator_a79b5ad22eea6f0d3de5f3c18060beabc}{RapidityGenerator::reset}}()}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00037}\mbox{\hyperlink{class_rapidity_generator_a13154931d48ecc28834dff0687aa8938}{00037}} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_rapidity_generator_a13154931d48ecc28834dff0687aa8938}{RapidityGenerator::generate}}()}
 \DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00038}00038 \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00039}00039   \mbox{\hyperlink{class_rapidity_generator_ad79e1e3281e4152b932215bcaf534575}{nStored}} = 0;}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00040}00040 \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00041}00041 }
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00042}\mbox{\hyperlink{class_rapidity_generator_a13154931d48ecc28834dff0687aa8938}{00042}} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_rapidity_generator_a13154931d48ecc28834dff0687aa8938}{RapidityGenerator::generate}}()}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00043}00043 \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00044}00044   \textcolor{keywordtype}{double} v;}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00045}00045   \textcolor{keywordtype}{double} localRap;}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00046}00046   \textcolor{keywordtype}{double} rap1, rap2;}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00047}00047   \textcolor{keywordtype}{bool} OK = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00048}00048 }
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00049}00049   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_rapidity_generator_a5177e37822c3a9cd2652f670b2e595f3}{pairMode}}==0)}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00050}00050     \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00051}00051     \textcolor{comment}{// Generate clusters independently.}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00052}00052     \textcolor{keywordflow}{while} (!OK)}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00053}00053       \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00054}00054       \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_rapidity_generator_aa6136348e00c7cb4946bb6d3a8344a7c}{option}})}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00055}00055         \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00056}00056           \textcolor{keywordflow}{case} 0:  \textcolor{comment}{// uniform}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00039}00039   \textcolor{keywordtype}{double} v;}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00040}00040   \textcolor{keywordtype}{double} localRap;}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00041}00041   \textcolor{keywordtype}{double} rap1, rap2;}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00042}00042   \textcolor{keywordtype}{bool} OK = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00044}00044   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_rapidity_generator_a5177e37822c3a9cd2652f670b2e595f3}{pairMode}}==0)}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00045}00045     \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00046}00046     \textcolor{comment}{// Generate clusters independently.}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00047}00047     \textcolor{keywordflow}{while} (!OK)}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00048}00048       \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00049}00049       \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_rapidity_generator_aa6136348e00c7cb4946bb6d3a8344a7c}{option}})}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00050}00050         \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00051}00051           \textcolor{keywordflow}{case} 0:  \textcolor{comment}{// uniform}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00053}00053           v = \mbox{\hyperlink{class_rapidity_generator_ae89864fae7056a27dac64c4b0887c4c2}{maxRapidity}} * (2.0*\mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}}-\/>Rndm() -\/ 1.0);}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00054}00054           \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00056}00056           \textcolor{keywordflow}{case} 1:  \textcolor{comment}{// exponential}}
 \DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00057}00057 }
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00058}00058           v = \mbox{\hyperlink{class_rapidity_generator_ae89864fae7056a27dac64c4b0887c4c2}{maxRapidity}} * (2.0*\mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}}-\/>Rndm() -\/ 1.0);}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00059}00059           \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00060}00060 }
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00061}00061           \textcolor{keywordflow}{case} 1:  \textcolor{comment}{// exponential}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00062}00062 }
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00063}00063           v = -\/99999;}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00064}00064           \textcolor{keywordflow}{while} (fabs(v)>\mbox{\hyperlink{class_rapidity_generator_ae89864fae7056a27dac64c4b0887c4c2}{maxRapidity}})}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00065}00065             \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00066}00066             v = 0.5*\mbox{\hyperlink{class_rapidity_generator_a5b792ac7aa0d0bed9967658ea2564840}{minimumSeparation}} + \mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}}-\/>Exp(\mbox{\hyperlink{class_rapidity_generator_a6b173529816ec350be82dd0330a51e89}{scale}});}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00067}00067             v = (\mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}}-\/>Rndm()>0.50) ? v : -\/v;}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00068}00068             \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00069}00069           \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00070}00070 }
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00071}00071           \textcolor{keywordflow}{case} 2:  \textcolor{comment}{// Gaussian}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00072}00072 }
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00073}00073           v = -\/99999;}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00074}00074           \textcolor{keywordflow}{while} (fabs(v)>\mbox{\hyperlink{class_rapidity_generator_ae89864fae7056a27dac64c4b0887c4c2}{maxRapidity}})}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00075}00075             \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00076}00076             v = 0.5*\mbox{\hyperlink{class_rapidity_generator_a5b792ac7aa0d0bed9967658ea2564840}{minimumSeparation}} + \mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}}-\/>Gaus(0.0, \mbox{\hyperlink{class_rapidity_generator_a6b173529816ec350be82dd0330a51e89}{scale}});}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00077}00077             \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00078}00078           \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00079}00079         \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00080}00080 }
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00081}00081       OK = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00082}00082       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<\mbox{\hyperlink{class_rapidity_generator_ad79e1e3281e4152b932215bcaf534575}{nStored}}; k++)}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00083}00083         \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00084}00084         \textcolor{keywordflow}{if} (fabs(v-\/\mbox{\hyperlink{class_rapidity_generator_a951a3287b1fb417ebe5162316c75193c}{store}}[k])<\mbox{\hyperlink{class_rapidity_generator_a5b792ac7aa0d0bed9967658ea2564840}{minimumSeparation}})}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00085}00085           \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00086}00086           OK = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00087}00087           \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00088}00088           \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00089}00089         \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00090}00090 }
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00091}00091       \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00092}00092     \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00093}00093   \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00094}00094     \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00095}00095     \textcolor{comment}{// Generate clusters in pairs.}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00096}00096 }
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00097}00097     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_rapidity_generator_a8a918283cbd4950e7cd9299d06760dc7}{rank}}==0)}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00098}00098       \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00099}00099       \textcolor{keywordflow}{while} (!OK)}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00100}00100         \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00101}00101         \textcolor{comment}{// generate a new pair average rapidity}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00102}00102         \mbox{\hyperlink{class_rapidity_generator_a84b4eecaf75f4d0db7ad693845d6c482}{pairRapidity}} = \mbox{\hyperlink{class_rapidity_generator_ae89864fae7056a27dac64c4b0887c4c2}{maxRapidity}} * (2.0*\mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}}-\/>Rndm() -\/ 1.0);}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00103}00103         \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_rapidity_generator_aa6136348e00c7cb4946bb6d3a8344a7c}{option}})}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00104}00104           \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00105}00105             \textcolor{keywordflow}{case} 0:  \textcolor{comment}{// uniform}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00106}00106             \textcolor{comment}{//cout << "{}Option not available/sensible"{} << endl;}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00107}00107             localRap = 0.5;}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00108}00108             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00109}00109             \textcolor{keywordflow}{case} 1:  \textcolor{comment}{// exponential}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00110}00110             localRap = -\/99999;}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00111}00111             \textcolor{keywordflow}{while} (fabs(localRap)>2*\mbox{\hyperlink{class_rapidity_generator_ae89864fae7056a27dac64c4b0887c4c2}{maxRapidity}})}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00112}00112               \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00113}00113               localRap = \mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}}-\/>Exp(\mbox{\hyperlink{class_rapidity_generator_a6b173529816ec350be82dd0330a51e89}{scale}});}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00114}00114               \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00115}00115             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00116}00116             \textcolor{keywordflow}{case} 2:  \textcolor{comment}{// Gaussian}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00117}00117             localRap = -\/99999;}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00118}00118             \textcolor{keywordflow}{while} (fabs(localRap)>2*\mbox{\hyperlink{class_rapidity_generator_ae89864fae7056a27dac64c4b0887c4c2}{maxRapidity}})}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00119}00119               \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00120}00120               localRap = \mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}}-\/>Gaus(0.0, \mbox{\hyperlink{class_rapidity_generator_a6b173529816ec350be82dd0330a51e89}{scale}});}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00121}00121               \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00122}00122             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00123}00123           \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00124}00124         rap1 = \mbox{\hyperlink{class_rapidity_generator_a84b4eecaf75f4d0db7ad693845d6c482}{pairRapidity}} + localRap;}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00125}00125         rap2 = \mbox{\hyperlink{class_rapidity_generator_a84b4eecaf75f4d0db7ad693845d6c482}{pairRapidity}} -\/ localRap;}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00126}00126         OK = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00127}00127         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<\mbox{\hyperlink{class_rapidity_generator_ad79e1e3281e4152b932215bcaf534575}{nStored}}; k++)}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00128}00128           \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00129}00129           \textcolor{keywordflow}{if} (fabs(rap1-\/\mbox{\hyperlink{class_rapidity_generator_a951a3287b1fb417ebe5162316c75193c}{store}}[k])<\mbox{\hyperlink{class_rapidity_generator_a5b792ac7aa0d0bed9967658ea2564840}{minimumSeparation}} || fabs(rap2-\/\mbox{\hyperlink{class_rapidity_generator_a951a3287b1fb417ebe5162316c75193c}{store}}[k])<\mbox{\hyperlink{class_rapidity_generator_a5b792ac7aa0d0bed9967658ea2564840}{minimumSeparation}})}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00130}00130             \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00131}00131             OK = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00132}00132             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00133}00133             \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00134}00134           \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00135}00135         \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00136}00136       \mbox{\hyperlink{class_rapidity_generator_a24c0c3c3e9bf2107e8c0d83914d3b4e5}{saveRapidity}} = rap2;}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00137}00137       v = rap1;}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00138}00138       \mbox{\hyperlink{class_rapidity_generator_a8a918283cbd4950e7cd9299d06760dc7}{rank}} = 1; \textcolor{comment}{// next we use saveRapidity}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00058}00058           v = -\/99999;}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00059}00059           \textcolor{keywordflow}{while} (fabs(v)>\mbox{\hyperlink{class_rapidity_generator_ae89864fae7056a27dac64c4b0887c4c2}{maxRapidity}})}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00060}00060             \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00061}00061             v = 0.5*\mbox{\hyperlink{class_rapidity_generator_a5b792ac7aa0d0bed9967658ea2564840}{minimumSeparation}} + \mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}}-\/>Exp(\mbox{\hyperlink{class_rapidity_generator_a6b173529816ec350be82dd0330a51e89}{scale}});}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00062}00062             v = (\mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}}-\/>Rndm()>0.50) ? v : -\/v;}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00063}00063             \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00064}00064           \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00066}00066           \textcolor{keywordflow}{case} 2:  \textcolor{comment}{// Gaussian}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00068}00068           v = -\/99999;}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00069}00069           \textcolor{keywordflow}{while} (fabs(v)>\mbox{\hyperlink{class_rapidity_generator_ae89864fae7056a27dac64c4b0887c4c2}{maxRapidity}})}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00070}00070             \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00071}00071             v = 0.5*\mbox{\hyperlink{class_rapidity_generator_a5b792ac7aa0d0bed9967658ea2564840}{minimumSeparation}} + \mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}}-\/>Gaus(0.0, \mbox{\hyperlink{class_rapidity_generator_a6b173529816ec350be82dd0330a51e89}{scale}});}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00072}00072             \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00073}00073           \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00074}00074         \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00076}00076       OK = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00077}00077       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<\mbox{\hyperlink{class_rapidity_generator_ad79e1e3281e4152b932215bcaf534575}{nStored}}; k++)}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00078}00078         \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00079}00079         \textcolor{keywordflow}{if} (fabs(v-\/\mbox{\hyperlink{class_rapidity_generator_a951a3287b1fb417ebe5162316c75193c}{store}}[k])<\mbox{\hyperlink{class_rapidity_generator_a5b792ac7aa0d0bed9967658ea2564840}{minimumSeparation}})}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00080}00080           \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00081}00081           OK = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00082}00082           \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00083}00083           \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00084}00084         \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00086}00086       \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00087}00087     \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00088}00088   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00089}00089     \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00090}00090     \textcolor{comment}{// Generate clusters in pairs.}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00092}00092     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_rapidity_generator_a8a918283cbd4950e7cd9299d06760dc7}{rank}}==0)}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00093}00093       \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00094}00094       \textcolor{keywordflow}{while} (!OK)}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00095}00095         \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00096}00096         \textcolor{comment}{// generate a new pair average rapidity}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00097}00097         \mbox{\hyperlink{class_rapidity_generator_a84b4eecaf75f4d0db7ad693845d6c482}{pairRapidity}} = \mbox{\hyperlink{class_rapidity_generator_ae89864fae7056a27dac64c4b0887c4c2}{maxRapidity}} * (2.0*\mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}}-\/>Rndm() -\/ 1.0);}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00098}00098         \textcolor{keywordflow}{switch} (\mbox{\hyperlink{class_rapidity_generator_aa6136348e00c7cb4946bb6d3a8344a7c}{option}})}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00099}00099           \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00100}00100             \textcolor{keywordflow}{case} 0:  \textcolor{comment}{// uniform}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00101}00101             \textcolor{comment}{//cout << "{}Option not available/sensible"{} << endl;}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00102}00102             localRap = 0.5;}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00103}00103             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00104}00104             \textcolor{keywordflow}{case} 1:  \textcolor{comment}{// exponential}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00105}00105             localRap = -\/99999;}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00106}00106             \textcolor{keywordflow}{while} (fabs(localRap)>2*\mbox{\hyperlink{class_rapidity_generator_ae89864fae7056a27dac64c4b0887c4c2}{maxRapidity}})}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00107}00107               \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00108}00108               localRap = \mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}}-\/>Exp(\mbox{\hyperlink{class_rapidity_generator_a6b173529816ec350be82dd0330a51e89}{scale}});}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00109}00109               \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00110}00110             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00111}00111             \textcolor{keywordflow}{case} 2:  \textcolor{comment}{// Gaussian}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00112}00112             localRap = -\/99999;}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00113}00113             \textcolor{keywordflow}{while} (fabs(localRap)>2*\mbox{\hyperlink{class_rapidity_generator_ae89864fae7056a27dac64c4b0887c4c2}{maxRapidity}})}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00114}00114               \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00115}00115               localRap = \mbox{\hyperlink{class_rapidity_generator_a0d1a943b4fe59f40d8d92b061bbfb4da}{r}}-\/>Gaus(0.0, \mbox{\hyperlink{class_rapidity_generator_a6b173529816ec350be82dd0330a51e89}{scale}});}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00116}00116               \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00117}00117             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00118}00118           \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00119}00119         rap1 = \mbox{\hyperlink{class_rapidity_generator_a84b4eecaf75f4d0db7ad693845d6c482}{pairRapidity}} + localRap;}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00120}00120         rap2 = \mbox{\hyperlink{class_rapidity_generator_a84b4eecaf75f4d0db7ad693845d6c482}{pairRapidity}} -\/ localRap;}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00121}00121         OK = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00122}00122         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=0; k<\mbox{\hyperlink{class_rapidity_generator_ad79e1e3281e4152b932215bcaf534575}{nStored}}; k++)}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00123}00123           \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00124}00124           \textcolor{keywordflow}{if} (fabs(rap1-\/\mbox{\hyperlink{class_rapidity_generator_a951a3287b1fb417ebe5162316c75193c}{store}}[k])<\mbox{\hyperlink{class_rapidity_generator_a5b792ac7aa0d0bed9967658ea2564840}{minimumSeparation}} || fabs(rap2-\/\mbox{\hyperlink{class_rapidity_generator_a951a3287b1fb417ebe5162316c75193c}{store}}[k])<\mbox{\hyperlink{class_rapidity_generator_a5b792ac7aa0d0bed9967658ea2564840}{minimumSeparation}})}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00125}00125             \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00126}00126             OK = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00127}00127             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00128}00128             \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00129}00129           \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00130}00130         \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00131}00131       \mbox{\hyperlink{class_rapidity_generator_a24c0c3c3e9bf2107e8c0d83914d3b4e5}{saveRapidity}} = rap2;}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00132}00132       v = rap1;}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00133}00133       \mbox{\hyperlink{class_rapidity_generator_a8a918283cbd4950e7cd9299d06760dc7}{rank}} = 1; \textcolor{comment}{// next we use saveRapidity}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00134}00134       \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00135}00135     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00136}00136       \{}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00137}00137       v = \mbox{\hyperlink{class_rapidity_generator_a24c0c3c3e9bf2107e8c0d83914d3b4e5}{saveRapidity}};}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00138}00138       \mbox{\hyperlink{class_rapidity_generator_a8a918283cbd4950e7cd9299d06760dc7}{rank}} = 0; \textcolor{comment}{// next we calculate a new pair}}
 \DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00139}00139       \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00140}00140     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00141}00141       \{}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00142}00142       v = \mbox{\hyperlink{class_rapidity_generator_a24c0c3c3e9bf2107e8c0d83914d3b4e5}{saveRapidity}};}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00143}00143       \mbox{\hyperlink{class_rapidity_generator_a8a918283cbd4950e7cd9299d06760dc7}{rank}} = 0; \textcolor{comment}{// next we calculate a new pair}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00144}00144       \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00145}00145     \}}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00146}00146   \textcolor{keywordflow}{return} v;}
-\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00147}00147   \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00140}00140     \}}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00141}00141   \textcolor{keywordflow}{return} v;}
+\DoxyCodeLine{\Hypertarget{_rapidity_generator_8cpp_source_l00142}00142   \}}
 
 \end{DoxyCode}
