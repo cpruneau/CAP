@@ -74,6 +74,8 @@ public:
   //!
   virtual void loadHistograms(TFile * inputFile);
 
+  virtual Task * getDerivedCalculator();
+
 protected:
   int multiplicityType; //!< variable used to select which event property is used to differential studies of the moments. This variable is set the class parameter "inputType".
 

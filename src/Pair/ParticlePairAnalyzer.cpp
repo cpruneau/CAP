@@ -10,6 +10,7 @@
  *
  * *********************************************************************/
 #include "ParticlePairAnalyzer.hpp"
+#include "ParticlePairDerivedHistogramCalculator.hpp"
 
 ClassImp(ParticlePairAnalyzer);
 
@@ -413,3 +414,18 @@ void ParticlePairAnalyzer::scaleHistograms()
     ;
 }
 
+Task * ParticlePairAnalyzer::getDerivedCalculator()
+{
+  if (reportDebug(__FUNCTION__))
+    ;
+  TString nameD = getName();
+  if (reportDebug(__FUNCTION__)) cout << "Name of this task is:" << nameD  << endl;
+  Configuration derivedCalcConfiguration;
+  // copy the parameters of this task to the new task -- so all the histograms will automatically match
+  derivedCalcConfiguration.setParameters(configuration);
+  derivedCalcConfiguration.setParameter("createHistograms",       true);
+  derivedCalcConfiguration.setParameter("loadHistograms",         true);
+  derivedCalcConfiguration.setParameter("saveHistograms",         true);
+  Task * calculator = new ParticlePairDerivedHistogramCalculator(nameD,derivedCalcConfiguration,eventFilters,particleFilters,getReportLevel());
+  return calculator;
+}

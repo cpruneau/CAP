@@ -29,6 +29,7 @@ public:
   virtual void printProperties(ostream & output);
 
   virtual void fill(vector<double> & nFiltered,  // number of particles accepted by filter #i
+                    vector<double> & ptSumFiltered,  // total pT of particles accepted by filter #i
                     vector<double> & eFiltered,  // total energy of particles accepted by filter #i
                     vector<double> & qFiltered,  // total charge of particles accepted by filter #i
                     vector<double> & sFiltered,  // total strangeness of particles accepted by filter #i
@@ -63,6 +64,7 @@ public:
   // From GlobalAnalyzer
   int    nFilters;
   vector<double> nFiltered;  // number of particles accepted by filter #i
+  vector<double> ptSumFiltered;  // total pT of particles accepted by filter #i
   vector<double> eFiltered;  // total energy of particles accepted by filter #i
   vector<double> qFiltered;  // total charge of particles accepted by filter #i
   vector<double> sFiltered;  // total strangeness of particles accepted by filter #i

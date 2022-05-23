@@ -30,8 +30,10 @@ eventFilters            (),
 particleFilters         (),
 eventCountHistos        ( nullptr),
 inputHistograms         (),
+histograms              (),
 baseSingleHistograms    (),
 basePairHistograms      (),
+derivedHistograms       (),
 derivedSingleHistograms (),
 derivedPairHistograms   (),
 combinedHistograms      (),
@@ -69,6 +71,7 @@ eventCountHistos        ( nullptr),
 inputHistograms         (),
 baseSingleHistograms    (),
 basePairHistograms      (),
+derivedHistograms       (),
 derivedSingleHistograms (),
 derivedPairHistograms   (),
 combinedHistograms      (),
@@ -99,8 +102,10 @@ eventFilters            (_eventFilters),
 particleFilters         (_particleFilters),
 eventCountHistos        ( nullptr),
 inputHistograms         (),
+histograms              (),
 baseSingleHistograms    (),
 basePairHistograms      (),
+derivedHistograms       (),
 derivedSingleHistograms (),
 derivedPairHistograms   (),
 combinedHistograms      (),
@@ -117,6 +122,9 @@ void Task::setDefaultConfiguration()
 {
   if (reportStart(__FUNCTION__))
     ;
+  TString nullString("");
+  TString none("none");
+  TString treeName("tree");
   configuration.addParameter( "useEvents",               false);
   configuration.addParameter( "useParticles",            false);
   configuration.addParameter( "useEventStream0",         false);
@@ -135,40 +143,26 @@ void Task::setDefaultConfiguration()
   configuration.addParameter( "doSubsampleAnalysis",     false);
   configuration.addParameter( "doPartialReports",        false);
   configuration.addParameter( "doPartialSaves",          false);
-  configuration.addParameter( "histoInputPath",          TString("./")   );
-  configuration.addParameter( "histoInputFileName",      TString("") );
-  configuration.addParameter( "histoOutputPath",         TString("./")  );
-  configuration.addParameter( "histoOutputFileName",     TString("./")  ); // do not used
-  configuration.addParameter( "histoOutputDataName",     TString("./")  );
-  configuration.addParameter( "histoOutputAnalyzerName", TString("./")  );
-  configuration.addParameter( "histoBaseName",           TString("BaseNameUndefined"));
-  
-  configuration.addParameter( "dataInputUsed",       false);
-  configuration.addParameter( "dataInputPath",       TString("./"));
-  configuration.addParameter( "dataInputFileName",   TString("FOLDER"));
-  configuration.addParameter( "dataInputTreeName",   TString("tree") );
-  configuration.addParameter( "dataInputFileMinIndex", -1);
-  configuration.addParameter( "dataInputFileMaxIndex", -1);
-  
-  configuration.addParameter( "dataOutputUsed",     false);
-  configuration.addParameter( "dataOutputPath",     TString("./"));
-  configuration.addParameter( "dataOutputFileName", TString(""));
-  configuration.addParameter( "dataOutputTreeName", TString("tree"));
-  
-  configuration.addParameter( "dataConversionToWac", true);
-
-  for (int k=0; k<20; k++)
-    {
-    TString key("IncludedPattern"); key += k;
-    TString value("none"); value += k;
-    configuration.addParameter(key, value);
-    }
-  for (int k=0; k<20; k++)
-    {
-    TString key("ExcludedPattern"); key += k;
-    TString value("none"); value += k;
-    configuration.addParameter(key, value);
-    }
+  configuration.addParameter( "histoInputPath",          nullString);
+  configuration.addParameter( "histoInputFileName",      nullString);
+  configuration.addParameter( "histoOutputPath",         nullString);
+  configuration.addParameter( "histoOutputFileName",     nullString);
+  configuration.addParameter( "histoOutputDataName",     nullString);
+  configuration.addParameter( "histoOutputAnalyzerName", nullString);
+  configuration.addParameter( "histoBaseName",           nullString);
+  configuration.addParameter( "dataInputUsed",           false);
+  configuration.addParameter( "dataInputPath",           nullString);
+  configuration.addParameter( "dataInputFileName",       nullString);
+  configuration.addParameter( "dataInputTreeName",       treeName);
+  configuration.addParameter( "dataInputFileMinIndex",   -1);
+  configuration.addParameter( "dataInputFileMaxIndex",   -1);
+  configuration.addParameter( "dataOutputUsed",          false);
+  configuration.addParameter( "dataOutputPath",          nullString);
+  configuration.addParameter( "dataOutputFileName",      nullString);
+  configuration.addParameter( "dataOutputTreeName",      treeName);
+  configuration.addParameter( "dataConversionToWac",     true);
+  configuration.generateKeyValuePairs("IncludedPattern", none, 20);
+  configuration.generateKeyValuePairs("ExcludedPattern", none, 20);
   if (reportDebug(__FUNCTION__))    configuration.printConfiguration(cout);
 }
 
@@ -179,7 +173,6 @@ void Task::setConfiguration(const Configuration & _configuration)
   configuration.setParameters(_configuration);
   if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
-
 
 void Task::initialize()
 {
@@ -354,6 +347,7 @@ void Task::loadHistograms()
   bool useParticles          = configuration.getValueBool("useParticles");
   TString histoInputPath     = configuration.getValueString("histoInputPath");
   TString histoInputFileName = configuration.getValueString("histoInputFileName");
+
   TFile * inputFile          = openRootFile(histoInputPath,histoInputFileName,"READ");
   if (!inputFile) return;
   if (useParticles)  loadEventCountHistograms(inputFile);
@@ -437,6 +431,7 @@ void Task::resetHistograms()
   for (unsigned int iHisto=0; iHisto<histograms.size();             iHisto++) histograms[iHisto]->reset();
   for (unsigned int iHisto=0; iHisto<baseSingleHistograms.size();   iHisto++) baseSingleHistograms[iHisto]->reset();
   for (unsigned int iHisto=0; iHisto<basePairHistograms.size();     iHisto++) basePairHistograms[iHisto]->reset();
+  for (unsigned int iHisto=0; iHisto<derivedHistograms.size();      iHisto++) derivedHistograms[iHisto]->reset();
   for (unsigned int iHisto=0; iHisto<derivedSingleHistograms.size();iHisto++) derivedSingleHistograms[iHisto]->reset();
   for (unsigned int iHisto=0; iHisto<derivedPairHistograms.size();  iHisto++) derivedPairHistograms[iHisto]->reset();
   for (unsigned int iHisto=0; iHisto<combinedHistograms.size();     iHisto++) combinedHistograms[iHisto]->reset();
@@ -453,6 +448,7 @@ void Task::clearHistograms()
   for (unsigned int iHisto=0; iHisto<histograms.size();             iHisto++) delete histograms[iHisto];
   for (unsigned int iHisto=0; iHisto<baseSingleHistograms.size();   iHisto++) delete baseSingleHistograms[iHisto];
   for (unsigned int iHisto=0; iHisto<basePairHistograms.size();     iHisto++) delete basePairHistograms[iHisto];
+  for (unsigned int iHisto=0; iHisto<derivedHistograms.size();      iHisto++) delete derivedHistograms[iHisto];
   for (unsigned int iHisto=0; iHisto<derivedSingleHistograms.size();iHisto++) delete derivedSingleHistograms[iHisto];
   for (unsigned int iHisto=0; iHisto<derivedPairHistograms.size();  iHisto++) delete derivedPairHistograms[iHisto];
   for (unsigned int iHisto=0; iHisto<combinedHistograms.size();     iHisto++) delete combinedHistograms[iHisto];
@@ -460,6 +456,7 @@ void Task::clearHistograms()
   histograms.clear();
   baseSingleHistograms.clear();
   basePairHistograms.clear();
+  derivedHistograms.clear();
   derivedSingleHistograms.clear();
   derivedPairHistograms.clear();
   combinedHistograms.clear();
@@ -545,8 +542,10 @@ void Task::saveHistograms(TFile * outputFile)
   if (reportDebug(__FUNCTION__))
     {
     cout << endl;
+    cout << "         global histogram(s):"  << histograms.size() << endl;
     cout << "    base single histogram(s):"  << baseSingleHistograms.size() << endl;
     cout << "      base pair histogram(s):"  << basePairHistograms.size() << endl;
+    cout << " derived global histogram(s):"  << derivedHistograms.size() << endl;
     cout << " derived single histogram(s):"  << derivedSingleHistograms.size() << endl;
     cout << "   derived pair histogram(s):"  << derivedPairHistograms.size() << endl;
     cout << "       combined histogram(s):"  << combinedHistograms.size() << endl;
@@ -565,6 +564,11 @@ void Task::saveHistograms(TFile * outputFile)
     {
     if (reportDebug(__FUNCTION__)) cout << "Saving pair histogram(s) group:" << iHisto << endl;
     basePairHistograms[iHisto]->saveHistograms(outputFile);
+    }
+  for (unsigned int iHisto=0; iHisto<derivedHistograms.size(); iHisto++)
+    {
+    if (reportDebug(__FUNCTION__)) cout << "Saving global histogram(s) group:" << iHisto << endl;
+    derivedHistograms[iHisto]->saveHistograms(outputFile);
     }
   for (unsigned int iHisto=0; iHisto<derivedSingleHistograms.size(); iHisto++)
     {
@@ -598,11 +602,17 @@ void Task::saveHistograms()
   TString histoOutputDataName     = configuration.getValueString("histoOutputDataName");
   TString histoOutputAnalyzerName = configuration.getValueString("histoOutputAnalyzerName");
 
-//  histoOutputFileName            = removeRootExtension(histoOutputFileName);
+  // rule: if an actual file name 'histoOutputFileName' is provided, that is what is
+  // used to save the histograms. If not, assemble a name based on 'histoOutputDataName' and 'histoOutputAnalyzerName'
+  // If the partial save option is set, a sequence number will be added to the file name.
+  //
+  if (histoOutputFileName.IsNull())
+    {
+    histoOutputFileName  = histoOutputDataName;
+    histoOutputFileName  += "_";
+    histoOutputFileName  += histoOutputAnalyzerName;
+    }
 
-  histoOutputFileName  = histoOutputDataName;
-  histoOutputFileName  += "_";
-  histoOutputFileName  += histoOutputAnalyzerName;
   if (doSubsampleAnalysis || doPartialSave )
     {
     histoOutputFileName += "_";
@@ -622,9 +632,14 @@ void Task::saveHistograms()
   else
     outputFile = openRootFile(histoOutputPath,histoOutputFileName,"NEW");
   if (!outputFile) return;
-  if (useParticles)  saveEventCountHistograms(outputFile);
-  if (useParticles)  writeNEventsAccepted(outputFile);
-  if (useParticles)  writeNEexecutedTask(outputFile);
+  if (useParticles)
+    {
+    // this next fill is done once per save (after reset)
+    fillEventCountHistograms();
+    writeNEventsAccepted(outputFile);
+    writeNEexecutedTask(outputFile);
+    saveEventCountHistograms(outputFile);
+    }
   saveHistograms(outputFile);
   outputFile->Close();
   if (reportEnd(__FUNCTION__))

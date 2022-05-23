@@ -142,6 +142,7 @@ void EventProperties::reset()
 }
 
 void EventProperties::fill(vector<double> & n,  // number of particles accepted by filter #i
+                           vector<double> & ptSum,  // total pT of particles accepted by filter #i
                            vector<double> & e,  // total energy of particles accepted by filter #i
                            vector<double> & q,  // total charge of particles accepted by filter #i
                            vector<double> & s,  // total strangeness of particles accepted by filter #i
@@ -150,11 +151,12 @@ void EventProperties::fill(vector<double> & n,  // number of particles accepted 
   int nFilters = n.size();
   for (int iFilter=0; iFilter<nFilters; iFilter++)
     {
-    nFiltered.push_back( n[iFilter] );
-    eFiltered.push_back( e[iFilter] );
-    qFiltered.push_back( q[iFilter] );
-    sFiltered.push_back( s[iFilter] );
-    bFiltered.push_back( b[iFilter] );
+    nFiltered.push_back(    n[iFilter] );
+    ptSumFiltered.push_back(ptSum[iFilter] );
+    eFiltered.push_back(    e[iFilter] );
+    qFiltered.push_back(    q[iFilter] );
+    sFiltered.push_back(    s[iFilter] );
+    bFiltered.push_back(    b[iFilter] );
     }
 }
 
@@ -193,6 +195,7 @@ void EventProperties::printProperties(ostream & output)
   output 
     << setw(5) << k << " "
   << scientific << setw(15)<< setprecision(5) << nFiltered[k]
+  << scientific << setw(15)<< setprecision(5) << ptSumFiltered[k]
   << scientific << setw(15)<< setprecision(5) << eFiltered[k]
   << scientific << setw(15)<< setprecision(5) << qFiltered[k]
   << scientific << setw(15)<< setprecision(5) << sFiltered[k]

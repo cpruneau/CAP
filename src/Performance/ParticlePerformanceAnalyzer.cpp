@@ -37,8 +37,8 @@ void ParticlePerformanceAnalyzer::setDefaultConfiguration()
   Configuration & configuration = getConfiguration();
   configuration.setName("ParticlePerformanceAnalyzer Configuration");
   configuration.addParameter("useParticles",     true);
-  configuration.addParameter( "useEventStream0", true);
-  configuration.addParameter( "useEventStream1", true);
+  configuration.addParameter("useEventStream0",  true);
+  configuration.addParameter("useEventStream1",  true);
   configuration.addParameter("createHistograms", true);
   configuration.addParameter("saveHistograms",   true);
   

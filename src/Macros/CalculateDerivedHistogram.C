@@ -1,44 +1,49 @@
 #include "TString.h"
 #include "TRandom.h"
+void loadBase(const TString & includeBasePath);
 
 int CalculateDerivedHistogram()
 {
+
+  TString includeBasePath = getenv("CAP_SRC");
+  loadBase(includeBasePath);
+
   std::cout << "==================================================================================" << std::endl;
   std::cout << "CalculateDerivedHistogram()" << endl;
   std::cout << "==================================================================================" << std::endl;
- 
-  TString includesPath = getenv("WAC_SRC");
-  includesPath += "/Base/";
-  gSystem->Load(includesPath+"MessageLogger.hpp");
-  gSystem->Load(includesPath+"Task.hpp");
-  gSystem->Load(includesPath+"HistogramCollection.hpp");
-  gSystem->Load(includesPath+"Histograms.hpp");
-  gSystem->Load(includesPath+"DerivedHistogramCalculator.hpp");
-  gSystem->Load(includesPath+"ParticleFilterAliceV0.hpp");
-  gSystem->Load("libBase.dylib");
+
+  TString modelLabel;
+  TString systemLabel;
+  TString energyLabel;
+  TString extraLabel;
+
+  TString globalLabel     = "G";
+  TString spherocityLabel = "S";
+  TString partLabel       = "Part";
+  TString pairLabel       = "Pair";
+  TString nuDynLabel      = "NuDyn";
+  TString derivedLabel         = "Derived";
+  TString sumLabel             = "Sum";
+  TString balFctLabel          = "BalFct";
+  TString rootExt              = ".root";
+
+  TString histoOutputDataName;
+  TString histoOutputAnalyzerName;
+  TString histoBaseName;
 
   MessageLogger::LogLevel  infoLevel  = MessageLogger::Info;
   MessageLogger::LogLevel  debugLevel = MessageLogger::Debug;
   MessageLogger::LogLevel  selectedLevel = debugLevel; //infoLevel;
   bool YES = true;
   bool NO  = false;
-  //TString histoInputPath      = "/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/13TEV/Eta2/";
-  //TString baseFileName  = "PYTHIA_pp_13TeV_inelastic_Pair_";
-   
-  TString histoInputPath       = "/Volumes/ClaudeDisc4/OutputFiles/RhoResonanceTestWiderFinest/";
-  TString histoInputFileName   = "RhoResonance_";
-  TString histoOutputPath      = "/Volumes/ClaudeDisc4/OutputFiles/RhoResonanceTestWiderFinest/";
-  TString histoOutputFileName  = "RhoResonance_";
-  TString histoBaseName        = "RhoResonance_";
-  TString globalLabel          = "Global";
-  TString partLabel            = "Part";
-  TString pairLabel            = "Pair";
-  TString nuDynLabel           = "NuDyn";
-  TString derivedLabel         = "Derived";
-  TString sumLabel             = "Sum";
-  TString balFctLabel          = "BalFct";
-  TString rootExt              = ".root";
-  
+
+  TString histoInputPath       = "/Volumes/ClaudeDisc4/OutputFiles/quickTest2/RhoDecay/";
+  TString histoInputFileName   = "RhoDecay";
+  TString histoOutputPath      = "/Volumes/ClaudeDisc4/OutputFiles/quickTest2/RhoDecay/";
+  TString histoOutputFileName  = "RhoDecay";
+  TString histoBaseName        = "RhoDecay";
+
+
   bool forceHistogramsRewrite  =  YES;
   int  eventSelection      = 0;
   int  particleSelection   = 3;
@@ -141,8 +146,6 @@ int CalculateDerivedHistogram()
 
   Configuration nuDynConfig("Nu Dyn Configuration");
 
-  
-  
   vector<EventFilter*> eventFilters;
   vector<ParticleFilter*>  particleFilters;
 
@@ -232,7 +235,7 @@ int CalculateDerivedHistogram()
       fileIteratorConfig.addParameter("appendedString",  derivedLabel);
       FileTaskIterator * iterator = new FileTaskIterator("ParticleDerivedHistogramIterator",fileIteratorConfig,selectedLevel);
       iterator->addSubtask(new ParticleDerivedHistogramCalculator(partLabel, partConfig, eventFilters, particleFilters, selectedLevel));
-      iterator->run();
+      iterator->execute();
       delete iterator;
       }
     
@@ -250,7 +253,7 @@ int CalculateDerivedHistogram()
       fileIteratorConfig.addParameter("appendedString",  derivedLabel);
       FileTaskIterator * iterator = new FileTaskIterator("ParticleDerivedHistogramIterator",fileIteratorConfig,selectedLevel);
       iterator->addSubtask(new ParticleDerivedHistogramCalculator(partLabel, partConfig, eventFilters, particleFilters, selectedLevel));
-      iterator->run();
+      iiterator->execute();
       delete iterator;
       }
     
@@ -268,186 +271,218 @@ int CalculateDerivedHistogram()
       fileIteratorConfig.addParameter("appendedString",  derivedLabel);
       FileTaskIterator * iterator = new FileTaskIterator("NuDynDerivedHistogramIterator",fileIteratorConfig,selectedLevel);
       iterator->addSubtask(new NuDynDerivedHistogramCalculator(nuDynLabel, nuDynConfig, eventFilters, particleFilters, selectedLevel));
-      iterator->run();
+      iterator->execute();
       delete iterator;
       }
     }
 
-  if (sumBasicHistograms)
-    {
-    if (doParticles)
-      {
-      Configuration subSampleCalcularorConfig("SubSampleCalcularor-Particles Configuration");
-      subSampleCalcularorConfig.addParameter("histoInputPath",        histoInputPath      );
-      subSampleCalcularorConfig.addParameter("histoOutputPath",       histoOutputPath     );
-      subSampleCalcularorConfig.addParameter("forceHistogramsRewrite",forceHistogramsRewrite);
-      subSampleCalcularorConfig.addParameter("IncludedPattern0", rootExt);
-      subSampleCalcularorConfig.addParameter("IncludedPattern1", histoBaseName+partLabel);
-      subSampleCalcularorConfig.addParameter("ExcludedPattern0", derivedLabel);
-      subSampleCalcularorConfig.addParameter("ExcludedPattern1", sumLabel);
-      subSampleCalcularorConfig.addParameter("ExcludedPattern2", balFctLabel);
-      subSampleCalcularorConfig.addParameter("defaultGroupSize", 10);
-      subSampleCalcularorConfig.addParameter("appendedString",   "Sum_");
-      SubSampleStatCalculator * calculator = new SubSampleStatCalculator("SubSampleStatCalculator-Particles",subSampleCalcularorConfig,infoLevel);
-      calculator->run();
-      }
-    if (doPairs)
-      {
-      Configuration subSampleCalcularorConfig("SubSampleCalcularor-Pairs Configuration");
-      subSampleCalcularorConfig.addParameter("histoInputPath",        histoInputPath      );
-      subSampleCalcularorConfig.addParameter("histoOutputPath",       histoOutputPath     );
-      subSampleCalcularorConfig.addParameter("forceHistogramsRewrite",forceHistogramsRewrite);
-      subSampleCalcularorConfig.addParameter("IncludedPattern0", rootExt);
-      subSampleCalcularorConfig.addParameter("IncludedPattern1", histoBaseName+pairLabel);
-      subSampleCalcularorConfig.addParameter("ExcludedPattern0", derivedLabel);
-      subSampleCalcularorConfig.addParameter("ExcludedPattern1", sumLabel);
-      subSampleCalcularorConfig.addParameter("ExcludedPattern2", balFctLabel);
-      subSampleCalcularorConfig.addParameter("defaultGroupSize", 10);
-      subSampleCalcularorConfig.addParameter("appendedString",   "Sum_");
-      SubSampleStatCalculator * calculator = new SubSampleStatCalculator("SubSampleStatCalculator-Pairs",subSampleCalcularorConfig,infoLevel);
-      calculator->run();
-      }
-    if (doNuDyns)
-      {
-      Configuration subSampleCalcularorConfig("SubSampleCalcularor-NuDyns Configuration");
-      subSampleCalcularorConfig.addParameter("histoInputPath",        histoInputPath      );
-      subSampleCalcularorConfig.addParameter("histoOutputPath",       histoOutputPath     );
-      subSampleCalcularorConfig.addParameter("forceHistogramsRewrite",forceHistogramsRewrite);
-      subSampleCalcularorConfig.addParameter("IncludedPattern0", rootExt);
-      subSampleCalcularorConfig.addParameter("IncludedPattern1", histoBaseName+nuDynLabel);
-      subSampleCalcularorConfig.addParameter("ExcludedPattern2", derivedLabel);
-      subSampleCalcularorConfig.addParameter("ExcludedPattern0", sumLabel);
-      subSampleCalcularorConfig.addParameter("ExcludedPattern1", balFctLabel);
-      subSampleCalcularorConfig.addParameter("defaultGroupSize", 10);
-      subSampleCalcularorConfig.addParameter("appendedString",   "Derived_Sum_");
-      SubSampleStatCalculator * calculator = new SubSampleStatCalculator("SubSampleStatCalculator-NuDyns",subSampleCalcularorConfig,infoLevel);
-      calculator->run();
-      }
-    }
-  
-  if (sumDerivedHistograms)
-    {
-    if (doParticles)
-      {
-      Configuration subSampleCalcularorConfig("SubSampleCalcularor-Particles Configuration");
-      subSampleCalcularorConfig.addParameter("histoInputPath",        histoInputPath      );
-      subSampleCalcularorConfig.addParameter("histoOutputPath",       histoOutputPath     );
-      subSampleCalcularorConfig.addParameter("forceHistogramsRewrite",forceHistogramsRewrite);
-      subSampleCalcularorConfig.addParameter("IncludedPattern0", rootExt);
-      subSampleCalcularorConfig.addParameter("IncludedPattern1", histoBaseName+partLabel);
-      subSampleCalcularorConfig.addParameter("IncludedPattern2", derivedLabel);
-      subSampleCalcularorConfig.addParameter("ExcludedPattern0", sumLabel);
-      subSampleCalcularorConfig.addParameter("ExcludedPattern1", balFctLabel);
-      subSampleCalcularorConfig.addParameter("defaultGroupSize", 10);
-      subSampleCalcularorConfig.addParameter("appendedString",   "Derived_Sum_");
-      SubSampleStatCalculator * calculator = new SubSampleStatCalculator("SubSampleStatCalculator-Particles",subSampleCalcularorConfig,infoLevel);
-      calculator->run();
-      }
-    if (doPairs)
-      {
-      Configuration subSampleCalcularorConfig("SubSampleCalcularor-Pairs Configuration");
-      subSampleCalcularorConfig.addParameter("histoInputPath",        histoInputPath      );
-      subSampleCalcularorConfig.addParameter("histoOutputPath",       histoOutputPath     );
-      subSampleCalcularorConfig.addParameter("forceHistogramsRewrite",forceHistogramsRewrite);
-      subSampleCalcularorConfig.addParameter("IncludedPattern0", rootExt);
-      subSampleCalcularorConfig.addParameter("IncludedPattern1", histoBaseName+pairLabel);
-      subSampleCalcularorConfig.addParameter("IncludedPattern2", derivedLabel);
-      subSampleCalcularorConfig.addParameter("ExcludedPattern0", sumLabel);
-      subSampleCalcularorConfig.addParameter("ExcludedPattern1", balFctLabel);
-      subSampleCalcularorConfig.addParameter("defaultGroupSize", 10);
-      subSampleCalcularorConfig.addParameter("appendedString",   "Derived_Sum_");
-      SubSampleStatCalculator * calculator = new SubSampleStatCalculator("SubSampleStatCalculator-Pairs",subSampleCalcularorConfig,infoLevel);
-      calculator->run();
-      }
-    if (doNuDyns)
-      {
-      Configuration subSampleCalcularorConfig("SubSampleCalcularor-NuDyns Configuration");
-      subSampleCalcularorConfig.addParameter("histoInputPath",        histoInputPath      );
-      subSampleCalcularorConfig.addParameter("histoOutputPath",       histoOutputPath     );
-      subSampleCalcularorConfig.addParameter("forceHistogramsRewrite",forceHistogramsRewrite);
-      subSampleCalcularorConfig.addParameter("IncludedPattern0", rootExt);
-      subSampleCalcularorConfig.addParameter("IncludedPattern1", histoBaseName+nuDynLabel);
-      subSampleCalcularorConfig.addParameter("IncludedPattern2", derivedLabel);
-      subSampleCalcularorConfig.addParameter("ExcludedPattern0", sumLabel);
-      subSampleCalcularorConfig.addParameter("ExcludedPattern1", balFctLabel);
-      subSampleCalcularorConfig.addParameter("defaultGroupSize", 10);
-      subSampleCalcularorConfig.addParameter("appendedString",   "Derived_Sum_");
-      SubSampleStatCalculator * calculator = new SubSampleStatCalculator("SubSampleStatCalculator-NuDyns",subSampleCalcularorConfig,infoLevel);
-      calculator->run();
-      }
-    }
 
-  if (computeBalFct)
-    {
-    cout << "ComputeBF -- from folder:" << histoInputPath  << endl;
-
-   
-    vector<TString> summedFiles = Task::listFilesInDir(histoInputPath,"Derived_Group_0_to_9.root");
-    int nSummedFiles = summedFiles.size();
-    cout << "  nSummedFiles: " << nSummedFiles << endl;
-    if (nSummedFiles<1)
-      {
-      cout << "<E> RunDerivedHistogramCalculator(...) No sum of derived files founds???" << endl;
-      return 1;
-      }
- 
-
-    vector<TString>  sObservableNames;
-    vector<TString>  pObservableNames;
-    switch (observableSelection)
-      {
-        default:
-        case 0: // eta based observables, full complement
-        sObservableNames.push_back("_n1_eta");
-        sObservableNames.push_back("_n1_phi");
-        pObservableNames.push_back("_R2_ptpt");
-        pObservableNames.push_back("_R2_phiPhi");
-        pObservableNames.push_back("_R2_etaEta");
-        pObservableNames.push_back("_R2_DetaDphi_shft");
-        break;
-
-        case 1: // eta based observables, only DeltaEta vs DeltaPhi
-        sObservableNames.push_back("_n1_eta");
-        sObservableNames.push_back("_n1_phi");
-        pObservableNames.push_back("_R2_DetaDphi_shft");
-        break;
-
-        case 2: // y based observables, full complement
-        sObservableNames.push_back("_n1_y");
-        sObservableNames.push_back("_n1_phi");
-        pObservableNames.push_back("_R2_ptpt");
-        pObservableNames.push_back("_R2_phiPhi");
-        pObservableNames.push_back("_R2_yY");
-        pObservableNames.push_back("_R2_DyDphi_shft");
-        break;
-
-        case 3: // y based observables, only DeltaY vs DeltaPhi
-        sObservableNames.push_back("_n1_y");
-        sObservableNames.push_back("_n1_phi");
-        pObservableNames.push_back("_R2_DyDphi_shft");
-        break;
-
-        case 4: // eta based observables, only DeltaEta vs DeltaPhi
-        sObservableNames.push_back("_n1_eta");
-        sObservableNames.push_back("_n1_phi");
-        pObservableNames.push_back("_B2AB_DetaDphi_shft");
-        pObservableNames.push_back("_B2BA_DetaDphi_shft");
-        break;
-      }
-   
-    for (unsigned int k=0; k<nSummedFiles; k++  )
-      {
-      pairConfig.setParameter( "histoInputPath",      histoInputPath    );
-      pairConfig.setParameter( "histoInputFileName",  summedFiles[k]    );
-      pairConfig.setParameter( "histoOutputPath",     histoOutputPath   );
-      pairConfig.setParameter( "histoOutputFileName", TString("test")   );
-      pairConfig.setParameter( "histoBaseName",       TString("Pair_")  );
-      BalanceFunctionCalculator * bfc = new BalanceFunctionCalculator("BFC",pairConfig,eventFilters, particleFilters, sObservableNames, pObservableNames, selectedLevel);
-      bfc->execute();
-      delete bfc;
-      }
-    }
+//    SubSampleStatIterator * subSampleStatIterator;
+//    if (doSubsampleAnalysisBasic)
+//      {
+//      Configuration subSampleConfig("Event Iterator Configuration");
+//      subSampleConfig.addParameter( "forceHistogramsRewrite",forceHistogramsRewrite);
+//      subSampleConfig.addParameter( "appendedString",      TString("Sum_"));
+//      subSampleConfig.addParameter( "IncludedPattern",     outputFileNameBase);
+//      subSampleConfig.setParameter( "histoInputPath",      outputPathName);
+//      subSampleConfig.setParameter( "histoOutputPath",     outputPathName);
+//      subSampleConfig.addParameter( "histoOutputDataName",     histoOutputDataName);
+//      subSampleConfig.addParameter( "histoOutputAnalyzerName", histoOutputAnalyzerName);
+//      subSampleStatIterator = new SubSampleStatIterator("MultiTaskSubSampleIterator",subSampleConfig,infoLevel);
+//
+//    if (doParticles)
+//      {
+//      Configuration subSampleCalcularorConfig("SubSampleCalcularor-Particles Configuration");
+//      subSampleCalcularorConfig.addParameter("histoInputPath",        histoInputPath      );
+//      subSampleCalcularorConfig.addParameter("histoOutputPath",       histoOutputPath     );
+//      subSampleCalcularorConfig.addParameter("forceHistogramsRewrite",forceHistogramsRewrite);
+//      subSampleCalcularorConfig.addParameter("IncludedPattern0", rootExt);
+//      subSampleCalcularorConfig.addParameter("IncludedPattern1", histoBaseName+partLabel);
+//      subSampleCalcularorConfig.addParameter("ExcludedPattern0", derivedLabel);
+//      subSampleCalcularorConfig.addParameter("ExcludedPattern1", sumLabel);
+//      subSampleCalcularorConfig.addParameter("ExcludedPattern2", balFctLabel);
+//      subSampleCalcularorConfig.addParameter("defaultGroupSize", 10);
+//      subSampleCalcularorConfig.addParameter("appendedString",   "Sum_");
+//      subSampleStatIterator->addSubTask( globalEventAna );
+//
+//      SubSampleStatCalculator * calculator = new SubSampleStatCalculator("SubSampleStatCalculator-Particles",subSampleCalcularorConfig,infoLevel);
+//      calculator->run();
+//      }
+//    if (doPairs)
+//      {
+//      Configuration subSampleCalcularorConfig("SubSampleCalcularor-Pairs Configuration");
+//      subSampleCalcularorConfig.addParameter("histoInputPath",        histoInputPath      );
+//      subSampleCalcularorConfig.addParameter("histoOutputPath",       histoOutputPath     );
+//      subSampleCalcularorConfig.addParameter("forceHistogramsRewrite",forceHistogramsRewrite);
+//      subSampleCalcularorConfig.addParameter("IncludedPattern0", rootExt);
+//      subSampleCalcularorConfig.addParameter("IncludedPattern1", histoBaseName+pairLabel);
+//      subSampleCalcularorConfig.addParameter("ExcludedPattern0", derivedLabel);
+//      subSampleCalcularorConfig.addParameter("ExcludedPattern1", sumLabel);
+//      subSampleCalcularorConfig.addParameter("ExcludedPattern2", balFctLabel);
+//      subSampleCalcularorConfig.addParameter("defaultGroupSize", 10);
+//      subSampleCalcularorConfig.addParameter("appendedString",   "Sum_");
+//      SubSampleStatCalculator * calculator = new SubSampleStatCalculator("SubSampleStatCalculator-Pairs",subSampleCalcularorConfig,infoLevel);
+//      calculator->run();
+//      }
+//    if (doNuDyns)
+//      {
+//      Configuration subSampleCalcularorConfig("SubSampleCalcularor-NuDyns Configuration");
+//      subSampleCalcularorConfig.addParameter("histoInputPath",        histoInputPath      );
+//      subSampleCalcularorConfig.addParameter("histoOutputPath",       histoOutputPath     );
+//      subSampleCalcularorConfig.addParameter("forceHistogramsRewrite",forceHistogramsRewrite);
+//      subSampleCalcularorConfig.addParameter("IncludedPattern0", rootExt);
+//      subSampleCalcularorConfig.addParameter("IncludedPattern1", histoBaseName+nuDynLabel);
+//      subSampleCalcularorConfig.addParameter("ExcludedPattern2", derivedLabel);
+//      subSampleCalcularorConfig.addParameter("ExcludedPattern0", sumLabel);
+//      subSampleCalcularorConfig.addParameter("ExcludedPattern1", balFctLabel);
+//      subSampleCalcularorConfig.addParameter("defaultGroupSize", 10);
+//      subSampleCalcularorConfig.addParameter("appendedString",   "Derived_Sum_");
+//      SubSampleStatCalculator * calculator = new SubSampleStatCalculator("SubSampleStatCalculator-NuDyns",subSampleCalcularorConfig,infoLevel);
+//      calculator->run();
+//      }
+//    }
+//
+//  if (sumDerivedHistograms)
+//    {
+//    if (doParticles)
+//      {
+//      Configuration subSampleCalcularorConfig("SubSampleCalcularor-Particles Configuration");
+//      subSampleCalcularorConfig.addParameter("histoInputPath",        histoInputPath      );
+//      subSampleCalcularorConfig.addParameter("histoOutputPath",       histoOutputPath     );
+//      subSampleCalcularorConfig.addParameter("forceHistogramsRewrite",forceHistogramsRewrite);
+//      subSampleCalcularorConfig.addParameter("IncludedPattern0", rootExt);
+//      subSampleCalcularorConfig.addParameter("IncludedPattern1", histoBaseName+partLabel);
+//      subSampleCalcularorConfig.addParameter("IncludedPattern2", derivedLabel);
+//      subSampleCalcularorConfig.addParameter("ExcludedPattern0", sumLabel);
+//      subSampleCalcularorConfig.addParameter("ExcludedPattern1", balFctLabel);
+//      subSampleCalcularorConfig.addParameter("defaultGroupSize", 10);
+//      subSampleCalcularorConfig.addParameter("appendedString",   "Derived_Sum_");
+//      SubSampleStatCalculator * calculator = new SubSampleStatCalculator("SubSampleStatCalculator-Particles",subSampleCalcularorConfig,infoLevel);
+//      calculator->run();
+//      }
+//    if (doPairs)
+//      {
+//      Configuration subSampleCalcularorConfig("SubSampleCalcularor-Pairs Configuration");
+//      subSampleCalcularorConfig.addParameter("histoInputPath",        histoInputPath      );
+//      subSampleCalcularorConfig.addParameter("histoOutputPath",       histoOutputPath     );
+//      subSampleCalcularorConfig.addParameter("forceHistogramsRewrite",forceHistogramsRewrite);
+//      subSampleCalcularorConfig.addParameter("IncludedPattern0", rootExt);
+//      subSampleCalcularorConfig.addParameter("IncludedPattern1", histoBaseName+pairLabel);
+//      subSampleCalcularorConfig.addParameter("IncludedPattern2", derivedLabel);
+//      subSampleCalcularorConfig.addParameter("ExcludedPattern0", sumLabel);
+//      subSampleCalcularorConfig.addParameter("ExcludedPattern1", balFctLabel);
+//      subSampleCalcularorConfig.addParameter("defaultGroupSize", 10);
+//      subSampleCalcularorConfig.addParameter("appendedString",   "Derived_Sum_");
+//      SubSampleStatCalculator * calculator = new SubSampleStatCalculator("SubSampleStatCalculator-Pairs",subSampleCalcularorConfig,infoLevel);
+//      calculator->run();
+//      }
+//    if (doNuDyns)
+//      {
+//      Configuration subSampleCalcularorConfig("SubSampleCalcularor-NuDyns Configuration");
+//      subSampleCalcularorConfig.addParameter("histoInputPath",        histoInputPath      );
+//      subSampleCalcularorConfig.addParameter("histoOutputPath",       histoOutputPath     );
+//      subSampleCalcularorConfig.addParameter("forceHistogramsRewrite",forceHistogramsRewrite);
+//      subSampleCalcularorConfig.addParameter("IncludedPattern0", rootExt);
+//      subSampleCalcularorConfig.addParameter("IncludedPattern1", histoBaseName+nuDynLabel);
+//      subSampleCalcularorConfig.addParameter("IncludedPattern2", derivedLabel);
+//      subSampleCalcularorConfig.addParameter("ExcludedPattern0", sumLabel);
+//      subSampleCalcularorConfig.addParameter("ExcludedPattern1", balFctLabel);
+//      subSampleCalcularorConfig.addParameter("defaultGroupSize", 10);
+//      subSampleCalcularorConfig.addParameter("appendedString",   "Derived_Sum_");
+//      SubSampleStatCalculator * calculator = new SubSampleStatCalculator("SubSampleStatCalculator-NuDyns",subSampleCalcularorConfig,infoLevel);
+//      calculator->run();
+//      }
+//    }
+//
+//  if (computeBalFct)
+//    {
+//    cout << "ComputeBF -- from folder:" << histoInputPath  << endl;
+//
+//
+//    vector<TString> summedFiles = Task::listFilesInDir(histoInputPath,"Derived_Group_0_to_9.root");
+//    int nSummedFiles = summedFiles.size();
+//    cout << "  nSummedFiles: " << nSummedFiles << endl;
+//    if (nSummedFiles<1)
+//      {
+//      cout << "<E> RunDerivedHistogramCalculator(...) No sum of derived files founds???" << endl;
+//      return 1;
+//      }
+//
+//
+//    vector<TString>  sObservableNames;
+//    vector<TString>  pObservableNames;
+//    switch (observableSelection)
+//      {
+//        default:
+//        case 0: // eta based observables, full complement
+//        sObservableNames.push_back("_n1_eta");
+//        sObservableNames.push_back("_n1_phi");
+//        pObservableNames.push_back("_R2_ptpt");
+//        pObservableNames.push_back("_R2_phiPhi");
+//        pObservableNames.push_back("_R2_etaEta");
+//        pObservableNames.push_back("_R2_DetaDphi_shft");
+//        break;
+//
+//        case 1: // eta based observables, only DeltaEta vs DeltaPhi
+//        sObservableNames.push_back("_n1_eta");
+//        sObservableNames.push_back("_n1_phi");
+//        pObservableNames.push_back("_R2_DetaDphi_shft");
+//        break;
+//
+//        case 2: // y based observables, full complement
+//        sObservableNames.push_back("_n1_y");
+//        sObservableNames.push_back("_n1_phi");
+//        pObservableNames.push_back("_R2_ptpt");
+//        pObservableNames.push_back("_R2_phiPhi");
+//        pObservableNames.push_back("_R2_yY");
+//        pObservableNames.push_back("_R2_DyDphi_shft");
+//        break;
+//
+//        case 3: // y based observables, only DeltaY vs DeltaPhi
+//        sObservableNames.push_back("_n1_y");
+//        sObservableNames.push_back("_n1_phi");
+//        pObservableNames.push_back("_R2_DyDphi_shft");
+//        break;
+//
+//        case 4: // eta based observables, only DeltaEta vs DeltaPhi
+//        sObservableNames.push_back("_n1_eta");
+//        sObservableNames.push_back("_n1_phi");
+//        pObservableNames.push_back("_B2AB_DetaDphi_shft");
+//        pObservableNames.push_back("_B2BA_DetaDphi_shft");
+//        break;
+//      }
+//
+//    for (unsigned int k=0; k<nSummedFiles; k++  )
+//      {
+//      pairConfig.setParameter( "histoInputPath",      histoInputPath    );
+//      pairConfig.setParameter( "histoInputFileName",  summedFiles[k]    );
+//      pairConfig.setParameter( "histoOutputPath",     histoOutputPath   );
+//      pairConfig.setParameter( "histoOutputFileName", TString("test")   );
+//      pairConfig.setParameter( "histoBaseName",       TString("Pair_")  );
+//      BalanceFunctionCalculator * bfc = new BalanceFunctionCalculator("BFC",pairConfig,eventFilters, particleFilters, sObservableNames, pObservableNames, selectedLevel);
+//      bfc->execute();
+//      delete bfc;
+//      }
+//    }
 
   return 0;
 }
 
+
+void loadBase(const TString & includeBasePath)
+{
+  TString includePath = includeBasePath + "/Base/";
+  gSystem->Load(includePath+"Timer.hpp");
+  gSystem->Load(includePath+"MessageLogger.hpp");
+  gSystem->Load(includePath+"Task.hpp");
+  gSystem->Load(includePath+"TaskIterator.hpp");
+  gSystem->Load(includePath+"Collection.hpp");
+  gSystem->Load(includePath+"CanvasCollection.hpp");
+  gSystem->Load(includePath+"HistogramCollection.hpp");
+  gSystem->Load(includePath+"Histograms.hpp");
+  gSystem->Load(includePath+"Particle.hpp");
+  gSystem->Load(includePath+"ParticleType.hpp");
+  gSystem->Load(includePath+"ParticleTypeCollection.hpp");
+  gSystem->Load(includePath+"ParticleDecayMode.hpp");
+  gSystem->Load("libBase.dylib");
+}

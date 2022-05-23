@@ -102,6 +102,13 @@ public:
   //!
   virtual void loadHistograms(TFile * inputFile);
 
+  //!
+  //! Instantiate an object of the appropriate derived class and return a pointer to it.
+  //!
+  //! @return DerivedCalculator task.
+  //!
+  virtual Task * getDerivedCalculator();
+
 protected:
   
   bool fillEta; //!< whether to fill pseudorapidity histograms (set from configuration at initialization)

@@ -82,7 +82,9 @@ public:
   //!Load histograms previously produced by this task.
   //!
   virtual void loadHistograms(TFile * inputFile);
- 
+
+  virtual Task * getDerivedCalculator();
+
 protected:
   
   bool setEvent;   //!< bool controling whether this task instance sets the EventProperties record of events it analyzes.
@@ -91,6 +93,7 @@ protected:
   vector<double> q; //!< array of net charges corresponding to the different particle filters operated by this task.
   vector<double> s; //!< array of net strangeness corresponding to the different particle filters operated by this task.
   vector<double> b; //!< array of net baryon number corresponding to the different particle filters operated by this task.
+  vector<double> ptSum; //!< array of transverse momentum sums  corresponding to the different particle filters operated by this task.
 
   ClassDef(GlobalAnalyzer,0)
 };

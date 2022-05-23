@@ -97,6 +97,8 @@ public:
   //!
   virtual void scaleHistograms();
 
+  virtual Task * getDerivedCalculator();
+
 protected:
   
   bool fillEta; //!< whether to fill pseudorapidity histograms (set from configuration at initialization)

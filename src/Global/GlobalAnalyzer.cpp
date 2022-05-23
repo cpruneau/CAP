@@ -11,6 +11,7 @@
  * *********************************************************************/
 #include <TLorentzVector.h>
 #include "GlobalAnalyzer.hpp"
+#include "GlobalDerivedHistogramCalculator.hpp"
 
 ClassImp(GlobalAnalyzer);
 
@@ -26,7 +27,8 @@ n(),
 e(),
 q(),
 s(),
-b()
+b(),
+ptSum()
 {
   appendClassName("GlobalAnalyzer");
   setInstanceName(_name);
@@ -48,8 +50,10 @@ void GlobalAnalyzer::setDefaultConfiguration()
   configuration.setParameter("saveHistograms",   true);
   
   configuration.addParameter("setEvent",         true);
-  configuration.addParameter("countParticles",   true);
+
   configuration.addParameter("fillCorrelationHistos",false);
+  configuration.addParameter("fill2D", false);
+
   configuration.addParameter("nBins_n", 100);
   configuration.addParameter("nBins_n2",20);
   configuration.addParameter("min_n",   0.0);
@@ -73,9 +77,21 @@ void GlobalAnalyzer::setDefaultConfiguration()
   configuration.addParameter("min_b",   -50.0);
   configuration.addParameter("max_b",    50.0);
   configuration.addParameter("range_b", 100.0);
+
+  configuration.addParameter("nBins_ptSum",  100);
+  configuration.addParameter("nBins_ptSum2",  20);
+  configuration.addParameter("min_ptSum",    0.0);
+  configuration.addParameter("max_ptSum",  100.0);
+
+  configuration.addParameter("nBins_ptAvg",  200);
+  configuration.addParameter("nBins_ptAvg2",  40);
+  configuration.addParameter("min_ptAvg",    0.0);
+  configuration.addParameter("max_ptAvg",    2.0);
+
   if (reportDebug("GlobalAnalyzer",getName(),"setDefaultConfiguration()"))
     {
     configuration.printConfiguration(cout);
+    cout << " Did it work?????? " << endl;
     }
 }
 
@@ -88,6 +104,7 @@ void GlobalAnalyzer::initialize()
   int nParticleFilters = particleFilters.size();
   setEvent = configuration.getValueBool("setEvent");
   n.assign(nParticleFilters,0.0);
+  ptSum.assign(nParticleFilters,0.0);
   e.assign(nParticleFilters,0.0);
   q.assign(nParticleFilters,0.0);
   s.assign(nParticleFilters,0.0);
@@ -102,15 +119,13 @@ void GlobalAnalyzer::createHistograms()
     ;
   Configuration & configuration = getConfiguration();
   TString prefixName = getName(); prefixName += "_";
-  unsigned int nEventFilters    = eventFilters.size();
-  unsigned int nParticleFilters = particleFilters.size();
   if (reportInfo(__FUNCTION__))
     {
     cout << "Creating Histograms for : " << prefixName  << endl;
     cout << "          nEventFilters : " << nEventFilters << endl;
     cout << "       nParticleFilters : " << nParticleFilters << endl;
     }
-  for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     GlobalHistos * histos = new GlobalHistos(prefixName+eventFilters[iEventFilter]->getName(),configuration,particleFilters,getReportLevel());
     histos->createHistograms();
@@ -127,15 +142,13 @@ void GlobalAnalyzer::loadHistograms(TFile * inputFile)
     ;
   Configuration & configuration = getConfiguration();
   TString prefixName = getName(); prefixName += "_";
-  unsigned int nEventFilters    = eventFilters.size();
-  unsigned int nParticleFilters = particleFilters.size();
   if (reportInfo(__FUNCTION__))
     {
     cout << "Creating Histograms for " << prefixName  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     cout << "    nParticleFilters: " << nParticleFilters << endl;
     }
-  for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     GlobalHistos * histos = new GlobalHistos(prefixName+eventFilters[iEventFilter]->getName(),configuration,particleFilters,getReportLevel());
     histos->loadHistograms(inputFile);
@@ -169,6 +182,7 @@ void GlobalAnalyzer::execute()
     q.assign(nParticleFilters,0.0);
     s.assign(nParticleFilters,0.0);
     b.assign(nParticleFilters,0.0);
+    ptSum.assign(nParticleFilters,0.0);
     for (unsigned int iParticle=0; iParticle<event.getNParticles(); iParticle++)
       {
       Particle & particle = * event.getParticleAt(iParticle);
@@ -186,16 +200,32 @@ void GlobalAnalyzer::execute()
           q[iParticleFilter] += type.getCharge();
           s[iParticleFilter] += type.getStrange();
           b[iParticleFilter] += type.getBaryon();
+          ptSum[iParticleFilter] += momentum.Pt();
           }
         }
       }
     if (iEventFilter==0 && setEvent)
       {
       EventProperties * ep = event.getEventProperties();
-      ep->fill(n,e,q,s,b);
+      ep->fill(n,ptSum, e,q,s,b);
       }
     GlobalHistos * globalHistos = (GlobalHistos * ) histograms[iEventFilter];
-    globalHistos->fill(n,e,q,s,b,1.0);
+    globalHistos->fill(n,ptSum,e,q,s,b,1.0);
     }
 }
  
+Task * GlobalAnalyzer::getDerivedCalculator()
+{
+  if (reportDebug(__FUNCTION__))
+    ;
+  TString nameD = getName();
+  if (reportDebug(__FUNCTION__)) cout << "Name of this task is:" << nameD  << endl;
+  Configuration derivedCalcConfiguration;
+  // copy the parameters of this task to the new task -- so all the histograms will automatically match
+  derivedCalcConfiguration.setParameters(configuration);
+  derivedCalcConfiguration.setParameter("createHistograms",       true);
+  derivedCalcConfiguration.setParameter("loadHistograms",         true);
+  derivedCalcConfiguration.setParameter("saveHistograms",         true);
+  Task * calculator = new GlobalDerivedHistogramCalculator(nameD,derivedCalcConfiguration,eventFilters,particleFilters,getReportLevel());
+  return calculator;
+}

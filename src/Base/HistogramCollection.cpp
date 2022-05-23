@@ -311,8 +311,10 @@ void HistogramCollection::saveHistograms(TFile * outputFile)
 }
 
 //!
-// Scale selected histograms by the given factor
-// Set scaleAll to true to scale all histogram of this collection.
+//! Scale selected histograms by the given factor
+//! Set scaleAll to true to scale all histogram of this collection.
+//!  Profile are not scaled here because usually, the scaling done is to account for
+//!  the number of events
 //!
 void HistogramCollection::scale(double factor)
 {
@@ -321,7 +323,9 @@ void HistogramCollection::scale(double factor)
     { }
   for (unsigned int iObject=0; iObject<size(); iObject++)
     {
-    objects[iObject]->Scale(factor);
+    TH1 * h = objects[iObject];
+    if ( (h->IsA()==TProfile::Class()) ||  (h->IsA()==TProfile2D::Class()) ) continue;
+    h->Scale(factor);
     }
   if (reportEnd(__FUNCTION__))
     { }

@@ -112,19 +112,25 @@ Dependencies</h2>
 </ul>
 <h2><a class="anchor" id="download"></a>
 Downloading CAP</h2>
+<p >The CAP package is freely avaiable from [<a href="https://github.com/cpruneau/CAP.git">https://github.com/cpruneau/CAP.git</a>][].</p>
 <h2><a class="anchor" id="installation"></a>
 Installation/Configuration</h2>
-<p >In its current version, CAP does include or provide for the building of binary executables (although it is easy to setup if you are proficient with CMAKE). Its uses thus relies entirely on a generic version of root and root loads of relevant CAP (root compatible) libraries. The building, compilation, and use of the CAP package is determined by few environment varibles which can be efficiently setup and assigned by sourcing the SETUP_CAP configuration file.</p>
+<p >In its current version, CAP does not include nor provides for the building of binary executables (although it is easy to setup if you are proficient with CMAKE). Its uses thus relies entirely on a generic version of root and root loads of relevant CAP (root compatible) libraries. The building, compilation, and use of the CAP package is determined by few environment varibles which can be efficiently setup and assigned by sourcing the SETUP_CAP configuration file.</p>
 <pre class="fragment">* cd SOMEPATH/CAP;
-* source Setup_CAP
-* </pre><p >Prior to sourcing this setup file, however, you must edit the file to choose appropriate valeues to the following lines that assigne environment variables </p><pre class="fragment">* export ROOT_SELECTED_VERSION="/Users/YourName/rootdirectory/"
-* export CAP_LARGE_DATA="/Volumes/SomeHardDiskOfYourChoice/CAP-DATA/"
-* </pre><p >The Setup_CAP script will assign default values for the location in binary and library files produced when build the libraries. You can evidently modify these to your liking.</p>
+* source Setup_CAP </pre><p >Prior to sourcing this setup file, however, you must edit the file to choose appropriate valeues to the following lines that assigne environment variables </p><pre class="fragment">* export ROOT_SELECTED_VERSION="/Users/YourName/rootdirectory/"
+* export CAP_LARGE_DATA="/Volumes/SomeHardDiskOfYourChoice/CAP-DATA/" </pre><p >The Setup_CAP script will assign default values for the location in binary and library files produced when build the libraries. You can evidently modify these to your liking.</p>
 <h2><a class="anchor" id="building"></a>
 Building</h2>
+<p >Assuming you have downloaded the CAP code in a directory "/MyCapPath/CAP", you can create CMAKE files to build all CAP modules and libraries by creating a build directory, invoking CMAKE to create the necessary files accorging to the following sequence of commands: </p><pre class="fragment">* cd /MyCapPath/CAP
+* mkdir build
+* cd build
+* cmake ../src </pre><p >Once the above executes without error, you are then ready to invoke the "make" command: </p><pre class="fragment">* cd /MyCapPath/CAP/build
+* make install </pre><p >If all required resources are in place, this should compile and produce root compatible libraries and root pct files, and install them in the appropriate directories (folders). If this operation fails, verify that the required resources (root, PYTHIA8, ...) are in their respective proper place. Additionally check that the environment variables designated by the Setup_CAP script exist and are propertly pointed to by environment variables.</p>
 <h2><a class="anchor" id="usage"></a>
 Examples</h2>
-<h1><a class="anchor" id="model"></a>
+<pre class="fragment">* cd /MyCapPath/CAP/src/Macros
+* root CapBasicExample.C
+* </pre><h1><a class="anchor" id="model"></a>
 Object Model</h1>
 <p >blablablabla blablablabla blablablabla blablablabla</p>
 <h1><a class="anchor" id="modules"></a>

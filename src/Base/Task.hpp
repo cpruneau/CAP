@@ -86,31 +86,52 @@ using namespace std;
 //!
 //!\subsection download Downloading CAP
 //!
+//!The CAP package is freely avaiable from  [https://github.com/cpruneau/CAP.git][].
 //!
 //!\subsection installation Installation/Configuration
 //!
-//!In its current version, CAP does include or provide for the building of binary executables (although it is easy to setup if you are proficient with CMAKE).
+//!In its current version, CAP does not include nor provides for the building of binary executables (although it is easy to setup if you are proficient with CMAKE).
 //!Its uses thus relies entirely on a generic version of root and root loads of relevant CAP (root compatible) libraries.
 //!The building, compilation,  and use of the CAP package is determined by few environment varibles which can be efficiently setup and assigned by
 //!sourcing the SETUP_CAP configuration file.
 //!
 //!\verbatim
 //!cd SOMEPATH/CAP;
-//!source Setup_CAP
-//!\endverbatim
+//!source Setup_CAP \endverbatim
 //!
 //!Prior to sourcing this setup file, however, you must edit the file to choose appropriate valeues  to the following lines that assigne environment variables
 //!\verbatim
 //!export ROOT_SELECTED_VERSION="/Users/YourName/rootdirectory/"
-//!export CAP_LARGE_DATA="/Volumes/SomeHardDiskOfYourChoice/CAP-DATA/"
-//!\endverbatim
+//!export CAP_LARGE_DATA="/Volumes/SomeHardDiskOfYourChoice/CAP-DATA/" \endverbatim
+//!
 //!
 //!The Setup_CAP script will assign default values for the location in binary and library files produced when build the libraries. You can evidently modify these to your liking.
 //!
 //!\subsection building Building
 //!
+//!Assuming you have downloaded the CAP code in a directory "/MyCapPath/CAP", you can create CMAKE files to build  all CAP modules and libraries by creating a build directory, invoking CMAKE to create
+//!the necessary files accorging to the following sequence of commands:
+//!\verbatim
+//!cd /MyCapPath/CAP
+//!mkdir build
+//!cd build
+//!cmake ../src \endverbatim
+//!
+//!Once the above executes without error, you are then ready to invoke the "make" command:
+//!\verbatim
+//!cd /MyCapPath/CAP/build
+//!make install \endverbatim
+//!
+//!If all required resources are in place, this should compile and produce root compatible libraries and root pct files,  and install them in the appropriate directories (folders). If this operation
+//!fails, verify that the required resources (root, PYTHIA8, ...) are in their respective proper place. Additionally check that the environment variables designated by the Setup_CAP script exist and are
+//!propertly pointed to by environment variables.
 //!
 //!\subsection usage Examples
+//!
+//!\verbatim
+//!cd /MyCapPath/CAP/src/Macros
+//!root CapBasicExample.C \endverbatim
+//!
 //!
 //!\section model Object Model
 //!
@@ -361,6 +382,12 @@ protected:
   //! Array of pointers to  particle pair histogram objects produced on output by this task instance.
   //!
   vector<Histograms*>      basePairHistograms;
+
+  //!
+  //! Array of pointers to generic histogram objects produced on output by this task instance.
+  //!
+  vector<Histograms*>      derivedHistograms;
+
   //!
   //! Array of pointers to Histograms objects produced on output by this task instance as "derivatives" of those contained in the array "histograms".
   //!
@@ -678,6 +705,16 @@ public:
   }
 
   //!
+  //! Abstract class designed to probide a place holder for a concreate analysis class to instantiate and return  a related DerivedCalculator task.
+  //! 
+  //! @return DerivedCalculator task.
+  //!
+  virtual Task * getDerivedCalculator()
+  {
+  return nullptr;
+  }
+
+  //!
   //! Returns a pointer to the Configuration object controlling the behavior of this task instance.
   //! @return pointer to the Configuration instance controlling this task instance.
   //!
@@ -980,7 +1017,6 @@ public:
   inline unsigned int getNDerivedPairHistograms() const   { return derivedPairHistograms.size();  }
   inline unsigned int getNCombinedHistograms() const      { return combinedHistograms.size(); }
 
-  //vector<Histograms*>       histograms;
 
   inline vector<Histograms*> & getBaseSingleHistograms()    { return baseSingleHistograms;    }
   inline vector<Histograms*> & getBasePairHistograms()      { return basePairHistograms;      }

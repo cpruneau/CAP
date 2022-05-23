@@ -10,6 +10,7 @@
  *
  * *********************************************************************/
 #include "NuDynAnalyzer.hpp"
+#include "NuDynDerivedHistogramCalculator.hpp"
 
 ClassImp(NuDynAnalyzer);
 
@@ -165,4 +166,21 @@ void NuDynAnalyzer::execute()
         case 2: nuDynHistos->fill(ep.referenceMultiplicity, nAccepted,1.0); break;
       }
     }
+}
+
+
+Task * NuDynAnalyzer::getDerivedCalculator()
+{
+  if (reportDebug(__FUNCTION__))
+    ;
+  TString nameD = getName();
+  if (reportDebug(__FUNCTION__)) cout << "Name of this task is:" << nameD  << endl;
+  Configuration derivedCalcConfiguration;
+  // copy the parameters of this task to the new task -- so all the histograms will automatically match
+  derivedCalcConfiguration.setParameters(configuration);
+  derivedCalcConfiguration.setParameter("createHistograms",       true);
+  derivedCalcConfiguration.setParameter("loadHistograms",         true);
+  derivedCalcConfiguration.setParameter("saveHistograms",         true);
+  Task * calculator = new NuDynDerivedHistogramCalculator(nameD,derivedCalcConfiguration,eventFilters,particleFilters,getReportLevel());
+  return calculator;
 }

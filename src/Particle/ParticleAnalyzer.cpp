@@ -10,6 +10,7 @@
  *
  * *********************************************************************/
 #include "ParticleAnalyzer.hpp"
+#include "ParticleDerivedHistogramCalculator.hpp"
 
 ClassImp(ParticleAnalyzer);
 
@@ -269,5 +270,24 @@ void ParticleAnalyzer::execute()
       }
     histos->fillMultiplicity(nAccepted[iParticleFilter],totalEnergy[iParticleFilter],1.0);
     }
+  
 // all done with this event...
 }
+
+
+Task * ParticleAnalyzer::getDerivedCalculator()
+{
+  if (reportDebug(__FUNCTION__))
+    ;
+  TString nameD = getName();
+  if (reportDebug(__FUNCTION__)) cout << "Name of this task is:" << nameD  << endl;
+  Configuration derivedCalcConfiguration;
+  // copy the parameters of this task to the new task -- so all the histograms will automatically match
+  derivedCalcConfiguration.setParameters(configuration);
+  derivedCalcConfiguration.setParameter("createHistograms",       true);
+  derivedCalcConfiguration.setParameter("loadHistograms",         true);
+  derivedCalcConfiguration.setParameter("saveHistograms",         true);
+  Task * calculator = new ParticleDerivedHistogramCalculator(nameD,derivedCalcConfiguration,eventFilters,particleFilters,getReportLevel());
+  return calculator;
+}
+

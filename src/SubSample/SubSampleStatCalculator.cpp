@@ -121,7 +121,7 @@ void SubSampleStatCalculator::execute()
     int first = iGroup*groupSize;
     int last  = (iGroup+1)*groupSize;
     if (last>=nFilesToSum) last = nFilesToSum;
-    if (reportInfo(__FUNCTION__)) cout << "Summing files from index:" << first << " to index: " << last << endl;
+    if (reportInfo(__FUNCTION__)) cout << "Summing files from index:" << first << " to index: " << last-1 << endl;
     TString outputFileName = histoOutputFileName;
     outputFileName += appendedString;
     outputFileName += first;
@@ -133,7 +133,7 @@ void SubSampleStatCalculator::execute()
     sumEventProcessed = 0.0;
     nEventProcessed   = 0.0;
 
-    HistogramCollection * collectionAvg = new HistogramCollection("Sum",getReportLevel());
+    HistogramCollection * collectionAvg;
     HistogramCollection * collection;
     TString parameterNEexecutedTask("ExecutedTaskReset");
     int nInputFile = last - first+1;
@@ -145,9 +145,10 @@ void SubSampleStatCalculator::execute()
       nEventProcessed = readParameter(inputFile,parameterNEexecutedTask);
       if (!isTaskOk()) return;
       if (reportInfo (__FUNCTION__)) cout << "Loading histograms" << endl;
-      if (iFile==0)
+      if (iFile==first)
         {
         firstInputFile = inputFile;
+        collectionAvg  = new HistogramCollection("Sum",getReportLevel());
         collectionAvg->loadCollection(inputFile);
         if (reportDebug (__FUNCTION__)) cout << "First Load completed."  << endl;
         sumEventProcessed = nEventProcessed;
@@ -156,7 +157,7 @@ void SubSampleStatCalculator::execute()
         {
         collection = new HistogramCollection(histoInputFileName,getReportLevel());;
         collection->loadCollection(inputFile);
-        collectionAvg->squareDifferenceCollection(*collection, double(sumEventProcessed), double(nEventProcessed), (iFile==last) ? nInputFile : -iFile);
+        collectionAvg->squareDifferenceCollection(*collection, double(sumEventProcessed), double(nEventProcessed), (iFile==(last-1)) ? nInputFile : -iFile);
         sumEventProcessed += nEventProcessed;
         delete collection;
         delete inputFile;
@@ -168,7 +169,6 @@ void SubSampleStatCalculator::execute()
         cout << "    " << parameterNEexecutedTask << " : " << nEventProcessed << endl;
         }
       }
-
     TFile * outputFile = openRootFile(histoOutputPath, outputFileName, "RECREATE");
     if (!isTaskOk()) return;
     if (reportInfo (__FUNCTION__))

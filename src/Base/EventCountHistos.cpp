@@ -37,11 +37,11 @@ void EventCountHistos::createHistograms()
     ;
   TString bn = getHistoBaseName();
   TString histoName;
-  histoName = bn+TString("_taskExecuted");
+  histoName = bn+TString("taskExecuted");
   h_taskExecutedReset = createHistogram(histoName,1,-0.5, 0.5, "taskExecuted", "Count") ;
-  histoName = bn+TString("_eventAccepted");
+  histoName = bn+TString("eventAccepted");
   h_eventAcceptedReset = createHistogram(histoName,nEventFilters,-0.5, -0.5+double(nEventFilters), "event filter", "Count");
-  histoName = bn+TString("_partilceAccepted");
+  histoName = bn+TString("partilceAccepted");
   int n = nEventFilters*nParticleFilters;
   h_partilceAcceptedReset = createHistogram(histoName,n,-0.5, -0.5+double(n), "event x particle filter", "Count");
   if (reportEnd(__FUNCTION__))
