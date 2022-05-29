@@ -28,7 +28,6 @@ public:
   virtual void loadHistograms(TFile * inputFile);
   virtual void fill(Event & event, double weight);
   virtual void noFill(Event & event, double weight);
-  virtual void createDerivedHistograms();
   virtual void calculateRms(TProfile * h1, TProfile * h1Sq, TH1* h1Rms, TH1* h1Omega, TH1* h1R2);
 
 protected:

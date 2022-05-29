@@ -45,8 +45,8 @@ void SubSampleStatCalculator::setDefaultConfiguration()
   configuration.setParameter("forceHistogramsRewrite", true);
   configuration.addParameter("defaultGroupSize",         10);
   configuration.addParameter("nInputFile",                0);
-  configuration.addParameter("histoOutputDataName",     "DataSource");
-  configuration.addParameter("histoOutputAnalyzerName", "Analyzer");
+  configuration.addParameter("histoModelDataName",     "DataSource");
+  configuration.addParameter("histoAnalyzerName", "Analyzer");
 
   configuration.generateKeyValuePairs("IncludedPattern",none,20);
   configuration.generateKeyValuePairs("ExcludedPattern",none,20);
@@ -67,17 +67,29 @@ void SubSampleStatCalculator::execute()
   TString appendedString  = configuration.getValueString("appendedString");
   TString histoInputPath  = configuration.getValueString("histoInputPath");
   TString histoOutputPath = configuration.getValueString("histoOutputPath");
-  TString histoOutputDataName     = configuration.getValueString("histoOutputDataName");
-  TString histoOutputAnalyzerName = configuration.getValueString("histoOutputAnalyzerName");
+  TString histoModelDataName     = configuration.getValueString("histoModelDataName");
+  TString histoAnalyzerName = configuration.getValueString("histoAnalyzerName");
 
   TString histoOutputFileName;
-  histoOutputFileName = histoOutputDataName;
+  histoOutputFileName = histoModelDataName;
   histoOutputFileName += "_";
-  histoOutputFileName += histoOutputAnalyzerName;
+  histoOutputFileName += histoAnalyzerName;
   histoOutputFileName += "_";
 
   vector<TString> includePatterns = configuration.getSelectedValues("IncludedPattern", "none");
-  vector<TString> excludePatterns = configuration.getSelectedValues("ExcludedPattern", "none");;
+  vector<TString> excludePatterns = configuration.getSelectedValues("ExcludedPattern", "none");
+
+  for (unsigned int k=0;k<includePatterns.size();k++)
+    {
+    cout << " k:" << k << "  Include: " << includePatterns[k] << endl;
+    }
+
+  for (unsigned int k=0;k<excludePatterns.size();k++)
+    {
+    cout << " k:" << k << "  Exclude: " << excludePatterns[k] << endl;
+    }
+
+
   vector<TString> allFilesToSum = listFilesInDir(histoInputPath,includePatterns,excludePatterns);
   int nFilesToSum = allFilesToSum.size();
   int groupSize = (nFilesToSum>defaultGroupSize) ? defaultGroupSize : nFilesToSum;
@@ -108,8 +120,8 @@ void SubSampleStatCalculator::execute()
     cout << "           appendedString: " << appendedString << endl;
     cout << "           histoInputPath: " << histoInputPath << endl;
     cout << "          histoOutputPath: " << histoOutputPath << endl;
-    cout << "      histoOutputDataName: " << histoOutputDataName << endl;
-    cout << "  histoOutputAnalyzerName: " << histoOutputAnalyzerName << endl;
+    cout << "      histoModelDataName: " << histoModelDataName << endl;
+    cout << "  histoAnalyzerName: " << histoAnalyzerName << endl;
     cout << "      histoOutputFileName: " << histoOutputFileName << endl;
     cout << " ===========================================================" << endl;
     cout << " ===========================================================" << endl;
@@ -142,7 +154,10 @@ void SubSampleStatCalculator::execute()
       TString histoInputFileName = allFilesToSum[iFile];
       inputFile = openRootFile("", histoInputFileName, "READ");
       if (!inputFile || !isTaskOk()) return;
+      cout << " Loading from file: " << histoInputFileName << endl;
+
       nEventProcessed = readParameter(inputFile,parameterNEexecutedTask);
+
       if (!isTaskOk()) return;
       if (reportInfo (__FUNCTION__)) cout << "Loading histograms" << endl;
       if (iFile==first)
@@ -180,8 +195,10 @@ void SubSampleStatCalculator::execute()
       cout << "          outputFileName : " << outputFileName <<  endl;
       cout << "       sumEventProcessed : " << sumEventProcessed << endl;
       }
-    collectionAvg->saveHistograms(outputFile);
     writeParameter(outputFile,parameterNEexecutedTask, sumEventProcessed);
+
+
+    collectionAvg->saveHistograms(outputFile);
     outputFile->Close();
 
     delete collectionAvg;

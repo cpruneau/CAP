@@ -30,7 +30,7 @@
 //! b:  total (net) baryon charge of the selected particles in an event
 //!
 //! The fill method of this class must be called at most once per event
-//! otherwise weird multiple counting will happen...
+//! otherwise weird multiple counting will happen..
 //!
 class GlobalHistos : public Histograms
 {

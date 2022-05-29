@@ -115,7 +115,7 @@ using namespace std;
 //!cd /MyCapPath/CAP
 //!mkdir build
 //!cd build
-//!cmake ../src \endverbatim
+//!cmake ./src \endverbatim
 //!
 //!Once the above executes without error, you are then ready to invoke the "make" command:
 //!\verbatim
@@ -123,7 +123,7 @@ using namespace std;
 //!make install \endverbatim
 //!
 //!If all required resources are in place, this should compile and produce root compatible libraries and root pct files,  and install them in the appropriate directories (folders). If this operation
-//!fails, verify that the required resources (root, PYTHIA8, ...) are in their respective proper place. Additionally check that the environment variables designated by the Setup_CAP script exist and are
+//!fails, verify that the required resources (root, PYTHIA8, ..) are in their respective proper place. Additionally check that the environment variables designated by the Setup_CAP script exist and are
 //!propertly pointed to by environment variables.
 //!
 //!\subsection usage Examples
@@ -200,11 +200,8 @@ using namespace std;
 //!\subsubsection tools Tools
 //!
 //!\subsection macros  Macros and Examples
-//!blablablabla
-//!blablablabla
-//!blablablabla
 //!
-
+//!
 //!\class Task
 //!\brief Base class defining the notion of light weight tasks for the generation and analysis of data
 //!
@@ -342,12 +339,12 @@ protected:
   vector<Event*>           eventStreams;
 
   //!
-  //! number of EventFilter objects used by this class... This is a convenience variable used to avoid calling size() repeatedly
+  //! number of EventFilter objects used by this class.. This is a convenience variable used to avoid calling size() repeatedly
   //!
   int nEventFilters;
 
   //!
-  //! number of EventFilter objects used by this class... This is a convenience variable used to avoid calling size() repeatedly
+  //! number of EventFilter objects used by this class.. This is a convenience variable used to avoid calling size() repeatedly
   //!
   int nParticleFilters;
 
@@ -433,7 +430,7 @@ protected:
   vector<long> nEventsAcceptedTotal;
 
   //!
-  //!Number of particles accepted in the last event for each of the event filters and particle filters used by this task...
+  //!Number of particles accepted in the last event for each of the event filters and particle filters used by this task..
   //!
   vector<long> nParticlesAcceptedEvent;
 
@@ -616,23 +613,24 @@ public:
   //!
   virtual void createHistograms() {}
 
-  
   //!
   //! Loads histogram groups used by this task. This method opens the root file identified in the Configuration object owned by this task. If the file exists,
   //! it calls the  loadHistograms(TFile * inputFile) to actually load the relevant groups.
   //!
   virtual void loadHistograms();
+
   //!
   //! Implement this method in a derived class to load from a root file the histogram groups that are need for the execution of this task.
   //!
   virtual void loadHistograms(TFile * inputFile __attribute__((unused))) {  }
+
   //!
   //! Calls the reset method of all the histogram groups owned by this task.
   //!
   virtual void resetHistograms();
   //!
   //! Calls the clear method of all the histogram groups owned by this task. This effectively delete the histogram groups. Only call this method if you know
-  //! what you are doing...
+  //! what you are doing..
   //!
   virtual void clearHistograms();
 
@@ -683,7 +681,7 @@ public:
   //!
   Event * getEventStream(unsigned int index)
   {
-    return eventStreams[index];
+  return eventStreams[index];
   }
 
   //!
@@ -706,7 +704,7 @@ public:
 
   //!
   //! Abstract class designed to probide a place holder for a concreate analysis class to instantiate and return  a related DerivedCalculator task.
-  //! 
+  //!
   //! @return DerivedCalculator task.
   //!
   virtual Task * getDerivedCalculator()
@@ -720,12 +718,12 @@ public:
   //!
   const Configuration & getConfiguration() const
   {
-    return configuration;
+  return configuration;
   }
 
   Configuration & getConfiguration()
   {
-    return configuration;
+  return configuration;
   }
 
   inline ParticleTypeCollection * getParticleTypeCollection() const
@@ -744,7 +742,7 @@ public:
   //!
   inline TString getName() const
   {
-    return taskName;
+  return taskName;
   }
 
   //!
@@ -752,7 +750,7 @@ public:
   //!
   inline void setName(const TString & _name)
   {
-    taskName = _name;
+  taskName = _name;
   }
 
   inline void incrementTaskExecuted()
@@ -916,7 +914,7 @@ public:
 
   void printEventStatistics() const;
 
-
+  bool hasEventCountHistograms();
   void createEventCountHistograms();
   void loadEventCountHistograms(TFile * inputFile);
   void fillEventCountHistograms();
@@ -1024,18 +1022,31 @@ public:
   inline vector<Histograms*> & getDerivedPairHistograms()   { return derivedPairHistograms;   }
   inline vector<Histograms*> & getCombinedPairHistograms()  { return combinedHistograms;      }
 
-  const TString createHistogramName(const TString & baseName,
-                                    const TString & evtFilterName,
-                                    const TString & partFilterName,
-                                    const TString & observableName="",
-                                    const TString & suffix="");
+
+  const TString makeHistoName(const TString & s0,
+                              const TString & s1);
+
+  const TString makeHistoName(const TString & s0,
+                              const TString & s1,
+                              const TString & s2);
+
+  const TString makeHistoName(const TString & s0,
+                              const TString & s1,
+                              const TString & s2,
+                              const TString & s3);
+
+  const TString makeHistoName(const TString & s0,
+                              const TString & s1,
+                              const TString & s2,
+                              const TString & s3,
+                              const TString & s4);
   
-  const TString createPairHistogramName(const TString & baseName,
-                                        const TString & evtFilterName,
-                                        const TString & partFilterName1,
-                                        const TString & partFilterName2,
-                                        const TString & observableName="",
-                                        const TString & suffix="");
+  const TString makeHistoName(const TString & s0,
+                              const TString & s1,
+                              const TString & s2,
+                              const TString & s3,
+                              const TString & s4,
+                              const TString & s5);
 
 
   void setHistogramFileNames(const TString inputName, const TString outputName)
@@ -1046,16 +1057,16 @@ public:
   }
   
   vector<TString> listFilesInDir(const TString & dirname,
-                                        const TString ext=".root");
+                                 const TString ext=".root");
   vector<TString> listFilesInDir(const TString & pathName,
-                                        vector<TString> includePatterns,
-                                        vector<TString> excludePatterns);
+                                 vector<TString> includePatterns,
+                                 vector<TString> excludePatterns);
 
   //!
   //!Get selected files in the given directory. The selection is made by means of two sets of configuration parameters
   //!of the form IncludePattern# and ExcludePattern# (where # represents a number between 0 and 20. These include
   //!and exclude patterns are used to assemble two lists, vector<TString> includePatterns and vector<TString> excludePatterns)
-  //!which are then used to identify all file names of the given folder that match the includePatterns but exclude the excludePatterns. 
+  //!which are then used to identify all file names of the given folder that match the includePatterns but exclude the excludePatterns.
   //!
   vector<TString> getSelectedFileNamesFrom(const TString & folder);
   
@@ -1067,7 +1078,7 @@ public:
   //!
   TString removeRootExtension(const TString fileName);
 
- 
+
 
   ClassDef(Task,0)
 };

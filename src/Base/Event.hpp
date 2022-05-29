@@ -95,12 +95,12 @@ protected:
   unsigned long getEventNumber() const     { return eventNumber; }
 
   //!
-  //! Increment the index of this event..
+  //! Increment the index of this event.
   //!
   void incrementEventIndex()      { eventIndex++;       }
 
   //!
-  //! Set the index of this event..
+  //! Set the index of this event.
   //!
   void setEventIndex(unsigned long index)  { eventIndex  = index;}
 

@@ -119,7 +119,7 @@ option(_opt)
   eyLow   = new double[nPoints];
   eyHigh  = new double[nPoints];
   double w, ey;
-  for (unsigned int k=0; k<nPoints; k++)
+  for (int k=0; k<nPoints; k++)
     {
     x[k] = histo->GetXaxis()->GetBinCenter(k+1);
     w = 0.5 * histo->GetXaxis()->GetBinWidth(k+1);
@@ -140,7 +140,7 @@ option(_opt)
 DataGraph::DataGraph(const TString _graphName,
                      const TString _xTitle,
                      const TString _yTitle,
-                     const TString _legendText,
+                     const TString _legendText __attribute__((unused)),
                      double _xMin, double _xMax,
                      double _yMin, double _yMax,
                      TH1 * histo, double *_eeyLow, double *_eeyHigh,  int _opt)
@@ -171,7 +171,7 @@ option(_opt)
   eyLow   = new double[nPoints];
   eyHigh  = new double[nPoints];
   double w, ey;
-  for (unsigned int k=0; k<nPoints; k++)
+  for (int k=0; k<nPoints; k++)
     {
     x[k] = histo->GetXaxis()->GetBinCenter(k+1);
     w = 0.5 * histo->GetXaxis()->GetBinWidth(k+1);
@@ -225,37 +225,37 @@ void DataGraph::setMinMax(double minY, double maxY)
 void DataGraph::setProperties(const GraphConfiguration & graphConfig)
 {
   //cout << "<I> DataGraph::setProperties() Setting properties of graph: " << graphs[0]->GetName() << endl;
-  graphs[0]->SetLineColor(graphConfig.lineColor);
-  graphs[0]->SetLineStyle(graphConfig.lineStyle);
-  graphs[0]->SetLineWidth(graphConfig.lineWidth);
-  graphs[0]->SetMarkerColor(graphConfig.markerColor);
-  graphs[0]->SetMarkerStyle(graphConfig.markerStyle);
-  graphs[0]->SetMarkerSize(graphConfig.markerSize);
+  graphs[0]->SetLineColor(graphConfig .getValueInt("lineColor"));
+  graphs[0]->SetLineStyle(graphConfig.getValueInt("lineStyle"));
+  graphs[0]->SetLineWidth(graphConfig.getValueInt("lineWidth"));
+  graphs[0]->SetMarkerColor(graphConfig.getValueInt("markerColor"));
+  graphs[0]->SetMarkerStyle(graphConfig.getValueInt("markerStyle"));
+  graphs[0]->SetMarkerSize(graphConfig.getValueDouble("markerSize"));
   graphs[0]->SetFillColor(0);
   if (graphs.size()>1)
     {
-    graphs[1]->SetLineColor(graphConfig.systsColor);
-    graphs[1]->SetLineStyle(graphConfig.lineStyle);
-    graphs[1]->SetLineWidth(graphConfig.systsWidth);
-    graphs[1]->SetMarkerColor(graphConfig.markerColor);
+    graphs[1]->SetLineColor(graphConfig.getValueInt("systsColor"));
+    graphs[1]->SetLineStyle(graphConfig.getValueInt("systsStyle"));
+    graphs[1]->SetLineWidth(graphConfig.getValueInt("systsWidth"));
+    graphs[1]->SetMarkerColor(graphConfig.getValueInt("markerColor"));
     graphs[1]->SetMarkerStyle(1);
     graphs[1]->SetMarkerSize(0.1);
-    graphs[1]->SetFillStyle(graphConfig.systsStyle);
-    graphs[1]->SetFillColor(graphConfig.systsColor);
+    graphs[1]->SetFillStyle(graphConfig.getValueInt("systsStyle"));
+    graphs[1]->SetFillColor(graphConfig.getValueInt("systsColor"));
     }
 
   TAxis * xAxis = (TAxis *) GetXaxis();
-  xAxis->SetNdivisions(graphConfig.nXDivisions);
-  xAxis->SetTitleSize(graphConfig.xTitleSize);
-  xAxis->SetTitleOffset(graphConfig.xTitleOffset);
-  xAxis->SetLabelSize(graphConfig.xLabelSize);
-  xAxis->SetLabelOffset(graphConfig.xLabelOffset);
+  xAxis->SetNdivisions(graphConfig.getValueDouble("nXDivisions"));
+  xAxis->SetTitleSize(graphConfig.getValueDouble("xTitleSize"));
+  xAxis->SetTitleOffset(graphConfig.getValueDouble("xTitleOffset"));
+  xAxis->SetLabelSize(graphConfig.getValueDouble("xLabelSize"));
+  xAxis->SetLabelOffset(graphConfig.getValueDouble("xLabelOffset"));
   TAxis * yAxis = (TAxis *) GetYaxis();
-  yAxis->SetNdivisions(graphConfig.nYDivisions);
-  yAxis->SetTitleSize(graphConfig.yTitleSize);
-  yAxis->SetTitleOffset(graphConfig.yTitleOffset);
-  yAxis->SetLabelSize(graphConfig.yLabelSize);
-  yAxis->SetLabelOffset(graphConfig.yLabelOffset);
+  yAxis->SetNdivisions(graphConfig.getValueInt("nYDivisions"));
+  yAxis->SetTitleSize(graphConfig.getValueDouble("yTitleSize"));
+  yAxis->SetTitleOffset(graphConfig.getValueDouble("yTitleOffset"));
+  yAxis->SetLabelSize(graphConfig.getValueDouble("yLabelSize"));
+  yAxis->SetLabelOffset(graphConfig.getValueDouble("yLabelOffset"));
   //cout << "<I> DataGraph::::setProperties() Completed" << endl;
 }
 
@@ -291,16 +291,7 @@ DataGraph *  DataGraph::loadGraph(const TString  graphName,
                           double yMin, double yMax,
                           TFile * inputFile, TString folderName, TString h1Name, TString h1e1Name, TString h1e2Name, TString g1Name )
 {
-  if (!inputFile)
-    {
-    cout << "<E> DataGraph::loadGraph(...) inputFile is a nullptr" << endl;
-    return nullptr;
-    }
-//else
-//  {
-//  cout << "<I> DataGraph::loadGraph() Loading from file: " << inputFile->GetName() << endl;
-//
-//  }
+  if (!inputFile) return nullptr;
 
   TString name;
   name = folderName; name += "/"; name += h1Name;
@@ -331,7 +322,7 @@ DataGraph *  DataGraph::loadGraph(const TString  graphName,
     cout << "<E> DataGraph::loadGraph() Could not load graph called: " << name << " from file:" << inputFile->GetName() << endl;
     return nullptr;
     }
-  //cout << "<I> DataGraph::loadGraph() Data loaded..." << endl;
+  //cout << "<I> DataGraph::loadGraph() Data loaded.." << endl;
 
   int n = h1->GetNbinsX();
   double * x       = new double[n];
@@ -366,17 +357,7 @@ DataGraph * DataGraph::loadGraph(const TString graphName,
                              double yMin, double yMax,
                              TFile * inputFile, TString hName, double scale, int rebin)
 {
-  if (!inputFile)
-    {
-    cout << "<E> DataGraph::loadGraph(...) inputFile is a nullptr" << endl;
-    return nullptr;
-    }
-//else
-//  {
-//  cout << "<I> DataGraph::loadGraph() Loading from file: " << inputFile->GetName() << endl;
-//
-//  }
-
+  if (!inputFile) return nullptr;
   TString name;
   name = hName;
   TH1 * histo = (TH1*)inputFile->Get(name);

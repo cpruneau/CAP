@@ -87,32 +87,24 @@ void ParticleAnalyzer::createHistograms()
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString prefixName = getName(); //prefixName += "_";
-  unsigned int nEventFilters    = eventFilters.size();
-  unsigned int nParticleFilters = particleFilters.size();
-  
+  TString bn  = getName();
   fillEta = configuration.getValueBool("fillEta");
   fillY   = configuration.getValueBool("fillY");
   fillP2  = configuration.getValueBool("fillP2");
   
   if (reportInfo(__FUNCTION__))
     {
-    cout << "Creating Histogram(s) for..."  << endl;
+    cout << "Creating Histogram(s) for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     cout << "    nParticleFilters: " << nParticleFilters << endl;
     }
-  for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    TString evtFilterName = eventFilters[iEventFilter]->getName();
-    for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
+    TString efn = eventFilters[iEventFilter]->getName();
+    for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
       {
-      TString partFilterName = particleFilters[iParticleFilter]->getName();
-      TString histoName  = prefixName;
-      histoName += "_";
-      histoName += evtFilterName;
-      histoName += "_";
-      histoName += partFilterName;
-      ParticleHistos * histos = new ParticleHistos(histoName,configuration,getReportLevel());
+      TString pfn = particleFilters[iParticleFilter]->getName();
+      ParticleHistos * histos = new ParticleHistos(makeHistoName(bn,efn,pfn),configuration,getReportLevel());
       histos->createHistograms();
       baseSingleHistograms.push_back(histos);
       }
@@ -127,24 +119,20 @@ void ParticleAnalyzer::loadHistograms(TFile * inputFile)
   
   if (reportStart(__FUNCTION__))
     ;
-  TString prefixName = getName(); prefixName += "_";
-  if (reportInfo(__FUNCTION__))
+  TString bn  = getName(); bn  += "_";
+  if (reportDebug(__FUNCTION__))
     {
-    cout << endl <<  "Loading Histogram(s) for..."  << endl;
+    cout << endl <<  "Loading Histogram(s) for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     cout << "    nParticleFilters: " << nParticleFilters << endl;
     }
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    TString evtFilterName = * eventFilters[iEventFilter]->getName();
+    TString efn = * eventFilters[iEventFilter]->getName();
     for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
       {
-      TString partFilterName = * particleFilters[iParticleFilter]->getName();
-      TString histoName  = prefixName;
-      histoName += evtFilterName;
-      histoName += "_";
-      histoName += partFilterName;
-      ParticleHistos * histos = new ParticleHistos(histoName,configuration,getReportLevel());
+      TString pfn = * particleFilters[iParticleFilter]->getName();
+      ParticleHistos * histos = new ParticleHistos(makeHistoName(bn,efn,pfn),configuration,getReportLevel());
       histos->loadHistograms(inputFile);
       baseSingleHistograms.push_back(histos);
       }
@@ -225,7 +213,7 @@ void ParticleAnalyzer::execute()
             pd->iPhi = iPhi;
             pd->pt   = pt;
             pd->e    = e;
-            digitized = true; // so no need to digitize this particle again...
+            digitized = true; // so no need to digitize this particle again..
             }
           if (digitized && ( iPt>0 || iPhi>0 || iEta>=0 || iY>=0))
             {
@@ -249,7 +237,7 @@ void ParticleAnalyzer::execute()
     }
   else
     {
-    // 1 event filter and 1 particle filter: just scan the particles...
+    // 1 event filter and 1 particle filter: just scan the particles..
     // no need for sublists.
     int iParticleFilter = 0;
     int iEventFilter = eventFilterPassed[0];
@@ -271,7 +259,7 @@ void ParticleAnalyzer::execute()
     histos->fillMultiplicity(nAccepted[iParticleFilter],totalEnergy[iParticleFilter],1.0);
     }
   
-// all done with this event...
+// all done with this event..
 }
 
 
@@ -280,7 +268,6 @@ Task * ParticleAnalyzer::getDerivedCalculator()
   if (reportDebug(__FUNCTION__))
     ;
   TString nameD = getName();
-  if (reportDebug(__FUNCTION__)) cout << "Name of this task is:" << nameD  << endl;
   Configuration derivedCalcConfiguration;
   // copy the parameters of this task to the new task -- so all the histograms will automatically match
   derivedCalcConfiguration.setParameters(configuration);

@@ -53,7 +53,7 @@ public:
   virtual void execute();
   
   //!
-  //! Initialize the mapping of Root Tree Branches onto local variables..
+  //! Initialize the mapping of Root Tree Branches onto local variables.
   //!
   virtual void initInputTreeMapping();
   

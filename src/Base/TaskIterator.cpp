@@ -115,7 +115,7 @@ void TaskIterator::execute()
     }
   timer.stop();
   finalize();
-  clear(); // should delete everything...
+  clear(); // should delete everything..
 }
 
 

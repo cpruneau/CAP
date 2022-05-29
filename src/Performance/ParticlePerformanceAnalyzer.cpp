@@ -96,7 +96,7 @@ void ParticlePerformanceAnalyzer::createHistograms()
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;
-    cout << "Creating Histogram(s) for..."  << endl;
+    cout << "Creating Histogram(s) for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     cout << "    nParticleFilters: " << nParticleFilters << endl;
     }
@@ -133,10 +133,10 @@ void ParticlePerformanceAnalyzer::loadHistograms(TFile * inputFile)
   fillEta = configuration.getValueBool("fillEta");
   fillY   = configuration.getValueBool("fillY");
   
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
-    cout << "Loading Histogram(s) for..."  << endl;
+    cout << "Loading Histogram(s) for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     cout << "    nParticleFilters: " << nParticleFilters << endl;
     }

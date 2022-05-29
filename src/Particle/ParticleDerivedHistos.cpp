@@ -83,73 +83,72 @@ void ParticleDerivedHistos::createHistograms()
   min_y = configuration.getValueDouble("min_y");
   max_y = configuration.getValueDouble("max_y");
    
-  h_n1_phi     = createHistogram(bn+TString("n1_phi"), nBins_phi, min_phi, max_phi, "#varphi","#rho_{1}(#varphi)");
+  h_n1_phi     = createHistogram(makeName(bn,"n1_phi"), nBins_phi, min_phi, max_phi, "#varphi","#rho_{1}(#varphi)");
 
   if (fillP2)
     {
-    h_spt_phi    = createHistogram(bn+TString("sumpt1_phi"), nBins_phi, min_phi, max_phi, "#varphi","#sum p_{T}");
-    h_pt_phi     = createHistogram(bn+TString("pt_phi"),     nBins_phi, min_phi, max_phi, "#varphi","<p_{T}>");
+    h_spt_phi    = createHistogram(makeName(bn,"sumpt1_phi"), nBins_phi, min_phi, max_phi, "#varphi","#sum p_{T}");
+    h_pt_phi     = createHistogram(makeName(bn,"pt_phi"),     nBins_phi, min_phi, max_phi, "#varphi","<p_{T}>");
     }
 
   if (fillEta)
     {
-    h_n1_eta     = createHistogram(bn+TString("n1_eta"),     nBins_eta, min_eta, max_eta, "#eta",   "#rho_{1}(#eta)");
+    h_n1_eta     = createHistogram(makeName(bn,"n1_eta"),     nBins_eta, min_eta, max_eta, "#eta",   "#rho_{1}(#eta)");
     if (fillP2)
       {
-      h_spt_eta     = createHistogram(bn+TString("sumpt1_eta"),  nBins_eta, min_eta, max_eta, "#eta",   "#sum p_{T}");
-      h_pt_eta     = createHistogram(bn+TString("pt_eta"),     nBins_eta, min_eta, max_eta, "#eta",   "<p_{T}>");
-      h_pt_phiEta  = createHistogram(bn+TString("pt_phiEta"),  nBins_eta, min_eta, max_eta, nBins_phi, min_phi, max_phi, "#eta", "#varphi","N");
+      h_spt_eta     = createHistogram(makeName(bn,"sumpt1_eta"),  nBins_eta, min_eta, max_eta, "#eta",   "#sum p_{T}");
+      h_pt_eta     = createHistogram(makeName(bn,"pt_eta"),     nBins_eta, min_eta, max_eta, "#eta",   "<p_{T}>");
+      h_pt_phiEta  = createHistogram(makeName(bn,"pt_phiEta"),  nBins_eta, min_eta, max_eta, nBins_phi, min_phi, max_phi, "#eta", "#varphi","N");
       }
     }
   if (fillY)
     {
-    h_n1_y      = createHistogram(bn+TString("n1_y"),     nBins_y, min_y,   max_y, "y",   "#rho_{1}(y)");
+    h_n1_y      = createHistogram(makeName(bn,"n1_y"),     nBins_y, min_y,   max_y, "y",   "#rho_{1}(y)");
     if (fillP2)
       {
-      h_spt_y     = createHistogram(bn+TString("sumpt1_y"),  nBins_eta, min_eta, max_eta, "y",   "#sum p_{T}");
-      h_pt_y      = createHistogram(bn+TString("pt_y"),     nBins_y,   min_y,   max_y,    "y",   "<p_{T}>");
-      h_pt_phiY   = createHistogram(bn+TString("pt_phiY"),  nBins_y,   min_y,   max_y, nBins_phi, min_phi, max_phi, "y", "#varphi","N");
+      h_spt_y     = createHistogram(makeName(bn,"sumpt1_y"),  nBins_eta, min_eta, max_eta, "y",   "#sum p_{T}");
+      h_pt_y      = createHistogram(makeName(bn,"pt_y"),     nBins_y,   min_y,   max_y,    "y",   "<p_{T}>");
+      h_pt_phiY   = createHistogram(makeName(bn,"pt_phiY"),  nBins_y,   min_y,   max_y, nBins_phi, min_phi, max_phi, "y", "#varphi","N");
       }
     }
-  if ( reportEnd("ParticleDerivedHistos",getName(),"createHistograms()"))
+  if ( reportEnd(__FUNCTION__))
     { }
 }
 
 //________________________________________________________________________
 void ParticleDerivedHistos::loadHistograms(TFile * inputFile)
 {
-  if (reportStart("ParticleDerivedHistos",getName(),"loadHistograms(TFile * inputFile)"))
-    { }
-  TString fct = "loadHistograms(TFile * inputFile)";
-  if (!ptrFileExist(fct,inputFile)) return;
+  if (reportStart(__FUNCTION__))
+    ;
+  if (!ptrFileExist(__FUNCTION__,inputFile)) return;
   TString bn = getHistoBaseName();
-  h_n1_phi  = loadH1(inputFile,  bn+TString("n1_phi"));
-  h_spt_phi = loadH1(inputFile,  bn+TString("spt_phi"));
-  h_pt_phi  = loadH1(inputFile,  bn+TString("pt_phi"));
+  h_n1_phi  = loadH1(inputFile,  makeName(bn,"n1_phi"));
+  h_spt_phi = loadH1(inputFile,  makeName(bn,"spt_phi"));
+  h_pt_phi  = loadH1(inputFile,  makeName(bn,"pt_phi"));
 
   if (fillEta)
     {
-    h_n1_eta     = loadH1(inputFile,  bn+TString("n1_eta"));
+    h_n1_eta     = loadH1(inputFile,  makeName(bn,"n1_eta"));
     if (fillP2)
       {
-      h_spt_eta     = loadH1(inputFile,  bn+TString("spt_eta"));
-      h_pt_eta      = loadH1(inputFile,  bn+TString("pt_eta"));
-      h_pt_phiEta   = loadH2(inputFile,  bn+TString("pt_phiEta"));
+      h_spt_eta     = loadH1(inputFile,  makeName(bn,"spt_eta"));
+      h_pt_eta      = loadH1(inputFile,  makeName(bn,"pt_eta"));
+      h_pt_phiEta   = loadH2(inputFile,  makeName(bn,"pt_phiEta"));
       }
     }
   if (fillY)
     {
-    h_n1_y     = loadH1(inputFile,  bn+TString("n1_y"));
+    h_n1_y     = loadH1(inputFile,  makeName(bn,"n1_y"));
     if (fillP2)
       {
-      h_spt_y     = loadH1(inputFile,  bn+TString("spt_y"));
-      h_pt_y      = loadH1(inputFile,  bn+TString("pt_y"));
-      h_pt_phiY   = loadH2(inputFile,  bn+TString("pt_phiY"));
+      h_spt_y     = loadH1(inputFile,  makeName(bn,"spt_y"));
+      h_pt_y      = loadH1(inputFile,  makeName(bn,"pt_y"));
+      h_pt_phiY   = loadH2(inputFile,  makeName(bn,"pt_phiY"));
       }
     }
 
-  if ( reportEnd("ParticleDerivedHistos",getName(),"loadHistograms(TFile * inputFile)"))
-    { }
+  if ( reportEnd(__FUNCTION__))
+    ;
 }
 
 //!
@@ -157,7 +156,6 @@ void ParticleDerivedHistos::loadHistograms(TFile * inputFile)
 //!
 void ParticleDerivedHistos::calculateDerivedHistograms(ParticleHistos * baseHistos)
 {
-  TString fct = "calculateDerivedHistograms(ParticleHistos * baseHistos)";
   if (reportStart(__FUNCTION__))
     ;
   TString bn = getHistoBaseName();

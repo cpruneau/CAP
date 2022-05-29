@@ -93,12 +93,12 @@ void PythiaEventGenerator::initialize()
     //cout << " key : " << key << "   value: " << value << endl;
     if (key.Contains("option") && !value.Contains("none") )
       {
-      //cout << " adding to pythia ..." << endl;
+      //cout << " adding to pythia .." << endl;
       pythia8->ReadString(value);
       }
     else
       {
-      //cout << " NOT adding to pythia ..." << endl;
+      //cout << " NOT adding to pythia .." << endl;
       }
       
     }
@@ -239,7 +239,7 @@ void PythiaEventGenerator::generate(Particle * parentInteraction)
     Event & event = * eventStreams[0];
     ParticleFilter & particleFilter = * particleFilters[0];
     // load particles from TClone storage and copy into event.
-    //if (reportDebug(__FUNCTION__)) cout << "PythiaEventGenerator::execute() starting copy loop into event..." << endl;
+    //if (reportDebug(__FUNCTION__)) cout << "PythiaEventGenerator::execute() starting copy loop into event.." << endl;
 
     resetNParticlesAcceptedEvent();
     for (int iParticle = 0; iParticle < nParticles; iParticle++)
@@ -363,7 +363,7 @@ void PythiaEventGenerator::finalize()
 //  if (ist <= 0) continue;
 //  int pdg = part.GetPdgCode();
 //  mass = TDatabasePDG::Instance()->GetParticle(pdg)->Mass();
-//  if (mass<0.002) continue;  // no photons, electrons...
+//  if (mass<0.002) continue;  // no photons, electrons..
 //  charge = TDatabasePDG::Instance()->GetParticle(pdg)->Charge();
 //  p_x  = cosPhi*part.Px() - sinPhi*part.Py();
 //  p_y  = sinPhi*part.Px() + cosPhi*part.Py();

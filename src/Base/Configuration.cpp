@@ -246,7 +246,7 @@ int Configuration::getValueInt(const TString & name) const
     }
   else
     {
-    std::cout  << " Configuration::getValueInt(...) did not find key:" << name << std::endl;
+    std::cout  << " Configuration::getValueInt(..) did not find key:" << name << std::endl;
     }
   return value;
 }
@@ -263,7 +263,7 @@ int Configuration::getValueLong(const TString & name) const
     }
   else
     {
-    std::cout  << " Configuration::getValueLong(...) did not find key:" << name << std::endl;
+    std::cout  << " Configuration::getValueLong(..) did not find key:" << name << std::endl;
     }
   return value;
 }
@@ -281,7 +281,7 @@ double Configuration::getValueDouble(const TString & name)  const
     }
   else
     {
-    std::cout  << " Configuration::getValueDouble(...)  did not find key:" << name << std::endl;
+    std::cout  << " Configuration::getValueDouble(..)  did not find key:" << name << std::endl;
     }
   return value;
 }
@@ -298,7 +298,7 @@ TString  Configuration::getValueString(const TString & name) const
     }
   else
     {
-    std::cout  << " Configuration::getValueString(...)  did not find key:" << name << std::endl;
+    std::cout  << " Configuration::getValueString(..)  did not find key:" << name << std::endl;
     }
   return value;
 }

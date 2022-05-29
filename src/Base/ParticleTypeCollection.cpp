@@ -61,7 +61,7 @@ void ParticleTypeCollection::readFromFile(const TString & inputFileName)
   TString theAntiTitle;
   while (1)
     {
-    //cout << "Reading in ParticleType resonance decay table... - 2 -" << endl;
+    //cout << "Reading in ParticleType resonance decay table.. - 2 -" << endl;
     inputFile >> pdgCode;
     if (inputFile.eof())
       {
@@ -129,14 +129,14 @@ void ParticleTypeCollection::readFromFile(const TString & inputFileName)
         }
       }
     }
-    //cout << "Reading in ParticleType resonance decay table... - 5- " << endl;
+    //cout << "Reading in ParticleType resonance decay table.. - 5- " << endl;
     inputFile.close();
     //particleList.erase(particleList.begin());  // delete gamma
     cout << "<I> Total number of Hadrons: " <<  size() << endl;
     resolveTypes();
     sortByMass();
 
-  // setup the decay montecarlo probabilities....
+  // setup the decay montecarlo probabilities...
   for (unsigned int k=0; k<size(); k++)
     {
     objects[k]->setupDecayGenerator();

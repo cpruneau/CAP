@@ -20,7 +20,7 @@
 //!
 //! Let the species be: a, b, c, etc
 //! First order moments:  f_1(a), f_1(b), f_1(c), etc
-//! Second order moments: f_2(a,a), f_2(a,b), f_2(a,c), ..., f_2(b,b), f_2(b,c), etc
+//! Second order moments: f_2(a,a), f_2(a,b), f_2(a,c), .., f_2(b,b), f_2(b,c), etc
 //! Third order moments: f_3(a,a,a), f_3(a,a,b), f_3(a,a,c), f(a,a,d), f(a,b,b), etc
 //! Fourth order moments: f_4(a,a,a,a), f_(a,a,a,b), f_4(a,a,b,b), etc
 //!
@@ -28,7 +28,7 @@
 // Naming convention
 // ================================================================================
 // fk_i     : factorial moments of order "k" for particle "i" (i.e., accepted by filter 1)
-// Fk_i..j  : factorial cumulants of order "k" for particles "i, ..., j" (i.e., accepted by filter i..j)
+// Fk_i.j  : factorial cumulants of order "k" for particles "i, .., j" (i.e., accepted by filter i.j)
 // rk_i     : ratio of factorial moments of order "k" for particle "i" (i.e., accepted by filter 1)
 //            to product of f1_i
 //

@@ -70,7 +70,7 @@ void NuDynAnalyzer::createHistograms()
   TString partFilterName;
   if (reportInfo(__FUNCTION__))
     {
-    cout << "Creating Histograms for..."  << endl;
+    cout << "Creating Histograms for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     cout << "    nParticleFilters: " << nParticleFilters << endl;
     }
@@ -106,9 +106,9 @@ void NuDynAnalyzer::loadHistograms(TFile * inputFile)
   TString histoName;
   TString partFilterName;
   
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
-    cout << "Creating Histograms for..."  << endl;
+    cout << "Creating Histograms for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     cout << "    nParticleFilters: " << nParticleFilters << endl;
     }
@@ -142,7 +142,7 @@ void NuDynAnalyzer::execute()
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     if (!eventFilters[iEventFilter]->accept(*event)) continue;
-    incrementNEventsAccepted(iEventFilter); // count eventStreams used to fill histograms and for scaling at the end...
+    incrementNEventsAccepted(iEventFilter); // count eventStreams used to fill histograms and for scaling at the end..
     
     vector<double> nAccepted(nParticleFilters,0.0);
     for (unsigned long  iParticle=0; iParticle<event->getNParticles(); iParticle++)

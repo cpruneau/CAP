@@ -124,7 +124,7 @@ random(_selectedRandom)
       }
   if (invalidSetup)
     {
-    cout << "<F> MomentumGenerator(...)" << endl;
+    cout << "<F> MomentumGenerator(..)" << endl;
     cout << "           generatorType: " << generatorType           << endl;
     cout << "            particleType: " << particleType->getName() << endl;
     cout << "       parameters.size(): " << parameters.size()       << endl;

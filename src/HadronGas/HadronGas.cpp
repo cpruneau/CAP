@@ -191,7 +191,7 @@ void HadronGas::calculateParticleDecayProbability()
         }
       // now we have a local list of the pdg ids iPart decays into (w/o photons)
       // must look at singles and then at pairs
-      // if there are no particleTypes left, just skip this decay channel...
+      // if there are no particleTypes left, just skip this decay channel..
       double prob1, prob2;
       for (int kParticle1 = 0; kParticle1 < nChildren; kParticle1++)
         {
@@ -566,13 +566,13 @@ int HadronGas::generateRandomHadronByIndex()
 // ======================================================================
 double HadronGas::computeThermalDensityVsP(double temperature, double mass, double mu, double g, double sign, double p)
 {
-  if (reportStart("HadronGas", getName(), "computeThermalDensityVsP(...)" ) )
+  if (reportStart("HadronGas", getName(), "computeThermalDensityVsP(..)" ) )
     ;
   double e = sqrt(p*p+mass*mass);
   double prefactor = g/twoPiCube;
   double arg = (e-mu)/temperature;
   double density = prefactor*(p/e)/(exp(arg)+sign);
-  if (reportEnd("HadronGas", getName(), "computeThermalDensityVsP(...)" ) )
+  if (reportEnd("HadronGas", getName(), "computeThermalDensityVsP(..)" ) )
     ;
   return density;
 }

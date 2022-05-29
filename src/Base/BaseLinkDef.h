@@ -66,7 +66,7 @@
 
 #pragma link C++ class  Nucleus+;
 
-#pragma link C++ class  BidimGaussFitResult+;
-#pragma link C++ class  BidimGaussFitConfiguration+;
-#pragma link C++ class  BidimGaussFitter+;
+//#pragma link C++ class  BidimGaussFitResult+;
+//#pragma link C++ class  BidimGaussFitConfiguration+;
+//#pragma link C++ class  BidimGaussFitter+;
 #endif

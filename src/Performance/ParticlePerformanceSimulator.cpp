@@ -183,7 +183,7 @@ void ParticlePerformanceSimulator::initialize()
 
 void ParticlePerformanceSimulator::loadHistograms(TFile * inputFile)
 {
-  if (reportStart("ParticlePerformanceSimulator",getName(),"loadHistograms(TFile * inputFile)"))
+  if (reportStart(__FUNCTION__))
     ;
   Configuration & config = getConfiguration();
   useSameSetForAll = config.getValueBool("useSameSetForAll");
@@ -226,6 +226,8 @@ void ParticlePerformanceSimulator::loadHistograms(TFile * inputFile)
       efficienyHistogram   = loadH1(inputFile,baseName+"_Eff");
       break;
     }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 void ParticlePerformanceSimulator::smearMomentum(const TLorentzVector &in, TLorentzVector & out)

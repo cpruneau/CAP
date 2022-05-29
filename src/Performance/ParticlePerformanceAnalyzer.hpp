@@ -82,7 +82,7 @@ public:
   virtual void setDefaultConfiguration();
   
   //!
-  //! Execute ...
+  //! Execute ..
   //!
   virtual void execute();
   

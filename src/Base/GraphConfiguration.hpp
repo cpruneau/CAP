@@ -32,7 +32,7 @@ using std::vector;
 
 //!
 //! Class encapsulates the plotting properties or attributes of a graph or histograms.
-//! This class is designed to work with other WAC graphics classes to set the plotting
+//! This class is designed to work with other CAP graphics classes to set the plotting
 //! attributes of graphs (TGraph), histograms (TH1*), and data graphs (DataGraph) displaying
 //! data values, statistical error bars, and systematic error bars.
 //!
@@ -43,52 +43,6 @@ using std::vector;
 class GraphConfiguration : public Configuration
 {
 public:
-
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // Data Members
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  int npx;
-  int npy;
-  
-  int lineColor;
-  int lineStyle;
-  int lineWidth;
-  
-  int markerColor;
-  int markerStyle;
-  float markerSize;
-
-  int systsColor;
-  int systsStyle;
-  float systsWidth;
-
-
-  int   nXDivisions;
-  float xTitleSize;
-  float xTitleOffset;
-  float xLabelSize;
-  float xLabelOffset;
-  TString xTitle;
-  
-  int   nYDivisions;
-  float yTitleSize;
-  float yTitleOffset;
-  float yLabelSize;
-  float yLabelOffset;
-  TString yTitle;
-  
-  int   nZDivisions;
-  float zTitleSize;
-  float zTitleOffset;
-  float zLabelSize;
-  float zLabelOffset;
-  TString zTitle;
-  
-  TString plotOption;
-
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // Member functrions
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   //!
   //!Default CTOR

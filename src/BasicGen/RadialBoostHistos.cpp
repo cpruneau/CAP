@@ -42,26 +42,21 @@ void RadialBoostHistos::createHistograms()
   double max_beta = configuration.getValueDouble("max_beta");
   
   TString bn = getHistoBaseName();
-  h_phi  = createHistogram(bn+TString("ns_phi"),   nBins_phi,  min_phi,  max_phi,  "#phi",      "N_{s}");
-  h_r    = createHistogram(bn+TString("ns_r"),     nBins_r,    min_r,    max_r,    "r",         "N_{s}");
-  h_beta = createHistogram(bn+TString("ns_beta"),  nBins_beta, min_beta, max_beta, "#beta_{s}", "N_{s}");
-  h_xy   = createHistogram(bn+TString("ns_xy"),    40, -10.0, 10.0,  40, -10.0, 10.0,       "x",    "y", "N_{s}");
+  h_phi  = createHistogram(makeName(bn,"ns_phi"),   nBins_phi,  min_phi,  max_phi,  "#phi",      "N_{s}");
+  h_r    = createHistogram(makeName(bn,"ns_r"),     nBins_r,    min_r,    max_r,    "r",         "N_{s}");
+  h_beta = createHistogram(makeName(bn,"ns_beta"),  nBins_beta, min_beta, max_beta, "#beta_{s}", "N_{s}");
+  h_xy   = createHistogram(makeName(bn,"ns_xy"),    40, -10.0, 10.0,  40, -10.0, 10.0,       "x",    "y", "N_{s}");
 }
 
 //________________________________________________________________________
 void RadialBoostHistos::loadHistograms(TFile * inputFile)
 {
-  if (!inputFile)
-    {
-    if (reportFatal()) cout << "-Fatal- Attempting to load RadialBoostHistos from an invalid file pointer" << endl;
-    return;
-    }
-  //RadialBoostConfiguration & ac = *(RadialBoostConfiguration*) getConfiguration();
+  if (!ptrFileExist(__FUNCTION__, inputFile)) return;
   TString bn = getHistoBaseName();
-  h_phi  = loadH1(inputFile,bn+TString("ns_phi")  );
-  h_r    = loadH1(inputFile,bn+TString("ns_r")    );
-  h_beta = loadH1(inputFile,bn+TString("ns_beta") );
-  h_xy   = loadH2(inputFile,bn+TString("ns_xy") );
+  h_phi  = loadH1(inputFile,makeName(bn,"ns_phi")  );
+  h_r    = loadH1(inputFile,makeName(bn,"ns_r")    );
+  h_beta = loadH1(inputFile,makeName(bn,"ns_beta") );
+  h_xy   = loadH2(inputFile,makeName(bn,"ns_xy") );
   return;
 }
 

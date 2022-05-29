@@ -57,31 +57,31 @@ void NuDynHistos::createHistograms()
   
   switch (multiplicityType)
     {
-      case 0: suffix = "_vsCent"; xTitle = "%"; break;
-      case 1: suffix = "_vsMult"; xTitle = "mult_{Tot}";  break;
-      case 2: suffix = "_vsMult"; xTitle = "mult_{acc}";  break;
+      case 0: suffix = "vsCent"; xTitle = "%"; break;
+      case 1: suffix = "vsMult"; xTitle = "mult_{Tot}";  break;
+      case 2: suffix = "vsMult"; xTitle = "mult_{acc}";  break;
     }
   
-  h_eventStreams   = createHistogram(bn+TString("NeventStreams"),10,0.0,10, "Streams","n_{Events}");
-  h_eventStreams_vsMult = createHistogram(bn+TString("NeventStreams")+suffix,nBins_mult,min_mult,  max_mult,  xTitle,"n_{Events}");
+  h_eventStreams   = createHistogram(makeName(bn,"NeventStreams"),10,0.0,10, "Streams","n_{Events}");
+  h_eventStreams_vsMult = createHistogram(makeName(bn,"NeventStreams")+suffix,nBins_mult,min_mult,  max_mult,  xTitle,"n_{Events}");
   for (unsigned int i1=0; i1<nFilters; i1++)
     {
-    h_f1.push_back(        createProfile(makeName(bn+"f1",i1), 10,0.0,10, "Streams", makeName("f_{1}^{",i1,"}")) );
-    h_f1_vsMult.push_back( createProfile(makeName(bn+TString("f1")+suffix,i1),nBins_mult,min_mult,max_mult,xTitle, makeName("f_{1}^{",i1,"}") ) );
+    h_f1.push_back(        createProfile(makeName(bn,"f1",i1), 10,0.0,10, "Streams", makeName("f_{1}^{",i1,"}")) );
+    h_f1_vsMult.push_back( createProfile(makeName(bn,"f1",i1,suffix),nBins_mult,min_mult,max_mult,xTitle, makeName("f_{1}^{",i1,"}") ) );
     for (unsigned int i2=i1; i2<nFilters; i2++)
       {
-      h_f2.push_back(        createProfile(makeName(bn+"f2",i1,i2), 10,0.0,10, "Streams", makeName("f_{2}^{",i1,i2,"}")) );
-      h_f2_vsMult.push_back( createProfile(makeName(bn+TString("f2")+suffix,i1,i2),nBins_mult,min_mult,max_mult,xTitle,makeName("f_{2}^{",i1,i2,"}")) );
+      h_f2.push_back(        createProfile(makeName(bn,"f2",i1,i2), 10,0.0,10, "Streams", makeName("f_{2}^{",i1,i2,"}")) );
+      h_f2_vsMult.push_back( createProfile(makeName(bn,"f2",i1,i2,suffix),nBins_mult,min_mult,max_mult,xTitle,makeName("f_{2}^{",i1,i2,"}")) );
       if (!pairOnly)
         {
         for (unsigned int i3=i2; i3<nFilters; i3++)
           {
-          h_f3.push_back(        createProfile(makeName(bn+"f3",i1,i2,i3), 10,0.0,10, "Streams", makeName("f_{3}^{",i1,i2,i3,"}")) );
-          h_f3_vsMult.push_back( createProfile(makeName(bn+TString("f3")+suffix,i1,i2,i3),nBins_mult,min_mult,max_mult,xTitle,makeName("f_{3}^{",i1,i2,i3,"}")) );
+          h_f3.push_back(        createProfile(makeName(bn,"f3",i1,i2,i3), 10,0.0,10, "Streams", makeName("f_{3}^{",i1,i2,i3,"}")) );
+          h_f3_vsMult.push_back( createProfile(makeName(bn,"f3",i1,i2,i3,suffix),nBins_mult,min_mult,max_mult,xTitle,makeName("f_{3}^{",i1,i2,i3,"}")) );
           for (unsigned int i4=i3; i4<nFilters; i4++)
             {
-            h_f4.push_back(        createProfile(makeName(bn+"f4",i1,i2,i3,i4), 10,0.0,10, "Streams", makeName("f_{4}^{",i1,i2,i3,i4,"}")));
-            h_f4_vsMult.push_back( createProfile(makeName(bn+TString("f4")+suffix,i1,i2,i3,i4),nBins_mult,min_mult,max_mult,xTitle,makeName("f_{4}^{",i1,i2,i3,i4,"}")));
+            h_f4.push_back(        createProfile(makeName(bn,"f4",i1,i2,i3,i4), 10,0.0,10, "Streams", makeName("f_{4}^{",i1,i2,i3,i4,"}")));
+            h_f4_vsMult.push_back( createProfile(makeName(bn,"f4",i1,i2,i3,i4,suffix),nBins_mult,min_mult,max_mult,xTitle,makeName("f_{4}^{",i1,i2,i3,i4,"}")));
             }
           }
         } // !pairOnly
@@ -92,11 +92,9 @@ void NuDynHistos::createHistograms()
 //________________________________________________________________________
 void NuDynHistos::loadHistograms(TFile * inputFile)
 {
-  if (!inputFile)
-    {
-    if (reportFatal()) cout << "-Fatal- Attempting to load NuDynHistos from an invalid file pointer" << endl;
-    return;
-    }
+  if (reportStart(__FUNCTION__))
+    ;
+  if (!ptrFileExist(__FUNCTION__, inputFile)) return;
   Configuration & configuration = getConfiguration();
   nFilters         = configuration.getValueInt("nFilters");
   multiplicityType = configuration.getValueInt("multiplicityType");
@@ -106,36 +104,38 @@ void NuDynHistos::loadHistograms(TFile * inputFile)
   TString suffix = "";
   switch ( multiplicityType )
     {
-      case 0: suffix = "_vsCent"; break;
-      case 1: suffix = "_vsMult"; break;
-      case 2: suffix = "_vsMult"; break;
+      case 0: suffix = "vsCent"; break;
+      case 1: suffix = "vsMult"; break;
+      case 2: suffix = "vsMult"; break;
     }
-  h_eventStreams        = loadH1(inputFile,bn+TString("NeventStreams"));
-  h_eventStreams_vsMult = loadH1(inputFile,bn+TString("NeventStreams")+suffix);
+  h_eventStreams        = loadH1(inputFile,makeName(bn,"NeventStreams"));
+  h_eventStreams_vsMult = loadH1(inputFile,makeName(bn,"NeventStreams")+suffix);
   
   for (unsigned int i1=0; i1<nFilters; i1++)
     {
     h_f1.push_back(loadProfile(inputFile,makeName(bn+"f1",i1)));
-    h_f1_vsMult.push_back(loadProfile(inputFile,makeName(bn+TString("f1")+suffix,i1)));
+    h_f1_vsMult.push_back(loadProfile(inputFile,makeName(bn,"f1",i1,suffix)));
     for (unsigned int i2=i1; i2<nFilters; i2++)
       {
       h_f2.push_back(loadProfile(inputFile,makeName(bn+"f2",i1,i2)));
-      h_f2_vsMult.push_back(loadProfile(inputFile,makeName(bn+TString("f2")+suffix,i1,i2)));
+      h_f2_vsMult.push_back(loadProfile(inputFile,makeName(bn,"f2",i1,i2,suffix)));
       if (!pairOnly)
         {
         for (unsigned int i3=i2; i3<nFilters; i3++)
           {
           h_f3.push_back(loadProfile(inputFile,makeName(bn+"f3",i1,i2,i3)));
-          h_f3_vsMult.push_back(loadProfile(inputFile,makeName(bn+TString("f3")+suffix,i1,i2,i3)));
+          h_f3_vsMult.push_back(loadProfile(inputFile,makeName(bn,"f3",i1,i2,i3,suffix)));
           for (unsigned int i4=i3; i4<nFilters; i4++)
             {
-            h_f4.push_back(loadProfile(inputFile,makeName(bn+"f4",i1,i2,i3,i4)));
-            h_f4_vsMult.push_back(loadProfile(inputFile,makeName(bn+TString("f4")+suffix,i1,i2,i3,i4)));
+            h_f4.push_back(loadProfile(inputFile,makeName(bn,"f4",i1,i2,i3,i4)));
+            h_f4_vsMult.push_back(loadProfile(inputFile,makeName(bn,"f4",i1,i2,i3,i4,suffix)));
             }
           }
         } // !pairOnly
       }
     }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 

@@ -53,10 +53,10 @@ void TransverseSpherocityHistos::createHistograms()
   for (int iPartFilter1=0; iPartFilter1<nParticleFilters; iPartFilter1++ )
     {
     TString pfn1 = particleFilters[iPartFilter1]->getName();
-    if (fillS0) h_s0.push_back( createHistogram(bn+pfn1+"_S0", nBins_spherocity,min_spherocity,max_spherocity,"S_{0}","N"));
-    if (fillS1) h_s1.push_back( createHistogram(bn+pfn1+"_S1", nBins_spherocity,min_spherocity,max_spherocity,"S_{1}","N"));
+    if (fillS0) h_s0.push_back( createHistogram(makeName(bn,pfn1,"S0"), nBins_spherocity,min_spherocity,max_spherocity,"S_{0}","N"));
+    if (fillS1) h_s1.push_back( createHistogram(makeName(bn,pfn1,"S1"), nBins_spherocity,min_spherocity,max_spherocity,"S_{1}","N"));
     if (fillS1VsS0)
-      h_s1VsS0.push_back( createHistogram(bn+pfn1+"_S1VsS0",
+      h_s1VsS0.push_back( createHistogram(makeName(bn,pfn1,"S1VsS0"),
                                           nBins_spherocity,min_spherocity,max_spherocity,nBins_spherocity,min_spherocity,max_spherocity,
                                           "S_{0}","S_{1}","N"));
     if (fillCorrelationHistos)
@@ -69,7 +69,7 @@ void TransverseSpherocityHistos::createHistograms()
       for (int iPartFilter2=iPartFilter1+1; iPartFilter2<nParticleFilters; iPartFilter2++ )
           {
           TString pfn2 = particleFilters[iPartFilter2]->getName();
-          h_s0VsS0.push_back( createHistogram(bn+pfn1+pfn2+"_S0VsS0",
+          h_s0VsS0.push_back( createHistogram(makeName(bn,pfn1,"S0VsS0"),
                                               nBins_spherocity,min_spherocity,max_spherocity,
                                               nBins_spherocity,min_spherocity,max_spherocity,
                                               "S_{0}","S_{0}","N"));
@@ -82,7 +82,7 @@ void TransverseSpherocityHistos::createHistograms()
 
 void TransverseSpherocityHistos::loadHistograms(TFile * inputFile)
 {
-  if ( reportStart("TransverseSpherocityHistos",getName(),"loadHistograms(TFile * inputFile)"))
+  if ( reportStart(__FUNCTION__))
     { }
   TString bn = getHistoBaseName();
   Configuration & configuration = getConfiguration();
@@ -94,21 +94,20 @@ void TransverseSpherocityHistos::loadHistograms(TFile * inputFile)
   for (int iPartFilter1=0; iPartFilter1<nParticleFilters; iPartFilter1++ )
     {
     TString pfn1 = particleFilters[iPartFilter1]->getName();
-    if (fillS0) h_s0.push_back( loadH1(inputFile, bn+pfn1+TString("S0")));
-    if (fillS1) h_s1.push_back( loadH1(inputFile, bn+pfn1+TString("S1")));
-    if (fillS1VsS0) h_s1VsS0.push_back( loadH2(inputFile, bn+pfn1+TString("S1VsS0")));
+    if (fillS0) h_s0.push_back( loadH1(inputFile, makeName(bn,pfn1,"S0")));
+    if (fillS1) h_s1.push_back( loadH1(inputFile, makeName(bn,pfn1,"S1")));
+    if (fillS1VsS0) h_s1VsS0.push_back( loadH2(inputFile, makeName(bn,pfn1,"S1VsS0")));
     if (fillCorrelationHistos)
       {
       for (int iPartFilter2=iPartFilter1+1; iPartFilter2<nParticleFilters; iPartFilter2++ )
           {
           TString pfn2 = particleFilters[iPartFilter2]->getName();
-          TString hn = bn+pfn1+pfn2+TString("_S0VsS0");
-          h_s0VsS0.push_back( loadH2(inputFile, hn));
+          h_s0VsS0.push_back( loadH2(inputFile, makeName(bn,pfn1,pfn2,"S0VsS0")));
           }
       }
     }
   
-  if ( reportEnd("TransverseSpherocityHistos",getName(),"loadHistograms(TFile * inputFile)"))
+  if ( reportEnd(__FUNCTION__))
     { }
 }
 

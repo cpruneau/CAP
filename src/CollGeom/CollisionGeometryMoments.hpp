@@ -33,7 +33,7 @@ public:
   virtual void fill(double x ,double y);
   virtual void calculate();
 
-  double m0; // counts...
+  double m0; // counts..
   double m1x, m1y, m2x2, m2y2, m2xy;
 
   double meanX;

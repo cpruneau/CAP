@@ -69,18 +69,19 @@ void GlobalDerivedHistogramCalculator::createHistograms()
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString prefixName = getName(); prefixName += "_";
-  if (reportInfo(__FUNCTION__))
+  TString bn  = getName();
+  if (reportDebug(__FUNCTION__))
     {
-    cout << "Creating Histograms for : " << prefixName  << endl;
+    cout << "Creating Histograms for : " << bn  << endl;
     cout << "          nEventFilters : " << nEventFilters << endl;
     cout << "       nParticleFilters : " << nParticleFilters << endl;
     }
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    GlobalDerivedHistos * histos = new GlobalDerivedHistos(prefixName+eventFilters[iEventFilter]->getName(),configuration,particleFilters,getReportLevel());
+    TString efn = eventFilters[iEventFilter]->getName();
+    GlobalDerivedHistos * histos = new GlobalDerivedHistos(makeHistoName(bn,efn),configuration,particleFilters,getReportLevel());
     histos->createHistograms();
-    histograms.push_back(histos);
+    derivedHistograms.push_back(histos);
     }
   if (reportEnd(__FUNCTION__))
     ;
@@ -89,20 +90,21 @@ void GlobalDerivedHistogramCalculator::createHistograms()
 
 void GlobalDerivedHistogramCalculator::loadHistograms(TFile * inputFile)
 {
-  
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString prefixName = getName(); prefixName += "_";
-  if (reportInfo(__FUNCTION__))
+  TString bn  = getName();
+
+  if (reportDebug(__FUNCTION__))
     {
-    cout << "Creating Histograms for " << prefixName  << endl;
-    cout << "       nEventFilters: " << nEventFilters << endl;
-    cout << "    nParticleFilters: " << nParticleFilters << endl;
+    cout << "Loading Histograms for " << bn  << endl;
+    cout << "        nEventFilters: " << nEventFilters << endl;
+    cout << "     nParticleFilters: " << nParticleFilters << endl;
     }
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    GlobalDerivedHistos * histos = new GlobalDerivedHistos(prefixName+eventFilters[iEventFilter]->getName(),configuration,particleFilters,getReportLevel());
+    TString efn = eventFilters[iEventFilter]->getName();
+    GlobalHistos * histos = new GlobalHistos(makeHistoName(bn,efn),configuration,particleFilters,getReportLevel());
     histos->loadHistograms(inputFile);
     histograms.push_back(histos);
     }
@@ -113,13 +115,9 @@ void GlobalDerivedHistogramCalculator::loadHistograms(TFile * inputFile)
 
 void GlobalDerivedHistogramCalculator::execute()
 {
-  
   if (reportStart(__FUNCTION__))
     ;
-  incrementTaskExecuted();
-  unsigned int nEventFilters    = eventFilters.size();
-  unsigned int nParticleFilters = particleFilters.size();
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "Computing derived histograms for: " << endl;
@@ -128,16 +126,16 @@ void GlobalDerivedHistogramCalculator::execute()
     }
   GlobalHistos        * baseHistos;
   GlobalDerivedHistos * derivedHistos;
-  unsigned index;
 
   //!Mode 1: Running rigth after Analysis: base histograms pointers  are copied from analyzer to baseSingleHistograms
   //!Mode 2: Running as standalone: base histograms are loaded from file.
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
       baseHistos    = (GlobalHistos *) histograms[iEventFilter];
+
       derivedHistos = (GlobalDerivedHistos *) derivedHistograms[iEventFilter];
       derivedHistos->calculateDerivedHistograms(baseHistos);
     }
   if (reportEnd(__FUNCTION__))
-    { }
+    ;
 }

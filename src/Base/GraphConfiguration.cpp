@@ -33,7 +33,7 @@ void GraphConfiguration::setDefaultConfiguration()
   addParameter("npy", 100);
   addParameter("lineColor", 1);
   addParameter("lineStyle", 1);
-  addParameter("lineWidth", 2);
+  addParameter("lineWidth", 1);
   addParameter("markerColor",   1);
   addParameter("markerStyle",  20);
   addParameter("markerSize",  1.1);
@@ -45,21 +45,25 @@ void GraphConfiguration::setDefaultConfiguration()
   addParameter("xTitleOffset", 1.1);
   addParameter("xLabelSize",  0.05);
   addParameter("xLabelOffset", 0.01);
-  addParameter("xTitle",        "x");
+  addParameter("xTitle",       TString("x"));
   addParameter("nYDivisions",     5);
   addParameter("yTitleSize",   0.06);
   addParameter("yTitleOffset",  1.2);
   addParameter("yLabelSize",   0.05);
   addParameter("yLabelOffset", 0.01);
-  addParameter("yTitle",        "y");
+  addParameter("yTitle",        TString("y"));
   addParameter("nZDivisions",     5);
   addParameter("zTitleSize",   0.06);
   addParameter("zTitleOffset",  1.5);
   addParameter("zLabelSize",   0.05);
   addParameter("zLabelOffset", 0.01);
   addParameter("zLabelOffset", 0.01);
-  addParameter("zTitle",        "z");
-  addParameter("plotOption",   "E0");
+  addParameter("zTitle",        TString("z"));
+  addParameter("plotOption",    TString("E0"));
+
+  addParameter("systsColor",1);
+  addParameter("systsStyle",1001);
+  addParameter("systsWidth",1);
 }
 
 void GraphConfiguration::setParametersWith(int dim, int type)
@@ -441,20 +445,20 @@ void GraphConfiguration::setParametersWith(int dim, int type)
     addParameter("xTitleOffset", 1.3);
     addParameter("xLabelSize",  0.05);
     addParameter("xLabelOffset", 0.002);
-    addParameter("xTitle",        "x");
+    addParameter("xTitle",        TString("x"));
     addParameter("nYDivisions",     5);
     addParameter("yTitleSize",   0.05);
     addParameter("yTitleOffset",  1.5);
     addParameter("yLabelSize",   0.05);
     addParameter("yLabelOffset", 0.05);
-    addParameter("yTitle",        "y");
+    addParameter("yTitle",        TString("y"));
     addParameter("nZDivisions",     5);
     addParameter("zTitleSize",   0.05);
     addParameter("zTitleOffset",  1.5);
     addParameter("zLabelSize",   0.05);
     addParameter("zLabelOffset",0.005);
-    addParameter("zTitle",        "z");
-    addParameter("plotOption","SURF3");
+    addParameter("zTitle",        TString("z"));
+    addParameter("plotOption",TString("SURF3"));
     }
 }
 

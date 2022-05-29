@@ -58,12 +58,12 @@ void SubSampleStatIterator::execute()
   int  defaultGroupSize       = configuration.getValueInt("defaultGroupSize");
   TString histoInputPath      = configuration.getValueString("histoInputPath");
   TString histoOutputPath     = configuration.getValueString("histoOutputPath");
-  TString histoOutputDataName = configuration.getValueString("histoOutputDataName");
+  TString histoModelDataName = configuration.getValueString("histoModelDataName");
 
 
   //TString histoBaseName       = subTaskConfig.getValueString("histoBaseName");
 
-  //int  nInputFile             = configuration.getValueInt("nInputFile"); // do not use yet...
+  //int  nInputFile             = configuration.getValueInt("nInputFile"); // do not use yet..
   vector<TString> includedPatterns = configuration.getSelectedValues("IncludedPattern",none);
   vector<TString> excludedPatterns = configuration.getSelectedValues("ExcludedPattern",none);
 
@@ -75,12 +75,12 @@ void SubSampleStatIterator::execute()
     Task & subTask = *subTasks[iTask];
     Configuration & subTaskConfig = subTask.getConfiguration();
     TString taskName        = subTask.getName();
-    TString histoOutputAnalyzerName = subTaskConfig.getValueString("histoOutputAnalyzerName");
+    TString histoAnalyzerName = subTaskConfig.getValueString("histoAnalyzerName");
 
     TString histoOutputFileName;
-    histoOutputFileName = histoOutputDataName;
+    histoOutputFileName = histoModelDataName;
     histoOutputFileName += "_";
-    histoOutputFileName += histoOutputAnalyzerName;
+    histoOutputFileName += histoAnalyzerName;
     //histoOutputFileName += "_";
 
     if (reportInfo(__FUNCTION__))
@@ -89,8 +89,8 @@ void SubSampleStatIterator::execute()
       cout << "            SubTask Name: " << taskName  << endl;
       cout << "          histoInputPath: " << histoInputPath  << endl;
       cout << "         histoOutputPath: " << histoOutputPath  << endl;
-      cout << "     histoOutputDataName: " << histoOutputDataName  <<   endl;
-      cout << " histoOutputAnalyzerName: " << histoOutputAnalyzerName   << endl;
+      cout << "     histoModelDataName: " << histoModelDataName  <<   endl;
+      cout << " histoAnalyzerName: " << histoAnalyzerName   << endl;
       cout << "     histoOutputFileName: " << histoOutputFileName  << endl;
       }
 
@@ -100,8 +100,8 @@ void SubSampleStatIterator::execute()
     subsampleConfig.setParameter("histoBaseName",  histoOutputFileName);
     subsampleConfig.setParameter("appendedString",         appendedString);
     subsampleConfig.setParameter("forceHistogramsRewrite", forceHistogramsRewrite);
-    subsampleConfig.setParameter("histoOutputDataName",    histoOutputDataName);
-    subsampleConfig.setParameter("histoOutputAnalyzerName",histoOutputAnalyzerName);
+    subsampleConfig.setParameter("histoModelDataName",    histoModelDataName);
+    subsampleConfig.setParameter("histoAnalyzerName",histoAnalyzerName);
 
     subsampleConfig.setParameter("defaultGroupSize",       defaultGroupSize);
     subsampleConfig.setParameter("IncludedPattern",        taskName);

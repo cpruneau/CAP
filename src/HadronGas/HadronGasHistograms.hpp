@@ -14,7 +14,7 @@
 
 // ===================================================
 // Particle abundance at a specific temperature or beam
-// energy or etc...
+// energy or etc..
 class HadronGasHistograms : public Histograms
 {
 public:

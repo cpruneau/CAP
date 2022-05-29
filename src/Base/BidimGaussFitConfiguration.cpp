@@ -553,7 +553,7 @@ double BidimGaussFitConfiguration::excludeCentralRegion(double deltaEtaExclusion
   const TAxis * yAxisHist = hist->GetYaxis();
   bool  usedRegion = kTRUE;
 
-  // work variables - at the end, we save these into in patch variables...
+  // work variables - at the end, we save these into in patch variables..
   int lowBinEta;
   int highBinEta;
   int lowBinPhi;

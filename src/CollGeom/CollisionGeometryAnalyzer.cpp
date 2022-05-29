@@ -82,7 +82,6 @@ void CollisionGeometryAnalyzer::setDefaultConfiguration()
   configuration.addParameter(  "createHistograms",    true);
   configuration.addParameter(  "saveHistograms",      true);
   configuration.addParameter(  "useEventStream0",     true);
-  configuration.addParameter(  "createDerivedHistograms", true);
   if (reportDebug("CollisionGeometryAnalyzer",getName(),"setDefaultConfiguration()"))
     {
     configuration.printConfiguration(cout);
@@ -100,7 +99,7 @@ void CollisionGeometryAnalyzer::createHistograms()
 
   if (reportInfo(__FUNCTION__))
     {
-    cout << "Creating Histograms for..."  << endl;
+    cout << "Creating Histograms for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     }
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
@@ -129,7 +128,7 @@ void CollisionGeometryAnalyzer::loadHistograms(TFile * inputFile)
   unsigned int nEventFilters    = eventFilters.size();
   if (reportInfo(__FUNCTION__))
     {
-    cout << "Loading Histograms for..."  << endl;
+    cout << "Loading Histograms for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     }
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
@@ -156,7 +155,7 @@ void CollisionGeometryAnalyzer::execute()
     {
     if (eventFilters[iEventFilter]->accept(event))
       {
-      incrementNEventsAccepted(iEventFilter); // count eventStreams used to fill histograms and for scaling at the end...
+      incrementNEventsAccepted(iEventFilter); // count eventStreams used to fill histograms and for scaling at the end..
       CollisionGeometryHistograms * histos = (CollisionGeometryHistograms *) histograms[iEventFilter];
       histos->fill(event,1.0);
       }

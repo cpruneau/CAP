@@ -67,42 +67,42 @@ void FunctionCollection::setDefaultOptions(bool color)
 
 void FunctionCollection::setFunctionProperties(TF1 * f, const GraphConfiguration & graphConfiguration)
 {
-  if (reportDebug("FunctionCollection",getName(),"setFunctionProperties(...)"))
+  if (reportDebug("FunctionCollection",getName(),"setFunctionProperties(..)"))
     {
     cout << "Setting properties of function: " << f->GetTitle() << endl;
     }
-  f->SetLineColor(graphConfiguration.lineColor);
-  f->SetLineStyle(graphConfiguration.lineStyle);
-  f->SetLineWidth(graphConfiguration.lineWidth);
+  f->SetLineColor(graphConfiguration .getValueInt("lineColor"));
+  f->SetLineStyle(graphConfiguration.getValueInt("lineStyle"));
+  f->SetLineWidth(graphConfiguration.getValueInt("lineWidth"));
   TAxis * xAxis = (TAxis *) f->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.nXDivisions);
-  xAxis->SetTitleSize(graphConfiguration.xTitleSize);
-  xAxis->SetTitleOffset(graphConfiguration.xTitleOffset);
+  xAxis->SetNdivisions(graphConfiguration.getValueDouble("nXDivisions"));
+  xAxis->SetTitleSize(graphConfiguration.getValueDouble("xTitleSize"));
+  xAxis->SetTitleOffset(graphConfiguration.getValueDouble("xTitleOffset"));
   //xAxis->SetTitle(graphConfiguration.xTitle);
-  xAxis->SetLabelSize(graphConfiguration.xLabelSize);
-  xAxis->SetLabelOffset(graphConfiguration.xLabelOffset);
+  xAxis->SetLabelSize(graphConfiguration.getValueDouble("xLabelSize"));
+  xAxis->SetLabelOffset(graphConfiguration.getValueDouble("xLabelOffset"));
   TAxis * yAxis = (TAxis *) f->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.nYDivisions);
-  yAxis->SetTitleSize(graphConfiguration.yTitleSize);
-  yAxis->SetTitleOffset(graphConfiguration.yTitleOffset);
-  yAxis->SetLabelSize(graphConfiguration.yLabelSize);
-  yAxis->SetLabelOffset(graphConfiguration.yLabelOffset);
+  yAxis->SetNdivisions(graphConfiguration.getValueInt("nYDivisions"));
+  yAxis->SetTitleSize(graphConfiguration.getValueDouble("yTitleSize"));
+  yAxis->SetTitleOffset(graphConfiguration.getValueDouble("yTitleOffset"));
+  yAxis->SetLabelSize(graphConfiguration.getValueDouble("yLabelSize"));
+  yAxis->SetLabelOffset(graphConfiguration.getValueDouble("yLabelOffset"));
   //yAxis->SetTitle(graphConfiguration.yTitle);
   if (f->IsA() == TF2::Class() )
     {
     TAxis * zAxis = (TAxis *) f->GetZaxis();
-    zAxis->SetNdivisions(graphConfiguration.nZDivisions);
-    zAxis->SetTitleSize(graphConfiguration.zTitleSize);
-    zAxis->SetTitleOffset(graphConfiguration.zTitleOffset);
-    zAxis->SetLabelSize(graphConfiguration.zLabelSize);
-    zAxis->SetLabelOffset(graphConfiguration.zLabelOffset);
+    zAxis->SetNdivisions(graphConfiguration.getValueInt("nZDivisions"));
+    zAxis->SetTitleSize(graphConfiguration.getValueDouble("zTitleSize"));
+    zAxis->SetTitleOffset(graphConfiguration.getValueDouble("zTitleOffset"));
+    zAxis->SetLabelSize(graphConfiguration.getValueDouble("zLabelSize"));
+    zAxis->SetLabelOffset(graphConfiguration.getValueDouble("zLabelOffset"));
     }
 }
 
 
 void FunctionCollection::plotAllFunctions(const TString & outputPath, bool doPrint)
 {
-  if (reportStart("FunctionCollection",getName(),"plotAllFunctions(...)"))
+  if (reportStart("FunctionCollection",getName(),"plotAllFunctions(..)"))
     ;
   GraphConfiguration  * gc1D = new GraphConfiguration(1,0);
   GraphConfiguration  * gc2D = new GraphConfiguration(2,0);
@@ -111,7 +111,7 @@ void FunctionCollection::plotAllFunctions(const TString & outputPath, bool doPri
   CanvasCollection    * canvasCollection = new CanvasCollection();
   canvasCollection->createDirectory(outputPath);
   TString name;
-  //cout << "-INFO- plotAllHistos(...) getNFunction() :" << getNFunction()  << " with capacity:" << nFunctionCapacity << endl;
+  //cout << "-INFO- plotAllHistos(..) getNFunction() :" << getNFunction()  << " with capacity:" << nFunctionCapacity << endl;
 
   for (int iFunc=0; iFunc<getNFunction() ; iFunc++)
     {
@@ -119,7 +119,7 @@ void FunctionCollection::plotAllFunctions(const TString & outputPath, bool doPri
     name = f->GetName();
     if (f->IsA() == TF1::Class())
       {
-      if (reportInfo("FunctionCollection",getName(),"plotAllFunctions(...)"))
+      if (reportInfo("FunctionCollection",getName(),"plotAllFunctions(..)"))
         {
         cout << "Plotting 1D function:" << iFunc << " named " << f->GetTitle() << endl;
 
@@ -130,7 +130,7 @@ void FunctionCollection::plotAllFunctions(const TString & outputPath, bool doPri
       }
     else if (f->IsA() == TF2::Class())
       {
-      if (reportInfo("FunctionCollection",getName(),"plotAllFunctions(...)"))
+      if (reportInfo("FunctionCollection",getName(),"plotAllFunctions(..)"))
         {
         cout << "Plotting 2D function:" << iFunc << " named " << f->GetTitle() << endl;
 

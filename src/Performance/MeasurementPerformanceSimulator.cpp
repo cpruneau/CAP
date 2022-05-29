@@ -140,7 +140,7 @@ void MeasurementPerformanceSimulator::initialize()
         }
       }
     }
-  // looking good...
+  // looking good..
 }
 
 
@@ -221,7 +221,7 @@ void MeasurementPerformanceSimulator::execute()
           TLorentzVector & genPosition = genParticle->getPosition();
           simulator->smearMomentum(genMomentum,recoMomentum);
           Particle * recoParticle = particleFactory->getNextObject();
-          // we dont smear the position for now...
+          // we dont smear the position for now..
           recoParticle->set(type,recoMomentum,genPosition,true);
           recoParticle->setTruth(genParticle);
           recoEvent.add(recoParticle);

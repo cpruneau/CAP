@@ -203,8 +203,8 @@ public:
   void reduce_n1EtaPhiN1EtaPhiOntoN1N1DetaDphi(const TH2 * h_1, TH2 * h_2, TH2 * h_12,int nDeta,int nDphi);
 
   virtual void calculateAverage(TH1* h, double & avgDensity, double & eAvgDensity);
-  virtual void calculateIntegral(TH1 * h, double  & integral, double & error);
-  virtual void calculateIntegral(TH2 * h, double  & integral, double & error);
+  virtual void calculateIntegral(TH1 * h, double xMin, double xMax, double  & result, double & resultError, int option);
+  virtual void calculateIntegral(TH2 * h, double xMin, double xMax, double yMin, double yMax, double  & result, double & resultError, int option);
   
   void calculateAvgH2H2(const TH2 * h_1, TH2 * h_2, double scaleFactor);
 

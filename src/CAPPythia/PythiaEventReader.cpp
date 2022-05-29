@@ -35,7 +35,7 @@ void PythiaEventReader::setDefaultConfiguration()
 
 //!
 //! Read a PYTHIA  event from file
-//! Copy the event into Event for convenience...
+//! Copy the event into Event for convenience..
 //!
 void PythiaEventReader::execute()
 {
@@ -84,7 +84,7 @@ void PythiaEventReader::execute()
     type = particleTypeCollection->findPdgCode(pdg);
     if (type==nullptr) continue;
     mass = type->getMass();
-    if (mass<0.002) continue;  // no photons, electrons...
+    if (mass<0.002) continue;  // no photons, electrons..
     charge = type->getCharge();
     double px = particles_fPx[iParticle];
     double py = particles_fPy[iParticle];

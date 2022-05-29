@@ -26,7 +26,8 @@ h_taskExecutedReset(nullptr),
 h_eventAcceptedReset(nullptr),
 h_partilceAcceptedReset(nullptr)
 {
-  // no ops
+  appendClassName("EventCountHistos");
+  setInstanceName(_name);
 }
 
 // for now use the same boundaries for eta and y histogram
@@ -35,15 +36,12 @@ void EventCountHistos::createHistograms()
   
   if (reportStart(__FUNCTION__))
     ;
-  TString bn = getHistoBaseName();
-  TString histoName;
-  histoName = bn+TString("taskExecuted");
-  h_taskExecutedReset = createHistogram(histoName,1,-0.5, 0.5, "taskExecuted", "Count") ;
-  histoName = bn+TString("eventAccepted");
-  h_eventAcceptedReset = createHistogram(histoName,nEventFilters,-0.5, -0.5+double(nEventFilters), "event filter", "Count");
-  histoName = bn+TString("partilceAccepted");
+  setOwnership(true);
   int n = nEventFilters*nParticleFilters;
-  h_partilceAcceptedReset = createHistogram(histoName,n,-0.5, -0.5+double(n), "event x particle filter", "Count");
+  TString bn = getHistoBaseName();
+  h_taskExecutedReset     = createHistogram(makeName(bn,"taskExecuted"),1,-0.5, 0.5, "taskExecuted", "Count") ;
+  h_eventAcceptedReset    = createHistogram(makeName(bn,"eventAccepted"),nEventFilters,-0.5, -0.5+double(nEventFilters), "event filter", "Count");
+  h_partilceAcceptedReset = createHistogram(makeName(bn,"particleAccepted"),n,-0.5, -0.5+double(n), "event x particle filter", "Count");
   if (reportEnd(__FUNCTION__))
     ;
  }
@@ -51,26 +49,13 @@ void EventCountHistos::createHistograms()
 //________________________________________________________________________
 void EventCountHistos::loadHistograms(TFile * inputFile)
 {
-  
   if (reportStart(__FUNCTION__))
     ;
-  if (!inputFile)
-    {
-    if (reportFatal()) cout << "Attempting to load EventCountHistos from an invalid file pointer" << endl;
-    return;
-    }
+  if (!ptrFileExist(__FUNCTION__, inputFile)) return;
   TString bn = getHistoBaseName();
-  TString histoName;
-
-  histoName = bn+TString("taskExecuted");
-  h_taskExecutedReset = loadH1(inputFile,histoName);
-  if (!h_taskExecutedReset && reportError()) cout << "Could not load histogram: " << histoName << endl;
-  histoName = bn+TString("eventAccepted");
-  h_eventAcceptedReset = loadH1(inputFile,histoName);
-  if (!h_eventAcceptedReset && reportError()) cout << "Could not load histogram: " << histoName << endl;
-  histoName = bn+TString("partilceAccepted");
-  h_partilceAcceptedReset = loadH1(inputFile,histoName);
-  if (!h_partilceAcceptedReset && reportError()) cout << "Could not load histogram: " << histoName << endl;
+  h_taskExecutedReset     = loadH1(inputFile,makeName(bn,"taskExecuted"));
+  h_eventAcceptedReset    = loadH1(inputFile,makeName(bn,"eventAccepted"));
+  h_partilceAcceptedReset = loadH1(inputFile,makeName(bn,"particleAccepted"));
   if (reportEnd(__FUNCTION__))
     ;
 }

@@ -48,7 +48,7 @@ void  ParticleDecayer::decay2(ParticleType   & parentType,
   minMass  = m1 + m2;
   if (mp < minMass)
     {
-    //cout << "<W> ParticleDecayer::decay2(...) Parent too light: M = " << mp << ", m1 = " << m1 << ", m2 = " << m2 << endl;
+    //cout << "<W> ParticleDecayer::decay2(..) Parent too light: M = " << mp << ", m1 = " << m1 << ", m2 = " << m2 << endl;
     mp = 1.02*minMass;
     }
   e        = parentMomentum.E();
@@ -134,7 +134,7 @@ void  ParticleDecayer::decay3(ParticleType & parentType,
   minMass  = m1 + m2 + m3;
   if (mp < minMass)
     {
-    //cout << "<E> ParticleDecayer::decay3(...) Parent too light: M = " << mp << ", m1 = " << m1 << ", m2 = " << m2 << ", m3 = " << m3 << endl;
+    //cout << "<E> ParticleDecayer::decay3(..) Parent too light: M = " << mp << ", m1 = " << m1 << ", m2 = " << m2 << ", m3 = " << m3 << endl;
     mp =  mp = 1.02*minMass;
     }
   e        = parentMomentum.E();

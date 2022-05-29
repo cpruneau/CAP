@@ -72,7 +72,7 @@ void FileTaskIterator::execute()
     }
   if (reportInfo(__FUNCTION__))
     {
-    cout << "Running with ..." << endl;
+    cout << "Running with .." << endl;
     cout << "            nTasks: " << getNSubTasks() << endl;
     cout << "nselectedFileNames: " << nSelectedFiles << endl << endl;
     }

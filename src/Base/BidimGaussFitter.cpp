@@ -149,9 +149,11 @@ double Global2DFitFunction(double *x, double *par)
 }
 
 
-BidimGaussFitter::BidimGaussFitter()
+BidimGaussFitter::BidimGaussFitter(const TString &           _name,
+                                   const Configuration &     _configuration,
+                                   LogLevel                  _requiredLevel)
 :
-Plotter("BidimGaussFitter", Info),
+Plotter(_name,_configuration,_requiredLevel),
 histBaseTitle(""),
 histBaseName(""),
 flowFitResult(),
@@ -339,50 +341,56 @@ void BidimGaussFitter::projectHistoAndFit(TH2 *dataHist,
   TString baseName = dataHist->GetName();
   baseName += label;
 
-  int xLowBin  = dataHist->GetXaxis()->FindBin( xLow);
-  int xHighBin = dataHist->GetXaxis()->FindBin( xHigh);
-  int yLowBin  = dataHist->GetYaxis()->FindBin( yLow);
-  int yHighBin = dataHist->GetYaxis()->FindBin( yHigh);
-  dataHist->GetXaxis()->SetRange(xLowBin,xHighBin);
-  dataHist->GetYaxis()->SetRange(yLowBin,yHighBin);
-  fitHist ->GetXaxis()->SetRange(xLowBin,xHighBin);
-  fitHist ->GetYaxis()->SetRange(yLowBin,yHighBin);
+//  int xLowBin  = dataHist->GetXaxis()->FindBin( xLow);
+//  int xHighBin = dataHist->GetXaxis()->FindBin( xHigh);
+//  int yLowBin  = dataHist->GetYaxis()->FindBin( yLow);
+//  int yHighBin = dataHist->GetYaxis()->FindBin( yHigh);
+//  dataHist->GetXaxis()->SetRange(xLowBin,xHighBin);
+//  dataHist->GetYaxis()->SetRange(yLowBin,yHighBin);
+//  fitHist ->GetXaxis()->SetRange(xLowBin,xHighBin);
+//  fitHist ->GetYaxis()->SetRange(yLowBin,yHighBin);
+//
+//  double yScalingFactor = 1.0/double(xHighBin-xLowBin+1);
+//  double xScalingFactor = 1.0/double(yHighBin-yLowBin+1);
+//  vector<TH1*>    histograms;
+//  vector<TString> legends;
+//  legends.push_back(TString("Data"));
+//  legends.push_back(TString("Fit"));
+//  //legends.push_back(TString("Data/Fit"));
+//
+//  dataHist->Scale(xScalingFactor);
+//  fitHist ->Scale(xScalingFactor);
 
-  double yScalingFactor = 1.0/double(xHighBin-xLowBin+1);
-  double xScalingFactor = 1.0/double(yHighBin-yLowBin+1);
-  TH1     * histograms[6];
-  TString * legends[6];
-  legends[0] = new TString("Data");
-  legends[1] = new TString("Fit");
-  legends[2] = new TString("Data/Fit");
-
-  histograms[0] = dataHist->ProjectionX(baseName+"_dataEtaProj",yLowBin, yHighBin); histograms[0]->Scale(xScalingFactor);
-  histograms[1] = fitHist ->ProjectionX(baseName+"_fitEtaProj", yLowBin, yHighBin); histograms[1]->Scale(xScalingFactor);
-  graphConfigs1D[0]->plotOption = "HIST";
-  graphConfigs1D[1]->plotOption = "HIST";
-
-  plot(2,baseName+"_DataAndFitEtaProj",canvasConfig1DLinear, graphConfigs1D,
-       fitConfig.xTitle,xLow,xHigh,
-       fitConfig.zTitle,1.2, -1.2,
-       histograms,legends, 0.25, 0.15, 0.35, 0.35, 0.03);
-  histograms[2] = cloneAndReset(histograms[0],baseName+"_DataToFitRatioEtaProj");
-  histograms[2]->Divide(histograms[0],histograms[1]);
-  plot(1,baseName+"_DataToFitRatioEtaProj",canvasConfig1DLinear, graphConfigs1D,
-       fitConfig.xTitle,xLow,xHigh,
-       fitConfig.zTitle,1.2, -1.2,
-       histograms+2,legends+2, 0.25, 0.15, 0.35, 0.35, 0.03);
-  histograms[3] = dataHist->ProjectionY(baseName+"_dataPhiProj",xLowBin, xHighBin); histograms[3]->Scale(yScalingFactor);
-  histograms[4] = fitHist ->ProjectionY(baseName+"_fitPhiProj", xLowBin, xHighBin); histograms[4]->Scale(yScalingFactor);
-  plot(2,baseName+"_DataAndFitPhiProj",canvasConfig1DLinear, graphConfigs1D,
-       fitConfig.yTitle,yLow,yHigh,
-       fitConfig.zTitle,1.2, -1.2,
-       histograms+3,legends, 0.25, 0.15, 0.35, 0.35, 0.03);
-  histograms[5] = cloneAndReset(histograms[3],baseName+"_DataToFitRatioPhiProj");
-  histograms[5]->Divide(histograms[4],histograms[3]);
-  plot(1,baseName+"_DataToFitRatioPhiProj",canvasConfig1DLinear, graphConfigs1D,
-       fitConfig.yTitle,yLow,yHigh,
-       fitConfig.zTitle,1.2, -1.2,
-       histograms+5,legends+2, 0.25, 0.15, 0.35, 0.35, 0.03);
+//  histograms.push_back(dataHist->ProjectionX(baseName+"_dataEtaProj",yLowBin, yHighBin));
+//  histograms.push_back(fitHist ->ProjectionX(baseName+"_fitEtaProj", yLowBin, yHighBin));
+//
+//  graphConfigs1D[0]->plotOption = "HIST";
+//  graphConfigs1D[1]->plotOption = "HIST";
+//
+//  plot(histograms,legends,graphConfigs1D,legends,
+//       baseName+"_DataAndFitEtaProj",canvasConfig1DLinear,
+//       fitConfig.xTitle,xLow,xHigh,
+//       fitConfig.zTitle,1.2, -1.2,
+//       0.25, 0.15, 0.35, 0.35, 0.03);
+//
+//  histograms[2] = cloneAndReset(histograms[0],baseName+"_DataToFitRatioEtaProj");
+//  histograms[2]->Divide(histograms[0],histograms[1]);
+//  plot(1,baseName+"_DataToFitRatioEtaProj",canvasConfig1DLinear, graphConfigs1D,
+//       fitConfig.xTitle,xLow,xHigh,
+//       fitConfig.zTitle,1.2, -1.2,
+//       histograms+2,legends+2, 0.25, 0.15, 0.35, 0.35, 0.03);
+//  histograms[3] = dataHist->ProjectionY(baseName+"_dataPhiProj",xLowBin, xHighBin); histograms[3]->Scale(yScalingFactor);
+//  histograms[4] = fitHist ->ProjectionY(baseName+"_fitPhiProj", xLowBin, xHighBin); histograms[4]->Scale(yScalingFactor);
+//  plot(2,baseName+"_DataAndFitPhiProj",canvasConfig1DLinear, graphConfigs1D,
+//       fitConfig.yTitle,yLow,yHigh,
+//       fitConfig.zTitle,1.2, -1.2,
+//       histograms+3,legends, 0.25, 0.15, 0.35, 0.35, 0.03);
+//  histograms[5] = cloneAndReset(histograms[3],baseName+"_DataToFitRatioPhiProj");
+//  histograms[5]->Divide(histograms[4],histograms[3]);
+//  plot(1,baseName+"_DataToFitRatioPhiProj",canvasConfig1DLinear, graphConfigs1D,
+//       fitConfig.yTitle,yLow,yHigh,
+//       fitConfig.zTitle,1.2, -1.2,
+//       histograms+5,legends+2, 0.25, 0.15, 0.35, 0.35, 0.03);
 }
 
 
@@ -539,7 +547,7 @@ void BidimGaussFitter::flowFit(TH2 *dataHist, BidimGaussFitConfiguration & fitCo
   }
   flowFitResult.success = true;
   flowFitResult.saveResults(flowFitFct);
-  if (reportInfo("BidimGaussFitter","2D Gauss Fit","flowFit(...)"))
+  if (reportInfo("BidimGaussFitter","2D Gauss Fit","flowFit(..)"))
     {
     flowFitResult.printResults(cout);
     }
@@ -549,7 +557,7 @@ void BidimGaussFitter::flowFit(TH2 *dataHist, BidimGaussFitConfiguration & fitCo
 /* main fit procedure */
 /* by default a 0.13 radius area around (0,0) is excluded from the fit, i.e, 3x3 bins area centered in (0,0), see fitfunction.H */
 /* to obtain this behavior set the sys parameter to kNoSystem or the cent parameter to -1 */
-/* for different behavior see fitfunction.H for the different sys values and the excludeCentralBins... structures and */
+/* for different behavior see fitfunction.H for the different sys values and the excludeCentralBins.. structures and */
 /* the excludedEtaBins, excludedPhiBins and excludeCentralRegion routines, all of them in the beginning of this source file, for */
 /* its processing */
 void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig)
@@ -558,7 +566,7 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
     {
     if (reportError("BidimGaussFitter","2D Gauss Fit","fullFit(const TH2 *data, const BidimGaussFitConfiguration & fitConfig)"))
       {
-      cout << "Input histogram 'data' is a null pointer. Abort..." << endl;
+      cout << "Input histogram 'data' is a null pointer. Abort.." << endl;
       }
     return;
     }
@@ -577,7 +585,7 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
   int nFlowPar     = 11;
   int nFlowParUsed = 7;
   // =========================================================
-  // Fitting the large eta range...
+  // Fitting the large eta range..
   // =========================================================
   double xLow   = fitConfig.deltaEtaLimit;
   double xHigh  = fitConfig.deltaEtaOuterLimit;
@@ -675,7 +683,7 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
 //      dataHist->SetBinError(iEta,iPhi,0.05*error);
 //      }
 //    }
-  //Exclude the (0,0) region from the fit...
+  //Exclude the (0,0) region from the fit..
   for (int iEta=14; iEta<=18; iEta++)
   {
   for (int iPhi=14; iPhi<=18; iPhi++)
@@ -990,7 +998,7 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
 //
 //    if (deltaEtaExclusionRegion != 0)
 //      {
-//      if (reportInfo("BidimGaussFitter","2D Gauss Fit","fullFit(...)"))
+//      if (reportInfo("BidimGaussFitter","2D Gauss Fit","fullFit(..)"))
 //        {
 //        cout << endl
 //        << " NOTE : Recovered bins at (0, 0) within the exclusion region  : " << deltaEtaExclusionRegion << endl;
@@ -1036,7 +1044,7 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
 //      {
 //      if (fullFitResult.resultPtr->IsValid())
 //        {
-//        if (reportWarning("BidimGaussFitter","2D Gauss Fit","fullFit(...)"))
+//        if (reportWarning("BidimGaussFitter","2D Gauss Fit","fullFit(..)"))
 //          {
 //          cout << endl
 //          << " Fit valid but fit status equal to : " << fullFitResult.resultPtr->Status() << endl
@@ -1054,7 +1062,7 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
 
 //  if (isFlow && useEtaDependentFlowInFit)
 //    {
-//    if (reportWarning("BidimGaussFitter","2D Gauss Fit","fullFit(...)"))
+//    if (reportWarning("BidimGaussFitter","2D Gauss Fit","fullFit(..)"))
 //      {
 //      cout << " STEP3b: fit everything, with limits, including flow eta dependence." << endl;
 //      }
@@ -1074,14 +1082,14 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
 //      {
 //      if (fullFitResult.resultPtr->IsValid())
 //        {
-//        if (reportWarning("BidimGaussFitter","2D Gauss Fit","fullFit(...)"))
+//        if (reportWarning("BidimGaussFitter","2D Gauss Fit","fullFit(..)"))
 //          {
 //          cout << " Status is weird." << endl;
 //          }
 //        fullFitResult.result= 0; // discarded the not fully correct fit result
 //        }
 //      }
-//    if (reportInfo("BidimGaussFitter","2D Gauss Fit","fullFit(...)"))
+//    if (reportInfo("BidimGaussFitter","2D Gauss Fit","fullFit(..)"))
 //      {
 //      cout << endl
 //      << "   Step3b: Fit result : " << fitResult << endl
@@ -1484,7 +1492,7 @@ void BidimGaussFitter::initializeFlowFitParameters(TF2 * f, const BidimGaussFitC
 void BidimGaussFitter::initializePeakFitParameters(TF2 * f, const BidimGaussFitConfiguration & fitConfig, double scale)
 {
   int nPar  = f->GetNpar();
-  if (nPar==11)  return; // Do NOT want to initialize flow parameters here...
+  if (nPar==11)  return; // Do NOT want to initialize flow parameters here..
   int first = 0;
   int last  = 5;
   for (int iPar=first; iPar<=last; iPar++)

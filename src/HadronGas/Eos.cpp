@@ -2,7 +2,7 @@
 // Copyright 2016 Chun Shen
 // This code is adapted from Chun's code
 // for the purpose of computing Eosic resonance
-// correlations...
+// correlations..
 
 //#include <gsl/gsl_sf_bessel.h>
 //#include <gsl/gsl_sf_expint.h>

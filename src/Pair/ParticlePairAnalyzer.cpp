@@ -123,16 +123,12 @@ void ParticlePairAnalyzer::createHistograms()
   Configuration & configuration = getConfiguration();
   LogLevel debugLevel = getReportLevel();
   TString bn  = getName();
-  bn += "_";
-  unsigned int nEventFilters    = eventFilters.size();
-  unsigned int nParticleFilters = particleFilters.size();
-
   fillEta = configuration.getValueBool("fillEta");
   fillY   = configuration.getValueBool("fillY");
   fillP2  = configuration.getValueBool("fillP2");
   
   Histograms * histos;
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "       Creating Histograms: " << bn << endl;
@@ -140,28 +136,28 @@ void ParticlePairAnalyzer::createHistograms()
     cout << "          nParticleFilters: " << nParticleFilters << endl;
     cout << endl;
     }
-  for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     TString efn = eventFilters[iEventFilter]->getName();
     if (reportDebug(__FUNCTION__)) cout << "Event filter:" << efn << endl;
-    for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
+    for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
       {
       TString pfn = particleFilters[iParticleFilter]->getName();
       if (reportDebug(__FUNCTION__)) cout << "Particle filter (Singles):" << pfn << endl;
-      histos = new ParticleHistos(createHistogramName(bn,efn,pfn,""),configuration,debugLevel);
+      histos = new ParticleHistos(makeHistoName(bn,efn,pfn),configuration,debugLevel);
       histos->createHistograms();
       baseSingleHistograms.push_back(histos);
       }
 
     // pairs
-    for (unsigned int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
+    for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
       {
       TString pfn1 = particleFilters[iParticleFilter1]->getName();
-      for (unsigned int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
+      for (int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
         {
         TString pfn2 = particleFilters[iParticleFilter2]->getName();
         if (reportDebug(__FUNCTION__)) cout << "Particle pairs with filter: " << pfn1 << " & " << pfn2 << endl;
-        histos = new ParticlePairHistos(createPairHistogramName(bn,efn,pfn1,pfn2,""),configuration,debugLevel);
+        histos = new ParticlePairHistos(makeHistoName(bn,efn,pfn1,pfn2),configuration,debugLevel);
         histos->createHistograms();
         basePairHistograms.push_back(histos);
         }
@@ -182,12 +178,8 @@ void ParticlePairAnalyzer::loadHistograms(TFile * inputFile)
   Configuration & configuration = getConfiguration();
   LogLevel debugLevel    = getReportLevel();
   TString bn  = getName();
-  bn += "_";
-  unsigned int nEventFilters    = eventFilters.size();
-  unsigned int nParticleFilters = particleFilters.size();
-
   Histograms * histos;
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "       Creating Histograms: " << bn << endl;
@@ -195,28 +187,28 @@ void ParticlePairAnalyzer::loadHistograms(TFile * inputFile)
     cout << "          nParticleFilters: " << nParticleFilters << endl;
     cout << endl;
     }
-  for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     TString efn = eventFilters[iEventFilter]->getName();
     if (reportDebug(__FUNCTION__)) cout << "Event filter:" << efn << endl;
-    for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
+    for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
       {
       TString pfn = particleFilters[iParticleFilter]->getName();
       if (reportDebug(__FUNCTION__)) cout << "Particle filter (Singles):" << pfn << endl;
-      histos = new ParticlePairHistos(createHistogramName(bn,efn,pfn,""),configuration,debugLevel);
+      histos = new ParticlePairHistos(makeHistoName(bn,efn,pfn),configuration,debugLevel);
       histos->loadHistograms(inputFile);
       baseSingleHistograms.push_back(histos);
       }
 
     // pairs
-    for (unsigned int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
+    for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
       {
       TString pfn1 = particleFilters[iParticleFilter1]->getName();
-      for (unsigned int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
+      for (int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
         {
         TString pfn2 = particleFilters[iParticleFilter2]->getName();
         if (reportDebug(__FUNCTION__)) cout << "Particle pairs with filter: " << pfn1 << " & " << pfn2 << endl;
-        histos = new ParticlePairHistos(createPairHistogramName(bn,efn,pfn1,pfn2,""),configuration,debugLevel);
+        histos = new ParticlePairHistos(makeHistoName(bn,efn,pfn1,pfn2),configuration,debugLevel);
         histos->loadHistograms(inputFile);
         basePairHistograms.push_back(histos);
         }
@@ -269,7 +261,7 @@ void ParticlePairAnalyzer::execute()
   //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 4 --" << endl;
 
   // produce sublists with ParticleDigits so we do not have to digitize too many
-  // times...
+  // times..
   // The histo instance fetched here is used for digitization only. So
   // we use instance [0];
   ParticlePairHistos * histos = (ParticlePairHistos *) basePairHistograms[0];
@@ -329,7 +321,7 @@ void ParticlePairAnalyzer::execute()
           pd->iPhi  = iPhi;
           pd->pt    = pt;
           pd->e     = e;
-          digitized = true; // so no need to digitize this particle again...
+          digitized = true; // so no need to digitize this particle again..
           }
         if (digitized && iPt>=0 && iPhi>=0 && (iEta>=0 || iY>=0) )
           {

@@ -98,29 +98,22 @@ void ParticleDerivedHistogramCalculator::createHistograms()
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString prefixName = getName(); prefixName += "_";
-  unsigned int nEventFilters    = eventFilters.size();
-  unsigned int nParticleFilters = particleFilters.size();
-  
+  TString bn  = getName();
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;
-    cout << "Creating Histogram(s) for..."  << endl;
+    cout << "Creating Histogram(s) for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     cout << "    nParticleFilters: " << nParticleFilters << endl;
     }
   ParticleDerivedHistos * histos;
-  for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    TString evtFilterName = eventFilters[iEventFilter]->getName();
-    for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
+    TString efn = eventFilters[iEventFilter]->getName();
+    for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
       {
-      TString partFilterName = particleFilters[iParticleFilter]->getName();
-      TString histoName  = prefixName;
-      histoName += evtFilterName;
-      histoName += "_";
-      histoName += partFilterName;
-      histos = new ParticleDerivedHistos(histoName,configuration,getReportLevel());
+      TString pfn = particleFilters[iParticleFilter]->getName();
+      histos = new ParticleDerivedHistos(makeHistoName(bn,efn,pfn),configuration,getReportLevel());
       histos->createHistograms();
       derivedSingleHistograms.push_back(histos);
       }
@@ -136,27 +129,25 @@ void ParticleDerivedHistogramCalculator::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString prefixName = getName(); prefixName += "_";
-  unsigned int nEventFilters    = eventFilters.size();
-  unsigned int nParticleFilters = particleFilters.size();
-  if (reportInfo(__FUNCTION__))
+  TString bn  = getName();
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
-    cout << "Loading Histogram(s) for..."  << endl;
+    cout << "Loading Histogram(s) for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     cout << "    nParticleFilters: " << nParticleFilters << endl;
     }
 
   ParticleHistos     * histos;
-  for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     TString efn = eventFilters[iEventFilter]->getName();
     // singles
-    for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
+    for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
       {
       TString pfn = particleFilters[iParticleFilter]->getName();
       if (reportDebug(__FUNCTION__)) cout << "Particle filter (Singles):" << pfn << endl;
-      histos = new ParticleHistos(createHistogramName(prefixName,efn,pfn,""),configuration,getReportLevel());
+      histos = new ParticleHistos(makeHistoName(bn,efn,pfn),configuration,getReportLevel());
       histos->loadHistograms(inputFile);
       baseSingleHistograms.push_back(histos);
       }

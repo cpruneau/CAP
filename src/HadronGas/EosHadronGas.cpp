@@ -2,7 +2,7 @@
 // Copyright 2016 Chun Shen 
 // This code is adapted from Chun's code
 // for the purpose of computing hadronic resonance
-// correlations...
+// correlations..
 
 #include <iostream>
 #include <iomanip>

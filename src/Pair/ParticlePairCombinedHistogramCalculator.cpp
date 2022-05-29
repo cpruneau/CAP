@@ -83,10 +83,7 @@ void ParticlePairCombinedHistogramCalculator::createHistograms()
   Configuration & configuration = getConfiguration();
   LogLevel debugLevel    = getReportLevel();
   TString bn  = getName();
-  bn += "_";
-  unsigned int nEventFilters    = eventFilters.size();
-  unsigned int nParticleFilters = particleFilters.size();
-  
+
   Histograms * histos;
   if (reportInfo("ParticlePairCombinedHistogramCalculator",getName(),"createHistograms()"))
     {
@@ -96,7 +93,7 @@ void ParticlePairCombinedHistogramCalculator::createHistograms()
     cout << "          nParticleFilters: " << nParticleFilters << endl;
     cout << endl;
     }
-  for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     TString efn = eventFilters[iEventFilter]->getName();
     if (reportDebug("ParticlePairCombinedHistogramCalculator",getName(),"createHistograms()"))
@@ -104,23 +101,23 @@ void ParticlePairCombinedHistogramCalculator::createHistograms()
       cout << "Event filter:" << efn << endl;
       }
     // singles
-    for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
+    for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
       {
       TString pfn = particleFilters[iParticleFilter]->getName();
       if (reportDebug("ParticlePairCombinedHistogramCalculator",getName(),"createHistograms()"))
         {
         cout << "Particle filter (Singles):" << pfn << endl;
         }
-      histos = new ParticleHistos(createHistogramName(bn,efn,pfn,""),configuration,debugLevel);
+      histos = new ParticleHistos(makeHistoName(bn,efn,pfn,""),configuration,debugLevel);
       histos->createHistograms();
       baseSingleHistograms.push_back(histos);
       }
     
     // pairs
-    for (unsigned int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
+    for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
       {
       TString pfn1 = particleFilters[iParticleFilter1]->getName();
-      for (unsigned int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
+      for (int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
         {
         TString pfn2 = particleFilters[iParticleFilter2]->getName();
         if (reportDebug(__FUNCTION__)) cout << "Particle pairs with filter: " << pfn1 << " & " << pfn2 << endl;
@@ -141,12 +138,9 @@ void ParticlePairCombinedHistogramCalculator::loadHistograms(TFile * inputFile)
   Configuration & configuration = getConfiguration();
   LogLevel debugLevel = getReportLevel();
   TString bn  = getName();
-  bn += "_";
-  unsigned int nEventFilters    = eventFilters.size();
-  unsigned int nParticleFilters = particleFilters.size();
-  
+
   Histograms * histos;
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "       Creating Histograms: " << bn << endl;
@@ -154,24 +148,24 @@ void ParticlePairCombinedHistogramCalculator::loadHistograms(TFile * inputFile)
     cout << "          nParticleFilters: " << nParticleFilters << endl;
     cout << endl;
     }
-  for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     TString efn = eventFilters[iEventFilter]->getName();
     if (reportDebug(__FUNCTION__)) cout << "Event filter:" << efn << endl;
     // singles
-    for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
+    for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
       {
       TString pfn = particleFilters[iParticleFilter]->getName();
       if (reportDebug(__FUNCTION__)) cout << "Particle filter (Singles):" << pfn << endl;
-      histos = new ParticleHistos(createHistogramName(bn,efn,pfn,""),configuration,debugLevel);
+      histos = new ParticleHistos(makeHistoName(bn,efn,pfn,""),configuration,debugLevel);
       }
     }
     
     // pairs
-    for (unsigned int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
+    for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
       {
       TString pfn1 = particleFilters[iParticleFilter1]->getName();
-      for (unsigned int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
+      for (int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
         {
         TString pfn2 = particleFilters[iParticleFilter2]->getName();
         if (reportDebug(__FUNCTION__)) cout << "Particle pairs with filter: " << pfn1 << " & " << pfn2 << endl;

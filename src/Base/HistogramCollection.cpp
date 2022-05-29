@@ -296,18 +296,19 @@ void HistogramCollection::addHistogramsToExtList(TList *list)
 //!
 void HistogramCollection::saveHistograms(TFile * outputFile)
 {
-
-  if (reportDebug(__FUNCTION__)) cout << " Saving (selected) histograms to file: " << outputFile->GetName()  << endl;
-  outputFile->cd();
+  if (reportStart(__FUNCTION__))
+    ;
+  if (!ptrFileExist(__FUNCTION__, outputFile)) return;
+  if (reportDebug(__FUNCTION__)) cout << "    Saving histograms to file: " << outputFile->GetName()  << endl;
   if (reportDebug(__FUNCTION__)) cout << " Number of histograms to save: " <<  size() << endl;
-
+  outputFile->cd();
   for (unsigned int iObject=0; iObject<size(); iObject++)
     {
     if (reportDebug(__FUNCTION__)) cout << " Saving iObject: " << iObject << " named: " <<  objects[iObject]->GetName() << endl;
     objects[iObject]->Write();
     }
   if (reportEnd(__FUNCTION__))
-    { }
+    ;
 }
 
 //!
@@ -318,7 +319,6 @@ void HistogramCollection::saveHistograms(TFile * outputFile)
 //!
 void HistogramCollection::scale(double factor)
 {
-
   if (reportStart(__FUNCTION__))
     { }
   for (unsigned int iObject=0; iObject<size(); iObject++)
@@ -331,201 +331,130 @@ void HistogramCollection::scale(double factor)
     { }
 }
 
-////////////////////////////////////////////////////////////////////////
-// Plot Selected Histograms
-////////////////////////////////////////////////////////////////////////
-//void HistogramCollection::plotHistograms(const TString             & outputPath,
-//                                         CanvasCollection          & canvasCollection,
-//                                         CanvasConfiguration & cc1d,
-//                                         CanvasConfiguration & cc2d,
-//                                         GraphConfiguration  & gc1D,
-//                                         GraphConfiguration  & gc2D)
-//{
-//  TString fct = "plotHistograms(...)";
-//  if (reportDebug(__FUNCTION__))
-//    cout << endl << "Plot histograms of collection: " << getName() << " started  w/ getNHistograms() =" << size() << endl;
-//
-//  canvasCollection.createDirectory(outputPath);
-//  TString   canvasName;
-//  TCanvas * canvas = 0;
-//  for (int iHisto=0; iHisto<getNHistograms(); iHisto++)
-//    {
-//    TH1* h = getObjectAt(iHisto);
-//    canvasName = h->GetName();
-//    if (isPlotted(options[iHisto]))
-//      {
-//      if (h->IsA() == TH1::Class()  ||
-//          h->IsA() == TH1F::Class() ||
-//          h->IsA() == TH1D::Class())
-//        {
-//        if (reportDebug(__FUNCTION__)) cout << "Plotting 1D histo #" << iHisto << " named " << h->GetTitle() << endl;
-//        canvas = canvasCollection.createCanvas(canvasName,cc1d, 30);
-//        setHistoProperties(h,gc1D);
-//        h->Draw(gc1D.plotOption);
-//        }
-//      else if (h->IsA() == TH2::Class()  ||
-//               h->IsA() == TH2F::Class() ||
-//               h->IsA() == TH2D::Class())
-//        {
-//        int nx = h->GetNbinsX();
-//        int ny = h->GetNbinsY();
-//        if (nx*ny<=10000)
-//          {
-//          if (reportDebug(__FUNCTION__)) cout << "Plotting 2D histo #" << iHisto << " named " << h->GetTitle() << endl;
-//          canvas = canvasCollection.createCanvas(canvasName,cc2d, 30);
-//          setHistoProperties(h,gc2D);
-//          h->Draw(gc2D.plotOption);
-//          }
-//        else
-//          {
-//          if (reportDebug(__FUNCTION__)) cout << "Skipping 2D histo #" << iHisto << " named " << h->GetTitle() << endl;
-//          }
-//        }
-//      else if (h->IsA() == TH3::Class())
-//        {
-//        if (reportDebug(__FUNCTION__)) cout << "Skipping 3D histo called " << h->GetTitle() << endl;
-//        }
-//      else
-//        {
-//        if (reportDebug(__FUNCTION__)) cout << "Skipping histo #" << iHisto << " of unfamiliar type named " << h->GetTitle() << endl;
-//        }
-//
-//      if (isPrinted(options[iHisto]) )
-//        canvasCollection.printCanvas(canvas, outputPath, 0, 1, 0, 0);
-//      }
-//    else
-//      {
-//      if (reportDebug(__FUNCTION__)) cout << "Skipping histo #" << iHisto << " named " << h->GetTitle() << endl;
-//      }
-//    }
-//  if (reportEnd(__FUNCTION__))
-//    ;
-//}
-
-////////////////////////////////////////////////////////////////////////
-// Setting Histogram Properties
-////////////////////////////////////////////////////////////////////////
 void HistogramCollection::setHistoProperties(TH1 * h, const GraphConfiguration & graphConfiguration)
 {
-
   if (reportDebug(__FUNCTION__))
     cout << "Setting properties of histo: " << h->GetTitle() << endl;
-  h->SetLineColor(graphConfiguration.lineColor);
-  h->SetLineStyle(graphConfiguration.lineStyle);
-  h->SetLineWidth(graphConfiguration.lineWidth);
+  h->SetLineColor(graphConfiguration .getValueInt("lineColor"));
+  h->SetLineStyle(graphConfiguration.getValueInt("lineStyle"));
+  h->SetLineWidth(graphConfiguration.getValueInt("lineWidth"));
   TAxis * xAxis = (TAxis *) h->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.nXDivisions);
-  xAxis->SetTitleSize(graphConfiguration.xTitleSize);
-  xAxis->SetTitleOffset(graphConfiguration.xTitleOffset);
+  xAxis->SetNdivisions(graphConfiguration.getValueDouble("nXDivisions"));
+  xAxis->SetTitleSize(graphConfiguration.getValueDouble("xTitleSize"));
+  xAxis->SetTitleOffset(graphConfiguration.getValueDouble("xTitleOffset"));
   //xAxis->SetTitle(graphConfiguration.xTitle);
-  xAxis->SetLabelSize(graphConfiguration.xLabelSize);
-  xAxis->SetLabelOffset(graphConfiguration.xLabelOffset);
+  xAxis->SetLabelSize(graphConfiguration.getValueDouble("xLabelSize"));
+  xAxis->SetLabelOffset(graphConfiguration.getValueDouble("xLabelOffset"));
   TAxis * yAxis = (TAxis *) h->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.nYDivisions);
-  yAxis->SetTitleSize(graphConfiguration.yTitleSize);
-  yAxis->SetTitleOffset(graphConfiguration.yTitleOffset);
-  yAxis->SetLabelSize(graphConfiguration.yLabelSize);
-  yAxis->SetLabelOffset(graphConfiguration.yLabelOffset);
+  yAxis->SetNdivisions(graphConfiguration.getValueInt("nYDivisions"));
+  yAxis->SetTitleSize(graphConfiguration.getValueDouble("yTitleSize"));
+  yAxis->SetTitleOffset(graphConfiguration.getValueDouble("yTitleOffset"));
+  yAxis->SetLabelSize(graphConfiguration.getValueDouble("yLabelSize"));
+  yAxis->SetLabelOffset(graphConfiguration.getValueDouble("yLabelOffset"));
   //yAxis->SetTitle(graphConfiguration.yTitle);
   if (h->IsA() == TH2::Class()  || h->IsA() == TH2F::Class() || h->IsA() == TH2F::Class() )
     {
     if (reportDebug(__FUNCTION__)) cout << "Setting options as 2D histo: " << h->GetTitle() << endl;
     TAxis * zAxis = (TAxis *) h->GetZaxis();
-    zAxis->SetNdivisions(graphConfiguration.nZDivisions);
-    zAxis->SetTitleSize(graphConfiguration.zTitleSize);
-    zAxis->SetTitleOffset(graphConfiguration.zTitleOffset);
-    zAxis->SetLabelSize(graphConfiguration.zLabelSize);
-    zAxis->SetLabelOffset(graphConfiguration.zLabelOffset);
+    zAxis->SetNdivisions(graphConfiguration.getValueInt("nZDivisions"));
+    zAxis->SetTitleSize(graphConfiguration.getValueDouble("zTitleSize"));
+    zAxis->SetTitleOffset(graphConfiguration.getValueDouble("zTitleOffset"));
+    zAxis->SetLabelSize(graphConfiguration.getValueDouble("zLabelSize"));
+    zAxis->SetLabelOffset(graphConfiguration.getValueDouble("zLabelOffset"));
     }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 void HistogramCollection::setHistoProperties(TH2 * h, const GraphConfiguration & graphConfiguration)
 {
-
   if (reportDebug(__FUNCTION__))
     cout << endl << "Setting options of 2D histo: " << h->GetTitle() << endl;
-  h->SetLineColor(graphConfiguration.lineColor);
-  h->SetLineStyle(graphConfiguration.lineStyle);
-  h->SetLineWidth(graphConfiguration.lineWidth);
+  h->SetLineColor(graphConfiguration .getValueInt("lineColor"));
+  h->SetLineStyle(graphConfiguration.getValueInt("lineStyle"));
+  h->SetLineWidth(graphConfiguration.getValueInt("lineWidth"));
   TAxis * xAxis = (TAxis *) h->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.nXDivisions);
-  xAxis->SetTitleSize(graphConfiguration.xTitleSize);
-  xAxis->SetTitleOffset(graphConfiguration.xTitleOffset);
-  xAxis->SetLabelSize(graphConfiguration.xLabelSize);
-  xAxis->SetLabelOffset(graphConfiguration.xLabelOffset);
+  xAxis->SetNdivisions(graphConfiguration.getValueDouble("nXDivisions"));
+  xAxis->SetTitleSize(graphConfiguration.getValueDouble("xTitleSize"));
+  xAxis->SetTitleOffset(graphConfiguration.getValueDouble("xTitleOffset"));
+  xAxis->SetLabelSize(graphConfiguration.getValueDouble("xLabelSize"));
+  xAxis->SetLabelOffset(graphConfiguration.getValueDouble("xLabelOffset"));
   TAxis * yAxis = (TAxis *) h->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.nYDivisions);
-  yAxis->SetTitleSize(graphConfiguration.yTitleSize);
-  yAxis->SetTitleOffset(graphConfiguration.yTitleOffset);
-  yAxis->SetLabelSize(graphConfiguration.yLabelSize);
-  yAxis->SetLabelOffset(graphConfiguration.yLabelOffset);
+  yAxis->SetNdivisions(graphConfiguration.getValueInt("nYDivisions"));
+  yAxis->SetTitleSize(graphConfiguration.getValueDouble("yTitleSize"));
+  yAxis->SetTitleOffset(graphConfiguration.getValueDouble("yTitleOffset"));
+  yAxis->SetLabelSize(graphConfiguration.getValueDouble("yLabelSize"));
+  yAxis->SetLabelOffset(graphConfiguration.getValueDouble("yLabelOffset"));
 
   if (h->IsA() == TH2::Class() || h->IsA() == TH2F::Class() || h->IsA() == TH2D::Class())
     {
     TAxis * zAxis = (TAxis *) h->GetZaxis();
-    zAxis->SetNdivisions(graphConfiguration.nZDivisions);
-    zAxis->SetTitleSize(graphConfiguration.zTitleSize);
-    zAxis->SetTitleOffset(graphConfiguration.zTitleOffset);
-    zAxis->SetLabelSize(graphConfiguration.zLabelSize);
-    zAxis->SetLabelOffset(graphConfiguration.zLabelOffset);
+    zAxis->SetNdivisions(graphConfiguration.getValueInt("nZDivisions"));
+    zAxis->SetTitleSize(graphConfiguration.getValueDouble("zTitleSize"));
+    zAxis->SetTitleOffset(graphConfiguration.getValueDouble("zTitleOffset"));
+    zAxis->SetLabelSize(graphConfiguration.getValueDouble("zLabelSize"));
+    zAxis->SetLabelOffset(graphConfiguration.getValueDouble("zLabelOffset"));
     }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 void HistogramCollection::setHistoProperties(TH1 * h, const GraphConfiguration & graphConfiguration, const TString & xTitle, const TString & yTitle)
 {
-
   if (reportDebug(__FUNCTION__))
     cout << endl << "Setting options of histo: " << h->GetTitle() << endl;
-  h->SetLineColor(graphConfiguration.lineColor);
-  h->SetLineStyle(graphConfiguration.lineStyle);
-  h->SetLineWidth(graphConfiguration.lineWidth);
+  h->SetLineColor(graphConfiguration .getValueInt("lineColor"));
+  h->SetLineStyle(graphConfiguration.getValueInt("lineStyle"));
+  h->SetLineWidth(graphConfiguration.getValueInt("lineWidth"));
   TAxis * xAxis = (TAxis *) h->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.nXDivisions);
-  xAxis->SetTitleSize(graphConfiguration.xTitleSize);
-  xAxis->SetTitleOffset(graphConfiguration.xTitleOffset);
+  xAxis->SetNdivisions(graphConfiguration.getValueDouble("nXDivisions"));
+  xAxis->SetTitleSize(graphConfiguration.getValueDouble("xTitleSize"));
+  xAxis->SetTitleOffset(graphConfiguration.getValueDouble("xTitleOffset"));
   xAxis->SetTitle(xTitle);
-  xAxis->SetLabelSize(graphConfiguration.xLabelSize);
-  xAxis->SetLabelOffset(graphConfiguration.xLabelOffset);
+  xAxis->SetLabelSize(graphConfiguration.getValueDouble("xLabelSize"));
+  xAxis->SetLabelOffset(graphConfiguration.getValueDouble("xLabelOffset"));
   TAxis * yAxis = (TAxis *) h->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.nYDivisions);
-  yAxis->SetTitleSize(graphConfiguration.yTitleSize);
-  yAxis->SetTitleOffset(graphConfiguration.yTitleOffset);
-  yAxis->SetLabelSize(graphConfiguration.yLabelSize);
-  yAxis->SetLabelOffset(graphConfiguration.yLabelOffset);
+  yAxis->SetNdivisions(graphConfiguration.getValueInt("nYDivisions"));
+  yAxis->SetTitleSize(graphConfiguration.getValueDouble("yTitleSize"));
+  yAxis->SetTitleOffset(graphConfiguration.getValueDouble("yTitleOffset"));
+  yAxis->SetLabelSize(graphConfiguration.getValueDouble("yLabelSize"));
+  yAxis->SetLabelOffset(graphConfiguration.getValueDouble("yLabelOffset"));
   yAxis->SetTitle(yTitle);
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 void HistogramCollection::setHistoProperties(TH2 * h, const GraphConfiguration & graphConfiguration, const TString & xTitle, const TString & yTitle, const TString & zTitle)
 {
-
   if (reportDebug(__FUNCTION__))
     cout << endl << "Setting options of histo: " << h->GetTitle() << endl;
   TAxis * xAxis = (TAxis *) h->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.nXDivisions);
-  xAxis->SetTitleSize(graphConfiguration.xTitleSize);
-  xAxis->SetTitleOffset(graphConfiguration.xTitleOffset);
+  xAxis->SetNdivisions(graphConfiguration.getValueDouble("nXDivisions"));
+  xAxis->SetTitleSize(graphConfiguration.getValueDouble("xTitleSize"));
+  xAxis->SetTitleOffset(graphConfiguration.getValueDouble("xTitleOffset"));
   xAxis->SetTitle(xTitle);
-  xAxis->SetLabelSize(graphConfiguration.xLabelSize);
-  xAxis->SetLabelOffset(graphConfiguration.xLabelOffset);
+  xAxis->SetLabelSize(graphConfiguration.getValueDouble("xLabelSize"));
+  xAxis->SetLabelOffset(graphConfiguration.getValueDouble("xLabelOffset"));
   TAxis * yAxis = (TAxis *) h->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.nYDivisions);
-  yAxis->SetTitleSize(graphConfiguration.yTitleSize);
-  yAxis->SetTitleOffset(graphConfiguration.yTitleOffset);
-  yAxis->SetLabelSize(graphConfiguration.yLabelSize);
-  yAxis->SetLabelOffset(graphConfiguration.yLabelOffset);
+  yAxis->SetNdivisions(graphConfiguration.getValueInt("nYDivisions"));
+  yAxis->SetTitleSize(graphConfiguration.getValueDouble("yTitleSize"));
+  yAxis->SetTitleOffset(graphConfiguration.getValueDouble("yTitleOffset"));
+  yAxis->SetLabelSize(graphConfiguration.getValueDouble("yLabelSize"));
+  yAxis->SetLabelOffset(graphConfiguration.getValueDouble("yLabelOffset"));
   yAxis->SetTitle(yTitle);
   TAxis * zAxis = (TAxis *) h->GetZaxis();
-  zAxis->SetNdivisions(graphConfiguration.nZDivisions);
-  zAxis->SetTitleSize(graphConfiguration.zTitleSize);
-  zAxis->SetTitleOffset(graphConfiguration.zTitleOffset);
-  zAxis->SetLabelSize(graphConfiguration.zLabelSize);
-  zAxis->SetLabelOffset(graphConfiguration.zLabelOffset);
+  zAxis->SetNdivisions(graphConfiguration.getValueInt("nZDivisions"));
+  zAxis->SetTitleSize(graphConfiguration.getValueDouble("zTitleSize"));
+  zAxis->SetTitleOffset(graphConfiguration.getValueDouble("zTitleOffset"));
+  zAxis->SetLabelSize(graphConfiguration.getValueDouble("zLabelSize"));
+  zAxis->SetLabelOffset(graphConfiguration.getValueDouble("zLabelOffset"));
   zAxis->SetTitle(zTitle);
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 int  HistogramCollection::loadCollection(TFile * inputFile)
 {
-
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(inputFile)) return -1;
@@ -573,7 +502,7 @@ void HistogramCollection::add(const HistogramCollection & c1, double a1)
     ;
   if (!sameSizeAs(c1))
     {
-    if (reportError() )
+    if (reportError(__FUNCTION__) )
       {
       cout << endl;
       cout << "Invalid operation on collections -- incompatible sizes:"  << endl;
@@ -588,7 +517,7 @@ void HistogramCollection::add(const HistogramCollection & c1, double a1)
     TH1* h1 = c1.objects[iObject];
     if (!h0 || !h1 )
       {
-      if (reportError() )
+      if (reportError(__FUNCTION__) )
         {
         cout << endl;
         cout << " Null pointer detected at iObject:" << iObject << endl;
@@ -599,7 +528,7 @@ void HistogramCollection::add(const HistogramCollection & c1, double a1)
       }
     if (!sameDimensions(__FUNCTION__,h0,h1))
       {
-      if (reportWarning(getClassName(), getInstanceName(), "add(...)" ) )
+      if (reportWarning(getClassName(), getInstanceName(), "add(..)" ) )
         {
         cout << " Incompatible histogram sizes at iObject:" << iObject << endl;
         cout << "this: " << getName()    << " histogram named: " << h0->GetName() << endl;
@@ -625,7 +554,7 @@ void HistogramCollection::add(const HistogramCollection & c1, const HistogramCol
     ;
   if (!sameSizeAs(c1) || !sameSizeAs(c2))
     {
-    if (reportError() )
+    if (reportError(__FUNCTION__) )
       {
       cout << endl;
       cout << "Invalid operation on collections -- incompatible sizes:"  << endl;
@@ -642,7 +571,7 @@ void HistogramCollection::add(const HistogramCollection & c1, const HistogramCol
     TH1* h2 = c2.objects[iObject];
     if (!h0 || !h1 || !h2)
       {
-      if (reportError() )
+      if (reportError(__FUNCTION__) )
         {
         cout << endl;
         cout << " Null pointer detected at iObject:" << iObject << endl;
@@ -681,7 +610,7 @@ void HistogramCollection::add(const HistogramCollection & c1,
     ;
   if (!sameSizeAs(c1) || !sameSizeAs(c2) || !sameSizeAs(c3))
     {
-    if (reportError() )
+    if (reportError(__FUNCTION__) )
       {
       cout << endl;
       cout << "Invalid operation on collections -- incompatible sizes:"  << endl;
@@ -700,7 +629,7 @@ void HistogramCollection::add(const HistogramCollection & c1,
     TH1* h3 = c3.objects[iObject];
     if (!h0 || !h1 || !h2 || !h3)
       {
-      if (reportError() )
+      if (reportError(__FUNCTION__) )
         {
         cout << endl;
         cout << " Null pointer detected at iObject:" << iObject << endl;
@@ -748,7 +677,7 @@ void HistogramCollection::add(const HistogramCollection & c1,
     ;
   if (!sameSizeAs(c1) || !sameSizeAs(c2) || !sameSizeAs(c3) || !sameSizeAs(c4))
     {
-    if (reportError() )
+    if (reportError(__FUNCTION__) )
       {
       cout << endl;
       cout << "Invalid operation on collections -- incompatible sizes:"  << endl;
@@ -815,7 +744,7 @@ void HistogramCollection::divide(const HistogramCollection & c1)
     ;
   if (!sameSizeAs(c1))
     {
-    if (reportError() )
+    if (reportError(__FUNCTION__) )
       {
       cout << endl;
       cout << "Invalid operation on collections -- incompatible sizes:"  << endl;
@@ -830,7 +759,7 @@ void HistogramCollection::divide(const HistogramCollection & c1)
     TH1* h1 = c1.objects[iObject];
     if (!h0 || !h1)
       {
-      if (reportError() )
+      if (reportError(__FUNCTION__) )
         {
         cout << endl;
         cout << " Null pointer detected at iObject:" << iObject << endl;
@@ -918,7 +847,7 @@ void HistogramCollection::differenceCollection(const HistogramCollection & colle
     ;
   if (!collection.sameSizeAs(refCollection))
     {
-    if (reportError() )
+    if (reportError(__FUNCTION__) )
       {
       cout << "Invalid operation on collections:"  << endl;
       cout << "Attempting to calculate a difference of  collection " << collection.getName() << " containing " << collection.size() << " histograms" << endl;
@@ -989,7 +918,7 @@ void HistogramCollection::ratioCollection(const HistogramCollection & collection
 //! Calculate square difference (bin by bin) of all  histograms of the other  collection relative to the
 //! reference collection and store the result in the histograms of  this collection.
 //! TProfile histograms have to be handled differently
-//! This function is used for sub-sample analyses...
+//! This function is used for sub-sample analyses..
 //! double sumWeights: sum of the weights of the n-1 collection accumulated in this collection
 //!     double weight: weight of the current n-th collection.
 //! The means are store in the BinContent
@@ -1002,7 +931,7 @@ void HistogramCollection::squareDifferenceCollection(const HistogramCollection &
     ;
   if (!sameSizeAs(collection))
     {
-    if (reportError() )
+    if (reportError(__FUNCTION__) )
       {
       cout << "Invalid operation on collections:"  << endl;
       cout << "Attempting to add collection named " << getName() << " containing " << size() << " histograms" << endl;
@@ -3208,7 +3137,7 @@ void HistogramCollection::unpack_vsXY_to_vsXVsY(const TH1 * source, TH2 * target
 
   // Unpack 1D source histogram into a 2D histogram
   int k = 1;
-  double v, ev;
+  double v;
   int n  = source->GetNbinsX();
   int n_x = target->GetNbinsX();
   int n_y = target->GetNbinsY();
@@ -3217,7 +3146,7 @@ void HistogramCollection::unpack_vsXY_to_vsXVsY(const TH1 * source, TH2 * target
     if (reportError(__FUNCTION__))
       {
       cout << endl;
-      cout << "    unpack_vsXY_to_vsXVsY(...)  Incompatible histogram dimensions" << endl;
+      cout << "    unpack_vsXY_to_vsXVsY(..)  Incompatible histogram dimensions" << endl;
       cout << "    source  n:" << n << endl;
       cout << "    target n_x:" << n_x << endl;
       cout << "    target n_y:" << n_y << endl;
@@ -3230,7 +3159,7 @@ void HistogramCollection::unpack_vsXY_to_vsXVsY(const TH1 * source, TH2 * target
     for (int i_y=1; i_y<=n_y; ++i_y)
       {
       v  = source->GetBinContent(k);
-      ev = source->GetBinError(k);
+      //ev = source->GetBinError(k);
       target->SetBinContent(i_x,i_y,v);
       target->SetBinError(i_x,i_y,v);
       k++;
@@ -3533,7 +3462,7 @@ void HistogramCollection::calculateR2VsM(const TProfile * h1, const TProfile * h
     if (reportError(__FUNCTION__)) cout << endl << "Incompatible histogram dimensions" << endl;
     return;
     }
-  double n, nSum, vSum, v1,ev1,v2,v12,ev2,ev12, r, er;
+  double n, nSum, vSum, v1,ev1,v2,v12,ev12, r, er;
   nSum = vSum = 0;
   for (int i=1;i<=n1;++i)
     {
@@ -3541,11 +3470,11 @@ void HistogramCollection::calculateR2VsM(const TProfile * h1, const TProfile * h
     v1   = h1->GetBinContent(i);  ev1  = h1->GetBinError(i);
     if (sameFilter)
       {
-      v2   = v1;  ev2  = ev1;
+      v2   = v1;  //ev2  = ev1;
       }
     else
       {
-      v2   = h2->GetBinContent(i);  ev2  = h2->GetBinError(i);
+      v2   = h2->GetBinContent(i);  //ev2  = h2->GetBinError(i);
       }
     v12  = h12->GetBinContent(i); ev12 = h12->GetBinError(i);
     if (v1>0 && v2>0 && v12>0)
@@ -3662,62 +3591,54 @@ void HistogramCollection::calculateAverage(TH1* h, double & avgDensity, double &
     }
 }
 
-void HistogramCollection::calculateIntegral(TH1 * h, double  & integral, double & error)
+void HistogramCollection::calculateIntegral(TH1 * h, double xMin, double xMax, double  & result, double & resultError, int option)
 {
-
   if (reportStart(__FUNCTION__))
     ;
+  int xFirst = h->GetXaxis()->FindBin(xMin);
+  int xLast  = h->GetXaxis()->FindBin(xMax);
 
-  double check;
-  int n = h->GetNbinsX();
-  //check = h->Integral(1,n,"WIDTH");
-  int first = 1; //14;
-  int last  = n; //27;
-  int norm  = last - first + 1;
-  check = h->Integral(first,last,"WIDTH");
-  double v, ev, width, sum, esum;
-  sum  = 0.0;
-  esum = 0.0;
-  for (int i=first; i<=last; i++)
+  double sum, sumError;
+  double integral, integralError;
+  sum      = h->IntegralAndError(xFirst,xLast, sumError);
+  integral = h->IntegralAndError(xFirst,xLast, integralError, "WIDTH");
+  switch (option)
     {
-    v     = h->GetBinContent(i);
-    ev    = h->GetBinError(i);
-    width = h->GetBinWidth(i);
-    sum += v*width;
-    esum += ev*ev*width*width;
+      case 0: result = sum; resultError = sumError; break;
+      case 1: result = integral; resultError = integralError; break;
     }
-  integral = sum;
-  error    = sqrt(esum);
   if ( reportInfo(__FUNCTION__))
     {
     cout << "     Name: " << h->GetName() << endl;
-    cout << "    check: " << check << endl;
-    cout << " integral: " << integral << " +- " << error << endl;
+    cout << "      sum: " << sum      << " +- " << sumError << endl;
+    cout << " integral: " << integral << " +- " << integralError << endl;
     }
 }
 
-void HistogramCollection::calculateIntegral(TH2 * h, double  & integral, double & error)
+void HistogramCollection::calculateIntegral(TH2 * h, double xMin, double xMax, double yMin, double yMax, double  & result, double & resultError, int option)
 {
 
   if (reportStart(__FUNCTION__))
     ;
-  double check;
-  int nx = h->GetNbinsX();
-  int ny = h->GetNbinsY();
-  int xFirst =  1;
-  int xLast  = nx;
-  int yFirst =  1;
-  int yLast  = ny;
+  int xFirst = h->GetXaxis()->FindBin(xMin);
+  int xLast  = h->GetXaxis()->FindBin(xMax);
+  int yFirst = h->GetYaxis()->FindBin(yMin);
+  int yLast  = h->GetYaxis()->FindBin(yMax);
 
-  check = h->Integral(xFirst,xLast,yFirst,yLast,"WIDTH");
-  integral = h->IntegralAndError(xFirst,xLast,yFirst,yLast,error,"WIDTH");
+  double sum, sumError;
+  double integral, integralError;
+  sum      = h->IntegralAndError(xFirst,xLast, yFirst, yLast, sumError);
+  integral = h->IntegralAndError(xFirst,xLast, yFirst, yLast, integralError, "WIDTH");
+  switch (option)
+    {
+      case 0: result = sum; resultError = sumError; break;
+      case 1: result = integral; resultError = integralError; break;
+    }
   if ( reportInfo(__FUNCTION__))
     {
-    cout << endl << endl;
-    cout << "=============================================" << endl;
-    cout << "          Name: " << h->GetName() << endl;
-    cout << "         check: " << check << endl;
-    cout << "      integral: " << integral << " +- " << error << endl<< endl;
+    cout << "     Name: " << h->GetName() << endl;
+    cout << "      sum: " << sum      << " +- " << sumError << endl;
+    cout << " integral: " << integral << " +- " << integralError << endl;
     }
 }
 
@@ -3913,7 +3834,7 @@ void HistogramCollection::symmetrize3D(TH3* h)
 
 
 
-// h must be writtable otherwise this does not work...
+// h must be writtable otherwise this does not work..
 // x axis is DeltaEta. It must have an odd number of bins
 // y axis is DeltaPhi. It must have an even number of bins
 void HistogramCollection::symmetrizeDeltaEtaDeltaPhi(TH2 * h, bool ijNormalization)
@@ -4503,7 +4424,7 @@ void HistogramCollection::project_n2XYXY_n2YY(const TH2 * source, TH2 * target,i
   target->SetEntries(source->GetEntries());
 }
 
-//! Depracated--dont use...
+//! Depracated--dont use..
 TH2* HistogramCollection::symmetrize(TH2* h)
 {
 
@@ -5198,11 +5119,11 @@ void HistogramCollection::calculateF4R4(double f1_1,double ef1_1,double f1_2,dou
   if (reportStart(__FUNCTION__))
     ;
 
-  double ref1_1,  ref1_2,  ref1_3,  ref1_4;
-  double ref2_12, ref2_13, ref2_14, ref2_23, ref2_24, ref2_34;
+  double ref1_1,  ref1_2,  ref1_3; //,  ref1_4;
+  double ref2_12, ref2_13, ref2_14, ref2_24, ref2_34;
   double ref3_123, ref3_124, ref3_134, ref3_234;
-  double ref4_1234;
-  double reF4_1234;
+  //double ref4_1234;
+  //double reF4_1234;
 
   if (f1_1<1E-20 || f1_2<1E-20 || f1_3<1E-20 || f1_4<1E-20)
     {
@@ -5221,18 +5142,18 @@ void HistogramCollection::calculateF4R4(double f1_1,double ef1_1,double f1_2,dou
     ref1_1    = ef1_1/f1_1;
     ref1_2    = ef1_2/f1_2;
     ref1_3    = ef1_3/f1_3;
-    ref1_4    = ef1_3/f1_4;
+    //ref1_4    = ef1_4/f1_4;
     ref2_12   = ef2_12/f2_12;
     ref2_13   = ef2_13/f2_13;
     ref2_14   = ef2_14/f2_14;
-    ref2_23   = ef2_23/f2_23;
+    //ref2_23   = ef2_23/f2_23;
     ref2_24   = ef2_24/f2_24;
     ref2_34   = ef2_34/f2_34;
     ref3_123  = ef3_123/f3_123;
     ref3_124  = ef3_124/f3_124;
     ref3_134  = ef3_134/f3_134;
     ref3_234  = ef3_234/f3_234;
-    ref4_1234 = ef4_1234/f4_1234;
+    //ref4_1234 = ef4_1234/f4_1234;
 
     eF4_1234   = ef4_1234*ef4_1234
     + f3_123*f3_123*f1_4*f1_4*(ref3_123*ref3_123 + ef1_4*ef1_4)
@@ -5242,9 +5163,9 @@ void HistogramCollection::calculateF4R4(double f1_1,double ef1_1,double f1_2,dou
     + 16.0*f2_12*f2_12*f2_34*f2_34*(ref2_12*ref2_12 + ef2_34*ef2_34)
     + 16.0*f2_13*f2_13*f2_24*f2_24*(ref2_13*ref2_13 + ef2_24*ef2_24)
     + 16.0*f2_14*f2_14*f2_23*f2_23*(ref2_14*ref2_14 + ef2_23*ef2_23);
-    // neglect singles term for now...
+    // neglect singles term for now..
     eF4_1234   = sqrt(eF4_1234);
-    reF4_1234  = 0.0; //eF4_1234/F4_1234;
+    //reF4_1234  = 0.0; //eF4_1234/F4_1234;
     R4_1234    = F4_1234/(f1_1*f1_2*f1_3*f1_4);
     eR4_1234   = 0.0; //R4_1234*reF4_1234;
     }

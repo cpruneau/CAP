@@ -27,8 +27,8 @@ int CalculateDerivedHistogram()
   TString balFctLabel          = "BalFct";
   TString rootExt              = ".root";
 
-  TString histoOutputDataName;
-  TString histoOutputAnalyzerName;
+  TString histoModelDataName;
+  TString histoAnalyzerName;
   TString histoBaseName;
 
   MessageLogger::LogLevel  infoLevel  = MessageLogger::Info;
@@ -286,8 +286,8 @@ int CalculateDerivedHistogram()
 //      subSampleConfig.addParameter( "IncludedPattern",     outputFileNameBase);
 //      subSampleConfig.setParameter( "histoInputPath",      outputPathName);
 //      subSampleConfig.setParameter( "histoOutputPath",     outputPathName);
-//      subSampleConfig.addParameter( "histoOutputDataName",     histoOutputDataName);
-//      subSampleConfig.addParameter( "histoOutputAnalyzerName", histoOutputAnalyzerName);
+//      subSampleConfig.addParameter( "histoModelDataName",     histoModelDataName);
+//      subSampleConfig.addParameter( "histoAnalyzerName", histoAnalyzerName);
 //      subSampleStatIterator = new SubSampleStatIterator("MultiTaskSubSampleIterator",subSampleConfig,infoLevel);
 //
 //    if (doParticles)

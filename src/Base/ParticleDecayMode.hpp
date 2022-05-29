@@ -5,7 +5,7 @@
  * Based on the ROOT package and environment
  * This code is adapted from Chun Shen's code
  * for the purpose of computing hadronic resonance
- * correlations...
+ * correlations..
  *
  * For the licensing terms see LICENSE.
  *

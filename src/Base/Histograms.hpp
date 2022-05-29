@@ -21,17 +21,11 @@ public:
   Histograms(const TString & name,
              const Configuration & configuration,
              LogLevel  debugLevel);
-//  Histograms(TFile * inputFile,
-//             const TString & name,
-//             const Configuration & configuration,
-//             LogLevel  debugLevel);
+
   ~Histograms() {}
 
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);
-  virtual void createDerivedHistograms();
-  virtual void createDerivedHistograms(const Histograms & histograms);
-
   
   //!
   //! Returns the configuration of this histogram set
@@ -59,14 +53,21 @@ public:
   
   virtual TString getHistoBaseName() const;
 
-  TString makeName(const TString & baseName,const  TString & filterName1);
-  TString makeName(const TString & baseName,const  TString & filterName1,const  TString & observableName1);
-  TString makeName(const TString & baseName,const  TString & filterName1,const  TString & observableName1,const  TString & filterName2,const  TString & observableName2);
-  TString makeName(const TString & baseName, int i1, const TString suffix="");
-  TString makeName(const TString & baseName, int i1, int i2, const TString suffix="");
-  TString makeName(const TString & baseName, int i1, int i2, int i3, const TString suffix="");
-  TString makeName(const TString & baseName, int i1, int i2, int i3, int i4, const TString suffix="");
- 
+  TString makeName(const TString & s0, const  TString & s1);
+  TString makeName(const TString & s0, const  TString & s1, const TString & s2);
+  TString makeName(const TString & s0, const  TString & s1, const TString & s2, const TString & s3);
+  TString makeName(const TString & s0, const  TString & s1, const TString & s2, const TString & s3, const TString & s4);
+
+  TString makeName(const TString & s0, int i1, const TString suffix="");
+  TString makeName(const TString & s0, int i1, int i2, const TString suffix="");
+  TString makeName(const TString & s0, int i1, int i2, int i3, const TString suffix="");
+  TString makeName(const TString & s0, int i1, int i2, int i3, int i4, const TString suffix="");
+
+  TString makeName(const TString & s0, const TString & s1, int i1, const TString suffix);
+  TString makeName(const TString & s0, const TString & s1, int i1, int i2, const TString suffix);
+  TString makeName(const TString & s0, const TString & s1, int i1, int i2, int i3, const TString suffix);
+  TString makeName(const TString & s0, const TString & s1, int i1, int i2, int i3, int i4, const TString suffix);
+
   
 protected:
   

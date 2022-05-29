@@ -152,11 +152,11 @@ void ResonanceGenerator::generate(Particle * parentInteraction)
   Event & event = * eventStreams[0];
   //ParticleFilter & particleFilter = * particleFilters[0];
 
-  // generate neutral rho-meson and decay them...
+  // generate neutral rho-meson and decay them..
   ParticleType * parentType = particleTypeCollection->findPdgCode(113);  // rho-meson only
   ParticleDecayMode & decayMode = parentType->generateDecayMode(); // pi+ and pi- only
   
-  // for now, assume a two body decay exclisively...
+  // for now, assume a two body decay exclisively..
   //int nChildren = decayMode.getNChildren();
   TLorentzVector parentPosition = parentInteraction->getPosition();
   ParticleDecayer decayer;

@@ -46,11 +46,12 @@ void GaussianGeneratorTask::setDefaultConfiguration()
   configuration.addParameter("gammaphi",  1.0);
   configuration.addParameter("omegaeta",  1.0);
   configuration.addParameter("omegaphi",  1.0);
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 void GaussianGeneratorTask::initialize()
 {
-  
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();

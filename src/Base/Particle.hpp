@@ -350,7 +350,7 @@ public:
   bool isSecondary() const;
 
   //!
-  //!Return true if this particle is in fact a particle, as opposed to an interaction or source of particles...
+  //!Return true if this particle is in fact a particle, as opposed to an interaction or source of particles..
   //!
   bool isParticle() const;
 
@@ -420,7 +420,7 @@ public:
   }
 
   //!
-  //!Get the number of parents this particle has...
+  //!Get the number of parents this particle has..
   //!
   unsigned int getNParents() const
   {

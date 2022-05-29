@@ -20,14 +20,15 @@
 #include "TGraphAsymmErrors.h"
 #include "TH1D.h"
 #include "GraphConfiguration.hpp"
+#include "MessageLogger.hpp"
 
 using std::vector;
 
 //!
 //! Class to draw graphs with statistical and systematic errors
-//! Use  the TGraph and derived classes to carry out the drawing...
+//! Use  the TGraph and derived classes to carry out the drawing..
 //!
-class DataGraph : public TH1D
+class DataGraph : public TH1D, public MessageLogger
 {
 protected:
 

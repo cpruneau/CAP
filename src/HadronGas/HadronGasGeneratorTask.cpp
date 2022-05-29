@@ -323,7 +323,7 @@ void HadronGasGeneratorTask::generate(Particle * parent)
     particle->set(type, momentum, parentPosition,true);
     //particle->printProperties(cout);
     //incrementParticlesCounted(); // photons are NOT included in this tally
-    //if (!particleFilter.accept(*particle)) continue; // no filter for now...
+    //if (!particleFilter.accept(*particle)) continue; // no filter for now..
     event.add(particle);
     // // incrementParticlesAccepted();
     }

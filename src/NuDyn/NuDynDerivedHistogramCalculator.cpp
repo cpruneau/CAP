@@ -57,10 +57,10 @@ void NuDynDerivedHistogramCalculator::createHistograms()
   TString prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
-    cout << "Creating Histogram(s) for..."  << endl;
+    cout << "Creating Histogram(s) for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     cout << "    nParticleFilters: " << nParticleFilters << endl;
     }
@@ -96,7 +96,7 @@ void NuDynDerivedHistogramCalculator::loadHistograms(TFile * inputFile)
   unsigned int nParticleFilters = particleFilters.size();
   if (reportInfo(__FUNCTION__))
     {
-    cout << "Loading Histogram(s) for..."  << endl;
+    cout << "Loading Histogram(s) for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     cout << "    nParticleFilters: " << nParticleFilters << endl;
     }
@@ -110,7 +110,7 @@ void NuDynDerivedHistogramCalculator::loadHistograms(TFile * inputFile)
       {
       TString pfn = particleFilters[iParticleFilter]->getName();
       if (reportDebug(__FUNCTION__))cout << "Particle filter (Singles):" << pfn << endl;
-      histos = new NuDynHistos(createHistogramName(prefixName,efn,pfn,""),configuration,getReportLevel());
+      histos = new NuDynHistos(makeHistoName(prefixName,efn,pfn,""),configuration,getReportLevel());
       histos->loadHistograms(inputFile);
       baseSingleHistograms.push_back(histos);
       }

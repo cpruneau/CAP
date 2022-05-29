@@ -163,9 +163,9 @@ class BidimGaussFitConfiguration : public Configuration
 
   TString outputPath;
 
-// Configuration for different systems...
+// Configuration for different systems..
   // Number of bins to be excluded relative to the central bin
-  // in the eta and phi directions...
+  // in the eta and phi directions..
   static int excludeCentralBinsEtaPbPb276MM[9]; // = {3,3,3,3,3,3,3,-1,-1};
   static int excludeCentralBinsEtaPbPb276PP[9]; // = {3,3,3,3,3,3,3,-1,-1};
   static int excludeCentralBinsEtaPbPb276CI[9]; // = {3,3,3,3,3,3,3,-1,-1};

@@ -36,7 +36,7 @@ PTHistos::~PTHistos()
 // for now use the same boundaries for eta and y histogram
 void PTHistos::createHistograms()
 {
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::createHistograms(...) started"<< endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::createHistograms(..) started"<< endl;
 //	HeavyIonConfiguration & ac = (HeavyIonConfiguration&)( *getConfiguration());
 //	TString bn = getHistoBaseName();
 //	TH1::SetDefaultBufferSize(ac.totEvents);
@@ -90,9 +90,9 @@ void PTHistos::createHistograms()
 //
 //	orders = new int [size];
 //
-//	h_eventStreams   = createHistogram(bn+TString("NeventStreams"),1, 0.0, 0.0,  "mult","n_{Events}");
-//	if (ac.ptCorrelatorVsMult) h_eventStreams_vsMult = createHistogram(bn+TString("NeventStreams_vsMult"),ac.nBins_mult, 0.0, 0.0,  "mult","n_{Events}");
-//	if (ac.ptCorrelatorVsCent) h_eventStreams_vsCent = createHistogram(bn+TString("NeventStreams_vsCent"),ac.nBins_cent, 0.0, 0.0,  "cent","n_{Events}");
+//	h_eventStreams   = createHistogram(makeName(bn,"NeventStreams"),1, 0.0, 0.0,  "mult","n_{Events}");
+//	if (ac.ptCorrelatorVsMult) h_eventStreams_vsMult = createHistogram(makeName(bn,"NeventStreams_vsMult"),ac.nBins_mult, 0.0, 0.0,  "mult","n_{Events}");
+//	if (ac.ptCorrelatorVsCent) h_eventStreams_vsCent = createHistogram(makeName(bn,"NeventStreams_vsCent"),ac.nBins_cent, 0.0, 0.0,  "cent","n_{Events}");
 //
 //	TString * baseName = new TString[2 * numFunc + 1];
 //	baseName[0] = bn + "S_";
@@ -131,7 +131,7 @@ void PTHistos::createHistograms()
 //	}
 //
 //	histoIndex = 0;
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::createHistograms(...) ended"<< endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::createHistograms(..) ended"<< endl;
 //	//h_c123vsMultTest = createProfile("c123Test", ac.nBins_mult,ac.min_mult,ac.max_mult,"mult", "c123Test" );
 }
 
@@ -177,9 +177,9 @@ void PTHistos::loadHistograms(TFile * inputFile)
 //
 //	orders = new int [size];
 //
-//	h_eventStreams   = loadH1(inputFile, bn+TString("NeventStreams"));
-//	if (ac.ptCorrelatorVsMult) h_eventStreams_vsMult = loadH1(inputFile, bn+TString("NeventStreams_vsMult"));
-//	if (ac.ptCorrelatorVsCent) h_eventStreams_vsCent = loadH1(inputFile, bn+TString("NeventStreams_vsCent"));
+//	h_eventStreams   = loadH1(inputFile, makeName(bn,"NeventStreams"));
+//	if (ac.ptCorrelatorVsMult) h_eventStreams_vsMult = loadH1(inputFile, makeName(bn,"NeventStreams_vsMult"));
+//	if (ac.ptCorrelatorVsCent) h_eventStreams_vsCent = loadH1(inputFile, makeName(bn,"NeventStreams_vsCent"));
 //
 //	TString * baseName = new TString[numFunc + 1];
 //	baseName[0] = bn + "S_";
@@ -270,7 +270,7 @@ void PTHistos::fillEventHistos(double mult, double cent, double weight)
 // Note: these histograms are not in sequence of lowest order to highest order. The reording occurs when the histograms are saved with the saveHistograms function.
 void PTHistos::createHistogramRec(TString * baseName, TString * baseTitle, int depth, int partIndex)
 {
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::createHistogramsRec(...) started"<< endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::createHistogramsRec(..) started"<< endl;
 //	Configuration & ac = *(Configuration*) getConfiguration();
 //	TString *histoName = new TString[2 * numFunc +1];
 //	TString *histoTitle= new TString[2 * numFunc +1];
@@ -317,7 +317,7 @@ void PTHistos::createHistogramRec(TString * baseName, TString * baseTitle, int d
 //
 //	delete [] histoName;
 //	delete [] histoTitle;
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::createHistogramsRec(...) ended"<< endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::createHistogramsRec(..) ended"<< endl;
 //	return;
 }
 
@@ -327,7 +327,7 @@ void PTHistos::createHistogramRec(TString * baseName, TString * baseTitle, int d
 void PTHistos::loadHistogramRec(TString * baseName, int depth, int partIndex, TFile * inputFile)
 {
 
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::loadHistogramRec(...) Starting." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::loadHistogramRec(..) Starting." << endl;
 //	Configuration & ac = *(Configuration*) getConfiguration();
 //	TString *histoName = new TString[2 * numFunc +1];
 //
@@ -367,12 +367,12 @@ void PTHistos::loadHistogramRec(TString * baseName, int depth, int partIndex, TF
 //
 //	delete [] histoName;
 //	return;
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::loadHistogramRec(...) Completed." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::loadHistogramRec(..) Completed." << endl;
 }
 
 void PTHistos::fillDerivedHistos(bool *** acceptances, double * mults, double * cents, int * numParticles, double ** pT)
 {
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::fillDerivedHistos(...) Starting." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::fillDerivedHistos(..) Starting." << endl;
 //	auto start = chrono::high_resolution_clock::now();
 //	HeavyIonConfiguration & ac = (HeavyIonConfiguration&)*getConfiguration();
 //	//double max = ac.nCollisionsMax;
@@ -499,7 +499,7 @@ void PTHistos::fillDerivedHistos(bool *** acceptances, double * mults, double * 
 //	auto stop = chrono::high_resolution_clock::now();
 //	auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
 //	if (reportInfo(__FUNCTION__)) cout << "Time taken to calculate derived histos: " << duration.count() << " microseconds"<< endl;
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::fillDerivedHistos(...) Completed." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::fillDerivedHistos(..) Completed." << endl;
 //
 //
 
@@ -511,7 +511,7 @@ void PTHistos::fillDerivedHistos(bool *** acceptances, double * mults, double * 
 /////////////////////////////////////////////
 void PTHistos::fillNormalizedPTValues( int depth, int partIndex, double product, double * values, double  mult, double  cent)
 {
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::fillNormalizedPTValues(...) Starting." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::fillNormalizedPTValues(..) Starting." << endl;
 //	Configuration & ac = *(Configuration*)  getConfiguration();
 //
 //	for(int i = partIndex; i < maxOrder; i++)
@@ -528,12 +528,12 @@ void PTHistos::fillNormalizedPTValues( int depth, int partIndex, double product,
 //
 //		if(depth != 0)	fillNormalizedPTValues(depth - 1, i, newProduct, values, mult, cent);
 //	}
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::fillNormalizedPTValues(...) Completed." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::fillNormalizedPTValues(..) Completed." << endl;
 }
 //
 void PTHistos::fillNormalizedPTValues( int depth, int partIndex, double product, TH1 *** values, int* reorder, int*  nBin)
 {
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::fillNormalizedPTValues(...) Starting." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::fillNormalizedPTValues(..) Starting." << endl;
 //	Configuration & ac = *(Configuration*) getConfiguration();
 //
 //	for(int i = partIndex; i < maxOrder; i++)
@@ -580,7 +580,7 @@ void PTHistos::fillNormalizedPTValues( int depth, int partIndex, double product,
 //
 //		if(depth != 0)	fillNormalizedPTValues(depth - 1, i, newProduct, values, reorder, nBin);
 //	}
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::fillNormalizedPTValues(...) Completed." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::fillNormalizedPTValues(..) Completed." << endl;
 }
 
 ///////////////////////////////////////////
@@ -588,7 +588,7 @@ void PTHistos::fillNormalizedPTValues( int depth, int partIndex, double product,
 //////////////////////////////////////////
 void PTHistos::calculateCumulants(TProfile ** SHistos, TH1 **CHistos, int nBins, double min, double max)
 {	
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateCumulants(...) Starting." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateCumulants(..) Starting." << endl;
 //
 //	//HeavyIonConfiguration & ac = (HeavyIonConfiguration&)( *getConfiguration());
 //
@@ -649,7 +649,7 @@ void PTHistos::calculateCumulants(TProfile ** SHistos, TH1 **CHistos, int nBins,
 //	}
 //
 //	return;
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateCumulants(...) Completed." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateCumulants(..) Completed." << endl;
 
 }
 
@@ -662,13 +662,13 @@ void PTHistos::calculateCumulants(TProfile ** SHistos, TH1 **CHistos, int nBins,
 //		It then proceeds to recurse on the proper subsets of {1, 3} and multiply these by C(2), so it gets C(1) * C(2) * C(3) and finds it on the used array so skips
 //		Going back to the top level, it goes to subset {2, 3} and gets C(2, 3) * C(1) and adds it to sum and places it on the used array
 //		It then proceeds to recurse on the proper subsets of {1} of which there are none
-// 		so on...
+// 		so on..
 //     	After this function concludes, C(1, 2, 3) = S(1, 2, 3) - sum
 // note that C(1) = S(1) because sum = 0
 ///////////////////////////////////////////////////
 void PTHistos::calcRecSum(TH1 **CHistos, int iBin, double& absESq, double curRelESq, int* iHisto, int* Subset, int len,  int * set, int lenSet, double productC, double* used, int& curInd, int productS, double& sum)
 {
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calcRecSum(...) Starting." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calcRecSum(..) Starting." << endl;
 //	int lenSub = 0;
 //	int lenCompSub = 0;
 //	if(len != 1)
@@ -728,7 +728,7 @@ void PTHistos::calcRecSum(TH1 **CHistos, int iBin, double& absESq, double curRel
 //		}
 //	}
 //
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calcRecSum(...) Completed." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calcRecSum(..) Completed." << endl;
 //	return;
 	
 }
@@ -737,7 +737,7 @@ void PTHistos::calcRecSum(TH1 **CHistos, int iBin, double& absESq, double curRel
 
 void PTHistos::calculateInclusivePtAverage(bool *** acceptances, int * numParticles, double ** pT)
 {
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateInclusivePtAverage(...) Starting." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateInclusivePtAverage(..) Starting." << endl;
 //
 //	for(int iFilter = 0; iFilter < maxOrder; iFilter++)
 //	{
@@ -756,13 +756,13 @@ void PTHistos::calculateInclusivePtAverage(bool *** acceptances, int * numPartic
 //		}
 //		avgpT[iFilter] = sumPt/totParts;
 //	}
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateInclusivePtAverage(...) Completed." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateInclusivePtAverage(..) Completed." << endl;
 
 }
 
 void PTHistos::calculateInclusiveYieldsAverage(bool *** acceptances, int * numParticles)
 {
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateInclusiveYieldsAverage(...) Starting." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateInclusiveYieldsAverage(..) Starting." << endl;
 //
 //	int ** tempCounts = new int *[totEvents];
 //	double * tempAvgCounts = new double [size];
@@ -855,13 +855,13 @@ void PTHistos::calculateInclusiveYieldsAverage(bool *** acceptances, int * numPa
 //	{
 //		avgCounts[iHisto] = tempAvgCounts[reorder[iHisto]];
 //	}
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateInclusiveYieldsAverage(...) Completed." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateInclusiveYieldsAverage(..) Completed." << endl;
 
 }
 
 void PTHistos::calculateEventMoments(bool *** acceptances, int * numParticles, double ** pT)
 {
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateEventMoments(...) Starting." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateEventMoments(..) Starting." << endl;
 //
 //	double ** tempSValues = new double *[totEvents];
 //	for(int iEvent = 0; iEvent < totEvents; iEvent++)
@@ -978,7 +978,7 @@ void PTHistos::calculateEventMoments(bool *** acceptances, int * numParticles, d
 //		}
 //	}
 //
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateEventMoments(...) Completed." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateEventMoments(..) Completed." << endl;
 }
 ////////////////////////////////////////////////////////////////////////////
 //Helper Functions
@@ -989,7 +989,7 @@ void PTHistos::calculateEventMoments(bool *** acceptances, int * numParticles, d
 
 ///////////////////////////////////////
 // convert a base maxOrder integer (represented by num) into the index of the corresponding moment in the array
-// ex: for 4th order correlations, the function {1,2,3} is index 19 in the array (1, 2, 3, 4, 11, 12 ... 44, 111, ... 123)
+// ex: for 4th order correlations, the function {1,2,3} is index 19 in the array (1, 2, 3, 4, 11, 12 .. 44, 111, .. 123)
 // checked for correctness
 ///////////////////////////////////////
 int PTHistos::convert(int * num, int len)
@@ -1007,13 +1007,13 @@ int PTHistos::convert(int * num, int len)
 
 //////////////////////////////////////
 // convert the index of the moment (represented by num) into a base maxOrder integer
-// ex: for 4th order correlations, the function {1,2,3} is index 19 in the array (1, 2, 3, 4, 11, 12 ... 44, 111, ... 123)
+// ex: for 4th order correlations, the function {1,2,3} is index 19 in the array (1, 2, 3, 4, 11, 12 .. 44, 111, .. 123)
 //////////////////////////////////////
 int * PTHistos::convert(int num, int & len)
 {
   return 0;
 
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::convert(...) started." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::convert(..) started." << endl;
 //	for(len = 2; len <=maxOrder + 1; len++)
 //	{
 //		int temp = (TMath::Factorial( maxOrder + len - 1)) / (TMath::Factorial(maxOrder ) * TMath::Factorial(len - 1 )) - 1 ;
@@ -1041,7 +1041,7 @@ int * PTHistos::convert(int num, int & len)
 //			}
 //		}
 //	}
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::convert(...) Completed." << endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::convert(..) Completed." << endl;
 //	return convert;
 }
 

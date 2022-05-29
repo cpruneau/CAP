@@ -132,8 +132,6 @@ void Task::setDefaultConfiguration()
   configuration.addParameter( "useEventStream2",         false);
   configuration.addParameter( "useEventStream3",         false);
   configuration.addParameter( "createHistograms",        false);
-  configuration.addParameter( "createDerivedHistograms", false);
-  configuration.addParameter( "createCombinedHistograms",false);
   configuration.addParameter( "loadHistograms",          false);
   configuration.addParameter( "saveHistograms",          false);
   configuration.addParameter( "resetHistograms",         false);
@@ -147,8 +145,8 @@ void Task::setDefaultConfiguration()
   configuration.addParameter( "histoInputFileName",      nullString);
   configuration.addParameter( "histoOutputPath",         nullString);
   configuration.addParameter( "histoOutputFileName",     nullString);
-  configuration.addParameter( "histoOutputDataName",     nullString);
-  configuration.addParameter( "histoOutputAnalyzerName", nullString);
+  configuration.addParameter( "histoModelDataName",     nullString);
+  configuration.addParameter( "histoAnalyzerName", nullString);
   configuration.addParameter( "histoBaseName",           nullString);
   configuration.addParameter( "dataInputUsed",           false);
   configuration.addParameter( "dataInputPath",           nullString);
@@ -205,12 +203,12 @@ void Task::initialize()
   if (useEventStream2)  addEventStream(Event::getEventStream(2));
   if (useEventStream3)  addEventStream(Event::getEventStream(3));
   if (reportDebug(__FUNCTION__)) cout << " #event added streams: "  << getNEventStreams() << endl;
+  if (loadHistos   && isTaskOk())  loadHistograms();
   if (createHistos && isTaskOk())
     {
-    createEventCountHistograms();
+    if (useParticles && !hasEventCountHistograms()) createEventCountHistograms();
     createHistograms();
     }
-  if (loadHistos && isTaskOk())  loadHistograms();
   if (hasSubTasks() && isTaskOk()) initializeSubTasks();
   if (reportEnd(__FUNCTION__))
     ;
@@ -251,7 +249,7 @@ void Task::finalize()
   bool saveHistos   = configuration.getValueBool("saveHistograms");
 
   // if a partial save has been done and there are no additional
-  // new data, no point in saving again...
+  // new data, no point in saving again..
   if (useParticles)
     {
     if (reportInfo(__FUNCTION__)) cout << "useParticles==true" << endl;
@@ -266,9 +264,7 @@ void Task::finalize()
     }
   else
     {
-    if (reportInfo(__FUNCTION__)) cout << "useParticles==false" << endl;
-    if (scaleHistos) scaleHistograms();
-    if (saveHistos) saveHistograms();
+   if (saveHistos) saveHistograms();
     if (hasSubTasks() && isTaskOk()) finalizeSubTasks();
     }
   if (reportEnd(__FUNCTION__))
@@ -323,7 +319,7 @@ void Task::clear()
   bool createHistos = configuration.getValueBool("createHistograms");
   if (useParticles) clearNEventsAccepted();
   if (useParticles) clearNParticlesAccepted();
-  if (useParticles  && createHistos) clearEventCountHistograms();
+  if (useParticles) clearEventCountHistograms();
   if (createHistos  && isTaskOk()) clearHistograms();
   if (hasSubTasks() && isTaskOk()) clearSubTasks();
   if (reportEnd(__FUNCTION__))
@@ -341,13 +337,11 @@ void Task::printConfiguration(ostream & output)
 
 void Task::loadHistograms()
 {
-
   if (reportStart(__FUNCTION__))
     ;
   bool useParticles          = configuration.getValueBool("useParticles");
   TString histoInputPath     = configuration.getValueString("histoInputPath");
   TString histoInputFileName = configuration.getValueString("histoInputFileName");
-
   TFile * inputFile          = openRootFile(histoInputPath,histoInputFileName,"READ");
   if (!inputFile) return;
   if (useParticles)  loadEventCountHistograms(inputFile);
@@ -358,21 +352,25 @@ void Task::loadHistograms()
     ;
 }
 
+bool Task::hasEventCountHistograms()
+{
+  return eventCountHistos!=nullptr;
+}
+
+
 void Task::createEventCountHistograms()
 {
-
   if (reportStart(__FUNCTION__))
     ;
   eventCountHistos = new EventCountHistos(getName(),configuration,nEventFilters,nParticleFilters,getReportLevel());
   eventCountHistos->createHistograms();
+  eventCountHistos->setOwnership(true);
   if (reportEnd(__FUNCTION__))
     ;
 }
 
-
 void Task::fillEventCountHistograms()
 {
-
   if (reportStart(__FUNCTION__))
     ;
   eventCountHistos->fill(nTaskExecutedReset,nEventsAcceptedReset,nParticleAcceptedReset);
@@ -416,8 +414,11 @@ void Task::clearEventCountHistograms()
 
   if (reportStart(__FUNCTION__))
     ;
-  eventCountHistos->clear();
-  delete eventCountHistos;
+  if (eventCountHistos)
+    {
+    eventCountHistos->clear();
+    delete eventCountHistos;
+    }
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -537,8 +538,8 @@ void Task::saveHistograms(TFile * outputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
+  if (!ptrFileExist(__FUNCTION__,outputFile)) return;
   outputFile->cd();
-
   if (reportDebug(__FUNCTION__))
     {
     cout << endl;
@@ -599,18 +600,18 @@ void Task::saveHistograms()
   bool forceHistogramsRewrite     = configuration.getValueBool("forceHistogramsRewrite");
   TString histoOutputPath         = configuration.getValueString("histoOutputPath");
   TString histoOutputFileName     = configuration.getValueString("histoOutputFileName");
-  TString histoOutputDataName     = configuration.getValueString("histoOutputDataName");
-  TString histoOutputAnalyzerName = configuration.getValueString("histoOutputAnalyzerName");
+  TString histoModelDataName     = configuration.getValueString("histoModelDataName");
+  TString histoAnalyzerName = configuration.getValueString("histoAnalyzerName");
 
   // rule: if an actual file name 'histoOutputFileName' is provided, that is what is
-  // used to save the histograms. If not, assemble a name based on 'histoOutputDataName' and 'histoOutputAnalyzerName'
+  // used to save the histograms. If not, assemble a name based on 'histoModelDataName' and 'histoAnalyzerName'
   // If the partial save option is set, a sequence number will be added to the file name.
   //
   if (histoOutputFileName.IsNull())
     {
-    histoOutputFileName  = histoOutputDataName;
+    histoOutputFileName  = histoModelDataName;
     histoOutputFileName  += "_";
-    histoOutputFileName  += histoOutputAnalyzerName;
+    histoOutputFileName  += histoAnalyzerName;
     }
 
   if (doSubsampleAnalysis || doPartialSave )
@@ -711,7 +712,7 @@ long Task::readParameter(TFile * inputFile, const TString & parameterName)
   TParameter<Long64_t> *par = (TParameter<Long64_t> *) inputFile->Get(parameterName);
   if (!par)
     {
-    if (reportError(__FUNCTION__)) cout << "Parameter not found." << endl;
+    if (reportError(__FUNCTION__)) cout << "Parameter not found:" <<  parameterName << endl;
     postTaskError();
     return 1.0;
     }
@@ -889,35 +890,79 @@ void Task::addHistogramsToExtList(TList *list __attribute__((unused)) )
 //    }
 }
 
-const TString Task::createHistogramName(const TString & baseName,
-                                        const TString & evtFilterName,
-                                        const TString & partFilterName1,
-                                        const TString & observableName,
-                                        const TString & suffix)
+const TString Task::makeHistoName(const TString & s0,
+                                  const TString & s1)
 {
-  TString histoName  = baseName;
-  histoName += evtFilterName;
+  TString histoName = s0;
   histoName += "_";
-  histoName += partFilterName1;
-  histoName += observableName;
-  histoName += suffix;
+  histoName += s1;
   return histoName;
 }
 
-const TString Task::createPairHistogramName(const TString & baseName,
-                                            const TString & evtFilterName,
-                                            const TString & partFilterName1,
-                                            const TString & partFilterName2,
-                                            const TString & observableName,
-                                            const TString & suffix)
+const TString Task::makeHistoName(const TString & s0,
+                                  const TString & s1,
+                                  const TString & s2)
 {
-  TString histoName  = baseName;
-  histoName += evtFilterName;
+  TString histoName = s0;
   histoName += "_";
-  histoName += partFilterName1;
-  histoName += partFilterName2;
-  histoName += observableName;
-  histoName += suffix;
+  histoName += s1;
+  histoName += "_";
+  histoName += s2;
+  return histoName;
+}
+
+const TString Task::makeHistoName(const TString & s0,
+                                        const TString & s1,
+                                        const TString & s2,
+                                        const TString & s3)
+{
+  TString histoName = s0;
+  histoName += "_";
+  histoName += s1;
+  histoName += "_";
+  histoName += s2;
+  histoName += "_";
+  histoName += s3;
+  return histoName;
+}
+
+
+const TString Task::makeHistoName(const TString & s0,
+                                        const TString & s1,
+                                        const TString & s2,
+                                        const TString & s3,
+                                        const TString & s4)
+{
+  TString histoName = s0;
+  histoName += "_";
+  histoName += s1;
+  histoName += "_";
+  histoName += s2;
+  histoName += "_";
+  histoName += s3;
+  histoName += "_";
+  histoName += s4;
+  return histoName;
+}
+
+const TString Task::makeHistoName(const TString & s0,
+                                            const TString & s1,
+                                            const TString & s2,
+                                            const TString & s3,
+                                            const TString & s4,
+                                            const TString & s5)
+{
+  TString histoName  = s0;
+  histoName += "_";
+  histoName += s1;
+  histoName += "_";
+  histoName += s2;
+  histoName += "_";
+  histoName += s3;
+  histoName += "_";
+  histoName += s4;
+  histoName += "_";
+  histoName += s5;
   return histoName;
 }
 

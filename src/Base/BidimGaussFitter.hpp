@@ -27,7 +27,9 @@ double  Global2DFitFunction(double  *x, double  *par);
 class BidimGaussFitter : public Plotter
 {
   public:
-  BidimGaussFitter();
+  BidimGaussFitter(const TString &           _name,
+                   const Configuration &     _configuration,
+                   LogLevel                  _requiredLevel);
   BidimGaussFitter(const BidimGaussFitter& source);
   virtual ~BidimGaussFitter();
   const BidimGaussFitter & operator=(const BidimGaussFitter & source);

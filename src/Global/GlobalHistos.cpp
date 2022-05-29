@@ -147,11 +147,7 @@ void GlobalHistos::loadHistograms(TFile * inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (!inputFile)
-    {
-    if (reportFatal(__FUNCTION__)) cout << "Attempting to load GlobalHistos from an invalid file pointer" << endl;
-    return;
-    }
+  if (!ptrFileExist(__FUNCTION__, inputFile)) return;
   const Configuration & configuration = getConfiguration();
   fillCorrelationHistos = configuration.getValueBool("fillCorrelationHistos");
   fill2D = configuration.getValueBool("fill2D");

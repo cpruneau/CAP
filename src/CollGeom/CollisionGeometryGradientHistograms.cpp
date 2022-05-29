@@ -30,10 +30,10 @@ void CollisionGeometryGradientHistograms::createHistograms()
   if (reportStart("CollisionGeometryGradientHistograms",getName(),"createHistograms()"))
     ;
   TString bn = getHistoBaseName();
-  h_edge     = createHistogram(bn+TString("edge"),   200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "Edge");
-  h_radius   = createHistogram(bn+TString("radius"), 200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "r/r_{max}");
-  h_gx       = createHistogram(bn+TString("gx"),     200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "g_{x}");
-  h_gy       = createHistogram(bn+TString("gy"),     200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "g_{y}");
+  h_edge     = createHistogram(makeName(bn,"edge"),   200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "Edge");
+  h_radius   = createHistogram(makeName(bn,"radius"), 200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "r/r_{max}");
+  h_gx       = createHistogram(makeName(bn,"gx"),     200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "g_{x}");
+  h_gy       = createHistogram(makeName(bn,"gy"),     200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "g_{y}");
   if (reportEnd("CollisionGeometryGradientHistograms",getName(),"createHistograms()"))
     ;
 }
@@ -41,42 +41,15 @@ void CollisionGeometryGradientHistograms::createHistograms()
 //________________________________________________________________________
 void CollisionGeometryGradientHistograms::loadHistograms(TFile * inputFile)
 {
-  if (reportStart("CollisionGeometryGradientHistograms",getName(),"loadHistograms(TFile * inputFile)"))
+  if (reportStart(__FUNCTION__))
     ;
-  if (!inputFile)
-    {
-    if (reportFatal("CollisionGeometryGradientHistograms",getName(),"loadHistograms(TFile * inputFile) inputFile is a nullptr"))
-      {
-      exit(1);
-      }
-    }
+  if (!ptrFileExist(__FUNCTION__, inputFile)) return;
   TString bn = getHistoBaseName();
-  h_edge   = loadH2(inputFile,bn+TString("edge"));
-  h_radius = loadH2(inputFile,bn+TString("radius"));
-  if (!h_radius)
-    {
-    if (reportFatal("CollisionGeometryGradientHistograms",getName(),"loadHistograms(TFile * inputFile) h_radius is a nullptr"))
-      {
-      exit(1);
-      }
-    }
-  h_gx     = loadH2(inputFile,bn+TString("gx"));
-  if (!h_gx)
-    {
-    if (reportFatal("CollisionGeometryGradientHistograms",getName(),"loadHistograms(TFile * inputFile) h_gx is a nullptr"))
-      {
-      exit(1);
-      }
-    }
-  h_gy     = loadH2(inputFile,bn+TString("gy"));
-  if (!h_gy)
-    {
-    if (reportFatal("CollisionGeometryGradientHistograms",getName(),"loadHistograms(TFile * inputFile) h_gy is a nullptr"))
-      {
-      exit(1);
-      }
-    }
-  if (reportEnd("CollisionGeometryGradientHistograms",getName(),"loadHistograms(TFile * inputFile)"))
+  h_edge   = loadH2(inputFile,makeName(bn,"edge"));
+  h_radius = loadH2(inputFile,makeName(bn,"radius"));
+  h_gx     = loadH2(inputFile,makeName(bn,"gx"));
+  h_gy     = loadH2(inputFile,makeName(bn,"gy"));
+  if (reportEnd(__FUNCTION__))
     ;
 }
 

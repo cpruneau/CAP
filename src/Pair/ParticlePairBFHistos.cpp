@@ -76,13 +76,6 @@ b2Diff(nullptr)
   setInstanceName(name);
 }
 
-ParticlePairBFHistos(const TString & name,
-                     const Configuration & configuration,
-                     LogLevel  debugLevel);
-virtual ~ParticlePairBFHistos();
-virtual void createHistograms();
-virtual void loadHistograms(TFile * inputFile);
-virtual void calculateBalanceFunctions(TFile * inputFile);
 
 ParticlePairBFHistos::~ParticlePairBFHistos()
 {
@@ -91,37 +84,27 @@ ParticlePairBFHistos::~ParticlePairBFHistos()
 
 void ParticlePairBFHistos::createHistograms()
 {
-  if ( reportStart("ParticlePairBFHistos",getName(),"createHistograms()"))
+  if ( reportStart(__FUNCTION__))
     { }
   TString bn = getHistoBaseName();
   Configuration & configuration = getConfiguration();
   nBins_n2 = configuration.getParameterInt("nBins_n2");
   min_n2 = configuration.getParameterDouble("min_n2");
   max_n2 = configuration.getParameterDouble("max_n2");
-  h_n2 = createHistogram(bn+TString("n2"), nBins_n2,  min_n2, max_n2, "n_{2}", "Yield");
+  h_n2 = createHistogram(makeName(bn,"n2"), nBins_n2,  min_n2, max_n2, "n_{2}", "Yield");
    
-  if ( reportEnd("ParticlePairBFHistos",getName(),"createHistograms()"))
+  if ( reportEnd(__FUNCTION__))
     { }
 }
 
 //________________________________________________________________________
 void ParticlePairBFHistos::loadHistograms(TFile * inputFile)
 {
-  if (reportStart("ParticlePairBFHistos",getName(),"loadHistograms(TFile * inputFile)"))
-    { }
-  if (!inputFile)
-    {
-    if (reportFatal("ParticlePairBFHistos",getName(),"loadHistograms(TFile * inputFile)"))
-      {
-      cout << "Attempting to load ParticleHistos from an invalid (null) file pointer" << endl;
-      }
-    return;
-    }
-  TString bn = getHistoBaseName();
-
-  
-  if ( reportEnd("ParticlePairBFHistos",getName(),"loadHistograms(TFile * inputFile)"))
-    { }
+  if (reportStart(__FUNCTION__))
+    ;
+  if (!ptrFileExist(__FUNCTION__, inputFile)) return;
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 void ParticlePairBFHistos::calculateBalanceFunctions();

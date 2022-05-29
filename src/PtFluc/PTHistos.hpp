@@ -66,7 +66,7 @@ public:
   // c are the normalized cumulants
   // c* are the cumulants normalizd by average pT's
 
-  //maximum order of correlation functions (2,3,4 ...) 
+  //maximum order of correlation functions (2,3,4 ..) 
   //order is also equal to number of particle filters in PTCorrelator
   int maxOrder;
 
@@ -103,7 +103,7 @@ public:
   TH1 *** hC_vsCent;
 
 
-  //number of pairs, triples ... NOT IN ORDER (They are in "recursive order")
+  //number of pairs, triples .. NOT IN ORDER (They are in "recursive order")
   TProfile ** h_counts;
   TProfile ** h_counts_vsMult;
   TProfile ** h_counts_vsCent;
@@ -120,16 +120,16 @@ public:
   //store the inclusive avgpT of each of the particle filters
   double * avgpT; 
   
-  //store the inclusive average yields of each combination of particle filters (1, 2 ... 4, 11, 12, ... 44 ...)
+  //store the inclusive average yields of each combination of particle filters (1, 2 .. 4, 11, 12, .. 44 ..)
   //calculated in normal order, but then changed into recursive order.
   double * avgCounts;
 
-  //store the yields of each combination of particle filters (1, 2 ... 4, 11, 12, ... 44 ...) per event
+  //store the yields of each combination of particle filters (1, 2 .. 4, 11, 12, .. 44 ..) per event
   //first index is event number
   //calculated in normal order, but then changed into recursive order.
   int ** counts;
 
-  //store the moments of each combination of particle filters (1, 2 ... 4, 11, 12, ... 44 ...) per event
+  //store the moments of each combination of particle filters (1, 2 .. 4, 11, 12, .. 44 ..) per event
   //first index is event number
   //calculated in normal order, but then changed into recursive order.
   double ** SValues;

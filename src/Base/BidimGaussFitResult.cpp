@@ -334,9 +334,9 @@ void BidimGaussFitResult::saveResults(TF2 * f)
   if (extractWidths)
   {
   cout << "===============================================================================================" << endl;
-  cout << "BidimGaussFitResult::saveResults(TF2 * f) -- Extracting the matrice..." << endl;
+  cout << "BidimGaussFitResult::saveResults(TF2 * f) -- Extracting the matrice.." << endl;
   TMatrixDSym cov = resultPtr->GetCovarianceMatrix();
-  cout << "BidimGaussFitResult::saveResults(TF2 * f) -- Extracting the matrice..." << endl;
+  cout << "BidimGaussFitResult::saveResults(TF2 * f) -- Extracting the matrice.." << endl;
   cout << "===============================================================================================" << endl;
 
   sigmaEta    = extractGeneralizedRMS(f,1,3);

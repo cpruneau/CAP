@@ -94,25 +94,25 @@ void ParticleHistos::createHistograms()
   fillY   = configuration.getValueBool("fillY");
   fillP2  = configuration.getValueBool("fillP2");
   
-  h_n1         = createHistogram(bn+TString("n1"),           nBins_n1,  min_n1,  max_n1,  "n_1","N");
-  h_n1_eTotal  = createHistogram(bn+TString("n1_eTotal"),    nBins_n1,  min_n1,  10.0*max_n1,  "n1_eTotal","N");
-  h_n1_pt      = createHistogram(bn+TString("n1_pt"),        nBins_pt,  min_pt,  max_pt,  "p_{T}","N");
-  h_n1_ptXS    = createHistogram(bn+TString("n1_ptXS"),      nBins_pt,  min_pt,  max_pt,  "p_{T}","1/p_{T} dN/p_{T}");
+  h_n1         = createHistogram(makeName(bn,"n1"),           nBins_n1,  min_n1,  max_n1,  "n_1","N");
+  h_n1_eTotal  = createHistogram(makeName(bn,"n1_eTotal"),    nBins_n1,  min_n1,  10.0*max_n1,  "n1_eTotal","N");
+  h_n1_pt      = createHistogram(makeName(bn,"n1_pt"),        nBins_pt,  min_pt,  max_pt,  "p_{T}","N");
+  h_n1_ptXS    = createHistogram(makeName(bn,"n1_ptXS"),      nBins_pt,  min_pt,  max_pt,  "p_{T}","1/p_{T} dN/p_{T}");
 
   if (fillEta)
     {
-    h_n1_phiEta  = createHistogram(bn+TString("n1_phiEta"),  nBins_eta, min_eta, max_eta, nBins_phi, min_phi, max_phi, "#eta", "#varphi","N");
+    h_n1_phiEta  = createHistogram(makeName(bn,"n1_phiEta"),  nBins_eta, min_eta, max_eta, nBins_phi, min_phi, max_phi, "#eta", "#varphi","N");
     if (fillP2)
       {
-      h_spt_phiEta  = createHistogram(bn+TString("spt_phiEta"),  nBins_eta, min_eta, max_eta, nBins_phi, min_phi, max_phi, "#eta", "#varphi","N");
+      h_spt_phiEta  = createHistogram(makeName(bn,"spt_phiEta"),  nBins_eta, min_eta, max_eta, nBins_phi, min_phi, max_phi, "#eta", "#varphi","N");
       }
     }
   if (fillY)
     {
-    h_n1_phiY  = createHistogram(bn+TString("n1_phiY"),     nBins_y,   min_y,   max_y, nBins_phi, min_phi, max_phi, "y", "#varphi","N");
+    h_n1_phiY  = createHistogram(makeName(bn,"n1_phiY"),     nBins_y,   min_y,   max_y, nBins_phi, min_phi, max_phi, "y", "#varphi","N");
     if (fillP2)
       {
-      h_spt_phiY  = createHistogram(bn+TString("spt_phiY"),  nBins_y,   min_y,   max_y, nBins_phi, min_phi, max_phi, "y", "#varphi","N");
+      h_spt_phiY  = createHistogram(makeName(bn,"spt_phiY"),  nBins_y,   min_y,   max_y, nBins_phi, min_phi, max_phi, "y", "#varphi","N");
       }
     }
   if ( reportEnd("ParticleHistos",getName(),"createHistograms()"))
@@ -122,43 +122,39 @@ void ParticleHistos::createHistograms()
 //________________________________________________________________________
 void ParticleHistos::loadHistograms(TFile * inputFile)
 {
-  if ( reportStart("ParticleHistos",getName(),"loadHistograms(TFile * inputFile)"))
-    { }
-  TString fct = "loadHistograms(TFile * inputFile)";
-  if (!ptrFileExist(fct,inputFile)) return;
+  if (reportStart(__FUNCTION__))
+    ;
+  if (!ptrFileExist(__FUNCTION__,inputFile)) return;
 
   Configuration & configuration = getConfiguration();
   fillEta    = configuration.getValueBool("fillEta");
   fillY      = configuration.getValueBool("fillY");
   fillP2     = configuration.getValueBool("fillP2");
-
-  
   TString bn = getHistoBaseName();
-  h_n1         = loadH1(inputFile,  bn+TString("n1"));
-  h_n1_eTotal  = loadH1(inputFile,  bn+TString("n1_eTotal"));
-  h_n1_pt      = loadH1(inputFile,  bn+TString("n1_pt"));
-  h_n1_ptXS    = loadH1(inputFile,  bn+TString("n1_ptXS"));
+  h_n1         = loadH1(inputFile,  makeName(bn,"n1"));
+  h_n1_eTotal  = loadH1(inputFile,  makeName(bn,"n1_eTotal"));
+  h_n1_pt      = loadH1(inputFile,  makeName(bn,"n1_pt"));
+  h_n1_ptXS    = loadH1(inputFile,  makeName(bn,"n1_ptXS"));
 
- 
   if (fillEta)
     {
-    h_n1_phiEta  = loadH2(inputFile,  bn+TString("n1_phiEta"));
+    h_n1_phiEta  = loadH2(inputFile,  makeName(bn,"n1_phiEta"));
     if (fillP2)
       {
-      h_spt_phiEta  = loadH2(inputFile,  bn+TString("spt_phiEta"));
+      h_spt_phiEta  = loadH2(inputFile,  makeName(bn,"spt_phiEta"));
       }
     }
   if (fillY)
     {
-    h_n1_phiY  = loadH2(inputFile,  bn+TString("n1_phiY"));
+    h_n1_phiY  = loadH2(inputFile,  makeName(bn,"n1_phiY"));
     if (fillP2)
       {
-      h_spt_phiY  = loadH2(inputFile,  bn+TString("spt_phiY"));
+      h_spt_phiY  = loadH2(inputFile,  makeName(bn,"spt_phiY"));
       }
     }
 
-  if ( reportEnd("ParticleHistos",getName(),"loadHistograms(TFile * inputFile)"))
-    { }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 //!
@@ -257,90 +253,3 @@ void ParticleHistos::fillMultiplicity(double nAccepted, double totalEnergy, doub
   h_n1->Fill(nAccepted, weight);
   h_n1_eTotal->Fill(totalEnergy, weight);
 }
-
-//!
-//! Calculates derived histograms. This is currently limited to pt averages vs eta and phi.
-//!
-//void ParticleHistos::createDerivedHistograms()
-//{
-//  //setHoldLogLevel(MessageLogger::Debug);
-//
-//  TString fct = "createDerivedHistograms()";
-//  if (reportStart(__FUNCTION__))
-//    ;
-//  TString bn = getHistoBaseName();
-//  TH1* hTemp;
-//
-//  if (h_n1_phiEta)
-//    {
-//    if (reportDebug(__FUNCTION__)) cout << "Compute h_n1_phi" << endl;
-//    hTemp = h_n1_phiEta->ProjectionY();
-//    h_n1_phi->Add(hTemp);
-//    delete hTemp;
-//
-//    if (reportDebug(__FUNCTION__)) cout << "Compute h_n1_eta" << endl;
-//    hTemp = h_n1_phiEta->ProjectionX();
-//    h_n1_eta->Add(hTemp);
-//    delete hTemp;
-//
-//    if (fillP2)
-//      {
-//      if (reportDebug(__FUNCTION__)) cout << "Compute sumpt1_phi" << endl;
-//      hTemp = h_spt_phiEta->ProjectionY();
-//      h_spt_phi->Add(hTemp);
-//      delete hTemp;
-//
-//      if (reportDebug(__FUNCTION__)) cout << "Compute pt_phi" << endl;
-//      calculateAveragePt(h_spt_phi, h_n1_phi, h_pt_phi);
-//
-//      if (reportDebug(__FUNCTION__)) cout << "Compute h_spt_eta" << endl;
-//      hTemp = h_spt_phiEta->ProjectionX();
-//      h_spt_eta->Add(hTemp);
-//      delete hTemp;
-//
-//      if (reportDebug(__FUNCTION__)) cout << "Compute h_pt_eta" << endl;
-//      calculateAveragePt(h_spt_eta, h_n1_eta, h_pt_eta);
-//      }
-//    }
-//
-//  if (h_n1_phiY)
-//    {
-//    if (!h_n1_phiEta)
-//      {
-//      if (reportDebug(__FUNCTION__)) cout << "Compute h_n1_phi" << endl;
-//      hTemp = h_n1_phiY->ProjectionY();
-//      h_n1_phi->Add(hTemp);
-//      delete hTemp;
-//      }
-//
-//    if (reportDebug(__FUNCTION__)) cout << "Compute h_n1_y" << endl;
-//    hTemp = h_n1_phiY->ProjectionX();
-//    h_n1_y->Add(hTemp);
-//    delete hTemp;
-//
-//    if (fillP2)
-//      {
-//      if (!h_n1_phiEta)
-//        {
-//        if (reportDebug(__FUNCTION__)) cout << "Compute h_spt_phi" << endl;
-//        hTemp = h_spt_phiY->ProjectionY();
-//        h_spt_phi->Add(hTemp);
-//        delete hTemp;
-//
-//        if (reportDebug(__FUNCTION__)) cout << "Compute h_pt_phi" << endl;
-//        calculateAveragePt(h_spt_phi, h_n1_phi, h_pt_phi);
-//        }
-//
-//      if (reportDebug(__FUNCTION__)) cout << "Compute h_spt_y" << endl;
-//      hTemp = h_spt_phiEta->ProjectionX();
-//      h_spt_y->Add(hTemp);
-//      delete hTemp;
-//
-//      if (reportDebug(__FUNCTION__)) cout << "Compute h_pt_y" << endl;
-//      calculateAveragePt(h_spt_y, h_n1_y, h_pt_y);
-//      }
-//    }
-//
-//  //restoreLogLevel();
-//}
-

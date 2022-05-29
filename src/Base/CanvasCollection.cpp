@@ -71,13 +71,13 @@ TCanvas * CanvasCollection::createCanvas(const TString & canvasName, const Canva
   canvas->SetLeftMargin(  configuration.getValueDouble("windowLeftMargin") );
   canvas->SetBottomMargin(configuration.getValueDouble("windowBottomMargin") );
   canvas->SetTopMargin(   configuration.getValueDouble("windowTopMargin") );
-  canvas->SetTheta(       configuration.getValueDouble("windowTheta") );
-  canvas->SetPhi(         configuration.getValueDouble("windowPhi") );
-
-  canvas->SetFillColor(  configuration.getValueInt("windowFillColor") );
-  canvas->SetFillStyle(  configuration.getValueInt("windowFillStyle") );
-  canvas->SetBorderSize( configuration.getValueDouble("windowBorderSize") );
-  canvas->SetBorderMode( configuration.getValueDouble("windowBorderMode") );
+//  canvas->SetTheta(       configuration.getValueDouble("windowTheta") );
+//  canvas->SetPhi(         configuration.getValueDouble("windowPhi") );
+//
+//  canvas->SetFillColor(  configuration.getValueInt("windowFillColor") );
+//  canvas->SetFillStyle(  configuration.getValueInt("windowFillStyle") );
+//  canvas->SetBorderSize( configuration.getValueInt("windowBorderSize") );
+//  canvas->SetBorderMode( configuration.getValueInt("windowBorderMode") );
   append(canvas);
 
   return canvas;

@@ -111,9 +111,9 @@ void TransverseSpherocityAnalyzer::loadHistograms(TFile * inputFile)
   TString prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();;
   unsigned int nParticleFilters = particleFilters.size();
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
-    cout << "Creating Histograms for " << prefixName  << endl;
+    cout << "Loading Histograms for " << prefixName  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     cout << "    nParticleFilters: " << nParticleFilters << endl;
     }
@@ -137,7 +137,7 @@ void TransverseSpherocityAnalyzer::execute()
   static double factor = TMath::Pi()*TMath::Pi()/4.0;
   incrementTaskExecuted();
   Event & event = * getEventStream(0);
-   // count eventStreams used to fill histograms and for scaling at the end...
+   // count eventStreams used to fill histograms and for scaling at the end..
   // resetParticleCounters();
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();

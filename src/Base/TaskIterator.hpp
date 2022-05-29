@@ -16,7 +16,7 @@
 //!
 //! This class implements a task iterator task, i.e., a task that repeated calls other tasks (subtasks) to carry out the same operation(s) on a sequence of events (event stream).
 //!  Use the 'run' method to execute the job on all selected events. Internally, 'run' calls the 'execute' method repeatedly on each event in the event stream.
-//!  Do not call the 'execute' method of this class directly unless you know what you are doing...
+//!  Do not call the 'execute' method of this class directly unless you know what you are doing..
 //!
 //!  Optionally, the iterator may call a subsampleAnalysis method to carry out a sub-sample analysis of all the sub tasks operated by this iterator.
 //!

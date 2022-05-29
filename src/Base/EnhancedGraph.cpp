@@ -136,49 +136,49 @@ void EnhancedGraph::setMinMax(double minY, double maxY)
 void EnhancedGraph::setProperties(const GraphConfiguration & graphConfig)
 {
   cout << "-INFO- EnhancedGraph::setProperties() Setting properties of graph: " << g->GetName() << endl;
-  g->SetLineColor(graphConfig.lineColor);
-  g->SetLineStyle(graphConfig.lineStyle);
-  g->SetLineWidth(graphConfig.lineWidth);
-  g->SetMarkerColor(graphConfig.markerColor);
-  g->SetMarkerStyle(graphConfig.markerStyle);
-  g->SetMarkerSize(graphConfig.markerSize);
+  g->SetLineColor(graphConfig .getValueInt("lineColor"));
+  g->SetLineStyle(graphConfig.getValueInt("lineStyle"));
+  g->SetLineWidth(graphConfig.getValueInt("lineWidth"));
+  g->SetMarkerColor(graphConfig.getValueInt("markerColor"));
+  g->SetMarkerStyle(graphConfig.getValueInt("markerStyle"));
+  g->SetMarkerSize(graphConfig.getValueDouble("markerSize"));
   g->SetFillColor(0);
 
   if (gP)
     {
-    gP->SetLineColor(graphConfig.lineColor);
-    gP->SetLineStyle(graphConfig.lineStyle);
-    gP->SetLineWidth(graphConfig.lineWidth);
-    gM->SetLineColor(graphConfig.lineColor);
-    gM->SetLineStyle(graphConfig.lineStyle);
-    gM->SetLineWidth(graphConfig.lineWidth);
+    gP->SetLineColor(graphConfig .getValueInt("lineColor"));
+    gP->SetLineStyle(graphConfig.getValueInt("lineStyle"));
+    gP->SetLineWidth(graphConfig.getValueInt("lineWidth"));
+    gM->SetLineColor(graphConfig .getValueInt("lineColor"));
+    gM->SetLineStyle(graphConfig.getValueInt("lineStyle"));
+    gM->SetLineWidth(graphConfig.getValueInt("lineWidth"));
 
     }
 
   if (gSys)
     {
-    gSys->SetLineColor(graphConfig.lineColor);
-    gSys->SetLineStyle(graphConfig.lineStyle);
-    gSys->SetLineWidth(graphConfig.lineWidth);
-    gSys->SetMarkerColorAlpha(graphConfig.markerColor,0.1);
-    gSys->SetMarkerStyle(graphConfig.markerStyle);
-    gSys->SetMarkerSize(graphConfig.markerSize);
-    gSys->SetFillColorAlpha(graphConfig.markerColor,0.3);
+    gSys->SetLineColor(graphConfig .getValueInt("lineColor"));
+    gSys->SetLineStyle(graphConfig.getValueInt("lineStyle"));
+    gSys->SetLineWidth(graphConfig.getValueInt("lineWidth"));
+    gSys->SetMarkerColorAlpha(graphConfig.getValueInt("markerColor"),0.1);
+    gSys->SetMarkerStyle(graphConfig.getValueInt("markerStyle"));
+    gSys->SetMarkerSize(graphConfig.getValueDouble("markerSize"));
+    gSys->SetFillColorAlpha(graphConfig.getValueInt("markerColor"),0.3);
     }
 
 
   TAxis * xAxis = (TAxis *) GetXaxis();
-  xAxis->SetNdivisions(graphConfig.nXDivisions);
-  xAxis->SetTitleSize(graphConfig.xTitleSize);
-  xAxis->SetTitleOffset(graphConfig.xTitleOffset);
-  xAxis->SetLabelSize(graphConfig.xLabelSize);
-  xAxis->SetLabelOffset(graphConfig.xLabelOffset);
+  xAxis->SetNdivisions(graphConfig.getValueDouble("nXDivisions"));
+  xAxis->SetTitleSize(graphConfig.getValueDouble("xTitleSize"));
+  xAxis->SetTitleOffset(graphConfig.getValueDouble("xTitleOffset"));
+  xAxis->SetLabelSize(graphConfig.getValueDouble("xLabelSize"));
+  xAxis->SetLabelOffset(graphConfig.getValueDouble("xLabelOffset"));
   TAxis * yAxis = (TAxis *) GetYaxis();
-  yAxis->SetNdivisions(graphConfig.nYDivisions);
-  yAxis->SetTitleSize(graphConfig.yTitleSize);
-  yAxis->SetTitleOffset(graphConfig.yTitleOffset);
-  yAxis->SetLabelSize(graphConfig.yLabelSize);
-  yAxis->SetLabelOffset(graphConfig.yLabelOffset);
+  yAxis->SetNdivisions(graphConfig.getValueInt("nYDivisions"));
+  yAxis->SetTitleSize(graphConfig.getValueDouble("yTitleSize"));
+  yAxis->SetTitleOffset(graphConfig.getValueDouble("yTitleOffset"));
+  yAxis->SetLabelSize(graphConfig.getValueDouble("yLabelSize"));
+  yAxis->SetLabelOffset(graphConfig.getValueDouble("yLabelOffset"));
 
   cout << "-INFO- EnhancedGraph::::setProperties() Completed" << endl;
 

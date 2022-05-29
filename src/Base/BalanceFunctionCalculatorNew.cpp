@@ -10,25 +10,25 @@
  *
  * *********************************************************************/
 #include "HistogramCollection.hpp"
-#include "DerivedHistoIterator.hpp"
+#include "BalanceFunctionCalculator.hpp"
 #include "SubSampleStatCalculator.hpp"
 
-ClassImp(DerivedHistoIterator);
+ClassImp(BalanceFunctionCalculator);
 
 
-DerivedHistoIterator::DerivedHistoIterator(const TString &       _name,
+BalanceFunctionCalculator::BalanceFunctionCalculator(const TString &       _name,
                                                  const Configuration & _configuration,
                                                  MessageLogger::LogLevel debugLevel)
 :
 Task(_name,_configuration,debugLevel)
 {
-  appendClassName("DerivedHistoIterator");
+  appendClassName("BalanceFunctionCalculator");
   setInstanceName(_name);
   setDefaultConfiguration();
   setConfiguration(_configuration);
 }
 
-void DerivedHistoIterator::setDefaultConfiguration()
+void BalanceFunctionCalculator::setDefaultConfiguration()
 {
   TString none  = "none";
   configuration.setParameter("createHistograms",       true);
@@ -45,7 +45,7 @@ void DerivedHistoIterator::setDefaultConfiguration()
 }
 
 
-void DerivedHistoIterator::execute()
+void BalanceFunctionCalculator::execute()
 {
   if (reportStart(__FUNCTION__))
     ;
@@ -54,17 +54,17 @@ void DerivedHistoIterator::execute()
   bool    forceHistogramsRewrite   = configuration.getValueBool("forceHistogramsRewrite");
   TString histoInputPath           = configuration.getValueString("histoInputPath");
   TString histoOutputPath          = configuration.getValueString("histoOutputPath");
-  TString histoModelDataName      = configuration.getValueString("histoModelDataName");
+  TString histoOutputDataName      = configuration.getValueString("histoOutputDataName");
   vector<TString> includedPatterns = configuration.getSelectedValues("IncludedPattern",none);
   vector<TString> excludedPatterns = configuration.getSelectedValues("ExcludedPattern",none);
-  TString histoAnalyzerName;
+  TString histoOutputAnalyzerName;
   unsigned int nSubTasks = subTasks.size();
   if (reportDebug())  cout << "SubTasks Count: " << nSubTasks  << endl;
   for (unsigned int iTask=0; iTask<nSubTasks; iTask++)
     {
     Task & subTask = *subTasks[iTask];
     Configuration & subTaskConfig = subTask.getConfiguration();
-    histoAnalyzerName = subTaskConfig.getValueString("histoAnalyzerName");
+    histoOutputAnalyzerName = subTaskConfig.getValueString("histoOutputAnalyzerName");
     if (reportInfo(__FUNCTION__))
       {
       cout << endl;
@@ -74,15 +74,15 @@ void DerivedHistoIterator::execute()
       cout << "            SubTask Name: " << taskName  << endl;
       cout << "          histoInputPath: " << histoInputPath  << endl;
       cout << "         histoOutputPath: " << histoOutputPath  << endl;
-      cout << "     histoModelDataName: " << histoModelDataName  <<   endl;
-      cout << " histoAnalyzerName: " << histoAnalyzerName   << endl;
+      cout << "     histoOutputDataName: " << histoOutputDataName  <<   endl;
+      cout << " histoOutputAnalyzerName: " << histoOutputAnalyzerName   << endl;
       cout << " ===========================================================" << endl;
       cout << " ===========================================================" << endl;
       }
     vector<TString> includePatterns = configuration.getSelectedValues("IncludedPattern", "none");
     vector<TString> excludePatterns = configuration.getSelectedValues("ExcludedPattern", "none");
-    includePatterns.push_back(histoModelDataName);
-    includePatterns.push_back(histoAnalyzerName);
+    includePatterns.push_back(histoOutputDataName);
+    includePatterns.push_back(histoOutputAnalyzerName);
     vector<TString> allFilesToProcess = listFilesInDir(histoInputPath,includePatterns,excludePatterns);
     int nFiles = allFilesToProcess.size();
     if (nFiles<1)
@@ -107,8 +107,8 @@ void DerivedHistoIterator::execute()
       cout << "           appendedString: " << appendedString << endl;
       cout << "           histoInputPath: " << histoInputPath << endl;
       cout << "          histoOutputPath: " << histoOutputPath << endl;
-      cout << "      histoModelDataName: " << histoModelDataName << endl;
-      cout << "  histoAnalyzerName: " << histoAnalyzerName << endl;
+      cout << "      histoOutputDataName: " << histoOutputDataName << endl;
+      cout << "  histoOutputAnalyzerName: " << histoOutputAnalyzerName << endl;
       cout << " ===========================================================" << endl;
       }
     for (int iFile=0; iFile<nFiles; iFile++)
@@ -145,7 +145,7 @@ void DerivedHistoIterator::execute()
       config.setParameter("forceHistogramsRewrite", forceHistogramsRewrite);
       config.setParameter("histoOutputPath",        TString(""));
       config.setParameter("histoOutputFileName",    histoOutputFileName);
-      config.setParameter("histoAnalyzerName",histoAnalyzerName);
+      config.setParameter("histoOutputAnalyzerName",histoOutputAnalyzerName);
       config.setParameter("createHistograms",       true);
       config.setParameter("loadHistograms",         true);
       config.setParameter("saveHistograms",         true);

@@ -34,10 +34,10 @@ void HadronGasVsTempHistograms::createHistograms()
   double minT = config.getValueDouble("minT");
   double maxT = config.getValueDouble("maxT");
   int nT = TMath::Abs(1000*(maxT-minT));
-  numberDensityVsT   = createHistogram(bn+TString("numberyDensityVsT"), nT, minT, maxT, "T (GeV)","n (fm^{-3})");
-  energyDensityVsT   = createHistogram(bn+TString("energyDensityVsT"),  nT, minT, maxT, "T (GeV)","e (GeV.fm^{-3})");
-  entropyDensityVsT  = createHistogram(bn+TString("entropyDensityVsT"), nT, minT, maxT, "T (GeV)","s (fm^{-3})");
-  pressureVsT        = createHistogram(bn+TString("pressureVsT"),       nT, minT, maxT, "T (GeV)","p");
+  numberDensityVsT   = createHistogram(makeName(bn,"numberyDensityVsT"), nT, minT, maxT, "T (GeV)","n (fm^{-3})");
+  energyDensityVsT   = createHistogram(makeName(bn,"energyDensityVsT"),  nT, minT, maxT, "T (GeV)","e (GeV.fm^{-3})");
+  entropyDensityVsT  = createHistogram(makeName(bn,"entropyDensityVsT"), nT, minT, maxT, "T (GeV)","s (fm^{-3})");
+  pressureVsT        = createHistogram(makeName(bn,"pressureVsT"),       nT, minT, maxT, "T (GeV)","p");
 
   // FIX ME!!!!!!!!!!!!!!! 
   unsigned int nStableSpecies = 1111; // nStableTypes;
@@ -49,9 +49,9 @@ void HadronGasVsTempHistograms::createHistograms()
   TString bnSpecies = bn;
   bnSpecies += "_";
   bnSpecies += iSpecies;
-  nDensityVsT.push_back(createHistogram(bnSpecies+TString("_nVsT"),  nT, minT, maxT, "T (GeV)","n (fm^{-3})"));
-  eDensityVsT.push_back(createHistogram(bnSpecies+TString("_eVsT"),  nT, minT, maxT, "T (GeV)","e (GeV.fm^{-3})"));
-  sDensityVsT.push_back(createHistogram(bnSpecies+TString("_sVsT"),  nT, minT, maxT, "T (GeV)","s (fm^{-3})"));
+  nDensityVsT.push_back(createHistogram(makeName(bnSpecies,"nVsT"),  nT, minT, maxT, "T (GeV)","n (fm^{-3})"));
+  eDensityVsT.push_back(createHistogram(makeName(bnSpecies,"eVsT"),  nT, minT, maxT, "T (GeV)","e (GeV.fm^{-3})"));
+  sDensityVsT.push_back(createHistogram(makeName(bnSpecies,"sVsT"),  nT, minT, maxT, "T (GeV)","s (fm^{-3})"));
   }
 }
 
@@ -59,21 +59,21 @@ void HadronGasVsTempHistograms::createHistograms()
 //________________________________________________________________________
 void HadronGasVsTempHistograms::loadHistograms(TFile * inputFile)
 {
-  if (!inputFile)
-    {
-    if (reportFatal()) cout << "Attempting to load HadronGasVsTempHistograms from an invalid file pointer" << endl;
-    return;
-    }
-  TString bn  = getHistoBaseName();
-  numberDensityVsT   = loadH1(inputFile,bn+TString("numberyDensityVsT"));
-  energyDensityVsT   = loadH1(inputFile,bn+TString("energyDensityVsT"));
-  entropyDensityVsT  = loadH1(inputFile,bn+TString("entropyDensityVsT"));
-  pressureVsT        = loadH1(inputFile,bn+TString("pressureVsT"));
-  if (!numberDensityVsT)
-    {
-    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << bn+TString("numberDensityVsT") << endl;
-    return;
-    }
+  if (reportStart(__FUNCTION__))
+    ;
+  if (!ptrFileExist(__FUNCTION__, inputFile)) return;
+      TString bn  = getHistoBaseName();
+      numberDensityVsT   = loadH1(inputFile,makeName(bn,"numberyDensityVsT"));
+      energyDensityVsT   = loadH1(inputFile,makeName(bn,"energyDensityVsT"));
+      entropyDensityVsT  = loadH1(inputFile,makeName(bn,"entropyDensityVsT"));
+      pressureVsT        = loadH1(inputFile,makeName(bn,"pressureVsT"));
+      if (!numberDensityVsT)
+      {
+  if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << makeName(bn,"numberDensityVsT") << endl;
+  return;
+  }
+      if (reportEnd(__FUNCTION__))
+      ;
 }
 
 void HadronGasVsTempHistograms::fill(HadronGas & hadronGas)

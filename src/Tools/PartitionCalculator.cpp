@@ -21,7 +21,7 @@ PartitionCalculator::PartitionCalculator()
 void PartitionCalculator::computePartitions(TH1* h, vector<double>& fractions, vector<double>& boundaries)
 {
   unsigned int nPartitions = -1 + fractions.size();
-  cout << "PartitionCalculator::computePartitions(...)" << endl;
+  cout << "PartitionCalculator::computePartitions(..)" << endl;
   cout << "Computing nPartitions: " << nPartitions << endl;
   if (nPartitions<2)
     {
@@ -55,7 +55,7 @@ void PartitionCalculator::computePartitions(TH1* h, vector<double>& fractions, v
     }
   }
   boundaries.push_back( h->GetXaxis()->GetXmax () );
-  cout << "PartitionCalculator::computePartitions(...) Partitions" << endl;
+  cout << "PartitionCalculator::computePartitions(..) Partitions" << endl;
   cout << "Computed nPartitions: " << -1 + boundaries.size() << endl;
 
   for (unsigned int k=0; k<boundaries.size()-1; k++)

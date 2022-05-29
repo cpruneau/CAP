@@ -54,97 +54,150 @@ TString Histograms::getHistoBaseName() const
 {
 //  Configuration & ac = *(Configuration*) getConfiguration();
   TString bn; //ac.histoBaseName;
-//  bn += "_";
   bn = getName();
-  bn += "_";
   return bn;
 }
 
-//!
-//! Overload this class to calculated derived histograms based on members of primary histogram of this class.
-//!
-void Histograms::createDerivedHistograms()
+TString Histograms::makeName(const TString & s0, const  TString & s1)
 {
-  setFunctionName("createDerivedHistograms()");
-  if (reportWarning(__FUNCTION__)) cout << "Implement derived class to calculate derived histograms." << endl;
-}
-
-//!
-//! Overload this class to calculated derived histograms based on members of the give primary histogram class instance.
-//!
-void Histograms::createDerivedHistograms(const Histograms & histograms __attribute__((unused)))
-{
-  setFunctionName("createDerivedHistograms(const Histograms & histograms)");
-  if (reportWarning(__FUNCTION__)) cout << "Implement derived class to calculate derived histograms from external source..." << endl;
-}
-
-TString Histograms::makeName(const TString & baseName,const  TString & filterName1)
-{
-  TString name = baseName;
+  TString name = s0;
   name += "_";
-  name += filterName1;
+  name += s1;
   return name;
 }
 
-TString Histograms::makeName(const TString & baseName,const  TString & filterName1,const  TString & observableName1)
+TString Histograms::makeName(const TString & s0, const  TString & s1,const  TString & s2)
 {
-  TString name = baseName;
+  TString name = s0;
   name += "_";
-  name += filterName1;
+  name += s1;
   name += "_";
-  name += observableName1;
+  name += s2;
   return name;
 }
 
-
-TString Histograms::makeName(const TString & baseName,const  TString & filterName1,const  TString & observableName1,const  TString & filterName2,const  TString & observableName2)
+TString Histograms::makeName(const TString & s0, const  TString & s1, const  TString & s2, const  TString & s3)
 {
-  TString name = baseName;
+  TString name = s0;
   name += "_";
-  name += filterName1;
+  name += s1;
   name += "_";
-  name += observableName1;
+  name += s2;
   name += "_";
-  name += filterName2;
-  name += "_";
-  name += observableName2;
+  name += s3;
   return name;
 }
 
-TString Histograms::makeName(const TString & baseName, int i1, const TString suffix)
+TString Histograms::makeName(const TString & s0, const  TString & s1, const  TString & s2,const  TString & s3,const  TString & s4)
 {
-  TString name = baseName;
+  TString name = s0;
+  name += "_";
+  name += s1;
+  name += "_";
+  name += s2;
+  name += "_";
+  name += s3;
+  name += "_";
+  name += s4;
+  return name;
+}
+
+TString Histograms::makeName(const TString & s0, const TString & s1, int i1, const TString suffix)
+{
+  TString name = s0;
+  name += "_";
+  name += s1;
+  name += "_";
   name += i1;
+  name += "_";
   name += suffix;
   return name;
 }
 
-TString Histograms::makeName(const TString & baseName, int i1, int i2, const TString suffix)
+TString Histograms::makeName(const TString & s0, const TString & s1, int i1, int i2, const TString suffix)
 {
-  TString name = baseName;
+  TString name = s0;
+  name += "_";
+  name += s1;
+  name += "_";
   name += i1;
   name += i2;
+  name += "_";
   name += suffix;
   return name;
 }
 
-TString Histograms::makeName(const TString & baseName, int i1, int i2, int i3, const TString suffix)
+TString Histograms::makeName(const TString & s0, const TString & s1, int i1, int i2, int i3, const TString suffix)
 {
-  TString name = baseName;
+  TString name = s0;
+  name += "_";
+  name += s1;
+  name += "_";
   name += i1;
   name += i2;
   name += i3;
+  name += "_";
   name += suffix;
   return name;
 }
 
-TString Histograms::makeName(const TString & baseName, int i1, int i2, int i3, int i4, const TString suffix)
+TString Histograms::makeName(const TString & s0, const TString & s1, int i1, int i2, int i3, int i4, const TString suffix)
 {
-  TString name = baseName;
+  TString name = s0;
+  name += "_";
+  name += s1;
+  name += "_";
   name += i1;
   name += i2;
   name += i3;
   name += i4;
+  name += "_";
+  name += suffix;
+  return name;
+}
+
+
+TString Histograms::makeName(const TString & s0, int i1, const TString suffix)
+{
+  TString name = s0;
+  name += "_";
+  name += i1;
+  name += "_";
+  name += suffix;
+  return name;
+}
+
+TString Histograms::makeName(const TString & s0, int i1, int i2, const TString suffix)
+{
+  TString name = s0;
+  name += i1;
+  name += i2;
+  name += "_";
+  name += suffix;
+  return name;
+}
+
+TString Histograms::makeName(const TString & s0, int i1, int i2, int i3, const TString suffix)
+{
+  TString name = s0;
+  name += "_";
+  name += i1;
+  name += i2;
+  name += i3;
+  name += "_";
+  name += suffix;
+  return name;
+}
+
+TString Histograms::makeName(const TString & s0, int i1, int i2, int i3, int i4, const TString suffix)
+{
+  TString name = s0;
+  name += "_";
+  name += i1;
+  name += i2;
+  name += i3;
+  name += i4;
+  name += "_";
   name += suffix;
   return name;
 }

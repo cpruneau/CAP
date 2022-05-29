@@ -100,7 +100,7 @@ public:
   void clear()
   {
   
-  if (reportInfo(__FUNCTION__)) cout << " Has ownership? " << ownership << endl;
+  //if (reportInfo(__FUNCTION__)) cout << " Has ownership? " << ownership << endl;
   if (ownership)
     {
     for (unsigned long k=0;k<objects.size();k++)
@@ -110,7 +110,7 @@ public:
     }
   objects.clear();
   name = "";
-  if (reportInfo(__FUNCTION__)) cout << " Completed!!!!!! " << endl;
+  //if (reportInfo(__FUNCTION__)) cout << " Completed!!!!!! " << endl;
   }
 
 
