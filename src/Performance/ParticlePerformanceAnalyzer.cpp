@@ -165,12 +165,11 @@ void ParticlePerformanceAnalyzer::execute()
   if (reportStart(__FUNCTION__))
     ;
   incrementTaskExecuted();
+
   Event & recoEvent = *eventStreams[1];
-  //cout<< "ParticlePerformanceAnalyzer::execute() -- 2 --" << endl;
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
   unsigned long nParticles      = recoEvent.getParticleCount();
-  //cout<< "ParticlePerformanceAnalyzer::execute() -- 3 --" << endl;
 
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {

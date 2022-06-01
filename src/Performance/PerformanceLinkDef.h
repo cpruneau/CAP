@@ -6,7 +6,8 @@
 #pragma link C++ class ParticlePerformanceHistos+;
 #pragma link C++ class ParticlePerformanceSimulator+;
 #pragma link C++ class MeasurementPerformanceSimulator+;
-#pragma link C++ class ClosureTest+;
+#pragma link C++ class ClosureCalculator+;
+#pragma link C++ class ClosureIterator+;
 #pragma link C++ class EventPlaneRandomizerTask+;
 #pragma link C++ class EventVertexRandomizerTask+;
 #endif

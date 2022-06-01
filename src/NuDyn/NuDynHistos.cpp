@@ -32,7 +32,8 @@ h_f2_vsMult(),
 h_f3_vsMult(),
 h_f4_vsMult()
 {
-  //
+  appendClassName("NuDynHistos");
+  setInstanceName(_name);
 }
 
 

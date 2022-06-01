@@ -33,7 +33,7 @@ class ParticleDecayMode;
 //!
 class ParticleType
 {
-private:
+protected:
 
   TString name;       //!<ParticleType name: e.g., pip
   TString title;      //!<ParticleType title: e.g., #pi^{+}
@@ -79,7 +79,7 @@ public:
   //! @param gIsospin_in : isospin generacy of the particle
   //! @param charge_in : electric charge (|e| unit)
   //!
-  ParticleType(int pdgCode_in, TString & name_in, TString & title_in, double mass_in,
+  ParticleType(int pdgCode_in, const TString & name_in, const TString & title_in, double mass_in,
                double width_in, int gSpin_in, int baryon_in, int strange_in,
                int charm_in, int bottom_in, int gIsospin_in, int charge_in);
   

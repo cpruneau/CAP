@@ -9,13 +9,15 @@
  * Author: Claude Pruneau,   04/01/2022
  *
  * *********************************************************************/
-#ifndef CAP__ClosureTest
-#define CAP__ClosureTest
+#ifndef CAP__ClosureIterator
+#define CAP__ClosureIterator
 #include "Task.hpp"
 
-class ClosureTest : public Task
+//!
+//!Task calculates 
+//!
+class ClosureIterator : public Task
 {
-  
 public:
   
   //!
@@ -25,26 +27,27 @@ public:
   //! @param _configuration Configuration used to run this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  ClosureTest(const TString &          _name,
-              const Configuration &    _configuration,
-              MessageLogger::LogLevel  _reportLevel);
+  ClosureIterator(const TString &       _name,
+                        const Configuration & _configuration,
+                        MessageLogger::LogLevel debugLevel);
   
   //!
   //! DTOR
   //!
-  virtual ~ClosureTest() {}
+  virtual ~ClosureIterator() {}
   
   //!
   //! Sets the default  values of the configuration parameters used by this task
+  //! The configuration stipulates the input and output paths, the file template names and the output file append string.
   //!
   virtual void setDefaultConfiguration();
-  
+
   //!
-  //! Execute this task based on the configuration and class variable specified at construction
+  //! Execute the calculation for all registered tasks and all the files they select.
   //!
   virtual void execute();
-  
-  ClassDef(ClosureTest,0)
+
+  ClassDef(ClosureIterator,0)
 };
 
-#endif /* CAP__ClosureTest */
+#endif /* CAP__ClosureIterator */

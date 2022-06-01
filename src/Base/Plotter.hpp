@@ -90,9 +90,6 @@ public:
                   const TString & xTitle,  double xMin, double xMax,
                   const TString & yTitle,  double yMin, double yMax,
                   const TString & zTitle,  double zMin, double zMax);
-//  ,
-//                  const TString & text1, double x1, double y1, int color1,  double fontSize1,
-//                  const TString & text2, double x2, double y2, int color2,  double fontSize2);
 
   TCanvas *  plot(vector<TH1*> histograms,
                   const vector<GraphConfiguration*> & graphConfigurations,
@@ -103,29 +100,37 @@ public:
                   const TString & yTitle,  double yMin, double yMax,
                   double xMinLeg, double yMinLeg, double xMaxLeg, double yMaxLeg,
                   double legendSize);
-//                  const TString & text1,   double x1, double y1, int color1,  double fontSize1,
-//                  const TString & text2,   double x2, double y2, int color2,  double fontSize2);
+
+  TCanvas *  plot(vector<TGraph*> graphs,
+                  const vector<GraphConfiguration*> & graphConfigurations,
+                  const vector<TString>  &  legendTexts,
+                  const TString & canvasName,
+                  const CanvasConfiguration & canvasConfiguration,
+                  const TString & xTitle,  double xMin, double xMax,
+                  const TString & yTitle,  double yMin, double yMax,
+                  double xMinLeg, double yMinLeg, double xMaxLeg, double yMaxLeg,
+                  double legendSize);
 
 
-//  // ================================================================================================
-//  // Function to plot nHists 1D histogram
-//  // h       : vector of nHists pointers to histograms
-//  // legends : vector of nHists pointers to labels used as legends in the body of the plot
-//  // ================================================================================================
-//  TCanvas *  plot(TString  canvasName, CanvasConfiguration * cc, vector<GraphConfiguration*> gc,
-//                  TString  xTitle,  double xMin, double xMax,
-//                  TString  yTitle,  double yMin, double yMax,
-//                  vector<TH1*> histograms,
-//                  vector<TString> legends,
-//                  double xMinLeg, double yMinLeg, double xMaxLeg, double yMaxLeg,double legendSize,
-//                  bool label1=0, TString text1="", double x1=0.0, double y1=0.0, int color1=1,  double fontSize1=0.05,
-//                  bool label2=0, TString text2="", double x2=0.0, double y2=0.0, int color2=1,  double fontSize2=0.05);
-//
-//  TCanvas * plot(TString  canvasName, CanvasConfiguration * cc,
-//                 TString  xTitle,  double xMin, double xMax,
-//                 TString  yTitle,  double yMin, double yMax,
-//                 vector<DataGraph*> graphs,
-//                 double xMinLeg, double yMinLeg, double xMaxLeg, double yMaxLeg,double legendSize);
+  //  // ================================================================================================
+  //  // Function to plot nHists 1D histogram
+  //  // h       : vector of nHists pointers to histograms
+  //  // legends : vector of nHists pointers to labels used as legends in the body of the plot
+  //  // ================================================================================================
+  //  TCanvas *  plot(TString  canvasName, CanvasConfiguration * cc, vector<GraphConfiguration*> gc,
+  //                  TString  xTitle,  double xMin, double xMax,
+  //                  TString  yTitle,  double yMin, double yMax,
+  //                  vector<TH1*> histograms,
+  //                  vector<TString> legends,
+  //                  double xMinLeg, double yMinLeg, double xMaxLeg, double yMaxLeg,double legendSize,
+  //                  bool label1=0, TString text1="", double x1=0.0, double y1=0.0, int color1=1,  double fontSize1=0.05,
+  //                  bool label2=0, TString text2="", double x2=0.0, double y2=0.0, int color2=1,  double fontSize2=0.05);
+  //
+  //  TCanvas * plot(TString  canvasName, CanvasConfiguration * cc,
+  //                 TString  xTitle,  double xMin, double xMax,
+  //                 TString  yTitle,  double yMin, double yMax,
+  //                 vector<DataGraph*> graphs,
+  //                 double xMinLeg, double yMinLeg, double xMaxLeg, double yMaxLeg,double legendSize);
 
   ////////////////////////////////////////////////////////////////////////
   // Setting Histogram Properties
@@ -144,6 +149,7 @@ public:
   TLegend * createLegend(double x1, double y1, double x2, double y2, double fontSize);
   TLegend * createLegend(TH1*histogram, const TString & legendText, double x1, double y1, double x2, double y2, double fontSize, bool doDraw=true);
   TLegend * createLegend(vector<TH1*> h,vector<TString> legendTexts,double x1, double y1, double x2, double y2, double fontSize, bool doDraw=true);
+  TLegend * createLegend(vector<TGraph*> h,vector<TString> legendTexts,double x1, double y1, double x2, double y2, double fontSize, bool doDraw=true);
   TLegend * createLegend(vector<DataGraph*> graphs,double x1, double y1, double x2, double y2, double fontSize, bool doDraw=true);
 
 
@@ -171,7 +177,7 @@ protected:
   CanvasCollection canvasCollection;
   HistogramCollection histogramCollection;
 
-    ClassDef(Plotter,0)
+  ClassDef(Plotter,0)
 };
 
 #endif /* CAP__Plotter */

@@ -240,6 +240,9 @@ void ParticlePerformanceSimulator::smearMomentum(const TLorentzVector &in, TLore
   double eta  = in.Eta();
   double mass = in.M();
   smearMomentum(pt,eta,phi,smearedPt,smearedEta,smearedPhi);
+
+  if (smearedPt<0.001) smearedPt = 0.001;
+
   out.SetPtEtaPhiM(smearedPt,smearedEta,smearedPhi,mass);
 }
 

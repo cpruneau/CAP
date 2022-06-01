@@ -189,7 +189,7 @@ void ParticleTypeCollection::sortByMass()
 void ParticleTypeCollection::resolveTypes()
 {
   int nPart = size();
-  cout << "<D> ParticleTypeCollection::sortHadronListByHadronMass() Collection size:"
+  cout << "<D> ParticleTypeCollection::resolveTypes()  Collection size:"
   << nPart << endl;
 
   for (int iPart = 0; iPart<nPart; iPart++)

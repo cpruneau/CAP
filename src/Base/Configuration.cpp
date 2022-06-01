@@ -271,7 +271,7 @@ int Configuration::getValueLong(const TString & name) const
 
 double Configuration::getValueDouble(const TString & name)  const
 {
-  double value = -9.99E100;
+  double value = 0.0;
   std::map<TString,double>::const_iterator it;
   it = doubleMap.find(name);
   if (it != doubleMap.cend())

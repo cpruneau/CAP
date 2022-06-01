@@ -13,26 +13,33 @@
 
 ClassImp(ParticlePairHistos);
 
-ParticlePairHistos::ParticlePairHistos(const TString &       name,
-                                       const Configuration & configuration,
-                                       LogLevel  debugLevel)
+ParticlePairHistos::ParticlePairHistos(const TString &       _name,
+                                       const Configuration & _configuration,
+                                       LogLevel  _debugLevel)
 :
-Histograms(name,configuration,debugLevel),
+Histograms(_name,_configuration,_debugLevel),
+nBins_n1(0),
+min_n1(0),
+max_n1(0),
 nBins_n2(0),
 min_n2(0),
 max_n2(0),
 nBins_pt(0),
 min_pt(0),
 max_pt(0),
+range_pt(0),
 nBins_phi(0),
 min_phi(0),
 max_phi(0),
+range_phi(0),
 nBins_eta(0),
 min_eta(0),
 max_eta(0),
+range_eta(0),
 nBins_y(0),
 min_y(0),
 max_y(0),
+range_y(0),
 nBins_Dphi(0),
 min_Dphi(0),
 max_Dphi(0),
@@ -46,24 +53,24 @@ max_Dy(0),
 nBins_Dphi_shft(0),
 min_Dphi_shft(0),
 max_Dphi_shft(0),
-h_n2(0),
-h_n2_ptpt(0),
-h_n2_etaEta(0),
-h_DptDpt_etaEta(0),
-h_n2_phiPhi(0),
-h_DptDpt_phiPhi(0),
-h_n2_yY(0),
-h_DptDpt_yY(0),
-h_n2_DetaDphi(0),
-h_DptDpt_DetaDphi(0),
-h_n2_DyDphi(0),
-h_DptDpt_DyDphi(0),
 fillEta(false),
 fillY(false),
-fillP2(false)
+fillP2(false),
+h_n2(nullptr),
+h_n2_ptpt(nullptr),
+h_n2_etaEta(nullptr),
+h_DptDpt_etaEta(nullptr),
+h_n2_phiPhi(nullptr),
+h_DptDpt_phiPhi(nullptr),
+h_n2_yY(nullptr),
+h_DptDpt_yY(nullptr),
+h_n2_DetaDphi(nullptr),
+h_DptDpt_DetaDphi(nullptr),
+h_n2_DyDphi(nullptr),
+h_DptDpt_DyDphi(nullptr)
 {
-  setClassName("ParticlePairHistos");
-  setInstanceName(name);
+  appendClassName("ParticlePairHistos");
+  setInstanceName(_name);
 }
 
 ParticlePairHistos::~ParticlePairHistos()

@@ -156,6 +156,79 @@ TCanvas *  Plotter::plot(vector<TH1*> histograms,
   return canvas;
 }
 
+
+
+TCanvas *  Plotter::plot(vector<TGraph*> graphs,
+                         const vector<GraphConfiguration*> & graphConfigurations,
+                         const vector<TString>  &  legendTexts,
+                         const TString & canvasName,
+                         const CanvasConfiguration & canvasConfiguration,
+                         const TString & xTitle,  double xMin, double xMax,
+                         const TString & yTitle,  double yMin, double yMax,
+                         double xMinLeg, double yMinLeg, double xMaxLeg, double yMaxLeg,
+                         double legendSize)
+{
+  if (reportInfo(__FUNCTION__)) cout << "Creating canvas named:" << canvasName << endl;
+  TCanvas * canvas = canvasCollection.createCanvas(canvasName,canvasConfiguration);
+  unsigned int nGraphs = graphs.size();
+  TGraph * h;
+  if (reportInfo(__FUNCTION__)) cout << "nGraphs:" << nGraphs << endl;
+
+  for (unsigned int iGraph=0; iGraph<nGraphs; iGraph++)
+    {
+    if (reportInfo(__FUNCTION__)) cout << "iGraph:" << iGraph << endl;
+    h = graphs[iGraph];
+    setProperties(h,*(graphConfigurations[iGraph]) );
+    h->GetXaxis()->SetTitle(xTitle);
+    h->GetYaxis()->SetTitle(yTitle);
+//    if (yMin>=yMax) findMinMax(h,yMin,yMax);
+//    if (yMin>=yMax) yMax = yMin + 1.0E1;
+    }
+  h = graphs[0];
+  h->SetMinimum(yMin);
+  h->SetMaximum(yMax);
+  //if (xMin<xMax) h->GetXaxis()->SetRangeUser(xMin,xMax);
+  TString plotOption = "ALP"; // graphConfigurations[0]->getValueString("plotOption");
+  h->Draw(plotOption);
+  //nGraphs = 1;
+  for (unsigned int iGraph=1; iGraph<nGraphs; iGraph++)
+    {
+    plotOption = "SAME P"; //graphConfigurations[iGraph]->getValueString("plotOption");
+    graphs[iGraph]->Draw(plotOption);
+    }
+  if (nGraphs<6)
+    createLegend(graphs,legendTexts,xMinLeg, yMinLeg, xMaxLeg, yMaxLeg,legendSize);
+  else
+    {
+    unsigned int n1 = nGraphs/2;
+    unsigned int n2 = nGraphs - n1;
+    vector<TGraph*> h1;
+    vector<TGraph*> h2;
+    vector<TString> lg1;
+    vector<TString> lg2;
+    for (unsigned int k=0; k<n1; k++)
+      {
+      h1.push_back( graphs[k]);
+      lg1.push_back( legendTexts[k]);
+      }
+    for (unsigned int k=0; k<n2; k++)
+      {
+      h2.push_back( graphs[n1+k]);
+      lg2.push_back( legendTexts[n1+k]);
+      }
+    createLegend(h1,lg1,xMinLeg, yMinLeg, xMaxLeg, yMaxLeg,legendSize);
+    createLegend(h2,lg2,xMaxLeg, yMinLeg, 2.0*xMaxLeg-xMinLeg, yMaxLeg,legendSize);
+    }
+
+  //  if (label1) createLabel(text1, x1,y1,color1,true);
+  //  if (label2) createLabel(text2, x2,y2,color2,true);
+
+  return canvas;
+}
+
+
+
+
 ////!
 ////! Function to plot n DataGraphs on a single canvas
 ////!
@@ -245,7 +318,7 @@ TLegend * Plotter::createLegend(TH1*histogram, const TString & legendText, doubl
 
 TLegend * Plotter::createLegend(vector<TH1*> histograms, vector<TString> legendTexts, double x1, double y1, double x2, double y2, double fontSize, bool doDraw)
 {
-  if (reportDebug(__FUNCTION__)) cout << "Create legend for several histogram" << endl;
+  if (reportDebug(__FUNCTION__)) cout << "Create legend for several histograms" << endl;
   TLegend *legend = new TLegend(x1,y1,x2,y2);
   legend->SetTextSize(fontSize);
   legend->SetFillColor(0);
@@ -257,6 +330,22 @@ TLegend * Plotter::createLegend(vector<TH1*> histograms, vector<TString> legendT
   if (doDraw) legend->Draw();
   return legend;
 }
+
+TLegend * Plotter::createLegend(vector<TGraph*> graphs,vector<TString> legendTexts,double x1, double y1, double x2, double y2, double fontSize, bool doDraw)
+{
+  if (reportDebug(__FUNCTION__)) cout << "Create legend for several graphs" << endl;
+  TLegend *legend = new TLegend(x1,y1,x2,y2);
+  legend->SetTextSize(fontSize);
+  legend->SetFillColor(0);
+  legend->SetBorderSize(0);
+  for (unsigned int iGraph=0; iGraph<graphs.size(); iGraph++)
+    {
+    legend->AddEntry(graphs[iGraph],legendTexts[iGraph]);
+    }
+  if (doDraw) legend->Draw();
+  return legend;
+}
+
 
 TLegend * Plotter::createLegend(vector<DataGraph*> graphs,double x1, double y1, double x2, double y2, double fontSize, bool doDraw)
 {

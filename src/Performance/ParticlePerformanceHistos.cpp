@@ -148,38 +148,60 @@ void ParticlePerformanceHistos::loadHistograms(TFile * inputFile)
 void ParticlePerformanceHistos::fill(Particle & recoParticle, double weight)
 {
   Particle & genParticle  = *recoParticle.getTruth();
+
+  //if (reportInfo(__FUNCTION__)) cout << "got genParticle" << endl;
+
   TLorentzVector & recoMomentum = recoParticle.getMomentum();
   TLorentzVector & genMomentum  = genParticle.getMomentum();
-  
-  
-  double    recoPt   = recoMomentum.Pt();
-  double    recoEta  = recoMomentum.Eta();
-  double    recoY    = recoMomentum.Y();
-  double    recoPhi  = recoMomentum.Pt();
-  
-  double    genPt   = genMomentum.Pt();
-  double    genEta  = genMomentum.Eta();
-  double    genY    = genMomentum.Y();
-  double    genPhi  = genMomentum.Pt();
-  
-  double dPt  = recoPt  - genPt;
-  double dPhi = recoPhi - genPhi;
-  double dEta = recoEta - genEta;
-  double dY   = recoY   - genY;
-  
+
+//  if (reportInfo(__FUNCTION__)) cout << "got genMomentum" << endl;
+
+  double recoPt, recoEta, recoY, recoPhi;
+  double genPt, genEta, genY, genPhi;
+  double dPt, dPhi, dEta, dY;
+
+  recoPt   = recoMomentum.Pt();
+  recoEta  = recoMomentum.Eta();
+  if (fillY) recoY = recoMomentum.Y();
+  recoPhi  = recoMomentum.Phi();
+
+  //if (reportInfo(__FUNCTION__)) cout << "got reco stuff " << endl;
+
+
+  genPt   = genMomentum.Pt();
+  genPhi  = genMomentum.Phi();
+  if (fillEta) genEta  = genMomentum.Eta();
+  if (fillY)   genY    = genMomentum.Y();
+
+  //if (reportInfo(__FUNCTION__)) cout << "got gen stuff also " << endl;
+
+  dPt  = recoPt  - genPt;
+  dPhi = recoPhi - genPhi;
+  if (fillEta) dEta = recoEta - genEta;
+  if (fillY)   dY   = recoY   - genY;
+
+  //if (reportInfo(__FUNCTION__)) cout << "will fill histos " << endl;
+
+
   h_n1_dPt->Fill(dPt,weight);
   h_n1_dPhi->Fill(dPhi,weight);
   h_n1_dPtVsPt->Fill(genPt,dPt,weight);
   h_n1_dPhiVsPt->Fill(genPt,dPhi,weight);
-  
+
+  //if (reportInfo(__FUNCTION__)) cout << "will fill histos 1 " << endl;
+
   if (fillEta)
     {
+    //if (reportInfo(__FUNCTION__)) cout << "will fill histos 2" << endl;
+
     h_n1_dEta->Fill(dEta,weight);
     h_n1_dEtaVsEta->Fill(genEta,dEta,weight);
     }
   
   if (fillY)
     {
+    //if (reportInfo(__FUNCTION__)) cout << "will fill histos 3" << endl;
+
     h_n1_dY->Fill(dY,weight);
     h_n1_dYVsY->Fill(genY,dY,weight);
     }

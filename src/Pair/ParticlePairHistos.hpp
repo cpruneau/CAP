@@ -93,6 +93,8 @@ public:
   int    nBins_Dphi;
   double min_Dphi;
   double max_Dphi;
+  double width_Dphi;
+
   int    nBins_Deta;
   double min_Deta;
   double max_Deta;
@@ -100,8 +102,7 @@ public:
   double min_Dy;
   double max_Dy;
 
-  float width_Dphi;
-  int   nBins_Dphi_shft;
+  int    nBins_Dphi_shft;
   double min_Dphi_shft;
   double max_Dphi_shft;
 

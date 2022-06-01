@@ -152,38 +152,6 @@ protected:
   static unsigned int getNEventStreams();
   static void resetEventStreams();
 
-//  //!
-//  //! Return the participant moments of the current event
-//  //!
-//  CollisionGeometryMoments & getParticipantMoments()
-//  {
-//  return *participantMoments;
-//  }
-//
-//  //!
-//  //! Return the participant moments of the current event
-//  //!
-//  const CollisionGeometryMoments & getParticipantMoments() const
-//  {
-//  return *participantMoments;
-//  }
-//
-//  //!
-//  //! Return the binary moments of the current event
-//  //!
-//  CollisionGeometryMoments & getBinaryMoments()
-//  {
-//  return *binaryMoments;
-//  }
-//
-//  //!
-//  //! Return the binary moments of the current event
-//  //!
-//  const CollisionGeometryMoments & getBinaryMoments() const
-//  {
-//  return *binaryMoments;
-//  }
-
   void setStreamIndex(unsigned int index)
   {
   streamIndex = index;
@@ -218,3 +186,34 @@ protected:
 
 
 #endif /* Event_hpp */
+//  //!
+//  //! Return the participant moments of the current event
+//  //!
+//  CollisionGeometryMoments & getParticipantMoments()
+//  {
+//  return *participantMoments;
+//  }
+//
+//  //!
+//  //! Return the participant moments of the current event
+//  //!
+//  const CollisionGeometryMoments & getParticipantMoments() const
+//  {
+//  return *participantMoments;
+//  }
+//
+//  //!
+//  //! Return the binary moments of the current event
+//  //!
+//  CollisionGeometryMoments & getBinaryMoments()
+//  {
+//  return *binaryMoments;
+//  }
+//
+//  //!
+//  //! Return the binary moments of the current event
+//  //!
+//  const CollisionGeometryMoments & getBinaryMoments() const
+//  {
+//  return *binaryMoments;
+//  }

@@ -49,7 +49,6 @@ void MeasurementPerformanceSimulator::setDefaultConfiguration()
     TString baseName = "Filter";
     baseName += k;
     configuration.addParameter(baseName+"_PtBiasAinv",0.0);
-
     configuration.addParameter(baseName+"_PtBiasA0",0.0);
     configuration.addParameter(baseName+"_PtBiasA1",0.0);
     configuration.addParameter(baseName+"_PtBiasA2",0.0);
@@ -57,7 +56,8 @@ void MeasurementPerformanceSimulator::setDefaultConfiguration()
     configuration.addParameter(baseName+"_PtRmsA0",0.0);
     configuration.addParameter(baseName+"_PtRmsA1",0.0);
     configuration.addParameter(baseName+"_PtRmsA2",0.0);
-    
+
+    configuration.addParameter(baseName+"_EtaBiasAinv",0.0);
     configuration.addParameter(baseName+"_EtaBiasA0",0.0);
     configuration.addParameter(baseName+"_EtaBiasA1",0.0);
     configuration.addParameter(baseName+"_EtaBiasA2",0.0);
@@ -66,6 +66,7 @@ void MeasurementPerformanceSimulator::setDefaultConfiguration()
     configuration.addParameter(baseName+"_EtaRmsA1",0.0);
     configuration.addParameter(baseName+"_EtaRmsA2",0.0);
 
+    configuration.addParameter(baseName+"_PhiBiasAinv",0.0);
     configuration.addParameter(baseName+"_PhiBiasA0",0.0);
     configuration.addParameter(baseName+"_PhiBiasA1",0.0);
     configuration.addParameter(baseName+"_PhiBiasA2",0.0);
@@ -186,6 +187,16 @@ void MeasurementPerformanceSimulator::execute()
   incrementTaskExecuted();
   Event & genEvent  = *eventStreams[0];
   Event & recoEvent = *eventStreams[1];
+  unsigned long nPartGen   = genEvent.getParticleCount();
+  unsigned long nPartReco  = recoEvent.getParticleCount();
+  //if (reportInfo(__FUNCTION__)) cout << " BEFORE PERFORM SIM: GEN EVENT Particle Count: " << nPartGen << endl;
+  //if (reportInfo(__FUNCTION__)) cout << " BEFORE PERFORM SIM: RECO EVENT Particle Count: " << nPartReco << endl;
+  if (nPartReco>nPartGen)
+    {
+    if (reportInfo(__FUNCTION__))cout << " nParticles>nPartGen   ABORT NOW!!!!!" << endl;
+    exit(1);
+    }
+
   unsigned int nParticles = genEvent.getNParticles();
   unsigned int firstPartFilter;
   unsigned int lastPartFilter;
@@ -229,4 +240,15 @@ void MeasurementPerformanceSimulator::execute()
         } //particle loop
       } // particle filter loop
     } // event filter loop
+
+  nPartGen   = genEvent.getParticleCount();
+  nPartReco  = recoEvent.getParticleCount();
+  //if (reportInfo(__FUNCTION__)) cout << " AFTER PERFORM SIM:   GEN EVENT Particle Count: " << nPartGen << endl;
+  //if (reportInfo(__FUNCTION__)) cout << " AFTER PERFORM SIM:  RECO EVENT Particle Count: " << nPartReco << endl;
+  if (nPartReco>nPartGen)
+    {
+    if (reportInfo(__FUNCTION__))cout << " nParticles>nPartGen   ABORT NOW!!!!!" << endl;
+    exit(1);
+    }
+
 }

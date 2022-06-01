@@ -9,29 +9,29 @@
  * Author: Claude Pruneau,   04/01/2022
  *
  * *********************************************************************/
-#include "HistogramCollection.hpp"
-#include "ClosureTest.hpp"
+//#include "HistogramCollection.hpp"
+#include "ClosureCalculator.hpp"
 
-ClassImp(ClosureTest);
+ClassImp(ClosureCalculator);
 
-ClosureTest::ClosureTest(const TString &          _name,
+ClosureCalculator::ClosureCalculator(const TString &          _name,
                          const Configuration &    _configuration,
                          MessageLogger::LogLevel  _reportLevel)
 :
 Task(_name, _configuration, _reportLevel)
 {
-  appendClassName("ClosureTest");
+  appendClassName("ClosureCalculator");
   setInstanceName(_name);
   setDefaultConfiguration();
   setConfiguration(_configuration);
 }
 
-void ClosureTest::setDefaultConfiguration()
+void ClosureCalculator::setDefaultConfiguration()
 {
   
   if (reportStart(__FUNCTION__))
     ;
-  configuration.setName("ClosureTest Configuration");
+  configuration.setName("ClosureCalculator Configuration");
   configuration.setParameter("createHistograms",      true);
   configuration.setParameter("saveHistograms",        true);
   configuration.setParameter("forceHistogramsRewrite",true);
@@ -44,7 +44,7 @@ void ClosureTest::setDefaultConfiguration()
   if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
-void ClosureTest::execute()
+void ClosureCalculator::execute()
 {
   
   if (reportStart(__FUNCTION__))
