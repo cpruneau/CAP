@@ -24,7 +24,7 @@ list(APPEND CMAKE_PREFIX_PATH $ENV{ROOTSYS})
 
 #---Locate the ROOT package and defines a number of variables (e.g. ROOT_INCLUDE_DIRS)
 find_package(ROOT REQUIRED COMPONENTS EG MathCore MathMore RIO Hist Tree Net )
-find_library(PYTHIA8_LIB pythia8 PATHS $ENV{PYTHIA8_LIBRARIES})
+find_library(PYTHIA8_LIB pythia8 PATHS $ENV{PYTHIA8}/lib)
 find_library(EGPYTHIA8 EGPythia8)
 
 
@@ -52,7 +52,7 @@ add_subdirectory(NuDyn)
 add_subdirectory(Performance)
 add_subdirectory(CollGeom)
 #add_subdirectory(Blastwave)
-add_subdirectory(Epos)
+#add_subdirectory(Epos)
 #add_subdirectory(LambdaAnalysis)
 #add_subdirectory(Music)
 #add_subdirectory(Urqmd)

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ####################################################################################################
 #
 # Use this file to setup envirionment variable to run CAP applications
@@ -26,16 +28,14 @@
 ####################################################################################################
 echo "========================================================================================"
 echo "Creating (if needed) build, InputFiles, and OutputFiles directories"
-if [[ ! (-d build) ]] then
+if [[ ! (-d build) ]]
+then
   mkdir build;
 fi
 
 echo "========================================================================================"
 echo "Setting up CAP environment variables"
 echo "========================================================================================"
-export ROOT_SELECTED_VERSION="/Users/aa7526/opt/root/root_build"
-export ROOT_LIBS="$ROOT_SELECTED_VERSION/lib/"
-export CAP_LARGE_DATA="/Volumes/ClaudeDisc4/CAP4/"
 export CAP_ROOT=`pwd`
 export CAP_SRC="$CAP_ROOT/src/"
 export CAP_BIN="$CAP_ROOT/bin/"
