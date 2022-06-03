@@ -11,14 +11,12 @@
  * *********************************************************************/
 #include "HistogramCollection.hpp"
 #include "BalanceFunctionCalculator.hpp"
-#include "SubSampleStatCalculator.hpp"
 
 ClassImp(BalanceFunctionCalculator);
 
-
 BalanceFunctionCalculator::BalanceFunctionCalculator(const TString &       _name,
-                                                 const Configuration & _configuration,
-                                                 MessageLogger::LogLevel debugLevel)
+                                                     const Configuration & _configuration,
+                                                     MessageLogger::LogLevel debugLevel)
 :
 Task(_name,_configuration,debugLevel)
 {
@@ -65,7 +63,7 @@ void BalanceFunctionCalculator::execute()
     Task & subTask = *subTasks[iTask];
     Configuration & subTaskConfig = subTask.getConfiguration();
     histoOutputAnalyzerName = subTaskConfig.getValueString("histoOutputAnalyzerName");
-    if (reportInfo(__FUNCTION__))
+    if (reportDebug(__FUNCTION__))
       {
       cout << endl;
       cout << " ===========================================================" << endl;
@@ -90,12 +88,12 @@ void BalanceFunctionCalculator::execute()
       if (reportError(__FUNCTION__))
         {
         cout << endl;
-        cout << "X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#"  << endl;
-        cout << "X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#"  << endl;
-        cout << "  Attempting to execute derived histo analysis with no selected files." << endl;
-        cout << "                         Check your code!!!!!!! " <<  endl;
-        cout << "X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#"  << endl;
-        cout << "X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#"  << endl;
+        cout << "X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#"  << endl;
+        cout << "X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#"  << endl;
+        cout << "         Attempting to execute Balance Function calculation with no selected files." << endl;
+        cout << "                               Check your code!!!!!!! " <<  endl;
+        cout << "X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#"  << endl;
+        cout << "X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#"  << endl;
         }
       return;
       }
@@ -130,15 +128,16 @@ void BalanceFunctionCalculator::execute()
       TString histoInputFileName  = allFilesToProcess[iFile];
       TString histoOutputFileName = removeRootExtension(histoInputFileName);
       histoOutputFileName += appendedString;
-      if (reportDebug(__FUNCTION__))
-        {
-        cout << endl;
-        cout << " ===========================================================" << endl;
-        cout
-        << "         iFile: " << iFile << endl
-        << "    Input file: " << histoInputFileName << endl
-        << "   Output file: " << histoOutputFileName << endl;
-        }
+//      if (reportDebug(__FUNCTION__))
+//        {
+//        cout << endl;
+//        cout << " ===========================================================" << endl;
+//        cout
+//        << "         iFile: " << iFile << endl
+//        << "    Input file: " << histoInputFileName << endl
+//        << "   Output file: " << histoOutputFileName << endl;
+//        }
+      if (reportInfo(__FUNCTION__)) cout << "iFile: " << iFile << " File: " << histoInputFileName << endl;
       Configuration config;
       config.setParameter("histoInputPath",         TString(""));
       config.setParameter("histoInputFileName",     histoInputFileName);

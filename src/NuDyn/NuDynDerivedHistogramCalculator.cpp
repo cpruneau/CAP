@@ -124,7 +124,7 @@ void NuDynDerivedHistogramCalculator::execute()
   
   if (reportStart(__FUNCTION__))
     ;
-  incrementTaskExecuted();
+  //incrementTaskExecuted();
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
   if (reportInfo(__FUNCTION__))

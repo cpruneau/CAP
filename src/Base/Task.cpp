@@ -252,11 +252,9 @@ void Task::finalize()
   // new data, no point in saving again..
   if (useParticles)
     {
-    if (reportInfo(__FUNCTION__)) cout << "useParticles==true" << endl;
     if (getNTaskExecutedReset()>0)
       {
-      if (reportInfo(__FUNCTION__)) cout << "getNTaskExecutedReset()>0" << endl;
-      if (reportInfo(__FUNCTION__)) printEventStatistics();
+      if (reportDebug(__FUNCTION__)) printEventStatistics();
       if (scaleHistos) scaleHistograms();
       if (saveHistos) saveHistograms();
       if (hasSubTasks() && isTaskOk()) finalizeSubTasks();
@@ -264,7 +262,7 @@ void Task::finalize()
     }
   else
     {
-   if (saveHistos) saveHistograms();
+    if (saveHistos) saveHistograms();
     if (hasSubTasks() && isTaskOk()) finalizeSubTasks();
     }
   if (reportEnd(__FUNCTION__))
@@ -600,8 +598,8 @@ void Task::saveHistograms()
   bool forceHistogramsRewrite     = configuration.getValueBool("forceHistogramsRewrite");
   TString histoOutputPath         = configuration.getValueString("histoOutputPath");
   TString histoOutputFileName     = configuration.getValueString("histoOutputFileName");
-  TString histoModelDataName     = configuration.getValueString("histoModelDataName");
-  TString histoAnalyzerName = configuration.getValueString("histoAnalyzerName");
+  TString histoModelDataName      = configuration.getValueString("histoModelDataName");
+  TString histoAnalyzerName       = configuration.getValueString("histoAnalyzerName");
 
   // rule: if an actual file name 'histoOutputFileName' is provided, that is what is
   // used to save the histograms. If not, assemble a name based on 'histoModelDataName' and 'histoAnalyzerName'
@@ -619,7 +617,7 @@ void Task::saveHistograms()
     histoOutputFileName += "_";
     histoOutputFileName += subSampleIndex++;
     }
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "  nTaskExecutedReset : " << nTaskExecutedReset  << endl;
@@ -627,6 +625,7 @@ void Task::saveHistograms()
     cout << "     histoOutputPath : " << histoOutputPath  << endl;
     cout << " histoOutputFileName : " << histoOutputFileName  << endl;
     }
+  if (reportInfo(__FUNCTION__)) cout << " Saving: " << histoOutputFileName << endl;
   TFile * outputFile;
   if (forceHistogramsRewrite)
     outputFile = openRootFile(histoOutputPath,histoOutputFileName,"RECREATE");

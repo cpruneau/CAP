@@ -132,7 +132,6 @@ void GlobalDerivedHistogramCalculator::execute()
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
       baseHistos    = (GlobalHistos *) histograms[iEventFilter];
-
       derivedHistos = (GlobalDerivedHistos *) derivedHistograms[iEventFilter];
       derivedHistos->calculateDerivedHistograms(baseHistos);
     }

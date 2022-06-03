@@ -38,12 +38,8 @@ void DerivedHistoIterator::setDefaultConfiguration()
   configuration.setParameter("forceHistogramsRewrite", true);
   configuration.generateKeyValuePairs("IncludedPattern",none,20);
   configuration.generateKeyValuePairs("ExcludedPattern",none,20);
-  if (reportDebug(__FUNCTION__))
-    {
-    configuration.printConfiguration(cout);
-    }
+  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
-
 
 void DerivedHistoIterator::execute()
 {
@@ -54,7 +50,7 @@ void DerivedHistoIterator::execute()
   bool    forceHistogramsRewrite   = configuration.getValueBool("forceHistogramsRewrite");
   TString histoInputPath           = configuration.getValueString("histoInputPath");
   TString histoOutputPath          = configuration.getValueString("histoOutputPath");
-  TString histoModelDataName      = configuration.getValueString("histoModelDataName");
+  TString histoModelDataName       = configuration.getValueString("histoModelDataName");
   vector<TString> includedPatterns = configuration.getSelectedValues("IncludedPattern",none);
   vector<TString> excludedPatterns = configuration.getSelectedValues("ExcludedPattern",none);
   TString histoAnalyzerName;
@@ -65,7 +61,7 @@ void DerivedHistoIterator::execute()
     Task & subTask = *subTasks[iTask];
     Configuration & subTaskConfig = subTask.getConfiguration();
     histoAnalyzerName = subTaskConfig.getValueString("histoAnalyzerName");
-    if (reportInfo(__FUNCTION__))
+    if (reportDebug(__FUNCTION__))
       {
       cout << endl;
       cout << " ===========================================================" << endl;
@@ -74,8 +70,8 @@ void DerivedHistoIterator::execute()
       cout << "            SubTask Name: " << taskName  << endl;
       cout << "          histoInputPath: " << histoInputPath  << endl;
       cout << "         histoOutputPath: " << histoOutputPath  << endl;
-      cout << "     histoModelDataName: " << histoModelDataName  <<   endl;
-      cout << " histoAnalyzerName: " << histoAnalyzerName   << endl;
+      cout << "      histoModelDataName: " << histoModelDataName  <<   endl;
+      cout << "       histoAnalyzerName: " << histoAnalyzerName   << endl;
       cout << " ===========================================================" << endl;
       cout << " ===========================================================" << endl;
       }
@@ -107,8 +103,8 @@ void DerivedHistoIterator::execute()
       cout << "           appendedString: " << appendedString << endl;
       cout << "           histoInputPath: " << histoInputPath << endl;
       cout << "          histoOutputPath: " << histoOutputPath << endl;
-      cout << "      histoModelDataName: " << histoModelDataName << endl;
-      cout << "  histoAnalyzerName: " << histoAnalyzerName << endl;
+      cout << "       histoModelDataName: " << histoModelDataName << endl;
+      cout << "        histoAnalyzerName: " << histoAnalyzerName << endl;
       cout << " ===========================================================" << endl;
       }
     for (int iFile=0; iFile<nFiles; iFile++)

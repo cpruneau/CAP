@@ -279,7 +279,7 @@ void BalanceFunctionCalculator::execute()
   
   if (reportStart(__FUNCTION__))
     ;
-  incrementTaskExecuted();
+  //incrementTaskExecuted();
   TString histoInputPath      = configuration.getValueString("histoInputPath");
   TString histoInputFileName  = configuration.getValueString("histoInputFileName");
   TString histoOutputPath     = configuration.getValueString("histoOutputPath");
@@ -309,9 +309,12 @@ void BalanceFunctionCalculator::execute()
 //    histoInputFileName  += histoAnalyzerName;
     vector<TString> includePatterns = configuration.getSelectedValues("IncludedPattern", "none");
     vector<TString> excludePatterns = configuration.getSelectedValues("ExcludedPattern", "none");
-    for (unsigned int k=0;k<includePatterns.size();k++) cout << " k:" << k << "  Include: " << includePatterns[k] << endl;
-    for (unsigned int k=0;k<excludePatterns.size();k++) cout << " k:" << k << "  Exclude: " << excludePatterns[k] << endl;
-    allFilesToAnalyze = listFilesInDir(histoInputPath,includePatterns,excludePatterns);
+    if (reportDebug(__FUNCTION__))
+      {
+      for (unsigned int k=0;k<includePatterns.size();k++) cout << " k:" << k << "  Include: " << includePatterns[k] << endl;
+      for (unsigned int k=0;k<excludePatterns.size();k++) cout << " k:" << k << "  Exclude: " << excludePatterns[k] << endl;
+      }
+      allFilesToAnalyze = listFilesInDir(histoInputPath,includePatterns,excludePatterns);
     }
 
   int nFilesToAnalyze = allFilesToAnalyze.size();
@@ -329,7 +332,7 @@ void BalanceFunctionCalculator::execute()
       }
     return;
     }
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << " ===========================================================" << endl;
@@ -359,7 +362,7 @@ void BalanceFunctionCalculator::execute()
     histoInputFileName = allFilesToAnalyze[iFile];
     histoOutputFileName = removeRootExtension(histoInputFileName);
     histoOutputFileName += appendedString;
-    if (reportInfo(__FUNCTION__)) cout << " Processing iFile:" << iFile << " named: " << histoInputFileName << endl;
+    if (reportInfo(__FUNCTION__)) cout << " File:" << iFile << " named: " << histoInputFileName << endl;
     TFile * inputFile  = nullptr;
     TFile * outputFile = nullptr;
     inputFile = openRootFile("",histoInputFileName,"OLD");
@@ -370,7 +373,6 @@ void BalanceFunctionCalculator::execute()
       outputFile = openRootFile("",histoOutputFileName, "NEW");
     if (!outputFile) return;
 
-    if (reportInfo(__FUNCTION__)) cout << "I/O Files are opened. Proceed with data loading." << endl;
 
     // Use hh as helper to load and calculate histograms, etc.
     Histograms * hh = new Histograms(getName(), getConfiguration(), getLogLevel());
@@ -378,7 +380,6 @@ void BalanceFunctionCalculator::execute()
     histograms.push_back(hh); // enables handling in functions.
 
     loadNEexecutedTask(inputFile);
-    if (reportInfo(__FUNCTION__)) cout << "Begin observable loop." << endl;
     unsigned int nSpecies = particleFilters.size()/2;
     for (unsigned int iObservable = 0; iObservable<pObservableNames.size();iObservable++)
       {
@@ -426,20 +427,15 @@ void BalanceFunctionCalculator::execute()
           }
         }
       }
-    if (reportInfo(__FUNCTION__)) cout << "Observable loop completed." << endl;
     outputFile->cd();
     hh->saveHistograms(outputFile);
     writeNEexecutedTask(outputFile);
-    if (reportInfo(__FUNCTION__)) cout << "Balance Function Histos saved." << endl;
     outputFile->Close();
     inputFile->Close();
-    if (reportInfo(__FUNCTION__)) cout << "Files closed." << endl;
     hh->clear();
     delete hh;
     histograms.clear();
-    if (reportInfo(__FUNCTION__)) cout << "Objects cleared." << endl;
     }
-
   if (reportEnd(__FUNCTION__))
     ;
 }

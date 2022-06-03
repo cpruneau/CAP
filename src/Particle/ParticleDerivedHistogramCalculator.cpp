@@ -85,7 +85,6 @@ void ParticleDerivedHistogramCalculator::setDefaultConfiguration()
   configuration.addParameter("fillEta",   true);
   configuration.addParameter("fillY",    false);
   configuration.addParameter("fillP2",   false);
-
   if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
@@ -94,12 +93,11 @@ void ParticleDerivedHistogramCalculator::setDefaultConfiguration()
 //!
 void ParticleDerivedHistogramCalculator::createHistograms()
 {
-  
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
   TString bn  = getName();
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "Creating Histogram(s) for.."  << endl;
@@ -162,10 +160,10 @@ void ParticleDerivedHistogramCalculator::execute()
   
   if (reportStart(__FUNCTION__))
     ;
-  incrementTaskExecuted();
+  //incrementTaskExecuted();
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "Computing derived histograms for: " << endl;

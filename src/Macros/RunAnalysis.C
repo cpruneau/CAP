@@ -60,12 +60,12 @@ int RunAnalysis()
   TString partLabel       = "Part";
   TString pairLabel       = "Pair";
   TString nuDynLabel      = "NuDyn";
+  TString simAnaLabel     = "SimAna";
   TString rootExt         = ".root";
   TString derivedLabel    = "_Derived";
   TString sumLabel        = "_Sum";
-  TString balFctLabel     = "BalFct";
-  TString simAnaLabel     = "SimAna";
-  TString closureLabel    = "Closure";
+  TString balFctLabel     = "_BalFct";
+  TString closureLabel    = "_Closure";
 
   TString histoModelDataName;
   TString histoAnalyzerName;
@@ -75,56 +75,56 @@ int RunAnalysis()
   MessageLogger::LogLevel debugLevel = MessageLogger::Debug;
   MessageLogger::LogLevel selectedLevel = infoLevel;
   
-  bool    runEventAnalysis           = YES;
-  bool    runDerivedHistoCalculation = YES;
-  bool    runSumOfBasicHistos        = NO;
-  bool    runSumOfDerivedHistos      = NO;
-  bool    runBalFctCalculation       = YES;
-  bool    runSumOfBalFctCalculation  = NO;
-  bool    runPythiaGenerator         = YES;
-  bool    runHerwigGenerator         = NO;
-  bool    runAmptReader              = NO;
-  bool    runEposGenerator           = NO;
-  bool    runUrqmdGenerator          = NO;
-  bool    runHijingGenerator         = NO;
-  bool    runGausResGenerator        = NO;
-  bool    runGlobalAnalysis          = YES;
-  bool    runSpherocityAnalysis      = NO;
-  bool    runPartAnalysis            = YES;
-  bool    runPairAnalysis            = YES;
-  bool    runNuDynAnalysis           = NO;
-  bool    runPerformSimulator        = YES;
-  bool    runPerformAnalysis         = YES;
-  bool    runClosureAnalysis         = YES;
-  bool    loadPdgTable               = YES;
-  bool    fillEta                    = YES;
-  bool    fillY                      = NO;
+  bool    runEventAnalysis               = YES;
+  bool    runGenLevelAnalysis            = YES;
+  bool    runRecoLevelAnalysis           = NO;
+  bool    runDerivedHistoCalculation     = YES;
+  bool    runBalFctCalculation           = YES;
+  bool    runSubsampleAnalysis           = YES;
+  bool    runBasicSubsampleAnalysis      = NO;
+  bool    runDerivedSubsampleAnalysis    = YES;
+  bool    runBalFctSubsampleAnalysis     = NO;
+  bool    runPerformSimulator            = NO;
+  bool    runPerformAnalysis             = NO;
+  bool    runClosureAnalysis             = NO;
+  bool    runBasicClosureAnalysis        = NO;
+  bool    runDerivedClosureAnalysis      = NO;
+  bool    runBalFctClosureAnalysis       = NO;
 
-  long    nIterationRequested        =  1000;
-  long    nIterationReported         =  1000;
-  long    nIterationPartialSave      =  1000;
-  bool    doPartialReports           = YES;
-  bool    doPartialSaves             = NO;
-  bool    doSubsampleAnalysis        = NO;
-  bool    doPerformanceSimulation    = YES;
-  bool    doPerformanceAnalysis      = YES;
-  bool    doGenLevelAnalysis         = YES;
-  bool    doRecoLevelAnalysis        = YES;
-  bool    forceHistogramsRewrite     = YES;
-  bool    scaleHistograms            = YES;
-  double  beamEnergy                 = 13000.0; // GeV
-  int     beamPdgCode                = 2212;    // proton
-  int     targetPdgCode              = 2212;
+  bool    runPythiaGenerator             = YES;
+  bool    runHerwigGenerator             = NO;
+  bool    runAmptReader                  = NO;
+  bool    runEposGenerator               = NO;
+  bool    runUrqmdGenerator              = NO;
+  bool    runHijingGenerator             = NO;
+  bool    runGausResGenerator            = NO;
+  bool    runGlobalAnalysis              = YES;
+  bool    runSpherocityAnalysis          = NO;
+  bool    runPartAnalysis                = YES;
+  bool    runPairAnalysis                = YES;
+  bool    runNuDynAnalysis               = NO;
+  bool    loadPdgTable                   = YES;
+  bool    fillEta                        = YES;
+  bool    fillY                          = NO;
 
-  int     globalEventFilterOptions     = 0;
-  int     analysisParticleFilterOption = 4;
-  int     analysisEventFilterOptions   = 0;
+  long    nIterationRequested            = 10000000;
+  long    nIterationReported             = 100000;
+  long    nIterationPartialSave          = 1000000;
+  bool    doPartialReports               = YES;
+  bool    doPartialSaves                 = YES;
+  bool    forceHistogramsRewrite         = YES;
+  bool    scaleHistograms                = YES;
+  double  beamEnergy                     = 13000.0; // GeV
+  int     beamPdgCode                    = 2212;    // proton
+  int     targetPdgCode                  = 2212;
+
+  int     globalEventFilterOptions       = 0;
+  int     analysisParticleFilterOption   = 4;
+  int     analysisEventFilterOptions     = 0;
 
 
-
-  
-  TString inputPathBase   = "/Volumes/ClaudeDisc4/OutputFiles/PythiaTest/";
-  TString outputPathBase  = "/Volumes/ClaudeDisc4/OutputFiles/PythiaTest/";
+  TString inputPathBase   = "/Volumes/ClaudeDisc4/OutputFiles/PythiaNew/";
+  TString outputPathBase  = "/Volumes/ClaudeDisc4/OutputFiles/PythiaNew/";
   // TString input FileNameBase;
   TString outputFileNameBase;
   TString inputPathName   = inputPathBase;
@@ -239,17 +239,15 @@ int RunAnalysis()
   std::cout << "==================================================================================" << std::endl;
 
   TaskIterator              * eventAnalysis;
-  DerivedHistoIterator      * derivedHistoCalculation;
-  SubSampleStatIterator     * sumOfBasicHistos;
-  SubSampleStatIterator     * sumOfDerivedHistos;
-  SubSampleStatIterator     * sumOfBalFctHistos;
-  BalanceFunctionCalculator * balFctCalc;
+  DerivedHistoIterator      * derivedHistoIterator;
+  BalanceFunctionCalculator * balFctHistoIterator;
+  SubSampleStatIterator     * basicSubsampleIterator;
+  SubSampleStatIterator     * derivedSubsampleIterator;
+  SubSampleStatIterator     * balFctSubsampleIterator;
   ClosureIterator           * basicClosureIterator;
   ClosureIterator           * derivedClosureIterator;
   ClosureIterator           * balFctClosureIterator;
-  Task * task;
-
-
+  Task                      * task;
 
   if (loadPdgTable)
     {
@@ -275,12 +273,11 @@ int RunAnalysis()
     eventAnalysisConfig.addParameter("nIterationRequested",   nIterationRequested);
     eventAnalysisConfig.addParameter("nIterationReported",    nIterationReported);
     eventAnalysisConfig.addParameter("nIterationPartialSave", nIterationPartialSave);
-    eventAnalysisConfig.addParameter("doSubsampleAnalysis",   doSubsampleAnalysis);
+    eventAnalysisConfig.addParameter("doSubsampleAnalysis",   runSubsampleAnalysis);
     eventAnalysisConfig.addParameter("useParticles",          YES);
     eventAnalysisConfig.addParameter("useEventStream0",       YES);
     if (runPerformSimulator) eventAnalysisConfig.addParameter("useEventStream1",  YES);
-    eventAnalysis = new TaskIterator("MultiTaskIterator",eventAnalysisConfig,selectedLevel);
-
+    eventAnalysis = new TaskIterator("EventIterator",eventAnalysisConfig,selectedLevel);
 
     if (runPythiaGenerator)
       {
@@ -480,106 +477,101 @@ int RunAnalysis()
     derivedHistoConfig.addParameter("ExcludedPattern1",sumLabel);
     derivedHistoConfig.addParameter("ExcludedPattern2",balFctLabel);
     derivedHistoConfig.addParameter("appendedString",  derivedLabel);
-    derivedHistoCalculation = new DerivedHistoIterator("DerivedHistoIterator",derivedHistoConfig,selectedLevel);
+    derivedHistoIterator = new DerivedHistoIterator("DerivedHistoIterator",derivedHistoConfig,selectedLevel);
     }
 
-  if (runSumOfBasicHistos)
+  if (runBasicSubsampleAnalysis)
     {
     TString s("Sum_");
-    Configuration sumOfBasicHistosConfig("Event Iterator Configuration");
-    sumOfBasicHistosConfig.addParameter("forceHistogramsRewrite",forceHistogramsRewrite);
-    sumOfBasicHistosConfig.addParameter("appendedString",        sumLabel);
-    sumOfBasicHistosConfig.addParameter("IncludedPattern0",      histoModelDataName);
-    sumOfBasicHistosConfig.addParameter("ExcludedPattern0",      sumLabel);
-    sumOfBasicHistosConfig.addParameter("ExcludedPattern1",      derivedLabel);
-    sumOfBasicHistosConfig.addParameter("ExcludedPattern2",      balFctLabel);
-    sumOfBasicHistosConfig.addParameter("histoInputPath",        outputPathName);
-    sumOfBasicHistosConfig.addParameter("histoOutputPath",       outputPathName);
-    sumOfBasicHistosConfig.addParameter("histoModelDataName",    histoModelDataName);
-    sumOfBasicHistos = new SubSampleStatIterator("SumOfBasicHistos",sumOfBasicHistosConfig,selectedLevel);
+    Configuration config("Event Iterator Configuration");
+    config.addParameter("forceHistogramsRewrite",forceHistogramsRewrite);
+    config.addParameter("appendedString",        sumLabel);
+    config.addParameter("IncludedPattern0",      histoModelDataName);
+    config.addParameter("ExcludedPattern0",      sumLabel);
+    config.addParameter("ExcludedPattern1",      derivedLabel);
+    config.addParameter("ExcludedPattern2",      balFctLabel);
+    config.addParameter("histoInputPath",        outputPathName);
+    config.addParameter("histoOutputPath",       outputPathName);
+    config.addParameter("histoModelDataName",    histoModelDataName);
+    basicSubsampleIterator = new SubSampleStatIterator("SubsampleBasicHistos",config,selectedLevel);
     }
 
-  if (runSumOfDerivedHistos)
+  if (runDerivedSubsampleAnalysis)
     {
-    Configuration sumOfDerivedHistosConfig("Event Iterator Configuration");
-    sumOfDerivedHistosConfig.addParameter( "forceHistogramsRewrite",forceHistogramsRewrite);
-    sumOfDerivedHistosConfig.addParameter( "appendedString",        derivedLabel+sumLabel);
-    sumOfDerivedHistosConfig.addParameter( "IncludedPattern0",      histoModelDataName);
-    sumOfDerivedHistosConfig.addParameter( "IncludedPattern1",      derivedLabel);
-    sumOfDerivedHistosConfig.addParameter( "ExcludedPattern0",      balFctLabel);
-    sumOfDerivedHistosConfig.addParameter( "histoInputPath",        outputPathName);
-    sumOfDerivedHistosConfig.addParameter( "histoOutputPath",       outputPathName);
-    sumOfDerivedHistosConfig.addParameter( "histoModelDataName",    histoModelDataName);
-    sumOfDerivedHistos = new SubSampleStatIterator("SumOfBasicHistos",sumOfDerivedHistosConfig,selectedLevel);
+    Configuration config("Event Iterator Configuration");
+    config.addParameter( "forceHistogramsRewrite",forceHistogramsRewrite);
+    config.addParameter( "appendedString",        derivedLabel+sumLabel);
+    config.addParameter( "IncludedPattern0",      histoModelDataName);
+    config.addParameter( "IncludedPattern1",      derivedLabel);
+    config.addParameter( "ExcludedPattern0",      balFctLabel);
+    config.addParameter( "histoInputPath",        outputPathName);
+    config.addParameter( "histoOutputPath",       outputPathName);
+    config.addParameter( "histoModelDataName",    histoModelDataName);
+    derivedSubsampleIterator = new SubSampleStatIterator("SubsampleBasicHistos",config,selectedLevel);
     }
 
-  if (runSumOfBalFctCalculation)
+  if (runBalFctSubsampleAnalysis)
     {
-    cout << "runSumOfBalFctCalculation" << endl;
-    Configuration sumOfBalFctConfig("BalFct Calculation Configuration");
-    sumOfBalFctConfig.addParameter( "forceHistogramsRewrite",forceHistogramsRewrite);
-    sumOfBalFctConfig.addParameter( "appendedString",        derivedLabel+balFctLabel+sumLabel);
-    sumOfBalFctConfig.addParameter( "IncludedPattern0",      histoModelDataName);
-    sumOfBalFctConfig.addParameter( "IncludedPattern1",      derivedLabel);
-    sumOfBalFctConfig.addParameter( "IncludedPattern2",      balFctLabel);
-    sumOfBalFctConfig.addParameter( "histoInputPath",        outputPathName);
-    sumOfBalFctConfig.addParameter( "histoOutputPath",       outputPathName);
-    sumOfBalFctConfig.addParameter( "histoModelDataName",    histoModelDataName);
-    sumOfBalFctHistos = new SubSampleStatIterator("sumOfBalFctHistos",sumOfBalFctConfig,selectedLevel);
+    cout << "runBalFctSubsampleAnalysis" << endl;
+    Configuration config("BalFct Calculation Configuration");
+    config.addParameter( "forceHistogramsRewrite",forceHistogramsRewrite);
+    config.addParameter( "appendedString",        derivedLabel+balFctLabel+sumLabel);
+    config.addParameter( "IncludedPattern0",      histoModelDataName);
+    config.addParameter( "IncludedPattern1",      derivedLabel);
+    config.addParameter( "IncludedPattern2",      balFctLabel);
+    config.addParameter( "histoInputPath",        outputPathName);
+    config.addParameter( "histoOutputPath",       outputPathName);
+    config.addParameter( "histoModelDataName",    histoModelDataName);
+    balFctSubsampleIterator = new SubSampleStatIterator("balFctSubsampleIterator",config,selectedLevel);
     }
 
-  if (runClosureAnalysis)
+
+  if (runClosureAnalysis && runBasicClosureAnalysis)
     {
     cout << "runClosureAnalysis" << endl;
-    Configuration closureConfig("Basic Closure Analysis Configuration");
-    closureConfig.addParameter("forceHistogramsRewrite",  forceHistogramsRewrite);
-    closureConfig.addParameter("selectedMethod",          1);
-    closureConfig.addParameter("histoInputPath",          outputPathName);
-    closureConfig.addParameter("histoOutputPath",         outputPathName);
-    closureConfig.addParameter("ExcludedPattern0",        derivedLabel);
-    closureConfig.addParameter("ExcludedPattern1",        balFctLabel);
-    closureConfig.addParameter("ExcludedPattern2",        closureLabel);
-    basicClosureIterator = new ClosureTest("BasicClosureAnalysis", closureConfig,infoLevel);
+    Configuration config("Basic Closure Analysis Configuration");
+    config.addParameter("forceHistogramsRewrite",  forceHistogramsRewrite);
+    config.addParameter("selectedMethod",          1);
+    config.addParameter("histoInputPath",          outputPathName);
+    config.addParameter("histoOutputPath",         outputPathName);
+    config.addParameter("ExcludedPattern0",        derivedLabel);
+    config.addParameter("ExcludedPattern1",        balFctLabel);
+    config.addParameter("ExcludedPattern2",        closureLabel);
+    basicClosureIterator = new ClosureIterator("BasicClosureAnalysis", config,infoLevel);
     }
-
-  if (runClosureAnalysis && runDerivedHistoCalculation)
+  if (runClosureAnalysis && runDerivedClosureAnalysis)
     {
     cout << "runDerivedHistoCalculation" << endl;
-    Configuration closureConfig("Derived Closure Analysis Configuration");
-    closureConfig.addParameter("forceHistogramsRewrite",  forceHistogramsRewrite);
-    closureConfig.addParameter("selectedMethod",          1);
-    closureConfig.addParameter("histoInputPath",          outputPathName);
-    closureConfig.addParameter("histoOutputPath",         outputPathName);
-    closureConfig.addParameter("IncludedPattern0",        derivedLabel);
-    closureConfig.addParameter("ExcludedPattern0",        balFctLabel);
-    closureConfig.addParameter("ExcludedPattern1",        closureLabel);
-    derivedClosureIterator = new ClosureTest("DerivedClosureAnalysis", closureConfig,infoLevel);
+    Configuration config("Derived Closure Analysis Configuration");
+    config.addParameter("forceHistogramsRewrite",  forceHistogramsRewrite);
+    config.addParameter("selectedMethod",          1);
+    config.addParameter("histoInputPath",          outputPathName);
+    config.addParameter("histoOutputPath",         outputPathName);
+    config.addParameter("IncludedPattern0",        derivedLabel);
+    config.addParameter("ExcludedPattern0",        balFctLabel);
+    config.addParameter("ExcludedPattern1",        closureLabel);
+    derivedClosureIterator = new ClosureIterator("DerivedClosureAnalysis", config,infoLevel);
     }
-
-  if (runClosureAnalysis && runBalFctCalculation)
+  if (runClosureAnalysis && runBalFctClosureAnalysis)
     {
     cout << "runDerivedHistoCalculation" << endl;
-    Configuration closureConfig("Derived Closure Analysis Configuration");
-    closureConfig.addParameter("forceHistogramsRewrite",  forceHistogramsRewrite);
-    closureConfig.addParameter("selectedMethod",          1);
-    closureConfig.addParameter("histoInputPath",          outputPathName);
-    closureConfig.addParameter("histoOutputPath",         outputPathName);
-    closureConfig.addParameter("IncludedPattern0",        derivedLabel);
-    closureConfig.addParameter("ExcludedPattern0",        balFctLabel);
-    closureConfig.addParameter("ExcludedPattern1",        closureLabel);
-    derivedClosureIterator = new ClosureTest("BalFctClosureAnalysis", closureConfig,infoLevel);
+    Configuration config("Derived Closure Analysis Configuration");
+    config.addParameter("forceHistogramsRewrite",  forceHistogramsRewrite);
+    config.addParameter("selectedMethod",          1);
+    config.addParameter("histoInputPath",          outputPathName);
+    config.addParameter("histoOutputPath",         outputPathName);
+    config.addParameter("IncludedPattern0",        derivedLabel);
+    config.addParameter("ExcludedPattern0",        balFctLabel);
+    config.addParameter("ExcludedPattern1",        closureLabel);
+    balFctClosureIterator = new ClosureIterator("BalFctClosureAnalysis", config,infoLevel);
     }
 
-
-
-  ClosureIterator           * ;
-  ClosureIterator           * balFctClosureIterator;
 
   if (runPerformAnalysis)
     {
     Configuration performAnaConfig("Performance Analyzer Configuration");
     performAnaConfig.addParameter("forceHistogramsRewrite",  forceHistogramsRewrite);
-    performAnaConfig.addParameter("doSubsampleAnalysis",     doSubsampleAnalysis);
+    performAnaConfig.addParameter("runSubsampleAnalysis",    runSubsampleAnalysis);
     performAnaConfig.addParameter("doPartialSaves",          doPartialSaves);
     performAnaConfig.addParameter("scaleHistograms",         scaleHistograms);
     performAnaConfig.addParameter("histoOutputPath",         outputPathName);
@@ -593,51 +585,51 @@ int RunAnalysis()
     performAnaEventFilters.push_back( openEventFilter);
     performAnaParticleFilters.push_back( openParticleFilter  );
     task = new ParticlePerformanceAnalyzer(simAnaLabel,performAnaConfig,performAnaEventFilters,performAnaParticleFilters,selectedLevel);
-    if (runEventAnalysis)    eventAnalysis->addSubTask( task  );
-    if (runSumOfBasicHistos) sumOfBasicHistos->addSubTask( task );
-    if (runDerivedHistoCalculation) derivedHistoCalculation->addSubTask(task);
-    if (runSumOfDerivedHistos) sumOfDerivedHistos->addSubTask( task );
+    if (runEventAnalysis)    eventAnalysis->addSubTask(task);
+    if (runBasicSubsampleAnalysis) basicSubsampleIterator->addSubTask(task);
+    if (runDerivedHistoCalculation) derivedHistoIterator->addSubTask(task);
+    if (runDerivedSubsampleAnalysis) derivedSubsampleIterator->addSubTask(task);
     }
 
   if (runGlobalAnalysis)
     {
-    Configuration globalConfig("Global Configuration");
-    globalConfig.addParameter("useEventStream0",         YES);
-    globalConfig.addParameter("useEventStream1",         NO);
-    globalConfig.addParameter("forceHistogramsRewrite",  forceHistogramsRewrite);
-    globalConfig.addParameter("doSubsampleAnalysis",     doSubsampleAnalysis);
-    globalConfig.addParameter("doPartialSaves",          doPartialSaves);
-    globalConfig.addParameter("scaleHistograms",         scaleHistograms);
-    globalConfig.addParameter("histoOutputPath",         outputPathName);
-    globalConfig.addParameter("histoModelDataName",      histoModelDataName);
-    globalConfig.addParameter("histoAnalyzerName",       globalLabel);
-    globalConfig.addParameter("histoBaseName",           globalLabel);
-    globalConfig.addParameter("fillCorrelationHistos",   NO);
-    globalConfig.addParameter("fill2D",                  YES);
-    globalConfig.addParameter("nBins_n",        100);
-    globalConfig.addParameter("nBins_n2",       100);
-    globalConfig.addParameter("min_n",         -0.5);
-    globalConfig.addParameter("max_n",         99.5);
-    globalConfig.addParameter("nBins_e",        200);
-    globalConfig.addParameter("nBins_e2",        20);
-    globalConfig.addParameter("min_e",          0.0);
-    globalConfig.addParameter("max_e",       1000.0);
-    globalConfig.addParameter("nBins_q",        201);
-    globalConfig.addParameter("nBins_q2",        20);
-    globalConfig.addParameter("min_q",       -100.5);
-    globalConfig.addParameter("max_q",        100.5);
-    globalConfig.addParameter("nBins_b",        41);
-    globalConfig.addParameter("nBins_b2",       41);
-    globalConfig.addParameter("min_b",        -20.5);
-    globalConfig.addParameter("max_b",         20.5);
-    globalConfig.addParameter("nBins_ptSum",  100);
-    globalConfig.addParameter("nBins_ptSum2", 100);
-    globalConfig.addParameter("min_ptSum",    0.0);
-    globalConfig.addParameter("max_ptSum",  100.0);
-    globalConfig.addParameter("nBins_ptAvg",  100);
-    globalConfig.addParameter("nBins_ptAvg2", 100);
-    globalConfig.addParameter("min_ptAvg",    0.0);
-    globalConfig.addParameter("max_ptAvg",    4.0);
+    Configuration config("Global Configuration");
+    config.addParameter("useEventStream0",         YES);
+    config.addParameter("useEventStream1",         NO);
+    config.addParameter("forceHistogramsRewrite",  forceHistogramsRewrite);
+    config.addParameter("runSubsampleAnalysis",    runSubsampleAnalysis);
+    config.addParameter("doPartialSaves",          doPartialSaves);
+    config.addParameter("scaleHistograms",         scaleHistograms);
+    config.addParameter("histoOutputPath",         outputPathName);
+    config.addParameter("histoModelDataName",      histoModelDataName);
+    config.addParameter("histoAnalyzerName",       globalLabel);
+    config.addParameter("histoBaseName",           globalLabel);
+    config.addParameter("fillCorrelationHistos",   NO);
+    config.addParameter("fill2D",                  YES);
+    config.addParameter("nBins_n",        100);
+    config.addParameter("nBins_n2",       100);
+    config.addParameter("min_n",         -0.5);
+    config.addParameter("max_n",         99.5);
+    config.addParameter("nBins_e",        200);
+    config.addParameter("nBins_e2",        20);
+    config.addParameter("min_e",          0.0);
+    config.addParameter("max_e",       1000.0);
+    config.addParameter("nBins_q",        201);
+    config.addParameter("nBins_q2",        20);
+    config.addParameter("min_q",       -100.5);
+    config.addParameter("max_q",        100.5);
+    config.addParameter("nBins_b",        41);
+    config.addParameter("nBins_b2",       41);
+    config.addParameter("min_b",        -20.5);
+    config.addParameter("max_b",         20.5);
+    config.addParameter("nBins_ptSum",  100);
+    config.addParameter("nBins_ptSum2", 100);
+    config.addParameter("min_ptSum",    0.0);
+    config.addParameter("max_ptSum",  100.0);
+    config.addParameter("nBins_ptAvg",  100);
+    config.addParameter("nBins_ptAvg2", 100);
+    config.addParameter("min_ptAvg",    0.0);
+    config.addParameter("max_ptAvg",    4.0);
 
     vector<EventFilter*>     globalEventFilters;
     vector<ParticleFilter*>  globalParticleFilters ;
@@ -654,50 +646,56 @@ int RunAnalysis()
         globalParticleFilters.push_back( aliceTpcParticleFilter  );
         break;
       }
-    if (doGenLevelAnalysis)
+
+    if (runGenLevelAnalysis)
       {
-      task = new GlobalAnalyzer(globalLabel,globalConfig,globalEventFilters,globalParticleFilters,selectedLevel);
-      if (runEventAnalysis)    eventAnalysis->addSubTask( task  );
-      if (runSumOfBasicHistos) sumOfBasicHistos->addSubTask( task );
-      if (runDerivedHistoCalculation) derivedHistoCalculation->addSubTask(task);
-      if (runSumOfDerivedHistos) sumOfDerivedHistos->addSubTask( task );
+      task = new GlobalAnalyzer(globalLabel,config,globalEventFilters,globalParticleFilters,selectedLevel);
+      if (runEventAnalysis)            eventAnalysis->addSubTask(task);
+      if (runBasicSubsampleAnalysis)   basicSubsampleIterator->addSubTask(task);
+      if (runDerivedHistoCalculation)  derivedHistoIterator->addSubTask(task);
+      if (runDerivedSubsampleAnalysis) derivedSubsampleIterator->addSubTask(task);
+      if (runClosureAnalysis && runBasicClosureAnalysis)     basicClosureIterator->addSubTask(task);
+      if (runClosureAnalysis && runDerivedClosureAnalysis)   derivedClosureIterator->addSubTask(task);
+      if (runClosureAnalysis && runBalFctClosureAnalysis)    balFctClosureIterator->addSubTask(task);
       }
-    if (doRecoLevelAnalysis)
+    if (runRecoLevelAnalysis)
       {
-      Configuration globalConfigReco(globalConfig);
-      globalConfigReco.addParameter("useEventStream0",  NO);
-      globalConfigReco.addParameter("useEventStream1",  YES);
-      globalConfigReco.addParameter("histoBaseName",    globalLabel+"R");
-      task = new GlobalAnalyzer(globalLabel+"R",globalConfigReco,globalEventFilters,globalParticleFilters,selectedLevel);
-      if (runEventAnalysis)    eventAnalysis->addSubTask( task  );
-      if (runSumOfBasicHistos) sumOfBasicHistos->addSubTask( task );
-      if (runDerivedHistoCalculation) derivedHistoCalculation->addSubTask(task);
-      if (runSumOfDerivedHistos) sumOfDerivedHistos->addSubTask( task );
+      Configuration configR(config);
+      configR.addParameter("useEventStream0",   NO);
+      configR.addParameter("useEventStream1",   YES);
+      configR.addParameter("histoAnalyzerName", globalLabel+"R");
+      configR.addParameter("histoBaseName",     globalLabel+"R");
+      task = new GlobalAnalyzer(globalLabel+"R",config,globalEventFilters,globalParticleFilters,selectedLevel);
+      if (runEventAnalysis)            eventAnalysis->addSubTask(task);
+      if (runBasicSubsampleAnalysis)   basicSubsampleIterator->addSubTask(task);
+      if (runDerivedHistoCalculation)  derivedHistoIterator->addSubTask(task);
+      if (runDerivedSubsampleAnalysis) derivedSubsampleIterator->addSubTask(task);
       }
+
     }
 
   if (runSpherocityAnalysis)
     {
-    Configuration spherocityConfig("Global Configuration");
-    spherocityConfig.addParameter("useEventStream0",       YES);
-    spherocityConfig.addParameter("forceHistogramsRewrite",forceHistogramsRewrite);
-    spherocityConfig.addParameter("doSubsampleAnalysis",   doSubsampleAnalysis);
-    spherocityConfig.addParameter("doPartialSaves",        doPartialSaves);
-    spherocityConfig.addParameter("scaleHistograms",       scaleHistograms);
-    spherocityConfig.addParameter("histoOutputPath",       outputPathName);
-    spherocityConfig.addParameter("histoOutputFileName",   outputFileNameBase+spherocityLabel);
-    spherocityConfig.addParameter("histoModelDataName",     histoModelDataName);
-    spherocityConfig.addParameter("histoAnalyzerName", spherocityLabel);
-    spherocityConfig.addParameter("histoBaseName",           spherocityLabel);
-    spherocityConfig.addParameter("setEvent",              NO);
-    spherocityConfig.addParameter("fillCorrelationHistos", YES);
-    spherocityConfig.addParameter("nSteps", 360);
-    spherocityConfig.addParameter("fillS0", YES);
-    spherocityConfig.addParameter("fillS1", NO);
-    spherocityConfig.addParameter("fillS1VsS0",NO);
-    spherocityConfig.addParameter("nBins_spherocity", 100);
-    spherocityConfig.addParameter("min_spherocity",   0.0);
-    spherocityConfig.addParameter("max_spherocity",   1.0);
+    Configuration config("Global Configuration");
+    config.addParameter("useEventStream0",        YES);
+    config.addParameter("forceHistogramsRewrite", forceHistogramsRewrite);
+    config.addParameter("runSubsampleAnalysis",   runSubsampleAnalysis);
+    config.addParameter("doPartialSaves",         doPartialSaves);
+    config.addParameter("scaleHistograms",        scaleHistograms);
+    config.addParameter("histoOutputPath",        outputPathName);
+    config.addParameter("histoOutputFileName",    outputFileNameBase+spherocityLabel);
+    config.addParameter("histoModelDataName",     histoModelDataName);
+    config.addParameter("histoAnalyzerName",      spherocityLabel);
+    config.addParameter("histoBaseName",          spherocityLabel);
+    config.addParameter("setEvent",               NO);
+    config.addParameter("fillCorrelationHistos",  YES);
+    config.addParameter("nSteps",                 360);
+    config.addParameter("fillS0",                 YES);
+    config.addParameter("fillS1",                 NO);
+    config.addParameter("fillS1VsS0",             NO);
+    config.addParameter("nBins_spherocity",       100);
+    config.addParameter("min_spherocity",         0.0);
+    config.addParameter("max_spherocity",         1.0);
     vector<EventFilter*>     spherocityEventFilters;
     vector<ParticleFilter*>  spherocityParticleFilters ;
     switch (globalEventFilterOptions)
@@ -715,177 +713,189 @@ int RunAnalysis()
         spherocityParticleFilters.push_back( chargedParticleFilter );
         break;
       }
-    if (doGenLevelAnalysis)
+    if (runGenLevelAnalysis)
       {
-      task = new TransverseSpherocityAnalyzer(spherocityLabel,spherocityConfig,spherocityEventFilters,spherocityParticleFilters,selectedLevel);
-      if (runEventAnalysis)           eventAnalysis->addSubTask( task  );
-      if (runSumOfBasicHistos)        sumOfBasicHistos->addSubTask( task );
-      if (runDerivedHistoCalculation) derivedHistoCalculation->addSubTask(task);
-      if (runSumOfDerivedHistos)      sumOfDerivedHistos->addSubTask( task );
+      task = new TransverseSpherocityAnalyzer(spherocityLabel,config,spherocityEventFilters,spherocityParticleFilters,selectedLevel);
+      if (runEventAnalysis)            eventAnalysis->addSubTask(task);
+      if (runBasicSubsampleAnalysis)   basicSubsampleIterator->addSubTask(task);
+      if (runDerivedHistoCalculation)  derivedHistoIterator->addSubTask(task);
+      if (runDerivedSubsampleAnalysis) derivedSubsampleIterator->addSubTask(task);
+      if (runClosureAnalysis && runBasicClosureAnalysis)     basicClosureIterator->addSubTask(task);
+      if (runClosureAnalysis && runDerivedClosureAnalysis)   derivedClosureIterator->addSubTask(task);
+      if (runClosureAnalysis && runBalFctClosureAnalysis)    balFctClosureIterator->addSubTask(task);
       }
-    if (doRecoLevelAnalysis)
+    if (runRecoLevelAnalysis)
       {
-      Configuration spherocityConfigReco(spherocityConfig);
-      spherocityConfigReco.addParameter("useEventStream0",  NO);
-      spherocityConfigReco.addParameter("useEventStream1", YES);
-      spherocityConfigReco.addParameter("histoAnalyzerName", spherocityLabel);
-      spherocityConfigReco.addParameter("histoBaseName",           spherocityLabel);
-      task = new TransverseSpherocityAnalyzer(spherocityLabel+"R",spherocityConfigReco,spherocityEventFilters,spherocityParticleFilters,selectedLevel);
-      if (runEventAnalysis)           eventAnalysis->addSubTask( task  );
-      if (runSumOfBasicHistos)        sumOfBasicHistos->addSubTask( task );
-      if (runDerivedHistoCalculation) derivedHistoCalculation->addSubTask(task);
-      if (runSumOfDerivedHistos)        sumOfDerivedHistos->addSubTask( task );
+      Configuration configR(config);
+      configR.addParameter("useEventStream0",   NO);
+      configR.addParameter("useEventStream1",   YES);
+      configR.addParameter("histoAnalyzerName", spherocityLabel);
+      configR.addParameter("histoBaseName",     spherocityLabel);
+      task = new TransverseSpherocityAnalyzer(spherocityLabel+"R",config,spherocityEventFilters,spherocityParticleFilters,selectedLevel);
+      if (runEventAnalysis)            eventAnalysis->addSubTask(task);
+      if (runBasicSubsampleAnalysis)   basicSubsampleIterator->addSubTask(task);
+      if (runDerivedHistoCalculation)  derivedHistoIterator->addSubTask(task);
+      if (runDerivedSubsampleAnalysis) derivedSubsampleIterator->addSubTask(task);
       }
     }
 
   if (runPartAnalysis)
     {
-    Configuration partConfig("Part Spectra Configuration");
-    partConfig.addParameter("useEventStream0",         YES);
-    partConfig.addParameter("useEventStream1",         NO);
-    partConfig.addParameter("forceHistogramsRewrite",  forceHistogramsRewrite);
-    partConfig.addParameter("doSubsampleAnalysis",     doSubsampleAnalysis);
-    partConfig.addParameter("doPartialSaves",          doPartialSaves);
-    partConfig.addParameter("scaleHistograms",         scaleHistograms);
-    partConfig.addParameter("histoOutputPath",         outputPathName);
-    partConfig.addParameter("histoModelDataName",      histoModelDataName);
-    partConfig.addParameter("histoAnalyzerName",       partLabel);
-    partConfig.addParameter("histoBaseName",           partLabel);
-    partConfig.addParameter("nBins_n1",  100);
-    partConfig.addParameter("min_n1",    0.0);
-    partConfig.addParameter("max_n1",  100.0);
-    partConfig.addParameter("nBins_eTot",  100);
-    partConfig.addParameter("min_eTot",    0.0);
-    partConfig.addParameter("max_eTot",  100.0);
-    partConfig.addParameter("nBins_pt",  1000);
-    partConfig.addParameter("min_pt",    0.0);
-    partConfig.addParameter("max_pt",  100.0);
-    partConfig.addParameter("nBins_eta",  80);
-    partConfig.addParameter("min_eta",   -4.0);
-    partConfig.addParameter("max_eta",    4.0);
-    partConfig.addParameter("nBins_phi",  72);
-    partConfig.addParameter("min_phi",    0.0);
-    partConfig.addParameter("max_phi",    TMath::TwoPi());
-    partConfig.addParameter("fillEta",    fillEta);
-    partConfig.addParameter("fillY",      fillY);
-    partConfig.addParameter("fillP2",     NO);
+    Configuration config("Part Spectra Configuration");
+    config.addParameter("useEventStream0",         YES);
+    config.addParameter("useEventStream1",         NO);
+    config.addParameter("forceHistogramsRewrite",  forceHistogramsRewrite);
+    config.addParameter("runSubsampleAnalysis",     runSubsampleAnalysis);
+    config.addParameter("doPartialSaves",          doPartialSaves);
+    config.addParameter("scaleHistograms",         scaleHistograms);
+    config.addParameter("histoOutputPath",         outputPathName);
+    config.addParameter("histoModelDataName",      histoModelDataName);
+    config.addParameter("histoAnalyzerName",       partLabel);
+    config.addParameter("histoBaseName",           partLabel);
+    config.addParameter("nBins_n1",  100);
+    config.addParameter("min_n1",    0.0);
+    config.addParameter("max_n1",  100.0);
+    config.addParameter("nBins_eTot",  100);
+    config.addParameter("min_eTot",    0.0);
+    config.addParameter("max_eTot",  100.0);
+    config.addParameter("nBins_pt",  1000);
+    config.addParameter("min_pt",    0.0);
+    config.addParameter("max_pt",  100.0);
+    config.addParameter("nBins_eta",  80);
+    config.addParameter("min_eta",   -4.0);
+    config.addParameter("max_eta",    4.0);
+    config.addParameter("nBins_phi",  72);
+    config.addParameter("min_phi",    0.0);
+    config.addParameter("max_phi",    TMath::TwoPi());
+    config.addParameter("fillEta",    fillEta);
+    config.addParameter("fillY",      fillY);
+    config.addParameter("fillP2",     NO);
 
-    if (doGenLevelAnalysis)
+    if (runGenLevelAnalysis)
       {
-      task = new ParticleAnalyzer(partLabel,partConfig,analysisEventFilters,analysisParticleFilters,selectedLevel);
-      if (runEventAnalysis)           eventAnalysis->addSubTask( task  );
-      if (runSumOfBasicHistos)        sumOfBasicHistos->addSubTask( task );
-      if (runDerivedHistoCalculation) derivedHistoCalculation->addSubTask(task);
-      if (runSumOfDerivedHistos)      sumOfDerivedHistos->addSubTask( task );
+      task = new ParticleAnalyzer(partLabel,config,analysisEventFilters,analysisParticleFilters,selectedLevel);
+      if (runEventAnalysis)            eventAnalysis->addSubTask(task);
+      if (runBasicSubsampleAnalysis)   basicSubsampleIterator->addSubTask(task);
+      if (runDerivedHistoCalculation)  derivedHistoIterator->addSubTask(task);
+      if (runDerivedSubsampleAnalysis) derivedSubsampleIterator->addSubTask(task);
+      if (runClosureAnalysis && runBasicClosureAnalysis)     basicClosureIterator->addSubTask(task);
+      if (runClosureAnalysis && runDerivedClosureAnalysis)   derivedClosureIterator->addSubTask(task);
+      if (runClosureAnalysis && runBalFctClosureAnalysis)    balFctClosureIterator->addSubTask(task);
       }
-    if (doRecoLevelAnalysis)
+    if (runRecoLevelAnalysis)
       {
-      Configuration partConfigReco(partConfig);
-      partConfigReco.addParameter("useEventStream0",  NO);
-      partConfigReco.addParameter("useEventStream1", YES);
-      partConfigReco.addParameter("histoAnalyzerName", partLabel+"R");
-      partConfigReco.addParameter("histoBaseName",           partLabel+"R");
-      task = new ParticleAnalyzer(partLabel+"R",partConfigReco,analysisEventFilters,analysisParticleFilters,selectedLevel);
-      if (runEventAnalysis)           eventAnalysis->addSubTask( task  );
-      if (runSumOfBasicHistos)        sumOfBasicHistos->addSubTask( task );
-      if (runDerivedHistoCalculation) derivedHistoCalculation->addSubTask(task);
-      if (runSumOfDerivedHistos)      sumOfDerivedHistos->addSubTask( task );
+      Configuration configR(config);
+      configR.addParameter("useEventStream0",   NO);
+      configR.addParameter("useEventStream1",   YES);
+      configR.addParameter("histoAnalyzerName", partLabel+"R");
+      configR.addParameter("histoBaseName",     partLabel+"R");
+      task = new ParticleAnalyzer(partLabel+"R",configR,analysisEventFilters,analysisParticleFilters,selectedLevel);
+      if (runEventAnalysis)            eventAnalysis->addSubTask(task);
+      if (runBasicSubsampleAnalysis)   basicSubsampleIterator->addSubTask(task);
+      if (runDerivedHistoCalculation)  derivedHistoIterator->addSubTask(task);
+      if (runDerivedSubsampleAnalysis) derivedSubsampleIterator->addSubTask(task);
       }
     }
 
   if (runPairAnalysis)
     {
-    Configuration pairConfig("Pair Correlation Configuration");
-    pairConfig.addParameter("useEventStream0",         YES);
-    pairConfig.addParameter("useEventStream1",         NO);
-    pairConfig.addParameter("forceHistogramsRewrite",  forceHistogramsRewrite);
-    pairConfig.addParameter("doSubsampleAnalysis",     doSubsampleAnalysis);
-    pairConfig.addParameter("doPartialSaves",          doPartialSaves);
-    pairConfig.addParameter("scaleHistograms",         scaleHistograms);
-    pairConfig.addParameter("histoOutputPath",         outputPathName);
-    pairConfig.addParameter("histoModelDataName",      histoModelDataName);
-    pairConfig.addParameter("histoAnalyzerName",       pairLabel);
-    pairConfig.addParameter("histoBaseName",           pairLabel);
-    pairConfig.addParameter("nBins_n1",       100);
-    pairConfig.addParameter("min_n1",         0.0);
-    pairConfig.addParameter("max_n1",       100.0);
-    pairConfig.addParameter("nBins_n2",       100);
-    pairConfig.addParameter("min_n2",         0.0);
-    pairConfig.addParameter("max_n2",       400.0);
-    pairConfig.addParameter("nBins_pt",        40);
-    pairConfig.addParameter("min_pt",        0.00);
-    pairConfig.addParameter("max_pt",        20.0);
-    pairConfig.addParameter("nBins_eta",       40);
-    pairConfig.addParameter("min_eta",       -2.0); // 1;
-    pairConfig.addParameter("max_eta",        2.0);  // 1;
-    pairConfig.addParameter("nBins_phi",       72);
-    pairConfig.addParameter("min_phi",        0.0);
-    pairConfig.addParameter("max_phi",      TMath::TwoPi());
-    pairConfig.addParameter("fillEta",      fillEta);
-    pairConfig.addParameter("fillY",        fillY);
-    pairConfig.addParameter("fillP2",       NO);
+    Configuration config("Pair Correlation Configuration");
+    config.addParameter("useEventStream0",         YES);
+    config.addParameter("useEventStream1",         NO);
+    config.addParameter("forceHistogramsRewrite",  forceHistogramsRewrite);
+    config.addParameter("runSubsampleAnalysis",     runSubsampleAnalysis);
+    config.addParameter("doPartialSaves",          doPartialSaves);
+    config.addParameter("scaleHistograms",         scaleHistograms);
+    config.addParameter("histoOutputPath",         outputPathName);
+    config.addParameter("histoModelDataName",      histoModelDataName);
+    config.addParameter("histoAnalyzerName",       pairLabel);
+    config.addParameter("histoBaseName",           pairLabel);
+    config.addParameter("nBins_n1",       100);
+    config.addParameter("min_n1",         0.0);
+    config.addParameter("max_n1",       100.0);
+    config.addParameter("nBins_n2",       100);
+    config.addParameter("min_n2",         0.0);
+    config.addParameter("max_n2",       400.0);
+    config.addParameter("nBins_pt",        40);
+    config.addParameter("min_pt",        0.00);
+    config.addParameter("max_pt",        20.0);
+    config.addParameter("nBins_eta",       40);
+    config.addParameter("min_eta",       -2.0); // 1;
+    config.addParameter("max_eta",        2.0);  // 1;
+    config.addParameter("nBins_phi",       72);
+    config.addParameter("min_phi",        0.0);
+    config.addParameter("max_phi",      TMath::TwoPi());
+    config.addParameter("fillEta",      fillEta);
+    config.addParameter("fillY",        fillY);
+    config.addParameter("fillP2",       NO);
 
-    if (doGenLevelAnalysis)
+    if (runGenLevelAnalysis)
       {
-      task = new ParticlePairAnalyzer(pairLabel, pairConfig,analysisEventFilters, analysisParticleFilters,selectedLevel);
-      if (runEventAnalysis)           eventAnalysis->addSubTask( task  );
-      if (runSumOfBasicHistos)        sumOfBasicHistos->addSubTask( task );
-      if (runDerivedHistoCalculation) derivedHistoCalculation->addSubTask(task);
-      if (runSumOfDerivedHistos)      sumOfDerivedHistos->addSubTask( task );
-      if (runSumOfBalFctCalculation)  sumOfBalFctHistos->addSubTask( task );
+      task = new ParticlePairAnalyzer(pairLabel, config,analysisEventFilters, analysisParticleFilters,selectedLevel);
+      if (runEventAnalysis)            eventAnalysis->addSubTask(task);
+      if (runBasicSubsampleAnalysis)   basicSubsampleIterator->addSubTask(task);
+      if (runDerivedHistoCalculation)  derivedHistoIterator->addSubTask(task);
+      if (runDerivedSubsampleAnalysis) derivedSubsampleIterator->addSubTask(task);
+      if (runClosureAnalysis && runBasicClosureAnalysis)     basicClosureIterator->addSubTask(task);
+      if (runClosureAnalysis && runDerivedClosureAnalysis)   derivedClosureIterator->addSubTask(task);
+      if (runClosureAnalysis && runBalFctClosureAnalysis)    balFctClosureIterator->addSubTask(task);
       }
-    if (doRecoLevelAnalysis)
+    if (runRecoLevelAnalysis)
       {
-      Configuration pairConfigReco(pairConfig);
-      pairConfigReco.addParameter("useEventStream0",  NO);
-      pairConfigReco.addParameter("useEventStream1", YES);
-      pairConfigReco.addParameter("histoAnalyzerName", pairLabel+"R");
-      pairConfigReco.addParameter("histoBaseName",           pairLabel+"R");
-      task = new ParticlePairAnalyzer(pairLabel+"R", pairConfigReco,analysisEventFilters, analysisParticleFilters,selectedLevel);
-      if (runEventAnalysis)           eventAnalysis->addSubTask( task  );
-      if (runSumOfBasicHistos)        sumOfBasicHistos->addSubTask( task );
-      if (runDerivedHistoCalculation) derivedHistoCalculation->addSubTask(task);
-      if (runSumOfDerivedHistos)      sumOfDerivedHistos->addSubTask( task );      }
+      Configuration configR(config);
+      configR.addParameter("useEventStream0",   NO);
+      configR.addParameter("useEventStream1",   YES);
+      configR.addParameter("histoAnalyzerName", pairLabel+"R");
+      configR.addParameter("histoBaseName",     pairLabel+"R");
+      task = new ParticlePairAnalyzer(pairLabel+"R", configR,analysisEventFilters, analysisParticleFilters,selectedLevel);
+      if (runEventAnalysis)            eventAnalysis->addSubTask(task);
+      if (runBasicSubsampleAnalysis)   basicSubsampleIterator->addSubTask(task);
+      if (runDerivedHistoCalculation)  derivedHistoIterator->addSubTask(task);
+      if (runDerivedSubsampleAnalysis) derivedSubsampleIterator->addSubTask(task);
+      }
     }
-
   if (runNuDynAnalysis)
     {
-    Configuration nuDynConfig("NuDyn Correlation Configuration");
-    nuDynConfig.addParameter("useEventStream0",         YES);
-    nuDynConfig.addParameter("forceHistogramsRewrite",  forceHistogramsRewrite);
-    nuDynConfig.addParameter("doSubsampleAnalysis",     doSubsampleAnalysis);
-    nuDynConfig.addParameter("doPartialSaves",          doPartialSaves);
-    nuDynConfig.addParameter("scaleHistograms",         scaleHistograms);
-    nuDynConfig.addParameter("histoOutputPath",         outputPathName);
-    nuDynConfig.addParameter("histoOutputFileName",     outputFileNameBase+nuDynLabel);
-    nuDynConfig.addParameter("histoModelDataName",      histoModelDataName);
-    nuDynConfig.addParameter("histoAnalyzerName",       nuDynLabel);
-    nuDynConfig.addParameter("histoBaseName",           nuDynLabel);
-    nuDynConfig.addParameter("inputType",               1);
-    nuDynConfig.addParameter("pairOnly",                true);
-    nuDynConfig.addParameter("nBins_mult",              200);
-    nuDynConfig.addParameter("min_mult",                0.0);
-    nuDynConfig.addParameter("max_mult",                200.0);
+    Configuration config("NuDyn Correlation Configuration");
+    config.addParameter("useEventStream0",         YES);
+    config.addParameter("forceHistogramsRewrite",  forceHistogramsRewrite);
+    config.addParameter("runSubsampleAnalysis",     runSubsampleAnalysis);
+    config.addParameter("doPartialSaves",          doPartialSaves);
+    config.addParameter("scaleHistograms",         scaleHistograms);
+    config.addParameter("histoOutputPath",         outputPathName);
+    config.addParameter("histoOutputFileName",     outputFileNameBase+nuDynLabel);
+    config.addParameter("histoModelDataName",      histoModelDataName);
+    config.addParameter("histoAnalyzerName",       nuDynLabel);
+    config.addParameter("histoBaseName",           nuDynLabel);
+    config.addParameter("inputType",               1);
+    config.addParameter("pairOnly",                true);
+    config.addParameter("nBins_mult",              200);
+    config.addParameter("min_mult",                0.0);
+    config.addParameter("max_mult",                200.0);
 
-    if (doGenLevelAnalysis)
+    if (runGenLevelAnalysis)
       {
-      task = new NuDynAnalyzer(nuDynLabel,nuDynConfig,analysisEventFilters,analysisParticleFilters,selectedLevel);
-      if (runEventAnalysis)           eventAnalysis->addSubTask( task  );
-      if (runSumOfBasicHistos)        sumOfBasicHistos->addSubTask( task );
-      if (runDerivedHistoCalculation) derivedHistoCalculation->addSubTask(task);
-      if (runSumOfDerivedHistos)      sumOfDerivedHistos->addSubTask( task );      }
-    if (doRecoLevelAnalysis)
+      task = new NuDynAnalyzer(nuDynLabel,config,analysisEventFilters,analysisParticleFilters,selectedLevel);
+      if (runEventAnalysis)            eventAnalysis->addSubTask(task);
+      if (runBasicSubsampleAnalysis)   basicSubsampleIterator->addSubTask(task);
+      if (runDerivedHistoCalculation)  derivedHistoIterator->addSubTask(task);
+      if (runDerivedSubsampleAnalysis) derivedSubsampleIterator->addSubTask(task);
+      if (runClosureAnalysis && runBasicClosureAnalysis)     basicClosureIterator->addSubTask(task);
+      if (runClosureAnalysis && runDerivedClosureAnalysis)   derivedClosureIterator->addSubTask(task);
+      if (runClosureAnalysis && runBalFctClosureAnalysis)    balFctClosureIterator->addSubTask(task);
+      }
+    if (runRecoLevelAnalysis)
       {
-      Configuration nuDynConfigReco(nuDynConfig);
-      nuDynConfigReco.addParameter("useEventStream0",             NO);
-      nuDynConfigReco.addParameter("useEventStream1",             YES);
-      nuDynConfigReco.addParameter("histoAnalyzerName",           nuDynLabel+"R");
-      nuDynConfigReco.addParameter("histoBaseName",               nuDynLabel+"R");
-      task = new NuDynAnalyzer(nuDynLabel+"R",nuDynConfigReco,analysisEventFilters,analysisParticleFilters,selectedLevel);
-      if (runEventAnalysis)           eventAnalysis->addSubTask( task  );
-      if (runSumOfBasicHistos)        sumOfBasicHistos->addSubTask( task );
-      if (runDerivedHistoCalculation) derivedHistoCalculation->addSubTask(task);
-      if (runSumOfDerivedHistos)      sumOfDerivedHistos->addSubTask( task );
+      Configuration configR(config);
+      configR.addParameter("useEventStream0",     NO);
+      configR.addParameter("useEventStream1",     YES);
+      configR.addParameter("histoAnalyzerName",   nuDynLabel+"R");
+      configR.addParameter("histoBaseName",       nuDynLabel+"R");
+      task = new NuDynAnalyzer(nuDynLabel+"R",configR,analysisEventFilters,analysisParticleFilters,selectedLevel);
+      if (runEventAnalysis)            eventAnalysis->addSubTask(task);
+      if (runBasicSubsampleAnalysis)   basicSubsampleIterator->addSubTask(task);
+      if (runDerivedHistoCalculation)  derivedHistoIterator->addSubTask(task);
+      if (runDerivedSubsampleAnalysis) derivedSubsampleIterator->addSubTask(task);
       }
     }
 
@@ -894,11 +904,10 @@ int RunAnalysis()
   std::cout << "==================================================================================" << std::endl;
   gSystem->mkdir(outputPathName,1);
 
-  if (runEventAnalysis)           eventAnalysis->execute();
-  if (runDerivedHistoCalculation) derivedHistoCalculation->execute();
-  if (runSumOfBasicHistos)        sumOfBasicHistos->execute();
-  if (runSumOfDerivedHistos)      sumOfDerivedHistos->execute();
-
+  if (runEventAnalysis)             eventAnalysis->execute();
+  if (runBasicSubsampleAnalysis)    basicSubsampleIterator->execute();
+  if (runDerivedHistoCalculation)   derivedHistoIterator->execute();
+  if (runDerivedSubsampleAnalysis)  derivedSubsampleIterator->execute();
   if (runBalFctCalculation)
     {
     vector<TString>  sObservableNames;
@@ -942,9 +951,9 @@ int RunAnalysis()
         sObservableNames.push_back("n1_phi");
         pObservableNames.push_back("rho2_DetaDphi_shft");
         pObservableNames.push_back("R2_DetaDphi_shft");
-//        pObservableNames.push_back("n2_etaEta");
-//        pObservableNames.push_back("n2_ptPt");
-//        pObservableNames.push_back("n2_phiPhi");
+        //        pObservableNames.push_back("n2_etaEta");
+        //        pObservableNames.push_back("n2_ptPt");
+        //        pObservableNames.push_back("n2_phiPhi");
         break;
       }
     //outputPathName = "/Volumes/ClaudeDisc4/OutputFiles/longTest/RhoDecay/";
@@ -963,38 +972,22 @@ int RunAnalysis()
     balFctCalcConfig.addParameter( "histoOutputFileName",     TString(""));
     balFctCalcConfig.addParameter( "histoModelDataName",      histoModelDataName);
     balFctCalcConfig.addParameter( "histoAnalyzerName",       pairLabel);
-    balFctCalc = new BalanceFunctionCalculator("BalFctCalc",
-                                               balFctCalcConfig,
-                                               analysisEventFilters,
-                                               analysisParticleFilters,
-                                               sObservableNames,
-                                               pObservableNames,
-                                               selectedLevel);
-    balFctCalc->execute();
-    //delete balFctCalc;
+    balFctHistoIterator = new BalanceFunctionCalculator("BalFctCalc",
+                                                        balFctCalcConfig,
+                                                        analysisEventFilters,
+                                                        analysisParticleFilters,
+                                                        sObservableNames,
+                                                        pObservableNames,
+                                                        selectedLevel);
+    balFctHistoIterator->execute();
+    //delete balFctHistoIterator;
     }
+  if (runBalFctSubsampleAnalysis) balFctSubsampleIterator->execute();
+  if (runClosureAnalysis && runBasicClosureAnalysis)    basicClosureIterator->execute();
+  if (runClosureAnalysis && runDerivedClosureAnalysis)  derivedClosureIterator->execute();
+  if (runClosureAnalysis && runBalFctClosureAnalysis)   derivedClosureIterator->execute();
 
-  if (runSumOfBalFctCalculation)
-    {
-    sumOfBalFctHistos->execute();
-    }
-
-  if (runClosureAnalysis && runPartAnalysis)
-    {
-    // Do a closure test
-    Configuration partConfig("Part Closure Test Configuration");
-    partConfig.addParameter("forceHistogramsRewrite",  forceHistogramsRewrite);
-    partConfig.addParameter("selectedMethod",            1);
-    partConfig.addParameter("histoInputPath",          outputPathName);
-    partConfig.addParameter("histoOutputPath",         outputPathName);
-    partConfig.addParameter("histoGeneratorFileName",  outputFileNameBase+partLabel);
-    partConfig.addParameter("histoDetectorFileName",   outputFileNameBase+partLabel+"R");
-    partConfig.addParameter("histoClosureFileName",    outputFileNameBase+partLabel+"Closure");
-    ClosureTest * closureTest = new ClosureTest(outputFileNameBase+partLabel+"Closure", partConfig,infoLevel);
-    closureTest->execute();
-    }
-
-   return 0;
+  return 0;
 }
 
 

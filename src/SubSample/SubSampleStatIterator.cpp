@@ -41,10 +41,7 @@ void SubSampleStatIterator::setDefaultConfiguration()
   configuration.generateKeyValuePairs("IncludedPattern",none,20);
   configuration.generateKeyValuePairs("ExcludedPattern",none,20);
   configuration.generateKeyValuePairs("InputFile",none,100);
-  if (reportDebug(__FUNCTION__))
-    {
-    configuration.printConfiguration(cout);
-    }
+  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 
@@ -58,54 +55,43 @@ void SubSampleStatIterator::execute()
   int  defaultGroupSize       = configuration.getValueInt("defaultGroupSize");
   TString histoInputPath      = configuration.getValueString("histoInputPath");
   TString histoOutputPath     = configuration.getValueString("histoOutputPath");
-  TString histoModelDataName = configuration.getValueString("histoModelDataName");
-
-
-  //TString histoBaseName       = subTaskConfig.getValueString("histoBaseName");
-
-  //int  nInputFile             = configuration.getValueInt("nInputFile"); // do not use yet..
+  TString histoModelDataName  = configuration.getValueString("histoModelDataName");
   vector<TString> includedPatterns = configuration.getSelectedValues("IncludedPattern",none);
   vector<TString> excludedPatterns = configuration.getSelectedValues("ExcludedPattern",none);
-
   unsigned int nSubTasks = subTasks.size();
   if (reportDebug())  cout << "SubTasks Count: " << nSubTasks  << endl;
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++)
     {
-    if (reportInfo(__FUNCTION__))  cout << "SubTasks #: " << iTask  << endl;
     Task & subTask = *subTasks[iTask];
     Configuration & subTaskConfig = subTask.getConfiguration();
     TString taskName        = subTask.getName();
-    TString histoAnalyzerName = subTaskConfig.getValueString("histoAnalyzerName");
+    if (reportInfo(__FUNCTION__))  cout << "SubTasks: " << iTask << " Named:" <<  taskName << endl;
 
+    TString histoAnalyzerName = subTaskConfig.getValueString("histoAnalyzerName");
     TString histoOutputFileName;
     histoOutputFileName = histoModelDataName;
     histoOutputFileName += "_";
     histoOutputFileName += histoAnalyzerName;
-    //histoOutputFileName += "_";
-
-    if (reportInfo(__FUNCTION__))
+    if (reportDebug(__FUNCTION__))
       {
       cout << endl;
       cout << "            SubTask Name: " << taskName  << endl;
       cout << "          histoInputPath: " << histoInputPath  << endl;
       cout << "         histoOutputPath: " << histoOutputPath  << endl;
-      cout << "     histoModelDataName: " << histoModelDataName  <<   endl;
-      cout << " histoAnalyzerName: " << histoAnalyzerName   << endl;
+      cout << "      histoModelDataName: " << histoModelDataName  <<   endl;
+      cout << "       histoAnalyzerName: " << histoAnalyzerName   << endl;
       cout << "     histoOutputFileName: " << histoOutputFileName  << endl;
       }
-
     Configuration subsampleConfig;
-    subsampleConfig.setParameter("histoInputPath", histoInputPath);
-    subsampleConfig.setParameter("histoOutputPath",histoOutputPath);
-    subsampleConfig.setParameter("histoBaseName",  histoOutputFileName);
+    subsampleConfig.setParameter("histoInputPath",         histoInputPath);
+    subsampleConfig.setParameter("histoOutputPath",        histoOutputPath);
+    subsampleConfig.setParameter("histoBaseName",          histoOutputFileName);
     subsampleConfig.setParameter("appendedString",         appendedString);
     subsampleConfig.setParameter("forceHistogramsRewrite", forceHistogramsRewrite);
-    subsampleConfig.setParameter("histoModelDataName",    histoModelDataName);
-    subsampleConfig.setParameter("histoAnalyzerName",histoAnalyzerName);
-
+    subsampleConfig.setParameter("histoModelDataName",     histoModelDataName);
+    subsampleConfig.setParameter("histoAnalyzerName",      histoAnalyzerName);
     subsampleConfig.setParameter("defaultGroupSize",       defaultGroupSize);
     subsampleConfig.setParameter("IncludedPattern",        taskName);
-
     subsampleConfig.addSelectedValues("IncludedPattern", "none", includedPatterns);
     subsampleConfig.addSelectedValues("ExcludedPattern", "none", excludedPatterns);
     SubSampleStatCalculator calculator("SubSampleAnalyzer", subsampleConfig, getReportLevel());

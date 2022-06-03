@@ -243,7 +243,7 @@ void ParticlePairDerivedHistogramCalculator::execute()
   
   if (reportStart(__FUNCTION__))
     ;
-  incrementTaskExecuted();
+  //incrementTaskExecuted();
   //const Configuration & config  = getConfiguration();
    if (reportDebug(__FUNCTION__))
     {
