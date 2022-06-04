@@ -38,7 +38,7 @@ void DerivedHistoIterator::setDefaultConfiguration()
   configuration.setParameter("forceHistogramsRewrite", true);
   configuration.generateKeyValuePairs("IncludedPattern",none,20);
   configuration.generateKeyValuePairs("ExcludedPattern",none,20);
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  //// if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 void DerivedHistoIterator::execute()
@@ -79,6 +79,11 @@ void DerivedHistoIterator::execute()
     vector<TString> excludePatterns = configuration.getSelectedValues("ExcludedPattern", "none");
     includePatterns.push_back(histoModelDataName);
     includePatterns.push_back(histoAnalyzerName);
+    bool isReco = histoAnalyzerName.Contains("Reco");
+    if (isReco)  includePatterns.push_back(TString("Reco"));
+    if (!isReco) excludePatterns.push_back(TString("Reco"));
+
+
     vector<TString> allFilesToProcess = listFilesInDir(histoInputPath,includePatterns,excludePatterns);
     int nFiles = allFilesToProcess.size();
     if (nFiles<1)
@@ -141,7 +146,7 @@ void DerivedHistoIterator::execute()
       config.setParameter("forceHistogramsRewrite", forceHistogramsRewrite);
       config.setParameter("histoOutputPath",        TString(""));
       config.setParameter("histoOutputFileName",    histoOutputFileName);
-      config.setParameter("histoAnalyzerName",histoAnalyzerName);
+      config.setParameter("histoAnalyzerName",      histoAnalyzerName);
       config.setParameter("createHistograms",       true);
       config.setParameter("loadHistograms",         true);
       config.setParameter("saveHistograms",         true);

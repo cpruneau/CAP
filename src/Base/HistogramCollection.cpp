@@ -900,6 +900,15 @@ void HistogramCollection::ratioCollection(const HistogramCollection & collection
     {
     TH1* h     = collection.objects[iObject];
     TH1* hRef  = refCollection.objects[iObject];
+
+//    if (h->IsA()==TH1::Class() || h->IsA()==TH1F::Class() || h->IsA()==TH1D::Class() || h->IsA()==TH1I::Class() )
+//      {
+//      cout << "h is a  1D" << endl;
+//      }
+//    if (h->IsA()==TH2::Class() || h->IsA()==TH2F::Class() || h->IsA()==TH2D::Class() || h->IsA()==TH2I::Class() )
+//      {
+//      cout << "h is a  2D" << endl;
+//      }
     if (!ptrExist(__FUNCTION__,h,hRef)) return;
     if (!sameDimensions(__FUNCTION__,h,hRef)) return;
     TH1* hRatio = (TH1*)  h->Clone();
@@ -1204,7 +1213,7 @@ void HistogramCollection::ratioHistos(TH1 *h, TH1 *hRef, TH1 *hRatio, bool corre
   double v,  ev, rev;
   double vRef,  evRef, revRef;
   double vRatio, evRatio, revRatio, revRatioSq;
-  
+
   if (h->IsA()==TH1::Class() || h->IsA()==TH1F::Class() || h->IsA()==TH1D::Class() || h->IsA()==TH1I::Class() )
     {
     int nx = h->GetNbinsX();
@@ -1235,11 +1244,11 @@ void HistogramCollection::ratioHistos(TH1 *h, TH1 *hRef, TH1 *hRatio, bool corre
       {
       for (int ix=1; ix<=nx; ix++)
         {
-        v        = h->GetBinContent(ix);
-        ev       = h->GetBinError(ix);
+        v        = h->GetBinContent(ix,iy);
+        ev       = h->GetBinError(ix,iy);
         rev      = (v!=0) ? ev/v : 0.0;
-        vRef     = hRef->GetBinContent(ix);
-        evRef    = hRef->GetBinError(ix);
+        vRef     = hRef->GetBinContent(ix,iy);
+        evRef    = hRef->GetBinError(ix,iy);
         revRef   = (vRef!=0) ? evRef/vRef : 0.0;
         if (vRef)
           {
@@ -1247,8 +1256,8 @@ void HistogramCollection::ratioHistos(TH1 *h, TH1 *hRef, TH1 *hRatio, bool corre
           revRatioSq = correlatedUncertainties ? TMath::Abs(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
           revRatio   = TMath::Sqrt(revRatioSq);
           evRatio    = revRatio*vRatio;
-          hRatio->SetBinContent(ix, vRatio);
-          hRatio->SetBinError(ix, evRatio);
+          hRatio->SetBinContent(ix,iy, vRatio);
+          hRatio->SetBinError(ix,iy, evRatio);
           }
         }
       }
@@ -1264,11 +1273,11 @@ void HistogramCollection::ratioHistos(TH1 *h, TH1 *hRef, TH1 *hRatio, bool corre
         {
         for (int ix=1; ix<=nx; ix++)
           {
-          v        = h->GetBinContent(ix);
-          ev       = h->GetBinError(ix);
+          v        = h->GetBinContent(ix,iy,iz);
+          ev       = h->GetBinError(ix,iy,iz);
           rev      = (v!=0) ? ev/v : 0.0;
-          vRef     = hRef->GetBinContent(ix);
-          evRef    = hRef->GetBinError(ix);
+          vRef     = hRef->GetBinContent(ix,iy,iz);
+          evRef    = hRef->GetBinError(ix,iy,iz);
           revRef   = (vRef!=0) ? evRef/vRef : 0.0;
           if (vRef)
             {
@@ -1276,8 +1285,8 @@ void HistogramCollection::ratioHistos(TH1 *h, TH1 *hRef, TH1 *hRatio, bool corre
             revRatioSq = correlatedUncertainties ? TMath::Abs(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
             revRatio   = TMath::Sqrt(revRatioSq);
             evRatio    = revRatio*vRatio;
-            hRatio->SetBinContent(ix, vRatio);
-            hRatio->SetBinError(ix, evRatio);
+            hRatio->SetBinContent(ix,iy,iz, vRatio);
+            hRatio->SetBinError(ix,iy,iz, evRatio);
             }
           }
         }

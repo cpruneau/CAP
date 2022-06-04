@@ -43,10 +43,11 @@ void ParticleAnalyzer::setDefaultConfiguration()
     ;
   Configuration & configuration = getConfiguration();
   configuration.setName("ParticleAnalyzer Configuration");
-  configuration.setParameter("useParticles",true);
-  configuration.setParameter("createHistograms",true);
-  configuration.setParameter("saveHistograms",true);
-   
+  configuration.setParameter("useParticles",      true);
+  configuration.setParameter("createHistograms",  true);
+  configuration.setParameter("saveHistograms",    true);
+  configuration.setParameter("histoAnalyzerName", TString("Part"));
+  configuration.setParameter("histoBaseName",     TString("Part"));
   configuration.addParameter("nBins_n1",  100);
   configuration.addParameter("min_n1",    0.0);
   configuration.addParameter("max_n1",  100.0);
@@ -78,7 +79,7 @@ void ParticleAnalyzer::setDefaultConfiguration()
   configuration.addParameter("fillEta",  fillEta);
   configuration.addParameter("fillY",    fillY);
   configuration.addParameter("fillP2",   fillP2);
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 void ParticleAnalyzer::createHistograms()

@@ -20,27 +20,12 @@ GlobalDerivedHistogramCalculator::GlobalDerivedHistogramCalculator(const TString
                                                                    vector<ParticleFilter*>& _particleFilters,
                                                                    LogLevel                 _selectedLevel)
 :
-Task(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel)
+DerivedHistogramCalculator(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel)
 {
   appendClassName("GlobalDerivedHistogramCalculator");
   setInstanceName(_name);
   setDefaultConfiguration();
   setConfiguration(_configuration);
-}
-
-//!
-//!  Contructor Version 2 -- Object will get all parameters and histograms for the ParticleAnalyzer object.
-//!
-GlobalDerivedHistogramCalculator::GlobalDerivedHistogramCalculator(const TString &    _name,
-                                                                   ParticleAnalyzer * _analyzer,
-                                                                   LogLevel           _selectedLevel)
-:
-Task(_name,_analyzer->getConfiguration(),_analyzer->getEventFilters(),_analyzer->getParticleFilters(),_selectedLevel)
-{
-  appendClassName("GlobalDerivedHistogramCalculator");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  baseSingleHistograms = _analyzer->getBaseSingleHistograms();
 }
 
 void GlobalDerivedHistogramCalculator::setDefaultConfiguration()
@@ -57,7 +42,7 @@ void GlobalDerivedHistogramCalculator::setDefaultConfiguration()
   configuration.addParameter("min_n",   0.0);
   configuration.addParameter("max_n",   1000.0);
   configuration.addParameter("range_n", 1000.0);
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 //!
@@ -69,7 +54,7 @@ void GlobalDerivedHistogramCalculator::createHistograms()
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString bn  = getName();
+  TString bn  = getHistoBaseName();
   if (reportDebug(__FUNCTION__))
     {
     cout << "Creating Histograms for : " << bn  << endl;
@@ -93,7 +78,7 @@ void GlobalDerivedHistogramCalculator::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString bn  = getName();
+  TString bn  = getHistoBaseName();
 
   if (reportDebug(__FUNCTION__))
     {

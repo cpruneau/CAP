@@ -82,7 +82,7 @@ void MeasurementPerformanceSimulator::setDefaultConfiguration()
     configuration.addParameter(baseName+"_EffA2",0.0);
     }
   
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 void MeasurementPerformanceSimulator::initialize()

@@ -19,29 +19,10 @@ ParticlePairDerivedHistogramCalculator::ParticlePairDerivedHistogramCalculator(c
                                                                                vector<ParticleFilter*>& _particleFilters,
                                                                                LogLevel _selectedLevel)
 :
-Task(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel)
+DerivedHistogramCalculator(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel)
 {
   appendClassName("ParticlePairDerivedHistogramCalculator");
   setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
-}
-
-ParticlePairDerivedHistogramCalculator::ParticlePairDerivedHistogramCalculator(const TString &        _name,
-                                                                               const Configuration &  _configuration,
-                                                                               ParticlePairAnalyzer * _analyzer,
-                                                                               LogLevel               _selectedLevel)
-:
-Task(_name,_configuration,_selectedLevel)
-{
-  appendClassName("ParticlePairDerivedHistogramCalculator");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
-  eventFilters    = _analyzer->getEventFilters();
-  particleFilters = _analyzer->getParticleFilters();
-  baseSingleHistograms = _analyzer->getBaseSingleHistograms();
-  basePairHistograms   = _analyzer->getBasePairHistograms();
   setDefaultConfiguration();
   setConfiguration(_configuration);
 }
@@ -128,7 +109,7 @@ void ParticlePairDerivedHistogramCalculator::setDefaultConfiguration()
   configuration.addParameter("max_Dy",            2.0);
   configuration.addParameter("width_Dy",     4.0/39.0);
   
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 void ParticlePairDerivedHistogramCalculator::createHistograms()
@@ -275,13 +256,13 @@ void ParticlePairDerivedHistogramCalculator::execute()
       {
       TString pfn1 = particleFilters[iParticleFilter1]->getName();
       index = baseSingle+iParticleFilter1;
-      if (reportDebug(__FUNCTION__))   cout << " (1) iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << " with index:" << index << endl;
+      //if (reportDebug(__FUNCTION__))   cout << " (1) iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << " with index:" << index << endl;
       bSingleHistos1 = (ParticleHistos *) baseSingleHistograms[index];
-      if (reportDebug(__FUNCTION__))   cout << " (1a) iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << " with index:" << index << endl;
+      //if (reportDebug(__FUNCTION__))   cout << " (1a) iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << " with index:" << index << endl;
       dSingleHistos1 = (ParticleDerivedHistos *) derivedSingleHistograms[index];
-      if (reportDebug(__FUNCTION__))   cout << " (2) iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << " with index:" << index << endl;
+      //if (reportDebug(__FUNCTION__))   cout << " (2) iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << " with index:" << index << endl;
       dSingleHistos1->calculateDerivedHistograms(bSingleHistos1);
-      if (reportDebug(__FUNCTION__))   cout << " (3) iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << " with index:" << index << endl;
+      //if (reportDebug(__FUNCTION__))   cout << " (3) iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << " with index:" << index << endl;
       }
     
     //! Calculate derived spectra of pairs
@@ -295,8 +276,8 @@ void ParticlePairDerivedHistogramCalculator::execute()
       for (int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++)
         {
         TString pfn2 = particleFilters[iParticleFilter2]->getName();
-        if (reportDebug(__FUNCTION__))
-          cout << "  iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << ";  iParticleFilter2:" << iParticleFilter2<< " named " << pfn2  << endl;
+//        if (reportDebug(__FUNCTION__))
+//          cout << "  iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << ";  iParticleFilter2:" << iParticleFilter2<< " named " << pfn2  << endl;
         index = baseSingle+iParticleFilter2;
         bSingleHistos2 = (ParticleHistos *) baseSingleHistograms[index];
         dSingleHistos2 = (ParticleDerivedHistos *) derivedSingleHistograms[index];

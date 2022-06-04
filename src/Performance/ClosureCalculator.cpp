@@ -32,16 +32,16 @@ void ClosureCalculator::setDefaultConfiguration()
   if (reportStart(__FUNCTION__))
     ;
   configuration.setName("ClosureCalculator Configuration");
-  configuration.setParameter("createHistograms",      true);
-  configuration.setParameter("saveHistograms",        true);
-  configuration.setParameter("forceHistogramsRewrite",true);
+  configuration.setParameter("createHistograms",        true);
+  configuration.setParameter("saveHistograms",          true);
+  configuration.setParameter("forceHistogramsRewrite",  true);
   configuration.addParameter("selectedMethod",          0);
   configuration.addParameter("histoInputPath",          TString("./"));
   configuration.addParameter("histoGeneratorFileName",  TString("histoGeneratorFileName"));
   configuration.addParameter("histoDetectorFileName",   TString("histoDetectorFileName"));
   configuration.addParameter("histoOutputPath",         TString("./"));
   configuration.addParameter("histoClosureFileName",    TString("histoClosureFileName"));
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 void ClosureCalculator::execute()
@@ -75,13 +75,13 @@ void ClosureCalculator::execute()
       }
     }
 
-  TFile * generatorFile = openRootFile(histoInputPath, histoGeneratorFileName, "READ");
-  TFile * detectorFile  = openRootFile(histoInputPath, histoDetectorFileName,  "READ");
+  TFile * generatorFile = openRootFile("", histoGeneratorFileName, "READ");
+  TFile * detectorFile  = openRootFile("", histoDetectorFileName,  "READ");
   TFile * closureFile;
   if (forceHistogramsRewrite)
-    closureFile   = openRootFile(histoOutputPath, histoClosureFileName,"RECREATE");
+    closureFile   = openRootFile("", histoClosureFileName,"RECREATE");
   else
-    closureFile   = openRootFile(histoOutputPath, histoClosureFileName,"NEW");
+    closureFile   = openRootFile("", histoClosureFileName,"NEW");
 
   if (!generatorFile || !detectorFile || !closureFile || !isTaskOk()) return;
   

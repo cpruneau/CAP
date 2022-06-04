@@ -20,7 +20,7 @@ AmptEventReader::AmptEventReader(const TString &          _name,
 :
 RootTreeReader(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel)
 {
-  setFunctionName(__FILE__);
+  setFunctionName(__FUNCTION__);
   appendClassName("AmptEventReader");
   setInstanceName(_name);
   setDefaultConfiguration();
@@ -34,7 +34,7 @@ void AmptEventReader::setDefaultConfiguration()
 
 void AmptEventReader::execute()
 {
-  //  if (reportDebug("AmptEventReader",getName(),"execute()"))
+  //  if (reportDebug(__FUNCTION__))
   //    ;
   incrementTaskExecuted();
   EventFilter & eventFilter = * eventFilters[0];
@@ -59,7 +59,7 @@ void AmptEventReader::execute()
   nBytes += nb;
   if (nParticles > arraySize)
     {
-    if (reportError("AmptEventReader",getName(),"execute()"))
+    if (reportError(__FUNCTION__))
       cout<< "nParticles: " << nParticles << "  exceeds capacity " << arraySize << endl;
     postTaskFatal();
     exit(1);
@@ -81,14 +81,13 @@ void AmptEventReader::execute()
   double r_z = sourcePosition.Z();
   double r_t = sourcePosition.T();
   ParticleType * type;
-  //if (reportDebug("AmptEventReader",getName(),"execute()")) cout << " Starting loop with nParticles: " << nParticles << endl;
   for (int iParticle=0; iParticle<nParticles; iParticle++)
     {
     int pdgCode = pid[iParticle];
     type = particleTypeCollection->findPdgCode(pdgCode);
     if (type==nullptr)
       {
-      if (reportWarning("AmptEventReader",getName(),"execute()")) cout << "Encountered unknown pdgCode: " << pdgCode << " Particle not added to event." << endl;
+      if (reportWarning(__FUNCTION__)) cout << "Encountered unknown pdgCode: " << pdgCode << " Particle not added to event." << endl;
       continue;
       }
     Particle * particle = particleFactory->getNextObject();
@@ -127,11 +126,6 @@ void AmptEventReader::execute()
   //  eventProperties.particlesCounted      = getNParticlesCounted();
   //  eventProperties.particlesAccepted     = getNParticlesAccepted();
   incrementNEventsAccepted(0);
-  //  if (reportDebug("AmptEventReader",getName(),"execute()"))
-  //    {
-  //    eventProperties.printProperties(cout);
-  //    cout << "AmptEventReader::execute() event completed!" << endl;
-  //    }
 }
 
 void AmptEventReader::initInputTreeMapping()

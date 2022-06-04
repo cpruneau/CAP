@@ -77,7 +77,7 @@ void ParticlePerformanceAnalyzer::setDefaultConfiguration()
   configuration.addParameter("fillEta",  fillEta);
   configuration.addParameter("fillY",    fillY);
 
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 void ParticlePerformanceAnalyzer::createHistograms()

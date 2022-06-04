@@ -11,7 +11,7 @@
  * *********************************************************************/
 #ifndef CAP__GlobalDerivedHistogramCalculator
 #define CAP__GlobalDerivedHistogramCalculator
-#include "Task.hpp"
+#include "DerivedHistogramCalculator.hpp"
 #include "GlobalHistos.hpp"
 #include "ParticleAnalyzer.hpp"
 
@@ -20,7 +20,7 @@
 //!
 //!  \see ParticleAnalyzer for a list of the configuration parameters of this class.
 //!
-class GlobalDerivedHistogramCalculator : public Task
+class GlobalDerivedHistogramCalculator : public DerivedHistogramCalculator
 {
 public:
   
@@ -38,13 +38,6 @@ public:
                                      vector<EventFilter*>   & _eventFilters,
                                      vector<ParticleFilter*>& _particleFilters,
                                      LogLevel                 _selectedLevel=Info);
-
-  //!
-  //!  Contructor Version 2 -- Object will get all parameters and histograms for the ParticleAnalyzer object.
-  //!
-  GlobalDerivedHistogramCalculator(const TString &    _name,
-                                     ParticleAnalyzer * _analyzer,
-                                     LogLevel           _selectedLevel=Info);
   
   //!
   //! DTOR

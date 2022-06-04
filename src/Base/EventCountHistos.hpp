@@ -29,18 +29,18 @@ public:
   virtual ~EventCountHistos(){}
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);
-  virtual void fill(long nTaskExecutedReset,
-                    vector<long> & nEventsAcceptedReset,
-                    vector<long> & nParticleAcceptedReset);
+  virtual void fill(long nTaskExecuted,
+                    vector<long> & nEventsAccepted,
+                    vector<long> & nParticleAccepted);
 
 protected:
 
   int nEventFilters;
   int nParticleFilters;
 
-  TH1 * h_taskExecutedReset;
-  TH1 * h_eventAcceptedReset;
-  TH1 * h_partilceAcceptedReset;
+  TH1 * h_taskExecuted;
+  TH1 * h_eventAccepted;
+  TH1 * h_particleAccepted;
 
   ClassDef(EventCountHistos,0)
 

@@ -44,42 +44,44 @@ void GlobalAnalyzer::setDefaultConfiguration()
   if (reportStart(__FUNCTION__))
     ;
   configuration.setName("GlobalAnalyzer Configuration");
-  configuration.setParameter("useEventStream0",  true);
-  configuration.setParameter("useParticles",     true);
-  configuration.setParameter("createHistograms", true);
-  configuration.setParameter("saveHistograms",   true);
-  configuration.addParameter("setEvent",         true);
+  configuration.setParameter("useEventStream0",      true);
+  configuration.setParameter("useParticles",         true);
+  configuration.setParameter("createHistograms",     true);
+  configuration.setParameter("saveHistograms",       true);
+  configuration.setParameter("histoAnalyzerName",    TString("G"));
+  configuration.setParameter("histoBaseName",        TString("G"));
+  configuration.addParameter("setEvent",             true);
   configuration.addParameter("fillCorrelationHistos",false);
-  configuration.addParameter("fill2D", false);
-  configuration.addParameter("nBins_n", 100);
-  configuration.addParameter("nBins_n2",20);
-  configuration.addParameter("min_n",   0.0);
-  configuration.addParameter("max_n",   1000.0);
-  configuration.addParameter("range_n", 1000.0),
-  configuration.addParameter("nBins_e", 100);
-  configuration.addParameter("nBins_e2",20);
-  configuration.addParameter("min_e",   0.0);
-  configuration.addParameter("max_e",   1000.0);
-  configuration.addParameter("range_e", 1000.0),
-  configuration.addParameter("nBins_q", 100);
-  configuration.addParameter("nBins_q2",20);
-  configuration.addParameter("min_q",   -50.0);
-  configuration.addParameter("max_q",    50.0);
-  configuration.addParameter("range_n", 100.0),
-  configuration.addParameter("nBins_b", 100);
-  configuration.addParameter("nBins_b2",20);
-  configuration.addParameter("min_b",   -50.0);
-  configuration.addParameter("max_b",    50.0);
-  configuration.addParameter("range_b", 100.0);
-  configuration.addParameter("nBins_ptSum",  100);
-  configuration.addParameter("nBins_ptSum2",  20);
-  configuration.addParameter("min_ptSum",    0.0);
-  configuration.addParameter("max_ptSum",  100.0);
-  configuration.addParameter("nBins_ptAvg",  200);
-  configuration.addParameter("nBins_ptAvg2",  40);
-  configuration.addParameter("min_ptAvg",    0.0);
-  configuration.addParameter("max_ptAvg",    2.0);
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  configuration.addParameter("fill2D",               false);
+  configuration.addParameter("nBins_n",              100);
+  configuration.addParameter("nBins_n2",             20);
+  configuration.addParameter("min_n",                0.0);
+  configuration.addParameter("max_n",                1000.0);
+  configuration.addParameter("range_n",              1000.0),
+  configuration.addParameter("nBins_e",              100);
+  configuration.addParameter("nBins_e2",             20);
+  configuration.addParameter("min_e",                0.0);
+  configuration.addParameter("max_e",                1000.0);
+  configuration.addParameter("range_e",              1000.0),
+  configuration.addParameter("nBins_q",              100);
+  configuration.addParameter("nBins_q2",             20);
+  configuration.addParameter("min_q",                -50.0);
+  configuration.addParameter("max_q",                50.0);
+  configuration.addParameter("range_n",              100.0),
+  configuration.addParameter("nBins_b",              100);
+  configuration.addParameter("nBins_b2",             20);
+  configuration.addParameter("min_b",                -50.0);
+  configuration.addParameter("max_b",                50.0);
+  configuration.addParameter("range_b",              100.0);
+  configuration.addParameter("nBins_ptSum",          100);
+  configuration.addParameter("nBins_ptSum2",         20);
+  configuration.addParameter("min_ptSum",            0.0);
+  configuration.addParameter("max_ptSum",            100.0);
+  configuration.addParameter("nBins_ptAvg",          200);
+  configuration.addParameter("nBins_ptAvg2",         40);
+  configuration.addParameter("min_ptAvg",            0.0);
+  configuration.addParameter("max_ptAvg",            2.0);
+  //// if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 void GlobalAnalyzer::initialize()
@@ -105,7 +107,7 @@ void GlobalAnalyzer::createHistograms()
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString bn  = getName();
+  TString bn  = getHistoBaseName();
   if (reportDebug(__FUNCTION__))
     {
     cout << "Creating Histograms for : " << bn  << endl;
@@ -129,7 +131,7 @@ void GlobalAnalyzer::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString bn  = getName();
+  TString bn  = getHistoBaseName();
   if (reportDebug(__FUNCTION__))
     {
     cout << "Creating Histograms for " << bn  << endl;

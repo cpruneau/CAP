@@ -42,10 +42,12 @@ void ParticlePairAnalyzer::setDefaultConfiguration()
   if (reportStart(__FUNCTION__))
     ;
   configuration.setName("ParticlePairAnalyzer Configuration");
-  configuration.setParameter("useParticles",     true);
-  configuration.setParameter("createHistograms", true);
-  configuration.setParameter("saveHistograms",   true);
-  
+  configuration.setParameter("useParticles",      true);
+  configuration.setParameter("createHistograms",  true);
+  configuration.setParameter("saveHistograms",    true);
+  configuration.setParameter("histoAnalyzerName", TString("Pair"));
+  configuration.setParameter("histoBaseName",     TString("Pair"));
+
   configuration.addParameter("fillEta",  fillEta);
   configuration.addParameter("fillY",    fillY);
   configuration.addParameter("fillP2",   fillP2);
@@ -108,7 +110,7 @@ void ParticlePairAnalyzer::setDefaultConfiguration()
   configuration.addParameter("min_Dy",           -2.0);
   configuration.addParameter("max_Dy",            2.0);
   configuration.addParameter("width_Dy",     4.0/39.0);
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -397,7 +399,7 @@ void ParticlePairAnalyzer::scaleHistograms()
         {
         cout << endl;
         cout << "                            iEventFilter: " <<  iEventFilter<< endl;
-        cout << "           nEventsAccepted[iEventFilter]: " <<  nAccepted<< endl;
+        cout << "           nEventsAcceptedTotal[iEventFilter]: " <<  nAccepted<< endl;
         cout << "                    no scaling performed: " <<  endl;
         }
       }

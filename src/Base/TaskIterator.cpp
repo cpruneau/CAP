@@ -43,10 +43,10 @@ void TaskIterator::setDefaultConfiguration()
   configuration.addParameter( "nIterationRequested",   nIterationRequested);
   configuration.addParameter( "nIterationReported",    nIterationReported);
   configuration.addParameter( "nIterationPartialSave", nIterationPartialSave);
-  if (reportEnd("TaskIterator",getName(),"setDefaultConfiguration()"))
-    {
-    configuration.printConfiguration(cout);
-    }
+//  if (reportEnd("TaskIterator",getName(),"setDefaultConfiguration()"))
+//    {
+//    configuration.printConfiguration(cout);
+//    }
 }
 
 void TaskIterator::initialize()
@@ -104,14 +104,14 @@ void TaskIterator::execute()
     unsigned int nSubTasks = subTasks.size();
     for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->execute();
     incrementTaskExecuted();
-    if (doPartialReports  && getNTaskExecutedReset()%nIterationReported==0) cout << "Completed iteration # " << iter << endl;
-    if (doPartialSaves    && getNTaskExecutedReset()%nIterationPartialSave==0 )
+    if (doPartialReports  && getnTaskExecuted()%nIterationReported==0) cout << "Completed iteration # " << iter << endl;
+    if (doPartialSaves    && getnTaskExecuted()%nIterationPartialSave==0 )
       {
       savePartial();
       if (doSubsampleAnalysis) reset();
       }
 
-    if (getNTaskExecuted() >= nIterationRequested ) break;
+    if (getnTaskExecutedTotal() >= nIterationRequested ) break;
     }
   timer.stop();
   finalize();
@@ -129,8 +129,8 @@ void TaskIterator::finalize()
     cout << "---------------------------------------------------------------------------------------- " <<   endl;
     cout << "                               Task named : " << getName()<< endl;
     cout << "                    Completed with status : " << getTaskStatusName() << endl;
-    cout << "                     Completed iterations : " << getNTaskExecuted() << endl;
-    cout << "  Completed iterations since partial save : " << getNTaskExecutedReset() << endl;
+    cout << "                     Completed iterations : " << getnTaskExecutedTotal() << endl;
+    cout << "  Completed iterations since partial save : " << getnTaskExecuted() << endl;
     timer.print(cout);
     cout << "---------------------------------------------------------------------------------------- " <<   endl;
     cout << "---------------------------------------------------------------------------------------- " <<   endl;

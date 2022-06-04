@@ -19,7 +19,7 @@ NuDynDerivedHistogramCalculator::NuDynDerivedHistogramCalculator(const TString &
                                                                        vector<ParticleFilter*>& _particleFilters,
                                                                        LogLevel                 _selectedLevel)
 :
-Task(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel)
+DerivedHistogramCalculator(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel)
 {
   appendClassName("NuDynDerivedHistogramCalculator");
   setInstanceName(_name);
@@ -42,7 +42,7 @@ void NuDynDerivedHistogramCalculator::setDefaultConfiguration()
   configuration.addParameter("nBins_mult",200);
   configuration.addParameter("min_mult", 0.0);
   configuration.addParameter("max_mult",200.0);
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 //!

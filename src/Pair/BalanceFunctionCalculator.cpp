@@ -119,7 +119,7 @@ void BalanceFunctionCalculator::setDefaultConfiguration()
   configuration.addParameter("min_Dy",           -2.0);
   configuration.addParameter("max_Dy",            2.0);
   configuration.addParameter("width_Dy",     4.0/39.0);
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 

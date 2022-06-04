@@ -40,9 +40,9 @@
 #pragma link C++ class HistoScalarDoubleRandomGenerator+;
 #pragma link C++ class VectorRandomGenerator+;
 #pragma link C++ class Task+;
+#pragma link C++ class DerivedHistogramCalculator+;
 #pragma link C++ class RootTreeReader+;
 #pragma link C++ class TaskIterator+;
-#pragma link C++ class FileTaskIterator+;
 #pragma link C++ class DerivedHistoIterator+;
 #pragma link C++ class MessageLogger+;
 

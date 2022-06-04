@@ -412,22 +412,22 @@ protected:
   //!
   //! Number of times this task was executed (excute called)
   //!
-  long nTaskExecuted;
+  long nTaskExecutedTotal;
 
   //!
   //! Number of times this task was executed (excute called) since last reset
   //!
-  long nTaskExecutedReset;
+  long nTaskExecuted;
 
   //!
   //!Number of events accepted by event filters used by this task since last reset (partial save)
   //!
-  vector<long> nEventsAcceptedReset;
+  vector<long> nEventsAccepted;
 
   //!
   //!Total number of events accepted by event filters used by this task since last reset (partial save)
   //!
-  vector<long> nEventsAcceptedTotal;
+  vector<long> nEventsAcceptedTotalTotal;
 
   //!
   //!Number of particles accepted in the last event for each of the event filters and particle filters used by this task..
@@ -746,6 +746,16 @@ public:
   }
 
   //!
+  //! Return the base name of histograms created or used by  task instance.
+  //! @return name of histograms created or used by  task instance.
+  //!
+  inline TString getHistoBaseName() const
+  {
+  TString bn =  configuration.getValueString("histoBaseName");
+  return bn;
+  }
+
+  //!
   //! Set the name of this task instance.
   //!
   inline void setName(const TString & _name)
@@ -755,59 +765,59 @@ public:
 
   inline void incrementTaskExecuted()
   {
+  nTaskExecutedTotal++;
   nTaskExecuted++;
-  nTaskExecutedReset++;
   }
 
   inline void initializeTaskExecuted()
   {
+  nTaskExecutedTotal = 0;
   nTaskExecuted = 0;
-  nTaskExecutedReset = 0;
   }
 
   inline void resetTaskExecuted()
   {
-  nTaskExecutedReset = 0;
+  nTaskExecuted = 0;
   }
 
   inline void clearTaskExecuted()
   {
+  nTaskExecutedTotal = 0;
   nTaskExecuted = 0;
-  nTaskExecutedReset = 0;
   }
 
-  inline long getNTaskExecuted()
+  inline long getnTaskExecutedTotal()
+  {
+  return nTaskExecutedTotal;
+  }
+
+
+  inline long getnTaskExecuted()
   {
   return nTaskExecuted;
   }
 
-
-  inline long getNTaskExecutedReset()
-  {
-  return nTaskExecutedReset;
-  }
-
   inline void initializeNEventsAccepted()
   {
-  nEventsAcceptedReset.assign(nEventFilters,0);
-  nEventsAcceptedTotal.assign(nEventFilters,0);
+  nEventsAccepted.assign(nEventFilters,0);
+  nEventsAcceptedTotalTotal.assign(nEventFilters,0);
   }
 
   inline void incrementNEventsAccepted(int iEventFilter=0)
   {
-  nEventsAcceptedReset[iEventFilter]++;
-  nEventsAcceptedTotal[iEventFilter]++;
+  nEventsAccepted[iEventFilter]++;
+  nEventsAcceptedTotalTotal[iEventFilter]++;
   }
 
   inline void resetNEventsAccepted()
   {
-  nEventsAcceptedReset.assign(nEventFilters,0);
+  nEventsAccepted.assign(nEventFilters,0);
   }
 
   inline void clearNEventsAccepted()
   {
-  nEventsAcceptedReset.assign(nEventFilters,0);
-  nEventsAcceptedTotal.assign(nEventFilters,0);
+  nEventsAccepted.assign(nEventFilters,0);
+  nEventsAcceptedTotalTotal.assign(nEventFilters,0);
   }
 
   inline int getNEventsAcceptedReset(int iEventFilter=0) const
@@ -815,7 +825,7 @@ public:
   if (iEventFilter<0 || iEventFilter>=nEventFilters)
     return -1;
   else
-    return nEventsAcceptedReset[iEventFilter];
+    return nEventsAccepted[iEventFilter];
   }
 
   inline int getNEventsAcceptedTotal(int iEventFilter=0) const
@@ -823,7 +833,7 @@ public:
   if (iEventFilter<0 || iEventFilter>=nEventFilters)
     return -1;
   else
-    return nEventsAcceptedTotal[iEventFilter];
+    return nEventsAcceptedTotalTotal[iEventFilter];
   }
 
   void writeNEexecutedTask(TFile * outputFile);
@@ -831,45 +841,45 @@ public:
   void writeNEventsAccepted(TFile * outputFile);
   void loadNEventsAccepted(TFile * outputFile);
 
-  vector<long> nParticleAcceptedEvent;
-  vector<long> nParticleAcceptedReset;
-  vector<long> nParticleAcceptedTotal;
+  vector<long> nParticleAcceptedTotalEvent;
+  vector<long> nParticleAccepted;
+  vector<long> nParticleAcceptedTotalTotal;
 
   inline void initializeNParticlesAccepted()
   {
   int n = nEventFilters*nParticleFilters;
-  nParticleAcceptedEvent.assign(n,0);
-  nParticleAcceptedReset.assign(n,0);
-  nParticleAcceptedTotal.assign(n,0);
+  nParticleAcceptedTotalEvent.assign(n,0);
+  nParticleAccepted.assign(n,0);
+  nParticleAcceptedTotalTotal.assign(n,0);
   }
 
   inline void incrementNParticlesAccepted(int iEventFilter=0, int iParticleFilter=0)
   {
   int index = iEventFilter*nParticleFilters+iParticleFilter;
-  nParticleAcceptedEvent[index]++;
-  nParticleAcceptedReset[index]++;
-  nParticleAcceptedTotal[index]++;
+  nParticleAcceptedTotalEvent[index]++;
+  nParticleAccepted[index]++;
+  nParticleAcceptedTotalTotal[index]++;
   }
 
   inline void resetNParticlesAcceptedEvent()
   {
   int n = nEventFilters*nParticleFilters;
-  nParticleAcceptedEvent.assign(n,0);
+  nParticleAcceptedTotalEvent.assign(n,0);
   }
 
   inline void resetNParticlesAccepted()
   {
   int n = nEventFilters*nParticleFilters;
-  nParticleAcceptedEvent.assign(n,0);
-  nParticleAcceptedReset.assign(n,0);
+  nParticleAcceptedTotalEvent.assign(n,0);
+  nParticleAccepted.assign(n,0);
   }
 
   inline void clearNParticlesAccepted()
   {
   int n = nEventFilters*nParticleFilters;
-  nParticleAcceptedEvent.assign(n,0);
-  nParticleAcceptedReset.assign(n,0);
-  nParticleAcceptedTotal.assign(n,0);
+  nParticleAcceptedTotalEvent.assign(n,0);
+  nParticleAccepted.assign(n,0);
+  nParticleAcceptedTotalTotal.assign(n,0);
   }
 
   inline int getNParticlesAcceptedEvent(int iEventFilter=0, int iParticleFilter=0)  const
@@ -881,7 +891,7 @@ public:
     if (iParticleFilter<0 || iParticleFilter>=nParticleFilters)
       return -1;
     else
-      return nParticleAcceptedEvent[iEventFilter*nParticleFilters+iParticleFilter];
+      return nParticleAcceptedTotalEvent[iEventFilter*nParticleFilters+iParticleFilter];
     }
   }
 
@@ -894,7 +904,7 @@ public:
     if (iParticleFilter<0 || iParticleFilter>=nParticleFilters)
       return -1;
     else
-      return nParticleAcceptedReset[iEventFilter*nParticleFilters+iParticleFilter];
+      return nParticleAccepted[iEventFilter*nParticleFilters+iParticleFilter];
     }
   }
 
@@ -907,7 +917,7 @@ public:
     if (iParticleFilter<0 || iParticleFilter>=nParticleFilters)
       return -1;
     else
-      return nParticleAcceptedTotal[iEventFilter*nParticleFilters+iParticleFilter];
+      return nParticleAcceptedTotalTotal[iEventFilter*nParticleFilters+iParticleFilter];
     }
   }
 

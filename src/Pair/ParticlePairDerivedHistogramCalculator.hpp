@@ -12,7 +12,7 @@
 
 #ifndef CAP__ParticlePairDerivedHistogramCalculator
 #define CAP__ParticlePairDerivedHistogramCalculator
-#include "Task.hpp"
+#include "DerivedHistogramCalculator.hpp"
 #include "ParticleHistos.hpp"
 #include "ParticleDerivedHistos.hpp"
 #include "ParticlePairHistos.hpp"
@@ -25,7 +25,7 @@
 //! \see ParticlePairAnalyzer for a list of the configuration parameters of this class.
 //! \see ParticlePairDerivedHistos
 //!
-class ParticlePairDerivedHistogramCalculator : public Task
+class ParticlePairDerivedHistogramCalculator : public DerivedHistogramCalculator
 {
 public:
 
@@ -43,11 +43,7 @@ public:
                                          vector<EventFilter*>   & _eventFilters,
                                          vector<ParticleFilter*>& _particleFilters,
                                          LogLevel _selectedLevel);
-
-  ParticlePairDerivedHistogramCalculator(const TString &_name,
-                                         const Configuration &  _configuration,
-                                         ParticlePairAnalyzer * _analyzer,
-                                         LogLevel               _selectedLevel);
+  
   //!
   //!DTOR
   //!

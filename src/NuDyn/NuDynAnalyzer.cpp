@@ -36,12 +36,14 @@ void NuDynAnalyzer::setDefaultConfiguration()
     ;
   Configuration & configuration = getConfiguration();
   configuration.setName("NuDynAnalyzer Configuration");
-  configuration.setParameter("useParticles",true);
-  configuration.addParameter("inputType",1);
-  configuration.addParameter("pairOnly",true);
-  configuration.addParameter("nBins_mult",200);
-  configuration.addParameter("min_mult", 0.0);
-  configuration.addParameter("max_mult",200.0);
+  configuration.setParameter("useParticles",      true);
+  configuration.setParameter("histoAnalyzerName", TString("NuDyn"));
+  configuration.setParameter("histoBaseName",     TString("NuDyn"));
+  configuration.addParameter("inputType",         1);
+  configuration.addParameter("pairOnly",          true);
+  configuration.addParameter("nBins_mult",        200);
+  configuration.addParameter("min_mult",          0.0);
+  configuration.addParameter("max_mult",          200.0);
   if (reportDebug("NuDynAnalyzer",getName(),"setDefaultConfiguration()"))
     {
     configuration.printConfiguration(cout);

@@ -34,10 +34,10 @@ void FileTaskIterator::setDefaultConfiguration()
   configuration.setName("FileTaskIterator Configuration");
   configuration.addParameter("appendedString",TString("_Derived") );
 
-  if (reportDebug("FileTaskIterator",getName(),"setDefaultConfiguration()"))
-    {
-    configuration.printConfiguration(cout);
-    }
+//  if (reportDebug("FileTaskIterator",getName(),"setDefaultConfiguration()"))
+//    {
+//    configuration.printConfiguration(cout);
+//    }
 }
 
 

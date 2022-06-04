@@ -41,7 +41,7 @@ void SubSampleStatIterator::setDefaultConfiguration()
   configuration.generateKeyValuePairs("IncludedPattern",none,20);
   configuration.generateKeyValuePairs("ExcludedPattern",none,20);
   configuration.generateKeyValuePairs("InputFile",none,100);
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 

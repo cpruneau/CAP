@@ -50,7 +50,7 @@ void SubSampleStatCalculator::setDefaultConfiguration()
   configuration.generateKeyValuePairs("IncludedPattern",none,20);
   configuration.generateKeyValuePairs("ExcludedPattern",none,20);
   configuration.generateKeyValuePairs("InputFile",none,100);
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 void SubSampleStatCalculator::execute()
@@ -140,7 +140,7 @@ void SubSampleStatCalculator::execute()
 
     HistogramCollection * collectionAvg;
     HistogramCollection * collection;
-    TString parameterNEexecutedTask("ExecutedTaskReset");
+    TString parameterNEexecutedTask("nTaskExecuted");
     int nInputFile = last - first+1;
     for (int iFile=first; iFile<last; iFile++)
       {

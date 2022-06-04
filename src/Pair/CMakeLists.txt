@@ -7,14 +7,14 @@
 #add_definitions(${ROOT_CXX_FLAGS})
 
 ROOT_GENERATE_DICTIONARY(G__Pair 
-ParticlePairCombinedHistos.hpp ParticlePairDerivedHistos.hpp ParticlePairHistos.hpp ParticlePairAnalyzer.hpp  ParticlePairDerivedHistogramCalculator.hpp BalanceFunctionCalculator.hpp LINKDEF PairLinkDef.h)  
+ParticlePairDerivedHistos.hpp ParticlePairHistos.hpp ParticlePairAnalyzer.hpp  ParticlePairDerivedHistogramCalculator.hpp BalanceFunctionCalculator.hpp LINKDEF PairLinkDef.h)  
 
 
 ################################################################################################
 # Create a shared library with geneated dictionary
 ################################################################################################
 add_compile_options(-Wall -Wextra -pedantic)
-add_library(Pair SHARED ParticlePairCombinedHistos.cpp ParticlePairDerivedHistos.cpp ParticlePairHistos.cpp ParticlePairAnalyzer.cpp  ParticlePairDerivedHistogramCalculator.cpp BalanceFunctionCalculator.cpp G__Pair.cxx)
+add_library(Pair SHARED ParticlePairDerivedHistos.cpp ParticlePairHistos.cpp ParticlePairAnalyzer.cpp  ParticlePairDerivedHistogramCalculator.cpp BalanceFunctionCalculator.cpp G__Pair.cxx)
 
 target_link_libraries(Pair Base Particle ${ROOT_LIBRARIES} ${EXTRA_LIBS} )
 target_include_directories(Pair  PUBLIC Base Particle Pair ${EXTRA_INCLUDES} ) 

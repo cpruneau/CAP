@@ -20,27 +20,12 @@ ParticleDerivedHistogramCalculator::ParticleDerivedHistogramCalculator(const TSt
                                                                        vector<ParticleFilter*>& _particleFilters,
                                                                        LogLevel                 _selectedLevel)
 :
-Task(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel)
+DerivedHistogramCalculator(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel)
 {
   appendClassName("ParticleDerivedHistogramCalculator");
   setInstanceName(_name);
   setDefaultConfiguration();
   setConfiguration(_configuration);
-}
-
-//!
-//!  Contructor Version 2 -- Object will get all parameters and histograms for the ParticleAnalyzer object.
-//!
-ParticleDerivedHistogramCalculator::ParticleDerivedHistogramCalculator(const TString &    _name,
-                                                                       ParticleAnalyzer * _analyzer,
-                                                                       LogLevel           _selectedLevel)
-:
-Task(_name,_analyzer->getConfiguration(),_analyzer->getEventFilters(),_analyzer->getParticleFilters(),_selectedLevel)
-{
-  appendClassName("ParticleDerivedHistogramCalculator");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  baseSingleHistograms = _analyzer->getBaseSingleHistograms();
 }
 
 void ParticleDerivedHistogramCalculator::setDefaultConfiguration()
@@ -85,7 +70,7 @@ void ParticleDerivedHistogramCalculator::setDefaultConfiguration()
   configuration.addParameter("fillEta",   true);
   configuration.addParameter("fillY",    false);
   configuration.addParameter("fillP2",   false);
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 //!

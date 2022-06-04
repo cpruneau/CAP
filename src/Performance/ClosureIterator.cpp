@@ -31,18 +31,15 @@ Task(_name,_configuration,_debugLevel)
 void ClosureIterator::setDefaultConfiguration()
 {
   TString none  = "none";
-  configuration.setParameter("createHistograms",       true);
-  configuration.setParameter("loadHistograms",         true);
-  configuration.setParameter("saveHistograms",         true);
-  configuration.setParameter("appendedString",         TString("Closure"));
-  configuration.setParameter("forceHistogramsRewrite", true);
-  configuration.setParameter("selectedMethod",         1);
+  configuration.setParameter("createHistograms",        true);
+  configuration.setParameter("loadHistograms",          true);
+  configuration.setParameter("saveHistograms",          true);
+  configuration.setParameter("appendedString",          TString("Closure"));
+  configuration.setParameter("forceHistogramsRewrite",  true);
+  configuration.setParameter("selectedMethod",          1);
   configuration.generateKeyValuePairs("IncludedPattern",none,20);
   configuration.generateKeyValuePairs("ExcludedPattern",none,20);
-  if (reportDebug(__FUNCTION__))
-    {
-    configuration.printConfiguration(cout);
-    }
+  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 
@@ -59,40 +56,40 @@ void ClosureIterator::execute()
   if (reportStart(__FUNCTION__))
     ;
   TString none  = "none";
-  TString appendedString      = configuration.getValueString("_Closure");
+  TString appendedString      = configuration.getValueString("appendedString");
   TString histoInputPath      = configuration.getValueString("histoInputPath");
   TString histoOutputPath     = configuration.getValueString("histoOutputPath");
   TString histoModelDataName  = configuration.getValueString("histoModelDataName");
   bool forceHistogramsRewrite = configuration.getValueBool("forceHistogramsRewrite");
   int selectedMethod          = configuration.getValueInt("selectedMethod");
-  vector<TString> includedPatterns = configuration.getSelectedValues("IncludedPattern",none);
-  vector<TString> excludedPatterns = configuration.getSelectedValues("ExcludedPattern",none);
-  if (reportDebug(__FUNCTION__))
-    {
-    for (unsigned int k=0;k<includedPatterns.size();k++)
-      {
-      cout << " k:" << k << "  Include: " << includedPatterns[k] << endl;
-      }
 
-    for (unsigned int k=0;k<excludedPatterns.size();k++)
-      {
-      cout << " k:" << k << "  Exclude: " << excludedPatterns[k] << endl;
-      }
-    }
 
   unsigned int nSubTasks = subTasks.size();
   if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++)
     {
-    if (reportInfo(__FUNCTION__))  cout << "SubTasks #: " << iTask  << endl;
     Task & subTask = *subTasks[iTask];
     Configuration & subTaskConfig = subTask.getConfiguration();
     TString taskName              = subTask.getName();
     TString histoAnalyzerName     = subTaskConfig.getValueString("histoAnalyzerName");
+    if (reportInfo(__FUNCTION__))  cout << "SubTasks:" << iTask  << " named:" << taskName << " w/ analyzer:" <<  histoAnalyzerName << endl;
+    vector<TString> includedPatterns = configuration.getSelectedValues("IncludedPattern",none);
+    vector<TString> excludedPatterns = configuration.getSelectedValues("ExcludedPattern",none);
     includedPatterns.push_back(histoModelDataName);
     includedPatterns.push_back(histoAnalyzerName);
-    excludedPatterns.push_back(histoAnalyzerName+"R");
+    excludedPatterns.push_back("Reco");
+    if (reportDebug(__FUNCTION__))
+      {
+      for (unsigned int k=0;k<includedPatterns.size();k++)
+        {
+        cout << " k:" << k << "  Include: " << includedPatterns[k] << endl;
+        }
 
+      for (unsigned int k=0;k<excludedPatterns.size();k++)
+        {
+        cout << " k:" << k << "  Exclude: " << excludedPatterns[k] << endl;
+        }
+      }
     vector<TString> allFilesToProcess = listFilesInDir(histoInputPath,includedPatterns,excludedPatterns);
     int nFilesToProcess = allFilesToProcess.size();
     if (nFilesToProcess<1)
@@ -129,8 +126,9 @@ void ClosureIterator::execute()
     for (int iFile=0; iFile<nFilesToProcess; iFile++)
       {
       TString histoGeneratorFileName = removeRootExtension(allFilesToProcess[iFile]);
-      TString histoDetectorFileName  = substitute(histoGeneratorFileName, histoAnalyzerName, histoAnalyzerName+"R");
-      TString histoClosureFileName   = histoGeneratorFileName+appendedString;
+      TString histoDetectorFileName  = substitute(histoGeneratorFileName, "_Gen", "_Reco");
+      TString histoClosureFileName   = substitute(histoGeneratorFileName, "_Gen", "_Closure");
+
       if (reportInfo(__FUNCTION__))
         {
         cout << endl;

@@ -36,10 +36,10 @@ void BalanceFunctionCalculator::setDefaultConfiguration()
   configuration.setParameter("forceHistogramsRewrite", true);
   configuration.generateKeyValuePairs("IncludedPattern",none,20);
   configuration.generateKeyValuePairs("ExcludedPattern",none,20);
-  if (reportDebug(__FUNCTION__))
-    {
-    configuration.printConfiguration(cout);
-    }
+//  if (reportDebug(__FUNCTION__))
+//    {
+//    configuration.printConfiguration(cout);
+//    }
 }
 
 

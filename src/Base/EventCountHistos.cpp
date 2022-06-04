@@ -22,9 +22,9 @@ EventCountHistos::EventCountHistos(const TString & _name,
 Histograms(_name,_configuration,_debugLevel),
 nEventFilters(_nEventFilters),
 nParticleFilters(_nParticleFilters),
-h_taskExecutedReset(nullptr),
-h_eventAcceptedReset(nullptr),
-h_partilceAcceptedReset(nullptr)
+h_taskExecuted(nullptr),
+h_eventAccepted(nullptr),
+h_particleAccepted(nullptr)
 {
   appendClassName("EventCountHistos");
   setInstanceName(_name);
@@ -39,9 +39,9 @@ void EventCountHistos::createHistograms()
   setOwnership(true);
   int n = nEventFilters*nParticleFilters;
   TString bn = getHistoBaseName();
-  h_taskExecutedReset     = createHistogram(makeName(bn,"taskExecuted"),1,-0.5, 0.5, "taskExecuted", "Count") ;
-  h_eventAcceptedReset    = createHistogram(makeName(bn,"eventAccepted"),nEventFilters,-0.5, -0.5+double(nEventFilters), "event filter", "Count");
-  h_partilceAcceptedReset = createHistogram(makeName(bn,"particleAccepted"),n,-0.5, -0.5+double(n), "event x particle filter", "Count");
+  h_taskExecuted     = createHistogram(makeName(bn,"nTaskExecuted"),1,-0.5, 0.5, "nTaskExecuted", "Count") ;
+  h_eventAccepted    = createHistogram(makeName(bn,"nEventAccepted"),nEventFilters,-0.5, -0.5+double(nEventFilters), "event filter", "Count");
+  h_particleAccepted = createHistogram(makeName(bn,"nParticleAccepted"),n,-0.5, -0.5+double(n), "event x particle filter", "Count");
   if (reportEnd(__FUNCTION__))
     ;
  }
@@ -53,29 +53,29 @@ void EventCountHistos::loadHistograms(TFile * inputFile)
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
   TString bn = getHistoBaseName();
-  h_taskExecutedReset     = loadH1(inputFile,makeName(bn,"taskExecuted"));
-  h_eventAcceptedReset    = loadH1(inputFile,makeName(bn,"eventAccepted"));
-  h_partilceAcceptedReset = loadH1(inputFile,makeName(bn,"particleAccepted"));
+  h_taskExecuted     = loadH1(inputFile,makeName(bn,"nTaskExecuted"));
+  h_eventAccepted    = loadH1(inputFile,makeName(bn,"nEventAccepted"));
+  h_particleAccepted = loadH1(inputFile,makeName(bn,"nParticleAccepted"));
   if (reportEnd(__FUNCTION__))
     ;
 }
 
 // This fills the event count histogram. Should be called once per histo file save.
-void EventCountHistos::fill(long nTaskExecutedReset,
-                            vector<long> & nEventsAcceptedReset,
-                            vector<long> & nParticleAcceptedReset)
+void EventCountHistos::fill(long nTaskExecuted,
+                            vector<long> & nEventsAccepted,
+                            vector<long> & nParticleAccepted)
 {
   
   if (reportStart(__FUNCTION__))
     ;
-  h_taskExecutedReset->Fill(0.0, double(nTaskExecutedReset));
+  h_taskExecuted->Fill(0.0, double(nTaskExecuted));
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++)
     {
-    h_eventAcceptedReset->Fill(double(iEventFilter),double(nEventsAcceptedReset[iEventFilter]));
+    h_eventAccepted->Fill(double(iEventFilter),double(nEventsAccepted[iEventFilter]));
     for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++)
       {
       int index = iEventFilter*nParticleFilters + iParticleFilter;
-      h_partilceAcceptedReset->Fill(double(index),double(nParticleAcceptedReset[index]));
+      h_particleAccepted->Fill(double(index),double(nParticleAccepted[index]));
       }
     }
   if (reportEnd(__FUNCTION__))

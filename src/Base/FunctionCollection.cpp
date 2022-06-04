@@ -67,7 +67,7 @@ void FunctionCollection::setDefaultOptions(bool color)
 
 void FunctionCollection::setFunctionProperties(TF1 * f, const GraphConfiguration & graphConfiguration)
 {
-  if (reportDebug("FunctionCollection",getName(),"setFunctionProperties(..)"))
+  if (reportDebug(__FUNCTION__))
     {
     cout << "Setting properties of function: " << f->GetTitle() << endl;
     }
@@ -102,7 +102,7 @@ void FunctionCollection::setFunctionProperties(TF1 * f, const GraphConfiguration
 
 void FunctionCollection::plotAllFunctions(const TString & outputPath, bool doPrint)
 {
-  if (reportStart("FunctionCollection",getName(),"plotAllFunctions(..)"))
+  if (reportStart(__FUNCTION__))
     ;
   GraphConfiguration  * gc1D = new GraphConfiguration(1,0);
   GraphConfiguration  * gc2D = new GraphConfiguration(2,0);
@@ -119,7 +119,7 @@ void FunctionCollection::plotAllFunctions(const TString & outputPath, bool doPri
     name = f->GetName();
     if (f->IsA() == TF1::Class())
       {
-      if (reportInfo("FunctionCollection",getName(),"plotAllFunctions(..)"))
+      if (reportInfo(__FUNCTION__))
         {
         cout << "Plotting 1D function:" << iFunc << " named " << f->GetTitle() << endl;
 
@@ -130,11 +130,7 @@ void FunctionCollection::plotAllFunctions(const TString & outputPath, bool doPri
       }
     else if (f->IsA() == TF2::Class())
       {
-      if (reportInfo("FunctionCollection",getName(),"plotAllFunctions(..)"))
-        {
-        cout << "Plotting 2D function:" << iFunc << " named " << f->GetTitle() << endl;
-
-        }
+      if (reportInfo(__FUNCTION__)) cout << "Plotting 2D function:" << iFunc << " named " << f->GetTitle() << endl;
       canvasCollection->createCanvas(name, *cc2D, 30);
       setFunctionProperties(f, *gc2D);
       f->Draw("SURF3");

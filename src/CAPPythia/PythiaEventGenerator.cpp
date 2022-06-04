@@ -61,10 +61,10 @@ void PythiaEventGenerator::setDefaultConfiguration()
     TString value = "none";
     configuration.addParameter(key, value);
     }
-  if (reportDebug(__FUNCTION__))
-    {
-    configuration.printConfiguration(cout);
-    }
+//  if (reportDebug(__FUNCTION__))
+//    {
+//    configuration.printConfiguration(cout);
+//    }
 }
 
 //!

@@ -80,7 +80,7 @@ void CollisionGeometryGenerator::setDefaultConfiguration()
   configuration.addParameter("saveHistograms",      true);
   configuration.addParameter("useEventStream0",     true);
 
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 

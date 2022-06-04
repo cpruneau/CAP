@@ -38,9 +38,9 @@ derivedSingleHistograms (),
 derivedPairHistograms   (),
 combinedHistograms      (),
 filteredParticles       (),
-nTaskExecuted           (0),
-nTaskExecutedReset      (0),
-nEventsAcceptedTotal    (),
+nTaskExecutedTotal           (0),
+nTaskExecuted      (0),
+nEventsAcceptedTotalTotal    (),
 nParticlesAcceptedEvent (),
 nParticlesAcceptedReset (),
 nParticlesAcceptedTotal (),
@@ -122,7 +122,7 @@ void Task::setDefaultConfiguration()
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString nullString("");
+  TString nullString("null");
   TString none("none");
   TString treeName("tree");
   configuration.addParameter( "useEvents",               false);
@@ -145,8 +145,8 @@ void Task::setDefaultConfiguration()
   configuration.addParameter( "histoInputFileName",      nullString);
   configuration.addParameter( "histoOutputPath",         nullString);
   configuration.addParameter( "histoOutputFileName",     nullString);
-  configuration.addParameter( "histoModelDataName",     nullString);
-  configuration.addParameter( "histoAnalyzerName", nullString);
+  configuration.addParameter( "histoModelDataName",      nullString);
+  configuration.addParameter( "histoAnalyzerName",       nullString);
   configuration.addParameter( "histoBaseName",           nullString);
   configuration.addParameter( "dataInputUsed",           false);
   configuration.addParameter( "dataInputPath",           nullString);
@@ -161,7 +161,7 @@ void Task::setDefaultConfiguration()
   configuration.addParameter( "dataConversionToWac",     true);
   configuration.generateKeyValuePairs("IncludedPattern", none, 20);
   configuration.generateKeyValuePairs("ExcludedPattern", none, 20);
-  if (reportDebug(__FUNCTION__))    configuration.printConfiguration(cout);
+  //if (reportDebug(__FUNCTION__))    configuration.printConfiguration(cout);
 }
 
 void Task::setConfiguration(const Configuration & _configuration)
@@ -169,7 +169,7 @@ void Task::setConfiguration(const Configuration & _configuration)
    if (reportStart(__FUNCTION__))
     ;
   configuration.setParameters(_configuration);
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 void Task::initialize()
@@ -252,7 +252,7 @@ void Task::finalize()
   // new data, no point in saving again..
   if (useParticles)
     {
-    if (getNTaskExecutedReset()>0)
+    if (getnTaskExecuted()>0)
       {
       if (reportDebug(__FUNCTION__)) printEventStatistics();
       if (scaleHistos) scaleHistograms();
@@ -275,7 +275,7 @@ void Task::printEventStatistics() const
     ;
   cout << endl;
   cout << "Event Statistics : " << getName() <<  "/"  << getClassName()
-  << "       #calls after reset/total: " << nTaskExecutedReset << "/" << nTaskExecuted << " #EventFilters : " << nEventFilters << " #ParticleFilters : " << nParticleFilters << endl;
+  << "       #calls after reset/total: " << nTaskExecuted << "/" << nTaskExecutedTotal << " #EventFilters : " << nEventFilters << " #ParticleFilters : " << nParticleFilters << endl;
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++)
     {
     cout << "       Event filter : " << iEventFilter << " name : " << eventFilters[iEventFilter]->getName() << " #events after reset/total : " << getNEventsAcceptedReset(iEventFilter) << "/" << getNEventsAcceptedTotal(iEventFilter) << endl;
@@ -288,8 +288,6 @@ void Task::printEventStatistics() const
   if (reportEnd(__FUNCTION__))
     ;
 }
-
-
 
 void Task::reset()
 {
@@ -371,7 +369,7 @@ void Task::fillEventCountHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  eventCountHistos->fill(nTaskExecutedReset,nEventsAcceptedReset,nParticleAcceptedReset);
+  eventCountHistos->fill(nTaskExecuted,nEventsAccepted,nParticleAccepted);
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -471,7 +469,7 @@ void Task::scaleHistograms()
   int index;
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    long nEvents = nEventsAcceptedReset[iEventFilter];
+    long nEvents = nEventsAccepted[iEventFilter];
     if (nEvents>1)
       {
       scalingFactor = 1.0/double(nEvents);
@@ -479,7 +477,7 @@ void Task::scaleHistograms()
         {
         cout << endl;
         cout << "                            iEventFilter: " <<  iEventFilter<< endl;
-        cout << "           nEventsAccepted[iEventFilter]: " <<  nEvents<< endl;
+        cout << "           nEventsAcceptedTotal[iEventFilter]: " <<  nEvents<< endl;
         cout << "                           scalingFactor: " <<  scalingFactor << endl;
         }
       if (histograms.size()>0)
@@ -515,7 +513,7 @@ void Task::scaleHistograms()
         {
         cout << endl;
         cout << "                            iEventFilter: " <<  iEventFilter<< endl;
-        cout << "      nEventsAcceptedReset[iEventFilter]: " <<  nEventsAcceptedReset[iEventFilter]<< endl;
+        cout << "      nEventsAccepted[iEventFilter]: " <<  nEventsAccepted[iEventFilter]<< endl;
         cout << "                    no scaling performed: " <<  endl;
         }
       }
@@ -605,7 +603,7 @@ void Task::saveHistograms()
   // used to save the histograms. If not, assemble a name based on 'histoModelDataName' and 'histoAnalyzerName'
   // If the partial save option is set, a sequence number will be added to the file name.
   //
-  if (histoOutputFileName.IsNull())
+  if (histoOutputFileName.Contains("null"))
     {
     histoOutputFileName  = histoModelDataName;
     histoOutputFileName  += "_";
@@ -620,8 +618,8 @@ void Task::saveHistograms()
   if (reportDebug(__FUNCTION__))
     {
     cout << endl;
-    cout << "  nTaskExecutedReset : " << nTaskExecutedReset  << endl;
     cout << "       nTaskExecuted : " << nTaskExecuted  << endl;
+    cout << "  nTaskExecutedTotal : " << nTaskExecutedTotal  << endl;
     cout << "     histoOutputPath : " << histoOutputPath  << endl;
     cout << " histoOutputFileName : " << histoOutputFileName  << endl;
     }
@@ -635,7 +633,7 @@ void Task::saveHistograms()
   if (useParticles)
     {
     // this next fill is done once per save (after reset)
-    fillEventCountHistograms();
+    fillEventCountHistograms();  // do not do in finalize derived
     writeNEventsAccepted(outputFile);
     writeNEexecutedTask(outputFile);
     saveEventCountHistograms(outputFile);
@@ -650,8 +648,8 @@ void Task::writeNEexecutedTask(TFile * outputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString name = "ExecutedTaskReset";
-  writeParameter(outputFile,name,nTaskExecutedReset);
+  TString name = "nTaskExecuted";
+  writeParameter(outputFile,name,nTaskExecuted);
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -660,11 +658,11 @@ long Task::loadNEexecutedTask(TFile * inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString name = "ExecutedTaskReset";
-  nTaskExecutedReset = readParameter(inputFile,name);
+  TString name = "nTaskExecuted";
+  nTaskExecuted = readParameter(inputFile,name);
   if (reportEnd(__FUNCTION__))
     ;
-  return nTaskExecutedReset;
+  return nTaskExecuted;
 }
 
 void Task::writeNEventsAccepted(TFile * outputFile)
@@ -675,7 +673,7 @@ void Task::writeNEventsAccepted(TFile * outputFile)
     {
     TString name = "EventFilter";
     name += iFilter;
-    writeParameter(outputFile,name,nEventsAcceptedReset[iFilter]);
+    writeParameter(outputFile,name,nEventsAccepted[iFilter]);
     }
   if (reportEnd(__FUNCTION__))
     ;
@@ -689,7 +687,7 @@ void Task::loadNEventsAccepted(TFile * inputFile)
     {
     TString name = "EventFilter";
     name += iFilter;
-    nEventsAcceptedReset[iFilter] = readParameter(inputFile,name);
+    nEventsAccepted[iFilter] = readParameter(inputFile,name);
     }
   if (reportEnd(__FUNCTION__))
     ;
@@ -872,8 +870,8 @@ void Task::addHistogramsToExtList(TList *list __attribute__((unused)) )
 //
 //  for (unsigned int k=0; eventFilters.size(); k++)
 //    {
-//    TString name = "nEventsAccepted"; name += k;
-//    list->Add(new TParameter<Long64_t>(name,nEventsAccepted[k],'+'));
+//    TString name = "nEventsAcceptedTotal"; name += k;
+//    list->Add(new TParameter<Long64_t>(name,nEventsAcceptedTotal[k],'+'));
 //    }
 //  for (unsigned int k=1; k<baseSingleHistograms.size(); k++)
 //    {
