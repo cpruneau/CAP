@@ -428,29 +428,54 @@ int RunAnaPerform()
       performConfig.addParameter("resolutionOption",  1);
       performConfig.addParameter("efficiencyOption",  1);
       TString baseName = "Filter0";
+//
       performConfig.addParameter(baseName+"_PtBiasAinv",0.0);
       performConfig.addParameter(baseName+"_PtBiasA0",  0.0);
       performConfig.addParameter(baseName+"_PtBiasA1",  0.0);
       performConfig.addParameter(baseName+"_PtBiasA2",  0.0);
-      performConfig.addParameter(baseName+"_PtRmsAinv", 0.0005);
+      performConfig.addParameter(baseName+"_PtRmsAinv", 0.000);
       performConfig.addParameter(baseName+"_PtRmsA0",   0.00);
       performConfig.addParameter(baseName+"_PtRmsA1",   0.00);
-      performConfig.addParameter(baseName+"_PtRmsA2",   0.005);
+      performConfig.addParameter(baseName+"_PtRmsA2",   0.00);
       performConfig.addParameter(baseName+"_EtaBiasA0",  0.0);
       performConfig.addParameter(baseName+"_EtaBiasA1",  0.0);
       performConfig.addParameter(baseName+"_EtaBiasA2",  0.0);
       performConfig.addParameter(baseName+"_EtaRmsAinv", 0.0);
-      performConfig.addParameter(baseName+"_EtaRmsA0",   0.01);
-      performConfig.addParameter(baseName+"_EtaRmsA1",   0.01);
+      performConfig.addParameter(baseName+"_EtaRmsA0",   0.0);
+      performConfig.addParameter(baseName+"_EtaRmsA1",   0.0);
       performConfig.addParameter(baseName+"_EtaRmsA2",   0.0);
 
       performConfig.addParameter(baseName+"_PhiBiasA0",  0.0);
       performConfig.addParameter(baseName+"_PhiBiasA1",  0.0);
       performConfig.addParameter(baseName+"_PhiBiasA2",  0.0);
-      performConfig.addParameter(baseName+"_PhiRmsAinv", 0.01);
-      performConfig.addParameter(baseName+"_PhiRmsA0",   0.034);
-      performConfig.addParameter(baseName+"_PhiRmsA1",   0.035);
+      performConfig.addParameter(baseName+"_PhiRmsAinv", 0.0);
+      performConfig.addParameter(baseName+"_PhiRmsA0",   0.0);
+      performConfig.addParameter(baseName+"_PhiRmsA1",   0.0);
       performConfig.addParameter(baseName+"_PhiRmsA2",   0.0);
+
+//      performConfig.addParameter(baseName+"_PtBiasAinv",0.0);
+//      performConfig.addParameter(baseName+"_PtBiasA0",  0.0);
+//      performConfig.addParameter(baseName+"_PtBiasA1",  0.0);
+//      performConfig.addParameter(baseName+"_PtBiasA2",  0.0);
+//      performConfig.addParameter(baseName+"_PtRmsAinv", 0.0005);
+//      performConfig.addParameter(baseName+"_PtRmsA0",   0.00);
+//      performConfig.addParameter(baseName+"_PtRmsA1",   0.00);
+//      performConfig.addParameter(baseName+"_PtRmsA2",   0.005);
+//      performConfig.addParameter(baseName+"_EtaBiasA0",  0.0);
+//      performConfig.addParameter(baseName+"_EtaBiasA1",  0.0);
+//      performConfig.addParameter(baseName+"_EtaBiasA2",  0.0);
+//      performConfig.addParameter(baseName+"_EtaRmsAinv", 0.0);
+//      performConfig.addParameter(baseName+"_EtaRmsA0",   0.01);
+//      performConfig.addParameter(baseName+"_EtaRmsA1",   0.01);
+//      performConfig.addParameter(baseName+"_EtaRmsA2",   0.0);
+//
+//      performConfig.addParameter(baseName+"_PhiBiasA0",  0.0);
+//      performConfig.addParameter(baseName+"_PhiBiasA1",  0.0);
+//      performConfig.addParameter(baseName+"_PhiBiasA2",  0.0);
+//      performConfig.addParameter(baseName+"_PhiRmsAinv", 0.01);
+//      performConfig.addParameter(baseName+"_PhiRmsA0",   0.034);
+//      performConfig.addParameter(baseName+"_PhiRmsA1",   0.035);
+//      performConfig.addParameter(baseName+"_PhiRmsA2",   0.0);
 
       performConfig.addParameter(baseName+"_EffPeakAmp",0.8);
       performConfig.addParameter(baseName+"_EffPeakPt",1.0);

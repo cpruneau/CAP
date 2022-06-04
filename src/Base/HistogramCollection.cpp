@@ -866,6 +866,11 @@ void HistogramCollection::differenceCollection(const HistogramCollection & colle
     if (!ptrExist(__FUNCTION__,h,hRef)) return;
     if (!sameDimensions(__FUNCTION__,h,hRef)) return;
     TH1* hDiff = (TH1*) h->Clone();
+    TString name = hDiff->GetName();
+    name.ReplaceAll("Reco","Ratio");
+    hDiff->SetName(name);
+    hDiff->SetTitle(name);
+
     if (reportDebug(__FUNCTION__))
       {
       cout << "At iObject:" << iObject << " Computing  difference of  histogram " << h->GetName() << " and histogram " << hRef->GetName() << endl;
@@ -912,6 +917,11 @@ void HistogramCollection::ratioCollection(const HistogramCollection & collection
     if (!ptrExist(__FUNCTION__,h,hRef)) return;
     if (!sameDimensions(__FUNCTION__,h,hRef)) return;
     TH1* hRatio = (TH1*)  h->Clone();
+    TString name = hRatio->GetName();
+    name.ReplaceAll("Reco","Ratio");
+    hRatio->SetName(name);
+    hRatio->SetTitle(name);
+
     if (reportDebug(__FUNCTION__))
       {
       cout << "At iObject:" << iObject << " Computing ratio of " << h->GetName() << " by " << hRef->GetName() << endl;
