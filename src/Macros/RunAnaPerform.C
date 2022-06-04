@@ -478,7 +478,7 @@ int RunAnaPerform()
 //      performConfig.addParameter(baseName+"_PhiRmsA2",   0.0);
 
       performConfig.addParameter(baseName+"_EffPeakAmp",0.8);
-      performConfig.addParameter(baseName+"_EffPeakPt",1.0);
+      performConfig.addParameter(baseName+"_EffPeakPt",0.01);
       performConfig.addParameter(baseName+"_EffPeakRms",0.5);
       performConfig.addParameter(baseName+"_EffA1",0.0);
       performConfig.addParameter(baseName+"_EffA2",0.0);
