@@ -4218,9 +4218,12 @@ void HistogramCollection::reduce_n1EtaPhiN1EtaPhiOntoN1N1DetaDphi(const TH2 * h_
   vector<double> denominator(nDeta*nDphi,0.0);
   int nEta = h_1->GetNbinsX();
   int nPhi = h_1->GetNbinsY();
+  nDeta = h_12->GetNbinsX();
+  nDphi = h_12->GetNbinsY();
+
   int index;
 
-  if (reportDebug(__FUNCTION__))
+  if (reportInfo(__FUNCTION__))
     {
     cout << endl;
     cout << "         nEta:" << nEta << endl;

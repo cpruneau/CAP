@@ -28,18 +28,22 @@ nBins_pt(0),
 min_pt(0),
 max_pt(0),
 range_pt(0),
+scale_pt(0),
 nBins_phi(0),
 min_phi(0),
 max_phi(0),
 range_phi(0),
+scale_phi(0),
 nBins_eta(0),
 min_eta(0),
 max_eta(0),
 range_eta(0),
+scale_eta(0),
 nBins_y(0),
 min_y(0),
 max_y(0),
 range_y(0),
+scale_y(0),
 nBins_Dphi(0),
 min_Dphi(0),
 max_Dphi(0),
@@ -98,12 +102,14 @@ void ParticlePairHistos::createHistograms()
   min_pt   = configuration.getValueDouble("min_pt");
   max_pt   = configuration.getValueDouble("max_pt");
   range_pt = max_pt - min_pt;
-  
+  scale_pt = double(nBins_pt)/range_pt;
+
   nBins_phi   = configuration.getValueInt("nBins_phi");
   min_phi     = configuration.getValueDouble("min_phi");
   max_phi     = configuration.getValueDouble("max_phi");
   range_phi   = max_phi - min_phi;
-  width_Dphi  = range_phi/nBins_phi;
+  scale_phi   = double(nBins_phi)/range_phi;
+  width_Dphi  = range_phi/double(nBins_phi);
 
   nBins_Dphi       = nBins_phi;
   min_Dphi         = 0.0; //-width_Dphi/2.;
@@ -116,6 +122,7 @@ void ParticlePairHistos::createHistograms()
   min_eta   = configuration.getValueDouble("min_eta");
   max_eta   = configuration.getValueDouble("max_eta");
   range_eta = max_eta - min_eta;
+  scale_eta = double(nBins_eta)/range_eta;
 
   nBins_Deta= 2*nBins_eta-1;
   min_Deta  = -range_eta;
@@ -126,6 +133,7 @@ void ParticlePairHistos::createHistograms()
   min_y   = configuration.getValueDouble("min_y");
   max_y   = configuration.getValueDouble("max_y");
   range_y = max_y - min_y;
+  scale_y = double(nBins_y)/range_y;
 
   nBins_Dy  = 2*nBins_y-1;
   min_Dy    = -range_y;
@@ -260,7 +268,7 @@ void ParticlePairHistos::fill(vector<ParticleDigit*> & particle1, vector<Particl
           }
         }
 
-      if (fillEta)
+      if (fillEta && iEta_1!=0 && iEta_2!=0 )
         {
         // delta-eta maps onto a 2n-1 range i.e., 0 to 2n-2
         int iDeltaEta  = iEta_1-iEta_2 + nBins_eta-1;
@@ -302,7 +310,7 @@ void ParticlePairHistos::fill(vector<ParticleDigit*> & particle1, vector<Particl
           }
         }
 
-      if (fillY)
+      if (fillY && iY_1!=0 && iY_2!=0 )
         {
         int iDeltaY    = iY_1-iY_2 + nBins_y-1;
         int iDeltaPhi  = iPhi_1-iPhi_2;

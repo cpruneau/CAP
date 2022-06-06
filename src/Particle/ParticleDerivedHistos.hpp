@@ -38,11 +38,11 @@ public:
   unsigned int nBins_pt;
   float        min_pt;
   float        max_pt;
-  float        range_pt;
+  float        scale_pt;
   unsigned int nBins_phi;
   float        min_phi;
   float        max_phi;
-  float        range_phi;
+  float        scale_phi;
   unsigned int nBins_eta;
   float        min_eta;
   float        max_eta;

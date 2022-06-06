@@ -31,30 +31,33 @@ public:
 
   inline int getPtBinFor(float v) const
   {
-  int index = 1+double(nBins_pt)*(v-min_pt)/range_pt;
-  if (index>int(nBins_pt)) index = -1;
+  int index = 0; // indicates a value out of bounds
+  if (v<min_pt || v>=max_pt) return index;
+  index = 1+int(scale_pt*(v-min_pt));
   return index;
   }
 
   inline int getPhiBinFor(float v) const
   {
-  if (v<0.0) v += TMath::TwoPi();
-  int index = 1+double(nBins_phi)*(v-min_phi)/range_phi;
-  if (index>int(nBins_phi)) index = -1;
+  int index = 0; // indicates a value out of bounds
+  if (v<min_phi || v>=max_phi) return index;
+  index = 1+int(scale_phi*(v-min_phi));
   return index;
   }
 
   inline int getEtaBinFor(float v) const
   {
-  int index = 1+ double(nBins_eta)*(v-min_eta)/range_eta;
-  if (index>int(nBins_eta)) index = -1;
+  int index = 0; // indicates a value out of bounds
+  if (v<min_eta || v>=max_eta) return index;
+  index = 1+int(scale_eta*(v-min_eta));
   return index;
   }
 
   inline int getYBinFor(float v) const
   {
-  int index = 1+ double(nBins_y)*(v-min_y)/range_y;
-  if (index>int(nBins_y)) index = -1;
+  int index = 0; // indicates a value out of bounds
+  if (v<min_y || v>=max_y) return index;
+  index = 1+int(scale_y*(v-min_y));
   return index;
   }
 
@@ -74,21 +77,25 @@ public:
   double min_pt;
   double max_pt;
   double range_pt;
+  double scale_pt;
 
   int    nBins_phi;
   double min_phi;
   double max_phi;
   double range_phi;
+  double scale_phi;
 
   int    nBins_eta;
   double min_eta;
   double max_eta;
   double range_eta;
+  double scale_eta;
 
   int    nBins_y;
   double min_y;
   double max_y;
   double range_y;
+  double scale_y;
 
   int    nBins_Dphi;
   double min_Dphi;

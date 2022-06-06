@@ -295,7 +295,7 @@ void ParticlePairAnalyzer::execute()
     //      cout << "Found L" << endl;
     //      exit(0);
     //      }
-    float pt, e;
+    float pt, e, phi;
     int iPt, iPhi, iEta, iY;
     ParticleDigit * pd;
     bool digitized = false;
@@ -303,19 +303,20 @@ void ParticlePairAnalyzer::execute()
       {
       if (particleFilters[iParticleFilter]->accept(particle))
         {
-
         if (!digitized)
           {
           TLorentzVector & momentum = particle.getMomentum();
           pt        = momentum.Pt();
           e         = momentum.E();
+          phi       = momentum.Phi();
+          if (phi<0.0) phi += TMath::TwoPi();
           iPt       = histos->getPtBinFor(pt);
-          iPhi      = histos->getPhiBinFor(momentum.Phi());
-          iEta = fillEta ? histos->getEtaBinFor(momentum.Eta())    : -1;
-          iY   = fillY   ? histos->getYBinFor(momentum.Rapidity()) : -1;
-          
-         // cout << " pt: " << pt << " e:" << e <<  " iPt: " << iPt << " iPhi:" << iPhi << " iEta: " << iEta << " iY: " << iY << endl;
-          
+          if (iPt==0) continue;
+          iPhi      = histos->getPhiBinFor(phi);
+          if (iPhi==0) continue;
+          iEta = fillEta ? histos->getEtaBinFor(momentum.Eta())    : 0;
+          iY   = fillY   ? histos->getYBinFor(momentum.Rapidity()) : 0;
+          if (iEta==0 && iY==0) continue;
           pd        = factory->getNextObject();
           pd->iY    = iY;
           pd->iEta  = iEta;
@@ -325,10 +326,7 @@ void ParticlePairAnalyzer::execute()
           pd->e     = e;
           digitized = true; // so no need to digitize this particle again..
           }
-        if (digitized && iPt>=0 && iPhi>=0 && (iEta>=0 || iY>=0) )
-          {
-          filteredParticles[iParticleFilter].push_back(pd);
-          }
+        filteredParticles[iParticleFilter].push_back(pd);
         //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 7 --" << endl;
         } // particle accepted by filter
       } //particle loop
@@ -344,7 +342,7 @@ void ParticlePairAnalyzer::execute()
     unsigned int  index;
     for (unsigned int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
       {
-      incrementNParticlesAccepted(jEventFilter,iParticleFilter1);
+      incrementNParticlesAccepted(iEventFilter,iParticleFilter1);
       //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 10 --" << endl;
       index = baseSingle + iParticleFilter1;
       ParticleHistos * histos = (ParticleHistos *) baseSingleHistograms[index];

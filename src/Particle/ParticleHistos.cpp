@@ -27,11 +27,11 @@ max_n1(0),
 nBins_pt(0),
 min_pt(0),
 max_pt(0),
-range_pt(0),
+scale_pt(0),
 nBins_phi(0),
 min_phi(0),
 max_phi(0),
-range_phi(0),
+scale_phi(0),
 nBins_eta(0),
 min_eta(0),
 max_eta(0),
@@ -73,12 +73,12 @@ void ParticleHistos::createHistograms()
   nBins_pt = configuration.getValueInt("nBins_pt");
   min_pt   = configuration.getValueDouble("min_pt");
   max_pt   = configuration.getValueDouble("max_pt");
-  range_pt = max_pt - min_pt;
+  scale_pt = max_pt - min_pt;
   
   nBins_phi = configuration.getValueInt("nBins_phi");
   min_phi   = configuration.getValueDouble("min_phi");
   max_phi   = configuration.getValueDouble("max_phi");
-  range_phi = max_phi - min_phi;
+  scale_phi = max_phi - min_phi;
   
   nBins_eta = configuration.getValueInt("nBins_eta");
   min_eta   = configuration.getValueDouble("min_eta");

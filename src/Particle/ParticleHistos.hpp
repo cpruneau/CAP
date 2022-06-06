@@ -33,16 +33,16 @@ public:
   
   inline int getPtBinFor(float v) const
   {
-  int index = 1+double(nBins_pt)*(v-min_pt)/range_pt;
+  int index = 1+double(nBins_pt)*(v-min_pt)/scale_pt;
   if (index>int(nBins_pt)) index = -1;
-  //cout << "getPtBinFor() v:" << v << " min:" << min_pt <<  " max:" << max_pt <<  " range:" << range_pt << " index:" << index << endl;
+  //cout << "getPtBinFor() v:" << v << " min:" << min_pt <<  " max:" << max_pt <<  " range:" << scale_pt << " index:" << index << endl;
   return index;
   }
 
   inline int getPhiBinFor(float v) const
   {
   if (v<0.0) v += TMath::TwoPi();
-  int index = 1+ double(nBins_phi)*(v-min_phi)/range_phi;
+  int index = 1+ double(nBins_phi)*(v-min_phi)/scale_phi;
   if (index>int(nBins_phi)) index = -1;
   return index;
   }
@@ -73,11 +73,11 @@ public:
   unsigned int nBins_pt;
   float        min_pt;
   float        max_pt;
-  float        range_pt;
+  float        scale_pt;
   unsigned int nBins_phi;
   float        min_phi;
   float        max_phi;
-  float        range_phi;
+  float        scale_phi;
   unsigned int nBins_eta;
   float        min_eta;
   float        max_eta;

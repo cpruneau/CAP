@@ -189,7 +189,7 @@ void ParticleAnalyzer::execute()
     for (unsigned int iParticle=0; iParticle<nParticles; iParticle++)
       {
       Particle & particle = * event.getParticleAt(iParticle);
-      float pt,e;
+      double  pt,e,phi;
       int iPt, iPhi, iEta, iY;
       ParticleDigit * pd;
       bool digitized = false;
@@ -203,8 +203,10 @@ void ParticleAnalyzer::execute()
             TLorentzVector & momentum = particle.getMomentum();
             pt     = momentum.Pt();
             e      = momentum.E();
+            phi    = momentum.Phi();
+            if (phi<0.0) phi += TMath::TwoPi();
             iPt    = histos->getPtBinFor(pt);
-            iPhi   = histos->getPhiBinFor(momentum.Phi());
+            iPhi   = histos->getPhiBinFor(phi);
             iEta   = histos->getEtaBinFor(momentum.Eta());
             iY     = histos->getYBinFor(momentum.Rapidity());
             pd     = factory->getNextObject();

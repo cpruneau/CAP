@@ -140,8 +140,8 @@ void ParticlePairDerivedHistos::createHistograms()
   nBins_phi   = configuration.getValueInt("nBins_phi");
   min_phi     = configuration.getValueDouble("min_phi");
   max_phi     = configuration.getValueDouble("max_phi");
-  double range_phi   = max_phi - min_phi;
-  double width_Dphi  = range_phi/nBins_phi;
+  double scale_phi   = max_phi - min_phi;
+  double width_Dphi  = scale_phi/nBins_phi;
 
   nBins_Dphi       = nBins_phi;
   min_Dphi         = 0.0; //-width_Dphi/2.;
