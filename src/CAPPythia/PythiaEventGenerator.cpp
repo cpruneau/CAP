@@ -142,6 +142,7 @@ void PythiaEventGenerator::execute()
 
   Particle * interaction;
   // resetParticleCounters();
+  standaloneMode = true;
   if (standaloneMode)
     {
     // In this mode, we generate one PYTHIA (pp) collision per event. One interaction vertex is
@@ -248,7 +249,7 @@ void PythiaEventGenerator::generate(Particle * parentInteraction)
       int ist = part.GetStatusCode();
       if (ist <= 0) continue;
       int pdg = part.GetPdgCode();
-      if (pdg==22) continue;
+      if (abs(pdg)<=22) continue;
       //if (pdg==311 || pdg==-311 || pdg==3122|| pdg==-3122)
 //      if (pdg==3122|| pdg==-3122)
 //        {
@@ -275,6 +276,13 @@ void PythiaEventGenerator::generate(Particle * parentInteraction)
 
       type = getParticleTypeCollection()->findPdgCode(pdg);
       if (type==nullptr) continue;
+      double m = type->getMass();
+      if (m<0.100 || m>2.00)
+        {
+        if (reportInfo(__FUNCTION__))
+          cout << " m<0.100 || m>2.00 mass: " << m << " PDG: " << pdg << " Name:" << type->getName() << " Charge:" << type->getCharge() << endl;
+        continue;
+        }
       particle = particleFactory->getNextObject();
       particle->set(type,part.Px(),part.Py(),part.Pz(),part.Energy(),sourceX,sourceY,sourceZ,sourceT,true);
       //incrementParticlesCounted(0); // photons are NOT included in this tally

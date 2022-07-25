@@ -3364,6 +3364,41 @@ void HistogramCollection::calculateR2_H1H1H1(const TH1 * n2_12, const TH1 * n1n1
     }
 }
 
+
+void HistogramCollection::calculateAverageVsDeta(const TH2 * obs_12, TH2 * avgObs_12, int n)
+{
+  if (!ptrExist(__FUNCTION__,obs_12,avgObs_12)) return;
+  if (!sameDimensions(__FUNCTION__,obs_12,avgObs_12)) return;
+  int n_x = obs_12->GetNbinsX();
+  int n_y = obs_12->GetNbinsY();
+  vector<double> denom(n_x,1.0);
+  int off = (n_x - (2*n-1))/2;
+  for (int i_x=0; i_x<n; ++i_x)
+    {
+    if (i_x==0)
+      {
+      denom[off + n] = n;
+      }
+    else
+      {
+      denom[off + n + i_x] = n-i_x;
+      denom[off + n - i_x] = n-i_x;
+      }
+    }
+  for (int i_x=0; i_x<n; ++i_x)
+    {
+    for (int i_y=1;i_y<=n_y;++i_y)
+      {
+      double v  = obs_12->GetBinContent(i_x,i_y);
+      double ev = obs_12->GetBinError(i_x,i_y);
+      v  = v/denom[i_x];
+      ev = ev/denom[i_x];
+      avgObs_12->SetBinContent(i_x,i_y,v);
+      avgObs_12->SetBinError(i_x,i_y,ev);
+      }
+    }
+}
+
 //Calculate R2 = N2/N1/N1 - 1
 void HistogramCollection::calculateR2_H2H2H2(const TH2 * n2_12, const TH2 * n1n1_12, TH2 * r2_12, bool ijNormalization, double a1, double a2)
 {
@@ -3604,7 +3639,7 @@ void HistogramCollection::calculateAverage(TH1* h, double & avgDensity, double &
   avgValue    = sum/norm;
   avgDensity  = avgValue/TMath::TwoPi();
   eAvgDensity = sqrt(esum)/norm/TMath::TwoPi();
-  if ( reportInfo("HistogramCollection",getName(),"calculateAverage(TH1* h, double & avgDensity, double & eAvgDensity"))
+  if ( reportDebug("HistogramCollection",getName(),"calculateAverage(TH1* h, double & avgDensity, double & eAvgDensity"))
     {
     cout << "     Name: " << h->GetName() << "  avgValue: " << avgValue   << "  density: " << avgDensity  <<  " +- " << eAvgDensity << endl;
     }
@@ -3626,7 +3661,7 @@ void HistogramCollection::calculateIntegral(TH1 * h, double xMin, double xMax, d
       case 0: result = sum; resultError = sumError; break;
       case 1: result = integral; resultError = integralError; break;
     }
-  if ( reportInfo(__FUNCTION__))
+  if ( reportDebug(__FUNCTION__))
     {
     cout << "     Name: " << h->GetName() << endl;
     cout << "      sum: " << sum      << " +- " << sumError << endl;
@@ -3653,7 +3688,7 @@ void HistogramCollection::calculateIntegral(TH2 * h, double xMin, double xMax, d
       case 0: result = sum; resultError = sumError; break;
       case 1: result = integral; resultError = integralError; break;
     }
-  if ( reportInfo(__FUNCTION__))
+  if ( reportDebug(__FUNCTION__))
     {
     cout << "     Name: " << h->GetName() << endl;
     cout << "      sum: " << sum      << " +- " << sumError << endl;
@@ -4223,7 +4258,7 @@ void HistogramCollection::reduce_n1EtaPhiN1EtaPhiOntoN1N1DetaDphi(const TH2 * h_
 
   int index;
 
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "         nEta:" << nEta << endl;

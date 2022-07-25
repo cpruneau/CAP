@@ -1,5 +1,5 @@
-#ifndef WAC_Eos
-#define WAC_Eos
+#ifndef CAP_Eos
+#define CAP_Eos
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -51,5 +51,5 @@ public:
   ClassDef(Eos,0)
 };
 
-#endif  // WAC_Eos
+#endif  // CAP_Eos
 

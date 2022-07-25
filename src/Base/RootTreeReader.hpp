@@ -9,8 +9,8 @@
  * Author: Claude Pruneau,   04/01/2022
  *
  * *********************************************************************/
-#ifndef WAC_RootTreeReader
-#define WAC_RootTreeReader
+#ifndef CAP_RootTreeReader
+#define CAP_RootTreeReader
 #include "TChain.h"
 #include "TTree.h"
 #include "TBranch.h"
@@ -146,4 +146,4 @@ protected:
   ClassDef(RootTreeReader,0)
 };
 
-#endif /* WAC_RootTreeReader */
+#endif /* CAP_RootTreeReader */

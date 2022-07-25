@@ -9,11 +9,11 @@
  * Author: Claude Pruneau,   04/01/2022
  *
  * *********************************************************************/
-#include "ParticlePairHistos.hpp"
+#include "ParticlePair3DHistos.hpp"
 
-ClassImp(ParticlePairHistos);
+ClassImp(ParticlePair3DHistos);
 
-ParticlePairHistos::ParticlePairHistos(const TString &       _name,
+ParticlePair3DHistos::ParticlePair3DHistos(const TString &       _name,
                                        const Configuration & _configuration,
                                        LogLevel  _debugLevel)
 :
@@ -73,23 +73,23 @@ h_DptDpt_DetaDphi(nullptr),
 h_n2_DyDphi(nullptr),
 h_DptDpt_DyDphi(nullptr)
 {
-  appendClassName("ParticlePairHistos");
+  appendClassName("ParticlePair3DHistos");
   setInstanceName(_name);
 }
 
-ParticlePairHistos::~ParticlePairHistos()
+ParticlePair3DHistos::~ParticlePair3DHistos()
 {
   // no ops
 }
 
-void ParticlePairHistos::createHistograms()
+void ParticlePair3DHistos::createHistograms()
 {
-  if ( reportStart("ParticlePairHistos",getName(),"createHistograms()"))
+  if ( reportStart("ParticlePair3DHistos",getName(),"createHistograms()"))
     { }
   TString bn = getHistoBaseName();
   
   Configuration & configuration = getConfiguration();
-
+ 
   nBins_n2  = configuration.getValueInt("nBins_n2");
   min_n2    = configuration.getValueDouble("min_n2");
   max_n2    = configuration.getValueDouble("max_n2");
@@ -97,7 +97,7 @@ void ParticlePairHistos::createHistograms()
   nBins_n2  = configuration.getValueInt("nBins_n2");
   min_n2    = configuration.getValueDouble("min_n2");
   max_n2    = configuration.getValueDouble("max_n2");
-
+ 
   nBins_pt = configuration.getValueInt("nBins_pt");
   min_pt   = configuration.getValueDouble("min_pt");
   max_pt   = configuration.getValueDouble("max_pt");
@@ -135,9 +135,9 @@ void ParticlePairHistos::createHistograms()
   range_y = max_y - min_y;
   scale_y = double(nBins_y)/range_y;
 
-  //  nBins_DeltaP  = configuration.getValueInt("nBins_DeltaP");
-  //  min_DeltaP    = configuration.getValueDouble("min_DeltaP");
-  //  max_DeltaP    = configuration.getValueDouble("max_DeltaP");
+  nBins_DeltaP  = configuration.getValueInt("nBins_DeltaP");
+  min_DeltaP    = configuration.getValueDouble("min_DeltaP");
+  max_DeltaP    = configuration.getValueDouble("max_DeltaP");
 
   nBins_Dy  = 2*nBins_y-1;
   min_Dy    = -range_y;
@@ -171,29 +171,29 @@ void ParticlePairHistos::createHistograms()
   if (fillY)
     {
     h_n2_yY     = createHistogram(makeName(bn,"n2_yY"),     nBins_y,  min_y,  max_y,  nBins_y, min_y, max_y, "y_{1}","y_{2}", "N_{2}");
-    h_n2_DyDphi = createHistogram(makeName(bn,"n2_DyDphi"), nBins_Dy, min_Dy, max_Dy, nBins_Dphi, min_Dphi, max_Dphi, "#Delta y", "#Delta#phi", "N_{2}");
+    h_n2_DyDphi = createHistogram(makeName(bn,"n2_DyDphi"), nBins_Dy, min_Dy, max_Dy, nBins_Dphi, min_Dphi, max_Dphi, "#Delta#y", "#Delta#phi", "N_{2}");
     if (fillP2)
       {
       h_DptDpt_yY    = createHistogram(makeName(bn,"ptpt_yY"),  nBins_y,  min_y, max_y, nBins_y, min_y, max_y, "y_{1}","y_{2}", "p_{T}xp_{T}");
-      h_DptDpt_DyDphi = createHistogram(makeName(bn,"ptpt_DyDphi"),nBins_Dy, min_Dy, max_Dy, nBins_Dphi, min_Dphi, max_Dphi, "#Delta y", "#Delta#phi", "ptpt");
+      h_DptDpt_DyDphi = createHistogram(makeName(bn,"ptpt_DyDphi"),nBins_Dy, min_Dy, max_Dy, nBins_Dphi, min_Dphi, max_Dphi, "#Delta#y", "#Delta#phi", "ptpt");
       }
     }
 
-  //  if (fill3D)
-  //    {
-  //    h_n2_DeltaP    = createHistogram(makeName(bn,"n2_DeltaP"),
-  //                                     nBins_DeltaP,  min_DeltaP, max_DeltaP,
-  //                                     nBins_DeltaP,  min_DeltaP, max_DeltaP,
-  //                                     nBins_DeltaP,  min_DeltaP, max_DeltaP,
-  //                                     "p_{s}","p_{o}", "p_{l}","n_{2}");
-  //    }
+  if (fill3D)
+    {
+    h_n2_DeltaP    = createHistogram(makeName(bn,"n2_DeltaP"),
+                                     nBins_DeltaP,  min_DeltaP, max_DeltaP,
+                                     nBins_DeltaP,  min_DeltaP, max_DeltaP,
+                                     nBins_DeltaP,  min_DeltaP, max_DeltaP,
+                                     "p_{s}","p_{o}", "p_{l}","n_{2}");
+    }
 
-  if ( reportEnd("ParticlePairHistos",getName(),"createHistograms()"))
+  if ( reportEnd("ParticlePair3DHistos",getName(),"createHistograms()"))
     { }
 }
 
 //________________________________________________________________________
-void ParticlePairHistos::loadHistograms(TFile * inputFile)
+void ParticlePair3DHistos::loadHistograms(TFile * inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
@@ -236,11 +236,9 @@ void ParticlePairHistos::loadHistograms(TFile * inputFile)
     ;
 }
 
-void ParticlePairHistos::fill(vector<ParticleDigit*> & particle1, vector<ParticleDigit*> & particle2, bool same, double weight)
+void ParticlePair3DHistos::fill(vector<ParticleDigit*> & particle1, vector<ParticleDigit*> & particle2, bool same, double weight)
 {
-  double nPairs    = 0;
-  double nPairsEta = 0;
-  double nPairsY   = 0;
+  double nPairs = 0;
   int iG;
 
   for (unsigned int iPart_1=0; iPart_1<particle1.size(); iPart_1++)
@@ -261,7 +259,8 @@ void ParticlePairHistos::fill(vector<ParticleDigit*> & particle1, vector<Particl
       unsigned int iEta_2 = particle2[iPart_2]->iEta;
       unsigned int iY_2   = particle2[iPart_2]->iY;
 
-      nPairs++;
+
+      nPairs += 1.0;
       iG = h_n2_ptpt->GetBin(iPt_1,iPt_2);
       h_n2_ptpt->AddBinContent(iG,  weight);
 
@@ -286,7 +285,6 @@ void ParticlePairHistos::fill(vector<ParticleDigit*> & particle1, vector<Particl
 
       if (fillEta && iEta_1!=0 && iEta_2!=0 )
         {
-        nPairsEta++;
         // delta-eta maps onto a 2n-1 range i.e., 0 to 2n-2
         int iDeltaEta  = iEta_1-iEta_2 + nBins_eta-1;
         int iDeltaPhi  = iPhi_1-iPhi_2;
@@ -307,7 +305,6 @@ void ParticlePairHistos::fill(vector<ParticleDigit*> & particle1, vector<Particl
           }
         if (same)
           {
-          nPairsEta++;
           // delta-eta maps onto a 2n-1 range i.e., 0 to 2n-2
           iDeltaEta  = iEta_2-iEta_1 + nBins_eta-1;
           iDeltaPhi  = iPhi_2-iPhi_1;
@@ -330,7 +327,6 @@ void ParticlePairHistos::fill(vector<ParticleDigit*> & particle1, vector<Particl
 
       if (fillY && iY_1!=0 && iY_2!=0 )
         {
-        nPairsY++;
         int iDeltaY    = iY_1-iY_2 + nBins_y-1;
         int iDeltaPhi  = iPhi_1-iPhi_2;
         if (iDeltaPhi < 0) iDeltaPhi += nBins_phi;
@@ -350,7 +346,6 @@ void ParticlePairHistos::fill(vector<ParticleDigit*> & particle1, vector<Particl
           }
         if (same)
           {
-          nPairsY++;
           int iDeltaY   = iY_2-iY_1 + nBins_y-1;
           int iDeltaPhi  = iPhi_2-iPhi_1;
           if (iDeltaPhi < 0) iDeltaPhi += nBins_phi;
@@ -371,33 +366,33 @@ void ParticlePairHistos::fill(vector<ParticleDigit*> & particle1, vector<Particl
           }
         }
 
-      //      if (fill3D)
-      //        {
-      //        //decompose(double *pa,double *pb,double &qlong,double &qout,double &qside,double &qinv)
-      //
-      //        // Method from Scott Pratt to do three dimensional qinv components
-      //        double pt,s,Mlong,roots;
-      //        double ptot[4],q[4];
-      //        const int g[4]={1,-1,-1,-1};
-      //        int alpha;
-      //        qinv=0.0;
-      //        s=0.0;
-      //        for(alpha=0;alpha<4;alpha++)
-      //          {
-      //          ptot[alpha]=pa[alpha]+pb[alpha];
-      //          s+=g[alpha]*ptot[alpha]*ptot[alpha];
-      //          q[alpha]=pa[alpha]-pb[alpha];
-      //          qinv-=g[alpha]*q[alpha]*q[alpha];
-      //          }
-      //        pt=sqrt(ptot[1]*ptot[1]+ptot[2]*ptot[2]);
-      //        Mlong=sqrt(s+pt*pt);
-      //        roots=sqrt(s);
-      //
-      //        qside=(ptot[1]*q[2]-ptot[2]*q[1])/pt;
-      //        qlong=(ptot[0]*q[3]-ptot[3]*q[0])/Mlong;
-      //        qout=(roots/Mlong)*(ptot[1]*q[1]+ptot[2]*q[2])/pt;
-      //        qinv=sqrt(qinv);
-      //        }
+      if (fill3D)
+        {
+        //decompose(double *pa,double *pb,double &qlong,double &qout,double &qside,double &qinv)
+
+        // Method from Scott Pratt to do three dimensional qinv components
+        double pt,s,Mlong,roots;
+        double ptot[4],q[4];
+        const int g[4]={1,-1,-1,-1};
+        int alpha;
+        qinv=0.0;
+        s=0.0;
+        for(alpha=0;alpha<4;alpha++)
+          {
+          ptot[alpha]=pa[alpha]+pb[alpha];
+          s+=g[alpha]*ptot[alpha]*ptot[alpha];
+          q[alpha]=pa[alpha]-pb[alpha];
+          qinv-=g[alpha]*q[alpha]*q[alpha];
+          }
+        pt=sqrt(ptot[1]*ptot[1]+ptot[2]*ptot[2]);
+        Mlong=sqrt(s+pt*pt);
+        roots=sqrt(s);
+
+        qside=(ptot[1]*q[2]-ptot[2]*q[1])/pt;
+        qlong=(ptot[0]*q[3]-ptot[3]*q[0])/Mlong;
+        qout=(roots/Mlong)*(ptot[1]*q[1]+ptot[2]*q[2])/pt;
+        qinv=sqrt(qinv);
+        }
       }
     }
 
@@ -410,77 +405,27 @@ void ParticlePairHistos::fill(vector<ParticleDigit*> & particle1, vector<Particl
     }
   if (fillEta)
     {
-    h_n2_etaEta->SetEntries(h_n2_etaEta->GetEntries()+nPairsEta);
-    h_n2_DetaDphi->SetEntries(h_n2_DetaDphi->GetEntries()+nPairsEta);
+    h_n2_etaEta->SetEntries(h_n2_etaEta->GetEntries()+nPairs);
+    h_n2_DetaDphi->SetEntries(h_n2_DetaDphi->GetEntries()+nPairs);
     if (fillP2)
       {
-      h_DptDpt_etaEta->SetEntries(h_DptDpt_etaEta->GetEntries()+nPairsEta);
-      h_DptDpt_DetaDphi->SetEntries(h_DptDpt_DetaDphi->GetEntries()+nPairsEta);
+      h_DptDpt_etaEta->SetEntries(h_DptDpt_etaEta->GetEntries()+nPairs);
+      h_DptDpt_DetaDphi->SetEntries(h_DptDpt_DetaDphi->GetEntries()+nPairs);
       }
     }
 
   if (fillY)
     {
-    h_n2_yY->SetEntries(h_n2_yY->GetEntries()+nPairsY);
-    h_n2_DyDphi->SetEntries(h_n2_DyDphi->GetEntries()+nPairsY);
+    h_n2_yY->SetEntries(h_n2_yY->GetEntries()+nPairs);
+    h_n2_DyDphi->SetEntries(h_n2_DyDphi->GetEntries()+nPairs);
     if (fillP2)
       {
-      h_DptDpt_yY->SetEntries(h_DptDpt_yY->GetEntries()+nPairsY);
-      h_DptDpt_DyDphi->SetEntries(h_DptDpt_DyDphi->GetEntries()+nPairsY);
+      h_DptDpt_yY->SetEntries(h_DptDpt_yY->GetEntries()+nPairs);
+      h_DptDpt_DyDphi->SetEntries(h_DptDpt_DyDphi->GetEntries()+nPairs);
       }
     }
   h_n2->Fill(double(nPairs),weight);
 
 
-}
-
-void ParticlePairHistos::fill(Particle & particle1, Particle & particle2, double weight)
-{
-
-  TLorentzVector & momentum1 = particle1.getMomentum();
-  double pt1   = momentum1.Pt();
-  double e1    = momentum1.E();
-  double phi1  = momentum1.Phi();
-  double eta1  = momentum1.Eta();
-  double y1    = momentum1.Rapidity();
-  TLorentzVector & momentum2 = particle2.getMomentum();
-  double pt2   = momentum2.Pt();
-  double e2    = momentum2.E();
-  double phi2  = momentum2.Phi();
-  double eta2  = momentum2.Eta();
-  double y2    = momentum2.Rapidity();
-  if (phi1<0.0) phi1 += TMath::TwoPi();
-  if (phi2<0.0) phi2 += TMath::TwoPi();
-  double dphi = phi1 - phi2;
-  if (dphi<0.0) dphi += TMath::TwoPi();
-  else if (dphi>TMath::TwoPi()) dphi -= TMath::TwoPi();
-
-  h_n2_ptpt->Fill(pt1,pt2);
-  h_n2_phiPhi->Fill(phi1,phi2);
-  //if (fillP2)h_DptDpt_phiPhi ->AddBinContent(iG,weight*dpt1*dpt2);
-
-  if (fillEta)
-    {
-    double deta = eta1 - eta2;
-    h_n2_etaEta   ->Fill(eta1,eta2);
-    h_n2_DetaDphi ->Fill(deta,dphi);
-    if (fillP2)
-      {
-      h_DptDpt_etaEta->Fill(eta1,eta2,weight*pt1*pt2);  // needs attention
-      h_DptDpt_DetaDphi->Fill(deta,dphi,weight*pt1*pt2); // needs attention
-      }
-    }
-  if (fillY)
-    {
-    double dy = y1 - y2;
-    h_n2_yY     ->Fill(y1,y2);
-    h_n2_DyDphi ->Fill(dy,dphi);
-    if (fillP2)
-      {
-      h_DptDpt_yY->Fill(y1,y2,weight*pt1*pt2); // needs attention
-      h_DptDpt_DyDphi->Fill(dy,dphi,weight*pt1*pt2); // needs attention
-      }
-    }
-  //  h_n2->Fill(double(nPairs),weight);
 }
 

@@ -21,6 +21,8 @@ Histograms(_name,_configuration,_debugLevel),
 fillEta(0),
 fillY(0),
 fillP2(0),
+useEffCorrection(0),
+efficiencyOpt(0),
 nBins_n1(0),
 min_n1(0),
 max_n1(0),
@@ -47,7 +49,8 @@ h_n1_ptXS(nullptr),
 h_n1_phiEta(nullptr),
 h_spt_phiEta(nullptr),
 h_n1_phiY(nullptr),
-h_spt_phiY(nullptr)
+h_spt_phiY(nullptr),
+h_pdgId(nullptr)
 {
   appendClassName("ParticleHistos");
   setInstanceName(_name);
@@ -115,9 +118,15 @@ void ParticleHistos::createHistograms()
       h_spt_phiY  = createHistogram(makeName(bn,"spt_phiY"),  nBins_y,   min_y,   max_y, nBins_phi, min_phi, max_phi, "y", "#varphi","N");
       }
     }
+
+  h_pdgId  = createHistogram(makeName(bn,"n1_indexId"),   400,  -0.5, 399.5, "Index", "N");
+
   if ( reportEnd("ParticleHistos",getName(),"createHistograms()"))
     { }
 }
+
+
+
 
 //________________________________________________________________________
 void ParticleHistos::loadHistograms(TFile * inputFile)
@@ -153,26 +162,105 @@ void ParticleHistos::loadHistograms(TFile * inputFile)
       }
     }
 
+  h_pdgId  = loadH2(inputFile,  makeName(bn,"n1_indexId"));
+
   if (reportEnd(__FUNCTION__))
     ;
 }
+
+void ParticleHistos::loadCalibration(TFile * inputFile)
+{
+  if (reportStart(__FUNCTION__))
+    ;
+  if (!ptrFileExist(__FUNCTION__,inputFile)) return;
+
+  Configuration & configuration = getConfiguration();
+  useEffCorrection = true;
+  efficiencyOpt    = configuration.getValueInt("efficientOpt");
+  TString bn = getHistoBaseName();
+
+  switch (efficiencyOpt)
+    {
+      case 0: // pT dependence only
+      h_eff_pt = loadH1(inputFile,  makeName(bn,"eff_pt"));
+      break;
+
+      case 1: // pT vs eta dependence
+      h_eff_ptEta = loadH2(inputFile,  makeName(bn,"eff_ptEta"));
+      break;
+
+      case 2: // pT vs y dependence
+      h_eff_ptY   = loadH2(inputFile,  makeName(bn,"eff_ptY"));
+      break;
+
+      case 3: // pT vs vs phi vs eta dependence
+      h_eff_ptPhiEta = loadH3(inputFile,  makeName(bn,"eff_ptPhiEta"));
+
+      case 4: // pT vs vs phi vs y dependence
+      h_eff_ptPhiY = loadH3(inputFile,  makeName(bn,"eff_ptPhiY"));
+      break;
+
+    }
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
 
 //!
 //! Fiil  single particle histograms of this class with the particles contained in the given list.
 //!
 void ParticleHistos::fill(vector<ParticleDigit*> & particles, double weight)
 {
-  double nSingles    = 0;
-  double totalEnergy = 0;
+  double nSingles      = 0;
+  double nSinglesEta   = 0;
+  double nSinglesY     = 0;
+  double totalEnergy   = 0;
 
   for (unsigned int iPart=0; iPart<particles.size(); iPart++)
     {
     float        e    = particles[iPart]->e;
     float        pt   = particles[iPart]->pt;
+    float        eta  = particles[iPart]->eta;
+    float        phi  = particles[iPart]->phi;
+    float        y    = particles[iPart]->y;
     unsigned int iPt  = particles[iPart]->iPt;
     unsigned int iPhi = particles[iPart]->iPhi;
     unsigned int iEta = particles[iPart]->iEta;
     unsigned int iY   = particles[iPart]->iY;
+
+    if (useEffCorrection)
+      {
+      int k = 0;
+      double eff = 0.0;
+      switch (efficiencyOpt)
+        {
+          case 0:
+          k = h_eff_pt->FindBin(pt);
+          eff = h_eff_pt->GetBinContent(k);
+          break;
+
+          case 1:
+          k = h_eff_ptEta->FindBin(eta,pt);
+          eff = h_eff_ptEta->GetBinContent(k);
+          break;
+
+          case 2:
+          k = h_eff_ptY->FindBin(y,pt);
+          eff = h_eff_ptY->GetBinContent(k);
+          break;
+
+          case 3:
+          k = h_eff_ptPhiEta->FindBin(eta,phi,pt);
+          eff = h_eff_ptPhiEta->GetBinContent(k);
+          break;
+
+          case 4:
+          k = h_eff_ptPhiY->FindBin(y,phi,pt);
+          eff = h_eff_ptPhiY->GetBinContent(k);
+          break;
+        }
+      if (eff>0) weight /= eff;
+      }
 
     nSingles++;
     totalEnergy += e;
@@ -188,6 +276,7 @@ void ParticleHistos::fill(vector<ParticleDigit*> & particles, double weight)
         {
         cout << "iG:" << iG << endl;
         }
+      nSinglesEta++;
       h_n1_phiEta->AddBinContent(iG,weight);
       if (fillP2) h_spt_phiEta->AddBinContent(iG,weight*pt);
       }
@@ -199,6 +288,7 @@ void ParticleHistos::fill(vector<ParticleDigit*> & particles, double weight)
         {
         cout << "iG:" << iG << endl;
         }
+      nSinglesY++;
       h_n1_phiY->AddBinContent(iG,weight);
       if (fillP2) h_spt_phiY->AddBinContent(iG,weight*pt);
       }
@@ -207,13 +297,13 @@ void ParticleHistos::fill(vector<ParticleDigit*> & particles, double weight)
   h_n1_ptXS->SetEntries(h_n1_ptXS->GetEntries()+nSingles);
   if (fillEta)
     {
-    h_n1_phiEta->SetEntries(h_n1_phiEta->GetEntries()+nSingles);
-    if (fillP2) h_spt_phiEta->SetEntries(h_spt_phiEta->GetEntries()+nSingles);
+    h_n1_phiEta->SetEntries(h_n1_phiEta->GetEntries()+nSinglesEta);
+    if (fillP2) h_spt_phiEta->SetEntries(h_spt_phiEta->GetEntries()+nSinglesEta);
     }
   if (fillY)
     {
-    h_n1_phiY->SetEntries(h_n1_phiY->GetEntries()+nSingles);
-    if (fillP2) h_spt_phiY->SetEntries(h_spt_phiY->GetEntries()+nSingles);
+    h_n1_phiY->SetEntries(h_n1_phiY->GetEntries()+nSinglesY);
+    if (fillP2) h_spt_phiY->SetEntries(h_spt_phiY->GetEntries()+nSinglesY);
     }
   h_n1->Fill(nSingles, weight);
   h_n1_eTotal->Fill(totalEnergy, weight);
@@ -228,7 +318,43 @@ void ParticleHistos::fill(Particle & particle, double weight)
   float pt   = momentum.Pt();
   float eta  = momentum.Eta();
   float phi  = momentum.Phi();
+  float rapidity = momentum.Rapidity();
   if (phi<0) phi += TMath::TwoPi();
+
+  if (useEffCorrection)
+    {
+    int k = 0;
+    double eff = 0.0;
+    switch (efficiencyOpt)
+      {
+        case 0:
+        k = h_eff_pt->FindBin(pt);
+        eff = h_eff_pt->GetBinContent(k);
+        break;
+
+        case 1:
+        k = h_eff_ptEta->FindBin(eta,pt);
+        eff = h_eff_ptEta->GetBinContent(k);
+        break;
+
+        case 2:
+        k = h_eff_ptY->FindBin(rapidity,pt);
+        eff = h_eff_ptY->GetBinContent(k);
+        break;
+
+        case 3:
+        k = h_eff_ptPhiEta->FindBin(eta,phi,pt);
+        eff = h_eff_ptPhiEta->GetBinContent(k);
+        break;
+
+        case 4:
+        k = h_eff_ptPhiY->FindBin(rapidity,phi,pt);
+        eff = h_eff_ptPhiY->GetBinContent(k);
+        break;
+      }
+    if (eff>0) weight /= eff;
+    }
+
   h_n1_pt  ->Fill(pt,weight);
   h_n1_ptXS->Fill(pt,weight/pt);
   if (fillEta)
@@ -238,10 +364,12 @@ void ParticleHistos::fill(Particle & particle, double weight)
     }
   if (fillY)
     {
-    float rapidity = momentum.Rapidity();
     h_n1_phiY->Fill(rapidity,phi,weight);
     if (fillP2) h_spt_phiY->Fill(rapidity,phi,weight*pt);
     }
+
+  double pdgIndex = ParticleTypeCollection::getMasterParticleCollection()->findIndexForType(particle.getTypePtr());
+  h_pdgId->Fill(pdgIndex);
 }
 
 //!

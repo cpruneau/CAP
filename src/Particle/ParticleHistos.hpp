@@ -27,6 +27,7 @@ public:
   virtual ~ParticleHistos();
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);
+  virtual void loadCalibration(TFile * inputFile);
   virtual void fill(vector<ParticleDigit*> & particles, double weight);
   virtual void fill(Particle & particle, double weight);
   virtual void fillMultiplicity(double nAccepted, double totalEnergy, double weight);
@@ -67,6 +68,9 @@ public:
   bool fillEta;
   bool fillY;
   bool fillP2;
+  bool useEffCorrection;
+  int  efficiencyOpt;
+
   unsigned int nBins_n1;
   float        min_n1;
   float        max_n1;
@@ -104,6 +108,13 @@ public:
   TH2 * h_n1_phiY;
   TH2 * h_spt_phiY;
 
+  TH1 * h_pdgId;
+
+  TH1 * h_eff_pt;
+  TH2 * h_eff_ptEta;
+  TH2 * h_eff_ptY;
+  TH3 * h_eff_ptPhiEta;
+  TH3 * h_eff_ptPhiY;
 
     ClassDef(ParticleHistos,0)
 

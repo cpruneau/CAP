@@ -28,8 +28,11 @@ public:
                 unsigned int _iEta,
                 unsigned int _iPhi,
                 unsigned int _iPt,
-                double       _pt,
-                double       _e);
+                float       _pt,
+                float       _phi,
+                float       _eta,
+                float       _y,
+                float       _e);
   virtual ~ParticleDigit();
   ParticleDigit(const ParticleDigit& other);
   ParticleDigit & operator=(const ParticleDigit & other);
@@ -40,8 +43,11 @@ public:
   unsigned int iEta;
   unsigned int iPhi;
   unsigned int iPt;
-  double pt;
-  double e;
+  float pt;
+  float phi;
+  float eta;
+  float y;
+  float e;
 
   static int factorySize;
   static Factory<ParticleDigit> * factory;

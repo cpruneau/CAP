@@ -1,5 +1,5 @@
-#ifndef WAC_ChemicalPotential
-#define WAC_ChemicalPotential
+#ifndef CAP_ChemicalPotential
+#define CAP_ChemicalPotential
 #include "Table2D.hpp"
 
 class ChemicalPotential

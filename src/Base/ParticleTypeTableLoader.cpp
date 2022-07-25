@@ -27,7 +27,6 @@ Task(_name,_configuration,_selectedLevel)
 
 void ParticleTypeTableLoader::setDefaultConfiguration()
 {
-  
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
@@ -39,7 +38,7 @@ void ParticleTypeTableLoader::setDefaultConfiguration()
   configuration.setParameter("dataOutputUsed",    false);
   configuration.setParameter("dataOutputPath",    TString(getenv("CAP_DATA")));
   configuration.setParameter("dataOutputFileName",TString("NewParticleTypeData.dat"));
-  if (reportDebug("ParticleTypeTableLoader",getName(),"setDefaultConfiguration()"))
+  if (reportDebug(__FUNCTION__))
     {
     configuration.printConfiguration(cout);
     }
@@ -47,7 +46,6 @@ void ParticleTypeTableLoader::setDefaultConfiguration()
 
 void ParticleTypeTableLoader::execute()
 {
-  
   if (reportStart(__FUNCTION__))
     ;
   incrementTaskExecuted();
@@ -57,19 +55,19 @@ void ParticleTypeTableLoader::execute()
   bool    dataOutputUsed     = configuration.getValueBool("dataOutputUsed");
   TString dataOutputPath     = configuration.getValueString("dataOutputPath");
   TString dataOutputFileName = configuration.getValueString("dataOutputFileName");
-
   TString pdgDataFileName;
-  
   if (dataInputUsed)
     {
     pdgDataFileName =  dataInputPath;
     pdgDataFileName += dataInputFileName;
     ParticleTypeCollection * particles = ParticleTypeCollection::getMasterParticleCollection();
     particles->readFromFile(pdgDataFileName);
-    if (reportDebug("ParticleTypeTableLoader",getName(),"execute()"))
+    if (reportDebug(__FUNCTION__))
+      {
       particles->printProperties(std::cout);
+      particles->printDecayProperties(std::cout);
+      }
     }
-
   if (dataOutputUsed)
     {
     pdgDataFileName =  dataOutputPath;
@@ -77,7 +75,7 @@ void ParticleTypeTableLoader::execute()
     ParticleTypeCollection * particles = ParticleTypeCollection::getMasterParticleCollection();
     particles->writeToFile(pdgDataFileName);
     }
- 
   if (reportEnd(__FUNCTION__))
     ;
 }
+

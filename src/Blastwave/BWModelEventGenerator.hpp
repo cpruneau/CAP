@@ -4,8 +4,8 @@
 //  Copyright © 2016-2019 Claude Pruneau. All rights reserved.
 //
 
-#ifndef WAC_BWModelEventGenerator
-#define WAC_BWModelEventGenerator
+#ifndef CAP_BWModelEventGenerator
+#define CAP_BWModelEventGenerator
 #include "Task.hpp"
 #include "Configuration.hpp"
 
@@ -58,5 +58,5 @@ public:
     ClassDef(BWModelEventGenerator,0)
 };
 
-#endif /* WAC_BWModelEventGenerator */
+#endif /* CAP_BWModelEventGenerator */
 

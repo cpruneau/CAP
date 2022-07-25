@@ -1,5 +1,5 @@
-#ifndef WAC_Arsenal
-#define WAC_Arsenal
+#ifndef CAP_Arsenal
+#define CAP_Arsenal
 
 #include<fstream>
 #include<string>

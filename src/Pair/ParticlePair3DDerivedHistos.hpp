@@ -9,31 +9,31 @@
  * Author: Claude Pruneau,   04/01/2022
  *
  * *********************************************************************/
-#ifndef CAP__ParticlePairDerivedHistos
-#define CAP__ParticlePairDerivedHistos
+#ifndef CAP__ParticlePair3DDerivedHistos
+#define CAP__ParticlePair3DDerivedHistos
 #include "ParticleHistos.hpp"
 #include "ParticleDerivedHistos.hpp"
-#include "ParticlePairHistos.hpp"
+#include "ParticlePair3DHistos.hpp"
 #include "Histograms.hpp"
 
 //!
 //! Two-Particle Correlation Function Histograms
 //!
-class ParticlePairDerivedHistos : public  Histograms
+class ParticlePair3DDerivedHistos : public  Histograms
 {
 public:
 
-  ParticlePairDerivedHistos(const TString & name,
+  ParticlePair3DDerivedHistos(const TString & name,
                             const Configuration & configuration,
                             LogLevel  debugLevel);
-  virtual ~ParticlePairDerivedHistos();
+  virtual ~ParticlePair3DDerivedHistos();
   virtual void loadHistograms(TFile * inputFile);
   virtual void createHistograms();
   virtual void calculatePairDerivedHistograms(ParticleHistos         & part1BaseHistos,
                                               ParticleHistos         & part2BaseHistos,
                                               ParticleDerivedHistos  & part1DerivedHistos,
                                               ParticleDerivedHistos  & part2DerivedHistos,
-                                              ParticlePairHistos     & pairHistos,
+                                              ParticlePair3DHistos     & pairHistos,
                                               double bincorrection);
 
   bool         fillEta;
@@ -69,15 +69,9 @@ public:
   double       max_Dphi_shft;
 
   TH2* h_n1n1_ptpt;
-  TH2* h_A2_ptpt;
-  TH2* h_B2_ptpt;
-  TH2* h_C2_ptpt;
   TH2* h_R2_ptpt;
 
   TH2* h_n1n1_phiPhi;
-  TH2* h_A2_phiPhi;
-  TH2* h_B2_phiPhi;
-  TH2* h_C2_phiPhi;
   TH2* h_R2_phiPhi;
 
   TH2* h_pt1pt1_phiPhi;
@@ -86,9 +80,6 @@ public:
   TH2* h_G2_phiPhi;
 
   TH2* h_n1n1_etaEta;
-  TH2* h_A2_etaEta;
-  TH2* h_B2_etaEta;
-  TH2* h_C2_etaEta;
   TH2* h_R2_etaEta;
 
   TH2* h_pt1pt1_etaEta;
@@ -98,9 +89,8 @@ public:
 
   TH2* h_n1n1_DetaDphi;
   TH2* h_rho2_DetaDphi;
-  TH2* h_A2_DetaDphi;
-  TH2* h_B2_DetaDphi;
-  TH2* h_C2_DetaDphi;
+  TH2* h_B2AB_DetaDphi;
+  TH2* h_B2BA_DetaDphi;
   TH2* h_R2_DetaDphi;
   TH2* h_P2_DetaDphi;
   TH2* h_G2_DetaDphi;
@@ -110,18 +100,14 @@ public:
 
 
   TH2* h_rho2_DetaDphi_shft;
-  TH2* h_A2_DetaDphi_shft;
-  TH2* h_B2_DetaDphi_shft;
-  TH2* h_C2_DetaDphi_shft;
+  TH2* h_B2AB_DetaDphi_shft;
+  TH2* h_B2BA_DetaDphi_shft;
   TH2* h_R2_DetaDphi_shft;
   TH2* h_DptDpt_DetaDphi_shft;
   TH2* h_P2_DetaDphi_shft;
   TH2* h_G2_DetaDphi_shft;
 
   TH2* h_n1n1_yY;
-  TH2* h_A2_yY;
-  TH2* h_B2_yY;
-  TH2* h_C2_yY;
   TH2* h_R2_yY;
 
   TH2* h_pt1pt1_yY;
@@ -131,17 +117,15 @@ public:
 
   TH2* h_n1n1_DyDphi;
   TH2* h_rho2_DyDphi;
-  TH2* h_A2_DyDphi;
-  TH2* h_B2_DyDphi;
-  TH2* h_C2_DyDphi;
+  TH2* h_B2AB_DyDphi;
+  TH2* h_B2BA_DyDphi;
   TH2* h_R2_DyDphi;
   TH2* h_P2_DyDphi;
   TH2* h_G2_DyDphi;
 
   TH2* h_rho2_DyDphi_shft;
-  TH2* h_A2_DyDphi_shft;
-  TH2* h_B2_DyDphi_shft;
-  TH2* h_C2_DyDphi_shft;
+  TH2* h_B2AB_DyDphi_shft;
+  TH2* h_B2BA_DyDphi_shft;
   TH2* h_R2_DyDphi_shft;
   TH2* h_DptDpt_DyDphi_shft;
   TH2* h_P2_DyDphi_shft;
@@ -150,8 +134,8 @@ public:
   TH2* h_pt1pt1_DyDphi;
   TH2* h_DptDpt_DyDphi;
 
-  ClassDef(ParticlePairDerivedHistos,1)
+  ClassDef(ParticlePair3DDerivedHistos,1)
 
 };
 
-#endif /* CAP__ParticlePairDerivedHistos */
+#endif /* CAP__ParticlePair3DDerivedHistos */

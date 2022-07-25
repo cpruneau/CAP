@@ -121,6 +121,11 @@ void ParticleDerivedHistos::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(__FUNCTION__,inputFile)) return;
+
+  fillEta  = configuration.getValueBool("fillEta");
+  fillY    = configuration.getValueBool("fillY");
+  fillP2   = configuration.getValueBool("fillP2");
+
   TString bn = getHistoBaseName();
   h_n1_phi  = loadH1(inputFile,  makeName(bn,"n1_phi"));
   h_spt_phi = loadH1(inputFile,  makeName(bn,"spt_phi"));

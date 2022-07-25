@@ -5,56 +5,113 @@
 //  Created by Claude Pruneau on 9/23/16.
 //  Copyright © 2016 Claude Pruneau. All rights reserved.
 //
+#include "HadronGas.hpp"
 #include "HadronGasHistograms.hpp"
+
 ClassImp(HadronGasHistograms);
 
 HadronGasHistograms::HadronGasHistograms(const TString &       _name,
                                          const Configuration & _config,
-                                         HadronGas *           _hadronGas,
                                          LogLevel              _debugLevel)
 :
 Histograms(_name,_config,_debugLevel),
-hadronGas(_hadronGas)
+h_numberDensity(nullptr),
+h_energyDensity(nullptr),
+h_entropyDensity(nullptr),
+h_pressure(nullptr),
+h_numberDensityVsMass(nullptr),
+h_energyDensityVsMass(nullptr),
+h_entropyDensityVsMass(nullptr),
+h_pressureVsMass(nullptr),
+h_rho1ThVsIndex(nullptr),
+h_rho1VsIndex(nullptr),
+h_rho1RatioVsIndex(nullptr),
+h_rho1ThVsMass(nullptr),
+h_rho1VsMass(nullptr),
+h_rho1RatioVsMass(nullptr),
+h_rho1thrho1th(nullptr),
+h_rho1rho1(nullptr),
+h_rho2Corr(nullptr),
+h_rho2Uncorr(nullptr),
+h_rho2(nullptr),
+h_C2(nullptr),
+h_R2(nullptr),
+h_rho1ThVsP()
 {
-  // no ops
-}
-
-HadronGasHistograms::~HadronGasHistograms()
-{
-  // no ops
+  appendClassName("HadronGasHistograms");
+  setInstanceName(_name);
 }
 
 void HadronGasHistograms::createHistograms()
 {
-  if (reportStart("HadronGasHistograms",getName(),"createHistograms()"))
+  if (reportStart(__FUNCTION__))
     ;
   TString bn = getHistoBaseName();
-  const Configuration & config = getConfiguration();
-  int nMass      = config.getValueInt("nMass");
-  double minMass = config.getValueDouble("minMass");
-  double maxMass = config.getValueDouble("maxMass");
-  
-  int nP      = config.getValueInt("nP");
-  double minP = config.getValueDouble("minP");
-  double maxP = config.getValueDouble("maxP");
+  const   Configuration & config   = getConfiguration();
+  int     nMass                    = config.getValueInt("nMass");
+  double  minMass                  = config.getValueDouble("minMass");
+  double  maxMass                  = config.getValueDouble("maxMass");
+  int     nThermalSpecies          = config.getValueInt("nThermalSpecies");
+  int     nStableSpecies           = config.getValueInt("nStableSpecies");
+//  bool    plotStableSpeciesVsT     = config.getValueBool("doPlotVsStableSpecies");
+//  bool    plotThermalSpeciesVsT    = config.getValueBool("doPlotVsAllSpecies");
+  bool    plotPtDistHistos         = config.getValueBool("plotPtDistHistos");
+//  int     nChemicalTemp            = config.getValueInt("nChemicalTemp");
+//  double  minChemicalTemp          = config.getValueDouble("minChemicalTemp");
+//  double  maxChemicalTemp          = config.getValueDouble("maxChemicalTemp");
+//  double  stepTemp                 = (maxChemicalTemp - minChemicalTemp)/double(nChemicalTemp);
+//  int     nMuB                     = config.getValueInt("nMuB");
+//  double  minMuB                   = config.getValueDouble("minMuB");
+//  double  maxMuB                   = config.getValueDouble("maxMuB");
+//  double  stepMuB                  = (maxMuB - minMuB)/double(nMuB);
+//  int     nMuS                     = configuration.getValueInt("nMuS");
+//  double  minMuS                   = configuration.getValueDouble("minMuS");
+//  double  maxMuS                   = configuration.getValueDouble("maxMuS");
+//  double  stepMuS                  = (maxMuS - minMuS)/double(nMuS);
+  int     nP                       = config.getValueInt("nP");
+  double  minP                     = config.getValueDouble("minP");
+  double  maxP                     = config.getValueDouble("maxP");
 
-  int nSpecies       = hadronGas->particleTypes->size();
-  int nStableSpecies = hadronGas->stableParticleTypes->size();
-  double dSpecies = nSpecies;
+  double dSpecies       = nThermalSpecies;
   double dStableSpecies = nStableSpecies;
-  
-  h_rho1ThVsMass    = createProfile(makeName(bn,"rho1ThVsMass"), nMass,minMass,maxMass,"Mass (GeV)","#rho_{1}");
-  h_rho1AllVsMass   = createProfile(makeName(bn,"rho1AllVsMass"),nMass,minMass,maxMass,"Mass (GeV)","#rho_{1}");
-  h_rho1VsMass      = createProfile(makeName(bn,"rho1VsMass"),   nMass,minMass,maxMass,"Mass (GeV)","#rho_{1}");
 
-  h_rho1All         = createHistogram(makeName(bn,"rho1All"),nSpecies,        0.0, dSpecies,       "Species","#rho_{1}");
-  h_rho1Th          = createHistogram(makeName(bn,"rho1Th"), nStableSpecies,  0.0, dStableSpecies, "Species","#rho1_{1}^{Th}");
-  h_rho1            = createHistogram(makeName(bn,"rho1"),   nStableSpecies,  0.0, dStableSpecies, "Species","#rho_{1}");
-  h_rho1ToRho1Th    = createHistogram(makeName(bn,"rho1ToRho1Th"),nStableSpecies,  0.0, dStableSpecies, "Species","#rho_{1}");
+  vector<TString> allSpeciesLabels;
+  vector<TString> stableSpeciesLabels;
+  for (int k=0;k<nThermalSpecies; k++)
+    {
+    TString key = "Species";
+    key += k;
+    allSpeciesLabels.push_back(config.getValueString(key));
+    }
+  for (int k=0;k<nStableSpecies; k++)
+    {
+    TString key = "StableSpecies";
+    key += k;
+    stableSpeciesLabels.push_back(config.getValueString(key));
+    }
+
+  h_numberDensity    = createHistogram(makeName(bn,"numberDensity"),  nThermalSpecies,0.0,dSpecies,"Index","n");
+  h_energyDensity    = createHistogram(makeName(bn,"energyDensity"),  nThermalSpecies,0.0,dSpecies,"Index","e");
+  h_entropyDensity   = createHistogram(makeName(bn,"entropyDensity"), nThermalSpecies,0.0,dSpecies,"Index","s");
+  h_pressure         = createHistogram(makeName(bn,"pressure"),       nThermalSpecies,0.0,dSpecies,"Index","p");
+
+  h_numberDensityVsMass   = createProfile(makeName(bn,"numberDensityVsMass"),  nMass,minMass,maxMass,"Mass (GeV/c^{2})","n");
+  h_energyDensityVsMass   = createProfile(makeName(bn,"energyDensityVsMass"),  nMass,minMass,maxMass,"Mass (GeV/c^{2})","e");
+  h_entropyDensityVsMass  = createProfile(makeName(bn,"entropyDensityVsMass"), nMass,minMass,maxMass,"Mass (GeV/c^{2})","s");
+  h_pressureVsMass        = createProfile(makeName(bn,"pressureVsMass"),       nMass,minMass,maxMass,"Mass (GeV/c^{2})","p");
+
+  h_rho1ThVsIndex    = createHistogram(makeName(bn,"rho1ThVsIndex"),    nStableSpecies,0.0,dStableSpecies,"Index","n");
+  h_rho1VsIndex      = createHistogram(makeName(bn,"rho1VsIndex"),      nStableSpecies,0.0,dStableSpecies,"Index","n");
+  h_rho1RatioVsIndex = createHistogram(makeName(bn,"rho1RatioVsIndex"), nStableSpecies,0.0,dStableSpecies,"Index","n");
+
+  h_rho1ThVsMass     = createHistogram(makeName(bn,"rho1ThVsMass"),     nMass,minMass,maxMass,"Mass (GeV/c^{2})","n");
+  h_rho1VsMass       = createHistogram(makeName(bn,"rho1VsMass"),       nMass,minMass,maxMass,"Mass (GeV/c^{2})","n");
+  h_rho1RatioVsMass  = createHistogram(makeName(bn,"rho1RatioVsMass"),  nMass,minMass,maxMass,"Mass (GeV/c^{2})","n");
+
   h_rho1rho1        = createHistogram(makeName(bn,"rho1rho1"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
-                                      "Species","Species","Pairs");
+                                      "Species","Species","#rho_{1}#rho_{1}");
   h_rho1thrho1th    = createHistogram(makeName(bn,"rho1thrho1th"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
@@ -67,12 +124,10 @@ void HadronGasHistograms::createHistograms()
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","Uncorrelated Pairs");
-
   h_rho2            = createHistogram(makeName(bn,"rho2"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","#rho_{2}");
-
   h_C2              = createHistogram(makeName(bn,"C2"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
@@ -81,299 +136,173 @@ void HadronGasHistograms::createHistograms()
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","R_{2}");
-  h_BF              = createHistogram(makeName(bn,"BF"),18,  0.0, 18.0, "Pairs","BF");
+  //h_BF              = createHistogram(makeName(bn,"BF"),18,  0.0, 18.0, "Pairs","BF");
 
   // set labels
-  for (int iSpecies=1; iSpecies<=nSpecies; iSpecies++)
+  for (int iSpecies=0; iSpecies<nThermalSpecies; iSpecies++)
     {
-    TString label = hadronGas->particleTypes->getParticleType(iSpecies-1)->getTitle();
-    h_rho1All->GetXaxis()->SetBinLabel(iSpecies,label);
+    int bin = iSpecies+1;
+    TString label = allSpeciesLabels[iSpecies];
+    h_numberDensity  ->GetXaxis()->SetBinLabel(bin,label);
+    h_energyDensity  ->GetXaxis()->SetBinLabel(bin,label);
+    h_entropyDensity ->GetXaxis()->SetBinLabel(bin,label);
+    h_pressure       ->GetXaxis()->SetBinLabel(bin,label);
     }
-  for (int iSpecies=1; iSpecies<=nStableSpecies; iSpecies++)
+  for (int iSpecies=0; iSpecies<nStableSpecies; iSpecies++)
     {
-    TString label = hadronGas->stableParticleTypes->getParticleType(iSpecies-1)->getTitle();
-    h_rho1Th->GetXaxis()->SetBinLabel(iSpecies,label);
-    h_rho1->GetXaxis()->SetBinLabel(iSpecies,label);
-    h_rho1ToRho1Th->GetXaxis()->SetBinLabel(iSpecies,label);
-    h_rho2Corr->GetXaxis()->SetBinLabel(iSpecies,label);
-    h_rho2Corr->GetYaxis()->SetBinLabel(iSpecies,label);
-    h_rho2->GetXaxis()->SetBinLabel(iSpecies,label);
-    h_rho2->GetYaxis()->SetBinLabel(iSpecies,label);
-    h_rho1rho1->GetXaxis()->SetBinLabel(iSpecies,label);
-    h_rho1rho1->GetYaxis()->SetBinLabel(iSpecies,label);
-    h_rho1thrho1th->GetXaxis()->SetBinLabel(iSpecies,label);
-    h_rho1thrho1th->GetYaxis()->SetBinLabel(iSpecies,label);
-    h_C2->GetXaxis()->SetBinLabel(iSpecies,label);
-    h_C2->GetYaxis()->SetBinLabel(iSpecies,label);
-    h_R2->GetXaxis()->SetBinLabel(iSpecies,label);
-    h_R2->GetYaxis()->SetBinLabel(iSpecies,label);
-    h_rho2Uncorr->GetXaxis()->SetBinLabel(iSpecies,label);
-    h_rho2Uncorr->GetYaxis()->SetBinLabel(iSpecies,label);
+    int bin = iSpecies+1;
+    TString label = stableSpeciesLabels[iSpecies];
+    h_rho1ThVsIndex    ->GetXaxis()->SetBinLabel(bin,label);
+    h_rho1VsIndex      ->GetXaxis()->SetBinLabel(bin,label);
+    h_rho1RatioVsIndex ->GetXaxis()->SetBinLabel(bin,label);
+    h_rho1rho1         ->GetXaxis()->SetBinLabel(bin,label);
+    h_rho1rho1         ->GetYaxis()->SetBinLabel(bin,label);
+    h_rho1thrho1th     ->GetXaxis()->SetBinLabel(bin,label);
+    h_rho1thrho1th     ->GetYaxis()->SetBinLabel(bin,label);
+    h_rho2Corr         ->GetXaxis()->SetBinLabel(bin,label);
+    h_rho2Corr         ->GetYaxis()->SetBinLabel(bin,label);
+    h_rho2Uncorr       ->GetXaxis()->SetBinLabel(bin,label);
+    h_rho2Uncorr       ->GetYaxis()->SetBinLabel(bin,label);
+    h_rho2             ->GetXaxis()->SetBinLabel(bin,label);
+    h_rho2             ->GetYaxis()->SetBinLabel(bin,label);
+    h_C2               ->GetXaxis()->SetBinLabel(bin,label);
+    h_C2               ->GetYaxis()->SetBinLabel(bin,label);
+    h_R2               ->GetXaxis()->SetBinLabel(bin,label);
+    h_R2               ->GetYaxis()->SetBinLabel(bin,label);
     }
-
-  h_BF->GetXaxis()->SetBinLabel(1,"#pi^{-} | #pi^{+}");
-  h_BF->GetXaxis()->SetBinLabel(2,"K^{-} | #pi^{+}");
-  h_BF->GetXaxis()->SetBinLabel(3,"#bar{p} | #pi^{+}");
-
-  h_BF->GetXaxis()->SetBinLabel(4,"#pi^{+} | #pi^{-}");
-  h_BF->GetXaxis()->SetBinLabel(5,"K^{+} | #pi^{-}");
-  h_BF->GetXaxis()->SetBinLabel(6,"p | #pi^{-}");
-
-  h_BF->GetXaxis()->SetBinLabel(7,"#pi^{-} | K^{+}");
-  h_BF->GetXaxis()->SetBinLabel(8,"K^{-} | K^{+}");
-  h_BF->GetXaxis()->SetBinLabel(9,"#bar{p} | K^{+}");
-
-  h_BF->GetXaxis()->SetBinLabel(10,"#pi^{+} | K^{-}");
-  h_BF->GetXaxis()->SetBinLabel(11,"K^{+} | K^{-}");
-  h_BF->GetXaxis()->SetBinLabel(12,"p | K^{-}");
-
-  h_BF->GetXaxis()->SetBinLabel(13,"#pi^{-} | p");
-  h_BF->GetXaxis()->SetBinLabel(14,"K^{-} | p");
-  h_BF->GetXaxis()->SetBinLabel(15,"#bar{p} | p");
-
-  h_BF->GetXaxis()->SetBinLabel(16,"#pi^{+} | #bar{p}");
-  h_BF->GetXaxis()->SetBinLabel(17,"K^{+} | #bar{p}");
-  h_BF->GetXaxis()->SetBinLabel(18,"p | #bar{p}");
-
-
-  TString histoName;
-  h_rho1ThVsP = new TH1*[nSpecies];
-  for (int iSpecies=0; iSpecies<nSpecies; iSpecies++)
+  if (plotPtDistHistos)
     {
-    histoName = makeName(bn,"rho1ThVsP_S");
-    histoName += iSpecies; //hadronGas->getParticleType(iSpecies)->getName();
-    h_rho1ThVsP[iSpecies] = createHistogram(histoName,nP,minP,maxP,"p (GeV/c)","#rho_{1}^{Th} (c/GeV)");
+    TString histoName;
+    for (int iSpecies=0; iSpecies<nThermalSpecies; iSpecies++)
+      {
+      h_rho1ThVsP.push_back(createHistogram(makeName(bn,allSpeciesLabels[iSpecies],"rho1ThVsP"),nP,minP,maxP,"p (GeV/c)","#rho_{1}^{Th} (c/GeV)"));
+      }
     }
   if (reportEnd("HadronGasHistograms",getName(),"createHistograms()"))
     ;
 }
 
-void HadronGasHistograms::fillBf(int trig, int sameSignAssoc, int oppSignAssoc, int bfIndex)
+// Fix me...
+void HadronGasHistograms::loadHistograms(TFile * inputFile __attribute__((unused)) )
 {
-  if (reportStart("HadronGasHistograms",getName(),"fillBf(..)"))
-    ;
-  double sameSignAssocYield = h_rho1->GetBinContent(sameSignAssoc);
-  double oppSignAssocYield  = h_rho1->GetBinContent(oppSignAssoc);
-  double sameSignPair       = h_R2->GetBinContent(trig,sameSignAssoc);
-  double oppSignPair        = h_R2->GetBinContent(trig,oppSignAssoc);
-  double bf = oppSignAssocYield*oppSignPair - sameSignAssocYield*sameSignPair;
-  h_BF->SetBinContent(bfIndex, bf);
-  h_BF->SetBinError(bfIndex, 0.0);
-  if (reportEnd("HadronGasHistograms",getName(),"fillBf(..)"))
-    ;
+
 }
 
-void HadronGasHistograms::fillRho1VsP(HadronGas & hadronGas, double volume)
-{
-  if (reportStart("HadronGasHistograms",getName(),"fillRho1VsP(..)"))
-    ;
-  const Configuration & config = getConfiguration();
-  int    nP   = config.getValueInt("nP");
-  double minP = config.getValueDouble("minP");
-  double maxP = config.getValueDouble("maxP");
-  double deltaP = (maxP - minP)/double(nP);
-  
-  double zero = 0.0;
-  double density;
-  double temperature = hadronGas.getTemperature();
-  ParticleTypeCollection & particleTypes = hadronGas.getParticleTypes();
-  for (unsigned int iSpecies=0; iSpecies<particleTypes.size(); iSpecies++)
-    {
-    ParticleType & particleType = *(particleTypes[iSpecies]);
-    double g    = particleType.getSpinFactor();
-    double mass = particleType.getMass();
-    double sign = particleType.getStatistics();
-    double mu   = hadronGas.chemicalPotentials[iSpecies];
-    double p = 0.0;
-    for (int iP=1; iP<=nP; iP++)
-      {
-      density = hadronGas.computeThermalDensityVsP(temperature, mass,  mu,  g, sign, p);
-      h_rho1ThVsP[iSpecies]->SetBinContent(iP, density);
-      h_rho1ThVsP[iSpecies]->SetBinError(iP,zero);
-      p += deltaP;
-      }
-    }
-  if (reportEnd("HadronGasHistograms",getName(),"fillRho1VsP(..)"))
-    ;
-}
-
-void HadronGasHistograms::calculateDerivedHistograms()
-{
-  if (reportStart("HadronGasHistograms",getName(),"calculateDerivedHistograms()"))
-    ;
-  double zero = 0.0;
-  if (!h_rho1)         { cout << "h_rho1   Does not exist" << endl; return;}
-  if (!h_rho1Th)       { cout << "h_rho1Th   Does not exist" << endl; return;}
-  if (!h_rho1ToRho1Th) { cout << "h_rho1ToRho1Th   Does not exist" << endl; return;}
-  if (!h_rho2Corr)     { cout << "h_rho2Corr   Does not exist" << endl; return;}
-  if (!h_rho2Uncorr)   { cout << "h_rho2Uncorr   Does not exist" << endl; return;}
-  if (!h_rho1rho1)     { cout << "h_rho1rho1   Does not exist" << endl; return;}
-  if (!h_rho1thrho1th) { cout << "h_rho1thrho1th   Does not exist" << endl; return;}
-  if (!h_rho2)         { cout << "h_rho2   Does not exist" << endl; return;}
-  if (!h_C2)           { cout << "h_C2   Does not exist" << endl; return;}
-  if (!h_R2)           { cout << "h_R2   Does not exist" << endl; return;}
-  if (!h_BF)           { cout << "h_BF   Does not exist" << endl; return;}
-  h_rho1ToRho1Th->Divide(h_rho1,h_rho1Th);
-  int n = h_rho1Th->GetNbinsX();
-  for (int i1=1; i1<= n; i1++)
-    {
-    double rho1Th_1 = h_rho1Th->GetBinContent(i1);
-    double rho1_1   = h_rho1->GetBinContent(i1);
-
-    for (int i2=1; i2<= n; i2++)
-      {
-      double rho1Th_2     = h_rho1Th->GetBinContent(i2);
-      double rho1_2       = h_rho1->GetBinContent(i2);
-      double c2           = h_rho2Corr->GetBinContent(i1,i2);
-      double c1c1         = h_rho2Uncorr->GetBinContent(i1,i2);
-      double rho2         = c2 + rho1Th_1*rho1_2 + rho1_1*rho1Th_2- rho1Th_1*rho1Th_2 +c1c1;
-      double rho1rho1     = rho1_1*rho1_2;
-      double rho1Thrho1Th = rho1Th_1*rho1Th_2;
-      double C2 = rho2 - rho1rho1;
-      double R2 = (rho1rho1>0) ? C2/rho1rho1 - 1.0 : 0.0;
-      h_rho1rho1->SetBinContent(i1,i2,rho1rho1);         h_rho1rho1->SetBinError(i1,i2,zero);
-      h_rho1thrho1th->SetBinContent(i1,i2,rho1Thrho1Th); h_rho1thrho1th->SetBinError(i1,i2,zero);
-      h_rho2->SetBinContent(i1,i2,rho2); h_rho2->SetBinError(i1,i2,zero);
-      h_C2  ->SetBinContent(i1,i2,C2);   h_C2->SetBinError(i1,i2,zero);
-      h_R2  ->SetBinContent(i1,i2,R2);   h_R2->SetBinError(i1,i2,zero);
-      }
-    if (reportEnd("HadronGasHistograms",getName(),"calculateDerivedHistograms()"))
-      ;
-    }
-
-  for (int k=1;k<=18;k++)
-    {
-    h_BF->SetBinError(k,zero);
-    }
-  // pi- | pi+
-  fillBf(2, 2, 3, 1);
-  // K- | pi+
-  fillBf(2, 4, 5, 2);
-  // p- | pi+
-  fillBf(2, 8, 9, 3);
-  // pi+ | pi-
-  fillBf(3, 3, 2, 4);
-  // K+ | pi-
-  fillBf(3, 5, 4, 5);
-  // p+ | pi-
-  fillBf(3, 9, 8, 6);
-  // pi- | K+
-  fillBf(4, 2, 3, 7);
-  // K- | K+
-  fillBf(4, 4, 5, 8);
-  // p- | K+
-  fillBf(4, 8, 9, 9);
-  // pi+ | K-
-  fillBf(5, 3, 2, 10);
-  // K+ | K-
-  fillBf(5, 5, 4, 11);
-  // p+ | K-
-  fillBf(5, 9, 8, 12);
-  // pi- | p+
-  fillBf(8, 2, 3, 13);
-  // K- | p+
-  fillBf(8, 4, 5, 14);
-  // p- | p+
-  fillBf(8, 8, 9, 15);
-  // pi+ | p-
-  fillBf(9, 3, 2, 16);
-  // K+ | p-
-  fillBf(9, 5, 4, 17);
-  // p+ | p-
-  fillBf(9, 9, 8, 18);
-  if (reportEnd("HadronGasHistograms",getName(),"calculateDerivedHistograms()"))
-    ;
-}
-
-void HadronGasHistograms::loadHistograms(TFile * inputFile)
-{
-  if (reportStart(__FUNCTION__))
-    ;
-  if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  //HadronGasConfiguration & ac = *(HadronGasConfiguration*) getConfiguration();
-  TString bn  = getHistoBaseName();
-  h_rho1All   = loadH1(inputFile,makeName(bn,"rho1All"));
-  if (!h_rho1All)
-    {
-    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << makeName(bn,"allYields") << endl;
-    return;
-    }
-  h_rho1AllVsMass = loadProfile(inputFile,makeName(bn,"rho1AllVsMass"));
-  h_rho1ThVsMass  = loadProfile(inputFile,makeName(bn,"rho1ThVsMass"));
-  h_rho1VsMass    = loadProfile(inputFile,makeName(bn,"rho1VsMass"));
-
-  h_rho1Th        = loadH1(inputFile,makeName(bn,"rho1Th"));
-  h_rho1          = loadH1(inputFile,makeName(bn,"rho1"));
-  h_rho2Uncorr    = loadH2(inputFile,makeName(bn,"rho2Uncorr"));
-  h_rho2Corr      = loadH2(inputFile,makeName(bn,"rho2Corr"));
-
-  h_rho2          = loadH2(inputFile,makeName(bn,"rho2"));
-  h_rho1rho1      = loadH2(inputFile,makeName(bn,"rho1rho1"));
-  h_rho1thrho1th  = loadH2(inputFile,makeName(bn,"rho1thrho1th"));
-  h_C2            = loadH2(inputFile,makeName(bn,"C2"));
-  h_R2            = loadH2(inputFile,makeName(bn,"R2"));
-  h_BF            = loadH1(inputFile,makeName(bn,"BF"));
-}
 
 void HadronGasHistograms::fill(HadronGas & hadronGas)
 {
   if (reportStart(__FUNCTION__))
     ;
-  double rho1th1, rho1_1, rho1_2, rho_2_12c, rho_2_12u, mass, g;
-  double zero = 0.0;
-  int pdgCode1;
-  ParticleTypeCollection & particleTypes       = hadronGas.getParticleTypes();
-  ParticleTypeCollection & stableParticleTypes = hadronGas.getStableParticleTypes();
-  vector<double> & particleDensities           = hadronGas.particleDensities;
-  vector<double> & stableParticleDensities     = hadronGas.stableParticleDensities;
-  unsigned int nSpecies       = particleTypes.size();
-  unsigned int nStableSpecies = stableParticleTypes.size();
-  for (unsigned int iSpecies1=0; iSpecies1<nSpecies; iSpecies1++)
+  const   Configuration & config   = getConfiguration();
+//  int     nMass                    = config.getValueInt("nMass");
+//  double  minMass                  = config.getValueDouble("minMass");
+//  double  maxMass                  = config.getValueDouble("maxMass");
+  int     nThermalSpecies          = config.getValueInt("nThermalSpecies");
+  int     nStableSpecies           = config.getValueInt("nStableSpecies");
+//  bool    plotStableSpeciesVsT     = config.getValueBool("doPlotVsStableSpecies");
+//  bool    plotThermalSpeciesVsT    = config.getValueBool("doPlotVsAllSpecies");
+  bool    plotPtDistHistos         = config.getValueBool("plotPtDistHistos");
+//  int     nChemicalTemp            = config.getValueInt("nChemicalTemp");
+//  double  minChemicalTemp          = config.getValueDouble("minChemicalTemp");
+//  double  maxChemicalTemp          = config.getValueDouble("maxChemicalTemp");
+//  double  stepTemp                 = (maxChemicalTemp - minChemicalTemp)/double(nChemicalTemp);
+//  int     nMuB                     = config.getValueInt("nMuB");
+//  double  minMuB                   = config.getValueDouble("minMuB");
+//  double  maxMuB                   = config.getValueDouble("maxMuB");
+//  double  stepMuB                  = (maxMuB - minMuB)/double(nMuB);
+//  int     nMuS                     = configuration.getValueInt("nMuS");
+//  double  minMuS                   = configuration.getValueDouble("minMuS");
+//  double  maxMuS                   = configuration.getValueDouble("maxMuS");
+//  double  stepMuS                  = (maxMuS - minMuS)/double(nMuS);
+  int     nP                       = config.getValueInt("nP");
+  double  minP                     = config.getValueDouble("minP");
+  double  maxP                     = config.getValueDouble("maxP");
+  double  stepP                    = (maxP - minP)/double(nP);
+  double  zero = 0.0;
+  
+  //
+  // thermal (undecayed) particles
+  //
+  vector<HadronGasParticle*> &  hadrons = hadronGas.getAllHadrons();
+  for (int iSpecies1=0; iSpecies1<nThermalSpecies; iSpecies1++)
     {
-    ParticleType * ptr = particleTypes.getParticleType(iSpecies1);
-    if (ptr==nullptr)
+    HadronGasParticle & hadron = *(hadrons[iSpecies1]); //  getHadronGasParticleAt();
+    double mass  = hadron.mass;
+    double gSpin = hadron.gSpin;
+    double numberDensity  = hadron.numberDensity;
+    double energyDensity  = hadron.energyDensity;
+    double entropyDensity = hadron.entropyDensity;
+    double pressure       = hadron.pressure;
+    h_numberDensity  ->SetBinContent(iSpecies1,numberDensity);  h_numberDensity  ->SetBinError(iSpecies1,zero);
+    h_energyDensity  ->SetBinContent(iSpecies1,energyDensity);  h_energyDensity  ->SetBinError(iSpecies1,zero);
+    h_entropyDensity ->SetBinContent(iSpecies1,entropyDensity); h_entropyDensity ->SetBinError(iSpecies1,zero);
+    h_pressure       ->SetBinContent(iSpecies1,pressure);       h_pressure       ->SetBinError(iSpecies1,zero);
+
+    h_numberDensityVsMass   ->Fill(mass,numberDensity/gSpin);
+    h_energyDensityVsMass   ->Fill(mass,energyDensity/gSpin);
+    h_entropyDensityVsMass  ->Fill(mass,entropyDensity/gSpin);
+    h_pressureVsMass        ->Fill(mass,pressure/gSpin);
+    }
+
+//  vector<double> rho1_stable;
+//  vector< vector<double> > rho2_stable;
+//  vector< vector<double> > rho2cor_stable;
+//  vector< vector<double> > rho1rho1_stable;
+//  vector< vector<double> > c2_stable;
+  //
+  // Decayed  particles
+  //
+
+  ParticleTypeCollection & stableParticles = hadronGas.getStableParticleTypes();
+
+  for (int iStableSpecies1=0; iStableSpecies1<nStableSpecies; iStableSpecies1++)
+    {
+    // Fix me
+    double rho1th_1     = 1.0; //hadronGas.particleDensities[iStableSpecies1];
+    double rho1Stable_1 = hadronGas.rho1_stable[iStableSpecies1];
+    double mass = stableParticles[iStableSpecies1]->getMass();
+    h_rho1ThVsIndex  ->SetBinContent(iStableSpecies1+1, rho1th_1);      h_rho1ThVsIndex ->SetBinError(iStableSpecies1,zero);
+    h_rho1VsIndex    ->SetBinContent(iStableSpecies1+1, rho1Stable_1);  h_rho1VsIndex   ->SetBinError(iStableSpecies1,zero);
+    h_rho1ThVsMass   ->Fill(mass,rho1th_1);
+    h_rho1VsMass     ->Fill(mass,rho1Stable_1);
+    for (int iStableSpecies2=0; iStableSpecies2<nStableSpecies; iStableSpecies2++)
       {
-      if (reportError(__FUNCTION__))
+      // Fix me
+      //double rho1th_2     = 1.0; //hadronGas.rho1_stable[iStableSpecies2];
+      double rho1Stable_2 = hadronGas.rho1_stable[iStableSpecies2];
+      double rho2_12      = hadronGas.rho2_stable[iStableSpecies1][iStableSpecies2];
+      double rho2_12c     = hadronGas.rho2cor_stable[iStableSpecies1][iStableSpecies2];
+      h_rho1rho1->SetBinContent  (iStableSpecies1+1, iStableSpecies2+1, rho1Stable_1*rho1Stable_2);
+      h_rho1rho1->SetBinError    (iStableSpecies1+1, iStableSpecies2+1, zero);
+      h_rho2    ->SetBinContent  (iStableSpecies1+1, iStableSpecies2+1, rho2_12);
+      h_rho2    ->SetBinError    (iStableSpecies1+1, iStableSpecies2+1, zero);
+      h_rho2Corr->SetBinContent  (iStableSpecies1+1, iStableSpecies2+1, rho2_12c);
+      h_rho2Corr->SetBinError    (iStableSpecies1+1, iStableSpecies2+1, zero);
+      }
+    }
+
+  //
+  // Momentum/Energy spectra
+  //
+  if (plotPtDistHistos)
+    {
+    for (unsigned int iSpecies=0; iSpecies<hadrons.size(); iSpecies++)
+      {
+      HadronGasParticle & hadron = *(hadrons[iSpecies]);
+      //double mass  = hadron.mass;
+      //double gSpin = hadron.gSpin;
+      double p = minP;
+      for (int iP=0; iP<nP; iP++)
         {
-        cout << "Null pointer at iSpecies1:" << iSpecies1 << endl;
-        exit(1);
+        p += stepP;
+        double density = hadron.computeThermalDensityAtP(p);
+        h_rho1ThVsP[iSpecies]->SetBinContent(iP, density);
+        h_rho1ThVsP[iSpecies]->SetBinError(iP,zero);
         }
       }
-    ParticleType & particleType = *ptr;
-    g       = particleType.getSpinFactor();
-    mass    = particleType.getMass();
-    rho1th1 = particleDensities[iSpecies1];   ///
-    h_rho1All->SetBinContent(iSpecies1+1, rho1th1);
-    h_rho1All->SetBinError  (iSpecies1+1, 0.0);
-    h_rho1AllVsMass->Fill(mass,rho1th1/g);
     }
-  for (unsigned int iStableSpecies1=0; iStableSpecies1<nStableSpecies; iStableSpecies1++)
-    {
-    ParticleType & type1 = *(stableParticleTypes[iStableSpecies1]);
-    g         = type1.getSpinFactor();
-    mass      = type1.getMass();
-    pdgCode1  = type1.getPdgCode();
-    int iSpecies1 = particleTypes.findIndexForPdgCode(pdgCode1);
-    rho1_1    = stableParticleDensities[iStableSpecies1];
-    rho1th1   = particleDensities[iSpecies1];
-    h_rho1Th->SetBinContent(iStableSpecies1+1, rho1th1);  h_rho1Th->SetBinError(iStableSpecies1,zero);
-    h_rho1  ->SetBinContent(iStableSpecies1+1, rho1_1);   h_rho1  ->SetBinError(iStableSpecies1,zero);
-    h_rho1ThVsMass->Fill(mass,rho1th1/g);
-    h_rho1VsMass->Fill(mass,rho1_1);
-    for (unsigned int iStableSpecies2=0; iStableSpecies2<nStableSpecies; iStableSpecies2++)
-      {
-      rho1_2    = stableParticleDensities[iStableSpecies2];
-      rho_2_12c = hadronGas.stableParticlePairDensities[iStableSpecies1][iStableSpecies2];
-      rho_2_12u = hadronGas.stableParticlePairUncorrelatedDensities[iStableSpecies1][iStableSpecies2];
-      h_rho1rho1->SetBinContent  (iStableSpecies1+1, iStableSpecies2+1, rho1_1*rho1_2);
-      h_rho1rho1->SetBinError    (iStableSpecies1+1, iStableSpecies2+1, zero);
-      h_rho2Corr->SetBinContent  (iStableSpecies1+1, iStableSpecies2+1, rho_2_12c);
-      h_rho2Corr->SetBinError    (iStableSpecies1+1, iStableSpecies2+1, zero);
-      h_rho2Uncorr->SetBinContent(iStableSpecies1+1, iStableSpecies2+1, rho_2_12u);
-      h_rho2Uncorr->SetBinError  (iStableSpecies1+1, iStableSpecies2+1, zero);
-      }
-    }
-  if (reportEnd(__FUNCTION__))
+
+  if (reportEnd("HadronGasHistograms",getName(),"fillRho1VsP(..)"))
     ;
 }
 

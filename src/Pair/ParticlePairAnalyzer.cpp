@@ -84,17 +84,7 @@ void ParticlePairAnalyzer::setDefaultConfiguration()
   configuration.addParameter("nBins_n2",          100);
   configuration.addParameter("min_n2",            0.0);
   configuration.addParameter("max_n2",         1000.0);
-  configuration.addParameter("nBins_DeltaPlong",   10);
-  configuration.addParameter("min_DeltaPlong",   -1.0);
-  configuration.addParameter("max_DeltaPlong",    1.0);
-  configuration.addParameter("nBins_DeltaPside",   10);
-  configuration.addParameter("min_DeltaPside",   -1.0);
-  configuration.addParameter("max_DeltaPside",    1.0);
-  configuration.addParameter("range_DeltaPside",  2.0);
-  configuration.addParameter("nBins_DeltaPout",    10);
-  configuration.addParameter("min_DeltaPout",    -1.0);
-  configuration.addParameter("max_DeltaPout",     1.0);
-  configuration.addParameter("range_DeltaPout",   2.0);
+
   configuration.addParameter("nBins_Dphi",         36);
   configuration.addParameter("min_Dphi",          0.0);
   configuration.addParameter("max_Dphi",TMath::TwoPi());
@@ -110,6 +100,15 @@ void ParticlePairAnalyzer::setDefaultConfiguration()
   configuration.addParameter("min_Dy",           -2.0);
   configuration.addParameter("max_Dy",            2.0);
   configuration.addParameter("width_Dy",     4.0/39.0);
+
+//  configuration.getValueInt("nBins_DeltaP");
+//  min_DeltaP    = configuration.getValueDouble("min_DeltaP");
+//  max_DeltaP    = configuration.getValueDouble("max_DeltaP");
+
+  configuration.addParameter("nBins_DeltaP",   10);
+  configuration.addParameter("min_DeltaP",   -4.0);
+  configuration.addParameter("max_DeltaP",    4.0);
+
   // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
   if (reportEnd(__FUNCTION__))
     ;
@@ -229,136 +228,151 @@ void ParticlePairAnalyzer::execute()
   incrementTaskExecuted();
   Event & event = *eventStreams[0];
 
-  //Is this event accepted by this task's event filters?
-  bool analyzeThisEvent = false;
-  unsigned int nEventFilters = eventFilters.size();
-  vector<unsigned int> eventFilterPassed;
-  eventFilterPassed.clear();
-  resetNParticlesAcceptedEvent();
-  for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+  vector<Particle*> & particles = event.getParticles();
+  unsigned int nParticles = particles.size();
+
+  if (false)
     {
-    if (!eventFilters[iEventFilter]->accept(event)) continue;
-    incrementNEventsAccepted(iEventFilter);
-    eventFilterPassed.push_back(iEventFilter);
-    analyzeThisEvent = true;
-    }
-  //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 2 --" << endl;
-
-  if (!analyzeThisEvent) return;
-
-  //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 2b --" << endl;
-
-  // The event is accepted at least one event filter
-  // but it may not have particle pairs. If so skip out.
-  // Doing the checks in this order guarantees the accepted
-  // event count is correct for normalization purposes.
-  unsigned int nParticles = event.getNParticles();
-  if (nParticles<2) return;
-
-  //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 3 --" << endl;
-
-  Factory<ParticleDigit> * factory = ParticleDigit::getFactory();
-  factory->reset();
-
-  //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 4 --" << endl;
-
-  // produce sublists with ParticleDigits so we do not have to digitize too many
-  // times..
-  // The histo instance fetched here is used for digitization only. So
-  // we use instance [0];
-  ParticlePairHistos * histos = (ParticlePairHistos *) basePairHistograms[0];
-  
-//    cout << "Particle Pair Analyzer Test :" << endl;
-//    cout <<  histos->getPtBinFor(0.5) << endl;
-//    exit(1);
-  
-  
-  unsigned int nParticleFilters = particleFilters.size();
-  for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ ) filteredParticles[iParticleFilter].clear();
-
-  //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 5 --" << endl;
-
-  for (unsigned int iParticle=0; iParticle<nParticles; iParticle++)
-    {
-    Particle & particle = * event.getParticleAt(iParticle);
-    //    TLorentzVector & what = particle.getMomentum();
-    //    double rap = what.Rapidity();
-    //    if (rap<-1.0)
-    //      {
-    //      cout << " rap: " << rap << endl;
-    //      }
-
-    //    int pdg = particle.getType().getPdgCode();
-    //    if (pdg==3122|| pdg==-3122)
-    //      {
-    //      cout << "pdg:" << pdg << endl;
-    //      cout << "Found L" << endl;
-    //      exit(0);
-    //      }
-    float pt, e, phi;
-    int iPt, iPhi, iEta, iY;
-    ParticleDigit * pd;
-    bool digitized = false;
-    for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
+    //Is this event accepted by this task's event filters?
+    bool analyzeThisEvent = false;
+    unsigned int nEventFilters = eventFilters.size();
+    vector<unsigned int> eventFilterPassed;
+    eventFilterPassed.clear();
+    resetNParticlesAcceptedEvent();
+    for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
       {
-      if (particleFilters[iParticleFilter]->accept(particle))
+      if (!eventFilters[iEventFilter]->accept(event)) continue;
+      incrementNEventsAccepted(iEventFilter);
+      eventFilterPassed.push_back(iEventFilter);
+      analyzeThisEvent = true;
+      }
+    //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 2 --" << endl;
+    if (!analyzeThisEvent) return;
+    if (nParticles<2) return;
+
+    // in this branch we pixelize before filling histograms...
+    Factory<ParticleDigit> * factory = ParticleDigit::getFactory();
+    factory->reset();
+
+    //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 4 --" << endl;
+
+    // produce sublists with ParticleDigits so we do not have to digitize too many
+    // times..
+    // The histo instance fetched here is used for digitization only. So
+    // we use instance [0];
+    ParticlePairHistos * histos = (ParticlePairHistos *) basePairHistograms[0];
+    unsigned int nParticleFilters = particleFilters.size();
+    for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ ) filteredParticles[iParticleFilter].clear();
+    for (unsigned int iParticle=0; iParticle<nParticles; iParticle++)
+      {
+      Particle & particle = * (particles[iParticle]);
+      float pt, e, phi;
+      int iPt, iPhi, iEta, iY;
+      ParticleDigit * pd;
+      bool digitized = false;
+      for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
         {
-        if (!digitized)
+        if (particleFilters[iParticleFilter]->accept(particle))
           {
-          TLorentzVector & momentum = particle.getMomentum();
-          pt        = momentum.Pt();
-          e         = momentum.E();
-          phi       = momentum.Phi();
-          if (phi<0.0) phi += TMath::TwoPi();
-          iPt       = histos->getPtBinFor(pt);
-          if (iPt==0) continue;
-          iPhi      = histos->getPhiBinFor(phi);
-          if (iPhi==0) continue;
-          iEta = fillEta ? histos->getEtaBinFor(momentum.Eta())    : 0;
-          iY   = fillY   ? histos->getYBinFor(momentum.Rapidity()) : 0;
-          if (iEta==0 && iY==0) continue;
-          pd        = factory->getNextObject();
-          pd->iY    = iY;
-          pd->iEta  = iEta;
-          pd->iPt   = iPt;
-          pd->iPhi  = iPhi;
-          pd->pt    = pt;
-          pd->e     = e;
-          digitized = true; // so no need to digitize this particle again..
-          }
-        filteredParticles[iParticleFilter].push_back(pd);
-        //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 7 --" << endl;
-        } // particle accepted by filter
-      } //particle loop
-    } // particle filter loop
-      //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 8 --" << endl;
-      // use the filtered particles to fill the histos for the accepted event filters
-  for (unsigned int jEventFilter=0; jEventFilter<eventFilterPassed.size(); jEventFilter++ )
-    {
-    //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 9 --" << endl;
-    unsigned int  iEventFilter = eventFilterPassed[jEventFilter];
-    unsigned int  baseSingle   = iEventFilter*nParticleFilters;
-    unsigned int  basePair     = iEventFilter*nParticleFilters*nParticleFilters;
-    unsigned int  index;
-    for (unsigned int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
+          if (!digitized)
+            {
+            TLorentzVector & momentum = particle.getMomentum();
+            pt        = momentum.Pt();
+            e         = momentum.E();
+            phi       = momentum.Phi();
+            if (phi<0.0) phi += TMath::TwoPi();
+            iPt       = histos->getPtBinFor(pt);
+            if (iPt==0) continue;
+            iPhi      = histos->getPhiBinFor(phi);
+            if (iPhi==0) continue;
+            iEta = fillEta ? histos->getEtaBinFor(momentum.Eta())    : 0;
+            iY   = fillY   ? histos->getYBinFor(momentum.Rapidity()) : 0;
+            if (iEta==0 && iY==0) continue;
+            pd        = factory->getNextObject();
+            pd->iY    = iY;
+            pd->iEta  = iEta;
+            pd->iPt   = iPt;
+            pd->iPhi  = iPhi;
+            pd->pt    = pt;
+            pd->e     = e;
+            digitized = true; // so no need to digitize this particle again..
+            }
+          filteredParticles[iParticleFilter].push_back(pd);
+          //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 7 --" << endl;
+          } // particle accepted by filter
+        } //particle loop
+      } // particle filter loop
+    //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 8 --" << endl;
+    // use the filtered particles to fill the histos for the accepted event filters
+    for (unsigned int jEventFilter=0; jEventFilter<eventFilterPassed.size(); jEventFilter++ )
       {
-      incrementNParticlesAccepted(iEventFilter,iParticleFilter1);
-      //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 10 --" << endl;
-      index = baseSingle + iParticleFilter1;
-      ParticleHistos * histos = (ParticleHistos *) baseSingleHistograms[index];
-      histos->fill(filteredParticles[iParticleFilter1],1.0);
-      for (unsigned int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
+      //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 9 --" << endl;
+      unsigned int  iEventFilter = eventFilterPassed[jEventFilter];
+      unsigned int  baseSingle   = iEventFilter*nParticleFilters;
+      unsigned int  basePair     = iEventFilter*nParticleFilters*nParticleFilters;
+      unsigned int  index;
+      for (unsigned int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
         {
-        //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 11 --" << endl;
-        index = basePair + iParticleFilter1*nParticleFilters + iParticleFilter2;
-        ParticlePairHistos * histos = (ParticlePairHistos *) basePairHistograms[index];
-        histos->fill(filteredParticles[iParticleFilter1],filteredParticles[iParticleFilter2],iParticleFilter1==iParticleFilter2,1.0);
-        //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 13 --" << endl;
+        incrementNParticlesAccepted(iEventFilter,iParticleFilter1);
+        //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 10 --" << endl;
+        index = baseSingle + iParticleFilter1;
+        ParticleHistos * histos = (ParticleHistos *) baseSingleHistograms[index];
+        histos->fill(filteredParticles[iParticleFilter1],1.0);
+        for (unsigned int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
+          {
+          //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 11 --" << endl;
+          index = basePair + iParticleFilter1*nParticleFilters + iParticleFilter2;
+          ParticlePairHistos * histos = (ParticlePairHistos *) basePairHistograms[index];
+          histos->fill(filteredParticles[iParticleFilter1],filteredParticles[iParticleFilter2],iParticleFilter1==iParticleFilter2,1.0);
+          //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 13 --" << endl;
+          }
         }
       }
     }
-//  if (reportEnd(__FUNCTION__))
-//    ;
+  else
+    {
+    for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+      {
+      if (!eventFilters[iEventFilter]->accept(event)) continue;
+      incrementNEventsAccepted(iEventFilter);
+      unsigned int  baseSingle   = iEventFilter*nParticleFilters;
+      unsigned int  basePair     = iEventFilter*nParticleFilters*nParticleFilters;
+      unsigned int  index;
+      for (unsigned int iParticle1=0; iParticle1<nParticles; iParticle1++)
+        {
+        Particle & particle1 = *(particles[iParticle1]);
+        for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
+          {
+          if (particleFilters[iParticleFilter1]->accept(particle1))
+            {
+            incrementNParticlesAccepted(iEventFilter,iParticleFilter1);
+            index = baseSingle + iParticleFilter1;
+            ParticleHistos * histos = (ParticleHistos *) baseSingleHistograms[index];
+            histos->fill(particle1,1.0);
+            }
+          }
+        for (unsigned int iParticle2=0; iParticle2<nParticles; iParticle2++)
+          {
+          if (iParticle1==iParticle2) continue;
+          Particle & particle2 = *(particles[iParticle2]);
+          for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
+            {
+            bool accept1 = particleFilters[iParticleFilter1]->accept(particle1);
+            for (int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
+              {
+              bool accept2 = particleFilters[iParticleFilter2]->accept(particle2);
+              if (accept1 & accept2)
+                {
+                index = basePair + iParticleFilter1*nParticleFilters + iParticleFilter2;
+                ParticlePairHistos * histos = (ParticlePairHistos *) basePairHistograms[index];
+                histos->fill(particle1, particle2,1.0);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 }
 
 
@@ -397,7 +411,7 @@ void ParticlePairAnalyzer::scaleHistograms()
         {
         cout << endl;
         cout << "                            iEventFilter: " <<  iEventFilter<< endl;
-        cout << "           nEventsAcceptedTotal[iEventFilter]: " <<  nAccepted<< endl;
+        cout << "      nEventsAcceptedTotal[iEventFilter]: " <<  nAccepted<< endl;
         cout << "                    no scaling performed: " <<  endl;
         }
       }

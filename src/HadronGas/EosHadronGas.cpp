@@ -44,7 +44,7 @@ void EosHadronGas::calculateNumberDensity(double temperature, double mu)
 {
   double beta      = 1./temperature;   // inverser temperature
   double lambda    = exp(beta*mu);     // fugacity factor
-  double prefactor = gSpin/(2*M_PI*M_PI)/hbarC/hbarC/hbarC;
+  double prefactor = gSpin/(2*TMath::Pi()*TMath::Pi())/hbarC/hbarC/hbarC;
   double betaMass  = mass*beta;
   double betaMu    = mu*beta;
   double lambda    = exp(betaMu);
@@ -112,7 +112,7 @@ void EosHadronGas::calculateEnergyDensity(double temperature)
 {
   double arg;
   double results   = 0.0;
-  double prefactor = gSpin/(2*M_PI*M_PI)*pow(mass, 4)/(hbarC*hbarC*hbarC);
+  double prefactor = gSpin/(2*TMath::Pi()*TMath::Pi())*pow(mass, 4)/(hbarC*hbarC*hbarC);
   double betaMass  = mass/temperature;
   double betaMu    = mu/temperature;
   double lambda    = exp(mu/temperature);
@@ -132,7 +132,7 @@ void EosHadronGas::calculatePressure(double temperature)
 {
   double arg;
   double results = 0.0;
-  double prefactor = 0.5*gSpin*mass*mass*temperature*temperature/(M_PI*M_PI)/(hbarC*hbarC*hbarC);
+  double prefactor = 0.5*gSpin*mass*mass*temperature*temperature/(TMath::Pi()*TMath::Pi())/(hbarC*hbarC*hbarC);
   double betaMass  = mass/temperature;
   double betaMu    = mu/temperature;
   double lambda    = exp(mu/temperature);
@@ -160,7 +160,7 @@ void EosHadronGas::calculateEntropyDensity(double temperature)
 double EosHadronGas::calculate_dndmu(double temperature)
 {
   double results = 0.0;
-  double prefactor = gSpin/(2*M_PI*M_PI)*mass;
+  double prefactor = gSpin/(2*TMath::Pi()*TMath::Pi())*mass;
   for (int j = 0; j < trunOrder; j++) {
     double arg = (j+1)*mass/temperature;
     double lambda = exp(mu/temperature);
@@ -179,7 +179,7 @@ double EosHadronGas::calculate_dPoverTdmu(double temperature)
 {
   double results;
   results = 0.0;
-  double prefactor = gSpin/(2*M_PI*M_PI)*mass*mass;
+  double prefactor = gSpin/(2*TMath::Pi()*TMath::Pi())*mass*mass;
   for (int j = 0; j < trunOrder; j++)
   {
   double arg = (j+1)*mass/temperature;
@@ -201,7 +201,7 @@ double EosHadronGas::calculate_deoverTdmu(double temperature)
 {
   double results;
   results = 0.0;
-  double prefactor = gSpin/(2*M_PI*M_PI)*pow(mass, 4);
+  double prefactor = gSpin/(2*TMath::Pi()*TMath::Pi())*pow(mass, 4);
   for (int j = 0; j < trunOrder; j++) {
     double arg = (j+1)*mass/temperature;
     double lambda = exp(mu/temperature);

@@ -9,58 +9,23 @@
  * Author: Claude Pruneau,   04/01/2022
  *
  * *********************************************************************/
-#ifndef CAP__ParticlePairHistos
-#define CAP__ParticlePairHistos
+#ifndef CAP__ParticlePair3DHistos
+#define CAP__ParticlePair3DHistos
 
 #include "Histograms.hpp"
 #include "Particle.hpp"
-#include "ParticleDigit.hpp"
 
-class ParticlePairHistos : public Histograms
+class ParticlePair3DHistos : public Histograms
 {
 public:
 
-  ParticlePairHistos(const TString & name,
+  ParticlePair3DHistos(const TString & name,
                      const Configuration & configuration,
                      LogLevel  debugLevel);
-  virtual ~ParticlePairHistos();
+  virtual ~ParticlePair3DHistos();
   virtual void createHistograms();
+  virtual void fill(vector<Particle*> & particle1, vector<Particle*> & particle2, bool same, double weight);
   virtual void loadHistograms(TFile * inputFile);
-
-  virtual void fill(vector<ParticleDigit*> & particle1, vector<ParticleDigit*> & particle2, bool same, double weight);
-  virtual void fill(Particle & particle1, Particle & particle2, double weight);
-
-  inline int getPtBinFor(float v) const
-  {
-  int index = 0; // indicates a value out of bounds
-  if (v<min_pt || v>=max_pt) return index;
-  index = 1+int(scale_pt*(v-min_pt));
-  return index;
-  }
-
-  inline int getPhiBinFor(float v) const
-  {
-  int index = 0; // indicates a value out of bounds
-  if (v<min_phi || v>=max_phi) return index;
-  index = 1+int(scale_phi*(v-min_phi));
-  return index;
-  }
-
-  inline int getEtaBinFor(float v) const
-  {
-  int index = 0; // indicates a value out of bounds
-  if (v<min_eta || v>=max_eta) return index;
-  index = 1+int(scale_eta*(v-min_eta));
-  return index;
-  }
-
-  inline int getYBinFor(float v) const
-  {
-  int index = 0; // indicates a value out of bounds
-  if (v<min_y || v>=max_y) return index;
-  index = 1+int(scale_y*(v-min_y));
-  return index;
-  }
 
   ////////////////////////////////////////////////////////////////////////////
   // Data Members - Histograms
@@ -140,8 +105,8 @@ public:
 
   TH3 * h_n2_DeltaP;
 
-  ClassDef(ParticlePairHistos,0)
+  ClassDef(ParticlePair3DHistos,0)
 };
 
 
-#endif /* CAP__ParticlePairHistos  */
+#endif /* CAP__ParticlePair3DHistos  */

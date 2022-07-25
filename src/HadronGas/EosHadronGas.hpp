@@ -1,5 +1,5 @@
-#ifndef WAC_EosHadronGas
-#define WAC_EosHadronGas
+#ifndef CAP_EosHadronGas
+#define CAP_EosHadronGas
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -26,5 +26,5 @@ public:
   ClassDef(EosHadronGas,0)
 };
 
-#endif  // WAC_EosHadronGas
+#endif  // CAP_EosHadronGas
 

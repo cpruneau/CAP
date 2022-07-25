@@ -123,7 +123,7 @@ void BalanceFunctionCalculator::setDefaultConfiguration()
 }
 
 
-void BalanceFunctionCalculator::calculate_CI(const TString & histoBaseName,
+TH2* BalanceFunctionCalculator::calculate_CI(const TString & histoBaseName,
                                              const TString & eventClassName,
                                              const TString & particleName1,
                                              const TString & particleName2,
@@ -154,9 +154,11 @@ void BalanceFunctionCalculator::calculate_CI(const TString & histoBaseName,
   obs_y->SetName(name);
   obs_y->SetTitle(name);
   histograms[0]->append(obs_y);
+
+  return obs;
 }
 
-void BalanceFunctionCalculator::calculate_CD(const TString & histoBaseName,
+TH2* BalanceFunctionCalculator::calculate_CD(const TString & histoBaseName,
                                              const TString & eventClassName,
                                              const TString & particleName1,
                                              const TString & particleName2,
@@ -190,15 +192,17 @@ void BalanceFunctionCalculator::calculate_CD(const TString & histoBaseName,
   obs_y->SetName(name);
   obs_y->SetTitle(name);
   histograms[0]->append(obs_y);
+
+  return obs;
 }
 
-void BalanceFunctionCalculator::calculate_BalFct(const TString & histoBaseName,
+TH2* BalanceFunctionCalculator::calculate_BalFct(const TString & histoBaseName,
                                                  const TString & eventClassName,
                                                  const TString & particleName1,
                                                  const TString & particleName2,
                                                  const TString & obsName,
                                                  const TString & comboName,
-                                                 TH1* rho1_2 __attribute__((unused)),
+                                                 TH1* rho1_2,
                                                  TH2* obs_US,
                                                  TH2* obs_LS)
 {
@@ -211,7 +215,7 @@ void BalanceFunctionCalculator::calculate_BalFct(const TString & histoBaseName,
   obs->SetTitle(name);
   obs->Add(obs_LS, -1.0);
   double rho1Integral = rho1_2->Integral();
-  obs->Scale(1.0/rho1Integral);
+  //obs->Scale(1.0/rho1Integral);
   histograms[0]->append(obs);
 
   name = makeHistoName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_x");
@@ -226,19 +230,131 @@ void BalanceFunctionCalculator::calculate_BalFct(const TString & histoBaseName,
   obs_y->SetTitle(name);
   histograms[0]->append(obs_y);
 
-//  histograms[0]->calculateIntegral(rho1_2Bar,xMin,xMax,triggerInt,triggerIntError,0);
-//  hh->calculateIntegral(bf_12B,xMin,xMax,yMin,yMax,integralBF,eIntegralBF,0);
-//  cout << "                 rho1_2Bar integral:" << triggerInt <<  " +- " << triggerIntError << endl;
-//  cout << "                  bf_12B integral:" << integralBF <<  " +- " << eIntegralBF <<  endl;
-//  cout << "bf_12B integral/ rho1_2Bar integral:" << integralBF / triggerInt << endl;
-//  cout << "bf_12B integral* rho1_2Bar integral:" << integralBF * triggerInt << endl;
-//  integralsBF12B.push_back( integralBF );
-//  eIntegralsBF12B.push_back( eIntegralBF );
-
-
+  return obs;
 }
 
-void BalanceFunctionCalculator::calculate_Diff(const TString & histoBaseName,
+TH2* BalanceFunctionCalculator::calculate_BalFctSum(const TString & histoBaseName,
+                                                    const TString & eventClassName,
+                                                    const TString & particleName1,
+                                                    const TString & particleName2,
+                                                    const TString & obsName,
+                                                    const TString & comboName,
+                                                    TH2* obs_12Bar,
+                                                    TH2* obs_1Bar2)
+{
+  TString name = makeHistoName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName);
+  TH2 * obs;
+  TH1 * obs_x;
+  TH1 * obs_y;
+  obs = (TH2*) obs_12Bar->Clone();
+  obs->SetName(name);
+  obs->SetTitle(name);
+  obs->Add(obs_1Bar2, 1.0);
+  //double rho1Integral = rho1_2->Integral();
+  obs->Scale(0.5);
+  histograms[0]->append(obs);
+
+  name = makeHistoName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_x");
+  obs_x = obs->ProjectionX();
+  obs_x->SetName(name);
+  obs_x->SetTitle(name);
+  histograms[0]->append(obs_x);
+
+  name = makeHistoName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_y");
+  obs_y = obs->ProjectionY();
+  obs_y->SetName(name);
+  obs_y->SetTitle(name);
+  histograms[0]->append(obs_y);
+
+  return obs;
+}
+
+TH2* BalanceFunctionCalculator::calculate_BalFct2(const TString & histoBaseName,
+                                                  const TString & eventClassName,
+                                                  const TString & particleName1,
+                                                  const TString & particleName2,
+                                                  const TString & obsName,
+                                                  const TString & comboName,
+                                                  TH1* rho1_1,
+                                                  TH1* rho1_2,
+                                                  TH2* obs_US,
+                                                  TH2* obs_LS)
+{
+  TString name = makeHistoName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName);
+  TH2 * obs;
+  TH1 * obs_x;
+  TH1 * obs_y;
+  double rho1_1_Integral = rho1_1->Integral();
+  double rho1_2_Integral = rho1_2->Integral();
+
+//  double low  = rho1_1->GetXaxis()->GetXmin();
+//  double high = rho1_1->GetXaxis()->GetXmax();
+//  double yieldA = yieldA/(high-low)/TMath::TwoPi();
+//  double yieldB = yieldB/(high-low)/TMath::TwoPi();
+
+
+  obs = (TH2*) obs_US->Clone();
+  obs->SetName(name);
+  obs->SetTitle(name);
+  obs->Add(obs_LS, -1.0);
+  obs->Scale(rho1_1_Integral);
+  histograms[0]->append(obs);
+
+  name = makeHistoName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_x");
+  obs_x = obs->ProjectionX();
+  obs_x->SetName(name);
+  obs_x->SetTitle(name);
+  histograms[0]->append(obs_x);
+
+  name = makeHistoName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_y");
+  obs_y = obs->ProjectionY();
+  obs_y->SetName(name);
+  obs_y->SetTitle(name);
+  histograms[0]->append(obs_y);
+
+  return obs;
+}
+
+TH2* BalanceFunctionCalculator::calculate_BalFct3(const TString & histoBaseName,
+                                                  const TString & eventClassName,
+                                                  const TString & particleName1,
+                                                  const TString & particleName2,
+                                                  const TString & obsName,
+                                                  const TString & comboName,
+                                                  TH1* rho1_2 __attribute__((unused)),
+                                                  TH2* obs_US,
+                                                  TH2* obs_LS)
+{
+  TString name = makeHistoName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName);
+  TH2 * obs;
+  TH1 * obs_x;
+  TH1 * obs_y;
+  obs = (TH2*) obs_US->Clone();
+  obs->SetName(name);
+  obs->SetTitle(name);
+  obs->Add(obs_LS, -1.0);
+//  double rho1Integral = rho1_2->Integral("WIDTH");
+//  obs->Scale(rho1Integral);
+  histograms[0]->append(obs);
+
+  name = makeHistoName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_x");
+  obs_x = obs->ProjectionX();
+  obs_x->SetName(name);
+  obs_x->SetTitle(name);
+  histograms[0]->append(obs_x);
+
+  name = makeHistoName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_y");
+  obs_y = obs->ProjectionY();
+  obs_y->SetName(name);
+  obs_y->SetTitle(name);
+  histograms[0]->append(obs_y);
+
+  return obs;
+}
+
+
+
+TH2* BalanceFunctionCalculator::calculate_Diff(const TString & histoBaseName,
                                                  const TString & eventClassName,
                                                  const TString & particleName1,
                                                  const TString & particleName2,
@@ -268,6 +384,8 @@ void BalanceFunctionCalculator::calculate_Diff(const TString & histoBaseName,
   obs_y->SetName(name);
   obs_y->SetTitle(name);
   histograms[0]->append(obs_y);
+
+  return obs;
 }
 
 
@@ -362,7 +480,6 @@ void BalanceFunctionCalculator::execute()
     histoInputFileName = allFilesToAnalyze[iFile];
     histoOutputFileName = removeRootExtension(histoInputFileName);
     histoOutputFileName += appendedString;
-    if (reportInfo(__FUNCTION__)) cout << " File:" << iFile << " named: " << histoInputFileName << endl;
     TFile * inputFile  = nullptr;
     TFile * outputFile = nullptr;
     inputFile = openRootFile("",histoInputFileName,"OLD");
@@ -372,7 +489,9 @@ void BalanceFunctionCalculator::execute()
     else
       outputFile = openRootFile("",histoOutputFileName, "NEW");
     if (!outputFile) return;
-
+    if (reportInfo(__FUNCTION__))
+      cout << endl << "     From: "  << histoInputFileName
+           << endl << " Saved to: "  << histoOutputFileName << endl;
 
     // Use hh as helper to load and calculate histograms, etc.
     Histograms * hh = new Histograms(getName(), getConfiguration(), getLogLevel());
@@ -414,10 +533,10 @@ void BalanceFunctionCalculator::execute()
 
             if (calculateBFv1)
               {
-              calculate_BalFct(histoBaseName,eventClassName,particleName1,particleName2, pObservableNames[iObservable], "B2_1_2Bar",rho1_2Bar, obs_1_2Bar, obs_1Bar_2Bar);
-              calculate_BalFct(histoBaseName,eventClassName,particleName1,particleName2, pObservableNames[iObservable], "B2_1Bar_2",rho1_2,    obs_1Bar_2, obs_1_2);
+              TH2* bfa = calculate_BalFct(histoBaseName,eventClassName,particleName1,particleName2, pObservableNames[iObservable], "B2_1_2Bar",rho1_2Bar, obs_1_2Bar, obs_1Bar_2Bar);
+              TH2* bfb = calculate_BalFct(histoBaseName,eventClassName,particleName1,particleName2, pObservableNames[iObservable], "B2_1Bar_2",rho1_2,    obs_1Bar_2, obs_1_2);
+              TH2* bfs = calculate_BalFctSum(histoBaseName,eventClassName,particleName1,particleName2, pObservableNames[iObservable], "B2_12Sum",bfa,bfb);
               }
-
             if (calculateDiffs)
               {
               calculate_Diff(histoBaseName,eventClassName,particleName1,particleName2, pObservableNames[iObservable], "Diff_US",   obs_1Bar_2,    obs_1_2Bar);

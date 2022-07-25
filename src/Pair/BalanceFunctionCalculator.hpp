@@ -69,7 +69,7 @@ public:
   //!@param obs_1_2Bar Pointer to histogram of the observable of interest for particle 1 and 2Bar
   //!@param obs_1Bar_2Bar Pointer to histogram of the observable of interest for particle 1Bar and 2Bar
   //!
-  virtual void calculate_CI(const TString & histoBaseName,
+  virtual TH2* calculate_CI(const TString & histoBaseName,
                             const TString & eventClassName,
                             const TString & particleName1,
                             const TString & particleName2,
@@ -93,7 +93,7 @@ public:
   //!@param obs_1_2Bar Pointer to histogram of the observable of interest for particle 1 and 2Bar
   //!@param obs_1Bar_2Bar Pointer to histogram of the observable of interest for particle 1Bar and 2Bar
   //!
-  virtual void calculate_CD(const TString & histoBaseName,
+  virtual TH2* calculate_CD(const TString & histoBaseName,
                             const TString & eventClassName,
                             const TString & particleName1,
                             const TString & particleName2,
@@ -106,7 +106,7 @@ public:
   //!
   //!Calculate the "balance function" combination of the given observable defined as
   //!\verbatim
-  //! obs_BalFct = rho1_2 * (obs_US - obs_LS )
+  //! obs_BalFct = (obs_US - obs_LS )/int(rho1_2)f
   //!\endverbatim
   //!in which US and LS represent unlike-signs (unlike baryon numbers, etc) and like-sign (same baryon number sign)
   //!
@@ -119,7 +119,7 @@ public:
   //!@param obs_US  Pointer to histogram of the observable of interest for a US pair
   //!@param obs_LS Pointer to histogram of the observable of interest for LS pair
   //!
-  virtual void calculate_BalFct(const TString & histoBaseName,
+  virtual TH2* calculate_BalFct(const TString & histoBaseName,
                                 const TString & eventClassName,
                                 const TString & particleName1,
                                 const TString & particleName2,
@@ -128,6 +128,36 @@ public:
                                 TH1* rho1_2,
                                 TH2* obs_US,
                                 TH2* obs_LS);
+
+  virtual TH2* calculate_BalFct2(const TString & histoBaseName,
+                                 const TString & eventClassName,
+                                 const TString & particleName1,
+                                 const TString & particleName2,
+                                 const TString & obsName,
+                                 const TString & comboName,
+                                 TH1* rho1_1,
+                                 TH1* rho1_2,
+                                 TH2* obs_US,
+                                 TH2* obs_LS);
+
+  virtual TH2* calculate_BalFct3(const TString & histoBaseName,
+                                 const TString & eventClassName,
+                                 const TString & particleName1,
+                                 const TString & particleName2,
+                                 const TString & obsName,
+                                 const TString & comboName,
+                                 TH1* rho1_2,
+                                 TH2* obs_US,
+                                 TH2* obs_LS);
+
+  virtual TH2* calculate_BalFctSum(const TString & histoBaseName,
+                                    const TString & eventClassName,
+                                    const TString & particleName1,
+                                    const TString & particleName2,
+                                    const TString & obsName,
+                                    const TString & comboName,
+                                    TH2* obs_12Bar,
+                                    TH2* obs_1Bar2);
 
   //!
   //!Calculate the "difference" combination of the given observable defined as
@@ -147,7 +177,7 @@ public:
   //!@param obs_first  Pointer to histogram of the observable of the first pair
   //!@param obs_second Pointer to histogram of the observable of the second pair
   //!
-  virtual void calculate_Diff(const TString & histoBaseName,
+  virtual TH2* calculate_Diff(const TString & histoBaseName,
                               const TString & eventClassName,
                               const TString & particleName1,
                               const TString & particleName2,

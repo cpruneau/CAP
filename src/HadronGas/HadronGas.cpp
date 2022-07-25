@@ -1,4 +1,16 @@
-// Copyright 2016 Chun Shen
+/* **********************************************************************
+ * Copyright (C) 2019-2022, Claude Pruneau, Victor Gonzalez, Sumit Basu
+ * All rights reserved.
+ *
+ * Based on the ROOT package and environment
+ *
+ * For the licensing terms see LICENSE.
+ *
+ * Author: Claude Pruneau,   04/01/2022
+ * Copyright 2016 Chun Shen
+ // Copyright 2022 Claude Pruneau
+ *
+ * *********************************************************************/
 
 #include <iostream>
 #include <sstream>
@@ -8,143 +20,119 @@
 #include <iomanip>
 #include <TMath.h>
 #include "HadronGas.hpp"
+#include "HadronGasHistograms.hpp"
 #include "Math/SpecFunc.h"
+#include "SelectionGenerator.hpp"
 
 ClassImp(HadronGas);
 
 using namespace std;
 
-int HadronGas::trunOrder = 10;
-double HadronGas::twoPi  = 2.0*3.1415927;
-double HadronGas::twoPiCube = twoPi*twoPi*twoPi;
-
-HadronGas::HadronGas(ParticleTypeCollection * _particles,
+HadronGas::HadronGas(const TString &          _name,
+                     const Configuration &    _configuration,
+                     ParticleTypeCollection * _particles,
                      ParticleTypeCollection * _stableParticles,
-                     LogLevel debugLevel)
+                     LogLevel _debugLevel)
 :
+Task(_name,_configuration,_debugLevel),
 particleTypes(_particles),
 stableParticleTypes(_stableParticles),
-temperature(0),
-mu(0),
-muB(0),
-muS(0),
-muQ(0),
-thermalNumberDensity(0),
-thermalEnergyDensity(0),
-thermalEntropyDensity(0),
-thermalPressure(0),
-chemicalPotentials(),
-particleDensities(),
-particleEnergies(),
-particleEntropies(),
-particlePressures(),
-particleDsDmu(),
-particleDnDmu(),
-particleDeOverTDmu(),
-particleDpOverTmu(),
-stableParticleDensities(),
-stableParticlePairDensities(),
-stableParticlePairCorrelatedDensities(),
-stableParticlePairUncorrelatedDensities(),
-decayProbabilities(),
-decayPairProbabilities(),
-name("HadronGas")
+hadrons(),
+temperature(0.0),
+mu(0.0),
+muB(0.0),
+muS(0.0),
+muQ(0.0),
+thermalNumberDensity(0.0),
+thermalNetBaryonDensity(0.0),
+thermalNetStrangenessDensity(0.0),
+thermalNetChargeDensity(0.0),
+thermalEnergyDensity(0.0),
+thermalEntropyDensity(0.0),
+pressure(0.0),
+hadronRndmSelector(nullptr)
 {
-  calculateParticleDecayProbability();
+  appendClassName("HadronGas");
+  setInstanceName(_name);
+  setDefaultConfiguration();
+  setConfiguration(_configuration);
 }
 
-HadronGas::~HadronGas()
+void HadronGas::setDefaultConfiguration()
 {
+  if (reportStart(__FUNCTION__))
+    ;
+  TString hg = "HG";
+  Configuration & config = getConfiguration();
+  config.setParameter("useParticles",          false);
+  config.setParameter("useEventStream0",       false);
+  config.setParameter("createHistograms",      false);
+  config.setParameter("saveHistograms",        false);
+  config.addParameter("temperature",           150.0);
+  config.addParameter("muB",                   0.0);
+  config.addParameter("muS",                   0.0);
+  config.addParameter("volume",                1.0);
 }
 
-ostream & HadronGas::printProperties(ostream & os)
+void HadronGas::initialize()
 {
-  os << "===================================================================================================================" << std::endl;
-  os << "===================================================================================================================" << std::endl;
-  os << " Hadron Gas Global Properties" << endl;
-  os << "===================================================================================================================" << std::endl;
-  os << "===================================================================================================================" << std::endl;
-  os << "           temperature: " << scientific << setw(15)<< setprecision(5) << temperature << endl;
-  os << "                    mu: " << scientific << setw(15)<< setprecision(5) << mu << endl;
-  os << "                   muB: " << scientific << setw(15)<< setprecision(5) << muB << endl;
-  os << "                   muS: " << scientific << setw(15)<< setprecision(5) << muS << endl;
-  os << "                   muQ: " << scientific << setw(15)<< setprecision(5) << muQ << endl;
-  os << "  thermalNumberDensity: " << scientific << setw(15)<< setprecision(5) << thermalNumberDensity << endl;
-  os << "  thermalEnergyDensity: " << scientific << setw(15)<< setprecision(5) << thermalEnergyDensity << endl;
-  os << " thermalEntropyDensity: " << scientific << setw(15)<< setprecision(5) << thermalEntropyDensity << endl;
-  os << "       thermalPressure: " << scientific << setw(15)<< setprecision(5) << thermalPressure << endl;
-  os << "===================================================================================================================" << std::endl;
-  os << " Thermal Hadron Properties" << endl;
-  os << setw(5)  << "k";
-  os << setw(25) << "Name";
-  os << setw(15) << "Mu";
-  os << setw(15) << "Density";
-  os << setw(15) << "Energy";
-  os << setw(15) << "Entropy";
-  os << setw(15) << "Pressure" << endl;
-  os << "===================================================================================================================" << std::endl;
-  int nPart = particleTypes->size();
-  for (int iPart=0; iPart<nPart; iPart++)
+  if (reportStart(__FUNCTION__) )
+    ;
+  reset();
+
+  Configuration & config = getConfiguration();
+  temperature = config.getValueDouble("temperature");
+  muB         = config.getValueDouble("muB");
+  muS         = config.getValueDouble("muS");
+
+  if (reportDebug(__FUNCTION__) )
     {
-    cout
-    << setw(5)    << iPart
-    << setw(25)   << particleTypes->getParticleType(iPart)->getName()
-    << scientific << setw(15)<< setprecision(5) << chemicalPotentials[iPart]
-    << scientific << setw(15)<< setprecision(5) << particleDensities[iPart]
-    << scientific << setw(15)<< setprecision(5) << particleEnergies[iPart]
-    << scientific << setw(15)<< setprecision(5) << particleEntropies[iPart]
-    << scientific << setw(15)<< setprecision(5) << particlePressures[iPart]
-    << endl;
-    }
-  os << "==================================================================================" << std::endl;
-  os << "Stable Hadron Properties" << endl;
-  os << setw(5)  << "k";
-  os << setw(25) << "Name";
-  os << setw(25) << "Density"  << endl;
-  os << "==================================================================================" << std::endl;
-  nPart = stableParticleTypes->size();
-  for (int iPart=0; iPart<nPart; iPart++)
-    {
-    cout
-    <<  setw(5)  << iPart
-    <<  setw(25) << stableParticleTypes->getParticleType(iPart)->getName()
-    <<  scientific << setw(25)<< setprecision(5) << stableParticleDensities[iPart]
-    << endl;
+    cout << endl;
+    cout << " ======================initialize=============="  << endl;
+    cout << " temperature =" <<  temperature << endl;
+    cout << " ======================initialize=============="  << endl;
     }
 
-  return os;
+
+  for (unsigned int iParticle = 0; iParticle<particleTypes->size(); iParticle++)
+    {
+    HadronGasParticle * p = new HadronGasParticle();
+    p->setParticleType(particleTypes->getParticleType(iParticle));
+    hadrons.push_back(p);
+    }
+
+  if (reportEnd(__FUNCTION__) )
+    ;
 }
+
 
 void HadronGas::calculateParticleDecayProbability()
 {
-  if (reportStart("HadronGas", getName(), "calculateParticleDecayProbability()" ) )
+  if (reportStart(__FUNCTION__) )
     ;
-  int nPart       = particleTypes->size();
+  int nPart       = hadrons.size();
   int nStablePart = stableParticleTypes->size();
-  if (reportInfo("HadronGas", getName(), "calculateParticleDecayProbability()" ) )
+  if (reportInfo(__FUNCTION__) )
     {
+    cout << std::endl;
     cout << "==================================================================================" << std::endl;
-    cout << "<I> HadronGas::calculateParticleDecayProbability()" << endl;
     cout << "        nPart: " << nPart << endl;
     cout << "  nStablePart: " << nStablePart  << endl;
     cout << "==================================================================================" << std::endl;
     }
-  decayProbabilities.clear();
-  decayPairProbabilities.clear();
-  // Setup arrays
+
+  // Setup decay probability arrays
   for (int iPart = 0; iPart < nPart; iPart++)
     {
-    vector<double> temp(nStablePart,0.0);
-    vector< vector<double> > temp2; // (nStablePart,temp);
-    for (int k=0;k<nStablePart;k++) temp2.push_back(temp);
-
-    ParticleType & particleType = * (particleTypes->getParticleType(iPart));
+    HadronGasParticle & hadron = *(hadrons[iPart]);
+    hadron.createDecayProbabilityArray(nStablePart);
+    ParticleType & particleType = hadron.getType();
     if (particleType.isStable() && !particleType.isPhoton())
       {
       int indexStable = stableParticleTypes->findIndexForPdgCode(particleType.getPdgCode());
       if (indexStable<0 || indexStable>=nStablePart)
         {
-        if (reportError("HadronGas", getName(), "calculateParticleDecayProbability()" ) )
+        if (reportError(__FUNCTION__) )
           {
           cout << "==================================================================================" << std::endl;
           cout << "iPart: " << iPart << " indexStable:" << indexStable << " --- LOGIC ERROR - ABORT" << endl;
@@ -153,69 +141,71 @@ void HadronGas::calculateParticleDecayProbability()
           exit(1);
           }
         }
-      temp[indexStable] = 1.0;
+      // this hadron is stable and thus has a unit
+      // probability of decaying into itself.
+      hadron.setDecayProbability(indexStable,1.0);
       }
-    decayProbabilities.push_back(temp);
-    decayPairProbabilities.push_back(temp2);
     }
+
+  vector<double> temp(nStablePart,0.0);
+  vector< vector<double> > temp2(nStablePart,temp);
+
   // Calculate decayProbabilities
   for (int iPart = 0; iPart < nPart; iPart++)
     {
-    vector<double> temp(nStablePart,0.0);
-    vector< vector<double> > temp2; // (nStablePart,temp);
-    for (int k=0;k<nStablePart;k++) temp2.push_back(temp);
-
-    vector<int> indexOfDecayParts(5,0);
-    ParticleType & particleType = * (particleTypes->getParticleType(iPart));
-    for (int jChannel = 0; jChannel < particleType.getNDecayModes(); jChannel++)
+    HadronGasParticle & hadron = *(hadrons[iPart]);
+    int nDecayModes = hadron.getNDecayModes();
+    if (nDecayModes==0) continue;
+    vector<HadronGasParticle*> ptrToDecayHadron(5,nullptr);
+    for (int jChannel = 0; jChannel<nDecayModes; jChannel++)
       {
-      ParticleDecayMode & decayMode = particleType.getDecayMode(jChannel);
+      ParticleDecayMode & decayMode = hadron.getDecayMode(jChannel);
       double branchingRatio = decayMode.getBranchingRatio();
       int    nChildren      = decayMode.getNChildren();
-      for (int kParticle = 0; kParticle < nChildren; kParticle++)
+      for (int kHadron = 0; kHadron<nChildren; kHadron++)
         {
-        int pdgCode = decayMode.getChildPdgCode(kParticle);
-        int index   = particleTypes->findIndexForPdgCode(pdgCode);
-        if (index<0 || index > iPart)
+        int pdgCode = decayMode.getChildPdgCode(kHadron);
+        HadronGasParticle* decayHadron =nullptr; // = hadrons.findPdgCode(pdgCode);
+        for (unsigned int k=0;k<hadrons.size(); k++)
           {
-          if (reportError("HadronGas", getName(), "calculateParticleDecayProbability()" ) )
+          if (hadrons[k]->getType().getPdgCode() == pdgCode)
+            {
+            decayHadron = hadrons[k];
+            }
+          }
+        if (decayHadron==nullptr)
+          {
+          if (reportError(__FUNCTION__) )
             {
             cout << "==================================================================================" << std::endl;
-            cout << "lPart1=" << index <<  " -- Could not find PDG code: " << pdgCode << endl;
+            cout << "Could not find PDG code: " << pdgCode << endl;
             cout << "Terminate task."  << endl;
             cout << "==================================================================================" << std::endl;
             exit(1);
             }
           }
-        indexOfDecayParts[kParticle] = index;
+        ptrToDecayHadron[kHadron] = decayHadron;
         }
       // now we have a local list of the pdg ids iPart decays into (w/o photons)
       // must look at singles and then at pairs
       // if there are no particleTypes left, just skip this decay channel..
       double prob1, prob2;
-      for (int kParticle1 = 0; kParticle1 < nChildren; kParticle1++)
+
+      for (int kHadron1 = 0; kHadron1 < nChildren; kHadron1++)
         {
-        int lPart1 = indexOfDecayParts[kParticle1];
+        HadronGasParticle & hadron1 =  * (ptrToDecayHadron[kHadron1]);
         for (int mStable1 = 0; mStable1 < nStablePart; mStable1++)
           {
-          prob1 = decayProbabilities[lPart1][mStable1];
+          prob1 = hadron1.getDecayProbability(mStable1);
           temp[mStable1] += branchingRatio*prob1;
-
-          //cout << "kParticle1:" << kParticle1 << "mStable1" << mStable1 << endl;
-
-          for (int kParticle2 = 0; kParticle2 < nChildren; kParticle2++)
+          for (int kHadron2=0; kHadron2<nChildren; kHadron2++)
             {
-            if (kParticle1 != kParticle2)
+            if (kHadron1 != kHadron2)
               {
-              int lPart2 = indexOfDecayParts[kParticle2];
-              //cout << "lPart2:" << lPart2 << endl;
-
-              //cout <<  " kParticle1:" << kParticle1 << "  lPart1: " << lPart1  << " kParticle2:" << kParticle2 << "  lPart2: " << lPart2 << endl;
+              HadronGasParticle & hadron2 =  * (ptrToDecayHadron[kHadron2]);
               for (int mStable2 = 0; mStable2 < nStablePart; mStable2++)
                 {
-                //cout << "mStable2:" << mStable2 << endl;
-
-                prob2 = decayProbabilities[lPart2][mStable2];
+                prob2 = hadron2.getDecayProbability(mStable2);
                 temp2[mStable1][mStable2] += branchingRatio*prob1*prob2;
                 }
               }
@@ -223,356 +213,268 @@ void HadronGas::calculateParticleDecayProbability()
 
           for (int mStable3 = 0; mStable3 < nStablePart; mStable3++)
             {
-            //cout << "mStable3:" << mStable3 << endl;
-
-            prob1 = decayProbabilities[mStable1][mStable3];
-            //if (branchingRatio * prob1>0.0) cout << " NON ZERO HAPPENS lPart1: " << lPart1 << " mStable3:" << mStable3<< endl;
-            temp2[mStable1][mStable3] += branchingRatio *prob1;
+            temp2[mStable1][mStable3] += branchingRatio * hadron1.getDecayProbability(mStable1,mStable3);
             }
           }
         }
       }
-   // cout << "Store results." << endl;
+
+    // Store results
     for (int iStable=0;iStable<nStablePart;iStable++)
       {
-      decayProbabilities[iPart][iStable] = temp[iStable];
-      //cout << "iPart:" << iPart << " iStable:" << iStable <<  " decayProbabilities[iPart][iStable]:" << decayProbabilities[iPart][iStable] << endl;
+      hadron.setDecayProbability(iStable,temp[iStable]);
       for (int jStable=0;jStable<nStablePart;jStable++)
         {
-        decayPairProbabilities[iPart][iStable][jStable] = temp2[iStable][jStable];
-        //cout << "iPart:" << iPart << " iStable:" << iStable << " jStable:" << jStable <<  " decayPairProbabilities[iPart][iStable][jStable] :" << decayPairProbabilities[iPart][iStable][jStable]  << endl;
+        hadron.setDecayProbability(iStable,jStable,temp2[iStable][jStable]);
         }
       }
-//    cout << "Next Particle." << endl;
-
     }
-  if (reportEnd("HadronGas", getName(), "calculateParticleDecayProbability()" ) )
+  if (reportEnd(__FUNCTION__) )
     ;
 }
 
-void HadronGas::calculateParticleDecays()
+//!
+//!
+void HadronGas::calculateStableDensities()
 {
-  if (reportStart("HadronGas", getName(), "calculateParticleDecays()" ) )
+  if (reportStart(__FUNCTION__) )
     ;
-  int nPart       = particleTypes->size();
+  int nHadrons = hadrons.size();
   int nStablePart = stableParticleTypes->size();
 
-  if (stableParticleDensities.size()>0)
-    {
-    stableParticleDensities.clear();
-    stableParticlePairDensities.clear();
-    stableParticlePairCorrelatedDensities.clear();
-    stableParticlePairUncorrelatedDensities.clear();
-    }
-  vector<double> temp(nStablePart,0.0);
-  vector< vector<double> > temp2(nStablePart,temp);
-  stableParticleDensities                 = temp;
-  stableParticlePairDensities             = temp2;
-  stableParticlePairCorrelatedDensities   = temp2;
-  stableParticlePairUncorrelatedDensities = temp2;
-
-  double stableDensity;
+  //
+  // single particle density: rho1_stable
+  //
   for (int jStable = 0; jStable < nStablePart;jStable++)
     {
-    stableDensity = 0.0;
-    for (int kPart = 0; kPart < nPart;kPart++)
+    double rho1 = 0.0;
+    for (int kHadron=0; kHadron<nHadrons; kHadron++)
       {
-      stableDensity += decayProbabilities[kPart][jStable]*particleDensities[kPart];
+      HadronGasParticle & hadron = *(hadrons[kHadron]);
+      rho1 += hadron.getDecayProbability(jStable) * hadron.getNumberDensity();
       }
-    stableParticleDensities[jStable] = stableDensity;
+    rho1_stable[jStable] = rho1;
     }
+
+  //
+  // product of single particle densities: rho1rho1_stable
+  //
+  for (int jStable1 = 0; jStable1 < nStablePart; jStable1++)
+    {
+    double rho1_1 = rho1_stable[jStable1];
+    for (int jStable2 = 0; jStable2 < nStablePart; jStable2++)
+      {
+      double rho1_2 = rho1_stable[jStable2];
+      rho1rho1_stable[jStable1][jStable2] = rho1_1*rho1_2;
+      }
+    }
+
+  //
+  // pair densities: rho2_stable
+  // correlated pair density
+  //
   for (int jStable1 = 0; jStable1 < nStablePart; jStable1++)
     {
     for (int jStable2 = 0; jStable2 < nStablePart; jStable2++)
       {
-      stableDensity = 0.0;
-      for (int kPart = 0; kPart < nPart;kPart++)
+      double rho2  = 0.0;
+      double rho2c = 0.0;
+      for (int kHadron1=0; kHadron1<nHadrons; kHadron1++)
         {
-        stableDensity +=  decayPairProbabilities[kPart][jStable1][jStable2]*particleDensities[kPart];
-        }
-      stableParticlePairCorrelatedDensities[jStable1][jStable2] = stableDensity;
-
-      stableDensity = 0.0;
-      for (int kPart1 = 0; kPart1 < nPart;kPart1++)
-        {
-        double v1 = decayProbabilities[kPart1][jStable1]*particleDensities[kPart1];
-        for (int kPart2 = 0; kPart2 < nPart;kPart2++)
+        HadronGasParticle & hadron1 = *(hadrons[kHadron1]);
+        double prob1     = hadron1.getDecayProbability(jStable1);
+        double prob12    = hadron1.getDecayProbability(jStable1,jStable2);
+        double density1  = hadron1.getNumberDensity();
+        double rho1_1    = density1*prob1;
+        rho2c +=  density1*prob12;
+        for (int kHadron2=0; kHadron2<nHadrons; kHadron2++)
           {
-          if (kPart1 == kPart2) continue;
-          double v2 = decayProbabilities[kPart2][jStable2]*particleDensities[kPart2];
-          stableDensity += v1*v2;
+          HadronGasParticle & hadron2 = *(hadrons[kHadron2]);
+          double prob2     = hadron2.getDecayProbability(jStable2);
+          double density2  = hadron2.getNumberDensity();
+          double rho1_2    = density2*prob2;
+          rho2 += rho1_1 * rho1_2;
           }
-        stableParticlePairUncorrelatedDensities[jStable1][jStable2] = stableDensity;
         }
-
-      stableParticlePairDensities[jStable1][jStable2] = stableParticleDensities[jStable1]*stableParticleDensities[jStable2];
+      rho2cor_stable[jStable1][jStable2] = rho2c;
+      rho2_stable[jStable1][jStable2]    = rho2;
       }
     }
-  if (reportEnd("HadronGas", getName(), "calculateParticleDecays()" ) )
+
+  //
+  // pair cumulant rho2-rho1rho1
+  //
+  for (int jStable1 = 0; jStable1 < nStablePart; jStable1++)
+    {
+    for (int jStable2 = 0; jStable2 < nStablePart; jStable2++)
+      {
+      double rho2     = rho2_stable[jStable1][jStable2];
+      double rho1rho1 = rho1rho1_stable[jStable1][jStable2];
+      c2_stable[jStable1][jStable2] = rho2 - rho1rho1;
+      }
+    }
+  if (reportEnd(__FUNCTION__) )
     ;
 }
 
-// ========================================================================================
-// Reset all containers to empty.
-// ========================================================================================
-void HadronGas::clear()
+
+void HadronGas::reset()
 {
-  chemicalPotentials.clear();
-  particleDensities.clear();
-  particleEnergies.clear();
-  particlePressures.clear();
-  particleEntropies.clear();
-  particleDsDmu.clear();
-  particleDpOverTmu.clear();
-  particleDeOverTDmu.clear();
-  particleDnDmu.clear();
-  deltaN_bulk_term1s.clear();
-  deltaN_bulk_term2s.clear();
-  deltaN_qmu_term1s.clear();
-  deltaN_qmu_term2s.clear();
-  stableParticleDensities.clear();
-  stableParticlePairDensities.clear();
-  stableParticlePairCorrelatedDensities.clear();
-  stableParticlePairUncorrelatedDensities.clear();
-  decayProbabilities.clear();
-  decayPairProbabilities.clear();
-}
-
-
-// ========================================================================================
-// Compute all properties of this gas at the given temperature
-// and chemical potentials
-// ========================================================================================
-void HadronGas::calculateAllProperties(double _temp, double _muB, double _muS)
-{
-  if (reportStart("HadronGas", getName(), "calculateAllProperties(double _temp, double _muB, double _muS)" ) )
-    ;
-  temperature = _temp;
-  muB         = _muB;
-  muS         = _muS;
-
-  chemicalPotentials.clear();
-  particleDensities.clear();
-  deltaN_bulk_term1s.clear();
-  deltaN_bulk_term2s.clear();
-  deltaN_qmu_term1s.clear();
-  deltaN_qmu_term2s.clear();
-  particleEnergies.clear();
-  particlePressures.clear();
-  particleEntropies.clear();
-  particleDpOverTmu.clear();
-  particleDeOverTDmu.clear();
-  particleDnDmu.clear();
-  particleDsDmu.clear();
-
-
-  double mu;
-  double numberDensity;
-  double energyDensity;
-  double entropyDensity;
-  double pressure;
-
-  double deltaN_bulk_term1;
-  double deltaN_bulk_term2;
-  double deltaN_qmu_term1;
-  double deltaN_qmu_term2;
-
-  double dsdmu;
-  double dndmu;
-  double deoverTdmu;
-  double dPoverTdmu;
-  double gSpin;
-  double arg;
-  double lambda;
-
-  double beta = 1.0/temperature;
-  double t2   = temperature*temperature;
-  double sign;
-  double mass;
-  double mass2;
-  double mass3;
-  double mass4;
-  double mbeta;
-  double mbeta2;
-  double mbeta3;
-  double mbeta4;
-  double hbarC  = 0.19733;
-  double hbarC2 = hbarC*hbarC;
-  double hbarC3 = hbarC2*hbarC;
-  double twiceMPi2 = 2*M_PI*M_PI;
-  double theta;
-  double fugacity;
-  double besselKn1;
-  double besselKn2;
-  double doubleJ;
-
+  temperature = 0.0;
+  muB         = 0.0;
+  muS         = 0.0;
+  mu          = 0.0;
   thermalNumberDensity         = 0.0;
   thermalEnergyDensity         = 0.0;
   thermalEntropyDensity        = 0.0;
-  thermalPressure              = 0.0;
+  pressure                     = 0.0;
   thermalNetBaryonDensity      = 0.0;
   thermalNetStrangenessDensity = 0.0;
   thermalNetChargeDensity      = 0.0;
+  unsigned int nStableHadrons  = stableParticleTypes->size();
+  for (unsigned int iHadron=0; iHadron<hadrons.size();iHadron++) hadrons[iHadron]->reset();
+  vector<double> array(nStableHadrons,0.0);
+  rho1_stable = array;
+  rho2_stable.assign(nStableHadrons,array);
+  rho2cor_stable.assign(nStableHadrons,array);
+  rho1rho1_stable.assign(nStableHadrons,array);
+  c2_stable.assign(nStableHadrons,array);
+}
 
-  unsigned int  nPart = particleTypes->size();
-  for (unsigned int iPart=0; iPart < nPart; iPart++)
+void HadronGas::clear()
+{
+  temperature = 0.0;
+  muB         = 0.0;
+  muS         = 0.0;
+  mu          = 0.0;
+  thermalNumberDensity         = 0.0;
+  thermalEnergyDensity         = 0.0;
+  thermalEntropyDensity        = 0.0;
+  pressure                     = 0.0;
+  thermalNetBaryonDensity      = 0.0;
+  thermalNetStrangenessDensity = 0.0;
+  thermalNetChargeDensity      = 0.0;
+  for (unsigned int iHadron=0; iHadron<hadrons.size();iHadron++) hadrons[iHadron]->clear();
+  hadrons.clear();
+  rho1_stable.clear();
+  rho2_stable.clear();
+  rho2cor_stable.clear();
+  rho1rho1_stable.clear();
+  c2_stable.clear();
+//  for (int iStable=0; iStable<nStableHadrons; iStable)
+//    {
+//    rho2_stable.push_back(array);
+//    rho2cor_stable.push_back(array);
+//    rho1rho1_stable.push_back(array);
+//    c2_stable.push_back(array);
+//    }
+}
+
+void HadronGas::execute()
+{
+  if (reportStart(__FUNCTION__))
+    ;
+
+  if (reportDebug(__FUNCTION__))
     {
-    ParticleType & particleType = *(particleTypes->getParticleType(iPart));
-    mass = particleType.getMass();
-
-    if (mass>0.0)
-      {
-      gSpin     = particleType.getSpinFactor();
-      sign      = particleType.getStatistics();
-      mass2     = mass*mass;
-      mass3     = mass2*mass;
-      mass4     = mass3*mass;
-      mbeta     = mass*beta;
-      mbeta2    = mbeta*mbeta;
-      mbeta3    = mbeta2*mbeta;
-      mbeta4    = mbeta3*mbeta;
-      mu        = muB*particleType.getBaryon() + muS*particleType.getStrange();
-
-      numberDensity     = 0.0;
-      deltaN_bulk_term1 = 0.0;
-      deltaN_bulk_term2 = 0.0;
-      deltaN_qmu_term1  = 0.0;
-      energyDensity     = 0.0;
-      pressure          = 0.0;
-      dPoverTdmu        = 0.0;
-      deoverTdmu        = 0.0;
-      dndmu             = 0.0;
-      for (int j = 1; j < trunOrder; j++)
-        {
-        doubleJ    = double(j);
-        arg        = doubleJ*mbeta;  // argument inside bessel functions
-        lambda     = exp(beta*mu);  // fugacity factor
-        theta      = pow(-sign,  j-1);
-        fugacity   = pow(lambda, j);
-        besselKn1  = TMath::BesselK1(arg);
-        besselKn2  = TMath::BesselK(2,arg);
-
-        numberDensity     += theta*fugacity*besselKn2/doubleJ;
-        deltaN_bulk_term1 += theta*fugacity*(mass*beta*besselKn1 + 3.0/doubleJ*besselKn2);
-        deltaN_bulk_term2 += theta*fugacity*besselKn1;
-        deltaN_qmu_term1  += theta*fugacity*besselKn2/doubleJ; // baryon diffusion contribution
-        double I_1_1 = exp(-arg)/arg*(2./(arg*arg) + 2.0/arg - 0.5);
-        double I_1_2 = 3./8.0*ROOT::Math::expint_n(2, arg);
-        double I_1_n = I_1_1 + I_1_2;
-        double double_factorial    = 1.;  // record (2k-5)!!
-        double factorial           = 2.;         // record k! start with 2!
-        double factor_2_to_k_power = 4.;      // record 2^k start with 2^2
-        for (int k = 3; k < trunOrder; k++)
-          {
-          double_factorial *= (2*k - 5);
-          factorial        *= k;
-          factor_2_to_k_power *= 2;
-          double rrr = ROOT::Math::expint_n(2*k-2, arg);
-          double I_1_k = (3.*double_factorial/factor_2_to_k_power/factorial*rrr);
-          I_1_n += I_1_k;
-          }
-        I_1_n = -mbeta3*I_1_n;
-        deltaN_qmu_term2 += doubleJ*theta*fugacity*I_1_n;
-        energyDensity += theta*fugacity*(3.*besselKn2/(arg*arg) + besselKn1/arg);
-        pressure      += theta*fugacity*besselKn2/doubleJ/doubleJ;
-        dPoverTdmu    += theta*fugacity*besselKn2/doubleJ;
-        deoverTdmu    += theta*fugacity*doubleJ*(3*besselKn2/(arg*arg)+ besselKn1/arg);
-        dndmu         += theta*fugacity*besselKn2;
-        }
-      numberDensity     = numberDensity*gSpin*mass2*temperature/twiceMPi2/hbarC3;
-      deltaN_bulk_term1 = mass2*temperature*deltaN_bulk_term1;
-      deltaN_bulk_term2 = 0.33333*mass3*deltaN_bulk_term2;
-      deltaN_qmu_term1  = mass2*deltaN_qmu_term1/(beta*beta);
-      deltaN_qmu_term2  = deltaN_qmu_term2/(3.0*beta*beta*beta);
-      energyDensity     = energyDensity*gSpin*mass4/twiceMPi2/hbarC3;
-      pressure          = pressure*gSpin*mass2*t2/twiceMPi2/hbarC3;
-      entropyDensity    = (energyDensity + pressure - mu*numberDensity)*beta;    // unit : 1/fm^3
-      dPoverTdmu        = dPoverTdmu*gSpin*mass2/twiceMPi2/hbarC3;
-      deoverTdmu        = deoverTdmu*gSpin*mass4/twiceMPi2/hbarC3;
-      dndmu             = dndmu*gSpin*mass/twiceMPi2;
-      dsdmu             = dPoverTdmu - numberDensity - mu*dndmu + deoverTdmu;
-
-      chemicalPotentials.push_back(mu);
-      particleDensities.push_back(numberDensity);
-      deltaN_bulk_term1s.push_back(deltaN_bulk_term1);
-      deltaN_bulk_term2s.push_back(deltaN_bulk_term2);
-      deltaN_qmu_term1s.push_back(deltaN_qmu_term1);
-      deltaN_qmu_term2s.push_back(deltaN_qmu_term2);
-      particleEnergies.push_back(energyDensity);
-      particlePressures.push_back(pressure);
-      particleEntropies.push_back(entropyDensity);
-      particleDpOverTmu.push_back(dPoverTdmu);
-      particleDeOverTDmu.push_back(deoverTdmu);
-      particleDnDmu.push_back(dndmu);
-      particleDsDmu.push_back(dsdmu);
-
-      thermalNumberDensity  += numberDensity;
-//      cout << setw(5)  <<  "iPart:" << setw(5)<< iPart;
-//      cout << setw(25) <<  "NumberDensity:";
-//      cout << scientific << setw(15)<< setprecision(5) << numberDensity;
-//      cout << setw(25) <<  "ThermalNumberDensity:";
-//      cout << scientific << setw(15)<< setprecision(5) << thermalNumberDensity << endl;
-
-      thermalEnergyDensity  += energyDensity;
-      thermalEntropyDensity += entropyDensity;
-      thermalPressure       += pressure;
-      if (particleType.isBaryon())   thermalNetBaryonDensity      += numberDensity * particleType.getBaryon();
-      if (particleType.isCharged())  thermalNetChargeDensity      += numberDensity * particleType.getCharge();
-      if (particleType.isStrange())  thermalNetStrangenessDensity += numberDensity * particleType.getStrange();
-      }
-    else
-      {
-      double zero = 0.0;
-      chemicalPotentials.push_back(zero);
-      particleDensities.push_back(zero);
-      deltaN_bulk_term1s.push_back(zero);
-      deltaN_bulk_term2s.push_back(zero);
-      deltaN_qmu_term1s.push_back(zero);
-      deltaN_qmu_term2s.push_back(zero);
-      particleEnergies.push_back(zero);
-      particlePressures.push_back(zero);
-      particleEntropies.push_back(zero);
-      particleDpOverTmu.push_back(zero);
-      particleDeOverTDmu.push_back(zero);
-      particleDnDmu.push_back(zero);
-      particleDsDmu.push_back(zero);
-
-      }
+    cout << endl;
+    cout << " ============================================================"  << endl;
+    cout << " temperature =" <<  temperature << endl;
+    cout << " ============================================================"  << endl;
     }
-  calculateParticleDecays();
-  setupDecayGenerator();
-  if (reportEnd("HadronGas", getName(), "calculateAllProperties(double _temp, double _muB, double _muS)" ) )
+  for (unsigned int iHadron=0; iHadron < hadrons.size(); iHadron++)
+    {
+    if (hadrons[iHadron]->mass<=0.0) continue;
+    hadrons[iHadron]->calculateAllProperties(temperature, muB, muS);
+    thermalNumberDensity  += hadrons[iHadron]->numberDensity;
+    thermalEnergyDensity  += hadrons[iHadron]->energyDensity;
+    thermalEntropyDensity += hadrons[iHadron]->entropyDensity;
+    pressure              += hadrons[iHadron]->pressure;
+    thermalNetBaryonDensity      += hadrons[iHadron]->getBaryonDensity();
+    thermalNetChargeDensity      += hadrons[iHadron]->getChargeDensity();
+    thermalNetStrangenessDensity += hadrons[iHadron]->getStrangeDensity();
+    }
+  //return;
+  calculateParticleDecayProbability();
+  calculateStableDensities();
+  //setupDecayGenerator();
+  if (reportEnd(__FUNCTION__))
     ;
 }
 
+// this needs to be "fixed"
 void HadronGas::setupDecayGenerator()
 {
-  hadronRndmSelector = new SelectionGenerator(particleDensities);
+  //hadronRndmSelector = new SelectionGenerator(particleDensities);
 }
 
+// this needs to be "fixed"
 ParticleType * HadronGas::generateRandomHadron()
 {
-  int index = hadronRndmSelector->generate();
+  int index = 0; // hadronRndmSelector->generate();
   return particleTypes->getParticleType(index);
 }
 
+// this needs to be "fixed"
 int HadronGas::generateRandomHadronByIndex()
 {
-  return hadronRndmSelector->generate();
+  return 0; // hadronRndmSelector->generate();
 }
 
 // ======================================================================
 // computes dn/dp at given temperature, mass, mu, g, sign, and p
 // ======================================================================
-double HadronGas::computeThermalDensityVsP(double temperature, double mass, double mu, double g, double sign, double p)
+//double HadronGas::computeThermalDensityVsP(double temperature, double mass, double mu, double g, double sign, double p)
+//{
+//  if (reportStart(__FUNCTION__))
+//    ;
+//  double e = sqrt(p*p+mass*mass);
+//  double prefactor = g/twoPiCube;
+//  double arg = (e-mu)/temperature;
+//  double density = prefactor*(p/e)/(exp(arg)+sign);
+//  if (reportEnd(__FUNCTION__) )
+//    ;
+//  return density;
+//}
+
+
+ostream & HadronGas::printProperties(ostream & os)
 {
-  if (reportStart("HadronGas", getName(), "computeThermalDensityVsP(..)" ) )
-    ;
-  double e = sqrt(p*p+mass*mass);
-  double prefactor = g/twoPiCube;
-  double arg = (e-mu)/temperature;
-  double density = prefactor*(p/e)/(exp(arg)+sign);
-  if (reportEnd("HadronGas", getName(), "computeThermalDensityVsP(..)" ) )
-    ;
-  return density;
+  os << "===================================================================================================================" << std::endl;
+  os << "===================================================================================================================" << std::endl;
+  os << " Hadron Gas : " << name  << endl;
+  os << "===================================================================================================================" << std::endl;
+  os << "                  temperature: " << scientific << setw(15)<< setprecision(5) << temperature << endl;
+  os << "                           mu: " << scientific << setw(15)<< setprecision(5) << mu << endl;
+  os << "                          muB: " << scientific << setw(15)<< setprecision(5) << muB << endl;
+  os << "                          muS: " << scientific << setw(15)<< setprecision(5) << muS << endl;
+  os << "                          muQ: " << scientific << setw(15)<< setprecision(5) << muQ << endl;
+  os << "         thermalNumberDensity: " << scientific << setw(15)<< setprecision(5) << thermalNumberDensity << endl;
+  os << "      thermalNetBaryonDensity: " << scientific << setw(15)<< setprecision(5) << thermalNetBaryonDensity << endl;
+  os << " thermalNetStrangenessDensity: " << scientific << setw(15)<< setprecision(5) << thermalNetStrangenessDensity << endl;
+  os << "      thermalNetChargeDensity: " << scientific << setw(15)<< setprecision(5) << thermalNetChargeDensity << endl;
+  os << "         thermalEnergyDensity: " << scientific << setw(15)<< setprecision(5) << thermalEnergyDensity << endl;
+  os << "        thermalEntropyDensity: " << scientific << setw(15)<< setprecision(5) << thermalEntropyDensity << endl;
+  os << "                     pressure: " << scientific << setw(15)<< setprecision(5) << pressure << endl;
+  os << "===================================================================================================================" << std::endl;
+  os << " Hadron Properties" << endl;
+  os << "===================================================================================================================" << std::endl;
+
+  os <<  fixed << setw(20) << "Name";
+  os <<  fixed << setw(15) << "Mu";
+  os <<  fixed << setw(15) << "N-Density";
+  os <<  fixed << setw(15) << "E-Density";
+  os <<  fixed << setw(15) << "S-Density";
+  os <<  fixed << setw(15) << "Pressure";
+  os <<  fixed << setw(15) << "dPoverTdmu";
+  os <<  fixed << setw(15) << "deoverTdmu";
+  os <<  fixed << setw(15) << "dndmu";
+  os <<  fixed << setw(15) << "dsdmu";
+  os << endl;
+
+  for (unsigned int iHadron=0; iHadron<hadrons.size(); iHadron++)
+    {
+    hadrons[iHadron]->printProperties(os);
+    }
+  return os;
 }

@@ -193,7 +193,7 @@ TCanvas *  Plotter::plot(vector<TGraph*> graphs,
   //nGraphs = 1;
   for (unsigned int iGraph=1; iGraph<nGraphs; iGraph++)
     {
-    plotOption = "SAME P"; //graphConfigurations[iGraph]->getValueString("plotOption");
+    plotOption = "SAME LP"; //graphConfigurations[iGraph]->getValueString("plotOption");
     graphs[iGraph]->Draw(plotOption);
     }
   if (nGraphs<6)
