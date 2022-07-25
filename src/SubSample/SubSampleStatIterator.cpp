@@ -58,6 +58,21 @@ void SubSampleStatIterator::execute()
   TString histoModelDataName  = configuration.getValueString("histoModelDataName");
   vector<TString> includedPatterns = configuration.getSelectedValues("IncludedPattern",none);
   vector<TString> excludedPatterns = configuration.getSelectedValues("ExcludedPattern",none);
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << "include patterns size: " << includedPatterns.size() << endl;
+    for (unsigned int k=0; k<includedPatterns.size(); k++)
+      {
+      cout << " k:" << k << includedPatterns[k] << endl;
+      }
+    cout << "exclude patterns size: " << excludedPatterns.size() << endl;
+    for (unsigned int k=0; k<excludedPatterns.size(); k++)
+      {
+      cout << " k:" << k << excludedPatterns[k] << endl;
+      }
+    }
+
+
   unsigned int nSubTasks = subTasks.size();
   if (reportDebug())  cout << "SubTasks Count: " << nSubTasks  << endl;
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++)
@@ -94,7 +109,9 @@ void SubSampleStatIterator::execute()
     subsampleConfig.setParameter("IncludedPattern",        taskName);
     subsampleConfig.addSelectedValues("IncludedPattern", "none", includedPatterns);
     subsampleConfig.addSelectedValues("ExcludedPattern", "none", excludedPatterns);
-    SubSampleStatCalculator calculator("SubSampleAnalyzer", subsampleConfig, getReportLevel());
+    TString statCalculatorName = "SubSampleStatCalculator_";
+    statCalculatorName += taskName;
+    SubSampleStatCalculator calculator(statCalculatorName, subsampleConfig, getReportLevel());
     calculator.execute();
     }
   if (reportEnd(__FUNCTION__))

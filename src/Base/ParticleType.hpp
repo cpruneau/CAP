@@ -741,6 +741,12 @@ public:
   //!
   void   setWeakStable(bool value) { weakStable = value; }
 
+
+  std::vector<ParticleDecayMode> getDecayModes() const
+  {
+  return decayModes; //!<Array of decay modes
+  }
+
   //!
   //! Print the properties of this particle on the given stream and return a reference to that stream.
   //!

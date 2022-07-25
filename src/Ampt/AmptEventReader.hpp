@@ -95,4 +95,4 @@ protected:
   ClassDef(AmptEventReader,0)
 };
 
-#endif /* WAC_AmptEventReader */
+#endif /* CAP_AmptEventReader */

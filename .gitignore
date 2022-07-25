@@ -15,6 +15,7 @@ src/Music
 src/StatStudies
 src/Urqmd
 src/*/cmake_install*
+documentation
 Makefile
 */Makefile
 */CMakeFiles

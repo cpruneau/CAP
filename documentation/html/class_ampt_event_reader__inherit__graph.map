@@ -1,6 +1,0 @@
-<map id="AmptEventReader" name="AmptEventReader">
-<area shape="rect" id="node1" title=" " alt="" coords="5,229,135,256"/>
-<area shape="rect" id="node2" href="$class_root_tree_reader.html" title=" " alt="" coords="11,155,129,181"/>
-<area shape="rect" id="node3" href="$class_task.html" title="Base class defining the notion of light weight tasks for the generation and analysis of data." alt="" coords="45,80,95,107"/>
-<area shape="rect" id="node4" href="$class_message_logger.html" title=" " alt="" coords="13,5,127,32"/>
-</map>

@@ -27,7 +27,7 @@ void loadNuDyn(const TString & includeBasePath);
 void loadSubSample(const TString & includeBasePath);
 
 
-int RunAnalysis()
+int RunAnaPerformPtDepEff()
 {
   TString includeBasePath = getenv("CAP_SRC");
   loadBase(includeBasePath);
@@ -77,20 +77,20 @@ int RunAnalysis()
   MessageLogger::LogLevel debugLevel = MessageLogger::Debug;
   MessageLogger::LogLevel selectedLevel = infoLevel;
   
-  bool    runEventAnalysis               = NO;
+  bool    runEventAnalysis               = YES;
   bool    runGenLevelAnalysis            = YES;
-  bool    runRecoLevelAnalysis           = NO;
-  bool    runDerivedHistoCalculation     = NO;
+  bool    runRecoLevelAnalysis           = YES;
+  bool    runDerivedHistoCalculation     = YES;
   bool    runBalFctCalculation           = NO;
-  bool    runSubsampleAnalysis           = YES;
+  bool    runSubsampleAnalysis           = NO;
   bool    runBasicSubsampleAnalysis      = NO;
   bool    runDerivedSubsampleAnalysis    = NO;
-  bool    runBalFctSubsampleAnalysis     = YES;
-  bool    runPerformSimulator            = NO;
-  bool    runPerformAnalysis             = NO;
-  bool    runClosureAnalysis             = NO;
-  bool    runBasicClosureAnalysis        = NO;
-  bool    runDerivedClosureAnalysis      = NO;
+  bool    runBalFctSubsampleAnalysis     = NO;
+  bool    runPerformSimulator            = YES;
+  bool    runPerformAnalysis             = YES;
+  bool    runClosureAnalysis             = YES;
+  bool    runBasicClosureAnalysis        = YES;
+  bool    runDerivedClosureAnalysis      = YES;
   bool    runBalFctClosureAnalysis       = NO;
 
   bool    runPythiaGenerator             = YES;
@@ -102,35 +102,32 @@ int RunAnalysis()
   bool    runGausResGenerator            = NO;
   bool    runGlobalAnalysis              = YES;
   bool    runSpherocityAnalysis          = NO;
-  bool    runPartAnalysis                = NO;
+  bool    runPartAnalysis                = YES;
   bool    runPairAnalysis                = YES;
   bool    runNuDynAnalysis               = NO;
   bool    loadPdgTable                   = YES;
   bool    fillEta                        = YES;
   bool    fillY                          = NO;
-  int     globalEventFilterOptions       = 0;
-  int     analysisParticleFilterOption   = 3;
-  int     analysisEventFilterOptions     = 0;
 
-  long    nIterationRequested            = 4000000;
+  long    nIterationRequested            = 1000000;
   long    nIterationReported             = 100000;
-  long    nIterationPartialSave          = 400000;
+  long    nIterationPartialSave          = 10000;
   bool    doPartialReports               = YES;
-  bool    doPartialSaves                 = YES;
+  bool    doPartialSaves                 = NO;
   bool    forceHistogramsRewrite         = YES;
   bool    scaleHistograms                = YES;
+  double  beamEnergy                     = 13000.0; // GeV
+  int     beamPdgCode                    = 2212;    // proton
+  int     targetPdgCode                  = 2212;
 
-  //
-  // The input and output path names have the following structure
-  //
-  //         inputPathBase/modelSpecific/pathSuffix
-  //
-  // Use the path suffix to direct the input/output based on some
-  // "external" considerations.
+  int     globalEventFilterOptions       = 0;
+  int     analysisParticleFilterOption   = 4;
+  int     analysisEventFilterOptions     = 0;
 
-  TString inputPathBase   = "/Volumes/ClaudeDisc4/OutputFiles/";
-  TString outputPathBase  = "/Volumes/ClaudeDisc4/OutputFiles/";
-  TString pathSuffix      = "WideEtaWidePt/";
+
+  TString inputPathBase   = "/Volumes/ClaudeDisc4/OutputFiles/PythiaPtDepEff/";
+  TString outputPathBase  = "/Volumes/ClaudeDisc4/OutputFiles/PythiaPtDepEff/";
+  // TString input FileNameBase;
   TString outputFileNameBase;
   TString inputPathName   = inputPathBase;
   TString outputPathName  = outputPathBase;
@@ -230,9 +227,9 @@ int RunAnalysis()
       case 0:  analysisParticleFilters.push_back( openParticleFilter      ); break;
       case 1:  analysisParticleFilters.push_back( aliceV0ParticleFilter   ); break;
       case 2:  analysisParticleFilters.push_back( aliceTpcParticleFilter ); break;
-      case 3:  analysisParticleFilters = ParticleFilter::createChargedHadronFilters(YES,0.0, 20.0, YES,-2.0, 2.0, NO, 10.0, -10.0); break;
+      case 3:  analysisParticleFilters = ParticleFilter::createChargedHadronFilters(YES,0.0, 10.0, YES,-4.0, 4.0, NO, 10.0, -10.0); break;
       case 4:  analysisParticleFilters = ParticleFilter::createChargedHadronFilters(YES,0.2, 2.0, YES,-4.0, 4.0, NO, 10.0, -10.0); break;
-      case 5:  analysisParticleFilters = ParticleFilter::createPlusMinusHadronFilters(YES,0.0, 10.0, YES,-2.0, 2.0, NO, 10.0, -10.0); break;
+      case 5:  analysisParticleFilters = ParticleFilter::createPlusMinusHadronFilters(YES,0.2, 5.0, YES,-2.0, 2.0, NO, 10.0, -10.0); break;
       case 6:  analysisParticleFilters = ParticleFilter::createPlusMinusHadronFilters(YES,0.0, 100.0, YES,-4.0, 4.0, NO, 10.0, -10.0); break;
       case 7:  analysisParticleFilters = ParticleFilter::createChargedHadronFilters(YES,0.2, 1.0, YES,-4.0, 4.0, NO, 10.0, -10.0); break;
       //case 6:  analysisParticleFilters = ParticleFilter::createBaryonFilters(YES,0.2, 10.0, YES, -1.0, 1.0, NO, 10.0, -10.0); break;
@@ -286,12 +283,8 @@ int RunAnalysis()
 
     if (runPythiaGenerator)
       {
-      double  beamEnergy                     = 13000.0; // GeV
-      int     beamPdgCode                    = 2212;    // proton
-      int     targetPdgCode                  = 2212;
-
-      histoModelDataName  = TString("PYTHIA");
-      TString pythiaLabel = histoModelDataName;
+      histoModelDataName  = "PYTHIA";
+      TString pythiaLabel = "PYTHIA";
       TString systemLabel = "";
       TString energyLabel = "";
       if (beamPdgCode    == 2212) systemLabel += "P";
@@ -312,7 +305,6 @@ int RunAnalysis()
       outputPathName  += "/";
       outputPathName  += energyLabel;
       outputPathName  += "/";
-      outputPathName  += pathSuffix;
       //outputFileNameBase = "PYTHIA_";
 
 
@@ -401,18 +393,10 @@ int RunAnalysis()
       {
       histoModelDataName  = "RhoDecay";
       TString gausResLabel = "RhoDecay";
-
-      double pTslope = 1.0;
-      double rhoMass = 0.5;
+      inputPathName  += gausResLabel;
+      inputPathName  += "/";
       outputPathName += gausResLabel;
-      outputPathName += "/PtSlope";
-      outputPathName += int(1000*pTslope);
-      outputPathName += "/Mass";
-      outputPathName += int(1000*rhoMass);
       outputPathName += "/";
-      outputPathName += pathSuffix;
-      inputPathName  = outputPathName;
-
       Configuration resConfig("Resonance Generator Configuration");
       resConfig.addParameter("useEventStream0",      YES);
       resConfig.addParameter("standaloneMode",       YES);
@@ -420,10 +404,8 @@ int RunAnalysis()
       resConfig.addParameter("nParticlesMaximum",     50);
       resConfig.addParameter("yMinimum",            -0.5);
       resConfig.addParameter("yMaximum",             0.5);
-      resConfig.addParameter("pTslope",              pTslope);
-      resConfig.addParameter("mass",                 rhoMass);
-
-
+      resConfig.addParameter("pTslope",              1.0);
+      resConfig.addParameter("mass",                0.800);
       vector<EventFilter*> eventFiltersR;
       eventFiltersR.push_back( openEventFilter);
       vector<ParticleFilter*>  particleFiltersR;
@@ -496,7 +478,7 @@ int RunAnalysis()
 //      performConfig.addParameter(baseName+"_PhiRmsA2",   0.0);
 
       performConfig.addParameter(baseName+"_EffPeakAmp",0.8);
-      performConfig.addParameter(baseName+"_EffPeakPt",0.01);
+      performConfig.addParameter(baseName+"_EffPeakPt", 1.0);
       performConfig.addParameter(baseName+"_EffPeakRms",0.5);
       performConfig.addParameter(baseName+"_EffA1",0.0);
       performConfig.addParameter(baseName+"_EffA2",0.0);
@@ -551,7 +533,7 @@ int RunAnalysis()
     config.addParameter( "histoInputPath",        outputPathName);
     config.addParameter( "histoOutputPath",       outputPathName);
     config.addParameter( "histoModelDataName",    histoModelDataName);
-    derivedSubsampleIterator = new SubSampleStatIterator("DerivedSubsampleAnalysis",config,selectedLevel);
+    derivedSubsampleIterator = new SubSampleStatIterator("SubsampleBasicHistos",config,selectedLevel);
     }
 
   if (runBalFctSubsampleAnalysis)
@@ -560,14 +542,15 @@ int RunAnalysis()
     Configuration config("BalFct Calculation Configuration");
     config.addParameter( "forceHistogramsRewrite",forceHistogramsRewrite);
     config.addParameter( "appendedString",        derivedLabel+balFctLabel+sumLabel);
-    config.addParameter( "IncludedPattern0",      histoModelDataName); //TString("WTF")); //
+    config.addParameter( "IncludedPattern0",      histoModelDataName);
     config.addParameter( "IncludedPattern1",      derivedLabel);
     config.addParameter( "IncludedPattern2",      balFctLabel);
     config.addParameter( "histoInputPath",        outputPathName);
     config.addParameter( "histoOutputPath",       outputPathName);
     config.addParameter( "histoModelDataName",    histoModelDataName);
-    balFctSubsampleIterator = new SubSampleStatIterator("BalFctSubsampleIterator",config,debugLevel);
+    balFctSubsampleIterator = new SubSampleStatIterator("balFctSubsampleIterator",config,selectedLevel);
     }
+
 
   if (runClosureAnalysis && runBasicClosureAnalysis)
     {
@@ -852,7 +835,6 @@ int RunAnalysis()
     config.addParameter("runSubsampleAnalysis",    runSubsampleAnalysis);
     config.addParameter("doPartialSaves",          doPartialSaves);
     config.addParameter("scaleHistograms",         scaleHistograms);
-    config.addParameter("histoOutputPath",         inputPathName);
     config.addParameter("histoOutputPath",         outputPathName);
     config.addParameter("histoModelDataName",      histoModelDataName);
     config.addParameter("histoAnalyzerName",       pairLabel+genLabel);
@@ -869,7 +851,7 @@ int RunAnalysis()
     config.addParameter("nBins_eta",       40);
     config.addParameter("min_eta",       -2.0); // 1;
     config.addParameter("max_eta",        2.0);  // 1;
-    config.addParameter("nBins_phi",       36);
+    config.addParameter("nBins_phi",       72);
     config.addParameter("min_phi",        0.0);
     config.addParameter("max_phi",      TMath::TwoPi());
     config.addParameter("fillEta",      fillEta);
@@ -883,7 +865,6 @@ int RunAnalysis()
       if (runBasicSubsampleAnalysis)   basicSubsampleIterator->addSubTask(task);
       if (runDerivedHistoCalculation)  derivedHistoIterator->addSubTask(task);
       if (runDerivedSubsampleAnalysis) derivedSubsampleIterator->addSubTask(task);
-      if (runBalFctSubsampleAnalysis)  balFctSubsampleIterator->addSubTask(task);
       if (runClosureAnalysis && runBasicClosureAnalysis)     basicClosureIterator->addSubTask(task);
       if (runClosureAnalysis && runDerivedClosureAnalysis)   derivedClosureIterator->addSubTask(task);
       if (runClosureAnalysis && runBalFctClosureAnalysis)    balFctClosureIterator->addSubTask(task);
@@ -900,7 +881,6 @@ int RunAnalysis()
       if (runBasicSubsampleAnalysis)   basicSubsampleIterator->addSubTask(task);
       if (runDerivedHistoCalculation)  derivedHistoIterator->addSubTask(task);
       if (runDerivedSubsampleAnalysis) derivedSubsampleIterator->addSubTask(task);
-      //if (runBalFctSubsampleAnalysis)  balFctSubsampleIterator->addSubTask(task);
       }
     }
   if (runNuDynAnalysis)
@@ -1020,7 +1000,7 @@ int RunAnalysis()
     balFctCalcConfig.addParameter( "histoInputFileName",      TString(""));
     balFctCalcConfig.addParameter( "histoOutputFileName",     TString(""));
     balFctCalcConfig.addParameter( "histoModelDataName",      histoModelDataName);
-    balFctCalcConfig.addParameter( "histoAnalyzerName",       pairLabel+genLabel);
+    balFctCalcConfig.addParameter( "histoAnalyzerName",       pairLabel);
     balFctHistoIterator = new BalanceFunctionCalculator("BalFctCalc",
                                                         balFctCalcConfig,
                                                         analysisEventFilters,
