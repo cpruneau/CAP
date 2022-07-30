@@ -417,7 +417,7 @@ int RunGridAnalysis(int jobIndex, int seed)
     outputPathName += "/Mass";
     outputPathName += int(1000*rhoMass);
     outputPathName += "/";
-    outputPathName += pathSuffix;
+    //outputPathName += pathSuffix;
     inputPathName  = outputPathName;
 
     Configuration resConfig("Resonance Generator Configuration");
@@ -1182,6 +1182,7 @@ void loadBasicGen(const TString & includeBasePath)
   gSystem->Load(includePath+"RadialBoostHistos.hpp");
   gSystem->Load(includePath+"RadialBoostTask.hpp");
   gSystem->Load(includePath+"RapidityGenerator.hpp");
+  gSystem->Load(includePath+"ResonanceGenerator.hpp");
   gSystem->Load("libBasicGen.dylib");
 }
 
