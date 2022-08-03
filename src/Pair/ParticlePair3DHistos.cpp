@@ -369,8 +369,9 @@ void ParticlePair3DHistos::fill(vector<ParticleDigit*> & particle1, vector<Parti
       if (fill3D)
         {
         //decompose(double *pa,double *pb,double &qlong,double &qout,double &qside,double &qinv)
-
+        // ====================================================================================
         // Method from Scott Pratt to do three dimensional qinv components
+        // ====================================================================================
         double pt,s,Mlong,roots;
         double ptot[4],q[4];
         const int g[4]={1,-1,-1,-1};
