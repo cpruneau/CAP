@@ -24,11 +24,11 @@ public:
   void makePlots(const TString & canvasNameBase,
                  NuDynHistos * nuDynHistosUsed,
                  NuDynDerivedHistos * nuDynDerivedHistosUsed,
-                 CanvasConfiguration * canvasConfigurationUsed,
+                 CanvasConfiguration & canvasConfigurationUsed,
                  GraphConfiguration  ** graphConfigurationsUsed);
 
   void makeComparisonPlots(const TString & canvasNameBase,
-                           CanvasConfiguration * canvasConfiguration,
+                           CanvasConfiguration & canvasConfiguration,
                            int nGraphs,
                            NuDynHistos ** nuDynHistos,
                            NuDynDerivedHistos ** nuDynDerivedHistos,
@@ -36,7 +36,7 @@ public:
                            GraphConfiguration  ** graphConfigurations);
 
   void makeNudynComparisonPlots(const TString & canvasNameBase,
-                                CanvasConfiguration * canvasConfiguration,
+                                CanvasConfiguration & canvasConfiguration,
                                 int nGraphs,
                                 NuDynHistos ** nuDynHistos,
                                 NuDynDerivedHistos ** nuDynDerivedHistos,

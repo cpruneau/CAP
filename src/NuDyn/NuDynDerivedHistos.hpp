@@ -19,9 +19,9 @@ class NuDynDerivedHistos : public Histograms
 {
 public:
 
-  NuDynDerivedHistos(const TString & name,
-                     const Configuration & configuration,
-                     LogLevel  debugLevel);
+  NuDynDerivedHistos(Task * _parent,
+                     const TString & _name,
+                     Configuration & _configuration);
   virtual ~NuDynDerivedHistos() {} 
   void createHistograms();
   void loadHistograms(TFile * inputFile);

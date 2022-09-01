@@ -14,13 +14,12 @@
 
 ClassImp(PythiaEventGenerator);
 
-PythiaEventGenerator::PythiaEventGenerator(const TString &         _name,
-                                           const Configuration &   _configuration,
+PythiaEventGenerator::PythiaEventGenerator(const TString & _name,
+                                           Configuration & _configuration,
                                            vector<EventFilter*>&   _eventFilters,
-                                           vector<ParticleFilter*>&_particleFilters,
-                                           LogLevel                _selectedLevel)
+                                           vector<ParticleFilter*>&_particleFilters)
 :
-Task(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel),
+Task(_name, _configuration, _eventFilters, _particleFilters),
 pythia8(nullptr),
 nMaxClonesArray(10000),
 particles(nullptr),
@@ -30,41 +29,33 @@ outputTree(nullptr),
 standaloneMode(true)
 {
   appendClassName("PythiaEventGenerator");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 
 void PythiaEventGenerator::setDefaultConfiguration()
 {
-  if (reportStart(__FUNCTION__))
-    ;
-  configuration.setName("PythiaEventGenerator Configuration");
-  configuration.setParameter("useParticles",     true);
-  configuration.setParameter("useEventStream0",  true);
-  configuration.addParameter("clonesArraySize", 10000);
-  configuration.addParameter("removePhotons",    true);
-  configuration.addParameter("standaloneMode",   true);
-  configuration.addParameter("ppOnly",           true);
-  configuration.addParameter("beam",     2212);
-  configuration.addParameter("target",   2212);
-  configuration.addParameter("energy", 2726.0);
-  configuration.addParameter("nMaxClonesArray", 10000);
-  configuration.addParameter("dataOutputPath", "./");
-  configuration.addParameter("histoOutputPath", "./");
-  configuration.addParameter("histoOutputFileName","HistoOutputFile");
-  configuration.addParameter("dataConversionToWac",true);
-  for (int k=0; k<30; k++)
-    {
-    TString key = "option"; key += k;
-    TString value = "none";
-    configuration.addParameter(key, value);
-    }
-//  if (reportDebug(__FUNCTION__))
-//    {
-//    configuration.printConfiguration(cout);
-//    }
+  //Task::setDefaultConfiguration();
+  setParameter("UseParticles",     true);
+  setParameter("UseEventStream0",  true);
+  addParameter("RemovePhotons",    true);
+  addParameter("StandaloneMode",   true);
+  addParameter("SaveHistograms",   false);
+  addParameter("LoadHistograms",   false);
+  addParameter("ScaleHistograms",  false);
+  addParameter("ppOnly",           true);
+  addParameter("Beam",             2212);
+  addParameter("Target",           2212);
+  addParameter("Energy",           2700.0);
+  addParameter("nMaxClonesArray",  10000);
+  addParameter("DataOutputPath",      "./");
+  addParameter("HistogramOutputPath", "./");
+  addParameter("HistogramOutputFile", "HistoOutputFile");
+  addParameter("DataConversionToWac", true);
+  addParameter("DataInputUsed",       false);
+  addParameter("SaveHistograms",      false);
+  addParameter("SetSeed",             TString("Random:setSeed = on"));
+  addParameter("Seed",                TString("Random:seed = 1212121"));
+  generateKeyValuePairs("Option",     TString("none"),30);
 }
 
 //!
@@ -76,55 +67,65 @@ void PythiaEventGenerator::initialize()
   if (reportStart(__FUNCTION__))
     ;
   Task::initialize();
-  const Configuration & pc      = getConfiguration();
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
   initializeNEventsAccepted();
   pythia8 = new TPythia8();
-  
-  standaloneMode = pc.getValueBool("standaloneMode");
-  dataOutputUsed = pc.getValueBool("dataOutputUsed");
-  dataConversionToWac = pc.getValueBool("dataConversionToWac");
-  
+
+  standaloneMode = getValueBool("StandaloneMode");
+  dataOutputUsed = getValueBool("DataOutputUsed");
+  DataConversionToWac = getValueBool("DataConversionToWac");
+  int    beam   = getValueInt("Beam");
+  int    target = getValueInt("Target");
+  double energy = getValueDouble("Energy");
+
+
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  Pythia:StandaloneMode.........: " << standaloneMode      << endl;
+    cout << "  Pythia:DataOutputUsed.........: " << dataOutputUsed      << endl;
+    cout << "  Pythia:DataConversionToWac....: " << DataConversionToWac << endl;
+    cout << "  Pythia:beam...................: " << beam << endl;
+    cout << "  Pythia:target.................: " << target << endl;
+    cout << "  Pythia:energy.................: " << energy << endl;
+    cout << "  Pythia:ReportLevel............: " << getReportLevel() << endl;
+    }
+
   for (int k=0; k<30; k++)
     {
-    TString key = "option"; key += k;
-    TString  value = pc.getValueString(key);
-    //cout << " key : " << key << "   value: " << value << endl;
-    if (key.Contains("option") && !value.Contains("none") )
+    TString key = "Option"; key += k;
+    TString  value = getValueString(key);
+    if (getReportLevel()<=MessageLogger::Info ) cout << "  Pythia::" << key << "......: " << value << endl;
+    if (key.Contains("Option") && !value.Contains("none") )
       {
-      //cout << " adding to pythia .." << endl;
       pythia8->ReadString(value);
       }
     else
       {
       //cout << " NOT adding to pythia .." << endl;
       }
-      
     }
-  pythia8->Initialize(pc.getValueInt("beam"),
-                      pc.getValueInt("target"),
-                      pc.getValueDouble("energy"));
+  pythia8->Initialize(beam,target,energy);
   if (reportDebug(__FUNCTION__))
     {
     pythia8->ListAll();
     }
-
-  if (  dataOutputUsed )
+  if (dataOutputUsed )
     {
-    TString outputFileName = pc.getValueString("dataOutputPath");
+    TString outputFileName = getValueString("DataOutputPath");
     outputFileName += "/";
-    outputFileName += pc.getValueString("dataOutputFileName");
+    outputFileName += getValueString("dataOutputFileName");
     outputFile = TFile::Open(outputFileName,"recreate");
     //outputEvent = &pythia8->Pythia8()->event;
-    outputTree  = new TTree(pc.getValueString("dataOutputTreeName"),"PythiaEventTree");
+    outputTree  = new TTree(getValueString("dataOutputTreeName"),"PythiaEventTree");
     particles = (TClonesArray*) pythia8->GetListOfParticles();
     outputTree->Branch("particles", &particles);
     //outputTree->Branch("event",&outputEvent);
     }
-  if (dataConversionToWac)
+  if (DataConversionToWac)
     {
-    nMaxClonesArray = pc.getValueInt("nMaxClonesArray");
+    nMaxClonesArray = getValueInt("nMaxClonesArray");
     particles = new TClonesArray("TParticle", nMaxClonesArray);
     }
   if (reportEnd(__FUNCTION__))
@@ -133,15 +134,12 @@ void PythiaEventGenerator::initialize()
 
 void PythiaEventGenerator::execute()
 {
-//  
-//  if (reportStart(__FUNCTION__))
-//    ;
+  if (reportStart(__FUNCTION__))
+    ;
   incrementTaskExecuted();
   Event & event = *getEventStream(0);
   EventProperties & eventProperties = * event.getEventProperties();
-
   Particle * interaction;
-  // resetParticleCounters();
   standaloneMode = true;
   if (standaloneMode)
     {
@@ -167,41 +165,42 @@ void PythiaEventGenerator::execute()
     eventProperties.nPartTarget        = 1;     // number of participants  target
     eventProperties.nParticipantsTotal = 2;     // total number of participants
     eventProperties.nBinaryTotal       = 1;     // total number of binary collisions
-    eventProperties.impactParameter       = -99999; // nucleus-nucleus center distance in fm
-    eventProperties.fractionalXSection    = -99999; // fraction cross section value
-//    eventProperties.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
-//    eventProperties.particlesCounted      = getNParticlesCounted();
-//    eventProperties.particlesAccepted     = getNParticlesAccepted();
+    eventProperties.impactParameter    = -99999; // nucleus-nucleus center distance in fm
+    eventProperties.fractionalXSection = -99999; // fraction cross section value
+    eventProperties.refMultiplicity    = getNParticlesAccepted();
+    eventProperties.particlesCounted   = -1;
+    eventProperties.particlesAccepted  = getNParticlesAccepted();
     }
-  else
-    {
-    // In this mode, we generate several PYTHIA collisions per event. Interaction vertices and their locations
-    // are assumed to be already loaded in the event stream and we produce as many PYTHIA events as there
-    // are nucleon-nucleon interactions in the stream. Objects nucleusA and nucleusB are assumed defined by
-    // an earlier task and the structure EventProperties is assumed filled by that earlier task.He we only fill the number of
-    // particle generated and accepted (in addition to storing the generated particles in the event)
-
-    // May skip this event if it does not satisfy the event cut.
-    if (!eventFilters[0]->accept(event)) return;
-    if (event.getParticleCount() < 1)
-      {
-      return;
-      }
-    vector<Particle*> interactions = event.getNucleonNucleonInteractions();
-
-    unsigned int n = interactions.size();
-//    if (reportWarning("PythiaEventGenerator",getName(),"execute()"))
-//      cout << "Size of interactions:" <<  n << endl;
-    for (unsigned int kInter=0; kInter<n; kInter++)
-      {
-      generate(interactions[kInter]);
-      }
-//    eventProperties.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
-//    eventProperties.particlesCounted      = getNParticlesCounted();
-//    eventProperties.particlesAccepted     = getNParticlesAccepted();
-    }
+//  else
+//    {
+//    // In this mode, we generate several PYTHIA collisions per event. Interaction vertices and their locations
+//    // are assumed to be already loaded in the event stream and we produce as many PYTHIA events as there
+//    // are nucleon-nucleon interactions in the stream. Objects nucleusA and nucleusB are assumed defined by
+//    // an earlier task and the structure EventProperties is assumed filled by that earlier task.He we only fill the number of
+//    // particle generated and accepted (in addition to storing the generated particles in the event)
+//
+//    // May skip this event if it does not satisfy the event cut.
+//    if (!eventFilters[0]->accept(event)) return;
+//    if (event.getParticleCount() < 1)
+//      {
+//      return;
+//      }
+//    vector<Particle*> interactions = event.getNucleonNucleonInteractions();
+//
+//    unsigned int n = interactions.size();
+////    if (reportWarning("PythiaEventGenerator",getName(),"execute()"))
+////      cout << "Size of interactions:" <<  n << endl;
+//    for (unsigned int kInter=0; kInter<n; kInter++)
+//      {
+//      generate(interactions[kInter]);
+//      }
+////    eventProperties.refMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
+////    eventProperties.particlesCounted      = getNParticlesCounted();
+////    eventProperties.particlesAccepted     = getNParticlesAccepted();
+//    }
   incrementNEventsAccepted(0);
-  if (reportDebug(__FUNCTION__)) eventProperties.printProperties(cout);
+  //if (reportInfo(__FUNCTION__)) eventProperties.printProperties(cout);
+  //if (reportInfo(__FUNCTION__)) cout << "Pythia Execute Completed" << endl;
 }
 
 void PythiaEventGenerator::generate(Particle * parentInteraction)
@@ -229,7 +228,7 @@ void PythiaEventGenerator::generate(Particle * parentInteraction)
     {
     outputTree->Fill();
     }
-  if (dataConversionToWac)
+  if (DataConversionToWac)
     {
     TLorentzVector sourcePosition = parentInteraction->getPosition();
     double sourceX = sourcePosition.X();
@@ -302,8 +301,6 @@ void PythiaEventGenerator::generate(Particle * parentInteraction)
 
 void PythiaEventGenerator::finalize()
 {
-  if (reportStart(__FUNCTION__))
-    ;
   if (reportInfo(__FUNCTION__)) pythia8->PrintStatistics();
   if (dataOutputUsed)
     {

@@ -107,10 +107,10 @@ void HistogramCollection::reset()
 //!
 //! Create 1D histogram
 //!
-TH1 * HistogramCollection::createHistogram(const TString &  name,
+TH1 * HistogramCollection::createHistogram(const TString & name,
                                            int n, double min_x, double max_x,
-                                           const TString &  title_x,
-                                           const TString &  title_y)
+                                           const TString & title_x,
+                                           const TString & title_y)
 {
 
   if (reportDebug(__FUNCTION__))
@@ -126,10 +126,10 @@ TH1 * HistogramCollection::createHistogram(const TString &  name,
 //!
 //! Create 1D histogram
 //!
-TH1 * HistogramCollection::createHistogram(const TString &  name,
+TH1 * HistogramCollection::createHistogram(const TString & name,
                                            int n, double * bins,
-                                           const TString &  title_x,
-                                           const TString &  title_y)
+                                           const TString & title_x,
+                                           const TString & title_y)
 {
 
   if (reportDebug(__FUNCTION__)) cout << "Creating  1D histo " << name << " with " << n << " non uniform nBins:" << endl;
@@ -145,12 +145,12 @@ TH1 * HistogramCollection::createHistogram(const TString &  name,
 // Create 2D histogram
 //!
 
-TH2 * HistogramCollection::createHistogram(const TString &  name,
+TH2 * HistogramCollection::createHistogram(const TString & name,
                                            int n_x, double min_x, double max_x,
                                            int n_y, double min_y, double max_y,
-                                           const TString &  title_x,
-                                           const TString &  title_y,
-                                           const TString &  title_z )
+                                           const TString & title_x,
+                                           const TString & title_y,
+                                           const TString & title_z )
 {
 
   if (reportDebug(__FUNCTION__))
@@ -167,11 +167,11 @@ TH2 * HistogramCollection::createHistogram(const TString &  name,
 //!
 // Create 2D histogram
 //!
-TH2 * HistogramCollection::createHistogram(const TString &  name,
+TH2 * HistogramCollection::createHistogram(const TString & name,
                                            int n_x, double* xbins, int n_y, double min_y, double max_y,
-                                           const TString &  title_x,
-                                           const TString &  title_y,
-                                           const TString &  title_z)
+                                           const TString & title_x,
+                                           const TString & title_y,
+                                           const TString & title_z)
 
 {
 
@@ -190,14 +190,14 @@ TH2 * HistogramCollection::createHistogram(const TString &  name,
 //!
 // Create 3D histogram
 //!
-TH3 * HistogramCollection::createHistogram(const TString &  name,
+TH3 * HistogramCollection::createHistogram(const TString & name,
                                            int n_x, double min_x, double max_x,
                                            int n_y, double min_y, double max_y,
                                            int n_z, double min_z, double max_z,
-                                           const TString &  title_x,
-                                           const TString &  title_y,
-                                           const TString &  title_z,
-                                           const TString &  title_w = "w")
+                                           const TString & title_x,
+                                           const TString & title_y,
+                                           const TString & title_z,
+                                           const TString & title_w = "w")
 
 {
 
@@ -222,8 +222,8 @@ TH3 * HistogramCollection::createHistogram(const TString &  name,
 //!
 TProfile * HistogramCollection::createProfile(const TString & name,
                                               int n_x,double min_x,double max_x,
-                                              const TString &  title_x,
-                                              const TString &  title_y)
+                                              const TString & title_x,
+                                              const TString & title_y)
 {
 
   if (reportDebug(__FUNCTION__)) cout << "Creating  1D profile " << name << " n_x:" << n_x << " min_x:" << min_x << " max_x:" << max_x << endl;
@@ -237,10 +237,10 @@ TProfile * HistogramCollection::createProfile(const TString & name,
 //!
 // Create 1D profile histogram
 //!
-TProfile * HistogramCollection::createProfile(const TString &  name,
+TProfile * HistogramCollection::createProfile(const TString & name,
                                               int n_x,  double* bins,
-                                              const TString &  title_x,
-                                              const TString &  title_y)
+                                              const TString & title_x,
+                                              const TString & title_y)
 {
 
   if (reportDebug(__FUNCTION__))
@@ -255,12 +255,12 @@ TProfile * HistogramCollection::createProfile(const TString &  name,
 //!
 // Create 2D profile histogram
 //!
-TProfile2D * HistogramCollection::createProfile(const TString &  name,
+TProfile2D * HistogramCollection::createProfile(const TString & name,
                                                 int n_x, double min_x, double max_x,
                                                 int n_y, double min_y, double max_y,
-                                                const TString &  title_x,
-                                                const TString &  title_y,
-                                                const TString &  title_z)
+                                                const TString & title_x,
+                                                const TString & title_y,
+                                                const TString & title_z)
 {
 
   if (reportDebug(__FUNCTION__))
@@ -335,32 +335,32 @@ void HistogramCollection::setHistoProperties(TH1 * h, const GraphConfiguration &
 {
   if (reportDebug(__FUNCTION__))
     cout << "Setting properties of histo: " << h->GetTitle() << endl;
-  h->SetLineColor(graphConfiguration .getValueInt("lineColor"));
-  h->SetLineStyle(graphConfiguration.getValueInt("lineStyle"));
-  h->SetLineWidth(graphConfiguration.getValueInt("lineWidth"));
+  h->SetLineColor(graphConfiguration .getValueInt(getName(),"lineColor"));
+  h->SetLineStyle(graphConfiguration.getValueInt(getName(),"lineStyle"));
+  h->SetLineWidth(graphConfiguration.getValueInt(getName(),"lineWidth"));
   TAxis * xAxis = (TAxis *) h->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.getValueDouble("nXDivisions"));
-  xAxis->SetTitleSize(graphConfiguration.getValueDouble("xTitleSize"));
-  xAxis->SetTitleOffset(graphConfiguration.getValueDouble("xTitleOffset"));
+  xAxis->SetNdivisions(graphConfiguration.getValueDouble(getName(),"nXDivisions"));
+  xAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"xTitleSize"));
+  xAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"xTitleOffset"));
   //xAxis->SetTitle(graphConfiguration.xTitle);
-  xAxis->SetLabelSize(graphConfiguration.getValueDouble("xLabelSize"));
-  xAxis->SetLabelOffset(graphConfiguration.getValueDouble("xLabelOffset"));
+  xAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"xLabelSize"));
+  xAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"xLabelOffset"));
   TAxis * yAxis = (TAxis *) h->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.getValueInt("nYDivisions"));
-  yAxis->SetTitleSize(graphConfiguration.getValueDouble("yTitleSize"));
-  yAxis->SetTitleOffset(graphConfiguration.getValueDouble("yTitleOffset"));
-  yAxis->SetLabelSize(graphConfiguration.getValueDouble("yLabelSize"));
-  yAxis->SetLabelOffset(graphConfiguration.getValueDouble("yLabelOffset"));
+  yAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nYDivisions"));
+  yAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"yTitleSize"));
+  yAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"yTitleOffset"));
+  yAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"yLabelSize"));
+  yAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"yLabelOffset"));
   //yAxis->SetTitle(graphConfiguration.yTitle);
   if (h->IsA() == TH2::Class()  || h->IsA() == TH2F::Class() || h->IsA() == TH2F::Class() )
     {
     if (reportDebug(__FUNCTION__)) cout << "Setting options as 2D histo: " << h->GetTitle() << endl;
     TAxis * zAxis = (TAxis *) h->GetZaxis();
-    zAxis->SetNdivisions(graphConfiguration.getValueInt("nZDivisions"));
-    zAxis->SetTitleSize(graphConfiguration.getValueDouble("zTitleSize"));
-    zAxis->SetTitleOffset(graphConfiguration.getValueDouble("zTitleOffset"));
-    zAxis->SetLabelSize(graphConfiguration.getValueDouble("zLabelSize"));
-    zAxis->SetLabelOffset(graphConfiguration.getValueDouble("zLabelOffset"));
+    zAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nZDivisions"));
+    zAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"zTitleSize"));
+    zAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"zTitleOffset"));
+    zAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"zLabelSize"));
+    zAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"zLabelOffset"));
     }
   if (reportEnd(__FUNCTION__))
     ;
@@ -370,30 +370,30 @@ void HistogramCollection::setHistoProperties(TH2 * h, const GraphConfiguration &
 {
   if (reportDebug(__FUNCTION__))
     cout << endl << "Setting options of 2D histo: " << h->GetTitle() << endl;
-  h->SetLineColor(graphConfiguration .getValueInt("lineColor"));
-  h->SetLineStyle(graphConfiguration.getValueInt("lineStyle"));
-  h->SetLineWidth(graphConfiguration.getValueInt("lineWidth"));
+  h->SetLineColor(graphConfiguration .getValueInt(getName(),"lineColor"));
+  h->SetLineStyle(graphConfiguration.getValueInt(getName(),"lineStyle"));
+  h->SetLineWidth(graphConfiguration.getValueInt(getName(),"lineWidth"));
   TAxis * xAxis = (TAxis *) h->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.getValueDouble("nXDivisions"));
-  xAxis->SetTitleSize(graphConfiguration.getValueDouble("xTitleSize"));
-  xAxis->SetTitleOffset(graphConfiguration.getValueDouble("xTitleOffset"));
-  xAxis->SetLabelSize(graphConfiguration.getValueDouble("xLabelSize"));
-  xAxis->SetLabelOffset(graphConfiguration.getValueDouble("xLabelOffset"));
+  xAxis->SetNdivisions(graphConfiguration.getValueDouble(getName(),"nXDivisions"));
+  xAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"xTitleSize"));
+  xAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"xTitleOffset"));
+  xAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"xLabelSize"));
+  xAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"xLabelOffset"));
   TAxis * yAxis = (TAxis *) h->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.getValueInt("nYDivisions"));
-  yAxis->SetTitleSize(graphConfiguration.getValueDouble("yTitleSize"));
-  yAxis->SetTitleOffset(graphConfiguration.getValueDouble("yTitleOffset"));
-  yAxis->SetLabelSize(graphConfiguration.getValueDouble("yLabelSize"));
-  yAxis->SetLabelOffset(graphConfiguration.getValueDouble("yLabelOffset"));
+  yAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nYDivisions"));
+  yAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"yTitleSize"));
+  yAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"yTitleOffset"));
+  yAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"yLabelSize"));
+  yAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"yLabelOffset"));
 
   if (h->IsA() == TH2::Class() || h->IsA() == TH2F::Class() || h->IsA() == TH2D::Class())
     {
     TAxis * zAxis = (TAxis *) h->GetZaxis();
-    zAxis->SetNdivisions(graphConfiguration.getValueInt("nZDivisions"));
-    zAxis->SetTitleSize(graphConfiguration.getValueDouble("zTitleSize"));
-    zAxis->SetTitleOffset(graphConfiguration.getValueDouble("zTitleOffset"));
-    zAxis->SetLabelSize(graphConfiguration.getValueDouble("zLabelSize"));
-    zAxis->SetLabelOffset(graphConfiguration.getValueDouble("zLabelOffset"));
+    zAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nZDivisions"));
+    zAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"zTitleSize"));
+    zAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"zTitleOffset"));
+    zAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"zLabelSize"));
+    zAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"zLabelOffset"));
     }
   if (reportEnd(__FUNCTION__))
     ;
@@ -403,22 +403,22 @@ void HistogramCollection::setHistoProperties(TH1 * h, const GraphConfiguration &
 {
   if (reportDebug(__FUNCTION__))
     cout << endl << "Setting options of histo: " << h->GetTitle() << endl;
-  h->SetLineColor(graphConfiguration .getValueInt("lineColor"));
-  h->SetLineStyle(graphConfiguration.getValueInt("lineStyle"));
-  h->SetLineWidth(graphConfiguration.getValueInt("lineWidth"));
+  h->SetLineColor(graphConfiguration .getValueInt(getName(),"lineColor"));
+  h->SetLineStyle(graphConfiguration.getValueInt(getName(),"lineStyle"));
+  h->SetLineWidth(graphConfiguration.getValueInt(getName(),"lineWidth"));
   TAxis * xAxis = (TAxis *) h->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.getValueDouble("nXDivisions"));
-  xAxis->SetTitleSize(graphConfiguration.getValueDouble("xTitleSize"));
-  xAxis->SetTitleOffset(graphConfiguration.getValueDouble("xTitleOffset"));
+  xAxis->SetNdivisions(graphConfiguration.getValueDouble(getName(),"nXDivisions"));
+  xAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"xTitleSize"));
+  xAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"xTitleOffset"));
   xAxis->SetTitle(xTitle);
-  xAxis->SetLabelSize(graphConfiguration.getValueDouble("xLabelSize"));
-  xAxis->SetLabelOffset(graphConfiguration.getValueDouble("xLabelOffset"));
+  xAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"xLabelSize"));
+  xAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"xLabelOffset"));
   TAxis * yAxis = (TAxis *) h->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.getValueInt("nYDivisions"));
-  yAxis->SetTitleSize(graphConfiguration.getValueDouble("yTitleSize"));
-  yAxis->SetTitleOffset(graphConfiguration.getValueDouble("yTitleOffset"));
-  yAxis->SetLabelSize(graphConfiguration.getValueDouble("yLabelSize"));
-  yAxis->SetLabelOffset(graphConfiguration.getValueDouble("yLabelOffset"));
+  yAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nYDivisions"));
+  yAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"yTitleSize"));
+  yAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"yTitleOffset"));
+  yAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"yLabelSize"));
+  yAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"yLabelOffset"));
   yAxis->SetTitle(yTitle);
   if (reportEnd(__FUNCTION__))
     ;
@@ -429,25 +429,25 @@ void HistogramCollection::setHistoProperties(TH2 * h, const GraphConfiguration &
   if (reportDebug(__FUNCTION__))
     cout << endl << "Setting options of histo: " << h->GetTitle() << endl;
   TAxis * xAxis = (TAxis *) h->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.getValueDouble("nXDivisions"));
-  xAxis->SetTitleSize(graphConfiguration.getValueDouble("xTitleSize"));
-  xAxis->SetTitleOffset(graphConfiguration.getValueDouble("xTitleOffset"));
+  xAxis->SetNdivisions(graphConfiguration.getValueDouble(getName(),"nXDivisions"));
+  xAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"xTitleSize"));
+  xAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"xTitleOffset"));
   xAxis->SetTitle(xTitle);
-  xAxis->SetLabelSize(graphConfiguration.getValueDouble("xLabelSize"));
-  xAxis->SetLabelOffset(graphConfiguration.getValueDouble("xLabelOffset"));
+  xAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"xLabelSize"));
+  xAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"xLabelOffset"));
   TAxis * yAxis = (TAxis *) h->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.getValueInt("nYDivisions"));
-  yAxis->SetTitleSize(graphConfiguration.getValueDouble("yTitleSize"));
-  yAxis->SetTitleOffset(graphConfiguration.getValueDouble("yTitleOffset"));
-  yAxis->SetLabelSize(graphConfiguration.getValueDouble("yLabelSize"));
-  yAxis->SetLabelOffset(graphConfiguration.getValueDouble("yLabelOffset"));
+  yAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nYDivisions"));
+  yAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"yTitleSize"));
+  yAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"yTitleOffset"));
+  yAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"yLabelSize"));
+  yAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"yLabelOffset"));
   yAxis->SetTitle(yTitle);
   TAxis * zAxis = (TAxis *) h->GetZaxis();
-  zAxis->SetNdivisions(graphConfiguration.getValueInt("nZDivisions"));
-  zAxis->SetTitleSize(graphConfiguration.getValueDouble("zTitleSize"));
-  zAxis->SetTitleOffset(graphConfiguration.getValueDouble("zTitleOffset"));
-  zAxis->SetLabelSize(graphConfiguration.getValueDouble("zLabelSize"));
-  zAxis->SetLabelOffset(graphConfiguration.getValueDouble("zLabelOffset"));
+  zAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nZDivisions"));
+  zAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"zTitleSize"));
+  zAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"zTitleOffset"));
+  zAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"zLabelSize"));
+  zAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"zLabelOffset"));
   zAxis->SetTitle(zTitle);
   if (reportEnd(__FUNCTION__))
     ;
@@ -3655,7 +3655,7 @@ void HistogramCollection::calculateIntegral(TH1 * h, double xMin, double xMax, d
   double sum, sumError;
   double integral, integralError;
   sum      = h->IntegralAndError(xFirst,xLast, sumError);
-  integral = h->IntegralAndError(xFirst,xLast, integralError, "WIDTH");
+  integral = h->IntegralAndError(xFirst,xLast, integralError, "Width");
   switch (option)
     {
       case 0: result = sum; resultError = sumError; break;
@@ -3682,7 +3682,7 @@ void HistogramCollection::calculateIntegral(TH2 * h, double xMin, double xMax, d
   double sum, sumError;
   double integral, integralError;
   sum      = h->IntegralAndError(xFirst,xLast, yFirst, yLast, sumError);
-  integral = h->IntegralAndError(xFirst,xLast, yFirst, yLast, integralError, "WIDTH");
+  integral = h->IntegralAndError(xFirst,xLast, yFirst, yLast, integralError, "Width");
   switch (option)
     {
       case 0: result = sum; resultError = sumError; break;

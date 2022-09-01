@@ -13,89 +13,78 @@
 
 ClassImp(MeasurementPerformanceSimulator);
 
-MeasurementPerformanceSimulator::MeasurementPerformanceSimulator(const TString &         _name,
-                                                                 const Configuration &   _configuration,
-                                                                 vector<EventFilter*>    _eventFilters,
-                                                                 vector<ParticleFilter*> _particleFilters,
-                                                                 LogLevel                _selectedLevel)
+MeasurementPerformanceSimulator::MeasurementPerformanceSimulator(const TString & _name,
+                                                                 Configuration & _configuration,
+                                                                 vector<EventFilter*> & _eventFilters,
+                                                                 vector<ParticleFilter*>& _particleFilters)
 :
-Task(_name,_configuration,_eventFilters,_particleFilters,_selectedLevel),
+Task(_name,_configuration,_eventFilters,_particleFilters),
 allEventsUseSameFilters(true)
 {
   appendClassName("MeasurementPerformanceSimulator");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void MeasurementPerformanceSimulator::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  Configuration & configuration = getConfiguration();
-  configuration.setName("MeasurementPerformanceSimulator Configuration");
-  configuration.setParameter("useParticles",    true);
-  configuration.setParameter("useEventStream0", true);
-  configuration.setParameter("useEventStream1", true);
-  configuration.setParameter("loadHistograms",  false);
-  configuration.addParameter("allEventsUseSameFilters", allEventsUseSameFilters);
-  configuration.addParameter("useSameSetForAll",  true);
-  configuration.addParameter("resolutionOption",  0);
-  configuration.addParameter("efficiencyOption",  0);
+  Task::setDefaultConfiguration();
+  setParameter("UseParticles",    true);
+  setParameter("UseEventStream0", true);
+  setParameter("UseEventStream1", true);
+  setParameter("LoadHistograms",  false);
+  addParameter("allEventsUseSameFilters", allEventsUseSameFilters);
+  addParameter("useSameSetForAll",  true);
+  addParameter("resolutionOption",  0);
+  addParameter("efficiencyOption",  0);
   
   for (int k=0; k<10; k++)
     {
     TString baseName = "Filter";
     baseName += k;
-    configuration.addParameter(baseName+"_PtBiasAinv",0.0);
-    configuration.addParameter(baseName+"_PtBiasA0",0.0);
-    configuration.addParameter(baseName+"_PtBiasA1",0.0);
-    configuration.addParameter(baseName+"_PtBiasA2",0.0);
-    configuration.addParameter(baseName+"_PtRmsAinv",0.0);
-    configuration.addParameter(baseName+"_PtRmsA0",0.0);
-    configuration.addParameter(baseName+"_PtRmsA1",0.0);
-    configuration.addParameter(baseName+"_PtRmsA2",0.0);
+    addParameter(baseName+"_PtBiasAinv",0.0);
+    addParameter(baseName+"_PtBiasA0",0.0);
+    addParameter(baseName+"_PtBiasA1",0.0);
+    addParameter(baseName+"_PtBiasA2",0.0);
+    addParameter(baseName+"_PtRmsAinv",0.0);
+    addParameter(baseName+"_PtRmsA0",0.0);
+    addParameter(baseName+"_PtRmsA1",0.0);
+    addParameter(baseName+"_PtRmsA2",0.0);
 
-    configuration.addParameter(baseName+"_EtaBiasAinv",0.0);
-    configuration.addParameter(baseName+"_EtaBiasA0",0.0);
-    configuration.addParameter(baseName+"_EtaBiasA1",0.0);
-    configuration.addParameter(baseName+"_EtaBiasA2",0.0);
-    configuration.addParameter(baseName+"_EtaRmsAinv",0.0);
-    configuration.addParameter(baseName+"_EtaRmsA0",0.0);
-    configuration.addParameter(baseName+"_EtaRmsA1",0.0);
-    configuration.addParameter(baseName+"_EtaRmsA2",0.0);
+    addParameter(baseName+"_EtaBiasAinv",0.0);
+    addParameter(baseName+"_EtaBiasA0",0.0);
+    addParameter(baseName+"_EtaBiasA1",0.0);
+    addParameter(baseName+"_EtaBiasA2",0.0);
+    addParameter(baseName+"_EtaRmsAinv",0.0);
+    addParameter(baseName+"_EtaRmsA0",0.0);
+    addParameter(baseName+"_EtaRmsA1",0.0);
+    addParameter(baseName+"_EtaRmsA2",0.0);
 
-    configuration.addParameter(baseName+"_PhiBiasAinv",0.0);
-    configuration.addParameter(baseName+"_PhiBiasA0",0.0);
-    configuration.addParameter(baseName+"_PhiBiasA1",0.0);
-    configuration.addParameter(baseName+"_PhiBiasA2",0.0);
-    configuration.addParameter(baseName+"_PhiRmsAinv",0.0);
-    configuration.addParameter(baseName+"_PhiRmsA0",0.0);
-    configuration.addParameter(baseName+"_PhiRmsA1",0.0);
-    configuration.addParameter(baseName+"_PhiRmsA2",0.0);
+    addParameter(baseName+"_PhiBiasAinv",0.0);
+    addParameter(baseName+"_PhiBiasA0",0.0);
+    addParameter(baseName+"_PhiBiasA1",0.0);
+    addParameter(baseName+"_PhiBiasA2",0.0);
+    addParameter(baseName+"_PhiRmsAinv",0.0);
+    addParameter(baseName+"_PhiRmsA0",0.0);
+    addParameter(baseName+"_PhiRmsA1",0.0);
+    addParameter(baseName+"_PhiRmsA2",0.0);
 
-    configuration.addParameter(baseName+"_EffPeakAmp",0.0);
-    configuration.addParameter(baseName+"_EffPeakPt",0.0);
-    configuration.addParameter(baseName+"_EffPeakRms",0.0);
-    configuration.addParameter(baseName+"_EffA1",0.0);
-    configuration.addParameter(baseName+"_EffA2",0.0);
+    addParameter(baseName+"_EffPeakAmp",0.0);
+    addParameter(baseName+"_EffPeakPt",0.0);
+    addParameter(baseName+"_EffPeakRms",0.0);
+    addParameter(baseName+"_EffA1",0.0);
+    addParameter(baseName+"_EffA2",0.0);
     }
-  
-  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
 void MeasurementPerformanceSimulator::initialize()
 {
-  
   if (reportStart(__FUNCTION__))
     ;
   Task::initialize();
   Configuration & configuration = getConfiguration();
-  allEventsUseSameFilters = configuration.getValueBool("allEventsUseSameFilters");
-  bool useSameSetForAll = configuration.getValueBool("useSameSetForAll");
-  int  resolutionOption = configuration.getValueInt("resolutionOption");
-  int  efficiencyOption = configuration.getValueInt("efficiencyOption");
+  allEventsUseSameFilters = getValueBool("allEventsUseSameFilters");
+  bool useSameSetForAll = getValueBool("useSameSetForAll");
+  int  resolutionOption = configuration.getValueInt(getName(),"resolutionOption");
+  int  efficiencyOption = configuration.getValueInt(getName(),"efficiencyOption");
 
   nEventFilters    = eventFilters.size();
   nParticleFilters = particleFilters.size();
@@ -135,7 +124,7 @@ void MeasurementPerformanceSimulator::initialize()
         name += iEventFilter;
         name += "_";
         name += iParticleFilter;
-        ParticlePerformanceSimulator * sim = new ParticlePerformanceSimulator(iParticleFilter,name, getConfiguration(), getReportLevel() );
+        ParticlePerformanceSimulator * sim = new ParticlePerformanceSimulator(this,iParticleFilter,name, getConfiguration());
         sim->initialize();
         baseSingleHistograms.push_back(sim);
         }
@@ -163,7 +152,7 @@ void MeasurementPerformanceSimulator::loadHistograms(TFile * inputFile)
       histoName += evtFilterName;
       histoName += "_";
       histoName += partFilterName;
-      ParticlePerformanceSimulator * histos = new ParticlePerformanceSimulator(iParticleFilter, histoName,configuration,getReportLevel());
+      ParticlePerformanceSimulator * histos = new ParticlePerformanceSimulator(this,iParticleFilter, histoName,configuration);
       histos->loadHistograms(inputFile);
       baseSingleHistograms.push_back(histos);
       }

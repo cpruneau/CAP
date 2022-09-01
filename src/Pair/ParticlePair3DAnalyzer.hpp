@@ -61,11 +61,10 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  ParticlePair3DAnalyzer(const TString &          _name,
-                       const Configuration &    _configuration,
-                       vector<EventFilter*> &   _eventFilters,
-                       vector<ParticleFilter*> &_particleFilters,
-                       LogLevel                 _selectedLevel);
+  ParticlePair3DAnalyzer(const TString & _name,
+                         Configuration & _configuration,
+                         vector<EventFilter*> & _eventFilters,
+                         vector<ParticleFilter*> &_particleFilters);
   
   //!
   //! DTOR
@@ -96,6 +95,12 @@ public:
   //! Scales the pair histograms by the number of events accepted in each event filter category.
   //!
   virtual void scaleHistograms();
+
+  virtual void createDerivedHistograms();
+
+  virtual void loadDerivedHistograms(TFile * inputFile __attribute__((unused)));
+
+  virtual void calculateDerivedHistograms();
 
   virtual Task * getDerivedCalculator();
 

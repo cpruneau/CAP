@@ -9,12 +9,12 @@
 
 ClassImp(HadronGasVsTempHistograms);
 
-HadronGasVsTempHistograms::HadronGasVsTempHistograms(const TString &       _name,
-                                                     const Configuration & _config,
-                                                     HadronGas *           _hadronGas,
-                                                     LogLevel              _debugLevel)
+HadronGasVsTempHistograms::HadronGasVsTempHistograms(Task * _parent,
+                                                     const TString & _name,
+                                                     Configuration & _config,
+                                                     HadronGas * _hadronGas)
 :
-Histograms(_name,_config,_debugLevel),
+Histograms(_parent,_name,_config),
 numberDensityVsT(nullptr),
 energyDensityVsT(nullptr),
 entropyDensityVsT(nullptr),
@@ -28,11 +28,12 @@ sDensityVsT()
 
 void HadronGasVsTempHistograms::createHistograms()
 {
-  const Configuration & config = getConfiguration();
-  TString bn = getHistoBaseName();
-  int nT      = config.getValueInt("nChemicalTemp");
-  double minT = config.getValueDouble("minChemicalTemp");
-  double maxT = config.getValueDouble("maxChemicalTemp");
+  Configuration & config = getConfiguration();
+  TString bn = getParentTaskName();
+  TString pn = getParentName();
+  int nT      = config.getValueInt(pn,"nChemicalTemp");
+  double minT = config.getValueDouble(pn,"MinChemicalTemp");
+  double maxT = config.getValueDouble(pn,"MaxChemicalTemp");
 
   numberDensityVsT   = createHistogram(makeName(bn,"numberyDensityVsT"), nT, minT, maxT, "T (GeV)","n (fm^{-3})");
   energyDensityVsT   = createHistogram(makeName(bn,"energyDensityVsT"),  nT, minT, maxT, "T (GeV)","e (GeV.fm^{-3})");
@@ -59,21 +60,17 @@ void HadronGasVsTempHistograms::createHistograms()
 //________________________________________________________________________
 void HadronGasVsTempHistograms::loadHistograms(TFile * inputFile)
 {
-  if (reportStart(__FUNCTION__))
-    ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-      TString bn  = getHistoBaseName();
-      numberDensityVsT   = loadH1(inputFile,makeName(bn,"numberyDensityVsT"));
-      energyDensityVsT   = loadH1(inputFile,makeName(bn,"energyDensityVsT"));
-      entropyDensityVsT  = loadH1(inputFile,makeName(bn,"entropyDensityVsT"));
-      pressureVsT        = loadH1(inputFile,makeName(bn,"pressureVsT"));
-      if (!numberDensityVsT)
-      {
-  if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << makeName(bn,"numberDensityVsT") << endl;
-  return;
-  }
-      if (reportEnd(__FUNCTION__))
-      ;
+  TString bn  = getParentTaskName();
+  numberDensityVsT   = loadH1(inputFile,makeName(bn,"numberyDensityVsT"));
+  energyDensityVsT   = loadH1(inputFile,makeName(bn,"energyDensityVsT"));
+  entropyDensityVsT  = loadH1(inputFile,makeName(bn,"entropyDensityVsT"));
+  pressureVsT        = loadH1(inputFile,makeName(bn,"pressureVsT"));
+  if (!numberDensityVsT)
+    {
+    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << makeName(bn,"numberDensityVsT") << endl;
+    return;
+    }
 }
 
 void HadronGasVsTempHistograms::fill(HadronGas & hadronGas)

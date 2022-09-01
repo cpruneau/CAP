@@ -32,8 +32,7 @@ public:
   ResonanceGenerator(const TString  &        _name,
                      Configuration  &        _configuration,
                      vector<EventFilter*>&   _eventFilters,
-                     vector<ParticleFilter*>&_particleFilters,
-                     LogLevel                _selectedLevel);
+                     vector<ParticleFilter*>&_particleFilters);
   
   //!
   //! DTOR

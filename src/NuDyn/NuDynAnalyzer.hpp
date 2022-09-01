@@ -12,8 +12,6 @@
 #ifndef CAP__NuDynAnalyzer
 #define CAP__NuDynAnalyzer
 #include "Task.hpp"
-#include "NuDynHistos.hpp"
-#include "NuDynDerivedHistos.hpp"
 
 //!
 //!Task used for the determination of multiplicity moments of second, third, and fourth order. These moments
@@ -39,11 +37,10 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  NuDynAnalyzer(const TString &     _name,
-            const Configuration &   _configuration,
-            vector<EventFilter*>    _eventFilters,
-            vector<ParticleFilter*> _particleFilters,
-            LogLevel                _selectedLevel);
+  NuDynAnalyzer(const TString & _name,
+                Configuration & _configuration,
+                vector<EventFilter*> & _eventFilters,
+                vector<ParticleFilter*> & _particleFilters);
   //!
   //!DTOR
   //!
@@ -74,7 +71,11 @@ public:
   //!
   virtual void loadHistograms(TFile * inputFile);
 
-  virtual Task * getDerivedCalculator();
+  virtual void createDerivedHistograms();
+
+  virtual void loadDerivedHistograms(TFile * inputFile __attribute__((unused)));
+
+  virtual void calculateDerivedHistograms();
 
 protected:
   int multiplicityType; //!< variable used to select which event property is used to differential studies of the moments. This variable is set the class parameter "inputType".

@@ -22,11 +22,10 @@ class Plotter : public Task
 {
 public:
 
-  Plotter(const TString& _name,
-          const Configuration _configuration,
-          LogLevel _logLevel=Info);
+  Plotter(const TString & _name,
+          Configuration & _configuration);
   
-  virtual ~Plotter();
+  virtual ~Plotter() {} 
 
   //!
   //! Function to plot a single 1D histogram in a new canvas with the given canvas configuration, graph configuration, and a legend. If the text of the legend is a null or empty
@@ -55,7 +54,7 @@ public:
                   const GraphConfiguration  & gc,
                   const TString & xTitle,  double xMin, double xMax,
                   const TString & yTitle,  double yMin, double yMax,
-                  const TString &  legendText,
+                  const TString & legendText,
                   double xMinLeg, double yMinLeg, double xMaxLeg, double yMaxLeg,
                   double legendSize);
 
@@ -117,7 +116,7 @@ public:
   //  // h       : vector of nHists pointers to histograms
   //  // legends : vector of nHists pointers to labels used as legends in the body of the plot
   //  // ================================================================================================
-  //  TCanvas *  plot(TString  canvasName, CanvasConfiguration * cc, vector<GraphConfiguration*> gc,
+  //  TCanvas *  plot(TString  canvasName, CanvasConfiguration & cc, vector<GraphConfiguration*> gc,
   //                  TString  xTitle,  double xMin, double xMax,
   //                  TString  yTitle,  double yMin, double yMax,
   //                  vector<TH1*> histograms,
@@ -126,7 +125,7 @@ public:
   //                  bool label1=0, TString text1="", double x1=0.0, double y1=0.0, int color1=1,  double fontSize1=0.05,
   //                  bool label2=0, TString text2="", double x2=0.0, double y2=0.0, int color2=1,  double fontSize2=0.05);
   //
-  //  TCanvas * plot(TString  canvasName, CanvasConfiguration * cc,
+  //  TCanvas * plot(TString  canvasName, CanvasConfiguration & cc,
   //                 TString  xTitle,  double xMin, double xMax,
   //                 TString  yTitle,  double yMin, double yMax,
   //                 vector<DataGraph*> graphs,

@@ -31,9 +31,7 @@ public:
   //! @param _configuration Configuration used to run this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  TaskIterator(const TString &         _name = "TaskIterator",
-               const Configuration &   _configuration = Configuration(),
-               MessageLogger::LogLevel _reportLevel = MessageLogger::Info);
+  TaskIterator(const TString & _name, Configuration & _configuration);
 
   //!
   //! DTOR
@@ -78,10 +76,10 @@ public:
 
 protected:
 
-  bool useParticles;
-  bool doPartialReports;
-  bool doPartialSaves;
-  bool doSubsampleAnalysis;
+  bool UseParticles;
+  bool DoPartialReports;
+  bool DoPartialSaves;
+  bool DoSubsampleAnalysis;
   long nIterationRequested;
   long nIterationReported;
   long nIterationPartialSave;

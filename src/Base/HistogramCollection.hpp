@@ -47,7 +47,7 @@ class HistogramCollection : public Collection<TH1>
 {
 public:
 
-  HistogramCollection(const TString & name,LogLevel  debugLevel);
+  HistogramCollection(const TString & _name,LogLevel  debugLevel=LogLevel::Info);
   HistogramCollection(const HistogramCollection & source);
   virtual ~HistogramCollection();
 
@@ -68,49 +68,49 @@ public:
   virtual void reset();
 
   void setDefaultOptions(bool color=0);
-  TH1 * createHistogram(const TString &  name,
+  TH1 * createHistogram(const TString & name,
                         int n, double min_x, double max_x,
-                        const TString &  title_x,
-                        const TString &  title_y);
-  TH1 * createHistogram(const TString &  name,
+                        const TString & title_x,
+                        const TString & title_y);
+  TH1 * createHistogram(const TString & name,
                         int n, double * bins,
-                        const TString &  title_x,
-                        const TString &  title_y);
-  TH2 * createHistogram(const TString &  name,
+                        const TString & title_x,
+                        const TString & title_y);
+  TH2 * createHistogram(const TString & name,
                         int n_x, double min_x, double max_x,
                         int n_y, double min_y, double max_y,
-                        const TString &  title_x,
-                        const TString &  title_y,
-                        const TString &  title_z);
-  TH2 * createHistogram(const TString &  name,
+                        const TString & title_x,
+                        const TString & title_y,
+                        const TString & title_z);
+  TH2 * createHistogram(const TString & name,
                         int n_x, double* xbins, int n_y, double min_y, double max_y,
-                        const TString &  title_x,
-                        const TString &  title_y,
-                        const TString &  title_z);
-  TH3 * createHistogram(const TString &  name,
+                        const TString & title_x,
+                        const TString & title_y,
+                        const TString & title_z);
+  TH3 * createHistogram(const TString & name,
                         int n_x, double min_x, double max_x,
                         int n_y, double min_y, double max_y,
                         int n_z, double min_z, double max_z,
-                        const TString &  title_x,
-                        const TString &  title_y,
-                        const TString &  title_z,
-                        const TString &  title_w);
-  TProfile * createProfile(const TString & name,
+                        const TString & title_x,
+                        const TString & title_y,
+                        const TString & title_z,
+                        const TString & title_w);
+  TProfile * createProfile(const TString & _name,
                            int n_x,double min_x,double max_x,
-                           const TString &  title_x,
-                           const TString &  title_y);
+                           const TString & title_x,
+                           const TString & title_y);
 
-  TProfile * createProfile(const TString &  name,
+  TProfile * createProfile(const TString & name,
                            int n_x,  double* bins,
-                           const TString &  title_x,
-                           const TString &  title_y);
+                           const TString & title_x,
+                           const TString & title_y);
 
-  TProfile2D * createProfile(const TString &  title,
+  TProfile2D * createProfile(const TString & title,
                              int n_x, double min_x, double max_x,
                              int n_y, double min_y, double max_y,
-                             const TString &  title_x,
-                             const TString &  title_y,
-                             const TString &  title_z);
+                             const TString & title_x,
+                             const TString & title_y,
+                             const TString & title_z);
 
   void addHistogramsToExtList(TList *list);
   void saveHistograms(TFile * outputFile);

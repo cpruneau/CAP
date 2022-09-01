@@ -15,87 +15,59 @@
 ClassImp(SubSampleStatCalculator);
 
 
-SubSampleStatCalculator::SubSampleStatCalculator(const TString &       _name,
-                                                 const Configuration & _configuration,
-                                                 MessageLogger::LogLevel debugLevel)
+SubSampleStatCalculator::SubSampleStatCalculator(const TString & _name,
+                                                 Configuration & _configuration)
 :
-Task(_name,_configuration,debugLevel),
+Task(_name,_configuration),
 nEventProcessed(0),
 sumEventProcessed(0)
 {
   appendClassName("SubSampleStatCalculator");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 
 
 void SubSampleStatCalculator::setDefaultConfiguration()
 {
-  if (reportStart(__FUNCTION__))
-    ;
   TString none  = "none";
-  configuration.setParameter("createHistograms",       true);
-  configuration.setParameter("loadHistograms",         true);
-  configuration.setParameter("saveHistograms",         true);
-  configuration.setParameter("appendedString",         TString("_Sum"));
-  configuration.setParameter("forceHistogramsRewrite", true);
-  configuration.addParameter("defaultGroupSize",       10);
-  configuration.addParameter("nInputFile",             0);
-  configuration.addParameter("histoModelDataName",     "DataSource");
-  configuration.addParameter("histoAnalyzerName",      TString("Analyzer"));
-  configuration.generateKeyValuePairs("IncludedPattern",none,20);
-  configuration.generateKeyValuePairs("ExcludedPattern",none,20);
-  configuration.generateKeyValuePairs("InputFile",      none,100);
- // // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  setParameter("CreateHistograms",       true);
+  setParameter("LoadHistograms",         true);
+  setParameter("SaveHistograms",         true);
+  setParameter("AppendedString",         TString("_Sum"));
+  setParameter("ForceHistogramsRewrite", true);
+  addParameter("DefaultGroupSize",       10);
+  addParameter("nInputFile",             0);
+  generateKeyValuePairs("IncludedPattern",none,20);
+  generateKeyValuePairs("ExcludedPattern",none,20);
+  generateKeyValuePairs("InputFile",      none,100);
 }
 
 void SubSampleStatCalculator::execute()
 {
   if (reportStart(__FUNCTION__))
     ;
-  //incrementTaskExecuted();
-  int defaultGroupSize       = configuration.getValueInt("defaultGroupSize");
-  TString appendedString     = configuration.getValueString("appendedString");
-  TString histoInputPath     = configuration.getValueString("histoInputPath");
-  TString histoOutputPath    = configuration.getValueString("histoOutputPath");
-  TString histoModelDataName = configuration.getValueString("histoModelDataName");
-  TString histoAnalyzerName  = configuration.getValueString("histoAnalyzerName");
-  TString histoOutputFileName;
-  histoOutputFileName = histoModelDataName;
-  histoOutputFileName += "_";
-  histoOutputFileName += histoAnalyzerName;
-  vector<TString> includePatterns = configuration.getSelectedValues("IncludedPattern", "none");
-  vector<TString> excludePatterns = configuration.getSelectedValues("ExcludedPattern", "none");
-
-//  if (reportDebug(__FUNCTION__))
-//    {
-//    for (unsigned int k=0;k<includePatterns.size();k++)
-//      {
-//      cout << " k:" << k << "  Include: " << includePatterns[k] << endl;
-//      }
-//
-//    for (unsigned int k=0;k<excludePatterns.size();k++)
-//      {
-//      cout << " k:" << k << "  Exclude: " << excludePatterns[k] << endl;
-//      }
-//    }
-
-  vector<TString> allFilesToSum = listFilesInDir(histoInputPath,includePatterns,excludePatterns);
+  int defaultGroupSize            = getValueInt("DefaultGroupSize");
+  TString appendedString          = getValueString("AppendedString");
+  TString histogramInputPath      = getValueString("HistogramInputPath");
+  TString histogramOutputPath     = getValueString("HistogramOutputPath");
+  TString histogramOutputFile     = getValueString("HistogramOutputFile");
+  vector<TString> includePatterns = getSelectedValues("IncludedPattern", "none");
+  vector<TString> excludePatterns = getSelectedValues("ExcludedPattern", "none");
+  bool prependPath = true;
+  bool verbose     = true;
+  int  maximumDepth = 2;
+  vector<TString> allFilesToSum   = listFilesInDir(histoInputPath,includePatterns,excludePatterns,prependPath, verbose, maximumDepth);
   int nFilesToSum = allFilesToSum.size();
-  int groupSize = (nFilesToSum>defaultGroupSize) ? defaultGroupSize : nFilesToSum;
-  int nGroups   = 1 + double(nFilesToSum-1)/double(groupSize);
+  int groupSize   = (nFilesToSum>defaultGroupSize) ? defaultGroupSize : nFilesToSum;
+  int nGroups     = 1 + double(nFilesToSum-1)/double(groupSize);
   if (nFilesToSum<1)
     {
     if (reportError(__FUNCTION__))
       {
       cout << endl;
       cout << "========================================================================"  << endl;
-      cout << "========================================================================"  << endl;
       cout << "  Attempting to execute subsample analysis with no selected files." << endl;
       cout << "                         Check your code!!!!!!! " <<  endl;
-      cout << "========================================================================"  << endl;
       cout << "========================================================================"  << endl;
       }
     return;
@@ -104,18 +76,14 @@ void SubSampleStatCalculator::execute()
     {
     cout << endl;
     cout << " ==========================================================================================" << endl;
-    cout << " ==========================================================================================" << endl;
-    cout << "              nFilesToSum: " << nFilesToSum << endl;
-    cout << "       Default group size: " << defaultGroupSize << endl;
-    cout << "        Actual group size: " << groupSize << endl;
-    cout << "                  nGroups: " << nGroups << endl;
-    cout << "           appendedString: " << appendedString << endl;
-    cout << "           histoInputPath: " << histoInputPath << endl;
-    cout << "          histoOutputPath: " << histoOutputPath << endl;
-    cout << "       histoModelDataName: " << histoModelDataName << endl;
-    cout << "        histoAnalyzerName: " << histoAnalyzerName << endl;
-    cout << "      histoOutputFileName: " << histoOutputFileName << endl;
-    cout << " ==========================================================================================" << endl;
+    cout << " nFilesToSum................: " << nFilesToSum << endl;
+    cout << " Default group size.........: " << defaultGroupSize << endl;
+    cout << " Actual group size..........: " << groupSize << endl;
+    cout << " nGroups....................: " << nGroups << endl;
+    cout << " appendedString.............: " << appendedString << endl;
+    cout << " HistogramInputPath.........: " << histogramInputPath << endl;
+    cout << " HistogramOutputPath........: " << histogramOutputPath << endl;
+    cout << " HistogramOutputFile........: " << histogramOutputFile << endl;
     cout << " ==========================================================================================" << endl;
     }
   postTaskOk();
@@ -126,7 +94,7 @@ void SubSampleStatCalculator::execute()
     int last  = (iGroup+1)*groupSize;
     if (last>=nFilesToSum) last = nFilesToSum;
     if (reportInfo(__FUNCTION__)) cout << "Summing files w/ index :" << first << " to : " << last-1 << endl;
-    TString outputFileName = histoOutputFileName;
+    TString outputFileName = histogramOutputFile;
     outputFileName += appendedString;
     outputFileName += "_";
     outputFileName += first;
@@ -144,10 +112,10 @@ void SubSampleStatCalculator::execute()
     int nInputFile = last - first+1;
     for (int iFile=first; iFile<last; iFile++)
       {
-      TString histoInputFileName = allFilesToSum[iFile];
-      inputFile = openRootFile("", histoInputFileName, "READ");
+      TString HistogramInputFile = allFilesToSum[iFile];
+      inputFile = openRootFile("", HistogramInputFile, "READ");
       if (!inputFile || !isTaskOk()) return;
-      if (reportInfo(__FUNCTION__)) cout << "Loading file: " << histoInputFileName << endl;
+      if (reportInfo(__FUNCTION__)) cout << "Loading file: " << HistogramInputFile << endl;
       nEventProcessed = readParameter(inputFile,parameterNEexecutedTask);
       if (!isTaskOk()) return;
       if (iFile==first)
@@ -160,7 +128,7 @@ void SubSampleStatCalculator::execute()
         }
       else
         {
-        collection = new HistogramCollection(histoInputFileName,getReportLevel());;
+        collection = new HistogramCollection(HistogramInputFile,getReportLevel());;
         collection->loadCollection(inputFile);
         collectionAvg->squareDifferenceCollection(*collection, double(sumEventProcessed), double(nEventProcessed), (iFile==(last-1)) ? nInputFile : -iFile);
         sumEventProcessed += nEventProcessed;
@@ -169,16 +137,16 @@ void SubSampleStatCalculator::execute()
         }
       //if (reportInfo (__FUNCTION__)) cout << "iFile:" << iFile << "    " << parameterNEexecutedTask << " : " << nEventProcessed << endl;
       }
-    TFile * outputFile = openRootFile(histoOutputPath, outputFileName, "RECREATE");
+    TFile * outputFile = openRootFile(HistogramOutputPath, outputFileName, "RECREATE");
     if (!isTaskOk()) return;
     if (reportDebug(__FUNCTION__))
       {
       cout << endl;
-      cout << "    Saving histgroams to : " << endl;
-      cout << "         histoOutputPath : " << histoOutputPath <<  endl;
-      cout << "     histoOutputFileName : " << histoOutputFileName << endl;
-      cout << "          outputFileName : " << outputFileName <<  endl;
-      cout << "       sumEventProcessed : " << sumEventProcessed << endl;
+      cout << "Saving histgroams to" << endl;
+      cout << "HistogramOutputPath...............: " << histogramOutputPath << endl;
+      cout << "HistogramOutputFile...............: " << histogramOutputFile << endl;
+      cout << "OutputFileName....................: " << outputFileName      << endl;
+      cout << "SumEventProcessed.................: " << sumEventProcessed   << endl;
       }
     writeParameter(outputFile,parameterNEexecutedTask, sumEventProcessed);
     collectionAvg->saveHistograms(outputFile);

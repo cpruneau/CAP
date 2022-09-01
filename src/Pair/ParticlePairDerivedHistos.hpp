@@ -23,10 +23,10 @@ class ParticlePairDerivedHistos : public  Histograms
 {
 public:
 
-  ParticlePairDerivedHistos(const TString & name,
-                            const Configuration & configuration,
-                            LogLevel  debugLevel);
-  virtual ~ParticlePairDerivedHistos();
+  ParticlePairDerivedHistos(Task * _parent,
+                            const TString & _name,
+                            Configuration & _configuration);
+  virtual ~ParticlePairDerivedHistos() {}
   virtual void loadHistograms(TFile * inputFile);
   virtual void createHistograms();
   virtual void calculatePairDerivedHistograms(ParticleHistos         & part1BaseHistos,

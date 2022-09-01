@@ -33,7 +33,7 @@ int main()
 
   long nEventsRequested=100;
 
-  AnalysisConfiguration * ac = new AnalysisConfiguration("ClusterModel1","ClusterModel","1.0");
+  AnalysisConfiguration & ac = new AnalysisConfiguration("ClusterModel1","ClusterModel","1.0");
   ac->loadHistograms  = false;
   ac->createHistograms  = true;
   ac->scaleHistograms  = false;
@@ -41,7 +41,7 @@ int main()
   ac->saveHistograms  = true;
   ac->resetHistograms  = false;
   ac->clearHistograms  = false;
-  ac->forceHistogramsRewrite  = true;
+  ac->ForceHistogramsRewrite  = true;
   ac->inputPath = "./";
   ac->configurationFileName = "configuration";
   ac->rootInputFileName = "";
@@ -90,7 +90,7 @@ int main()
   // ==================================================================================
   // Cluster Model Generator Parameters
   // ==================================================================================
-  ClusterModelConfiguration * cmc = new ClusterModelConfiguration("ClusterModel2","ClusterModel","1.0");
+  ClusterModelConfiguration & cmc = new ClusterModelConfiguration("ClusterModel2","ClusterModel","1.0");
   cmc->loadHistograms    = false;
   cmc->createHistograms  = false;
   cmc->scaleHistograms   = false;

@@ -13,11 +13,11 @@
 
 ClassImp(ParticlePair3DHistos);
 
-ParticlePair3DHistos::ParticlePair3DHistos(const TString &       _name,
-                                       const Configuration & _configuration,
-                                       LogLevel  _debugLevel)
+ParticlePair3DHistos::ParticlePair3DHistos(Task * _parent,
+                                           const TString & _name,
+                                           Configuration & _configuration)
 :
-Histograms(_name,_configuration,_debugLevel),
+Histograms(_parent,_name,_configuration),
 nBins_n1(0),
 min_n1(0),
 max_n1(0),
@@ -74,39 +74,33 @@ h_n2_DyDphi(nullptr),
 h_DptDpt_DyDphi(nullptr)
 {
   appendClassName("ParticlePair3DHistos");
-  setInstanceName(_name);
-}
-
-ParticlePair3DHistos::~ParticlePair3DHistos()
-{
-  // no ops
 }
 
 void ParticlePair3DHistos::createHistograms()
 {
-  if ( reportStart("ParticlePair3DHistos",getName(),"createHistograms()"))
+  if ( reportStart(__FUNCTION__))
     { }
-  TString bn = getHistoBaseName();
+  TString bn = getParentTaskName();
   
   Configuration & configuration = getConfiguration();
  
-  nBins_n2  = configuration.getValueInt("nBins_n2");
-  min_n2    = configuration.getValueDouble("min_n2");
-  max_n2    = configuration.getValueDouble("max_n2");
+  nBins_n2  = configuration.getValueInt(getParentTaskName(),"nBins_n2");
+  min_n2    = configuration.getValueDouble(getParentTaskName(),"Min_n2");
+  max_n2    = configuration.getValueDouble(getParentTaskName(),"Max_n2");
   
-  nBins_n2  = configuration.getValueInt("nBins_n2");
-  min_n2    = configuration.getValueDouble("min_n2");
-  max_n2    = configuration.getValueDouble("max_n2");
+  nBins_n2  = configuration.getValueInt(getParentTaskName(),"nBins_n2");
+  min_n2    = configuration.getValueDouble(getParentTaskName(),"Min_n2");
+  max_n2    = configuration.getValueDouble(getParentTaskName(),"Max_n2");
  
-  nBins_pt = configuration.getValueInt("nBins_pt");
-  min_pt   = configuration.getValueDouble("min_pt");
-  max_pt   = configuration.getValueDouble("max_pt");
+  nBins_pt = configuration.getValueInt(getParentTaskName(),"nBins_pt");
+  min_pt   = configuration.getValueDouble(getParentTaskName(),"Min_pt");
+  max_pt   = configuration.getValueDouble(getParentTaskName(),"Max_pt");
   range_pt = max_pt - min_pt;
   scale_pt = double(nBins_pt)/range_pt;
 
-  nBins_phi   = configuration.getValueInt("nBins_phi");
-  min_phi     = configuration.getValueDouble("min_phi");
-  max_phi     = configuration.getValueDouble("max_phi");
+  nBins_phi   = configuration.getValueInt(getParentTaskName(),"nBins_phi");
+  min_phi     = configuration.getValueDouble(getParentTaskName(),"Min_phi");
+  max_phi     = configuration.getValueDouble(getParentTaskName(),"Max_phi");
   range_phi   = max_phi - min_phi;
   scale_phi   = double(nBins_phi)/range_phi;
   width_Dphi  = range_phi/double(nBins_phi);
@@ -118,9 +112,9 @@ void ParticlePair3DHistos::createHistograms()
   min_Dphi_shft    = min_Dphi - width_Dphi*double(nBins_Dphi_shft);
   max_Dphi_shft    = max_Dphi - width_Dphi*double(nBins_Dphi_shft);
 
-  nBins_eta = configuration.getValueInt("nBins_eta");
-  min_eta   = configuration.getValueDouble("min_eta");
-  max_eta   = configuration.getValueDouble("max_eta");
+  nBins_eta = configuration.getValueInt(getParentTaskName(),"nBins_eta");
+  min_eta   = configuration.getValueDouble(getParentTaskName(),"Min_eta");
+  max_eta   = configuration.getValueDouble(getParentTaskName(),"Max_eta");
   range_eta = max_eta - min_eta;
   scale_eta = double(nBins_eta)/range_eta;
 
@@ -129,24 +123,24 @@ void ParticlePair3DHistos::createHistograms()
   max_Deta  = range_eta;
 
 
-  nBins_y = configuration.getValueInt("nBins_y");
-  min_y   = configuration.getValueDouble("min_y");
-  max_y   = configuration.getValueDouble("max_y");
+  nBins_y = configuration.getValueInt(getParentTaskName(),"nBins_y");
+  min_y   = configuration.getValueDouble(getParentTaskName(),"Min_y");
+  max_y   = configuration.getValueDouble(getParentTaskName(),"Max_y");
   range_y = max_y - min_y;
   scale_y = double(nBins_y)/range_y;
 
-  nBins_DeltaP  = configuration.getValueInt("nBins_DeltaP");
-  min_DeltaP    = configuration.getValueDouble("min_DeltaP");
-  max_DeltaP    = configuration.getValueDouble("max_DeltaP");
+  nBins_DeltaP  = configuration.getValueInt(getParentTaskName(),"nBins_DeltaP");
+  min_DeltaP    = configuration.getValueDouble(getParentTaskName(),"Min_DeltaP");
+  max_DeltaP    = configuration.getValueDouble(getParentTaskName(),"Max_DeltaP");
 
   nBins_Dy  = 2*nBins_y-1;
   min_Dy    = -range_y;
   max_Dy    = range_y;
 
-  fillEta    = configuration.getValueBool("fillEta");
-  fillY      = configuration.getValueBool("fillY");
-  fillP2     = configuration.getValueBool("fillP2");
-  fill3D     = configuration.getValueBool("fill3D");
+  fillEta    = configuration.getValueBool(getParentTaskName(),"FillEta");
+  fillY      = configuration.getValueBool(getParentTaskName(),"FillY");
+  fillP2     = configuration.getValueBool(getParentTaskName(),"FillP2");
+  fill3D     = configuration.getValueBool(getParentTaskName(),"Fill3D");
 
   h_n2          = createHistogram(makeName(bn,"n2"),         nBins_n2,  min_n2, max_n2, "n_{2}", "Yield");
   h_n2_ptpt     = createHistogram(makeName(bn,"n2_ptpt"),    nBins_pt,  min_pt, max_pt, nBins_pt, min_pt, max_pt,   "p_{T,1}",  "p_{T,2}", "N_{2}");
@@ -188,7 +182,7 @@ void ParticlePair3DHistos::createHistograms()
                                      "p_{s}","p_{o}", "p_{l}","n_{2}");
     }
 
-  if ( reportEnd("ParticlePair3DHistos",getName(),"createHistograms()"))
+  if ( reportEnd("ParticlePair3DHistos",getParentTaskName(),"createHistograms()"))
     { }
 }
 
@@ -198,11 +192,11 @@ void ParticlePair3DHistos::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  TString bn = getHistoBaseName();
+  TString bn = getParentTaskName();
   Configuration & configuration = getConfiguration();
-  fillEta    = configuration.getValueBool("fillEta");
-  fillY      = configuration.getValueBool("fillY");
-  fillP2     = configuration.getValueBool("fillP2");
+  fillEta    = configuration.getValueBool(getParentTaskName(),"FillEta");
+  fillY      = configuration.getValueBool(getParentTaskName(),"FillY");
+  fillP2     = configuration.getValueBool(getParentTaskName(),"FillP2");
   h_n2          = loadH1(inputFile, makeName(bn,"n2"));
   h_n2_ptpt     = loadH2(inputFile, makeName(bn,"n2_ptpt"));
   h_n2_phiPhi   = loadH2(inputFile, makeName(bn,"n2_phiPhi"));

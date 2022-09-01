@@ -27,8 +27,8 @@ double  Global2DFitFunction(double  *x, double  *par);
 class BidimGaussFitter : public Plotter
 {
   public:
-  BidimGaussFitter(const TString &           _name,
-                   const Configuration &     _configuration,
+  BidimGaussFitter(const TString & _name,
+                   Configuration &     _configuration,
                    LogLevel                  _requiredLevel);
   BidimGaussFitter(const BidimGaussFitter& source);
   virtual ~BidimGaussFitter();
@@ -66,7 +66,7 @@ class BidimGaussFitter : public Plotter
                           double yLow,
                           double yHigh,
                           const BidimGaussFitConfiguration & fitConfig,
-                          const TString & label);
+                          const TString  & label);
   
   void projectFlowComponents(TH2 *dataHist,
                              TF2 *f,
@@ -75,21 +75,21 @@ class BidimGaussFitter : public Plotter
                              double yLow,
                              double yHigh,
                              const BidimGaussFitConfiguration & fitConfig,
-                             const TString & label);
+                             const TString  & label);
 
 
 
   TH2* subtractEtaSides(TH2* dataHist,
                         TF2 *flowFitFct,
                         const BidimGaussFitConfiguration & fitConfig);
-  TH1* cloneAndReset(const TH1* h, const TString & hName);
-  TH1* cloneAndSetWithFct(const TH1* h,  TF1* f, const TString & hName);
-  TH2* cloneAndReset(const TH2* h, const TString & hName);
-  TH2* cloneAndSetWithFct(const TH2* h,  TF2* f, const TString & hName);
+  TH1* cloneAndReset(const TH1* h, const TString  & hName);
+  TH1* cloneAndSetWithFct(const TH1* h,  TF1* f, const TString  & hName);
+  TH2* cloneAndReset(const TH2* h, const TString  & hName);
+  TH2* cloneAndSetWithFct(const TH2* h,  TF2* f, const TString  & hName);
   void divideByHistoErrors(const TH2* numerator, const TH2* denominator, TH2* target);
 
-  void calculateResidualHistos(const TString & baseName,
-                               const TString & baseTitle,
+  void calculateResidualHistos(const TString  & baseName,
+                               const TString  & baseTitle,
                                TH2* data,
                                TH2* fit,
                                TH2*& residuals,
@@ -158,8 +158,8 @@ class BidimGaussFitter : public Plotter
   TH1 * phiProjections[10];
 
  
-  CanvasConfiguration *  canvasConfig1DLinear;
-  CanvasConfiguration *  canvasConfig2DLinear;
+  CanvasConfiguration &  canvasConfig1DLinear;
+  CanvasConfiguration &  canvasConfig2DLinear;
   GraphConfiguration  ** graphConfigs1D;
   GraphConfiguration  ** graphConfigs2D;
   TH1     ** histograms;

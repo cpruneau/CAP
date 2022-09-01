@@ -25,7 +25,7 @@ nParticipantsTotal(0),
 nBinaryTotal(0),
 impactParameter(0),
 fractionalXSection(0),
-referenceMultiplicity(0),
+refMultiplicity(0),
 other(0),
 nFilters(0),
 nFiltered(),
@@ -51,7 +51,7 @@ nParticipantsTotal(source.nParticipantsTotal),
 nBinaryTotal(source.nBinaryTotal),
 impactParameter(source.impactParameter),
 fractionalXSection(source.fractionalXSection),
-referenceMultiplicity(source.referenceMultiplicity),
+refMultiplicity(source.refMultiplicity),
 other(source.other),
 nFilters(source.nFilters),
 nFiltered(source.nFiltered),
@@ -69,45 +69,45 @@ EventProperties & EventProperties::operator=(const EventProperties & source)
 {
   if (this!=&source)
     {
-    zProjectile      =  source.zProjectile;
-    aProjectile      =  source.aProjectile;
-    nPartProjectile  =  source.nPartProjectile;
-    zTarget          =  source.zTarget;
-    aTarget          =  source.aTarget;
-    nPartTarget      =  source.nPartTarget;
-    nParticipantsTotal       =  source.nParticipantsTotal;
-    nBinaryTotal     =  source.nBinaryTotal;
-    impactParameter  =  source.impactParameter;
-    fractionalXSection       =  source.fractionalXSection;
-    referenceMultiplicity     =  source.referenceMultiplicity;
-    other      =  source.other;
-    nFilters   =  source.nFilters;
-    nFiltered  =  source.nFiltered;
-    eFiltered  =  source.eFiltered;
-    qFiltered  =  source.qFiltered;
-    sFiltered  =  source.sFiltered;
-    bFiltered  =  source.bFiltered;
-    s0Filtered =  source.s0Filtered;
-    s1Filtered =  source.s1Filtered;
+    zProjectile        =  source.zProjectile;
+    aProjectile        =  source.aProjectile;
+    nPartProjectile    =  source.nPartProjectile;
+    zTarget            =  source.zTarget;
+    aTarget            =  source.aTarget;
+    nPartTarget        =  source.nPartTarget;
+    nParticipantsTotal =  source.nParticipantsTotal;
+    nBinaryTotal       =  source.nBinaryTotal;
+    impactParameter    =  source.impactParameter;
+    fractionalXSection =  source.fractionalXSection;
+    refMultiplicity    =  source.refMultiplicity;
+    other              =  source.other;
+    nFilters           =  source.nFilters;
+    nFiltered          =  source.nFiltered;
+    eFiltered          =  source.eFiltered;
+    qFiltered          =  source.qFiltered;
+    sFiltered          =  source.sFiltered;
+    bFiltered          =  source.bFiltered;
+    s0Filtered         =  source.s0Filtered;
+    s1Filtered         =  source.s1Filtered;
     }
   return *this;
 }
 
 void EventProperties::clear()
 {
-  zProjectile     = 0;
-  aProjectile     = 0;
-  nPartProjectile = 0;
-  zTarget         = 0;
-  aTarget         = 0;
-  nPartTarget     = 0;
-  nParticipantsTotal      = 0;
-  nBinaryTotal    = 0;
-  impactParameter = 0;
-  fractionalXSection      = 0;
-  referenceMultiplicity    = 0;
-  other           = 0;
-  nFilters        = 0;
+  zProjectile        = 0;
+  aProjectile        = 0;
+  nPartProjectile    = 0;
+  zTarget            = 0;
+  aTarget            = 0;
+  nPartTarget        = 0;
+  nParticipantsTotal = 0;
+  nBinaryTotal       = 0;
+  impactParameter    = 0;
+  fractionalXSection = 0;
+  refMultiplicity    = 0;
+  other              = 0;
+  nFilters           = 0;
   nFiltered.clear();
   eFiltered.clear();
   qFiltered.clear();
@@ -119,19 +119,19 @@ void EventProperties::clear()
 
 void EventProperties::reset()
 {
-  zProjectile     = 0;
-  aProjectile     = 0;
-  nPartProjectile = 0;
-  zTarget         = 0;
-  aTarget         = 0;
-  nPartTarget     = 0;
-  nParticipantsTotal      = 0;
-  nBinaryTotal    = 0;
-  impactParameter = 0;
-  fractionalXSection      = 0;
-  referenceMultiplicity    = 0;
-  other           = 0;
-  nFilters        = 0;
+  zProjectile        = 0;
+  aProjectile        = 0;
+  nPartProjectile    = 0;
+  zTarget            = 0;
+  aTarget            = 0;
+  nPartTarget        = 0;
+  nParticipantsTotal = 0;
+  nBinaryTotal       = 0;
+  impactParameter    = 0;
+  fractionalXSection = 0;
+  refMultiplicity    = 0;
+  other              = 0;
+  nFilters           = 0;
   nFiltered.clear();
   eFiltered.clear();
   qFiltered.clear();
@@ -169,6 +169,7 @@ void EventProperties::fillSpherocity(vector<double> & s0, vector<double> & s1)
 
 void EventProperties::printProperties(ostream & output)
 {
+  nFilters = nFiltered.size();
   output << "===============================================" << endl;
   output << "Event Properties" << endl;
   output << "===============================================" << endl;
@@ -182,14 +183,11 @@ void EventProperties::printProperties(ostream & output)
   output << "          nBinaryTotal : " << nBinaryTotal << endl;    // total number of binary collisions
   output << "       impactParameter : " << impactParameter << endl; // nucleus-nucleus center distance in fm
   output << "    fractionalXSection : " << fractionalXSection << endl;      // fraction cross section value
-  output << " referenceMultiplicity : " << referenceMultiplicity << endl;    // nominal multiplicity in the reference range
+  output << "       refMultiplicity : " << refMultiplicity << endl;    // nominal multiplicity in the reference range
   output << "                 other : " << other << endl;           // other value of interest
   output << "       particlesCounted: " << particlesCounted << endl;
   output << "      particlesAccepted: " << particlesAccepted << endl;
-
-  nFilters = nFiltered.size();
-  output << "             nFilters : " << nFilters << endl;
-  
+  output << "              nFilters : " << nFilters << endl;
   for (int k=0;k<nFilters;k++)
   {
   output 

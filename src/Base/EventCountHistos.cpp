@@ -13,13 +13,14 @@
 #include "EventCountHistos.hpp"
 ClassImp(EventCountHistos);
 
-EventCountHistos::EventCountHistos(const TString & _name,
+EventCountHistos::EventCountHistos(Task *          _parent,
+                                   const TString & _name,
                                    Configuration & _configuration,
-                                   int _nEventFilters,
-                                   int _nParticleFilters,
-                                   LogLevel _debugLevel)
+                                   int             _nEventFilters,
+                                   int             _nParticleFilters,
+                                   LogLevel        _debugLevel)
 :
-Histograms(_name,_configuration,_debugLevel),
+Histograms(_parent,_name,_configuration),
 nEventFilters(_nEventFilters),
 nParticleFilters(_nParticleFilters),
 h_taskExecuted(nullptr),
@@ -27,7 +28,6 @@ h_eventAccepted(nullptr),
 h_particleAccepted(nullptr)
 {
   appendClassName("EventCountHistos");
-  setInstanceName(_name);
 }
 
 // for now use the same boundaries for eta and y histogram
@@ -38,7 +38,7 @@ void EventCountHistos::createHistograms()
     ;
   setOwnership(true);
   int n = nEventFilters*nParticleFilters;
-  TString bn = getHistoBaseName();
+  TString bn = getParentTaskName();
   h_taskExecuted     = createHistogram(makeName(bn,"nTaskExecuted"),1,-0.5, 0.5, "nTaskExecuted", "Count") ;
   h_eventAccepted    = createHistogram(makeName(bn,"nEventAccepted"),nEventFilters,-0.5, -0.5+double(nEventFilters), "event filter", "Count");
   h_particleAccepted = createHistogram(makeName(bn,"nParticleAccepted"),n,-0.5, -0.5+double(n), "event x particle filter", "Count");
@@ -52,7 +52,7 @@ void EventCountHistos::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  TString bn = getHistoBaseName();
+  TString bn = getParentTaskName();
   h_taskExecuted     = loadH1(inputFile,makeName(bn,"nTaskExecuted"));
   h_eventAccepted    = loadH1(inputFile,makeName(bn,"nEventAccepted"));
   h_particleAccepted = loadH1(inputFile,makeName(bn,"nParticleAccepted"));

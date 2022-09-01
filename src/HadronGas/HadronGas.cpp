@@ -28,13 +28,13 @@ ClassImp(HadronGas);
 
 using namespace std;
 
-HadronGas::HadronGas(const TString &          _name,
-                     const Configuration &    _configuration,
+HadronGas::HadronGas(const TString & _name,
+                     Configuration &    _configuration,
                      ParticleTypeCollection * _particles,
                      ParticleTypeCollection * _stableParticles,
                      LogLevel _debugLevel)
 :
-Task(_name,_configuration,_debugLevel),
+Task(_name,_configuration),
 particleTypes(_particles),
 stableParticleTypes(_stableParticles),
 hadrons(),
@@ -53,25 +53,19 @@ pressure(0.0),
 hadronRndmSelector(nullptr)
 {
   appendClassName("HadronGas");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void HadronGas::setDefaultConfiguration()
 {
-  if (reportStart(__FUNCTION__))
-    ;
-  TString hg = "HG";
-  Configuration & config = getConfiguration();
-  config.setParameter("useParticles",          false);
-  config.setParameter("useEventStream0",       false);
-  config.setParameter("createHistograms",      false);
-  config.setParameter("saveHistograms",        false);
-  config.addParameter("temperature",           150.0);
-  config.addParameter("muB",                   0.0);
-  config.addParameter("muS",                   0.0);
-  config.addParameter("volume",                1.0);
+  Task::setDefaultConfiguration();
+  setParameter("UseParticles",          false);
+  setParameter("UseEventStream0",       false);
+  setParameter("CreateHistograms",      false);
+  setParameter("SaveHistograms",        false);
+  addParameter("Temperature",           150.0);
+  addParameter("MuB",                   0.0);
+  addParameter("MuS",                   0.0);
+  addParameter("Volume",                1.0);
 }
 
 void HadronGas::initialize()
@@ -79,20 +73,17 @@ void HadronGas::initialize()
   if (reportStart(__FUNCTION__) )
     ;
   reset();
-
-  Configuration & config = getConfiguration();
-  temperature = config.getValueDouble("temperature");
-  muB         = config.getValueDouble("muB");
-  muS         = config.getValueDouble("muS");
+  temperature = getValueDouble("Temperature");
+  muB         = getValueDouble("MuB");
+  muS         = getValueDouble("MuS");
 
   if (reportDebug(__FUNCTION__) )
     {
     cout << endl;
     cout << " ======================initialize=============="  << endl;
-    cout << " temperature =" <<  temperature << endl;
+    cout << " Temperature =" <<  temperature << endl;
     cout << " ======================initialize=============="  << endl;
     }
-
 
   for (unsigned int iParticle = 0; iParticle<particleTypes->size(); iParticle++)
     {
@@ -104,7 +95,6 @@ void HadronGas::initialize()
   if (reportEnd(__FUNCTION__) )
     ;
 }
-
 
 void HadronGas::calculateParticleDecayProbability()
 {

@@ -170,11 +170,10 @@ public:
   TString getTitleY() const { return GetYaxis()->GetTitle(); }
   TString getLegendText() const { return legendText; }
 
-  void setName(const TString & name) { SetName(name); }
-  void setTitleX(const TString & name) { GetXaxis()->SetTitle(name); }
-  void setTitleY(const TString & name) { GetYaxis()->SetTitle(name); }
-  void setLegendText(const TString & name) { legendText = name; }
-
+  void setName(const TString & _name) { SetName(_name); }
+  void setTitleX(const TString & _name) { GetXaxis()->SetTitle(_name); }
+  void setTitleY(const TString & _name) { GetYaxis()->SetTitle(_name); }
+  void setLegendText(const TString & _name) { legendText = _name; }
   bool hasSystematics() const { return graphs.size()>1; }
   TGraph * getDataGraph() {  return graphs[0]; }
   TGraph * getSystGraph() {  return graphs[1]; }

@@ -59,7 +59,7 @@ void GraphConfiguration::setDefaultConfiguration()
   addParameter("zLabelOffset", 0.01);
   addParameter("zLabelOffset", 0.01);
   addParameter("zTitle",        TString("z"));
-  addParameter("plotOption",    TString("E0"));
+  addParameter("PlotOption",    TString("E0"));
 
   addParameter("systsColor",1);
   addParameter("systsStyle",1001);
@@ -458,7 +458,7 @@ void GraphConfiguration::setParametersWith(int dim, int type)
     addParameter("zLabelSize",   0.05);
     addParameter("zLabelOffset",0.005);
     addParameter("zTitle",        TString("z"));
-    addParameter("plotOption",TString("SURF3"));
+    addParameter("PlotOption",TString("SURF3"));
     }
 }
 

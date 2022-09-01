@@ -35,7 +35,7 @@ EventFilter::~EventFilter()
 }
 
 //!
-//! accept/reject the given particle based on filter parameter
+//! accept/reject the given Event based on filter parameter
 //!
 bool EventFilter::accept(const Event & event)
 {
@@ -95,7 +95,7 @@ bool EventFilter::accept(const Event & event)
           }
         value = eventProperties->sFiltered[index]; break;
         case 5:
-        // filtered strangeness
+        // filtered baryoness
         if (index>=eventProperties->bFiltered.size())
           {
           cout << "<E> EventFilter::accept(Event & event)  index>=eventProperties->bFiltered.size()" << endl;
@@ -108,3 +108,114 @@ bool EventFilter::accept(const Event & event)
   return true;
 }
 
+
+vector<EventFilter*> EventFilter::createOpenEventFilter()
+{
+  vector<EventFilter*> filters;
+  EventFilter * filter = new EventFilter();
+  filter->setName("All");
+  filter->setLongName("All");
+  filter->setTitle("All");
+  filter->setLongTitle("All");
+  filters.push_back(filter);
+  return filters;
+}
+
+vector<EventFilter*> EventFilter::createAliceMBEventFilter()
+{
+  vector<EventFilter*> filters;
+  EventFilter* filter  = new EventFilter();
+  filter->setName("AliceMB");
+  filter->setLongName("AliceMB");
+  filter->setTitle("AliceMB");
+  filter->setLongTitle("AliceMB");
+  filter->addCondition(1, 0, 1.0, 1.0E10); // v0 multiplicity
+  filter->addCondition(1, 1, 1.0, 1.0E10); // TPC multiplicity
+  filters.push_back(filter);
+  return filters;
+}
+
+vector<EventFilter*> EventFilter::createImpactParameterFilters(vector<double> & bounds)
+{
+  vector<EventFilter*> filters;
+  EventFilter* filter;
+  int n = bounds.size();
+  for (int k=0; k<n-1; k++)
+    {
+    double low  = bounds[k];
+    double high = bounds[k+1];
+    TString name = "b";
+    name += int(1000*low);
+    name +="To";
+    name += int(1000*high);
+    TString title;
+    title = low;
+    title += "#LT b <";
+    title += high;
+    filter = new EventFilter();
+    filter->setName(name);
+    filter->setLongName(name);
+    filter->setTitle(title);
+    filter->setLongTitle(title);
+    filter->addCondition(0, 0, low, high); // meant to cut on b
+    }
+  filters.push_back(filter);
+  return filters;
+}
+
+vector<EventFilter*> EventFilter::createV0MultiplicityFilters(vector<double> & bounds)
+{
+  vector<EventFilter*> filters;
+  EventFilter* filter;
+  int n = bounds.size();
+  for (int k=0; k<n-1; k++)
+    {
+    double low  = bounds[k];
+    double high = bounds[k+1];
+    TString name = "b";
+    name += int(1000*low);
+    name +="To";
+    name += int(1000*high);
+    TString title;
+    title = low;
+    title += "#LT b <";
+    title += high;
+    filter = new EventFilter();
+    filter->setName(name);
+    filter->setLongName(name);
+    filter->setTitle(title);
+    filter->setLongTitle(title);
+    filter->addCondition(1, 0, low, high); // meant to cut on V0M
+    }
+  filters.push_back(filter);
+  return filters;
+}
+
+
+vector<EventFilter*> EventFilter::createTpcMultiplicityFilters(vector<double> & bounds)
+{
+  vector<EventFilter*> filters;
+  EventFilter* filter;
+  int n = bounds.size();
+  for (int k=0; k<n-1; k++)
+    {
+    double low  = bounds[k];
+    double high = bounds[k+1];
+    TString name = "b";
+    name += int(1000*low);
+    name +="To";
+    name += int(1000*high);
+    TString title;
+    title = low;
+    title += "#LT b <";
+    title += high;
+    filter = new EventFilter();
+    filter->setName(name);
+    filter->setLongName(name);
+    filter->setTitle(title);
+    filter->setLongTitle(title);
+    filter->addCondition(1, 1, low, high); // meant to cut on V0M
+    }
+  filters.push_back(filter);
+  return filters;
+}

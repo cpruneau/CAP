@@ -10,38 +10,32 @@
  *
  * *********************************************************************/
 #include "RadialBoostHistos.hpp"
+
 ClassImp(RadialBoostHistos);
 
-RadialBoostHistos::RadialBoostHistos(const TString & _name,
-                                     const Configuration& _configuration,
-                                     LogLevel  _debugLevel)
+RadialBoostHistos::RadialBoostHistos(Task * _partial,
+                                     const TString & _name,
+                                     Configuration & _configuration)
 :
-Histograms(_name,_configuration,_debugLevel)
+Histograms(_partial,_name,_configuration)
 {
   appendClassName("RadialBoostHistos");
-  setInstanceName(name);
-}
-
-RadialBoostHistos::~RadialBoostHistos()
-{
-  //deleteHistograms();
 }
 
 // for now use the same boundaries for eta and y histogram
 void RadialBoostHistos::createHistograms()
 {
-  Configuration & configuration = getConfiguration();
-  int nBins_phi   = configuration.getValueInt("nBins_phi");
-  double min_phi  = configuration.getValueDouble("min_phi");
-  double max_phi  = configuration.getValueDouble("max_phi");
-  int nBins_r     = configuration.getValueInt("nBins_r");
-  double min_r    = configuration.getValueDouble("min_r");
-  double max_r    = configuration.getValueDouble("max_r");
-  int nBins_beta  = configuration.getValueInt("nBins_beta");
-  double min_beta = configuration.getValueDouble("min_beta");
-  double max_beta = configuration.getValueDouble("max_beta");
+  int nBins_phi   = configuration.getValueInt(   "nBins_phi");
+  double min_phi  = configuration.getValueDouble("Min_phi");
+  double max_phi  = configuration.getValueDouble("Max_phi");
+  int nBins_r     = configuration.getValueInt(   "nBins_r");
+  double min_r    = configuration.getValueDouble("Min_r");
+  double max_r    = configuration.getValueDouble("Max_r");
+  int nBins_beta  = configuration.getValueInt(   "nBins_beta");
+  double min_beta = configuration.getValueDouble("Min_beta");
+  double max_beta = configuration.getValueDouble("Max_beta");
   
-  TString bn = getHistoBaseName();
+  TString bn = getParentTaskName();
   h_phi  = createHistogram(makeName(bn,"ns_phi"),   nBins_phi,  min_phi,  max_phi,  "#phi",      "N_{s}");
   h_r    = createHistogram(makeName(bn,"ns_r"),     nBins_r,    min_r,    max_r,    "r",         "N_{s}");
   h_beta = createHistogram(makeName(bn,"ns_beta"),  nBins_beta, min_beta, max_beta, "#beta_{s}", "N_{s}");
@@ -52,7 +46,7 @@ void RadialBoostHistos::createHistograms()
 void RadialBoostHistos::loadHistograms(TFile * inputFile)
 {
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  TString bn = getHistoBaseName();
+  TString bn = getParentTaskName();
   h_phi  = loadH1(inputFile,makeName(bn,"ns_phi")  );
   h_r    = loadH1(inputFile,makeName(bn,"ns_r")    );
   h_beta = loadH1(inputFile,makeName(bn,"ns_beta") );

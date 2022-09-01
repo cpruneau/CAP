@@ -21,9 +21,9 @@ class ParticlePerformanceHistos : public Histograms
 {
 public:
   
-  ParticlePerformanceHistos(const TString &       _name,
-                            const Configuration & _configuration,
-                            LogLevel              _debugLevel);
+  ParticlePerformanceHistos(Task * _parent,
+                            const TString & _name,
+                            Configuration & _configuration);
   virtual ~ParticlePerformanceHistos() {}
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);

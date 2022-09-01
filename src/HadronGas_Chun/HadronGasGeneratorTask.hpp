@@ -20,8 +20,7 @@ class HadronGasGeneratorTask : public Task
 public:
 
   HadronGasGeneratorTask(const TString  & _name,
-                         Configuration  & _configuration,
-                         LogLevel         _selectedLevel);
+                         Configuration  & _configuration);
   virtual ~HadronGasGeneratorTask() {}
   virtual void setDefaultConfiguration();
   virtual void initialize();

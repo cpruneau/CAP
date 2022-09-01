@@ -25,10 +25,49 @@ public:
   virtual ~ParticleFilter() {}
   virtual bool accept(const Particle & particle);
 
+
+  //!
+  //!  Create an open filter i.e., a filter that accepts all particles considered "live".
+  //!
+  static vector<ParticleFilter*> createOpenParticleFilter();
+
+  //!
+  //!  Create a filter that simulates the ALICE min bias V0 trigger.
+  //!
+  static vector<ParticleFilter*> createAliceV0Filter();
+
+  //!
+  //!  Create a filter accepting all neutral particles
+  //!
+  static vector<ParticleFilter*> createNeutralParticleFilter(bool filteringOnPt,  double minPt,  double maxPt,
+                                                      bool filteringOnEta, double minEta, double maxEta,
+                                                      bool filteringOnY,   double minY,   double maxY);
+
+  //!
+  //!  Create a filter accepting all charged particles
+  //!
+  static vector<ParticleFilter*> createChargedParticleFilter(bool filteringOnPt,  double minPt,  double maxPt,
+                                                      bool filteringOnEta, double minEta, double maxEta,
+                                                      bool filteringOnY,   double minY,   double maxY);
+
+  //!
+  //!  Create a filter accepting all negative particles
+  //!
+  static vector<ParticleFilter*> createNegativeParticleFilter(bool filteringOnPt,  double minPt,  double maxPt,
+                                                       bool filteringOnEta, double minEta, double maxEta,
+                                                       bool filteringOnY,   double minY,   double maxY);
+
+  //!
+  //!  Create a filter accepting all positive particles
+  //!
+  static vector<ParticleFilter*> createPositiveParticleFilter(bool filteringOnPt,  double minPt,  double maxPt,
+                                                       bool filteringOnEta, double minEta, double maxEta,
+                                                       bool filteringOnY,   double minY,   double maxY);
+
   //!
   //!  Create a filter accepting only the given pdg code with the given kinematical parameters
   //!
-  static  ParticleFilter * createBaryonFilter(int pdg, const TString & name, const TString & title,
+  static  ParticleFilter * createHadronFilter(int pdg, const TString & _name, const TString  & title,
                                               bool filteringOnPt,  double minPt,  double maxPt,
                                               bool filteringOnEta, double minEta, double maxEta,
                                               bool filteringOnY,   double minY,   double maxY);
@@ -63,6 +102,10 @@ public:
   static vector<ParticleFilter*> createBaryonFilters(bool filteringOnPt,  double minPt,  double maxPt,
                                                      bool filteringOnEta, double minEta, double maxEta,
                                                      bool filteringOnY,   double minY,   double maxY);
+
+  static vector<ParticleFilter*> createStrangeHadronFilters(bool filteringOnPt,  double minPt,  double maxPt,
+                                                            bool filteringOnEta, double minEta, double maxEta,
+                                                            bool filteringOnY,   double minY,   double maxY);
 
   ClassDef(ParticleFilter,0)
 };

@@ -241,7 +241,7 @@ public:
   //!
   //! Set the short name of this filter
   //!
-  void setName(const TString & newName)
+  void setName(const TString  & newName)
   {
   name = newName;
   }
@@ -249,7 +249,7 @@ public:
   //!
   //! Set the short title of this filter
   //!
-  void setTitle(const TString & newTitle)
+  void setTitle(const TString  & newTitle)
   {
   title = newTitle;
   }
@@ -257,7 +257,7 @@ public:
   //!
   //! Set the long name of this filter
   //!
-  void setLongName(const TString & newLongName)
+  void setLongName(const TString  & newLongName)
   {
   longName = newLongName;
   }
@@ -265,7 +265,7 @@ public:
   //!
   //! Set the long title of this filter
   //!
-  void setLongTitle(const TString & newLongTitle)
+  void setLongTitle(const TString  & newLongTitle)
   {
   longTitle = newLongTitle;
   }

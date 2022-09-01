@@ -34,7 +34,7 @@ public:
   virtual bool accept(Event & event);
 
 //  TString getName();
-//  const TString & getUserName() const { return userName; }
+//  const TString  & getUserName() const { return userName; }
 //  TString getTitle();
 //  TString getLongName();
 //  TString getLongTitle();

@@ -39,10 +39,10 @@ public:
   //!
   //!Generic/standard CTOR
   //!
-  GlobalHistos(const TString &         _name,
-               const Configuration &   _configuration,
-               vector<ParticleFilter*> _particleFilters,
-               LogLevel                _debugLevel);
+  GlobalHistos(Task * _parent,
+               const TString & _name,
+               Configuration & _configuration,
+               vector<ParticleFilter*> _particleFilters);
 
   //!
   //!DTOR

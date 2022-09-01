@@ -12,11 +12,11 @@
 #include "NuDynDerivedHistos.hpp"
 ClassImp(NuDynDerivedHistos);
 
-NuDynDerivedHistos::NuDynDerivedHistos(const TString & _name,
-                                       const Configuration & _configuration,
-                                       LogLevel  _debugLevel)
+NuDynDerivedHistos::NuDynDerivedHistos(Task * _parent,
+                                       const TString & _name,
+                                       Configuration & _configuration)
 :
-Histograms(_name,_configuration,_debugLevel),
+Histograms(_parent,_name,_configuration),
 h_F2(),
 h_F3(),
 h_F4(),
@@ -38,14 +38,16 @@ h_nudyn_vsMult()
 // for now use the same boundaries for eta and y histogram
 void NuDynDerivedHistos::createHistograms()
 {
+  const TString & bn  = getName();
+  const TString & ptn = getParentTaskName();
+  const TString & ppn = getParentPathName();
   Configuration & configuration = getConfiguration();
-  nFilters         = configuration.getValueInt("nFilters");
-  multiplicityType = configuration.getValueInt("multiplicityType");
-  pairOnly         = configuration.getValueBool("pairOnly");
-  int nBins_mult   = configuration.getValueInt("nBins_mult");
-  double min_mult  = configuration.getValueInt("min_mult");
-  double max_mult  = configuration.getValueInt("max_mult");
-  TString bn = getHistoBaseName();
+  nFilters         = configuration.getValueInt(ppn,"nFilters");
+  multiplicityType = configuration.getValueInt(ppn,"multiplicityType");
+  pairOnly         = configuration.getValueBool(ppn,"PairOnly");
+  int nBins_mult   = configuration.getValueInt(ppn,"nBins_mult");
+  double min_mult  = configuration.getValueInt(ppn,"Min_mult");
+  double max_mult  = configuration.getValueInt(ppn,"Max_mult");
   TString suffix = "";
   TString xTitle = "";
   
@@ -55,6 +57,18 @@ void NuDynDerivedHistos::createHistograms()
       case 1: suffix = "_vsMult"; xTitle = "mult_{Tot}";  break;
       case 2: suffix = "_vsMult"; xTitle = "mult_{acc}";  break;
     }
+
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  NuDyn:Parent Task Name....................: " << ptn << endl;
+    cout << "  NuDyn:Parent Path Name....................: " << ppn << endl;
+    cout << "  NuDyn:Histo Base Name.....................: " << bn << endl;
+    cout << "  NuDyn:nFilters............................: " << nFilters <<  endl;
+    cout << "  NuDyn:multiplicityType....................: " << multiplicityType << endl;
+    cout << "  NuDyn:pairOnly............................: " << pairOnly << endl;
+    }
+
   
   for (int i1=0; i1<nFilters; i1++)
     {
@@ -93,11 +107,12 @@ void NuDynDerivedHistos::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  nFilters         = configuration.getValueInt("nFilters");
-  multiplicityType = configuration.getValueInt("multiplicityType");
-  pairOnly         = configuration.getValueBool("pairOnly");
+  const TString & bn  = getName();
+  const TString & ptn = getParentTaskName();
+  const TString & ppn = getParentPathName();  nFilters         = configuration.getValueInt(ppn,"nFilters");
+  multiplicityType = configuration.getValueInt(ppn,"multiplicityType");
+  pairOnly         = configuration.getValueBool(ppn,"PairOnly");
 
-  TString bn = getHistoBaseName();
   TString suffix = "";
   TString xTitle = "";
   switch ( multiplicityType )
@@ -106,7 +121,19 @@ void NuDynDerivedHistos::loadHistograms(TFile * inputFile)
       case 1: suffix = "_vsMult"; xTitle = "mult_{Tot}";  break;
       case 2: suffix = "_vsMult"; xTitle = "mult_{acc}";  break;
     }
-  
+
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  NuDyn:Parent Task Name....................: " << ptn << endl;
+    cout << "  NuDyn:Parent Path Name....................: " << ppn << endl;
+    cout << "  NuDyn:Histo Base Name.....................: " << bn << endl;
+    cout << "  NuDyn:nFilters............................: " << nFilters <<  endl;
+    cout << "  NuDyn:multiplicityType....................: " << multiplicityType << endl;
+    cout << "  NuDyn:pairOnly............................: " << pairOnly << endl;
+    }
+
+
   for (int i1=0; i1<nFilters; i1++)
     {
     for (int i2=i1; i2<nFilters; i2++)

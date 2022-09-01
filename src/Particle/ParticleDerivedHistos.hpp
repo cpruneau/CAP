@@ -18,10 +18,10 @@ class ParticleDerivedHistos : public Histograms
 {
 public:
 
-  ParticleDerivedHistos(const TString & collectionName,
-                        const Configuration & analysisConfiguration,
-                        LogLevel  debugLevel);
-  virtual ~ParticleDerivedHistos();
+  ParticleDerivedHistos(Task * _parent,
+                        const TString & _name,
+                        Configuration & _configuration);
+  virtual ~ParticleDerivedHistos() {}
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);
   virtual void calculateDerivedHistograms(ParticleHistos* baseHistos);

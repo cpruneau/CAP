@@ -205,4 +205,4 @@ class BidimGaussFitConfiguration : public Configuration
   ClassDef(BidimGaussFitConfiguration,0)
   };
 
-#endif /* CAP__BidimGaussFitConfiguration */
+#endif /* CAP__BidimGaussFitConfiguration &/

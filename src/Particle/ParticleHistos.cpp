@@ -13,11 +13,11 @@
 #include "ParticleHistos.hpp"
 ClassImp(ParticleHistos);
 
-ParticleHistos::ParticleHistos(const TString &       _name,
-                               const Configuration & _configuration,
-                               LogLevel              _debugLevel)
+ParticleHistos::ParticleHistos(Task * _parent,
+                               const TString & _name,
+                               Configuration & _configuration)
 :
-Histograms(_name,_configuration,_debugLevel),
+Histograms(_parent,_name,_configuration),
 fillEta(0),
 fillY(0),
 fillP2(0),
@@ -53,7 +53,6 @@ h_spt_phiY(nullptr),
 h_pdgId(nullptr)
 {
   appendClassName("ParticleHistos");
-  setInstanceName(_name);
 }
 
 ParticleHistos::~ParticleHistos()
@@ -65,38 +64,72 @@ ParticleHistos::~ParticleHistos()
 void ParticleHistos::createHistograms()
 {
   if ( reportStart("ParticleHistos",getName(),"createHistograms()"))
-    { }
-  TString bn = getHistoBaseName();
+    ;
+  const TString & bn  = getName();
+  const TString & ptn = getParentTaskName();
+  const TString & ppn = getParentPathName();
   Configuration & configuration = getConfiguration();
+  nBins_n1 = configuration.getValueInt(ppn,"nBins_n1");
+  min_n1   = configuration.getValueDouble(ppn,"Min_n1");
+  max_n1   = configuration.getValueDouble(ppn,"Max_n1");
   
-  nBins_n1 = configuration.getValueInt("nBins_n1");
-  min_n1   = configuration.getValueDouble("min_n1");
-  max_n1   = configuration.getValueDouble("max_n1");
-  
-  nBins_pt = configuration.getValueInt("nBins_pt");
-  min_pt   = configuration.getValueDouble("min_pt");
-  max_pt   = configuration.getValueDouble("max_pt");
+  nBins_pt = configuration.getValueInt(ppn,"nBins_pt");
+  min_pt   = configuration.getValueDouble(ppn,"Min_pt");
+  max_pt   = configuration.getValueDouble(ppn,"Max_pt");
   scale_pt = max_pt - min_pt;
   
-  nBins_phi = configuration.getValueInt("nBins_phi");
-  min_phi   = configuration.getValueDouble("min_phi");
-  max_phi   = configuration.getValueDouble("max_phi");
+  nBins_phi = configuration.getValueInt(ppn,"nBins_phi");
+  min_phi   = configuration.getValueDouble(ppn,"Min_phi");
+  max_phi   = configuration.getValueDouble(ppn,"Max_phi");
   scale_phi = max_phi - min_phi;
   
-  nBins_eta = configuration.getValueInt("nBins_eta");
-  min_eta   = configuration.getValueDouble("min_eta");
-  max_eta   = configuration.getValueDouble("max_eta");
+  nBins_eta = configuration.getValueInt(ppn,"nBins_eta");
+  min_eta   = configuration.getValueDouble(ppn,"Min_eta");
+  max_eta   = configuration.getValueDouble(ppn,"Max_eta");
   range_eta = max_eta - min_eta;
   
-  nBins_y = configuration.getValueInt("nBins_y");
-  min_y   = configuration.getValueDouble("min_y");
-  max_y   = configuration.getValueDouble("max_y");
+  nBins_y = configuration.getValueInt(ppn,"nBins_y");
+  min_y   = configuration.getValueDouble(ppn,"Min_y");
+  max_y   = configuration.getValueDouble(ppn,"Max_y");
   range_y = max_y - min_y;
   
-  fillEta = configuration.getValueBool("fillEta");
-  fillY   = configuration.getValueBool("fillY");
-  fillP2  = configuration.getValueBool("fillP2");
-  
+  fillEta = configuration.getValueBool(ppn,"FillEta");
+  fillY   = configuration.getValueBool(ppn,"FillY");
+  fillP2  = configuration.getValueBool(ppn,"FillP2");
+
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  Part:Parent Task Name....................: " << ptn << endl;
+    cout << "  Part:Parent Path Name....................: " << ppn << endl;
+    cout << "  Part:Histo Base Name.....................: " << bn << endl;
+    cout << "  Part:FillEta.............................: " << fillEta << endl;
+    cout << "  Part:FillY...............................: " << fillY   << endl;
+    cout << "  Part:FillP2..............................: " << fillP2  << endl;
+    cout << "  Part:nBins_n1............................: " << nBins_n1 << endl;
+    cout << "  Part:Min_n1..............................: " << min_n1 << endl;
+    cout << "  Part:Max_n1..............................: " << max_n1 << endl;
+    cout << "  Part:nBins_pt............................: " << nBins_pt << endl;
+    cout << "  Part:Min_pt..............................: " << min_pt << endl;
+    cout << "  Part:Max_pt..............................: " << max_pt << endl;
+    cout << "  Part:scale_pt............................: " << scale_pt << endl;
+    cout << "  Part:nBins_phi...........................: " << nBins_phi << endl;
+    cout << "  Part:Min_phi.............................: " << min_phi << endl;
+    cout << "  Part:Max_phi.............................: " << max_phi << endl;
+    cout << "  Part:scale_phi...........................: " << scale_phi << endl;
+    cout << "  Part:nBins_eta...........................: " << nBins_eta << endl;
+    cout << "  Part:Min_eta.............................: " << min_eta << endl;
+    cout << "  Part:Max_eta.............................: " << max_eta << endl;
+    cout << "  Part:range_eta...........................: " << range_eta << endl;
+    cout << "  Part:nBins_y.............................: " << nBins_y << endl;
+    cout << "  Part:Min_y...............................: " << min_y << endl;
+    cout << "  Part:Max_y...............................: " << max_y << endl;
+    cout << "  Part:range_y.............................: " << range_y << endl;
+    cout << "  Part:FillEta.............................: " << fillEta << endl;
+    cout << "  Part:FillY...............................: " << fillY << endl;
+    cout << "  Part:FillP2..............................: " << fillP2 << endl;
+    }
+
   h_n1         = createHistogram(makeName(bn,"n1"),           nBins_n1,  min_n1,  max_n1,  "n_1","N");
   h_n1_eTotal  = createHistogram(makeName(bn,"n1_eTotal"),    nBins_n1,  min_n1,  10.0*max_n1,  "n1_eTotal","N");
   h_n1_pt      = createHistogram(makeName(bn,"n1_pt"),        nBins_pt,  min_pt,  max_pt,  "p_{T}","N");
@@ -134,12 +167,27 @@ void ParticleHistos::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(__FUNCTION__,inputFile)) return;
-
+  const TString & bn  = getName();
+  const TString & ptn = getParentTaskName();
+  const TString & ppn = getParentPathName();
   Configuration & configuration = getConfiguration();
-  fillEta    = configuration.getValueBool("fillEta");
-  fillY      = configuration.getValueBool("fillY");
-  fillP2     = configuration.getValueBool("fillP2");
-  TString bn = getHistoBaseName();
+
+  setReportLevel(MessageLogger::Debug);
+
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  Part:Parent Task Name....................: " << ptn << endl;
+    cout << "  Part:Parent Path Name....................: " << ppn << endl;
+    cout << "  Part:Histo Base Name.....................: " << bn << endl;
+    cout << "  Part:FillEta.............................: " << fillEta << endl;
+    cout << "  Part:FillY...............................: " << fillY   << endl;
+    cout << "  Part:FillP2..............................: " << fillP2  << endl;
+    }
+
+  fillEta      = configuration.getValueBool(ppn,"FillEta");
+  fillY        = configuration.getValueBool(ppn,"FillY");
+  fillP2       = configuration.getValueBool(ppn,"FillP2");
   h_n1         = loadH1(inputFile,  makeName(bn,"n1"));
   h_n1_eTotal  = loadH1(inputFile,  makeName(bn,"n1_eTotal"));
   h_n1_pt      = loadH1(inputFile,  makeName(bn,"n1_pt"));
@@ -174,10 +222,21 @@ void ParticleHistos::loadCalibration(TFile * inputFile)
     ;
   if (!ptrFileExist(__FUNCTION__,inputFile)) return;
 
+  const TString & bn  = getName();
+  const TString & ptn = getParentTaskName();
+  const TString & ppn = getParentPathName();
   Configuration & configuration = getConfiguration();
   useEffCorrection = true;
-  efficiencyOpt    = configuration.getValueInt("efficientOpt");
-  TString bn = getHistoBaseName();
+  efficiencyOpt    = configuration.getValueInt(ppn,"efficientOpt");
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  Part:Parent Task Name....................: " << ptn << endl;
+    cout << "  Part:Parent Path Name....................: " << ppn << endl;
+    cout << "  Part:Histo Base Name.....................: " << bn << endl;
+    cout << "  Part:useEffCorrection....................: " << useEffCorrection << endl;
+    cout << "  Part:efficiencyOpt.......................: " << efficiencyOpt   << endl;
+    }
 
   switch (efficiencyOpt)
     {

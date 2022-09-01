@@ -64,7 +64,7 @@ public:
   //!
   //!Assignment operator (COPY)
   //!
-  GraphConfiguration & operator=(const GraphConfiguration & other);
+  GraphConfiguration & operator=(const GraphConfiguration & source);
   
   //!
   //! Set the default graph configuration

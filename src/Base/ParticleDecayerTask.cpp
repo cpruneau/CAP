@@ -13,26 +13,22 @@
 
 ClassImp(ParticleDecayerTask);
 
-ParticleDecayerTask::ParticleDecayerTask(const TString &         _name,
-                                         const Configuration &   _configuration,
+ParticleDecayerTask::ParticleDecayerTask(const TString & _name,
+                                         Configuration &   _configuration,
                                          vector<EventFilter*>    _eventFilters,
-                                         vector<ParticleFilter*> _particleFilters,
-                                         LogLevel                _selectedLevel)
+                                         vector<ParticleFilter*> _particleFilters)
 :
-Task(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel),
+Task(_name, _configuration, _eventFilters, _particleFilters),
 decayer()
 {
   appendClassName("ParticleDecayerTask");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
  }
 
 void ParticleDecayerTask::setDefaultConfiguration()
 {
-  configuration.setName("ParticleDecayerTask Configuration");
-  configuration.setParameter("useParticles",    true );
-  configuration.setParameter("useEventStream0", true );
+  Task::setDefaultConfiguration();
+  setParameter("UseParticles",    true );
+  setParameter("UseEventStream0", true );
 }
 
 // ====================================================================

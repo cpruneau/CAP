@@ -149,8 +149,8 @@ double Global2DFitFunction(double *x, double *par)
 }
 
 
-BidimGaussFitter::BidimGaussFitter(const TString &           _name,
-                                   const Configuration &     _configuration,
+BidimGaussFitter::BidimGaussFitter(const TString & _name,
+                                   Configuration &     _configuration,
                                    LogLevel                  _requiredLevel)
 :
 Plotter(_name,_configuration,_requiredLevel),
@@ -336,7 +336,7 @@ void BidimGaussFitter::projectHistoAndFit(TH2 *dataHist,
                                           double yLow,
                                           double yHigh,
                                           const BidimGaussFitConfiguration & fitConfig,
-                                          const TString & label)
+                                          Configuration & label)
 {
   TString baseName = dataHist->GetName();
   baseName += label;
@@ -401,7 +401,7 @@ void BidimGaussFitter::projectFlowComponents(TH2 *dataHist,
                                              double yLow,
                                              double yHigh,
                                              const BidimGaussFitConfiguration & fitConfig,
-                                             const TString & label)
+                                             Configuration & label)
 {
   int nPar = f->GetNpar();
   int first;
@@ -1134,7 +1134,7 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
 //  dipHist->Add(func, -1);
 //  dipHist->DrawCopy("surf1");
 //
-//  double yieldIntegral = peakHist->Integral("width");
+//  double yieldIntegral = peakHist->Integral("Width");
 //  double integral = 0, integralError = 0;
 //  double integralAll = 0, integralErrorAll = 0;
 //  double centralExclusionForDip = 0.04; //0.08 for normal binning
@@ -1152,13 +1152,13 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
 //                                              dipHistClone->GetXaxis()->FindBin(deltaEtaExclusionRegion),dipyAxisHist->FindBin(-deltaEtaExclusionRegion),
 //                                              dipyAxisHist->FindBin(deltaEtaExclusionRegion),
 //                                              integralError,
-//                                              "width");
+//                                              "Width");
 //    delete dipHistClone;
 //    }
 //  integralAll = dipHist->IntegralAndError(fitConfig.bwdDeltaEtaOuterLimitBin,fitConfig.fwdDeltaEtaOuterLimitBin,
 //                                          fitConfig.deltaPhiLowLimitBin,fitConfig.deltaPhiHighLimitBin,
 //                                          integralErrorAll,
-//                                          "width");
+//                                          "Width");
 
 
 
@@ -1206,7 +1206,7 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
 
   if (reportInfo("BidimGaussFitter","2D Gauss Fit","fullFit(const BidimGaussConfig &fitConfig,const TH2 *data)"))
     {
-    cout << endl << "DONE!!!!!!!!!!!!!!!!" << endl;
+    cout << endl << "DoNE!!!!!!!!!!!!!!!!" << endl;
     }
 
  
@@ -1244,14 +1244,14 @@ void BidimGaussFitter::setOuterRangeByBin(TH2* h, const BidimGaussFitConfigurati
 }
 
 
-TH1* BidimGaussFitter::cloneAndReset(const TH1* h, const TString & hName)
+TH1* BidimGaussFitter::cloneAndReset(const TH1* h, Configuration & hName)
 {
   TH1 * clone = (TH1*) h->Clone(hName);
   clone->Reset();
   return clone;
 }
 
-TH1* BidimGaussFitter::cloneAndSetWithFct(const TH1* h,   TF1* f, const TString & hName)
+TH1* BidimGaussFitter::cloneAndSetWithFct(const TH1* h,   TF1* f, Configuration & hName)
 {
   TH1 * clone = (TH1*) h->Clone(hName);
   clone->Reset();
@@ -1259,14 +1259,14 @@ TH1* BidimGaussFitter::cloneAndSetWithFct(const TH1* h,   TF1* f, const TString 
   return clone;
 }
 
-TH2* BidimGaussFitter::cloneAndReset(const TH2* h, const TString & hName)
+TH2* BidimGaussFitter::cloneAndReset(const TH2* h, Configuration & hName)
 {
   TH2 * clone = (TH2*) h->Clone(hName);
   clone->Reset();
   return clone;
 }
 
-TH2* BidimGaussFitter::cloneAndSetWithFct(const TH2* h,   TF2* f, const TString & hName)
+TH2* BidimGaussFitter::cloneAndSetWithFct(const TH2* h,   TF2* f, Configuration & hName)
 {
   TH2 * clone = (TH2*) h->Clone(hName);
   clone->Reset();

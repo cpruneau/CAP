@@ -32,7 +32,7 @@ private:
   double deltaN_qmu_term2;
 
 public:
-  Eos(const TString & name, double gSpin, double _mass);
+  Eos(const TString & _name, double gSpin, double _mass);
   Eos(const Eos & source);
   virtual ~Eos();
   Eos & operator=(const Eos & source);

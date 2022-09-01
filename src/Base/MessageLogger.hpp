@@ -135,22 +135,22 @@ public:
   //!
   //!Append the given string to the class name sequence of this object instance.
   //!
-  inline void appendClassName(const TString & _className)
+  inline void appendClassName(const TString &  _className)
   {
   className += "/";
   className += _className;
   }
 
-  inline void setClassName(const TString & _className)
+  inline void setClassName(const TString &  _className)
   {
   className = _className;
   }
 
-  inline void setInstanceName(const TString & _instanceName) { instanceName = _instanceName;  }
-  inline void setFunctionName(const TString & _fctName) { fctName = _fctName;   }
-  inline const TString & getClassName()     const    { return className; }
-  inline const TString & getInstanceName()  const    { return instanceName; }
-  inline const TString & getFunctionName() const    { return fctName; }
+  inline void setInstanceName(const TString &  _instanceName) { instanceName = _instanceName;  }
+  inline void setFunctionName(const TString &  _fctName) { fctName = _fctName;   }
+  inline const TString &  getClassName()     const    { return className; }
+  inline const TString &  getInstanceName()  const    { return instanceName; }
+  inline const TString &  getFunctionName() const    { return fctName; }
 
   bool reportStart  (ostream & output=cout) const;
   bool reportEnd    (ostream & output=cout) const;
@@ -160,23 +160,23 @@ public:
   bool reportError(ostream & output=cout) const;
   bool reportFatal(ostream & output=cout) const;
 
-  bool reportDebug  (const TString & fctName, ostream & output=cout) const;
-  bool reportNoOps  (const TString & fctName, ostream & output=cout) const;
-  bool reportStart  (const TString & fctName, ostream & output=cout) const;
-  bool reportEnd    (const TString & fctName, ostream & output=cout) const;
-  bool reportInfo   (const TString & fctName, ostream & output=cout) const;
-  bool reportWarning(const TString & fctName, ostream & output=cout) const;
-  bool reportError  (const TString & fctName, ostream & output=cout) const;
-  bool reportFatal  (const TString & fctName, ostream & output=cout) const;
+  bool reportDebug  (const TString &  fctName, ostream & output=cout) const;
+  bool reportNoOps  (const TString &  fctName, ostream & output=cout) const;
+  bool reportStart  (const TString &  fctName, ostream & output=cout) const;
+  bool reportEnd    (const TString &  fctName, ostream & output=cout) const;
+  bool reportInfo   (const TString &  fctName, ostream & output=cout) const;
+  bool reportWarning(const TString &  fctName, ostream & output=cout) const;
+  bool reportError  (const TString &  fctName, ostream & output=cout) const;
+  bool reportFatal  (const TString &  fctName, ostream & output=cout) const;
 
-  bool reportDebug  (const TString & className, const TString & instanceName, const TString & fctName, ostream & output=cout) const;
-  bool reportNoOps  (const TString & className, const TString & instanceName, const TString & fctName, ostream & output=cout) const;
-  bool reportStart  (const TString & className, const TString & instanceName, const TString & fctName, ostream & output=cout) const;
-  bool reportEnd    (const TString & className, const TString & instanceName, const TString & fctName, ostream & output=cout) const;
-  bool reportInfo   (const TString & className, const TString & instanceName, const TString & fctName, ostream & output=cout) const;
-  bool reportWarning(const TString & className, const TString & instanceName, const TString & fctName, ostream & output=cout) const;
-  bool reportError  (const TString & className, const TString & instanceName, const TString & fctName, ostream & output=cout) const;
-  bool reportFatal  (const TString & className, const TString & instanceName, const TString & fctName, ostream & output=cout) const;
+  bool reportDebug  (const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output=cout) const;
+  bool reportNoOps  (const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output=cout) const;
+  bool reportStart  (const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output=cout) const;
+  bool reportEnd    (const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output=cout) const;
+  bool reportInfo   (const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output=cout) const;
+  bool reportWarning(const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output=cout) const;
+  bool reportError  (const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output=cout) const;
+  bool reportFatal  (const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output=cout) const;
 
   //!
   //! Return the current task status of all ongoing tasks in this job.
@@ -236,19 +236,19 @@ public:
   static TString errorString;
   static TString fatalString;
 
-  bool ptrFileExist(const TString & caller, const TFile * f) const;
-  bool ptrExist(const TString & caller, const TH1 * h1)  const;
-  bool ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2) const;
-  bool ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3) const;
-  bool ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4) const;
-  bool ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5) const;
-  bool ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6) const;
-  bool ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7) const;
-  bool ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8) const;
-  bool ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9) const;
-  bool ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10) const;
-  bool ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11) const;
-  bool ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11, const TH1 * h12) const;
+  bool ptrFileExist(const TString &  caller, const TFile * f) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1)  const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11, const TH1 * h12) const;
 
   bool ptrFileExist(const TFile * f) const;
   bool ptrExist(const TH1 * h1)  const;

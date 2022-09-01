@@ -13,8 +13,8 @@
 
 ClassImp(MessageLogger);
 
-TString MessageLogger::startString   = "<DS> ";
-TString MessageLogger::endString     = "<DE> ";
+TString MessageLogger::startString   = "<S> ";
+TString MessageLogger::endString     = "<T> ";
 TString MessageLogger::debugString   = "<D> ";
 TString MessageLogger::infoString    = "<I> ";
 TString MessageLogger::warningString = "<W> ";
@@ -22,7 +22,7 @@ TString MessageLogger::errorString   = "<E> ";
 TString MessageLogger::fatalString   = "<F> ";
 MessageLogger::TaskStatus MessageLogger::taskStatus = MessageLogger::TaskOk;
 
-bool MessageLogger::reportDebug(const TString & fctName, ostream & output) const
+bool MessageLogger::reportDebug(const TString &  fctName, ostream & output) const
 {
  if (reportLevel<=Debug)
    {
@@ -33,7 +33,7 @@ bool MessageLogger::reportDebug(const TString & fctName, ostream & output) const
    return false;
 }
 
-bool MessageLogger::reportNoOps(const TString & fctName, ostream & output) const
+bool MessageLogger::reportNoOps(const TString &  fctName, ostream & output) const
 {
  if (reportLevel<=Debug)
    {
@@ -44,7 +44,7 @@ bool MessageLogger::reportNoOps(const TString & fctName, ostream & output) const
    return false;
 }
 
-bool MessageLogger::reportStart(const TString & fctName, ostream & output) const
+bool MessageLogger::reportStart(const TString &  fctName, ostream & output) const
 {
  if (reportLevel<=Debug)
    {
@@ -55,7 +55,7 @@ bool MessageLogger::reportStart(const TString & fctName, ostream & output) const
    return false;
 }
 
-bool MessageLogger::reportEnd(const TString & fctName, ostream & output) const
+bool MessageLogger::reportEnd(const TString &  fctName, ostream & output) const
 {
  if (reportLevel<=Debug)
    {
@@ -67,7 +67,7 @@ bool MessageLogger::reportEnd(const TString & fctName, ostream & output) const
 }
 
 
-bool MessageLogger::reportInfo(const TString & fctName, ostream & output) const
+bool MessageLogger::reportInfo(const TString &  fctName, ostream & output) const
 {
  if (reportLevel<=Info)
    {
@@ -79,7 +79,7 @@ bool MessageLogger::reportInfo(const TString & fctName, ostream & output) const
 }
 
 
-bool MessageLogger::reportWarning(const TString & fctName, ostream & output) const
+bool MessageLogger::reportWarning(const TString &  fctName, ostream & output) const
 {
   postTaskWarning();
  if (reportLevel<=Warning)
@@ -92,7 +92,7 @@ bool MessageLogger::reportWarning(const TString & fctName, ostream & output) con
 }
 
 
-bool MessageLogger::reportError(const TString & fctName, ostream & output) const
+bool MessageLogger::reportError(const TString &  fctName, ostream & output) const
 {
   postTaskError();
  if (reportLevel<=Error)
@@ -104,7 +104,7 @@ bool MessageLogger::reportError(const TString & fctName, ostream & output) const
    return false;
 }
 
-bool MessageLogger::reportFatal(const TString & fctName, ostream & output) const
+bool MessageLogger::reportFatal(const TString &  fctName, ostream & output) const
 {
   postTaskFatal();
  if (reportLevel<=Fatal)
@@ -116,7 +116,7 @@ bool MessageLogger::reportFatal(const TString & fctName, ostream & output) const
    return false;
 }
 
-bool MessageLogger::reportDebug(const TString & className, const TString & instanceName, const TString & fctName, ostream & output) const
+bool MessageLogger::reportDebug(const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output) const
 {
  if (reportLevel<=Debug)
    {
@@ -127,7 +127,7 @@ bool MessageLogger::reportDebug(const TString & className, const TString & insta
    return false;
 }
 
-bool MessageLogger::reportNoOps(const TString & className, const TString & instanceName, const TString & fctName, ostream & output) const
+bool MessageLogger::reportNoOps(const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output) const
 {
  if (reportLevel<=Debug)
    {
@@ -138,7 +138,7 @@ bool MessageLogger::reportNoOps(const TString & className, const TString & insta
    return false;
 }
 
-bool MessageLogger::reportStart(const TString & className, const TString & instanceName, const TString & fctName, ostream & output) const
+bool MessageLogger::reportStart(const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output) const
 {
  if (reportLevel<=Debug)
    {
@@ -149,7 +149,7 @@ bool MessageLogger::reportStart(const TString & className, const TString & insta
    return false;
 }
 
-bool MessageLogger::reportEnd(const TString & className, const TString & instanceName, const TString & fctName, ostream & output) const
+bool MessageLogger::reportEnd(const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output) const
 {
  if (reportLevel<=Debug)
    {
@@ -161,7 +161,7 @@ bool MessageLogger::reportEnd(const TString & className, const TString & instanc
 }
 
 
-bool MessageLogger::reportInfo(const TString & className, const TString & instanceName, const TString & fctName, ostream & output) const
+bool MessageLogger::reportInfo(const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output) const
 {
  if (reportLevel<=Info)
    {
@@ -173,7 +173,7 @@ bool MessageLogger::reportInfo(const TString & className, const TString & instan
 }
 
 
-bool MessageLogger::reportWarning(const TString & className, const TString & instanceName, const TString & fctName, ostream & output) const
+bool MessageLogger::reportWarning(const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output) const
 {
   postTaskWarning();
  if (reportLevel<=Warning)
@@ -186,7 +186,7 @@ bool MessageLogger::reportWarning(const TString & className, const TString & ins
 }
 
 
-bool MessageLogger::reportError(const TString & className, const TString & instanceName, const TString & fctName, ostream & output) const
+bool MessageLogger::reportError(const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output) const
 {
   postTaskError();
  if (reportLevel<=Error)
@@ -198,7 +198,7 @@ bool MessageLogger::reportError(const TString & className, const TString & insta
    return false;
 }
 
-bool MessageLogger::reportFatal(const TString & className, const TString & instanceName, const TString & fctName, ostream & output) const
+bool MessageLogger::reportFatal(const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output) const
 {
   postTaskFatal();
  if (reportLevel<=Fatal)
@@ -311,7 +311,7 @@ TString MessageLogger::getTaskStatusName()
 
 // sanity check functions
 
-bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1) const
+bool MessageLogger::ptrExist(const TString &  caller, const TH1 * h1) const
 {
   bool allGood = true;
   if (!h1)
@@ -322,7 +322,7 @@ bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1) const
   return allGood;
 }
 
-bool MessageLogger::ptrFileExist(const TString & caller, const TFile * f) const
+bool MessageLogger::ptrFileExist(const TString &  caller, const TFile * f) const
 {
   bool allGood = true;
   if (!f)
@@ -333,7 +333,7 @@ bool MessageLogger::ptrFileExist(const TString & caller, const TFile * f) const
   return allGood;
 }
 
-bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2) const
+bool MessageLogger::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2) const
 {
   bool allGood = true;
   if (!h1)
@@ -349,7 +349,7 @@ bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 *
   return allGood;
 }
 
-bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3) const
+bool MessageLogger::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3) const
 {
   bool allGood = true;
   if (!h1)
@@ -370,7 +370,7 @@ bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 *
   return allGood;
 }
 
-bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4) const
+bool MessageLogger::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4) const
 {
   bool allGood = true;
   if (!h1)
@@ -396,7 +396,7 @@ bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 *
   return allGood;
 }
 
-bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5) const
+bool MessageLogger::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5) const
 {
   bool allGood = true;
   if (!h1)
@@ -427,7 +427,7 @@ bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 *
   return allGood;
 }
 
-bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6) const
+bool MessageLogger::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6) const
 {
   bool allGood = true;
   if (!h1)
@@ -463,7 +463,7 @@ bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 *
   return allGood;
 }
 
-bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7) const
+bool MessageLogger::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7) const
 {
   bool allGood = true;
   if (!h1)
@@ -504,7 +504,7 @@ bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 *
   return allGood;
 }
 
-bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
+bool MessageLogger::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
                                    const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8) const
 {
   bool allGood = true;
@@ -551,7 +551,7 @@ bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 *
   return allGood;
 }
 
-bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
+bool MessageLogger::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
                                    const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7,
                                    const TH1 * h8, const TH1 * h9) const
 {
@@ -604,7 +604,7 @@ bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 *
   return allGood;
 }
 
-bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
+bool MessageLogger::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
                                    const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7,
                                    const TH1 * h8, const TH1 * h9, const TH1 * h10) const
 {
@@ -662,7 +662,7 @@ bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 *
   return allGood;
 }
 
-bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
+bool MessageLogger::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
                                    const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7,
                                    const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11) const
 {
@@ -725,7 +725,7 @@ bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 *
   return allGood;
 }
 
-bool MessageLogger::ptrExist(const TString & caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
+bool MessageLogger::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
                                    const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7,
                                    const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11, const TH1 * h12) const
 {

@@ -8,35 +8,31 @@
 #include "HadronGasHistograms.hpp"
 ClassImp(HadronGasHistograms);
 
-HadronGasHistograms::HadronGasHistograms(const TString &       _name,
-                                         const Configuration & _config,
-                                         HadronGas *           _hadronGas,
-                                         LogLevel              _debugLevel)
+HadronGasHistograms::HadronGasHistograms(Task * _parent,
+                                         const TString & _name,
+                                         Configuration & _config,
+                                         HadronGas * _hadronGas)
 :
-Histograms(_name,_config,_debugLevel),
+Histograms(_parent,_name,_config),
 hadronGas(_hadronGas)
-{
-  // no ops
-}
-
-HadronGasHistograms::~HadronGasHistograms()
 {
   // no ops
 }
 
 void HadronGasHistograms::createHistograms()
 {
-  if (reportStart("HadronGasHistograms",getName(),"createHistograms()"))
+  if (reportStart(__FUNCTION__))
     ;
-  TString bn = getHistoBaseName();
-  const Configuration & config = getConfiguration();
-  int nMass      = config.getValueInt("nMass");
-  double minMass = config.getValueDouble("minMass");
-  double maxMass = config.getValueDouble("maxMass");
+  TString bn = getParentTaskName();
+  TString pn = getParentName();
+  Configuration & config = getConfiguration();
+  int nMass      = config.getValueInt(pn,"nMass");
+  double minMass = config.getValueDouble(pn,"MinMass");
+  double maxMass = config.getValueDouble(pn,"MaxMass");
   
-  int nP      = config.getValueInt("nP");
-  double minP = config.getValueDouble("minP");
-  double maxP = config.getValueDouble("maxP");
+  int nP      = config.getValueInt(pn,"nP");
+  double minP = config.getValueDouble(pn,"MinP");
+  double maxP = config.getValueDouble(pn,"MaxP");
 
   int nSpecies       = hadronGas->particleTypes->size();
   int nStableSpecies = hadronGas->stableParticleTypes->size();
@@ -144,13 +140,13 @@ void HadronGasHistograms::createHistograms()
     histoName += iSpecies; //hadronGas->getParticleType(iSpecies)->getName();
     h_rho1ThVsP[iSpecies] = createHistogram(histoName,nP,minP,maxP,"p (GeV/c)","#rho_{1}^{Th} (c/GeV)");
     }
-  if (reportEnd("HadronGasHistograms",getName(),"createHistograms()"))
+  if (reportEnd(__FUNCTION__))
     ;
 }
 
 void HadronGasHistograms::fillBf(int trig, int sameSignAssoc, int oppSignAssoc, int bfIndex)
 {
-  if (reportStart("HadronGasHistograms",getName(),"fillBf(..)"))
+  if (reportStart("HadronGasHistograms",getName(),"FillBf(..)"))
     ;
   double sameSignAssocYield = h_rho1->GetBinContent(sameSignAssoc);
   double oppSignAssocYield  = h_rho1->GetBinContent(oppSignAssoc);
@@ -159,18 +155,18 @@ void HadronGasHistograms::fillBf(int trig, int sameSignAssoc, int oppSignAssoc, 
   double bf = oppSignAssocYield*oppSignPair - sameSignAssocYield*sameSignPair;
   h_BF->SetBinContent(bfIndex, bf);
   h_BF->SetBinError(bfIndex, 0.0);
-  if (reportEnd("HadronGasHistograms",getName(),"fillBf(..)"))
+  if (reportEnd("HadronGasHistograms",getName(),"FillBf(..)"))
     ;
 }
 
 void HadronGasHistograms::fillRho1VsP(HadronGas & hadronGas, double volume)
 {
-  if (reportStart("HadronGasHistograms",getName(),"fillRho1VsP(..)"))
+  if (reportStart("HadronGasHistograms",getName(),"FillRho1VsP(..)"))
     ;
-  const Configuration & config = getConfiguration();
-  int    nP   = config.getValueInt("nP");
-  double minP = config.getValueDouble("minP");
-  double maxP = config.getValueDouble("maxP");
+  Configuration & config = getConfiguration();
+  int    nP   = config.getValueInt(getName(),"nP");
+  double minP = getValueDouble("MinP");
+  double maxP = getValueDouble("MaxP");
   double deltaP = (maxP - minP)/double(nP);
   
   double zero = 0.0;
@@ -193,7 +189,7 @@ void HadronGasHistograms::fillRho1VsP(HadronGas & hadronGas, double volume)
       p += deltaP;
       }
     }
-  if (reportEnd("HadronGasHistograms",getName(),"fillRho1VsP(..)"))
+  if (reportEnd("HadronGasHistograms",getName(),"FillRho1VsP(..)"))
     ;
 }
 
@@ -291,7 +287,7 @@ void HadronGasHistograms::loadHistograms(TFile * inputFile)
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
   //HadronGasConfiguration & ac = *(HadronGasConfiguration*) getConfiguration();
-  TString bn  = getHistoBaseName();
+  TString bn  = getParentTaskName();
   h_rho1All   = loadH1(inputFile,makeName(bn,"rho1All"));
   if (!h_rho1All)
     {

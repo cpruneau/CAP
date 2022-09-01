@@ -13,11 +13,11 @@
 
 ClassImp(ParticlePairHistos);
 
-ParticlePairHistos::ParticlePairHistos(const TString &       _name,
-                                       const Configuration & _configuration,
-                                       LogLevel  _debugLevel)
+ParticlePairHistos::ParticlePairHistos(Task * _parent,
+                                       const TString & _name,
+                                       Configuration & _configuration)
 :
-Histograms(_name,_configuration,_debugLevel),
+Histograms(_parent,_name,_configuration),
 nBins_n1(0),
 min_n1(0),
 max_n1(0),
@@ -74,39 +74,35 @@ h_n2_DyDphi(nullptr),
 h_DptDpt_DyDphi(nullptr)
 {
   appendClassName("ParticlePairHistos");
-  setInstanceName(_name);
-}
-
-ParticlePairHistos::~ParticlePairHistos()
-{
-  // no ops
 }
 
 void ParticlePairHistos::createHistograms()
 {
-  if ( reportStart("ParticlePairHistos",getName(),"createHistograms()"))
+  if ( reportStart(__FUNCTION__))
     { }
-  TString bn = getHistoBaseName();
-  
+
+  const TString & bn  = getName();
+  const TString & ptn = getParentTaskName();
+  const TString & ppn = getParentPathName();
   Configuration & configuration = getConfiguration();
 
-  nBins_n2  = configuration.getValueInt("nBins_n2");
-  min_n2    = configuration.getValueDouble("min_n2");
-  max_n2    = configuration.getValueDouble("max_n2");
+  nBins_n2  = configuration.getValueInt(ppn,   "nBins_n2");
+  min_n2    = configuration.getValueDouble(ppn,"Min_n2");
+  max_n2    = configuration.getValueDouble(ppn,"Max_n2");
   
-  nBins_n2  = configuration.getValueInt("nBins_n2");
-  min_n2    = configuration.getValueDouble("min_n2");
-  max_n2    = configuration.getValueDouble("max_n2");
+  nBins_n2  = configuration.getValueInt(ppn,   "nBins_n2");
+  min_n2    = configuration.getValueDouble(ppn,"Min_n2");
+  max_n2    = configuration.getValueDouble(ppn,"Max_n2");
 
-  nBins_pt = configuration.getValueInt("nBins_pt");
-  min_pt   = configuration.getValueDouble("min_pt");
-  max_pt   = configuration.getValueDouble("max_pt");
+  nBins_pt = configuration.getValueInt(ppn,   "nBins_pt");
+  min_pt   = configuration.getValueDouble(ppn,"Min_pt");
+  max_pt   = configuration.getValueDouble(ppn,"Max_pt");
   range_pt = max_pt - min_pt;
   scale_pt = double(nBins_pt)/range_pt;
 
-  nBins_phi   = configuration.getValueInt("nBins_phi");
-  min_phi     = configuration.getValueDouble("min_phi");
-  max_phi     = configuration.getValueDouble("max_phi");
+  nBins_phi   = configuration.getValueInt(ppn,   "nBins_phi");
+  min_phi     = configuration.getValueDouble(ppn,"Min_phi");
+  max_phi     = configuration.getValueDouble(ppn,"Max_phi");
   range_phi   = max_phi - min_phi;
   scale_phi   = double(nBins_phi)/range_phi;
   width_Dphi  = range_phi/double(nBins_phi);
@@ -118,9 +114,9 @@ void ParticlePairHistos::createHistograms()
   min_Dphi_shft    = min_Dphi - width_Dphi*double(nBins_Dphi_shft);
   max_Dphi_shft    = max_Dphi - width_Dphi*double(nBins_Dphi_shft);
 
-  nBins_eta = configuration.getValueInt("nBins_eta");
-  min_eta   = configuration.getValueDouble("min_eta");
-  max_eta   = configuration.getValueDouble("max_eta");
+  nBins_eta = configuration.getValueInt(ppn,   "nBins_eta");
+  min_eta   = configuration.getValueDouble(ppn,"Min_eta");
+  max_eta   = configuration.getValueDouble(ppn,"Max_eta");
   range_eta = max_eta - min_eta;
   scale_eta = double(nBins_eta)/range_eta;
 
@@ -128,28 +124,77 @@ void ParticlePairHistos::createHistograms()
   min_Deta  = -range_eta;
   max_Deta  = range_eta;
 
-
-  nBins_y = configuration.getValueInt("nBins_y");
-  min_y   = configuration.getValueDouble("min_y");
-  max_y   = configuration.getValueDouble("max_y");
+  nBins_y = configuration.getValueInt(ppn,   "nBins_y");
+  min_y   = configuration.getValueDouble(ppn,"Min_y");
+  max_y   = configuration.getValueDouble(ppn,"Max_y");
   range_y = max_y - min_y;
   scale_y = double(nBins_y)/range_y;
 
-  //  nBins_DeltaP  = configuration.getValueInt("nBins_DeltaP");
-  //  min_DeltaP    = configuration.getValueDouble("min_DeltaP");
-  //  max_DeltaP    = configuration.getValueDouble("max_DeltaP");
+  //  nBins_DeltaP  = configuration.getValueInt(ppn,"nBins_DeltaP");
+  //  min_DeltaP    = configuration.getValueDouble(ppn,"Min_DeltaP");
+  //  max_DeltaP    = configuration.getValueDouble(ppn,"Max_DeltaP");
 
   nBins_Dy  = 2*nBins_y-1;
   min_Dy    = -range_y;
   max_Dy    = range_y;
 
-  fillEta    = configuration.getValueBool("fillEta");
-  fillY      = configuration.getValueBool("fillY");
-  fillP2     = configuration.getValueBool("fillP2");
-  fill3D     = configuration.getValueBool("fill3D");
+  fillEta    = configuration.getValueBool(ppn,"FillEta");
+  fillY      = configuration.getValueBool(ppn,"FillY");
+  fillP2     = configuration.getValueBool(ppn,"FillP2");
+  //fill3D     = configuration.getValueBool(ppn,"Fill3D");
 
-  h_n2          = createHistogram(makeName(bn,"n2"),         nBins_n2,  min_n2, max_n2, "n_{2}", "Yield");
-  h_n2_ptpt     = createHistogram(makeName(bn,"n2_ptpt"),    nBins_pt,  min_pt, max_pt, nBins_pt, min_pt, max_pt,   "p_{T,1}",  "p_{T,2}", "N_{2}");
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  Pair:Parent Task Name....................: " << ptn << endl;
+    cout << "  Pair:Parent Path Name....................: " << ppn << endl;
+    cout << "  Pair:Histo Base Name.....................: " << bn << endl;
+    cout << "  Pair:FillEta.............................: " << fillEta     << endl;
+    cout << "  Pair:FillY...............................: " << fillY       << endl;
+    cout << "  Pair:FillP2..............................: " << fillP2      << endl;
+    cout << "  Pair:nBins_n2............................: " << nBins_n2    << endl;
+    cout << "  Pair:Min_n2..............................: " << min_n2      << endl;
+    cout << "  Pair:Max_n2..............................: " << max_n2      << endl;
+    cout << "  Pair:nBins_pt............................: " << nBins_pt      << endl;
+    cout << "  Pair:Min_pt..............................: " << min_pt        << endl;
+    cout << "  Pair:Max_pt..............................: " << max_pt        << endl;
+    cout << "  Pair:range_pt............................: " << range_pt      << endl;
+    cout << "  Pair:scale_pt............................: " << scale_pt      << endl;
+    cout << "  Pair:nBins_phi...........................: " << nBins_phi    << endl;
+    cout << "  Pair:Min_phi.............................: " << min_phi      << endl;
+    cout << "  Pair:Max_phi.............................: " << max_phi      << endl;
+    cout << "  Pair:range_phi...........................: " << range_phi    << endl;
+    cout << "  Pair:scale_phi...........................: " << scale_phi    << endl;
+    cout << "  Pair:width_Dphi..........................: " << width_Dphi   << endl;
+    cout << "  Pair:nBins_Dphi..........................: " << nBins_Dphi   << endl;
+    cout << "  Pair:min_Dphi............................: " << min_Dphi     << endl;
+    cout << "  Pair:max_Dphi............................: " << max_Dphi     << endl;
+    cout << "  Pair:nBins_Dphi_shft.....................: " << nBins_Dphi_shft << endl;
+    cout << "  Pair:min_Dphi_shft.......................: " << min_Dphi_shft   << endl;
+    cout << "  Pair:max_Dphi_shft.......................: " << max_Dphi_shft   << endl;
+    cout << "  Pair:nBins_eta...........................: " << nBins_eta    << endl;
+    cout << "  Pair:Min_eta.............................: " << min_eta      << endl;
+    cout << "  Pair:Max_eta.............................: " << max_eta      << endl;
+    cout << "  Pair:range_eta...........................: " << range_eta    << endl;
+    cout << "  Pair:scale_eta...........................: " << scale_eta    << endl;
+    cout << "  Pair:nBins_Deta..........................: " << nBins_Deta   << endl;
+    cout << "  Pair:min_Deta............................: " << min_Deta     << endl;
+    cout << "  Pair:max_Deta............................: " << max_Deta     << endl;
+    cout << "  Pair:nBins_y.............................: " << nBins_y      << endl;
+    cout << "  Pair:Min_y...............................: " << min_y        << endl;
+    cout << "  Pair:Max_y...............................: " << max_y        << endl;
+    cout << "  Pair:range_y.............................: " << range_y      << endl;
+    cout << "  Pair:scale_y.............................: " << scale_y      << endl;
+    cout << "  Pair:nBins_Dy............................: " << nBins_Dy     << endl;
+    cout << "  Pair:Min_Dy..............................: " << min_Dy       << endl;
+    cout << "  Pair:Max_Dy..............................: " << max_Dy       << endl;
+//    cout << "  Pair:nBins_DeltaP........................: " << standaloneMode      << endl;
+//    cout << "  Pair:Min_DeltaP..........................: " << standaloneMode      << endl;
+//    cout << "  Pair:Max_DeltaP..........................: " << standaloneMode      << endl;
+    }
+
+  h_n2          = createHistogram(makeName(bn,"n2"),         nBins_n2,  min_n2,  max_n2, "n_{2}", "Yield");
+  h_n2_ptpt     = createHistogram(makeName(bn,"n2_ptpt"),    nBins_pt,  min_pt,  max_pt, nBins_pt, min_pt, max_pt,   "p_{T,1}",  "p_{T,2}", "N_{2}");
   h_n2_phiPhi   = createHistogram(makeName(bn,"n2_phiPhi"),  nBins_phi, min_phi, max_phi, nBins_phi, min_phi, max_phi, "#varphi_{1}", "#varphi_{2}", "N_{2}");
 
   if (fillP2)
@@ -188,7 +233,7 @@ void ParticlePairHistos::createHistograms()
   //                                     "p_{s}","p_{o}", "p_{l}","n_{2}");
   //    }
 
-  if ( reportEnd("ParticlePairHistos",getName(),"createHistograms()"))
+  if ( reportEnd("ParticlePairHistos",ppn,"createHistograms()"))
     { }
 }
 
@@ -198,11 +243,23 @@ void ParticlePairHistos::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  TString bn = getHistoBaseName();
+  const TString & bn  = getName();
+  const TString & ptn = getParentTaskName();
+  const TString & ppn = getParentPathName();
   Configuration & configuration = getConfiguration();
-  fillEta    = configuration.getValueBool("fillEta");
-  fillY      = configuration.getValueBool("fillY");
-  fillP2     = configuration.getValueBool("fillP2");
+  fillEta       = configuration.getValueBool(ppn,"FillEta");
+  fillY         = configuration.getValueBool(ppn,"FillY");
+  fillP2        = configuration.getValueBool(ppn,"FillP2");
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  Pair:Parent Task Name....................: " << ptn << endl;
+    cout << "  Pair:Parent Path Name....................: " << ppn << endl;
+    cout << "  Pair:Histo Base Name.....................: " << bn << endl;
+    cout << "  Pair:FillEta.............................: " << fillEta     << endl;
+    cout << "  Pair:FillY...............................: " << fillY       << endl;
+    cout << "  Pair:FillP2..............................: " << fillP2      << endl;
+    }
   h_n2          = loadH1(inputFile, makeName(bn,"n2"));
   h_n2_ptpt     = loadH2(inputFile, makeName(bn,"n2_ptpt"));
   h_n2_phiPhi   = loadH2(inputFile, makeName(bn,"n2_phiPhi"));
@@ -430,13 +487,12 @@ void ParticlePairHistos::fill(vector<ParticleDigit*> & particle1, vector<Particl
       }
     }
   h_n2->Fill(double(nPairs),weight);
-
-
 }
 
 void ParticlePairHistos::fill(Particle & particle1, Particle & particle2, double weight)
 {
-
+//  if (reportInfo(__FUNCTION__))
+//    ;
   TLorentzVector & momentum1 = particle1.getMomentum();
   double pt1   = momentum1.Pt();
   double e1    = momentum1.E();
@@ -481,6 +537,7 @@ void ParticlePairHistos::fill(Particle & particle1, Particle & particle2, double
       h_DptDpt_DyDphi->Fill(dy,dphi,weight*pt1*pt2); // needs attention
       }
     }
-  //  h_n2->Fill(double(nPairs),weight);
+//  if (reportInfo(__FUNCTION__))
+//    ;
 }
 

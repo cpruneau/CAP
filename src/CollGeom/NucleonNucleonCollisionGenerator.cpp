@@ -14,25 +14,18 @@
 
 ClassImp(NucleonNucleonCollisionGenerator);
 
-NucleonNucleonCollisionGenerator::NucleonNucleonCollisionGenerator(const TString &         _name,
-                                                                   const Configuration &   _configuration,
-                                                                   vector<EventFilter*>&   _eventFilters,
-                                                                   vector<ParticleFilter*>&_particleFilters,
-                                                                   LogLevel                _selectedLevel)
+NucleonNucleonCollisionGenerator::NucleonNucleonCollisionGenerator(const TString & _name,
+                                                                   Configuration & _configuration,
+                                                                   vector<EventFilter*>& _eventFilters,
+                                                                   vector<ParticleFilter*>&_particleFilters)
 :
-Task(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel)
+Task(_name, _configuration, _eventFilters, _particleFilters)
 {
   appendClassName("NucleonNucleonCollisionGenerator");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void NucleonNucleonCollisionGenerator::generate(Particle * parent)
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
   incrementTaskExecuted();
 }
 

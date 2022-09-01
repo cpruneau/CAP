@@ -13,35 +13,24 @@
 
 ClassImp(ParticleTypeTableLoader);
 
-ParticleTypeTableLoader:: ParticleTypeTableLoader(const TString &         _name,
-                                                  const Configuration &   _configuration,
-                                                  LogLevel                _selectedLevel)
+ParticleTypeTableLoader:: ParticleTypeTableLoader(const TString & _name,
+                                                  Configuration & _configuration)
 :
-Task(_name,_configuration,_selectedLevel)
+Task(_name,_configuration)
 {
   appendClassName("ParticleTypeTableLoader");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void ParticleTypeTableLoader::setDefaultConfiguration()
 {
-  if (reportStart(__FUNCTION__))
-    ;
-  Configuration & configuration = getConfiguration();
-  configuration.setName("ParticleTypeTableLoader Configuration");
-  configuration.setParameter("useParticles",      true);
-  configuration.setParameter("dataInputUsed",     true);
-  configuration.setParameter("dataInputPath",     TString(getenv("CAP_DATA")));
-  configuration.setParameter("dataInputFileName", TString("ParticleTypeData.dat"));
-  configuration.setParameter("dataOutputUsed",    false);
-  configuration.setParameter("dataOutputPath",    TString(getenv("CAP_DATA")));
-  configuration.setParameter("dataOutputFileName",TString("NewParticleTypeData.dat"));
-  if (reportDebug(__FUNCTION__))
-    {
-    configuration.printConfiguration(cout);
-    }
+  //Task::setDefaultConfiguration();
+  setParameter("UseParticles",      true);
+  setParameter("LoadTable",         true);
+  setParameter("PathName",          TString(getenv("CAP_SRC"))+"/EOS/");
+  setParameter("TableName",         TString("pdg.dat"));
+  setParameter("SaveTable",         false);
+  setParameter("OutputPathName",    TString(getenv("CAP_SRC"))+"/EOS/");
+  setParameter("OutputTableName",   TString("savedPdg.dat"));
 }
 
 void ParticleTypeTableLoader::execute()
@@ -49,17 +38,17 @@ void ParticleTypeTableLoader::execute()
   if (reportStart(__FUNCTION__))
     ;
   incrementTaskExecuted();
-  bool    dataInputUsed      = configuration.getValueBool("dataInputUsed");
-  TString dataInputPath      = configuration.getValueString("dataInputPath");
-  TString dataInputFileName  = configuration.getValueString("dataInputFileName");
-  bool    dataOutputUsed     = configuration.getValueBool("dataOutputUsed");
-  TString dataOutputPath     = configuration.getValueString("dataOutputPath");
-  TString dataOutputFileName = configuration.getValueString("dataOutputFileName");
+  bool    loadTable          = getValueBool(  "LoadTable");
+  TString inputPathName      = getValueString("PathName");
+  TString inputTableName     = getValueString("TableName");
+  bool    saveTable          = getValueBool(  "SaveTable");
+  TString outputPathName     = getValueString("OutputPathName");
+  TString outputTableName    = getValueString("OutputTableName");
   TString pdgDataFileName;
-  if (dataInputUsed)
+  if (loadTable)
     {
-    pdgDataFileName =  dataInputPath;
-    pdgDataFileName += dataInputFileName;
+    pdgDataFileName =  inputPathName;
+    pdgDataFileName += inputTableName;
     ParticleTypeCollection * particles = ParticleTypeCollection::getMasterParticleCollection();
     particles->readFromFile(pdgDataFileName);
     if (reportDebug(__FUNCTION__))
@@ -68,10 +57,10 @@ void ParticleTypeTableLoader::execute()
       particles->printDecayProperties(std::cout);
       }
     }
-  if (dataOutputUsed)
+  if (saveTable)
     {
-    pdgDataFileName =  dataOutputPath;
-    pdgDataFileName += dataOutputFileName;
+    pdgDataFileName =  outputPathName;
+    pdgDataFileName += outputTableName;
     ParticleTypeCollection * particles = ParticleTypeCollection::getMasterParticleCollection();
     particles->writeToFile(pdgDataFileName);
     }

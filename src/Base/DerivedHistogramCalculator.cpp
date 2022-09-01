@@ -14,43 +14,35 @@
 
 ClassImp(DerivedHistogramCalculator);
 
-DerivedHistogramCalculator::DerivedHistogramCalculator(const TString &          _name,
-                                                       const Configuration &    _configuration,
-                                                       vector<EventFilter*>   & _eventFilters,
-                                                       vector<ParticleFilter*>& _particleFilters,
-                                                       LogLevel                 _selectedLevel)
+DerivedHistogramCalculator::DerivedHistogramCalculator(const TString & _name,
+                                                       Configuration & _configuration,
+                                                       vector<EventFilter*> & _eventFilters,
+                                                       vector<ParticleFilter*>& _particleFilters)
 :
-Task(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel)
+Task(_name, _configuration, _eventFilters, _particleFilters)
 {
   appendClassName("DerivedHistogramCalculator");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void DerivedHistogramCalculator::saveHistograms()
 {
-  if (reportStart(__FUNCTION__))
+  if (reportEnd(__FUNCTION__))
     ;
-  bool forceHistogramsRewrite     = configuration.getValueBool("forceHistogramsRewrite");
-  TString histoOutputPath         = configuration.getValueString("histoOutputPath");
-  TString histoOutputFileName     = configuration.getValueString("histoOutputFileName");
-  if (reportDebug(__FUNCTION__))
+  bool forceHistogramsRewrite     = getValueBool("ForceHistogramsRewrite");
+  TString histogramOutputPath     = getValueString("HistogramOutputPath");
+  TString histogramOutputFile     = getValueString("HistogramOutputFile");
+  if (reportInfo(__FUNCTION__))
     {
     cout << endl;
-    cout << "       nTaskExecuted : " << nTaskExecuted  << endl;
-    cout << "  nTaskExecutedTotal : " << nTaskExecutedTotal  << endl;
-    cout << "     histoOutputPath : " << histoOutputPath  << endl;
-    cout << " histoOutputFileName : " << histoOutputFileName  << endl;
+    cout << " HistogramOutputPath..........: " << histogramOutputPath  << endl;
+    cout << " HistogramOutputFile..........: " << histogramOutputFile  << endl;
     }
-  if (reportInfo(__FUNCTION__)) cout << " Saving: " << histoOutputFileName << endl;
   TFile * outputFile;
   if (forceHistogramsRewrite)
-    outputFile = openRootFile(histoOutputPath,histoOutputFileName,"RECREATE");
+    outputFile = openRootFile(histogramOutputPath,histogramOutputFile,"RECREATE");
   else
-    outputFile = openRootFile(histoOutputPath,histoOutputFileName,"NEW");
+    outputFile = openRootFile(histogramOutputPath,histogramOutputFile,"NEW");
   if (!outputFile) return;
-
   writeNEventsAccepted(outputFile);
   writeNEexecutedTask(outputFile);
   saveEventCountHistograms(outputFile);

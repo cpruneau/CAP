@@ -22,7 +22,7 @@ ClassImp(Eos);
 double Eos::hbarC     = 0.19733;
 int    Eos::trunOrder = 10;
 
-Eos::Eos(const TString & name, double _gSpin, double _mass)
+Eos::Eos(const TString & _name, double _gSpin, double _mass)
 :
 modelName(""),
 gSpin(_gSpin),

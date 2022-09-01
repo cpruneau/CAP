@@ -10,60 +10,48 @@
  *
  * *********************************************************************/
 #include "NuDynAnalyzer.hpp"
-#include "NuDynDerivedHistogramCalculator.hpp"
+#include "NuDynHistos.hpp"
+#include "NuDynDerivedHistos.hpp"
 
 ClassImp(NuDynAnalyzer);
 
-NuDynAnalyzer::NuDynAnalyzer(const TString &         _name,
-                             const Configuration &   _configuration,
-                             vector<EventFilter*>    _eventFilters,
-                             vector<ParticleFilter*> _particleFilters,
-                             LogLevel                _selectedLevel)
+NuDynAnalyzer::NuDynAnalyzer(const TString & _name,
+                             Configuration & _configuration,
+                             vector<EventFilter*> & _eventFilters,
+                             vector<ParticleFilter*> & _particleFilters)
 :
-Task(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel),
+Task(_name, _configuration, _eventFilters, _particleFilters),
 multiplicityType(1)
 {
   appendClassName("NuDynAnalyzer");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void NuDynAnalyzer::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  Configuration & configuration = getConfiguration();
-  configuration.setName("NuDynAnalyzer Configuration");
-  configuration.setParameter("useParticles",      true);
-  configuration.setParameter("histoAnalyzerName", TString("NuDyn"));
-  configuration.setParameter("histoBaseName",     TString("NuDyn"));
-  configuration.addParameter("inputType",         1);
-  configuration.addParameter("pairOnly",          true);
-  configuration.addParameter("nBins_mult",        200);
-  configuration.addParameter("min_mult",          0.0);
-  configuration.addParameter("max_mult",          200.0);
-  if (reportDebug("NuDynAnalyzer",getName(),"setDefaultConfiguration()"))
-    {
-    configuration.printConfiguration(cout);
-    }
+  setParameter("UseParticles",      true);
+  setParameter("CreateHistograms",  true);
+  setParameter("SaveHistograms",    true);
+  setParameter("UseEventStream0",   true);
+  setParameter("UseEventStream1",   false);
+  addParameter("InputType",         1);
+  addParameter("PairOnly",          true);
+  addParameter("nBins_mult",        200);
+  addParameter("Min_mult",          0.0);
+  addParameter("Max_mult",          200.0);
 }
 
 void NuDynAnalyzer::initialize()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
   Task::initialize();
-  multiplicityType = configuration.getValueInt("inputType");
+  multiplicityType = getValueInt("InputType");
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << " NuDyn:multiplicityType....: " << multiplicityType  << endl;
+    }
 }
 
 void NuDynAnalyzer::createHistograms()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
   TString prefixName = getName(); prefixName += "_";
@@ -72,9 +60,9 @@ void NuDynAnalyzer::createHistograms()
   TString partFilterName;
   if (reportInfo(__FUNCTION__))
     {
-    cout << "Creating Histograms for.."  << endl;
-    cout << "       nEventFilters: " << nEventFilters << endl;
-    cout << "    nParticleFilters: " << nParticleFilters << endl;
+    cout << " NuDyn:Creating Histograms for......: "  << endl;
+    cout << " NuDyn:nEventFilters................: " << nEventFilters << endl;
+    cout << " NuDyn:nParticleFilters.............: " << nParticleFilters << endl;
     }
   partFilterName = particleFilters[0]->getName();
   for (unsigned int iParticleFilter=1; iParticleFilter<nParticleFilters; iParticleFilter++ )
@@ -88,7 +76,7 @@ void NuDynAnalyzer::createHistograms()
     histoName      += evtFilterName;
     histoName      += "_";
     histoName      += partFilterName;
-    NuDynHistos * nuDynHistos = new NuDynHistos(histoName,getConfiguration(),getReportLevel());
+    NuDynHistos * nuDynHistos = new NuDynHistos(this,histoName,getConfiguration());
     nuDynHistos->createHistograms();
     histograms.push_back(nuDynHistos);
     }
@@ -108,11 +96,11 @@ void NuDynAnalyzer::loadHistograms(TFile * inputFile)
   TString histoName;
   TString partFilterName;
   
-  if (reportDebug(__FUNCTION__))
+  if (reportInfo(__FUNCTION__))
     {
-    cout << "Creating Histograms for.."  << endl;
-    cout << "       nEventFilters: " << nEventFilters << endl;
-    cout << "    nParticleFilters: " << nParticleFilters << endl;
+    cout << " Creating Histograms for......"  << endl;
+    cout << " nEventFilters................: " << nEventFilters << endl;
+    cout << " nParticleFilters.............: " << nParticleFilters << endl;
     }
   partFilterName = particleFilters[0]->getName();
   for (unsigned int iParticleFilter=1; iParticleFilter<nParticleFilters; iParticleFilter++ )
@@ -126,7 +114,7 @@ void NuDynAnalyzer::loadHistograms(TFile * inputFile)
     histoName      += evtFilterName;
     histoName      += "_";
     histoName      += partFilterName;
-    NuDynHistos * nuDynHistos = new NuDynHistos(histoName,getConfiguration(),getReportLevel());
+    NuDynHistos * nuDynHistos = new NuDynHistos(this,histoName,getConfiguration());
     nuDynHistos->loadHistograms(inputFile);
     histograms.push_back(nuDynHistos);
     }
@@ -164,25 +152,81 @@ void NuDynAnalyzer::execute()
     switch ( multiplicityType )
       {
         case 0: nuDynHistos->fill(ep.fractionalXSection,   nAccepted,1.0); break;
-        case 1: nuDynHistos->fill(ep.referenceMultiplicity, nAccepted,1.0); break;
-        case 2: nuDynHistos->fill(ep.referenceMultiplicity, nAccepted,1.0); break;
+        case 1: nuDynHistos->fill(ep.refMultiplicity, nAccepted,1.0); break;
+        case 2: nuDynHistos->fill(ep.refMultiplicity, nAccepted,1.0); break;
       }
     }
 }
 
-
-Task * NuDynAnalyzer::getDerivedCalculator()
+void NuDynAnalyzer::createDerivedHistograms()
 {
-  if (reportDebug(__FUNCTION__))
+  if (reportStart(__FUNCTION__))
     ;
-  TString nameD = getName();
-  if (reportDebug(__FUNCTION__)) cout << "Name of this task is:" << nameD  << endl;
-  Configuration derivedCalcConfiguration;
-  // copy the parameters of this task to the new task -- so all the histograms will automatically match
-  derivedCalcConfiguration.setParameters(configuration);
-  derivedCalcConfiguration.setParameter("createHistograms",       true);
-  derivedCalcConfiguration.setParameter("loadHistograms",         true);
-  derivedCalcConfiguration.setParameter("saveHistograms",         true);
-  Task * calculator = new NuDynDerivedHistogramCalculator(nameD,derivedCalcConfiguration,eventFilters,particleFilters,getReportLevel());
-  return calculator;
+  Configuration & configuration = getConfiguration();
+  TString prefixName = getName(); prefixName += "_";
+  unsigned int nEventFilters    = eventFilters.size();
+  unsigned int nParticleFilters = particleFilters.size();
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << " Creating Histograms for......"  << endl;
+    cout << " nEventFilters................: " << nEventFilters << endl;
+    cout << " nParticleFilters.............: " << nParticleFilters << endl;
+    }
+  NuDynDerivedHistos * histos;
+  for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+    {
+    TString evtFilterName = eventFilters[iEventFilter]->getName();
+    for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
+      {
+      TString partFilterName = particleFilters[iParticleFilter]->getName();
+      TString histoName  = prefixName;
+      histoName += evtFilterName;
+      histoName += "_";
+      histoName += partFilterName;
+      histos = new NuDynDerivedHistos(this,histoName,configuration);
+      histos->createHistograms();
+      derivedPairHistograms.push_back(histos);
+      }
+    }
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
+void NuDynAnalyzer::loadDerivedHistograms(TFile * inputFile __attribute__((unused)))
+{
+
+}
+
+void NuDynAnalyzer::calculateDerivedHistograms()
+{
+  if (reportStart(__FUNCTION__))
+    ;
+  //incrementTaskExecuted();
+  unsigned int nEventFilters    = eventFilters.size();
+  unsigned int nParticleFilters = particleFilters.size();
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "Computing derived histograms for: " << endl;
+    cout << "                   nEventFilters: " << nEventFilters << endl;
+    cout << "                nParticleFilters: " << nParticleFilters << endl;
+    }
+  NuDynHistos        * baseHistos;
+  NuDynDerivedHistos * derivedHistos;
+  unsigned index;
+
+  //!Mode 1: Running rigth after Analysis: base histograms pointers  are copied from analyzer to baseSingleHistograms
+  //!Mode 2: Running as standalone: base histograms are loaded from file.
+  for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+    {
+    for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
+      {
+      index = iEventFilter*nParticleFilters + iParticleFilter;
+      baseHistos    = (NuDynHistos *) baseSingleHistograms[index];
+      derivedHistos = (NuDynDerivedHistos *) derivedSingleHistograms[index];
+      derivedHistos->calculateDerivedHistograms(baseHistos);
+      }
+    }
+  if (reportEnd(__FUNCTION__))
+    { }
 }

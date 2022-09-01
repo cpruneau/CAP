@@ -31,9 +31,9 @@ public:
 
   // const TString& _name, bool _ownership, LogLevel logLevel
   ParticleTypeCollection();
-  virtual ~ParticleTypeCollection();
+  virtual ~ParticleTypeCollection() {} 
   void readFromFile(const TString & inputFileName);
-  void writeToFile(const TString & outputFileName, bool printDecayProperties=true);
+  void writeToFile(const TString &  outputFileName, bool printDecayProperties=true);
   void sortByMass();
   ParticleTypeCollection * extractCollection(int option);
    int findIndexForType(ParticleType * type);

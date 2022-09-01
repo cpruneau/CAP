@@ -19,10 +19,10 @@ class RadialBoostHistos : public Histograms
 {
 public:
 
-  RadialBoostHistos(const TString & _name,
-                    const Configuration& _configuration,
-                    LogLevel  _debugLevel);
-  virtual ~RadialBoostHistos();
+  RadialBoostHistos(Task * _partial,
+                    const TString & _name,
+                    Configuration & _configuration);
+  virtual ~RadialBoostHistos() {}
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);
   virtual void fill(double x, double y, double r, double phi, double beta, double weight);

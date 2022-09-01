@@ -11,17 +11,17 @@
  * *********************************************************************/
 #include <TLorentzVector.h>
 #include "GlobalAnalyzer.hpp"
-#include "GlobalDerivedHistogramCalculator.hpp"
+#include "GlobalHistos.hpp"
+#include "GlobalDerivedHistos.hpp"
 
 ClassImp(GlobalAnalyzer);
 
-GlobalAnalyzer::GlobalAnalyzer(const TString &           _name,
-                               const Configuration &     _configuration,
-                               vector<EventFilter*> &    _eventFilters,
-                               vector<ParticleFilter*> & _particleFilters,
-                               LogLevel                  _requiredLevel)
+GlobalAnalyzer::GlobalAnalyzer(const TString & _name,
+                               Configuration & _configuration,
+                               vector<EventFilter*> & _eventFilters,
+                               vector<ParticleFilter*> & _particleFilters)
 :
-Task(_name,_configuration,_eventFilters,_particleFilters,_requiredLevel),
+Task(_name,_configuration,_eventFilters,_particleFilters),
 setEvent(false),
 n(),
 e(),
@@ -31,67 +31,57 @@ b(),
 ptSum()
 {
   appendClassName("GlobalAnalyzer");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 //!
 //!
 void GlobalAnalyzer::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  configuration.setName("GlobalAnalyzer Configuration");
-  configuration.setParameter("useEventStream0",      true);
-  configuration.setParameter("useParticles",         true);
-  configuration.setParameter("createHistograms",     true);
-  configuration.setParameter("saveHistograms",       true);
-  configuration.setParameter("histoAnalyzerName",    TString("G"));
-  configuration.setParameter("histoBaseName",        TString("G"));
-  configuration.addParameter("setEvent",             true);
-  configuration.addParameter("fillCorrelationHistos",false);
-  configuration.addParameter("fill2D",               false);
-  configuration.addParameter("nBins_n",              100);
-  configuration.addParameter("nBins_n2",             20);
-  configuration.addParameter("min_n",                0.0);
-  configuration.addParameter("max_n",                1000.0);
-  configuration.addParameter("range_n",              1000.0),
-  configuration.addParameter("nBins_e",              100);
-  configuration.addParameter("nBins_e2",             20);
-  configuration.addParameter("min_e",                0.0);
-  configuration.addParameter("max_e",                1000.0);
-  configuration.addParameter("range_e",              1000.0),
-  configuration.addParameter("nBins_q",              100);
-  configuration.addParameter("nBins_q2",             20);
-  configuration.addParameter("min_q",                -50.0);
-  configuration.addParameter("max_q",                50.0);
-  configuration.addParameter("range_n",              100.0),
-  configuration.addParameter("nBins_b",              100);
-  configuration.addParameter("nBins_b2",             20);
-  configuration.addParameter("min_b",                -50.0);
-  configuration.addParameter("max_b",                50.0);
-  configuration.addParameter("range_b",              100.0);
-  configuration.addParameter("nBins_ptSum",          100);
-  configuration.addParameter("nBins_ptSum2",         20);
-  configuration.addParameter("min_ptSum",            0.0);
-  configuration.addParameter("max_ptSum",            100.0);
-  configuration.addParameter("nBins_ptAvg",          200);
-  configuration.addParameter("nBins_ptAvg2",         40);
-  configuration.addParameter("min_ptAvg",            0.0);
-  configuration.addParameter("max_ptAvg",            2.0);
-  //// if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  setParameter("UseParticles",      true);
+  setParameter("CreateHistograms",  true);
+  setParameter("SaveHistograms",    true);
+  setParameter("UseEventStream0",   true);
+  setParameter("UseEventStream1",   false);
+  addParameter("SetEvent",             true);
+  addParameter("FillCorrelationHistos",false);
+  addParameter("Fill2D",               false);
+  addParameter("nBins_n",              100);
+  addParameter("nBins_n2",             20);
+  addParameter("Min_n",                0.0);
+  addParameter("Max_n",                1000.0);
+  addParameter("range_n",              1000.0),
+  addParameter("nBins_e",              100);
+  addParameter("nBins_e2",             20);
+  addParameter("Min_e",                0.0);
+  addParameter("Max_e",                1000.0);
+  addParameter("range_e",              1000.0),
+  addParameter("nBins_q",              100);
+  addParameter("nBins_q2",             20);
+  addParameter("Min_q",                -50.0);
+  addParameter("Max_q",                50.0);
+  addParameter("range_n",              100.0),
+  addParameter("nBins_b",              100);
+  addParameter("nBins_b2",             20);
+  addParameter("Min_b",                -50.0);
+  addParameter("Max_b",                50.0);
+  addParameter("range_b",              100.0);
+  addParameter("nBins_ptSum",          100);
+  addParameter("nBins_ptSum2",         20);
+  addParameter("Min_ptSum",            0.0);
+  addParameter("Max_ptSum",            100.0);
+  addParameter("nBins_ptAvg",          200);
+  addParameter("nBins_ptAvg2",         40);
+  addParameter("Min_ptAvg",            0.0);
+  addParameter("Max_ptAvg",            2.0);
 }
 
 void GlobalAnalyzer::initialize()
 {
-  
   if (reportStart(__FUNCTION__))
     ;
   Task::initialize();
   int nParticleFilters = particleFilters.size();
-  setEvent = configuration.getValueBool("setEvent");
+  setEvent = getValueBool("SetEvent");
   n.assign(nParticleFilters,0.0);
   ptSum.assign(nParticleFilters,0.0);
   e.assign(nParticleFilters,0.0);
@@ -103,21 +93,20 @@ void GlobalAnalyzer::initialize()
 
 void GlobalAnalyzer::createHistograms()
 {
-  
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString bn  = getHistoBaseName();
-  if (reportDebug(__FUNCTION__))
+  TString bn  = getParentTaskName();
+  if (reportInfo(__FUNCTION__))
     {
-    cout << "Creating Histograms for : " << bn  << endl;
-    cout << "          nEventFilters : " << nEventFilters << endl;
-    cout << "       nParticleFilters : " << nParticleFilters << endl;
+    cout << "  G:Creating Histograms for.......: " << bn  << endl;
+    cout << "  G:nEventFilters................ : " << nEventFilters << endl;
+    cout << "  G:nParticleFilters............. : " << nParticleFilters << endl;
     }
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     TString efn = eventFilters[iEventFilter]->getName();
-    GlobalHistos * histos = new GlobalHistos(makeHistoName(bn,efn),configuration,particleFilters,getReportLevel());
+    GlobalHistos * histos = new GlobalHistos(this,makeHistoName(bn,efn),configuration,particleFilters);
     histos->createHistograms();
     histograms.push_back(histos);
     }
@@ -127,21 +116,20 @@ void GlobalAnalyzer::createHistograms()
 
 void GlobalAnalyzer::loadHistograms(TFile * inputFile)
 {
-  
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString bn  = getHistoBaseName();
+  TString bn  = getParentTaskName();
   if (reportDebug(__FUNCTION__))
     {
-    cout << "Creating Histograms for " << bn  << endl;
-    cout << "       nEventFilters: " << nEventFilters << endl;
-    cout << "    nParticleFilters: " << nParticleFilters << endl;
+    cout << "Loading Histograms for " << bn  << endl;
+    cout << "nEventFilters................ : " << nEventFilters << endl;
+    cout << "nParticleFilters............. : " << nParticleFilters << endl;
     }
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     TString efn = eventFilters[iEventFilter]->getName();
-    GlobalHistos * histos = new GlobalHistos(makeHistoName(bn,efn),configuration,particleFilters,getReportLevel());
+    GlobalHistos * histos = new GlobalHistos(this,makeHistoName(bn,efn),configuration,particleFilters);
     histos->loadHistograms(inputFile);
     histograms.push_back(histos);
     }
@@ -204,20 +192,58 @@ void GlobalAnalyzer::execute()
     globalHistos->fill(n,ptSum,e,q,s,b,1.0);
     }
 }
- 
-Task * GlobalAnalyzer::getDerivedCalculator()
+
+void GlobalAnalyzer::createDerivedHistograms()
+{
+  if (reportStart(__FUNCTION__))
+    ;
+  Configuration & configuration = getConfiguration();
+  TString bn  = getName();
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << "Creating histograms for " << bn << endl;
+    cout << "nEventFilters............... : " << nEventFilters << endl;
+    cout << "nParticleFilters............ : " << nParticleFilters << endl;
+    }
+  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+    {
+    TString efn = eventFilters[iEventFilter]->getName();
+    GlobalDerivedHistos * histos = new GlobalDerivedHistos(this,makeHistoName(bn,efn),configuration,particleFilters);
+    histos->createHistograms();
+    derivedHistograms.push_back(histos);
+    }
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
+void GlobalAnalyzer::loadDerivedHistograms(TFile * inputFile)
+{
+  if (reportStart(__FUNCTION__))
+    ;
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
+void GlobalAnalyzer::calculateDerivedHistograms()
 {
   if (reportDebug(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "Computing derived histograms for....: " << endl;
+    cout << "nEventFilters.......................: " << nEventFilters << endl;
+    cout << "nParticleFilters....................: " << nParticleFilters << endl;
+    }
+  GlobalHistos        * baseHistos;
+  GlobalDerivedHistos * derivedHistos;
+
+  //!Mode 1: Running rigth after Analysis: base histograms pointers  are copied from analyzer to baseSingleHistograms
+  //!Mode 2: Running as standalone: base histograms are loaded from file.
+  for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+    {
+    baseHistos    = (GlobalHistos *) histograms[iEventFilter];
+    derivedHistos = (GlobalDerivedHistos *) derivedHistograms[iEventFilter];
+    derivedHistos->calculateDerivedHistograms(baseHistos);
+    }
+  if (reportEnd(__FUNCTION__))
     ;
-  TString nameD = getName();
-  Configuration derivedCalcConfiguration;
-  // copy the parameters of this task to the new task -- so all the histograms will automatically match
-  derivedCalcConfiguration.setParameters(configuration);
-  derivedCalcConfiguration.setParameter("createHistograms",       true);
-  derivedCalcConfiguration.setParameter("loadHistograms",         true);
-  derivedCalcConfiguration.setParameter("saveHistograms",         true);
-  derivedCalcConfiguration.setParameter("useEventStream0",        false);
-  derivedCalcConfiguration.setParameter("useParticles",           true); // insures the event data are read/written.
-  Task * calculator = new GlobalDerivedHistogramCalculator(nameD,derivedCalcConfiguration,eventFilters,particleFilters,getReportLevel());
-  return calculator;
 }

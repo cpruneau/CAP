@@ -30,9 +30,9 @@ class HadronGasHistograms : public Histograms
 {
 public:
 
-  HadronGasHistograms(const TString &       _name,
-                      const Configuration & _config,
-                      LogLevel              _debugLevel);
+  HadronGasHistograms(Task * _parent,
+                      const TString & _name,
+                      Configuration & _config);
   virtual ~HadronGasHistograms() {}
   void createHistograms();
   void loadHistograms(TFile * inputFile);

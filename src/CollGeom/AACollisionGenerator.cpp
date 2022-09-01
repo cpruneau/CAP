@@ -14,31 +14,22 @@
 
 ClassImp(AACollisionGenerator);
 
-AACollisionGenerator::AACollisionGenerator(const TString &          _name,
-                                           const Configuration  &   _configuration,
-                                           vector<EventFilter*> &   _eventFilters,
-                                           vector<ParticleFilter*>& _particleFilters,
-                                           MessageLogger::LogLevel  _reportLevel)
+AACollisionGenerator::AACollisionGenerator(const TString * _name,
+                                           Configuration & _configuration,
+                                           vector<EventFilter*> & _eventFilters,
+                                           vector<ParticleFilter*>& _particleFilters)
 :
 Task(_name, _configuration, eventFilters, particleFilters, _reportLevel),
 nnCollisionGenerator(NucleonNucleonCollisionGenerator::getDefaultNNCollisionGenerator() )
 {
-  nnCollisionGenerator = new NucleonNucleonCollisionGenerator("NN",_configuration,_eventFilters,_particleFilters,_reportLevel);
+  nnCollisionGenerator = new NucleonNucleonCollisionGenerator("NN",_configuration,_eventFilters,_particleFilters);
   appendClassName("AACollisionGenerator");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void AACollisionGenerator::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  Configuration * configuration = getConfiguration();
-  configuration.setName("AACollisionGenerator Configuration");
-  configuration.setParameter("useParticles",    true);
-  configuration.setParameter("useEventStream0", true);
+  setParameter("UseParticles",    true);
+  setParameter("UseEventStream0", true);
 }
 
 void AACollisionGenerator::initialize()

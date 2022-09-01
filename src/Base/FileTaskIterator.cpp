@@ -13,35 +13,20 @@
 ClassImp(FileTaskIterator);
 
 FileTaskIterator::FileTaskIterator(const TString & _name,
-                                   const Configuration & _configuration,
-                                   MessageLogger::LogLevel _reportLevel)
+                                   Configuration & _configuration)
 :
-TaskIterator(_name,_configuration,_reportLevel),
+TaskIterator(_name,_configuration),
 selectedFileNames(),
 appendedString("_Derived")
 {
-  setClassName("FileTaskIterator");
-  setInstanceName("FileTaskIterator");
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
+  appendClassName("FileTaskIterator");
 }
 
 void FileTaskIterator::setDefaultConfiguration()
 {
-  if (reportStart("FileTaskIterator",getName(),"setDefaultConfiguration()"))
-    {
-    }
-  configuration.setName("FileTaskIterator Configuration");
-  configuration.addParameter("appendedString",TString("_Derived") );
-
-//  if (reportDebug("FileTaskIterator",getName(),"setDefaultConfiguration()"))
-//    {
-//    configuration.printConfiguration(cout);
-//    }
+  Task::setDefaultConfiguration();
+  addParameter("AppendedString",TString("_Derived") );
 }
-
-
-
 
 void FileTaskIterator::execute()
 {
@@ -57,7 +42,7 @@ void FileTaskIterator::execute()
     {
     // no file selected, get the list from the designated folder
     // with the included and excluded patterns.
-    TString histoInputPath = configuration.getValueString("histoInputPath");
+    TString histoInputPath = getValueString("HistogramInputPath");
     selectedFileNames = getSelectedFileNamesFrom(histoInputPath);
     }
   nSelectedFiles = selectedFileNames.size();

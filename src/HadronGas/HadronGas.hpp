@@ -123,8 +123,8 @@ public:
   //!@param _stableParticles Pointer to "stable" particle collection.
   //!@param _debugLevel debug level to be used by this task
   //!
-  HadronGas(const TString &          _name,
-            const Configuration &    _configuration,
+  HadronGas(const TString & _name,
+            Configuration &    _configuration,
             ParticleTypeCollection * _particles,
             ParticleTypeCollection * _stableParticles,
             LogLevel _debugLevel);

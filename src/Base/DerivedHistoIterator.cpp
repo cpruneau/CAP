@@ -16,75 +16,79 @@
 ClassImp(DerivedHistoIterator);
 
 
-DerivedHistoIterator::DerivedHistoIterator(const TString &       _name,
-                                                 const Configuration & _configuration,
-                                                 MessageLogger::LogLevel debugLevel)
+DerivedHistoIterator::DerivedHistoIterator(const TString & _name,
+                                           Configuration & _configuration)
 :
-Task(_name,_configuration,debugLevel)
+Task(_name,_configuration)
 {
   appendClassName("DerivedHistoIterator");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void DerivedHistoIterator::setDefaultConfiguration()
 {
   TString none  = "none";
-  configuration.setParameter("createHistograms",       true);
-  configuration.setParameter("loadHistograms",         true);
-  configuration.setParameter("saveHistograms",         true);
-  configuration.setParameter("appendedString",         TString("_Derived"));
-  configuration.setParameter("forceHistogramsRewrite", true);
-  configuration.generateKeyValuePairs("IncludedPattern",none,20);
-  configuration.generateKeyValuePairs("ExcludedPattern",none,20);
-  //// if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  setParameter("CreateHistograms",         true);
+  setParameter("LoadHistograms",           true);
+  setParameter("SaveHistograms",           true);
+  setParameter("AppendedString",           TString("_Derived"));
+  generateKeyValuePairs("IncludedPattern", none,20);
+  generateKeyValuePairs("ExcludedPattern", none,20);
 }
 
 void DerivedHistoIterator::execute()
 {
-  if (reportStart(__FUNCTION__))
-    ;
   TString none("none");
-  TString appendedString           = configuration.getValueString("appendedString");
-  bool    forceHistogramsRewrite   = configuration.getValueBool("forceHistogramsRewrite");
-  TString histoInputPath           = configuration.getValueString("histoInputPath");
-  TString histoOutputPath          = configuration.getValueString("histoOutputPath");
-  TString histoModelDataName       = configuration.getValueString("histoModelDataName");
-  vector<TString> includedPatterns = configuration.getSelectedValues("IncludedPattern",none);
-  vector<TString> excludedPatterns = configuration.getSelectedValues("ExcludedPattern",none);
-  TString histoAnalyzerName;
+  TString analyzerName;
+  TString appendedString           = getValueString("AppendedString");
+  bool    forceHistogramsRewrite   = getValueString("ForceHistogramsRewrite");
+  TString histogramInputPath       = getValueString("HistogramInputPath");
+  TString histogramOutputPath      = getValueString("HistogramOutputPath");
+  vector<TString> includedPatterns = getSelectedValues("IncludedPattern",none);
+  vector<TString> excludedPatterns = getSelectedValues("ExcludedPattern",none);
   unsigned int nSubTasks = subTasks.size();
-  if (reportDebug())  cout << "SubTasks Count: " << nSubTasks  << endl;
+
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << " SubTasks Count...................: " << nSubTasks              << endl;
+    cout << " AppendedString...................: " << appendedString         << endl;
+    cout << " ForceHistogramsRewrite...........: " << forceHistogramsRewrite << endl;
+    cout << " HistogramInputPath...............: " << histogramInputPath     << endl;
+    cout << " HistogramOutputPath..............: " << histogramOutputPath    << endl;
+    for (int k=0; k<includedPatterns.size(); k++)
+      {
+      cout << " Included.................: " << includedPatterns[k]     << endl;
+      }
+    for (int k=0; k<excludedPatterns.size(); k++)
+      {
+      cout << " Excluded.................: " << excludedPatterns[k]     << endl;
+      }
+    }
+
   for (unsigned int iTask=0; iTask<nSubTasks; iTask++)
     {
     Task & subTask = *subTasks[iTask];
-    Configuration & subTaskConfig = subTask.getConfiguration();
-    histoAnalyzerName = subTaskConfig.getValueString("histoAnalyzerName");
-    if (reportDebug(__FUNCTION__))
+    analyzerName = subTask.getName();
+    if (reportInfo(__FUNCTION__))
       {
       cout << endl;
       cout << " ===========================================================" << endl;
-      cout << " ===========================================================" << endl;
-      cout << "               SubTask #: " << iTask  << endl;
-      cout << "            SubTask Name: " << taskName  << endl;
-      cout << "          histoInputPath: " << histoInputPath  << endl;
-      cout << "         histoOutputPath: " << histoOutputPath  << endl;
-      cout << "      histoModelDataName: " << histoModelDataName  <<   endl;
-      cout << "       histoAnalyzerName: " << histoAnalyzerName   << endl;
-      cout << " ===========================================================" << endl;
+      cout << " SubTask#.......................: " << iTask  << endl;
+      cout << " SubTask Name...................: " << analyzerName  << endl;
       cout << " ===========================================================" << endl;
       }
-    vector<TString> includePatterns = configuration.getSelectedValues("IncludedPattern", "none");
-    vector<TString> excludePatterns = configuration.getSelectedValues("ExcludedPattern", "none");
-    includePatterns.push_back(histoModelDataName);
-    includePatterns.push_back(histoAnalyzerName);
-    bool isReco = histoAnalyzerName.Contains("Reco");
+    vector<TString> includePatterns = getSelectedValues("IncludedPattern", "none");
+    vector<TString> excludePatterns = getSelectedValues("ExcludedPattern", "none");
+    includePatterns.push_back(analyzerName);
+    bool isReco = analyzerName.Contains("Reco");
     if (isReco)  includePatterns.push_back(TString("Reco"));
     if (!isReco) excludePatterns.push_back(TString("Reco"));
-
-
-    vector<TString> allFilesToProcess = listFilesInDir(histoInputPath,includePatterns,excludePatterns);
+    excludePatterns.push_back(TString("Derived"));
+    bool prependPath = true;
+    bool verbose = false;
+    int  maximumDepth = 2;
+    vector<TString> allFilesToProcess = listFilesInDir(histogramInputPath,includePatterns,excludePatterns, prependPath, verbose, maximumDepth);
+    
     int nFiles = allFilesToProcess.size();
     if (nFiles<1)
       {
@@ -100,73 +104,37 @@ void DerivedHistoIterator::execute()
         }
       return;
       }
-    if (reportDebug(__FUNCTION__))
+    if (reportInfo(__FUNCTION__))
       {
       cout << endl;
-      cout << " ===========================================================" << endl;
-      cout << "                   nFiles: " << nFiles << endl;
-      cout << "           appendedString: " << appendedString << endl;
-      cout << "           histoInputPath: " << histoInputPath << endl;
-      cout << "          histoOutputPath: " << histoOutputPath << endl;
-      cout << "       histoModelDataName: " << histoModelDataName << endl;
-      cout << "        histoAnalyzerName: " << histoAnalyzerName << endl;
-      cout << " ===========================================================" << endl;
+      cout << " nFiles................: " << nFiles << endl;
       }
     for (int iFile=0; iFile<nFiles; iFile++)
       {
-      Task * task = subTask.getDerivedCalculator();
-      if (!task)
-        {
-        if (reportError(__FUNCTION__))
-          {
-          cout << endl;
-          cout << " X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#"  << endl;
-          cout << "     iTask: " << iTask << " Task Named: " << subTask.getName() << endl;
-          cout << "     HAS NO DERIVED CALCULATOR"  << endl;
-          cout << " X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#X#"  << endl;
-          break;
-          }
-        }
-      task->setReportLevel(getReportLevel());
-      TString histoInputFileName  = allFilesToProcess[iFile];
-      TString histoOutputFileName = removeRootExtension(histoInputFileName);
-      histoOutputFileName += appendedString;
-      if (reportDebug(__FUNCTION__))
+      TString histogramInputFile  = allFilesToProcess[iFile];
+      TString histogramOutputFile = removeRootExtension(histogramInputFile);
+      histogramOutputFile += appendedString;
+      if (reportInfo(__FUNCTION__))
         {
         cout << endl;
-        cout << " ===========================================================" << endl;
-        cout
-        << "         iFile: " << iFile << endl
-        << "    Input file: " << histoInputFileName << endl
-        << "   Output file: " << histoOutputFileName << endl;
+        cout << " nFiles................: " << nFiles << endl;
+        cout << " iFile.................: " << iFile  << endl;
+        cout << " Input file............: " << histogramInputFile << endl;
+        cout << " Output file...........: " << histogramOutputFile << endl;
         }
-      Configuration config;
-      config.setParameter("histoInputPath",         TString(""));
-      config.setParameter("histoInputFileName",     histoInputFileName);
-      config.setParameter("forceHistogramsRewrite", forceHistogramsRewrite);
-      config.setParameter("histoOutputPath",        TString(""));
-      config.setParameter("histoOutputFileName",    histoOutputFileName);
-      config.setParameter("histoAnalyzerName",      histoAnalyzerName);
-      config.setParameter("createHistograms",       true);
-      config.setParameter("loadHistograms",         true);
-      config.setParameter("saveHistograms",         true);
-      config.setParameter("scaleHistograms",        false);
-      config.setParameter("doSubsampleAnalysis",    false);
-      config.setParameter("doPartialSaves",         false);
-      config.setParameter("useParticles",           true);
-      config.addParameter("useEventStream0",        false);
-      config.addParameter("useEventStream1",        false);
-
-      task->setConfiguration(config);
-      task->setReportLevel(getReportLevel());
       postTaskOk();
-      task->initialize();
+      TString nullString = "";
+      subTask.setParameter("HistogramInputPath",nullString);
+      subTask.setParameter("HistogramOutputPath",nullString);
+      subTask.setParameter("HistogramInputFile",histogramInputFile);
+      subTask.setParameter("HistogramOutputFile",histogramOutputFile);
+
+      subTask.loadHistograms();
+      subTask.createDerivedHistograms();
       if (!isTaskOk()) break;
-      task->execute();
+      subTask.calculateDerivedHistograms();
       if (!isTaskOk()) break;
-      task->finalize();
-      task->clear();
-      delete task;
+      subTask.saveHistograms();
       }
     }
   if (reportEnd(__FUNCTION__))

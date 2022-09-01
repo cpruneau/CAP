@@ -18,76 +18,63 @@
 
 ClassImp(HadronGasGeneratorTask);
 
-HadronGasGeneratorTask::HadronGasGeneratorTask(const TString  &  _name,
-                                               Configuration  &  _configuration,
-                                               LogLevel          _selectedLevel)
+HadronGasGeneratorTask::HadronGasGeneratorTask(const TString & _name,
+                                               Configuration & _configuration)
 :
-Task(_name,_configuration,_selectedLevel),
+Task(_name,_configuration),
 {
   appendClassName("HadronGasGeneratorTask");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void HadronGasGeneratorTask::setDefaultConfiguration()
 {
-
-  if (reportStart(__FUNCTION__))
-    ;
+  //Task::setDefaultConfiguration();
   TString hg = "HG"
-  Configuration config = getConfiguration();
-  config.addParameter("useParticles",          false);
-  config.addParameter("useEventStream0",       false);
-  config.addParameter("standaloneMode",        true);
-  config.setParameter("createHistograms",      true);
-  config.setParameter("saveHistograms",        true);
-  config.setParameter("histoAnalyzerName",     hg);
-  config.setParameter("histoBaseName",         hg);
-  config.setParameter("doTempDependentHistos", YES);
-  config.setParameter("doPtDistHistos",        YES);
-  config.addParameter("nChemicalTemp",         1);
-  config.addParameter("minChemicalTemp",       150.0);
-  config.addParameter("maxChemicalTemp",       240.0);
-  config.addParameter("nMuB",                  1);
-  config.addParameter("minMuB",                0.0);
-  config.addParameter("maxMuB",                0.0);
-  config.addParameter("nMuS",                  1);
-  config.addParameter("minMuS",                0.0);
-  config.addParameter("maxMuS",                0.0);
-  config.addParameter("volume",                1.0);
-  config.addParameter("nMass",                 50);
-  config.addParameter("minMass",               0.0);
-  config.addParameter("maxMass",               3.0);
-  config.addParameter("nP",                    500);
-  config.addParameter("minP",                  0.0);
-  config.addParameter("maxP",                  5.0);
-
-
+  addParameter(""UseParticles",         false);
+  addParameter(""UseEventStream0",      false);
+  addParameter(""StandaloneMode",       true);
+  setParameter("CreateHistograms",      true);
+  setParameter("SaveHistograms",        true);
+  setParameter("HistoAnalyzerName",     hg);
+  setParameter("HistoBaseName",         hg);
+  setParameter("DoTempDependentHistos", YES);
+  setParameter("DoPtDistHistos",        YES);
+  addParameter("nChemicalTemp",         1);
+  addParameter("MinChemicalTemp",       150.0);
+  addParameter("MaxChemicalTemp",       240.0);
+  addParameter("nMuB",                  1);
+  addParameter("MinMuB",                0.0);
+  addParameter("MaxMuB",                0.0);
+  addParameter("nMuS",                   1);
+  addParameter("MinMuS",                0.0);
+  addParameter("MaxMuS",                0.0);
+  addParameter("Volume",                1.0);
+  addParameter("nMass",                 50);
+  addParameter("MinMass",               0.0);
+  addParameter("MaxMass",               3.0);
+  addParameter("nP",                    500);
+  addParameter("MinP",                  0.0);
+  addParameter("MaxP",                  5.0);
 }
 
 
 void HadronGasGeneratorTask::initialize()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
   Task::initialize();
-  const Configuration & config = getConfiguration();
-  standaloneMode = config.getValueBool("standaloneMode");
-  minTotalMult   = config.getValueInt("minTotalMult");
-  maxTotalMult   = config.getValueInt("minTotalMult");
+  standaloneMode = getValueBool(name,"StandaloneMode");
+  minTotalMult   = getValueInt(name,"MinTotalMult");
+  maxTotalMult   = getValueInt(name,"MinTotalMult");
   rangeTotalMult = maxTotalMult - minTotalMult;
-  minY = config.getValueInt("minY");
-  maxY = config.getValueInt("maxY");
+  minY = getValueInt(name,"MinY");
+  maxY = getValueInt(name,"MaxY");
   rangeY = maxY - minY;
-  double temperature = config.getValueDouble("chemicalTemp");
-  double muB         = config.getValueDouble("muB");
-  double muS         = config.getValueDouble("muS");
+  double temperature = getValueDouble(name,"chemicalTemp");
+  double muB         = getValueDouble(name,"MuB");
+  double muS         = getValueDouble(name,"MuS");
   
   particleTypes       = ParticleTypeCollection::getMasterParticleCollection();
   stableParticleTypes = particleTypes->extractCollection(1);
-  if (reportDebug("HadronGasGeneratorTask",getName(),"initialize()"))
+  if (reportDebug("HadronGasGeneratorTask",name,"initialize()"))
     {
     stableParticleTypes->printProperties(std::cout);
     }
@@ -97,17 +84,17 @@ void HadronGasGeneratorTask::initialize()
   HadronGas * gas = new HadronGas(particleTypes,stableParticleTypes,getLogLevel());
   gas->setName(label);
   gas->calculateAllProperties(temperature,muB,muS);
-  if (reportDebug("HadronGasGeneratorTask",getName(),"initialize()"))
+  if (reportDebug("HadronGasGeneratorTask",name,"initialize()"))
     {
     gas->printProperties(std::cout);
     }
   hadronGases.push_back(gas);
 
-  if (reportDebug("HadronGasGeneratorTask",getName(),"initialize()"))
+  if (reportDebug("HadronGasGeneratorTask",name,"initialize()"))
     {
     cout << "Setting up momentum generation parameters." << endl;
     }
-  int generatorType = config.getValueInt("generatorType");
+  int generatorType = getValueInt(name,"generatorType");
   vector<double> parameters;
   parameters.clear();
   switch (generatorType)
@@ -198,26 +185,27 @@ void HadronGasGeneratorTask::createHistograms()
   basePairHistograms.clear();
   Configuration & configuration = getConfiguration();
   LogLevel debugLevel = getReportLevel();
+  TString & name = getName();
 
-  TString bn                    = configuration.getValueString("histoBaseName");
-  bool    doTempDependentHistos = configuration.getValueBool("doTempDependentHistos");
-  int     nChemicalTemp         = configuration.getValueInt("nChemicalTemp");
-  double  minChemicalTemp       = configuration.getValueDouble("minChemicalTemp");
-  double  maxChemicalTemp       = configuration.getValueDouble("maxChemicalTemp");
+  TString bn                    = configuration.getValueString(name,"HistoBaseName");
+  bool    doTempDependentHistos = configuration.getValueBool(name,"DoTempDependentHistos");
+  int     nChemicalTemp         = configuration.getValueInt(name,"nChemicalTemp");
+  double  minChemicalTemp       = configuration.getValueDouble(name,"MinChemicalTemp");
+  double  maxChemicalTemp       = configuration.getValueDouble(name,"MaxChemicalTemp");
 
-  int     nChemicalTemp         = configuration.getValueInt("nChemicalTemp");
-  double  minChemicalTemp       = configuration.getValueDouble("minChemicalTemp");
-  double  maxChemicalTemp       = configuration.getValueDouble("maxChemicalTemp");
+  int     nChemicalTemp         = configuration.getValueInt(name,"nChemicalTemp");
+  double  minChemicalTemp       = configuration.getValueDouble(name,"MinChemicalTemp");
+  double  maxChemicalTemp       = configuration.getValueDouble(name,"MaxChemicalTemp");
   double  stepTemp              = (maxChemicalTemp - minChemicalTemp)/double(nChemicalTemp);
 
-  int     nMuB                  = configuration.getValueInt("nMuB");
-  double  minMuB                = configuration.getValueDouble("minMuB");
-  double  maxMuB                = configuration.getValueDouble("maxMuB");
+  int     nMuB                  = configuration.getValueInt(name,"nMuB");
+  double  minMuB                = configuration.getValueDouble(name,"MinMuB");
+  double  maxMuB                = configuration.getValueDouble(name,"MaxMuB");
   double  stepMuB               = (maxMuB - minMuB)/double(nMuB);
 
-  int     nMuS                  = configuration.getValueInt("nMuS");
-  double  minMuS                = configuration.getValueDouble("minMuS");
-  double  maxMuS                = configuration.getValueDouble("maxMuS");
+  int     nMuS                  = configuration.getValueInt(name,"nMuS");
+  double  minMuS                = configuration.getValueDouble(name,"MinMuS");
+  double  maxMuS                = configuration.getValueDouble(name,"MaxMuS");
   double  stepMuS               = (maxMuS - minMuS)/double(nMuS);
 
   TString histoBaseName;
@@ -246,7 +234,7 @@ void HadronGasGeneratorTask::createHistograms()
         histoBaseName += "_";
         histoBaseName += muSLabel;
         if (reportDebug(__FUNCTION__)) cout << "Set:" << histoBaseName << endl;
-        histos = new HadronGasHistograms(histoBaseName,configuration,debugLevel);
+        histos = new HadronGasHistograms(histoBaseName,configuration);
         histos->createHistograms();
         baseSingleHistograms.push_back(histos);
         }
@@ -256,7 +244,7 @@ void HadronGasGeneratorTask::createHistograms()
     {
     histoBaseName = bn;
     histoBaseName += "VsT";
-    histos = new HadronGasVsTempHistograms(histoBaseName,configuration,debugLevel);
+    histos = new HadronGasVsTempHistograms(histoBaseName,configuration);
     histos->createHistograms();
     histograms.push_back(histos);
     }
@@ -272,25 +260,25 @@ void HadronGasGeneratorTask::loadHistograms(TFile * inputFile)
   Configuration & configuration = getConfiguration();
   LogLevel debugLevel = getReportLevel();
 
-  TString bn                    = configuration.getValueString("histoBaseName");
-  bool    doTempDependentHistos = configuration.getValueBool("doTempDependentHistos");
-  int     nChemicalTemp         = configuration.getValueInt("nChemicalTemp");
-  double  minChemicalTemp       = configuration.getValueDouble("minChemicalTemp");
-  double  maxChemicalTemp       = configuration.getValueDouble("maxChemicalTemp");
+  TString bn                    = configuration.getValueString(name,"HistoBaseName");
+  bool    doTempDependentHistos = configuration.getValueBool(name,"DoTempDependentHistos");
+  int     nChemicalTemp         = configuration.getValueInt(name,"nChemicalTemp");
+  double  minChemicalTemp       = configuration.getValueDouble(name,"MinChemicalTemp");
+  double  maxChemicalTemp       = configuration.getValueDouble(name,"MaxChemicalTemp");
 
-  int     nChemicalTemp         = configuration.getValueInt("nChemicalTemp");
-  double  minChemicalTemp       = configuration.getValueDouble("minChemicalTemp");
-  double  maxChemicalTemp       = configuration.getValueDouble("maxChemicalTemp");
+  int     nChemicalTemp         = configuration.getValueInt(name,"nChemicalTemp");
+  double  minChemicalTemp       = configuration.getValueDouble(name,"MinChemicalTemp");
+  double  maxChemicalTemp       = configuration.getValueDouble(name,"MaxChemicalTemp");
   double  stepTemp              = (maxChemicalTemp - minChemicalTemp)/double(nChemicalTemp);
 
-  int     nMuB                  = configuration.getValueInt("nMuB");
-  double  minMuB                = configuration.getValueDouble("minMuB");
-  double  maxMuB                = configuration.getValueDouble("maxMuB");
+  int     nMuB                  = configuration.getValueInt(name,"nMuB");
+  double  minMuB                = configuration.getValueDouble(name,"MinMuB");
+  double  maxMuB                = configuration.getValueDouble(name,"MaxMuB");
   double  stepMuB               = (maxMuB - minMuB)/double(nMuB);
 
-  int     nMuS                  = configuration.getValueInt("nMuS");
-  double  minMuS                = configuration.getValueDouble("minMuS");
-  double  maxMuS                = configuration.getValueDouble("maxMuS");
+  int     nMuS                  = configuration.getValueInt(name,"nMuS");
+  double  minMuS                = configuration.getValueDouble(name,"MinMuS");
+  double  maxMuS                = configuration.getValueDouble(name,"MaxMuS");
   double  stepMuS               = (maxMuS - minMuS)/double(nMuS);
 
   TString histoBaseName;
@@ -319,7 +307,7 @@ void HadronGasGeneratorTask::loadHistograms(TFile * inputFile)
         histoBaseName += "_";
         histoBaseName += muSLabel;
         if (reportDebug(__FUNCTION__)) cout << "Set:" << histoBaseName << endl;
-        histos = new HadronGasHistograms(histoBaseName,configuration,debugLevel);
+        histos = new HadronGasHistograms(histoBaseName,configuration);
         histos->loadHistograms(inputFile);
         baseSingleHistograms.push_back(histos);
         }
@@ -329,7 +317,7 @@ void HadronGasGeneratorTask::loadHistograms(TFile * inputFile)
     {
     histoBaseName = bn;
     histoBaseName += "VsT";
-    histos = new HadronGasVsTempHistograms(histoBaseName,configuration,debugLevel);
+    histos = new HadronGasVsTempHistograms(histoBaseName,configuration);
     histos->loadHistograms(inputFile);
     histograms.push_back(histos);
     }
@@ -344,21 +332,21 @@ void HadronGasGeneratorTask::execute()
 {
   if (reportStart(__FUNCTION__))
     ;
-  bool    doTempDependentHistos = configuration.getValueBool("doTempDependentHistos");
+  bool    doTempDependentHistos = configuration.getValueBool(name,"DoTempDependentHistos");
 
-  int     nChemicalTemp         = configuration.getValueInt("nChemicalTemp");
-  double  minChemicalTemp       = configuration.getValueDouble("minChemicalTemp");
-  double  maxChemicalTemp       = configuration.getValueDouble("maxChemicalTemp");
+  int     nChemicalTemp         = configuration.getValueInt(name,"nChemicalTemp");
+  double  minChemicalTemp       = configuration.getValueDouble(name,"MinChemicalTemp");
+  double  maxChemicalTemp       = configuration.getValueDouble(name,"MaxChemicalTemp");
   double  stepTemp              = (maxChemicalTemp - minChemicalTemp)/double(nChemicalTemp);
 
-  int     nMuB                  = configuration.getValueInt("nMuB");
-  double  minMuB                = configuration.getValueDouble("minMuB");
-  double  maxMuB                = configuration.getValueDouble("maxMuB");
+  int     nMuB                  = configuration.getValueInt(name,"nMuB");
+  double  minMuB                = configuration.getValueDouble(name,"MinMuB");
+  double  maxMuB                = configuration.getValueDouble(name,"MaxMuB");
   double  stepMuB               = (maxMuB - minMuB)/double(nMuB);
 
-  int     nMuS                  = configuration.getValueInt("nMuS");
-  double  minMuS                = configuration.getValueDouble("minMuS");
-  double  maxMuS                = configuration.getValueDouble("maxMuS");
+  int     nMuS                  = configuration.getValueInt(name,"nMuS");
+  double  minMuS                = configuration.getValueDouble(name,"MinMuS");
+  double  maxMuS                = configuration.getValueDouble(name,"MaxMuS");
   double  stepMuS               = (maxMuS - minMuS)/double(nMuS);
 
   for (int iTemp=0; iTemp<nChemicalTemp; iTemp++ )
@@ -409,7 +397,7 @@ void HadronGasGeneratorTask::execute()
 //    ep.nBinaryTotal      = 1;     // total number of binary collisions
 //    ep.impactParameter   = -99999; // nucleus-nucleus center distance in fm
 //    ep.fractionalXSection= -99999; // fraction cross section value
-////    ep.referenceMultiplicity = eventStreams[0]->getNParticles();// nominal multiplicity in the reference range
+////    ep.refMultiplicity = eventStreams[0]->getNParticles();// nominal multiplicity in the reference range
 ////    ep.particlesCounted  = getNParticlesCounted();
 ////    ep.particlesAccepted = getNParticlesAccepted();
 //    }
@@ -430,14 +418,14 @@ void HadronGasGeneratorTask::execute()
 //    vector<Particle*> interactions = event.getNucleonNucleonInteractions();
 //
 //    unsigned int n = interactions.size();
-////    if (reportWarning("PythiaEventGenerator",getName(),"execute()"))
+////    if (reportWarning("PythiaEventGenerator",name,"execute()"))
 ////      cout << "Size of interactions:" <<  n << endl;
 //    for (unsigned int kInter=0; kInter<n; kInter++)
 //      {
 //      generate(interactions[kInter]);
 //      }
 ////    EventProperties & ep = * event.getEventProperties();
-////    ep.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
+////    ep.refMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
 ////    ep.particlesCounted      = getNParticlesCounted();
 ////    ep.particlesAccepted     = getNParticlesAccepted();
 //    }

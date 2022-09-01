@@ -12,30 +12,23 @@
 #include "AmptEventReader.hpp"
 ClassImp(AmptEventReader);
 
-AmptEventReader::AmptEventReader(const TString &          _name,
-                                 Configuration &          _configuration,
-                                 vector<EventFilter*>   & _eventFilters,
-                                 vector<ParticleFilter*>& _particleFilters,
-                                 LogLevel                 _selectedLevel)
+AmptEventReader::AmptEventReader(const TString & _name,
+                                 Configuration & _configuration,
+                                 vector<EventFilter*> & _eventFilters,
+                                 vector<ParticleFilter*> & _particleFilters)
 :
-RootTreeReader(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel)
+RootTreeReader(_name, _configuration, _eventFilters, _particleFilters)
 {
-  setFunctionName(__FUNCTION__);
   appendClassName("AmptEventReader");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void AmptEventReader::setDefaultConfiguration()
 {
-  //RootTreeReader::setDefaultConfiguration();
+  RootTreeReader::setDefaultConfiguration();
 }
 
 void AmptEventReader::execute()
 {
-  //  if (reportDebug(__FUNCTION__))
-  //    ;
   incrementTaskExecuted();
   EventFilter & eventFilter = * eventFilters[0];
   ParticleFilter & particleFilter = * particleFilters[0];
@@ -122,7 +115,7 @@ void AmptEventReader::execute()
   eventProperties.nBinaryTotal          = 0;
   eventProperties.impactParameter       = impact;
   eventProperties.fractionalXSection    = -99999;
-  //  eventProperties.referenceMultiplicity = getNParticlesAccepted();
+  //  eventProperties.refMultiplicity = getNParticlesAccepted();
   //  eventProperties.particlesCounted      = getNParticlesCounted();
   //  eventProperties.particlesAccepted     = getNParticlesAccepted();
   incrementNEventsAccepted(0);

@@ -12,13 +12,12 @@
 #include "PythiaEventReader.hpp"
 ClassImp(PythiaEventReader);
 
-PythiaEventReader::PythiaEventReader(const TString &         _name,
-                                     const Configuration &   _configuration,
+PythiaEventReader::PythiaEventReader(const TString & _name,
+                                     Configuration &   _configuration,
                                      vector<EventFilter*>&   _eventFilters,
-                                     vector<ParticleFilter*>&_particleFilters,
-                                     LogLevel                _selectedLevel)
+                                     vector<ParticleFilter*>&_particleFilters)
 :
-RootTreeReader(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel)
+RootTreeReader(_name, _configuration, _eventFilters, _particleFilters)
 {
 }
 
@@ -26,11 +25,6 @@ RootTreeReader(_name, _configuration, _eventFilters, _particleFilters, _selected
 void PythiaEventReader::setDefaultConfiguration()
 {
   RootTreeReader::setDefaultConfiguration();
-  Configuration & config = getConfiguration();
-  config.addParameter("ppOnly", true);
-  config.addParameter("beam",   2212);
-  config.addParameter("target", 2212);
-  config.addParameter("energy", 2726.0);
 }
 
 //!

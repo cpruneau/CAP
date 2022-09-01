@@ -24,7 +24,7 @@ NuDynPlotter::~NuDynPlotter()
 void NuDynPlotter::makePlots(const TString & canvasNameBase,
                              NuDynHistos * nuDynHistos,
                              NuDynDerivedHistos * nuDynDerivedHistos,
-                             CanvasConfiguration * canvasConfiguration,
+                             CanvasConfiguration & canvasConfiguration,
                              GraphConfiguration  ** graphConfigurations)
 {
   TH1 ** histograms = new TH1* [100];
@@ -347,7 +347,7 @@ void NuDynPlotter::makePlots(const TString & canvasNameBase,
 }
 
 void NuDynPlotter::makeComparisonPlots(const TString & canvasNameBase,
-                                       CanvasConfiguration * canvasConfiguration,
+                                       CanvasConfiguration & canvasConfiguration,
                                        int nGraphs,
                                        NuDynHistos ** nuDynHistos,
                                        NuDynDerivedHistos ** nuDynDerivedHistos,
@@ -427,7 +427,7 @@ int index1234 = nuDynHistos[0]->index4(0,1,2,3);
 }
 
 void NuDynPlotter::makeNudynComparisonPlots(const TString & canvasNameBase,
-                                            CanvasConfiguration * canvasConfiguration,
+                                            CanvasConfiguration & canvasConfiguration,
                                             int nGraphs,
                                             NuDynHistos ** nuDynHistos,
                                             NuDynDerivedHistos ** nuDynDerivedHistos,

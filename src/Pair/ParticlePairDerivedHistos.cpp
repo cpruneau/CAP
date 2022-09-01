@@ -12,11 +12,11 @@
 #include "ParticlePairDerivedHistos.hpp"
 ClassImp(ParticlePairDerivedHistos);
 
-ParticlePairDerivedHistos::ParticlePairDerivedHistos(const TString &       _name,
-                                                     const Configuration & _configuration,
-                                                     LogLevel              _debugLevel)
+ParticlePairDerivedHistos::ParticlePairDerivedHistos(Task * _parent,
+                                                     const TString & _name,
+                                                     Configuration & _configuration)
 :
-Histograms(_name,_configuration,_debugLevel),
+Histograms(_parent,_name,_configuration),
 fillEta(0),
 fillY(0),
 fillP2(0),
@@ -123,38 +123,32 @@ h_pt1pt1_DyDphi(nullptr),
 h_DptDpt_DyDphi(nullptr)
 {
   appendClassName("ParticlePairDerivedHistos");
-  setInstanceName(name);
 }
-
-
-ParticlePairDerivedHistos::~ParticlePairDerivedHistos()
-{
-  // no ops
-}
-
 
 void ParticlePairDerivedHistos::createHistograms()
 {
-  if (reportStart("ParticlePairDerivedHistos",getName(),"createHistograms()"))
-    { }
-  TString bn = getHistoBaseName();
-  const Configuration & configuration = getConfiguration();
-  
-  nBins_n2  = configuration.getValueInt("nBins_n2");
-  min_n2    = configuration.getValueDouble("min_n2");
-  max_n2    = configuration.getValueDouble("max_n2");
+  if (reportStart(__FUNCTION__))
+    ;
+  const TString & bn  = getName();
+  const TString & ptn = getParentTaskName();
+  const TString & ppn = getParentPathName();
+  Configuration & configuration = getConfiguration();
+  nBins_n2   = configuration.getValueInt(ppn,"nBins_n2");
+  min_n2     = configuration.getValueDouble(ppn,"Min_n2");
+  max_n2     = configuration.getValueDouble(ppn,"Max_n2");
+  nBins_n2   = configuration.getValueInt(ppn,"nBins_n2");
+  min_n2     = configuration.getValueDouble(ppn,"Min_n2");
+  max_n2     = configuration.getValueDouble(ppn,"Max_n2");
+  nBins_pt   = configuration.getValueInt(ppn,"nBins_pt");
+  min_pt     = configuration.getValueDouble(ppn,"Min_pt");
+  max_pt     = configuration.getValueDouble(ppn,"Max_pt");
+  nBins_phi  = configuration.getValueInt(ppn,"nBins_phi");
+  min_phi    = configuration.getValueDouble(ppn,"Min_phi");
+  max_phi    = configuration.getValueDouble(ppn,"Max_phi");
+  fillEta    = configuration.getValueBool(ppn,"FillEta");
+  fillY      = configuration.getValueBool(ppn,"FillY");
+  fillP2     = configuration.getValueBool(ppn,"FillP2");
 
-  nBins_n2  = configuration.getValueInt("nBins_n2");
-  min_n2    = configuration.getValueDouble("min_n2");
-  max_n2    = configuration.getValueDouble("max_n2");
-
-  nBins_pt = configuration.getValueInt("nBins_pt");
-  min_pt   = configuration.getValueDouble("min_pt");
-  max_pt   = configuration.getValueDouble("max_pt");
-
-  nBins_phi   = configuration.getValueInt("nBins_phi");
-  min_phi     = configuration.getValueDouble("min_phi");
-  max_phi     = configuration.getValueDouble("max_phi");
   double scale_phi   = max_phi - min_phi;
   double width_Dphi  = scale_phi/nBins_phi;
 
@@ -165,27 +159,70 @@ void ParticlePairDerivedHistos::createHistograms()
   min_Dphi_shft    = min_Dphi - width_Dphi*double(nBins_Dphi_shft);
   max_Dphi_shft    = max_Dphi - width_Dphi*double(nBins_Dphi_shft);
 
-  nBins_eta = configuration.getValueInt("nBins_eta");
-  min_eta   = configuration.getValueDouble("min_eta");
-  max_eta   = configuration.getValueDouble("max_eta");
+  nBins_eta = configuration.getValueInt(ppn,"nBins_eta");
+  min_eta   = configuration.getValueDouble(ppn,"Min_eta");
+  max_eta   = configuration.getValueDouble(ppn,"Max_eta");
   double range_eta = max_eta - min_eta;
 
   nBins_Deta= 2*nBins_eta-1;
   min_Deta  = -range_eta;
   max_Deta  = range_eta;
 
-  nBins_y = configuration.getValueInt("nBins_y");
-  min_y   = configuration.getValueDouble("min_y");
-  max_y   = configuration.getValueDouble("max_y");
+  nBins_y = configuration.getValueInt(ppn,"nBins_y");
+  min_y   = configuration.getValueDouble(ppn,"Min_y");
+  max_y   = configuration.getValueDouble(ppn,"Max_y");
   double range_y = max_y - min_y;
 
   nBins_Dy  = 2*nBins_y-1;
   min_Dy    = -range_y;
   max_Dy    = range_y;
 
-  fillEta    = configuration.getValueBool("fillEta");
-  fillY      = configuration.getValueBool("fillY");
-  fillP2     = configuration.getValueBool("fillP2");
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  Pair:Parent Task Name....................: " << ptn << endl;
+    cout << "  Pair:Parent Path Name....................: " << ppn << endl;
+    cout << "  Pair:Histo Base Name.....................: " << bn << endl;
+    cout << "  Pair:nBins_n2............................: " << nBins_n2 << endl;
+    cout << "  Pair:Min_n2..............................: " << min_n2 << endl;
+    cout << "  Pair:Max_n2..............................: " << max_n2 << endl;
+    cout << "  Pair:nBins_pt............................: " << nBins_pt << endl;
+    cout << "  Pair:Min_pt..............................: " << min_pt << endl;
+    cout << "  Pair:Max_pt..............................: " << max_pt << endl;
+    cout << "  Pair:nBins_phi...........................: " << nBins_phi << endl;
+    cout << "  Pair:Min_phi.............................: " << min_phi << endl;
+    cout << "  Pair:Max_phi.............................: " << max_phi << endl;
+    cout << "  Pair:scale_phi...........................: " << scale_phi << endl;
+
+    cout << "  Pair:nBins_Dphi..........................: " << nBins_Dphi << endl;
+    cout << "  Pair:Min_Dphi............................: " << min_Dphi << endl;
+    cout << "  Pair:Max_Dphi............................: " << max_Dphi << endl;
+    cout << "  Pair:width_Dphi..........................: " << width_Dphi << endl;
+    cout << "  Pair:nBins_Dphi_shft.....................: " << nBins_Dphi_shft << endl;
+    cout << "  Pair:min_Dphi_shft.......................: " << min_Dphi_shft << endl;
+    cout << "  Pair:max_Dphi_shft.......................: " << max_Dphi_shft << endl;
+
+    cout << "  Pair:nBins_eta...........................: " << nBins_eta << endl;
+    cout << "  Pair:Min_eta.............................: " << min_eta << endl;
+    cout << "  Pair:Max_eta.............................: " << max_eta << endl;
+    cout << "  Pair:range_eta...........................: " << range_eta << endl;
+    cout << "  Pair:nBins_Deta..........................: " << nBins_Deta << endl;
+    cout << "  Pair:min_Deta............................: " << min_Deta << endl;
+    cout << "  Pair:max_Deta............................: " << max_Deta << endl;
+
+    cout << "  Pair:nBins_y.............................: " << nBins_y << endl;
+    cout << "  Pair:Min_y...............................: " << min_y << endl;
+    cout << "  Pair:Max_y...............................: " << max_y << endl;
+    cout << "  Pair:range_y.............................: " << range_y << endl;
+    cout << "  Pair:nBins_Dy............................: " << nBins_Dy << endl;
+    cout << "  Pair:min_Dy..............................: " << min_Dy << endl;
+    cout << "  Pair:max_Dy..............................: " << max_Dy << endl;
+
+    cout << "  Pair:FillEta.............................: " << fillEta << endl;
+    cout << "  Pair:FillY...............................: " << fillY << endl;
+    cout << "  Pair:FillP2..............................: " << fillP2 << endl;
+    }
+
 
   h_n1n1_ptpt            = createHistogram(makeName(bn,"n1n1_ptpt"),   nBins_pt,  min_pt,  max_pt,  nBins_pt,  min_pt,   max_pt,   "p_{T,1}", "p_{T,2}", "<n_{1}><n_{2}>");
   h_A2_ptpt              = createHistogram(makeName(bn,"A2_ptpt"),     nBins_pt,  min_pt,  max_pt,  nBins_pt,  min_pt,   max_pt,   "p_{T,1}", "p_{T,2}", "A_{2}");
@@ -283,118 +320,130 @@ void ParticlePairDerivedHistos::createHistograms()
       h_G2_DyDphi_shft    = createHistogram(makeName(bn,"G2_DyDphi_shft"),    nBins_Dy,  min_Dy,  max_Dy,  nBins_Dphi,  min_Dphi_shft, max_Dphi_shft, "#Delta y", "#Delta#varphi", "G_{2}");
       }
     }
-  if (reportEnd("ParticlePairDerivedHistos",getName(),"createHistograms()"))
-    { }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 void ParticlePairDerivedHistos::loadHistograms(TFile * inputFile)
 {
-  TString fct = "loadHistograms(TFile * inputFile)";
   if (reportDebug(__FUNCTION__))
     ;
-  if (ptrFileExist(fct,inputFile)) return;
-  
-  TString bn = getHistoBaseName();
-  if (false)
-    {
-    h_n1n1_phiPhi          = loadH2(inputFile, makeName(bn,"n1n1_phiPhi"));
-    h_A2_phiPhi            = loadH2(inputFile, makeName(bn,"A2_phiPhi"));
-    h_B2_phiPhi            = loadH2(inputFile, makeName(bn,"B2_phiPhi"));
-    h_C2_phiPhi            = loadH2(inputFile, makeName(bn,"C2_phiPhi"));
-    h_R2_phiPhi            = loadH2(inputFile, makeName(bn,"R2_phiPhi"));
+  if (ptrFileExist(__FUNCTION__,inputFile)) return;
+  const TString & bn  = getName();
+  const TString & ptn = getParentTaskName();
+  const TString & ppn = getParentPathName();
+  Configuration & configuration = getConfiguration();
 
-    h_n1n1_ptpt            = loadH2(inputFile, makeName(bn,"n1n1_ptpt"));
-    h_A2_ptpt              = loadH2(inputFile, makeName(bn,"A2_ptpt"));
-    h_B2_ptpt              = loadH2(inputFile, makeName(bn,"B2_ptpt"));
-    h_C2_ptpt              = loadH2(inputFile, makeName(bn,"C2_ptpt"));
-    h_R2_ptpt              = loadH2(inputFile, makeName(bn,"R2_ptpt"));
+  fillEta    = configuration.getValueBool(ppn,"FillEta");
+  fillY      = configuration.getValueBool(ppn,"FillY");
+  fillP2     = configuration.getValueBool(ppn,"FillP2");
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  Pair:Parent Task Name....................: " << ptn << endl;
+    cout << "  Pair:Parent Path Name....................: " << ppn << endl;
+    cout << "  Pair:Histo Base Name.....................: " << bn << endl;
+    cout << "  Pair:FillEta.............................: " << fillEta << endl;
+    cout << "  Pair:FillY...............................: " << fillY << endl;
+    cout << "  Pair:FillP2..............................: " << fillP2 << endl;
+    }
+
+  h_n1n1_phiPhi          = loadH2(inputFile, makeName(bn,"n1n1_phiPhi"));
+  h_A2_phiPhi            = loadH2(inputFile, makeName(bn,"A2_phiPhi"));
+  h_B2_phiPhi            = loadH2(inputFile, makeName(bn,"B2_phiPhi"));
+  h_C2_phiPhi            = loadH2(inputFile, makeName(bn,"C2_phiPhi"));
+  h_R2_phiPhi            = loadH2(inputFile, makeName(bn,"R2_phiPhi"));
+
+  h_n1n1_ptpt            = loadH2(inputFile, makeName(bn,"n1n1_ptpt"));
+  h_A2_ptpt              = loadH2(inputFile, makeName(bn,"A2_ptpt"));
+  h_B2_ptpt              = loadH2(inputFile, makeName(bn,"B2_ptpt"));
+  h_C2_ptpt              = loadH2(inputFile, makeName(bn,"C2_ptpt"));
+  h_R2_ptpt              = loadH2(inputFile, makeName(bn,"R2_ptpt"));
+
+  if (fillP2)
+    {
+    h_pt1pt1_phiPhi      = loadH2(inputFile, makeName(bn,"pt1pt1_phiPhi"));
+    h_DptDpt_phiPhi      = loadH2(inputFile, makeName(bn,"DptDpt_phiPhi"));
+    h_P2_phiPhi          = loadH2(inputFile, makeName(bn,"P2_phiPhi"));
+    h_G2_phiPhi          = loadH2(inputFile, makeName(bn,"G2_phiPhi"));
+    }
+
+  if (fillEta)
+    {
+    h_n1n1_etaEta        = loadH2(inputFile, makeName(bn,"n1n1_etaEta"));
+    h_A2_etaEta          = loadH2(inputFile, makeName(bn,"A2_etaEta"));
+    h_B2_etaEta          = loadH2(inputFile, makeName(bn,"B2_etaEta"));
+    h_C2_etaEta          = loadH2(inputFile, makeName(bn,"C2_etaEta"));
+    h_R2_etaEta          = loadH2(inputFile, makeName(bn,"R2_etaEta"));
+
+    h_n1n1_DetaDphi      = loadH2(inputFile, makeName(bn,"n1n1_DetaDphi"));
+    h_rho2_DetaDphi      = loadH2(inputFile, makeName(bn,"rho2_DetaDphi"));
+    h_A2_DetaDphi        = loadH2(inputFile, makeName(bn,"A2_DetaDphi"));
+    h_B2_DetaDphi        = loadH2(inputFile, makeName(bn,"B2_DetaDphi"));
+    h_C2_DetaDphi        = loadH2(inputFile, makeName(bn,"C2_DetaDphi"));
+    h_R2_DetaDphi        = loadH2(inputFile, makeName(bn,"R2_DetaDphi"));
+
+    h_rho2_DetaDphi_shft = loadH2(inputFile, makeName(bn,"rho2_DetaDphi_shft"));
+    h_A2_DetaDphi_shft   = loadH2(inputFile, makeName(bn,"A2_DetaDphi_shft"));
+    h_B2_DetaDphi_shft   = loadH2(inputFile, makeName(bn,"B2_DetaDphi_shft"));
+    h_C2_DetaDphi_shft   = loadH2(inputFile, makeName(bn,"C2_DetaDphi_shft"));
+    h_R2_DetaDphi_shft   = loadH2(inputFile, makeName(bn,"R2_DetaDphi_shft"));
 
     if (fillP2)
       {
-      h_pt1pt1_phiPhi      = loadH2(inputFile, makeName(bn,"pt1pt1_phiPhi"));
-      h_DptDpt_phiPhi      = loadH2(inputFile, makeName(bn,"DptDpt_phiPhi"));
-      h_P2_phiPhi          = loadH2(inputFile, makeName(bn,"P2_phiPhi"));
-      h_G2_phiPhi          = loadH2(inputFile, makeName(bn,"G2_phiPhi"));
-      }
-    
-    if (fillEta)
-      {
-      h_n1n1_etaEta        = loadH2(inputFile, makeName(bn,"n1n1_etaEta"));
-      h_A2_etaEta          = loadH2(inputFile, makeName(bn,"A2_etaEta"));
-      h_B2_etaEta          = loadH2(inputFile, makeName(bn,"B2_etaEta"));
-      h_C2_etaEta          = loadH2(inputFile, makeName(bn,"C2_etaEta"));
-      h_R2_etaEta          = loadH2(inputFile, makeName(bn,"R2_etaEta"));
+      h_pt1pt1_etaEta        = loadH2(inputFile, makeName(bn,"pt1pt1_etaEta"));
+      h_DptDpt_etaEta        = loadH2(inputFile, makeName(bn,"DptDpt_etaEta"));
+      h_P2_etaEta            = loadH2(inputFile, makeName(bn,"P2_etaEta"));
+      h_G2_etaEta            = loadH2(inputFile, makeName(bn,"G2_etaEta"));
 
-      h_n1n1_DetaDphi      = loadH2(inputFile, makeName(bn,"n1n1_DetaDphi"));
-      h_rho2_DetaDphi      = loadH2(inputFile, makeName(bn,"rho2_DetaDphi"));
-      h_A2_DetaDphi        = loadH2(inputFile, makeName(bn,"A2_DetaDphi"));
-      h_B2_DetaDphi        = loadH2(inputFile, makeName(bn,"B2_DetaDphi"));
-      h_C2_DetaDphi        = loadH2(inputFile, makeName(bn,"C2_DetaDphi"));
-      h_R2_DetaDphi        = loadH2(inputFile, makeName(bn,"R2_DetaDphi"));
-
-      h_rho2_DetaDphi_shft = loadH2(inputFile, makeName(bn,"rho2_DetaDphi_shft"));
-      h_A2_DetaDphi_shft   = loadH2(inputFile, makeName(bn,"A2_DetaDphi_shft"));
-      h_B2_DetaDphi_shft   = loadH2(inputFile, makeName(bn,"B2_DetaDphi_shft"));
-      h_C2_DetaDphi_shft   = loadH2(inputFile, makeName(bn,"C2_DetaDphi_shft"));
-      h_R2_DetaDphi_shft   = loadH2(inputFile, makeName(bn,"R2_DetaDphi_shft"));
-
-      if (fillP2)
-        {
-        h_pt1pt1_etaEta        = loadH2(inputFile, makeName(bn,"pt1pt1_etaEta"));
-        h_DptDpt_etaEta        = loadH2(inputFile, makeName(bn,"DptDpt_etaEta"));
-        h_P2_etaEta            = loadH2(inputFile, makeName(bn,"P2_etaEta"));
-        h_G2_etaEta            = loadH2(inputFile, makeName(bn,"G2_etaEta"));
-        
-        h_pt1pt1_DetaDphi      = loadH2(inputFile, makeName(bn,"pt1pt1_DetaDphi"));
-        h_DptDpt_DetaDphi      = loadH2(inputFile, makeName(bn,"DptDpt_DetaDphi"));
-        h_P2_DetaDphi          = loadH2(inputFile, makeName(bn,"P2_DetaDphi"));
-        h_G2_DetaDphi          = loadH2(inputFile, makeName(bn,"G2_DetaDphi"));
-        h_DptDpt_DetaDphi_shft = loadH2(inputFile, makeName(bn,"DptDpt_DetaDphi_shft"));
-        h_P2_DetaDphi_shft     = loadH2(inputFile, makeName(bn,"P2_DetaDphi_shft"));
-        h_G2_DetaDphi_shft     = loadH2(inputFile, makeName(bn,"G2_DetaDphi_shft"));
-        }
-      }
-    
-    if (fillY)
-      {
-      h_n1n1_yY           = loadH2(inputFile, makeName(bn,"n1n1_yY"));
-      h_A2_yY             = loadH2(inputFile, makeName(bn,"A2_yY"));
-      h_B2_yY             = loadH2(inputFile, makeName(bn,"B2_yY"));
-      h_C2_yY             = loadH2(inputFile, makeName(bn,"C2_yY"));
-      h_R2_yY             = loadH2(inputFile, makeName(bn,"R2_yY"));
-
-      h_n1n1_DyDphi       = loadH2(inputFile, makeName(bn,"n1n1_DyDphi"));
-      h_rho2_DyDphi       = loadH2(inputFile, makeName(bn,"rho2_DyDphi"));
-      h_A2_DyDphi         = loadH2(inputFile, makeName(bn,"A2_DyDphi"));
-      h_B2_DyDphi         = loadH2(inputFile, makeName(bn,"B2_DyDphi"));
-      h_C2_DyDphi         = loadH2(inputFile, makeName(bn,"C2_DyDphi"));
-      h_R2_DyDphi         = loadH2(inputFile, makeName(bn,"R2_DyDphi"));
-
-      h_rho2_DyDphi_shft  = loadH2(inputFile, makeName(bn,"rho2_DyDphi_shft"));
-      h_A2_DyDphi_shft    = loadH2(inputFile, makeName(bn,"A2_DyDphi_shft"));
-      h_B2_DyDphi_shft    = loadH2(inputFile, makeName(bn,"B2_DyDphi_shft"));
-      h_C2_DyDphi_shft    = loadH2(inputFile, makeName(bn,"C2_DyDphi_shft"));
-      h_R2_DyDphi_shft    = loadH2(inputFile, makeName(bn,"R2_DyDphi_shft"));
-
-      if (fillP2)
-        {
-        h_pt1pt1_yY         = loadH2(inputFile, makeName(bn,"pt1pt1_yY"));
-        h_DptDpt_yY         = loadH2(inputFile, makeName(bn,"DptDpt_yY"));
-        h_P2_yY             = loadH2(inputFile, makeName(bn,"P2_yY"));
-        h_G2_yY             = loadH2(inputFile, makeName(bn,"G2_yY"));
-        
-        h_pt1pt1_DyDphi     = loadH2(inputFile, makeName(bn,"pt1pt1_DyDphi"));
-        h_DptDpt_DyDphi     = loadH2(inputFile, makeName(bn,"DptDpt_DyDphi"));
-        h_P2_DyDphi         = loadH2(inputFile, makeName(bn,"P2_DyDphi"));
-        h_G2_DyDphi         = loadH2(inputFile, makeName(bn,"G2_DyDphi"));
-        
-        h_DptDpt_DyDphi_shft= loadH2(inputFile, makeName(bn,"DptDpt_DyDphi_shft"));
-        h_P2_DyDphi_shft    = loadH2(inputFile, makeName(bn,"P2_DyDphi_shft"));
-        h_G2_DyDphi_shft    = loadH2(inputFile, makeName(bn,"G2_DyDphi_shft"));
-        }
+      h_pt1pt1_DetaDphi      = loadH2(inputFile, makeName(bn,"pt1pt1_DetaDphi"));
+      h_DptDpt_DetaDphi      = loadH2(inputFile, makeName(bn,"DptDpt_DetaDphi"));
+      h_P2_DetaDphi          = loadH2(inputFile, makeName(bn,"P2_DetaDphi"));
+      h_G2_DetaDphi          = loadH2(inputFile, makeName(bn,"G2_DetaDphi"));
+      h_DptDpt_DetaDphi_shft = loadH2(inputFile, makeName(bn,"DptDpt_DetaDphi_shft"));
+      h_P2_DetaDphi_shft     = loadH2(inputFile, makeName(bn,"P2_DetaDphi_shft"));
+      h_G2_DetaDphi_shft     = loadH2(inputFile, makeName(bn,"G2_DetaDphi_shft"));
       }
     }
-  
+
+  if (fillY)
+    {
+    h_n1n1_yY           = loadH2(inputFile, makeName(bn,"n1n1_yY"));
+    h_A2_yY             = loadH2(inputFile, makeName(bn,"A2_yY"));
+    h_B2_yY             = loadH2(inputFile, makeName(bn,"B2_yY"));
+    h_C2_yY             = loadH2(inputFile, makeName(bn,"C2_yY"));
+    h_R2_yY             = loadH2(inputFile, makeName(bn,"R2_yY"));
+
+    h_n1n1_DyDphi       = loadH2(inputFile, makeName(bn,"n1n1_DyDphi"));
+    h_rho2_DyDphi       = loadH2(inputFile, makeName(bn,"rho2_DyDphi"));
+    h_A2_DyDphi         = loadH2(inputFile, makeName(bn,"A2_DyDphi"));
+    h_B2_DyDphi         = loadH2(inputFile, makeName(bn,"B2_DyDphi"));
+    h_C2_DyDphi         = loadH2(inputFile, makeName(bn,"C2_DyDphi"));
+    h_R2_DyDphi         = loadH2(inputFile, makeName(bn,"R2_DyDphi"));
+
+    h_rho2_DyDphi_shft  = loadH2(inputFile, makeName(bn,"rho2_DyDphi_shft"));
+    h_A2_DyDphi_shft    = loadH2(inputFile, makeName(bn,"A2_DyDphi_shft"));
+    h_B2_DyDphi_shft    = loadH2(inputFile, makeName(bn,"B2_DyDphi_shft"));
+    h_C2_DyDphi_shft    = loadH2(inputFile, makeName(bn,"C2_DyDphi_shft"));
+    h_R2_DyDphi_shft    = loadH2(inputFile, makeName(bn,"R2_DyDphi_shft"));
+
+    if (fillP2)
+      {
+      h_pt1pt1_yY         = loadH2(inputFile, makeName(bn,"pt1pt1_yY"));
+      h_DptDpt_yY         = loadH2(inputFile, makeName(bn,"DptDpt_yY"));
+      h_P2_yY             = loadH2(inputFile, makeName(bn,"P2_yY"));
+      h_G2_yY             = loadH2(inputFile, makeName(bn,"G2_yY"));
+
+      h_pt1pt1_DyDphi     = loadH2(inputFile, makeName(bn,"pt1pt1_DyDphi"));
+      h_DptDpt_DyDphi     = loadH2(inputFile, makeName(bn,"DptDpt_DyDphi"));
+      h_P2_DyDphi         = loadH2(inputFile, makeName(bn,"P2_DyDphi"));
+      h_G2_DyDphi         = loadH2(inputFile, makeName(bn,"G2_DyDphi"));
+
+      h_DptDpt_DyDphi_shft= loadH2(inputFile, makeName(bn,"DptDpt_DyDphi_shft"));
+      h_P2_DyDphi_shft    = loadH2(inputFile, makeName(bn,"P2_DyDphi_shft"));
+      h_G2_DyDphi_shft    = loadH2(inputFile, makeName(bn,"G2_DyDphi_shft"));
+      }
+    }
 }
 
 void quickCopy(TH2 * source, TH2 * target)
@@ -431,11 +480,10 @@ void ParticlePairDerivedHistos::calculatePairDerivedHistograms(ParticleHistos   
                                                                ParticlePairHistos     & pairHistos,
                                                                double bincorrection)
 {
-  TString fct = "calculatePairDerivedHistograms(..)";
   if (reportStart(__FUNCTION__))
     ;
   MessageLogger::LogLevel store = getReportLevel();
-  //setReportLevel(MessageLogger::Debug);
+  setReportLevel(MessageLogger::Debug);
   
   double yield1;
   double yield2;
@@ -454,7 +502,20 @@ void ParticlePairDerivedHistos::calculatePairDerivedHistograms(ParticleHistos   
   //
   // pt vs pt
   //
-  if (reportDebug(__FUNCTION__))  cout << "Calculate XXX_ptpt" << endl;
+  if (reportDebug(__FUNCTION__))
+    {
+    if (!part1BaseHistos.h_n1_pt ) { cout << "  no part1BaseHistos" << endl; exit(0); }
+    if (!part2BaseHistos.h_n1_pt ) { cout << "  no part2BaseHistos" << endl; exit(0); }
+    if (!pairHistos.h_n2_ptpt )    { cout << "  no pairHistos.h_n2_ptpt" << endl; exit(0); }
+    if (!h_n1n1_ptpt ) { cout << "  no h_n1n1_ptpt" << endl; exit(0); }
+    if (!h_C2_ptpt ) { cout << "  no h_C2_ptpt" << endl; exit(0); }
+    if (!h_B2_ptpt ) { cout << "  no h_B2_ptpt" << endl; exit(0); }
+    if (!h_A2_ptpt ) { cout << "  no h_A2_ptpt" << endl; exit(0); }
+    if (!h_R2_ptpt ) { cout << "  h_R2_ptpt" << endl; exit(0); }
+    }
+
+    cout << "Calculate XXX_ptpt" << endl;
+
   yield1 = part1BaseHistos.h_n1_pt->Integral();
   yield2 = part2BaseHistos.h_n1_pt->Integral();
   calculateN1N1_H1H1H2( part1BaseHistos.h_n1_pt,   part2BaseHistos.h_n1_pt,  h_n1n1_ptpt,1.0, 1.0);

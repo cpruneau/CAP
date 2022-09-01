@@ -13,9 +13,8 @@ class BWModelEventGenerator : public Task
 {
 public:
 
-  BWModelEventGenerator(const TString &       _name,
-                        const Configuration & _configuration,
-                        LogLevel              _selectedLevel);
+  BWModelEventGenerator(const TString & _name
+                        Configuration & _configuration);
   virtual ~BWModelEventGenerator();
   virtual void setDefaultConfiguration();
   virtual void initialize();

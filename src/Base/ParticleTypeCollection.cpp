@@ -32,10 +32,6 @@ Collection<ParticleType>()
 {
 }
 
-ParticleTypeCollection::~ParticleTypeCollection()
-{
-}
-
 // ================================================================================================
 // read in ParticleType information from pdg data file
 // ================================================================================================
@@ -43,6 +39,11 @@ void ParticleTypeCollection::readFromFile(const TString & inputFileName)
 {
   cout << "<I> ParticleTypeCollection::readFromFile() Reading particle list from file:" <<  inputFileName << endl;
   ifstream inputFile(inputFileName.Data());
+  if (!inputFile.is_open())
+    {
+    cout << "<E> ParticleTypeCollection::readFromFile() File not found:" <<  inputFileName << endl;
+    exit(1);
+    }
   int pdgCode;
   string name;
   string title;
@@ -142,7 +143,7 @@ void ParticleTypeCollection::readFromFile(const TString & inputFileName)
     objects[k]->setupDecayGenerator();
     }
 
-  cout << "ParticleTypeCollection::readFromFile(const TString & inputFileName) Completed." << endl;
+  cout << "ParticleTypeCollection::readFromFile(const TString  & inputFileName) Completed." << endl;
 }
 
 void ParticleTypeCollection::writeToFile(const TString & outputFileName, bool printDecayProperties)
@@ -160,7 +161,7 @@ void ParticleTypeCollection::writeToFile(const TString & outputFileName, bool pr
       }
     }
   outputFile.close();
-  cout << "ParticleTypeCollection::readFromFile(const TString & inputFileName) Completed." << endl;
+  cout << "ParticleTypeCollection::readFromFile(const TString  & inputFileName) Completed." << endl;
 }
 
 void ParticleTypeCollection::sortByMass()

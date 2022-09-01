@@ -12,11 +12,11 @@
 #include "CollisionGeometryGradientHistograms.hpp"
 
 
-CollisionGeometryGradientHistograms::CollisionGeometryGradientHistograms(const TString &       _name,
-                                                                         const Configuration & _configuration,
-                                                                         LogLevel              _debugLevel)
+CollisionGeometryGradientHistograms::CollisionGeometryGradientHistograms(Task * _parent,
+                                                                         const TString & _name,
+                                                                         Configuration & _configuration)
 :
-Histograms(_name,_configuration,_debugLevel),
+Histograms(_parent,_name,_configuration),
 h_edge(0),
 h_radius(0),
 h_gx(0),
@@ -29,7 +29,7 @@ void CollisionGeometryGradientHistograms::createHistograms()
 {
   if (reportStart("CollisionGeometryGradientHistograms",getName(),"createHistograms()"))
     ;
-  TString bn = getHistoBaseName();
+  TString bn = getParentTaskName();
   h_edge     = createHistogram(makeName(bn,"edge"),   200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "Edge");
   h_radius   = createHistogram(makeName(bn,"radius"), 200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "r/r_{max}");
   h_gx       = createHistogram(makeName(bn,"gx"),     200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "g_{x}");
@@ -44,7 +44,7 @@ void CollisionGeometryGradientHistograms::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  TString bn = getHistoBaseName();
+  TString bn = getParentTaskName();
   h_edge   = loadH2(inputFile,makeName(bn,"edge"));
   h_radius = loadH2(inputFile,makeName(bn,"radius"));
   h_gx     = loadH2(inputFile,makeName(bn,"gx"));

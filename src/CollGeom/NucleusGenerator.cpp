@@ -14,10 +14,9 @@
 ClassImp(NucleusGenerator);
 
 NucleusGenerator::NucleusGenerator(const TString & _name,
-                                   Configuration & _configuration,
-                                   LogLevel _selectedLevel)
+                                   Configuration & _configuration)
 :
-Task(_name, _configuration, _selectedLevel),
+Task(_name, _configuration),
 gType(0),
 nR(0),
 minR(0),
@@ -45,24 +44,19 @@ NucleusGenerator::~NucleusGenerator()
 
 void NucleusGenerator::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  configuration.setName("NucleusGenerator Configuration");
-  configuration.setParameter("useParticles",    true);
-  configuration.setParameter("useEventStream0", true);
-  configuration.addParameter("generatorType",    0);
-  configuration.addParameter("nRadiusBins",    100);
-  configuration.addParameter("minimumRadius",  0.0);
-  configuration.addParameter("maximumRadius", 10.0);
-  configuration.addParameter("parA", 0);
-  configuration.addParameter("parB", 0);
-  configuration.addParameter("parC", 0);
-  configuration.addParameter("useRecentering",     true);
-  configuration.addParameter("useNucleonExclusion",true);
-  configuration.addParameter("exclusionRadius",     0.4);
-  if (reportEnd(__FUNCTION__))
-    ;
+  Task::setDefaultConfiguration();
+  setParameter("UseParticles",    true);
+  setParameter("UseEventStream0", true);
+  addParameter("generatorType",    0);
+  addParameter("nRadiusBins",    100);
+  addParameter("MinimumRadius",  0.0);
+  addParameter("MaximumRadius", 10.0);
+  addParameter("parA", 0);
+  addParameter("parB", 0);
+  addParameter("parC", 0);
+  addParameter("useRecentering",     true);
+  addParameter("useNucleonExclusion",true);
+  addParameter("exclusionRadius",     0.4);
 }
 
 // create the container but do not assign any positions or properties.
@@ -71,16 +65,16 @@ void NucleusGenerator::initialize()
   
   if (reportStart(__FUNCTION__))
     ;
-  gType = configuration.getValueInt("generatorType");
-  nR    = configuration.getValueInt("nRadiusBins");
-  minR  = configuration.getValueDouble("minimumRadius");
-  maxR  = configuration.getValueDouble("maximumRadius");
-  parA  = configuration.getValueDouble("parA");
-  parB  = configuration.getValueDouble("parB");;
-  parC  = configuration.getValueDouble("parC");
-  useRecentering      = configuration.getValueInt("useRecentering");
-  useNucleonExclusion = configuration.getValueInt("useNucleonExclusion");
-  exclusionRadius     = configuration.getValueInt("exclusionRadius"); // fm
+  gType = configuration.getValueInt(getName(),"generatorType");
+  nR    = configuration.getValueInt(getName(),"nRadiusBins");
+  minR  = configuration.getValueDouble(getName(),"MinimumRadius");
+  maxR  = configuration.getValueDouble(getName(),"MaximumRadius");
+  parA  = configuration.getValueDouble(getName(),"parA");
+  parB  = configuration.getValueDouble(getName(),"parB");;
+  parC  = configuration.getValueDouble(getName(),"parC");
+  useRecentering      = configuration.getValueInt(getName(),"useRecentering");
+  useNucleonExclusion = configuration.getValueInt(getName(),"useNucleonExclusion");
+  exclusionRadius     = configuration.getValueInt(getName(),"exclusionRadius"); // fm
   exclusionRadiusSq   = exclusionRadius*exclusionRadius;
   double dr = (maxR-minR)/double(nR);
   double r  = minR + dr/2.0;

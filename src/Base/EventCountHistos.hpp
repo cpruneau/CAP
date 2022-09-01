@@ -21,11 +21,12 @@ class EventCountHistos : public Histograms
 {
 public:
 
-  EventCountHistos(const TString & _name,
+  EventCountHistos(Task *          _parent,
+                   const TString & _name,
                    Configuration & _configuration,
-                   int _nEventFilters,
-                   int _nParticleFilters,
-                   LogLevel _debugLevel);
+                   int             _nEventFilters,
+                   int             _nParticleFilters,
+                   LogLevel        _debugLevel);
   virtual ~EventCountHistos(){}
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);

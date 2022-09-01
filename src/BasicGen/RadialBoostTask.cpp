@@ -14,49 +14,37 @@
 
 ClassImp(RadialBoostTask);
 
-RadialBoostTask::RadialBoostTask(const TString &          _name,
-                                 const Configuration &    _configuration,
+RadialBoostTask::RadialBoostTask(const TString & _name,
+                                 Configuration & _configuration,
                                  vector<EventFilter*>&    _eventFilters,
-                                 vector<ParticleFilter*>& _particleFilters,
-                                 LogLevel                 _selectedLevel)
+                                 vector<ParticleFilter*>& _particleFilters)
 :
-Task(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel),
+Task(_name, _configuration, _eventFilters, _particleFilters),
 param_b(0),
 param_a(0),
 betaMaximum(0)
 {
   appendClassName("RadialBoostTask");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
  }
 
 void RadialBoostTask::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  Configuration & configuration = getConfiguration();
-  configuration.setName("RadialBoostTask Configuration");
-  configuration.setParameter("useEventStream0",  true);
-  configuration.setParameter("useParticles",     true);
-  configuration.setParameter("loadHistograms",   true);
-  configuration.setParameter("createHistograms", true);
-  configuration.setParameter("saveHistograms",   true);
-  
-  configuration.addParameter("param_a", 0.9);
-  configuration.addParameter("param_b", 1.0);
-  configuration.addParameter("betaMaximum", 0.999);
-  configuration.addParameter("min_phi", 0.0);
-  configuration.addParameter("max_phi", TMath::TwoPi());
-  configuration.addParameter("nBins_r", 100);
-  configuration.addParameter("min_r",   0.0);
-  configuration.addParameter("max_r",   10.0);
-  configuration.addParameter("nBins_beta", 100);
-  configuration.addParameter("min_beta",   0.0);
-  configuration.addParameter("max_beta",   1.0);
-  if (reportEnd(__FUNCTION__))
-    ;
+  setParameter("UseParticles",      true);
+  setParameter("CreateHistograms",  true);
+  setParameter("SaveHistograms",    true);
+  setParameter("UseEventStream0",   true);
+  setParameter("UseEventStream1",   false);
+  addParameter("param_a", 0.9);
+  addParameter("param_b", 1.0);
+  addParameter("betaMaximum", 0.999);
+  addParameter("Min_phi", 0.0);
+  addParameter("Max_phi", TMath::TwoPi());
+  addParameter("nBins_r", 100);
+  addParameter("Min_r",   0.0);
+  addParameter("Max_r",   10.0);
+  addParameter("nBins_beta", 100);
+  addParameter("Min_beta",   0.0);
+  addParameter("Max_beta",   1.0);
 }
 
 void RadialBoostTask::createHistograms()
@@ -65,10 +53,10 @@ void RadialBoostTask::createHistograms()
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  param_a     = configuration.getValueDouble("param_a");
-  param_b     = configuration.getValueDouble("param_b"); // exponent of order 1
-  betaMaximum = configuration.getValueDouble("betaMaximum");;
-  RadialBoostHistos * histos = new RadialBoostHistos(getName(),configuration,getReportLevel());
+  param_a     = configuration.getValueDouble(getName(),"param_a");
+  param_b     = configuration.getValueDouble(getName(),"param_b"); // exponent of order 1
+  betaMaximum = configuration.getValueDouble(getName(),"betaMaximum");;
+  RadialBoostHistos * histos = new RadialBoostHistos(this,getName(),configuration);
   histos->createHistograms();
   histograms.push_back(histos);
   if (reportEnd(__FUNCTION__))
@@ -80,7 +68,7 @@ void RadialBoostTask::loadHistograms(TFile * inputFile)
   
   if (reportStart(__FUNCTION__))
     ;
-  RadialBoostHistos * histos = new RadialBoostHistos(getName(),configuration,getReportLevel());
+  RadialBoostHistos * histos = new RadialBoostHistos(this,getName(),configuration);
   histos->loadHistograms(inputFile);
   histograms.push_back(histos);
   if (reportEnd(__FUNCTION__))

@@ -20,10 +20,10 @@ class ParticlePairHistos : public Histograms
 {
 public:
 
-  ParticlePairHistos(const TString & name,
-                     const Configuration & configuration,
-                     LogLevel  debugLevel);
-  virtual ~ParticlePairHistos();
+  ParticlePairHistos(Task * _parent,
+                     const TString & _name,
+                     Configuration & _configuration);
+  virtual ~ParticlePairHistos() {}
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);
 

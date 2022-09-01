@@ -71,31 +71,31 @@ void FunctionCollection::setFunctionProperties(TF1 * f, const GraphConfiguration
     {
     cout << "Setting properties of function: " << f->GetTitle() << endl;
     }
-  f->SetLineColor(graphConfiguration .getValueInt("lineColor"));
-  f->SetLineStyle(graphConfiguration.getValueInt("lineStyle"));
-  f->SetLineWidth(graphConfiguration.getValueInt("lineWidth"));
+  f->SetLineColor(graphConfiguration.getValueInt(getName(),"lineColor"));
+  f->SetLineStyle(graphConfiguration.getValueInt(getName(),"lineStyle"));
+  f->SetLineWidth(graphConfiguration.getValueInt(getName(),"lineWidth"));
   TAxis * xAxis = (TAxis *) f->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.getValueDouble("nXDivisions"));
-  xAxis->SetTitleSize(graphConfiguration.getValueDouble("xTitleSize"));
-  xAxis->SetTitleOffset(graphConfiguration.getValueDouble("xTitleOffset"));
+  xAxis->SetNdivisions(graphConfiguration.getValueDouble(getName(),"nXDivisions"));
+  xAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"xTitleSize"));
+  xAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"xTitleOffset"));
   //xAxis->SetTitle(graphConfiguration.xTitle);
-  xAxis->SetLabelSize(graphConfiguration.getValueDouble("xLabelSize"));
-  xAxis->SetLabelOffset(graphConfiguration.getValueDouble("xLabelOffset"));
+  xAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"xLabelSize"));
+  xAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"xLabelOffset"));
   TAxis * yAxis = (TAxis *) f->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.getValueInt("nYDivisions"));
-  yAxis->SetTitleSize(graphConfiguration.getValueDouble("yTitleSize"));
-  yAxis->SetTitleOffset(graphConfiguration.getValueDouble("yTitleOffset"));
-  yAxis->SetLabelSize(graphConfiguration.getValueDouble("yLabelSize"));
-  yAxis->SetLabelOffset(graphConfiguration.getValueDouble("yLabelOffset"));
+  yAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nYDivisions"));
+  yAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"yTitleSize"));
+  yAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"yTitleOffset"));
+  yAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"yLabelSize"));
+  yAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"yLabelOffset"));
   //yAxis->SetTitle(graphConfiguration.yTitle);
   if (f->IsA() == TF2::Class() )
     {
     TAxis * zAxis = (TAxis *) f->GetZaxis();
-    zAxis->SetNdivisions(graphConfiguration.getValueInt("nZDivisions"));
-    zAxis->SetTitleSize(graphConfiguration.getValueDouble("zTitleSize"));
-    zAxis->SetTitleOffset(graphConfiguration.getValueDouble("zTitleOffset"));
-    zAxis->SetLabelSize(graphConfiguration.getValueDouble("zLabelSize"));
-    zAxis->SetLabelOffset(graphConfiguration.getValueDouble("zLabelOffset"));
+    zAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nZDivisions"));
+    zAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"zTitleSize"));
+    zAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"zTitleOffset"));
+    zAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"zLabelSize"));
+    zAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"zLabelOffset"));
     }
 }
 

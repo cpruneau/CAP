@@ -22,10 +22,11 @@ class PTHistos : public Histograms
 {
 public:
 
-  PTHistos(const TString & collectionName,
-           Configuration * analysisConfiguration,
-           LogLevel  debugLevel,
-           int ord);
+  PTHistos(Task *          _parent,
+           const TString & _name,
+           Configuration & _configuration,
+           LogLevel        _debugLevel,
+           int             _ord);
   virtual ~PTHistos();
 
   virtual void createHistograms();

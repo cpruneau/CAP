@@ -17,57 +17,47 @@
 
 ClassImp(HadronGasGeneratorTask);
 
-HadronGasGeneratorTask::HadronGasGeneratorTask(const TString  &  _name,
-                                               Configuration  &  _configuration,
-                                               LogLevel          _selectedLevel)
+HadronGasGeneratorTask::HadronGasGeneratorTask(const TString & _name,
+                                               Configuration & _configuration)
 :
-Task(_name,_configuration,_selectedLevel),
+Task(_name,_configuration),
 particleTypes(nullptr),
 stableParticleTypes(nullptr),
 nThermalSpecies(0),
 nStableSpecies(0)
 {
   appendClassName("HadronGasGeneratorTask");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void HadronGasGeneratorTask::setDefaultConfiguration()
 {
-  if (reportStart(__FUNCTION__))
-    ;
-  TString hg = "HG";
-  Configuration & config = getConfiguration();
-  config.addParameter("useParticles",          false);
-  config.addParameter("useEventStream0",       false);
-  config.addParameter("standaloneMode",        true);
-  config.setParameter("createHistograms",      true);
-  config.setParameter("saveHistograms",        true);
-  config.setParameter("histoModelName",        hg);
-  config.setParameter("histoAnalyzerName",     hg);
-  config.setParameter("histoBaseName",         hg);
-  config.setParameter("doTempDependentHistos", true);
-  config.setParameter("doPtDistHistos",        true);
-  config.setParameter("plotPtDistHistos",      false);
-  config.addParameter("nThermalSpecies",       1);
-  config.addParameter("nStableSpecies",        1);
-  config.addParameter("nChemicalTemp",         1);
-  config.addParameter("minChemicalTemp",       150.0);
-  config.addParameter("maxChemicalTemp",       240.0);
-  config.addParameter("nMuB",                  1);
-  config.addParameter("minMuB",                0.0);
-  config.addParameter("maxMuB",                0.0);
-  config.addParameter("nMuS",                  1);
-  config.addParameter("minMuS",                0.0);
-  config.addParameter("maxMuS",                0.0);
-  config.addParameter("volume",                1.0);
-  config.addParameter("nMass",                 50);
-  config.addParameter("minMass",               0.0);
-  config.addParameter("maxMass",               3.0);
-  config.addParameter("nP",                    500);
-  config.addParameter("minP",                  0.0);
-  config.addParameter("maxP",                  5.0);
+  //Task::setDefaultConfiguration();
+  addParameter("UseParticles",          false);
+  addParameter("UseEventStream0",       false);
+  addParameter("StandaloneMode",        true);
+  setParameter("CreateHistograms",      true);
+  setParameter("SaveHistograms",        true);
+  setParameter("DoTempDependentHistos", true);
+  setParameter("DoPtDistHistos",        true);
+  setParameter("PlotPtDistHistos",      false);
+  addParameter("nThermalSpecies",       1);
+  addParameter("nStableSpecies",        1);
+  addParameter("nChemicalTemp",         1);
+  addParameter("MinChemicalTemp",       150.0);
+  addParameter("MaxChemicalTemp",       240.0);
+  addParameter("nMuB",                  1);
+  addParameter("MinMuB",                0.0);
+  addParameter("MaxMuB",                0.0);
+  addParameter("nMuS",                  1);
+  addParameter("MinMuS",                0.0);
+  addParameter("MaxMuS",                0.0);
+  addParameter("Volume",                1.0);
+  addParameter("nMass",                 50);
+  addParameter("MinMass",               0.0);
+  addParameter("MaxMass",               3.0);
+  addParameter("nP",                    500);
+  addParameter("MinP",                  0.0);
+  addParameter("MaxP",                  5.0);
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -91,29 +81,28 @@ void HadronGasGeneratorTask::initialize()
     cout << "--------------------------------------------------------" << endl;
     stableParticleTypes->printProperties(std::cout);
     }
-
   nThermalSpecies = int(particleTypes->size());
   nStableSpecies  = int(stableParticleTypes->size());
-  configuration.setParameter("nThermalSpecies", nThermalSpecies);
-  configuration.setParameter("nStableSpecies",  nStableSpecies);
+  setParameter("nThermalSpecies", nThermalSpecies);
+  setParameter("nStableSpecies",  nStableSpecies);
 
   for (int k=0;k<nThermalSpecies; k++)
     {
     TString key = "Species";
     key += k;
-    configuration.addParameter(key,particleTypes->getParticleType(k)->getTitle());
+    addParameter(key,particleTypes->getParticleType(k)->getTitle());
     }
   for (int k=0;k<nStableSpecies; k++)
     {
     TString key = "StableSpecies";
     key += k;
-    configuration.addParameter(key,stableParticleTypes->getParticleType(k)->getTitle());
+    addParameter(key,stableParticleTypes->getParticleType(k)->getTitle());
     }
 
-  modelName             = configuration.getValueString("histoModelName");
-  nChemicalTemp         = configuration.getValueInt("nChemicalTemp");
-  minChemicalTemp       = configuration.getValueDouble("minChemicalTemp");
-  maxChemicalTemp       = configuration.getValueDouble("maxChemicalTemp");
+  modelName             = getValueString("HistoModelName");
+  nChemicalTemp         = configuration.getValueInt(getName(),"nChemicalTemp");
+  minChemicalTemp       = configuration.getValueDouble(getName(),"MinChemicalTemp");
+  maxChemicalTemp       = configuration.getValueDouble(getName(),"MaxChemicalTemp");
   if (maxChemicalTemp == minChemicalTemp || nChemicalTemp==1)
     {
     nChemicalTemp = 1;
@@ -122,9 +111,9 @@ void HadronGasGeneratorTask::initialize()
   else
     stepTemp = (maxChemicalTemp - minChemicalTemp)/(nChemicalTemp-1);
 
-  nMuB                  = configuration.getValueInt("nMuB");
-  minMuB                = configuration.getValueDouble("minMuB");
-  maxMuB                = configuration.getValueDouble("maxMuB");
+  nMuB                  = configuration.getValueInt(getName(),"nMuB");
+  minMuB                = configuration.getValueDouble(getName(),"MinMuB");
+  maxMuB                = configuration.getValueDouble(getName(),"MaxMuB");
   if (maxMuB == minMuB || nMuB==1)
     {
     nMuB    = 1;
@@ -133,9 +122,9 @@ void HadronGasGeneratorTask::initialize()
   else
     stepMuB = (maxMuB - minMuB)/double(nMuB-1);
 
-  nMuS                  = configuration.getValueInt("nMuS");
-  minMuS                = configuration.getValueDouble("minMuS");
-  maxMuS                = configuration.getValueDouble("maxMuS");
+  nMuS                  = configuration.getValueInt(getName(),"nMuS");
+  minMuS                = configuration.getValueDouble(getName(),"MinMuS");
+  maxMuS                = configuration.getValueDouble(getName(),"MaxMuS");
   if (maxMuS == minMuS || nMuS==1)
     {
     nMuS    = 1;
@@ -191,9 +180,9 @@ void HadronGasGeneratorTask::execute()
         muSLabel += int(0.5+1000*muB);
         TString name = makeHistoName(modelName,tempLabel,muBLabel,muSLabel);
         Configuration gasConfig(name);
-        gasConfig.addParameter("temperature", temperature);
-        gasConfig.addParameter("muB",         muB);
-        gasConfig.addParameter("muS",         muS);
+        gasConfig.addParameter("Temperature", temperature);
+        gasConfig.addParameter("MuB",         muB);
+        gasConfig.addParameter("MuS",         muS);
         HadronGas * gas = new HadronGas(name,gasConfig, particleTypes,stableParticleTypes,getLogLevel());
         gas->initialize();
         gas->execute();
@@ -224,9 +213,8 @@ void HadronGasGeneratorTask::createHistograms()
   basePairHistograms.clear();
   Configuration & configuration = getConfiguration();
   LogLevel debugLevel = getReportLevel();
-
-  TString bn                    = configuration.getValueString("histoBaseName");
-  bool    doTempDependentHistos = configuration.getValueBool("doTempDependentHistos");
+  TString bn = getValueString("HistoBaseName");
+  bool    doTempDependentHistos = getValueBool("DoTempDependentHistos");
   Histograms * histos;
   for (int iTemp=0; iTemp<nChemicalTemp; iTemp++ )
     {
@@ -240,7 +228,7 @@ void HadronGasGeneratorTask::createHistograms()
         {
         TString muSLabel = "S";
         muSLabel += int(0.5+1000*(minMuS+stepMuS*double(iMuS)));
-        histos = new HadronGasHistograms(makeHistoName(bn,tempLabel,muBLabel,muSLabel),configuration,debugLevel);
+        histos = new HadronGasHistograms(this,makeHistoName(bn,tempLabel,muBLabel,muSLabel),configuration);
         histos->createHistograms();
         baseSingleHistograms.push_back(histos);
         }
@@ -248,7 +236,7 @@ void HadronGasGeneratorTask::createHistograms()
     }
   if (doTempDependentHistos)
     {
-    histos = new HadronGasVsTempHistograms(bn+"VsT",configuration,debugLevel);
+    histos = new HadronGasVsTempHistograms(this,bn+"VsT",configuration);
     histos->createHistograms();
     histograms.push_back(histos);
     }
@@ -266,8 +254,8 @@ void HadronGasGeneratorTask::loadHistograms(TFile * inputFile)
   Configuration & configuration = getConfiguration();
   LogLevel debugLevel = getReportLevel();
 
-  TString bn                    = configuration.getValueString("histoBaseName");
-  bool    doTempDependentHistos = configuration.getValueBool("doTempDependentHistos");
+  TString bn                    = getValueString("HistoBaseName");
+  bool    doTempDependentHistos = getValueBool("DoTempDependentHistos");
 
   Histograms * histos;
   for (int iTemp=0; iTemp<nChemicalTemp; iTemp++ )
@@ -282,7 +270,7 @@ void HadronGasGeneratorTask::loadHistograms(TFile * inputFile)
         {
         TString muSLabel = "S";
         muSLabel += int(0.5+1000*(minMuS+stepMuS*double(iMuS)));
-        histos = new HadronGasHistograms(makeHistoName(bn,tempLabel,muBLabel,muSLabel),configuration,debugLevel);
+        histos = new HadronGasHistograms(this,makeHistoName(bn,tempLabel,muBLabel,muSLabel),configuration);
         histos->loadHistograms(inputFile);
         baseSingleHistograms.push_back(histos);
         }
@@ -290,7 +278,7 @@ void HadronGasGeneratorTask::loadHistograms(TFile * inputFile)
     }
   if (doTempDependentHistos)
     {
-    histos = new HadronGasVsTempHistograms(bn+"VsT",configuration,debugLevel);
+    histos = new HadronGasVsTempHistograms(this,bn+"VsT",configuration);
     histos->loadHistograms(inputFile);
     histograms.push_back(histos);
     }
@@ -302,20 +290,20 @@ void HadronGasGeneratorTask::loadHistograms(TFile * inputFile)
 //{
 //  if (reportStart(__FUNCTION__))
 //    ;
-//  bool    doTempDependentHistos = configuration.getValueBool("doTempDependentHistos");
-//  int     nChemicalTemp         = configuration.getValueInt("nChemicalTemp");
-//  double  minChemicalTemp       = configuration.getValueDouble("minChemicalTemp");
-//  double  maxChemicalTemp       = configuration.getValueDouble("maxChemicalTemp");
+//  bool    doTempDependentHistos = getValueBool("DoTempDependentHistos");
+//  int     nChemicalTemp         = configuration.getValueInt(getName(),"nChemicalTemp");
+//  double  minChemicalTemp       = configuration.getValueDouble(getName(),"MinChemicalTemp");
+//  double  maxChemicalTemp       = configuration.getValueDouble(getName(),"MaxChemicalTemp");
 //  double  stepTemp              = (maxChemicalTemp - minChemicalTemp)/double(nChemicalTemp);
 //
-//  int     nMuB                  = configuration.getValueInt("nMuB");
-//  double  minMuB                = configuration.getValueDouble("minMuB");
-//  double  maxMuB                = configuration.getValueDouble("maxMuB");
+//  int     nMuB                  = configuration.getValueInt(getName(),"nMuB");
+//  double  minMuB                = configuration.getValueDouble(getName(),"MinMuB");
+//  double  maxMuB                = configuration.getValueDouble(getName(),"MaxMuB");
 //  double  stepMuB               = (maxMuB - minMuB)/double(nMuB);
 //
-//  int     nMuS                  = configuration.getValueInt("nMuS");
-//  double  minMuS                = configuration.getValueDouble("minMuS");
-//  double  maxMuS                = configuration.getValueDouble("maxMuS");
+//  int     nMuS                  = configuration.getValueInt(getName(),"nMuS");
+//  double  minMuS                = configuration.getValueDouble(getName(),"MinMuS");
+//  double  maxMuS                = configuration.getValueDouble(getName(),"MaxMuS");
 //  double  stepMuS               = (maxMuS - minMuS)/double(nMuS);
 //
 //  for (int iTemp=0; iTemp<nChemicalTemp; iTemp++)

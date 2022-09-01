@@ -12,11 +12,11 @@
 #include "ParticlePair3DDerivedHistos.hpp"
 ClassImp(ParticlePair3DDerivedHistos);
 
-ParticlePair3DDerivedHistos::ParticlePair3DDerivedHistos(const TString &       _name,
-                                                     const Configuration & _configuration,
-                                                     LogLevel              _debugLevel)
+ParticlePair3DDerivedHistos::ParticlePair3DDerivedHistos(Task * _parent,
+                                                         const TString & _name,
+                                                         Configuration & _configuration)
 :
-Histograms(_name,_configuration,_debugLevel),
+Histograms(_parent,_name,_configuration),
 fillEta(0),
 fillY(0),
 fillP2(0),
@@ -108,38 +108,28 @@ h_pt1pt1_DyDphi(nullptr),
 h_DptDpt_DyDphi(nullptr)
 {
   appendClassName("ParticlePair3DDerivedHistos");
-  setInstanceName(name);
 }
-
-
-ParticlePair3DDerivedHistos::~ParticlePair3DDerivedHistos()
-{
-  // no ops
-}
-
 
 void ParticlePair3DDerivedHistos::createHistograms()
 {
-  if (reportStart("ParticlePair3DDerivedHistos",getName(),"createHistograms()"))
-    { }
-  TString bn = getHistoBaseName();
-  const Configuration & configuration = getConfiguration();
-  
-  nBins_n2  = configuration.getValueInt("nBins_n2");
-  min_n2    = configuration.getValueDouble("min_n2");
-  max_n2    = configuration.getValueDouble("max_n2");
+  if (reportStart("ParticlePair3DDerivedHistos","createHistograms()"))
+    ;
+  TString bn = getParentTaskName();
+  nBins_n2  = getValueInt("nBins_n2");
+  min_n2    = getValueDouble("Min_n2");
+  max_n2    = getValueDouble("Max_n2");
 
-  nBins_n2  = configuration.getValueInt("nBins_n2");
-  min_n2    = configuration.getValueDouble("min_n2");
-  max_n2    = configuration.getValueDouble("max_n2");
+  nBins_n2  = getValueInt("nBins_n2");
+  min_n2    = getValueDouble("Min_n2");
+  max_n2    = getValueDouble("Max_n2");
 
-  nBins_pt = configuration.getValueInt("nBins_pt");
-  min_pt   = configuration.getValueDouble("min_pt");
-  max_pt   = configuration.getValueDouble("max_pt");
+  nBins_pt = getValueInt("nBins_pt");
+  min_pt   = getValueDouble("Min_pt");
+  max_pt   = getValueDouble("Max_pt");
 
-  nBins_phi   = configuration.getValueInt("nBins_phi");
-  min_phi     = configuration.getValueDouble("min_phi");
-  max_phi     = configuration.getValueDouble("max_phi");
+  nBins_phi   = getValueInt("nBins_phi");
+  min_phi     = getValueDouble("Min_phi");
+  max_phi     = getValueDouble("Max_phi");
   double scale_phi   = max_phi - min_phi;
   double width_Dphi  = scale_phi/nBins_phi;
 
@@ -150,27 +140,27 @@ void ParticlePair3DDerivedHistos::createHistograms()
   min_Dphi_shft    = min_Dphi - width_Dphi*double(nBins_Dphi_shft);
   max_Dphi_shft    = max_Dphi - width_Dphi*double(nBins_Dphi_shft);
 
-  nBins_eta = configuration.getValueInt("nBins_eta");
-  min_eta   = configuration.getValueDouble("min_eta");
-  max_eta   = configuration.getValueDouble("max_eta");
+  nBins_eta = getValueInt("nBins_eta");
+  min_eta   = getValueDouble("Min_eta");
+  max_eta   = getValueDouble("Max_eta");
   double range_eta = max_eta - min_eta;
 
   nBins_Deta= 2*nBins_eta-1;
   min_Deta  = -range_eta;
   max_Deta  = range_eta;
 
-  nBins_y = configuration.getValueInt("nBins_y");
-  min_y   = configuration.getValueDouble("min_y");
-  max_y   = configuration.getValueDouble("max_y");
+  nBins_y = getValueInt("nBins_y");
+  min_y   = getValueDouble("Min_y");
+  max_y   = getValueDouble("Max_y");
   double range_y = max_y - min_y;
 
   nBins_Dy  = 2*nBins_y-1;
   min_Dy    = -range_y;
   max_Dy    = range_y;
 
-  fillEta    = configuration.getValueBool("fillEta");
-  fillY      = configuration.getValueBool("fillY");
-  fillP2     = configuration.getValueBool("fillP2");
+  fillEta    = getValueBool("FillEta");
+  fillY      = getValueBool("FillY");
+  fillP2     = getValueBool("FillP2");
 
   h_n1n1_phiPhi          = createHistogram(makeName(bn,"n1n1_phiPhi"), nBins_phi, min_phi, max_phi, nBins_phi, min_phi,  max_phi,  "#varphi_{1}", "#varphi_{2}",  "<n_{1}><n_{2}>");
   h_R2_phiPhi            = createHistogram(makeName(bn,"R2_phiPhi"),   nBins_phi, min_phi, max_phi, nBins_phi, min_phi,  max_phi,   "#varphi_{1}", "#varphi_{2}", "R_{2}");
@@ -251,7 +241,7 @@ void ParticlePair3DDerivedHistos::createHistograms()
       h_G2_DyDphi_shft    = createHistogram(makeName(bn,"G2_DyDphi_shft"),    nBins_Dy,  min_Dy,  max_Dy,  nBins_Dphi,  min_Dphi_shft, max_Dphi_shft, "#Delta y", "#Delta#varphi", "G_{2}");
       }
     }
-  if (reportEnd("ParticlePair3DDerivedHistos",getName(),"createHistograms()"))
+  if (reportEnd("ParticlePair3DDerivedHistos","createHistograms()"))
     { }
 }
 
@@ -262,7 +252,7 @@ void ParticlePair3DDerivedHistos::loadHistograms(TFile * inputFile)
     ;
   if (ptrFileExist(fct,inputFile)) return;
   
-  TString bn = getHistoBaseName();
+  TString bn = getParentTaskName();
   if (false)
     {
     h_n1n1_phiPhi          = loadH2(inputFile, makeName(bn,"n1n1_phiPhi"));
@@ -450,8 +440,8 @@ void ParticlePair3DDerivedHistos::calculatePairDerivedHistograms(ParticleHistos 
     reduce_n1EtaPhiN1EtaPhiOntoN1N1DetaDphi(part1BaseHistos.h_n1_phiEta,part2BaseHistos.h_n1_phiEta,h_n1n1_DetaDphi,nBins_Deta,nBins_Dphi);
     if (reportDebug(__FUNCTION__))  cout <<  " calculateR2_H2H2H2(pairHistos.h_n2_DetaDphi,h_n1n1_DetaDphi,h_R2_DetaDphi,0,1.0,1.0)" << endl;
     
-    double yieldA = part1DerivedHistos.h_n1_eta->Integral("width");
-    double yieldB = part2DerivedHistos.h_n1_eta->Integral("width");
+    double yieldA = part1DerivedHistos.h_n1_eta->Integral("Width");
+    double yieldB = part2DerivedHistos.h_n1_eta->Integral("Width");
 
     double low  = part1DerivedHistos.h_n1_eta->GetXaxis()->GetXmin();
     double high = part1DerivedHistos.h_n1_eta->GetXaxis()->GetXmax();
@@ -518,8 +508,8 @@ void ParticlePair3DDerivedHistos::calculatePairDerivedHistograms(ParticleHistos 
     reduce_n1EtaPhiN1EtaPhiOntoN1N1DetaDphi(part1BaseHistos.h_n1_phiY,part1BaseHistos.h_n1_phiY,h_n1n1_DyDphi,nBins_Dy,nBins_Dphi);
     if (reportDebug(__FUNCTION__))  cout <<  " calculateR2_H2H2H2(pairHistos.h_n2_DyDphi,h_n1n1_DyDphi,h_R2_DyDphi,0,1.0,1.0)" << endl;
     
-    double yieldA = part1DerivedHistos.h_n1_y->Integral("width");
-    double yieldB = part2DerivedHistos.h_n1_y->Integral("width");
+    double yieldA = part1DerivedHistos.h_n1_y->Integral("Width");
+    double yieldB = part2DerivedHistos.h_n1_y->Integral("Width");
     
     h_rho2_DyDphi->Add(pairHistos.h_n2_DyDphi);
 //    h_B2AB_DyDphi->Add(pairHistos.h_n2_DyDphi);

@@ -12,16 +12,14 @@
 #include "StatStudyHistograms.hpp"
 ClassImp(StatStudyHistograms);
 
-StatStudyHistograms::StatStudyHistograms(int _nSubSamples,
-                                         const TString &       _name,
-                                         const Configuration & _configuration,
-                                         LogLevel              _debugLevel)
+StatStudyHistograms::StatStudyHistograms(Task * _parent,
+                                         const TString & _name
+                                         Configuration & _configuration)
 :
-Histograms(_name,_configuration,_debugLevel),
-nSubSamples(_nSubSamples)
+Histograms(_parent,_name,_configuration),
+nSubSamples(10)
 {
   appendClassName("StatStudyHistograms");
-  setInstanceName(_name);
 }
 
 StatStudyHistograms::~StatStudyHistograms()
@@ -37,8 +35,10 @@ void StatStudyHistograms::createHistograms()
   int    nBins2 = 400;
   double f2_min = 0.0;
   double f2_max = f1_max*f1_max;
+  Configuration & configuration = getConfiguration();
+  nSubSamples = configuration->getValueInt(getParentTaskName(),"nSubSamples");
 
-  TString bn = getHistoBaseName();
+  TString bn = getParentTaskName();
   f1_1     = createHistogram(makeName(bn,"f1_1",    nBins, f1_min, f1_max, "n_{1}^{(1)}",  "Counts");
   f1_2     = createHistogram(makeName(bn,"f1_2",    nBins, f1_min, f1_max, "n_{1}^{(2)}",  "Counts");
   f1_1Eff  = createHistogram(makeName(bn,"f1_1Eff", nBins, f1_min, f1_max, "n_{1}^{(1)}",  "Counts");
@@ -153,7 +153,7 @@ void StatStudyHistograms::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  TString bn = getHistoBaseName();
+  TString bn = getParentTaskName();
   f1_1     = loadH1(inputFile,  makeName(bn,"f1_1"));
   f1_2     = loadH1(inputFile,  makeName(bn,"f1_2"));
   f2_11    = loadH1(inputFile,  makeName(bn,"f2_11"));

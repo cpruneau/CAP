@@ -19,10 +19,10 @@ class ParticlePair3DHistos : public Histograms
 {
 public:
 
-  ParticlePair3DHistos(const TString & name,
-                     const Configuration & configuration,
-                     LogLevel  debugLevel);
-  virtual ~ParticlePair3DHistos();
+  ParticlePair3DHistos(Task * _parent,
+                       const TString & _name,
+                       Configuration & _configuration);
+  virtual ~ParticlePair3DHistos() {}
   virtual void createHistograms();
   virtual void fill(vector<Particle*> & particle1, vector<Particle*> & particle2, bool same, double weight);
   virtual void loadHistograms(TFile * inputFile);

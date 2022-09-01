@@ -8,6 +8,7 @@
  *
  * Author: Claude Pruneau,   04/01/2022
  *
+ 
  * *********************************************************************/
 #ifndef CAP__EventFilter
 #define CAP__EventFilter
@@ -21,6 +22,12 @@ public:
   EventFilter();
   virtual ~EventFilter();
   virtual bool accept(const Event & event);
+
+  static vector<EventFilter*> createOpenEventFilter();
+  static vector<EventFilter*> createAliceMBEventFilter();
+  static vector<EventFilter*> createImpactParameterFilters(vector<double> & bounds);
+  static vector<EventFilter*> createV0MultiplicityFilters(vector<double>  & bounds);
+  static vector<EventFilter*> createTpcMultiplicityFilters(vector<double> & bounds);
 
   ClassDef(EventFilter,0)
 };

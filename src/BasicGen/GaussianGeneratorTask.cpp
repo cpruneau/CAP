@@ -17,49 +17,37 @@
 ClassImp(GaussianGeneratorTask);
 
 GaussianGeneratorTask::GaussianGeneratorTask(const TString & _name,
-                                             const Configuration & _configuration,
-                                             MessageLogger::LogLevel _reportLevel)
+                                             Configuration & _configuration)
 :
-Task(_name,  _configuration,  _reportLevel),
+Task(_name, _configuration),
 profile(nullptr)
 {
-  
   appendClassName("GaussianGeneratorTask");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 //!
 //!
 void GaussianGeneratorTask::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  Configuration & configuration = getConfiguration();
-  configuration.setName("GaussianGeneratorTask Configuration");
-  configuration.setParameter("useParticles", true);
-  configuration.setParameter("useEventStream0", true);
-  configuration.addParameter("amplitude", 1.0);
-  configuration.addParameter("gammaeta",  1.0);
-  configuration.addParameter("gammaphi",  1.0);
-  configuration.addParameter("omegaeta",  1.0);
-  configuration.addParameter("omegaphi",  1.0);
-  if (reportEnd(__FUNCTION__))
-    ;
+  //Task::setDefaultConfiguration();
+  setParameter("UseParticles", true);
+  setParameter("UseEventStream0", true);
+  setParameter("amplitude", 1.0);
+  setParameter("gammaeta",  1.0);
+  setParameter("gammaphi",  1.0);
+  setParameter("omegaeta",  1.0);
+  setParameter("omegaphi",  1.0);
 }
 
 void GaussianGeneratorTask::initialize()
 {
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & configuration = getConfiguration();
-  double amplitude = configuration.getValueDouble("amplitude");
-  double gammaeta  = configuration.getValueDouble("gammaeta");
-  double gammaphi  = configuration.getValueDouble("gammaphi");
-  double omegaeta  = configuration.getValueDouble("omegaeta");
-  double omegaphi  = configuration.getValueDouble("omegaphi");
+  double amplitude = getValueDouble("amplitude");
+  double gammaeta  = getValueDouble("gammaeta");
+  double gammaphi  = getValueDouble("gammaphi");
+  double omegaeta  = getValueDouble("omegaeta");
+  double omegaphi  = getValueDouble("omegaphi");
   profile = new TF2("2DGenGauss","[0]*[1]*[2]/4.0/[3]/[4]/TMath::Gamma(1.0/[1])/TMath::Gamma(1.0/[2])*"
                     "TMath::Exp(-1.0*(TMath::Power(TMath::Abs(x/[3]),[1])+TMath::Power(TMath::Abs(y/[4]),[2])))");
   profile->SetParameters(amplitude,gammaeta,gammaphi,omegaeta,omegaphi);
@@ -73,9 +61,6 @@ GaussianGeneratorTask::~GaussianGeneratorTask()
   if (profile != nullptr) delete profile;
 }
 
-//!
-//! process one event
-//!
 void GaussianGeneratorTask::execute()
 {
   incrementTaskExecuted();

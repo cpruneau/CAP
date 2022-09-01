@@ -6,7 +6,7 @@
 #include_directories(${CMAKE_SOURCE_DIR} ${ROOT_INCLUDE_DIRS})
 #add_definitions(${ROOT_CXX_FLAGS})
 
-ROOT_GENERATE_DICTIONARY(G__Particle ParticleHistos.hpp ParticleDerivedHistos.hpp  ParticleAnalyzer.hpp ParticleDerivedHistogramCalculator.hpp 
+ROOT_GENERATE_DICTIONARY(G__Particle ParticleHistos.hpp ParticleDerivedHistos.hpp  ParticleAnalyzer.hpp 
 LINKDEF ParticleLinkDef.h)  
 
 
@@ -14,8 +14,7 @@ LINKDEF ParticleLinkDef.h)
 # Create a shared library with geneated dictionary
 ################################################################################################
 add_compile_options(-Wall -Wextra -pedantic)
-add_library(Particle SHARED  ParticleHistos.cpp ParticleDerivedHistos.cpp  ParticleAnalyzer.cpp ParticleDerivedHistogramCalculator.cpp 
- G__Particle.cxx)
+add_library(Particle SHARED  ParticleHistos.cpp ParticleDerivedHistos.cpp  ParticleAnalyzer.cpp   G__Particle.cxx)
 
 target_link_libraries(Particle Base ${ROOT_LIBRARIES} ${EXTRA_LIBS} )
 target_include_directories(Particle  PUBLIC Base Particle ${EXTRA_INCLUDES} ) 

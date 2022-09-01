@@ -15,12 +15,12 @@
 
 ClassImp(TransverseSpherocityHistos);
 
-TransverseSpherocityHistos::TransverseSpherocityHistos(const TString &           _name,
-                                                       const Configuration &     _configuration,
-                                                       vector<ParticleFilter*> & _particleFilters,
-                                                       LogLevel                  _debugLevel)
+TransverseSpherocityHistos::TransverseSpherocityHistos(Task * _parent,
+                                                       const TString & _name,
+                                                       Configuration & _configuration,
+                                                       vector<ParticleFilter*> & _particleFilters)
 :
-Histograms(_name,_configuration,_debugLevel),
+Histograms(_parent,_name,_configuration),
 fillS0(true),
 fillS1(false),
 fillS1VsS0(false),
@@ -33,23 +33,39 @@ h_s1VsS0(),
 h_s0VsS0()
 {
   appendClassName("TransverseSpherocityHistos");
-  setInstanceName(_name);
 }
 
 void TransverseSpherocityHistos::createHistograms()
 {
-  if ( reportStart("TransverseSpherocityHistos",getName(),"createHistograms()"))
+  if ( reportStart(__FUNCTION__))
     { }
-  TString bn = getHistoBaseName();
+  const TString & bn  = getName();
+  const TString & ptn = getParentTaskName();
+  const TString & ppn = getParentPathName();
   Configuration & configuration = getConfiguration();
-  fillS0     = configuration.getValueBool("fillS0");
-  fillS1     = configuration.getValueBool("fillS1");
-  fillS1VsS0 = configuration.getValueBool("fillS1VsS0");
-  fillCorrelationHistos   = configuration.getValueBool("fillCorrelationHistos");
-  int nBins_spherocity    = configuration.getValueInt("nBins_spherocity");
-  double min_spherocity   = configuration.getValueDouble("min_spherocity");
-  double max_spherocity   = configuration.getValueDouble("max_spherocity");
+  fillS0     = configuration.getValueBool(ppn,"FillS0");
+  fillS1     = configuration.getValueBool(ppn,"FillS1");
+  fillS1VsS0 = configuration.getValueBool(ppn,"FillS1VsS0");
+  fillCorrelationHistos   = configuration.getValueBool(ppn,"FillCorrelationHistos");
+  int nBins_spherocity    = configuration.getValueInt(ppn,"nBins_spherocity");
+  double min_spherocity   = configuration.getValueDouble(ppn,"Min_spherocity");
+  double max_spherocity   = configuration.getValueDouble(ppn,"Max_spherocity");
   nParticleFilters = particleFilters.size();
+
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  S:Parent Task Name....................: " << ptn << endl;
+    cout << "  S:Parent Path Name....................: " << ppn << endl;
+    cout << "  S:Histo Base Name.....................: " << bn << endl;
+    cout << "  S:nParticleFilters....................: " << nParticleFilters     << endl;
+    cout << "  S:fillS0..............................: " << fillS0     << endl;
+    cout << "  S:fillS1..............................: " << fillS1     << endl;
+    cout << "  S:fillS1VsS0..........................: " << fillS1VsS0 << endl;
+    cout << "  S:nBins_spherocity....................: " << nBins_spherocity << endl;
+    cout << "  S:min_spherocity......................: " << min_spherocity   << endl;
+    cout << "  S:max_spherocity......................: " << max_spherocity   << endl;
+    }
   for (int iPartFilter1=0; iPartFilter1<nParticleFilters; iPartFilter1++ )
     {
     TString pfn1 = particleFilters[iPartFilter1]->getName();
@@ -84,13 +100,26 @@ void TransverseSpherocityHistos::loadHistograms(TFile * inputFile)
 {
   if ( reportStart(__FUNCTION__))
     { }
-  TString bn = getHistoBaseName();
+  const TString & bn  = getName();
+  const TString & ptn = getParentTaskName();
+  const TString & ppn = getParentPathName();
   Configuration & configuration = getConfiguration();
-  fillS0     = configuration.getValueBool("fillS0");
-  fillS1     = configuration.getValueBool("fillS1");
-  fillS1VsS0 = configuration.getValueBool("fillS1VsS0");
-  fillCorrelationHistos = configuration.getValueBool("fillCorrelationHistos");
+  fillS0     = configuration.getValueBool(ppn,"FillS0");
+  fillS1     = configuration.getValueBool(ppn,"FillS1");
+  fillS1VsS0 = configuration.getValueBool(ppn,"FillS1VsS0");
+  fillCorrelationHistos = configuration.getValueBool(ppn,"FillCorrelationHistos");
   nParticleFilters = particleFilters.size();
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  S:Parent Task Name....................: " << ptn << endl;
+    cout << "  S:Parent Path Name....................: " << ppn << endl;
+    cout << "  S:Histo Base Name.....................: " << bn << endl;
+    cout << "  S:nParticleFilters....................: " << nParticleFilters     << endl;
+    cout << "  S:fillS0..............................: " << fillS0     << endl;
+    cout << "  S:fillS1..............................: " << fillS1     << endl;
+    cout << "  S:fillS1VsS0..........................: " << fillS1VsS0 << endl;
+    }
   for (int iPartFilter1=0; iPartFilter1<nParticleFilters; iPartFilter1++ )
     {
     TString pfn1 = particleFilters[iPartFilter1]->getName();

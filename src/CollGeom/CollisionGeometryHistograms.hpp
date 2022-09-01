@@ -19,9 +19,9 @@ class CollisionGeometryHistograms : public Histograms
 {
 public:
 
-  CollisionGeometryHistograms(const TString       & name,
-                              const Configuration & configuration,
-                              LogLevel  debugLevel);
+  CollisionGeometryHistograms(Task * _parent,
+                              const TString & _name,
+                              Configuration & _configuration);
   virtual ~CollisionGeometryHistograms() { }
 
   virtual void createHistograms();

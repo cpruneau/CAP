@@ -19,10 +19,10 @@
 class TransverseSpherocityHistos: public Histograms
 {
 public:
-  TransverseSpherocityHistos(const TString           & _name,
-                             const Configuration     & _configuration,
-                             vector<ParticleFilter*> & _particleFilters,
-                             LogLevel                  _debugLevel);
+  TransverseSpherocityHistos(Task * _parent,
+                             const TString & _name,
+                             Configuration & _configuration,
+                             vector<ParticleFilter*> & _particleFilters);
   ~TransverseSpherocityHistos() {}
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);

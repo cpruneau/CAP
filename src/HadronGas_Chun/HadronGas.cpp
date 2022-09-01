@@ -19,8 +19,7 @@ double HadronGas::twoPi  = 2.0*3.1415927;
 double HadronGas::twoPiCube = twoPi*twoPi*twoPi;
 
 HadronGas::HadronGas(ParticleTypeCollection * _particles,
-                     ParticleTypeCollection * _stableParticles,
-                     LogLevel debugLevel)
+                     ParticleTypeCollection * _stableParticles)
 :
 particleTypes(_particles),
 stableParticleTypes(_stableParticles),

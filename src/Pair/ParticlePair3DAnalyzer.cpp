@@ -14,21 +14,17 @@
 
 ClassImp(ParticlePair3DAnalyzer);
 
-ParticlePair3DAnalyzer::ParticlePair3DAnalyzer(const TString &          _name,
-                                           const Configuration &    _configuration,
-                                           vector<EventFilter*> &   _eventFilters,
-                                           vector<ParticleFilter*> &_particleFilters,
-                                           LogLevel                 _selectedLevel)
+ParticlePair3DAnalyzer::ParticlePair3DAnalyzer(const TString & _name,
+                                               Configuration & _configuration,
+                                               vector<EventFilter*> & _eventFilters,
+                                               vector<ParticleFilter*> &_particleFilters)
 :
-Task(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel),
+Task(_name, _configuration, _eventFilters, _particleFilters),
 fillEta(true),
 fillY(false),
 fillP2(false)
 {
   appendClassName("ParticlePair3DAnalyzer");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
   for (unsigned int k=0; k<particleFilters.size(); k++)
     {
     vector<ParticleDigit*> list;
@@ -38,24 +34,16 @@ fillP2(false)
 
 void ParticlePair3DAnalyzer::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  configuration.setName("ParticlePair3DAnalyzer Configuration");
-  configuration.setParameter("useParticles",      true);
-  configuration.setParameter("createHistograms",  true);
-  configuration.setParameter("saveHistograms",    true);
-  configuration.setParameter("histoAnalyzerName", TString("Pair3D"));
-  configuration.setParameter("histoBaseName",     TString("Pair3D"));
-  configuration.setParameter("useAbsDelta",       false);
-
-  configuration.setParameter("nBins_DeltaP",  20);
-  configuration.setParameter("min_DeltaP",    -2.0);
-  configuration.setParameter("max_DeltaP",     2.0);
-
-  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
-  if (reportEnd(__FUNCTION__))
-    ;
+  //Task::setDefaultConfiguration();
+  setParameter("UseParticles",      true);
+  setParameter("CreateHistograms",  true);
+  setParameter("SaveHistograms",    true);
+  setParameter("HistoAnalyzerName", TString("Pair3D"));
+  setParameter("HistoBaseName",     TString("Pair3D"));
+  setParameter("useAbsDelta",       false);
+  setParameter("nBins_DeltaP",      20);
+  setParameter("Min_DeltaP",        -2.0);
+  setParameter("Max_DeltaP",        2.0);
 }
 
 void ParticlePair3DAnalyzer::createHistograms()
@@ -68,7 +56,7 @@ void ParticlePair3DAnalyzer::createHistograms()
   Configuration & configuration = getConfiguration();
   LogLevel debugLevel = getReportLevel();
   TString bn  = getName();
-  useAbsDelta = configuration.getValueBool("useAbsDelta");
+  useAbsDelta = getValueBool("useAbsDelta");
 
   Histograms * histos;
   if (reportDebug(__FUNCTION__))
@@ -87,7 +75,7 @@ void ParticlePair3DAnalyzer::createHistograms()
       {
       TString pfn = particleFilters[iParticleFilter]->getName();
       if (reportDebug(__FUNCTION__)) cout << "Particle filter (Singles):" << pfn << endl;
-      histos = new Particle3dHistos(makeHistoName(bn,efn,pfn),configuration,debugLevel);
+      histos = new Particle3dHistos(makeHistoName(bn,efn,pfn),configuration);
       histos->createHistograms();
       baseSingleHistograms.push_back(histos);
       }
@@ -100,7 +88,7 @@ void ParticlePair3DAnalyzer::createHistograms()
         {
         TString pfn2 = particleFilters[iParticleFilter2]->getName();
         if (reportDebug(__FUNCTION__)) cout << "Particle pairs with filter: " << pfn1 << " & " << pfn2 << endl;
-        histos = new ParticlePair3DHistos(makeHistoName(bn,efn,pfn1,pfn2),configuration,debugLevel);
+        histos = new ParticlePair3DHistos(makeHistoName(bn,efn,pfn1,pfn2),configuration);
         histos->createHistograms();
         basePairHistograms.push_back(histos);
         }
@@ -138,7 +126,7 @@ void ParticlePair3DAnalyzer::loadHistograms(TFile * inputFile)
       {
       TString pfn = particleFilters[iParticleFilter]->getName();
       if (reportDebug(__FUNCTION__)) cout << "Particle filter (Singles):" << pfn << endl;
-      histos = new Particle3DHistos(makeHistoName(bn,efn,pfn),configuration,debugLevel);
+      histos = new Particle3DHistos(makeHistoName(bn,efn,pfn),configuration);
       histos->loadHistograms(inputFile);
       baseSingleHistograms.push_back(histos);
       }
@@ -151,7 +139,7 @@ void ParticlePair3DAnalyzer::loadHistograms(TFile * inputFile)
         {
         TString pfn2 = particleFilters[iParticleFilter2]->getName();
         if (reportDebug(__FUNCTION__)) cout << "Particle pairs with filter: " << pfn1 << " & " << pfn2 << endl;
-        histos = new ParticlePair3DHistos(makeHistoName(bn,efn,pfn1,pfn2),configuration,debugLevel);
+        histos = new ParticlePair3DHistos(makeHistoName(bn,efn,pfn1,pfn2),configuration);
         histos->loadHistograms(inputFile);
         basePairHistograms.push_back(histos);
         }
@@ -164,9 +152,9 @@ void ParticlePair3DAnalyzer::loadHistograms(TFile * inputFile)
 
 void ParticlePair3DAnalyzer::execute()
 {
-//  
-//  if (reportStart(__FUNCTION__))
-//    ;
+  //
+  //  if (reportStart(__FUNCTION__))
+  //    ;
   incrementTaskExecuted();
   Event & event = *eventStreams[0];
 
@@ -239,8 +227,8 @@ void ParticlePair3DAnalyzer::execute()
         }
       }
     }
-//  if (reportEnd(__FUNCTION__))
-//    ;
+  //  if (reportEnd(__FUNCTION__))
+  //    ;
 }
 
 
@@ -297,9 +285,24 @@ Task * ParticlePair3DAnalyzer::getDerivedCalculator()
   Configuration derivedCalcConfiguration;
   // copy the parameters of this task to the new task -- so all the histograms will automatically match
   derivedCalcConfiguration.setParameters(configuration);
-  derivedCalcConfiguration.setParameter("createHistograms",       true);
-  derivedCalcConfiguration.setParameter("loadHistograms",         true);
-  derivedCalcConfiguration.setParameter("saveHistograms",         true);
+  derivedCalcsetParameter("CreateHistograms",       true);
+  derivedCalcsetParameter("LoadHistograms",         true);
+  derivedCalcsetParameter("SaveHistograms",         true);
   Task * calculator = new ParticlePair3DDerivedHistogramCalculator(nameD,derivedCalcConfiguration,eventFilters,particleFilters,getReportLevel());
   return calculator;
+}
+
+
+void ParticlePair3DAnalyzer::createDerivedHistograms()
+{
+
+}
+
+void ParticlePair3DAnalyzer::loadDerivedHistograms(TFile * inputFile __attribute__((unused)))
+{
+
+}
+
+void ParticlePair3DAnalyzer::calculateDerivedHistograms()
+{
 }

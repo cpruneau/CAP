@@ -16,32 +16,27 @@
 ClassImp(SubSampleStatIterator);
 
 
-SubSampleStatIterator::SubSampleStatIterator(const TString &       _name,
-                                                 const Configuration & _configuration,
-                                                 MessageLogger::LogLevel debugLevel)
+SubSampleStatIterator::SubSampleStatIterator(const TString & _name,
+                                             Configuration & _configuration)
 :
-Task(_name,_configuration,debugLevel)
+Task(_name,_configuration)
 {
   appendClassName("SubSampleStatIterator");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void SubSampleStatIterator::setDefaultConfiguration()
 {
   TString none  = "none";
-  configuration.setParameter("createHistograms",       true);
-  configuration.setParameter("loadHistograms",         true);
-  configuration.setParameter("saveHistograms",         true);
-  configuration.setParameter("appendedString",         TString("SubSampleSum_"));
-  configuration.setParameter("forceHistogramsRewrite", true);
-  configuration.addParameter("defaultGroupSize",         10);
-  configuration.addParameter("nInputFile",                0);
-  configuration.generateKeyValuePairs("IncludedPattern",none,20);
-  configuration.generateKeyValuePairs("ExcludedPattern",none,20);
-  configuration.generateKeyValuePairs("InputFile",none,100);
-  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  setParameter("CreateHistograms",        true);
+  setParameter("LoadHistograms",          true);
+  setParameter("SaveHistograms",          true);
+  setParameter("AppendedString",          TString("Sum"));
+  setParameter("ForceHistogramsRewrite",  true);
+  addParameter("DefaultGroupSize",        10);
+  addParameter("nInputFile",              0);
+  generateKeyValuePairs("IncludedPattern",none,20);
+  generateKeyValuePairs("ExcludedPattern",none,20);
+  generateKeyValuePairs("InputFile",      none,100);
 }
 
 
@@ -49,15 +44,15 @@ void SubSampleStatIterator::execute()
 {
   if (reportStart(__FUNCTION__))
     ;
+
   TString none  = "none";
-  TString appendedString      = configuration.getValueString("appendedString");
-  bool forceHistogramsRewrite = configuration.getValueBool("forceHistogramsRewrite");
-  int  defaultGroupSize       = configuration.getValueInt("defaultGroupSize");
-  TString histoInputPath      = configuration.getValueString("histoInputPath");
-  TString histoOutputPath     = configuration.getValueString("histoOutputPath");
-  TString histoModelDataName  = configuration.getValueString("histoModelDataName");
-  vector<TString> includedPatterns = configuration.getSelectedValues("IncludedPattern",none);
-  vector<TString> excludedPatterns = configuration.getSelectedValues("ExcludedPattern",none);
+  TString appendedString            = getValueString("AppendedString");
+  bool ForceHistogramsRewrite       = getValueBool(  "ForceHistogramsRewrite");
+  int  defaultGroupSize             = getValueInt(   "DefaultGroupSize");
+  TString HistogramInputPath        = getValueString("HistogramInputPath");
+  TString HistogramOutputPath       = getValueString("HistogramOutputPath");
+  vector<TString> includedPatterns  = getSelectedValues("IncludedPattern",none);
+  vector<TString> excludedPatterns  = getSelectedValues("ExcludedPattern",none);
   if (reportInfo(__FUNCTION__))
     {
     cout << "include patterns size: " << includedPatterns.size() << endl;
@@ -78,41 +73,31 @@ void SubSampleStatIterator::execute()
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++)
     {
     Task & subTask = *subTasks[iTask];
-    Configuration & subTaskConfig = subTask.getConfiguration();
-    TString taskName        = subTask.getName();
+    //Configuration & subTaskConfig = subTask.getConfiguration();
+    TString subtaskName        = subTask.getName();
     if (reportInfo(__FUNCTION__))  cout << "SubTasks: " << iTask << " Named:" <<  taskName << endl;
-
-    TString histoAnalyzerName = subTaskConfig.getValueString("histoAnalyzerName");
-    TString histoOutputFileName;
-    histoOutputFileName = histoModelDataName;
-    histoOutputFileName += "_";
-    histoOutputFileName += histoAnalyzerName;
-    if (reportDebug(__FUNCTION__))
+    TString HistogramOutputFile;
+    HistogramOutputFile += "XXXXXXX";
+    if (reportInfo(__FUNCTION__))
       {
       cout << endl;
-      cout << "            SubTask Name: " << taskName  << endl;
-      cout << "          histoInputPath: " << histoInputPath  << endl;
-      cout << "         histoOutputPath: " << histoOutputPath  << endl;
-      cout << "      histoModelDataName: " << histoModelDataName  <<   endl;
-      cout << "       histoAnalyzerName: " << histoAnalyzerName   << endl;
-      cout << "     histoOutputFileName: " << histoOutputFileName  << endl;
+      cout << " SubTask Name................: " << subtaskName  << endl;
+      cout << " HistoInputPath..............: " << HistogramInputPath  << endl;
+      cout << " HistogramOutputPath.........: " << HistogramOutputPath  << endl;
+      cout << " HistogramOutputFile.........: " << HistogramOutputFile  << endl;
       }
-    Configuration subsampleConfig;
-    subsampleConfig.setParameter("histoInputPath",         histoInputPath);
-    subsampleConfig.setParameter("histoOutputPath",        histoOutputPath);
-    subsampleConfig.setParameter("histoBaseName",          histoOutputFileName);
-    subsampleConfig.setParameter("appendedString",         appendedString);
-    subsampleConfig.setParameter("forceHistogramsRewrite", forceHistogramsRewrite);
-    subsampleConfig.setParameter("histoModelDataName",     histoModelDataName);
-    subsampleConfig.setParameter("histoAnalyzerName",      histoAnalyzerName);
-    subsampleConfig.setParameter("defaultGroupSize",       defaultGroupSize);
-    subsampleConfig.setParameter("IncludedPattern",        taskName);
-    subsampleConfig.addSelectedValues("IncludedPattern", "none", includedPatterns);
-    subsampleConfig.addSelectedValues("ExcludedPattern", "none", excludedPatterns);
-    TString statCalculatorName = "SubSampleStatCalculator_";
-    statCalculatorName += taskName;
-    SubSampleStatCalculator calculator(statCalculatorName, subsampleConfig, getReportLevel());
-    calculator.execute();
+//    Configuration subsampleConfig;
+//    subsampleConfig.setParameter("HistogramInputPath",     HistogramInputPath);
+//    subsampleConfig.setParameter("HistogramOutputPath",    HistogramOutputPath);
+//    subsampleConfig.setParameter("AppendedString",         appendedString);
+//    subsampleConfig.setParameter("ForceHistogramsRewrite", ForceHistogramsRewrite);
+//    subsampleConfig.setParameter("DefaultGroupSize",       defaultGroupSize);
+//    SubSampleStatCalculator calculator(subtaskName, subsampleConfig);
+//    calculator.configure();
+//    calculator.execute();
+
+    cout << " In lieu of code execution" << endl;
+
     }
   if (reportEnd(__FUNCTION__))
     { }

@@ -14,47 +14,39 @@
 
 ClassImp(BalanceFunctionCalculator);
 
-BalanceFunctionCalculator::BalanceFunctionCalculator(const TString &       _name,
-                                                     const Configuration & _configuration,
-                                                     MessageLogger::LogLevel debugLevel)
+BalanceFunctionCalculator::BalanceFunctionCalculator(const TString & _name
+                                                     Configuration & _configuration)
 :
-Task(_name,_configuration,debugLevel)
+Task(_name,_configuration)
 {
   appendClassName("BalanceFunctionCalculator");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void BalanceFunctionCalculator::setDefaultConfiguration()
 {
+  Task::setDefaultConfiguration();
   TString none  = "none";
-  configuration.setParameter("createHistograms",       true);
-  configuration.setParameter("loadHistograms",         true);
-  configuration.setParameter("saveHistograms",         true);
-  configuration.setParameter("appendedString",         TString("_Derived"));
-  configuration.setParameter("forceHistogramsRewrite", true);
-  configuration.generateKeyValuePairs("IncludedPattern",none,20);
-  configuration.generateKeyValuePairs("ExcludedPattern",none,20);
-//  if (reportDebug(__FUNCTION__))
-//    {
-//    configuration.printConfiguration(cout);
-//    }
+  setParameter("CreateHistograms",       true);
+  setParameter("LoadHistograms",         true);
+  setParameter("SaveHistograms",         true);
+  setParameter("AppendedString",         TString("_Derived"));
+  //setParameter("ForceHistogramsRewrite", true);
+  generateKeyValuePairs("IncludedPattern",none,20);
+  generateKeyValuePairs("ExcludedPattern",none,20);
 }
-
 
 void BalanceFunctionCalculator::execute()
 {
   if (reportStart(__FUNCTION__))
     ;
   TString none("none");
-  TString appendedString           = configuration.getValueString("appendedString");
-  bool    forceHistogramsRewrite   = configuration.getValueBool("forceHistogramsRewrite");
-  TString histoInputPath           = configuration.getValueString("histoInputPath");
-  TString histoOutputPath          = configuration.getValueString("histoOutputPath");
-  TString histoOutputDataName      = configuration.getValueString("histoOutputDataName");
-  vector<TString> includedPatterns = configuration.getSelectedValues("IncludedPattern",none);
-  vector<TString> excludedPatterns = configuration.getSelectedValues("ExcludedPattern",none);
+  TString appendedString           = getValueString("AppendedString");
+  bool    ForceHistogramsRewrite   = getValueBool("ForceHistogramsRewrite");
+  TString histoInputPath           = getValueString("HistogramInputPath");
+  TString HistogramOutputPath      = getValueString("HistogramOutputPath");
+  TString histoOutputDataName      = getValueString("HistoOutputDataName");
+  vector<TString> includedPatterns = getSelectedValues("IncludedPattern",none);
+  vector<TString> excludedPatterns = getSelectedValues("ExcludedPattern",none);
   TString histoOutputAnalyzerName;
   unsigned int nSubTasks = subTasks.size();
   if (reportDebug())  cout << "SubTasks Count: " << nSubTasks  << endl;
@@ -62,7 +54,7 @@ void BalanceFunctionCalculator::execute()
     {
     Task & subTask = *subTasks[iTask];
     Configuration & subTaskConfig = subTask.getConfiguration();
-    histoOutputAnalyzerName = subTaskConfig.getValueString("histoOutputAnalyzerName");
+    histoOutputAnalyzerName = subTaskConfig.getValueString(getName(),"HistoOutputAnalyzerName");
     if (reportDebug(__FUNCTION__))
       {
       cout << endl;
@@ -71,17 +63,20 @@ void BalanceFunctionCalculator::execute()
       cout << "               SubTask #: " << iTask  << endl;
       cout << "            SubTask Name: " << taskName  << endl;
       cout << "          histoInputPath: " << histoInputPath  << endl;
-      cout << "         histoOutputPath: " << histoOutputPath  << endl;
+      cout << "       stogramOutputPath: " << HistogramOutputPath  << endl;
       cout << "     histoOutputDataName: " << histoOutputDataName  <<   endl;
       cout << " histoOutputAnalyzerName: " << histoOutputAnalyzerName   << endl;
       cout << " ===========================================================" << endl;
       cout << " ===========================================================" << endl;
       }
-    vector<TString> includePatterns = configuration.getSelectedValues("IncludedPattern", "none");
-    vector<TString> excludePatterns = configuration.getSelectedValues("ExcludedPattern", "none");
+    vector<TString> includePatterns = getSelectedValues("IncludedPattern", "none");
+    vector<TString> excludePatterns = getSelectedValues("ExcludedPattern", "none");
     includePatterns.push_back(histoOutputDataName);
     includePatterns.push_back(histoOutputAnalyzerName);
-    vector<TString> allFilesToProcess = listFilesInDir(histoInputPath,includePatterns,excludePatterns);
+    bool prependPath = true;
+    bool verbose     = true;
+    int  maximumDepth = 2;
+    vector<TString> allFilesToProcess   = listFilesInDir(histoInputPath,includePatterns,excludePatterns,prependPath, verbose, maximumDepth);
     int nFiles = allFilesToProcess.size();
     if (nFiles<1)
       {
@@ -104,7 +99,7 @@ void BalanceFunctionCalculator::execute()
       cout << "                   nFiles: " << nFiles << endl;
       cout << "           appendedString: " << appendedString << endl;
       cout << "           histoInputPath: " << histoInputPath << endl;
-      cout << "          histoOutputPath: " << histoOutputPath << endl;
+      cout << "      HistogramOutputPath: " << HistogramOutputPath << endl;
       cout << "      histoOutputDataName: " << histoOutputDataName << endl;
       cout << "  histoOutputAnalyzerName: " << histoOutputAnalyzerName << endl;
       cout << " ===========================================================" << endl;
@@ -125,37 +120,33 @@ void BalanceFunctionCalculator::execute()
           }
         }
       task->setReportLevel(getReportLevel());
-      TString histoInputFileName  = allFilesToProcess[iFile];
-      TString histoOutputFileName = removeRootExtension(histoInputFileName);
-      histoOutputFileName += appendedString;
+      TString HistogramInputFile  = allFilesToProcess[iFile];
+      TString HistogramOutputFile = removeRootExtension(HistogramInputFile);
+      HistogramOutputFile += appendedString;
 //      if (reportDebug(__FUNCTION__))
 //        {
 //        cout << endl;
 //        cout << " ===========================================================" << endl;
 //        cout
 //        << "         iFile: " << iFile << endl
-//        << "    Input file: " << histoInputFileName << endl
-//        << "   Output file: " << histoOutputFileName << endl;
+//        << "    Input file: " << HistogramInputFile << endl
+//        << "   Output file: " << HistogramOutputFile << endl;
 //        }
-      if (reportInfo(__FUNCTION__)) cout << "iFile: " << iFile << " File: " << histoInputFileName << endl;
-      Configuration config;
-      config.setParameter("histoInputPath",         TString(""));
-      config.setParameter("histoInputFileName",     histoInputFileName);
-      config.setParameter("forceHistogramsRewrite", forceHistogramsRewrite);
-      config.setParameter("histoOutputPath",        TString(""));
-      config.setParameter("histoOutputFileName",    histoOutputFileName);
-      config.setParameter("histoOutputAnalyzerName",histoOutputAnalyzerName);
-      config.setParameter("createHistograms",       true);
-      config.setParameter("loadHistograms",         true);
-      config.setParameter("saveHistograms",         true);
-      config.setParameter("scaleHistograms",        false);
-      config.setParameter("doSubsampleAnalysis",    false);
-      config.setParameter("doPartialSaves",         false);
-      config.setParameter("useParticles",           true);
-      config.addParameter("useEventStream0",        false);
-      config.addParameter("useEventStream1",        false);
-
-      task->setConfiguration(config);
+      if (reportInfo(__FUNCTION__)) cout << "iFile: " << iFile << " File: " << HistogramInputFile << endl;
+      task->setParameter("HistogramInputPath",     TString(""));
+      task->setParameter("HistogramInputFile",     HistogramInputFile);
+      task->setParameter("ForceHistogramsRewrite", ForceHistogramsRewrite);
+      task->setParameter("HistogramOutputPath",    TString(""));
+      task->setParameter("HistogramOutputFile",    HistogramOutputFile);
+      task->setParameter("CreateHistograms",       true);
+      task->setParameter("LoadHistograms",         true);
+      task->setParameter("SaveHistograms",         true);
+      task->setParameter("ScaleHistograms",        false);
+      task->setParameter("DoSubsampleAnalysis",    false);
+      task->setParameter("DoPartialSaves",         false);
+      task->setParameter("UseParticles",           true);
+      task->setParameter("UseEventStream0",        false);
+      task->setParameter("UseEventStream1",        false);
       task->setReportLevel(getReportLevel());
       postTaskOk();
       task->initialize();

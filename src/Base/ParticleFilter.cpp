@@ -40,6 +40,107 @@ ParticleFilter & ParticleFilter::operator=(const ParticleFilter & otherFilter)
 }
 
 
+vector<ParticleFilter*> ParticleFilter::createOpenParticleFilter()
+{
+  vector<ParticleFilter*> filters;
+  ParticleFilter * filter = new ParticleFilter();
+  filter->setName("All");
+  filter->setLongName("All");
+  filter->setTitle("All");
+  filter->setLongTitle("All");
+  filter->addCondition(0, 1,  0.0, 0.0);  // live particles only
+  filters.push_back(filter);
+  return filters;
+}
+
+vector<ParticleFilter*> ParticleFilter::createAliceV0Filter()
+{
+  vector<ParticleFilter*> filters;
+  ParticleFilter* filter  = new ParticleFilter();
+  filter->setName("V0M");
+  filter->setLongName("V0M");
+  filter->setTitle("V0M");
+  filter->setLongTitle("V0M");
+  filter->addCondition(0, 1,  0.0, 0.0);  // live particles only
+  filter->addCondition(4, 1102, 0.0, 0.0);   // low mass charged hadron
+  filter->addCondition(5, 1, 0.05,  1000.0);  // pT
+  filter->addCondition(5, 7, -3.7, -1.7, 2.8, 5.1); // pseudorapidity in V0A and V0C
+  filters.push_back(filter);
+  return filters;
+}
+
+vector<ParticleFilter*> ParticleFilter::createNeutralParticleFilter(bool filteringOnPt,  double minPt,  double maxPt,
+                                                                    bool filteringOnEta, double minEta, double maxEta,
+                                                                    bool filteringOnY,   double minY,   double maxY)
+{
+  vector<ParticleFilter*> filters;
+  ParticleFilter* filter  = new ParticleFilter();
+  filter->setName("Neutral");
+  filter->setLongName("Meutral");
+  filter->setTitle("Q=0");
+  filter->setLongTitle("Q=0");
+  filter->addCondition(0, 1,  0.0, 0.0);  // live particles only
+  filter->addCondition(1, 0,  0.0, 0.0);   // neutral particles only
+  if (filteringOnPt)   filter->addCondition(5, 1, minPt,  maxPt);
+  if (filteringOnEta)  filter->addCondition(5, 7, minEta, maxEta);
+  if (filteringOnY)    filter->addCondition(5, 8, minY,   maxY);
+  filters.push_back(filter);  return filters;
+}
+
+vector<ParticleFilter*> ParticleFilter::createChargedParticleFilter(bool filteringOnPt,  double minPt,  double maxPt,
+                                                                     bool filteringOnEta, double minEta, double maxEta,
+                                                                     bool filteringOnY,   double minY,   double maxY)
+{
+  vector<ParticleFilter*> filters;
+  ParticleFilter* filter  = new ParticleFilter();
+  filter->setName("Charged");
+  filter->setLongName("Charged");
+  filter->setTitle("Q!=0");
+  filter->setLongTitle("Q!=0");
+  filter->addCondition(0, 1,  0.0, 0.0);  // live particles only
+  filter->addCondition(1, 1,  0.0, 0.0);   // charged particles only
+  if (filteringOnPt)   filter->addCondition(5, 1, minPt,  maxPt);
+  if (filteringOnEta)  filter->addCondition(5, 7, minEta, maxEta);
+  if (filteringOnY)    filter->addCondition(5, 8, minY,   maxY);
+  filters.push_back(filter);  return filters;
+}
+
+vector<ParticleFilter*> ParticleFilter::createNegativeParticleFilter(bool filteringOnPt,  double minPt,  double maxPt,
+                                                                     bool filteringOnEta, double minEta, double maxEta,
+                                                                     bool filteringOnY,   double minY,   double maxY)
+{
+  vector<ParticleFilter*> filters;
+  ParticleFilter* filter  = new ParticleFilter();
+  filter->setName("Negative");
+  filter->setLongName("Negative");
+  filter->setTitle("Q<0");
+  filter->setLongTitle("Q<0");
+  filter->addCondition(0, 1,  0.0, 0.0);  // live particles only
+  filter->addCondition(1, 2,  0.0, 0.0);   // negative particles only
+  if (filteringOnPt)   filter->addCondition(5, 1, minPt,  maxPt);
+  if (filteringOnEta)  filter->addCondition(5, 7, minEta, maxEta);
+  if (filteringOnY)    filter->addCondition(5, 8, minY,   maxY);
+  filters.push_back(filter);  return filters;
+}
+
+vector<ParticleFilter*> ParticleFilter::createPositiveParticleFilter(bool filteringOnPt,  double minPt,  double maxPt,
+                                                                     bool filteringOnEta, double minEta, double maxEta,
+                                                                     bool filteringOnY,   double minY,   double maxY)
+{
+  vector<ParticleFilter*> filters;
+  ParticleFilter* filter  = new ParticleFilter();
+  filter->setName("Positive");
+  filter->setLongName("Positive");
+  filter->setTitle("Q>0");
+  filter->setLongTitle("Q>0");
+  filter->addCondition(0, 1,  0.0, 0.0);  // live particles only
+  filter->addCondition(1, 3,  0.0, 0.0);   // negative particles only
+  if (filteringOnPt)   filter->addCondition(5, 1, minPt,  maxPt);
+  if (filteringOnEta)  filter->addCondition(5, 7, minEta, maxEta);
+  if (filteringOnY)    filter->addCondition(5, 8, minY,   maxY);
+  filters.push_back(filter);  return filters;
+}
+
 vector<ParticleFilter*> ParticleFilter::createPlusMinusHadronFilters(bool filteringOnPt,  double minPt,  double maxPt,
                                                                      bool filteringOnEta, double minEta, double maxEta,
                                                                      bool filteringOnY,   double minY,   double maxY)
@@ -157,7 +258,8 @@ vector<ParticleFilter*> ParticleFilter::createChargedHadronFilters(bool filterin
 }
 
 
-ParticleFilter *  ParticleFilter::createBaryonFilter(int pdg, const TString & name, const TString & title,
+
+ParticleFilter *  ParticleFilter::createHadronFilter(int pdg, const TString & name, const TString  & title,
                                                      bool filteringOnPt,  double minPt,  double maxPt,
                                                      bool filteringOnEta, double minEta, double maxEta,
                                                      bool filteringOnY,   double minY,   double maxY)
@@ -192,25 +294,63 @@ vector<ParticleFilter*> ParticleFilter::createBaryonFilters(bool filteringOnPt, 
   // Omega-  : 3334
   // ===========================
 
-  filters.push_back(createBaryonFilter(2212,"P",       "p",          filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
-  filters.push_back(createBaryonFilter(2112,"N",       "n",          filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
-  filters.push_back(createBaryonFilter(3122,"Lambda0", "#Lambda^{0}",filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
-  filters.push_back(createBaryonFilter(3222,"SigmaP",  "#Sigma^{+}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
-  filters.push_back(createBaryonFilter(3212,"Sigma0",  "#Sigma^{0}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
-  filters.push_back(createBaryonFilter(3112,"SigmaM",  "#Sigma^{-}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
-  filters.push_back(createBaryonFilter(3322,"Xi0",     "#Xi^{0}",    filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
-  filters.push_back(createBaryonFilter(3312,"XiM",     "#Xi^{-}",    filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
-  filters.push_back(createBaryonFilter(3334,"OmegaM",  "#Omega^{-}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(2212,"P",       "p",          filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(2112,"N",       "n",          filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(3122,"Lambda0", "#Lambda^{0}",filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(3222,"SigmaP",  "#Sigma^{+}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(3212,"Sigma0",  "#Sigma^{0}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(3112,"SigmaM",  "#Sigma^{-}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(3322,"Xi0",     "#Xi^{0}",    filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(3312,"XiM",     "#Xi^{-}",    filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(3334,"OmegaM",  "#Omega^{-}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
 
-  filters.push_back(createBaryonFilter(-2212,"Pbar",       "#bar{p}",          filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
-  filters.push_back(createBaryonFilter(-2112,"Nbar",       "#bar{n}",          filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
-  filters.push_back(createBaryonFilter(-3122,"Lambda0bar", "#bar{#Lambda}^{0}",filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
-  filters.push_back(createBaryonFilter(-3222,"SigmaPbar",  "#bar{#Sigma}^{-}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
-  filters.push_back(createBaryonFilter(-3212,"Sigma0bar",  "#bar{#Sigma}^{0}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
-  filters.push_back(createBaryonFilter(-3112,"SigmaMbar",  "#bar{#Sigma}^{+}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
-  filters.push_back(createBaryonFilter(-3322,"Xi0bar",     "#bar{#Xi}^{0}",    filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
-  filters.push_back(createBaryonFilter(-3312,"XiMbar",     "#bar{#Xi}^{+}",    filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
-  filters.push_back(createBaryonFilter(-3334,"OmegaMbar",  "#bar{#Omega}^{+}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(-2212,"Pbar",       "#bar{p}",          filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(-2112,"Nbar",       "#bar{n}",          filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(-3122,"Lambda0bar", "#bar{#Lambda}^{0}",filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(-3222,"SigmaPbar",  "#bar{#Sigma}^{-}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(-3212,"Sigma0bar",  "#bar{#Sigma}^{0}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(-3112,"SigmaMbar",  "#bar{#Sigma}^{+}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(-3322,"Xi0bar",     "#bar{#Xi}^{0}",    filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(-3312,"XiMbar",     "#bar{#Xi}^{+}",    filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(-3334,"OmegaMbar",  "#bar{#Omega}^{+}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+
+  return filters;
+}
+
+
+
+vector<ParticleFilter*> ParticleFilter::createStrangeHadronFilters(bool filteringOnPt,  double minPt,  double maxPt,
+                                                   bool filteringOnEta, double minEta, double maxEta,
+                                                   bool filteringOnY,   double minY,   double maxY)
+{
+  vector<ParticleFilter*> filters;
+
+  // lambda  : 3122
+  // Sigma+  : 3222
+  // Sigma0  : 3212
+  // Sigma-  : 3112
+  // Xi0     : 3322
+  // XiM     : 3312
+  // Omega-  : 3334
+  // ===========================
+
+  filters.push_back(createHadronFilter(321, "KP",      "K^{+}",      filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(3122,"Lambda0", "#Lambda^{0}",filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(3222,"SigmaP",  "#Sigma^{+}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(3212,"Sigma0",  "#Sigma^{0}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(3112,"SigmaM",  "#Sigma^{-}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(3322,"Xi0",     "#Xi^{0}",    filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(3312,"XiM",     "#Xi^{-}",    filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(3334,"OmegaM",  "#Omega^{-}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+
+  filters.push_back(createHadronFilter(-321, "KM",         "K^{-}",            filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(-3122,"Lambda0bar", "#bar{#Lambda}^{0}",filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(-3222,"SigmaPbar",  "#bar{#Sigma}^{-}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(-3212,"Sigma0bar",  "#bar{#Sigma}^{0}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(-3112,"SigmaMbar",  "#bar{#Sigma}^{+}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(-3322,"Xi0bar",     "#bar{#Xi}^{0}",    filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(-3312,"XiMbar",     "#bar{#Xi}^{+}",    filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
+  filters.push_back(createHadronFilter(-3334,"OmegaMbar",  "#bar{#Omega}^{+}", filteringOnPt,minPt,maxPt,filteringOnEta,minEta,maxEta,filteringOnY,minY,maxY));
 
   return filters;
 }
@@ -229,6 +369,7 @@ bool ParticleFilter::accept(const Particle & particle)
     Condition & condition = *(conditions[k]);
     unsigned int filterType    = condition.filterType;
     unsigned int filterSubType = condition.filterSubtype;
+    int charge = type.getCharge();
     switch (filterType)
       {
         case 0: // live or not to be considered at all
@@ -240,8 +381,14 @@ bool ParticleFilter::accept(const Particle & particle)
           }
         break;
 
-        case 1: // type selection/filtering
-        accepting = condition.accept(double(type.getCharge()));
+        case 1: // Charge, Neutral, Plus, or Minus
+        switch (filterSubType)
+          {
+            case  0: accepting = (charge==0); break;  // accepts neutral only
+            case  1: accepting = (charge!=0); break;  // accepts all charged particles
+            case  2: accepting = (charge<0);  break;  // accepts -ve only
+            case  3: accepting = (charge>0);  break;  // accepts +ve only
+          }
         break;
 
         case 2: // PDG Code
@@ -256,7 +403,6 @@ bool ParticleFilter::accept(const Particle & particle)
         switch (filterSubType)
           {
             case 0: accepting = type.isPhoton();     break;
-
             case 10: accepting = type.isLepton();         break;
             case 11: accepting = type.isElectron() || type.isPositron(); break;
             case 12: accepting = type.isElectron();   break;
@@ -364,5 +510,3 @@ bool ParticleFilter::accept(const Particle & particle)
     }
   return true;
 }
-
-

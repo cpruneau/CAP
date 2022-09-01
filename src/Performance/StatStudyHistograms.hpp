@@ -18,10 +18,9 @@ class StatStudyHistograms : public Histograms
 {
 public:
 
-  StatStudyHistograms(int _nSubSamples,
-                      const TString &       _name,
-                      const Configuration & _configuration,
-                      LogLevel              _debugLevel);
+  StatStudyHistograms(Task * _parent,
+                      const TString & _name
+                      Configuration & _configuration);
   virtual ~StatStudyHistograms();
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);

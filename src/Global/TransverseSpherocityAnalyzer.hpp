@@ -30,11 +30,10 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  TransverseSpherocityAnalyzer(const TString &           _name,
-                               const Configuration &     _configuration,
-                               vector<EventFilter*> &    _eventFilters,
-                               vector<ParticleFilter*> & _particleFilters,
-                               LogLevel                  _requiredLevel=Info);
+  TransverseSpherocityAnalyzer(const TString & _name,
+                               Configuration & _configuration,
+                               vector<EventFilter*> & _eventFilters,
+                               vector<ParticleFilter*> & _particleFilters);
   
   //!
   //! DTOR
@@ -65,7 +64,13 @@ public:
   //! Loads the histograms retquired by this task at execution
   //!
   virtual void loadHistograms(TFile * inputFile);
-  
+
+  virtual void createDerivedHistograms();
+
+  virtual void loadDerivedHistograms(TFile * inputFile __attribute__((unused)));
+
+  virtual void calculateDerivedHistograms();
+
 protected:
   
   bool setEvent;   //!< Whether this task instance sets spherocity properties stored in the EventProperty record of the current event.

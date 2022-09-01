@@ -12,8 +12,6 @@
 #ifndef CAP__ParticlePairAnalyzer
 #define CAP__ParticlePairAnalyzer
 #include "Task.hpp"
-#include "ParticleHistos.hpp"
-#include "ParticlePairHistos.hpp"
 
 //! Task used for the analysis of particle  pair distributions and correlations. As for other tasks classes of this package, use event filters and particle filters to determine the
 //! event selection and particle types and kinematic ranges across which  particle pair  distributions are studied. Particle particle distributions are computed
@@ -61,11 +59,10 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  ParticlePairAnalyzer(const TString &          _name,
-                       const Configuration &    _configuration,
-                       vector<EventFilter*> &   _eventFilters,
-                       vector<ParticleFilter*> &_particleFilters,
-                       LogLevel                 _selectedLevel);
+  ParticlePairAnalyzer(const TString & _name,
+                       Configuration & _configuration,
+                       vector<EventFilter*> & _eventFilters,
+                       vector<ParticleFilter*> & _particleFilters);
   
   //!
   //! DTOR
@@ -97,7 +94,11 @@ public:
   //!
   virtual void scaleHistograms();
 
-  virtual Task * getDerivedCalculator();
+  virtual void createDerivedHistograms();
+
+  virtual void loadDerivedHistograms(TFile * inputFile __attribute__((unused)));
+
+  virtual void calculateDerivedHistograms();
 
 protected:
   

@@ -13,71 +13,52 @@
 
 ClassImp(ParticlePerformanceAnalyzer);
 
-ParticlePerformanceAnalyzer::ParticlePerformanceAnalyzer(const TString &         _name,
-                                                         const Configuration &   _configuration,
-                                                         vector<EventFilter*>    _eventFilters,
-                                                         vector<ParticleFilter*> _particleFilters,
-                                                         LogLevel                _selectedLevel)
+ParticlePerformanceAnalyzer::ParticlePerformanceAnalyzer(const TString & _name,
+                                                         Configuration & _configuration,
+                                                         vector<EventFilter*> & _eventFilters,
+                                                         vector<ParticleFilter*>& _particleFilters)
 :
-Task(_name,_configuration,_eventFilters,_particleFilters,_selectedLevel),
+Task(_name,_configuration,_eventFilters,_particleFilters),
 fillEta(true),
 fillY(false)
 {
   appendClassName("ParticlePerformanceAnalyzer");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void ParticlePerformanceAnalyzer::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  Configuration & configuration = getConfiguration();
-  configuration.setName("ParticlePerformanceAnalyzer Configuration");
-  configuration.addParameter("useParticles",     true);
-  configuration.addParameter("useEventStream0",  true);
-  configuration.addParameter("useEventStream1",  true);
-  configuration.addParameter("createHistograms", true);
-  configuration.addParameter("saveHistograms",   true);
-  
-  configuration.addParameter("nBins_pt",100);
-  configuration.addParameter("min_pt", 0.0);
-  configuration.addParameter("max_pt", 5.0);
-  
-  configuration.addParameter("nBins_dpt", 100);
-  configuration.addParameter("min_dpt",  -1.0);
-  configuration.addParameter("max_dpt",   1.0);
-  
-  configuration.addParameter("nBins_phi", 100);
-  configuration.addParameter("min_phi",  -1.0);
-  configuration.addParameter("max_phi",   1.0);
-  
-  configuration.addParameter("nBins_dphi", 100);
-  configuration.addParameter("min_dphi",  -1.0);
-  configuration.addParameter("max_dphi",   1.0);
-  
-  configuration.addParameter("nBins_eta", 100);
-  configuration.addParameter("min_eta",  -1.0);
-  configuration.addParameter("max_eta",   1.0);
-  
-  configuration.addParameter("nBins_deta", 100);
-  configuration.addParameter("min_deta",  -1.0);
-  configuration.addParameter("max_deta",   1.0);
-  
-  configuration.addParameter("nBins_y", 100);
-  configuration.addParameter("min_y",  -1.0);
-  configuration.addParameter("max_y",  -1.0);
-  
-  configuration.addParameter("nBins_dy", 100);
-  configuration.addParameter("min_dy",  -1.0);
-  configuration.addParameter("max_dy",   1.0);
-  
-  configuration.addParameter("fillEta",  fillEta);
-  configuration.addParameter("fillY",    fillY);
-
-  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  Task::setDefaultConfiguration();
+  addParameter("UseParticles",     true);
+  addParameter("UseEventStream0",  true);
+  addParameter("UseEventStream1",  true);
+  addParameter("CreateHistograms", true);
+  addParameter("SaveHistograms",   true);
+  addParameter("nBins_pt",100);
+  addParameter("Min_pt", 0.0);
+  addParameter("Max_pt", 5.0);
+  addParameter("nBins_dpt", 100);
+  addParameter("Min_dpt",  -1.0);
+  addParameter("Max_dpt",   1.0);
+  addParameter("nBins_phi", 100);
+  addParameter("Min_phi",  -1.0);
+  addParameter("Max_phi",   1.0);
+  addParameter("nBins_dphi", 100);
+  addParameter("Min_dphi",  -1.0);
+  addParameter("Max_dphi",   1.0);
+  addParameter("nBins_eta", 100);
+  addParameter("Min_eta",  -1.0);
+  addParameter("Max_eta",   1.0);
+  addParameter("nBins_deta", 100);
+  addParameter("Min_deta",  -1.0);
+  addParameter("Max_deta",   1.0);
+  addParameter("nBins_y", 100);
+  addParameter("Min_y",  -1.0);
+  addParameter("Max_y",  -1.0);
+  addParameter("nBins_dy", 100);
+  addParameter("Min_dy",  -1.0);
+  addParameter("Max_dy",   1.0);
+  addParameter("FillEta",  fillEta);
+  addParameter("FillY",    fillY);
 }
 
 void ParticlePerformanceAnalyzer::createHistograms()
@@ -90,8 +71,8 @@ void ParticlePerformanceAnalyzer::createHistograms()
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
   
-  fillEta = configuration.getValueBool("fillEta");
-  fillY   = configuration.getValueBool("fillY");
+  fillEta = getValueBool("FillEta");
+  fillY   = getValueBool("FillY");
   
   if (reportInfo(__FUNCTION__))
     {
@@ -111,7 +92,7 @@ void ParticlePerformanceAnalyzer::createHistograms()
       histoName += evtFilterName;
       histoName += "_";
       histoName += partFilterName;
-      ParticlePerformanceHistos * histos = new ParticlePerformanceHistos(histoName,configuration,getReportLevel());
+      ParticlePerformanceHistos * histos = new ParticlePerformanceHistos(this,histoName,configuration);
       histos->createHistograms();
       baseSingleHistograms.push_back(histos);
       }
@@ -130,8 +111,8 @@ void ParticlePerformanceAnalyzer::loadHistograms(TFile * inputFile)
   TString prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
-  fillEta = configuration.getValueBool("fillEta");
-  fillY   = configuration.getValueBool("fillY");
+  fillEta = getValueBool("FillEta");
+  fillY   = getValueBool("FillY");
   
   if (reportDebug(__FUNCTION__))
     {
@@ -150,7 +131,7 @@ void ParticlePerformanceAnalyzer::loadHistograms(TFile * inputFile)
       histoName += evtFilterName;
       histoName += "_";
       histoName += partFilterName;
-      ParticlePerformanceHistos * histos = new ParticlePerformanceHistos(histoName,configuration,getReportLevel());
+      ParticlePerformanceHistos * histos = new ParticlePerformanceHistos(this,histoName,configuration);
       histos->loadHistograms(inputFile);
       baseSingleHistograms.push_back(histos);
       }

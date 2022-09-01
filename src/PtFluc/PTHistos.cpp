@@ -14,12 +14,13 @@
 
 ClassImp(PTHistos);
 
-PTHistos::PTHistos(const TString & name,
-                   Configuration * configuration,
-                   LogLevel  debugLevel,
-                   int ord)
+PTHistos::PTHistos(Task *          _parent,
+                   const TString & _name,
+                   Configuration & _configuration,
+                   LogLevel        _debugLevel,
+                   int             _ord)
 :
-Histograms(name,configuration,debugLevel),
+Histograms(_parent,_name,_configuration),
 maxOrder(ord),
 histoIndex(0),
 size(0),
@@ -38,7 +39,7 @@ void PTHistos::createHistograms()
 {
 //	if (reportDebug(__FUNCTION__))  cout << "PTHistos::createHistograms(..) started"<< endl;
 //	HeavyIonConfiguration & ac = (HeavyIonConfiguration&)( *getConfiguration());
-//	TString bn = getHistoBaseName();
+//	TString bn = getParentTaskName();
 //	TH1::SetDefaultBufferSize(ac.totEvents);
 //	totEvents =ac.totEvents;
 //
@@ -147,7 +148,7 @@ void PTHistos::loadHistograms(TFile * inputFile)
 //	}
 //	Configuration & ac = *(Configuration*) getConfiguration();
 //
-//	TString  bn = getHistoBaseName();
+//	TString  bn = getParentTaskName();
 //
 //	size = (TMath::Factorial(2 * maxOrder)) / (TMath::Factorial(maxOrder ) * TMath::Factorial(maxOrder )) - 1;
 //

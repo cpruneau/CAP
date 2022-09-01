@@ -490,7 +490,7 @@ double invertFunc(double (*func)(double), double y, double xL, double xR, double
     //cout << "impatience=" << impatience << endl;
     if (impatience>tolerance)
     {
-      cout << "invertFunc: " << "max number of iterations reached." << endl;
+      cout << "invertFunc: " << "Max number of iterations reached." << endl;
       exit(-1);
     }
 

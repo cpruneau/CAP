@@ -18,21 +18,17 @@ ClassImp(CollisionGeometryGenerator);
 //! @param _configuration Configuration to be used by this task instance
 //! @param _eventFilters  Vector of event filters to be used by this task instance
 //! @param _requiredLevel Debug/report level to be used by this task instance
-CollisionGeometryGenerator::CollisionGeometryGenerator(const TString &          _name,
-                                                       const Configuration  &   _configuration,
-                                                       vector<EventFilter*> &   _eventFilters,
-                                                       vector<ParticleFilter*>  _particleFilters,
-                                                       MessageLogger::LogLevel  _reportLevel)
+CollisionGeometryGenerator::CollisionGeometryGenerator(const TString & _name,
+                                                       Configuration & _configuration,
+                                                       vector<EventFilter*> & _eventFilters,
+                                                       vector<ParticleFilter*>& _particleFilters)
 :
-Task(_name,_configuration,_eventFilters, _particleFilters, _reportLevel),
+Task(_name,_configuration,_eventFilters, _particleFilters),
 minB(0), minBSq(0.0), maxB(10.0), maxBSq(100.0),
 nnCrossSection(0.0),
 maxNNDistanceSq(0.)
 {
   appendClassName("CollisionGeometryGenerator");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 CollisionGeometryGenerator::~CollisionGeometryGenerator()
@@ -42,97 +38,83 @@ CollisionGeometryGenerator::~CollisionGeometryGenerator()
 
 void CollisionGeometryGenerator::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  Configuration & configuration = getConfiguration();
-  configuration.setName("CollisionGeometryGenerator Configuration");
-  configuration.addParameter("aNucleusZ", 0);
-  configuration.addParameter("aNucleusA", 0);
-  configuration.addParameter("aGeneratorType",    0);
-  configuration.addParameter("aNRadiusBins",    100);
-  configuration.addParameter("aMinimumRadius",  0.0);
-  configuration.addParameter("aMaximumRadius", 10.0);
-  configuration.addParameter("aParA", 0.0);
-  configuration.addParameter("aParB", 0.0);
-  configuration.addParameter("aParC", 0.0);
-
-  configuration.addParameter("bNucleusZ", 0.0);
-  configuration.addParameter("bNucleusA", 0.0);
-  configuration.addParameter("bGeneratorType", 0);
-  configuration.addParameter("bNRadiusBins",    100);
-  configuration.addParameter("bMinimumRadius",  0.0);
-  configuration.addParameter("bMaximumRadius", 10.0);
-  configuration.addParameter("bParA", 0.0);
-  configuration.addParameter("bParB", 0.0);
-  configuration.addParameter("bParC", 0.0);
-
-  configuration.addParameter("nnCrossSection", 40.0);
-  configuration.addParameter("nBins_b", 100);
-  configuration.addParameter("min_b", 0.0);
-  configuration.addParameter("max_b", 0.0);
-  configuration.addParameter("nBins_bxSect", 100);
-
-  configuration.addParameter("useRecentering",      true);
-  configuration.addParameter("useNucleonExclusion", false);
-  configuration.setParameter("useParticles",        true);
-  configuration.addParameter("createHistograms",    true);
-  configuration.addParameter("saveHistograms",      true);
-  configuration.addParameter("useEventStream0",     true);
-
-  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  addParameter("aNucleusZ", 0);
+  addParameter("aNucleusA", 0);
+  addParameter("aGeneratorType",    0);
+  addParameter("aNRadiusBins",    100);
+  addParameter("aMinimumRadius",  0.0);
+  addParameter("aMaximumRadius", 10.0);
+  addParameter("aParA", 0.0);
+  addParameter("aParB", 0.0);
+  addParameter("aParC", 0.0);
+  addParameter("bNucleusZ", 0.0);
+  addParameter("bNucleusA", 0.0);
+  addParameter("bGeneratorType", 0);
+  addParameter("bNRadiusBins",    100);
+  addParameter("bMinimumRadius",  0.0);
+  addParameter("bMaximumRadius", 10.0);
+  addParameter("bParA", 0.0);
+  addParameter("bParB", 0.0);
+  addParameter("bParC", 0.0);
+  addParameter("nnCrossSection", 40.0);
+  addParameter("nBins_b", 100);
+  addParameter("Min_b", 0.0);
+  addParameter("Max_b", 0.0);
+  addParameter("nBins_bxSect", 100);
+  addParameter("useRecentering",      true);
+  addParameter("useNucleonExclusion", false);
+  setParameter("UseParticles",        true);
+  addParameter("CreateHistograms",    true);
+  addParameter("SaveHistograms",      true);
+  addParameter("UseEventStream0",     true);
 }
 
 
 void CollisionGeometryGenerator::initialize()
 {
-  
   if (reportStart(__FUNCTION__))
     ;
   Task::initialize();
-
   Event & event = * eventStreams[0];
-  event.setNucleusA(configuration.getValueInt("aNucleusZ"), configuration.getValueInt("aNucleusA") );
-  event.setNucleusB(configuration.getValueInt("bNucleusZ"), configuration.getValueInt("bNucleusA") );
-
-  configuration.addParameter("aNRadiusBins",    100);
-  configuration.addParameter("aMinimumRadius",  0.0);
-  configuration.addParameter("aMaximumRadius", 10.0);
-  configuration.addParameter("aParA", 0.0);
-  configuration.addParameter("aParB", 0.0);
-  configuration.addParameter("aParC", 0.0);
-
+  event.setNucleusA(configuration.getValueInt(getName(),"aNucleusZ"), configuration.getValueInt(getName(),"aNucleusA") );
+  event.setNucleusB(configuration.getValueInt(getName(),"bNucleusZ"), configuration.getValueInt(getName(),"bNucleusA") );
+  addParameter("aNRadiusBins",    100);
+  addParameter("aMinimumRadius",  0.0);
+  addParameter("aMaximumRadius", 10.0);
+  addParameter("aParA", 0.0);
+  addParameter("aParB", 0.0);
+  addParameter("aParC", 0.0);
 
   Configuration configGeneratorA;
-  configGeneratorA.addParameter("generatorType",  configuration.getValueInt("aGeneratorType"));
-  configGeneratorA.addParameter("nRadiusBins",    configuration.getValueInt("aNRadiusBins"));
-  configGeneratorA.addParameter("minimumRadius",  configuration.getValueInt("aMinimumRadius"));
-  configGeneratorA.addParameter("maximumRadius",  configuration.getValueInt("aMaximumRadius"));
-  configGeneratorA.addParameter("parA",           configuration.getValueDouble("aParA"));
-  configGeneratorA.addParameter("parB",           configuration.getValueDouble("aParB"));
-  configGeneratorA.addParameter("parC",           configuration.getValueDouble("aParC"));
-  configGeneratorA.addParameter("useRecentering",     configuration.getValueDouble("useRecentering"));
-  configGeneratorA.addParameter("useNucleonExclusion",configuration.getValueDouble("useNucleonExclusion"));
-  configGeneratorA.addParameter("exclusionRadius",    configuration.getValueDouble("exclusionRadius"));
-  NucleusGenerator * nucleusGeneratorA = new NucleusGenerator("NucleusGeneratorA", configGeneratorA, getReportLevel());
+  configGeneratorA.addParameter(getName(),"generatorType",  configuration.getValueInt(getName(),"aGeneratorType"));
+  configGeneratorA.addParameter(getName(),"nRadiusBins",    configuration.getValueInt(getName(),"aNRadiusBins"));
+  configGeneratorA.addParameter(getName(),"MinimumRadius",  configuration.getValueInt(getName(),"aMinimumRadius"));
+  configGeneratorA.addParameter(getName(),"MaximumRadius",  configuration.getValueInt(getName(),"aMaximumRadius"));
+  configGeneratorA.addParameter(getName(),"parA",           configuration.getValueDouble(getName(),"aParA"));
+  configGeneratorA.addParameter(getName(),"parB",           configuration.getValueDouble(getName(),"aParB"));
+  configGeneratorA.addParameter(getName(),"parC",           configuration.getValueDouble(getName(),"aParC"));
+  configGeneratorA.addParameter(getName(),"useRecentering",     configuration.getValueDouble(getName(),"useRecentering"));
+  configGeneratorA.addParameter(getName(),"useNucleonExclusion",configuration.getValueDouble(getName(),"useNucleonExclusion"));
+  configGeneratorA.addParameter(getName(),"exclusionRadius",    configuration.getValueDouble(getName(),"exclusionRadius"));
+  NucleusGenerator * nucleusGeneratorA = new NucleusGenerator("NucleusGeneratorA", configGeneratorA);
   addSubTask(nucleusGeneratorA);
 
   Configuration configGeneratorB;
-  configGeneratorB.addParameter("generatorType",  configuration.getValueInt("bGeneratorType"));
-  configGeneratorB.addParameter("nRadiusBins",    configuration.getValueInt("bNRadiusBins"));
-  configGeneratorB.addParameter("minimumRadius",  configuration.getValueInt("bMinimumRadius"));
-  configGeneratorB.addParameter("maximumRadius",  configuration.getValueInt("bMaximumRadius"));
-  configGeneratorB.addParameter("parA",           configuration.getValueDouble("bParA"));
-  configGeneratorB.addParameter("parB",           configuration.getValueDouble("bParB"));
-  configGeneratorB.addParameter("parC",           configuration.getValueDouble("bParC"));
-  configGeneratorB.addParameter("useRecentering",     configuration.getValueDouble("useRecentering"));
-  configGeneratorB.addParameter("useNucleonExclusion",configuration.getValueDouble("useNucleonExclusion"));
-  configGeneratorB.addParameter("exclusionRadius",    configuration.getValueDouble("exclusionRadius"));
-  NucleusGenerator * nucleusGeneratorB = new NucleusGenerator("NucleusGeneratorB", configGeneratorB, getReportLevel());
+  configGeneratorB.addParameter(getName(),"generatorType",  configuration.getValueInt(getName(),"bGeneratorType"));
+  configGeneratorB.addParameter(getName(),"nRadiusBins",    configuration.getValueInt(getName(),"bNRadiusBins"));
+  configGeneratorB.addParameter(getName(),"MinimumRadius",  configuration.getValueInt(getName(),"bMinimumRadius"));
+  configGeneratorB.addParameter(getName(),"MaximumRadius",  configuration.getValueInt(getName(),"bMaximumRadius"));
+  configGeneratorB.addParameter(getName(),"parA",           configuration.getValueDouble(getName(),"bParA"));
+  configGeneratorB.addParameter(getName(),"parB",           configuration.getValueDouble(getName(),"bParB"));
+  configGeneratorB.addParameter(getName(),"parC",           configuration.getValueDouble(getName(),"bParC"));
+  configGeneratorB.addParameter(getName(),"useRecentering",     configuration.getValueDouble(getName(),"useRecentering"));
+  configGeneratorB.addParameter(getName(),"useNucleonExclusion",configuration.getValueDouble(getName(),"useNucleonExclusion"));
+  configGeneratorB.addParameter(getName(),"exclusionRadius",    configuration.getValueDouble(getName(),"exclusionRadius"));
+  NucleusGenerator * nucleusGeneratorB = new NucleusGenerator("NucleusGeneratorB", configGeneratorB);
   addSubTask(nucleusGeneratorB);
 
-  minB   = configuration.getValueDouble( "minB"); minBSq = minB*minB;
-  maxB   = configuration.getValueDouble( "maxB"); maxBSq = maxB*maxB;
+  minB   = configuration.getValueDouble( "MinB"); minBSq = minB*minB;
+  maxB   = configuration.getValueDouble( "MaxB"); maxBSq = maxB*maxB;
   nnCrossSection  = configuration.getValueDouble( "nnCrossSection");
   maxNNDistanceSq = nnCrossSection/3.1415927;
   if (reportInfo(__FUNCTION__))
@@ -232,7 +214,7 @@ void CollisionGeometryGenerator::execute()
   ep.nBinaryTotal       = event.getNBinaryCollisions();  // total number of binary collisions
   ep.impactParameter    = b;    // nucleus-nucleus center distance in fm
   ep.fractionalXSection        = -99999; // fraction cross section value
-  ep.referenceMultiplicity     = -99999; // number of binary collisions
+  ep.refMultiplicity     = -99999; // number of binary collisions
   if (reportDebug(__FUNCTION__)) event.printProperties(cout);
 }
 

@@ -29,8 +29,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   GaussianGeneratorTask(const TString & _name,
-                        const Configuration & _configuration,
-                        MessageLogger::LogLevel _reportLevel);
+                        Configuration & _configuration);
 
   //!
   //! DTOR

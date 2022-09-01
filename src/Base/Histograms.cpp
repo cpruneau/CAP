@@ -11,23 +11,25 @@
  * *********************************************************************/
 
 #include "Histograms.hpp"
+#include "Task.hpp"
+
 ClassImp(Histograms);
 
-Histograms::Histograms(const TString &       _name,
-                       const Configuration & _configuration,
-                       LogLevel              _debugLevel)
+Histograms::Histograms(Task * _parent,
+                       const TString & _name,
+                       Configuration & _configuration)
 :
-HistogramCollection(_name,_debugLevel),
+HistogramCollection(_name),
+parent(_parent),
 configuration(_configuration)
 {
-  
-  appendClassName("Histograms");
+  setClassName("Histograms");
   setInstanceName(_name);
 }
 
 //Histograms(TFile * inputFile,
-//           const TString & name,
-//           const Configuration & configuration,
+//           const TString & _name,
+//           Configuration & configuration,
 //           LogLevel  debugLevel);
 
 //!
@@ -48,15 +50,6 @@ void Histograms::loadHistograms(TFile * inputFile __attribute__((unused)))
   if (reportWarning(__FUNCTION__)) cout << "Implement derived class to load histograms." << endl;
 }
 
-
-
-TString Histograms::getHistoBaseName() const
-{
-//  Configuration & ac = *(Configuration*) getConfiguration();
-  TString bn; //ac.histoBaseName;
-  bn = getName();
-  return bn;
-}
 
 TString Histograms::makeName(const TString & s0, const  TString & s1)
 {
@@ -201,3 +194,20 @@ TString Histograms::makeName(const TString & s0, int i1, int i2, int i3, int i4,
   name += suffix;
   return name;
 }
+
+
+Task * Histograms::getParentTask() const
+{
+  return parent;
+}
+
+const TString Histograms::getParentTaskName() const
+{
+  return parent->getName();
+}
+
+const TString Histograms::getParentPathName() const
+{
+  return parent->getFullTaskPath();
+}
+

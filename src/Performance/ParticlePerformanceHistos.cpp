@@ -13,11 +13,11 @@
 #include "ParticlePerformanceHistos.hpp"
 ClassImp(ParticlePerformanceHistos);
 
-ParticlePerformanceHistos::ParticlePerformanceHistos(const TString &       _name,
-                                                     const Configuration & _configuration,
-                                                     LogLevel              _debugLevel)
+ParticlePerformanceHistos::ParticlePerformanceHistos(Task * _parent,
+                                                     const TString & _name,
+                                                     Configuration & _configuration)
 :
-Histograms(_name,_configuration,_debugLevel),
+Histograms(_parent,_name,_configuration),
 fillEta(0),
 fillY(0),
 nBins_pt(0),
@@ -42,52 +42,51 @@ h_n1_dYVsY(nullptr),
 h_n1_dPhiVsPt(nullptr)
 {
   appendClassName("ParticlePerformanceHistos");
-  setInstanceName(_name);
 }
 
 
 // for now use the same boundaries for eta and y histogram
 void ParticlePerformanceHistos::createHistograms()
 {
-  if ( reportStart("ParticlePerformanceHistos",getName(),"createHistograms()"))
-    { }
-  TString bn = getHistoBaseName();
+  if ( reportStart(__FUNCTION__))
+    ;
+  TString bn = getParentTaskName();
   Configuration & configuration = getConfiguration();
   
-  fillEta    = configuration.getValueBool("fillEta");
-  fillY      = configuration.getValueBool("fillY");
+  fillEta    = configuration.getValueBool(getParentTaskName(),"FillEta");
+  fillY      = configuration.getValueBool(getParentTaskName(),"FillY");
   
-  nBins_pt   = configuration.getValueInt("nBins_pt");
-  min_pt     = configuration.getValueDouble("min_pt");
-  max_pt     = configuration.getValueDouble("max_pt");
+  nBins_pt   = configuration.getValueInt(getParentTaskName(),"nBins_pt");
+  min_pt     = configuration.getValueDouble(getParentTaskName(),"Min_pt");
+  max_pt     = configuration.getValueDouble(getParentTaskName(),"Max_pt");
   
-  nBins_dpt  = configuration.getValueInt("nBins_dpt");
-  min_dpt    = configuration.getValueDouble("min_dpt");
-  max_dpt    = configuration.getValueDouble("max_dpt");
+  nBins_dpt  = configuration.getValueInt(getParentTaskName(),"nBins_dpt");
+  min_dpt    = configuration.getValueDouble(getParentTaskName(),"Min_dpt");
+  max_dpt    = configuration.getValueDouble(getParentTaskName(),"Max_dpt");
   
-  nBins_phi = configuration.getValueInt("nBins_phi");
-  min_phi   = configuration.getValueDouble("min_phi");
-  max_phi   = configuration.getValueDouble("max_phi");
+  nBins_phi = configuration.getValueInt(getParentTaskName(),"nBins_phi");
+  min_phi   = configuration.getValueDouble(getParentTaskName(),"Min_phi");
+  max_phi   = configuration.getValueDouble(getParentTaskName(),"Max_phi");
   
-  nBins_dphi = configuration.getValueInt("nBins_dphi");
-  min_dphi   = configuration.getValueDouble("min_dphi");
-  max_dphi   = configuration.getValueDouble("max_dphi");
+  nBins_dphi = configuration.getValueInt(getParentTaskName(),"nBins_dphi");
+  min_dphi   = configuration.getValueDouble(getParentTaskName(),"Min_dphi");
+  max_dphi   = configuration.getValueDouble(getParentTaskName(),"Max_dphi");
   
-  nBins_eta = configuration.getValueInt("nBins_eta");
-  min_eta   = configuration.getValueDouble("min_eta");
-  max_eta   = configuration.getValueDouble("max_eta");
+  nBins_eta = configuration.getValueInt(getParentTaskName(),"nBins_eta");
+  min_eta   = configuration.getValueDouble(getParentTaskName(),"Min_eta");
+  max_eta   = configuration.getValueDouble(getParentTaskName(),"Max_eta");
   
-  nBins_deta = configuration.getValueInt("nBins_deta");
-  min_deta   = configuration.getValueDouble("min_deta");
-  max_deta   = configuration.getValueDouble("max_deta");
+  nBins_deta = configuration.getValueInt(getParentTaskName(),"nBins_deta");
+  min_deta   = configuration.getValueDouble(getParentTaskName(),"Min_deta");
+  max_deta   = configuration.getValueDouble(getParentTaskName(),"Max_deta");
   
-  nBins_y = configuration.getValueInt("nBins_y");
-  min_y   = configuration.getValueDouble("min_y");
-  max_y   = configuration.getValueDouble("max_y");
+  nBins_y = configuration.getValueInt(getParentTaskName(),"nBins_y");
+  min_y   = configuration.getValueDouble(getParentTaskName(),"Min_y");
+  max_y   = configuration.getValueDouble(getParentTaskName(),"Max_y");
   
-  nBins_dy = configuration.getValueInt("nBins_dy");
-  min_dy   = configuration.getValueDouble("min_dy");
-  max_dy   = configuration.getValueDouble("max_dy");
+  nBins_dy = configuration.getValueInt(getParentTaskName(),"nBins_dy");
+  min_dy   = configuration.getValueDouble(getParentTaskName(),"Min_dy");
+  max_dy   = configuration.getValueDouble(getParentTaskName(),"Max_dy");
   
   h_n1_dPt        = createHistogram(makeName(bn,"n1_dPt"),  nBins_dpt,  min_dpt,  max_dpt,  "#Delta p_{T}","N");
   h_n1_dPhi       = createHistogram(makeName(bn,"n1_dPhi"), nBins_dphi, min_dphi, max_dphi, "#Delta #varphi","N");
@@ -105,7 +104,7 @@ void ParticlePerformanceHistos::createHistograms()
     h_n1_dY       = createHistogram(makeName(bn,"n1_dY"),      nBins_dy,   min_dy,  max_dy,  "#Delta y","N");
     h_n1_dYVsY    = createHistogram(makeName(bn,"n1_dYVsY"),   nBins_y,    min_y,   max_y,   nBins_dy,  min_dy,  max_dy, "y", "#Delta y","N");
     }
-  if ( reportEnd("ParticlePerformanceHistos",getName(),"createHistograms()"))
+  if ( reportEnd(__FUNCTION__))
     { }
 }
 
@@ -115,11 +114,11 @@ void ParticlePerformanceHistos::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(__FUNCTION__,inputFile)) return;
-  TString bn = getHistoBaseName();
+  TString bn = getParentTaskName();
 
   Configuration & configuration = getConfiguration();
-  fillEta    = configuration.getValueBool("fillEta");
-  fillY      = configuration.getValueBool("fillY");
+  fillEta    = configuration.getValueBool(getParentTaskName(),"FillEta");
+  fillY      = configuration.getValueBool(getParentTaskName(),"FillY");
   
   h_n1_dPt        = loadH1(inputFile, makeName(bn,"n1_dpt"));
   h_n1_dPhi       = loadH1(inputFile, makeName(bn,"n1_dPhi"));

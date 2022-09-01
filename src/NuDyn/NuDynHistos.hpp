@@ -49,9 +49,9 @@ class NuDynHistos : public Histograms
 {
 public:
 
-  NuDynHistos(const TString & name,
-              const Configuration & configuration,
-              LogLevel  debugLevel);
+  NuDynHistos(Task * _parent,
+              const TString & _name,
+              Configuration & _configuration);
   virtual ~NuDynHistos();
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);

@@ -13,13 +13,12 @@
 #include "RootTreeReader.hpp"
 ClassImp(RootTreeReader);
 
-RootTreeReader::RootTreeReader(const TString &         _name,
-                               const Configuration &   _configuration,
-                               vector<EventFilter*>&   _eventFilters,
-                               vector<ParticleFilter*>&_particleFilters,
-                               LogLevel                _selectedLevel)
+RootTreeReader::RootTreeReader(const TString & _name,
+                               Configuration & _configuration,
+                               vector<EventFilter*> & _eventFilters,
+                               vector<ParticleFilter*> &_particleFilters)
 :
-Task(_name, _configuration, _eventFilters, _particleFilters, _selectedLevel),
+Task(_name, _configuration, _eventFilters, _particleFilters),
 
 dataInputPath(),
 dataInputFileName("FOLDER"),
@@ -37,16 +36,10 @@ nb(0),
 entryIndex(0)
 {
   appendClassName("RootTreeReader");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 RootTreeReader::~RootTreeReader()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
   if (inputDataFile)
     {
     inputDataFile->Close();
@@ -56,42 +49,33 @@ RootTreeReader::~RootTreeReader()
 
 void RootTreeReader::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  Configuration & config = getConfiguration();
-  config.setParameter("useParticles",          true);
-  config.setParameter("useEventStream0",       true);
-  config.setParameter("dataInputUsed",         true);
-  config.setParameter("dataInputPath",         TString("./"));
-  config.setParameter("dataInputFileName",     TString("FOLDER"));
-  config.setParameter("dataInputTreeName",     TString("tree"));
-  config.setParameter("dataInputFileMinIndex", -1);
-  config.setParameter("dataInputFileMaxIndex", -1);
-  
-  config.addParameter("removePhotons",         true);
-  config.addParameter("standaloneMode",        true);
-  config.addParameter("clonesMaxArraySize",    10000);
-  config.addParameter("randomizeEventPlane",   true);
+  Task::setDefaultConfiguration();
+  setParameter("UseParticles",          true);
+  setParameter("UseEventStream0",       true);
+  setParameter("DataInputUsed",         true);
+  setParameter("DataInputPath",         TString("./"));
+  setParameter("DataInputFile",         TString("FOLDER"));
+  setParameter("DataInputTree",         TString("tree"));
+  setParameter("dataInputFileMinIndex", -1);
+  setParameter("dataInputFileMaxIndex", -1);
+  addParameter("RemovePhotons",         true);
+  addParameter("StandaloneMode",        true);
+  addParameter("ClonesMaxArraySize",    10000);
+  addParameter("RandomizeEventPlane",   true);
 }
 
 void RootTreeReader::initialize()
 {
-  
   if (reportStart(__FUNCTION__))
     ;
   Task::initialize();
-  if (reportStart("RootTreeReader",getName(),"initialize()"))
-    ;
-  
-  const Configuration & configuration = getConfiguration();
-  dataInputPath     = configuration.getValueString("dataInputPath");
-  dataInputFileName = configuration.getValueString("dataInputFileName");
-  dataInputTreeName = configuration.getValueString("dataInputTreeName");
-  firstFile           = configuration.getValueInt("dataInputFileMinIndex");
-  lastFile            = configuration.getValueInt("dataInputFileMaxIndex");
-  clonesMaxArraySize  = configuration.getValueInt("clonesMaxArraySize");
-  randomizeEventPlane = configuration.getValueBool("randomizeEventPlane");
+  dataInputPath       = getValueString("DataInputPath");
+  dataInputFileName   = getValueString("DataInputFile");
+  dataInputTreeName   = getValueString("DataInputTree");
+  firstFile           = getValueInt(   "dataInputFileMinIndex");
+  lastFile            = getValueInt(   "dataInputFileMaxIndex");
+  clonesMaxArraySize  = getValueInt(   "ClonesMaxArraySize");
+  randomizeEventPlane = getValueBool(  "RandomizeEventPlane");
   
   inputRootChain = new TChain(dataInputTreeName);
   if (!inputRootChain)

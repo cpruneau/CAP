@@ -14,11 +14,11 @@
 ClassImp(EnhancedGraph);
 
 EnhancedGraph::EnhancedGraph(const TString & graphName,
-              const TString & xTitle,
-              const TString & yTitle,
-              double minX, double maxX,
-              double minY, double maxY,
-              int n, double * x, double *y, double *ex, double *ey, int opt)
+                             const TString & xTitle,
+                             const TString & yTitle,
+                             double minX, double maxX,
+                             double minY, double maxY,
+                             int n, double * x, double *y, double *ex, double *ey, int opt)
 : TH1D(graphName,graphName, 1, minX, maxX),
 nPoints(n),
 xPtr(x),
@@ -45,8 +45,8 @@ option(opt)
 }
 
 EnhancedGraph::EnhancedGraph(const TString & graphName,
-              const TString & xTitle,
-              const TString & yTitle,
+                             const TString & xTitle,
+                             const TString & yTitle,
               double minX, double maxX,
               double minY, double maxY,
               int n, double * x, double *y, double *ex, double *ey,
@@ -136,7 +136,7 @@ void EnhancedGraph::setMinMax(double minY, double maxY)
 void EnhancedGraph::setProperties(const GraphConfiguration & graphConfig)
 {
   cout << "-INFO- EnhancedGraph::setProperties() Setting properties of graph: " << g->GetName() << endl;
-  g->SetLineColor(graphConfig .getValueInt("lineColor"));
+  g->SetLineColor(graphConfig.getValueInt("lineColor"));
   g->SetLineStyle(graphConfig.getValueInt("lineStyle"));
   g->SetLineWidth(graphConfig.getValueInt("lineWidth"));
   g->SetMarkerColor(graphConfig.getValueInt("markerColor"));

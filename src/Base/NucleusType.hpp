@@ -63,7 +63,7 @@ public:
   //! @param _gIsospin isospin generacy
   //!
   NucleusType(int _z, int _a,
-              const TString & _name, const TString & _title,
+              const TString & _name, const TString  & _title,
               double _mass,
               int _gSpin,
               int _gIsospin);
@@ -81,7 +81,7 @@ public:
   //! @param _gIsospin isospin generacy
   //!
   NucleusType(int z, int a, int s,
-              const TString & _name, const TString & _title,
+              const TString & _name, const TString  & _title,
               double _mass,
               int _gSpin,
               int _gIsospin);

@@ -13,36 +13,25 @@
 
 ClassImp(EventPlaneRandomizerTask);
 
-EventPlaneRandomizerTask::EventPlaneRandomizerTask(const TString &          _name,
-                                                   const Configuration &    _configuration,
-                                                   vector<EventFilter*> &   _eventFilters,
-                                                   vector<ParticleFilter*>& _particleFilters,
-                                                   MessageLogger::LogLevel  _reportLevel)
+EventPlaneRandomizerTask::EventPlaneRandomizerTask(const TString & _name,
+                                                   Configuration & _configuration,
+                                                   vector<EventFilter*> & _eventFilters,
+                                                   vector<ParticleFilter*>& _particleFilters)
 :
-Task(_name,_configuration,_eventFilters,_particleFilters,_reportLevel)
+Task(_name,_configuration,_eventFilters,_particleFilters)
 {
   appendClassName("EventPlaneRandomizerTask");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void EventPlaneRandomizerTask::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  Configuration & configuration = getConfiguration();
-  configuration.setName("EventPlaneRandomizerTask Configuration");
-  configuration.setParameter("useParticles",    true);
-  configuration.setParameter("useEventStream0", true);
+  Task::setDefaultConfiguration();
+  setParameter("UseParticles",    true);
+  setParameter("UseEventStream0", true);
 }
 
 void EventPlaneRandomizerTask::execute()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
   incrementTaskExecuted();
   double eventAngle= TMath::TwoPi() * gRandom->Rndm();
   Event * event = eventStreams[0];

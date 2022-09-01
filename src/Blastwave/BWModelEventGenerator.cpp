@@ -9,9 +9,8 @@
 ClassImp(BWModelEventGenerator);
 
 
-BWModelEventGenerator::BWModelEventGenerator(const TString &       _name,
-                                             const Configuration & _configuration,
-                                             LogLevel              _selectedLevel)
+BWModelEventGenerator::BWModelEventGenerator(const TString & _name
+                                             Configuration & _configuration)
 :
 Task(),
 useAllKinds(true),
@@ -50,61 +49,61 @@ BWModelEventGenerator::~BWModelEventGenerator()
 
 void BWModelEventGenerator::setDefaultConfiguration()
 {
-  Task::setDefaultConfiguration();
+  //Task::setDefaultConfiguration();
   Configuration & config = getConfiguration();
-  config.setParameter("useParticles", true);
-  config.setParameter("createHistograms", true);
-  config.setParameter("saveHistograms", true);
+  setParameter("UseParticles", true);
+  setParameter("CreateHistograms", true);
+  setParameter("SaveHistograms", true);
 
-  config.addParameter("useAllKinds",    true);
-  config.addParameter("useFlow",        true);
-  config.addParameter("useBGBlastWave", true);
+  addParameter("useAllKinds",    true);
+  addParameter("useFlow",        true);
+  addParameter("useBGBlastWave", true);
   
-  config.addParameter("pionFraction", 0.70);
-  config.addParameter("kaonFraction", 0.20);
-  config.addParameter("protonFraction", 0.10);
+  addParameter("pionFraction", 0.70);
+  addParameter("kaonFraction", 0.20);
+  addParameter("protonFraction", 0.10);
   
-  config.addParameter("betaAvgBGBW", 0.6);
-  config.addParameter("betaProfileBGBW", 0.4);
+  addParameter("betaAvgBGBW", 0.6);
+  addParameter("betaProfileBGBW", 0.4);
   
-  config.addParameter("totalMultiplicityMean", 100);
-  config.addParameter("totalMultiplicitySigma", 0.4);
-  config.addParameter("netChargeMean", 0.0);
-  config.addParameter("netChargeSigma", 2.5);
+  addParameter("totalMultiplicityMean", 100);
+  addParameter("totalMultiplicitySigma", 0.4);
+  addParameter("netChargeMean", 0.0);
+  addParameter("netChargeSigma", 2.5);
   
-  config.addParameter("temperatureAllKinds", 160);
-  config.addParameter("directedFlowAllKinds", 0.01);
-  config.addParameter("ellipticFlowAllKinds", 0.01);
-  config.addParameter("triangularFlowAllKinds", 0.01);
-  config.addParameter("quadrangularFlowAllKinds", 0.01);
-  config.addParameter("pentangularFlowAllKinds", 0.01);
+  addParameter("temperatureAllKinds", 160);
+  addParameter("directedFlowAllKinds", 0.01);
+  addParameter("ellipticFlowAllKinds", 0.01);
+  addParameter("triangularFlowAllKinds", 0.01);
+  addParameter("quadrangularFlowAllKinds", 0.01);
+  addParameter("pentangularFlowAllKinds", 0.01);
   
-  config.addParameter("temperaturePions", 160);
-  config.addParameter("directedFlowPions", 0.01);
-  config.addParameter("ellipticFlowPions", 0.01);
-  config.addParameter("triangularFlowPions", 0.01);
-  config.addParameter("quadrangularFlowPions", 0.01);
-  config.addParameter("pentangularFlowPions", 0.01);
+  addParameter("temperaturePions", 160);
+  addParameter("directedFlowPions", 0.01);
+  addParameter("ellipticFlowPions", 0.01);
+  addParameter("triangularFlowPions", 0.01);
+  addParameter("quadrangularFlowPions", 0.01);
+  addParameter("pentangularFlowPions", 0.01);
 
-  config.addParameter("temperatureKaons", 160);
-  config.addParameter("directedFlowKaons", 0.01);
-  config.addParameter("ellipticFlowKaons", 0.01);
-  config.addParameter("triangularFlowKaons", 0.01);
-  config.addParameter("quadrangularFlowKaons", 0.01);
-  config.addParameter("pentangularFlowKaons", 0.01);
+  addParameter("temperatureKaons", 160);
+  addParameter("directedFlowKaons", 0.01);
+  addParameter("ellipticFlowKaons", 0.01);
+  addParameter("triangularFlowKaons", 0.01);
+  addParameter("quadrangularFlowKaons", 0.01);
+  addParameter("pentangularFlowKaons", 0.01);
 
-  config.addParameter("temperatureProtons", 160);
-  config.addParameter("directedFlowProtons", 0.01);
-  config.addParameter("ellipticFlowProtons", 0.01);
-  config.addParameter("triangularFlowProtons", 0.01);
-  config.addParameter("quadrangularFlowProtons", 0.01);
-  config.addParameter("pentangularFlowProtons", 0.01);
+  addParameter("temperatureProtons", 160);
+  addParameter("directedFlowProtons", 0.01);
+  addParameter("ellipticFlowProtons", 0.01);
+  addParameter("triangularFlowProtons", 0.01);
+  addParameter("quadrangularFlowProtons", 0.01);
+  addParameter("pentangularFlowProtons", 0.01);
   
-  config.addParameter("pt_Min", 0.20);
-  config.addParameter("pt_Max", 2.00);
-  config.addParameter("eta_Min", -1.00);
-  config.addParameter("eta_Max",  1.00);
-  config.addParameter("longitudinalFlow", 0.0);
+  addParameter("pt_Min", 0.20);
+  addParameter("pt_Max", 2.00);
+  addParameter("eta_Min", -1.00);
+  addParameter("eta_Max",  1.00);
+  addParameter("longitudinalFlow", 0.0);
 
 }
 
@@ -112,53 +111,50 @@ void BWModelEventGenerator::initialize()
 {
   if (reportStart("BWModelEventGenerator",getName(),"initialize()"))
     ;
-  Configuration & config = getConfiguration();
-
-  //==============Particles and spectra==============//
-  useAllKinds    = config.getValueBool("useAllKinds");
-  useFlow        = config.getValueBool("useFlow");
-  useBGBlastWave = config.getValueBool("useBGBlastWave");
+  useAllKinds    = getValueBool("useAllKinds");
+  useFlow        = getValueBool("useFlow");
+  useBGBlastWave = getValueBool("useBGBlastWave");
   
-  pionFraction = config.getValueDouble("pionFraction");
-  kaonFraction = config.getValueDouble("kaonFraction");
-  protonFraction = config.getValueDouble("protonFraction");
+  pionFraction = getValueDouble("pionFraction");
+  kaonFraction = getValueDouble("kaonFraction");
+  protonFraction = getValueDouble("protonFraction");
   
-  pt_Min = config.getValueDouble("pt_Min");
-  pt_Max = config.getValueDouble("pt_Max");
-  eta_Min = config.getValueDouble("eta_Min");
-  eta_Max = config.getValueDouble("eta_Max");
-  longitudinalFlow = config.getValueDouble("longitudinalFlow");
+  pt_Min = getValueDouble("pt_Min");
+  pt_Max = getValueDouble("pt_Max");
+  eta_Min = getValueDouble("eta_Min");
+  eta_Max = getValueDouble("eta_Max");
+  longitudinalFlow = getValueDouble("longitudinalFlow");
   
-  double betaAvgBGBW = config.getValueDouble("betaAvgBGBW");
-  double betaProfileBGBW = config.getValueDouble("betaProfileBGBW");
+  double betaAvgBGBW = getValueDouble("betaAvgBGBW");
+  double betaProfileBGBW = getValueDouble("betaProfileBGBW");
 
-  double temperatureAllKinds = config.getValueDouble("temperatureAllKinds");
-  double directedFlowAllKinds = config.getValueDouble("directedFlowAllKinds");
-  double ellipticFlowAllKinds = config.getValueDouble("ellipticFlowAllKinds");
-  double triangularFlowAllKinds = config.getValueDouble("triangularFlowAllKinds");
-  double quadrangularFlowAllKinds = config.getValueDouble("quadrangularFlowAllKinds");
-  double pentangularFlowAllKinds = config.getValueDouble("pentangularFlowAllKinds");
+  double temperatureAllKinds = getValueDouble("temperatureAllKinds");
+  double directedFlowAllKinds = getValueDouble("directedFlowAllKinds");
+  double ellipticFlowAllKinds = getValueDouble("ellipticFlowAllKinds");
+  double triangularFlowAllKinds = getValueDouble("triangularFlowAllKinds");
+  double quadrangularFlowAllKinds = getValueDouble("quadrangularFlowAllKinds");
+  double pentangularFlowAllKinds = getValueDouble("pentangularFlowAllKinds");
   
-  double temperaturePions = config.getValueDouble("temperaturePions");
-  double directedFlowPions = config.getValueDouble("directedFlowPions");
-  double ellipticFlowPions = config.getValueDouble("ellipticFlowPions");
-  double triangularFlowPions = config.getValueDouble("triangularFlowPions");
-  double quadrangularFlowPions = config.getValueDouble("quadrangularFlowPions");
-  double pentangularFlowPions  = config.getValueDouble("pentangularFlowPions");
+  double temperaturePions = getValueDouble("temperaturePions");
+  double directedFlowPions = getValueDouble("directedFlowPions");
+  double ellipticFlowPions = getValueDouble("ellipticFlowPions");
+  double triangularFlowPions = getValueDouble("triangularFlowPions");
+  double quadrangularFlowPions = getValueDouble("quadrangularFlowPions");
+  double pentangularFlowPions  = getValueDouble("pentangularFlowPions");
 
-  double temperatureKaons = config.getValueDouble("temperatureKons");
-  double directedFlowKaons = config.getValueDouble("directedFlowKaons");
-  double ellipticFlowKaons = config.getValueDouble("ellipticFlowKaons");
-  double triangularFlowKaons = config.getValueDouble("triangularFlowKaons");
-  double quadrangularFlowKaons = config.getValueDouble("quadrangularFlowKaons");
-  double pentangularFlowKaons = config.getValueDouble("pentangularFlowKaons");
+  double temperatureKaons = getValueDouble("temperatureKons");
+  double directedFlowKaons = getValueDouble("directedFlowKaons");
+  double ellipticFlowKaons = getValueDouble("ellipticFlowKaons");
+  double triangularFlowKaons = getValueDouble("triangularFlowKaons");
+  double quadrangularFlowKaons = getValueDouble("quadrangularFlowKaons");
+  double pentangularFlowKaons = getValueDouble("pentangularFlowKaons");
 
-  double temperatureProtons  = config.getValueDouble("temperatureProtons");
-  double directedFlowProtons = config.getValueDouble("directedFlowProtons");
-  double ellipticFlowProtons = config.getValueDouble("ellipticFlowProtons");
-  double triangularFlowProtons = config.getValueDouble("triangularFlowProtons");
-  double quadrangularFlowProtons = config.getValueDouble("quadrangularFlowProtons");
-  double pentangularFlowProtons = config.getValueDouble("pentangularFlowProtons");
+  double temperatureProtons  = getValueDouble("temperatureProtons");
+  double directedFlowProtons = getValueDouble("directedFlowProtons");
+  double ellipticFlowProtons = getValueDouble("ellipticFlowProtons");
+  double triangularFlowProtons = getValueDouble("triangularFlowProtons");
+  double quadrangularFlowProtons = getValueDouble("quadrangularFlowProtons");
+  double pentangularFlowProtons = getValueDouble("pentangularFlowProtons");
   
   if (useAllKinds)
     {

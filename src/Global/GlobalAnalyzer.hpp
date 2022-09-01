@@ -12,15 +12,7 @@
 
 #ifndef CAP__GlobalAnalyzer
 #define CAP__GlobalAnalyzer
-#include <TParameter.h>
-#include "TFile.h"
-#include "TList.h"
 #include "Task.hpp"
-#include "Event.hpp"
-#include "EventFilter.hpp"
-#include "ParticleFilter.hpp"
-#include "GlobalHistos.hpp"
-#include "Configuration.hpp"
 
 //!
 //! This class implements a basic analyzer of the multiplicity, energy, net charge, net strangeness, and net baryon number of the particles composing an event.
@@ -46,11 +38,10 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  GlobalAnalyzer(const TString           & _name,
-                 const Configuration     & _configuration,
-                 vector<EventFilter*>    & _eventFilters,
-                 vector<ParticleFilter*> & _particleFilters,
-                 LogLevel                  _requiredLevel=Info);
+  GlobalAnalyzer(const TString & _name,
+                 Configuration & _configuration,
+                 vector<EventFilter*> & _eventFilters,
+                 vector<ParticleFilter*> & _particleFilters);
   
   //!
   //! DTOR
@@ -83,7 +74,11 @@ public:
   //!
   virtual void loadHistograms(TFile * inputFile);
 
-  virtual Task * getDerivedCalculator();
+  virtual void createDerivedHistograms();
+
+  virtual void loadDerivedHistograms(TFile * inputFile __attribute__((unused)));
+
+  virtual void calculateDerivedHistograms();
 
 protected:
   

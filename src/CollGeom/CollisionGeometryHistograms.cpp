@@ -15,11 +15,11 @@ using std::vector;
 
 ClassImp(CollisionGeometryHistograms);
 
-CollisionGeometryHistograms::CollisionGeometryHistograms(const TString       & _name,
-                                                         const Configuration & _configuration,
-                                                         LogLevel  _debugLevel)
+CollisionGeometryHistograms::CollisionGeometryHistograms(Task * _parent,
+                                                         const TString & _name,
+                                                         Configuration & _configuration)
 :
-Histograms(_name,_configuration,_debugLevel),
+Histograms(_parent,_name,_configuration),
 h_nProcessedVsB(nullptr),
 h_nAcceptedVsB(nullptr),
 h_nPartVsB(nullptr),
@@ -89,21 +89,21 @@ void CollisionGeometryHistograms::createHistograms()
     ;
 
   Configuration & configuration = getConfiguration();
-  int nBins_b        = configuration.getValueInt("nBins_b");
-  double min_b       = configuration.getValueDouble("min_b");
-  double max_b       = configuration.getValueDouble("max_b");
-  int nBins_nPart    = configuration.getValueInt("nBins_nPart");
-  double min_nPart   = configuration.getValueDouble("min_nPart");
-  double max_nPart   = configuration.getValueDouble("max_nPart");
-  int nBins_nBinary  = configuration.getValueInt("nBins_nBinary");
-  double min_nBinary = configuration.getValueDouble("min_nBinary");
-  double max_nBinary = configuration.getValueDouble("max_nBinary");
+  int nBins_b        = configuration.getValueInt(getName(),"nBins_b");
+  double min_b       = configuration.getValueDouble(getName(),"Min_b");
+  double max_b       = configuration.getValueDouble(getName(),"Max_b");
+  int nBins_nPart    = configuration.getValueInt(getName(),"nBins_nPart");
+  double min_nPart   = configuration.getValueDouble(getName(),"Min_nPart");
+  double max_nPart   = configuration.getValueDouble(getName(),"Max_nPart");
+  int nBins_nBinary  = configuration.getValueInt(getName(),"nBins_nBinary");
+  double min_nBinary = configuration.getValueDouble(getName(),"Min_nBinary");
+  double max_nBinary = configuration.getValueDouble(getName(),"Max_nBinary");
   TString impact = "b (fm)";
   TString counts = "Counts";
   TString nParticipants  = "N_{Part}";
   TString nBin   = "N_{Bin}";
 
-  TString bn = getHistoBaseName();
+  TString bn = getParentTaskName();
   h_nProcessedVsB     = createHistogram(makeName(bn,"nProcessedVsB"),    nBins_b, min_b,  max_b,    impact,   counts);
   h_nAcceptedVsB      = createHistogram(makeName(bn,"nAcceptedVsB"),     nBins_b, min_b,  max_b,    impact,   counts);
   h_nPartVsB          = createHistogram(makeName(bn,"nPartVsB"),         nBins_b, min_b,  max_b,    nBins_nPart,   min_nPart,   max_nPart,   impact, nParticipants, counts);

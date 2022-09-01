@@ -31,9 +31,8 @@ public:
   //! @param _configuration Configuration used to run this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  DerivedHistoIterator(const TString &       _name,
-                        const Configuration & _configuration,
-                        MessageLogger::LogLevel debugLevel);
+  DerivedHistoIterator(const TString & _name,
+                       Configuration & _configuration);
   
   //!
   //! DTOR

@@ -12,80 +12,65 @@
 #include "CollisionGeometryAnalyzer.hpp"
 ClassImp(CollisionGeometryAnalyzer);
 
-CollisionGeometryAnalyzer::CollisionGeometryAnalyzer(const TString &          _name,
-                                                     const Configuration  &   _configuration,
+CollisionGeometryAnalyzer::CollisionGeometryAnalyzer(const TString & _name,
+                                                     Configuration &   _configuration,
                                                      vector<EventFilter*> &   _eventFilters,
-                                                     vector<ParticleFilter*>  _particleFilters,
-                                                     MessageLogger::LogLevel  _requiredLevel)
+                                                     vector<ParticleFilter*>  _particleFilters)
 :
-Task(_name,_configuration,_eventFilters, _particleFilters,_requiredLevel),
+Task(_name,_configuration,_eventFilters, _particleFilters),
 collisionGeometry(nullptr)
 {
   appendClassName("CollisionGeometryAnalyzer");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void CollisionGeometryAnalyzer::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  Configuration & configuration = getConfiguration();
-  configuration.setName("CollisionGeometryAnalyzer Configuration");
-  configuration.addParameter(  "aNucleusZ", 0);
-  configuration.addParameter(  "aNucleusA", 0);
-  configuration.addParameter(  "aGeneratorType", 0);
-  configuration.addParameter(  "aParA", 0.0);
-  configuration.addParameter(  "aParB", 0.0);
-  configuration.addParameter(  "aParC", 0.0);
-  configuration.addParameter(  "aNR",  100);
-  configuration.addParameter(  "aMinR", 0.0);
-  configuration.addParameter(  "aMaxR", 0.0);
-  configuration.addParameter(  "bNucleusZ", 0.0);
-  configuration.addParameter(  "bNucleusA", 0.0);
-  configuration.addParameter(  "bGeneratorType", 0);
-  configuration.addParameter(  "bParA", 0.0);
-  configuration.addParameter(  "bParB", 0.0);
-  configuration.addParameter(  "bParC", 0.0);
-  configuration.addParameter(  "bNR", 100);
-  configuration.addParameter(  "bMinR", 0.0);
-  configuration.addParameter(  "bMaxR", 0.0);
-  configuration.addParameter(  "minB", 0.0);
-  configuration.addParameter(  "maxB", 0.0);
-  configuration.addParameter(  "nnCrossSection", 40.0);
-  configuration.addParameter(  "nBins_b", 100);
-  configuration.addParameter(  "min_b", 0.0);
-  configuration.addParameter(  "max_b", 0.0);
-  configuration.addParameter(  "nBins_nPart", 100);
-  configuration.addParameter(  "min_nPart", 0);
-  configuration.addParameter(  "max_nPart", 400);
-  configuration.addParameter(  "nBins_nBinary", 0);
-  configuration.addParameter(  "min_nBinary", 0);
-  configuration.addParameter(  "max_nBinary", 0);
-  configuration.addParameter(  "nBins_bxSect", 100);
-
-  configuration.addParameter("nBins_b",100);
-  configuration.addParameter("min_b", 0.0);
-  configuration.addParameter("max_b", 10.0);
-  configuration.addParameter("nBins_nPart", 400);
-  configuration.addParameter("min_nPart", 0.0);
-  configuration.addParameter("max_nPart", 400.0);
-  configuration.addParameter("nBins_nBinary", 1000);
-  configuration.addParameter("min_nBinary", 0.0);
-  configuration.addParameter("max_nBinary", 1000.0);
-                             
-  configuration.addParameter(  "useRecentering",      true);
-  configuration.addParameter(  "useNucleonExclusion", false);
-  configuration.addParameter(  "useParticles",        true);
-  configuration.addParameter(  "createHistograms",    true);
-  configuration.addParameter(  "saveHistograms",      true);
-  configuration.addParameter(  "useEventStream0",     true);
-  if (reportDebug("CollisionGeometryAnalyzer",getName(),"setDefaultConfiguration()"))
-    {
-    configuration.printConfiguration(cout);
-    }
+  addParameter("aNucleusZ", 0);
+  addParameter("aNucleusA", 0);
+  addParameter("aGeneratorType", 0);
+  addParameter("aParA", 0.0);
+  addParameter("aParB", 0.0);
+  addParameter("aParC", 0.0);
+  addParameter("aNR",  100);
+  addParameter("aMinR", 0.0);
+  addParameter("aMaxR", 0.0);
+  addParameter("bNucleusZ", 0.0);
+  addParameter("bNucleusA", 0.0);
+  addParameter("bGeneratorType", 0);
+  addParameter("bParA", 0.0);
+  addParameter("bParB", 0.0);
+  addParameter("bParC", 0.0);
+  addParameter("bNR", 100);
+  addParameter("bMinR", 0.0);
+  addParameter("bMaxR", 0.0);
+  addParameter("MinB", 0.0);
+  addParameter("MaxB", 0.0);
+  addParameter("nnCrossSection", 40.0);
+  addParameter("nBins_b", 100);
+  addParameter("Min_b", 0.0);
+  addParameter("Max_b", 0.0);
+  addParameter("nBins_nPart", 100);
+  addParameter("Min_nPart", 0);
+  addParameter("Max_nPart", 400);
+  addParameter("nBins_nBinary", 0);
+  addParameter("Min_nBinary", 0);
+  addParameter("Max_nBinary", 0);
+  addParameter("nBins_bxSect", 100);
+  addParameter("nBins_b",100);
+  addParameter("Min_b", 0.0);
+  addParameter("Max_b", 10.0);
+  addParameter("nBins_nPart", 400);
+  addParameter("Min_nPart", 0.0);
+  addParameter("Max_nPart", 400.0);
+  addParameter("nBins_nBinary", 1000);
+  addParameter("Min_nBinary", 0.0);
+  addParameter("Max_nBinary", 1000.0);
+  addParameter("useRecentering",      true);
+  addParameter("useNucleonExclusion", false);
+  addParameter("UseParticles",        true);
+  addParameter("CreateHistograms",    true);
+  addParameter("SaveHistograms",      true);
+  addParameter("UseEventStream0",     true);
 }
 
 void CollisionGeometryAnalyzer::createHistograms()
@@ -110,7 +95,7 @@ void CollisionGeometryAnalyzer::createHistograms()
     TString histoName     = prefixName;
     histoName += evtFilterName;
     cout << " histoName:"  << histoName << endl;
-    CollisionGeometryHistograms * histos = new CollisionGeometryHistograms(histoName, configuration, getReportLevel() );
+    CollisionGeometryHistograms * histos = new CollisionGeometryHistograms(this,histoName, configuration);
     histos->createHistograms();
     histograms.push_back( histos);
     }
@@ -136,7 +121,7 @@ void CollisionGeometryAnalyzer::loadHistograms(TFile * inputFile)
     TString evtFilterName = eventFilters[iEventFilter]->getName();
     TString histoName     = prefixName;
     histoName += evtFilterName;
-    CollisionGeometryHistograms * histos = new CollisionGeometryHistograms(histoName, configuration, getReportLevel() );
+    CollisionGeometryHistograms * histos = new CollisionGeometryHistograms(this,histoName, configuration);
     histos->loadHistograms(inputFile);
     histograms.push_back( histos);
     }

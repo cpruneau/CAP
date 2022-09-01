@@ -25,9 +25,8 @@ public:
   //! @param _configuration Configuration used to run this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  ClosureCalculator(const TString &          _name,
-              const Configuration &    _configuration,
-              MessageLogger::LogLevel  _reportLevel);
+  ClosureCalculator(const TString & _name,
+                    Configuration & _configuration);
   
   //!
   //! DTOR

@@ -2,7 +2,7 @@
 # Project CAP/Global
 ################################################################################################
 
-ROOT_GENERATE_DICTIONARY(G__Global GlobalAnalyzer.hpp GlobalHistos.hpp GlobalDerivedHistos.hpp  GlobalDerivedHistogramCalculator.hpp  TransverseSpherocityHistos.hpp TransverseSpherocityAnalyzer.hpp  
+ROOT_GENERATE_DICTIONARY(G__Global GlobalAnalyzer.hpp GlobalHistos.hpp GlobalDerivedHistos.hpp    TransverseSpherocityHistos.hpp TransverseSpherocityAnalyzer.hpp  
 LINKDEF GlobalLinkDef.h)  
 
 
@@ -10,7 +10,7 @@ LINKDEF GlobalLinkDef.h)
 # Create a shared library with generated dictionary
 ################################################################################################
 add_compile_options(-Wall -Wextra -pedantic)
-add_library(Global SHARED GlobalAnalyzer.cpp GlobalHistos.cpp GlobalDerivedHistos.cpp  GlobalDerivedHistogramCalculator.cpp TransverseSpherocityHistos.cpp TransverseSpherocityAnalyzer.cpp 
+add_library(Global SHARED GlobalAnalyzer.cpp GlobalHistos.cpp GlobalDerivedHistos.cpp  TransverseSpherocityHistos.cpp TransverseSpherocityAnalyzer.cpp 
  G__Global.cxx)
 
 target_link_libraries(Global Base ${ROOT_LIBRARIES} ${EXTRA_LIBS} )

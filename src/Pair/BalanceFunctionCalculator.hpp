@@ -29,13 +29,10 @@ public:
   //! @param _pObservableNames Array containing the names of the pair  observables involved in the balance function calculation
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  BalanceFunctionCalculator(const TString &          _name,
-                            const Configuration &    _configuration,
-                            vector<EventFilter*> &   _eventFilters,
-                            vector<ParticleFilter*>& _particleFilters,
-                            vector<TString> &        _sObservableNames,
-                            vector<TString> &        _pObservableNames,
-                            MessageLogger::LogLevel  _reportLevel);
+  BalanceFunctionCalculator(const TString & _name,
+                            Configuration & _configuration,
+                            vector<EventFilter*> & _eventFilters,
+                            vector<ParticleFilter*> & _particleFilters);
   //!
   //! DTOR
   //!
@@ -192,12 +189,12 @@ protected:
   //!
   //! Array containing the names of the single particle  observables involved in the balance function calculation
   //!
-  vector<TString> & sObservableNames;
+  vector<TString> sObservableNames;
 
   //!
   //! Array containing the names of the pair observables involved in the balance function calculation
   //!
-  vector<TString> & pObservableNames;
+  vector<TString> pObservableNames;
 
   ClassDef(BalanceFunctionCalculator,0)
 };

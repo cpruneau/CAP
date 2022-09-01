@@ -25,7 +25,7 @@ mkdir $BASEDIRECTORY/$PRODUCTIONDIRECTORY
 echo Production $PRODUCTIONDIRECTORY
 
 # let's preserve the configuration
-cp /home/victorG/PROJECTS/WAC/Pythia/RunPythiaSimulationTwoParticlesDiff.cpp $BASEDIRECTORY/$PRODUCTIONDIRECTORY
+cp /wsu/home/aa/aa75/aa7526/Pythia/RunPythiaSimulationTwoParticlesDiff.cpp $BASEDIRECTORY/$PRODUCTIONDIRECTORY
 
 for ijob in $(seq 1 $NMAINJOBS)
 do

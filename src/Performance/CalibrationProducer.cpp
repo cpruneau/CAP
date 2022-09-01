@@ -13,45 +13,38 @@
 
 ClassImp(CalibrationProducer);
 
-CalibrationProducer::CalibrationProducer(const TString &          _name,
-                                         const Configuration &    _configuration,
-                                         MessageLogger::LogLevel  _reportLevel)
+CalibrationProducer::CalibrationProducer(const TString & _name,
+                                         Configuration & _configuration)
 :
 Task(_name, _configuration, _reportLevel)
 {
   appendClassName("CalibrationProducer");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void CalibrationProducer::setDefaultConfiguration()
 {
-  if (reportStart(__FUNCTION__))
-    ;
-  configuration.setName("CalibrationProducer Configuration");
-  configuration.setParameter("createHistograms",        true);
-  configuration.setParameter("saveHistograms",          true);
-  configuration.setParameter("forceHistogramsRewrite",  true);
-  configuration.addParameter("efficiencyOpt",           0);
-  configuration.addParameter("histoInputPath",          TString("./"));
-  configuration.addParameter("histoRatioFileName",      TString("none"));
-  configuration.addParameter("histoOutputPath",         TString("./"));
-  configuration.addParameter("histoEffFileName",        TString("none"));
+  Task::setDefaultConfiguration();
+  setParameter("CreateHistograms",        true);
+  setParameter("SaveHistograms",          true);
+  //setParameter("ForceHistogramsRewrite",  true);
+  addParameter("efficiencyOpt",           0);
+  addParameter("HistogramInputPath",          TString("./"));
+  addParameter("HistoRatioFileName",      TString("none"));
+  addParameter("HistogramOutputPath",         TString("./"));
+  addParameter("HistoEffFileName",        TString("none"));
 }
 
 void CalibrationProducer::execute()
 {
-  
   if (reportStart(__FUNCTION__))
     ;
   incrementTaskExecuted();
-  bool    forceHistogramsRewrite = configuration.getValueBool("forceHistogramsRewrite");
-  int     efficiencyOpt          = configuration.getValueInt("efficiencyOpt");
-  TString histoInputPath         = configuration.getValueString("histoInputPath");
-  TString histoRatioFileName     = configuration.getValueString("histoRatioFileName");
-  TString histoOutputPath        = configuration.getValueString("histoOutputPath");
-  TString histoEffFileName       = configuration.getValueString("histoEffFileName");
+  bool    ForceHistogramsRewrite = configuration.getValueBool(  getName(),"ForceHistogramsRewrite");
+  int     efficiencyOpt          = configuration.getValueInt(   getName(),"efficiencyOpt");
+  TString histoInputPath         = getValueString("HistogramInputPath");
+  TString histoRatioFileName     = getValueString("HistoRatioFileName");
+  TString HistogramOutputPath        = getValueString("HistogramOutputPath");
+  TString histoEffFileName       = getValueString("HistoEffFileName");
     
   if (reportInfo(__FUNCTION__))
     {
@@ -61,7 +54,7 @@ void CalibrationProducer::execute()
     << "           histoInputPath: " << histoInputPath  << endl
     << "       histoRatioFileName: " << histoRatioFileName << endl
     << "    histoDetectorFileName: " << histoDetectorFileName << endl
-    << "          histoOutputPath: " << histoOutputPath  << endl
+    << "          HistogramOutputPath: " << HistogramOutputPath  << endl
     << "         histoEffFileName: " << histoEffFileName  << endl;
     switch (efficiencyOpt)
       {
@@ -75,10 +68,10 @@ void CalibrationProducer::execute()
 
   TFile * inputFile = openRootFile(histoInputPath, histoRatioFileName, "READ");
   TFile * outputFile;
-  if (forceHistogramsRewrite)
-    outputFile   = openRootFile(histoOutputPath,histoEffFileName,"RECREATE");
+  if (ForceHistogramsRewrite)
+    outputFile   = openRootFile(HistogramOutputPath,histoEffFileName,"RECREATE");
   else
-    outputFile   = openRootFile(histoOutputPath,histoEffFileName,"NEW");
+    outputFile   = openRootFile(HistogramOutputPath,histoEffFileName,"NEW");
 
   if (!inputFile || !outputFile) return;
   
@@ -103,6 +96,6 @@ void CalibrationProducer::execute()
   delete generatorCollection;
   delete detectorCollection;
   delete closureCollection;
-  if (reportInfo ()) cout << "Closure Test Completed." << endl;
+  if (reportInfo (__FUNCTION__)) cout << "Closure Test Completed." << endl;
 }
 

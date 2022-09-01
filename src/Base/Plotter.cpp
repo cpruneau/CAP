@@ -12,23 +12,14 @@
 #include "Plotter.hpp"
 ClassImp(Plotter);
 
-Plotter::Plotter(const TString& _name,
-                 const Configuration _configuration,
-                 LogLevel _logLevel)
+Plotter::Plotter(const TString & _name,
+                 Configuration & _configuration)
 :
-Task(_name,_configuration,_logLevel),
+Task(_name,_configuration),
 canvasCollection(),
-histogramCollection("HISTOS",_logLevel)
+histogramCollection("HistoS",LogLevel::Info)
 {
   appendClassName("Plotter");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
-}
-
-Plotter::~Plotter()
-{
-
 }
 
 TCanvas *  Plotter::plot(TH1 * h,
@@ -37,7 +28,7 @@ TCanvas *  Plotter::plot(TH1 * h,
                          const GraphConfiguration  & gc,
                          const TString & xTitle,  double xMin, double xMax,
                          const TString & yTitle,  double yMin, double yMax,
-                         const TString &  legendText,
+                         const TString & legendText,
                          double xMinLeg, double yMinLeg, double xMaxLeg, double yMaxLeg,
                          double legendSize)
 {
@@ -49,7 +40,7 @@ TCanvas *  Plotter::plot(TH1 * h,
   h->SetMinimum(yMin);
   h->SetMaximum(yMax);
   h->GetXaxis()->SetRangeUser(xMin,xMax);
-  h->DrawCopy(gc.getValueString("plotOption"));
+  h->DrawCopy(gc.getValueString(getName(),"PlotOption"));
   if (!legendText.IsNull()) createLegend(h,legendText,xMinLeg, yMinLeg, xMaxLeg, yMaxLeg,0, legendSize);
   return canvas;
 }
@@ -61,9 +52,6 @@ TCanvas *  Plotter::plot(TH2 * h,
                          const TString & xTitle,  double xMin, double xMax,
                          const TString & yTitle,  double yMin, double yMax,
                          const TString & zTitle,  double zMin, double zMax)
-//,
-//                         const TString & text1, double x1, double y1, int color1,  double fontSize1,
-//                         const TString & text2, double x2, double y2, int color2,  double fontSize2)
 {
   if (reportDebug(__FUNCTION__)) cout << "Creating canvas named:" << canvasName << endl;
   TCanvas * canvas  = canvasCollection.createCanvas(canvasName,cc);
@@ -80,7 +68,7 @@ TCanvas *  Plotter::plot(TH2 * h,
     h->SetMinimum(zMin);
     h->SetMaximum(zMax);
     }
-  h->DrawCopy(gc.getValueString("plotOption"));
+  h->DrawCopy(gc.getValueString(getName(),"PlotOption"));
 //  if (!text1.IsNull()) createLabel(text1, x1,y1,color1, fontSize1, true);
 //  if (!text2.IsNull()) createLabel(text2, x2,y2,color2, fontSize2, true);
   return canvas;
@@ -119,11 +107,11 @@ TCanvas *  Plotter::plot(vector<TH1*> histograms,
   h->SetMinimum(yMin);
   h->SetMaximum(yMax);
   if (xMin<xMax) h->GetXaxis()->SetRangeUser(xMin,xMax);
-  TString plotOption = graphConfigurations[0]->getValueString("plotOption");
+  TString plotOption = graphConfigurations[0]->getValueString(getName(),"PlotOption");
   h->DrawCopy(plotOption);
   for (unsigned int iGraph=1; iGraph<nGraphs; iGraph++)
     {
-    plotOption = graphConfigurations[iGraph]->getValueString("plotOption");
+    plotOption = graphConfigurations[iGraph]->getValueString(getName(),"PlotOption");
     histograms[iGraph]->DrawCopy(plotOption+" SAME");
     }
   if (nGraphs<6)
@@ -188,12 +176,12 @@ TCanvas *  Plotter::plot(vector<TGraph*> graphs,
   h->SetMinimum(yMin);
   h->SetMaximum(yMax);
   //if (xMin<xMax) h->GetXaxis()->SetRangeUser(xMin,xMax);
-  TString plotOption = "ALP"; // graphConfigurations[0]->getValueString("plotOption");
+  TString plotOption = "ALP"; // graphConfigurations[0]->getValueString(getName(),"PlotOption");
   h->Draw(plotOption);
   //nGraphs = 1;
   for (unsigned int iGraph=1; iGraph<nGraphs; iGraph++)
     {
-    plotOption = "SAME LP"; //graphConfigurations[iGraph]->getValueString("plotOption");
+    plotOption = "SAME LP"; //graphConfigurations[iGraph]->getValueString(getName(),"PlotOption");
     graphs[iGraph]->Draw(plotOption);
     }
   if (nGraphs<6)
@@ -232,20 +220,20 @@ TCanvas *  Plotter::plot(vector<TGraph*> graphs,
 ////!
 ////! Function to plot n DataGraphs on a single canvas
 ////!
-//TCanvas *  Plotter::plot(TString  canvasName, CanvasConfiguration * cc,
+//TCanvas *  Plotter::plot(TString  canvasName, CanvasConfiguration & cc,
 //                         TString  xTitle,  double xMin, double xMax,
 //                         TString  yTitle,  double yMin, double yMax,
 //                         vector<DataGraph*> graphs,
 //                         double xMinLeg, double yMinLeg, double xMaxLeg, double yMaxLeg,double legendSize)
 //{
-//  if (reportInfo("Plotter",getName(),"plot(..)")) cout << "Creating canvas named:" << canvasName << endl;
+//  if (reportInfo("Plotter",getName(),"Plot(..)")) cout << "Creating canvas named:" << canvasName << endl;
 //  TCanvas * canvas = createCanvas(canvasName,*cc);
 //  graphs[0]->setTitleX(xTitle);
 //  graphs[0]->setTitleY(yTitle);
 //  double min = -1.0;
 //  double max =  1.0;
 //  unsigned int nGraphs = graphs.size();
-//  if (reportInfo("Plotter",getName(),"plot(..)")) cout << "nGraphs:" << nGraphs << endl;
+//  if (reportInfo("Plotter",getName(),"Plot(..)")) cout << "nGraphs:" << nGraphs << endl;
 //
 //  if (yMin < yMax)
 //    {
@@ -403,33 +391,33 @@ void Plotter::setProperties(TH1 * h, const GraphConfiguration & graphConfigurati
     cout << "Setting properties of histo: " << h->GetName() << endl;
     }
 
-  h->SetLineColor(graphConfiguration.getValueInt("lineColor"));
-  h->SetLineStyle(graphConfiguration.getValueInt("lineStyle"));
-  h->SetLineWidth(graphConfiguration.getValueInt("lineWidth"));
-  h->SetMarkerColor(graphConfiguration.getValueInt("markerColor"));
-  h->SetMarkerStyle(graphConfiguration.getValueInt("markerStyle"));
-  h->SetMarkerSize (graphConfiguration.getValueDouble("markerSize"));
+  h->SetLineColor(graphConfiguration.getValueInt(getName(),"lineColor"));
+  h->SetLineStyle(graphConfiguration.getValueInt(getName(),"lineStyle"));
+  h->SetLineWidth(graphConfiguration.getValueInt(getName(),"lineWidth"));
+  h->SetMarkerColor(graphConfiguration.getValueInt(getName(),"markerColor"));
+  h->SetMarkerStyle(graphConfiguration.getValueInt(getName(),"markerStyle"));
+  h->SetMarkerSize (graphConfiguration.getValueDouble(getName(),"markerSize"));
   TAxis * xAxis = (TAxis *) h->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.getValueInt("nXDivisions"));
-  xAxis->SetTitleSize(graphConfiguration.getValueDouble("xTitleSize"));
-  xAxis->SetTitleOffset(graphConfiguration.getValueDouble("xTitleOffset"));
-  xAxis->SetLabelSize(graphConfiguration.getValueDouble("xLabelSize"));
-  xAxis->SetLabelOffset(graphConfiguration.getValueDouble("xLabelOffset"));
+  xAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nXDivisions"));
+  xAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"xTitleSize"));
+  xAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"xTitleOffset"));
+  xAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"xLabelSize"));
+  xAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"xLabelOffset"));
   TAxis * yAxis = (TAxis *) h->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.getValueInt("nYDivisions"));
-  yAxis->SetTitleSize(graphConfiguration.getValueDouble("yTitleSize"));
-  yAxis->SetTitleOffset(graphConfiguration.getValueDouble("yTitleOffset"));
-  yAxis->SetLabelSize(graphConfiguration.getValueDouble("yLabelSize"));
-  yAxis->SetLabelOffset(graphConfiguration.getValueDouble("yLabelOffset"));
+  yAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nYDivisions"));
+  yAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"yTitleSize"));
+  yAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"yTitleOffset"));
+  yAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"yLabelSize"));
+  yAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"yLabelOffset"));
   if (h->IsA() == TH2::Class()  || h->IsA() == TH2F::Class() || h->IsA() == TH2F::Class() )
     {
     if (reportDebug(__FUNCTION__)) cout << "Setting properties as 2D histo: " << h->GetTitle() << endl;
     TAxis * zAxis = (TAxis *) h->GetZaxis();
-    zAxis->SetNdivisions(graphConfiguration.getValueInt("nZDivisions"));
-    zAxis->SetTitleSize(graphConfiguration.getValueDouble("zTitleSize"));
-    zAxis->SetTitleOffset(graphConfiguration.getValueDouble("zTitleOffset"));
-    zAxis->SetLabelSize(graphConfiguration.getValueDouble("zLabelSize"));
-    zAxis->SetLabelOffset(graphConfiguration.getValueDouble("zLabelOffset"));
+    zAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nZDivisions"));
+    zAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"zTitleSize"));
+    zAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"zTitleOffset"));
+    zAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"zLabelSize"));
+    zAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"zLabelOffset"));
     }
 }
 
@@ -458,24 +446,24 @@ void Plotter::setProperties(TGraph * g, const GraphConfiguration & graphConfigur
     {
     cout << "Setting properties of graph "<< g->GetTitle()  << endl;
     }
-  g->SetLineColor(graphConfiguration.getValueInt("lineColor"));
-  g->SetLineStyle(graphConfiguration.getValueInt("lineStyle"));
-  g->SetLineWidth(graphConfiguration.getValueInt("lineWidth"));
-  g->SetMarkerColor(graphConfiguration.getValueInt("markerColor"));
-  g->SetMarkerStyle(graphConfiguration.getValueInt("markerStyle"));
-  g->SetMarkerSize (graphConfiguration.getValueDouble("markerSize"));
+  g->SetLineColor(graphConfiguration.getValueInt(getName(),"lineColor"));
+  g->SetLineStyle(graphConfiguration.getValueInt(getName(),"lineStyle"));
+  g->SetLineWidth(graphConfiguration.getValueInt(getName(),"lineWidth"));
+  g->SetMarkerColor(graphConfiguration.getValueInt(getName(),"markerColor"));
+  g->SetMarkerStyle(graphConfiguration.getValueInt(getName(),"markerStyle"));
+  g->SetMarkerSize (graphConfiguration.getValueDouble(getName(),"markerSize"));
   TAxis * xAxis = (TAxis *) g->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.getValueInt("nXDivisions"));
-  xAxis->SetTitleSize(graphConfiguration.getValueDouble("xTitleSize"));
-  xAxis->SetTitleOffset(graphConfiguration.getValueDouble("xTitleOffset"));
-  xAxis->SetLabelSize(graphConfiguration.getValueDouble("xLabelSize"));
-  xAxis->SetLabelOffset(graphConfiguration.getValueDouble("xLabelOffset"));
+  xAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nXDivisions"));
+  xAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"xTitleSize"));
+  xAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"xTitleOffset"));
+  xAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"xLabelSize"));
+  xAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"xLabelOffset"));
   TAxis * yAxis = (TAxis *) g->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.getValueInt("nYDivisions"));
-  yAxis->SetTitleSize(graphConfiguration.getValueDouble("yTitleSize"));
-  yAxis->SetTitleOffset(graphConfiguration.getValueDouble("yTitleOffset"));
-  yAxis->SetLabelSize(graphConfiguration.getValueDouble("yLabelSize"));
-  yAxis->SetLabelOffset(graphConfiguration.getValueDouble("yLabelOffset"));
+  yAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nYDivisions"));
+  yAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"yTitleSize"));
+  yAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"yTitleOffset"));
+  yAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"yLabelSize"));
+  yAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"yLabelOffset"));
 }
 
 

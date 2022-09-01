@@ -13,14 +13,15 @@
 #define CAP__Histograms
 #include "HistogramCollection.hpp"
 #include "Configuration.hpp"
+class Task;
 
 class Histograms : public HistogramCollection
 {
 public:
   
-  Histograms(const TString & name,
-             const Configuration & configuration,
-             LogLevel  debugLevel);
+  Histograms(Task * _parent,
+             const TString & _name,
+             Configuration & _configuration);
 
   ~Histograms() {}
 
@@ -30,7 +31,7 @@ public:
   //!
   //! Returns the configuration of this histogram set
   //!
-  const Configuration & getConfiguration() const
+  Configuration & getConfiguration() const
   {
     return configuration;
   }
@@ -46,12 +47,11 @@ public:
   //!
   //! Sets the configuration of this task instance.
   //!
-  void setConfiguration(const Configuration & config)
+  void setConfiguration(Configuration & config)
   {
     configuration = config;
   }
   
-  virtual TString getHistoBaseName() const;
 
   TString makeName(const TString & s0, const  TString & s1);
   TString makeName(const TString & s0, const  TString & s1, const TString & s2);
@@ -68,10 +68,14 @@ public:
   TString makeName(const TString & s0, const TString & s1, int i1, int i2, int i3, const TString suffix);
   TString makeName(const TString & s0, const TString & s1, int i1, int i2, int i3, int i4, const TString suffix);
 
-  
+  Task * getParentTask() const;
+  const TString getParentTaskName() const;
+  const TString getParentPathName() const;
+
 protected:
-  
-  Configuration configuration;
+
+  Task * parent;
+  Configuration & configuration;
 
   ClassDef(Histograms,0)
 };

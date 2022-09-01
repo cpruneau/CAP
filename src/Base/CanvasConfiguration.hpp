@@ -37,12 +37,12 @@ public:
   //!
   //!Copy CTOR
   //!
-  CanvasConfiguration(const CanvasConfiguration & canvasConfig);
+  CanvasConfiguration(const CanvasConfiguration & config);
 
   //!
   //!Copy operator
   //!
-  CanvasConfiguration & operator=(const CanvasConfiguration & canvasConfig);
+  CanvasConfiguration &  operator=(const CanvasConfiguration & config);
 
   //!
   //!DOTR

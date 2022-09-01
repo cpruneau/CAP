@@ -229,7 +229,7 @@ using namespace std;
 //! an analysis job using the TaskIterator class would use a task to generate or read data from file (e.g., WacPythia/PythiaEventGenerator), and one or more tasks to fill
 //! histograms. To add a sub-task to a task, use the addSubTask method.
 //!
-//! The task class provides several methods (functions) used to carry out specific tasks, such as task initialization,, task execution,
+//! The task class provides several methods (functions) used to carry out specific tasks, such as task initialization, task execution,
 //! task finilization, and basic operations related to histograms such as histogram creation, histogram scaling at the end of analysis (to carry normalization e.g.,
 //! per event analyzed, histgram saving to file, calculations of 'derived' histograms, etc. Given a task can have one or many subTasks, a mechanism is required to
 //! enable a task to automatically invoke its subTasks. Generic methods thus have two levels of invocation. For instance, to carry out the action for which a specific subclass
@@ -323,12 +323,29 @@ protected:
   //! Name given to this task instance
   //!
   TString taskName;
+
   //!
-  //! Pointer to a TaskConfiguation class which defines the behavior of this instance of the class Task and/or its derived class instances.
+  //! True if the task has been configured by a call to configure()
+  //!
+  bool configured;
+
+
+  //!
+  //! Configuation object which defines the behavior of this Task instance.
   //!
   Configuration configuration;
 
-  
+  //!
+  //! Caller provided Configuation object to be used to set the actual configuration of this  Task instance.
+  //!
+  Configuration & requestedConfiguration;
+
+
+  //!
+  //! Pointer to parent task if any
+  //!
+  Task * parent;
+
   //!
   //! Pointer to a factory of entities of type Particle.
   //!
@@ -386,12 +403,12 @@ protected:
   vector<Histograms*>      derivedHistograms;
 
   //!
-  //! Array of pointers to Histograms objects produced on output by this task instance as "derivatives" of those contained in the array "histograms".
+  //! Array of pointers to Histograms objects produced on output by this task instance as "derivatives" of those contained in the array "Histograms".
   //!
   vector<Histograms*>      derivedSingleHistograms;
 
   //!
-  //! Array of pointers to Histograms objects produced on output by this task instance as "derivatives" of those contained in the array "histograms".
+  //! Array of pointers to Histograms objects produced on output by this task instance as "derivatives" of those contained in the array "Histograms".
   //!
   vector<Histograms*>      derivedPairHistograms;
 
@@ -470,19 +487,16 @@ public:
   //! Long constructor. It allocates resources but DOES NOT initialize the task. Task initialization can be performed by a call to the initializationTask() and/or
   //!  initialization() methods.
   //!
-  Task(const TString & _name,
-       const Configuration & _configuration,
-       MessageLogger::LogLevel _reportLevel);
+  Task(const TString & _name, Configuration & _configuration);
 
   //!
   //! Longer constructor. It allocates resources but DOES NOT initialize the task. Task initialization can be performed by a call to the initializationTask() and/or
   //!  initialization() methods.
   //!
-  Task(const TString &          _name,
-       const Configuration  &   _configuration,
+  Task(const TString & _name,
+       Configuration & _configuration,
        vector<EventFilter*> &   _eventFilters,
-       vector<ParticleFilter*>& _particleFilters,
-       MessageLogger::LogLevel  _reportLevel);
+       vector<ParticleFilter*>& _particleFilters);
 
   //!
   //! dtor
@@ -496,13 +510,19 @@ public:
   //!
   //! Set configuration parameters of this task to values in the given config;
   //!
-  void setConfiguration(const Configuration & config);
-  
+  void setConfiguration(Configuration & config);
+
+
+  virtual void configure();
+
+  void configureSubTasks();
+
   //!
   //! Method called for the initialization of this task instance and  its subTasks. This method first calls the iniatilize() method implemented by this class or  one of its derived classes.
   //! It next calls the initializeSubTasks() method of each  of the  subTasks of this instance, if any.
   //!
   void initializeSubTasks();
+
   //!
   //! Method called to execute this task instance and  its subTasks. This method first calls the execute() method implemented by this class or  one of its derived classes.
   //! It next calls the executeSubTasks() method of each  of the  subTasks of this instance, if any.
@@ -620,9 +640,32 @@ public:
   virtual void loadHistograms();
 
   //!
+  //! Nominally creates histogram groups used by this task. The method of this based class does not perform any histogram instantiation and must be
+  //! overiden in a derived class to achieve the desited behavior.
+  //!
+  virtual void createDerivedHistograms() {}
+
+  //!
+  //! Loads histogram groups used by this task. This method opens the root file identified in the Configuration object owned by this task. If the file exists,
+  //! it calls the  loadHistograms(TFile * inputFile) to actually load the relevant groups.
+  //!
+  virtual void loadDerivedHistograms();
+
+
+  virtual void calculateDerivedHistograms(){}
+
+
+  //!
   //! Implement this method in a derived class to load from a root file the histogram groups that are need for the execution of this task.
   //!
   virtual void loadHistograms(TFile * inputFile __attribute__((unused))) {  }
+
+  //!
+  //! Implement this method in a derived class to load from a root file the histogram groups that are need for the execution of this task.
+  //!
+  virtual void loadDerivedHistograms(TFile * inputFile __attribute__((unused))) {  }
+
+
 
   //!
   //! Calls the reset method of all the histogram groups owned by this task.
@@ -703,16 +746,6 @@ public:
   }
 
   //!
-  //! Abstract class designed to probide a place holder for a concreate analysis class to instantiate and return  a related DerivedCalculator task.
-  //!
-  //! @return DerivedCalculator task.
-  //!
-  virtual Task * getDerivedCalculator()
-  {
-  return nullptr;
-  }
-
-  //!
   //! Returns a pointer to the Configuration object controlling the behavior of this task instance.
   //! @return pointer to the Configuration instance controlling this task instance.
   //!
@@ -724,6 +757,20 @@ public:
   Configuration & getConfiguration()
   {
   return configuration;
+  }
+
+  //!
+  //! Returns a pointer to the Configuration object controlling the behavior of this task instance.
+  //! @return pointer to the Configuration instance controlling this task instance.
+  //!
+  const Configuration & getRequestedConfiguration() const
+  {
+  return requestedConfiguration;
+  }
+
+  Configuration & getRequestedConfiguration()
+  {
+  return requestedConfiguration;
   }
 
   inline ParticleTypeCollection * getParticleTypeCollection() const
@@ -749,9 +796,9 @@ public:
   //! Return the base name of histograms created or used by  task instance.
   //! @return name of histograms created or used by  task instance.
   //!
-  inline TString getHistoBaseName() const
+  inline TString getParentTaskName() const
   {
-  TString bn =  configuration.getValueString("histoBaseName");
+  TString bn =  getValueString("HistoBaseName");
   return bn;
   }
 
@@ -841,61 +888,44 @@ public:
   void writeNEventsAccepted(TFile * outputFile);
   void loadNEventsAccepted(TFile * outputFile);
 
-  vector<long> nParticleAcceptedTotalEvent;
+  vector<long> nParticleAcceptedTotal;
   vector<long> nParticleAccepted;
-  vector<long> nParticleAcceptedTotalTotal;
 
   inline void initializeNParticlesAccepted()
   {
   int n = nEventFilters*nParticleFilters;
-  nParticleAcceptedTotalEvent.assign(n,0);
+  nParticleAcceptedTotal.assign(n,0);
   nParticleAccepted.assign(n,0);
-  nParticleAcceptedTotalTotal.assign(n,0);
   }
 
   inline void incrementNParticlesAccepted(int iEventFilter=0, int iParticleFilter=0)
   {
   int index = iEventFilter*nParticleFilters+iParticleFilter;
-  nParticleAcceptedTotalEvent[index]++;
+  nParticleAcceptedTotal[index]++;
   nParticleAccepted[index]++;
-  nParticleAcceptedTotalTotal[index]++;
   }
 
   inline void resetNParticlesAcceptedEvent()
   {
   int n = nEventFilters*nParticleFilters;
-  nParticleAcceptedTotalEvent.assign(n,0);
+  nParticleAccepted.assign(n,0);
   }
 
   inline void resetNParticlesAccepted()
   {
   int n = nEventFilters*nParticleFilters;
-  nParticleAcceptedTotalEvent.assign(n,0);
+  nParticleAcceptedTotal.assign(n,0);
   nParticleAccepted.assign(n,0);
   }
 
   inline void clearNParticlesAccepted()
   {
   int n = nEventFilters*nParticleFilters;
-  nParticleAcceptedTotalEvent.assign(n,0);
+  nParticleAcceptedTotal.assign(n,0);
   nParticleAccepted.assign(n,0);
-  nParticleAcceptedTotalTotal.assign(n,0);
   }
 
-  inline int getNParticlesAcceptedEvent(int iEventFilter=0, int iParticleFilter=0)  const
-  {
-  if (iEventFilter<0 || iEventFilter>=nEventFilters)
-    return -1;
-  else
-    {
-    if (iParticleFilter<0 || iParticleFilter>=nParticleFilters)
-      return -1;
-    else
-      return nParticleAcceptedTotalEvent[iEventFilter*nParticleFilters+iParticleFilter];
-    }
-  }
-
-  inline int getNParticlesAcceptedReset(int iEventFilter=0, int iParticleFilter=0) const
+  inline int getNParticlesAccepted(int iEventFilter=0, int iParticleFilter=0)  const
   {
   if (iEventFilter<0 || iEventFilter>=nEventFilters)
     return -1;
@@ -908,7 +938,7 @@ public:
     }
   }
 
-  inline int getNParticlesAcceptedTotal(int iEventFilter=0, int iParticleFilter=0) const
+   inline int getNParticlesAcceptedTotal(int iEventFilter=0, int iParticleFilter=0) const
   {
   if (iEventFilter<0 || iEventFilter>=nEventFilters)
     return -1;
@@ -917,7 +947,7 @@ public:
     if (iParticleFilter<0 || iParticleFilter>=nParticleFilters)
       return -1;
     else
-      return nParticleAcceptedTotalTotal[iEventFilter*nParticleFilters+iParticleFilter];
+      return nParticleAcceptedTotal[iEventFilter*nParticleFilters+iParticleFilter];
     }
   }
 
@@ -936,7 +966,7 @@ public:
   //!
   //! Save the given (long) value with the given name in the given output file.
   //!
-  void writeParameter(TFile * outputFile, const TString parameterName, long value);
+  void writeParameter(TFile * outputFile, const TString & parameterName, long value);
 
   //!
   //! Clear the event filters used by this task instance.
@@ -1061,16 +1091,26 @@ public:
 
   void setHistogramFileNames(const TString inputName, const TString outputName)
   {
-  configuration.setParameter("fileFromParent", true);
-  configuration.setParameter("histogramInputFileName", inputName);
-  configuration.setParameter("histogramOuputFileName", outputName);
+  setParameter("fileFromParent", true);
+  setParameter("HistogramInputFileName", inputName);
+  setParameter("HistogramOuputFileName", outputName);
   }
   
-  vector<TString> listFilesInDir(const TString & dirname,
-                                 const TString ext=".root");
+  vector<TString> listFilesInDir(const TString & pathname,
+                                 const TString & ext,
+                                 bool prependPath=true,
+                                 bool verbose=false,
+                                 int  maximumDepth=1,
+                                 int  currentDepth=0);
+
+
   vector<TString> listFilesInDir(const TString & pathName,
                                  vector<TString> includePatterns,
-                                 vector<TString> excludePatterns);
+                                 vector<TString> excludePatterns,
+                                 bool prependPath=true,
+                                 bool verbose=false,
+                                 int  maximumDepth=1,
+                                 int  currentDepth=0);
 
   //!
   //!Get selected files in the given directory. The selection is made by means of two sets of configuration parameters
@@ -1088,6 +1128,159 @@ public:
   //!
   TString removeRootExtension(const TString fileName);
 
+  //!
+  //! Returns true if this task has a parent task.
+  //!
+  bool hasParent() const
+  {
+  return parent!=nullptr;
+  }
+
+  //!
+  //! Returns a pointer to the parent task if any. If this taks has no parent, the pointer
+  //! returned is  a null pointer.
+  //!
+  Task * getParent() const
+  {
+  return parent;
+  }
+
+  void setParent(Task * _parent)
+  {
+  parent = _parent;
+  }
+
+
+  //!
+  //! Returns the name of the parent task (if there is a parent task). If this task has no parent
+  //! the call returns a null string.
+  //!
+  TString getParentName() const
+  {
+  if (parent!=nullptr)
+    return parent->taskName;
+  else
+    return TString("");
+  }
+
+  //!
+  //! Returns the ancestor (parent) task at the given depth.
+  //! depth ==0 means self.
+  //!
+  Task * getTaskAt(int depth);
+
+
+  //!
+  //! Returns the ancestor (parent) task at the given depth.
+  //! depth ==0 means self.
+  //!
+  const Task * getTaskAt(int depth) const;
+
+  //!
+  //! Returns the ancestor parent to the given depth.
+  //! depth ==0 means self.
+  //!
+  TString getReverseTaskPath(int depth=0) const;
+
+  //!
+  //! Returns path tokens.
+  //!
+  vector<TString> getTaskPathTokens() const;
+
+
+  //!
+  //! Returns the ancestor parent to the given depth.
+  //! depth ==0 means prime ancestor only.
+  //!
+  TString getTaskPath(int depth=0) const;
+
+
+  //!
+  //! Returns the full task ancestor path.
+  //!
+  TString getFullTaskPath() const;
+
+  int getNAncestors() const;
+
+  bool getValueBool(const TString & key)   const;
+
+  int getValueInt(const TString & key)    const;
+
+  long getValueLong(const TString & key)    const;
+
+  double getValueDouble(const TString & key) const;
+
+  TString getValueString(const TString & key) const;
+
+  //!
+  //! Add a bool parameter to the configuration with the given name and value
+  //!
+  void addParameter(const TString & name, bool value);
+
+  //!
+  //! Add an int parameter to the configuration with the given name and value
+  //!
+  void addParameter(const TString & name, int value);
+
+  //!
+  //! Add an int parameter to the configuration with the given name and value
+  //!
+  void addParameter(const TString & name, long value);
+
+  //!
+  //! Add a double parameter to the configuration with the given name and value
+  //!
+  void addParameter(const TString & name, double value);
+
+  //!
+  //! Add a string parameter to the configuration with the given name and value
+  //!
+  void addParameter(const TString & name, const TString &  value);
+
+  //!
+  //! Set the parameter named 'name'  to the given value
+  //!
+  void setParameter(const TString & name, bool value);
+
+  //!
+  //! Set the parameter named 'name'  to the given value
+  //!
+  void setParameter(const TString & name, int value);
+
+  //!
+  //! Set the parameter named 'name'  to the given value
+  //!
+  void setParameter(const TString & name, long value);
+
+  //!
+  //! Set the parameter named 'name'  to the given value
+  //!
+  void setParameter(const TString & name, double value);
+
+  //!
+  //! Set the parameter named 'name'  to the given value
+  //!
+  void setParameter(const TString & name, const TString &  value);
+
+  //!
+  //!Generates and stores in the configuration of this task a list of key,value parameters based on the given parameters.value
+  //!The keys generated have the form keyBaseName## where keyBaseName is the base name of the keys and ## is an integer k
+  //!from 0 to nKeysToGenerate-1 (inclusively)
+  //!
+  //!@param keyBaseName base name of the keys
+  //!@param defaultValue default value given for all key,value pairs
+  //!@param nKeysToGenerate number of key,value pairs to generate and add to this task configuration.
+  //!
+  void generateKeyValuePairs(const TString keyBaseName, const TString defaultValue, int nKeysToGenerate);
+
+
+  //!
+  //!Parse the configuration associated with task to find the key,value pairs that DO NOT feature the defaultValue
+  //!
+  //!@param keyBaseName base name of the keys
+  //!@param defaultValue default value that is selected against
+  //!
+  vector<TString> getSelectedValues(const TString keyBaseName, const TString defaultValue) const;
 
 
   ClassDef(Task,0)

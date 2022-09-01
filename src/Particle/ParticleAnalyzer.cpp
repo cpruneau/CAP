@@ -10,25 +10,22 @@
  *
  * *********************************************************************/
 #include "ParticleAnalyzer.hpp"
-#include "ParticleDerivedHistogramCalculator.hpp"
+#include "ParticleHistos.hpp"
+#include "ParticleDerivedHistos.hpp"
 
 ClassImp(ParticleAnalyzer);
 
-ParticleAnalyzer::ParticleAnalyzer(const TString &         _name,
-                                   const Configuration &   _configuration,
-                                   vector<EventFilter*>    _eventFilters,
-                                   vector<ParticleFilter*> _particleFilters,
-                                   LogLevel                _selectedLevel)
+ParticleAnalyzer::ParticleAnalyzer(const TString & _name,
+                                   Configuration & _configuration,
+                                   vector<EventFilter*> & _eventFilters,
+                                   vector<ParticleFilter*> & _particleFilters)
 :
-Task(_name,_configuration,_eventFilters,_particleFilters,_selectedLevel),
+Task(_name,_configuration,_eventFilters,_particleFilters),
 fillEta(true),
 fillY(false),
 fillP2(false)
 {
   appendClassName("ParticleAnalyzer");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
   for (unsigned int k=0; k<particleFilters.size(); k++)
     {
     vector<ParticleDigit*> list;
@@ -38,60 +35,52 @@ fillP2(false)
 
 void ParticleAnalyzer::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  Configuration & configuration = getConfiguration();
-  configuration.setName("ParticleAnalyzer Configuration");
-  configuration.setParameter("useParticles",      true);
-  configuration.setParameter("createHistograms",  true);
-  configuration.setParameter("saveHistograms",    true);
-  configuration.setParameter("histoAnalyzerName", TString("Part"));
-  configuration.setParameter("histoBaseName",     TString("Part"));
-  configuration.addParameter("nBins_n1",  100);
-  configuration.addParameter("min_n1",    0.0);
-  configuration.addParameter("max_n1",  100.0);
+  setParameter( "UseParticles",      true);
+  setParameter( "CreateHistograms",  true);
+  setParameter( "SaveHistograms",    true);
+  setParameter( "UseEventStream0",   true);
+  setParameter( "UseEventStream1",   false);
+  addParameter( "nBins_n1",  100);
+  addParameter( "Min_n1",    0.0);
+  addParameter( "Max_n1",  100.0);
 
-  configuration.addParameter("nBins_eTot",  100);
-  configuration.addParameter("min_eTot",    0.0);
-  configuration.addParameter("max_eTot",  100.0);
+  addParameter( "nBins_eTot",  100);
+  addParameter( "Min_eTot",    0.0);
+  addParameter( "Max_eTot",  100.0);
 
-  configuration.addParameter("nBins_pt",  100);
-  configuration.addParameter("min_pt",    0.0);
-  configuration.addParameter("max_pt",  100.0);
+  addParameter( "nBins_pt",  100);
+  addParameter( "Min_pt",    0.0);
+  addParameter( "Max_pt",  100.0);
 
-  configuration.addParameter("nBins_eta",  20);
-  configuration.addParameter("min_eta",   -1.0);
-  configuration.addParameter("max_eta",    1.0);
+  addParameter( "nBins_eta",  20);
+  addParameter( "Min_eta",   -1.0);
+  addParameter( "Max_eta",    1.0);
 
-  configuration.addParameter("nBins_y",  20);
-  configuration.addParameter("min_y",   -1.0);
-  configuration.addParameter("max_y",    1.0);
+  addParameter( "nBins_y",  20);
+  addParameter( "Min_y",   -1.0);
+  addParameter( "Max_y",    1.0);
 
-  configuration.addParameter("nBins_phi",  36);
-  configuration.addParameter("min_phi",    0.0);
-  configuration.addParameter("max_phi",    TMath::TwoPi());
+  addParameter( "nBins_phi",  36);
+  addParameter( "Min_phi",    0.0);
+  addParameter( "Max_phi",    TMath::TwoPi());
 
-  configuration.addParameter("nBins_phiEta",    720);
-  configuration.addParameter("nBins_phiEtaPt",  7200);
-  configuration.addParameter("nBins_phiY",      720);
-  configuration.addParameter("nBins_phiYPt",    7200);
-  configuration.addParameter("fillEta",  fillEta);
-  configuration.addParameter("fillY",    fillY);
-  configuration.addParameter("fillP2",   fillP2);
-  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  addParameter( "nBins_phiEta",    720);
+  addParameter( "nBins_phiEtaPt",  7200);
+  addParameter( "nBins_phiY",      720);
+  addParameter( "nBins_phiYPt",    7200);
+  addParameter( "FillEta",  fillEta);
+  addParameter( "FillY",    fillY);
+  addParameter( "FillP2",   fillP2);
 }
 
 void ParticleAnalyzer::createHistograms()
 {
-  
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString bn  = getName();
-  fillEta = configuration.getValueBool("fillEta");
-  fillY   = configuration.getValueBool("fillY");
-  fillP2  = configuration.getValueBool("fillP2");
+  fillEta = getValueBool("FillEta");
+  fillY   = getValueBool("FillY");
+  fillP2  = getValueBool("FillP2");
   
   if (reportInfo(__FUNCTION__))
     {
@@ -105,7 +94,7 @@ void ParticleAnalyzer::createHistograms()
     for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
       {
       TString pfn = particleFilters[iParticleFilter]->getName();
-      ParticleHistos * histos = new ParticleHistos(makeHistoName(bn,efn,pfn),configuration,getReportLevel());
+      ParticleHistos * histos = new ParticleHistos(this,makeHistoName(getName(),efn,pfn),configuration);
       histos->createHistograms();
       baseSingleHistograms.push_back(histos);
       }
@@ -117,10 +106,8 @@ void ParticleAnalyzer::createHistograms()
 
 void ParticleAnalyzer::loadHistograms(TFile * inputFile)
 {
-  
   if (reportStart(__FUNCTION__))
     ;
-  TString bn  = getName(); bn  += "_";
   if (reportDebug(__FUNCTION__))
     {
     cout << endl <<  "Loading Histogram(s) for.."  << endl;
@@ -133,7 +120,7 @@ void ParticleAnalyzer::loadHistograms(TFile * inputFile)
     for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
       {
       TString pfn = * particleFilters[iParticleFilter]->getName();
-      ParticleHistos * histos = new ParticleHistos(makeHistoName(bn,efn,pfn),configuration,getReportLevel());
+      ParticleHistos * histos = new ParticleHistos(this,makeHistoName(getName(),efn,pfn),configuration);
       histos->loadHistograms(inputFile);
       baseSingleHistograms.push_back(histos);
       }
@@ -265,19 +252,73 @@ void ParticleAnalyzer::execute()
 // all done with this event..
 }
 
-
-Task * ParticleAnalyzer::getDerivedCalculator()
+void ParticleAnalyzer::createDerivedHistograms()
 {
-  if (reportDebug(__FUNCTION__))
+  if (reportStart(__FUNCTION__))
     ;
-  TString nameD = getName();
-  Configuration derivedCalcConfiguration;
-  // copy the parameters of this task to the new task -- so all the histograms will automatically match
-  derivedCalcConfiguration.setParameters(configuration);
-  derivedCalcConfiguration.setParameter("createHistograms",       true);
-  derivedCalcConfiguration.setParameter("loadHistograms",         true);
-  derivedCalcConfiguration.setParameter("saveHistograms",         true);
-  Task * calculator = new ParticleDerivedHistogramCalculator(nameD,derivedCalcConfiguration,eventFilters,particleFilters,getReportLevel());
-  return calculator;
+  Configuration & configuration = getConfiguration();
+  TString bn  = getName();
+  if (reportDebug(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "Creating Histogram(s) for........."  << endl;
+    cout << "nEventFilters.....................: " << nEventFilters << endl;
+    cout << "nParticleFilters..................: " << nParticleFilters << endl;
+    }
+  ParticleDerivedHistos * histos;
+  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+    {
+    TString efn = eventFilters[iEventFilter]->getName();
+    for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
+      {
+      TString pfn = particleFilters[iParticleFilter]->getName();
+      histos = new ParticleDerivedHistos(this,makeHistoName(bn,efn,pfn),configuration);
+      histos->createHistograms();
+      derivedSingleHistograms.push_back(histos);
+      }
+    }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
+
+void ParticleAnalyzer::loadDerivedHistograms(TFile * inputFile __attribute__((unused)))
+{
+
+}
+
+void ParticleAnalyzer::calculateDerivedHistograms()
+{
+  if (reportStart(__FUNCTION__))
+    ;
+  //incrementTaskExecuted();
+  unsigned int nEventFilters    = eventFilters.size();
+  unsigned int nParticleFilters = particleFilters.size();
+  if (reportDebug(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "Creating Histogram(s) for........."  << endl;
+    cout << "nEventFilters.....................: " << nEventFilters << endl;
+    cout << "nParticleFilters..................: " << nParticleFilters << endl;
+    }
+  ParticleHistos        * baseHistos;
+  ParticleDerivedHistos * derivedHistos;
+  unsigned index;
+
+  //!Mode 1: Running rigth after Analysis: base histograms pointers  are copied from analyzer to baseSingleHistograms
+  //!Mode 2: Running as standalone: base histograms are loaded from file.
+  for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+    {
+    for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
+      {
+      index = iEventFilter*nParticleFilters + iParticleFilter;
+      baseHistos    = (ParticleHistos *) baseSingleHistograms[index];
+      derivedHistos = (ParticleDerivedHistos *) derivedSingleHistograms[index];
+      derivedHistos->calculateDerivedHistograms(baseHistos);
+      }
+    }
+  if (reportEnd(__FUNCTION__))
+    { }
+
+
+}

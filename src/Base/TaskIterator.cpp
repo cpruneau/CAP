@@ -13,40 +13,30 @@
 ClassImp(TaskIterator);
 
 TaskIterator::TaskIterator(const TString & _name,
-                           const Configuration & _configuration,
-                           MessageLogger::LogLevel _reportLevel)
+                           Configuration & _configuration)
 :
-Task(_name,_configuration,_reportLevel),
-useParticles(false),
-doPartialReports(false),
-doPartialSaves(false),
-doSubsampleAnalysis(false),
+Task(_name,_configuration),
+UseParticles(false),
+DoPartialReports(false),
+DoPartialSaves(false),
+DoSubsampleAnalysis(false),
 nIterationRequested(1),
 nIterationReported(10000),
 nIterationPartialSave(10000)
 {
   appendClassName("TaskIterator");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void TaskIterator::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  configuration.addParameter( "useParticles",          useParticles);
-  configuration.addParameter( "doPartialReports",      doPartialReports);
-  configuration.addParameter( "doPartialSaves",        doPartialSaves);
-  configuration.addParameter( "doSubsampleAnalysis",   doSubsampleAnalysis);
-  configuration.addParameter( "nIterationRequested",   nIterationRequested);
-  configuration.addParameter( "nIterationReported",    nIterationReported);
-  configuration.addParameter( "nIterationPartialSave", nIterationPartialSave);
-//  if (reportEnd("TaskIterator",getName(),"setDefaultConfiguration()"))
-//    {
-//    configuration.printConfiguration(cout);
-//    }
+  addParameter("UseParticles",          UseParticles);
+  addParameter("DoPartialReports",      DoPartialReports);
+  addParameter("DoPartialSaves",        DoPartialSaves);
+  addParameter("DoSubsampleAnalysis",   DoSubsampleAnalysis);
+  addParameter("nIterationRequested",   nIterationRequested);
+  addParameter("nIterationReported",    nIterationReported);
+  addParameter("nIterationPartialSave", nIterationPartialSave);
+  addParameter("UseEventStream0",       true);
 }
 
 void TaskIterator::initialize()
@@ -54,31 +44,33 @@ void TaskIterator::initialize()
   if (reportStart(__FUNCTION__))
     ;
   postTaskOk();
-  useParticles           = configuration.getValueBool( "useParticles");
-  doPartialReports       = configuration.getValueBool( "doPartialReports");
-  doPartialSaves         = configuration.getValueBool( "doPartialSaves");
-  doSubsampleAnalysis    = configuration.getValueBool( "doSubsampleAnalysis");
-  nIterationRequested    = configuration.getValueLong( "nIterationRequested");
-  nIterationReported     = configuration.getValueLong( "nIterationReported");
-  nIterationPartialSave  = configuration.getValueLong( "nIterationPartialSave");
+  UseParticles           = getValueBool("UseParticles");
+  DoPartialReports       = getValueBool("DoPartialReports");
+  DoPartialSaves         = getValueBool("DoPartialSaves");
+  DoSubsampleAnalysis    = getValueBool("DoSubsampleAnalysis");
+  nIterationRequested    = getValueLong("nIterationRequested");
+  nIterationReported     = getValueLong("nIterationReported");
+  nIterationPartialSave  = getValueLong("nIterationPartialSave");
 
   Task::initialize();
   if (reportInfo(__FUNCTION__))
     {
-    cout << endl  << endl << endl << endl;
+    cout << endl;
+    cout << endl;
     cout << "---------------------------------------------------------------------------------------- " <<   endl;
+    cout << "  Task named..................: " << getName() << endl;
+    cout << "  nIterationRequested.........: " << nIterationRequested << endl;
+    cout << "  nSubTasks...................: " << getNSubTasks()      << endl;
+    cout << "  DoPartialReports............: " << DoPartialReports    << endl;
+    cout << "  DoPartialSaves..............: " << DoPartialSaves      << endl;
+    cout << "  DoSubsampleAnalysis.........: " << DoSubsampleAnalysis << endl;
+    cout << "  nIterationRequested.........: " << nIterationRequested << endl;
+    cout << "  nIterationReported..........: " << nIterationReported  << endl;
+    cout << "  nIterationPartialSave.......: " << nIterationPartialSave  << endl;
+    cout << "  Task status.................: " << getTaskStatusName() << endl;
     cout << "---------------------------------------------------------------------------------------- " <<   endl;
-    cout << "                               Task named : " << getName() << endl;
-    cout << "                      nIterationRequested : " << nIterationRequested << endl;
-    cout << "                                nSubTasks : " << getNSubTasks() << endl;
-    cout << "                         doPartialReports : " << doPartialReports << endl;
-    cout << "                           doPartialSaves : " << doPartialSaves  << endl;
-    cout << "                      nIterationRequested : " << nIterationRequested  << endl;
-    cout << "                       nIterationReported : " << nIterationReported  << endl;
-    cout << "                    nIterationPartialSave : " << nIterationPartialSave  << endl;
-    cout << "                              Task status : " << getTaskStatusName() << endl;
-    cout << "---------------------------------------------------------------------------------------- " <<   endl;
-    cout << "---------------------------------------------------------------------------------------- " <<   endl;
+    cout << endl;
+    cout << endl;
     }
   if (!isTaskOk())
     {
@@ -96,19 +88,19 @@ void TaskIterator::execute()
   if (!isTaskOk()) return;
   for (long iter=0; iter<nIterationRequested; iter++)
     {
-    if (useParticles)
+    if (UseParticles)
       {
       Particle::resetFactory();
       Event::resetEventStreams();
       }
     unsigned int nSubTasks = subTasks.size();
-    for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->execute();
+    for (unsigned int  iTask=0; iTask<nSubTasks; iTask++)  subTasks[iTask]->execute();
     incrementTaskExecuted();
-    if (doPartialReports  && getnTaskExecuted()%nIterationReported==0) cout << "Completed iteration # " << iter << endl;
-    if (doPartialSaves    && getnTaskExecuted()%nIterationPartialSave==0 )
+    if (DoPartialReports  && getnTaskExecuted()%nIterationReported==0) cout << "Completed iteration # " << iter << endl;
+    if (DoPartialSaves    && getnTaskExecuted()%nIterationPartialSave==0 )
       {
-      savePartial();
-      if (doSubsampleAnalysis) reset();
+      savePartialSubTasks();
+      if (DoSubsampleAnalysis) reset();
       }
 
     if (getnTaskExecutedTotal() >= nIterationRequested ) break;

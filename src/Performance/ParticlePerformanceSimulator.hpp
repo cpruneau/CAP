@@ -30,10 +30,10 @@ class ParticlePerformanceSimulator : public Histograms
 {
 public:
   
-  ParticlePerformanceSimulator(int filterIndex,
+  ParticlePerformanceSimulator(Task * _parent,
+                               int _filterIndex,
                                const TString & _name,
-                               const Configuration & _configuration,
-                               const LogLevel _selectedLevel);
+                               Configuration & _configuration);
   virtual ~ParticlePerformanceSimulator(){}
   
   virtual void initialize();

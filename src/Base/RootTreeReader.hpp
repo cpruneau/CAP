@@ -32,11 +32,10 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  RootTreeReader(const TString &         _name,
-                 const Configuration &   _configuration,
+  RootTreeReader(const TString & _name,
+                 Configuration & _configuration,
                  vector<EventFilter*>&   _eventFilters,
-                 vector<ParticleFilter*>&_particleFilters,
-                 LogLevel                _selectedLevel);
+                 vector<ParticleFilter*>&_particleFilters);
   
   //!
   //! DTOR

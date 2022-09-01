@@ -53,7 +53,7 @@ public:
   unsigned int    nBinaryTotal;       //!< total number of binary collisions
   double impactParameter;             //!< nucleus-nucleus center distance in fm
   double fractionalXSection;          //!< fraction cross section value
-  double referenceMultiplicity;       //!< nominal multiplicity in the reference range
+  double refMultiplicity;       //!< nominal multiplicity in the reference range
   double other;                       //!< other value of interest
   unsigned int    particlesCounted;   //!< number of particles provided internally by event generator/reader
   unsigned int    particlesAccepted;  //!< number of particles accepted by event generator/reader's particle filter

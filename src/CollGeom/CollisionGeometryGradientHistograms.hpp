@@ -18,9 +18,9 @@ class CollisionGeometryGradientHistograms : public Histograms
 {
 public:
 
-  CollisionGeometryGradientHistograms(const TString &       _name,
-                                      const Configuration & _configuration,
-                                      LogLevel              _debugLevel);
+  CollisionGeometryGradientHistograms(Task * _parent,
+                                      const TString & _name,
+                                      Configuration & _configuration);
   virtual ~CollisionGeometryGradientHistograms() { }
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);

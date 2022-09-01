@@ -46,8 +46,7 @@ public:
   
 public:
   HadronGas(ParticleTypeCollection * _particles,
-            ParticleTypeCollection * _stableParticles,
-            LogLevel debugLevel);
+            ParticleTypeCollection * _stableParticles);
   virtual ~HadronGas();
   virtual void clear();
   virtual void calculateParticleDecayProbability();
@@ -65,7 +64,7 @@ public:
   return *stableParticleTypes;
   }
 
-  const TString & getName() const
+  Configuration & getName() const
   {
   return name;
   }

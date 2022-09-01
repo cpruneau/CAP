@@ -10,11 +10,11 @@
 
 ClassImp(HadronGasHistograms);
 
-HadronGasHistograms::HadronGasHistograms(const TString &       _name,
-                                         const Configuration & _config,
-                                         LogLevel              _debugLevel)
+HadronGasHistograms::HadronGasHistograms(Task * _parent,
+                                         const TString & _name,
+                                         Configuration & _config)
 :
-Histograms(_name,_config,_debugLevel),
+Histograms(_parent,_name,_config),
 h_numberDensity(nullptr),
 h_energyDensity(nullptr),
 h_entropyDensity(nullptr),
@@ -39,38 +39,38 @@ h_R2(nullptr),
 h_rho1ThVsP()
 {
   appendClassName("HadronGasHistograms");
-  setInstanceName(_name);
 }
 
 void HadronGasHistograms::createHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString bn = getHistoBaseName();
+  TString pn = getParentTask()->getName();
+  TString bn = getParentTaskName();
   const   Configuration & config   = getConfiguration();
-  int     nMass                    = config.getValueInt("nMass");
-  double  minMass                  = config.getValueDouble("minMass");
-  double  maxMass                  = config.getValueDouble("maxMass");
-  int     nThermalSpecies          = config.getValueInt("nThermalSpecies");
-  int     nStableSpecies           = config.getValueInt("nStableSpecies");
-//  bool    plotStableSpeciesVsT     = config.getValueBool("doPlotVsStableSpecies");
-//  bool    plotThermalSpeciesVsT    = config.getValueBool("doPlotVsAllSpecies");
-  bool    plotPtDistHistos         = config.getValueBool("plotPtDistHistos");
-//  int     nChemicalTemp            = config.getValueInt("nChemicalTemp");
-//  double  minChemicalTemp          = config.getValueDouble("minChemicalTemp");
-//  double  maxChemicalTemp          = config.getValueDouble("maxChemicalTemp");
+  int     nMass                    = config.getValueInt(pn,"nMass");
+  double  minMass                  = config.getValueDouble(pn,"MinMass");
+  double  maxMass                  = config.getValueDouble(pn,"MaxMass");
+  int     nThermalSpecies          = config.getValueInt(pn,"nThermalSpecies");
+  int     nStableSpecies           = config.getValueInt(pn,"nStableSpecies");
+//  bool    plotStableSpeciesVsT     = config.getValueBool(pn,"DoPlotVsStableSpecies");
+//  bool    plotThermalSpeciesVsT    = config.getValueBool(pn,"DoPlotVsAllSpecies");
+  bool    plotPtDistHistos         = config.getValueBool(pn,"PlotPtDistHistos");
+//  int     nChemicalTemp            = config.getValueInt(pn,"nChemicalTemp");
+//  double  minChemicalTemp          = getValueDouble("MinChemicalTemp");
+//  double  maxChemicalTemp          = getValueDouble("MaxChemicalTemp");
 //  double  stepTemp                 = (maxChemicalTemp - minChemicalTemp)/double(nChemicalTemp);
-//  int     nMuB                     = config.getValueInt("nMuB");
-//  double  minMuB                   = config.getValueDouble("minMuB");
-//  double  maxMuB                   = config.getValueDouble("maxMuB");
+//  int     nMuB                     = config.getValueInt(getName(),"nMuB");
+//  double  minMuB                   = getValueDouble("MinMuB");
+//  double  maxMuB                   = getValueDouble("MaxMuB");
 //  double  stepMuB                  = (maxMuB - minMuB)/double(nMuB);
-//  int     nMuS                     = configuration.getValueInt("nMuS");
-//  double  minMuS                   = configuration.getValueDouble("minMuS");
-//  double  maxMuS                   = configuration.getValueDouble("maxMuS");
+//  int     nMuS                     = configuration.getValueInt(getName(),"nMuS");
+//  double  minMuS                   = configuration.getValueDouble(getName(),"MinMuS");
+//  double  maxMuS                   = configuration.getValueDouble(getName(),"MaxMuS");
 //  double  stepMuS                  = (maxMuS - minMuS)/double(nMuS);
-  int     nP                       = config.getValueInt("nP");
-  double  minP                     = config.getValueDouble("minP");
-  double  maxP                     = config.getValueDouble("maxP");
+  int     nP                       = config.getValueInt(pn,"nP");
+  double  minP                     = config.getValueDouble(pn,"MinP");
+  double  maxP                     = config.getValueDouble(pn,"MaxP");
 
   double dSpecies       = nThermalSpecies;
   double dStableSpecies = nStableSpecies;
@@ -81,13 +81,13 @@ void HadronGasHistograms::createHistograms()
     {
     TString key = "Species";
     key += k;
-    allSpeciesLabels.push_back(config.getValueString(key));
+    allSpeciesLabels.push_back(config.getValueString(pn,key));
     }
   for (int k=0;k<nStableSpecies; k++)
     {
     TString key = "StableSpecies";
     key += k;
-    stableSpeciesLabels.push_back(config.getValueString(key));
+    stableSpeciesLabels.push_back(config.getValueString(pn,key));
     }
 
   h_numberDensity    = createHistogram(makeName(bn,"numberDensity"),  nThermalSpecies,0.0,dSpecies,"Index","n");
@@ -193,30 +193,31 @@ void HadronGasHistograms::fill(HadronGas & hadronGas)
 {
   if (reportStart(__FUNCTION__))
     ;
+  TString pn = getParentTask()->getName();
   const   Configuration & config   = getConfiguration();
-//  int     nMass                    = config.getValueInt("nMass");
-//  double  minMass                  = config.getValueDouble("minMass");
-//  double  maxMass                  = config.getValueDouble("maxMass");
-  int     nThermalSpecies          = config.getValueInt("nThermalSpecies");
-  int     nStableSpecies           = config.getValueInt("nStableSpecies");
-//  bool    plotStableSpeciesVsT     = config.getValueBool("doPlotVsStableSpecies");
-//  bool    plotThermalSpeciesVsT    = config.getValueBool("doPlotVsAllSpecies");
-  bool    plotPtDistHistos         = config.getValueBool("plotPtDistHistos");
-//  int     nChemicalTemp            = config.getValueInt("nChemicalTemp");
-//  double  minChemicalTemp          = config.getValueDouble("minChemicalTemp");
-//  double  maxChemicalTemp          = config.getValueDouble("maxChemicalTemp");
+//  int     nMass                    = config.getValueInt(pn,"nMass");
+//  double  minMass                  = config.getValueDouble(pn,"MinMass");
+//  double  maxMass                  = config.getValueDouble(pn,"MaxMass");
+  int     nThermalSpecies          = config.getValueInt(pn,"nThermalSpecies");
+  int     nStableSpecies           = config.getValueInt(pn,"nStableSpecies");
+//  bool    plotStableSpeciesVsT     = config.getValueBool(pn,"DoPlotVsStableSpecies");
+//  bool    plotThermalSpeciesVsT    = config.getValueBool(pn,"DoPlotVsAllSpecies");
+  bool    plotPtDistHistos         = config.getValueBool(pn,"PlotPtDistHistos");
+//  int     nChemicalTemp            = config.getValueInt(pn,"nChemicalTemp");
+//  double  minChemicalTemp          = config.getValueDouble(pn,"MinChemicalTemp");
+//  double  maxChemicalTemp          = config.getValueDouble(pn,"MaxChemicalTemp");
 //  double  stepTemp                 = (maxChemicalTemp - minChemicalTemp)/double(nChemicalTemp);
-//  int     nMuB                     = config.getValueInt("nMuB");
-//  double  minMuB                   = config.getValueDouble("minMuB");
-//  double  maxMuB                   = config.getValueDouble("maxMuB");
+//  int     nMuB                     = config.getValueInt(pn,"nMuB");
+//  double  minMuB                   = config.getValueDouble(pn,"MinMuB");
+//  double  maxMuB                   = config.getValueDouble(pn,"MaxMuB");
 //  double  stepMuB                  = (maxMuB - minMuB)/double(nMuB);
-//  int     nMuS                     = configuration.getValueInt("nMuS");
-//  double  minMuS                   = configuration.getValueDouble("minMuS");
-//  double  maxMuS                   = configuration.getValueDouble("maxMuS");
+//  int     nMuS                     = configuration.getValueInt(pn,"nMuS");
+//  double  minMuS                   = configuration.getValueDouble(pn,"MinMuS");
+//  double  maxMuS                   = configuration.getValueDouble(pn,"MaxMuS");
 //  double  stepMuS                  = (maxMuS - minMuS)/double(nMuS);
-  int     nP                       = config.getValueInt("nP");
-  double  minP                     = config.getValueDouble("minP");
-  double  maxP                     = config.getValueDouble("maxP");
+  int     nP                       = config.getValueInt(pn,"nP");
+  double  minP                     = config.getValueDouble(pn,"MinP");
+  double  maxP                     = config.getValueDouble(pn,"MaxP");
   double  stepP                    = (maxP - minP)/double(nP);
   double  zero = 0.0;
   
@@ -302,7 +303,7 @@ void HadronGasHistograms::fill(HadronGas & hadronGas)
       }
     }
 
-  if (reportEnd("HadronGasHistograms",getName(),"fillRho1VsP(..)"))
+  if (reportEnd(__FUNCTION__))
     ;
 }
 

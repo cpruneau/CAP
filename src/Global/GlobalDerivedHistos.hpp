@@ -18,10 +18,10 @@ class GlobalDerivedHistos : public Histograms
 {
 public:
 
-  GlobalDerivedHistos(const TString & _name,
-                      const Configuration & _configuration,
-                      vector<ParticleFilter*> _particleFilters,
-                      LogLevel  _debugLevel);
+  GlobalDerivedHistos(Task * _parent,
+                      const TString & _name,
+                      Configuration & _configuration,
+                      vector<ParticleFilter*> _particleFilters);
   virtual ~GlobalDerivedHistos() {} 
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);

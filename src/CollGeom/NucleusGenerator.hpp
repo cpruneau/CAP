@@ -46,8 +46,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   NucleusGenerator(const TString & _name,
-                   Configuration & _configuration,
-                   LogLevel _selectedLevel=Info);
+                   Configuration & _configuration);
 
   virtual ~NucleusGenerator();
 

@@ -21,10 +21,9 @@ ClassImp(ResonanceGenerator);
 ResonanceGenerator::ResonanceGenerator(const TString  &        _name,
                                        Configuration  &        _configuration,
                                        vector<EventFilter*>&   _eventFilters,
-                                       vector<ParticleFilter*>&_particleFilters,
-                                       LogLevel                _selectedLevel)
+                                       vector<ParticleFilter*>&_particleFilters)
 :
-Task(_name,_configuration,_eventFilters,_particleFilters,_selectedLevel),
+Task(_name,_configuration,_eventFilters,_particleFilters),
 standaloneMode(0),
 nPartMinimum(1),
 nPartMaximum(1),
@@ -36,43 +35,51 @@ yRange(2.0),
 pTslope(0.4)
 {
   appendClassName("ResonanceGenerator");
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
+
 }
 
 
 void ResonanceGenerator::setDefaultConfiguration()
 {
-  Configuration & configuration = getConfiguration();
-  configuration.setParameter("useParticles",    true);
-  configuration.setParameter("useEventStream0", true);
-  configuration.addParameter("standaloneMode", true);
-  configuration.addParameter("nParticlesMinimum",   10);
-  configuration.addParameter("nParticlesMaximum",   40);
-  configuration.addParameter("yMinimum",   -1.0);
-  configuration.addParameter("yMaximum",    1.0);
-  configuration.addParameter("pTslope",     0.5);
-  configuration.addParameter("mass",        0.4);
+  setParameter("UseParticles",      true);
+  setParameter("UseEventStream0",   true);
+  addParameter("StandaloneMode",    true);
+  addParameter("SaveHistograms",    false);
+  addParameter("LoadHistograms",    false);
+  addParameter("ScaleHistograms",   false);
+  addParameter("nParticlesMinimum", 10);
+  addParameter("nParticlesMaximum", 40);
+  addParameter("yMinimum",   -1.0);
+  addParameter("yMaximum",    1.0);
+  addParameter("pTslope",     0.5);
+  addParameter("mass",        0.4);
 }
 
-//!
-//! Initialize generator
-//! pythia8->Initialize(2212 /* p */, 2212 /* p */, 14000. /* GeV */);
-//!
 void ResonanceGenerator::initialize()
 {
   Task::initialize();
-  standaloneMode = configuration.getValueBool("standaloneMode");
-  nPartMinimum   = configuration.getValueInt("nParticlesMinimum");
-  nPartMaximum   = configuration.getValueInt("nParticlesMaximum");
+  standaloneMode = getValueBool("StandaloneMode");
+  nPartMinimum   = getValueInt("nParticlesMinimum");
+  nPartMaximum   = getValueInt("nParticlesMaximum");
   nPartRange     = nPartMaximum-nPartMinimum;
-  yMinimum       = configuration.getValueDouble("yMinimum");
-  yMaximum       = configuration.getValueDouble("yMaximum");
+  yMinimum       = getValueDouble("yMinimum");
+  yMaximum       = getValueDouble("yMaximum");
   yRange         = yMaximum - yMinimum;
-  pTslope        = configuration.getValueDouble("pTslope");
-  mass           = configuration.getValueDouble("mass");
-  if (reportEnd("ResonanceGenerator",getName(),"initialize()"))
-    ;
+  pTslope        = getValueDouble("pTslope");
+  mass           = getValueDouble("mass");
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << " Reso:standaloneMode.........: " << standaloneMode << endl;
+    cout << " Reso:nPartMinimum...........: " << nPartMinimum << endl;
+    cout << " Reso:nPartMaximum...........: " << nPartMaximum << endl;
+    cout << " Reso:nPartRange.............: " << nPartRange << endl;
+    cout << " Reso:yMinimum...............: " << yMinimum << endl;
+    cout << " Reso:yMaximum...............: " << yMaximum << endl;
+    cout << " Reso:yRange.................: " << yRange << endl;
+    cout << " Reso:pTslope................: " << pTslope << endl;
+    cout << " Reso:mass...................: " << mass << endl;
+    }
 }
 
 void ResonanceGenerator::execute()
@@ -110,7 +117,7 @@ void ResonanceGenerator::execute()
     ep.nBinaryTotal      = 1;     // total number of binary collisions
     ep.impactParameter   = -99999; // nucleus-nucleus center distance in fm
     ep.fractionalXSection = -99999; // fraction cross section value
-//    ep.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
+//    ep.refMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
 //    ep.particlesCounted   = getNParticlesCounted();
 //    ep.particlesAccepted  = getNParticlesAccepted();
     }
@@ -137,7 +144,7 @@ void ResonanceGenerator::execute()
       {
       generate(interactions[kInter]);
       }
-//    ep.referenceMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
+//    ep.refMultiplicity = getNParticlesAccepted(); // nominal multiplicity in the reference range
 //    ep.particlesCounted  = getNParticlesCounted();
 //    ep.particlesAccepted = getNParticlesAccepted();
     }

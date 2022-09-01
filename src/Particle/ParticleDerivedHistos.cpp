@@ -12,11 +12,11 @@
 #include "ParticleDerivedHistos.hpp"
 ClassImp(ParticleDerivedHistos);
 
-ParticleDerivedHistos::ParticleDerivedHistos(const TString & _name,
-                                             const Configuration & _configuration,
-                                             LogLevel  _debugLevel)
+ParticleDerivedHistos::ParticleDerivedHistos(Task * _parent,
+                                             const TString & _name,
+                                             Configuration & _configuration)
 :
-Histograms(_name,_configuration,_debugLevel),
+Histograms(_parent,_name,_configuration),
 fillEta(false),
 fillY(false),
 fillP2(false),
@@ -52,39 +52,56 @@ h_pt_y(nullptr),
 h_pt_phiY(nullptr)
 {
   appendClassName("ParticleDerivedHistos");
-  setInstanceName(name);
 }
 
-ParticleDerivedHistos::~ParticleDerivedHistos()
-{
-  //deleteHistograms();
-}
-
-// for now use the same boundaries for eta and y histogram
 void ParticleDerivedHistos::createHistograms()
 {
-  if ( reportStart("ParticleDerivedHistos",getName(),"createHistograms()"))
+  if ( reportStart(__FUNCTION__))
     { }
-  TString bn = getHistoBaseName();
-  const Configuration & configuration = getConfiguration();
-  fillEta  = configuration.getValueBool("fillEta");
-  fillY    = configuration.getValueBool("fillY");
-  fillP2   = configuration.getValueBool("fillP2");
-  nBins_pt = configuration.getValueInt("nBins_pt");
-  min_pt   = configuration.getValueDouble("min_pt");
-  max_pt   = configuration.getValueDouble("max_pt");
-  nBins_phi = configuration.getValueInt("nBins_phi");
-  min_phi = configuration.getValueDouble("min_phi");
-  max_phi = configuration.getValueDouble("max_phi");
-  nBins_eta = configuration.getValueInt("nBins_eta");
-  min_eta = configuration.getValueDouble("min_eta");
-  max_eta = configuration.getValueDouble("max_eta");
-  nBins_y = configuration.getValueInt("nBins_y");
-  min_y = configuration.getValueDouble("min_y");
-  max_y = configuration.getValueDouble("max_y");
-   
-  h_n1_phi     = createHistogram(makeName(bn,"n1_phi"), nBins_phi, min_phi, max_phi, "#varphi","#rho_{1}(#varphi)");
+  const TString & bn  = getName();
+  const TString & ptn = getParentTaskName();
+  const TString & ppn = getParentPathName();
+  Configuration & configuration = getConfiguration();
+  fillEta   = configuration.getValueBool(ppn,"FillEta");
+  fillY     = configuration.getValueBool(ppn,"FillY");
+  fillP2    = configuration.getValueBool(ppn,"FillP2");
+  nBins_pt  = configuration.getValueInt(ppn,"nBins_pt");
+  min_pt    = configuration.getValueDouble(ppn,"Min_pt");
+  max_pt    = configuration.getValueDouble(ppn,"Max_pt");
+  nBins_phi = configuration.getValueInt(ppn,"nBins_phi");
+  min_phi   = configuration.getValueDouble(ppn,"Min_phi");
+  max_phi   = configuration.getValueDouble(ppn,"Max_phi");
+  nBins_eta = configuration.getValueInt(ppn,"nBins_eta");
+  min_eta   = configuration.getValueDouble(ppn,"Min_eta");
+  max_eta   = configuration.getValueDouble(ppn,"Max_eta");
+  nBins_y   = configuration.getValueInt(ppn,"nBins_y");
+  min_y     = configuration.getValueDouble(ppn,"Min_y");
+  max_y     = configuration.getValueDouble(ppn,"Max_y");
 
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  Part:Parent Task Name....................: " << ptn << endl;
+    cout << "  Part:Parent Path Name....................: " << ppn << endl;
+    cout << "  Part:Histo Base Name.....................: " << bn << endl;
+    cout << "  Part:nBins_pt............................: " << nBins_pt << endl;
+    cout << "  Part:Min_pt..............................: " << min_pt << endl;
+    cout << "  Part:Max_pt..............................: " << max_pt << endl;
+    cout << "  Part:nBins_phi...........................: " << nBins_phi << endl;
+    cout << "  Part:Min_phi.............................: " << min_phi << endl;
+    cout << "  Part:Max_phi.............................: " << max_phi << endl;
+    cout << "  Part:nBins_eta...........................: " << nBins_eta << endl;
+    cout << "  Part:Min_eta.............................: " << min_eta << endl;
+    cout << "  Part:Max_eta.............................: " << max_eta << endl;
+    cout << "  Part:nBins_y.............................: " << nBins_y << endl;
+    cout << "  Part:Min_y...............................: " << min_y << endl;
+    cout << "  Part:Max_y...............................: " << max_y << endl;
+    cout << "  Part:FillEta.............................: " << fillEta << endl;
+    cout << "  Part:FillY...............................: " << fillY << endl;
+    cout << "  Part:FillP2..............................: " << fillP2 << endl;
+    }
+
+  h_n1_phi     = createHistogram(makeName(bn,"n1_phi"), nBins_phi, min_phi, max_phi, "#varphi","#rho_{1}(#varphi)");
   if (fillP2)
     {
     h_spt_phi    = createHistogram(makeName(bn,"sumpt1_phi"), nBins_phi, min_phi, max_phi, "#varphi","#sum p_{T}");
@@ -112,21 +129,28 @@ void ParticleDerivedHistos::createHistograms()
       }
     }
   if ( reportEnd(__FUNCTION__))
-    { }
+    ;
 }
 
 //________________________________________________________________________
 void ParticleDerivedHistos::loadHistograms(TFile * inputFile)
 {
-  if (reportStart(__FUNCTION__))
-    ;
   if (!ptrFileExist(__FUNCTION__,inputFile)) return;
+  const TString & bn  = getName();
+  const TString & ptn = getParentTaskName();
+  const TString & ppn = getParentPathName();
+  Configuration & configuration = getConfiguration();
 
-  fillEta  = configuration.getValueBool("fillEta");
-  fillY    = configuration.getValueBool("fillY");
-  fillP2   = configuration.getValueBool("fillP2");
-
-  TString bn = getHistoBaseName();
+  fillEta  = configuration.getValueBool(ppn,"FillEta");
+  fillY    = configuration.getValueBool(ppn,"FillY");
+  fillP2   = configuration.getValueBool(ppn,"FillP2");
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  Part:FillEta.............: " << fillEta << endl;
+    cout << "  Part:FillY...............: " << fillY << endl;
+    cout << "  Part:FillP2..............: " << fillP2 << endl;
+    }
   h_n1_phi  = loadH1(inputFile,  makeName(bn,"n1_phi"));
   h_spt_phi = loadH1(inputFile,  makeName(bn,"spt_phi"));
   h_pt_phi  = loadH1(inputFile,  makeName(bn,"pt_phi"));
@@ -151,7 +175,6 @@ void ParticleDerivedHistos::loadHistograms(TFile * inputFile)
       h_pt_phiY   = loadH2(inputFile,  makeName(bn,"pt_phiY"));
       }
     }
-
   if ( reportEnd(__FUNCTION__))
     ;
 }
@@ -163,7 +186,7 @@ void ParticleDerivedHistos::calculateDerivedHistograms(ParticleHistos * baseHist
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString bn = getHistoBaseName();
+  TString bn = getParentTaskName();
   TH1* hTemp;
 
   if (baseHistos->h_n1_phiEta)

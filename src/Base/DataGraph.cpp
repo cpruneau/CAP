@@ -225,36 +225,36 @@ void DataGraph::setMinMax(double minY, double maxY)
 void DataGraph::setProperties(const GraphConfiguration & graphConfig)
 {
   //cout << "<I> DataGraph::setProperties() Setting properties of graph: " << graphs[0]->GetName() << endl;
-  graphs[0]->SetLineColor(graphConfig .getValueInt("lineColor"));
-  graphs[0]->SetLineStyle(graphConfig.getValueInt("lineStyle"));
-  graphs[0]->SetLineWidth(graphConfig.getValueInt("lineWidth"));
-  graphs[0]->SetMarkerColor(graphConfig.getValueInt("markerColor"));
-  graphs[0]->SetMarkerStyle(graphConfig.getValueInt("markerStyle"));
-  graphs[0]->SetMarkerSize(graphConfig.getValueDouble("markerSize"));
+  graphs[0]->SetLineColor(  graphConfig.getValueInt(getName(),"lineColor"));
+  graphs[0]->SetLineStyle(  graphConfig.getValueInt(getName(),"lineStyle"));
+  graphs[0]->SetLineWidth(  graphConfig.getValueInt(getName(),"lineWidth"));
+  graphs[0]->SetMarkerColor(graphConfig.getValueInt(getName(),"markerColor"));
+  graphs[0]->SetMarkerStyle(graphConfig.getValueInt(getName(),"markerStyle"));
+  graphs[0]->SetMarkerSize( graphConfig.getValueDouble("markerSize"));
   graphs[0]->SetFillColor(0);
   if (graphs.size()>1)
     {
-    graphs[1]->SetLineColor(graphConfig.getValueInt("systsColor"));
-    graphs[1]->SetLineStyle(graphConfig.getValueInt("systsStyle"));
-    graphs[1]->SetLineWidth(graphConfig.getValueInt("systsWidth"));
-    graphs[1]->SetMarkerColor(graphConfig.getValueInt("markerColor"));
+    graphs[1]->SetLineColor(  graphConfig.getValueInt(getName(),"systsColor"));
+    graphs[1]->SetLineStyle(  graphConfig.getValueInt(getName(),"systsStyle"));
+    graphs[1]->SetLineWidth(  graphConfig.getValueInt(getName(),"systsWidth"));
+    graphs[1]->SetMarkerColor(graphConfig.getValueInt(getName(),"markerColor"));
     graphs[1]->SetMarkerStyle(1);
     graphs[1]->SetMarkerSize(0.1);
-    graphs[1]->SetFillStyle(graphConfig.getValueInt("systsStyle"));
-    graphs[1]->SetFillColor(graphConfig.getValueInt("systsColor"));
+    graphs[1]->SetFillStyle(graphConfig.getValueInt(getName(),"systsStyle"));
+    graphs[1]->SetFillColor(graphConfig.getValueInt(getName(),"systsColor"));
     }
 
   TAxis * xAxis = (TAxis *) GetXaxis();
-  xAxis->SetNdivisions(graphConfig.getValueDouble("nXDivisions"));
-  xAxis->SetTitleSize(graphConfig.getValueDouble("xTitleSize"));
+  xAxis->SetNdivisions( graphConfig.getValueDouble("nXDivisions"));
+  xAxis->SetTitleSize(  graphConfig.getValueDouble("xTitleSize"));
   xAxis->SetTitleOffset(graphConfig.getValueDouble("xTitleOffset"));
-  xAxis->SetLabelSize(graphConfig.getValueDouble("xLabelSize"));
+  xAxis->SetLabelSize(  graphConfig.getValueDouble("xLabelSize"));
   xAxis->SetLabelOffset(graphConfig.getValueDouble("xLabelOffset"));
   TAxis * yAxis = (TAxis *) GetYaxis();
-  yAxis->SetNdivisions(graphConfig.getValueInt("nYDivisions"));
-  yAxis->SetTitleSize(graphConfig.getValueDouble("yTitleSize"));
+  yAxis->SetNdivisions( graphConfig.getValueInt(getName(),"nYDivisions"));
+  yAxis->SetTitleSize(  graphConfig.getValueDouble("yTitleSize"));
   yAxis->SetTitleOffset(graphConfig.getValueDouble("yTitleOffset"));
-  yAxis->SetLabelSize(graphConfig.getValueDouble("yLabelSize"));
+  yAxis->SetLabelSize(  graphConfig.getValueDouble("yLabelSize"));
   yAxis->SetLabelOffset(graphConfig.getValueDouble("yLabelOffset"));
   //cout << "<I> DataGraph::::setProperties() Completed" << endl;
 }

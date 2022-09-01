@@ -14,13 +14,12 @@
 
 ClassImp(TransverseSpherocityAnalyzer);
 
-TransverseSpherocityAnalyzer::TransverseSpherocityAnalyzer(const TString &           _name,
-                                                           const Configuration &     _configuration,
-                                                           vector<EventFilter*> &    _eventFilters,
-                                                           vector<ParticleFilter*> & _particleFilters,
-                                                           LogLevel                  _requiredLevel)
+TransverseSpherocityAnalyzer::TransverseSpherocityAnalyzer(const TString & _name,
+                                                           Configuration & _configuration,
+                                                           vector<EventFilter*> & _eventFilters,
+                                                           vector<ParticleFilter*> & _particleFilters)
 :
-Task(_name,_configuration,_eventFilters,_particleFilters,_requiredLevel),
+Task(_name,_configuration,_eventFilters,_particleFilters),
 setEvent(true),
 fillS0(true),
 fillS1(false),
@@ -28,58 +27,50 @@ nSteps(360),
 stepSize(TMath::TwoPi()/360.0)
 {
   appendClassName("TransverseSpherocityAnalyzer");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 //!
 //!
 void TransverseSpherocityAnalyzer::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  configuration.setName("TransverseSpherocityAnalyzer Configuration");
-  configuration.setParameter("useEventStream0",  true);
-  configuration.setParameter("useParticles",     true);
-  configuration.setParameter("createHistograms", true);
-  configuration.setParameter("saveHistograms",   true);
-  configuration.setParameter("scaleHistograms",  true);
-  
-  configuration.addParameter("setEvent",         true);
-  configuration.addParameter("fillCorrelationHistos",false);
-  configuration.addParameter("nSteps", 1000);
-  configuration.addParameter("fillS0", true);
-  configuration.addParameter("fillS1", false);
-  configuration.addParameter("fillS1VsS0", false);
-
-  configuration.addParameter("nBins_spherocity", 100);
-  configuration.addParameter("min_spherocity",   0.0);
-  configuration.addParameter("max_spherocity",   1.0);
-  
-  if (reportDebug(__FUNCTION__))
-    {
-    configuration.printConfiguration(cout);
-    }
+  setParameter("UseParticles",      true);
+  setParameter("CreateHistograms",  true);
+  setParameter("SaveHistograms",    true);
+  setParameter("UseEventStream0",   true);
+  setParameter("UseEventStream1",   false);
+  addParameter("SetEvent",         true);
+  addParameter("FillCorrelationHistos",false);
+  addParameter("nSteps", 1000);
+  addParameter("FillS0", true);
+  addParameter("FillS1", false);
+  addParameter("FillS1VsS0", false);
+  addParameter("nBins_spherocity", 100);
+  addParameter("Min_spherocity",   0.0);
+  addParameter("Max_spherocity",   1.0);
 }
 
 void TransverseSpherocityAnalyzer::initialize()
 {
-  
   if (reportStart(__FUNCTION__))
     ;
   Task::initialize();
-  setEvent   = configuration.getValueBool("setEvent");
-  fillS0     = configuration.getValueBool("fillS0");
-  fillS1     = configuration.getValueBool("fillS1");
-  fillS1VsS0 = configuration.getValueBool("fillS1VsS0");
-  if (reportDebug(__FUNCTION__)) cout << " #event added streams: "  << getNEventStreams() << endl;
+  setEvent   = getValueBool("SetEvent");
+  fillS0     = getValueBool("FillS0");
+  fillS1     = getValueBool("FillS1");
+  fillS1VsS0 = getValueBool("FillS1VsS0");
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << " S:setEvent............: " << setEvent   << endl;
+    cout << " S:fillS0..............: " << fillS0     << endl;
+    cout << " S:fillS1..............: " << fillS1     << endl;
+    cout << " S:fillS1VsS0..........: " << fillS1VsS0 << endl;
+    cout << " S:#event streams......: " << getNEventStreams() << endl;
+    }
 }
 
 void TransverseSpherocityAnalyzer::createHistograms()
 {
-  
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
@@ -88,13 +79,13 @@ void TransverseSpherocityAnalyzer::createHistograms()
   unsigned int nParticleFilters = particleFilters.size();
   if (reportInfo(__FUNCTION__))
     {
-    cout << "Creating Histograms for " << prefixName  << endl;
-    cout << "       nEventFilters: " << nEventFilters << endl;
-    cout << "    nParticleFilters: " << nParticleFilters << endl;
+    cout << " S:Creating Histograms for....: " << prefixName  << endl;
+    cout << " S:nEventFilters..............: " << nEventFilters << endl;
+    cout << " S:nParticleFilters...........: " << nParticleFilters << endl;
     }
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    TransverseSpherocityHistos * histos = new TransverseSpherocityHistos(prefixName+eventFilters[iEventFilter]->getName(),configuration,particleFilters,getReportLevel());
+    TransverseSpherocityHistos * histos = new TransverseSpherocityHistos(this,prefixName+eventFilters[iEventFilter]->getName(),configuration,particleFilters);
     histos->createHistograms();
     histograms.push_back(histos);
     }
@@ -120,7 +111,7 @@ void TransverseSpherocityAnalyzer::loadHistograms(TFile * inputFile)
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     TString evtFilterName = eventFilters[iEventFilter]->getName();
-    TransverseSpherocityHistos * histos = new TransverseSpherocityHistos(prefixName+eventFilters[iEventFilter]->getName(),configuration,particleFilters,getReportLevel());
+    TransverseSpherocityHistos * histos = new TransverseSpherocityHistos(this, prefixName+eventFilters[iEventFilter]->getName(),configuration,particleFilters);
     histos->loadHistograms(inputFile);
     histograms.push_back(histos);
     }
@@ -213,3 +204,17 @@ void TransverseSpherocityAnalyzer::execute()
   }
 }
 
+void TransverseSpherocityAnalyzer::createDerivedHistograms()
+{
+
+}
+
+void TransverseSpherocityAnalyzer::loadDerivedHistograms(TFile * inputFile __attribute__((unused)))
+{
+
+}
+
+void TransverseSpherocityAnalyzer::calculateDerivedHistograms()
+{
+
+}

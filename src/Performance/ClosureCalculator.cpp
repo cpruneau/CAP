@@ -14,50 +14,41 @@
 
 ClassImp(ClosureCalculator);
 
-ClosureCalculator::ClosureCalculator(const TString &          _name,
-                         const Configuration &    _configuration,
-                         MessageLogger::LogLevel  _reportLevel)
+ClosureCalculator::ClosureCalculator(const TString & _name,
+                                     Configuration & _configuration)
 :
-Task(_name, _configuration, _reportLevel)
+Task(_name, _configuration)
 {
   appendClassName("ClosureCalculator");
-  setInstanceName(_name);
-  setDefaultConfiguration();
-  setConfiguration(_configuration);
 }
 
 void ClosureCalculator::setDefaultConfiguration()
 {
-  
-  if (reportStart(__FUNCTION__))
-    ;
-  configuration.setName("ClosureCalculator Configuration");
-  configuration.setParameter("createHistograms",        true);
-  configuration.setParameter("saveHistograms",          true);
-  configuration.setParameter("forceHistogramsRewrite",  true);
-  configuration.addParameter("selectedMethod",          0);
-  configuration.addParameter("histoInputPath",          TString("./"));
-  configuration.addParameter("histoGeneratorFileName",  TString("histoGeneratorFileName"));
-  configuration.addParameter("histoDetectorFileName",   TString("histoDetectorFileName"));
-  configuration.addParameter("histoOutputPath",         TString("./"));
-  configuration.addParameter("histoClosureFileName",    TString("histoClosureFileName"));
-  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  Task::setDefaultConfiguration();
+  setParameter("CreateHistograms",        true);
+  setParameter("SaveHistograms",          true);
+  //setParameter("ForceHistogramsRewrite",  true);
+  addParameter("SelectedMethod",          0);
+  addParameter("HistogramInputPath",          TString("./"));
+  addParameter("HistoGeneratorFileName",  TString("HistoGeneratorFileName"));
+  addParameter("HistoDetectorFileName",   TString("HistoDetectorFileName"));
+  addParameter("HistogramOutputPath",         TString("./"));
+  addParameter("HistoClosureFileName",    TString("HistoClosureFileName"));
 }
 
 void ClosureCalculator::execute()
 {
-  
   if (reportStart(__FUNCTION__))
     ;
   incrementTaskExecuted();
-  bool    forceHistogramsRewrite = configuration.getValueBool("forceHistogramsRewrite");
-  int     selectedMethod         = configuration.getValueInt("selectedMethod");
-  TString histoInputPath         = configuration.getValueString("histoInputPath");
-  TString histoGeneratorFileName = configuration.getValueString("histoGeneratorFileName");
-  TString histoDetectorFileName  = configuration.getValueString("histoDetectorFileName");
-  TString histoOutputPath        = configuration.getValueString("histoOutputPath");
-  TString histoClosureFileName   = configuration.getValueString("histoClosureFileName");
-    
+  bool    ForceHistogramsRewrite = configuration.getValueBool("ForceHistogramsRewrite");
+  int     selectedMethod         = configuration.getValueInt("SelectedMethod");
+  TString histoInputPath         = getValueString("HistogramInputPath");
+  TString histoGeneratorFileName = getValueString("HistoGeneratorFileName");
+  TString histoDetectorFileName  = getValueString("HistoDetectorFileName");
+  TString HistogramOutputPath    = getValueString("HistogramOutputPath");
+  TString histoClosureFileName   = getValueString("HistoClosureFileName");
+
   if (reportInfo(__FUNCTION__))
     {
     cout
@@ -66,7 +57,7 @@ void ClosureCalculator::execute()
     << "           histoInputPath: " << histoInputPath  << endl
     << "   histoGeneratorFileName: " << histoGeneratorFileName << endl
     << "    histoDetectorFileName: " << histoDetectorFileName << endl
-    << "          histoOutputPath: " << histoOutputPath  << endl
+    << "      HistogramOutputPath: " << HistogramOutputPath  << endl
     << "     histoClosureFileName: " << histoClosureFileName  << endl;
     switch (selectedMethod)
       {
@@ -78,7 +69,7 @@ void ClosureCalculator::execute()
   TFile * generatorFile = openRootFile("", histoGeneratorFileName, "READ");
   TFile * detectorFile  = openRootFile("", histoDetectorFileName,  "READ");
   TFile * closureFile;
-  if (forceHistogramsRewrite)
+  if (ForceHistogramsRewrite)
     closureFile   = openRootFile("", histoClosureFileName,"RECREATE");
   else
     closureFile   = openRootFile("", histoClosureFileName,"NEW");
@@ -94,10 +85,10 @@ void ClosureCalculator::execute()
   detectorCollection->setOwnership(false);
   closureCollection->setOwnership(false);
   switch (selectedMethod)
-  {
-    case 0: closureCollection->differenceCollection(*detectorCollection,*generatorCollection,true); break;
-    case 1: closureCollection->ratioCollection(*detectorCollection,*generatorCollection,true); break;
-  }
+    {
+      case 0: closureCollection->differenceCollection(*detectorCollection,*generatorCollection,true); break;
+      case 1: closureCollection->ratioCollection(*detectorCollection,*generatorCollection,true); break;
+    }
 
   //if (!isTaskOk()) return;
   closureCollection->saveHistograms(closureFile);

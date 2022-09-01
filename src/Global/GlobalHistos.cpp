@@ -12,12 +12,12 @@
 #include "GlobalHistos.hpp"
 ClassImp(GlobalHistos);
 
-GlobalHistos::GlobalHistos(const TString &         _name,
-                           const Configuration &   _configuration,
-                           vector<ParticleFilter*> _particleFilters,
-                           LogLevel                _debugLevel)
+GlobalHistos::GlobalHistos(Task * _parent,
+                           const TString & _name,
+                           Configuration & _configuration,
+                           vector<ParticleFilter*> _particleFilters)
 :
-Histograms(_name,_configuration,_debugLevel),
+Histograms(_parent,_name,_configuration),
 particleFilters(_particleFilters),
 h_n(),
 h_e(),
@@ -42,7 +42,6 @@ fill2D(false),
 fillCorrelationHistos(false)
 {
   appendClassName("GlobalHistos");
-  setInstanceName(_name);
 }
 
 
@@ -52,71 +51,100 @@ void GlobalHistos::createHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString bn = getName();
-  TString name;
   unsigned int nParticleFilters = particleFilters.size();
-  if (reportDebug(__FUNCTION__))  cout << "nParticleFilters: " << nParticleFilters << endl;
-  const Configuration & configuration = getConfiguration();
-  fillCorrelationHistos = configuration.getValueBool("fillCorrelationHistos");
-  fill2D = configuration.getValueBool("fill2D");
+  Configuration & configuration = getConfiguration();
+  const TString & bn  = getName();
+  const TString & ptn = getParentTaskName();
+  const TString & ppn = getParentPathName();
+  fillCorrelationHistos = configuration.getValueBool(ppn,"FillCorrelationHistos");
+  fill2D                = configuration.getValueBool(ppn,"Fill2D");
+  int nBins_n           = configuration.getValueInt(ppn,"nBins_n");
+  int nBins_n2          = configuration.getValueInt(ppn,"nBins_n2");
+  double min_n          = configuration.getValueDouble(ppn,"Min_n");
+  double max_n          = configuration.getValueDouble(ppn,"Max_n");
+  int nBins_e           = configuration.getValueInt(ppn,"nBins_e");
+  int nBins_e2          = configuration.getValueInt(ppn,"nBins_e2");
+  double min_e          = configuration.getValueDouble(ppn,"Min_e");
+  double max_e          = configuration.getValueDouble(ppn,"Max_e");
+  int nBins_q           = configuration.getValueInt(ppn,"nBins_q");
+  int nBins_q2          = configuration.getValueInt(ppn,"nBins_q2");
+  double min_q          = configuration.getValueDouble(ppn,"Min_q");
+  double max_q          = configuration.getValueDouble(ppn,"Max_q");
+  int nBins_b           = configuration.getValueInt(ppn,"nBins_b");
+  int nBins_b2          = configuration.getValueInt(ppn,"nBins_b2");
+  double min_b          = configuration.getValueDouble(ppn,"Min_b");
+  double max_b          = configuration.getValueDouble(ppn,"Max_b");
+  int nBins_ptSum       = configuration.getValueInt(ppn,"nBins_ptSum");
+  int nBins_ptSum2      = configuration.getValueInt(ppn,"nBins_ptSum2");
+  double min_ptSum      = configuration.getValueDouble(ppn,"Min_ptSum");
+  double max_ptSum      = configuration.getValueDouble(ppn,"Max_ptSum");
+  int nBins_ptAvg       = configuration.getValueInt(ppn,"nBins_ptAvg");
+  int nBins_ptAvg2      = configuration.getValueInt(ppn,"nBins_ptAvg2");
+  double min_ptAvg      = configuration.getValueDouble(ppn,"Min_ptAvg");
+  double max_ptAvg      = configuration.getValueDouble(ppn,"Max_ptAvg");
 
-  int nBins_n  = configuration.getValueInt("nBins_n");
-  int nBins_n2 = configuration.getValueInt("nBins_n2");
-  double min_n = configuration.getValueDouble("min_n");
-  double max_n = configuration.getValueDouble("max_n");
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  G:Parent Task Name....................: " << ptn << endl;
+    cout << "  G:Parent Path Name....................: " << ppn << endl;
+    cout << "  G:Histo Base Name.....................: " << bn << endl;
+    cout << "  G:nParticleFilters....................: "  <<  nParticleFilters << endl;
+    cout << "  G:FillCorrelationHistos...............: "  <<  fillCorrelationHistos << endl;
+    cout << "  G:Fill2D..............................: "  <<  fill2D << endl;
+    cout << "  G:nBins_n.............................: "  <<  nBins_n << endl;
+    cout << "  G:nBins_n2............................: "  <<  nBins_n2 << endl;
+    cout << "  G:Min_n...............................: "  <<  min_n << endl;
+    cout << "  G:Max_n...............................: "  <<  max_n << endl;
+    cout << "  G:nBins_e.............................: "  <<  nBins_e << endl;
+    cout << "  G:nBins_e2............................: "  <<  nBins_e2 << endl;
+    cout << "  G:Min_e...............................: "  <<  min_e << endl;
+    cout << "  G:Max_e...............................: "  <<  max_e << endl;
+    cout << "  G:nBins_q.............................: "  <<  nBins_q << endl;
+    cout << "  G:nBins_q2............................: "  <<  nBins_q2 << endl;
+    cout << "  G:Min_q...............................: "  <<  min_q << endl;
+    cout << "  G:Max_q...............................: "  <<  max_q << endl;
+    cout << "  G:nBins_b.............................: "  <<  nBins_b << endl;
+    cout << "  G:nBins_b2............................: "  <<  nBins_b2 << endl;
+    cout << "  G:Min_b...............................: "  <<  min_b << endl;
+    cout << "  G:Max_b...............................: "  <<  max_b << endl;
+    cout << "  G:nBins_ptSum.........................: "  <<  nBins_ptSum << endl;
+    cout << "  G:nBins_ptSum2........................: "  <<  nBins_ptSum2 << endl;
+    cout << "  G:Min_ptSum...........................: "  <<  min_ptSum << endl;
+    cout << "  G:Max_ptSum...........................: "  <<  max_ptSum << endl;
+    cout << "  G:nBins_ptAvg.........................: "  <<  nBins_ptAvg << endl;
+    cout << "  G:nBins_ptAvg2........................: "  <<  nBins_ptAvg2 << endl;
+    cout << "  G:Min_ptAvg...........................: "  <<  min_ptAvg << endl;
+    cout << "  G:Max_ptAvg...........................: "  <<  max_ptAvg << endl;
+    }
 
-  int nBins_e  = configuration.getValueInt("nBins_e");
-  int nBins_e2 = configuration.getValueInt("nBins_e2");
-  double min_e = configuration.getValueDouble("min_e");
-  double max_e = configuration.getValueDouble("max_e");
-  
-  int nBins_q  = configuration.getValueInt("nBins_q");
-  int nBins_q2 = configuration.getValueInt("nBins_q2");
-  double min_q = configuration.getValueDouble("min_q");
-  double max_q = configuration.getValueDouble("max_q");
-  
-  int nBins_b  = configuration.getValueInt("nBins_b");
-  int nBins_b2 = configuration.getValueInt("nBins_b2");
-  double min_b = configuration.getValueDouble("min_b");
-  double max_b = configuration.getValueDouble("max_b");
-
-  int nBins_ptSum   = configuration.getValueInt("nBins_ptSum");
-  int nBins_ptSum2  = configuration.getValueInt("nBins_ptSum2");
-  double min_ptSum  = configuration.getValueDouble("min_ptSum");
-  double max_ptSum  = configuration.getValueDouble("max_ptSum");
-
-  int nBins_ptAvg   = configuration.getValueInt("nBins_ptAvg");
-  int nBins_ptAvg2  = configuration.getValueInt("nBins_ptAvg2");
-  double min_ptAvg  = configuration.getValueDouble("min_ptAvg");
-  double max_ptAvg  = configuration.getValueDouble("max_ptAvg");
+  setReportLevel(MessageLogger::Debug);
 
   for (unsigned int k1=0; k1<nParticleFilters; k1++)
   {
+  TString name;
   TString pfName1 = particleFilters[k1]->getName();
-  h_n.push_back( createHistogram(makeName(bn,pfName1,"n"),  nBins_n, min_n,  max_n, "n","N") );
-  h_e.push_back( createHistogram(makeName(bn,pfName1,"e"),  nBins_e, min_e,  max_e, "e","N") );
-  h_q.push_back( createHistogram(makeName(bn,pfName1,"q"),  nBins_q, min_q,  max_q, "q","N") );
-  h_s.push_back( createHistogram(makeName(bn,pfName1,"s"),  nBins_b, min_b,  max_b, "s","N") );
-  h_b.push_back( createHistogram(makeName(bn,pfName1,"b"),  nBins_b, min_b,  max_b, "b","N") );
-  h_ptSum.push_back( createHistogram(makeName(bn,pfName1,"ptSum"),  nBins_ptSum, min_ptSum,  max_ptSum, "ptSum","N") );
-  h_ptAvg.push_back( createHistogram(makeName(bn,pfName1,"ptAvg"),  nBins_ptAvg, min_ptAvg,  max_ptAvg, "ptAvg","N") );
-
-  p_eVsN.push_back(     createProfile(makeName(bn,pfName1,"n",pfName1,"eProf"),     nBins_n, min_n, max_n, "n", "e"));
-  p_qVsN.push_back(     createProfile(makeName(bn,pfName1,"n",pfName1,"qProf"),     nBins_n, min_n, max_n, "n", "q"));
-  p_sVsN.push_back(     createProfile(makeName(bn,pfName1,"n",pfName1,"sProf"),     nBins_n, min_n, max_n, "n", "s"));
-  p_bVsN.push_back(     createProfile(makeName(bn,pfName1,"n",pfName1,"bProf"),     nBins_n, min_n, max_n, "n", "b"));
-  p_ptSumVsN.push_back( createProfile(makeName(bn,pfName1,"n",pfName1,"ptSumProf"), nBins_n, min_n, max_n, "n", "ptSum"));
-  p_ptAvgVsN.push_back( createProfile(makeName(bn,pfName1,"n",pfName1,"ptAvgProf"), nBins_n, min_n, max_n, "n", "ptAvg"));
-
+  h_n.push_back(     createHistogram(makeName(bn,pfName1,"n"), nBins_n, min_n,  max_n, "n","N") );
+  h_e.push_back(     createHistogram(makeName(bn,pfName1,"e"), nBins_e, min_e,  max_e, "e","N") );
+  h_q.push_back(     createHistogram(makeName(bn,pfName1,"q"), nBins_q, min_q,  max_q, "q","N") );
+  h_s.push_back(     createHistogram(makeName(bn,pfName1,"s"), nBins_b, min_b,  max_b, "s","N") );
+  h_b.push_back(     createHistogram(makeName(bn,pfName1,"b"), nBins_b, min_b,  max_b, "b","N") );
+  h_ptSum.push_back( createHistogram(makeName(bn,pfName1,"ptSum"), nBins_ptSum, min_ptSum,  max_ptSum, "ptSum","N") );
+  h_ptAvg.push_back( createHistogram(makeName(bn,pfName1,"ptAvg"), nBins_ptAvg, min_ptAvg,  max_ptAvg, "ptAvg","N") );
+  p_eVsN.push_back(  createProfile(makeName(bn,pfName1,TString("n"),pfName1,TString("eProf")),nBins_n, min_n, max_n, "n", "e"));
+  p_qVsN.push_back(  createProfile(makeName(bn,pfName1,TString("n"),pfName1,TString("qProf")),nBins_n, min_n, max_n, "n", "q"));
+  p_sVsN.push_back(  createProfile(makeName(bn,pfName1,TString("n"),pfName1,TString("sProf")),nBins_n, min_n, max_n, "n", "s"));
+  p_bVsN.push_back(  createProfile(makeName(bn,pfName1,TString("n"),pfName1,TString("bProf")),nBins_n, min_n, max_n, "n", "b"));
+  p_ptSumVsN.push_back( createProfile(makeName(bn,pfName1,TString("n"),pfName1,TString("ptSumProf")),nBins_n, min_n, max_n, "n", "ptSum"));
+  p_ptAvgVsN.push_back( createProfile(makeName(bn,pfName1,TString("n"),pfName1,TString("ptAvgProf")),nBins_n, min_n, max_n, "n", "ptAvg"));
   if ( fill2D )
     {
-    h_ptSumVsN.push_back( createHistogram(makeName(bn,pfName1,"n",pfName1,"ptSum"), nBins_n2, min_n, max_n, nBins_ptSum2, min_ptSum,  max_ptSum, "n", "ptSum", "N") );
-    h_ptAvgVsN.push_back( createHistogram(makeName(bn,pfName1,"n",pfName1,"ptAvg"), nBins_n2, min_n, max_n, nBins_ptAvg2, min_ptAvg,  max_ptAvg, "n", "ptAvg", "N") );
-    h_eVsN.push_back(     createHistogram(makeName(bn,pfName1,"n",pfName1,"e"),     nBins_n2, min_n, max_n, nBins_e2, min_e,  max_e, "n", "e", "N") );
-    h_qVsN.push_back(     createHistogram(makeName(bn,pfName1,"n",pfName1,"q"),     nBins_n2, min_n, max_n, nBins_q2, min_q,  max_q, "n", "q", "N") );
-    h_bVsN.push_back(     createHistogram(makeName(bn,pfName1,"n",pfName1,"b"),     nBins_n2, min_n, max_n, nBins_b2, min_b,  max_b, "n", "b", "N") );
+    h_ptSumVsN.push_back( createHistogram(makeName(bn,pfName1,TString("n"),pfName1,TString("ptSum")), nBins_n2, min_n, max_n, nBins_ptSum2, min_ptSum,  max_ptSum, "n", "ptSum", "N") );
+    h_ptAvgVsN.push_back( createHistogram(makeName(bn,pfName1,TString("n"),pfName1,TString("ptAvg")), nBins_n2, min_n, max_n, nBins_ptAvg2, min_ptAvg,  max_ptAvg, "n", "ptAvg", "N") );
+    h_eVsN.push_back(     createHistogram(makeName(bn,pfName1,TString("n"),pfName1,TString("e")),     nBins_n2, min_n, max_n, nBins_e2, min_e,  max_e, "n", "e", "N") );
+    h_qVsN.push_back(     createHistogram(makeName(bn,pfName1,TString("n"),pfName1,TString("q")),     nBins_n2, min_n, max_n, nBins_q2, min_q,  max_q, "n", "q", "N") );
+    h_bVsN.push_back(     createHistogram(makeName(bn,pfName1,TString("n"),pfName1,TString("b")),     nBins_n2, min_n, max_n, nBins_b2, min_b,  max_b, "n", "b", "N") );
     }
-
 
   if ( fillCorrelationHistos )
     {
@@ -138,6 +166,8 @@ void GlobalHistos::createHistograms()
         }
       }
     }
+  cout << "done: " <<  endl;
+
   }
   if (reportEnd(__FUNCTION__))
     ;
@@ -148,13 +178,24 @@ void GlobalHistos::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  const Configuration & configuration = getConfiguration();
-  fillCorrelationHistos = configuration.getValueBool("fillCorrelationHistos");
-  fill2D = configuration.getValueBool("fill2D");
-
-  TString bn = getName();
-  TString name;
+  Configuration & configuration = getConfiguration();
+  const TString & bn  = getName();
+  const TString & ptn = getParentTaskName();
+  const TString & ppn = getParentPathName();
+  fillCorrelationHistos = configuration.getValueBool(ppn,"FillCorrelationHistos");
+  fill2D                = configuration.getValueBool(ppn,"Fill2D");
   unsigned int nParticleFilters = particleFilters.size();
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    cout << "  G:Parent Task Name....................: " << ptn << endl;
+    cout << "  G:Parent Path Name....................: " << ppn << endl;
+    cout << "  G:Histo Base Name.....................: " << bn << endl;
+    cout << "  G:nParticleFilters....................: "  <<  nParticleFilters << endl;
+    cout << "  G:FillCorrelationHistos...............: "  <<  fillCorrelationHistos << endl;
+    cout << "  G:Fill2D..............................: "  <<  fill2D << endl;
+    }
+
   for (unsigned int k1=0; k1<nParticleFilters; k1++)
   {
   TString pfName1 = particleFilters[k1]->getName();
@@ -171,7 +212,7 @@ void GlobalHistos::loadHistograms(TFile * inputFile)
   p_sVsN.push_back(     loadProfile(inputFile, makeName(bn,pfName1,"n",pfName1,"sProf")));
   p_bVsN.push_back(     loadProfile(inputFile, makeName(bn,pfName1,"n",pfName1,"bProf")));
   p_ptSumVsN.push_back( loadProfile(inputFile, makeName(bn,pfName1,"n",pfName1,"ptSumProf")));
-  p_ptAvgVsN.push_back(  loadProfile(inputFile, makeName(bn,pfName1,"n",pfName1,"ptAvgProf")));
+  p_ptAvgVsN.push_back( loadProfile(inputFile, makeName(bn,pfName1,"n",pfName1,"ptAvgProf")));
 
   if ( fill2D )
     {
