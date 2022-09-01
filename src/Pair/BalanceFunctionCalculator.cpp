@@ -192,6 +192,10 @@ TH2* BalanceFunctionCalculator::calculate_BalFct(const TString & taskName,
   obs->SetName(name);
   obs->SetTitle(name);
   obs->Add(obs_LS, -1.0);
+
+  double wx = obs->GetXaxis()->GetBinWidth(1);
+  //double wy = obs->GetYaxis()->GetBinWidth(1);
+  obs->Scale(1.0/wx); // make this a function of delta y
   //double rho1Integral = rho1_2->Integral();
   //obs->Scale(1.0/rho1Integral);
   histograms[0]->append(obs);
@@ -228,10 +232,10 @@ TH2* BalanceFunctionCalculator::calculate_BalFctSum(const TString & taskName,
   obs->SetName(name);
   obs->SetTitle(name);
   obs->Add(obs_1Bar2, 1.0);
-  double wx = obs->GetXaxis()->GetBinWidth(1);
-  double wy = obs->GetYaxis()->GetBinWidth(1);
+
   //double rho1Integral = rho1_2->Integral();
-  obs->Scale(0.5/wx);
+  //obs->Scale(0.5/wx);
+  obs->Scale(0.5);
   histograms[0]->append(obs);
 
   name = makeHistoName(taskName,eventClassName,particleName1,particleName2,obsName,comboName+"_x");
