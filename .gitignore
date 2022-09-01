@@ -8,12 +8,10 @@ publishedData
 CMakeFiles
 src/Book2
 src/Cluster
-src/Epos
 src/LambdaAnalysis
 src/Misc
 src/Music
 src/StatStudies
-src/Urqmd
 src/*/cmake_install*
 documentation
 Makefile
