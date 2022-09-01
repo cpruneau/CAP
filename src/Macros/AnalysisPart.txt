@@ -74,7 +74,7 @@ Run:SeedValue               int    111231
 Run:PartialIndex            int    -1
 Run:PartialReports          bool   1
 Run:PartialSaves            bool   0
-Run:Subsample               bool   1
+Run:Subsample               bool   0
 Run:SubsampleBalFctGen      bool   0
 Run:SubsampleBalFctReco     bool   0
 Run:SubsampleBaseGen        bool   1
