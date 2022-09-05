@@ -570,53 +570,53 @@ void RunAnalysis::configure()
   if (RunGlobalGen)
     {
     task = new GlobalAnalyzer(GlobalLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysisGen)               eventAnalysis->addSubTask(task);
-    if (RunDerivedGen)                     derivedGen->addSubTask(task);
+    if (RunEventAnalysis&&RunEventAnalysisGen) eventAnalysis->addSubTask(task);
+    if (RunDerivedGen) derivedGen->addSubTask(task);
     //    if (RunClosure && RunClosureBase)      closureBasic->addSubTask(task);
     //    if (RunClosure && RunClosureDerived)   closureDerived->addSubTask(task);
     }
   if (RunGlobalReco)
     {
     task = new GlobalAnalyzer(GlobalLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysisReco)         eventAnalysis->addSubTask(task);
-    if (RunDerivedReco)               derivedReco->addSubTask(task);
+    if (RunEventAnalysis&&RunEventAnalysisReco) eventAnalysis->addSubTask(task);
+    if (RunDerivedReco) derivedReco->addSubTask(task);
     }
 
   if (RunSpherocityGen)
     {
     task = new TransverseSpherocityAnalyzer(SpherocityLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysisGen)               eventAnalysis->addSubTask(task);
-    if (RunDerivedGen)                     derivedGen->addSubTask(task);
+    if (RunEventAnalysis&&RunEventAnalysisGen) eventAnalysis->addSubTask(task);
+    if (RunDerivedGen) derivedGen->addSubTask(task);
     //    if (RunClosure && RunClosureBase)      closureBasic->addSubTask(task);
     //    if (RunClosure && RunClosureDerived)   closureDerived->addSubTask(task);
     }
   if (RunSpherocityReco)
     {
     task = new TransverseSpherocityAnalyzer(SpherocityLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysisReco)         eventAnalysis->addSubTask(task);
-    if (RunDerivedReco)               derivedReco->addSubTask(task);
+    if (RunEventAnalysis&&RunEventAnalysisReco) eventAnalysis->addSubTask(task);
+    if (RunDerivedReco) derivedReco->addSubTask(task);
     }
 
   if (RunPartGen)
     {
     task = new ParticleAnalyzer(PartLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysisGen)             eventAnalysis->addSubTask(task);
-    if (RunDerivedGen)                   derivedGen->addSubTask(task);
+    if (RunEventAnalysis&&RunEventAnalysisGen) eventAnalysis->addSubTask(task);
+    if (RunDerivedGen) derivedGen->addSubTask(task);
     //    if (RunClosure && RunClosureBase)    closureBasic->addSubTask(task);
     //    if (RunClosure && RunClosureDerived) closureDerived->addSubTask(task);
     }
   if (RunPartReco)
     {
     task = new ParticleAnalyzer(PartLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysisReco)         eventAnalysis->addSubTask(task);
-    if (RunDerivedReco)               derivedReco->addSubTask(task);
+    if (RunEventAnalysis&&RunEventAnalysisReco) eventAnalysis->addSubTask(task);
+    if (RunDerivedReco) derivedReco->addSubTask(task);
     }
 
   if (RunPairGen)
     {
     task = new ParticlePairAnalyzer(PairLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysisGen)         eventAnalysis->addSubTask(task);
-    if (RunDerivedGen)               derivedGen->addSubTask(task);
+    if (RunEventAnalysis&&RunEventAnalysisGen) eventAnalysis->addSubTask(task);
+    if (RunDerivedGen) derivedGen->addSubTask(task);
     //    if (RunClosure && RunClosureBase)      closureBasic->addSubTask(task);
     //    if (RunClosure && RunClosureDerived)   closureDerived->addSubTask(task);
     //    if (RunClosure && RunClosureBalFct)    closureBalFct->addSubTask(task);
@@ -624,23 +624,23 @@ void RunAnalysis::configure()
   if (RunPairReco)
     {
     task = new ParticlePairAnalyzer(PairLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysisReco)         eventAnalysis->addSubTask(task);
-    if (RunDerivedReco)               derivedReco->addSubTask(task);
+    if (RunEventAnalysis&&RunEventAnalysisReco) eventAnalysis->addSubTask(task);
+    if (RunDerivedReco) derivedReco->addSubTask(task);
     }
 
   if (RunNuDynGen)
     {
     task = new NuDynAnalyzer(NuDynLabel+GenLabel,configuration,analysisEventFilters,analysisParticleFilters);
-    if (RunEventAnalysisGen)              eventAnalysis->addSubTask(task);
-    if (RunDerivedGen)                    derivedGen->addSubTask(task);
+    if (RunEventAnalysis&&RunEventAnalysisGen) eventAnalysis->addSubTask(task);
+    if (RunDerivedGen) derivedGen->addSubTask(task);
     //    if (RunClosure && RunClosureBase)     closureBasic->addSubTask(task);
     //    if (RunClosure && RunClosureBalFct)   closureDerived->addSubTask(task);
     }
   if (RunNuDynReco)
     {
     task = new NuDynAnalyzer(NuDynLabel+RecoLabel,configuration,analysisEventFilters,analysisParticleFilters);
-    if (RunEventAnalysisReco)             eventAnalysis->addSubTask(task);
-    if (RunDerivedReco)                   derivedReco->addSubTask(task);
+    if (RunEventAnalysis&&RunEventAnalysisReco) eventAnalysis->addSubTask(task);
+    if (RunDerivedReco) derivedReco->addSubTask(task);
     //    if (RunClosure && RunClosureBase)     closureBasic->addSubTask(task);
     //    if (RunClosure && RunClosureBalFct)   closureDerived->addSubTask(task);
     }
