@@ -110,6 +110,9 @@ void ParticlePairAnalyzer::createHistograms()
     cout << "Creating Histograms...........: " << bn << endl;
     cout << "nEventFilters.................: " << nEventFilters << endl;
     cout << "nParticleFilters..............: " << nParticleFilters << endl;
+    cout << "fillEta.......................: " << fillEta  << endl;
+    cout << "fillY.........................: " << fillY    << endl;
+    cout << "fillP2........................: " << fillP2   << endl;
     cout << endl;
     }
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
@@ -155,12 +158,20 @@ void ParticlePairAnalyzer::loadHistograms(TFile * inputFile)
   LogLevel debugLevel    = getReportLevel();
   TString bn  = getName();
   Histograms * histos;
+
+  fillEta = getValueBool("FillEta");
+  fillY   = getValueBool("FillY");
+  fillP2  = getValueBool("FillP2");
+
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;
     cout << "Loading Histograms............: " << bn << endl;
     cout << "nEventFilters.................: " << nEventFilters << endl;
     cout << "nParticleFilters..............: " << nParticleFilters << endl;
+    cout << "fillEta.......................: " << fillEta  << endl;
+    cout << "fillY.........................: " << fillY    << endl;
+    cout << "fillP2........................: " << fillP2   << endl;
     cout << endl;
     }
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )

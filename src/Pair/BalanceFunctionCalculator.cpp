@@ -488,6 +488,7 @@ void BalanceFunctionCalculator::execute()
     hh->setOwnership(false);
     histograms.push_back(hh); // enables handling in functions.
     loadNEexecutedTask(inputFile);
+    loadNEventsAccepted(inputFile);
 
     unsigned int nSpecies = particleFilters.size()/2;
     vector<TString>  sObservableNames;
@@ -609,7 +610,9 @@ void BalanceFunctionCalculator::execute()
       }
     outputFile->cd();
     hh->saveHistograms(outputFile);
+    writeNEventsAccepted(outputFile);
     writeNEexecutedTask(outputFile);
+
     outputFile->Close();
     inputFile->Close();
     hh->clear();

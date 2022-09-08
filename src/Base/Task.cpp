@@ -43,9 +43,7 @@ combinedHistograms      (),
 filteredParticles       (),
 nTaskExecutedTotal      (0),
 nTaskExecuted           (0),
-nEventsAcceptedTotalTotal    (),
 nParticlesAcceptedEvent (),
-nParticlesAcceptedReset (),
 nParticlesAcceptedTotal (),
 subTasks                (),
 particleTypeCollection  (nullptr),
@@ -214,7 +212,7 @@ void Task::initialize()
   if (LoadHistos   && isTaskOk())  loadHistograms();
   if (CreateHistos && isTaskOk())
     {
-    if (UseParticles && !hasEventCountHistograms()) createEventCountHistograms();
+    //if (UseParticles && !hasEventCountHistograms()) createEventCountHistograms();
     createHistograms();
     }
   if (hasSubTasks() && isTaskOk()) initializeSubTasks();
@@ -307,7 +305,7 @@ void Task::reset()
   resetTaskExecuted();
   if (UseParticles) resetNEventsAccepted();
   if (UseParticles) resetNParticlesAccepted();
-  if (UseParticles  && CreateHistos) resetEventCountHistograms();
+  //if (UseParticles  && CreateHistos) resetEventCountHistograms();
   if (CreateHistos  && isTaskOk()) resetHistograms();
   if (hasSubTasks() && isTaskOk()) resetSubTasks();
   if (reportEnd(__FUNCTION__))
@@ -322,7 +320,7 @@ void Task::clear()
   bool CreateHistos = getValueBool("CreateHistograms");
   if (UseParticles) clearNEventsAccepted();
   if (UseParticles) clearNParticlesAccepted();
-  if (UseParticles) clearEventCountHistograms();
+  //if (UseParticles) clearEventCountHistograms();
   if (CreateHistos  && isTaskOk()) clearHistograms();
   if (hasSubTasks() && isTaskOk()) clearSubTasks();
   if (reportEnd(__FUNCTION__))
@@ -353,7 +351,7 @@ void Task::loadHistograms()
     }
   TFile * inputFile = openRootFile(histogramInputPath,histogramInputFile,"READ");
   if (!inputFile) return;
-  if (UseParticles)  loadEventCountHistograms(inputFile);
+  //if (UseParticles)  loadEventCountHistograms(inputFile);
   if (UseParticles)  loadNEventsAccepted(inputFile);
   if (UseParticles)  loadNEexecutedTask(inputFile);
   loadHistograms(inputFile);
@@ -377,7 +375,7 @@ void Task::loadDerivedHistograms()
     }
   TFile * inputFile = openRootFile(histogramInputPath,histogramInputFile,"READ");
   if (!inputFile) return;
-  if (UseParticles)  loadEventCountHistograms(inputFile);
+  //if (UseParticles)  loadEventCountHistograms(inputFile);
   if (UseParticles)  loadNEventsAccepted(inputFile);
   if (UseParticles)  loadNEexecutedTask(inputFile);
   loadDerivedHistograms(inputFile);
@@ -667,10 +665,10 @@ void Task::saveHistograms()
   if (UseParticles)
     {
     // this next fill is done once per Save (after reset)
-    fillEventCountHistograms();  // do not do in finalize derived
+    //fillEventCountHistograms();  // do not do in finalize derived
     writeNEventsAccepted(outputFile);
     writeNEexecutedTask(outputFile);
-    saveEventCountHistograms(outputFile);
+    //saveEventCountHistograms(outputFile);
     }
   saveHistograms(outputFile);
   outputFile->Close();
@@ -703,11 +701,14 @@ void Task::writeNEventsAccepted(TFile * outputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
+  TString parameterName = "nEventFilters";
+  writeParameter(outputFile,parameterName,nEventFilters);
+
   for (int iFilter=0; iFilter<nEventFilters; iFilter++)
     {
-    TString name = "EventFilter";
-    name += iFilter;
-    writeParameter(outputFile,name,nEventsAccepted[iFilter]);
+    parameterName = "EventFilter";
+    parameterName += iFilter;
+    writeParameter(outputFile,parameterName,nEventsAccepted[iFilter]);
     }
   if (reportEnd(__FUNCTION__))
     ;
@@ -717,11 +718,14 @@ void Task::loadNEventsAccepted(TFile * inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
+  TString parameterName = "nEventFilters";
+  nEventFilters = readParameter(inputFile,parameterName);
+  if (nEventsAccepted.size()<1) nEventsAccepted.assign(nEventFilters,0);
   for (int iFilter=0; iFilter<nEventFilters; iFilter++)
     {
-    TString name = "EventFilter";
-    name += iFilter;
-    nEventsAccepted[iFilter] = readParameter(inputFile,name);
+    parameterName = "EventFilter";
+    parameterName += iFilter;
+    nEventsAccepted[iFilter] = readParameter(inputFile,parameterName);
     }
   if (reportEnd(__FUNCTION__))
     ;

@@ -31,7 +31,8 @@ void loadSubSample(const TString & includeBasePath);
 void loadExec(const TString & includeBasePath);
 
 
-int RunAna(int jobIndex=0, int seed=1121331, TString configFile="AnalysisPart.txt", TString outputPath="Ouput")
+int RunSumBalFct(TString configFile="ResoAnalysis.txt",
+                 TString pathName="/Volumes/ClaudeDisc4/OutputFiles/Reso")
 {
   TString includeBasePath = getenv("CAP_SRC");
   loadBase(includeBasePath);
@@ -57,10 +58,15 @@ int RunAna(int jobIndex=0, int seed=1121331, TString configFile="AnalysisPart.tx
   std::cout << "====   ===========================================================================" << std::endl;
   Configuration configuration;
   configuration.readFromFile(configFile);
-  configuration.setParameter("Run:Seed",seed);
-  configuration.setParameter("Run:PartialIndex",jobIndex);
-  configuration.setParameter("Run:HistogramOutputPath",outputPath);
-  RunAnalysis * analysis = new RunAnalysis("Run", configuration);
+  configuration.setParameter("Run:HistogramInputPath",  pathName);
+  configuration.setParameter("Run:HistogramOutputPath", pathName);
+  configuration.setParameter("Run:Subsample",           true);
+  configuration.setParameter("Run:SubsampleBaseGen",    false);
+  configuration.setParameter("Run:SubsampleDerivedGen", false);
+  configuration.setParameter("Run:SubsampleBalFctGen",  true);
+  configuration.setParameter("Run:Bunched",       false);
+  configuration.setParameter("Run:nBunches",      0);
+  RunSubsample * analysis = new RunSubsample("Run", configuration);
   analysis->configure();
   analysis->execute();
   //if (selectedLevel==MessageLogger::Debug) analysis->getConfiguration().writeToFile("DebugConfig.txt");
@@ -205,7 +211,8 @@ void loadSubSample(const TString & includeBasePath)
 void loadExec(const TString & includeBasePath)
 {
   TString includePath = includeBasePath + "/Exec/";
-  gSystem->Load("/Users/aa7526/Documents/GitHub/CAP/src/Exec/RunAnalysis.hpp");
+  //gSystem->Load(includePath+"RunAnalysis.hpp");
+  gSystem->Load(includePath+"RunSubsample.hpp");
   gSystem->Load("libExec.dylib");
 }
 

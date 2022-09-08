@@ -63,10 +63,10 @@ public:
 
 protected:
   
-  long nEventProcessed;   //!< Number of events processed in the current file
-  long sumEventProcessed; //!< Sum of the number of events processes.
-//  long nEventAccepted;    //!< Number of events accepted in the current file
-//  long sumEventAccepted;  //!< Cumulated number of events accepted
+  long nEventsProcessed;   //!< Number of events processed in the current file
+  long sumEventsProcessed; //!< Sum of the number of events processes.
+  long * nEventsAccepted;    //!< Number of events accepted in the current file for each event filter
+  long * sumEventsAccepted;  //!< Cumulated number of events accepted for each event filter
 
   ClassDef(SubSampleStatCalculator,0)
 };

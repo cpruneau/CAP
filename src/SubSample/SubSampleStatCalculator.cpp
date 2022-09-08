@@ -19,10 +19,10 @@ SubSampleStatCalculator::SubSampleStatCalculator(const TString & _name,
                                                  Configuration & _configuration)
 :
 Task(_name,_configuration),
-nEventProcessed(0),
-sumEventProcessed(0)
-//nEventAccepted(0),
-//sumEventAccepted(0)
+nEventsProcessed(0),
+sumEventsProcessed(0),
+nEventsAccepted(nullptr),
+sumEventsAccepted(nullptr)
 {
   appendClassName("SubSampleStatCalculator");
 }
@@ -129,37 +129,79 @@ void SubSampleStatCalculator::execute()
 
     TFile * inputFile;
     TFile * firstInputFile;
-    sumEventProcessed = 0.0;
-    nEventProcessed   = 0.0;
+    sumEventsProcessed = 0.0;
+    nEventsProcessed   = 0.0;
 
     HistogramCollection * collectionAvg;
     HistogramCollection * collection;
-    TString parameterNEexecutedTask("nTaskExecuted");
+    TString parameterName;
+
     int nInputFile = last - first+1;
     for (int iFile=first; iFile<last; iFile++)
       {
       TString histogramInputFile = allFilesToSum[iFile];
       inputFile = openRootFile("", histogramInputFile, "READ");
       if (!inputFile || !isTaskOk()) return;
-      nEventProcessed = readParameter(inputFile,parameterNEexecutedTask);
+
       if (!isTaskOk()) return;
       if (iFile==first)
         {
         firstInputFile = inputFile;
         collectionAvg  = new HistogramCollection("Sum",getReportLevel());
         collectionAvg->loadCollection(inputFile);
-        sumEventProcessed = nEventProcessed;
+
+        parameterName      = "nTaskExecuted";
+        nEventsProcessed   = readParameter(inputFile,parameterName);
+        sumEventsProcessed = nEventsProcessed;
+
+        parameterName     = "nEventFilters";
+        nEventFilters     = readParameter(inputFile,parameterName);
+        if (nEventFilters>0)
+          {
+          nEventsAccepted    = new long[nEventFilters];
+          sumEventsAccepted  = new long[nEventFilters];
+          for (int iFilter=0; iFilter<nEventFilters; iFilter++)
+            {
+            parameterName = "EventFilter";
+            parameterName += iFilter;
+            nEventsAccepted[iFilter] = readParameter(inputFile,parameterName);
+            sumEventsAccepted[iFilter] = nEventsAccepted[iFilter];
+            }
+          }
+        else
+          {
+          if (reportWarning(__FUNCTION__)) cout << "nEventFilters is null" << endl;
+          }
         }
       else
         {
         collection = new HistogramCollection(histogramInputFile,getReportLevel());;
         collection->loadCollection(inputFile);
-        collectionAvg->squareDifferenceCollection(*collection, double(sumEventProcessed), double(nEventProcessed), (iFile==(last-1)) ? nInputFile : -iFile);
-        sumEventProcessed += nEventProcessed;
+        collectionAvg->squareDifferenceCollection(*collection, double(sumEventsProcessed), double(nEventsProcessed), (iFile==(last-1)) ? nInputFile : -iFile);
+
+        parameterName      = "nTaskExecuted";
+        nEventsProcessed   = readParameter(inputFile,parameterName);
+        sumEventsProcessed += nEventsProcessed;
+
+        if (nEventFilters>0)
+          {
+          for (int iFilter=0; iFilter<nEventFilters; iFilter++)
+            {
+            parameterName = "EventFilter";
+            parameterName += iFilter;
+            nEventsAccepted[iFilter] = readParameter(inputFile,parameterName);
+            sumEventsAccepted[iFilter] += nEventsAccepted[iFilter];
+            }
+          }
+        else
+          {
+          if (reportWarning(__FUNCTION__)) cout << "nEventFilters is null" << endl;
+          }
+
         delete collection;
         delete inputFile;
         }
-      if (reportInfo (__FUNCTION__)) cout << "File:" << iFile << " " << histogramInputFile << " Events: "  << nEventProcessed << " : " << sumEventProcessed << endl;
+      if (reportInfo (__FUNCTION__)) cout << "File:" << iFile << " " << histogramInputFile << " Events: "  << nEventsProcessed << " : " << sumEventsProcessed << endl;
       }
     TFile * outputFile = openRootFile(histogramOutputPath, outputFileName, "RECREATE");
     if (!isTaskOk()) return;
@@ -170,9 +212,22 @@ void SubSampleStatCalculator::execute()
       cout << " histogramOutputPath...........: " << histogramOutputPath << endl;
       cout << " histogramOutputFile...........: " << histogramOutputFile << endl;
       cout << " outputFileName................: " << outputFileName <<  endl;
-      cout << " sumEventProcessed.............: " << sumEventProcessed << endl;
+      cout << " sumEventsProcessed.............: " << sumEventsProcessed << endl;
       }
-    writeParameter(outputFile,parameterNEexecutedTask, sumEventProcessed);
+    parameterName    = "nTaskExecuted";
+    writeParameter(outputFile,parameterName, sumEventsProcessed);
+    parameterName    = "nEventFilters";
+    writeParameter(outputFile,parameterName, nEventFilters);
+    if (nEventFilters>0)
+      {
+      for (int iFilter=0; iFilter<nEventFilters; iFilter++)
+        {
+        parameterName = "EventFilter";
+        parameterName += iFilter;
+        writeParameter(outputFile,parameterName,sumEventsAccepted[iFilter]);
+        }
+      }
+
     collectionAvg->saveHistograms(outputFile);
     outputFile->Close();
     delete collectionAvg;

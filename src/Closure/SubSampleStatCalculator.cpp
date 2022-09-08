@@ -33,7 +33,7 @@ void SubSampleStatCalculator::setDefaultConfiguration()
   setParameter("CreateHistograms",       true);
   setParameter("LoadHistograms",         true);
   setParameter("SaveHistograms",         true);
-  setParameter("AppendedString",         TString("_Sum"));
+  setParameter("AppendedString",         TString("Sum"));
   setParameter("ForceHistogramsRewrite", true);
   addParameter("DefaultGroupSize",       10);
   addParameter("nInputFile",             0);
@@ -72,7 +72,7 @@ void SubSampleStatCalculator::execute()
       }
     return;
     }
-  if (reportDebug(__FUNCTION__))
+  if (reportInfo(__FUNCTION__))
     {
     cout << endl;
     cout << " ==========================================================================================" << endl;

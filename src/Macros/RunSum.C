@@ -31,7 +31,9 @@ void loadSubSample(const TString & includeBasePath);
 void loadExec(const TString & includeBasePath);
 
 
-int RunAna(int jobIndex=0, int seed=1121331, TString configFile="AnalysisPart.txt", TString outputPath="Ouput")
+int RunSum(TString configFile="ResoAnalysis.txt",
+           TString pathName="/Volumes/ClaudeDisc4/OutputFiles/Reso",
+           int nBunches=5)
 {
   TString includeBasePath = getenv("CAP_SRC");
   loadBase(includeBasePath);
@@ -57,10 +59,13 @@ int RunAna(int jobIndex=0, int seed=1121331, TString configFile="AnalysisPart.tx
   std::cout << "====   ===========================================================================" << std::endl;
   Configuration configuration;
   configuration.readFromFile(configFile);
-  configuration.setParameter("Run:Seed",seed);
-  configuration.setParameter("Run:PartialIndex",jobIndex);
-  configuration.setParameter("Run:HistogramOutputPath",outputPath);
-  RunAnalysis * analysis = new RunAnalysis("Run", configuration);
+  configuration.setParameter("Run:HistogramOutputPath",pathName);
+  configuration.setParameter("Run:HistogramInputPath",      "./");
+  configuration.setParameter("Run:HistogramOutputPath",     "./");
+  configuration.setParameter("Run:Bunched",       true);
+  configuration.setParameter("Run:nBunches",      5);
+  configuration.setParameter("Run:Subsample",     true);
+  RunSubsample * analysis = new RunSubsample("Run", configuration);
   analysis->configure();
   analysis->execute();
   //if (selectedLevel==MessageLogger::Debug) analysis->getConfiguration().writeToFile("DebugConfig.txt");
@@ -205,7 +210,8 @@ void loadSubSample(const TString & includeBasePath)
 void loadExec(const TString & includeBasePath)
 {
   TString includePath = includeBasePath + "/Exec/";
-  gSystem->Load("/Users/aa7526/Documents/GitHub/CAP/src/Exec/RunAnalysis.hpp");
+  //gSystem->Load(includePath+"RunAnalysis.hpp");
+  gSystem->Load(includePath+"RunSubsample.hpp");
   gSystem->Load("libExec.dylib");
 }
 

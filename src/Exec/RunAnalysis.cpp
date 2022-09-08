@@ -62,12 +62,12 @@ void RunAnalysis::setDefaultConfiguration()
   addParameter("NuDynLabel",      TString("NuDyn"));
   addParameter("SimAnaLabel",     TString("SimAna"));
   addParameter("RootExt",         TString(".root"));
-  addParameter("DerivedLabel",    TString("_Derived"));
-  addParameter("SumLabel",        TString("_Sum"));
-  addParameter("BalFctLabel",     TString("_BalFct"));
-  addParameter("ClosureLabel",    TString("_Closure"));
-  addParameter("GenLabel",        TString("_Gen"));
-  addParameter("RecoLabel",       TString("_Reco"));
+  addParameter("DerivedLabel",    TString("Derived"));
+  addParameter("SumLabel",        TString("Sum"));
+  addParameter("BalFctLabel",     TString("BalFct"));
+  addParameter("ClosureLabel",    TString("Closure"));
+  addParameter("GenLabel",        TString("Gen"));
+  addParameter("RecoLabel",       TString("Reco"));
   addParameter("PythiaLabel",     TString("PYTHIA"));
   addParameter("HerwigLabel",     TString("HERWIH"));
   addParameter("HijingLabel",     TString("HIJING"));
@@ -543,106 +543,45 @@ void RunAnalysis::configure()
     if (RunUrqmdReader)        eventAnalysis->addSubTask(new UrqmdEventReader(UrqmdLabel,configuration,modelEventFilters,modelParticleFilters));
     if (RunHijingReader)       eventAnalysis->addSubTask(new HijingEventReader(HijingLabel,configuration,modelEventFilters,modelParticleFilters));
     if (RunResonanceGenerator) eventAnalysis->addSubTask(new ResonanceGenerator(ResoLabel,configuration,modelEventFilters,modelParticleFilters));
+
     if (RunPerformanceSim)     eventAnalysis->addSubTask(new MeasurementPerformanceSimulator(PerformLabel,configuration,modelEventFilters,modelParticleFilters));
+
+    if (RunGlobalGen)          eventAnalysis->addSubTask(new GlobalAnalyzer(GlobalLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunSpherocityGen)      eventAnalysis->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunPartGen)            eventAnalysis->addSubTask(new ParticleAnalyzer(PartLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunPairGen)            eventAnalysis->addSubTask(new ParticlePairAnalyzer(PairLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunNuDynGen)           eventAnalysis->addSubTask(new NuDynAnalyzer(NuDynLabel+GenLabel,configuration,analysisEventFilters,analysisParticleFilters));
+
+    if (RunGlobalReco)         eventAnalysis->addSubTask(new GlobalAnalyzer(GlobalLabel+RecoLabel,configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunSpherocityReco)     eventAnalysis->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunPartReco)           eventAnalysis->addSubTask(new ParticleAnalyzer(PartLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunPairReco)           eventAnalysis->addSubTask(new ParticlePairAnalyzer(PairLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunNuDynReco)          eventAnalysis->addSubTask(new NuDynAnalyzer(NuDynLabel+RecoLabel,configuration,analysisEventFilters,analysisParticleFilters));
+    if (RunPerformanceAna)     eventAnalysis->addSubTask(new ParticlePerformanceAnalyzer(SimAnaLabel,configuration,analysisEventFilters, analysisParticleFilters));
+
     }
 
   if (RunDerivedGen)
     {
     derivedGen  = new DerivedHistoIterator("DerivedGen", configuration);
     addSubTask(derivedGen);
+    if (RunGlobalGen)          derivedGen->addSubTask(new GlobalAnalyzer(GlobalLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunSpherocityGen)      derivedGen->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunPartGen)            derivedGen->addSubTask(new ParticleAnalyzer(PartLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunPairGen)            derivedGen->addSubTask(new ParticlePairAnalyzer(PairLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunNuDynGen)           derivedGen->addSubTask(new NuDynAnalyzer(NuDynLabel+GenLabel,configuration,analysisEventFilters,analysisParticleFilters));
     }
 
   if (RunDerivedReco)
     {
     derivedReco = new DerivedHistoIterator("DerivedReco",configuration);
     addSubTask(derivedReco);
-    }
-
-
-
-  if (RunPerformanceAna)
-    {
-    task = new ParticlePerformanceAnalyzer(SimAnaLabel,configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysis)            eventAnalysis->addSubTask(task);
-    if (RunDerivedReco)              derivedReco->addSubTask(task);
-    }
-
-  if (RunGlobalGen)
-    {
-    task = new GlobalAnalyzer(GlobalLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysis&&RunEventAnalysisGen) eventAnalysis->addSubTask(task);
-    if (RunDerivedGen) derivedGen->addSubTask(task);
-    //    if (RunClosure && RunClosureBase)      closureBasic->addSubTask(task);
-    //    if (RunClosure && RunClosureDerived)   closureDerived->addSubTask(task);
-    }
-  if (RunGlobalReco)
-    {
-    task = new GlobalAnalyzer(GlobalLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysis&&RunEventAnalysisReco) eventAnalysis->addSubTask(task);
-    if (RunDerivedReco) derivedReco->addSubTask(task);
-    }
-
-  if (RunSpherocityGen)
-    {
-    task = new TransverseSpherocityAnalyzer(SpherocityLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysis&&RunEventAnalysisGen) eventAnalysis->addSubTask(task);
-    if (RunDerivedGen) derivedGen->addSubTask(task);
-    //    if (RunClosure && RunClosureBase)      closureBasic->addSubTask(task);
-    //    if (RunClosure && RunClosureDerived)   closureDerived->addSubTask(task);
-    }
-  if (RunSpherocityReco)
-    {
-    task = new TransverseSpherocityAnalyzer(SpherocityLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysis&&RunEventAnalysisReco) eventAnalysis->addSubTask(task);
-    if (RunDerivedReco) derivedReco->addSubTask(task);
-    }
-
-  if (RunPartGen)
-    {
-    task = new ParticleAnalyzer(PartLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysis&&RunEventAnalysisGen) eventAnalysis->addSubTask(task);
-    if (RunDerivedGen) derivedGen->addSubTask(task);
-    //    if (RunClosure && RunClosureBase)    closureBasic->addSubTask(task);
-    //    if (RunClosure && RunClosureDerived) closureDerived->addSubTask(task);
-    }
-  if (RunPartReco)
-    {
-    task = new ParticleAnalyzer(PartLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysis&&RunEventAnalysisReco) eventAnalysis->addSubTask(task);
-    if (RunDerivedReco) derivedReco->addSubTask(task);
-    }
-
-  if (RunPairGen)
-    {
-    task = new ParticlePairAnalyzer(PairLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysis&&RunEventAnalysisGen) eventAnalysis->addSubTask(task);
-    if (RunDerivedGen) derivedGen->addSubTask(task);
-    //    if (RunClosure && RunClosureBase)      closureBasic->addSubTask(task);
-    //    if (RunClosure && RunClosureDerived)   closureDerived->addSubTask(task);
-    //    if (RunClosure && RunClosureBalFct)    closureBalFct->addSubTask(task);
-    }
-  if (RunPairReco)
-    {
-    task = new ParticlePairAnalyzer(PairLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters);
-    if (RunEventAnalysis&&RunEventAnalysisReco) eventAnalysis->addSubTask(task);
-    if (RunDerivedReco) derivedReco->addSubTask(task);
-    }
-
-  if (RunNuDynGen)
-    {
-    task = new NuDynAnalyzer(NuDynLabel+GenLabel,configuration,analysisEventFilters,analysisParticleFilters);
-    if (RunEventAnalysis&&RunEventAnalysisGen) eventAnalysis->addSubTask(task);
-    if (RunDerivedGen) derivedGen->addSubTask(task);
-    //    if (RunClosure && RunClosureBase)     closureBasic->addSubTask(task);
-    //    if (RunClosure && RunClosureBalFct)   closureDerived->addSubTask(task);
-    }
-  if (RunNuDynReco)
-    {
-    task = new NuDynAnalyzer(NuDynLabel+RecoLabel,configuration,analysisEventFilters,analysisParticleFilters);
-    if (RunEventAnalysis&&RunEventAnalysisReco) eventAnalysis->addSubTask(task);
-    if (RunDerivedReco) derivedReco->addSubTask(task);
-    //    if (RunClosure && RunClosureBase)     closureBasic->addSubTask(task);
-    //    if (RunClosure && RunClosureBalFct)   closureDerived->addSubTask(task);
+    if (RunGlobalReco)         derivedReco->addSubTask(new GlobalAnalyzer(GlobalLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunSpherocityReco)     derivedReco->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunPartReco)           derivedReco->addSubTask(new ParticleAnalyzer(PartLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunPairReco)           derivedReco->addSubTask(new ParticlePairAnalyzer(PairLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunNuDynReco)          derivedReco->addSubTask(new NuDynAnalyzer(NuDynLabel+RecoLabel,configuration,analysisEventFilters,analysisParticleFilters));
+    if (RunPerformanceAna)     derivedReco->addSubTask(new ParticlePerformanceAnalyzer(SimAnaLabel,configuration,analysisEventFilters, analysisParticleFilters));
     }
 
   // subsample calculations
