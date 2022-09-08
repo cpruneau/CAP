@@ -59,9 +59,8 @@ int RunSum(TString configFile="ResoAnalysis.txt",
   std::cout << "====   ===========================================================================" << std::endl;
   Configuration configuration;
   configuration.readFromFile(configFile);
+  configuration.setParameter("Run:HistogramInputPath",pathName);
   configuration.setParameter("Run:HistogramOutputPath",pathName);
-  configuration.setParameter("Run:HistogramInputPath",      "./");
-  configuration.setParameter("Run:HistogramOutputPath",     "./");
   configuration.setParameter("Run:Bunched",       true);
   configuration.setParameter("Run:nBunches",      5);
   configuration.setParameter("Run:Subsample",     true);
