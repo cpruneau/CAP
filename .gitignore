@@ -14,6 +14,7 @@ src/Music
 src/StatStudies
 src/*/cmake_install*
 documentation
+presentations
 Makefile
 */Makefile
 */CMakeFiles
@@ -35,6 +36,7 @@ Makefile
 *.log
 *.sql
 *.sqlite
+*.pdf
 .DS_Store
 .DS_Store?
 ._*
