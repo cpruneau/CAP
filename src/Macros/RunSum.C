@@ -61,6 +61,8 @@ int RunSum(TString configFile="ResoAnalysis.txt",
   configuration.readFromFile(configFile);
   configuration.setParameter("Run:HistogramInputPath",pathName);
   configuration.setParameter("Run:HistogramOutputPath",pathName);
+  configuration.setParameter("Run:Subsample",          true);
+  configuration.setParameter("Run:SubsampleBaseGen",   true);
   configuration.setParameter("Run:Bunched",       true);
   configuration.setParameter("Run:nBunches",      5);
   configuration.setParameter("Run:Subsample",     true);
