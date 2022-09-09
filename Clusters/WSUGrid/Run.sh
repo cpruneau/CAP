@@ -22,5 +22,5 @@ SEED=$(( SLURM_ARRAY_TASK_ID + SLURM_ARRAY_JOB_ID*1000 ))
 echo "========================================================================================"
 echo "Calling root w/ RunAna"
 echo "========================================================================================"
-root -b "$CAP_MACROS/RunAna.C($TASKIX,$SEED,"\"$CAP_MACROS/$CAP_JOB_CONFIGURATION\"","\"$CAP_WORKINGDIRECTORY_Output\"")"
+root -b "$CAP_MACROS/RunAna.C("\"$CAP_MACROS/$CAP_JOB_CONFIGURATION\"","\"$CAP_WORKINGDIRECTORY_Output\"",$TASKIX,$SEED)"
 

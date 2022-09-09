@@ -30,8 +30,10 @@ void loadNuDyn(const TString & includeBasePath);
 void loadSubSample(const TString & includeBasePath);
 void loadExec(const TString & includeBasePath);
 
-
-int RunAna(int jobIndex=0, long seed=1121331, TString configFile="Analysis.txt", TString outputPath="Ouput")
+// jobindex provided by slurm
+// seed provided by slurm or directly by user
+// config file must be provided
+int RunAna(TString configFile, TString outputPath, int jobIndex=0, long seed=1121331)
 {
   TString includeBasePath = getenv("CAP_SRC");
   loadBase(includeBasePath);
