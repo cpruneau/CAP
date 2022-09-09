@@ -35,13 +35,13 @@ NMAINJOBS=$3
 NSUBJOBS=$4
 CAP_PRODUCTION=OUT`date +%Y%m%d%H%M`
 
-if [ -d $CAP_OUTPUT_PATH/$CAP_OUTPUT_SUBPATH/$CAP_PRODUCTION ]
+if [ -d $CAP_OUTPUT_PATH/$CAP_OUTPUT_SUBPATH/$CAP_PRODUCTION   ]
 then
   echo Production directory $PRODUCTIONDIRECTORY does exist. WAIT AT LEAST ONE MINUTE!!!!
   exit 1
 fi
 
-if [ ! -d $CAP_MACROS/$CAP_JOB_CONFIGURATION ]
+if [ ! -e $CAP_MACROS/$CAP_JOB_CONFIGURATION   ]
 then
   echo The configuration file $CAP_JOB_CONFIGURATION does not exist!!!!!
   exit 1
