@@ -41,7 +41,7 @@ then
   exit 1
 fi
 
-if [ ! -d $CAP_MACROS/$CAP_JOB_CONFIGURATION]
+if [ ! -d $CAP_MACROS/$CAP_JOB_CONFIGURATION ]
 then
   echo The configuration file $CAP_JOB_CONFIGURATION does not exist!!!!!
   exit 1
