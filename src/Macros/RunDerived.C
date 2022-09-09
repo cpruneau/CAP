@@ -63,7 +63,7 @@ int RunDerived(TString configFile="ResoAnalysis.txt",
   configuration.setParameter("Run:HistogramInputPath",pathName);
   configuration.setParameter("Run:Subsample",     true);
   configuration.setParameter("Run:DerivedGen",    true);
-  configuration.setParameter("Run:BalFctGen",     false);
+  configuration.setParameter("Run:BalFctGen",     true);
   RunDerivedCalculation * analysis = new RunDerivedCalculation("Run", configuration);
   analysis->configure();
   analysis->execute();
