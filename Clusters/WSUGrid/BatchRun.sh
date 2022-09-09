@@ -1,14 +1,18 @@
 #!/bin/bash
 
-if [ $# -gt 3 ]; then
+if [ $# -gt 4 ]; then
   echo "usage: BatchRun basedirectory nmainjobs nsubjobs"
   exit 1
 fi
 
-if [ $# -lt 3 ]; then
+if [ $# -lt 4 ]; then
   echo "usage: BatchRunPythia basedirectory nmainjobs nsubjobs"
   exit 1
 fi
+echo Arg1: $1
+echo Arg2: $2
+echo Arg3: $3
+echo Arg4: $4
 
 export CAP_ROOT="/wsu/home/aa/aa75/aa7526/CAP/"
 export CAP_SRC="$CAP_ROOT/src/"
