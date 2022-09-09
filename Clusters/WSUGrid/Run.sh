@@ -19,8 +19,10 @@ echo `which root`
 module load  pythia
 TASKIX=$SLURM_ARRAY_TASK_ID
 SEED=$(( SLURM_ARRAY_TASK_ID + SLURM_ARRAY_JOB_ID*1000 ))
+CAP_HISTOPATH=$CAP_WORKINGDIRECTORY_Output/SLURM_ARRAY_JOB_ID #$(printf "BUNCH%02d" $ijob)
+
 echo "========================================================================================"
 echo "Calling root w/ RunAna"
 echo "========================================================================================"
-root -b "$CAP_MACROS/RunAna.C("\"$CAP_MACROS/$CAP_JOB_CONFIGURATION\"","\"$CAP_WORKINGDIRECTORY_Output\"",$TASKIX,$SEED)"
+root -b "$CAP_MACROS/RunAna.C("\"$CAP_MACROS/$CAP_JOB_CONFIGURATION\"","\"$CAP_HISTOPATH\"",$TASKIX,$SEED)"
 
