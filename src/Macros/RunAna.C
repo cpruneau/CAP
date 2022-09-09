@@ -197,14 +197,13 @@ void loadSubSample(const TString & includeBasePath)
 {
   TString includePath = includeBasePath + "/SubSample/";
   gSystem->Load(includePath+"SubSampleStatCalculator.hpp");
-  gSystem->Load(includePath+"SubSampleStatIterator.hpp");
   gSystem->Load("libSubSample.dylib");
 }
 
 void loadExec(const TString & includeBasePath)
 {
   TString includePath = includeBasePath + "/Exec/";
-  gSystem->Load("/Users/aa7526/Documents/GitHub/CAP/src/Exec/RunAnalysis.hpp");
+  gSystem->Load(includePath+"Exec/RunAnalysis.hpp");
   gSystem->Load("libExec.dylib");
 }
 
