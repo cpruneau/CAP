@@ -60,10 +60,7 @@ int RunDerived(TString configFile="ResoAnalysis.txt",
   Configuration configuration;
   configuration.readFromFile(configFile);
   configuration.setParameter("Run:HistogramOutputPath",pathName);
-  configuration.setParameter("Run:HistogramInputPath",      "./");
-  //configuration.setParameter("Run:HistogramOutputPath",     "./");
-  //configuration.setParameter("Run:Bunched",       true);
-  //configuration.setParameter("Run:nBunches",      5);
+  configuration.setParameter("Run:HistogramInputPath",pathName);
   configuration.setParameter("Run:Subsample",     true);
   configuration.setParameter("Run:DerivedGen",    true);
   configuration.setParameter("Run:BalFctGen",     true);
