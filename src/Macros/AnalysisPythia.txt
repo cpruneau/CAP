@@ -21,7 +21,7 @@ Run:SpherocityLabel  string S
 Run:SumLabel         string Sum
 Run:Pdg:LogLevel            string   Info
 Run:Pdg:LoadTable           bool     1
-Run:Pdg:PathName            string   /Users/aa7526/Documents/GitHub/CAP/src/EOS/
+Run:Pdg:PathName            string   /wsu/home/aa/aa75/aa7526/CAP/src/data/EOS/
 Run:Pdg:TableName           string   pdgPhysicalKaons.dat
 Run:Energy                  double   13000.0
 Run:EnergyLabel             string   13TeV
