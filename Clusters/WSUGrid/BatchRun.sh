@@ -2,12 +2,12 @@
 
 if [ $# -gt 4 ]; then
   echo "usage: OUTPUT_SUBPATH  JOB_CONFIGURATION NMAINJOBS NSUBJOBS"
-  exit 1
+  exit 0
 fi
 
 if [ $# -lt 4 ]; then
   echo "usage: OUTPUT_SUBPATH  JOB_CONFIGURATION NMAINJOBS NSUBJOBS"
-  exit 1
+  exit 0
 fi
 echo Arg1: $1
 echo Arg2: $2
