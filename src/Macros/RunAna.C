@@ -203,7 +203,7 @@ void loadSubSample(const TString & includeBasePath)
 void loadExec(const TString & includeBasePath)
 {
   TString includePath = includeBasePath + "/Exec/";
-  gSystem->Load(includePath+"Exec/RunAnalysis.hpp");
+  gSystem->Load(includePath+"RunAnalysis.hpp");
   gSystem->Load("libExec.dylib");
 }
 
