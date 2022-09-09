@@ -1,12 +1,12 @@
 #!/bin/bash
 
 if [ $# -gt 4 ]; then
-  echo "usage: BatchRun basedirectory nmainjobs nsubjobs"
+  echo "usage: OUTPUT_SUBPATH  JOB_CONFIGURATION NMAINJOBS NSUBJOBS"
   exit 1
 fi
 
 if [ $# -lt 4 ]; then
-  echo "usage: BatchRunPythia basedirectory nmainjobs nsubjobs"
+  echo "usage: OUTPUT_SUBPATH  JOB_CONFIGURATION NMAINJOBS NSUBJOBS"
   exit 1
 fi
 echo Arg1: $1
