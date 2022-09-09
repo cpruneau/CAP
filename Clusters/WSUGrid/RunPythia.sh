@@ -19,6 +19,6 @@ SEED=$(( SLURM_ARRAY_TASK_ID + SLURM_ARRAY_JOB_ID*1000 ))
 echo "========================================================================================"
 echo "Calling root w/ RunAnalysis"
 echo "========================================================================================"
-root -b "/wsu/home/aa/aa75/aa7526/CAP/src/Macros/RunGridAnalysis.C($TASKIX,$SEED)"  
+root -b "/wsu/home/aa/aa75/aa7526/CAP/src/Macros/RunAna.C($TASKIX,$SEED)"  
 
 
