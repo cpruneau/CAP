@@ -31,7 +31,7 @@ void loadSubSample(const TString & includeBasePath);
 void loadExec(const TString & includeBasePath);
 
 
-int RunAna(int jobIndex=0, int seed=1121331, TString configFile="Analysis.txt", TString outputPath="Ouput")
+int RunAna(int jobIndex=0, long seed=1121331, TString configFile="Analysis.txt", TString outputPath="Ouput")
 {
   TString includeBasePath = getenv("CAP_SRC");
   loadBase(includeBasePath);
