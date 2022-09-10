@@ -19,9 +19,10 @@ echo `which root`
 module load  pythia
 TASKIX=$SLURM_ARRAY_TASK_ID
 SEED=$(( SLURM_ARRAY_TASK_ID + SLURM_ARRAY_JOB_ID*1000 ))
-CAP_HISTOPATH=$CAP_WORKINGDIRECTORY_Output/$(printf "%02d" SLURM_ARRAY_JOB_ID BUNCH%02d )
+CAP_HISTOPATH=$CAP_WORKINGDIRECTORY_Output/$(printf "%02d/" $SLURM_ARRAY_JOB_ID )
 echo "========================================================================================"
 echo Will save histogram at $CAP_HISTOPATH
+mkdir $CAP_HISTOPATH
 echo "Calling root w/ RunAna"
 echo "========================================================================================"
 #root -b "$CAP_MACROS/RunAna.C("\"$CAP_MACROS/$CAP_JOB_CONFIGURATION\"","\"$CAP_HISTOPATH\"",$TASKIX,$SEED)"
