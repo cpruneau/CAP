@@ -321,5 +321,6 @@ Run:DerivedGen:PairGen:Min_Dy           double  -2.0
 Run:DerivedGen:PairGen:Max_Dy           double  2.0
 Run:DerivedGen:PairGen:nBins_DeltaP     int     10
 Run:DerivedGen:PairGen:Min_DeltaP       double  -4.0
-Run:DerivedGen:PairGen:Max_DeltaP       double  4.0
+Run:DerivedGen:PairGen:Max_DeltaP       double  4.00000
+
 
