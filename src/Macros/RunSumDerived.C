@@ -66,9 +66,17 @@ int RunSumDerived(TString configFile="ResoAnalysis.txt",
   configuration.setParameter("Run:SubsampleBalFctGen",  false);
   configuration.setParameter("Run:Bunched",       false);
   configuration.setParameter("Run:nBunches",      0);
-  RunSubsample * analysis = new RunSubsample("Run", configuration);
-  analysis->configure();
-  analysis->execute();
+  RunSubsample * analysisD = new RunSubsample("Run", configuration);
+  analysisD->configure();
+  analysisD->execute();
+
+  configuration.setParameter("Run:SubsampleDerivedGen", false);
+  configuration.setParameter("Run:SubsampleBalFctGen",  true);
+  RunSubsample * analysisB = new RunSubsample("Run", configuration);
+  analysisB->configure();
+  analysisB->execute();
+
+
   //if (selectedLevel==MessageLogger::Debug) analysis->getConfiguration().writeToFile("DebugConfig.txt");
   return 0;
 }
