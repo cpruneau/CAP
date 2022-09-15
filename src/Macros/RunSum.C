@@ -174,7 +174,6 @@ void loadParticle(const TString & includeBasePath)
   gSystem->Load(includePath+"ParticleHistos.hpp");
   gSystem->Load(includePath+"ParticleDerivedHistos.hpp");
   gSystem->Load(includePath+"ParticleAnalyzer.hpp");
-  gSystem->Load(includePath+"ParticleDerivedHistogramCalculator.hpp");
   gSystem->Load("libParticle.dylib");
 }
 
@@ -184,7 +183,6 @@ void loadPair(const TString & includeBasePath)
   gSystem->Load(includePath+"ParticlePairAnalyzer.hpp");
   gSystem->Load(includePath+"ParticlePairHistos.hpp");
   gSystem->Load(includePath+"ParticlePairDerivedHistos.hpp");
-  gSystem->Load(includePath+"ParticlePairDerivedHistogramCalculator.hpp");
   gSystem->Load(includePath+"BalanceFunctionCalculator.hpp");
   gSystem->Load("libPair.dylib");
 }
@@ -193,7 +191,6 @@ void loadNuDyn(const TString & includeBasePath)
 {
   TString includePath = includeBasePath + "/NuDyn/";
   gSystem->Load(includePath+"NuDynAnalyzer.hpp");
-  gSystem->Load(includePath+"NuDynDerivedHistogramCalculator.hpp");
   gSystem->Load(includePath+"NuDynDerivedHistos.hpp");
   gSystem->Load(includePath+"NuDynHistos.hpp");
   gSystem->Load("libNuDyn.dylib");
