@@ -41,7 +41,7 @@ RunSubsample::RunSubsample(const TString & _name,
 Task(_name, _configuration)
 {
   //  TString includeBasePath = getenv("CAP_SRC");
-  appendClassName("RunAnalysis");
+  appendClassName("RunSubsample");
   setInstanceName(_name);
   setDefaultConfiguration();
   setConfiguration(_configuration);
@@ -61,7 +61,7 @@ void RunSubsample::setDefaultConfiguration()
   addParameter("GenLabel",        TString("Gen"));
   addParameter("RecoLabel",       TString("Reco"));
 
-  addParameter("LogLevel",                TString("Info"));
+  addParameter("LogLevel",                TString("DEBUG"));
   addParameter("Subsample",               YES);
   addParameter("SubsampleBaseGen",        YES);
   addParameter("SubsampleBaseReco",       NO);
