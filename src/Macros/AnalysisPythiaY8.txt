@@ -125,7 +125,7 @@ Run:AnaPartMaxEta         double 4
 Run:AnaPartFilterY        bool   1
 Run:AnaPartMinY           double -4
 Run:AnaPartMaxY           double 4
-Run:Analysis:nIterationRequested     long     600000
+Run:Analysis:nIterationRequested     long     600
 Run:Analysis:nIterationPartialSave   long     1000
 Run:Analysis:nIterationReported      long     10000
 Run:Analysis:DoPartialReports        bool     1
