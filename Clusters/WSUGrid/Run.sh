@@ -18,7 +18,7 @@ echo `which root`
 #echo "Environment variables are now defined for CAP"
 module load  pythia
 TASKIX=$SLURM_ARRAY_TASK_ID
-SEED=$(( SLURM_ARRAY_TASK_ID + SLURM_ARRAY_JOB_ID*1000 ))
+SEED=$(( SLURM_ARRAY_TASK_ID + SLURM_ARRAY_JOB_ID*100 ))
 CAP_HISTOPATH=$CAP_WORKINGDIRECTORY_Output/$(printf "%02d/" $TASKIX )
 echo "========================================================================================"
 echo SLURM_ARRAY_TASK_ID is  $SLURM_ARRAY_TASK_ID
