@@ -34,9 +34,6 @@
 
 ClassImp(RunAnalysis);
 
-
-//int RunAnalysis(int jobIndex, int seed)
-
 RunAnalysis::RunAnalysis(const TString & _name,
                          Configuration & _configuration)
 :
@@ -143,6 +140,8 @@ void RunAnalysis::setDefaultConfiguration()
   addParameter("HistogramOutputPath",     TString("Output"));
   addParameter("UseEventStream0",         true);
   addParameter("UseEventStream1",         false);
+  addParameter("SetSeed",                 true);
+  addParameter("SeedValue",               long(121212121));
 
   addParameter("ModelEventFilterOption",     TString("All"));
   addParameter("ModelEventFilterNValues",    0);
@@ -314,8 +313,8 @@ void RunAnalysis::configure()
   bool   anaPartFilterY           = getValueBool(  "AnaPartFilterY");
   double anaPartMinY              = getValueDouble("AnaPartMinY");
   double anaPartMaxY              = getValueDouble("AnaPartMaxY");
-  bool   setSeed                  = getValueDouble("SetSeed");
-  int    seedValue                = getValueInt(   "SeedValue");
+  bool   setSeed                  = getValueBool(  "SetSeed");
+  long   seedValue                = getValueLong(  "SeedValue");
 
   if (reportInfo(__FUNCTION__))
     {

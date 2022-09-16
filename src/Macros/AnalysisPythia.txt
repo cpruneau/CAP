@@ -61,7 +61,7 @@ Run:FillEta                 bool  0
 Run:FillY                   bool  1
 Run:ForceHistogramsRewrite  bool  1
 Run:SetSeed                 bool   1
-Run:SeedValue               int    111231
+Run:SeedValue               long   111231
 Run:PartialIndex            int    -1
 Run:PartialReports          bool   1
 Run:PartialSaves            bool   0
@@ -148,8 +148,6 @@ Run:Analysis:Pythia:ppOnly                bool   1
 Run:Analysis:Pythia:nMaxClonesArray       int    10000
 Run:Analysis:Pythia:DataConversionToWac   bool   1
 Run:Analysis:Pythia:DataInputUsed         bool   0
-Run:Analysis:Pythia:SetSeed               string Random:setSeed=on
-Run:Analysis:Pythia:Seed                  int    1212121  
 Run:Analysis:Pythia:Option0  string  Init:showProcesses=off
 Run:Analysis:Pythia:Option1  string  Init:showMultipartonInteractions=off
 Run:Analysis:Pythia:Option2  string  Init:showChangedSettings=off

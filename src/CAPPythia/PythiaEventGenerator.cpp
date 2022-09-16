@@ -53,8 +53,6 @@ void PythiaEventGenerator::setDefaultConfiguration()
   addParameter("DataConversionToWac", true);
   addParameter("DataInputUsed",       false);
   addParameter("SaveHistograms",      false);
-  addParameter("SetSeed",             TString("Random:setSeed = on"));
-  addParameter("Seed",                TString("Random:seed = 1212121"));
   generateKeyValuePairs("Option",     TString("none"),30);
 }
 
@@ -75,37 +73,50 @@ void PythiaEventGenerator::initialize()
   standaloneMode = getValueBool("StandaloneMode");
   dataOutputUsed = getValueBool("DataOutputUsed");
   DataConversionToWac = getValueBool("DataConversionToWac");
-  int    beam   = getValueInt("Beam");
-  int    target = getValueInt("Target");
-  double energy = getValueDouble("Energy");
+  int    beam      = getValueInt("Beam");
+  int    target    = getValueInt("Target");
+  double energy    = getValueDouble("Energy");
+  bool   setSeed   = getValueBool("SetSeed");
+  long   seedValue = getValueLong("SeedValue");
 
+  cout << endl;
+  cout << "===================================================================================" << endl;
+  cout << "===================================================================================" << endl;
+  cout << "  Pythia:StandaloneMode.........: " << standaloneMode      << endl;
+  cout << "  Pythia:DataOutputUsed.........: " << dataOutputUsed      << endl;
+  cout << "  Pythia:DataConversionToWac....: " << DataConversionToWac << endl;
+  cout << "  Pythia:Beam...................: " << beam << endl;
+  cout << "  Pythia:Target.................: " << target << endl;
+  cout << "  Pythia:Energy.................: " << energy << endl;
+  cout << "  Pythia:SetSeed................: " << setSeed << endl;
+  cout << "  Pythia:SeedValue..............: " << seedValue << endl;
+  cout << "  Pythia:ReportLevel............: " << getReportLevel() << endl;
 
-  if (reportInfo(__FUNCTION__))
+  if (setSeed)
     {
-    cout << endl;
-    cout << "  Pythia:StandaloneMode.........: " << standaloneMode      << endl;
-    cout << "  Pythia:DataOutputUsed.........: " << dataOutputUsed      << endl;
-    cout << "  Pythia:DataConversionToWac....: " << DataConversionToWac << endl;
-    cout << "  Pythia:beam...................: " << beam << endl;
-    cout << "  Pythia:target.................: " << target << endl;
-    cout << "  Pythia:energy.................: " << energy << endl;
-    cout << "  Pythia:ReportLevel............: " << getReportLevel() << endl;
-    }
+    TString  seedValueString = "Random:seed = ";
+    seedValueString += seedValue;
+    pythia8->ReadString("Random:setSeed = on");
+    pythia8->ReadString(seedValueString);
+    cout << "  Pythia:Random:setSeed = on" <<  endl;
+    cout << "  Pythia:" << seedValueString <<  endl;
 
+    }
   for (int k=0; k<30; k++)
     {
     TString key = "Option"; key += k;
     TString  value = getValueString(key);
-    if (getReportLevel()<=MessageLogger::Info ) cout << "  Pythia::" << key << "......: " << value << endl;
     if (key.Contains("Option") && !value.Contains("none") )
       {
+      cout << "  Pythia::" << key << "......: " << value << endl;
       pythia8->ReadString(value);
       }
-    else
-      {
-      //cout << " NOT adding to pythia .." << endl;
-      }
     }
+  cout << "===================================================================================" << endl;
+  cout << "===================================================================================" << endl;
+
+
+
   pythia8->Initialize(beam,target,energy);
   if (reportDebug(__FUNCTION__))
     {
@@ -355,10 +366,6 @@ void PythiaEventGenerator::finalize()
 ////  pythia8->ReadString("MultipartonInteractions:coreFraction = 0.5");
 ////  pythia8->ReadString("ultipartonInteractions:expPow = 1.");
 //
-//// use a reproducible seed: always the same results for the tutorial.
-////pythia8->ReadString("Random:setSeed = on");
-////pythia8->ReadString("Random:seed = 42");
-
 
 //for (int iParticle = 0; iParticle < nParticles; iParticle++)
 //  {

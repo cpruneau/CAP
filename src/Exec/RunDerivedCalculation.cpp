@@ -34,15 +34,11 @@
 
 ClassImp(RunDerivedCalculation);
 
-
-//int RunDerivedCalculation(int jobIndex, int seed)
-
 RunDerivedCalculation::RunDerivedCalculation(const TString & _name,
-                       Configuration & _configuration)
+                                             Configuration & _configuration)
 :
 Task(_name, _configuration)
 {
-  //  TString includeBasePath = getenv("CAP_SRC");
   appendClassName("RunDerivedCalculation");
   setInstanceName(_name);
   setDefaultConfiguration();

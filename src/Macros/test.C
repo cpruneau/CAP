@@ -1,12 +1,65 @@
-void wtf()
+/* **********************************************************************
+ * Copyright (C) 2019-2022, Claude Pruneau, Victor Gonzalez, Sumit Basu
+ * All rights reserved.
+ *
+ * Based on the ROOT package and environment
+ *
+ * For the licensing terms see LICENSE.
+ *
+ * Author: Claude Pruneau,   04/01/2022
+ *
+ * *********************************************************************/
+#include <iostream>
+#include <fstream>
+#include <TStyle.h>
+#include <TROOT.h>
+
+void loadBase(const TString & includeBasePath);
+void loadPythia(const TString & includeBasePath);
+void loadPerformance(const TString & includeBasePath);
+void loadAmpt(const TString & includeBasePath);
+void loadEpos(const TString & includeBasePath);
+void loadBasicGen(const TString & includeBasePath);
+void loadGlobal(const TString & includeBasePath);
+void loadParticle(const TString & includeBasePath);
+void loadPair(const TString & includeBasePath);
+void loadNuDyn(const TString & includeBasePath);
+void loadSubSample(const TString & includeBasePath);
+
+
+int RunAnalysis()
 {
-  TFile  * fg = new TFile("/Volumes/ClaudeDisc4/OutputFiles/RhoDecayTest2/RhoDecay/RhoDecay_Part_Gen_Derived.root");
-  TFile  * fr = new TFile("/Volumes/ClaudeDisc4/OutputFiles/RhoDecayTest2/RhoDecay/RhoDecay_Part_Reco_Derived.root");
+  TString includeBasePath = getenv("CAP_SRC");
+  loadBase(includeBasePath);
 
-  TH2F * r2Gen  = (TH2F*) fg->Get("Pair_Gen_All_HP_HM_R2_DetaDphi_shft");
-  TH2F * r2Reco = (TH2F*) fg->Get("Pair_Reco_All_HP_HM_R2_DetaDphi_shft");
 
-  TCanvas * c1 = new TCanvas();
-  r2Gen->GetXaxis()->SetRangeUser(-1.5,1.5);
-  r2Gen->Draw("SURF3");
+  MessageLogger::LogLevel infoLevel  = MessageLogger::Info;
+  MessageLogger::LogLevel debugLevel = MessageLogger::Debug;
+  MessageLogger::LogLevel selectedLevel = infoLevel;
+  
+
+  return 0;
 }
+
+
+
+
+void loadBase(const TString & includeBasePath)
+{
+  TString includePath = includeBasePath + "/Base/";
+  gSystem->Load(includePath+"Timer.hpp");
+  gSystem->Load(includePath+"MessageLogger.hpp");
+  gSystem->Load(includePath+"Task.hpp");
+  gSystem->Load(includePath+"TaskIterator.hpp");
+  gSystem->Load(includePath+"Collection.hpp");
+  gSystem->Load(includePath+"CanvasCollection.hpp");
+  gSystem->Load(includePath+"HistogramCollection.hpp");
+  gSystem->Load(includePath+"Histograms.hpp");
+  gSystem->Load(includePath+"Particle.hpp");
+  gSystem->Load(includePath+"ParticleType.hpp");
+  gSystem->Load(includePath+"ParticleTypeCollection.hpp");
+  gSystem->Load(includePath+"ParticleDecayMode.hpp");
+  gSystem->Load(includePath+"DerivedHistoIterator.hpp");
+  gSystem->Load("libBase.dylib");
+}
+

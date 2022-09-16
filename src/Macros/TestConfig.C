@@ -15,60 +15,81 @@
 #include <TROOT.h>
 
 void loadBase(const TString & includeBasePath);
-void loadPythia(const TString & includeBasePath);
-void loadPerformance(const TString & includeBasePath);
-void loadAmpt(const TString & includeBasePath);
-void loadEpos(const TString & includeBasePath);
-void loadHijing(const TString & includeBasePath);
-void loadHerwig(const TString & includeBasePath);
-void loadUrqmd(const TString & includeBasePath);
-void loadBasicGen(const TString & includeBasePath);
-void loadGlobal(const TString & includeBasePath);
-void loadParticle(const TString & includeBasePath);
-void loadPair(const TString & includeBasePath);
-void loadNuDyn(const TString & includeBasePath);
-void loadSubSample(const TString & includeBasePath);
-void loadExec(const TString & includeBasePath);
 
-// jobindex provided by slurm
-// seed provided by slurm or directly by user
-// config file must be provided
-int RunAna(TString configFile, TString outputPath, int jobIndex=0, long seed=1121331)
+int TestConfig()
 {
   TString includeBasePath = getenv("CAP_SRC");
+  cout << "Path: " << includeBasePath << endl;
   loadBase(includeBasePath);
-  loadPythia(includeBasePath);
-  loadPerformance(includeBasePath);
-  loadAmpt(includeBasePath);
-  loadEpos(includeBasePath);
-  loadHijing(includeBasePath);
-  loadHerwig(includeBasePath);
-  loadUrqmd(includeBasePath);
-  loadBasicGen(includeBasePath);
-  loadGlobal(includeBasePath);
-  loadParticle(includeBasePath);
-  loadPair(includeBasePath);
-  loadNuDyn(includeBasePath);
-  loadSubSample(includeBasePath);
-  loadExec(includeBasePath);
-
-  //outputPath = "/Volumes/ClaudeDisc4/OutputFiles/Reso/";
 
   std::cout << "==================================================================================" << std::endl;
-  std::cout << "Run Ana" << endl;
-  std::cout << "====   ===========================================================================" << std::endl;
-  Configuration configuration;
-  configuration.readFromFile(configFile);
-  configuration.setParameter("Run:SetSeed",true);
-  configuration.setParameter("Run:SeedValue",seed);
-  configuration.setParameter("Run:PartialIndex",jobIndex);
-  configuration.setParameter("Run:HistogramOutputPath",outputPath);
-  RunAnalysis * analysis = new RunAnalysis("Run", configuration);
-  analysis->configure();
-  analysis->execute();
-  //if (selectedLevel==MessageLogger::Debug) analysis->getConfiguration().writeToFile("DebugConfig.txt");
+  std::cout << "TestConfig" << endl;
+  std::cout << "==================================================================================" << std::endl;
+
+  Task * t0 = new Task();
+  t0->setName("task0");
+  Task * t1 = new Task();
+  t1->setName("task1");
+  t0->addSubTask(t1);
+  Task * t2 = new Task();
+  t2->setName("task2");
+  t1->addSubTask(t2);
+  Task * t3 = new Task();
+  t3->setName("task3");
+  t2->addSubTask(t3);
+  Task * t4 = new Task();
+  t4->setName("task4");
+  t3->addSubTask(t4);
+
+  Task * task = t4->getTaskAt(0);
+  cout << "0:" << task->getName() << endl;
+  task = t4->getTaskAt(1);
+  if (task) cout << "1:" << task->getName() << endl;
+  task = t4->getTaskAt(2);
+  if (task) cout << "2:" << task->getName() << endl;
+  task = t4->getTaskAt(3);
+  if (task) cout << "3:" << task->getName() << endl;
+  task = t4->getTaskAt(4);
+  if (task) cout << "4:" << task->getName() << endl;
+
+  for (int k=0; k<5; k++)
+    {
+    cout << "Path " << k  << "  is " << t4->getTaskPath(k) << endl;
+    }
+
+// Configuration configuration;
+//  configuration.addParameter("MyKey", TString("Junk0") );
+//  configuration.addParameter("task0:", "MyKey", TString("Junk4") );
+//  configuration.addParameter("task0:task1:", "MyKey", TString("Junk3") );
+//  configuration.addParameter("task0:task1:task2:", "MyKey", TString("Junk2") );
+//  configuration.addParameter("task0:task1:task2:task3:", "MyKey", TString("Junk1") );
+//  configuration.addParameter("task0:task1:task2:task3:task4:", "MyKey", TString("Junk1") );
+//  configuration.printConfiguration(cout);
+//
+//  cout << "      " <<  configuration.getValueString("task0:task1:task2", "MyKey") << endl;
+
+//  TString s = "Abc:Defg:hijklmop";
+//  TString s2, s3;
+//  int f1 =  s.Last(':');
+//  int f2 =  s.Length();
+//  if (f1>=0 )
+//    {
+//    s2 = s.Remove(f1,f2-f1);
+//    }
+//  cout << "   f1: " << f1 << endl;
+//  cout << "   f2: " << f2 << endl;
+//  cout << "   s2: " << s2 << endl;
+
+
+//  Configuration c;
+//  c.readFromFile("config.txt");
+//  c.writeToFile("newConfig.txt");
+//  c.printConfiguration(cout);
   return 0;
 }
+
+
+
 
 void loadBase(const TString & includeBasePath)
 {
@@ -124,28 +145,6 @@ void loadEpos(const TString & includeBasePath)
   gSystem->Load("libEpos.dylib");
 }
 
-void loadHijing(const TString & includeBasePath)
-{
-  TString includePath = includeBasePath + "/Hijing/";
-  gSystem->Load(includePath+"HijingEventReader.hpp");
-  gSystem->Load("libHijing.dylib");
-}
-
-void loadHerwig(const TString & includeBasePath)
-{
-  TString includePath = includeBasePath + "/Herwig/";
-  gSystem->Load(includePath+"HerwigEventReader.hpp");
-  gSystem->Load("libHerwig.dylib");
-}
-
-void loadUrqmd(const TString & includeBasePath)
-{
-  TString includePath = includeBasePath + "/Urqmd/";
-  gSystem->Load(includePath+"UrqmdEventReader.hpp");
-  gSystem->Load("libUrqmd.dylib");
-}
-
-
 void loadBasicGen(const TString & includeBasePath)
 {
   TString includePath = includeBasePath + "/BasicGen/";
@@ -172,6 +171,7 @@ void loadParticle(const TString & includeBasePath)
   gSystem->Load(includePath+"ParticleHistos.hpp");
   gSystem->Load(includePath+"ParticleDerivedHistos.hpp");
   gSystem->Load(includePath+"ParticleAnalyzer.hpp");
+  gSystem->Load(includePath+"ParticleDerivedHistogramCalculator.hpp");
   gSystem->Load("libParticle.dylib");
 }
 
@@ -181,6 +181,8 @@ void loadPair(const TString & includeBasePath)
   gSystem->Load(includePath+"ParticlePairAnalyzer.hpp");
   gSystem->Load(includePath+"ParticlePairHistos.hpp");
   gSystem->Load(includePath+"ParticlePairDerivedHistos.hpp");
+  gSystem->Load(includePath+"ParticlePairCombinedHistos.hpp");
+  gSystem->Load(includePath+"ParticlePairDerivedHistogramCalculator.hpp");
   gSystem->Load(includePath+"BalanceFunctionCalculator.hpp");
   gSystem->Load("libPair.dylib");
 }
@@ -189,6 +191,7 @@ void loadNuDyn(const TString & includeBasePath)
 {
   TString includePath = includeBasePath + "/NuDyn/";
   gSystem->Load(includePath+"NuDynAnalyzer.hpp");
+  gSystem->Load(includePath+"NuDynDerivedHistogramCalculator.hpp");
   gSystem->Load(includePath+"NuDynDerivedHistos.hpp");
   gSystem->Load(includePath+"NuDynHistos.hpp");
   gSystem->Load("libNuDyn.dylib");
@@ -198,13 +201,6 @@ void loadSubSample(const TString & includeBasePath)
 {
   TString includePath = includeBasePath + "/SubSample/";
   gSystem->Load(includePath+"SubSampleStatCalculator.hpp");
+  gSystem->Load(includePath+"SubSampleStatIterator.hpp");
   gSystem->Load("libSubSample.dylib");
 }
-
-void loadExec(const TString & includeBasePath)
-{
-  TString includePath = includeBasePath + "/Exec/";
-  gSystem->Load(includePath+"RunAnalysis.hpp");
-  gSystem->Load("libExec.dylib");
-}
-
