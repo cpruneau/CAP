@@ -314,7 +314,7 @@ int Configuration::getValueInt(const TString & name) const
 
 long Configuration::getValueLong(const TString & name) const
 {
-  int value = -99999;
+  long value = -99999;
   std::map<TString,long>::const_iterator it;
   it = longMap.find(name);
   if (it != longMap.cend())
