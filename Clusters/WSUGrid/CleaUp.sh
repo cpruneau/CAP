@@ -15,6 +15,8 @@ PATH=$1
 NMAINJOBS=$2
 NSUBJOBS=$3
 
+echo 'pwd'
+
 if [ -d $PATH   ]
 then
   echo Attempting clean up of directory $PATH
