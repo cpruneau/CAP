@@ -43,6 +43,7 @@ do
     fi
     if [ ! -f $CAP_WORKINGSUBDIRECTORY/PairGen.root  ]
     then
+      rm $CAP_WORKINGDIRECTORY/Job$(printf "Job*_%d.*" $iSubJob)
       echo would delete $CAP_WORKINGSUBDIRECTORY
     fi
   done
