@@ -1,36 +1,39 @@
 #!/bin/bash
+
+
 if [ $# -gt 3 ]; then
-  echo "usage: PATH  NMAINJOBS NSUBJOBS"
+  echo "usage: PathToClean NMAINJOBS NSUBJOBS"
   exit 0
 fi
 
 if [ $# -lt 3 ]; then
-  echo "usage: PATH  NMAINJOBS NSUBJOBS"
+  echo "usage: PathToClean  NMAINJOBS NSUBJOBS"
   exit 0
 fi
 echo Arg1: $1
 echo Arg2: $2
+echo Arg2: $3
 
-PATH=$1
+CAP_PathToClean=$1
 NMAINJOBS=$2
 NSUBJOBS=$3
 
 echo 'pwd'
 
-if [ -d $PATH   ]
+if [ -d $CAP_PathToClean   ]
 then
-  echo Attempting clean up of directory $PATH
+  echo Attempting clean up of directory $CAP_PathToClean
 fi
 
-if [ ! -d $PATH  ]
+if [ ! -d $CAP_PathToClean  ]
 then
-  echo The directory $PATH does not exist!!!!!
+  echo The directory $CAP_PathToClean does not exist!!!!!
   exit 0
 fi
 
 for ijob in $(seq 1 $NMAINJOBS)
 do
-  CAP_WORKINGDIRECTORY=$PATH/$(printf "BUNCH%02d" $ijob)
+  CAP_WORKINGDIRECTORY=$CAP_PathToClean/$(printf "BUNCH%02d" $ijob)
 
   for iSubJob in $(seq 1 $NSUBJOBS)
   do
