@@ -41,7 +41,7 @@ do
     then
       echo found file PairGen.root
     fi
-    if [ ! -e $CAP_WORKINGSUBDIRECTORY/PairGen.root  ]
+    if [ ! -f $CAP_WORKINGSUBDIRECTORY/PairGen.root  ]
     then
       echo would delete $CAP_WORKINGSUBDIRECTORY
     fi
