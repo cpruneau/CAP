@@ -18,8 +18,6 @@ CAP_PathToClean=$1
 NMAINJOBS=$2
 NSUBJOBS=$3
 
-echo 'pwd'
-
 if [ -d $CAP_PathToClean   ]
 then
   echo Attempting clean up of directory $CAP_PathToClean
@@ -39,9 +37,9 @@ do
   do
     CAP_WORKINGSUBDIRECTORY=$CAP_WORKINGDIRECTORY/$(printf "Output/%02d/" $iSubJob)
     echo Examining directory $CAP_WORKINGSUBDIRECTORY
-    if [ -e $CAP_WORKINGSUBDIRECTORY/*root ]
+    if [ -e $CAP_WORKINGSUBDIRECTORY/PairGen.root  ]
     then
-      echo found files *root
-    fi 
+      echo found file PairGen.root
+    fi
   done
 done
