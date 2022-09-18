@@ -39,6 +39,9 @@ do
   do
     CAP_WORKINGSUBDIRECTORY=$CAP_WORKINGDIRECTORY/$(printf "Output/%02d/" $iSubJob)
     echo Examining directory $CAP_WORKINGSUBDIRECTORY
-    ls -al $CAP_WORKINGSUBDIRECTORY
+    if [ -e $CAP_WORKINGSUBDIRECTORY/*root ]
+    then
+      echo found files *root
+    fi 
   done
 done
