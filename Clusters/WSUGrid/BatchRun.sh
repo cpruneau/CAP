@@ -87,6 +87,6 @@ do
   export CAP_WORKINGDIRECTORY_Output=$CAP_WORKINGDIRECTORY/Output
   echo Preparing to launch job  $ijob w/  working directory $CAP_WORKINGDIRECTORY w/ output $CAP_WORKINGDIRECTORY_Output
   mkdir -p $CAP_WORKINGDIRECTORY_Output
-  sbatch -J batch__CAP -q primary --array=1-$NSUBJOBS --chdir=$CAP_WORKINGDIRECTORY --time=04:00:00 --mem=2G -o $CAP_WORKINGDIRECTORY/Job_%A_%a.out -e $CAP_WORKINGDIRECTORY/Job_%A_%a.err $CAP_WSUGrid/Run.sh
+  sbatch -J batch__CAP -q primary --array=1-$NSUBJOBS --chdir=$CAP_WORKINGDIRECTORY --time=05:00:00 --mem=2G -o $CAP_WORKINGDIRECTORY/Job_%A_%a.out -e $CAP_WORKINGDIRECTORY/Job_%A_%a.err $CAP_WSUGrid/Run.sh
   sleep 2s
 done
