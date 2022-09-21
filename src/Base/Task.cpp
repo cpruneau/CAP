@@ -1335,6 +1335,13 @@ bool Task::getValueBool(const TString & key)   const
     path   = getTaskPath(k);
     extKey = path + key;
     bool found = configuration.isBool(extKey);
+    if (key.Contains("PairGen"))
+      {
+      cout << "Searching for PairGen" << endl;
+      cout << "getValueBool()   path:" << path << endl;
+      cout << "getValueBool() extKey:" << extKey << endl;
+      cout << "getValueBool()  found:" << found << endl;
+      }
 //    if (key.Contains("ForceHistogramsRewrite"))
 //      {
 //      cout << "Searching for ForceHistogramsRewrite" << endl;
