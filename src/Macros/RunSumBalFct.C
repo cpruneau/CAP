@@ -201,7 +201,6 @@ void loadSubSample(const TString & includeBasePath)
 {
   TString includePath = includeBasePath + "/SubSample/";
   gSystem->Load(includePath+"SubSampleStatCalculator.hpp");
-  gSystem->Load(includePath+"SubSampleStatIterator.hpp");
   gSystem->Load("libSubSample.dylib");
 }
 
