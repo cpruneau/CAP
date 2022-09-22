@@ -44,18 +44,21 @@ public:
                             const TString & bunchLabel,
                             int   nBunches,
                             const TString & subPath,
+                            int   maximumDepth,
                             const TString & taskType);
 
   void addDerivedSubSampleTask(const TString & basePath,
                                const TString & bunchLabel,
                                int   nBunches,
                                const TString & subPath,
+                               int   maximumDepth,
                                const TString & taskType);
 
   void addBalFctSubSampleTask(const TString & basePath,
                               const TString & bunchLabel,
                               int   nBunches,
                               const TString & subPath,
+                              int   maximumDepth,
                               const TString & taskType);
 
 

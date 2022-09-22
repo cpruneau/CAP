@@ -47,7 +47,6 @@
 #include "ParticleFilter.hpp"
 #include "Histograms.hpp"
 #include "ParticleTypeCollection.hpp"
-#include "EventCountHistos.hpp"
 #include "ParticleDigit.hpp"
 #include "Timer.hpp"
 
@@ -374,10 +373,6 @@ protected:
   //!
   vector<ParticleFilter*>  particleFilters;
 
-  //! Pointer to an object of the class EventCountHistos. An instance of the EventCountHistos is used to keep track of the number of events
-  //!  accepted by this task for each of its event filters.
-  //!
-  EventCountHistos *       eventCountHistos;
   //!
   //! Array of pointers to Histograms objects used on input for initialization or calibration of the activity of this task instance.
   //!
@@ -426,6 +421,17 @@ protected:
   //!
   vector< vector<ParticleDigit*> > filteredParticles;
 
+  bool useEventStream0;
+  bool useEventStream1;
+  bool useEventStream2;
+  bool useEventStream3;
+  bool useEvents;
+  bool useParticles;
+  bool scaleHistos;
+  bool createHistos;
+  bool loadHistos;
+  bool saveHistos;
+  bool forceHistogramsRewrite;
   //!
   //! Number of times this task was executed (excute called)
   //!
@@ -682,10 +688,7 @@ public:
   //! and only if the scaleHistograms parameter of the Configuration instance controlling this task is set to "true".
   //!
   virtual void scaleHistograms();
-  //!
-  //! Save this histogram in text format.
-  //!
-  virtual void saveHistogramsAsText();
+
 
   //!
   //! Save this histogram groups owned by this task instance to the given file.
@@ -953,15 +956,6 @@ public:
 
 
   void printEventStatistics() const;
-
-  bool hasEventCountHistograms();
-  void createEventCountHistograms();
-  void loadEventCountHistograms(TFile * inputFile);
-  void fillEventCountHistograms();
-  void saveEventCountHistograms(TFile * outputFile);
-  void resetEventCountHistograms();
-  void clearEventCountHistograms();
-
 
   //!
   //! Save the given (long) value with the given name in the given output file.

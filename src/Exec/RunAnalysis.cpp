@@ -85,13 +85,6 @@ void RunAnalysis::setDefaultConfiguration()
   addParameter("DerivedReco",             NO);
   addParameter("BalFctGen",               NO);
   addParameter("BalFctReco",              NO);
-  addParameter("Subsample",               NO);
-  addParameter("SubsampleBaseGen",        NO);
-  addParameter("SubsampleBaseReco",       NO);
-  addParameter("SubsampleDerivedGen",     NO);
-  addParameter("SubsampleDerivedReco",    NO);
-  addParameter("SubsampleBalFctGen",      NO);
-  addParameter("SubsampleBalFctReco",     NO);
   addParameter("PerformanceSim",          NO);
   addParameter("PerformanceAna",          NO);
   addParameter("Closure",                 NO);
@@ -121,18 +114,13 @@ void RunAnalysis::setDefaultConfiguration()
   addParameter("NuDynReco",               NO);
   addParameter("FillEta",                 NO);
   addParameter("FillY",                   YES);
-  addParameter("nIterationRequested",     long(100));
-  addParameter("nIterationReported",      long(10000));
-  addParameter("nIterationPartialSave",   long(10000));
-  addParameter("PartialReports",          YES);
-  addParameter("PartialSaves",            NO);
+  addParameter("nEventsPerSubbunch",      long(100));
+  addParameter("nSubbunchesPerBunch",     int(10));
+  addParameter("nBunches",                int(10));
+  addParameter("BunchLabel",              "Bunch");
+  addParameter("SubbunchLabel",           "");
   addParameter("ForceHistogramsRewrite",  NO);
   addParameter("ScaleHistograms",         YES);
-  addParameter("Energy",                  double(13000.0));
-  addParameter("Beam",                    int(2212));
-  addParameter("Target",                  int(2212));
-  addParameter("SystemLabel",             TString("pp"));
-  addParameter("EnergyLabel",             TString("13TeV"));
   addParameter("Pdg:LoadTable",           YES);
   addParameter("Pdg:PathName",            TString(getenv("CAP_DATA")));
   addParameter("Pdg:TableName",           TString("/EOS/pdgPhysicalKaons.dat"));
@@ -288,9 +276,6 @@ void RunAnalysis::configure()
   bool    RunFillEta              = getValueBool("FillEta");
   bool    RunFillY                = getValueBool("FillY");
   bool    PdgLoadTable            = getValueBool("Pdg:LoadTable");
-  int     beamCode                = getValueInt( "Beam");
-  int     targetCode              = getValueInt( "Target");
-  double  beamEnergy              = getValueDouble("Energy");
   TString inputPathName           = getValueString("HistogramInputPath");
   TString outputPathName          = getValueString("HistogramOutputPath");
   TString modelPartFilterOption   = getValueString("ModelPartFilterOption");
@@ -385,11 +370,6 @@ void RunAnalysis::configure()
     cout << "Pdg:LoadTable..............:" << PdgLoadTable          << endl;
     cout << "HistogramInputPath.........:" << inputPathName        << endl;
     cout << "HistogramOutputPath........:" << outputPathName        << endl;
-    cout << "ModelPartMinY..............:" << modelPartMinY         << endl;
-    cout << "ModelPartMaxY..............:" << modelPartMaxY         << endl;
-    cout << "BeamPdgCode................:" << beamCode              << endl;
-    cout << "TargetPdgCode..............:" << targetCode            << endl;
-    cout << "BeamEnergy........... .....:" << beamEnergy            << endl;
     cout << "ModelPartFilterOption......:" << modelPartFilterOption << endl;
     cout << "ModelPartFilterPt..........:" << modelPartFilterPt   << endl;
     cout << "ModelPartMinPt.............:" << modelPartMinPt      << endl;
@@ -560,354 +540,6 @@ void RunAnalysis::configure()
 
     }
 
-  if (RunDerivedGen)
-    {
-    derivedGen  = new DerivedHistoIterator("DerivedGen", configuration);
-    addSubTask(derivedGen);
-    if (RunGlobalGen)          derivedGen->addSubTask(new GlobalAnalyzer(GlobalLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunSpherocityGen)      derivedGen->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunPartGen)            derivedGen->addSubTask(new ParticleAnalyzer(PartLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunPairGen)            derivedGen->addSubTask(new ParticlePairAnalyzer(PairLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunNuDynGen)           derivedGen->addSubTask(new NuDynAnalyzer(NuDynLabel+GenLabel,configuration,analysisEventFilters,analysisParticleFilters));
-    }
-
-  if (RunDerivedReco)
-    {
-    derivedReco = new DerivedHistoIterator("DerivedReco",configuration);
-    addSubTask(derivedReco);
-    if (RunGlobalReco)         derivedReco->addSubTask(new GlobalAnalyzer(GlobalLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunSpherocityReco)     derivedReco->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunPartReco)           derivedReco->addSubTask(new ParticleAnalyzer(PartLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunPairReco)           derivedReco->addSubTask(new ParticlePairAnalyzer(PairLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunNuDynReco)          derivedReco->addSubTask(new NuDynAnalyzer(NuDynLabel+RecoLabel,configuration,analysisEventFilters,analysisParticleFilters));
-    if (RunPerformanceAna)     derivedReco->addSubTask(new ParticlePerformanceAnalyzer(SimAnaLabel,configuration,analysisEventFilters, analysisParticleFilters));
-    }
-
-  // subsample calculations
-
-  if (RunSubsample && RunSubsampleBaseGen && RunGlobalGen)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+GlobalLabel+GenLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+GlobalLabel+GenLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+GlobalLabel+GenLabel+TString(":IncludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+GlobalLabel+GenLabel+TString(":ExcludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+GlobalLabel+GenLabel+TString(":ExcludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+GlobalLabel+GenLabel+TString(":ExcludedPattern2"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+GlobalLabel+GenLabel+TString(":ExcludedPattern3"),TString("Sum"));
-    addSubTask( new SubSampleStatCalculator(GlobalLabel+GenLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleBaseReco && RunGlobalReco)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+GlobalLabel+RecoLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+GlobalLabel+RecoLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+GlobalLabel+RecoLabel+TString(":IncludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+GlobalLabel+RecoLabel+TString(":ExcludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+GlobalLabel+RecoLabel+TString(":ExcludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+GlobalLabel+RecoLabel+TString(":ExcludedPattern2"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+GlobalLabel+RecoLabel+TString(":ExcludedPattern3"),TString("Sum"));
-    addSubTask( new SubSampleStatCalculator(GlobalLabel+RecoLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleBaseGen && RunSpherocityGen)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+GenLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+GenLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+GenLabel+TString(":IncludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+GenLabel+TString(":ExcludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+GenLabel+TString(":ExcludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+GenLabel+TString(":ExcludedPattern2"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+GenLabel+TString(":ExcludedPattern3"),TString("Sum"));
-    addSubTask( new SubSampleStatCalculator(SpherocityLabel+GenLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleBaseReco && RunSpherocityReco)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+RecoLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+RecoLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+RecoLabel+TString(":IncludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+RecoLabel+TString(":ExcludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+RecoLabel+TString(":ExcludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+RecoLabel+TString(":ExcludedPattern2"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+RecoLabel+TString(":ExcludedPattern3"),TString("Sum"));
-    addSubTask( new SubSampleStatCalculator(SpherocityLabel+RecoLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleBaseGen && RunPartGen)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+PartLabel+GenLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+PartLabel+GenLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+PartLabel+GenLabel+TString(":IncludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+PartLabel+GenLabel+TString(":ExcludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+PartLabel+GenLabel+TString(":ExcludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+PartLabel+GenLabel+TString(":ExcludedPattern2"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+PartLabel+GenLabel+TString(":ExcludedPattern3"),TString("Sum"));
-    addSubTask( new SubSampleStatCalculator(PartLabel+GenLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleBaseReco && RunPartReco)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+PartLabel+RecoLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+PartLabel+RecoLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+PartLabel+RecoLabel+TString(":IncludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+PartLabel+RecoLabel+TString(":ExcludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+PartLabel+RecoLabel+TString(":ExcludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+PartLabel+RecoLabel+TString(":ExcludedPattern2"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+PartLabel+RecoLabel+TString(":ExcludedPattern3"),TString("Sum"));
-    addSubTask( new SubSampleStatCalculator(PartLabel+RecoLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleBaseGen && RunPairGen)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":HistogramOutputPath"),outputPathName);
-    //subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":IncludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern2"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern3"),TString("Sum"));
-    subConfig.printConfiguration(cout);
-    addSubTask( new SubSampleStatCalculator(PairLabel+GenLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleBaseGen && RunPairReco)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":HistogramOutputPath"),outputPathName);
-    //subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":IncludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern2"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern3"),TString("Sum"));
-    subConfig.printConfiguration(cout);
-    addSubTask( new SubSampleStatCalculator(PairLabel+RecoLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleBaseGen && RunNuDynGen)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+NuDynLabel+GenLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+NuDynLabel+GenLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+NuDynLabel+GenLabel+TString(":IncludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+NuDynLabel+GenLabel+TString(":ExcludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+NuDynLabel+GenLabel+TString(":ExcludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+NuDynLabel+GenLabel+TString(":ExcludedPattern2"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+NuDynLabel+GenLabel+TString(":ExcludedPattern3"),TString("Sum"));
-    subConfig.printConfiguration(cout);
-    addSubTask( new SubSampleStatCalculator(PairLabel+GenLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleBaseGen && RunNuDynReco)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+NuDynLabel+RecoLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+NuDynLabel+RecoLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+NuDynLabel+RecoLabel+TString(":IncludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+NuDynLabel+RecoLabel+TString(":ExcludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+NuDynLabel+RecoLabel+TString(":ExcludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+NuDynLabel+RecoLabel+TString(":ExcludedPattern2"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+NuDynLabel+RecoLabel+TString(":ExcludedPattern3"),TString("Sum"));
-    subConfig.printConfiguration(cout);
-    addSubTask( new SubSampleStatCalculator(NuDynLabel+RecoLabel,subConfig));
-    }
-
-  // ------
-  if (RunSubsample && RunSubsampleDerivedGen && RunGlobalGen)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+GlobalLabel+GenLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+GlobalLabel+GenLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+GlobalLabel+GenLabel+TString(":IncludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+GlobalLabel+GenLabel+TString(":IncludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+GlobalLabel+GenLabel+TString(":ExcludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+GlobalLabel+GenLabel+TString(":ExcludedPattern1"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+GlobalLabel+GenLabel+TString(":ExcludedPattern2"),TString("Sum"));
-    addSubTask( new SubSampleStatCalculator(GlobalLabel+GenLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleDerivedReco && RunGlobalReco)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+GlobalLabel+RecoLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+GlobalLabel+RecoLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+GlobalLabel+RecoLabel+TString(":IncludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+GlobalLabel+RecoLabel+TString(":IncludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+GlobalLabel+RecoLabel+TString(":ExcludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+GlobalLabel+RecoLabel+TString(":ExcludedPattern1"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+GlobalLabel+RecoLabel+TString(":ExcludedPattern2"),TString("Sum"));
-    addSubTask( new SubSampleStatCalculator(GlobalLabel+RecoLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleDerivedGen && RunSpherocityGen)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+GenLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+GenLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+GenLabel+TString(":IncludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+GenLabel+TString(":IncludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+GenLabel+TString(":ExcludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+GenLabel+TString(":ExcludedPattern1"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+GenLabel+TString(":ExcludedPattern2"),TString("Sum"));
-    addSubTask( new SubSampleStatCalculator(SpherocityLabel+GenLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleDerivedReco && RunSpherocityReco)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+RecoLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+RecoLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+RecoLabel+TString(":IncludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+RecoLabel+TString(":IncludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+RecoLabel+TString(":ExcludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+RecoLabel+TString(":ExcludedPattern1"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+SpherocityLabel+RecoLabel+TString(":ExcludedPattern2"),TString("Sum"));
-    addSubTask( new SubSampleStatCalculator(SpherocityLabel+RecoLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleDerivedGen && RunPartGen)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+PartLabel+GenLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+PartLabel+GenLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+PartLabel+GenLabel+TString(":IncludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+PartLabel+GenLabel+TString(":IncludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+PartLabel+GenLabel+TString(":ExcludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+PartLabel+GenLabel+TString(":ExcludedPattern1"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+PartLabel+GenLabel+TString(":ExcludedPattern2"),TString("Sum"));
-    addSubTask( new SubSampleStatCalculator(PartLabel+GenLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleDerivedReco && RunPartReco)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+PartLabel+RecoLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+PartLabel+RecoLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+PartLabel+RecoLabel+TString(":IncludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+PartLabel+RecoLabel+TString(":IncludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+PartLabel+RecoLabel+TString(":ExcludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+PartLabel+RecoLabel+TString(":ExcludedPattern1"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+PartLabel+RecoLabel+TString(":ExcludedPattern2"),TString("Sum"));
-    addSubTask( new SubSampleStatCalculator(PartLabel+RecoLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleDerivedGen && RunPairGen)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":HistogramOutputPath"),outputPathName);
-    //subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":IncludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":IncludedPattern0"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern1"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern2"),TString("Sum"));
-    subConfig.printConfiguration(cout);
-    addSubTask( new SubSampleStatCalculator(PairLabel+GenLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleDerivedReco && RunPairReco)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":IncludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":IncludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern1"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern2"),TString("Sum"));
-    subConfig.printConfiguration(cout);
-    addSubTask( new SubSampleStatCalculator(PairLabel+RecoLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleDerivedGen && RunNuDynGen)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+NuDynLabel+GenLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+NuDynLabel+GenLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+NuDynLabel+GenLabel+TString(":IncludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+NuDynLabel+GenLabel+TString(":IncludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+NuDynLabel+GenLabel+TString(":ExcludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+NuDynLabel+GenLabel+TString(":ExcludedPattern1"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+NuDynLabel+GenLabel+TString(":ExcludedPattern2"),TString("Sum"));
-    subConfig.printConfiguration(cout);
-    addSubTask( new SubSampleStatCalculator(PairLabel+GenLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleDerivedReco && RunNuDynReco)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+NuDynLabel+RecoLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+NuDynLabel+RecoLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+NuDynLabel+RecoLabel+TString(":IncludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+NuDynLabel+RecoLabel+TString(":IncludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+NuDynLabel+RecoLabel+TString(":ExcludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+NuDynLabel+RecoLabel+TString(":ExcludedPattern1"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+NuDynLabel+RecoLabel+TString(":ExcludedPattern2"),TString("Sum"));
-    subConfig.printConfiguration(cout);
-    addSubTask( new SubSampleStatCalculator(NuDynLabel+RecoLabel,subConfig));
-    }
-
-  if (RunSubsample && RunSubsampleBalFctGen && RunPairGen)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":IncludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":IncludedPattern1"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern2"),TString("Sum"));
-    subConfig.printConfiguration(cout);
-    addSubTask( new SubSampleStatCalculator(PairLabel+GenLabel,subConfig));
-    }
-
-  // balance function
-
-  if (RunSubsample && RunSubsampleBalFctReco && RunPairReco)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":IncludedPattern0"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":IncludedPattern1"),TString("BalFct"));
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern0"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern1"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern2"),TString("Sum"));
-    subConfig.printConfiguration(cout);
-    addSubTask( new SubSampleStatCalculator(PairLabel+GenLabel,subConfig));
-    }
-
-  if (RunBalFctGen)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":IncludedPattern0"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern1"),TString("Reco"));
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern2"),TString("BalFct"));
-    balFctGen = new BalanceFunctionCalculator("PairGen",subConfig,analysisEventFilters, analysisParticleFilters);
-    addSubTask(balFctGen);
-    }
-
-  if (RunBalFctReco)
-    {
-    Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":HistogramOutputPath"),outputPathName);
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":IncludedPattern0"),TString("Derived"));
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern1"),TString("Gen"));
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern2"),TString("BalFct"));
-    balFctReco = new BalanceFunctionCalculator("PairReco",subConfig,analysisEventFilters, analysisParticleFilters);
-    addSubTask(balFctReco);
-    }
-
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;
@@ -916,8 +548,6 @@ void RunAnalysis::configure()
     cout << "==================================================================================" << std::endl;
     }
   gSystem->mkdir(outputPathName,1);
-
-
   if (hasSubTasks() && isTaskOk()) configureSubTasks();
   if (reportEnd(__FUNCTION__))
     ;

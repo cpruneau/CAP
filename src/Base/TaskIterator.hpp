@@ -59,30 +59,14 @@ public:
   //!
   virtual void finalize();
 
-  //!
-  //! Get the number of events requested
-  //!
-  inline long getNIterationRequested() const   { return nIterationRequested; }
-
-  //!
-  //! Get the number of events reported period
-  //!
-  inline long getNIterationReported() const    { return nIterationReported; }
-
-  //!
-  //! Get the number of events required to produce a partial save.
-  //!
-  inline long getNIterationPartialSave() const { return nIterationPartialSave; }
-
 protected:
 
-  bool UseParticles;
-  bool DoPartialReports;
-  bool DoPartialSaves;
-  bool DoSubsampleAnalysis;
-  long nIterationRequested;
-  long nIterationReported;
-  long nIterationPartialSave;
+  bool    isGrid;
+  long    nEventsPerSubbunch;
+  int     nSubbunchesPerBunch;
+  int     nBunches;
+  TString bunchLabel;
+  TString subbunchLabel;
 
   ClassDef(TaskIterator,0)
 };

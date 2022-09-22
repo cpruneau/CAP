@@ -86,8 +86,8 @@ void DerivedHistoIterator::execute()
     excludePatterns.push_back(TString("Derived"));
     bool prependPath = true;
     bool verbose = false;
-    int  maximumDepth = 2;
-    vector<TString> allFilesToProcess = listFilesInDir(histogramInputPath,includePatterns,excludePatterns, prependPath, verbose, maximumDepth);
+    int  maximumDepth = 1;
+    vector<TString> allFilesToProcess = listFilesInDir(histogramInputPath,includePatterns,excludePatterns, prependPath, verbose, maximumDepth,0);
     
     int nFiles = allFilesToProcess.size();
     if (nFiles<1)

@@ -20,6 +20,7 @@ ClassImp(Task);
 Task::Task()
 :
 MessageLogger(Info),
+timer(),
 taskName                ( "Task" ),
 configured              (false),
 requestedConfiguration  (*new Configuration()),
@@ -31,7 +32,6 @@ nEventFilters           (0),
 nParticleFilters        (0),
 eventFilters            (),
 particleFilters         (),
-eventCountHistos        ( nullptr),
 inputHistograms         (),
 histograms              (),
 baseSingleHistograms    (),
@@ -41,6 +41,16 @@ derivedSingleHistograms (),
 derivedPairHistograms   (),
 combinedHistograms      (),
 filteredParticles       (),
+useEventStream0         (false),
+useEventStream1         (false),
+useEventStream2         (false),
+useEventStream3         (false),
+useEvents               (false),
+useParticles            (false),
+scaleHistos             (false),
+createHistos            (false),
+loadHistos              (false),
+saveHistos              (false),
 nTaskExecutedTotal      (0),
 nTaskExecuted           (0),
 nParticlesAcceptedEvent (),
@@ -69,7 +79,6 @@ nEventFilters           (0),
 nParticleFilters        (0),
 eventFilters            (),
 particleFilters         (),
-eventCountHistos        (nullptr),
 inputHistograms         (),
 baseSingleHistograms    (),
 basePairHistograms      (),
@@ -77,6 +86,22 @@ derivedHistograms       (),
 derivedSingleHistograms (),
 derivedPairHistograms   (),
 combinedHistograms      (),
+filteredParticles       (),
+useEventStream0         (false),
+useEventStream1         (false),
+useEventStream2         (false),
+useEventStream3         (false),
+useEvents               (false),
+useParticles            (false),
+scaleHistos             (false),
+createHistos            (false),
+loadHistos              (false),
+saveHistos              (false),
+nTaskExecutedTotal      (0),
+nTaskExecuted           (0),
+nParticlesAcceptedEvent (),
+nParticlesAcceptedTotal (),
+subTasks                (),
 particleTypeCollection  (nullptr),
 subSampleIndex(0)
 {
@@ -90,6 +115,7 @@ Task::Task(const TString & _name,
            vector<ParticleFilter*>& _particleFilters)
 :
 MessageLogger(LogLevel::Info),
+timer(),
 taskName                (_name),
 configured              (false),
 requestedConfiguration  (_configuration),
@@ -101,15 +127,30 @@ nEventFilters           (_eventFilters.size()),
 nParticleFilters        (_particleFilters.size()),
 eventFilters            (_eventFilters),
 particleFilters         (_particleFilters),
-eventCountHistos        (nullptr),
 inputHistograms         (),
-histograms              (),
 baseSingleHistograms    (),
 basePairHistograms      (),
 derivedHistograms       (),
 derivedSingleHistograms (),
 derivedPairHistograms   (),
 combinedHistograms      (),
+filteredParticles       (),
+useEventStream0         (false),
+useEventStream1         (false),
+useEventStream2         (false),
+useEventStream3         (false),
+useEvents               (false),
+useParticles            (false),
+scaleHistos             (false),
+createHistos            (false),
+loadHistos              (false),
+saveHistos              (false),
+forceHistogramsRewrite  (true),
+nTaskExecutedTotal      (0),
+nTaskExecuted           (0),
+nParticlesAcceptedEvent (),
+nParticlesAcceptedTotal (),
+subTasks                (),
 particleTypeCollection  (nullptr),
 subSampleIndex(0)
 {
@@ -124,30 +165,27 @@ void Task::setDefaultConfiguration()
   TString treeName("tree");
   configuration.clear();
   addParameter("LogLevel",                TString("Debug"));
-  addParameter("UseEvents",               false);
-  addParameter("UseParticles",            false);
-  addParameter("UseEventStream0",         false);
-  addParameter("UseEventStream1",         false);
-  addParameter("UseEventStream2",         false);
-  addParameter("UseEventStream3",         false);
-  addParameter("CreateHistograms",        false);
-  addParameter("LoadHistograms",          false);
-  addParameter("SaveHistograms",          false);
+  addParameter("UseEvents",               useEvents);
+  addParameter("UseParticles",            useParticles);
+  addParameter("UseEventStream0",         useEventStream0);
+  addParameter("UseEventStream1",         useEventStream1);
+  addParameter("UseEventStream2",         useEventStream2);
+  addParameter("UseEventStream3",         useEventStream3);
+  addParameter("CreateHistograms",        createHistos);
+  addParameter("LoadHistograms",          loadHistos);
+  addParameter("SaveHistograms",          saveHistos);
   addParameter("ResetHistograms",         false);
   addParameter("ClearHistograms",         false);
-  addParameter("ScaleHistograms",         false);
-  addParameter("ForceHistogramsRewrite",  false);
-  addParameter("DoSubsampleAnalysis",     false);
-  addParameter("DoPartialReports",        false);
-  addParameter("DoPartialSaves",          false);
+  addParameter("ScaleHistograms",         scaleHistos);
+  addParameter("ForceHistogramsRewrite",  forceHistogramsRewrite);
   addParameter("HistogramInputPath",      none);
   addParameter("HistogramInputFile",      none);
   addParameter("HistogramOutputPath",     none);
   addParameter("HistogramOutputFile",     none);
   addParameter("DataInputUsed",           false);
   addParameter("DataInputPath",           nullString);
-  addParameter("DataInputFile",       nullString);
-  addParameter("DataInputTree",       treeName);
+  addParameter("DataInputFile",           nullString);
+  addParameter("DataInputTree",           treeName);
   addParameter("DataInputFileMinIndex",   -1);
   addParameter("DataInputFileMaxIndex",   -1);
   addParameter("DataOutputUsed",          false);
@@ -162,6 +200,24 @@ void Task::setDefaultConfiguration()
 void Task::setConfiguration(Configuration & _configuration)
 {
   configuration.setParameters(_configuration);
+  useEventStream0 = getValueBool("UseEventStream0");
+  useEventStream1 = getValueBool("UseEventStream1");
+  useEventStream2 = getValueBool("UseEventStream2");
+  useEventStream3 = getValueBool("UseEventStream3");
+  useEvents       = getValueBool("UseEvents");
+  useParticles    = getValueBool("UseParticles");
+  scaleHistos     = getValueBool("ScaleHistograms");
+  createHistos    = getValueBool("CreateHistograms");
+  loadHistos      = getValueBool("LoadHistograms");
+  saveHistos      = getValueBool("SaveHistograms");
+  forceHistogramsRewrite = getValueBool("ForceHistogramsRewrite");
+  MessageLogger::LogLevel selectedLevel;
+  TString logOption = getValueString("LogLevel");
+  if (logOption.Contains("Debug"))        selectedLevel = MessageLogger::Debug;
+  else if (logOption.Contains("Info"))    selectedLevel = MessageLogger::Info;
+  else if (logOption.Contains("Warning")) selectedLevel = MessageLogger::Warning;
+  else selectedLevel = MessageLogger::Info;
+  setReportLevel(selectedLevel);
   if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
@@ -169,30 +225,10 @@ void Task::initialize()
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString logOption = getValueString("LogLevel");
-  MessageLogger::LogLevel selectedLevel  = MessageLogger::Info;
-  if (logOption.Contains("Debug"))        selectedLevel = MessageLogger::Debug;
-  else if (logOption.Contains("Info"))    selectedLevel = MessageLogger::Info;
-  else if (logOption.Contains("Warning")) selectedLevel = MessageLogger::Warning;
-  else selectedLevel = MessageLogger::Info;
-  setReportLevel(selectedLevel);
-
-
-  bool UseParticles     = getValueBool("UseParticles");
-  bool CreateHistos     = getValueBool("CreateHistograms");
-  bool LoadHistos       = getValueBool("LoadHistograms");
-  bool UseEventStream0  = getValueBool("UseEventStream0");
-  bool UseEventStream1  = getValueBool("UseEventStream1");
-  bool UseEventStream2  = getValueBool("UseEventStream2");
-  bool UseEventStream3  = getValueBool("UseEventStream3");
-  TString reportLevel   = getValueString("LogLevel");
-  if (reportLevel.Contains("Debug")) setReportLevel(MessageLogger::Debug);
-  if (reportLevel.Contains("Info"))  setReportLevel(MessageLogger::Info);
-
   initializeTaskExecuted();
-  if (UseParticles)
+  if (useParticles)
     {
-    particleFactory  = Particle::getFactory();
+    particleFactory        = Particle::getFactory();
     particleTypeCollection = ParticleTypeCollection::getMasterParticleCollection();
     if (nParticleFilters>0 && nEventFilters>0)
       {
@@ -204,18 +240,14 @@ void Task::initialize()
       if (reportWarning(__FUNCTION__)) cout << "UseParticles==true but nParticleFilters=0 or nEventFilters==0." << endl;
       }
     }
-  if (UseEventStream0)  addEventStream(Event::getEventStream(0));
-  if (UseEventStream1)  addEventStream(Event::getEventStream(1));
-  if (UseEventStream2)  addEventStream(Event::getEventStream(2));
-  if (UseEventStream3)  addEventStream(Event::getEventStream(3));
+  if (useEventStream0)  addEventStream(Event::getEventStream(0));
+  if (useEventStream1)  addEventStream(Event::getEventStream(1));
+  if (useEventStream2)  addEventStream(Event::getEventStream(2));
+  if (useEventStream3)  addEventStream(Event::getEventStream(3));
   if (reportDebug(__FUNCTION__)) cout << " #event added streams: "  << getNEventStreams() << endl;
-  if (LoadHistos   && isTaskOk())  loadHistograms();
-  if (CreateHistos && isTaskOk())
-    {
-    //if (UseParticles && !hasEventCountHistograms()) createEventCountHistograms();
-    createHistograms();
-    }
-  if (hasSubTasks() && isTaskOk()) initializeSubTasks();
+  if (loadHistos    && isTaskOk())  loadHistograms();
+  if (createHistos  && isTaskOk())  createHistograms();
+  if (hasSubTasks() && isTaskOk())  initializeSubTasks();
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -233,13 +265,10 @@ void Task::savePartial()
 {
   if (reportStart(__FUNCTION__))
     ;
-  bool UseParticles = getValueBool("UseParticles");
-  bool ScaleHistos  = getValueBool("ScaleHistograms");
-  bool SaveHistos   = getValueBool("SaveHistograms");
-  if (UseParticles  && reportInfo(__FUNCTION__)) printEventStatistics();
-  if (ScaleHistos   && isTaskOk()) scaleHistograms();
-  if (SaveHistos    && isTaskOk()) saveHistograms();
-  if (hasSubTasks() && isTaskOk()) savePartialSubTasks();
+  if (useParticles  && reportInfo(__FUNCTION__)) printEventStatistics();
+  if (scaleHistos)   scaleHistograms();
+  if (saveHistos)    saveHistograms();
+  if (hasSubTasks()) savePartialSubTasks();
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -248,26 +277,22 @@ void Task::finalize()
 {
   if (reportStart(__FUNCTION__))
     ;
-  bool UseParticles = getValueBool("UseParticles");
-  bool ScaleHistos  = getValueBool("ScaleHistograms");
-  bool SaveHistos   = getValueBool("SaveHistograms");
-
   // if a partial Save has been done and there are no additional
   // new data, no point in saving again..
-  if (UseParticles)
+  if (useParticles)
     {
     if (getnTaskExecuted()>0)
       {
       if (reportDebug(__FUNCTION__)) printEventStatistics();
-      if (ScaleHistos) scaleHistograms();
-      if (SaveHistos) saveHistograms();
-      if (hasSubTasks() && isTaskOk()) finalizeSubTasks();
+      if (scaleHistos)   scaleHistograms();
+      if (saveHistos)    saveHistograms();
+      if (hasSubTasks()) finalizeSubTasks();
       }
     }
   else
     {
-    if (SaveHistos) saveHistograms();
-    if (hasSubTasks() && isTaskOk()) finalizeSubTasks();
+    if (saveHistos)    saveHistograms();
+    if (hasSubTasks()) finalizeSubTasks();
     }
   if (reportEnd(__FUNCTION__))
     ;
@@ -278,7 +303,7 @@ void Task::printEventStatistics() const
   if (reportStart(__FUNCTION__))
     ;
   cout << endl;
-  cout << "Event Statistics : " << getName() <<  "/"  << getClassName()
+  cout << " Event Statistics.....: " << getName() <<  "/"  << getClassName()
   << "       #calls after Reset/total: " << nTaskExecuted << "/" << nTaskExecutedTotal << " #EventFilters : " << nEventFilters << " #ParticleFilters : " << nParticleFilters << endl;
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++)
     {
@@ -300,14 +325,11 @@ void Task::reset()
 {
   if (reportStart(__FUNCTION__))
     ;
-  bool UseParticles = getValueBool("UseParticles");
-  bool CreateHistos = getValueBool("CreateHistograms");
   resetTaskExecuted();
-  if (UseParticles) resetNEventsAccepted();
-  if (UseParticles) resetNParticlesAccepted();
-  //if (UseParticles  && CreateHistos) resetEventCountHistograms();
-  if (CreateHistos  && isTaskOk()) resetHistograms();
-  if (hasSubTasks() && isTaskOk()) resetSubTasks();
+  if (useParticles)  resetNEventsAccepted();
+  if (useParticles)  resetNParticlesAccepted();
+  if (createHistos)  resetHistograms();
+  if (hasSubTasks()) resetSubTasks();
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -316,22 +338,23 @@ void Task::clear()
 {
   if (reportStart(__FUNCTION__))
     ;
-  bool UseParticles = getValueBool("UseParticles");
-  bool CreateHistos = getValueBool("CreateHistograms");
-  if (UseParticles) clearNEventsAccepted();
-  if (UseParticles) clearNParticlesAccepted();
-  //if (UseParticles) clearEventCountHistograms();
-  if (CreateHistos  && isTaskOk()) clearHistograms();
-  if (hasSubTasks() && isTaskOk()) clearSubTasks();
+  if (useParticles)  clearNEventsAccepted();
+  if (useParticles)  clearNParticlesAccepted();
+  if (createHistos)  clearHistograms();
+  if (hasSubTasks()) clearSubTasks();
   if (reportEnd(__FUNCTION__))
     ;
 }
 
 void Task::printConfiguration(ostream & output)
 {
+  output << "--------------------------------------------------------" << endl;
+  output << "--------------------------------------------------------" << endl;
   output << "Task Name : " << taskName <<  endl;
   configuration.printConfiguration(output);
   if (hasSubTasks()) printConfigurationSubTasks(output);
+  output << "--------------------------------------------------------" << endl;
+  output << "--------------------------------------------------------" << endl;
 }
 
 
@@ -340,7 +363,6 @@ void Task::loadHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  bool UseParticles          = getValueBool("UseParticles");
   TString histogramInputPath = getValueString("HistogramInputPath");
   TString histogramInputFile = getValueString("HistogramInputFile");
   if (reportInfo(__FUNCTION__))
@@ -351,9 +373,8 @@ void Task::loadHistograms()
     }
   TFile * inputFile = openRootFile(histogramInputPath,histogramInputFile,"READ");
   if (!inputFile) return;
-  //if (UseParticles)  loadEventCountHistograms(inputFile);
-  if (UseParticles)  loadNEventsAccepted(inputFile);
-  if (UseParticles)  loadNEexecutedTask(inputFile);
+  if (useParticles)  loadNEventsAccepted(inputFile);
+  if (useParticles)  loadNEexecutedTask(inputFile);
   loadHistograms(inputFile);
   if (reportEnd(__FUNCTION__))
     ;
@@ -364,7 +385,6 @@ void Task::loadDerivedHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  bool UseParticles          = getValueBool("UseParticles");
   TString histogramInputPath = getValueString("HistogramInputPath");
   TString histogramInputFile = getValueString("HistogramInputFile");
   if (reportInfo(__FUNCTION__))
@@ -375,89 +395,16 @@ void Task::loadDerivedHistograms()
     }
   TFile * inputFile = openRootFile(histogramInputPath,histogramInputFile,"READ");
   if (!inputFile) return;
-  //if (UseParticles)  loadEventCountHistograms(inputFile);
-  if (UseParticles)  loadNEventsAccepted(inputFile);
-  if (UseParticles)  loadNEexecutedTask(inputFile);
+  if (useParticles)  loadNEventsAccepted(inputFile);
+  if (useParticles)  loadNEexecutedTask(inputFile);
   loadDerivedHistograms(inputFile);
   if (reportEnd(__FUNCTION__))
     ;
 }
 
 
-bool Task::hasEventCountHistograms()
-{
-  return eventCountHistos!=nullptr;
-}
-
-
-void Task::createEventCountHistograms()
-{
-  if (reportStart(__FUNCTION__))
-    ;
-  eventCountHistos = new EventCountHistos(this,getName(),configuration,nEventFilters,nParticleFilters,getReportLevel());
-  eventCountHistos->createHistograms();
-  eventCountHistos->setOwnership(true);
-  if (reportEnd(__FUNCTION__))
-    ;
-}
-
-void Task::fillEventCountHistograms()
-{
-  if (reportStart(__FUNCTION__))
-    ;
-  eventCountHistos->fill(nTaskExecuted,nEventsAccepted,nParticleAccepted);
-  if (reportEnd(__FUNCTION__))
-    ;
-}
-
-void Task::loadEventCountHistograms(TFile * inputFile)
-{
-
-  if (reportStart(__FUNCTION__))
-    ;
-  eventCountHistos = new EventCountHistos(this,getName(),configuration,nEventFilters,nParticleFilters,getReportLevel());
-  eventCountHistos->loadHistograms(inputFile);
-  if (reportEnd(__FUNCTION__))
-    ;
-}
-
-void Task::saveEventCountHistograms(TFile * outputFile)
-{
-
-  if (reportStart(__FUNCTION__))
-    ;
-  eventCountHistos->saveHistograms(outputFile);
-  if (reportEnd(__FUNCTION__))
-    ;
-}
-
-void Task::resetEventCountHistograms()
-{
-
-  if (reportStart(__FUNCTION__))
-    ;
-  eventCountHistos->reset();
-  if (reportEnd(__FUNCTION__))
-    ;
-}
-
-void Task::clearEventCountHistograms()
-{
-
-  if (reportStart(__FUNCTION__))
-    ;
-  if (eventCountHistos)
-    {
-    eventCountHistos->clear();
-    delete eventCountHistos;
-    }
-  if (reportEnd(__FUNCTION__))
-    ;
-}
-
 void Task::resetHistograms()
 {
-
   if (reportStart(__FUNCTION__))
     ;
   for (unsigned int iHisto=0; iHisto<inputHistograms.size();        iHisto++) inputHistograms[iHisto]->reset();
@@ -474,7 +421,6 @@ void Task::resetHistograms()
 
 void Task::clearHistograms()
 {
-
   if (reportStart(__FUNCTION__))
     ;
   for (unsigned int iHisto=0; iHisto<inputHistograms.size();        iHisto++) delete inputHistograms[iHisto];
@@ -558,13 +504,6 @@ void Task::scaleHistograms()
     ;
 }
 
-void Task::saveHistogramsAsText()
-{
-
-  if (reportStart(__FUNCTION__))
-    ;
-}
-
 
 void Task::saveHistograms(TFile * outputFile)
 {
@@ -626,49 +565,34 @@ void Task::saveHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  bool UseParticles               = getValueBool("UseParticles");
-  bool DoSubsampleAnalysis        = getValueBool("DoSubsampleAnalysis");
-  bool DoPartialSave              = getValueBool("DoPartialSaves");
-  bool ForceHistogramsRewrite     = getValueBool("ForceHistogramsRewrite");
-  TString HistogramOutputPath     = getValueString("HistogramOutputPath");
-  TString HistogramOutputFile     = getValueString("HistogramOutputFile");
-
-  // rule: if an actual file name 'HistogramOutputFile' is provided, that is what is
-  // used to Save the histograms. If not, assemble a name based on 'histoModelDataName' and 'histoAnalyzerName'
-  // If the partial Save option is set, a sequence number will be added to the file name.
-
-  if (HistogramOutputPath.Contains("null") || HistogramOutputPath.Contains("none")) HistogramOutputPath = "";
-  if (HistogramOutputFile.Contains("null") || HistogramOutputFile.Contains("none")) HistogramOutputFile = taskName;
-  if ((DoSubsampleAnalysis || DoPartialSave) &&  HistogramOutputPath.Length()>2)
-    {
-    HistogramOutputPath += "/Partial_";
-    HistogramOutputPath += subSampleIndex++;
-    HistogramOutputPath += "/";
-    }
-
+  TString histogramOutputPath     = getValueString("HistogramOutputPath");
+  TString histogramOutputFile     = getValueString("HistogramOutputFile");
+  if (histogramOutputPath.Contains("null") || histogramOutputPath.Contains("none")) histogramOutputPath = "";
+  if (histogramOutputFile.Contains("null") || histogramOutputFile.Contains("none")) histogramOutputFile = taskName;
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;
     cout << "nTaskExecuted.............: " << nTaskExecuted  << endl;
     cout << "nTaskExecutedTotal........: " << nTaskExecutedTotal  << endl;
-    cout << "HistogramOutputPath.......: " << HistogramOutputPath  << endl;
-    cout << "HistogramOutputFile.......: " << HistogramOutputFile  << endl;
-    cout << "Saving....................: " << HistogramOutputPath << "/" << HistogramOutputFile << endl;
+    cout << "HistogramOutputPath.......: " << histogramOutputPath  << endl;
+    cout << "HistogramOutputFile.......: " << histogramOutputFile  << endl;
+    cout << "Saving....................: " << histogramOutputPath << "/" << histogramOutputFile << endl;
     }
-  gSystem->mkdir(HistogramOutputPath,1);
+  gSystem->mkdir(histogramOutputPath,1);
   TFile * outputFile;
-  if (ForceHistogramsRewrite)
-    outputFile = openRootFile(HistogramOutputPath,HistogramOutputFile,"RECREATE");
+  if (forceHistogramsRewrite)
+    outputFile = openRootFile(histogramOutputPath,histogramOutputFile,"RECREATE");
   else
-    outputFile = openRootFile(HistogramOutputPath,HistogramOutputFile,"NEW");
-  if (!outputFile) return;
-  if (UseParticles)
+    outputFile = openRootFile(histogramOutputPath,histogramOutputFile,"NEW");
+  if (!outputFile)
     {
-    // this next fill is done once per Save (after reset)
-    //fillEventCountHistograms();  // do not do in finalize derived
+    postTaskError();
+    return;
+    }
+  if (useParticles)
+    {
     writeNEventsAccepted(outputFile);
     writeNEexecutedTask(outputFile);
-    //saveEventCountHistograms(outputFile);
     }
   saveHistograms(outputFile);
   outputFile->Close();
@@ -808,15 +732,9 @@ void Task::configure()
     }
   else
     {
-    if (reportInfo(__FUNCTION__)) cout << "setDefaultConfiguration for task " << taskName  << endl;
     setDefaultConfiguration();
-    if (reportInfo(__FUNCTION__)) cout << "Requested configuration is" <<  endl;
-    requestedConfiguration.printConfiguration(cout);
-    if (reportInfo(__FUNCTION__)) cout << "Now set requested configuration" <<  endl;
     setConfiguration(requestedConfiguration);
-    if (reportInfo(__FUNCTION__)) cout << "Set requested configuration completed" <<  endl;
-
-    if (hasSubTasks() && isTaskOk()) configureSubTasks();
+    if (hasSubTasks()) configureSubTasks();
     configured = true;
     }
   if (reportEnd(__FUNCTION__))
@@ -825,15 +743,16 @@ void Task::configure()
 
 void Task::configureSubTasks()
 {
-  if (reportInfo(__FUNCTION__)) cout << " Configure task named:" << getName() << endl;
+  if (reportStart(__FUNCTION__))
+    ;
   unsigned int nSubTasks = subTasks.size();
-  if (reportInfo(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
+  if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++)
     {
-    if (reportInfo(__FUNCTION__))  cout << " Calling configure method of task named:" << subTasks[iTask]->getName() << endl;
     subTasks[iTask]->configure();
     }
-  if (reportEnd(__FUNCTION__)) cout << " Done configuring task named:" << getName() << endl;
+  if (reportEnd(__FUNCTION__))
+    ;
 }
 
 
@@ -851,9 +770,6 @@ void Task::initializeSubTasks()
 
 void Task::executeSubTasks()
 {
-//
-//  if (reportStart(__FUNCTION__))
-//    ;
   unsigned int nSubTasks = subTasks.size();
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->execute();
 }
@@ -866,7 +782,7 @@ void Task::finalizeSubTasks()
   if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->finalize();
   if (reportEnd(__FUNCTION__))
-    { }
+    ;
 }
 
 void Task::resetSubTasks()
@@ -936,38 +852,6 @@ Task * Task::addSubTask(Task * task)
 
 void Task::addHistogramsToExtList(TList *list __attribute__((unused)) )
 {
-//
-//  TString fctName = "addHistogramsToExtList(TList *list)";
-//  if (reportStart("Task",getName(),fctName))
-//    ;
-//  if (!list)
-//    {
-//    if (reportError("Task",getName(),fctName))
-//      {
-//      cout << "Given list pointer is null." << endl;
-//      }
-//    postTaskWarning();
-//    return;
-//    }
-//  list->Add(new TParameter<Long64_t>("nEventProcessed",getNEventProcessed(),'+'));
-//
-//  for (unsigned int k=0; eventFilters.size(); k++)
-//    {
-//    TString name = "nEventsAcceptedTotal"; name += k;
-//    list->Add(new TParameter<Long64_t>(name,nEventsAcceptedTotal[k],'+'));
-//    }
-//  for (unsigned int k=1; k<baseSingleHistograms.size(); k++)
-//    {
-//    baseSingleHistograms[k]->addHistogramsToExtList(list);
-//    }
-//  for (unsigned int k=1; k<basePairHistograms.size(); k++)
-//    {
-//    basePairHistograms[k]->addHistogramsToExtList(list);
-//    }
-//  for (unsigned int k=1; k<derivedPairHistograms.size(); k++)
-//    {
-//    derivedPairHistograms[k]->addHistogramsToExtList(list);
-//    }
 }
 
 const TString Task::makeHistoName(const TString & s0,
@@ -1057,7 +941,9 @@ vector<TString> Task::listFilesInDir(const TString & pathname,
   TString dirname = pathname;
   int depth = currentDepth;
   if (!dirname.EndsWith("/")) dirname += "/";
-  if (verbose) cout << " Searching: " << dirname << endl;
+  if (verbose) cout << " Searching................: " << dirname << endl;
+  if (verbose) cout << " maximumDepth.............: " << maximumDepth << endl;
+  if (verbose) cout << " currentDepth.............: " << depth << endl;
   TSystemDirectory dir(dirname, dirname);
   TList *files = dir.GetListOfFiles();
   vector<TString>  fileNames;
@@ -1087,7 +973,7 @@ vector<TString> Task::listFilesInDir(const TString & pathname,
       }
     }
   int nSubdirs = subdirs.size();
-  if (verbose) cout << " Number of subdir found: " << nSubdirs << endl;
+  if (verbose) cout << " Number of subdir found...: " << nSubdirs << endl;
   ++depth;
 
   if (nSubdirs>0 && depth<=maximumDepth)
@@ -1106,7 +992,9 @@ vector<TString> Task::listFilesInDir(const TString & pathname,
         fileNames.push_back(additionalFiles[iFile]);
       }
     }
-  if (verbose) cout << " Number of files  found: " << fileNames.size() << endl;
+  if (verbose) cout << " Number of files  found...: " << fileNames.size() << endl;
+  if (verbose) cout << " Returning up one level.... " <<  endl;
+
   return fileNames;
 }
 
@@ -1342,7 +1230,7 @@ bool Task::getValueBool(const TString & key)   const
       cout << "getValueBool() extKey:" << extKey << endl;
       cout << "getValueBool()  found:" << found << endl;
       }
-//    if (key.Contains("ForceHistogramsRewrite"))
+//    if (key.Contains("forceHistogramsRewrite"))
 //      {
 //      cout << "Searching for ForceHistogramsRewrite" << endl;
 //      cout << "getValueBool()   path:" << path << endl;
@@ -1412,6 +1300,14 @@ double Task::getValueDouble(const TString & key) const
     extKey = path + key;
     //cout << "getValueDouble() extKey:" << extKey << endl;
     bool found = configuration.isDouble(extKey);
+    if (key.Contains("Energy"))
+      {
+      cout << "Searching for Energy" << endl;
+      cout << "getValueBool()   path:" << path << endl;
+      cout << "getValueBool() extKey:" << extKey << endl;
+      cout << "getValueBool()  found:" << found << endl;
+      }
+
     if (found) return configuration.getValueDouble(extKey);
     }
   return -99999.0;
@@ -1438,14 +1334,16 @@ TString Task::getValueString(const TString & key) const
 void Task::addParameter(const TString & name, bool value)
 {
   TString path = getFullTaskPath();
-  //cout << "addParameter() full path is: " << path << endl;
+  if (reportDebug("addParameter(const TString & name, bool value)"))
+    cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.addParameter(path,name,value);
 }
 
 void Task::addParameter(const TString & name, int value)
 {
   TString path = getFullTaskPath();
-  //cout << "addParameter() full path is: " << path << endl;
+  if (reportDebug("addParameter(const TString & name, int value)"))
+    cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.addParameter(path,name,value);
 }
 
@@ -1453,7 +1351,8 @@ void Task::addParameter(const TString & name, int value)
 void Task::addParameter(const TString & name, long value)
 {
   TString path = getFullTaskPath();
-  //cout << "addParameter() full path is: " << path << endl;
+  if (reportDebug("addParameter(const TString & name, long value)"))
+    cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.addParameter(path,name,value);
 }
 
@@ -1461,7 +1360,8 @@ void Task::addParameter(const TString & name, long value)
 void Task::addParameter(const TString & name, double value)
 {
   TString path = getFullTaskPath();
-  //cout << "addParameter() full path is: " << path << endl;
+  if (reportDebug("addParameter(const TString & name, double value)"))
+    cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.addParameter(path,name,value);
 }
 
@@ -1469,6 +1369,8 @@ void Task::addParameter(const TString & name, double value)
 void Task::addParameter(const TString & name, const TString &  value)
 {
   TString path = getFullTaskPath();
+  if (reportDebug("addParameter(const TString & name, string value)"))
+    cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.addParameter(path,name,value);
 }
 
@@ -1477,12 +1379,16 @@ void Task::addParameter(const TString & name, const TString &  value)
 void Task::setParameter(const TString & name, bool value)
 {
   TString path = getFullTaskPath();
+  if (reportDebug("setParameter(const TString & name, bool value)"))
+    cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.setParameter(path,name,value);
 }
 
 void Task::setParameter(const TString & name, int value)
 {
   TString path = getFullTaskPath();
+  if (reportDebug("setParameter(const TString & name, int value)"))
+    cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.setParameter(path,name,value);
 }
 
@@ -1490,20 +1396,24 @@ void Task::setParameter(const TString & name, int value)
 void Task::setParameter(const TString & name, long value)
 {
   TString path = getFullTaskPath();
+  if (reportDebug("setParameter(const TString & name, long value)"))
+    cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.setParameter(path,name,value);
 }
-
 
 void Task::setParameter(const TString & name, double value)
 {
   TString path = getFullTaskPath();
+  if (reportDebug("setParameter(const TString & name, double value)"))
+    cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.setParameter(path,name,value);
 }
-
 
 void Task::setParameter(const TString & name, const TString &  value)
 {
   TString path = getFullTaskPath();
+  if (reportDebug("setParameter(const TString & name, TString value)"))
+    cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.setParameter(path,name,value);
 }
 

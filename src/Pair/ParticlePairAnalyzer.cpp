@@ -511,26 +511,17 @@ void ParticlePairAnalyzer::calculateDerivedHistograms()
       if (reportDebug(__FUNCTION__)) cout << "  Pair: iParticleFilter1:" << iParticleFilter1 << " named:" << pfn1 << endl;
       index = baseSingle+iParticleFilter1;
       bSingleHistos1 = (ParticleHistos *) baseSingleHistograms[index];
-      if (reportDebug(__FUNCTION__)) cout << "   WTF 1" << endl;
       dSingleHistos1 = (ParticleDerivedHistos *) derivedSingleHistograms[index];
-      if (reportDebug(__FUNCTION__)) cout << "   WTF 2" << endl;
 
       for (int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++)
         {
         TString pfn2 = particleFilters[iParticleFilter2]->getName();
         if (reportDebug(__FUNCTION__)) cout << "  Pair: iParticleFilter2:" << iParticleFilter2 << " named:" << pfn2 << endl;
         index = baseSingle+iParticleFilter2;
-        if (reportDebug(__FUNCTION__)) cout << "   WTF 3" << endl;
         bSingleHistos2 = (ParticleHistos *) baseSingleHistograms[index];
-        if (reportDebug(__FUNCTION__)) cout << "   WTF 4" << endl;
         dSingleHistos2 = (ParticleDerivedHistos *) derivedSingleHistograms[index];
-
-        if (reportDebug(__FUNCTION__)) cout << "   WTF 5" << endl;
-
         index = basePair+iParticleFilter1*nParticleFilters+iParticleFilter2;
         bPairHistos = (ParticlePairHistos *) basePairHistograms[index];
-        if (reportDebug(__FUNCTION__)) cout << "   WTF 6" << endl;
-
         dPairHistos = (ParticlePairDerivedHistos *) derivedPairHistograms[index];
         if (reportDebug(__FUNCTION__))
           {

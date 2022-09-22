@@ -31,9 +31,10 @@ void loadSubSample(const TString & includeBasePath);
 void loadExec(const TString & includeBasePath);
 
 
-int RunSum(TString configFile="ResoAnalysis.txt",
-           TString pathName="/Volumes/ClaudeDisc4/OutputFiles/Reso",
-           int nBunches=5)
+int RunSum(TString configFile,
+           TString pathName,
+           int nBunches,
+           bool isGrid=true)
 {
   TString includeBasePath = getenv("CAP_SRC");
   loadBase(includeBasePath);
@@ -56,7 +57,7 @@ int RunSum(TString configFile="ResoAnalysis.txt",
 
   std::cout << "==================================================================================" << std::endl;
   std::cout << "Run Ana" << endl;
-  std::cout << "====   ===========================================================================" << std::endl;
+  std::cout << "==================================================================================" << std::endl;
   Configuration configuration;
   configuration.readFromFile(configFile);
   configuration.setParameter("Run:HistogramInputPath",pathName);
@@ -64,7 +65,19 @@ int RunSum(TString configFile="ResoAnalysis.txt",
   configuration.setParameter("Run:Subsample",          true);
   configuration.setParameter("Run:SubsampleBaseGen",   true);
   configuration.setParameter("Run:Bunched",            true);
-  configuration.setParameter("Run:nBunches",      nBunches);
+  configuration.setParameter("Run:nBunches",           nBunches);
+  configuration.setParameter("Run:BunchLabel",    TString("BUNCH"));
+  configuration.setParameter("Run:SubPathLabel",  TString(""));
+  configuration.setParameter("Run:MaximumDepth",  2);
+
+//  if (isGrid)
+//    {
+//     }
+//  else
+//    {
+//    configuration.setParameter("Run:BunchLabel",    TString("Partial"));
+//    configuration.setParameter("Run:SubPathLabel",  TString(""));
+//    }
   RunSubsample * analysis = new RunSubsample("Run", configuration);
   analysis->configure();
   analysis->execute();

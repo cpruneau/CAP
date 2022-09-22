@@ -41,6 +41,7 @@ void SubSampleStatCalculator::setDefaultConfiguration()
   addParameter("nInputFile",             0);
   addParameter("HistogramInputPath",     none);
   addParameter("HistogramOutputPath",    none);
+  addParameter("MaximumDepth",           2);
   generateKeyValuePairs("IncludedPattern",none,20);
   generateKeyValuePairs("ExcludedPattern",none,20);
   generateKeyValuePairs("InputFile",none,100);
@@ -52,10 +53,11 @@ void SubSampleStatCalculator::execute()
   TString none  = "none";
   configuration.printConfiguration(cout);
 
-  int defaultGroupSize        = getValueInt("DefaultGroupSize");
+  int defaultGroupSize        = getValueInt(   "DefaultGroupSize");
   TString appendedString      = getValueString("AppendedString");
   TString histogramInputPath  = getValueString("HistogramInputPath");
   TString histogramOutputPath = getValueString("HistogramOutputPath");
+  int  maximumDepth           = getValueInt(   "MaximumDepth");
   vector<TString> includePatterns = getSelectedValues("IncludedPattern",none);
   vector<TString> excludePatterns = getSelectedValues("ExcludedPattern",none);
   TString histogramOutputFile = taskName;
@@ -73,6 +75,7 @@ void SubSampleStatCalculator::execute()
     cout << " AppendedString............: " << appendedString << endl;
     cout << " HistogramInputPath........: " << histogramInputPath << endl;
     cout << " HistogramOutputPath.......: " << histogramOutputPath << endl;
+    cout << " MaximumDepth..............: " << maximumDepth << endl;
     cout << " N included patterns.......: " << includePatterns.size() << endl;
     for (unsigned int k=0;k<includePatterns.size();k++) cout << " Included..................:" <<   includePatterns[k] << endl;
     cout << " N excluded patterns.......: " << excludePatterns.size() << endl;
@@ -80,8 +83,7 @@ void SubSampleStatCalculator::execute()
     }
   bool prependPath = true;
   bool verbose = true;
-  int  maximumDepth = 2;
-  vector<TString> allFilesToSum = listFilesInDir(histogramInputPath,includePatterns,excludePatterns, prependPath, verbose, maximumDepth);
+  vector<TString> allFilesToSum = listFilesInDir(histogramInputPath,includePatterns,excludePatterns, prependPath, verbose, maximumDepth,0);
   int nFilesToSum = allFilesToSum.size();
   int groupSize = (nFilesToSum>defaultGroupSize) ? defaultGroupSize : nFilesToSum;
   int nGroups   = 1 + double(nFilesToSum-1)/double(groupSize);

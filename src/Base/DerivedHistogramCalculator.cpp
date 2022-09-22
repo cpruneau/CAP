@@ -45,7 +45,6 @@ void DerivedHistogramCalculator::saveHistograms()
   if (!outputFile) return;
   writeNEventsAccepted(outputFile);
   writeNEexecutedTask(outputFile);
-  saveEventCountHistograms(outputFile);
   Task::saveHistograms(outputFile);
   outputFile->Close();
   if (reportEnd(__FUNCTION__))

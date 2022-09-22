@@ -63,10 +63,8 @@ void RunDerivedCalculation::setDefaultConfiguration()
   addParameter("GenLabel",        TString("Gen"));
   addParameter("RecoLabel",       TString("Reco"));
   addParameter("LogLevel",                TString("Info"));
-  addParameter("DerivedGen",              YES);
-  addParameter("DerivedReco",             NO);
-  addParameter("BalFctGen",               YES);
-  addParameter("BalFctReco",              NO);
+  addParameter("Derived",                 YES);
+  addParameter("BalFct",                  YES);
   addParameter("GlobalGen",               NO);
   addParameter("GlobalReco",              NO);
   addParameter("SpherocityGen",           NO);
@@ -149,10 +147,8 @@ void RunDerivedCalculation::configure()
   //exit(1);
 
   // assemble the task from here...
-  DerivedHistoIterator      * derivedGen            = nullptr;
-  DerivedHistoIterator      * derivedReco           = nullptr;
-  BalanceFunctionCalculator * balFctGen             = nullptr;
-  BalanceFunctionCalculator * balFctReco            = nullptr;
+  DerivedHistoIterator      * derived   = nullptr;
+  BalanceFunctionCalculator * balFct    = nullptr;
   MessageLogger::LogLevel selectedLevel = MessageLogger::Debug;
   TString reportLevel                   = getValueBool("LogLevel");
   if (reportLevel.EqualTo("Debug")) selectedLevel = MessageLogger::Debug;
@@ -168,10 +164,8 @@ void RunDerivedCalculation::configure()
   TString BalFctLabel      = getValueString("BalFctLabel");
   TString GenLabel         = getValueString("GenLabel");
   TString RecoLabel        = getValueString("RecoLabel");
-  bool    RunDerivedCalculationGen           = getValueBool("DerivedGen");
-  bool    RunDerivedCalculationReco          = getValueBool("DerivedReco");
-  bool    RunBalFctGen            = getValueBool("BalFctGen");
-  bool    RunBalFctReco           = getValueBool("BalFctReco");
+  bool    RunDerived              = getValueBool("Derived");
+  bool    RunBalFct               = getValueBool("BalFct");
   bool    RunGlobalGen            = getValueBool("GlobalGen");
   bool    RunGlobalReco           = getValueBool("GlobalReco");
   bool    RunSpherocityGen        = getValueBool("SpherocityGen");
@@ -221,10 +215,8 @@ void RunDerivedCalculation::configure()
     cout << "BalFctLabel................:" << BalFctLabel      << endl;
     cout << "GenLabel...................:" << GenLabel         << endl;
     cout << "RecoLabel..................:" << RecoLabel        << endl;
-    cout << "DerivedGen.................:" << RunDerivedCalculationGen  << endl;
-    cout << "DerivedReco................:" << RunDerivedCalculationReco << endl;
-    cout << "BalFctGen..................:" << RunBalFctGen              << endl;
-    cout << "BalFctReco.................:" << RunBalFctReco             << endl;
+    cout << "Derived....................:" << RunDerived       << endl;
+    cout << "BalFct.....................:" << RunBalFct             << endl;
     cout << "GlobalGen..................:" << RunGlobalGen          << endl;
     cout << "GlobalReco.................:" << RunGlobalReco         << endl;
     cout << "SpherocityGen..............:" << RunSpherocityGen      << endl;
@@ -237,7 +229,7 @@ void RunDerivedCalculation::configure()
     cout << "NuDynReco..................:" << RunNuDynReco          << endl;
     cout << "FillEta....................:" << RunFillEta            << endl;
     cout << "FillY......................:" << RunFillY              << endl;
-    cout << "HistogramInputPath.........:" << inputPathName        << endl;
+    cout << "HistogramInputPath.........:" << inputPathName         << endl;
     cout << "HistogramOutputPath........:" << outputPathName        << endl;
     cout << "ModelPartMinY..............:" << modelPartMinY         << endl;
     cout << "ModelPartMaxY..............:" << modelPartMaxY         << endl;
@@ -294,7 +286,7 @@ void RunDerivedCalculation::configure()
     key += k;
     anaBounds.push_back( getValueBool(key));
     }
-  if (anaEventFilterOption.EqualTo("All"))                  analysisEventFilters = EventFilter::createOpenEventFilter();
+  if (anaEventFilterOption.EqualTo("All"))                   analysisEventFilters = EventFilter::createOpenEventFilter();
   else if (anaEventFilterOption.EqualTo("AliceMB"))          analysisEventFilters = EventFilter::createAliceMBEventFilter();
   else if (anaEventFilterOption.EqualTo("ImpactParameter"))  analysisEventFilters = EventFilter::createImpactParameterFilters(anaBounds);
   else if (anaEventFilterOption.EqualTo("V0Mult"))           analysisEventFilters = EventFilter::createV0MultiplicityFilters(anaBounds);
@@ -370,29 +362,24 @@ void RunDerivedCalculation::configure()
     cout << "==================================================================================" << std::endl;
     }
 
-  if (RunDerivedCalculationGen)
+  if (RunDerived)
     {
-    derivedGen  = new DerivedHistoIterator("DerivedGen", configuration);
-    addSubTask(derivedGen);
-    if (RunGlobalGen)          derivedGen->addSubTask(new GlobalAnalyzer(GlobalLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunSpherocityGen)      derivedGen->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunPartGen)            derivedGen->addSubTask(new ParticleAnalyzer(PartLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunPairGen)            derivedGen->addSubTask(new ParticlePairAnalyzer(PairLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunNuDynGen)           derivedGen->addSubTask(new NuDynAnalyzer(NuDynLabel+GenLabel,configuration,analysisEventFilters,analysisParticleFilters));
+    derived = new DerivedHistoIterator("Analysis", configuration);
+    addSubTask(derived);
+    if (RunGlobalGen)          derived->addSubTask(new GlobalAnalyzer(GlobalLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunSpherocityGen)      derived->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunPartGen)            derived->addSubTask(new ParticleAnalyzer(PartLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunPairGen)            derived->addSubTask(new ParticlePairAnalyzer(PairLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunNuDynGen)           derived->addSubTask(new NuDynAnalyzer(NuDynLabel+GenLabel,configuration,analysisEventFilters,analysisParticleFilters));
+
+    if (RunGlobalReco)         derived->addSubTask(new GlobalAnalyzer(GlobalLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunSpherocityReco)     derived->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunPartReco)           derived->addSubTask(new ParticleAnalyzer(PartLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunPairReco)           derived->addSubTask(new ParticlePairAnalyzer(PairLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunNuDynReco)          derived->addSubTask(new NuDynAnalyzer(NuDynLabel+RecoLabel,configuration,analysisEventFilters,analysisParticleFilters));
     }
 
-  if (RunDerivedCalculationReco)
-    {
-    derivedReco = new DerivedHistoIterator("DerivedReco",configuration);
-    addSubTask(derivedReco);
-    if (RunGlobalReco)         derivedReco->addSubTask(new GlobalAnalyzer(GlobalLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunSpherocityReco)     derivedReco->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunPartReco)           derivedReco->addSubTask(new ParticleAnalyzer(PartLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunPairReco)           derivedReco->addSubTask(new ParticlePairAnalyzer(PairLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunNuDynReco)          derivedReco->addSubTask(new NuDynAnalyzer(NuDynLabel+RecoLabel,configuration,analysisEventFilters,analysisParticleFilters));
-    }
-
-  if (RunBalFctGen)
+  if (RunBalFct && RunPairGen)
     {
     Configuration & subConfig = * new Configuration();
     subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":HistogramInputPath"),inputPathName);
@@ -400,11 +387,10 @@ void RunDerivedCalculation::configure()
     subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":IncludedPattern0"),TString("Derived"));
     subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern1"),TString("Reco"));
     subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern2"),TString("BalFct"));
-    balFctGen = new BalanceFunctionCalculator("PairGen",subConfig,analysisEventFilters, analysisParticleFilters);
-    addSubTask(balFctGen);
+    addSubTask(new BalanceFunctionCalculator("PairGen",subConfig,analysisEventFilters, analysisParticleFilters));
     }
 
-  if (RunBalFctReco)
+  if (RunBalFct && RunPairReco)
     {
     Configuration & subConfig = * new Configuration();
     subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":HistogramInputPath"),inputPathName);
@@ -412,8 +398,7 @@ void RunDerivedCalculation::configure()
     subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":IncludedPattern0"),TString("Derived"));
     subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern1"),TString("Gen"));
     subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern2"),TString("BalFct"));
-    balFctReco = new BalanceFunctionCalculator("PairReco",subConfig,analysisEventFilters, analysisParticleFilters);
-    addSubTask(balFctReco);
+    addSubTask(new BalanceFunctionCalculator("PairReco",subConfig,analysisEventFilters, analysisParticleFilters));
     }
 
   if (reportInfo(__FUNCTION__))

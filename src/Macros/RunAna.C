@@ -30,10 +30,10 @@ void loadNuDyn(const TString & includeBasePath);
 void loadSubSample(const TString & includeBasePath);
 void loadExec(const TString & includeBasePath);
 
-// jobindex provided by slurm
 // seed provided by slurm or directly by user
 // config file must be provided
-int RunAna(TString configFile, TString outputPath, int jobIndex=0, long seed=1121331)
+int RunAna(TString configFile, TString outputPath, long seed=1121331, bool isGrid=true,
+           long nEventsPerSubbunch=300, int nSubbunchesPerBunch=1, int nBunches=1)
 {
   TString includeBasePath = getenv("CAP_SRC");
   loadBase(includeBasePath);
@@ -51,22 +51,35 @@ int RunAna(TString configFile, TString outputPath, int jobIndex=0, long seed=112
   loadNuDyn(includeBasePath);
   loadSubSample(includeBasePath);
   loadExec(includeBasePath);
-
-  //outputPath = "/Volumes/ClaudeDisc4/OutputFiles/Reso/";
-
   std::cout << "==================================================================================" << std::endl;
-  std::cout << "Run Ana" << endl;
-  std::cout << "====   ===========================================================================" << std::endl;
+  std::cout << "==================================================================================" << std::endl;
+  std::cout << "RunAna" << endl;
+  std::cout << "----------------------------------------------------------------------------------" << std::endl;
+  std::cout << " configFile..............: " << configFile << std::endl;
+  std::cout << " outputPath..............: " << outputPath << std::endl;
+  std::cout << " seed....................: " << seed       << std::endl;
+  std::cout << " isGrid..................: " << isGrid     << std::endl;
+  std::cout << " nEventsPerSubbunch......: " << nEventsPerSubbunch  << std::endl;
+  std::cout << " nSubbunchesPerBunch.....: " << nSubbunchesPerBunch << std::endl;
+  std::cout << " nBunches................: " << nBunches   << std::endl;
+  std::cout << "==================================================================================" << std::endl;
+  std::cout << "==================================================================================" << std::endl;
+
   Configuration configuration;
   configuration.readFromFile(configFile);
+  configuration.setParameter("Run:LogLevel",TString("Debug"));
   configuration.setParameter("Run:SetSeed",true);
   configuration.setParameter("Run:SeedValue",seed);
-  configuration.setParameter("Run:PartialIndex",jobIndex);
-  configuration.setParameter("Run:HistogramOutputPath",outputPath);
+  configuration.setParameter("Run:Analysis:isGrid",                  isGrid);
+  configuration.setParameter("Run:Analysis:HistogramOutputPath",     outputPath);
+  configuration.setParameter("Run:Analysis:nEventsPerSubbunch",      nEventsPerSubbunch);
+  configuration.setParameter("Run:Analysis:nSubbunchesPerBunch",     nSubbunchesPerBunch);
+  configuration.setParameter("Run:Analysis:nBunches",                nBunches);
+  configuration.setParameter("Run:Analysis:BunchLabel",              TString("BUNCH"));
+  configuration.setParameter("Run:Analysis:SubbunchLabel",           TString(""));
   RunAnalysis * analysis = new RunAnalysis("Run", configuration);
   analysis->configure();
   analysis->execute();
-  //if (selectedLevel==MessageLogger::Debug) analysis->getConfiguration().writeToFile("DebugConfig.txt");
   return 0;
 }
 

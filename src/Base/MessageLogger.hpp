@@ -224,6 +224,22 @@ public:
   }
 
   //!
+  //! Returns "true" is the current status has reach the end of a file on input
+  //!
+  inline static bool isTaskEof()
+  {
+  return (taskStatus == TaskEof);
+  }
+
+  //!
+  //! Returns "true" is the current status has reach the end of data on input
+  //!
+  inline static bool isTaskEod()
+  {
+  return (taskStatus == TaskEod);
+  }
+
+  //!
   //! Returns a string corresponding to the current status of all ongoing tasks in this job.
   //!
   static TString getTaskStatusName();

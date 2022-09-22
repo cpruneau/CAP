@@ -46,6 +46,7 @@ export CAP_Clusters="$CAP_ROOT/Clusters/"
 export CAP_WSUGrid="$CAP_Clusters/WSUGrid/"
 export CAP_INPUT_PATH="$CAP_DATA/InputFiles/"
 export CAP_OUTPUT_PATH="$CAP_WSUGrid"
+export CAP_OUTPUT_SUBPATH=""
 export PATH="$CAP_BIN:$PATH"
 export DYLD_LIBRARY_PATH="$CAP_LIB:$DYLD_LIBRARY_PATH"
 export LD_LIBRARY_PATH="$CAP_LIB:$LD_LIBRARY_PATH"
@@ -84,7 +85,7 @@ for ijob in $(seq 1 $NMAINJOBS)
 do
   # launching the main generation jobs
   export CAP_WORKINGDIRECTORY=$CAP_OUTPUT_PATH/$CAP_OUTPUT_SUBPATH/$CAP_PRODUCTION/$(printf "BUNCH%02d" $ijob)
-  export CAP_WORKINGDIRECTORY_Output=$CAP_WORKINGDIRECTORY/Output
+  export CAP_WORKINGDIRECTORY_Output=$CAP_WORKINGDIRECTORY
   echo Preparing to launch job  $ijob w/  working directory $CAP_WORKINGDIRECTORY w/ output $CAP_WORKINGDIRECTORY_Output
   mkdir -p $CAP_WORKINGDIRECTORY_Output
   sbatch -J batch__CAP -q primary --array=1-$NSUBJOBS --chdir=$CAP_WORKINGDIRECTORY --time=05:00:00 --mem=2G -o $CAP_WORKINGDIRECTORY/Job_%A_%a.out -e $CAP_WORKINGDIRECTORY/Job_%A_%a.err $CAP_WSUGrid/Run.sh

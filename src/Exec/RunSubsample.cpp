@@ -53,30 +53,25 @@ void RunSubsample::setDefaultConfiguration()
   Task::setDefaultConfiguration();
   bool YES = true;
   bool NO  = false;
-  addParameter("GlobalLabel",     TString("G"));
-  addParameter("SpherocityLabel", TString("S"));
-  addParameter("PartLabel",       TString("Part"));
-  addParameter("PairLabel",       TString("Pair"));
-  addParameter("NuDynLabel",      TString("NuDyn"));
-  addParameter("GenLabel",        TString("Gen"));
-  addParameter("RecoLabel",       TString("Reco"));
-
-  addParameter("LogLevel",                TString("DEBUG"));
-  addParameter("Subsample",               YES);
-  addParameter("SubsampleBaseGen",        YES);
-  addParameter("SubsampleBaseReco",       NO);
-  addParameter("SubsampleDerivedGen",     NO);
-  addParameter("SubsampleDerivedReco",    NO);
-  addParameter("SubsampleBalFctGen",      NO);
-  addParameter("SubsampleBalFctReco",     NO);
-  addParameter("HistogramInputPath",      TString("./"));
-  addParameter("HistogramOutputPath",     TString("./"));
-
-  addParameter("Bunched",       YES);
-  addParameter("nBunches",      5);
-  addParameter("BunchLabel",    TString("BUNCH"));
-  addParameter("SubPathLabel",  TString("Output"));
-
+  addParameter("GlobalLabel",         TString("G"));
+  addParameter("SpherocityLabel",     TString("S"));
+  addParameter("PartLabel",           TString("Part"));
+  addParameter("PairLabel",           TString("Pair"));
+  addParameter("NuDynLabel",          TString("NuDyn"));
+  addParameter("GenLabel",            TString("Gen"));
+  addParameter("RecoLabel",           TString("Reco"));
+  addParameter("LogLevel",            TString("DEBUG"));
+  addParameter("Subsample",           YES);
+  addParameter("SubsampleBase",       YES);
+  addParameter("SubsampleDerived",    NO);
+  addParameter("SubsampleBalFct",     NO);
+  addParameter("HistogramInputPath",  TString("./"));
+  addParameter("HistogramOutputPath", TString("./"));
+  addParameter("Bunched",             YES);
+  addParameter("nBunches",            2);
+  addParameter("BunchLabel",          TString("BUNCH"));
+  addParameter("SubPathLabel",        TString("Output"));
+  addParameter("MaximumDepth",        1);
   setReportLevel(MessageLogger::Debug);
 }
 
@@ -84,6 +79,7 @@ void RunSubsample::addBaseSubSampleTask(const TString & basePath,
                                         const TString & bunchLabel,
                                         int   nBunches,
                                         const TString & subPath,
+                                        int   maximumDepth,
                                         const TString & taskType)
 {
   if (nBunches>0)
@@ -101,6 +97,7 @@ void RunSubsample::addBaseSubSampleTask(const TString & basePath,
       subConfig.addParameter(TString("Run:")+taskType+TString(":ExcludedPattern2"),TString("BalFct"));
       subConfig.addParameter(TString("Run:")+taskType+TString(":ExcludedPattern3"),TString("Sum"));
       subConfig.setParameter(TString("Run:")+taskType+TString(":AppendedString"),TString("Sum"));
+      subConfig.setParameter(TString("Run:")+taskType+TString(":MaximumDepth"),maximumDepth);
       subConfig.printConfiguration(cout);
       addSubTask( new SubSampleStatCalculator(taskType,subConfig));
       }
@@ -118,6 +115,7 @@ void RunSubsample::addBaseSubSampleTask(const TString & basePath,
     subConfig.addParameter(TString("Run:")+taskType+TString(":ExcludedPattern2"),TString("BalFct"));
     subConfig.addParameter(TString("Run:")+taskType+TString(":ExcludedPattern3"),TString("Sum"));
     subConfig.setParameter(TString("Run:")+taskType+TString(":AppendedString"),TString("Sum"));
+    subConfig.setParameter(TString("Run:")+taskType+TString(":MaximumDepth"),maximumDepth);
     subConfig.printConfiguration(cout);
     addSubTask( new SubSampleStatCalculator(taskType,subConfig));
     }
@@ -127,6 +125,7 @@ void RunSubsample::addDerivedSubSampleTask(const TString & basePath,
                                            const TString & bunchLabel,
                                            int   nBunches,
                                            const TString & subPath,
+                                           int   maximumDepth,
                                            const TString & taskType)
 {
   if (nBunches>0)
@@ -143,6 +142,7 @@ void RunSubsample::addDerivedSubSampleTask(const TString & basePath,
       subConfig.addParameter(TString("Run:")+taskType+TString(":ExcludedPattern0"),TString("Reco"));
       subConfig.addParameter(TString("Run:")+taskType+TString(":ExcludedPattern1"),TString("BalFct"));
       subConfig.setParameter(TString("Run:")+taskType+TString(":AppendedString"),TString("DerivedSum"));
+      subConfig.setParameter(TString("Run:")+taskType+TString(":MaximumDepth"),maximumDepth);
       subConfig.printConfiguration(cout);
       addSubTask( new SubSampleStatCalculator(taskType,subConfig));
       }
@@ -159,6 +159,7 @@ void RunSubsample::addDerivedSubSampleTask(const TString & basePath,
     subConfig.addParameter(TString("Run:")+taskType+TString(":ExcludedPattern0"),TString("Reco"));
     subConfig.addParameter(TString("Run:")+taskType+TString(":ExcludedPattern1"),TString("BalFct"));
     subConfig.setParameter(TString("Run:")+taskType+TString(":AppendedString"),TString("DerivedSum"));
+    subConfig.setParameter(TString("Run:")+taskType+TString(":MaximumDepth"),maximumDepth);
     subConfig.printConfiguration(cout);
     addSubTask( new SubSampleStatCalculator(taskType,subConfig));
     }
@@ -168,6 +169,7 @@ void RunSubsample::addBalFctSubSampleTask(const TString & basePath,
                                           const TString & bunchLabel,
                                           int   nBunches,
                                           const TString & subPath,
+                                          int   maximumDepth,
                                           const TString & taskType)
 {
   if (nBunches>0)
@@ -184,6 +186,7 @@ void RunSubsample::addBalFctSubSampleTask(const TString & basePath,
       subConfig.addParameter(TString("Run:")+taskType+TString(":ExcludedPattern0"),TString("Derived"));
       subConfig.addParameter(TString("Run:")+taskType+TString(":ExcludedPattern1"),TString("Reco"));
       subConfig.setParameter(TString("Run:")+taskType+TString(":AppendedString"),TString("BalFctSum"));
+      subConfig.setParameter(TString("Run:")+taskType+TString(":MaximumDepth"),maximumDepth);
       subConfig.printConfiguration(cout);
       addSubTask( new SubSampleStatCalculator(taskType,subConfig));
       }
@@ -200,6 +203,7 @@ void RunSubsample::addBalFctSubSampleTask(const TString & basePath,
     subConfig.addParameter(TString("Run:")+taskType+TString(":ExcludedPattern0"),TString("Derived"));
     subConfig.addParameter(TString("Run:")+taskType+TString(":ExcludedPattern1"),TString("Reco"));
     subConfig.setParameter(TString("Run:")+taskType+TString(":AppendedString"),TString("BalFctSum"));
+    subConfig.setParameter(TString("Run:")+taskType+TString(":MaximumDepth"),maximumDepth);
     subConfig.printConfiguration(cout);
     addSubTask( new SubSampleStatCalculator(taskType,subConfig));
     }
@@ -235,20 +239,17 @@ void RunSubsample::configure()
   bool    RunPairGen       = getValueBool("PairGen");
   bool    RunNuDynGen      = getValueBool("NuDynGen");
 
-  bool    RunSubsample            = getValueBool("Subsample");
-  bool    RunSubsampleBaseGen     = getValueBool("SubsampleBaseGen");
-  bool    RunSubsampleBaseReco    = getValueBool("SubsampleBaseReco");
-  bool    RunSubsampleDerivedGen  = getValueBool("SubsampleDerivedGen");
-  bool    RunSubsampleDerivedReco = getValueBool("SubsampleDerivedReco");
-  bool    RunSubsampleBalFctGen   = getValueBool("SubsampleBalFctGen");
-  bool    RunSubsampleBalFctReco  = getValueBool("SubsampleBalFctReco");
-  TString inputPathName           = getValueString("HistogramInputPath");
-  TString outputPathName          = getValueString("HistogramOutputPath");
+  bool    RunSubsampleBase     = getValueBool(  "SubsampleBase");
+  bool    RunSubsampleDerived  = getValueBool(  "SubsampleDerivedGen");
+  bool    RunSubsampleBalFct   = getValueBool(  "SubsampleBalFctGen");
+  TString inputPathName        = getValueString("HistogramInputPath");
+  TString outputPathName       = getValueString("HistogramOutputPath");
+  bool    bunched              = getValueBool(  "Bunched");
+  int     nBunches             = getValueInt(   "nBunches");
+  TString bunchLabel           = getValueString("BunchLabel");
+  TString subPathLabel         = getValueString("SubPathLabel");
+  int     maximumDepth         = getValueInt(   "MaximumDepth");
 
-  bool    bunched      = getValueBool("Bunched");
-  int     nBunches     = getValueInt("nBunches");
-  TString bunchLabel   = getValueString("BunchLabel");
-  TString subPathLabel = getValueString("SubPathLabel");
 
   if (reportInfo(__FUNCTION__))
     {
@@ -258,49 +259,36 @@ void RunSubsample::configure()
     cout << "PartLabel..................:" << PartLabel        << endl;
     cout << "PairLabel..................:" << PairLabel        << endl;
     cout << "NuDynLabel.................:" << NuDynLabel       << endl;
-
-    cout << "Subsample..................:" << RunSubsample              << endl;
-    cout << "SubsampleBaseGen...........:" << RunSubsampleBaseGen       << endl;
-    cout << "SubsampleBaseReco..........:" << RunSubsampleBaseReco      << endl;
-    cout << "SubsampleDerivedGen........:" << RunSubsampleDerivedGen    << endl;
-    cout << "SubsampleDerivedReco.......:" << RunSubsampleDerivedReco   << endl;
-    cout << "SubsampleBalFctGen.........:" << RunSubsampleBalFctGen     << endl;
-    cout << "SubsampleBalFctReco........:" << RunSubsampleBalFctReco    << endl;
-    cout << "HistogramInputPath.........:" << inputPathName             << endl;
-    cout << "HistogramOutputPath........:" << outputPathName            << endl;
-    cout << "Bunched....................:" << bunched                 << endl;
-    cout << "nBunches...................:" << nBunches                << endl;
-    cout << "BunchLabel.................:" << bunchLabel              << endl;
-    cout << "SubPathLabel...............:" << subPathLabel            << endl;
-
-    cout << "RunGlobalGen...............:" << RunGlobalGen      << endl;
+    cout << "SubsampleBase..............:" << RunSubsampleBase      << endl;
+    cout << "SubsampleDerived...........:" << RunSubsampleDerived   << endl;
+    cout << "SubsampleBalFct............:" << RunSubsampleBalFct    << endl;
+    cout << "HistogramInputPath.........:" << inputPathName         << endl;
+    cout << "HistogramOutputPath........:" << outputPathName        << endl;
+    cout << "Bunched....................:" << bunched              << endl;
+    cout << "nBunches...................:" << nBunches             << endl;
+    cout << "BunchLabel.................:" << bunchLabel           << endl;
+    cout << "SubPathLabel...............:" << subPathLabel         << endl;
+    cout << "MaximumDepth...............:" << maximumDepth         << endl;
+    cout << "RunGlobalGen...............:" << RunGlobalGen         << endl;
     cout << "RunSpherocityGen...........:" << RunSpherocityGen     << endl;
-    cout << "RunPartGen.................:" << RunPartGen     << endl;
-    cout << "RunPairGen.................:" << RunPairGen     << endl;
-    cout << "RunNuDynGen................:" << RunNuDynGen      << endl;
-
+    cout << "RunPartGen.................:" << RunPartGen           << endl;
+    cout << "RunPairGen.................:" << RunPairGen           << endl;
+    cout << "RunNuDynGen................:" << RunNuDynGen          << endl;
     }
 
-  if (!RunSubsample)
-    {
-    if (reportWarning(__FUNCTION__)) cout << "RunSubsample is FALSE" << endl;
-    return;
-    }
+  if (RunSubsampleBase && RunGlobalGen)     addBaseSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,maximumDepth,GlobalLabel+GenLabel);
+  if (RunSubsampleBase && RunSpherocityGen) addBaseSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,maximumDepth,SpherocityLabel+GenLabel);
+  if (RunSubsampleBase && RunPartGen)       addBaseSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,maximumDepth,PartLabel+GenLabel);
+  if (RunSubsampleBase && RunPairGen)       addBaseSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,maximumDepth,PairLabel+GenLabel);
+  if (RunSubsampleBase && RunNuDynGen)      addBaseSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,maximumDepth,NuDynLabel+GenLabel);
 
+  if (RunSubsampleDerived && RunGlobalGen)     addDerivedSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,maximumDepth,GlobalLabel+GenLabel);
+  if (RunSubsampleDerived && RunSpherocityGen) addDerivedSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,maximumDepth,SpherocityLabel+GenLabel);
+  if (RunSubsampleDerived && RunPartGen)       addDerivedSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,maximumDepth,PartLabel+GenLabel);
+  if (RunSubsampleDerived && RunPairGen)       addDerivedSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,maximumDepth,PairLabel+GenLabel);
+  if (RunSubsampleDerived && RunNuDynGen)      addDerivedSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,maximumDepth,NuDynLabel+GenLabel);
 
-  if (RunSubsampleBaseGen && RunGlobalGen)     addBaseSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,GlobalLabel+GenLabel);
-  if (RunSubsampleBaseGen && RunSpherocityGen) addBaseSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,SpherocityLabel+GenLabel);
-  if (RunSubsampleBaseGen && RunPartGen)       addBaseSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,PartLabel+GenLabel);
-  if (RunSubsampleBaseGen && RunPairGen)       addBaseSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,PairLabel+GenLabel);
-  if (RunSubsampleBaseGen && RunNuDynGen)      addBaseSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,NuDynLabel+GenLabel);
-
-  if (RunSubsampleDerivedGen && RunGlobalGen)     addDerivedSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,GlobalLabel+GenLabel);
-  if (RunSubsampleDerivedGen && RunSpherocityGen) addDerivedSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,SpherocityLabel+GenLabel);
-  if (RunSubsampleDerivedGen && RunPartGen)       addDerivedSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,PartLabel+GenLabel);
-  if (RunSubsampleDerivedGen && RunPairGen)       addDerivedSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,PairLabel+GenLabel);
-  if (RunSubsampleDerivedGen && RunNuDynGen)      addDerivedSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,NuDynLabel+GenLabel);
-
-  if (RunSubsampleBalFctGen && RunPairGen)       addBalFctSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,PairLabel+GenLabel);
+  if (RunSubsampleBalFct && RunPairGen)       addBalFctSubSampleTask(inputPathName,bunchLabel,nBunches,subPathLabel,maximumDepth,PairLabel+GenLabel);
 
   if (reportInfo(__FUNCTION__))
     {
@@ -323,9 +311,7 @@ void RunSubsample::execute()
     cout << "Subsample Analysis Started" << std::endl;
     cout << "==================================================================================" << std::endl;
     }
-  //initializeSubTasks();
   executeSubTasks();
-
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;

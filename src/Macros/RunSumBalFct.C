@@ -66,6 +66,7 @@ int RunSumBalFct(TString configFile="ResoAnalysis.txt",
   configuration.setParameter("Run:SubsampleBalFctGen",  true);
   configuration.setParameter("Run:Bunched",       false);
   configuration.setParameter("Run:nBunches",      0);
+  configuration.setParameter("Run:MaximumDepth",  1);
   RunSubsample * analysis = new RunSubsample("Run", configuration);
   analysis->configure();
   analysis->execute();
