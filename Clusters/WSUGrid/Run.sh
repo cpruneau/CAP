@@ -35,9 +35,10 @@ echo SLURM_ARRAY_TASK_ID is  $SLURM_ARRAY_TASK_ID
 echo SLURM_ARRAY_JOB_ID is  $SLURM_ARRAY_JOB_ID
 echo TASKIX is  $TASKIX
 echo SEED is $SEED
-echo Will save histogram at $CAP_HISTOPATH
+echo NEVENTS is $CAP_NEVENTS
+echo Will save histograms at $CAP_HISTOPATH
 mkdir $CAP_HISTOPATH
 echo "Calling root w/ RunAna"
 echo "========================================================================================"
-root -b "$CAP_MACROS/RunAna.C("\"$CAP_PROJECTS/$CAP_JOB_CONFIGURATION\"","\"$CAP_HISTOPATH\"",$TASKIX,$SEED)"
+root -b "$CAP_MACROS/RunAna.C("\"$CAP_PROJECTS/$CAP_JOB_CONFIGURATION\"","\"$CAP_HISTOPATH\"",$SEED,true,$CAP_NEVENTS,1,1)"
 
