@@ -14,6 +14,16 @@ echo Arg3: $3
 echo Arg4: $4
 echo Arg5: $5
 
+if [ $3 -gt 20 ]; then
+  echo "WARNING: Do you really want to launch more than 20 bunches?   "
+  exit 0
+fi
+if [ $4 -gt 30 ]; then
+  echo "WARNING: Do you really want to launch more than 30 sub-bunches...? "
+  exit 0
+fi
+
+
 # ===================================================================================
 # Environment variables used in this and subsiduary shell scripts
 #
