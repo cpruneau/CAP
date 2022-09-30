@@ -49,9 +49,9 @@ int plotSet(Plotter * plotter,
   double minB2 = -0.03;
   double maxB2 =  0.1;
   double minB2x = -0.03;
-  double maxB2x =  0.1;
+  double maxB2x =  0.6;
   double minB2y = -0.025;
-  double maxB2y =  0.05;
+  double maxB2y =  0.5;
   double minI2  = -1.5;
   double maxI2 =  3.2;
 
@@ -245,408 +245,107 @@ int PlotPythiaBFvsS()
   vector<TString> names;
   vector<TString> titles;
 
-  Plotter * plotter = new Plotter("Plotter",Configuration(),MessageLogger::Info);
+  Configuration plotConfig;
+
+  Plotter * plotter = new Plotter("Plotter",plotConfig);
   plotter->setDefaultOptions(useColor);
 
 
   vector<TGraph*>  graphs;
 
-  int option = 9;
+  int option = 8;
   switch (option)
     {
-      case 0:
-      //Eta2WidePt
-      histoInputFileNames.push_back(TString("PP/1000/Eta2WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_B2_1Bar_2"));
-      titles.push_back(TString(" - 1.0 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PP/2700/Eta2WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_2.7TeV_B2_1Bar_2"));
-      titles.push_back(TString(" - 2.7 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PP/5200/Eta2WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_B2_1Bar_2"));
-      titles.push_back(TString(" - 5.2 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PP/13000/Eta2WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_B2_1Bar_2"));
-      titles.push_back(TString(" - 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PPbar/13000/Eta2WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_ppBar_13TeV_B2_1Bar_2"));
-      titles.push_back(TString(" - p#bar{p} - 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_y"));
-
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,0,0);
-      break;
-
-      case 1:
-      histoInputFileNames.push_back(TString("PP/1000/Eta2WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_B2_1_2Bar"));
-      titles.push_back(TString(" - 1.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/2700/Eta2WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_2.7TeV_B2_1_2Bar"));
-      titles.push_back(TString(" - 2.7 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/5200/Eta2WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_B2_1_2Bar"));
-      titles.push_back(TString(" - 5.2 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/13000/Eta2WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_B2_1_2Bar"));
-      titles.push_back(TString(" - 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PPbar/13000/Eta2WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_ppBar_13TeV_B2_1_2Bar"));
-      titles.push_back(TString(" - p#bar{p} - 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_y"));
-
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,0,0);
-      break;
-
-      case 2:
-      //Eta4WidePt
-      histoInputFileNames.push_back(TString("PP/1000/Eta4WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_B2_1Bar_2"));
-      titles.push_back(TString(" - 1.0 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PP/2700/Eta4WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_2.7TeV_B2_1Bar_2"));
-      titles.push_back(TString(" - 2.7 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PP/5200/Eta4WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_B2_1Bar_2"));
-      titles.push_back(TString(" - 5.2 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PP/13000/Eta4WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_B2_1Bar_2"));
-      titles.push_back(TString(" - 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PPbar/13000/Eta4WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_ppBar_13TeV_B2_1Bar_2"));
-      titles.push_back(TString(" - p#bar{p} - 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_y"));
-
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,0,0);
-      break;
-
-      case 3:
-      //Eta4WidePt
-      histoInputFileNames.push_back(TString("PP/1000/Eta4WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_B2_1_2Bar"));
-      titles.push_back(TString(" - 1.0 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/2700/Eta4WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_2.7TeV_B2_1_2Bar"));
-      titles.push_back(TString(" - 2.7 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/5200/Eta4WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_B2_1_2Bar"));
-      titles.push_back(TString(" - 5.2 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/13000/Eta4WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_B2_1_2Bar"));
-      titles.push_back(TString(" - 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PPbar/13000/Eta4WidePt/PYTHIA_Pair_Gen_Derived_BalFct_Sum0TO9.root"));
-      names.push_back(TString("PYTHIA_ppBar_13TeV_B2_1_2Bar"));
-      titles.push_back(TString(" - p#bar{p} - 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_y"));
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,0,0);
-      break;
-
-      case 4:
-      //Eta4WidePt
-      histoInputFileNames.push_back(TString("PP/1000/Eta6WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_B2_1Bar_2"));
-      titles.push_back(TString(" - 1.0 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PP/2700/Eta6WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_2.7TeV_B2_1Bar_2"));
-      titles.push_back(TString(" - 2.7 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PP/5200/Eta6WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_B2_1Bar_2"));
-      titles.push_back(TString(" - 5.2 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PP/13000/Eta6WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_B2_1Bar_2"));
-      titles.push_back(TString(" - 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PPbar/13000/Eta6WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_ppBar_13TeV_B2_1Bar_2"));
-      titles.push_back(TString(" - p#bar{p} - 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1Bar_2_y"));
-
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,0,0);
-      break;
-
-      case 5:
-      //Eta4WidePt
-      histoInputFileNames.push_back(TString("PP/1000/Eta6WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_B2_1_2Bar"));
-      titles.push_back(TString(" - 1.0 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/2700/Eta6WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_2.7TeV_B2_1_2Bar"));
-      titles.push_back(TString(" - 2.7 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/5200/Eta6WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_B2_1_2Bar"));
-      titles.push_back(TString(" - 5.2 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/13000/Eta6WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_B2_1_2Bar"));
-      titles.push_back(TString(" - 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PPbar/13000/Eta6WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_ppBar_13TeV_B2_1_2Bar"));
-      titles.push_back(TString(" - p#bar{p} - 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_rho2_DetaDphi_shft_B2_1_2Bar_y"));
-
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,1,0);
-      break;
-
-// vs y
-      case 6:
-      //Y6
-      histoInputFileNames.push_back(TString("PP/1000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_B2_1Bar_2"));
+      case 8:
+      // Y10 -- A2
+      histoInputFileNames.push_back(TString("PP/1000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      names.push_back(TString("PYTHIA_pp_1TeV_B2Based_B2_1Bar_2"));
       titles.push_back(TString("(a) #sqrt{s} = 1.0 TeV"));
       histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
       histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
       histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
 
-      histoInputFileNames.push_back(TString("PP/2700/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_2.7TeV_B2_1Bar_2"));
+      histoInputFileNames.push_back(TString("PP/2700/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      names.push_back(TString("PYTHIA_pp_2.7TeV_B2Based_B2_1Bar_2"));
       titles.push_back(TString("(b) #sqrt{s} = 2.76 TeV"));
       histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
       histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
       histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
 
-      histoInputFileNames.push_back(TString("PP/5200/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_B2_1Bar_2"));
+      histoInputFileNames.push_back(TString("PP/5200/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      names.push_back(TString("PYTHIA_pp_5.2TeV_B2Based_B2_1Bar_2"));
       titles.push_back(TString("(c) #sqrt{s} = 5.20 TeV"));
       histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
       histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
       histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
 
-      histoInputFileNames.push_back(TString("PP/13000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_B2_1Bar_2"));
-      titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
+      //      histoInputFileNames.push_back(TString("PP/13000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      //      names.push_back(TString("PYTHIA_pp_13TeV_B2Based_B2_1Bar_2"));
+      //      titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
+      //      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
+      //      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
+      //      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
 
-      histoInputFileNames.push_back(TString("PPbar/13000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_ppBar_13TeV_B2_1Bar_2"));
+      histoInputFileNames.push_back(TString("PP/13000/PMgrid/PairGenBalFctSum0TO4.root"));
+      names.push_back(TString("PYTHIA_pp_13TeV_B2Based_B2_1Bar_2"));
+      titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
+      histoNames2D.push_back(TString( "PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
+      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
+      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
+
+
+      histoInputFileNames.push_back(TString("PPbar/13000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      names.push_back(TString("PYTHIA_ppBar_13TeV_B2Based_B2_1Bar_2"));
       titles.push_back(TString("(e) #sqrt{s} = 13.0 TeV - p#bar{p}"));
       histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
       histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
       histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
 
+      outputPath += "/B2Derived/";
       plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,1,0);
       break;
 
-      case 7:
-      //
-      histoInputFileNames.push_back(TString("PP/1000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_B2_1_2Bar"));
-      titles.push_back(TString("(f) #sqrt{s} = 1.0 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_y"));
 
-      histoInputFileNames.push_back(TString("PP/2700/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_2.7TeV_B2_1_2Bar"));
-      titles.push_back(TString("(g) #sqrt{s} = 2.7 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/5200/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_B2_1_2Bar"));
-      titles.push_back(TString("(h) #sqrt{s} = 5.2 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/13000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_B2_1_2Bar"));
-      titles.push_back(TString("(i) #sqrt{s} = 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PPbar/13000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_ppBar_13TeV_B2_1_2Bar"));
-      titles.push_back(TString("(j) #sqrt{s} = 13.0 TeV - p#bar{p}"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_y"));
-
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,1,1);
-      break;
-
-      case 8:
-      // B2_12Sum
-      histoInputFileNames.push_back(TString("PP/1000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_B2_12Sum"));
-      titles.push_back(TString("(k) #sqrt{s} = 1.0 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_y"));
-
-      histoInputFileNames.push_back(TString("PP/2700/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_2.7TeV_B2_12Sum"));
-      titles.push_back(TString("(l) #sqrt{s} = 2.7 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_y"));
-
-      histoInputFileNames.push_back(TString("PP/5200/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_B2_12Sum"));
-      titles.push_back(TString("(m) #sqrt{s} = 5.2 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_y"));
-
-      histoInputFileNames.push_back(TString("PP/13000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_B2_12Sum"));
-      titles.push_back(TString("(n) #sqrt{s} = 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_y"));
-
-      histoInputFileNames.push_back(TString("PPbar/13000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_ppBar_13TeV_B2_12Sum"));
-      titles.push_back(TString("(o) #sqrt{s} = 13.0 TeV - p#bar{p}"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_y"));
-
-
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,1,2);
-      break;
-
-// A2 from here
 
       case 9:
       // Y10 -- A2
-      histoInputFileNames.push_back(TString("PP/1000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      histoInputFileNames.push_back(TString("PP/1000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
       names.push_back(TString("PYTHIA_pp_1TeV_A2Based_B2_1Bar_2"));
       titles.push_back(TString("(a) #sqrt{s} = 1.0 TeV"));
       histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
       histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
       histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
 
-      histoInputFileNames.push_back(TString("PP/2700/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      histoInputFileNames.push_back(TString("PP/2700/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
       names.push_back(TString("PYTHIA_pp_2.7TeV_A2Based_B2_1Bar_2"));
       titles.push_back(TString("(b) #sqrt{s} = 2.76 TeV"));
       histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
       histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
       histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
 
-      histoInputFileNames.push_back(TString("PP/5200/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      histoInputFileNames.push_back(TString("PP/5200/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
       names.push_back(TString("PYTHIA_pp_5.2TeV_A2Based_B2_1Bar_2"));
       titles.push_back(TString("(c) #sqrt{s} = 5.20 TeV"));
       histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
       histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
       histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
 
-      histoInputFileNames.push_back(TString("PP/13000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+//      histoInputFileNames.push_back(TString("PP/13000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+//      names.push_back(TString("PYTHIA_pp_13TeV_A2Based_B2_1Bar_2"));
+//      titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
+//      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
+//      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
+//      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
+
+      histoInputFileNames.push_back(TString("PP/13000/PMgrid/PairGenBalFctSum0TO4.root"));
       names.push_back(TString("PYTHIA_pp_13TeV_A2Based_B2_1Bar_2"));
       titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
+      histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
+      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
+      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
 
-      histoInputFileNames.push_back(TString("PPbar/13000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+
+      histoInputFileNames.push_back(TString("PPbar/13000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
       names.push_back(TString("PYTHIA_ppBar_13TeV_A2Based_B2_1Bar_2"));
       titles.push_back(TString("(e) #sqrt{s} = 13.0 TeV - p#bar{p}"));
       histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
@@ -659,35 +358,35 @@ int PlotPythiaBFvsS()
 
       case 10:
       //
-      histoInputFileNames.push_back(TString("PP/1000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      histoInputFileNames.push_back(TString("PP/1000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
       names.push_back(TString("PYTHIA_pp_1TeV_A2Based_B2_1_2Bar"));
       titles.push_back(TString("(f) #sqrt{s} = 1.0 TeV"));
       histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
       histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
       histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
 
-      histoInputFileNames.push_back(TString("PP/2700/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      histoInputFileNames.push_back(TString("PP/2700/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
       names.push_back(TString("PYTHIA_pp_2.7TeV_A2Based_B2_1_2Bar"));
       titles.push_back(TString("(g) #sqrt{s} = 2.7 TeV"));
       histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
       histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
       histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
 
-      histoInputFileNames.push_back(TString("PP/5200/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      histoInputFileNames.push_back(TString("PP/5200/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
       names.push_back(TString("PYTHIA_pp_5.2TeV_A2Based_B2_1_2Bar"));
       titles.push_back(TString("(h) #sqrt{s} = 5.2 TeV"));
       histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
       histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
       histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
 
-      histoInputFileNames.push_back(TString("PP/13000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      histoInputFileNames.push_back(TString("PP/13000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
       names.push_back(TString("PYTHIA_pp_13TeV_A2Based_B2_1_2Bar"));
       titles.push_back(TString("(i) #sqrt{s} = 13.0 TeV"));
       histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
       histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
       histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
 
-      histoInputFileNames.push_back(TString("PPbar/13000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      histoInputFileNames.push_back(TString("PPbar/13000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
       names.push_back(TString("PYTHIA_ppBar_13TeV_A2Based_B2_1_2Bar"));
       titles.push_back(TString("(j) #sqrt{s} = 13.0 TeV - p#bar{p}"));
       histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
@@ -701,35 +400,35 @@ int PlotPythiaBFvsS()
 
       case 11:
       // B2_12Sum
-      histoInputFileNames.push_back(TString("PP/1000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      histoInputFileNames.push_back(TString("PP/1000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
       names.push_back(TString("PYTHIA_pp_1TeV_A2Based_B2_12Sum"));
       titles.push_back(TString("(k) #sqrt{s} = 1.0 TeV"));
       histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
       histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
 
-      histoInputFileNames.push_back(TString("PP/2700/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      histoInputFileNames.push_back(TString("PP/2700/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
       names.push_back(TString("PYTHIA_pp_2.7TeV_A2Based_B2_12Sum"));
       titles.push_back(TString("(l) #sqrt{s} = 2.7 TeV"));
       histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
       histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
 
-      histoInputFileNames.push_back(TString("PP/5200/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      histoInputFileNames.push_back(TString("PP/5200/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
       names.push_back(TString("PYTHIA_pp_5.2TeV_A2Based_B2_12Sum"));
       titles.push_back(TString("(m) #sqrt{s} = 5.2 TeV"));
       histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
       histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
 
-      histoInputFileNames.push_back(TString("PP/13000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      histoInputFileNames.push_back(TString("PP/13000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
       names.push_back(TString("PYTHIA_pp_13TeV_A2Based_B2_12Sum"));
       titles.push_back(TString("(n) #sqrt{s} = 13.0 TeV"));
       histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
       histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
 
-      histoInputFileNames.push_back(TString("PPbar/13000/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      histoInputFileNames.push_back(TString("PPbar/13000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
       names.push_back(TString("PYTHIA_ppBar_13TeV_A2Based_B2_12Sum"));
       titles.push_back(TString("(o) #sqrt{s} = 13.0 TeV - p#bar{p}"));
       histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
@@ -765,6 +464,7 @@ void loadBase(const TString & includeBasePath)
   gSystem->Load(includePath+"ParticleType.hpp");
   gSystem->Load(includePath+"ParticleTypeCollection.hpp");
   gSystem->Load(includePath+"ParticleDecayMode.hpp");
+  gSystem->Load(includePath+"Plotter.hpp");
   gSystem->Load(includePath+"DerivedHistoIterator.hpp");
   gSystem->Load("libBase.dylib");
 }

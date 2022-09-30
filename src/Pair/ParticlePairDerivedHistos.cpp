@@ -630,7 +630,7 @@ void ParticlePairDerivedHistos::calculatePairDerivedHistograms(ParticleHistos   
     calculateR2_H2H2H2(pairHistos.h_n2_yY,h_n1n1_yY,h_R2_yY,0, 1.0, 1.0);
 
     //
-    // Deta vs Dphi
+    // Dy vs Dphi
     //
     if (reportDebug(__FUNCTION__))  cout << "Calculate XXX_DyDphi" << endl;
     reduce_n1EtaPhiN1EtaPhiOntoN1N1DetaDphi(part1BaseHistos.h_n1_phiY,part2BaseHistos.h_n1_phiY,h_n1n1_DyDphi,nBins_Dy,nBins_Dphi);

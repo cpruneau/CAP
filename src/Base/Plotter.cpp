@@ -40,7 +40,7 @@ TCanvas *  Plotter::plot(TH1 * h,
   h->SetMinimum(yMin);
   h->SetMaximum(yMax);
   h->GetXaxis()->SetRangeUser(xMin,xMax);
-  h->DrawCopy(gc.getValueString(getName(),"PlotOption"));
+  h->DrawCopy(gc.getValueString("PlotOption"));
   if (!legendText.IsNull()) createLegend(h,legendText,xMinLeg, yMinLeg, xMaxLeg, yMaxLeg,0, legendSize);
   return canvas;
 }
@@ -68,7 +68,7 @@ TCanvas *  Plotter::plot(TH2 * h,
     h->SetMinimum(zMin);
     h->SetMaximum(zMax);
     }
-  h->DrawCopy(gc.getValueString(getName(),"PlotOption"));
+  h->DrawCopy(gc.getValueString("PlotOption"));
 //  if (!text1.IsNull()) createLabel(text1, x1,y1,color1, fontSize1, true);
 //  if (!text2.IsNull()) createLabel(text2, x2,y2,color2, fontSize2, true);
   return canvas;
@@ -107,11 +107,11 @@ TCanvas *  Plotter::plot(vector<TH1*> histograms,
   h->SetMinimum(yMin);
   h->SetMaximum(yMax);
   if (xMin<xMax) h->GetXaxis()->SetRangeUser(xMin,xMax);
-  TString plotOption = graphConfigurations[0]->getValueString(getName(),"PlotOption");
+  TString plotOption = graphConfigurations[0]->getValueString("PlotOption");
   h->DrawCopy(plotOption);
   for (unsigned int iGraph=1; iGraph<nGraphs; iGraph++)
     {
-    plotOption = graphConfigurations[iGraph]->getValueString(getName(),"PlotOption");
+    plotOption = graphConfigurations[iGraph]->getValueString("PlotOption");
     histograms[iGraph]->DrawCopy(plotOption+" SAME");
     }
   if (nGraphs<6)
@@ -355,7 +355,7 @@ TLegend * Plotter::createLegend(vector<DataGraph*> graphs,double x1, double y1, 
 ////////////////////////////////////////////////////
 TLine * Plotter::createLine(float x1, float y1, float x2, float y2, int style, int color, int width, bool doDraw)
 {
-  if (reportDebug("Plotter",getName(),"createLine(..)"))
+  if (reportDebug(__FUNCTION__))
     ;
   TLine *line = new TLine(x1,y1,x2,y2);
   line->SetLineStyle(style);
@@ -370,7 +370,7 @@ TLine * Plotter::createLine(float x1, float y1, float x2, float y2, int style, i
 ////////////////////////////////////////////////////
 TArrow * Plotter::createArrow(float x1, float y1, float x2, float y2, float arrowSize, Option_t* option, int style, int color, int width, bool doDraw)
 {
-  if (reportDebug("Plotter",getName(),"createArrow(..)"))
+  if (reportDebug(__FUNCTION__))
     ;
   TArrow *line = new TArrow(x1,y1,x2,y2,arrowSize,option);
   line->SetLineStyle(style);
@@ -386,45 +386,78 @@ TArrow * Plotter::createArrow(float x1, float y1, float x2, float y2, float arro
 ////////////////////////////////////////////////////////////////////////
 void Plotter::setProperties(TH1 * h, const GraphConfiguration & graphConfiguration)
 {
-  if (reportDebug("Plotter",getName(),"setProperties(TH1 * h,..)"))
+  if (reportInfo(__FUNCTION__))
     {
     cout << "Setting properties of histo: " << h->GetName() << endl;
     }
-
-  h->SetLineColor(graphConfiguration.getValueInt(getName(),"lineColor"));
-  h->SetLineStyle(graphConfiguration.getValueInt(getName(),"lineStyle"));
-  h->SetLineWidth(graphConfiguration.getValueInt(getName(),"lineWidth"));
-  h->SetMarkerColor(graphConfiguration.getValueInt(getName(),"markerColor"));
-  h->SetMarkerStyle(graphConfiguration.getValueInt(getName(),"markerStyle"));
-  h->SetMarkerSize (graphConfiguration.getValueDouble(getName(),"markerSize"));
-  TAxis * xAxis = (TAxis *) h->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nXDivisions"));
-  xAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"xTitleSize"));
-  xAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"xTitleOffset"));
-  xAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"xLabelSize"));
-  xAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"xLabelOffset"));
-  TAxis * yAxis = (TAxis *) h->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nYDivisions"));
-  yAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"yTitleSize"));
-  yAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"yTitleOffset"));
-  yAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"yLabelSize"));
-  yAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"yLabelOffset"));
-  if (h->IsA() == TH2::Class()  || h->IsA() == TH2F::Class() || h->IsA() == TH2F::Class() )
+  if (true)
     {
-    if (reportDebug(__FUNCTION__)) cout << "Setting properties as 2D histo: " << h->GetTitle() << endl;
-    TAxis * zAxis = (TAxis *) h->GetZaxis();
-    zAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nZDivisions"));
-    zAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"zTitleSize"));
-    zAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"zTitleOffset"));
-    zAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"zLabelSize"));
-    zAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"zLabelOffset"));
+    h->SetLineColor(graphConfiguration.getValueInt("lineColor"));
+    h->SetLineStyle(graphConfiguration.getValueInt("lineStyle"));
+    h->SetLineWidth(graphConfiguration.getValueInt("lineWidth"));
+    h->SetMarkerColor(graphConfiguration.getValueInt("markerColor"));
+    h->SetMarkerStyle(graphConfiguration.getValueInt("markerStyle"));
+    h->SetMarkerSize (graphConfiguration.getValueDouble("markerSize"));
+    TAxis * xAxis = (TAxis *) h->GetXaxis();
+    xAxis->SetNdivisions(graphConfiguration.getValueInt("nXDivisions"));
+    xAxis->SetTitleSize(graphConfiguration.getValueDouble("xTitleSize"));
+    xAxis->SetTitleOffset(graphConfiguration.getValueDouble("xTitleOffset"));
+    xAxis->SetLabelSize(graphConfiguration.getValueDouble("xLabelSize"));
+    xAxis->SetLabelOffset(graphConfiguration.getValueDouble("xLabelOffset"));
+    TAxis * yAxis = (TAxis *) h->GetYaxis();
+    yAxis->SetNdivisions(graphConfiguration.getValueInt("nYDivisions"));
+    yAxis->SetTitleSize(graphConfiguration.getValueDouble("yTitleSize"));
+    yAxis->SetTitleOffset(graphConfiguration.getValueDouble("yTitleOffset"));
+    yAxis->SetLabelSize(graphConfiguration.getValueDouble("yLabelSize"));
+    yAxis->SetLabelOffset(graphConfiguration.getValueDouble("yLabelOffset"));
+    if (h->IsA() == TH2::Class()  || h->IsA() == TH2F::Class() || h->IsA() == TH2F::Class() )
+      {
+      if (reportDebug(__FUNCTION__)) cout << "Setting properties as 2D histo: " << h->GetTitle() << endl;
+      TAxis * zAxis = (TAxis *) h->GetZaxis();
+      zAxis->SetNdivisions(graphConfiguration.getValueInt("nZDivisions"));
+      zAxis->SetTitleSize(graphConfiguration.getValueDouble("zTitleSize"));
+      zAxis->SetTitleOffset(graphConfiguration.getValueDouble("zTitleOffset"));
+      zAxis->SetLabelSize(graphConfiguration.getValueDouble("zLabelSize"));
+      zAxis->SetLabelOffset(graphConfiguration.getValueDouble("zLabelOffset"));
+      }
+    }
+  else
+    {
+    h->SetLineColor(graphConfiguration.getValueInt(getName(),"lineColor"));
+    h->SetLineStyle(graphConfiguration.getValueInt(getName(),"lineStyle"));
+    h->SetLineWidth(graphConfiguration.getValueInt(getName(),"lineWidth"));
+    h->SetMarkerColor(graphConfiguration.getValueInt(getName(),"markerColor"));
+    h->SetMarkerStyle(graphConfiguration.getValueInt(getName(),"markerStyle"));
+    h->SetMarkerSize (graphConfiguration.getValueDouble(getName(),"markerSize"));
+    TAxis * xAxis = (TAxis *) h->GetXaxis();
+    xAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nXDivisions"));
+    xAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"xTitleSize"));
+    xAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"xTitleOffset"));
+    xAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"xLabelSize"));
+    xAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"xLabelOffset"));
+    TAxis * yAxis = (TAxis *) h->GetYaxis();
+    yAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nYDivisions"));
+    yAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"yTitleSize"));
+    yAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"yTitleOffset"));
+    yAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"yLabelSize"));
+    yAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"yLabelOffset"));
+    if (h->IsA() == TH2::Class()  || h->IsA() == TH2F::Class() || h->IsA() == TH2F::Class() )
+      {
+      if (reportDebug(__FUNCTION__)) cout << "Setting properties as 2D histo: " << h->GetTitle() << endl;
+      TAxis * zAxis = (TAxis *) h->GetZaxis();
+      zAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nZDivisions"));
+      zAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"zTitleSize"));
+      zAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"zTitleOffset"));
+      zAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"zLabelSize"));
+      zAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"zLabelOffset"));
+      }
     }
 }
 
 void Plotter::setProperties(TH1 * h, const GraphConfiguration & graphConfiguration,
                             const TString & xTitle, const TString & yTitle, const TString & zTitle)
 {
-  if (reportDebug("Plotter",getName(),"setProperties(TH1 * h,..)"))
+  if (reportInfo("Plotter",getName(),"setProperties(TH1 * h, const GraphConfiguration & graphConfiguration, ....)"))
     {
     cout << "Setting properties of histo: " << h->GetTitle() << endl;
     }
@@ -446,30 +479,55 @@ void Plotter::setProperties(TGraph * g, const GraphConfiguration & graphConfigur
     {
     cout << "Setting properties of graph "<< g->GetTitle()  << endl;
     }
-  g->SetLineColor(graphConfiguration.getValueInt(getName(),"lineColor"));
-  g->SetLineStyle(graphConfiguration.getValueInt(getName(),"lineStyle"));
-  g->SetLineWidth(graphConfiguration.getValueInt(getName(),"lineWidth"));
-  g->SetMarkerColor(graphConfiguration.getValueInt(getName(),"markerColor"));
-  g->SetMarkerStyle(graphConfiguration.getValueInt(getName(),"markerStyle"));
-  g->SetMarkerSize (graphConfiguration.getValueDouble(getName(),"markerSize"));
-  TAxis * xAxis = (TAxis *) g->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nXDivisions"));
-  xAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"xTitleSize"));
-  xAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"xTitleOffset"));
-  xAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"xLabelSize"));
-  xAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"xLabelOffset"));
-  TAxis * yAxis = (TAxis *) g->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nYDivisions"));
-  yAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"yTitleSize"));
-  yAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"yTitleOffset"));
-  yAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"yLabelSize"));
-  yAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"yLabelOffset"));
+  if (true)
+    {
+    g->SetLineColor(graphConfiguration.getValueInt("lineColor"));
+    g->SetLineStyle(graphConfiguration.getValueInt("lineStyle"));
+    g->SetLineWidth(graphConfiguration.getValueInt("lineWidth"));
+    g->SetMarkerColor(graphConfiguration.getValueInt("markerColor"));
+    g->SetMarkerStyle(graphConfiguration.getValueInt("markerStyle"));
+    g->SetMarkerSize (graphConfiguration.getValueDouble("markerSize"));
+    TAxis * xAxis = (TAxis *) g->GetXaxis();
+    xAxis->SetNdivisions(graphConfiguration.getValueInt("nXDivisions"));
+    xAxis->SetTitleSize(graphConfiguration.getValueDouble("xTitleSize"));
+    xAxis->SetTitleOffset(graphConfiguration.getValueDouble("xTitleOffset"));
+    xAxis->SetLabelSize(graphConfiguration.getValueDouble("xLabelSize"));
+    xAxis->SetLabelOffset(graphConfiguration.getValueDouble("xLabelOffset"));
+    TAxis * yAxis = (TAxis *) g->GetYaxis();
+    yAxis->SetNdivisions(graphConfiguration.getValueInt("nYDivisions"));
+    yAxis->SetTitleSize(graphConfiguration.getValueDouble("yTitleSize"));
+    yAxis->SetTitleOffset(graphConfiguration.getValueDouble("yTitleOffset"));
+    yAxis->SetLabelSize(graphConfiguration.getValueDouble("yLabelSize"));
+    yAxis->SetLabelOffset(graphConfiguration.getValueDouble("yLabelOffset"));
+    }
+  else
+    {
+    g->SetLineColor(graphConfiguration.getValueInt(getName(),"lineColor"));
+    g->SetLineStyle(graphConfiguration.getValueInt(getName(),"lineStyle"));
+    g->SetLineWidth(graphConfiguration.getValueInt(getName(),"lineWidth"));
+    g->SetMarkerColor(graphConfiguration.getValueInt(getName(),"markerColor"));
+    g->SetMarkerStyle(graphConfiguration.getValueInt(getName(),"markerStyle"));
+    g->SetMarkerSize (graphConfiguration.getValueDouble(getName(),"markerSize"));
+    TAxis * xAxis = (TAxis *) g->GetXaxis();
+    xAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nXDivisions"));
+    xAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"xTitleSize"));
+    xAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"xTitleOffset"));
+    xAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"xLabelSize"));
+    xAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"xLabelOffset"));
+    TAxis * yAxis = (TAxis *) g->GetYaxis();
+    yAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nYDivisions"));
+    yAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"yTitleSize"));
+    yAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"yTitleOffset"));
+    yAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"yLabelSize"));
+    yAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"yLabelOffset"));
+    }
+
 }
 
 
 void Plotter::setProperties(TGraph * g, const GraphConfiguration & graphConfiguration, const TString & xTitle, const TString & yTitle)
 {
-  if (reportDebug("Plotter",getName(),"setProperties(TGraph * g,..)"))
+  if (reportInfo("Plotter",getName(),"setProperties(TGraph * g,..)"))
     {
     cout << "Setting properties of graph " << g->GetTitle() << endl;
     }
