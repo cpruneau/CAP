@@ -105,7 +105,7 @@ Run:Analysis:PartGen:Max_y            double  10.0
 Run:Analysis:PartGen:FillEta          bool    0
 Run:Analysis:PartGen:FillY            bool    1
 Run:Analysis:PartGen:FillP2           bool    0
-Run:Analysis:PairGen:LogLevel         string  Debug
+Run:Analysis:PairGen:LogLevel         string  Info
 Run:Analysis:PairGen:FillEta          bool    0
 Run:Analysis:PairGen:FillY            bool    1
 Run:Analysis:PairGen:FillP2           bool    0
