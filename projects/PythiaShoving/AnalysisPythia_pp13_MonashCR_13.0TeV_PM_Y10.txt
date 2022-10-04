@@ -16,7 +16,7 @@ Run:DerivedGen              bool  1
 Run:EventAnalysis           bool  1
 Run:EventAnalysisGen        bool  1
 Run:HistogramInputPath      string /Volumes/ClaudeDisc4/OutputFiles/PYTHIA/
-Run:HistogramOutputPath     string /Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/Shoving/
+Run:HistogramOutputPath     string /Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/MonashCR/
 Run:HistogramOutputFile     string null
 Run:FillEta                 bool   0
 Run:FillY                   bool   1
@@ -68,7 +68,7 @@ Run:Analysis:PYTHIA:ppOnly                bool    1
 Run:Analysis:PYTHIA:nMaxClonesArray       int     10000
 Run:Analysis:PYTHIA:DataConversionToWac   bool    1
 Run:Analysis:PYTHIA:DataInputUsed         bool    1
-Run:Analysis:PYTHIA:DataInputPath         string  /Volumes/ClaudeDisc4/Simulations/pp13/PythiaShoving/
+Run:Analysis:PYTHIA:DataInputPath         string  /Volumes/ClaudeDisc4/Simulations/pp13/PythiaMonashCR/
 Run:Analysis:PYTHIA:DataInputFile         string  FOLDER
 Run:Analysis:PYTHIA:DataInputTree         string  TT
 Run:Analysis:PYTHIA:dataInputFileMinIndex int -1
