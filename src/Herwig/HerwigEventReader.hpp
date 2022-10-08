@@ -62,34 +62,43 @@ protected:
   static const int arraySize = 50000;
   
   // Declaration of leaf types
-  Int_t           eventNo;
-  Int_t           nParticles;
-  Int_t           Nproj;
-  Int_t           Ntarg;
-  Float_t         impact;
-  Int_t           nPartTotal;
-  Int_t           pid[arraySize];   //[Mult]
-  Float_t         px[arraySize];   //[Mult]
-  Float_t         py[arraySize];   //[Mult]
-  Float_t         pz[arraySize];   //[Mult]
-  Float_t         m[arraySize];   //[Mult]
-  Float_t         Nx[arraySize];   //[Mult]
-  Float_t         Ny[arraySize];   //[Mult]
+  Int_t           nTracks;
+  UInt_t          tracks_fUniqueID[arraySize];   //[tracks_]
+  UInt_t          tracks_fBits[arraySize];   //[tracks_]
+  Double_t        tracks_fPt[arraySize];   //[tracks_]
+  Double_t        tracks_fPhi[arraySize];   //[tracks_]
+  Double_t        tracks_fY[arraySize];   //[tracks_]
+  Double_t        tracks_fMass[arraySize];   //[tracks_]
+  Double_t        tracks_fEta[arraySize];   //[tracks_]
+  Int_t           tracks_fPDG[arraySize];   //[tracks_]
+  Short_t         tracks_fCharge[arraySize];   //[tracks_]
+  Short_t         tracks_fIsPrimary[arraySize];   //[tracks_]
+  Int_t           tracks_fStatus[arraySize];   //[tracks_]
+  //MyEvent         *event;
+  UInt_t          fUniqueID;
+  UInt_t          fBits;
+  Int_t           fV0A;
+  Int_t           fV0C;
+  Int_t           fCL1;
 
   // List of branches
-  TBranch        *b_eventNo;   //!
-  TBranch        *b_mult;   //!
-  TBranch        *b_Nproj;   //!
-  TBranch        *b_Ntarg;   //!
-  TBranch        *b_impact;   //!
-  TBranch        *b_nPartTotal;   //!
-  TBranch        *b_pid;   //!
-  TBranch        *b_px;   //!
-  TBranch        *b_py;   //!
-  TBranch        *b_pz;   //!
-  TBranch        *b_m;   //!
-  TBranch        *b_Nx;   //!
-  TBranch        *b_Ny;   //!
+  TBranch        *b_tracks_;   //!
+  TBranch        *b_tracks_fUniqueID;   //!
+  TBranch        *b_tracks_fBits;   //!
+  TBranch        *b_tracks_fPt;   //!
+  TBranch        *b_tracks_fPhi;   //!
+  TBranch        *b_tracks_fY;   //!
+  TBranch        *b_tracks_fMass;   //!
+  TBranch        *b_tracks_fEta;   //!
+  TBranch        *b_tracks_fPDG;   //!
+  TBranch        *b_tracks_fCharge;   //!
+  TBranch        *b_tracks_fIsPrimary;   //!
+  TBranch        *b_tracks_fStatus;   //!
+  TBranch        *b_event_fUniqueID;   //!
+  TBranch        *b_event_fBits;   //!
+  TBranch        *b_event_fV0A;   //!
+  TBranch        *b_event_fV0C;   //!
+  TBranch        *b_event_fCL1;   //!
 
   ClassDef(HerwigEventReader,0)
 };

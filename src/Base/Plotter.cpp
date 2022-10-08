@@ -175,7 +175,7 @@ TCanvas *  Plotter::plot(vector<TGraph*> graphs,
   h = graphs[0];
   h->SetMinimum(yMin);
   h->SetMaximum(yMax);
-  //if (xMin<xMax) h->GetXaxis()->SetRangeUser(xMin,xMax);
+  if (xMin<xMax) h->GetXaxis()->SetRangeUser(xMin,xMax);
   TString plotOption = "ALP"; // graphConfigurations[0]->getValueString(getName(),"PlotOption");
   h->Draw(plotOption);
   //nGraphs = 1;

@@ -66,7 +66,7 @@ void RunAnalysis::setDefaultConfiguration()
   addParameter("GenLabel",        TString("Gen"));
   addParameter("RecoLabel",       TString("Reco"));
   addParameter("PythiaLabel",     TString("PYTHIA"));
-  addParameter("HerwigLabel",     TString("HERWIH"));
+  addParameter("HerwigLabel",     TString("HERWIG"));
   addParameter("HijingLabel",     TString("HIJING"));
   addParameter("AmptLabel",       TString("AMPT"));
   addParameter("EposLabel",       TString("EPOST"));
