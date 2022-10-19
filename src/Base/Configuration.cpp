@@ -557,6 +557,7 @@ void Configuration::readFromFile(const TString & inputFileName)
   double  dValue;
   TString sValue;
   bool debug = true;
+  
   while (1)
     {
     inputFile >> key;

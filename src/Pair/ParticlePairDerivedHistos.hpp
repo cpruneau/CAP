@@ -36,6 +36,9 @@ public:
                                               ParticlePairHistos     & pairHistos,
                                               double bincorrection);
 
+  void calculateOmegaFactor(TH2 * h_DyDphi, vector<double> & omegaFactor);
+  void calculateAverageYbar(TH2 * h_DyDphi, TH2 * h_DyDphi_Avg, vector<double> & omegaFactor);
+
   bool         fillEta;
   bool         fillY;
   bool         fillP2;
@@ -146,6 +149,11 @@ public:
   TH2* h_DptDpt_DyDphi_shft;
   TH2* h_P2_DyDphi_shft;
   TH2* h_G2_DyDphi_shft;
+
+  TH2* h_A2A_DyDphi_shft;
+  TH2* h_B2A_DyDphi_shft;
+  TH2* h_C2A_DyDphi_shft;
+  TH2* h_R2A_DyDphi_shft;
 
   TH2* h_pt1pt1_DyDphi;
   TH2* h_DptDpt_DyDphi;

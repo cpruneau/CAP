@@ -46,7 +46,7 @@ Run:AnaEventFilterNValues int 0
 Run:AnaPartFilterOption   string ChargedHadrons
 Run:AnaPartFilterPt       bool   1
 Run:AnaPartMinPt          double 0.2
-Run:AnaPartMaxPt          double 10.0
+Run:AnaPartMaxPt          double 4.0
 Run:AnaPartFilterEta      bool   0
 Run:AnaPartFilterY        bool   1
 Run:AnaPartMinY           double -4
@@ -54,8 +54,8 @@ Run:AnaPartMaxY           double 4
 Run:Analysis:LogLevel                     string Info
 Run:Analysis:ScaleHistograms              bool     1
 Run:Analysis:PYTHIA:LogLevel              string INFO
-Run:Analysis:PYTHIA:Energy                double 1000.0
-Run:Analysis:PYTHIA:EnergyLabel           string 1.00TeV
+Run:Analysis:PYTHIA:Energy                double 13000.0
+Run:Analysis:PYTHIA:EnergyLabel           string 13.00TeV
 Run:Analysis:PYTHIA:SystemLabel           string pp
 Run:Analysis:PYTHIA:Beam                  int    2212
 Run:Analysis:PYTHIA:Target                int    2212
