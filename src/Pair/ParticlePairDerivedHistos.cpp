@@ -663,12 +663,12 @@ void ParticlePairDerivedHistos::calculatePairDerivedHistograms(ParticleHistos   
     shiftY(*h_C2_DyDphi,  *h_C2_DyDphi_shft,     nBins_Dphi_shft);
     shiftY(*h_R2_DyDphi,  *h_R2_DyDphi_shft,     nBins_Dphi_shft);
 
-    vector<double> omegaFactor;
-    calculateOmegaFactor(h_rho2_DyDphi, omegaFactor)
-    calculateAverageYbar(h_A2_DyDphi, h_A2A_DyDphi, omegaFactor);
-    calculateAverageYbar(h_B2_DyDphi, h_B2A_DyDphi, omegaFactor);
-    calculateAverageYbar(h_C2_DyDphi, h_C2A_DyDphi, omegaFactor);
-    calculateAverageYbar(h_R2_DyDphi, h_R2A_DyDphi, omegaFactor);
+//    vector<double> omegaFactor;
+//    calculateOmegaFactor(h_rho2_DyDphi, omegaFactor)
+//    calculateAverageYbar(h_A2_DyDphi, h_A2A_DyDphi, omegaFactor);
+//    calculateAverageYbar(h_B2_DyDphi, h_B2A_DyDphi, omegaFactor);
+//    calculateAverageYbar(h_C2_DyDphi, h_C2A_DyDphi, omegaFactor);
+//    calculateAverageYbar(h_R2_DyDphi, h_R2A_DyDphi, omegaFactor);
 
 
     if (fillP2)
@@ -720,12 +720,12 @@ void ParticlePairDerivedHistos::calculateOmegaFactor(TH2 * h_DyDphi, vector<doub
     }
   cout << " yIndex : " << yIndex << endl;
   double y0 = h_DyDphi->GetXaxis()->GetBinLowEdge(yIndex);
-  for (int iY=yIndex; iY<=nYBins+1-yIndex)
-    {
-    double dy = h_DyDphi->GetXaxis()->GetBinCenter(yIndex);
-    omegaFactor[-1+iY] = y0-fabs(dy);
-    cout << " iY : " << iY << " omega[iY] : " << omegaFactor[-1+iY] << endl;
-    }
+//  for (int iY=yIndex; iY<=nYBins+1-yIndex)
+//    {
+//    double dy = h_DyDphi->GetXaxis()->GetBinCenter(yIndex);
+//    omegaFactor[-1+iY] = y0-fabs(dy);
+//    cout << " iY : " << iY << " omega[iY] : " << omegaFactor[-1+iY] << endl;
+//    }
 }
 
 
@@ -733,15 +733,15 @@ void ParticlePairDerivedHistos::calculateAverageYbar(TH2 * h_DyDphi, TH2 * h_DyD
 {
   int nYBins   = h_DyDphi->GetNbinsX();
   int nPhiBins = h_DyDphi->GetNbinsY();
-  for (int iY=1; iY<=nY; iY++)
-    {
-    double scale = 1.0/omegaFactor[iY-1];
-    for (int iPhi=1; iPhi<=nPhiBins; iPhi++)
-      {
-      double v  =  h_DyDphi->GetBinContent(iY,iPhi);
-      double ev =  h_DyDphi->GetBinError(iY,iPhi);
-      h_DyDphi_Avg->SetBinContent(iY,iPhi,v*scale);
-      h_DyDphi_Avg->SetBinError(iY,iPhi,ev*scale);
-      }
-    }
+//  for (int iY=1; iY<=nY; iY++)
+//    {
+//    double scale = 1.0/omegaFactor[iY-1];
+//    for (int iPhi=1; iPhi<=nPhiBins; iPhi++)
+//      {
+//      double v  =  h_DyDphi->GetBinContent(iY,iPhi);
+//      double ev =  h_DyDphi->GetBinError(iY,iPhi);
+//      h_DyDphi_Avg->SetBinContent(iY,iPhi,v*scale);
+//      h_DyDphi_Avg->SetBinError(iY,iPhi,ev*scale);
+//      }
+//    }
   }

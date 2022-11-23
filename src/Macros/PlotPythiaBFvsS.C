@@ -1,4 +1,3 @@
-
 /* **********************************************************************
  * Copyright (C) 2019-2022, Claude Pruneau, Victor Gonzalez, Sumit Basu
  * All rights reserved.
@@ -154,13 +153,28 @@ TGraph * makeGraph(vector<double> vx, vector<double> vex, vector<double> vy,  ve
 
 TH1 * makeHistoWithNames(const TString & histoName, vector<TString> & entryNames, vector<double> & vy,  vector<double> & vey)
 {
+  cout << "<I> makeHistoWithNames(names,vy,vey) Starting the creation of histo called " << histoName << endl;
+
   int n = vy.size();
-  if ( vy.size()!=n || vey.size()!=n )
+  int n1 = vey.size();
+  cout << "<I> makeHistoWithNames(names,vy,vey) n:" << n << "  n1:" << n1 << endl;
+  if ( n!=n1 || n<1 )
     {
     cout << "<E> makeHistoWithNames(names,vy,vey) arguments provided have incompatible sizes)" << endl;
-    return 0;
+    return nullptr;
     }
   TH1 * h = new TH1D(histoName,histoName,n,0.0, double(n));
+  cout << "<I> makeHistoWithNames(names,vy,vey) Histogram created?" << endl;
+  if (!h)
+    {
+    cout << "<E> makeHistoWithNames(names,vy,vey) Histogram pointer is null" << endl;
+    return nullptr;
+    }
+  else
+    {
+    cout << "<E> makeHistoWithNames(names,vy,vey) Histogram pointer is NOT null" << endl;
+    }
+
   for (int k=0;k<n;k++)
     {
     h->SetBinContent(k+1,vy[k]);
@@ -186,6 +200,7 @@ int plotSet(Plotter * plotter,
             bool doWidth=false)
 {
   CanvasConfiguration landscapeLinear(CanvasConfiguration::LandscapeWide,CanvasConfiguration::Linear);
+  CanvasConfiguration landscapeLogX(CanvasConfiguration::Landscape,CanvasConfiguration::LogX);
   CanvasConfiguration landscapeLogY(CanvasConfiguration::LandscapeWide,CanvasConfiguration::LogY);
   vector<GraphConfiguration*>  graphConfigurations1D = GraphConfiguration::createConfigurationPalette(10,1);
   vector<GraphConfiguration*>  graphConfigurations2D = GraphConfiguration::createConfigurationPalette(10,2);
@@ -199,6 +214,11 @@ int plotSet(Plotter * plotter,
     graphConfigurations1D[k]->setParameter("xLabelSize",   0.07);
     graphConfigurations1D[k]->setParameter("yLabelSize",   0.07);
     }
+  graphConfigurations1D[3]->setParameter("markerColor",  kBlue);
+  graphConfigurations1D[3]->setParameter("markerStyle",  kFullSquare);
+
+  graphConfigurations1D[4]->setParameter("markerColor",  kBlue);
+  graphConfigurations1D[4]->setParameter("markerStyle",  25);
 
   vector<TH2*>    histos2D;
   vector<TH1*>    histos1Dx;
@@ -222,12 +242,13 @@ int plotSet(Plotter * plotter,
 
   double minX     = -20.0;
   double maxX     =  20.0;
-  double minB2    = -0.05;
+  double minB2    = -0.01;
   double maxB2    =  0.1;
-  double minB2x   = -0.2199;
+  double minB2x   = -0.2199;    
+
   double maxB2x   =  0.4999;
-  double minB2y   = -0.025;
-  double maxB2y   =  0.5;
+  double minB2y   = -0.25;
+  double maxB2y   =  0.25;
   double minI2    = -1.199;
   double maxI2    =  3.199;
   double etaLow   =  0.1;
@@ -239,8 +260,6 @@ int plotSet(Plotter * plotter,
   TString titleB2;
   TString titleI2;
 
-  TLine * line = new TLine(0.0,1.0, 20.0,1.0);
-  TLine * line2 = new TLine(0.0,1.0, 3.0,1.0);
 
   switch (xAxisType)
     {
@@ -251,8 +270,8 @@ int plotSet(Plotter * plotter,
   switch (b2Type)
     {
       case 0:
-      titleB2     = "B^{#bar{1}2}";
-      titleI2     = "I^{#bar{1}2}";
+      titleB2     = "B^{-+}"; // B^{#bar{1}2}";
+      titleI2     = "I^{-+}"; // "I^{#bar{1}2}";
       b2XprojName = "PythiaPPvsS_B2_1Bar_2_VsDeltaX";
       b2YprojName = "PythiaPPvsS_B2_1Bar_2_VsDeltaY";
       i2Name      = "PythiaPPvsS_I2_1Bar_2_VsDeltaX";
@@ -261,8 +280,8 @@ int plotSet(Plotter * plotter,
       i2NameHighRes      = "PythiaPPvsS_I2_1Bar_2_VsDeltaXHighRes";
       break;
       case 1:
-      titleB2 = "B^{1#bar{2}}";
-      titleI2 = "I^{1#bar{2}}";
+      titleB2 = "B^{+-}";
+      titleI2 = "I^{+-}";
       b2XprojName = "PythiaPPvsS_B2_1_2Bar_VsDeltaX";
       b2YprojName = "PythiaPPvsS_B2_1_2Bar_VsDeltaY";
       i2Name      = "PythiaPPvsS_I2_1_2Bar_VsDeltaX";
@@ -294,15 +313,20 @@ int plotSet(Plotter * plotter,
     TH2 * h2 = plotter->getHistogramCollection().loadH2(f,histoNames2D[iFile]);
     if (!h2)
       {
+      cout << " In file " <<  histoInputFileNames[iFile] << endl;
       cout << " Could not load histogram named " << histoNames2D[iFile] << endl;
       cout << " ABORT!!!!" << endl;
       return -1;
       }
+   h2->Rebin2D(4,2);
+   h2->Scale(0.25);
+
     histos2D.push_back(h2);
 
     TH1 * h1x = plotter->getHistogramCollection().loadH1(f,histoNames1Dx[iFile]);
     if (!h1x)
       {
+      cout << " In file " <<  histoInputFileNames[iFile] << endl;
       cout << " Could not load histogram named " << histoNames1Dx[iFile] << endl;
       cout << " ABORT!!!!" << endl;
       return -1;
@@ -313,6 +337,7 @@ int plotSet(Plotter * plotter,
     TH1 * h1y = plotter->getHistogramCollection().loadH1(f,histoNames1Dy[iFile]);
     if (!h1y)
       {
+      cout << " In file " <<  histoInputFileNames[iFile] << endl;
       cout << " Could not load histogram named " << histoNames1Dy[iFile] << endl;
       cout << " ABORT!!!!" << endl;
       return -1;
@@ -376,6 +401,7 @@ int plotSet(Plotter * plotter,
     cout << "   k : " << k << "  " << rmsWidths[k] << " +- " << rmsWidthErrors[k] << endl;
     }
 
+  cout << "Make width histogram" << endl;
 
   TH1 * widthsHisto = makeHistoWithNames(widthHistoName, widthEntryNames, rmsWidths, rmsWidthErrors);
   //widthsHisto->Draw(); // return 0;
@@ -390,44 +416,61 @@ int plotSet(Plotter * plotter,
                   "RMS",0.6, 0.3, 0.8, 0.4, 0.05);
     }
   else
-  {
-  cout << "widthsHisto is a null pointer...  " << endl;
-  }
+    {
+    cout << "widthsHisto is a null pointer...  " << endl;
+    }
 
-    switch (b2Type)
-      {
-        case 0:
-        plotter->plot(histos1Dx,graphConfigurations1D,titles,b2XprojName,landscapeLinear,titleX, minX, maxX,titleB2,minB2x,maxB2x, 0.57, 0.6, 0.75, 0.9, 0.04);
-        plotter->plot(histos1Dy,graphConfigurations1D,titles,b2YprojName,landscapeLinear,titleY, 1.0, -1.0, titleB2,minB2y,maxB2y, 0.6, 0.6, 0.75, 0.9, 0.04);
-        plotter->plot(integralGraphs,   graphConfigurations1D,titles,i2Name,landscapeLinear,titleX, 0.0, maxX, titleI2,minI2,maxI2,   0.52, 0.6, 0.85, 0.89, 0.04);
-        line->Draw();
-        plotter->plot(histos1DxHighRes,graphConfigurations1D,titles,b2XprojNameHighRes,landscapeLinear,titleX, -3.0, 3.0,titleB2,-0.02, 0.49, 0.40, 0.2, 0.60, 0.45, 0.04);
-        plotter->plot(integralGraphsHighRes, graphConfigurations1D,titles,i2NameHighRes,landscapeLinear,titleX, 0.0, 3.0, titleI2,-0.02, 1.199,   0.52, 0.3, 0.85, 0.6, 0.04);
-        line2->Draw();
-        break;
-        case 1:
-        plotter->plot(histos1Dx,graphConfigurations1D,titles,b2XprojName,landscapeLinear,titleX, minX, maxX,titleB2,minB2x,maxB2x, 0.57, 0.6, 0.75, 0.9, 0.04);
-        plotter->plot(histos1Dy,graphConfigurations1D,titles,b2YprojName,landscapeLinear,titleY, 1.0, -1.0, titleB2,minB2y,maxB2y, 0.6, 0.2, 0.75, 0.5, 0.04);
-        plotter->plot(integralGraphs,   graphConfigurations1D,titles,i2Name,landscapeLinear,titleX, 0.0, maxX, titleI2,minI2,maxI2,   0.52, 0.2, 0.85, 0.49, 0.04);
-        line->Draw();
-        plotter->plot(histos1DxHighRes,graphConfigurations1D,titles,b2XprojNameHighRes,landscapeLinear,titleX, -3.0, 3.0,titleB2,-0.02, 0.49, 0.40, 0.2, 0.60, 0.45, 0.04);
-        plotter->plot(integralGraphsHighRes, graphConfigurations1D,titles,i2NameHighRes,landscapeLinear,titleX, 0.0, 3.0, titleI2,-0.02, 1.199,   0.52, 0.3, 0.85, 0.6, 0.04);
-        line2->Draw();
+  cout << "Done with width histogram" << endl;
 
-        break;
-        case 2:
-        cout << " case 2 ----" << endl;
-        plotter->plot(histos1Dx,graphConfigurations1D,titles,b2XprojName,landscapeLinear,titleX, minX, maxX,titleB2, minB2x,maxB2x, 0.57, 0.6, 0.75, 0.9, 0.04);
-        plotter->plot(histos1Dy,graphConfigurations1D,titles,b2YprojName,landscapeLinear,titleY, 1.0, -1.0, titleB2, 0.0,0.04,      0.6, 0.6, 0.75, 0.9, 0.04);
-        plotter->plot(integralGraphs,   graphConfigurations1D,titles,i2Name,     landscapeLinear,titleX, 0.0, maxX, titleI2,minI2,maxI2,    0.52, 0.2, 0.85, 0.49, 0.04);
-        line->Draw();
-        plotter->plot(histos1DxHighRes,graphConfigurations1D,titles,b2XprojNameHighRes,landscapeLinear,titleX, -3.0, 3.0,titleB2,-0.02, 0.49,     0.6, 0.57, 0.80, 0.89, 0.04);
-        //plotter->plot(integralGraphsHighRes, graphConfigurations1D,titles,i2NameHighRes,landscapeLinear,titleX, 0.0, 3.0, titleI2,-0.02, 1.199,   0.52, 0.3, 0.72, 0.6, 0.04);
-        plotter->plot(integralGraphsHighRes, graphConfigurations1D,titles,i2NameHighRes,landscapeLinear,titleX, 0.0, 3.0, titleI2,-0.02, 1.199,   0.45, 0.2, 0.75, 0.5, 0.04);
-        line2->Draw();
-        break;
 
-      }
+
+  // y dependence
+  minX = -20.0; maxX = 20.0;
+  //minX   = -6.0;  maxX = 6.0;
+  //minB2x = -0.02; maxB2x = 0.5;
+  minB2x = -0.149;  maxB2x = 0.5;
+  minI2  =  0.0;   maxI2 = 1.19;
+  //minI2  =  -1.2;   maxI2 = 3.2;
+  double minInt = 0.02;
+  double maxInt = 20.0;
+  TLine * line = new TLine(0.0,1.0,  20.0,1.0);
+  TLine * line2 = new TLine(0.0,1.0, 3.0,1.0);
+
+  //->GetXaxis()->SetRangeUser(-6.0,6.0)
+  switch (b2Type)
+    {
+      case 0:
+      plotter->plot(histos1Dx,graphConfigurations1D,widthEntryNames,b2XprojName,landscapeLinear,titleX, minX, maxX,titleB2,minB2x,maxB2x, 0.65, 0.55, 0.8, 0.9, 0.05);
+      plotter->plot(histos1Dy,graphConfigurations1D,widthEntryNames,b2YprojName,landscapeLinear,titleY, 1.0, -1.0, titleB2, 0.10, 0.25, 0.5, 0.55, 0.76, 0.85, 0.05);
+      plotter->plot(integralGraphs,   graphConfigurations1D,widthEntryNames,i2Name,landscapeLogX,titleX, minInt,maxInt, titleI2,minI2,maxI2,    0.55, 0.2, 0.85, 0.50, 0.05);
+      line->Draw();
+      plotter->plot(histos1DxHighRes,graphConfigurations1D,widthEntryNames,b2XprojNameHighRes,landscapeLinear,titleX, -3.0, 3.0,titleB2,-0.02, 0.49, 0.40, 0.2, 0.60, 0.45, 0.04);
+      plotter->plot(integralGraphsHighRes, graphConfigurations1D,widthEntryNames,i2NameHighRes,landscapeLinear,titleX, 0.0, 3.0, titleI2,0.0, 1.199,   0.49, 0.3, 0.85, 0.6, 0.04);
+      line2->Draw();
+      break;
+      case 1:
+      plotter->plot(histos1Dx,graphConfigurations1D,widthEntryNames,b2XprojName,landscapeLinear,titleX, minX, maxX,titleB2,minB2x,maxB2x, 0.65, 0.55, 0.8, 0.9, 0.05);
+      plotter->plot(histos1Dy,graphConfigurations1D,widthEntryNames,b2YprojName,landscapeLinear,titleY, 1.0, -1.0, titleB2, 0.10, 0.25, 0.5, 0.55, 0.76, 0.85, 0.05);
+      plotter->plot(integralGraphs,   graphConfigurations1D,widthEntryNames,i2Name,landscapeLogX,titleX, minInt,maxInt,  titleI2,minI2,maxI2,   0.55, 0.2, 0.85, 0.50, 0.05);
+      line->Draw();
+      plotter->plot(histos1DxHighRes,graphConfigurations1D,widthEntryNames,b2XprojNameHighRes,landscapeLinear,titleX, -3.0, 3.0,titleB2,-0.02, 0.49, 0.40, 0.2, 0.60, 0.45, 0.04);
+      plotter->plot(integralGraphsHighRes, graphConfigurations1D,widthEntryNames,i2NameHighRes,landscapeLinear,titleX, 0.0, 3.0, titleI2,-0.02, 1.199,   0.52, 0.3, 0.85, 0.6, 0.04);
+      line2->Draw();
+
+      break;
+      case 2:
+      cout << " case 2 ----" << endl;
+      plotter->plot(histos1Dx,graphConfigurations1D,widthEntryNames,b2XprojName,landscapeLinear,titleX, minX, maxX,titleB2, minB2x,maxB2x, 0.6, 0.5, 0.75, 0.9, 0.045);
+      plotter->plot(histos1Dy,graphConfigurations1D,widthEntryNames,b2YprojName,landscapeLinear,titleY, 1.0, -1.0, titleB2, 0.10, 0.25, 0.5, 0.55, 0.76, 0.85, 0.05);
+      plotter->plot(integralGraphs,   graphConfigurations1D,widthEntryNames,i2Name,landscapeLogX,titleX, minInt,maxInt,  titleI2,minI2,maxI2,   0.55, 0.2, 0.8, 0.45, 0.047);
+      line->Draw();
+      plotter->plot(histos1DxHighRes,graphConfigurations1D,widthEntryNames,b2XprojNameHighRes,landscapeLinear,titleX, -3.0, 3.0,titleB2,-0.02, 0.49,   0.65, 0.6, 0.80, 0.87, 0.05);
+      //plotter->plot(integralGraphsHighRes, graphConfigurations1D,titles,i2NameHighRes,landscapeLinear,titleX, 0.0, 3.0, titleI2,-0.02, 1.199,   0.52, 0.3, 0.72, 0.6, 0.04);
+      plotter->plot(integralGraphsHighRes, graphConfigurations1D,widthEntryNames,i2NameHighRes,landscapeLinear,titleX, 0.0, 3.0, titleI2,-0.02, 1.199,   0.45, 0.2, 0.75, 0.5, 0.04);
+      line2->Draw();
+      break;
+
+    }
   return 0;
 }
 
@@ -470,342 +513,175 @@ int PlotPythiaBFvsS(int option = 22)
     {
       case 8:
       // Y10 -- A2
-      histoInputFileNames.push_back(TString("PP/1000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_B2Based_B2_1Bar_2"));
-      titles.push_back(TString("(a) #sqrt{s} = 1.0 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
+      histoInputFileNames.push_back(TString("PP/900/PM/Y10/PairGenBalFctSum0TO9.root"));
+      names.push_back(TString("PYTHIA_pp_0.9TeV_B2Based_B2_1Bar_2"));
+      titles.push_back(TString("(a) #sqrt{s} = 0.9 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 0.9 TeV"));
+      histoNames2D.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
+      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
+      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
 
-      histoInputFileNames.push_back(TString("PP/2700/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      histoInputFileNames.push_back(TString("PP/2700/PM/Y10/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_pp_2.7TeV_B2Based_B2_1Bar_2"));
-      titles.push_back(TString("(b) #sqrt{s} = 2.76 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
+      widthLabels.push_back(TString("#sqrt{s} = 2.76 TeV"));
+      titles.push_back(TString("(a) #sqrt{s} = 2.76 TeV"));
+      histoNames2D.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
+      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
+      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
 
-      histoInputFileNames.push_back(TString("PP/5200/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      histoInputFileNames.push_back(TString("PP/5020/PM/Y10/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_pp_5.2TeV_B2Based_B2_1Bar_2"));
-      titles.push_back(TString("(c) #sqrt{s} = 5.20 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
-
-      //      histoInputFileNames.push_back(TString("PP/13000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      //      names.push_back(TString("PYTHIA_pp_13TeV_B2Based_B2_1Bar_2"));
-      //      titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
-      //      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
-      //      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
-      //      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PP/13000/PMgrid/PairGenBalFctSum0TO4.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_B2Based_B2_1Bar_2"));
-      titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
+      titles.push_back(TString("#sqrt{s} = 5.02 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 5.02 TeV"));
       histoNames2D.push_back(TString( "PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
 
+      histoInputFileNames.push_back(TString("PP/13000/PM/Y10/PairGenBalFctSum0TO4.root"));
+      names.push_back(TString("PYTHIA_pp_13TeV_B2Based_B2_1Bar_2"));
+      titles.push_back(TString("pp  #sqrt{s} = 13.0 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 13.0 TeV"));
+      histoNames2D.push_back(TString( "PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
+      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
+      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
 
-      histoInputFileNames.push_back(TString("PPbar/13000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
+      histoInputFileNames.push_back(TString("PPbar/13000/PM/Y10/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_ppBar_13TeV_B2Based_B2_1Bar_2"));
-      titles.push_back(TString("(e) #sqrt{s} = 13.0 TeV - p#bar{p}"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
+      titles.push_back(TString("#sqrt{s} = 13.0 TeV - p#bar{p}"));
+      widthLabels.push_back(TString("#sqrt{s} = 13.0 TeV  - p#bar{p}"));
+      histoNames2D.push_back(TString( "PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
+      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
+      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
 
-      outputPath += "/B2Derived/";
+      outputPath += "/PM/Y10/B2Derived/";
       plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,0);
       break;
-
-
 
       case 9:
       // Y10 -- A2
-      histoInputFileNames.push_back(TString("PP/1000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_A2Based_B2_1Bar_2"));
-      titles.push_back(TString("(a) #sqrt{s} = 1.0 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
+      histoInputFileNames.push_back(TString("PP/900/PM/Y10/PairGenBalFctSum0TO9.root"));
+      names.push_back(TString("PYTHIA_pp_0.9TeV_B2Based_B2_1_2Bar"));
+      titles.push_back(TString("(b) #sqrt{s} = 0.9 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 0.9 TeV"));
+      histoNames2D.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar"));
+      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_x"));
+      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_y"));
 
-      histoInputFileNames.push_back(TString("PP/2700/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_2.7TeV_A2Based_B2_1Bar_2"));
+      histoInputFileNames.push_back(TString("PP/2700/PM/Y10/PairGenBalFctSum0TO9.root"));
+      names.push_back(TString("PYTHIA_pp_2.7TeV_B2Based_B2_1_2Bar"));
+      widthLabels.push_back(TString("#sqrt{s} = 2.76 TeV"));
       titles.push_back(TString("(b) #sqrt{s} = 2.76 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
+      histoNames2D.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar"));
+      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_x"));
+      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_y"));
 
-      histoInputFileNames.push_back(TString("PP/5200/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_A2Based_B2_1Bar_2"));
-      titles.push_back(TString("(c) #sqrt{s} = 5.20 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
+      histoInputFileNames.push_back(TString("PP/5020/PM/Y10/PairGenBalFctSum0TO9.root"));
+      names.push_back(TString("PYTHIA_pp_5.2TeV_B2Based_B2_1_2Bar"));
+      titles.push_back(TString("(b) #sqrt{s} = 5.02 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 5.02 TeV"));
+      histoNames2D.push_back(TString( "PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar"));
+      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_x"));
+      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_y"));
 
-      //      histoInputFileNames.push_back(TString("PP/13000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      //      names.push_back(TString("PYTHIA_pp_13TeV_A2Based_B2_1Bar_2"));
-      //      titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
-      //      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
-      //      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
-      //      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
+      histoInputFileNames.push_back(TString("PP/13000/PM/Y10/PairGenBalFctSum0TO4.root"));
+      names.push_back(TString("PYTHIA_pp_13TeV_B2Based_B2_1_2Bar"));
+      titles.push_back(TString("(b) pp  #sqrt{s} = 13.0 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 13.0 TeV"));
+      histoNames2D.push_back(TString( "PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar"));
+      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_x"));
+      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_y"));
 
-      histoInputFileNames.push_back(TString("PP/13000/PMgrid/PairGenBalFctSum0TO4.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_A2Based_B2_1Bar_2"));
-      titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
-      histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
+      histoInputFileNames.push_back(TString("PPbar/13000/PM/Y10/PairGenBalFctSum0TO9.root"));
+      names.push_back(TString("PYTHIA_ppBar_13TeV_B2Based_B2_1_2Bar"));
+      titles.push_back(TString("(b) #sqrt{s} = 13.0 TeV - p#bar{p}"));
+      widthLabels.push_back(TString("#sqrt{s} = 13.0 TeV  - p#bar{p}"));
+      histoNames2D.push_back(TString( "PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar"));
+      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_x"));
+      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_y"));
 
-
-      histoInputFileNames.push_back(TString("PPbar/13000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_ppBar_13TeV_A2Based_B2_1Bar_2"));
-      titles.push_back(TString("(e) #sqrt{s} = 13.0 TeV - p#bar{p}"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
-
-      outputPath += "/A2Derived/";
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,0);
+      outputPath += "/PM/Y10/B2Derived/";
+      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,1);
       break;
+
 
       case 10:
-      //
-      histoInputFileNames.push_back(TString("PP/1000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_A2Based_B2_1_2Bar"));
-      titles.push_back(TString("(f) #sqrt{s} = 1.0 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/2700/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_2.7TeV_A2Based_B2_1_2Bar"));
-      titles.push_back(TString("(g) #sqrt{s} = 2.7 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/5200/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_A2Based_B2_1_2Bar"));
-      titles.push_back(TString("(h) #sqrt{s} = 5.2 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/13000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_A2Based_B2_1_2Bar"));
-      titles.push_back(TString("(i) #sqrt{s} = 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PPbar/13000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_ppBar_13TeV_A2Based_B2_1_2Bar"));
-      titles.push_back(TString("(j) #sqrt{s} = 13.0 TeV - p#bar{p}"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
-
-      outputPath += "/A2Derived/";
-
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,1);
-      break;
-
-      case 11:
-      // B2_12Sum
-      histoInputFileNames.push_back(TString("PP/1000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_A2Based_B2_12Sum"));
-      titles.push_back(TString("(k) #sqrt{s} = 1.0 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
-
-      histoInputFileNames.push_back(TString("PP/2700/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_2.7TeV_A2Based_B2_12Sum"));
-      titles.push_back(TString("(l) #sqrt{s} = 2.7 TeV"));
-      histoNames2D.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
-
-      histoInputFileNames.push_back(TString("PP/5200/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_A2Based_B2_12Sum"));
-      titles.push_back(TString("(m) #sqrt{s} = 5.2 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
-
-      histoInputFileNames.push_back(TString("PP/13000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_A2Based_B2_12Sum"));
-      titles.push_back(TString("(n) #sqrt{s} = 13.0 TeV"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
-
-      histoInputFileNames.push_back(TString("PPbar/13000/PM/Y10WidePt/PYTHIA_Pair_Gen_Derived_BalFct.root"));
-      names.push_back(TString("PYTHIA_ppBar_13TeV_A2Based_B2_12Sum"));
-      titles.push_back(TString("(o) #sqrt{s} = 13.0 TeV - p#bar{p}"));
-      histoNames2D.push_back(TString( "Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("Pair_Gen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
-
-      outputPath += "/A2Derived/";
-
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,2);
-      break;
-
-
-      case 20:
-      // Y10 -- b2
-      histoInputFileNames.push_back(TString("PP/1000/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_B2Based_B2_1Bar_2"));
-      titles.push_back(TString("(a) #sqrt{s} = 1.0 TeV"));
-      histoNames2D.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PP/2700/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_2.7TeV_B2Based_B2_1Bar_2"));
-      titles.push_back(TString("(b) #sqrt{s} = 2.76 TeV"));
-      histoNames2D.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PP/5200/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_B2Based_B2_1Bar_2"));
-      titles.push_back(TString("(c) #sqrt{s} = 5.20 TeV"));
-      histoNames2D.push_back(TString( "PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PP/13000/PMgrid/PairGenBalFctSum0TO4.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_B2Based_B2_1Bar_2"));
-      titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
-      histoNames2D.push_back(TString( "PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
-
-
-      histoInputFileNames.push_back(TString("PPbar/13000/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_ppBar_13TeV_B2Based_B2_1Bar_2"));
-      titles.push_back(TString("(e) #sqrt{s} = 13.0 TeV - p#bar{p}"));
-      histoNames2D.push_back(TString( "PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1Bar_2_y"));
-
-      outputPath += "/B2Derived/";
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,0);
-      break;
-
-      case 21:
-      // Y10 -- b2
-      histoInputFileNames.push_back(TString("PP/1000/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_B2Based_B2_1_2Bar"));
-      titles.push_back(TString("(a) #sqrt{s} = 1.0 TeV"));
-      histoNames2D.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/2700/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_2.7TeV_B2Based_B2_1_2Bar"));
-      titles.push_back(TString("(b) #sqrt{s} = 2.76 TeV"));
-      histoNames2D.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/5200/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_B2Based_B2_1_2Bar"));
-      titles.push_back(TString("(c) #sqrt{s} = 5.20 TeV"));
-      histoNames2D.push_back(TString( "PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/13000/PMgrid/PairGenBalFctSum0TO4.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_B2Based_B2_1_2Bar"));
-      titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
-      histoNames2D.push_back(TString( "PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_y"));
-
-
-      histoInputFileNames.push_back(TString("PPbar/13000/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_ppBar_13TeV_B2Based_B2_1_2Bar"));
-      titles.push_back(TString("(e) #sqrt{s} = 13.0 TeV - p#bar{p}"));
-      histoNames2D.push_back(TString( "PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_1_2Bar_y"));
-
-      outputPath += "/B2Derived/";
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,1);
-      break;
-
-      case 22:
-      // Y10 -- b2
-      histoInputFileNames.push_back(TString("PP/1000/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_B2Based_B2_12Sum"));
-      titles.push_back(TString("(a) #sqrt{s} = 1.0 TeV"));
+      histoInputFileNames.push_back(TString("PP/900/PM/Y10/PairGenBalFctSum0TO9.root"));
+      names.push_back(TString("PYTHIA_pp_0.9TeV_B2Based_B2_12Sum"));
+      titles.push_back(TString("(c) #sqrt{s} = 0.9 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 0.9 TeV"));
       histoNames2D.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_y"));
 
-      histoInputFileNames.push_back(TString("PP/2700/PMgrid/PairGenBalFctSum0TO9.root"));
+      histoInputFileNames.push_back(TString("PP/2700/PM/Y10/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_pp_2.7TeV_B2Based_B2_12Sum"));
-      titles.push_back(TString("(b) #sqrt{s} = 2.76 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 2.76 TeV"));
+      titles.push_back(TString("(c) #sqrt{s} = 2.76 TeV"));
       histoNames2D.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_y"));
 
-      histoInputFileNames.push_back(TString("PP/5200/PMgrid/PairGenBalFctSum0TO9.root"));
+      histoInputFileNames.push_back(TString("PP/5020/PM/Y10/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_pp_5.2TeV_B2Based_B2_12Sum"));
-      titles.push_back(TString("(c) #sqrt{s} = 5.20 TeV"));
+      titles.push_back(TString("(c) #sqrt{s} = 5.02 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 5.02 TeV"));
       histoNames2D.push_back(TString( "PairGen_All_HP_HP_B2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_y"));
 
-      histoInputFileNames.push_back(TString("PP/13000/PMgrid/PairGenBalFctSum0TO4.root"));
+      histoInputFileNames.push_back(TString("PP/13000/PM/Y10/PairGenBalFctSum0TO4.root"));
       names.push_back(TString("PYTHIA_pp_13TeV_B2Based_B2_12Sum"));
-      titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
+      titles.push_back(TString("(c) pp  #sqrt{s} = 13.0 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 13.0 TeV"));
       histoNames2D.push_back(TString( "PairGen_All_HP_HP_B2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_y"));
 
-
-      histoInputFileNames.push_back(TString("PPbar/13000/PMgrid/PairGenBalFctSum0TO9.root"));
+      histoInputFileNames.push_back(TString("PPbar/13000/PM/Y10/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_ppBar_13TeV_B2Based_B2_12Sum"));
-      titles.push_back(TString("(e) #sqrt{s} = 13.0 TeV - p#bar{p}"));
+      titles.push_back(TString("(c) #sqrt{s} = 13.0 TeV - p#bar{p}"));
+      widthLabels.push_back(TString("#sqrt{s} = 13.0 TeV  - p#bar{p}"));
       histoNames2D.push_back(TString( "PairGen_All_HP_HP_B2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_B2_DyDphi_shft_B2_12Sum_y"));
 
-      outputPath += "/B2Derived/";
+      outputPath += "/PM/Y10/B2Derived/";
       plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,2);
       break;
+
+
 
       // a2
-      case 23:
+      case 18:
       // Y10 -- A2
-      histoInputFileNames.push_back(TString("PP/1000/PM/Y10/PairGenBalFctSum0TO9.root"));
+      histoInputFileNames.push_back(TString("PP/900/PM/Y10/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_pp_1TeV_A2Based_B2_1Bar_2"));
-      titles.push_back(TString("(a) #sqrt{s} = 1.0 TeV"));
+      titles.push_back(TString("(a) #sqrt{s} = 0.9 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 0.9 TeV"));
       histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
 
       histoInputFileNames.push_back(TString("PP/2700/PM/Y10/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_pp_2.7TeV_A2Based_B2_1Bar_2"));
-      titles.push_back(TString("(b) #sqrt{s} = 2.76 TeV"));
+      titles.push_back(TString("(a) #sqrt{s} = 2.76 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 2.76 TeV"));
       histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
 
-      histoInputFileNames.push_back(TString("PP/5200/PM/Y10/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_A2Based_B2_1Bar_2"));
-      titles.push_back(TString("(c) #sqrt{s} = 5.20 TeV"));
+      histoInputFileNames.push_back(TString("PP/5020/PM/Y10/PairGenBalFctSum0TO9.root"));
+      names.push_back(TString("PYTHIA_pp_5.02TeV_A2Based_B2_1Bar_2"));
+      titles.push_back(TString("(a) #sqrt{s} = 5.02 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 5.02 TeV"));
       histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
 
       histoInputFileNames.push_back(TString("PP/13000/PM/Y10/PairGenBalFctSum0TO4.root"));
       names.push_back(TString("PYTHIA_pp_13TeV_A2Based_B2_1Bar_2"));
-      titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
+      titles.push_back(TString("(a) #sqrt{s} = 13.0 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 13.0 TeV"));
       histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
@@ -813,7 +689,8 @@ int PlotPythiaBFvsS(int option = 22)
 
       histoInputFileNames.push_back(TString("PPbar/13000/PM/Y10/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_ppBar_13TeV_A2Based_B2_1Bar_2"));
-      titles.push_back(TString("(e) #sqrt{s} = 13.0 TeV - p#bar{p}"));
+      titles.push_back(TString("(a) #sqrt{s} = 13.0 TeV - p#bar{p}"));
+      widthLabels.push_back(TString("#sqrt{s} = 13.0 TeV - p#bar{p}"));
       histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
@@ -822,11 +699,12 @@ int PlotPythiaBFvsS(int option = 22)
       plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,0);
       break;
 
-      case 24:
+      case 19:
       // Y10 -- A2
-      histoInputFileNames.push_back(TString("PP/1000/PM/Y10/PairGenBalFctSum0TO9.root"));
+      histoInputFileNames.push_back(TString("PP/900/PM/Y10/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_pp_1TeV_A2Based_B2_1_2Bar"));
-      titles.push_back(TString("(a) #sqrt{s} = 1.0 TeV"));
+      titles.push_back(TString("(b) #sqrt{s} = 0.9 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 0.9 TeV"));
       histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
@@ -834,20 +712,23 @@ int PlotPythiaBFvsS(int option = 22)
       histoInputFileNames.push_back(TString("PP/2700/PM/Y10/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_pp_2.7TeV_A2Based_B2_1_2Bar"));
       titles.push_back(TString("(b) #sqrt{s} = 2.76 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 2.76 TeV"));
       histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
 
-      histoInputFileNames.push_back(TString("PP/5200/PM/Y10/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_A2Based_B2_1_2Bar"));
-      titles.push_back(TString("(c) #sqrt{s} = 5.20 TeV"));
+      histoInputFileNames.push_back(TString("PP/5020/PM/Y10/PairGenBalFctSum0TO9.root"));
+      names.push_back(TString("PYTHIA_pp_5.02TeV_A2Based_B2_1_2Bar"));
+      titles.push_back(TString("(b) #sqrt{s} = 5.02 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 5.02 TeV"));
       histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
 
       histoInputFileNames.push_back(TString("PP/13000/PM/Y10/PairGenBalFctSum0TO4.root"));
       names.push_back(TString("PYTHIA_pp_13TeV_A2Based_B2_1_2Bar"));
-      titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
+      titles.push_back(TString("(b) #sqrt{s} = 13.0 TeV"));
+      widthLabels.push_back(TString("#sqrt{s} = 13.0 TeV"));
       histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
@@ -855,20 +736,21 @@ int PlotPythiaBFvsS(int option = 22)
 
       histoInputFileNames.push_back(TString("PPbar/13000/PM/Y10/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_ppBar_13TeV_A2Based_B2_1_2Bar"));
-      titles.push_back(TString("(e) #sqrt{s} = 13.0 TeV - p#bar{p}"));
+      titles.push_back(TString("(b) #sqrt{s} = 13.0 TeV - p#bar{p}"));
+      widthLabels.push_back(TString("#sqrt{s} = 13.0 TeV - p#bar{p}"));
       histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
 
-      outputPath += "/PM/Y10A2Derived/";
+      outputPath += "/PM/Y10/A2Derived/";
       plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,1);
       break;
 
-      case 25:
+      case 20:
       // Y10 -- A2
-      histoInputFileNames.push_back(TString("PP/1000/PM/Y10/PairGenBalFctSum0TO9.root"));
+      histoInputFileNames.push_back(TString("PP/900/PM/Y10/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_pp_1TeV_A2Based_B2_12Sum"));
-      titles.push_back(TString("(a) #sqrt{s} = 1.0 TeV"));
+      titles.push_back(TString("(c) #sqrt{s} = 0.9 TeV"));
       widthLabels.push_back(TString("1.0 TeV"));
       histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
@@ -876,23 +758,23 @@ int PlotPythiaBFvsS(int option = 22)
 
       histoInputFileNames.push_back(TString("PP/2700/PM/Y10/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_pp_2.7TeV_A2Based_B2_12Sum"));
-      titles.push_back(TString("(b) #sqrt{s} = 2.76 TeV"));
+      titles.push_back(TString("(c) #sqrt{s} = 2.76 TeV"));
       widthLabels.push_back(TString("2.76 TeV"));
       histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
 
-      histoInputFileNames.push_back(TString("PP/5200/PM/Y10/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_A2Based_B2_12Sum"));
-      titles.push_back(TString("(c) #sqrt{s} = 5.20 TeV"));
-      widthLabels.push_back(TString("5.20 TeV"));
+      histoInputFileNames.push_back(TString("PP/5020/PM/Y10/PairGenBalFctSum0TO9.root"));
+      names.push_back(TString("PYTHIA_pp_5.02TeV_A2Based_B2_12Sum"));
+      titles.push_back(TString("(c) #sqrt{s} = 5.02 TeV"));
+      widthLabels.push_back(TString("5.02 TeV"));
       histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
 
       histoInputFileNames.push_back(TString("PP/13000/PM/Y10/PairGenBalFctSum0TO4.root"));
       names.push_back(TString("PYTHIA_pp_13TeV_A2Based_B2_12Sum"));
-      titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
+      titles.push_back(TString("(c) #sqrt{s} = 13.0 TeV"));
       widthLabels.push_back(TString("13.0 TeV"));
       histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
@@ -900,159 +782,49 @@ int PlotPythiaBFvsS(int option = 22)
 
       histoInputFileNames.push_back(TString("PPbar/13000/PM/Y10/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_ppBar_13TeV_A2Based_B2_12Sum"));
-      titles.push_back(TString("(e) #sqrt{s} = 13.0 TeV - p#bar{p}"));
+      titles.push_back(TString("(c) #sqrt{s} = 13.0 TeV - p#bar{p}"));
       widthLabels.push_back(TString("p#bar{p} 13.0 TeV"));
       histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
 
-      outputPath += "/PM/Y10A2Derived/";
+      outputPath += "/PM/Y10/A2Derived/";
       plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,2);
       break;
 
 
       // a2 nominal, shoving, ropes
 
-      // a2
-      case 31:
-      // Y10 -- A2
-      histoInputFileNames.push_back(TString("PP/13000/PMgrid/PairGenBalFctSum0TO4.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_Nominal_A2Based_B2_1Bar_2"));
-      titles.push_back(TString("(a) #sqrt{s} = 13.0 TeV Monash CR=ON"));
-      histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
 
-      histoInputFileNames.push_back(TString("PP/Ropes/PairGenBalFctSum0TO4.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_Ropes_A2Based_B2_1Bar_2"));
-      titles.push_back(TString("(b) #sqrt{s} = 13.0 TeV Ropes"));
-      histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
-
-      histoInputFileNames.push_back(TString("PP/Shoving/PairGenBalFctSum0TO6.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_Shoving_A2Based_B2_1Bar_2"));
-      titles.push_back(TString("(c) #sqrt{s} = 13.0 TeV Shoving"));
-      histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
-
-      outputPath += "A2Derived/";
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,0);
-      break;
-
-      case 32:
-      // Y10 -- A2
-      histoInputFileNames.push_back(TString("PP/1000/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_A2Based_B2_1_2Bar"));
-      titles.push_back(TString("(a) #sqrt{s} = 1.0 TeV"));
-      histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/2700/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_2.7TeV_A2Based_B2_1_2Bar"));
-      titles.push_back(TString("(b) #sqrt{s} = 2.76 TeV"));
-      histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/5200/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_A2Based_B2_1_2Bar"));
-      titles.push_back(TString("(c) #sqrt{s} = 5.20 TeV"));
-      histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
-
-      histoInputFileNames.push_back(TString("PP/13000/PMgrid/PairGenBalFctSum0TO4.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_A2Based_B2_1_2Bar"));
-      titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
-      histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
-
-
-      histoInputFileNames.push_back(TString("PPbar/13000/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_ppBar_13TeV_A2Based_B2_1_2Bar"));
-      titles.push_back(TString("(e) #sqrt{s} = 13.0 TeV - p#bar{p}"));
-      histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1_2Bar_y"));
-
-      outputPath += "/A2Derived/";
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,1);
-      break;
-
-      case 33:
-      // Y10 -- A2
-      histoInputFileNames.push_back(TString("PP/1000/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_A2Based_B2_12Sum"));
-      titles.push_back(TString("(a) #sqrt{s} = 1.0 TeV"));
-      histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
-
-      histoInputFileNames.push_back(TString("PP/2700/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_2.7TeV_A2Based_B2_12Sum"));
-      titles.push_back(TString("(b) #sqrt{s} = 2.76 TeV"));
-      histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
-
-      histoInputFileNames.push_back(TString("PP/5200/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_5.2TeV_A2Based_B2_12Sum"));
-      titles.push_back(TString("(c) #sqrt{s} = 5.20 TeV"));
-      histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
-
-      histoInputFileNames.push_back(TString("PP/13000/PMgrid/PairGenBalFctSum0TO4.root"));
-      names.push_back(TString("PYTHIA_pp_13TeV_A2Based_B2_12Sum"));
-      titles.push_back(TString("(d) #sqrt{s} = 13.0 TeV"));
-      histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
-
-
-      histoInputFileNames.push_back(TString("PPbar/13000/PMgrid/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_ppBar_13TeV_A2Based_B2_12Sum"));
-      titles.push_back(TString("(e) #sqrt{s} = 13.0 TeV - p#bar{p}"));
-      histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
-
-      outputPath += "/A2Derived/";
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,2);
-      break;
 
       // a2 vs y range w/ filter
       case 41:
       // Y10 -- A2
-      histoInputFileNames.push_back(TString("PP/1000/PM/Y1/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_Y1_A2Based_B2_1Bar_2"));
+      histoInputFileNames.push_back(TString("PP/13000/PM/Y1/PairGenBalFctSum0TO9.root"));
+      names.push_back(TString("PYTHIA_pp_13TeV_Y1_A2Based_B2_1Bar_2"));
       titles.push_back(TString("(a) y_{0} = 1"));
       widthLabels.push_back(TString("y_{0}=1"));
       histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
 
-      histoInputFileNames.push_back(TString("PP/1000/PM/Y2/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_Y2_A2Based_B2_1Bar_2"));
+      histoInputFileNames.push_back(TString("PP/13000/PM/Y2/PairGenBalFctSum0TO9.root"));
+      names.push_back(TString("PYTHIA_pp_13TeV_Y2_A2Based_B2_1Bar_2"));
       titles.push_back(TString("(b) y_{0} = 2"));
       widthLabels.push_back(TString("y_{0}=2"));
       histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
 
-      histoInputFileNames.push_back(TString("PP/1000/PM/Y4/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_Y4_A2Based_B2_1Bar_2"));
+      histoInputFileNames.push_back(TString("PP/13000/PM/Y4/PairGenBalFctSum0TO9.root"));
+      names.push_back(TString("PYTHIA_pp_13TeV_Y4_A2Based_B2_1Bar_2"));
       titles.push_back(TString("(b) y_{0} = 4"));
       widthLabels.push_back(TString("y_{0}=4"));
       histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_1Bar_2_y"));
 
-      histoInputFileNames.push_back(TString("PP/1000/PM/Y10/PairGenBalFctSum0TO9.root"));
+      histoInputFileNames.push_back(TString("PP/13000/PM/Y10/PairGenBalFctSum0TO4.root"));
       names.push_back(TString("PYTHIA_pp_1TeV_Y10_A2Based_B2_1Bar_2"));
       titles.push_back(TString("(b) y_{0} = 10"));
       widthLabels.push_back(TString("y_{0}=10"));
@@ -1101,14 +873,14 @@ int PlotPythiaBFvsS(int option = 22)
 
 
       outputPath += "/PM/Ydependence/A2Derived/";
-      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,0);
+      plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,1);
       break;
 
       case 43:
       // Y10 -- A2
       histoInputFileNames.push_back(TString("PP/1000/PM/Y1/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_pp_1TeV_Y1_A2Based_B2_12Sum"));
-      titles.push_back(TString("(a) y_{0} = 1"));
+      titles.push_back(TString("y_{0} = 1"));
       widthLabels.push_back(TString("y_{0}=1"));
       histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
@@ -1116,7 +888,7 @@ int PlotPythiaBFvsS(int option = 22)
 
       histoInputFileNames.push_back(TString("PP/1000/PM/Y2/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_pp_1TeV_Y2_A2Based_B2_12Sum"));
-      titles.push_back(TString("(b) y_{0} = 2"));
+      titles.push_back(TString("y_{0} = 2"));
       widthLabels.push_back(TString("y_{0}=2"));
       histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
@@ -1124,7 +896,7 @@ int PlotPythiaBFvsS(int option = 22)
 
       histoInputFileNames.push_back(TString("PP/1000/PM/Y4/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_pp_1TeV_Y4_A2Based_B2_12Sum"));
-      titles.push_back(TString("(b) y_{0} = 4"));
+      titles.push_back(TString("y_{0} = 4"));
       widthLabels.push_back(TString("y_{0}=4"));
       histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
@@ -1132,7 +904,7 @@ int PlotPythiaBFvsS(int option = 22)
 
       histoInputFileNames.push_back(TString("PP/1000/PM/Y10/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_pp_1TeV_Y10_A2Based_B2_12Sum"));
-      titles.push_back(TString("(b) y_{0} = 10"));
+      titles.push_back(TString("y_{0} = 10"));
       widthLabels.push_back(TString("y_{0}=10"));
       histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
@@ -1144,9 +916,32 @@ int PlotPythiaBFvsS(int option = 22)
       break;
 
       case 53:
-      // Y10 -- A2
-      // Y10 -- A2
-      histoInputFileNames.push_back(TString("PP/1000/PM/Y4_pT0.1To2/PairGenBalFctSum0TO9.root"));
+
+      histoInputFileNames.push_back(TString("PP/13000/PM/Y4/PairGenBalFctSum0TO9.root"));
+      names.push_back(TString("PYTHIA_pp_1TeV_pT0.0To20_A2Based_B2_12Sum"));
+      titles.push_back(TString("p_{T} > 0.0"));
+      widthLabels.push_back(TString("p_{T} > 0.0"));
+      histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
+      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
+      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
+
+      histoInputFileNames.push_back(TString("PP/13000/PM/Y4_pT0.0To10/PairGenBalFctSum0TO9.root"));
+      names.push_back(TString("PYTHIA_pp_1TeV_Y4_pT0.0To10_A2Based_B2_12Sum"));
+      titles.push_back(TString("0.0 < p_{T} < 10 GeV/c"));
+      widthLabels.push_back(TString("0.0#leq p_{T} < 10 GeV/c"));
+      histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
+      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
+      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
+
+      histoInputFileNames.push_back(TString("PP/13000/PM/Y4_pT0.2To10/PairGenBalFctSum0TO9.root"));
+      names.push_back(TString("PYTHIA_pp_1TeV_Y4_pT0.2To10_A2Based_B2_12Sum"));
+      titles.push_back(TString("0.2#leq p_{T} < 10 GeV/c"));
+      widthLabels.push_back(TString("0.2#leq p_{T} < 10 GeV/c"));
+      histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
+      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
+      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
+
+      histoInputFileNames.push_back(TString("PP/13000/PM/Y4_pT0.1To2/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_pp_1TeV_Y4_pT0.1To2_A2Based_B2_12Sum"));
       titles.push_back(TString("0.1#leq p_{T} < 2 GeV/c"));
       widthLabels.push_back(TString("0.1#leq p_{T} < 2 GeV/c"));
@@ -1155,7 +950,7 @@ int PlotPythiaBFvsS(int option = 22)
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
 
 
-      histoInputFileNames.push_back(TString("PP/1000/PM/Y4_pT0.2To2/PairGenBalFctSum0TO9.root"));
+      histoInputFileNames.push_back(TString("PP/13000/PM/Y4_pT0.2To2/PairGenBalFctSum0TO9.root"));
       names.push_back(TString("PYTHIA_pp_1TeV_Y4_pT0.2To2_A2Based_B2_12Sum"));
       titles.push_back(TString("0.2#leq p_{T} < 2 GeV/c"));
       widthLabels.push_back(TString("0.2#leq p_{T} < 2 GeV/c"));
@@ -1163,35 +958,9 @@ int PlotPythiaBFvsS(int option = 22)
       histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
       histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
 
-      histoInputFileNames.push_back(TString("PP/1000/PM/Y4_pT0.2To4/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_Y4_pT0.2To4_A2Based_B2_12Sum"));
-      titles.push_back(TString("0.2#leq p_{T} < 4 GeV/c"));
-      widthLabels.push_back(TString("0.2#leq p_{T} < 4 GeV/c"));
-      histoNames2D.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
-
-      histoInputFileNames.push_back(TString("PP/1000/PM/Y4_pT0.2To10/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_Y4_pT0.2To10_A2Based_B2_12Sum"));
-      titles.push_back(TString("0.2#leq p_{T} < 10 GeV/c"));
-      widthLabels.push_back(TString("0.2#leq p_{T} < 10 GeV/c"));
-      histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
-
-      histoInputFileNames.push_back(TString("PP/1000/PM/Y4/PairGenBalFctSum0TO9.root"));
-      names.push_back(TString("PYTHIA_pp_1TeV_pT0.0To20_A2Based_B2_12Sum"));
-      titles.push_back(TString("0.0#leq p_{T} < 20 GeV/c"));
-      widthLabels.push_back(TString("0.0#leq p_{T} < 20 GeV/c"));
-      histoNames2D.push_back(TString( "PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum"));
-      histoNames1Dx.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_x"));
-      histoNames1Dy.push_back(TString("PairGen_All_HP_HP_A2_DyDphi_shft_B2_12Sum_y"));
-
-
       outputPath += "/PM/pTdependence/A2Derived/";
       plotSet(plotter,inputPath,outputPath,histoInputFileNames,histoInputFiles,histoNames2D,histoNames1Dx,histoNames1Dy,names,titles,widthLabels,1,2);
       break;
-
 
     }
 

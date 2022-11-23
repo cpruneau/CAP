@@ -34,6 +34,8 @@ TCanvas *  Plotter::plot(TH1 * h,
 {
   if (reportDebug(__FUNCTION__)) cout << "Creating canvas named:" << canvasName << endl;
   TCanvas * canvas  = canvasCollection.createCanvas(canvasName,cc);
+  canvas->SetTicky(1);
+  canvas->SetTickx(1);
   setProperties(h,gc);
   h->GetXaxis()->SetTitle(xTitle);
   h->GetYaxis()->SetTitle(yTitle);
@@ -41,7 +43,7 @@ TCanvas *  Plotter::plot(TH1 * h,
   h->SetMaximum(yMax);
   h->GetXaxis()->SetRangeUser(xMin,xMax);
   h->DrawCopy(gc.getValueString("PlotOption"));
-  if (!legendText.IsNull()) createLegend(h,legendText,xMinLeg, yMinLeg, xMaxLeg, yMaxLeg,0, legendSize);
+  if (!legendText.IsNull() && legendSize>0) createLegend(h,legendText,xMinLeg, yMinLeg, xMaxLeg, yMaxLeg,0, legendSize);
   return canvas;
 }
 
@@ -93,6 +95,8 @@ TCanvas *  Plotter::plot(vector<TH1*> histograms,
   if (reportDebug(__FUNCTION__)) cout << "Creating canvas named:" << canvasName << endl;
   TCanvas * canvas = canvasCollection.createCanvas(canvasName,canvasConfiguration);
   unsigned int nGraphs = histograms.size();
+  canvas->SetTicky(1);
+  canvas->SetTickx(1);
   TH1 * h;
   for (unsigned int iGraph=0; iGraph<nGraphs; iGraph++)
     {
@@ -114,7 +118,7 @@ TCanvas *  Plotter::plot(vector<TH1*> histograms,
     plotOption = graphConfigurations[iGraph]->getValueString("PlotOption");
     histograms[iGraph]->DrawCopy(plotOption+" SAME");
     }
-  if (nGraphs<6)
+  if (nGraphs<6 && legendSize>0)
     createLegend(histograms,legendTexts,xMinLeg, yMinLeg, xMaxLeg, yMaxLeg,legendSize);
   else
     {
@@ -134,8 +138,11 @@ TCanvas *  Plotter::plot(vector<TH1*> histograms,
       h2.push_back( histograms[n1+k]);
       lg2.push_back( legendTexts[n1+k]);
       }
-    createLegend(h1,lg1,xMinLeg, yMinLeg, xMaxLeg, yMaxLeg,legendSize);
-    createLegend(h2,lg2,xMaxLeg, yMinLeg, 2.0*xMaxLeg-xMinLeg, yMaxLeg,legendSize);
+    if (legendSize>0)
+      {
+      createLegend(h1,lg1,xMinLeg, yMinLeg, xMaxLeg, yMaxLeg,legendSize);
+      createLegend(h2,lg2,xMaxLeg, yMinLeg, 2.0*xMaxLeg-xMinLeg, yMaxLeg,legendSize);
+      }
     }
 
 //  if (label1) createLabel(text1, x1,y1,color1,true);
@@ -160,6 +167,8 @@ TCanvas *  Plotter::plot(vector<TGraph*> graphs,
   TCanvas * canvas = canvasCollection.createCanvas(canvasName,canvasConfiguration);
   unsigned int nGraphs = graphs.size();
   TGraph * h;
+  canvas->SetTicky(1);
+  canvas->SetTickx(1);
   if (reportInfo(__FUNCTION__)) cout << "nGraphs:" << nGraphs << endl;
 
   for (unsigned int iGraph=0; iGraph<nGraphs; iGraph++)
@@ -175,7 +184,8 @@ TCanvas *  Plotter::plot(vector<TGraph*> graphs,
   h = graphs[0];
   h->SetMinimum(yMin);
   h->SetMaximum(yMax);
-  if (xMin<xMax) h->GetXaxis()->SetRangeUser(xMin,xMax);
+  if (xMin<xMax) h->GetXaxis()->SetLimits(xMin,xMax);
+  //if (xMin<xMax) h->GetXaxis()->SetRangeUser(xMin,xMax);
   TString plotOption = "ALP"; // graphConfigurations[0]->getValueString(getName(),"PlotOption");
   h->Draw(plotOption);
   //nGraphs = 1;
@@ -184,7 +194,7 @@ TCanvas *  Plotter::plot(vector<TGraph*> graphs,
     plotOption = "SAME LP"; //graphConfigurations[iGraph]->getValueString(getName(),"PlotOption");
     graphs[iGraph]->Draw(plotOption);
     }
-  if (nGraphs<6)
+  if (nGraphs<6 && legendSize>0)
     createLegend(graphs,legendTexts,xMinLeg, yMinLeg, xMaxLeg, yMaxLeg,legendSize);
   else
     {
@@ -204,8 +214,11 @@ TCanvas *  Plotter::plot(vector<TGraph*> graphs,
       h2.push_back( graphs[n1+k]);
       lg2.push_back( legendTexts[n1+k]);
       }
-    createLegend(h1,lg1,xMinLeg, yMinLeg, xMaxLeg, yMaxLeg,legendSize);
-    createLegend(h2,lg2,xMaxLeg, yMinLeg, 2.0*xMaxLeg-xMinLeg, yMaxLeg,legendSize);
+    if (legendSize>0)
+      {
+      createLegend(h1,lg1,xMinLeg, yMinLeg, xMaxLeg, yMaxLeg,legendSize);
+      createLegend(h2,lg2,xMaxLeg, yMinLeg, 2.0*xMaxLeg-xMinLeg, yMaxLeg,legendSize);
+      }
     }
 
   //  if (label1) createLabel(text1, x1,y1,color1,true);

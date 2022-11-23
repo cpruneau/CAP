@@ -16,8 +16,6 @@
 #include "SubSampleStatCalculator.hpp"
 #include "ClosureIterator.hpp"
 #include "ParticleTypeTableLoader.hpp"
-#include "PythiaEventReader.hpp"
-#include "PythiaEventGenerator.hpp"
 #include "HerwigEventReader.hpp"
 #include "AmptEventReader.hpp"
 #include "EposEventReader.hpp"

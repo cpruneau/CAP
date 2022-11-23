@@ -17,7 +17,7 @@
 
 void loadBase(const TString & includeBasePath);
 
-int PlotPythiaDensity()
+int PlotPythiaDensity2()
 {
   TString includeBasePath = getenv("CAP_SRC");
   loadBase(includeBasePath);
@@ -54,15 +54,13 @@ int PlotPythiaDensity()
   vector<TH1*>    histos1Dy;
 
 
-  histoInputFileNames.push_back(TString("PYTHIA_Pair_Gen_Derived.root"));
-  names.push_back(TString("PYTHIA_pp_2.76TeV_rho1_y_hm"));
-  titles.push_back(TString(" #rho_{1}^{-}"));
-  histoNames1Dx.push_back(TString("Pair_Gen_All_HM_n1_y"));
-
-  histoInputFileNames.push_back(TString("PYTHIA_Pair_Gen_Derived.root"));
-  names.push_back(TString("PYTHIA_pp_2.76TeV_rho1_y_hp"));
+  names.push_back(TString("PYTHIA_pp_13.0TeV_rho1_y_hp"));
   titles.push_back(TString(" #rho_{1}^{+}"));
-  histoNames1Dx.push_back(TString("Pair_Gen_All_HP_n1_y"));
+  histoNames1Dx.push_back(TString("Part_Gen_All_HP_n1_y"));
+
+  names.push_back(TString("PYTHIA_pp_13.0TeV_rho1_y_hp"));
+  titles.push_back(TString(" #rho_{1}^{-}"));
+  histoNames1Dx.push_back(TString("Part_Gen_All_HM_n1_y"));
 
 
   Configuration taskConfig;
@@ -70,7 +68,42 @@ int PlotPythiaDensity()
   Plotter * plotter = new Plotter("Plotter",taskConfig);
   plotter->setDefaultOptions(useColor);
 
-  for (unsigned int iFile=0; iFile<histoInputFileNames.size(); iFile++)
+  TFile * f =  plotter->openRootFile(inputPath,"PairGenDerivedSum0TO4.root","OLD");
+  if (!f)
+    {
+    cout << " Could not open file named PairGenDerivedSum0TO4.root" <<   endl;
+    cout << " ABORT!!!!" << endl;
+    return -1;
+    }
+  TH2 * plus2D = (TH2*) f->Get("PairGen_All_HP_n1_phiY");
+  if (!plus2D)
+    {
+    cout << "PairGen_All_HP_n1_phiY not found - abort" << endl;
+    }
+  TH2 * minus2D = (TH2*) f->Get("PairGen_All_HM_n1_phiY");
+  if (!minus2D)
+    {
+    cout << "PairGen_All_HM_n1_phiY not found - abort" << endl;
+    }
+
+  TH1D * plus1D = plus2D->ProjectionX();
+  TH1D * minus1D = minus2D->ProjectionX();
+
+  double binWidth = plus1D->GetXaxis()->GetBinWidth(1);
+  double scale = 1.0/binWidth;
+  plus1D->Scale(scale);
+  minus1D->Scale(scale);
+  double integralPlus   = plus1D->Integral("WIDTH");
+  double integralMinus  = minus1D->Integral("WIDTH");
+  cout << "   plus Integral:" << integralPlus  << endl;
+  cout << "  minus Integral:" << integralMinus << endl;
+  cout << "   diff Integral:" << integralPlus - integralMinus << endl;
+  histos1Dx.push_back(plus1D);
+  histos1Dx.push_back(minus1D);
+
+  landscapeLinear.setParameter("windowHeight", 300);
+
+  for (unsigned int iFile=0; iFile<2; iFile++)
     {
     graphConfigurations1D[iFile]->setParameter("yTitleOffset",  0.9);
     graphConfigurations1D[iFile]->setParameter("xTitleSize",   0.1);
@@ -81,37 +114,17 @@ int PlotPythiaDensity()
     graphConfigurations1D[iFile]->setParameter("yTitleOffset", 0.5);
     graphConfigurations1D[iFile]->setParameter("yLabelSize",   0.085);
     graphConfigurations1D[iFile]->setParameter("yLabelOffset", 0.01);
-
-    TFile * f =  plotter->openRootFile(inputPath,histoInputFileNames[iFile],"OLD");
-    if (!f)
-      {
-      cout << " Could not open file named " << histoInputFileNames[iFile] << endl;
-      cout << " ABORT!!!!" << endl;
-      return -1;
-      }
-    histoInputFiles.push_back(f);
-    TH1 * h1x = plotter->getHistogramCollection().loadH1(f,histoNames1Dx[iFile]);
-    if (!h1x)
-      {
-      cout << " Could not load histogram named " << histoNames1Dx[iFile] << endl;
-      cout << " ABORT!!!!" << endl;
-      return -1;
-      }
-    histos1Dx.push_back(h1x);
-    double binWidth = h1x->GetXaxis()->GetBinWidth(1);
-    double scale = 1.0/binWidth;
-    h1x->Scale(scale);
-    double integral = h1x->Integral("WIDTH");
-    cout << "Histo:" << h1x->GetName() << " Integral:" << integral << endl;
+    graphConfigurations1D[iFile]->setParameter("markerSize",  0.7);
     }
 
-  landscapeLinear.setParameter("windowHeight", 300);
 
-  plotter->plot(histos1Dx,graphConfigurations1D,titles,"PYTHIA_pp_2.76TeV_rho1_y_HP_HM",landscapeLinear,TString("y"), -10.0, 10.0,TString("#rho_{1}(y)"),0.0, 2.499,
+
+
+  plotter->plot(histos1Dx,graphConfigurations1D,titles,"PYTHIA_pp_13.0TeV_rho1_y_HP_HM",landscapeLinear,TString("y"), -10.0, 10.0,TString("#rho_{1}(y)"),0.0, 4.499,
                 0.70, 0.62, 0.82, 0.9, 0.1);
 
-  TH1 * diff = (TH1*) histos1Dx[1]->Clone();
-  diff->Add(histos1Dx[0],-1.0);
+  TH1 * diff = (TH1*) histos1Dx[0]->Clone();
+  diff->Add(histos1Dx[1],-1.0);
 
   GraphConfiguration config = *new GraphConfiguration(1,0);
   config.setParameter("xTitleSize",   0.1);
@@ -123,10 +136,10 @@ int PlotPythiaDensity()
   config.setParameter("yLabelSize",   0.085);
   config.setParameter("yLabelOffset", 0.01);
 
-  plotter->plot(diff,"PYTHIA_pp_2.76TeV_rho1_y_Difference",landscapeLinear,config,
+  plotter->plot(diff,"PYTHIA_pp_13.0TeV_rho1_y_Difference",landscapeLinear,config,
                 TString("y"), -10.0, 10.0,
                 TString("#rho_{1}^{+}(y)-#rho_{1}^{-}(y)"),-0.0990, 0.750,
-                "PYTHIA8 pp #sqrt{s}=2.76 TeV", 0.5, 0.77, 0.82, 0.90, 0.08);
+                "PYTHIA8 pp #sqrt{s}=13.0 TeV", 0.5, 0.77, 0.82, 0.90, 0.08);
 
   plotter->printAllCanvas(outputPath, printGif, printPdf, printSvg, printC);
   return 0;

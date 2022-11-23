@@ -131,6 +131,7 @@ void CanvasCollection::printCanvas(TCanvas * canvas, const TString & directoryNa
   if (printPdf) canvas->Print(fileName+".pdf");
   if (printSvg) canvas->Print(fileName+".svg");
   if (printC)   canvas->Print(fileName+".C");
+  canvas->Print(fileName+".png");
 }
 
 ////////////////////////////////////////////////////
