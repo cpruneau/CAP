@@ -85,7 +85,7 @@ void RootTreeReader::initialize()
     return;
     }
 
-  // If the dataInputFileName is equal to "folder", then the use has requested
+  // If the dataInputFileName is equal to "folder", then the user has requested
   // the data be read from the folder identified by the dataInputPath parameter
   // and using IncludePattern and ExcludePattern to extract the data files to be
   // used in this particular analysis.
@@ -102,7 +102,7 @@ void RootTreeReader::initialize()
     {
     if (reportError(__FUNCTION__)) cout << "No root data file selected for input" << endl;
     postTaskError();
-    return;
+    exit(1);
     }
     
   // If the parameters firstFile and lastFile are less than zero, unspecified by the user,

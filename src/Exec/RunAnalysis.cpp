@@ -16,8 +16,8 @@
 #include "SubSampleStatCalculator.hpp"
 #include "ClosureIterator.hpp"
 #include "ParticleTypeTableLoader.hpp"
-//#include "PythiaEventReader.hpp"
-//#include "PythiaEventGenerator.hpp"
+#include "PythiaEventReader.hpp"
+#include "PythiaEventGenerator.hpp"
 #include "HerwigEventReader.hpp"
 #include "AmptEventReader.hpp"
 #include "EposEventReader.hpp"
@@ -514,8 +514,8 @@ void RunAnalysis::configure()
     eventAnalysis = new TaskIterator("Analysis",configuration);
     addSubTask(eventAnalysis);
 
-    //if (RunPythiaReader)       eventAnalysis->addSubTask(new PythiaEventReader(PythiaLabel,configuration,modelEventFilters,modelParticleFilters));
-    //if (RunPythiaGenerator)    eventAnalysis->addSubTask(new PythiaEventGenerator(PythiaLabel,configuration,modelEventFilters,modelParticleFilters));
+    if (RunPythiaReader)       eventAnalysis->addSubTask(new PythiaEventReader(PythiaLabel,configuration,modelEventFilters,modelParticleFilters));
+    if (RunPythiaGenerator)    eventAnalysis->addSubTask(new PythiaEventGenerator(PythiaLabel,configuration,modelEventFilters,modelParticleFilters));
     if (RunHerwigReader)       eventAnalysis->addSubTask(new HerwigEventReader(HerwigLabel,configuration,modelEventFilters,modelParticleFilters));
     if (RunAmptReader)         eventAnalysis->addSubTask(new AmptEventReader(AmptLabel,configuration,modelEventFilters,modelParticleFilters));
     if (RunEposReader)         eventAnalysis->addSubTask(new EposEventReader(EposLabel,configuration,modelEventFilters,modelParticleFilters));
