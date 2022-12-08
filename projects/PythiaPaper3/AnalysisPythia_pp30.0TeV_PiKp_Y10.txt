@@ -53,7 +53,7 @@ Run:AnaPartMinY           double -10
 Run:AnaPartMaxY           double 10
 Run:Analysis:LogLevel                     string Info
 Run:Analysis:ScaleHistograms              bool     1
-Run:Analysis:PYTHIA:LogLevel              string Debug
+Run:Analysis:PYTHIA:LogLevel              string Info
 Run:Analysis:PYTHIA:Energy                double 30000.0
 Run:Analysis:PYTHIA:EnergyLabel           string 30.00TeV
 Run:Analysis:PYTHIA:SystemLabel           string pp
@@ -105,7 +105,7 @@ Run:Analysis:PartGen:Max_y            double  10.0
 Run:Analysis:PartGen:FillEta          bool    0
 Run:Analysis:PartGen:FillY            bool    1
 Run:Analysis:PartGen:FillP2           bool    0
-Run:Analysis:PairGen:LogLevel         string  Debug
+Run:Analysis:PairGen:LogLevel         string  Info
 Run:Analysis:PairGen:FillEta          bool    0
 Run:Analysis:PairGen:FillY            bool    1
 Run:Analysis:PairGen:FillP2           bool    0
