@@ -48,6 +48,13 @@ void NuDynDerivedHistos::createHistograms()
   int nBins_mult   = configuration.getValueInt(ppn,"nBins_mult");
   double min_mult  = configuration.getValueInt(ppn,"Min_mult");
   double max_mult  = configuration.getValueInt(ppn,"Max_mult");
+
+  int    nBins_rapidity = configuration.getValueInt(ppn,"nBins_rapidity");
+  double min_rapidity   = configuration.getValueDouble(ppn,"Min_rapidity");
+  double max_rapidity   = configuration.getValueDouble(ppn,"Max_rapidity");
+  double width_rapidity = (max_rapidity-min_rapidity)/double(nBins_rapidity);
+
+
   TString suffix = "";
   TString xTitle = "";
   
@@ -67,6 +74,10 @@ void NuDynDerivedHistos::createHistograms()
     cout << "  NuDyn:nFilters............................: " << nFilters <<  endl;
     cout << "  NuDyn:multiplicityType....................: " << multiplicityType << endl;
     cout << "  NuDyn:pairOnly............................: " << pairOnly << endl;
+    cout << "  NuDyn:nBins_rapidity......................: " << nBins_rapidity << endl;
+    cout << "  NuDyn:min_rapidity........................: " << min_rapidity << endl;
+    cout << "  NuDyn:max_rapidity........................: " << max_rapidity << endl;
+    cout << "  NuDyn:width_rapidity......................: " << width_rapidity << endl;
     }
 
   

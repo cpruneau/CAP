@@ -38,16 +38,35 @@ void NuDynAnalyzer::setDefaultConfiguration()
   addParameter("nBins_mult",        200);
   addParameter("Min_mult",          0.0);
   addParameter("Max_mult",          200.0);
+  addParameter("nBins_rapidity",    99);
+  addParameter("Min_rapidity",      0.100);
+  addParameter("Max_rapidity",      10.00);
 }
 
 void NuDynAnalyzer::initialize()
 {
   Task::initialize();
   multiplicityType = getValueInt("InputType");
+
+  int    nBins_rapidity = configuration.getValueInt("nBins_rapidity");
+  double min_rapidity   = configuration.getValueDouble("Min_rapidity");
+  double max_rapidity   = configuration.getValueDouble("Max_rapidity");
+  double width_rapidity = (max_rapidity-min_rapidity)/double(nBins_rapidity);
+
   if (reportInfo(__FUNCTION__))
     {
-    cout << " NuDyn:multiplicityType....: " << multiplicityType  << endl;
+    cout << " NuDyn:multiplicityType....................: " << multiplicityType  << endl;
+    cout << " NuDyn:nBins_rapidity......................: " << nBins_rapidity    << endl;
+    cout << " NuDyn:min_rapidity........................: " << min_rapidity      << endl;
+    cout << " NuDyn:max_rapidity........................: " << max_rapidity      << endl;
+    cout << " NuDyn:width_rapidity......................: " << width_rapidity    << endl;
     }
+
+  for (int iEta=0; iEta<nBins_rapidity; iEta++)
+    {
+    deltaRapidtyBin.push_back(min_rapidity+double(iEta)*width_rapidity );
+    }
+
 }
 
 void NuDynAnalyzer::createHistograms()
@@ -65,10 +84,7 @@ void NuDynAnalyzer::createHistograms()
     cout << " NuDyn:nParticleFilters.............: " << nParticleFilters << endl;
     }
   partFilterName = particleFilters[0]->getName();
-  for (unsigned int iParticleFilter=1; iParticleFilter<nParticleFilters; iParticleFilter++ )
-    {
-    partFilterName += particleFilters[iParticleFilter]->getName();
-    }
+  partFilterName += particleFilters[1]->getName();
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     evtFilterName  = eventFilters[iEventFilter]->getName();
@@ -103,10 +119,8 @@ void NuDynAnalyzer::loadHistograms(TFile * inputFile)
     cout << " nParticleFilters.............: " << nParticleFilters << endl;
     }
   partFilterName = particleFilters[0]->getName();
-  for (unsigned int iParticleFilter=1; iParticleFilter<nParticleFilters; iParticleFilter++ )
-    {
-    partFilterName += particleFilters[iParticleFilter]->getName();
-    }
+  partFilterName += particleFilters[1]->getName();
+
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     evtFilterName  = eventFilters[iEventFilter]->getName();
@@ -133,17 +147,30 @@ void NuDynAnalyzer::execute()
     {
     if (!eventFilters[iEventFilter]->accept(*event)) continue;
     incrementNEventsAccepted(iEventFilter); // count eventStreams used to fill histograms and for scaling at the end..
-    
-    vector<double> nAccepted(nParticleFilters,0.0);
+
+    int nBins_rapidity = deltaRapidtyBin.size();
+    vector<double> nAccepted0(nBins_rapidity,0.0);
+    vector<double> nAccepted1(nBins_rapidity,0.0);
+    double rapidity;
     for (unsigned long  iParticle=0; iParticle<event->getNParticles(); iParticle++)
       {
       Particle & particle = * event->getParticleAt(iParticle);
-      for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++)
+      if (particleFilters[0]->accept(particle))
         {
-        if (particleFilters[iParticleFilter]->accept(particle))
+        incrementNParticlesAccepted(iEventFilter,0);
+        rapidity = fabs(particle.getMomentum().Rapidity());
+        for (int iY; iY<nBins_rapidity; iY++)
           {
-          incrementNParticlesAccepted(iEventFilter,iParticleFilter);
-          nAccepted[iParticleFilter]++;
+          if (rapidity<deltaRapidtyBin[iY]) nAccepted0[iY]++;
+          }
+        }
+      if (particleFilters[1]->accept(particle))
+        {
+        incrementNParticlesAccepted(iEventFilter,1);
+        rapidity = fabs(particle.getMomentum().Rapidity());
+        for (int iY; iY<nBins_rapidity; iY++)
+          {
+          if (rapidity<deltaRapidtyBin[iY]) nAccepted1[iY]++;
           }
         }
       }
@@ -151,9 +178,9 @@ void NuDynAnalyzer::execute()
     NuDynHistos * nuDynHistos = (NuDynHistos *) histograms[iEventFilter];
     switch ( multiplicityType )
       {
-        case 0: nuDynHistos->fill(ep.fractionalXSection,   nAccepted,1.0); break;
-        case 1: nuDynHistos->fill(ep.refMultiplicity, nAccepted,1.0); break;
-        case 2: nuDynHistos->fill(ep.refMultiplicity, nAccepted,1.0); break;
+        case 0: nuDynHistos->fill(ep.fractionalXSection, nAccepted0, nAccepted1, 1.0); break;
+        case 1: nuDynHistos->fill(ep.refMultiplicity,    nAccepted0, nAccepted1, 1.0); break;
+        case 2: nuDynHistos->fill(ep.refMultiplicity,    nAccepted0, nAccepted1, 1.0); break;
       }
     }
 }

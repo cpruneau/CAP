@@ -43,8 +43,8 @@ public:
   TCanvas * createCanvas(const TString & canvasName, const CanvasConfiguration & canvasConfig, int inc=200);
   TCanvas * createCanvasXX(int nx, int ny, const TString & canvasName, const CanvasConfiguration & canvasConfig, int inc=30);
 
-  void printCanvas(TCanvas * canvas, const TString & directoryName="./", bool printGif=0, bool printPdf=1, bool printSvg=0, bool printC=0);
-  void printAllCanvas(const TString & outputPath, bool printGif=0, bool printPdf=1, bool printSvg=0, bool printC=0);
+  void printCanvas(TCanvas * canvas, const TString & directoryName="./", bool printGif=0, bool printPdf=1, bool printSvg=0, bool printPng=0, bool printC=0);
+  void printAllCanvas(const TString & outputPath, bool printGif=0, bool printPdf=1, bool printSvg=0, bool printPng=0, bool printC=0);
   TLatex * createLabel(double x, double y, int color, int fontType, double fontSize, const TString & text, bool doDraw=true);
   TLegend * createLegend(float x1, float y1, float x2, float y2, int fontType, float fontSize);
   TLine * createLine(float x1, float y1, float x2, float y2, int style, int color, int width, bool doDraw=true);

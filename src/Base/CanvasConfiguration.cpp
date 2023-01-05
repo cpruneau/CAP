@@ -180,6 +180,18 @@ void CanvasConfiguration::setFormat(CanvasFormat format)
       setParameter("windowRightMargin", 0.15);
       setParameter("windowBottomMargin",0.15);
       break;
+
+      case LandscapeXtop:
+      setParameter("windowXPosition",     20);
+      setParameter("windowYPosition",     20);
+      setParameter("windowWidth",        800);
+      setParameter("windowHeight",       600);
+      setParameter("windowLeftMargin",  0.20);
+      setParameter("windowTopMargin",   0.20);
+      setParameter("windowRightMargin", 0.05);
+      setParameter("windowBottomMargin",0.15);
+      break;
+
     };
 }
 

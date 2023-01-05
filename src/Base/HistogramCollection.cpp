@@ -2876,6 +2876,27 @@ TProfile * HistogramCollection::loadProfile(TFile * inputFile, const TString & h
   return h;
 }
 
+TProfile2D * HistogramCollection::loadProfile2D(TFile * inputFile, const TString & histoName)
+{
+
+  if (!ptrFileExist(inputFile)) return nullptr;
+  TProfile2D* h = (TProfile2D*) inputFile->Get(histoName);
+  if (!h)
+    {
+    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << histoName << endl;
+    return nullptr;
+    }
+  else
+    {
+    if (reportDebug(__FUNCTION__)) cout << "Loaded histogram named: "  << histoName << endl;
+    }
+  append(h);
+  return h;
+}
+
+
+
+
 void HistogramCollection::loadHistosInList(TFile * inputFile, HistogramCollection * collection)
 {
 

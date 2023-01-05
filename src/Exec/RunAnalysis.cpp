@@ -18,6 +18,7 @@
 #include "ParticleTypeTableLoader.hpp"
 #include "PythiaEventReader.hpp"
 #include "PythiaEventGenerator.hpp"
+#include "PythiaEventGeneratorRho.hpp"
 #include "HerwigEventReader.hpp"
 #include "AmptEventReader.hpp"
 #include "EposEventReader.hpp"
@@ -92,6 +93,7 @@ void RunAnalysis::setDefaultConfiguration()
   addParameter("ClosureDerived",          NO);
   addParameter("ClosureBalFct",           NO);
   addParameter("PythiaGenerator",         NO);
+  addParameter("PythiaGeneratorRho",      NO);
   addParameter("PythiaReader",            NO);
   addParameter("HerwigGenerator",         NO);
   addParameter("HerwigReader",            NO);
@@ -189,7 +191,7 @@ void RunAnalysis::setDefaultConfiguration()
 
 void RunAnalysis::configure()
 {
-  if (reportEnd(__FUNCTION__))
+  if (reportStart(__FUNCTION__))
     ;
   setDefaultConfiguration();
   setConfiguration(requestedConfiguration);
@@ -253,6 +255,7 @@ void RunAnalysis::configure()
   bool    RunClosureDerived       = getValueBool("ClosureDerived");
   bool    RunClosureBalFct        = getValueBool("ClosureBalFct");
   bool    RunPythiaGenerator      = getValueBool("PythiaGenerator");
+  bool    RunPythiaGeneratorRho   = getValueBool("PythiaGeneratorRho");
   bool    RunPythiaReader         = getValueBool("PythiaReader");
   bool    RunHerwigGenerator      = getValueBool("HerwigGenerator");
   bool    RunHerwigReader         = getValueBool("HerwigReader");
@@ -345,6 +348,7 @@ void RunAnalysis::configure()
     cout << "ClosureDerived.............:" << RunClosureDerived     << endl;
     cout << "ClosureBalFct..............:" << RunClosureDerived     << endl;
     cout << "PythiaGenerator............:" << RunPythiaGenerator    << endl;
+    cout << "PythiaGeneratorRho.........:" << RunPythiaGeneratorRho << endl;
     cout << "PythiaReader...............:" << RunPythiaReader       << endl;
     cout << "HerwigGenerator............:" << RunHerwigGenerator    << endl;
     cout << "HerwigReader...............:" << RunHerwigReader       << endl;
@@ -516,6 +520,7 @@ void RunAnalysis::configure()
 
     if (RunPythiaReader)       eventAnalysis->addSubTask(new PythiaEventReader(PythiaLabel,configuration,modelEventFilters,modelParticleFilters));
     if (RunPythiaGenerator)    eventAnalysis->addSubTask(new PythiaEventGenerator(PythiaLabel,configuration,modelEventFilters,modelParticleFilters));
+    if (RunPythiaGeneratorRho) eventAnalysis->addSubTask(new PythiaEventGeneratorRho(PythiaLabel,configuration,modelEventFilters,modelParticleFilters));
     if (RunHerwigReader)       eventAnalysis->addSubTask(new HerwigEventReader(HerwigLabel,configuration,modelEventFilters,modelParticleFilters));
     if (RunAmptReader)         eventAnalysis->addSubTask(new AmptEventReader(AmptLabel,configuration,modelEventFilters,modelParticleFilters));
     if (RunEposReader)         eventAnalysis->addSubTask(new EposEventReader(EposLabel,configuration,modelEventFilters,modelParticleFilters));

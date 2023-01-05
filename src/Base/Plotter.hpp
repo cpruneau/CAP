@@ -15,6 +15,7 @@
 #include "CanvasCollection.hpp"
 #include "CanvasConfiguration.hpp"
 #include "GraphConfiguration.hpp"
+#include "LegendConfiguration.hpp"
 #include "DataGraph.hpp"
 #include "Task.hpp"
 
@@ -26,6 +27,16 @@ public:
           Configuration & _configuration);
   
   virtual ~Plotter() {} 
+
+  //!
+  //! Initialize the configuration parameter of the task to their default value;
+  //!
+  virtual void setDefaultConfiguration();
+
+  //!
+  //! Configure  this analysis task
+  //!
+  virtual void configure();
 
   //!
   //! Function to plot a single 1D histogram in a new canvas with the given canvas configuration, graph configuration, and a legend. If the text of the legend is a null or empty
@@ -110,6 +121,38 @@ public:
                   double xMinLeg, double yMinLeg, double xMaxLeg, double yMaxLeg,
                   double legendSize);
 
+  TCanvas *  plot(const TString & canvasName,
+                  const CanvasConfiguration  & cc,
+                  const GraphConfiguration   & gc,
+                  LegendConfiguration  & lc,
+                  TH1 * h,
+                  const TString & xTitle,  double xMin, double xMax,
+                  const TString & yTitle,  double yMin, double yMax);
+
+  TCanvas *  plot(const TString & canvasName,
+                  const CanvasConfiguration  & cc,
+                  const GraphConfiguration   & gc,
+                  LegendConfiguration  & lc,
+                  TH2 * h,
+                  const TString & xTitle,  double xMin, double xMax,
+                  const TString & yTitle,  double yMin, double yMax,
+                  const TString & zTitle,  double zMin, double zMax);
+
+  TCanvas *  plot(const TString & canvasName,
+                  const CanvasConfiguration  & cc,
+                  const vector<GraphConfiguration*> & gc,
+                  LegendConfiguration  & lc,
+                  vector<TH1*> histograms,
+                  const TString & xTitle,  double xMin, double xMax,
+                  const TString & yTitle,  double yMin, double yMax);
+
+  TCanvas *  plot(const TString & canvasName,
+                  const CanvasConfiguration  & cc,
+                  const vector<GraphConfiguration*> & gc,
+                  LegendConfiguration  & lc,
+                  vector<TGraph*> graphs,
+                  const TString & xTitle,  double xMin, double xMax,
+                  const TString & yTitle,  double yMin, double yMax);
 
   //  // ================================================================================================
   //  // Function to plot nHists 1D histogram
@@ -151,15 +194,19 @@ public:
   TLegend * createLegend(vector<TGraph*> h,vector<TString> legendTexts,double x1, double y1, double x2, double y2, double fontSize, bool doDraw=true);
   TLegend * createLegend(vector<DataGraph*> graphs,double x1, double y1, double x2, double y2, double fontSize, bool doDraw=true);
 
+  TLegend * createLegend(const LegendConfiguration & legendConfig);
+  TLegend * createLegend(TH1*histogram, const LegendConfiguration & legendConfig);
+  TLegend * createLegend(vector<TH1*> h,const LegendConfiguration & legendConfig);
+  TLegend * createLegend(TGraph*graph, const LegendConfiguration & legendConfig);
+  TLegend * createLegend(vector<TGraph*> h,const LegendConfiguration & legendConfig);
+  TLegend * createLegend(vector<DataGraph*> graphs,const LegendConfiguration & legendConfig);
 
   TLine   * createLine(float x1, float y1, float x2, float y2, int style, int color, int width, bool doDraw=true);
   TArrow  * createArrow(float x1, float y1, float x2, float y2, float arrowSize, Option_t* option, int style, int color, int width, bool doDraw=true);
   void setDefaultOptions(bool color);
 
-  void printAllCanvas(const TString & outputPath, bool printGif=0, bool printPdf=1, bool printSvg=0, bool printC=0)
-  {
-  canvasCollection.printAllCanvas(outputPath, printGif, printPdf, printSvg, printC);
-  }
+  void printAllCanvas(const TString & outputPath, bool printGif, bool printPdf, bool printSvg, bool printPng, bool printC);
+  void printAllCanvas(const TString & outputPath);
 
   CanvasCollection & getCanvases()
   {

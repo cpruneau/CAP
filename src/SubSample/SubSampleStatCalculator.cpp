@@ -37,7 +37,7 @@ void SubSampleStatCalculator::setDefaultConfiguration()
   addParameter("SaveHistograms",         true);
   addParameter("AppendedString",         TString("Sum"));
   setParameter("ForceHistogramsRewrite", true);
-  addParameter("DefaultGroupSize",       10);
+  addParameter("DefaultGroupSize",       50);
   addParameter("nInputFile",             0);
   addParameter("HistogramInputPath",     none);
   addParameter("HistogramOutputPath",    none);

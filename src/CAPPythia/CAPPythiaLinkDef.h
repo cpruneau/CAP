@@ -4,4 +4,5 @@
 #pragma link off all functions;
 #pragma link C++ class PythiaEventReader+;
 #pragma link C++ class PythiaEventGenerator+;
+#pragma link C++ class PythiaEventGeneratorRho+;
 #endif

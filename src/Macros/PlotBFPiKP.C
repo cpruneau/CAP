@@ -258,6 +258,7 @@ int plotSet(Plotter * plotter,
   CanvasConfiguration landscapeLogX(CanvasConfiguration::Landscape,CanvasConfiguration::LogX);
   CanvasConfiguration landscapeLogY(CanvasConfiguration::LandscapeWide,CanvasConfiguration::LogY);
   vector<GraphConfiguration*>  graphConfigurations1D = GraphConfiguration::createConfigurationPalette(10,1);
+  //vector<GraphConfiguration*>  integralGraphConfigurations1D = GraphConfiguration::createConfigurationPalette(10,1);
   GraphConfiguration *  graphConfigurations2D = new GraphConfiguration(2,0);
   GraphConfiguration *  widthGraphConfiguration = new GraphConfiguration(1,0);
 
@@ -269,13 +270,12 @@ int plotSet(Plotter * plotter,
     graphConfigurations1D[k]->setParameter("yTitleOffset", 0.8);
     graphConfigurations1D[k]->setParameter("xLabelSize",   0.07);
     graphConfigurations1D[k]->setParameter("yLabelSize",   0.07);
+    graphConfigurations1D[k]->setParameter("lineColor",    41+k);
+    graphConfigurations1D[k]->setParameter("markerColor",  41+k);
+    graphConfigurations1D[k]->setParameter("markerStyle",  kFullSquare);
+    graphConfigurations1D[k]->setParameter("markerSize",   0.9);
     }
-  graphConfigurations1D[3]->setParameter("lineColor",    kBlue);
-  graphConfigurations1D[3]->setParameter("markerColor",  kBlue);
-  graphConfigurations1D[3]->setParameter("markerStyle",  kFullSquare);
-  graphConfigurations1D[3]->setParameter("lineColor",    kBlue);
-  graphConfigurations1D[4]->setParameter("markerColor",  kBlue);
-  graphConfigurations1D[4]->setParameter("markerStyle",  25);
+
 
   widthGraphConfiguration->setParameter("markerColor",  kBlack);
   widthGraphConfiguration->setParameter("markerStyle",  kFullSquare);
@@ -698,7 +698,7 @@ int plotSet(Plotter * plotter,
       if (plot1DHighRes==1) plotter->createLabel("(c)", -2.5, 0.4, 0.0, 1, 0.07, true);
       plotter->plot(histosDeltaPhiProjB12s,  graphConfigurations1D,graphTitlesB12s,bDeltaPhiProjName,landscapeLinear,titleDeltaPhi, 1.0,         -1.0,       titleB,minBVsDeltaPhi,     maxBVsDeltaPhi,      0.5, 0.55, 0.76, 0.85, 0.05);
       plotter->createLabel("(c)", -1.0, 0.21, 0.0, 1, 0.07, true);
-      plotter->plot(integralGraphsB12s,      graphConfigurations1D,graphTitlesB12s,integralName,     landscapeLogX,  titleDeltaY,   0.1,      maxRapidityInt,titleI,minIVsDeltaRapidity,maxIVsDeltaRapidity, 0.25, 0.5, 0.45, 0.85, 0.05);
+      plotter->plot(integralGraphsB12s,      graphConfigurations1D,graphTitlesB12s,integralName,     landscapeLogX,  titleDeltaY,   0.1,      maxRapidityInt,titleI,minIVsDeltaRapidity,maxIVsDeltaRapidity, 0.20, 0.5, 0.3, 0.85, 0.05);
       plotter->createLabel("(c)", 0.12, 1.05, 0.0, 1, 0.07, true);
       line->Draw();
 
@@ -718,7 +718,7 @@ int plotSet(Plotter * plotter,
           }
         integralGraphsB12sSums.push_back(gs);
         }
-      plotter->plot(integralGraphsB12sSums,  graphConfigurations1D,graphTitlesB12s,integralSumName, landscapeLogX,  titleDeltaY,   0.1,      maxRapidityInt,titleI,minIVsDeltaRapidity,maxIVsDeltaRapidity, 0.25, 0.5, 0.45, 0.85, 0.05);
+      plotter->plot(integralGraphsB12sSums,  graphConfigurations1D,graphTitlesB12s,integralSumName, landscapeLogX,  titleDeltaY,   0.1,      maxRapidityInt,titleI,minIVsDeltaRapidity,maxIVsDeltaRapidity, 0.20, 0.5, 0.3, 0.85, 0.05);
       //plotter->createLabel("(c)", 0.12, 1.05, 0.0, 1, 0.07, true);
       line->Draw();
 
@@ -769,6 +769,7 @@ int PlotBFPiKP(int option = 1)
   int  plotWidths         = 0;
   int  plotIntegralVsLogY = 1;
 
+  gStyle->SetPalette(kLightTemperature);
 
   TString includeBasePath = getenv("CAP_SRC");
   loadBase(includeBasePath);

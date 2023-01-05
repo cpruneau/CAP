@@ -55,7 +55,7 @@ public:
   virtual ~NuDynHistos();
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);
-  virtual void fill(double mult, vector<double> & nAccepted0, vector<double> & nAccepted1,  double weight);
+  virtual void fill(double mult, vector<double> & nAccepted,  double weight);
 
   ////////////////////////////////////////////////////////////////////////////
   // Data Members - Histograms
@@ -87,7 +87,6 @@ public:
   unsigned int nFilters;
   unsigned int multiplicityType;
   bool pairOnly;
-  vector<double> deltaRapidtyBin;
 
   vector<TProfile *> h_f1;
   vector<TProfile *> h_f2;
@@ -95,10 +94,10 @@ public:
   vector<TProfile *> h_f4;
   // vs Mult measured in fiducial
   TH1 * h_eventStreams_vsMult;
-  vector<TProfile2D *> h_f1_vsMult;
-  vector<TProfile2D *> h_f2_vsMult;
-  vector<TProfile2D *> h_f3_vsMult;
-  vector<TProfile2D *> h_f4_vsMult;
+  vector<TProfile *> h_f1_vsMult;
+  vector<TProfile *> h_f2_vsMult;
+  vector<TProfile *> h_f3_vsMult;
+  vector<TProfile *> h_f4_vsMult;
  
   ClassDef(NuDynHistos,0)
 };

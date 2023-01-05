@@ -172,6 +172,7 @@ public:
   TH2 * loadH2(TFile * inputFile,const TString & histoName);
   TH3 * loadH3(TFile * inputFile,const TString & histoName);
   TProfile * loadProfile(TFile * inputFile,const TString & histoName);
+  TProfile2D * loadProfile2D(TFile * inputFile,const TString & histoName);
   void loadHistosInList(TFile * inputFile, HistogramCollection * collection);
   TH1 * clone(const TH1 * h1, const TString & histoName);
 

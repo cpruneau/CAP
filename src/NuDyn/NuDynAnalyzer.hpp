@@ -80,6 +80,9 @@ public:
 protected:
   int multiplicityType; //!< variable used to select which event property is used to differential studies of the moments. This variable is set the class parameter "inputType".
 
+  vector<double> deltaRapidtyBin;
+
+
   ClassDef(NuDynAnalyzer,0)
 };
 

@@ -115,13 +115,11 @@ TCanvas * CanvasCollection::createCanvasXX(int nx, int ny, const TString & canva
   return canvas;
 }
 
-
-
-
 ////////////////////////////////////////////////////
 // Print Canvas
 ////////////////////////////////////////////////////
-void CanvasCollection::printCanvas(TCanvas * canvas, const TString & directoryName, bool printGif, bool printPdf, bool printSvg, bool printC)
+///
+void CanvasCollection::printCanvas(TCanvas * canvas, const TString & directoryName, bool printGif, bool printPdf, bool printSvg, bool printPng, bool printC)
 {
   createDirectory(directoryName);
   TString fileName = directoryName;
@@ -130,18 +128,19 @@ void CanvasCollection::printCanvas(TCanvas * canvas, const TString & directoryNa
   if (printGif) canvas->Print(fileName+".gif");
   if (printPdf) canvas->Print(fileName+".pdf");
   if (printSvg) canvas->Print(fileName+".svg");
+  if (printPng) canvas->Print(fileName+".png");
   if (printC)   canvas->Print(fileName+".C");
-  canvas->Print(fileName+".png");
+  //canvas->Print(fileName+".png");
 }
 
-////////////////////////////////////////////////////
+// /////////////////////////////////////////////////
 // Print Canvases
-////////////////////////////////////////////////////
-void CanvasCollection::printAllCanvas(const TString & outputPath, bool printGif, bool printPdf, bool printSvg, bool printC)
+// /////////////////////////////////////////////////
+void CanvasCollection::printAllCanvas(const TString & outputPath, bool printGif, bool printPdf, bool printSvg, bool printPng, bool printC)
 {
   for (int k=0; k<getNCanvas(); k++)
     {
-    printCanvas(getObjectAt(k),outputPath,printGif,printPdf,printSvg,printC);
+    printCanvas(getObjectAt(k),outputPath,printGif,printPdf,printSvg,printPng,printC);
     }
 }
 

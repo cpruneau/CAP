@@ -53,6 +53,9 @@ void PythiaEventGenerator::setDefaultConfiguration()
   addParameter("DataConversionToWac", true);
   addParameter("DataInputUsed",       false);
   addParameter("SaveHistograms",      false);
+  addParameter("useQCDCR",            false);
+  addParameter("useRopes",            false);
+  addParameter("useShoving",          false);
   generateKeyValuePairs("Option",     TString("none"),30);
 }
 
@@ -70,14 +73,17 @@ void PythiaEventGenerator::initialize()
   initializeNEventsAccepted();
   pythia8 = new TPythia8();
 
-  standaloneMode = getValueBool("StandaloneMode");
-  dataOutputUsed = getValueBool("DataOutputUsed");
+  standaloneMode      = getValueBool("StandaloneMode");
+  dataOutputUsed      = getValueBool("DataOutputUsed");
   DataConversionToWac = getValueBool("DataConversionToWac");
-  int    beam      = getValueInt("Beam");
-  int    target    = getValueInt("Target");
-  double energy    = getValueDouble("Energy");
-  bool   setSeed   = getValueBool("SetSeed");
-  long   seedValue = getValueLong("SeedValue");
+  int    beam         = getValueInt("Beam");
+  int    target       = getValueInt("Target");
+  double energy       = getValueDouble("Energy");
+  bool   setSeed      = getValueBool("SetSeed");
+  long   seedValue    = getValueLong("SeedValue");
+  bool   useQCDCR     = getValueBool("useQCDCR");
+  bool   useRopes     = getValueBool("useRopes");
+  bool   useShoving   = getValueBool("useShoving");
 
   cout << endl;
   cout << "===================================================================================" << endl;
@@ -90,6 +96,9 @@ void PythiaEventGenerator::initialize()
   cout << "  Pythia:Energy.................: " << energy << endl;
   cout << "  Pythia:SetSeed................: " << setSeed << endl;
   cout << "  Pythia:SeedValue..............: " << seedValue << endl;
+  cout << "  Pythia:useQCDCR...............: " << useQCDCR << endl;
+  cout << "  Pythia:useRopes...............: " << useRopes << endl;
+  cout << "  Pythia:useShoving.............: " << useShoving << endl;
   cout << "  Pythia:ReportLevel............: " << getReportLevel() << endl;
 
   if (setSeed)
@@ -112,6 +121,69 @@ void PythiaEventGenerator::initialize()
       pythia8->ReadString(value);
       }
     }
+
+  if(useQCDCR)
+    {
+
+    pythia8->ReadString("MultiPartonInteractions:pT0Ref = 2.15");
+    pythia8->ReadString("BeamRemnants:remnantMode = 1");
+    pythia8->ReadString("BeamRemnants:saturation = 5");
+    pythia8->ReadString("ColourReconnection:mode = 1");
+    pythia8->ReadString("ColourReconnection:allowDoubleJunRem = off");
+    pythia8->ReadString("ColourReconnection:m0 = 0.3");
+    pythia8->ReadString("ColourReconnection:allowJunctions = on");
+    pythia8->ReadString("ColourReconnection:junctionCorrection = 1.2");
+    pythia8->ReadString("ColourReconnection:timeDilationMode = 2");
+    pythia8->ReadString("ColourReconnection:timeDilationPar = 0.18");
+    if(!useRopes)
+      pythia8->ReadString("Ropewalk:RopeHadronization = off");
+  }
+  if(useQCDCR && useRopes){
+    pythia8->ReadString("Ropewalk:RopeHadronization = on");
+    pythia8->ReadString("Ropewalk:doShoving = on");
+    pythia8->ReadString("Ropewalk:doFlavour = on");
+
+    pythia8->ReadString("Ropewalk:tInit = 1.5");
+    pythia8->ReadString("Ropewalk:deltat = 0.05");
+    pythia8->ReadString("Ropewalk:tShove = 0.1");
+    pythia8->ReadString("Ropewalk:gAmplitude = 0.");// # Set shoving strength to 0 explicitly
+    pythia8->ReadString("Ropewalk:r0 = 0.5");
+    pythia8->ReadString("Ropewalk:m0 = 0.2");
+    pythia8->ReadString("Ropewalk:beta = 0.1");
+    pythia8->ReadString("PartonVertex:setVertex = on");
+    pythia8->ReadString("PartonVertex:protonRadius = 0.7");
+    pythia8->ReadString("PartonVertex:emissionWidth = 0.1");
+  }
+  if(!useQCDCR && useRopes)
+    {
+    cout<<"You are trying to turn on ropes without the necessary junctions! Flip kQCDCR=kTRUE"<<endl;
+    exit(1);
+    }
+
+  if(useShoving)
+    {
+    pythia8->ReadString("Ropewalk:RopeHadronization = on");
+    pythia8->ReadString("Ropewalk:doShoving = on");
+    pythia8->ReadString("Ropewalk:doFlavour = off");
+
+    pythia8->ReadString("Ropewalk:tInit = 1.5");
+    pythia8->ReadString("Ropewalk:rCutOff = 10.0");
+    pythia8->ReadString("Ropewalk:limitMom =  on");
+    pythia8->ReadString("Ropewalk:pTcut = 2.0");
+    pythia8->ReadString("Ropewalk:deltat = 0.1");
+    pythia8->ReadString("Ropewalk:deltay = 0.1");
+    pythia8->ReadString("Ropewalk:tShove = 1.");
+    pythia8->ReadString("Ropewalk:deltat = 0.1");
+    pythia8->ReadString("Ropewalk:gAmplitude = 10.0");
+    pythia8->ReadString("Ropewalk:gExponent = 1.0");
+    pythia8->ReadString("Ropewalk:r0 = 0.41");
+    pythia8->ReadString("Ropewalk:m0 = 0.2");
+    pythia8->ReadString("PartonVertex:setVertex = on");
+    pythia8->ReadString("PartonVertex:protonRadius = 0.7");
+    pythia8->ReadString("PartonVertex:emissionWidth = 0.1");
+  }
+
+
   cout << "===================================================================================" << endl;
   cout << "===================================================================================" << endl;
 

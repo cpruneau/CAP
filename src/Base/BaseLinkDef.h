@@ -24,6 +24,7 @@
 #pragma link C++ class Collection<ParticleType>+;
 #pragma link C++ class FunctionCollection+;
 #pragma link C++ class GraphConfiguration+;
+#pragma link C++ class LegendConfiguration+;
 #pragma link C++ class HistogramCollection+;
 #pragma link C++ class Histograms+;
 #pragma link C++ class Plotter+;
