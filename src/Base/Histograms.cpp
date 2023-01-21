@@ -30,7 +30,7 @@ configuration(_configuration)
 //Histograms(TFile * inputFile,
 //           const TString & _name,
 //           Configuration & configuration,
-//           LogLevel  debugLevel);
+//           Severity  debugLevel);
 
 //!
 //! Overload this class to create histograms.

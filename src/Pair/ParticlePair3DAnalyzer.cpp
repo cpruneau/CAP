@@ -54,7 +54,7 @@ void ParticlePair3DAnalyzer::createHistograms()
   baseSingleHistograms.clear();
   basePairHistograms.clear();
   Configuration & configuration = getConfiguration();
-  LogLevel debugLevel = getReportLevel();
+  Severity debugLevel = getSeverityLevel();
   TString bn  = getName();
   useAbsDelta = getValueBool("useAbsDelta");
 
@@ -107,7 +107,7 @@ void ParticlePair3DAnalyzer::loadHistograms(TFile * inputFile)
   baseSingleHistograms.clear();
   basePairHistograms.clear();
   Configuration & configuration = getConfiguration();
-  LogLevel debugLevel    = getReportLevel();
+  Severity debugLevel    = getSeverityLevel();
   TString bn  = getName();
   Histograms * histos;
   if (reportDebug(__FUNCTION__))
@@ -288,7 +288,7 @@ Task * ParticlePair3DAnalyzer::getDerivedCalculator()
   derivedCalcsetParameter("CreateHistograms",       true);
   derivedCalcsetParameter("LoadHistograms",         true);
   derivedCalcsetParameter("SaveHistograms",         true);
-  Task * calculator = new ParticlePair3DDerivedHistogramCalculator(nameD,derivedCalcConfiguration,eventFilters,particleFilters,getReportLevel());
+  Task * calculator = new ParticlePair3DDerivedHistogramCalculator(nameD,derivedCalcConfiguration,eventFilters,particleFilters,getSeverityLevel());
   return calculator;
 }
 

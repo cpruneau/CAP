@@ -182,10 +182,10 @@ int main()
 
   EventLoop * eventLoop = new EventLoop();
 
-  gen->setReportLevel(MessageLogger::Info);
-  ana1->setReportLevel(MessageLogger::Info);
-  ana2->setReportLevel(MessageLogger::Info);
-  eventLoop->setReportLevel(MessageLogger::Info);
+  gen->getSeverityLevel(MessageLogger::Info);
+  ana1->getSeverityLevel(MessageLogger::Info);
+  ana2->getSeverityLevel(MessageLogger::Info);
+  eventLoop->getSeverityLevel(MessageLogger::Info);
 
   eventLoop->addTask(gen);
   eventLoop->addTask(ana1);

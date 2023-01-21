@@ -80,7 +80,7 @@ void RootTreeReader::initialize()
   inputRootChain = new TChain(dataInputTreeName);
   if (!inputRootChain)
     {
-    if (reportFatal()) cout << "Chain is a null pointer" << endl;
+    if (reportFatal(__FUNCTION__)) cout << "Chain is a null pointer" << endl;
     postTaskFatal();
     return;
     }

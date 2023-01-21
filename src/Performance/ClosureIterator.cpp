@@ -60,10 +60,8 @@ void ClosureIterator::execute()
   if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++)
     {
-    Task & subTask = *subTasks[iTask];
-    Configuration & subTaskConfig = subTask.getConfiguration();
-    TString taskName              = subTask.getName();
-    //if (reportInfo(__FUNCTION__))  cout << "SubTasks:" << iTask  << " named:" << taskName << " w/ analyzer:" <<  histoAnalyzerName << endl;
+    Task & subTask   = *subTasks[iTask];
+    TString taskName = subTask.getName();
     vector<TString> includedPatterns = getSelectedValues("IncludedPattern",none);
     vector<TString> excludedPatterns = getSelectedValues("ExcludedPattern",none);
     includedPatterns.push_back("XXXXX");

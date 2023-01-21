@@ -81,7 +81,7 @@ void HadronGasGeneratorTask::initialize()
  
   TString label = "T";
   label += int(1000*temperature);
-  HadronGas * gas = new HadronGas(particleTypes,stableParticleTypes,getLogLevel());
+  HadronGas * gas = new HadronGas(particleTypes,stableParticleTypes,getSeverity());
   gas->setName(label);
   gas->calculateAllProperties(temperature,muB,muS);
   if (reportDebug("HadronGasGeneratorTask",name,"initialize()"))
@@ -184,7 +184,7 @@ void HadronGasGeneratorTask::createHistograms()
   baseSingleHistograms.clear();
   basePairHistograms.clear();
   Configuration & configuration = getConfiguration();
-  LogLevel debugLevel = getReportLevel();
+  Severity debugLevel = getSeverityLevel();
   TString & name = getName();
 
   TString bn                    = configuration.getValueString(name,"HistoBaseName");
@@ -258,7 +258,7 @@ void HadronGasGeneratorTask::loadHistograms(TFile * inputFile)
   baseSingleHistograms.clear();
   basePairHistograms.clear();
   Configuration & configuration = getConfiguration();
-  LogLevel debugLevel = getReportLevel();
+  Severity debugLevel = getSeverityLevel();
 
   TString bn                    = configuration.getValueString(name,"HistoBaseName");
   bool    doTempDependentHistos = configuration.getValueBool(name,"DoTempDependentHistos");

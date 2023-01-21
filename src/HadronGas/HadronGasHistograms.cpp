@@ -178,7 +178,7 @@ void HadronGasHistograms::createHistograms()
       h_rho1ThVsP.push_back(createHistogram(makeName(bn,allSpeciesLabels[iSpecies],"rho1ThVsP"),nP,minP,maxP,"p (GeV/c)","#rho_{1}^{Th} (c/GeV)"));
       }
     }
-  if (reportEnd("HadronGasHistograms",getName(),"createHistograms()"))
+  if (reportEnd(__FUNCTION__))
     ;
 }
 

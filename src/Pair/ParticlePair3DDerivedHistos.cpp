@@ -376,8 +376,8 @@ void ParticlePair3DDerivedHistos::calculatePairDerivedHistograms(ParticleHistos 
   TString fct = "calculatePairDerivedHistograms(..)";
   if (reportStart(__FUNCTION__))
     ;
-  MessageLogger::LogLevel store = getReportLevel();
-  //setReportLevel(MessageLogger::Debug);
+  MessageLogger::Severity store = getSeverityLevel();
+  //getSeverityLevel(MessageLogger::Debug);
   
   
   double avgPt1Phi;
@@ -556,5 +556,5 @@ void ParticlePair3DDerivedHistos::calculatePairDerivedHistograms(ParticleHistos 
   
   if (reportEnd(__FUNCTION__))
     ;
-  setReportLevel(store);
+  getSeverityLevel(store);
 }

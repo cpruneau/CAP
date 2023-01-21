@@ -42,6 +42,7 @@
 #include "TFile.h"
 #include "Configuration.hpp"
 #include "MessageLogger.hpp"
+#include "StateManager.hpp"
 #include "Event.hpp"
 #include "EventFilter.hpp"
 #include "ParticleFilter.hpp"
@@ -51,6 +52,7 @@
 #include "Timer.hpp"
 
 using namespace std;
+using namespace CAP;
 
 //!
 //!\mainpage Correlation Analysis package
@@ -251,7 +253,7 @@ using namespace std;
 //! <li>execute(): A method called to carry out or execute the task at hand. The present version of the code does not implement a state engine that keeps track
 //! of whether or not a task has been initialized or not. This falls under the responsibility of the user. Note that the TaskIterator class handles all operations sequentially
 //! and gracefully thereby insuring operations are carried in "the proper order". Additionally note that if an exception or error occurs during the initialization, execution,
-//! or any other stage of a task, a PostTaskStatus call is placed to identify the abnormal condition.
+//! or any other stage of a task, a PostTaskState call is placed to identify the abnormal condition.
 //!
 //! <li>finalize(): A method called to finalize a task instance. The finalize() method implemented in the base class  automatically calls various functions to scale
 //!histograms (per event scaling), to compute derived histogram (as needed), and save histograms to a root file.
@@ -312,11 +314,33 @@ using namespace std;
 //!
 //!
 
+#define postTaskConfigured()  ( StateManager::getStateManager()->setState(StateManager::CONFIGURED)  )
+#define postTaskInitialized() ( StateManager::getStateManager()->setState(StateManager::INITIALIZED) )
+#define postTaskOk()          ( StateManager::getStateManager()->setState(StateManager::OK)     )
+#define postTaskRunning()     ( StateManager::getStateManager()->setState(StateManager::OK)     )
+#define postTaskCompleted()   ( StateManager::getStateManager()->setState(StateManager::COMPLETED)   )
+#define postTaskEof()         ( StateManager::getStateManager()->setState(StateManager::EOFILE)      )
+#define postTaskEod()         ( StateManager::getStateManager()->setState(StateManager::EODATA)     )
+#define postTaskWarning()     ( StateManager::getStateManager()->setState(StateManager::WARNING)     )
+#define postTaskError()       ( StateManager::getStateManager()->setState(StateManager::ERROR)       )
+#define postTaskFatal()       ( StateManager::getStateManager()->setState(StateManager::FATAL)       )
+
+#define isTaskConfigured()    ( StateManager::getStateManager()->isConfigured()  )
+#define isTaskInitialized()   ( StateManager::getStateManager()->Initialized()   )
+#define isTaskOk()            ( StateManager::getStateManager()->isOK()          )
+#define isTaskRunning()       ( StateManager::getStateManager()->isOK()          )
+#define isTaskCompleted()     ( StateManager::getStateManager()->isCompleted()   )
+#define isTaskEof()           ( StateManager::getStateManager()->isEof()   )
+#define isTaskEod()           ( StateManager::getStateManager()->isEod()   )
+
+
+
+
 class Task : public MessageLogger
 {
 protected:
 
-  Timer timer;
+  CAP::Timer timer;
   
   //!
   //! Name given to this task instance

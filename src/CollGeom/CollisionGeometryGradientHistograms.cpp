@@ -27,14 +27,14 @@ h_gy(0)
 
 void CollisionGeometryGradientHistograms::createHistograms()
 {
-  if (reportStart("CollisionGeometryGradientHistograms",getName(),"createHistograms()"))
+  if (reportStart(__FUNCTION__))
     ;
   TString bn = getParentTaskName();
   h_edge     = createHistogram(makeName(bn,"edge"),   200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "Edge");
   h_radius   = createHistogram(makeName(bn,"radius"), 200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "r/r_{max}");
   h_gx       = createHistogram(makeName(bn,"gx"),     200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "g_{x}");
   h_gy       = createHistogram(makeName(bn,"gy"),     200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "g_{y}");
-  if (reportEnd("CollisionGeometryGradientHistograms",getName(),"createHistograms()"))
+  if (reportEnd(__FUNCTION__))
     ;
 }
 

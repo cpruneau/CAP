@@ -60,7 +60,7 @@ void RunSubsample::setDefaultConfiguration()
   addParameter("NuDynLabel",          TString("NuDyn"));
   addParameter("GenLabel",            TString("Gen"));
   addParameter("RecoLabel",           TString("Reco"));
-  addParameter("LogLevel",            TString("DEBUG"));
+  addParameter("Severity",            TString("DEBUG"));
   addParameter("Subsample",           YES);
   addParameter("SubsampleBase",       YES);
   addParameter("SubsampleDerived",    NO);
@@ -72,7 +72,6 @@ void RunSubsample::setDefaultConfiguration()
   addParameter("BunchLabel",          TString("BUNCH"));
   addParameter("SubPathLabel",        TString("Output"));
   addParameter("MaximumDepth",        1);
-  setReportLevel(MessageLogger::Debug);
 }
 
 void RunSubsample::addBaseSubSampleTask(const TString & basePath,
@@ -220,8 +219,8 @@ void RunSubsample::configure()
 
   // assemble the task from here...
 
-  MessageLogger::LogLevel selectedLevel = MessageLogger::Debug;
-  TString reportLevel                   = getValueBool("LogLevel");
+  MessageLogger::Severity selectedLevel = MessageLogger::Debug;
+  TString reportLevel                   = getValueBool("Severity");
   if (reportLevel.EqualTo("Debug")) selectedLevel = MessageLogger::Debug;
   if (reportLevel.EqualTo("Info"))  selectedLevel = MessageLogger::Info;
 

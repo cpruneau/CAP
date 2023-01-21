@@ -17,7 +17,7 @@ Plotter::Plotter(const TString & _name,
 :
 Task(_name,_configuration),
 canvasCollection(),
-histogramCollection("HistoS",LogLevel::Info)
+histogramCollection("HistoS",Severity::Info)
 {
   appendClassName("Plotter");
 }
@@ -43,8 +43,8 @@ void Plotter::configure()
   setDefaultConfiguration();
   setConfiguration(requestedConfiguration);
   //configuration.printConfiguration(cout);
-  MessageLogger::LogLevel selectedLevel = MessageLogger::Debug;
-  TString reportLevel                   = getValueBool("LogLevel");
+  MessageLogger::Severity selectedLevel = MessageLogger::Debug;
+  TString reportLevel                   = getValueBool("Severity");
   if (reportLevel.EqualTo("Debug")) selectedLevel = MessageLogger::Debug;
   if (reportLevel.EqualTo("Info"))  selectedLevel = MessageLogger::Info;
 }
@@ -703,7 +703,7 @@ void Plotter::setProperties(TH1 * h, const GraphConfiguration & graphConfigurati
 void Plotter::setProperties(TH1 * h, const GraphConfiguration & graphConfiguration,
                             const TString & xTitle, const TString & yTitle, const TString & zTitle)
 {
-  if (reportDebug("Plotter",getName(),"setProperties(TH1 * h, const GraphConfiguration & graphConfiguration, ....)"))
+  if (reportDebug(__FUNCTION__))
     {
     cout << "Setting properties of histo: " << h->GetTitle() << endl;
     }
@@ -721,7 +721,7 @@ void Plotter::setProperties(TH1 * h, const GraphConfiguration & graphConfigurati
 
 void Plotter::setProperties(TGraph * g, const GraphConfiguration & graphConfiguration)
 {
-  if (reportDebug("Plotter",getName(),"setProperties(TGraph * g,..)"))
+  if (reportDebug(__FUNCTION__))
     {
     cout << "Setting properties of graph "<< g->GetTitle()  << endl;
     }
@@ -773,7 +773,7 @@ void Plotter::setProperties(TGraph * g, const GraphConfiguration & graphConfigur
 
 void Plotter::setProperties(TGraph * g, const GraphConfiguration & graphConfiguration, const TString & xTitle, const TString & yTitle)
 {
-  if (reportInfo("Plotter",getName(),"setProperties(TGraph * g,..)"))
+  if (reportInfo(__FUNCTION__))
     {
     cout << "Setting properties of graph " << g->GetTitle() << endl;
     }

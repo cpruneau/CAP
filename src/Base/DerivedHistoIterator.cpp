@@ -55,11 +55,11 @@ void DerivedHistoIterator::execute()
     cout << " ForceHistogramsRewrite...........: " << forceHistogramsRewrite << endl;
     cout << " HistogramInputPath...............: " << histogramInputPath     << endl;
     cout << " HistogramOutputPath..............: " << histogramOutputPath    << endl;
-    for (int k=0; k<includedPatterns.size(); k++)
+    for (unsigned int k=0; k<includedPatterns.size(); k++)
       {
       cout << " Included.................: " << includedPatterns[k]     << endl;
       }
-    for (int k=0; k<excludedPatterns.size(); k++)
+    for (unsigned int k=0; k<excludedPatterns.size(); k++)
       {
       cout << " Excluded.................: " << excludedPatterns[k]     << endl;
       }
@@ -122,13 +122,11 @@ void DerivedHistoIterator::execute()
         cout << " Input file............: " << histogramInputFile << endl;
         cout << " Output file...........: " << histogramOutputFile << endl;
         }
-      postTaskOk();
       TString nullString = "";
       subTask.setParameter("HistogramInputPath",nullString);
       subTask.setParameter("HistogramOutputPath",nullString);
       subTask.setParameter("HistogramInputFile",histogramInputFile);
       subTask.setParameter("HistogramOutputFile",histogramOutputFile);
-
       subTask.loadHistograms();
       subTask.createDerivedHistograms();
       if (!isTaskOk()) break;

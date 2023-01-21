@@ -60,7 +60,7 @@ void RunDerivedCalculation::setDefaultConfiguration()
   addParameter("BalFctLabel",     TString("BalFct"));
   addParameter("GenLabel",        TString("Gen"));
   addParameter("RecoLabel",       TString("Reco"));
-  addParameter("LogLevel",                TString("Info"));
+  addParameter("Severity",                TString("Info"));
   addParameter("Derived",                 YES);
   addParameter("BalFct",                  YES);
   addParameter("GlobalGen",               NO);
@@ -147,8 +147,8 @@ void RunDerivedCalculation::configure()
   // assemble the task from here...
   DerivedHistoIterator      * derived   = nullptr;
   BalanceFunctionCalculator * balFct    = nullptr;
-  MessageLogger::LogLevel selectedLevel = MessageLogger::Debug;
-  TString reportLevel                   = getValueBool("LogLevel");
+  MessageLogger::Severity selectedLevel = MessageLogger::Debug;
+  TString reportLevel                   = getValueBool("Severity");
   if (reportLevel.EqualTo("Debug")) selectedLevel = MessageLogger::Debug;
   if (reportLevel.EqualTo("Info"))  selectedLevel = MessageLogger::Info;
   TString GlobalLabel      = getValueString("GlobalLabel");

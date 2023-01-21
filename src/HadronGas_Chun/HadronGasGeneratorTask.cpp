@@ -88,7 +88,7 @@ void HadronGasGeneratorTask::initialize()
  
   TString label = "T";
   label += int(1000*temperature);
-  HadronGas * gas = new HadronGas(particleTypes,stableParticleTypes,getLogLevel());
+  HadronGas * gas = new HadronGas(particleTypes,stableParticleTypes,getSeverity());
   gas->setName(label);
   gas->calculateAllProperties(temperature,muB,muS);
   if (reportDebug("HadronGasGeneratorTask",name,"initialize()"))

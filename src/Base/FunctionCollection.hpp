@@ -41,7 +41,7 @@ public:
   /////////////////////////////////////////////////////////////
   // Member functions
   /////////////////////////////////////////////////////////////
-  FunctionCollection(const TString& _name="",LogLevel logLevel=Info);
+  FunctionCollection(const TString& _name="",Severity logLevel=Info);
   FunctionCollection(const FunctionCollection & source);
   virtual ~FunctionCollection();
   FunctionCollection & operator=(const FunctionCollection & source);

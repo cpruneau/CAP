@@ -44,7 +44,7 @@ public:
   name("Unnamed")
   {  }
 
-  Collection(const TString& _name, bool _ownership, LogLevel logLevel)
+  Collection(const TString& _name, bool _ownership, Severity logLevel)
   :
   MessageLogger(logLevel),
   objects(),

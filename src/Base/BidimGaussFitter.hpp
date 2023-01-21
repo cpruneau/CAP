@@ -29,7 +29,7 @@ class BidimGaussFitter : public Plotter
   public:
   BidimGaussFitter(const TString & _name,
                    Configuration &     _configuration,
-                   LogLevel                  _requiredLevel);
+                   Severity                  _requiredLevel);
   BidimGaussFitter(const BidimGaussFitter& source);
   virtual ~BidimGaussFitter();
   const BidimGaussFitter & operator=(const BidimGaussFitter & source);

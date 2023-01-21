@@ -75,8 +75,8 @@ void CalibrationProducer::execute()
 
   if (!inputFile || !outputFile) return;
   
-  HistogramCollection * inputCollection = new HistogramCollection("Input",getReportLevel());
-  HistogramCollection * outputCollection  = new HistogramCollection("Output", getReportLevel());
+  HistogramCollection * inputCollection = new HistogramCollection("Input",getSeverityLevel());
+  HistogramCollection * outputCollection  = new HistogramCollection("Output", getSeverityLevel());
   inputCollection->loadCollection(inputFile);
   inputCollection->setOwnership(false);
   outputCollection->setOwnership(false);

@@ -149,7 +149,7 @@ void SubSampleStatCalculator::execute()
       if (iFile==first)
         {
         firstInputFile = inputFile;
-        collectionAvg  = new HistogramCollection("Sum",getReportLevel());
+        collectionAvg  = new HistogramCollection("Sum",getSeverityLevel());
         collectionAvg->loadCollection(inputFile);
 
         parameterName      = "nTaskExecuted";
@@ -177,7 +177,7 @@ void SubSampleStatCalculator::execute()
         }
       else
         {
-        collection = new HistogramCollection(histogramInputFile,getReportLevel());;
+        collection = new HistogramCollection(histogramInputFile,getSeverityLevel());;
         collection->loadCollection(inputFile);
         collectionAvg->squareDifferenceCollection(*collection, double(sumEventsProcessed), double(nEventsProcessed), (iFile==(last-1)) ? nInputFile : -iFile);
 

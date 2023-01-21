@@ -18,7 +18,7 @@ EventCountHistos::EventCountHistos(Task *          _parent,
                                    Configuration & _configuration,
                                    int             _nEventFilters,
                                    int             _nParticleFilters,
-                                   LogLevel        _debugLevel)
+                                   Severity        _debugLevel)
 :
 Histograms(_parent,_name,_configuration),
 nEventFilters(_nEventFilters),

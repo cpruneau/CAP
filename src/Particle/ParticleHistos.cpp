@@ -63,7 +63,7 @@ ParticleHistos::~ParticleHistos()
 // for now use the same boundaries for eta and y histogram
 void ParticleHistos::createHistograms()
 {
-  if ( reportStart("ParticleHistos",getName(),"createHistograms()"))
+  if ( reportStart(__FUNCTION__))
     ;
   const TString & bn  = getName();
   const TString & ptn = getParentTaskName();
@@ -154,7 +154,7 @@ void ParticleHistos::createHistograms()
 
   h_pdgId  = createHistogram(makeName(bn,"n1_indexId"),   400,  -0.5, 399.5, "Index", "N");
 
-  if ( reportEnd("ParticleHistos",getName(),"createHistograms()"))
+  if ( reportEnd(__FUNCTION__))
     { }
 }
 
@@ -172,7 +172,7 @@ void ParticleHistos::loadHistograms(TFile * inputFile)
   const TString & ppn = getParentPathName();
   Configuration & configuration = getConfiguration();
 
-  setReportLevel(MessageLogger::Debug);
+  setSeverityLevel(MessageLogger::Debug);
 
   if (reportInfo(__FUNCTION__))
     {

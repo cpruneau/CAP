@@ -81,7 +81,7 @@ void PythiaEventGeneratorRho::initialize()
   cout << "  Pythia:Energy.................: " << energy << endl;
   cout << "  Pythia:SetSeed................: " << setSeed << endl;
   cout << "  Pythia:SeedValue..............: " << seedValue << endl;
-  cout << "  Pythia:ReportLevel............: " << getReportLevel() << endl;
+  cout << "  Pythia:ReportLevel............: " << getSeverityLevel() << endl;
 
   if (setSeed)
     {

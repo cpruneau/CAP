@@ -16,7 +16,7 @@ ClassImp(Collection<TF1>);
 
 ClassImp(FunctionCollection);
 
-FunctionCollection::FunctionCollection(const TString& _name,LogLevel logLevel)
+FunctionCollection::FunctionCollection(const TString& _name,Severity logLevel)
 :
 Collection<TF1>(_name,false,logLevel)
 {

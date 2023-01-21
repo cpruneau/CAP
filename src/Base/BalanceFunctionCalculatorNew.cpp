@@ -119,7 +119,7 @@ void BalanceFunctionCalculator::execute()
           break;
           }
         }
-      task->setReportLevel(getReportLevel());
+      task->setSeverityLevel(getSeverityLevel());
       TString HistogramInputFile  = allFilesToProcess[iFile];
       TString HistogramOutputFile = removeRootExtension(HistogramInputFile);
       HistogramOutputFile += appendedString;
@@ -147,7 +147,7 @@ void BalanceFunctionCalculator::execute()
       task->setParameter("UseParticles",           true);
       task->setParameter("UseEventStream0",        false);
       task->setParameter("UseEventStream1",        false);
-      task->setReportLevel(getReportLevel());
+      task->setSeverityLevel(getSeverityLevel());
       postTaskOk();
       task->initialize();
       if (!isTaskOk()) break;

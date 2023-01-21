@@ -97,7 +97,7 @@ void ParticlePairAnalyzer::createHistograms()
   baseSingleHistograms.clear();
   basePairHistograms.clear();
   Configuration & configuration = getConfiguration();
-  LogLevel debugLevel = getReportLevel();
+  Severity debugLevel = getSeverityLevel();
   TString bn  = getName();
   fillEta = getValueBool("FillEta");
   fillY   = getValueBool("FillY");
@@ -148,14 +148,17 @@ void ParticlePairAnalyzer::createHistograms()
 
 void ParticlePairAnalyzer::loadHistograms(TFile * inputFile)
 {
-  
   if (reportStart(__FUNCTION__))
     ;
-  if (!ptrFileExist(inputFile)) return;
+  if (!inputFile)
+    {
+    if (reportError(__FUNCTION__)) cout << "Given inputFile pointer is null" << endl;
+    postTaskError();
+    return;
+    }
   baseSingleHistograms.clear();
   basePairHistograms.clear();
   Configuration & configuration = getConfiguration();
-  LogLevel debugLevel    = getReportLevel();
   TString bn  = getName();
   Histograms * histos;
 
@@ -409,7 +412,6 @@ void ParticlePairAnalyzer::createDerivedHistograms()
   derivedSingleHistograms.clear();
   derivedPairHistograms.clear();
   Configuration & configuration = getConfiguration();
-  LogLevel debugLevel = getReportLevel();
   TString bn  = getName();
   Histograms * histos;
   if (reportInfo(__FUNCTION__))
@@ -461,7 +463,6 @@ void ParticlePairAnalyzer::calculateDerivedHistograms()
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  LogLevel debugLevel = getReportLevel();
   bool binCorrPP = getValueDouble("binCorrPP");
 
   if (reportInfo(__FUNCTION__))

@@ -47,7 +47,7 @@ class HistogramCollection : public Collection<TH1>
 {
 public:
 
-  HistogramCollection(const TString & _name,LogLevel  debugLevel=LogLevel::Info);
+  HistogramCollection(const TString & _name,Severity  debugLevel=Severity::Info);
   HistogramCollection(const HistogramCollection & source);
   virtual ~HistogramCollection();
 
@@ -317,6 +317,36 @@ public:
   bool sameDimensions(const TString & caller, const TH1* h1, const TH1* h2, const TH1* h3) const;
   bool sameDimensions(const TString & caller, const TH1* h1, const TH1* h2, const TH1* h3, const TH1* h4) const;
   bool sameDimensions(const TString & caller, const TH1* h1, const TH1* h2, const TH1* h3, const TH1* h4, const TH1* h5) const;
+
+  bool ptrFileExist(const TString &  caller, const TFile * f) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1) const ;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11) const;
+  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11, const TH1 * h12) const;
+
+  bool ptrFileExist(const TFile * f) const;
+  bool ptrExist(const TH1 * h1)  const;
+  bool ptrExist(const TH1 * h1, const TH1 * h2) const;
+  bool ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3) const;
+  bool ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4) const;
+  bool ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5) const;
+  bool ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6) const;
+  bool ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7) const;
+  bool ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8) const;
+  bool ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9) const;
+  bool ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10) const;
+  bool ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11) const;
+  bool ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11, const TH1 * h12) const;
+
+
 
   ////////////////////////////////////////////////////////////////////////////
   // Data Members - Inputs

@@ -126,8 +126,7 @@ public:
   HadronGas(const TString & _name,
             Configuration &    _configuration,
             ParticleTypeCollection * _particles,
-            ParticleTypeCollection * _stableParticles,
-            LogLevel _debugLevel);
+            ParticleTypeCollection * _stableParticles);
 
   virtual ~HadronGas() {}
 

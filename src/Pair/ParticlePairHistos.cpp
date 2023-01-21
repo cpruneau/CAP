@@ -233,7 +233,7 @@ void ParticlePairHistos::createHistograms()
   //                                     "p_{s}","p_{o}", "p_{l}","n_{2}");
   //    }
 
-  if ( reportEnd("ParticlePairHistos",ppn,"createHistograms()"))
+  if ( reportEnd(__FUNCTION__))
     { }
 }
 
@@ -495,13 +495,13 @@ void ParticlePairHistos::fill(Particle & particle1, Particle & particle2, double
 //    ;
   TLorentzVector & momentum1 = particle1.getMomentum();
   double pt1   = momentum1.Pt();
-  double e1    = momentum1.E();
+  //double e1    = momentum1.E();
   double phi1  = momentum1.Phi();
   double eta1  = momentum1.Eta();
   double y1    = momentum1.Rapidity();
   TLorentzVector & momentum2 = particle2.getMomentum();
   double pt2   = momentum2.Pt();
-  double e2    = momentum2.E();
+  //double e2    = momentum2.E();
   double phi2  = momentum2.Phi();
   double eta2  = momentum2.Eta();
   double y2    = momentum2.Rapidity();

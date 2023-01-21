@@ -118,7 +118,7 @@ void GlobalHistos::createHistograms()
     cout << "  G:Max_ptAvg...........................: "  <<  max_ptAvg << endl;
     }
 
-  setReportLevel(MessageLogger::Debug);
+  //setSeverityLevel(MessageLogger::Debug);
 
   for (unsigned int k1=0; k1<nParticleFilters; k1++)
   {

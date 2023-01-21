@@ -16,10 +16,11 @@
 #include <chrono>
 #include <fstream>
 #include "TObject.h"
-
 using namespace std;
 using namespace std::chrono;
 
+namespace CAP
+{
 class Timer
 {
 public:
@@ -46,5 +47,9 @@ public:
 
   ClassDef(Timer,0)
 };
+
+}
+
+
 
 #endif /* CAP__Timer */

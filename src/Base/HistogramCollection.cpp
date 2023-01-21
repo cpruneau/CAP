@@ -18,7 +18,7 @@ ClassImp(Collection<TH1>);
 ClassImp(HistogramCollection);
 
 HistogramCollection::HistogramCollection(const TString & _name,
-                                         LogLevel  _debugLevel)
+                                         Severity  _debugLevel)
 :
 Collection(_name, true, _debugLevel),
 randomGenerator(new TRandom())
@@ -480,7 +480,7 @@ HistogramCollection * HistogramCollection::clone() const
 {
   if (reportStart(__FUNCTION__))
     ;
-  HistogramCollection * newCollection = new HistogramCollection(getInstanceName(), getReportLevel());
+  HistogramCollection * newCollection = new HistogramCollection(getInstanceName(), getSeverityLevel());
   for (unsigned int iObject=0; iObject<size(); iObject++)
     {
     TH1* h0 = objects[iObject];
@@ -528,7 +528,7 @@ void HistogramCollection::add(const HistogramCollection & c1, double a1)
       }
     if (!sameDimensions(__FUNCTION__,h0,h1))
       {
-      if (reportWarning(getClassName(), getInstanceName(), "add(..)" ) )
+      if (reportWarning(__FUNCTION__) )
         {
         cout << " Incompatible histogram sizes at iObject:" << iObject << endl;
         cout << "this: " << getName()    << " histogram named: " << h0->GetName() << endl;
@@ -536,7 +536,7 @@ void HistogramCollection::add(const HistogramCollection & c1, double a1)
         }
       return;
       }
-    if (reportDebug() )
+    if (reportDebug(__FUNCTION__) )
       {
       cout << "At iObject:" << iObject << " Adding histogram " << h0->GetName() << " and histogram " << h1->GetName() << endl;
       }
@@ -583,7 +583,7 @@ void HistogramCollection::add(const HistogramCollection & c1, const HistogramCol
       }
     if (!sameDimensions(__FUNCTION__,h0,h1)  || !sameDimensions(__FUNCTION__,h0,h2))
       {
-      if (reportWarning() )
+      if (reportWarning(__FUNCTION__) )
         {
         cout << endl;
         cout << " Incompatible histogram sizes at iObject:" << iObject << endl;
@@ -770,7 +770,7 @@ void HistogramCollection::divide(const HistogramCollection & c1)
       }
     if (!sameDimensions(__FUNCTION__,h0,h1))
       {
-      if (reportWarning() )
+      if (reportWarning(__FUNCTION__) )
         {
         cout << endl;
         cout << " Incompatible histogram sizes at iObject:" << iObject << endl;
@@ -779,7 +779,7 @@ void HistogramCollection::divide(const HistogramCollection & c1)
         }
       return;
       }
-    if (reportDebug() )
+    if (reportDebug(__FUNCTION__) )
       {
       cout << "At iObject:" << iObject << " divide histogram " << h0->GetName() << " by histogram " << h1->GetName() << endl;
       }
@@ -827,7 +827,7 @@ void HistogramCollection::divide(const HistogramCollection & c1,
       }
     if (!sameDimensions(__FUNCTION__,h0,h1)  || !sameDimensions(__FUNCTION__,h0,h2))
       {
-      if (reportWarning() )
+      if (reportWarning(__FUNCTION__) )
         {
         cout << " Incompatible histogram sizes at iObject:" << iObject << endl;
         cout << "this: " << getName()    << " histogram named: " << h0->GetName() << endl;
@@ -964,12 +964,12 @@ void HistogramCollection::squareDifferenceCollection(const HistogramCollection &
     TH1* h    = collection.objects[iObject];
     if (!hAvg || !h)
       {
-      if (reportWarning() )
+      if (reportWarning(__FUNCTION__) )
         cout << " Histogram null pointers detected at iObject:" << iObject << endl;
       continue;
       }
     if (!sameDimensions(__FUNCTION__,hAvg,h)) return;
-    if (reportDebug() )
+    if (reportDebug(__FUNCTION__) )
       {
       cout << "At iObject:" << iObject << " Computing square difference of  histogram " << hAvg->GetName() << " and histogram " << h->GetName() << endl;
       }
@@ -1096,7 +1096,7 @@ void HistogramCollection::squareDifferenceHistos(TH1 *hAvg, TH1 *h, double sumWe
         }
       }
     }
-  if (reportEnd() )
+  if (reportEnd(__FUNCTION__) )
     ;
 }
 
@@ -1210,7 +1210,7 @@ void HistogramCollection::differenceHistos(TH1 *h, TH1 *hRef, TH1 *hDiff, bool c
         }
       }
     }
-  if (reportEnd() )
+  if (reportEnd(__FUNCTION__) )
     ;
 }
 
@@ -3660,7 +3660,7 @@ void HistogramCollection::calculateAverage(TH1* h, double & avgDensity, double &
   avgValue    = sum/norm;
   avgDensity  = avgValue/TMath::TwoPi();
   eAvgDensity = sqrt(esum)/norm/TMath::TwoPi();
-  if ( reportDebug("HistogramCollection",getName(),"calculateAverage(TH1* h, double & avgDensity, double & eAvgDensity"))
+  if ( reportDebug(__FUNCTION__))
     {
     cout << "     Name: " << h->GetName() << "  avgValue: " << avgValue   << "  density: " << avgDensity  <<  " +- " << eAvgDensity << endl;
     }
@@ -4393,12 +4393,10 @@ void HistogramCollection::reduce_n2xEtaPhi_n2EtaEta(const TH1 * source, TH2 * ta
       ev1  = target->GetBinError(iEta+1,jEta+1);
       v2   = work[ iEta*nEtaBins+jEta ];
       if (v2<=0)
-        if (reportFatal())
+        if (reportFatal(__FUNCTION__))
           {
           cout << endl;
-          cout << endl << "Serious BUG !!!!!!!!!!!!!!!!!!!!!!!" << endl;
-          delete [] work;
-          return;
+          exit(1);
           }
       target->SetBinContent(iEta+1,jEta+1,v1/v2);
       target->SetBinError(iEta+1,jEta+1,ev1/v2);
@@ -4619,7 +4617,7 @@ int HistogramCollection::index2(int i1, int i2)
       default: v = -1; break;
     }
   if (v<0)
-    if (reportWarning("index2(int i1, int i2)"))
+    if (reportWarning(__FUNCTION__))
       cout << "Combination i1:" << i1 << " i2:" << i2 << " is not allowed." << endl;
   return v;
 }
@@ -4736,7 +4734,7 @@ int HistogramCollection::index3(int i1, int i2, int i3)
       default: v = -1; break;
     }
   if (v<0)
-    if (reportWarning("index2(int i1, int i2)"))
+    if (reportWarning(__FUNCTION__))
       cout << "Combination i1:" << i1 << " i2:" << i2 <<  " i3:" << i3 << " is not allowed." << endl;
   return v;
 }
@@ -5258,3 +5256,969 @@ void HistogramCollection::calculateNudyn(double r2_11,double er2_11,double r2_12
   enudyn = sqrt(er2_11*er2_11 + er2_22*er2_22 + 4.0*er2_12*er2_12);
 }
 
+// sanity check functions
+
+bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(caller))  cout << endl  << "Function first argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrFileExist(const TString &  caller, const TFile * f) const
+{
+  bool allGood = true;
+  if (!f)
+    {
+    if (reportError(caller)) cout << endl  << "Ptr to file is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(caller))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(caller))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(caller))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(caller))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(caller))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(caller))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(caller))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(caller))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(caller))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(caller))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(caller))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(caller))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(caller))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h5)
+    {
+    if (reportError(caller))  cout << endl  << "Function 5th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(caller))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(caller))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(caller))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(caller))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h5)
+    {
+    if (reportError(caller))  cout << endl  << "Function 5th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h6)
+    {
+    if (reportError(caller))  cout << endl  << "Function 6th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(caller))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(caller))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(caller))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(caller))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h5)
+    {
+    if (reportError(caller))  cout << endl  << "Function 5th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h6)
+    {
+    if (reportError(caller))  cout << endl  << "Function 6th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h7)
+    {
+    if (reportError(caller))  cout << endl  << "Function 7th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
+              const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(caller))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(caller))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(caller))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(caller))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h5)
+    {
+    if (reportError(caller))  cout << endl  << "Function 5th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h6)
+    {
+    if (reportError(caller))  cout << endl  << "Function 6th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h7)
+    {
+    if (reportError(caller))  cout << endl  << "Function 7th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h8)
+    {
+    if (reportError(caller))  cout << endl  << "Function 8th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
+              const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7,
+              const TH1 * h8, const TH1 * h9) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(caller))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(caller))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(caller))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(caller))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h5)
+    {
+    if (reportError(caller))  cout << endl  << "Function 5th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h6)
+    {
+    if (reportError(caller))  cout << endl  << "Function 6th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h7)
+    {
+    if (reportError(caller))  cout << endl  << "Function 7th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h8)
+    {
+    if (reportError(caller))  cout << endl  << "Function 8th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h9)
+    {
+    if (reportError(caller))  cout << endl  << "Function 9th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
+              const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7,
+              const TH1 * h8, const TH1 * h9, const TH1 * h10) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(caller))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(caller))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(caller))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(caller))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h5)
+    {
+    if (reportError(caller))  cout << endl  << "Function 5th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h6)
+    {
+    if (reportError(caller))  cout << endl  << "Function 6th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h7)
+    {
+    if (reportError(caller))  cout << endl  << "Function 7th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h8)
+    {
+    if (reportError(caller))  cout << endl  << "Function 8th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h9)
+    {
+    if (reportError(caller))  cout << endl  << "Function 9th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h10)
+    {
+    if (reportError(caller))  cout << endl  << "Function 10th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
+              const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7,
+              const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(caller))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(caller))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(caller))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(caller))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h5)
+    {
+    if (reportError(caller))  cout << endl  << "Function 5th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h6)
+    {
+    if (reportError(caller))  cout << endl  << "Function 6th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h7)
+    {
+    if (reportError(caller))  cout << endl  << "Function 7th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h8)
+    {
+    if (reportError(caller))  cout << endl  << "Function 8th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h9)
+    {
+    if (reportError(caller))  cout << endl  << "Function 9th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h10)
+    {
+    if (reportError(caller))  cout << endl  << "Function 10th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h11)
+    {
+    if (reportError(caller))  cout << endl  << "Function 11th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
+              const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7,
+              const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11, const TH1 * h12) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(caller))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(caller))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(caller))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(caller))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h5)
+    {
+    if (reportError(caller))  cout << endl  << "Function 5th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h6)
+    {
+    if (reportError(caller))  cout << endl  << "Function 6th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h7)
+    {
+    if (reportError(caller))  cout << endl  << "Function 7th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h8)
+    {
+    if (reportError(caller))  cout << endl  << "Function 8th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h9)
+    {
+    if (reportError(caller))  cout << endl  << "Function 9th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h10)
+    {
+    if (reportError(caller))  cout << endl  << "Function 10th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h11)
+    {
+    if (reportError(caller))  cout << endl  << "Function 11th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h12)
+    {
+    if (reportError(caller))  cout << endl  << "Function 12th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+
+bool HistogramCollection::ptrExist(const TH1 * h1) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function first argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrFileExist(const TFile * f) const
+{
+  bool allGood = true;
+  if (!f)
+    {
+    if (reportError(__FUNCTION__)) cout << endl  << "Ptr to file is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TH1 * h1, const TH1 * h2) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h5)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 5th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h5)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 5th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h6)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 6th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h5)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 5th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h6)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 6th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h7)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 7th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3,
+              const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h5)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 5th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h6)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 6th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h7)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 7th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h8)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 8th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3,
+              const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7,
+              const TH1 * h8, const TH1 * h9) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h5)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 5th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h6)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 6th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h7)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 7th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h8)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 8th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h9)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 9th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3,
+              const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7,
+              const TH1 * h8, const TH1 * h9, const TH1 * h10) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h5)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 5th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h6)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 6th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h7)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 7th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h8)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 8th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h9)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 9th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h10)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 10th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3,
+              const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7,
+              const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h5)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 5th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h6)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 6th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h7)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 7th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h8)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 8th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h9)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 9th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h10)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 10th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h11)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 11th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}
+
+bool HistogramCollection::ptrExist(const TH1 * h1, const TH1 * h2, const TH1 * h3,
+              const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7,
+              const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11, const TH1 * h12) const
+{
+  bool allGood = true;
+  if (!h1)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 1st argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h2)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 2nd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h3)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 3rd argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h4)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 4th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h5)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 5th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h6)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 6th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h7)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 7th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h8)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 8th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h9)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 9th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h10)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 10th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h11)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 11th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  if (!h12)
+    {
+    if (reportError(__FUNCTION__))  cout << endl  << "Function 12th argument is a null ptr" << endl;
+    allGood = false;
+    }
+  return allGood;
+}

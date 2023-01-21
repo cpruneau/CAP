@@ -151,7 +151,7 @@ double Global2DFitFunction(double *x, double *par)
 
 BidimGaussFitter::BidimGaussFitter(const TString & _name,
                                    Configuration &     _configuration,
-                                   LogLevel                  _requiredLevel)
+                                   Severity                  _requiredLevel)
 :
 Plotter(_name,_configuration,_requiredLevel),
 histBaseTitle(""),

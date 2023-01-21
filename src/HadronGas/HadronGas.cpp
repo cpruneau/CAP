@@ -31,8 +31,7 @@ using namespace std;
 HadronGas::HadronGas(const TString & _name,
                      Configuration &    _configuration,
                      ParticleTypeCollection * _particles,
-                     ParticleTypeCollection * _stableParticles,
-                     LogLevel _debugLevel)
+                     ParticleTypeCollection * _stableParticles)
 :
 Task(_name,_configuration),
 particleTypes(_particles),

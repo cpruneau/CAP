@@ -258,6 +258,6 @@ void ParticleDerivedHistos::calculateDerivedHistograms(ParticleHistos * baseHist
       }
     }
 
-  //restoreLogLevel();
+  //restoreSeverity();
 }
 

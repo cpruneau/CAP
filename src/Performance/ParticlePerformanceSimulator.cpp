@@ -190,11 +190,11 @@ void ParticlePerformanceSimulator::loadHistograms(TFile * inputFile)
   resolutionOption = config.getValueInt(getParentTaskName(),"resolutionOption");
   efficiencyOption = config.getValueInt(getParentTaskName(),"efficiencyOption");
 
-  if (reportDebug("ParticlePerformanceSimulator",getName(),"initialize()"))
+  if (reportDebug(__FUNCTION__))
     {
-    cout << "  useSameSetForAll: " << useSameSetForAll << endl;
-    cout << "  resolutionOption: " << resolutionOption << endl;
-    cout << "  efficiencyOption: " << efficiencyOption << endl;
+    cout << "useSameSetForAll..........: " << useSameSetForAll << endl;
+    cout << "resolutionOption..........: " << resolutionOption << endl;
+    cout << "efficiencyOption..........: " << efficiencyOption << endl;
     }
   
   TString baseName = "Filter";

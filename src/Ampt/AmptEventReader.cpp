@@ -10,6 +10,10 @@
  *
  * *********************************************************************/
 #include "AmptEventReader.hpp"
+
+//using namespace CAP;
+//using namespace AMPT;
+
 ClassImp(AmptEventReader);
 
 AmptEventReader::AmptEventReader(const TString & _name,

@@ -29,7 +29,7 @@ class ParticleTypeCollection : public Collection<ParticleType>
 {
 public:
 
-  // const TString& _name, bool _ownership, LogLevel logLevel
+  // const TString& _name, bool _ownership, Severity logLevel
   ParticleTypeCollection();
   virtual ~ParticleTypeCollection() {} 
   void readFromFile(const TString & inputFileName);

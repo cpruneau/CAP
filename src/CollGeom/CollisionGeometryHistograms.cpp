@@ -333,7 +333,7 @@ void CollisionGeometryHistograms::noFill(Event & event, double weight)
 
 void CollisionGeometryHistograms::calculateRms(TProfile * h1, TProfile * h1Sq,   TH1* h1Rms, TH1* h1Omega, TH1* h1R2)
 {
-  if (reportStart("CollisionGeometryHistograms",getName(),"calculateRms(..)"))
+  if (reportStart(__FUNCTION__))
     ;
   double v, vSq, rms, erms, omega, eomega, R2, eR2;
   int nBins = h1->GetNbinsX();
@@ -371,6 +371,6 @@ void CollisionGeometryHistograms::calculateRms(TProfile * h1, TProfile * h1Sq,  
     h1R2->SetBinContent(iBin, R2);
     h1R2->SetBinError(iBin, eR2);
     }
-  if (reportEnd("CollisionGeometryHistograms",getName(),"calculateRms(..)"))
+  if (reportEnd(__FUNCTION__))
     ;
 }

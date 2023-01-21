@@ -41,7 +41,6 @@ void TaskIterator::initialize()
 {
   if (reportStart(__FUNCTION__))
     ;
-  postTaskOk();
   Task::initialize();
   isGrid                 = getValueBool(  "isGrid");
   nEventsPerSubbunch     = getValueLong(  "nEventsPerSubbunch");
@@ -62,7 +61,6 @@ void TaskIterator::initialize()
     cout << "  nBunches.........................: " << nBunches            << endl;
     cout << "  BunchLabel.......................: " << bunchLabel          << endl;
     cout << "  SubbunchLabel....................: " << subbunchLabel       << endl;
-    cout << "  Task status......................: " << getTaskStatusName() << endl;
     cout << "---------------------------------------------------------------------------------------- " <<   endl;
     cout << "---------------------------------------------------------------------------------------- " <<   endl;
     cout << endl;
@@ -143,7 +141,7 @@ void TaskIterator::finalize()
     cout << "---------------------------------------------------------------------------------------- " <<   endl;
     cout << "---------------------------------------------------------------------------------------- " <<   endl;
     cout << "                               Task named : " << getName()<< endl;
-    cout << "                    Completed with status : " << getTaskStatusName() << endl;
+    cout << "                    Completed with status : " << StateManager::getStateManager()->getStateName() << endl;
     cout << "                     Completed iterations : " << getnTaskExecutedTotal() << endl;
     cout << "  Completed iterations since partial save : " << getnTaskExecuted() << endl;
     timer.print(cout);

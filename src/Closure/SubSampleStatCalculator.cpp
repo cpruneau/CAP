@@ -121,14 +121,14 @@ void SubSampleStatCalculator::execute()
       if (iFile==first)
         {
         firstInputFile = inputFile;
-        collectionAvg  = new HistogramCollection("Sum",getReportLevel());
+        collectionAvg  = new HistogramCollection("Sum",getSeverityLevel());
         collectionAvg->loadCollection(inputFile);
         //if (reportDebug (__FUNCTION__)) cout << "First Load completed."  << endl;
         sumEventProcessed = nEventProcessed;
         }
       else
         {
-        collection = new HistogramCollection(HistogramInputFile,getReportLevel());;
+        collection = new HistogramCollection(HistogramInputFile,getSeverityLevel());;
         collection->loadCollection(inputFile);
         collectionAvg->squareDifferenceCollection(*collection, double(sumEventProcessed), double(nEventProcessed), (iFile==(last-1)) ? nInputFile : -iFile);
         sumEventProcessed += nEventProcessed;

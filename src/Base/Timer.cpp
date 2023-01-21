@@ -11,6 +11,10 @@
  * *********************************************************************/
 #include "Timer.hpp"
 
+using namespace CAP;
+
+
+
 ClassImp(Timer);
 
 Timer::Timer()

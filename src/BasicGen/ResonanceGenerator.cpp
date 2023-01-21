@@ -84,7 +84,7 @@ void ResonanceGenerator::initialize()
 
 void ResonanceGenerator::execute()
 {
-  if (reportStart("ResonanceGenerator",getName(),"execute()"))
+  if (reportStart(__FUNCTION__))
     ;
   incrementTaskExecuted();
   Event & event = *eventStreams[0];
@@ -148,7 +148,7 @@ void ResonanceGenerator::execute()
 //    ep.particlesCounted  = getNParticlesCounted();
 //    ep.particlesAccepted = getNParticlesAccepted();
     }
-  if (reportDebug("ResonanceGenerator",getName(),"execute()"))
+  if (reportDebug(__FUNCTION__))
     {
     ep.printProperties(cout);
     }

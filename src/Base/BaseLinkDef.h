@@ -46,6 +46,7 @@
 #pragma link C++ class TaskIterator+;
 #pragma link C++ class DerivedHistoIterator+;
 #pragma link C++ class MessageLogger+;
+#pragma link C++ class StateManager+;
 
 //// #pragma link C++ class AnalysisConfiguration+;
 #pragma link C++ class Event+;

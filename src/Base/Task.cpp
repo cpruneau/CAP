@@ -15,6 +15,8 @@
 #include "TParameter.h"
 #include "Task.hpp"
 
+using namespace CAP;
+
 ClassImp(Task);
 
 Task::Task()
@@ -66,7 +68,7 @@ subSampleIndex(0)
 Task::Task(const TString & _name,
            Configuration & _configuration)
 :
-MessageLogger(LogLevel::Info),
+MessageLogger(Severity::Info),
 timer(),
 taskName                (_name),
 configured              (false),
@@ -114,7 +116,7 @@ Task::Task(const TString & _name,
            vector<EventFilter*> & _eventFilters,
            vector<ParticleFilter*>& _particleFilters)
 :
-MessageLogger(LogLevel::Info),
+MessageLogger(Severity::Info),
 timer(),
 taskName                (_name),
 configured              (false),
@@ -164,7 +166,7 @@ void Task::setDefaultConfiguration()
   TString none("none");
   TString treeName("tree");
   configuration.clear();
-  addParameter("LogLevel",                TString("Debug"));
+  addParameter("Severity",                TString("Debug"));
   addParameter("UseEvents",               useEvents);
   addParameter("UseParticles",            useParticles);
   addParameter("UseEventStream0",         useEventStream0);
@@ -211,13 +213,13 @@ void Task::setConfiguration(Configuration & _configuration)
   loadHistos      = getValueBool("LoadHistograms");
   saveHistos      = getValueBool("SaveHistograms");
   forceHistogramsRewrite = getValueBool("ForceHistogramsRewrite");
-  MessageLogger::LogLevel selectedLevel;
-  TString logOption = getValueString("LogLevel");
+  MessageLogger::Severity selectedLevel;
+  TString logOption = getValueString("Severity");
   if (logOption.Contains("Debug"))        selectedLevel = MessageLogger::Debug;
   else if (logOption.Contains("Info"))    selectedLevel = MessageLogger::Info;
   else if (logOption.Contains("Warning")) selectedLevel = MessageLogger::Warning;
   else selectedLevel = MessageLogger::Info;
-  setReportLevel(selectedLevel);
+  setSeverityLevel(selectedLevel);
   if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
 }
 
@@ -509,7 +511,12 @@ void Task::saveHistograms(TFile * outputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (!ptrFileExist(__FUNCTION__,outputFile)) return;
+  if (!outputFile)
+    {
+    if (reportError(__FUNCTION__)) cout << "Given file pointer is null" << endl;
+    postTaskError();
+    return;
+    }
   outputFile->cd();
   if (reportInfo(__FUNCTION__))
     {
@@ -833,13 +840,13 @@ Task * Task::addSubTask(Task * task)
 {
   if (!task)
     {
-    if (reportFatal()) cout << "Given task pointer is null. Abort." << endl;
+    if (reportFatal(__FUNCTION__)) cout << "Given task pointer is null. Abort." << endl;
     postTaskFatal();
     return task;
     }
   if (task==this)
     {
-    if (reportFatal()) cout << "Given task pointer is self. Abort." << endl;
+    if (reportFatal(__FUNCTION__)) cout << "Given task pointer is self. Abort." << endl;
     postTaskFatal();
     return task;
     }

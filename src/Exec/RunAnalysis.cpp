@@ -78,7 +78,7 @@ void RunAnalysis::setDefaultConfiguration()
   //  addParameter("histoModelDataName",      TString("none"));
   //  addParameter("histoAnalyzerName",       TString("none"));
   //  addParameter("histoBaseName",           TString("none"));
-  addParameter("LogLevel",                TString("Info"));
+  addParameter("Severity",                TString("Info"));
   addParameter("EventAnalysis",           YES);
   addParameter("EventAnalysisGen",        YES);
   addParameter("EventAnalysisReco",       NO);
@@ -209,8 +209,8 @@ void RunAnalysis::configure()
   //  ClosureIterator           * closureBalFct         = nullptr;
   Task                      * task                  = nullptr;
 
-  MessageLogger::LogLevel selectedLevel = MessageLogger::Debug;
-  TString reportLevel                   = getValueBool("LogLevel");
+  MessageLogger::Severity selectedLevel = MessageLogger::Debug;
+  TString reportLevel                   = getValueBool("Severity");
   if (reportLevel.EqualTo("Debug")) selectedLevel = MessageLogger::Debug;
   if (reportLevel.EqualTo("Info"))  selectedLevel = MessageLogger::Info;
   TString GlobalLabel      = getValueString("GlobalLabel");

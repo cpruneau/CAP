@@ -99,7 +99,7 @@ void PythiaEventGenerator::initialize()
   cout << "  Pythia:useQCDCR...............: " << useQCDCR << endl;
   cout << "  Pythia:useRopes...............: " << useRopes << endl;
   cout << "  Pythia:useShoving.............: " << useShoving << endl;
-  cout << "  Pythia:ReportLevel............: " << getReportLevel() << endl;
+  cout << "  Pythia:ReportLevel............: " << getSeverityLevel() << endl;
 
   if (setSeed)
     {

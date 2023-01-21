@@ -76,9 +76,9 @@ void ClosureCalculator::execute()
 
   if (!generatorFile || !detectorFile || !closureFile || !isTaskOk()) return;
   
-  HistogramCollection * generatorCollection = new HistogramCollection("GeneratorLevel",getReportLevel());
-  HistogramCollection * detectorCollection  = new HistogramCollection("DetectorLevel", getReportLevel());
-  HistogramCollection * closureCollection   = new HistogramCollection("Closure",       getReportLevel());
+  HistogramCollection * generatorCollection = new HistogramCollection("GeneratorLevel",getSeverityLevel());
+  HistogramCollection * detectorCollection  = new HistogramCollection("DetectorLevel", getSeverityLevel());
+  HistogramCollection * closureCollection   = new HistogramCollection("Closure",       getSeverityLevel());
   generatorCollection->loadCollection(generatorFile);
   detectorCollection->loadCollection(detectorFile);
   generatorCollection->setOwnership(false);
@@ -98,6 +98,6 @@ void ClosureCalculator::execute()
   delete generatorCollection;
   delete detectorCollection;
   delete closureCollection;
-  if (reportInfo ()) cout << "Closure Test Completed." << endl;
+  if (reportInfo (__FUNCTION__)) cout << "Closure Test Completed." << endl;
 }
 

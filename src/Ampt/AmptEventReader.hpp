@@ -13,6 +13,7 @@
 #define CAP__AmptEventReader
 #include "RootTreeReader.hpp"
 
+
 //!
 //! This class defines tasks capable of reading Ampt data file.
 //!
@@ -93,5 +94,6 @@ protected:
 
   ClassDef(AmptEventReader,0)
 };
+
 
 #endif /* CAP_AmptEventReader */

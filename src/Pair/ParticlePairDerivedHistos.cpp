@@ -496,9 +496,6 @@ void ParticlePairDerivedHistos::calculatePairDerivedHistograms(ParticleHistos   
 {
   if (reportStart(__FUNCTION__))
     ;
-  MessageLogger::LogLevel store = getReportLevel();
-  setReportLevel(MessageLogger::Debug);
-  
   double yield1;
   double yield2;
   double avgPt1Phi;
@@ -695,10 +692,8 @@ void ParticlePairDerivedHistos::calculatePairDerivedHistograms(ParticleHistos   
       shiftY(*h_G2_DetaDphi,*h_G2_DetaDphi_shft,nBins_Dphi_shft);
       }
     }
-
   if (reportEnd(__FUNCTION__))
     ;
-  setReportLevel(store);
 }
 
 
@@ -718,8 +713,8 @@ void ParticlePairDerivedHistos::calculateOmegaFactor(TH2 * h_DyDphi, vector<doub
       }
     if (sums[iY]>0.0) yIndex = iY;
     }
-  cout << " yIndex : " << yIndex << endl;
-  double y0 = h_DyDphi->GetXaxis()->GetBinLowEdge(yIndex);
+//  cout << " yIndex : " << yIndex << endl;
+//  double y0 = h_DyDphi->GetXaxis()->GetBinLowEdge(yIndex);
 //  for (int iY=yIndex; iY<=nYBins+1-yIndex)
 //    {
 //    double dy = h_DyDphi->GetXaxis()->GetBinCenter(yIndex);
@@ -731,8 +726,8 @@ void ParticlePairDerivedHistos::calculateOmegaFactor(TH2 * h_DyDphi, vector<doub
 
 void ParticlePairDerivedHistos::calculateAverageYbar(TH2 * h_DyDphi, TH2 * h_DyDphi_Avg, vector<double> & omegaFactor)
 {
-  int nYBins   = h_DyDphi->GetNbinsX();
-  int nPhiBins = h_DyDphi->GetNbinsY();
+ // int nYBins   = h_DyDphi->GetNbinsX();
+ // int nPhiBins = h_DyDphi->GetNbinsY();
 //  for (int iY=1; iY<=nY; iY++)
 //    {
 //    double scale = 1.0/omegaFactor[iY-1];

@@ -26,7 +26,7 @@ public:
                    Configuration & _configuration,
                    int             _nEventFilters,
                    int             _nParticleFilters,
-                   LogLevel        _debugLevel);
+                   Severity        _debugLevel);
   virtual ~EventCountHistos(){}
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);

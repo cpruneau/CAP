@@ -29,8 +29,6 @@ void EposEventReader::setDefaultConfiguration()
 
 void EposEventReader::execute()
 {
-  //  if (reportDebug("EposEventReader",getName(),"execute()"))
-  //    ;
   incrementTaskExecuted();
   EventFilter & eventFilter = * eventFilters[0];
   ParticleFilter & particleFilter = * particleFilters[0];
@@ -54,7 +52,7 @@ void EposEventReader::execute()
   nBytes += nb;
   if (nParticles > arraySize)
     {
-    if (reportError("AmptEventReader",getName(),"execute()"))
+    if (reportError(__FUNCTION__))
       cout<< "nParticles: " << nParticles << "  exceeds capacity " << arraySize << endl;
     postTaskFatal();
     exit(1);
@@ -83,7 +81,7 @@ void EposEventReader::execute()
     type = particleTypeCollection->findPdgCode(pdgCode);
     if (type==nullptr)
       {
-      if (reportWarning("AmptEventReader",getName(),"execute()")) cout << "Encountered unknown pdgCode: " << pdgCode << " Particle not added to event." << endl;
+      if (reportWarning(__FUNCTION__)) cout << "Encountered unknown pdgCode: " << pdgCode << " Particle not added to event." << endl;
       continue;
       }
 

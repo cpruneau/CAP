@@ -92,7 +92,7 @@ void TransverseSpherocityHistos::createHistograms()
           }
       }
     }
-    if ( reportEnd("TransverseSpherocityHistos",getName(),"createHistograms()"))
+    if ( reportEnd(__FUNCTION__))
     { }
 }
 

@@ -112,7 +112,7 @@ void ParticlePair3DDerivedHistogramCalculator::createHistograms()
   derivedSingleHistograms.clear();
   derivedPairHistograms.clear();
   Configuration & configuration = getConfiguration();
-  LogLevel debugLevel = getReportLevel();
+  Severity debugLevel = getSeverityLevel();
   TString bn  = getName();
   Histograms * histos;
   if (reportDebug(__FUNCTION__))
@@ -164,7 +164,7 @@ void ParticlePair3DDerivedHistogramCalculator::loadHistograms(TFile * inputFile)
   baseSingleHistograms.clear();
   basePairHistograms.clear();
   Configuration & configuration = getConfiguration();
-  LogLevel debugLevel = getReportLevel();
+  Severity debugLevel = getSeverityLevel();
   TString bn  = getName();
    if (reportDebug(__FUNCTION__))
     {

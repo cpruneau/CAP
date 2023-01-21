@@ -17,7 +17,7 @@ ClassImp(PTHistos);
 PTHistos::PTHistos(Task *          _parent,
                    const TString & _name,
                    Configuration & _configuration,
-                   LogLevel        _debugLevel,
+                   Severity        _debugLevel,
                    int             _ord)
 :
 Histograms(_parent,_name,_configuration),

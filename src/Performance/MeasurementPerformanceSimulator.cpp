@@ -105,16 +105,16 @@ void MeasurementPerformanceSimulator::initialize()
   else
     {
     
-    if (reportInfo("MeasurementPerformanceSimulator",getName(),"initialize()"))
+    if (reportInfo(__FUNCTION__))
       {
       cout << endl;
       cout << "Initiating task with"  << endl;
-      cout << "          nEventFilters: " << nEventFilters << endl;
-      cout << "       nParticleFilters: " << nParticleFilters << endl;
-      cout << "allEventsUseSameFilters: " << allEventsUseSameFilters << endl;
-      cout << "       useSameSetForAll: " << useSameSetForAll << endl;
-      cout << "       resolutionOption: " << resolutionOption << endl;
-      cout << "       efficiencyOption: " << efficiencyOption << endl;
+      cout << "nEventFilters................: " << nEventFilters << endl;
+      cout << "nParticleFilters.............: " << nParticleFilters << endl;
+      cout << "allEventsUseSameFilters......: " << allEventsUseSameFilters << endl;
+      cout << "useSameSetForAll.............: " << useSameSetForAll << endl;
+      cout << "resolutionOption.............: " << resolutionOption << endl;
+      cout << "efficiencyOption.............: " << efficiencyOption << endl;
       }
     for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++)
       {
@@ -130,7 +130,6 @@ void MeasurementPerformanceSimulator::initialize()
         }
       }
     }
-  // looking good..
 }
 
 

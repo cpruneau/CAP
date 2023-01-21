@@ -121,7 +121,7 @@ void FileTaskIterator::execute()
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;
-    cout << "  Completed with status : " << getTaskStatusName() << endl;
+    cout << "  Completed with status : " << getStateName() << endl;
     cout << "            "; timer.print(cout);
     cout << endl << endl<< endl << endl;
     }
