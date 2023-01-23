@@ -323,7 +323,7 @@ void BalFctPlotter::configure()
   setConfiguration(requestedConfiguration);
   configuration.printConfiguration(cout);
 
-  MessageLogger::LogLevel selectedLevel = MessageLogger::Debug;
+  MessageLogger::Severity selectedLevel = MessageLogger::Debug;
   TString reportLevel                   = getValueBool("LogLevel");
   if (reportLevel.EqualTo("Debug")) selectedLevel = MessageLogger::Debug;
   if (reportLevel.EqualTo("Info"))  selectedLevel = MessageLogger::Info;
@@ -1075,8 +1075,19 @@ void BalFctPlotter::calculateBalFctIntegrals()
 
         ge = (TGraphErrors*) g;
         int nPoints = ge->GetN();
+//        for (int iPoint=0; iPoint<20; iPoint++)
+//          {
+//          double x = ge->GetPointX(iPoint);
+//          cout << " iPoint: " << iPoint << "   x: " << x << endl;
+//          }
+//        exit(1);
         double y  = ge->GetPointY(nPoints-1);
         double ey = ge->GetErrorY(nPoints-1);
+        // Jan 23, 2023, Compared MONASH, Shoving, and Ropes at Delta Y = 1.6 and saw no difference between
+        // the tunes... going back to full acceptance...
+        // iPoint==16 corresponds to delta-y == 1.6
+//        double y  = ge->GetPointY(16);
+//        double ey = ge->GetErrorY(16);
         pairIntegral.push_back(y);
         pairIntegralError.push_back(ey);
         }
@@ -1307,23 +1318,23 @@ void BalFctPlotter::setBFArrays()
       originCorrelatorPath = "A2Derived/";
 
       // B vs Y,Phi
-      balFct_Minima.push_back(-0.05);
-      balFct_Maxima.push_back( 0.4);
+      balFct_Minima.push_back(-0.049);
+      balFct_Maxima.push_back( 0.399);
       // B vs Y
-      balFct_Minima.push_back(-0.02);
-      balFct_Maxima.push_back( 0.4);
+      balFct_Minima.push_back(-0.019);
+      balFct_Maxima.push_back( 0.399);
       // B vs phi
-      balFct_Minima.push_back(-0.02);
-      balFct_Maxima.push_back( 0.20);
+      balFct_Minima.push_back(-0.019);
+      balFct_Maxima.push_back( 0.199);
       // I vs Y
-      balFct_Minima.push_back(-0.02);
-      balFct_Maxima.push_back( 1.09);
+      balFct_Minima.push_back(-0.019);
+      balFct_Maxima.push_back( 1.099);
       // Isum vs Y
-      balFct_Minima.push_back(-0.02);
-      balFct_Maxima.push_back( 1.09);
+      balFct_Minima.push_back(-0.019);
+      balFct_Maxima.push_back( 1.099);
       // B width
-      balFct_Minima.push_back( 0.00);
-      balFct_Maxima.push_back( 2.00);
+      balFct_Minima.push_back( -0.001);
+      balFct_Maxima.push_back( 2.119);
       break;
       }
 
@@ -1401,7 +1412,8 @@ void BalFctPlotter::setLegendConfigurations()
     balFct_LegendConfig1D_IntegralVsPair.push_back(lc);
 
     // width
-    lc = new LegendConfiguration(0.55, 0.8, 0.25, 0.45, 0.05);
+    //lc = new LegendConfiguration(0.55, 0.8, 0.25, 0.45, 0.05);
+    lc = new LegendConfiguration(0.25, 0.5, 0.22, 0.42, 0.05);
     lc->setParameter("useLegend",true);
     lc->setParameter("useLabels",true);
     lc->setParameter("useTitles",false);
@@ -1588,7 +1600,7 @@ void BalFctPlotter::create1DPlots()
            *balFct_LegendConfig1D_DeltaY_VsPair[iPair],
            deltaY_HistosVsPair,
            DeltaY_Title, -4.0, 4.0,
-           balFct_Title, balFct_Minima[1], balFct_Maxima[1]);
+           balFct_Title, 1.0, -1.0);
       }
     }
 
@@ -1661,7 +1673,7 @@ void BalFctPlotter::createIntegralPlots()
          *balFct_LegendConfig1D_IntegralVsPair[iTrigger],
          deltaY_IntegralVsName,
          "", 1.0, -1.0,
-         balFct_Integral_Title, -0.02, 0.6);
+         balFct_Integral_Title, -0.02, 0.599);
     }
 
 }
@@ -1686,7 +1698,7 @@ void BalFctPlotter::fitGeneralizedGauss(TString name, TH1* h, double xLowBin, do
   double chi2      = fitResult->GetChisquare();
   double ndf       = fitResult->GetNDF();
   double chi2Ndf   = chi2/ndf;
-  if (a>0.0001 && omegaEta>0.0 && gammaEta>0.0)
+  if (a>2E-4 && omegaEta>0.0 && gammaEta>0.0 && eomegaEta<0.05*omegaEta && egammaEta<0.05*gammaEta)
     calculateRmsAndError(omegaEta,eomegaEta,gammaEta,egammaEta,rms,erms);
   else
     {
@@ -1878,7 +1890,7 @@ int PlotBFBaryons_version3()
   configuration.setParameter("BalFctPlotter:BalFctTypeOption",       2);   // B+-, B-+, Bs
   configuration.setParameter("BalFctPlotter:BalFctSourceOption",     1);   // from B or from A type correlators...
 
-  int choice = 2;
+  int choice = 0;
 
   switch (choice)
     {
@@ -1940,6 +1952,7 @@ int PlotBFBaryons_version3()
 
       case 2:
       configuration.setParameter("BalFctPlotter:SpeciesOption",          2);   // baryons
+      //configuration.setParameter("BalFctPlotter:OutputPathBase",          TString("/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/Plots/BaryonsVsTune/"));
       configuration.setParameter("BalFctPlotter:OutputPathBase",          TString("/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/Plots/BaryonsVsTune/"));
       configuration.setParameter("BalFctPlotter:OutFileNameBase",         TString("PYTHIA_pp_BaryonsVsTune_A2Based"));
 

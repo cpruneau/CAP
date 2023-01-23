@@ -73,7 +73,7 @@ Run:Analysis:PYTHIA:useRopes              bool   0
 Run:Analysis:PYTHIA:useShoving            bool   1
 Run:Analysis:PYTHIA:Option0  string  Init:showProcesses=off
 Run:Analysis:PYTHIA:Option1  string  Init:showMultipartonInteractions=off
-Run:Analysis:PYTHIA:Option2  string  Init:showChangedSettings=off
+Run:Analysis:PYTHIA:Option2  string  Init:showChangedSettings=on
 Run:Analysis:PYTHIA:Option3  string  Init:showChangedParticleData=off
 Run:Analysis:PYTHIA:Option4  string  Next:numberCount=10000
 Run:Analysis:PYTHIA:Option5  string  Next:numberShowInfo=0
