@@ -383,8 +383,10 @@ void RunDerivedCalculation::configure()
     subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":HistogramInputPath"),inputPathName);
     subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":HistogramOutputPath"),outputPathName);
     subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":IncludedPattern0"),TString("Derived"));
+    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":IncludedPattern1"),TString("Pair"));
     subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern1"),TString("Reco"));
     subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern2"),TString("BalFct"));
+    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern3"),TString("Part"));
     addSubTask(new BalanceFunctionCalculator("PairGen",subConfig,analysisEventFilters, analysisParticleFilters));
     }
 
@@ -394,8 +396,10 @@ void RunDerivedCalculation::configure()
     subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":HistogramInputPath"),inputPathName);
     subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":HistogramOutputPath"),outputPathName);
     subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":IncludedPattern0"),TString("Derived"));
+    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":IncludedPattern1"),TString("Pair"));
     subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern1"),TString("Gen"));
     subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern2"),TString("BalFct"));
+    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern3"),TString("Part"));
     addSubTask(new BalanceFunctionCalculator("PairReco",subConfig,analysisEventFilters, analysisParticleFilters));
     }
 

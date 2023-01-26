@@ -97,7 +97,7 @@ void ParticleHistos::createHistograms()
   fillY   = configuration.getValueBool(ppn,"FillY");
   fillP2  = configuration.getValueBool(ppn,"FillP2");
 
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "  Part:Parent Task Name....................: " << ptn << endl;
@@ -174,7 +174,7 @@ void ParticleHistos::loadHistograms(TFile * inputFile)
 
   setSeverityLevel(MessageLogger::Debug);
 
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "  Part:Parent Task Name....................: " << ptn << endl;
@@ -228,7 +228,7 @@ void ParticleHistos::loadCalibration(TFile * inputFile)
   Configuration & configuration = getConfiguration();
   useEffCorrection = true;
   efficiencyOpt    = configuration.getValueInt(ppn,"efficientOpt");
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "  Part:Parent Task Name....................: " << ptn << endl;

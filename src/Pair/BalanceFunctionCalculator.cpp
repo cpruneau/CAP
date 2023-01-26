@@ -580,7 +580,11 @@ void BalanceFunctionCalculator::execute()
             TH1 * rho1_1Bar = hh->loadH1(inputFile,makeHistoName(taskName,eventClassName,particleName1Bar,sObservableNames[0]));
             TH1 * rho1_2    = hh->loadH1(inputFile,makeHistoName(taskName,eventClassName,particleName2,   sObservableNames[0]));
             TH1 * rho1_2Bar = hh->loadH1(inputFile,makeHistoName(taskName,eventClassName,particleName2Bar,sObservableNames[0]));
-            if (!rho1_1 || !rho1_1Bar || !rho1_2 || !rho1_2Bar) return;
+            if (!rho1_1 || !rho1_1Bar || !rho1_2 || !rho1_2Bar)
+              {
+              if (reportError(__FUNCTION__)) cout << "Cannot load one or more histograms. ABORT" << endl;
+              exit(1);
+              }
             TH2 * obs_1_2       = hh->loadH2(inputFile,makeHistoName(taskName,eventClassName,particleName1,    particleName2,    pObservableNames[iObservable]));
             TH2 * obs_1Bar_2    = hh->loadH2(inputFile,makeHistoName(taskName,eventClassName,particleName1Bar, particleName2,    pObservableNames[iObservable]));
             TH2 * obs_1_2Bar    = hh->loadH2(inputFile,makeHistoName(taskName,eventClassName,particleName1,    particleName2Bar, pObservableNames[iObservable]));

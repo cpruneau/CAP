@@ -82,7 +82,7 @@ void ParticleAnalyzer::createHistograms()
   fillY   = getValueBool("FillY");
   fillP2  = getValueBool("FillP2");
   
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << "Creating Histogram(s) for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;

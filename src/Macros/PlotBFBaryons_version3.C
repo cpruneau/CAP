@@ -1402,13 +1402,13 @@ void BalFctPlotter::setLegendConfigurations()
     balFct_LegendConfig1D_IntegralSum.push_back(lc);
 
     // I vs Pair
-    //lc = new LegendConfiguration(0.55, 0.75, 0.62, 0.9, 0.05);
-    lc = new LegendConfiguration(0.20, 0.95, 0.81, 0.98, 0.045);
+    lc = new LegendConfiguration(0.57, 0.77, 0.62, 0.9, 0.045);
+    //lc = new LegendConfiguration(0.20, 0.95, 0.81, 0.98, 0.045);
     lc->setParameter("useLegend",true);
     lc->setParameter("useLabels",true);
     lc->setParameter("useTitles",false);
     lc->setParameter("textIndex",42);
-    lc->setParameter("nColumns",2);
+    lc->setParameter("nColumns",1);
     balFct_LegendConfig1D_IntegralVsPair.push_back(lc);
 
     // width
@@ -1600,7 +1600,7 @@ void BalFctPlotter::create1DPlots()
            *balFct_LegendConfig1D_DeltaY_VsPair[iPair],
            deltaY_HistosVsPair,
            DeltaY_Title, -4.0, 4.0,
-           balFct_Title, 1.0, -1.0);
+           balFct_Title, 1.5, -1.5);
       }
     }
 
@@ -1668,12 +1668,12 @@ void BalFctPlotter::createIntegralPlots()
       {
       deltaY_IntegralVsName.push_back( balFct_IntegralVsPair[iFile*nSpecies +  iTrigger] );
       }
-    plot(balFct_IntegralVsPair_CanvasNames[iTrigger],landscapeLinearTop,
+    plot(balFct_IntegralVsPair_CanvasNames[iTrigger],landscapeLinear,
          graphConfigurations1DIntegralVsPair,
          *balFct_LegendConfig1D_IntegralVsPair[iTrigger],
          deltaY_IntegralVsName,
          "", 1.0, -1.0,
-         balFct_Integral_Title, -0.02, 0.599);
+         balFct_Integral_Title, -0.02, 1.19);
     }
 
 }
@@ -1890,7 +1890,7 @@ int PlotBFBaryons_version3()
   configuration.setParameter("BalFctPlotter:BalFctTypeOption",       2);   // B+-, B-+, Bs
   configuration.setParameter("BalFctPlotter:BalFctSourceOption",     1);   // from B or from A type correlators...
 
-  int choice = 0;
+  int choice = 10;
 
   switch (choice)
     {
@@ -1923,34 +1923,6 @@ int PlotBFBaryons_version3()
       break;
 
       case 1:
-      configuration.setParameter("BalFctPlotter:SpeciesOption",          1);   // pi K p
-      configuration.setParameter("BalFctPlotter:OutputPathBase",        TString("/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/Plots/PiKPVsTune/"));
-      configuration.setParameter("BalFctPlotter:OutFileNameBase",       TString("PYTHIA_pp_PiKPVsTune_A2Based"));
-
-      configuration.setParameter("BalFctPlotter:BalFct_InputPath_0",      TString("/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/13000/PiKp/y10"));
-      configuration.setParameter("BalFctPlotter:BalFct_InputFile_0",      TString("PairGenBalFctSum0TO9.root"));
-      configuration.setParameter("BalFctPlotter:BalFct_HistoTitleBase_0", TString("Monash - "));
-      configuration.setParameter("BalFctPlotter:BalFct_HistoNameBase_0",  TString("PairGen_All_"));
-      configuration.setParameter("BalFctPlotter:BalFct_CanvasNameBase_0", TString("13000_PiKp_Y10_"));
-      configuration.setParameter("BalFctPlotter:BalFct_Type_0",          2);
-
-      configuration.setParameter("BalFctPlotter:BalFct_InputPath_1",      TString("/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/13000/PiKp_Ropes"));
-      configuration.setParameter("BalFctPlotter:BalFct_InputFile_1",      TString("PairGenBalFctSum0TO9.root"));
-      configuration.setParameter("BalFctPlotter:BalFct_HistoTitleBase_1", TString("Ropes - "));
-      configuration.setParameter("BalFctPlotter:BalFct_HistoNameBase_1",  TString("PairGen_All_"));
-      configuration.setParameter("BalFctPlotter:BalFct_CanvasNameBase_1", TString("13000_ropes_PiKp_Y10_"));
-      configuration.setParameter("BalFctPlotter:BalFct_Type_1",          2);
-
-      configuration.setParameter("BalFctPlotter:BalFct_InputPath_2",      TString("/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/13000/PiKp_Shoving"));
-      configuration.setParameter("BalFctPlotter:BalFct_InputFile_2",      TString("PairGenBalFctSum0TO7.root"));
-      configuration.setParameter("BalFctPlotter:BalFct_HistoTitleBase_2", TString("Shoving - "));
-      configuration.setParameter("BalFctPlotter:BalFct_HistoNameBase_2",  TString("PairGen_All_"));
-      configuration.setParameter("BalFctPlotter:BalFct_CanvasNameBase_2", TString("13000_shoving_PiKp_Y10_"));
-      configuration.setParameter("BalFctPlotter:BalFct_Type_2",          2);
-
-      break;
-
-      case 2:
       configuration.setParameter("BalFctPlotter:SpeciesOption",          2);   // baryons
       //configuration.setParameter("BalFctPlotter:OutputPathBase",          TString("/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/Plots/BaryonsVsTune/"));
       configuration.setParameter("BalFctPlotter:OutputPathBase",          TString("/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/Plots/BaryonsVsTune/"));
@@ -1978,6 +1950,81 @@ int PlotBFBaryons_version3()
       configuration.setParameter("BalFctPlotter:BalFct_Type_2",          2);
 
       break;
+
+      case 10:
+      configuration.setParameter("BalFctPlotter:SpeciesOption",          1);   // pi K p
+      configuration.setParameter("BalFctPlotter:OutputPathBase",        TString("/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/Plots/PiKPVsTune/"));
+      configuration.setParameter("BalFctPlotter:OutFileNameBase",       TString("PYTHIA_pp_PiKPVsTune_A2Based"));
+
+      configuration.setParameter("BalFctPlotter:BalFct_InputPath_0",      TString("/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/13000/PiKp/Y10"));
+      configuration.setParameter("BalFctPlotter:BalFct_InputFile_0",      TString("PairGenBalFctSum0TO9.root"));
+      configuration.setParameter("BalFctPlotter:BalFct_HistoTitleBase_0", TString("Monash - "));
+      configuration.setParameter("BalFctPlotter:BalFct_HistoNameBase_0",  TString("PairGen_All_"));
+      configuration.setParameter("BalFctPlotter:BalFct_CanvasNameBase_0", TString("13000_PiKp_Y10_"));
+      configuration.setParameter("BalFctPlotter:BalFct_Type_0",          2);
+
+      configuration.setParameter("BalFctPlotter:BalFct_InputPath_1",      TString("/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/13000/PiKp_Ropes/Y10/"));
+      configuration.setParameter("BalFctPlotter:BalFct_InputFile_1",      TString("PairGenBalFctSum0TO9.root"));
+      configuration.setParameter("BalFctPlotter:BalFct_HistoTitleBase_1", TString("Ropes - "));
+      configuration.setParameter("BalFctPlotter:BalFct_HistoNameBase_1",  TString("PairGen_All_"));
+      configuration.setParameter("BalFctPlotter:BalFct_CanvasNameBase_1", TString("13000_ropes_PiKp_Y10_"));
+      configuration.setParameter("BalFctPlotter:BalFct_Type_1",          2);
+
+      configuration.setParameter("BalFctPlotter:BalFct_InputPath_2",      TString("/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/13000/PiKp_Shoving/Y10/"));
+      configuration.setParameter("BalFctPlotter:BalFct_InputFile_2",      TString("PairGenBalFctSum0TO7.root"));
+      configuration.setParameter("BalFctPlotter:BalFct_HistoTitleBase_2", TString("Shoving - "));
+      configuration.setParameter("BalFctPlotter:BalFct_HistoNameBase_2",  TString("PairGen_All_"));
+      configuration.setParameter("BalFctPlotter:BalFct_CanvasNameBase_2", TString("13000_shoving_PiKp_Y10_"));
+      configuration.setParameter("BalFctPlotter:BalFct_Type_2",          2);
+
+      break;
+
+      case 11:
+      configuration.setParameter("BalFctPlotter:SpeciesOption",          1);   // pi K p
+      configuration.setParameter("BalFctPlotter:OutputPathBase",        TString("/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/Plots/PiKPVsS/"));
+      configuration.setParameter("BalFctPlotter:OutFileNameBase",       TString("PYTHIA_pp_PiKPVsS_A2Based"));
+
+      configuration.setParameter("BalFctPlotter:BalFct_InputPath_0",      TString("/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/900/PiKp/Y10"));
+      configuration.setParameter("BalFctPlotter:BalFct_InputFile_0",      TString("PairGenBalFctSum0TO19.root"));
+      configuration.setParameter("BalFctPlotter:BalFct_HistoTitleBase_0", TString("0.9 TeV - "));
+      configuration.setParameter("BalFctPlotter:BalFct_HistoNameBase_0",  TString("PairGen_All_"));
+      configuration.setParameter("BalFctPlotter:BalFct_CanvasNameBase_0", TString("900_PiKp_Y10_"));
+      configuration.setParameter("BalFctPlotter:BalFct_Type_0",          2);
+
+      configuration.setParameter("BalFctPlotter:BalFct_InputPath_1",      TString("/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/5200/PiKp/Y10"));
+      configuration.setParameter("BalFctPlotter:BalFct_InputFile_1",      TString("PairGenBalFctSum0TO9.root"));
+      configuration.setParameter("BalFctPlotter:BalFct_HistoTitleBase_1", TString("5.2 TeV - "));
+      configuration.setParameter("BalFctPlotter:BalFct_HistoNameBase_1",  TString("PairGen_All_"));
+      configuration.setParameter("BalFctPlotter:BalFct_CanvasNameBase_1", TString("5200_PiKp_Y10_"));
+      configuration.setParameter("BalFctPlotter:BalFct_Type_1",          2);
+
+      configuration.setParameter("BalFctPlotter:BalFct_InputPath_2",      TString("/Volumes/ClaudeDisc4/OutputFiles/PYTHIA/PP/13000/PiKp/Y10"));
+      configuration.setParameter("BalFctPlotter:BalFct_InputFile_2",      TString("PairGenBalFctSum0TO9.root"));
+      configuration.setParameter("BalFctPlotter:BalFct_HistoTitleBase_2", TString("13 TeV - "));
+      configuration.setParameter("BalFctPlotter:BalFct_HistoNameBase_2",  TString("PairGen_All_"));
+      configuration.setParameter("BalFctPlotter:BalFct_CanvasNameBase_2", TString("13000_PiKp_Y10_"));
+      configuration.setParameter("BalFctPlotter:BalFct_Type_2",          2);
+
+//      configuration.setParameter("BalFctPlotter:BalFct_InputPath_3",      TString("/Volumes/ClaudeDisc5/OutputFiles/PYTHIA/PP/30000/PiKp/Y10"));
+//      configuration.setParameter("BalFctPlotter:BalFct_InputFile_3",      TString("PairGenBalFctSum0TO9.root"));
+//      configuration.setParameter("BalFctPlotter:BalFct_HistoTitleBase_3", TString("30 TeV - "));
+//      configuration.setParameter("BalFctPlotter:BalFct_HistoNameBase_3",  TString("PairGen_All_"));
+//      configuration.setParameter("BalFctPlotter:BalFct_CanvasNameBase_3", TString("30000_PiKp_Y10_"));
+//      configuration.setParameter("BalFctPlotter:BalFct_Type_3",          2);
+
+      configuration.setParameter("BalFctPlotter:BalFct_InputPath_3",      TString("/Volumes/ClaudeDisc5/OutputFiles/PYTHIA/PP/100000/PiKp/Y10"));
+      configuration.setParameter("BalFctPlotter:BalFct_InputFile_3",      TString("PairGenBalFctSum0TO9.root"));
+      configuration.setParameter("BalFctPlotter:BalFct_HistoTitleBase_3", TString("100 TeV - "));
+      configuration.setParameter("BalFctPlotter:BalFct_HistoNameBase_3",  TString("PairGen_All_"));
+      configuration.setParameter("BalFctPlotter:BalFct_CanvasNameBase_3", TString("100000_PiKp_Y10_"));
+      configuration.setParameter("BalFctPlotter:BalFct_Type_3",          2);
+
+
+
+      break;
+
+
+
     }
   BalFctPlotter * bf = new BalFctPlotter("BalFctPlotter",configuration);
   bf->configure();

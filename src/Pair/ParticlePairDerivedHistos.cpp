@@ -177,7 +177,7 @@ void ParticlePairDerivedHistos::createHistograms()
   min_Dy    = -range_y;
   max_Dy    = range_y;
 
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "  Pair:Parent Task Name....................: " << ptn << endl;
@@ -345,7 +345,7 @@ void ParticlePairDerivedHistos::loadHistograms(TFile * inputFile)
   fillEta    = configuration.getValueBool(ppn,"FillEta");
   fillY      = configuration.getValueBool(ppn,"FillY");
   fillP2     = configuration.getValueBool(ppn,"FillP2");
-  if (reportInfo(__FUNCTION__))
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
     cout << "  Pair:Parent Task Name....................: " << ptn << endl;
