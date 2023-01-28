@@ -11,6 +11,7 @@
  * *********************************************************************/
 
 #include "PartitionCalculator.hpp"
+using CAP::PartitionCalculator;
 
 ClassImp(PartitionCalculator);
 

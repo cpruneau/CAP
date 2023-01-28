@@ -12,10 +12,11 @@
 
 #include "PythiaEventGeneratorRho.hpp"
 #include "ParticleDecayer.hpp"
+using CAP::PythiaEventGeneratorRho;
 
 ClassImp(PythiaEventGeneratorRho);
 
-PythiaEventGeneratorRho::PythiaEventGeneratorRho(const TString & _name,
+PythiaEventGeneratorRho::PythiaEventGeneratorRho(const String & _name,
                                                  Configuration & _configuration,
                                                  vector<EventFilter*>&   _eventFilters,
                                                  vector<ParticleFilter*>&_particleFilters)
@@ -85,7 +86,7 @@ void PythiaEventGeneratorRho::initialize()
 
   if (setSeed)
     {
-    TString  seedValueString = "Random:seed = ";
+    String  seedValueString = "Random:seed = ";
     seedValueString += seedValue;
     pythia8->ReadString("Random:setSeed = on");
     pythia8->ReadString(seedValueString);
@@ -95,8 +96,8 @@ void PythiaEventGeneratorRho::initialize()
     }
   for (int k=0; k<30; k++)
     {
-    TString key = "Option"; key += k;
-    TString  value = getValueString(key);
+    String key = "Option"; key += k;
+    String  value = getValueString(key);
     if (key.Contains("Option") && !value.Contains("none") )
       {
       cout << "  Pythia::" << key << "......: " << value << endl;
@@ -187,7 +188,7 @@ void PythiaEventGeneratorRho::generate(Particle * parentInteraction)
     }
 
 
-  TLorentzVector sourcePosition = parentInteraction->getPosition();
+  LorentzVector sourcePosition = parentInteraction->getPosition();
   double sourceX = sourcePosition.X();
   double sourceY = sourcePosition.Y();
   double sourceZ = sourcePosition.Z();
@@ -199,11 +200,11 @@ void PythiaEventGeneratorRho::generate(Particle * parentInteraction)
   //if (reportDebug(__FUNCTION__)) cout << "PythiaEventGeneratorRho::execute() starting copy loop into event.." << endl;
 
   ParticleDecayer decayer;
-  TLorentzVector rhoMomentum;
-  TLorentzVector piPlusMomentum;
-  TLorentzVector piPlusPosition;
-  TLorentzVector piMinusMomentum;
-  TLorentzVector piMinusPosition;
+  LorentzVector rhoMomentum;
+  LorentzVector piPlusMomentum;
+  LorentzVector piPlusPosition;
+  LorentzVector piMinusMomentum;
+  LorentzVector piMinusPosition;
 
   resetNParticlesAcceptedEvent();
   for (int iParticle = 0; iParticle < nParticles; iParticle++)

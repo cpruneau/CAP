@@ -9,14 +9,16 @@
  * Author: Claude Pruneau,   04/01/2022
  *
  * *********************************************************************/
-#include "HistogramCollection.hpp"
 #include "DerivedHistoIterator.hpp"
-#include "SubSampleStatCalculator.hpp"
+using CAP::DerivedHistoIterator;
+using CAP::Configuration;
+using CAP::String;
+using CAP::VectorString;
 
 ClassImp(DerivedHistoIterator);
 
 
-DerivedHistoIterator::DerivedHistoIterator(const TString & _name,
+DerivedHistoIterator::DerivedHistoIterator(const String & _name,
                                            Configuration & _configuration)
 :
 Task(_name,_configuration)
@@ -26,7 +28,7 @@ Task(_name,_configuration)
 
 void DerivedHistoIterator::setDefaultConfiguration()
 {
-  TString none  = "none";
+  String none  = "none";
   setParameter("CreateHistograms",         true);
   setParameter("LoadHistograms",           true);
   setParameter("SaveHistograms",           true);
@@ -37,14 +39,14 @@ void DerivedHistoIterator::setDefaultConfiguration()
 
 void DerivedHistoIterator::execute()
 {
-  TString none("none");
-  TString analyzerName;
-  TString appendedString           = getValueString("AppendedString");
+  String none("none");
+  String analyzerName;
+  String appendedString           = getValueString("AppendedString");
   bool    forceHistogramsRewrite   = getValueString("ForceHistogramsRewrite");
-  TString histogramInputPath       = getValueString("HistogramInputPath");
-  TString histogramOutputPath      = getValueString("HistogramOutputPath");
-  vector<TString> includedPatterns = getSelectedValues("IncludedPattern",none);
-  vector<TString> excludedPatterns = getSelectedValues("ExcludedPattern",none);
+  String histogramInputPath       = getValueString("HistogramInputPath");
+  String histogramOutputPath      = getValueString("HistogramOutputPath");
+  VectorString  includedPatterns = getSelectedValues("IncludedPattern",none);
+  VectorString  excludedPatterns = getSelectedValues("ExcludedPattern",none);
   unsigned int nSubTasks = subTasks.size();
 
   if (reportInfo(__FUNCTION__))
@@ -77,8 +79,8 @@ void DerivedHistoIterator::execute()
       cout << " SubTask Name...................: " << analyzerName  << endl;
       cout << " ===========================================================" << endl;
       }
-    vector<TString> includePatterns = getSelectedValues("IncludedPattern", "none");
-    vector<TString> excludePatterns = getSelectedValues("ExcludedPattern", "none");
+    VectorString  includePatterns = getSelectedValues("IncludedPattern", "none");
+    VectorString  excludePatterns = getSelectedValues("ExcludedPattern", "none");
     includePatterns.push_back(analyzerName);
     bool isReco = analyzerName.Contains("Reco");
     if (isReco)  includePatterns.push_back(TString("Reco"));
@@ -87,7 +89,7 @@ void DerivedHistoIterator::execute()
     bool prependPath = true;
     bool verbose = false;
     int  maximumDepth = 1;
-    vector<TString> allFilesToProcess = listFilesInDir(histogramInputPath,includePatterns,excludePatterns, prependPath, verbose, maximumDepth,0);
+    VectorString  allFilesToProcess = listFilesInDir(histogramInputPath,includePatterns,excludePatterns, prependPath, verbose, maximumDepth,0);
     
     int nFiles = allFilesToProcess.size();
     if (nFiles<1)
@@ -111,8 +113,8 @@ void DerivedHistoIterator::execute()
       }
     for (int iFile=0; iFile<nFiles; iFile++)
       {
-      TString histogramInputFile  = allFilesToProcess[iFile];
-      TString histogramOutputFile = removeRootExtension(histogramInputFile);
+      String histogramInputFile  = allFilesToProcess[iFile];
+      String histogramOutputFile = removeRootExtension(histogramInputFile);
       histogramOutputFile += appendedString;
       if (reportInfo(__FUNCTION__))
         {
@@ -122,7 +124,7 @@ void DerivedHistoIterator::execute()
         cout << " Input file............: " << histogramInputFile << endl;
         cout << " Output file...........: " << histogramOutputFile << endl;
         }
-      TString nullString = "";
+      String nullString = "";
       subTask.setParameter("HistogramInputPath",nullString);
       subTask.setParameter("HistogramOutputPath",nullString);
       subTask.setParameter("HistogramInputFile",histogramInputFile);

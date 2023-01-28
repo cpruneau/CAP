@@ -13,6 +13,10 @@
 #define CAP__DerivedHistogramCalculator
 #include "Task.hpp"
 
+namespace CAP
+{
+
+
 //!
 //! Base class for derived histogram calculators. Derived histogram calculators handle saving histograms
 //! slightly differently than regular event analysis task. This subclass thus implement a slightly modified
@@ -31,7 +35,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  DerivedHistogramCalculator(const TString & _name,
+  DerivedHistogramCalculator(const String & _name,
                              Configuration &    _configuration,
                              vector<EventFilter*>   & _eventFilters,
                              vector<ParticleFilter*>& _particleFilters);
@@ -50,5 +54,6 @@ public:
   ClassDef(DerivedHistogramCalculator,0)
 };
 
+} // namespace CAP
 
 #endif /* CAP__DerivedHistogramCalculator */

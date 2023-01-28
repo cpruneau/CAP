@@ -15,6 +15,9 @@
 #include "Event.hpp"
 #include "Filter.hpp"
 
+namespace CAP
+{
+
 class EventFilter : public Filter<Event>
 {
 public:
@@ -31,5 +34,7 @@ public:
 
   ClassDef(EventFilter,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP__EventFilter */

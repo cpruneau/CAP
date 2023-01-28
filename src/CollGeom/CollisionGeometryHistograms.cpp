@@ -11,15 +11,16 @@
  * *********************************************************************/
 #include "CollisionGeometryHistograms.hpp"
 #include <vector>
+using CAP::CollisionGeometryHistograms;
 using std::vector;
 
 ClassImp(CollisionGeometryHistograms);
 
 CollisionGeometryHistograms::CollisionGeometryHistograms(Task * _parent,
-                                                         const TString & _name,
+                                                         const String & _name,
                                                          Configuration & _configuration)
 :
-Histograms(_parent,_name,_configuration),
+HistogramGroup(_parent,_name,_configuration),
 h_nProcessedVsB(nullptr),
 h_nAcceptedVsB(nullptr),
 h_nPartVsB(nullptr),
@@ -98,76 +99,76 @@ void CollisionGeometryHistograms::createHistograms()
   int nBins_nBinary  = configuration.getValueInt(getName(),"nBins_nBinary");
   double min_nBinary = configuration.getValueDouble(getName(),"Min_nBinary");
   double max_nBinary = configuration.getValueDouble(getName(),"Max_nBinary");
-  TString impact = "b (fm)";
-  TString counts = "Counts";
-  TString nParticipants  = "N_{Part}";
-  TString nBin   = "N_{Bin}";
+  String impact = "b (fm)";
+  String counts = "Counts";
+  String nParticipants  = "N_{Part}";
+  String nBin   = "N_{Bin}";
 
-  TString bn = getParentTaskName();
-  h_nProcessedVsB     = createHistogram(makeName(bn,"nProcessedVsB"),    nBins_b, min_b,  max_b,    impact,   counts);
-  h_nAcceptedVsB      = createHistogram(makeName(bn,"nAcceptedVsB"),     nBins_b, min_b,  max_b,    impact,   counts);
-  h_nPartVsB          = createHistogram(makeName(bn,"nPartVsB"),         nBins_b, min_b,  max_b,    nBins_nPart,   min_nPart,   max_nPart,   impact, nParticipants, counts);
-  h_nBinaryVsB        = createHistogram(makeName(bn,"nBinaryVsB"),       nBins_b, min_b,  max_b,    nBins_nBinary, min_nBinary, max_nBinary, impact, nBin,  counts);
-  h_nPartVsB_Prof     = createProfile(makeName(bn,"nPartVsB_Prof"),      nBins_b, min_b,  max_b,    impact,   "<N_{Part}>");
-  h_nPartSqVsB_Prof   = createProfile(makeName(bn,"nPartSqVsB_Prof"),    nBins_b, min_b,  max_b,    impact,   "<N_{Part}^{2}>");
-  h_nBinaryVsB_Prof   = createProfile(makeName(bn,"nBinaryVsB_Prof"),    nBins_b, min_b,  max_b,    impact,   "<N_{Bin}>");
-  h_nBinarySqVsB_Prof = createProfile(makeName(bn,"nBinarySqVsB_Prof"),  nBins_b, min_b,  max_b,    impact,   "<N_{Bin}^{2}>");
+  String bn = getParentTaskName();
+  h_nProcessedVsB     = createHistogram(createName(bn,"nProcessedVsB"),    nBins_b, min_b,  max_b,    impact,   counts);
+  h_nAcceptedVsB      = createHistogram(createName(bn,"nAcceptedVsB"),     nBins_b, min_b,  max_b,    impact,   counts);
+  h_nPartVsB          = createHistogram(createName(bn,"nPartVsB"),         nBins_b, min_b,  max_b,    nBins_nPart,   min_nPart,   max_nPart,   impact, nParticipants, counts);
+  h_nBinaryVsB        = createHistogram(createName(bn,"nBinaryVsB"),       nBins_b, min_b,  max_b,    nBins_nBinary, min_nBinary, max_nBinary, impact, nBin,  counts);
+  h_nPartVsB_Prof     = createProfile(createName(bn,"nPartVsB_Prof"),      nBins_b, min_b,  max_b,    impact,   "<N_{Part}>");
+  h_nPartSqVsB_Prof   = createProfile(createName(bn,"nPartSqVsB_Prof"),    nBins_b, min_b,  max_b,    impact,   "<N_{Part}^{2}>");
+  h_nBinaryVsB_Prof   = createProfile(createName(bn,"nBinaryVsB_Prof"),    nBins_b, min_b,  max_b,    impact,   "<N_{Bin}>");
+  h_nBinarySqVsB_Prof = createProfile(createName(bn,"nBinarySqVsB_Prof"),  nBins_b, min_b,  max_b,    impact,   "<N_{Bin}^{2}>");
 
-  h_nPart                 = createHistogram(makeName(bn,"nParticipants"),         nBins_nPart,  min_nPart,   max_nPart,   nParticipants, counts);
-  h_nBinaryVsNPart_Prof   = createProfile(makeName(bn,"nBinaryVsNPart_Prof"),  nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "<N_{Bin}>");
-  h_nBinarySqVsNPart_Prof = createProfile(makeName(bn,"nBinarySqVsNPart_Prof"),nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "<N_{Bin}^{2}>");
-  h_bVsNPart_Prof         = createProfile(makeName(bn,"bVsNPart_Prof"),   nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "<b>");
-  h_bSqVsNPart_Prof       = createProfile(makeName(bn,"bSqVsNPart_Proff"),nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "<b^{2}>");
+  h_nPart                 = createHistogram(createName(bn,"nParticipants"),         nBins_nPart,  min_nPart,   max_nPart,   nParticipants, counts);
+  h_nBinaryVsNPart_Prof   = createProfile(createName(bn,"nBinaryVsNPart_Prof"),  nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "<N_{Bin}>");
+  h_nBinarySqVsNPart_Prof = createProfile(createName(bn,"nBinarySqVsNPart_Prof"),nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "<N_{Bin}^{2}>");
+  h_bVsNPart_Prof         = createProfile(createName(bn,"bVsNPart_Prof"),   nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "<b>");
+  h_bSqVsNPart_Prof       = createProfile(createName(bn,"bSqVsNPart_Proff"),nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "<b^{2}>");
 
-  h_nBinary                = createHistogram(makeName(bn,"nBinary"),       nBins_nBinary,min_nBinary, max_nBinary, nBin,  counts);
-  h_nPartVsNBinary_Prof    = createProfile(makeName(bn,"nPartVsNBinary_Prof"),  nBins_nBinary,min_nBinary, max_nBinary, nBin,  "<N_{Part}>");
-  h_nPartSqVsNBinary_Prof  = createProfile(makeName(bn,"nPartSqVsNBinary_Prof"),nBins_nBinary,min_nBinary, max_nBinary, nBin,  "<N_{Part}^{2}>");
-  h_bVsNBinary_Prof        = createProfile(makeName(bn,"bVsNBinary_Prof"), nBins_nBinary,min_nBinary, max_nBinary, nBin,  "<b>");
-  h_bSqVsNBinary_Prof      = createProfile(makeName(bn,"bSqVsNBinary_Prof"),    nBins_nBinary,min_nBinary, max_nBinary, nBin,  "<b^{2}>");
+  h_nBinary                = createHistogram(createName(bn,"nBinary"),       nBins_nBinary,min_nBinary, max_nBinary, nBin,  counts);
+  h_nPartVsNBinary_Prof    = createProfile(createName(bn,"nPartVsNBinary_Prof"),  nBins_nBinary,min_nBinary, max_nBinary, nBin,  "<N_{Part}>");
+  h_nPartSqVsNBinary_Prof  = createProfile(createName(bn,"nPartSqVsNBinary_Prof"),nBins_nBinary,min_nBinary, max_nBinary, nBin,  "<N_{Part}^{2}>");
+  h_bVsNBinary_Prof        = createProfile(createName(bn,"bVsNBinary_Prof"), nBins_nBinary,min_nBinary, max_nBinary, nBin,  "<b>");
+  h_bSqVsNBinary_Prof      = createProfile(createName(bn,"bSqVsNBinary_Prof"),    nBins_nBinary,min_nBinary, max_nBinary, nBin,  "<b^{2}>");
 
-  h_crossSection           = createHistogram(makeName(bn,"Xsect"),    100,  0.0,            100.0,          "Xsect",    counts);
-  h_nPartVsXsect_Prof      = createProfile(makeName(bn,"nPartVsXsect_Prof"),     100,  0.0, 100.0,          "Xsect",    "<N_{Part}>");
-  h_nPartSqVsXsect_Prof    = createProfile(makeName(bn,"nPartSqVsXsect_Prof"),   100,  0.0, 100.0,          "Xsect",    "<N_{Part}^{2}>");
-  h_nBinaryVsXsect_Prof    = createProfile(makeName(bn,"nBinaryVsXsect_Prof"),   100,  0.0, 100.0,          "Xsect",    "<N_{Bin}>");
-  h_nBinarySqVsXsect_Prof  = createProfile(makeName(bn,"nBinarySqVsXsect_Prof"), 100,  0.0, 100.0,          "Xsect",    "<N_{Bin}^{2}>");
-  h_bVsXsect_Prof          = createProfile(makeName(bn,"bVsXsect_Prof"),         100,  0.0, 100.0,          "Xsect",    "<b>");
-  h_bSqVsXsect_Prof        = createProfile(makeName(bn,"bSqVsXsect_Prof"),       100,  0.0, 100.0,          "Xsect",    "<b^{2}>");
+  h_crossSection           = createHistogram(createName(bn,"Xsect"),    100,  0.0,            100.0,          "Xsect",    counts);
+  h_nPartVsXsect_Prof      = createProfile(createName(bn,"nPartVsXsect_Prof"),     100,  0.0, 100.0,          "Xsect",    "<N_{Part}>");
+  h_nPartSqVsXsect_Prof    = createProfile(createName(bn,"nPartSqVsXsect_Prof"),   100,  0.0, 100.0,          "Xsect",    "<N_{Part}^{2}>");
+  h_nBinaryVsXsect_Prof    = createProfile(createName(bn,"nBinaryVsXsect_Prof"),   100,  0.0, 100.0,          "Xsect",    "<N_{Bin}>");
+  h_nBinarySqVsXsect_Prof  = createProfile(createName(bn,"nBinarySqVsXsect_Prof"), 100,  0.0, 100.0,          "Xsect",    "<N_{Bin}^{2}>");
+  h_bVsXsect_Prof          = createProfile(createName(bn,"bVsXsect_Prof"),         100,  0.0, 100.0,          "Xsect",    "<b>");
+  h_bSqVsXsect_Prof        = createProfile(createName(bn,"bSqVsXsect_Prof"),       100,  0.0, 100.0,          "Xsect",    "<b^{2}>");
 
-  h_xyDistInteractions     = createHistogram(makeName(bn,"xyDistInteractions"),   400, -20.0, 20.0,   400, -20.0, 20.0, "x (fm)",  "y (fm)",   counts);
-  h_xyDistNucleons         = createHistogram(makeName(bn,"xyDistNucleons"),       400, -20.0, 20.0,   400, -20.0, 20.0, "x (fm)",  "y (fm)",   counts);
-  // Derived Histograms
-  h_nPartRmsVsB            = createHistogram(makeName(bn,"nPartRmsVsB"),       nBins_b, min_b,  max_b,      impact,   "RMS(N_{Part})");
-  h_nPartOmegaVsB          = createHistogram(makeName(bn,"nPartOmegaVsB"),     nBins_b, min_b,  max_b,      impact,   "#omega(N_{part})");
-  h_nPartR2VsB             = createHistogram(makeName(bn,"nPartR2VsB"),        nBins_b, min_b,  max_b,      impact,   "R_{2}(N_{part})");
-  h_nBinaryRmsVsB          = createHistogram(makeName(bn,"nBinaryRmsVsB"),     nBins_b, min_b,  max_b,      impact,   "RMS(N_{Bin})");
-  h_nBinaryOmegaVsB        = createHistogram(makeName(bn,"nBinaryOmegaVsB"),   nBins_b, min_b,  max_b,      impact,   "#omega(N_{Bin})");
-  h_nBinaryR2VsB           = createHistogram(makeName(bn,"nBinaryR2VsB"),      nBins_b, min_b,  max_b,      impact,   "R_{2}(N_{bin})");
+  h_xyDistInteractions     = createHistogram(createName(bn,"xyDistInteractions"),   400, -20.0, 20.0,   400, -20.0, 20.0, "x (fm)",  "y (fm)",   counts);
+  h_xyDistNucleons         = createHistogram(createName(bn,"xyDistNucleons"),       400, -20.0, 20.0,   400, -20.0, 20.0, "x (fm)",  "y (fm)",   counts);
+  // Derived HistogramGroup
+  h_nPartRmsVsB            = createHistogram(createName(bn,"nPartRmsVsB"),       nBins_b, min_b,  max_b,      impact,   "RMS(N_{Part})");
+  h_nPartOmegaVsB          = createHistogram(createName(bn,"nPartOmegaVsB"),     nBins_b, min_b,  max_b,      impact,   "#omega(N_{part})");
+  h_nPartR2VsB             = createHistogram(createName(bn,"nPartR2VsB"),        nBins_b, min_b,  max_b,      impact,   "R_{2}(N_{part})");
+  h_nBinaryRmsVsB          = createHistogram(createName(bn,"nBinaryRmsVsB"),     nBins_b, min_b,  max_b,      impact,   "RMS(N_{Bin})");
+  h_nBinaryOmegaVsB        = createHistogram(createName(bn,"nBinaryOmegaVsB"),   nBins_b, min_b,  max_b,      impact,   "#omega(N_{Bin})");
+  h_nBinaryR2VsB           = createHistogram(createName(bn,"nBinaryR2VsB"),      nBins_b, min_b,  max_b,      impact,   "R_{2}(N_{bin})");
 
-  h_nBinaryRmsVsNPart      = createHistogram(makeName(bn,"nBinaryRmsVsNPart"),  nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "RMS(N_{Bin})");
-  h_nBinaryOmegaVsNPart    = createHistogram(makeName(bn,"nBinaryOmegaVsNPart"),nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "#omega(N_{Bin})");
-  h_nBinaryR2VsNPart       = createHistogram(makeName(bn,"nBinaryR2VsNPart"),   nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "R_{2}(N_{bin})");
-  h_bRmsVsNPart            = createHistogram(makeName(bn,"bRmsVsNPart"),        nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "RMS(b)");
-  h_bOmegaVsNPart          = createHistogram(makeName(bn,"bOmegaVsNPart"),      nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "#omega(b)");
-  h_bR2VsNPart             = createHistogram(makeName(bn,"bR2VsNPart"),         nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "R_{2}(b)");
+  h_nBinaryRmsVsNPart      = createHistogram(createName(bn,"nBinaryRmsVsNPart"),  nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "RMS(N_{Bin})");
+  h_nBinaryOmegaVsNPart    = createHistogram(createName(bn,"nBinaryOmegaVsNPart"),nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "#omega(N_{Bin})");
+  h_nBinaryR2VsNPart       = createHistogram(createName(bn,"nBinaryR2VsNPart"),   nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "R_{2}(N_{bin})");
+  h_bRmsVsNPart            = createHistogram(createName(bn,"bRmsVsNPart"),        nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "RMS(b)");
+  h_bOmegaVsNPart          = createHistogram(createName(bn,"bOmegaVsNPart"),      nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "#omega(b)");
+  h_bR2VsNPart             = createHistogram(createName(bn,"bR2VsNPart"),         nBins_nPart,  min_nPart,   max_nPart,   nParticipants, "R_{2}(b)");
 
-  h_nPartRmsVsNBinary      = createHistogram(makeName(bn,"nPartRmsVsNBinary"),  nBins_nBinary,min_nBinary, max_nBinary, nBin, "RMS(N_{Bin})");
-  h_nPartOmegaVsNBinary    = createHistogram(makeName(bn,"nPartOmegaVsNBinary"),nBins_nBinary,min_nBinary, max_nBinary, nBin, "#omega(N_{Bin})");
-  h_nPartR2VsNBinary       = createHistogram(makeName(bn,"nPartR2VsNBinary"),   nBins_nBinary,min_nBinary, max_nBinary, nBin, "R_{2}(N_{bin})");
-  h_bRmsVsNBinary          = createHistogram(makeName(bn,"bRmsVsNBinary"),      nBins_nBinary,min_nBinary, max_nBinary, nBin, "RMS(b)");
-  h_bOmegaVsNBinary        = createHistogram(makeName(bn,"bOmegaVsNBinary"),    nBins_nBinary,min_nBinary, max_nBinary, nBin, "#omega(b)");
-  h_bR2VsNBinary           = createHistogram(makeName(bn,"bR2VsNBinary"),       nBins_nBinary,min_nBinary, max_nBinary, nBin, "R_{2}(b)");
+  h_nPartRmsVsNBinary      = createHistogram(createName(bn,"nPartRmsVsNBinary"),  nBins_nBinary,min_nBinary, max_nBinary, nBin, "RMS(N_{Bin})");
+  h_nPartOmegaVsNBinary    = createHistogram(createName(bn,"nPartOmegaVsNBinary"),nBins_nBinary,min_nBinary, max_nBinary, nBin, "#omega(N_{Bin})");
+  h_nPartR2VsNBinary       = createHistogram(createName(bn,"nPartR2VsNBinary"),   nBins_nBinary,min_nBinary, max_nBinary, nBin, "R_{2}(N_{bin})");
+  h_bRmsVsNBinary          = createHistogram(createName(bn,"bRmsVsNBinary"),      nBins_nBinary,min_nBinary, max_nBinary, nBin, "RMS(b)");
+  h_bOmegaVsNBinary        = createHistogram(createName(bn,"bOmegaVsNBinary"),    nBins_nBinary,min_nBinary, max_nBinary, nBin, "#omega(b)");
+  h_bR2VsNBinary           = createHistogram(createName(bn,"bR2VsNBinary"),       nBins_nBinary,min_nBinary, max_nBinary, nBin, "R_{2}(b)");
 
-  h_nPartRmsVsXsect        = createHistogram(makeName(bn,"nPartRmsVsXsect"),      100,  0.0,            100.0,          "Xsect", "RMS(N_{Part})");
-  h_nPartOmegaVsXsect      = createHistogram(makeName(bn,"nPartOmegaVsXsect"),    100,  0.0,            100.0,          "Xsect", "#omega(N_{Part})");
-  h_nPartR2VsXsect         = createHistogram(makeName(bn,"nPartR2VsXsect"),       100,  0.0,            100.0,          "Xsect", "R_{2}(N_{Part})");
+  h_nPartRmsVsXsect        = createHistogram(createName(bn,"nPartRmsVsXsect"),      100,  0.0,            100.0,          "Xsect", "RMS(N_{Part})");
+  h_nPartOmegaVsXsect      = createHistogram(createName(bn,"nPartOmegaVsXsect"),    100,  0.0,            100.0,          "Xsect", "#omega(N_{Part})");
+  h_nPartR2VsXsect         = createHistogram(createName(bn,"nPartR2VsXsect"),       100,  0.0,            100.0,          "Xsect", "R_{2}(N_{Part})");
 
-  h_nBinaryRmsVsXsect      = createHistogram(makeName(bn,"nNBinaryRmsVsXsect"),   100,  0.0,            100.0,          "Xsect", "RMS(N_{Bin})");
-  h_nBinaryOmegaVsXsect    = createHistogram(makeName(bn,"nBinaryOmegaVsXsect"),  100,  0.0,            100.0,          "Xsect", "#omega(N_{Bin})");
-  h_nBinaryR2VsXsect       = createHistogram(makeName(bn,"nBinaryR2VsXsect"),     100,  0.0,            100.0,          "Xsect", "R_{2}(N_{Bin})");
+  h_nBinaryRmsVsXsect      = createHistogram(createName(bn,"nNBinaryRmsVsXsect"),   100,  0.0,            100.0,          "Xsect", "RMS(N_{Bin})");
+  h_nBinaryOmegaVsXsect    = createHistogram(createName(bn,"nBinaryOmegaVsXsect"),  100,  0.0,            100.0,          "Xsect", "#omega(N_{Bin})");
+  h_nBinaryR2VsXsect       = createHistogram(createName(bn,"nBinaryR2VsXsect"),     100,  0.0,            100.0,          "Xsect", "R_{2}(N_{Bin})");
 
-  h_bRmsVsXsect            = createHistogram(makeName(bn,"bRmsVsXsect"),          100,  0.0,            100.0,          "Xsect", "RMS(b)");
-  h_bOmegaVsXsect          = createHistogram(makeName(bn,"bOmegaVsXsect"),        100,  0.0,            100.0,          "Xsect", "#omega(b)");
-  h_bR2VsXsect             = createHistogram(makeName(bn,"bR2VsXsect"),           100,  0.0,            100.0,          "Xsect", "R_{2}(b)");
+  h_bRmsVsXsect            = createHistogram(createName(bn,"bRmsVsXsect"),          100,  0.0,            100.0,          "Xsect", "RMS(b)");
+  h_bOmegaVsXsect          = createHistogram(createName(bn,"bOmegaVsXsect"),        100,  0.0,            100.0,          "Xsect", "#omega(b)");
+  h_bR2VsXsect             = createHistogram(createName(bn,"bR2VsXsect"),           100,  0.0,            100.0,          "Xsect", "R_{2}(b)");
 
 //  bValues10[0] = 0.0;
 //  bValues10[1] = 3.39927;
@@ -189,9 +190,9 @@ void CollisionGeometryHistograms::createHistograms()
 //  h_epsilonXVsB_Prof   = createProfile(bn+"epsilonXVsB_Prof",   nBins_b,  min_b,  max_b,  "b",  "#epsilon_{x}", 1);
 //  h_epsilonYVsB_Prof   = createProfile(bn+"epsilonYVsB_Prof",   nBins_b,  min_b,  max_b,  "b",  "#epsilon_{y}", 1);
 //  h_epsilonXYVsB_Prof  = createProfile(bn+"epsilonXYVsB_Prof",  nBins_b,  min_b,  max_b,  "b",  "|#epsilon|", 1);
-//  h_epsilonXYVsB       = createHistogram(makeName(bn,"epsilonXYVsB"), nBins_b,  min_b,  max_b,  40, -1.0, 1.0,  40, -1.0, 1.0, "b", "#epsilon_{x}", "#epsilon_{y}", counts,0,1);;
+//  h_epsilonXYVsB       = createHistogram(createName(bn,"epsilonXYVsB"), nBins_b,  min_b,  max_b,  40, -1.0, 1.0,  40, -1.0, 1.0, "b", "#epsilon_{x}", "#epsilon_{y}", counts,0,1);;
 //  h_psi2VsB_Prof       = createProfile(bn+"psi2VsB_Prof",       nBins_b,  min_b,  max_b,  "b",  "#psi_{2}", 1);
-//  h_psi2VsB            = createHistogram(makeName(bn,"psi2VsB"), nBins_b,  min_b,  max_b,  40, -TMath::Pi(), TMath::Pi(), "b", "#psi_2", counts,0,1);
+//  h_psi2VsB            = createHistogram(createName(bn,"psi2VsB"), nBins_b,  min_b,  max_b,  40, -TMath::Pi(), TMath::Pi(), "b", "#psi_2", counts,0,1);
 
   if (reportEnd(__FUNCTION__))
     ;
@@ -257,7 +258,7 @@ void CollisionGeometryHistograms::fill(Event & event, double weight)
   const vector<Particle*> interactions = event.getNucleonNucleonInteractions();
   for (unsigned int k=0;k<interactions.size(); k++)
     {
-    const TLorentzVector & position = interactions[k]->getPosition();
+    const LorentzVector & position = interactions[k]->getPosition();
     h_xyDistInteractions->Fill( position.X(), position.Y() );
     }
 
@@ -267,12 +268,12 @@ void CollisionGeometryHistograms::fill(Event & event, double weight)
   vector<Particle*> nucleonsB = nucleusB.getChildren();
   for (unsigned int k=0;k<nucleonsA.size(); k++)
     {
-    const TLorentzVector & position = nucleonsA[k]->getPosition();
+    const LorentzVector & position = nucleonsA[k]->getPosition();
     h_xyDistNucleons->Fill( position.X(), position.Y() );
     }
   for (unsigned int k=0;k<nucleonsB.size(); k++)
     {
-    const TLorentzVector & position = nucleonsB[k]->getPosition();
+    const LorentzVector & position = nucleonsB[k]->getPosition();
     h_xyDistNucleons->Fill( position.X(), position.Y() );
     }
 }
@@ -288,7 +289,7 @@ void CollisionGeometryHistograms::noFill(Event & event, double weight)
 }
 
 //
-//void CollisionGeometryHistograms::create Derived Histograms()
+//void CollisionGeometryHistograms::create Derived HistogramGroup()
 //{
 //  if (reportStart(__FUNCTION__))
 //    ;

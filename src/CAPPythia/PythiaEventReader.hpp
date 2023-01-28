@@ -13,6 +13,10 @@
 #define CAP__PythiaEventReader
 #include "RootTreeReader.hpp"
 
+namespace CAP
+{
+
+
 //!
 //! Class defining a ROOT Tree reader for PYTHIA events produced by Pythia8.
 //! The Init() method maps the tree branch onto variables used by this reader
@@ -31,7 +35,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  PythiaEventReader(const TString & _name,
+  PythiaEventReader(const String & _name,
                     Configuration & _configuration,
                     vector<EventFilter*>&   _eventFilters,
                     vector<ParticleFilter*>&_particleFilters);
@@ -190,5 +194,7 @@ protected:
 
   ClassDef(PythiaEventReader,0)
 };
+
+}
 
 #endif /* CAP__PythiaEventReader */

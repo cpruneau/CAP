@@ -10,6 +10,9 @@
  *
  * *********************************************************************/
 #include "Nucleus.hpp"
+using CAP::Particle;
+using CAP::Nucleus;
+
 ClassImp(Nucleus);
 
 Nucleus::Nucleus()

@@ -3,10 +3,11 @@
 #include <fstream>
 #include "ChemicalPotential.hpp"
 #include "Arsenal.hpp"
+using CAP::ChemicalPotential;
+//using namespace std;
 
 ClassImp(ChemicalPotential);
 
-using namespace std;
 
 ChemicalPotential::ChemicalPotential()
 {

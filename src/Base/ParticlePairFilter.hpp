@@ -14,6 +14,9 @@
 #include "Filter.hpp"
 #include "Particle.hpp"
 
+namespace CAP
+{
+
 //!
 //! Two Particle Filter
 //!
@@ -43,5 +46,7 @@ protected:
 
   ClassDef(ParticlePairFilter,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP__ParticlePairFilter */

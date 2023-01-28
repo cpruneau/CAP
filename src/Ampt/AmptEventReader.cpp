@@ -11,12 +11,11 @@
  * *********************************************************************/
 #include "AmptEventReader.hpp"
 
-//using namespace CAP;
-//using namespace AMPT;
+using CAP::AmptEventReader;
 
 ClassImp(AmptEventReader);
 
-AmptEventReader::AmptEventReader(const TString & _name,
+AmptEventReader::AmptEventReader(const String & _name,
                                  Configuration & _configuration,
                                  vector<EventFilter*> & _eventFilters,
                                  vector<ParticleFilter*> & _particleFilters)
@@ -72,7 +71,7 @@ void AmptEventReader::execute()
     sinPhi = sin(eventPhi);
     }
   
-  TLorentzVector & sourcePosition = parentInteraction->getPosition();
+  LorentzVector & sourcePosition = parentInteraction->getPosition();
   double r_x = sourcePosition.X();
   double r_y = sourcePosition.Y();
   double r_z = sourcePosition.Z();

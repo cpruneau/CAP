@@ -10,9 +10,11 @@
  *
  * *********************************************************************/
 #include "HijingEventReader.hpp"
+using CAP::HijingEventReader;
+
 ClassImp(HijingEventReader);
 
-HijingEventReader::HijingEventReader(const TString &          _name,
+HijingEventReader::HijingEventReader(const String &          _name,
                                      Configuration &          _configuration,
                                      vector<EventFilter*>   & _eventFilters,
                                      vector<ParticleFilter*>& _particleFilters)
@@ -70,7 +72,7 @@ void HijingEventReader::execute()
     sinPhi = sin(eventPhi);
     }
   
-  TLorentzVector & sourcePosition = parentInteraction->getPosition();
+  LorentzVector & sourcePosition = parentInteraction->getPosition();
   double r_x = sourcePosition.X();
   double r_y = sourcePosition.Y();
   double r_z = sourcePosition.Z();

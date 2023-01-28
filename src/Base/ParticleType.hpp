@@ -16,11 +16,15 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
-#include "TString.h"
+#include "Aliases.hpp"
 #include "SelectionGenerator.hpp"
 #include "ParticleDecayMode.hpp"
 
 using namespace std;
+
+namespace CAP
+{
+
 class ParticleDecayMode;
 
 //statistics = 1;  // Fermi-Dirac
@@ -35,8 +39,8 @@ class ParticleType
 {
 protected:
 
-  TString name;       //!<ParticleType name: e.g., pip
-  TString title;      //!<ParticleType title: e.g., #pi^{+}
+  String name;       //!<ParticleType name: e.g., pip
+  String title;      //!<ParticleType title: e.g., #pi^{+}
   int privateCode;    //!<Code used in this package only (convenience)
   int pdgCode;        //!<Monte-Carlo number according PDG
   double mass;        //!<ParticleType mass (GeV)
@@ -79,7 +83,7 @@ public:
   //! @param gIsospin_in : isospin generacy of the particle
   //! @param charge_in : electric charge (|e| unit)
   //!
-  ParticleType(int pdgCode_in, const TString & name_in, const TString & title_in, double mass_in,
+  ParticleType(int pdgCode_in, const String & name_in, const String & title_in, double mass_in,
                double width_in, int gSpin_in, int baryon_in, int strange_in,
                int charm_in, int bottom_in, int gIsospin_in, int charge_in);
   
@@ -108,12 +112,12 @@ public:
   //!
   //! Get the name of the particle
   //!
-  TString getName()     { return name;}
+  String getName()     { return name;}
 
   //!
   //! Get the title  of the particle
   //!
-  TString getTitle()    { return title;}
+  String getTitle()    { return title;}
 
   //!
   //! Get the PDG code of the antiparticle of this particle.
@@ -203,12 +207,12 @@ public:
   //!
   //! Set the name of this particle.
   //!
-  void setName(const TString & _name)  { name    = _name;}
+  void setName(const String & _name)  { name    = _name;}
 
   //!
   //! Set the 'title'' of this particle.
   //!
-  void setTitle(const TString & _title){ title   = _title;}
+  void setTitle(const String & _title){ title   = _title;}
 
   //!
   //! Set the PDG code of this particle.
@@ -813,5 +817,6 @@ protected:
   ClassDef(ParticleType,0)
 };
 
+}
 #endif  
 

@@ -11,6 +11,7 @@
  * *********************************************************************/
 #include <vector>
 #include "SelectionGenerator.hpp"
+using CAP::SelectionGenerator;
 
 ClassImp(SelectionGenerator);
 

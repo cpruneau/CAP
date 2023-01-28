@@ -32,6 +32,9 @@
 using namespace std;
 using std::ostream;
 
+namespace CAP
+{
+
 class BidimGaussFitResult
 {
 public:
@@ -101,5 +104,7 @@ public:
 
   ClassDef(BidimGaussFitResult,0)
   };
+
+} // namespace CAP
 
 #endif /* CAP__BidimGaussFitResult */

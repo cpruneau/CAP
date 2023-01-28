@@ -13,6 +13,9 @@
 #define CAP__CalibrationProducer
 #include "Task.hpp"
 
+namespace CAP
+{
+
 //!
 //! Task loads ratio histograms of single particle yields obtain for reconstructed events and generator level events (from a closure test w/o corrections) and
 //! produces a new file root file containing efficiency histograms. Nominally, there will be one histogram for each collision class present in the input file.
@@ -44,7 +47,7 @@ public:
   //! @param _configuration Configuration used to run this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  CalibrationProducer(const TString & _name,
+  CalibrationProducer(const String & _name,
                       Configuration & _configuration);
   
   //!
@@ -64,5 +67,7 @@ public:
   
   ClassDef(CalibrationProducer,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP__CalibrationProducer */

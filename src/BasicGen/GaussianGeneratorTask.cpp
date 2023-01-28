@@ -13,10 +13,11 @@
 #include <TVector2.h>
 #include <TRandom.h>
 #include "Event.hpp"
+using CAP::GaussianGeneratorTask;
 
 ClassImp(GaussianGeneratorTask);
 
-GaussianGeneratorTask::GaussianGeneratorTask(const TString & _name,
+GaussianGeneratorTask::GaussianGeneratorTask(const String & _name,
                                              Configuration & _configuration)
 :
 Task(_name, _configuration),

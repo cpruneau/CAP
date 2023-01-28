@@ -11,19 +11,23 @@
  * *********************************************************************/
 #ifndef CAP__PTHistos
 #define CAP__PTHistos
-#include "Histograms.hpp"
+#include "HistogramGroup.hpp"
 #include "Configuration.hpp"
 #include "TMath.h"
 #include <cstdlib>
 #include <cmath>
 #include <chrono>
 
-class PTHistos : public Histograms
+namespace CAP
+{
+
+
+class PTHistos : public HistogramGroup
 {
 public:
 
   PTHistos(Task *          _parent,
-           const TString & _name,
+           const String & _name,
            Configuration & _configuration,
            Severity        _debugLevel,
            int             _ord);
@@ -33,8 +37,8 @@ public:
   virtual void loadHistograms(TFile * inputFile);
   virtual void fillDerivedHistos(bool *** acceptances, double * mults, double * cents, int * numParticles, double ** pT);
   virtual void saveHistograms(TFile * outputFile, bool saveAll=false);
-  virtual void createHistogramRec(TString * baseName, TString * baseTitle, int depth, int partIndex);
-  virtual void loadHistogramRec(TString * baseName, int depth, int partIndex, TFile * inputFile);
+  virtual void createHistogramRec(String * baseName, String * baseTitle, int depth, int partIndex);
+  virtual void loadHistogramRec(String * baseName, int depth, int partIndex, TFile * inputFile);
   virtual void fillEventHistos(double mult, double cent, double weight);
   virtual void fillNormalizedPTValues( int depth, int partIndex, double product, double * SValues, double  mult, double  cent);
   virtual void fillNormalizedPTValues( int depth, int partIndex, double product, TH1 *** values, int* reorder, int*  nBin);
@@ -58,7 +62,7 @@ public:
 
 
   ////////////////////////////////////////////////////////////////////////////
-  // Data Members - Histograms
+  // Data Members - HistogramGroup
   ////////////////////////////////////////////////////////////////////////////
   // S is the pT deviation moments
   // s are the normalized moments
@@ -145,5 +149,7 @@ TString* *titles2;
 
   ClassDef(PTHistos,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP__PTHistos  */

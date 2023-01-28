@@ -13,6 +13,10 @@
 #define CAP__UrqmdEventReader
 #include "RootTreeReader.hpp"
 
+namespace CAP
+{
+
+
 class UrqmdEventReader : public RootTreeReader
 {
 public:
@@ -26,7 +30,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task -- use this filter to limit the range of particles read into CAP arrays.
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  UrqmdEventReader(const TString & _name,
+  UrqmdEventReader(const String & _name,
                    Configuration & _configuration,
                    vector<EventFilter*> & _eventFilters,
                    vector<ParticleFilter*> & _particleFilters);
@@ -98,5 +102,7 @@ protected:
   TBranch        *b_fTracks_fChIso3Ityp;   //!
                                            //!
 };
+
+} // namespace CAP
 
 #endif /* CAP__UrqmdEventReader */

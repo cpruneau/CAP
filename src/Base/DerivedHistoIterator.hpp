@@ -13,6 +13,9 @@
 #define CAP__DerivedHistoIterator
 #include "Task.hpp"
 
+namespace CAP
+{
+
 //!
 //!Task calculates the statistical errors of all histograms of the selected files based on the subsample method.
 //!The input file are selected based on a name template. All files read are assumed to have the same histogram structure (named objects).
@@ -31,7 +34,7 @@ public:
   //! @param _configuration Configuration used to run this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  DerivedHistoIterator(const TString & _name,
+  DerivedHistoIterator(const String & _name,
                        Configuration & _configuration);
   
   //!
@@ -52,5 +55,7 @@ public:
 
   ClassDef(DerivedHistoIterator,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP__DerivedHistoIterator */

@@ -15,6 +15,7 @@
 #include <TROOT.h>
 
 void loadBase(const TString & includeBasePath);
+void loadPlotting(const TString & includeBasePath);
 
 
 // ============================================================================================================
@@ -2038,19 +2039,19 @@ void loadBase(const TString & includeBasePath)
   gSystem->Load(includePath+"Timer.hpp");
   gSystem->Load(includePath+"MessageLogger.hpp");
   gSystem->Load(includePath+"Task.hpp");
-  gSystem->Load(includePath+"TaskIterator.hpp");
   gSystem->Load(includePath+"Collection.hpp");
+  gSystem->Load(includePath+"HistogramCollection.hpp");
+  gSystem->Load(includePath+"HistogramGroup.hpp");
+  gSystem->Load("libBase.dylib");
+}
+
+void loadPlotting(const TString & includeBasePath)
+{
+  TString includePath = includeBasePath + "/Plotting/";
   gSystem->Load(includePath+"CanvasCollection.hpp");
   gSystem->Load(includePath+"GraphConfiguration.hpp");
   gSystem->Load(includePath+"CanvasConfiguration.hpp");
-  gSystem->Load(includePath+"HistogramCollection.hpp");
-  gSystem->Load(includePath+"Histograms.hpp");
-  gSystem->Load(includePath+"Particle.hpp");
-  gSystem->Load(includePath+"ParticleType.hpp");
-  gSystem->Load(includePath+"ParticleTypeCollection.hpp");
-  gSystem->Load(includePath+"ParticleDecayMode.hpp");
   gSystem->Load(includePath+"Plotter.hpp");
-  gSystem->Load(includePath+"DerivedHistoIterator.hpp");
-  gSystem->Load("libBase.dylib");
+  gSystem->Load("libPlotting.dylib");
 }
 

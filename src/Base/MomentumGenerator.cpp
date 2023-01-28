@@ -10,6 +10,8 @@
  *
  * *********************************************************************/
 #include "MomentumGenerator.hpp"
+using CAP::MomentumGenerator;
+
 ClassImp(MomentumGenerator);
 
 double probDensity(double p, double mass, double temperature, double mu, double stat)
@@ -101,7 +103,7 @@ random(_selectedRandom)
       if (parameters.size()!=6) invalidSetup = true;
       double temp   = parameters[2];
       double zero   = 0.0;
-      TString hName = particleType->getName();
+      String hName = particleType->getName();
       hName += int(1000*temp);
       hName += "MeV";
       double mu     = 0.0;
@@ -134,7 +136,7 @@ random(_selectedRandom)
 }
 
 
-void  MomentumGenerator::generate(TLorentzVector & momentum)
+void  MomentumGenerator::generate(LorentzVector & momentum)
 {
   double px, py, pz, pt, mt, p, e, ptSq;
   double phi, cosTh, y;

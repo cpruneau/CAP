@@ -11,6 +11,7 @@
  * *********************************************************************/
 #include "RunSubsample.hpp"
 #include "SubSampleStatCalculator.hpp"
+using CAP::RunSubsample;
 
 // we consider two scenarios
 // (1) one master job with several sub-jobs or files
@@ -35,12 +36,12 @@
 ClassImp(RunSubsample);
 
 
-RunSubsample::RunSubsample(const TString & _name,
+RunSubsample::RunSubsample(const String & _name,
                            Configuration & _configuration)
 :
 Task(_name, _configuration)
 {
-  //  TString includeBasePath = getenv("CAP_SRC");
+  //  String includeBasePath = getenv("CAP_SRC");
   appendClassName("RunSubsample");
   setInstanceName(_name);
   setDefaultConfiguration();
@@ -74,19 +75,19 @@ void RunSubsample::setDefaultConfiguration()
   addParameter("MaximumDepth",        1);
 }
 
-void RunSubsample::addBaseSubSampleTask(const TString & basePath,
-                                        const TString & bunchLabel,
+void RunSubsample::addBaseSubSampleTask(const String & basePath,
+                                        const String & bunchLabel,
                                         int   nBunches,
-                                        const TString & subPath,
+                                        const String & subPath,
                                         int   maximumDepth,
-                                        const TString & taskType)
+                                        const String & taskType)
 {
   if (nBunches>0)
     {
     for (int k=1;k<=nBunches; k++)
       {
-      TString inputPathName  = TString(Form("%s/%s%02d/%s",basePath.Data(),bunchLabel.Data(),k,subPath.Data()));
-      TString outputPathName = TString(Form("%s/%s%02d/",basePath.Data(),bunchLabel.Data(),k));
+      String inputPathName  = TString(Form("%s/%s%02d/%s",basePath.Data(),bunchLabel.Data(),k,subPath.Data()));
+      String outputPathName = TString(Form("%s/%s%02d/",basePath.Data(),bunchLabel.Data(),k));
       Configuration & subConfig = * new Configuration();
       subConfig.addParameter(TString("Run:")+taskType+TString(":HistogramInputPath"),inputPathName);
       subConfig.addParameter(TString("Run:")+taskType+TString(":HistogramOutputPath"),outputPathName);
@@ -103,8 +104,8 @@ void RunSubsample::addBaseSubSampleTask(const TString & basePath,
     }
   else // not bunched
     {
-    TString inputPathName  = TString(Form("%s/",basePath.Data()));
-    TString outputPathName = inputPathName;
+    String inputPathName  = TString(Form("%s/",basePath.Data()));
+    String outputPathName = inputPathName;
     Configuration & subConfig = * new Configuration();
     subConfig.addParameter(TString("Run:")+taskType+TString(":HistogramInputPath"),inputPathName);
     subConfig.addParameter(TString("Run:")+taskType+TString(":HistogramOutputPath"),outputPathName);
@@ -120,19 +121,19 @@ void RunSubsample::addBaseSubSampleTask(const TString & basePath,
     }
 }
 
-void RunSubsample::addDerivedSubSampleTask(const TString & basePath,
-                                           const TString & bunchLabel,
+void RunSubsample::addDerivedSubSampleTask(const String & basePath,
+                                           const String & bunchLabel,
                                            int   nBunches,
-                                           const TString & subPath,
+                                           const String & subPath,
                                            int   maximumDepth,
-                                           const TString & taskType)
+                                           const String & taskType)
 {
   if (nBunches>0)
     {
     for (int k=1;k<=nBunches; k++)
       {
-      TString inputPathName  = TString(Form("%s/%s%02d/",basePath.Data(),bunchLabel.Data(),k));
-      TString outputPathName = TString(Form("%s/%s%02d/",basePath.Data(),bunchLabel.Data(),k));
+      String inputPathName  = TString(Form("%s/%s%02d/",basePath.Data(),bunchLabel.Data(),k));
+      String outputPathName = TString(Form("%s/%s%02d/",basePath.Data(),bunchLabel.Data(),k));
       Configuration & subConfig = * new Configuration();
       subConfig.addParameter(TString("Run:")+taskType+TString(":HistogramInputPath"),inputPathName);
       subConfig.addParameter(TString("Run:")+taskType+TString(":HistogramOutputPath"),outputPathName);
@@ -148,8 +149,8 @@ void RunSubsample::addDerivedSubSampleTask(const TString & basePath,
     }
   else // not bunched
     {
-    TString inputPathName  = TString(Form("%s/",basePath.Data()));
-    TString outputPathName = inputPathName;
+    String inputPathName  = TString(Form("%s/",basePath.Data()));
+    String outputPathName = inputPathName;
     Configuration & subConfig = * new Configuration();
     subConfig.addParameter(TString("Run:")+taskType+TString(":HistogramInputPath"),inputPathName);
     subConfig.addParameter(TString("Run:")+taskType+TString(":HistogramOutputPath"),outputPathName);
@@ -164,19 +165,19 @@ void RunSubsample::addDerivedSubSampleTask(const TString & basePath,
     }
 }
 
-void RunSubsample::addBalFctSubSampleTask(const TString & basePath,
-                                          const TString & bunchLabel,
+void RunSubsample::addBalFctSubSampleTask(const String & basePath,
+                                          const String & bunchLabel,
                                           int   nBunches,
-                                          const TString & subPath,
+                                          const String & subPath,
                                           int   maximumDepth,
-                                          const TString & taskType)
+                                          const String & taskType)
 {
   if (nBunches>0)
     {
     for (int k=1;k<=nBunches; k++)
       {
-      TString inputPathName  = TString(Form("%s/%s%02d/",basePath.Data(),bunchLabel.Data(),k));
-      TString outputPathName = TString(Form("%s/%s%02d/",basePath.Data(),bunchLabel.Data(),k));
+      String inputPathName  = TString(Form("%s/%s%02d/",basePath.Data(),bunchLabel.Data(),k));
+      String outputPathName = TString(Form("%s/%s%02d/",basePath.Data(),bunchLabel.Data(),k));
       Configuration & subConfig = * new Configuration();
       subConfig.addParameter(TString("Run:")+taskType+TString(":HistogramInputPath"),inputPathName);
       subConfig.addParameter(TString("Run:")+taskType+TString(":HistogramOutputPath"),outputPathName);
@@ -192,8 +193,8 @@ void RunSubsample::addBalFctSubSampleTask(const TString & basePath,
     }
   else // not bunched
     {
-    TString inputPathName  = TString(Form("%s/",basePath.Data()));
-    TString outputPathName = inputPathName;
+    String inputPathName  = TString(Form("%s/",basePath.Data()));
+    String outputPathName = inputPathName;
     Configuration & subConfig = * new Configuration();
     subConfig.addParameter(TString("Run:")+taskType+TString(":HistogramInputPath"),inputPathName);
     subConfig.addParameter(TString("Run:")+taskType+TString(":HistogramOutputPath"),outputPathName);
@@ -220,17 +221,17 @@ void RunSubsample::configure()
   // assemble the task from here...
 
   MessageLogger::Severity selectedLevel = MessageLogger::Debug;
-  TString reportLevel                   = getValueBool("Severity");
+  String reportLevel                   = getValueBool("Severity");
   if (reportLevel.EqualTo("Debug")) selectedLevel = MessageLogger::Debug;
   if (reportLevel.EqualTo("Info"))  selectedLevel = MessageLogger::Info;
 
-  TString GlobalLabel      = getValueString("GlobalLabel");
-  TString SpherocityLabel  = getValueString("SpherocityLabel");
-  TString PartLabel        = getValueString("PartLabel");
-  TString PairLabel        = getValueString("PairLabel");
-  TString NuDynLabel       = getValueString("NuDynLabel");
-  TString GenLabel         = getValueString("GenLabel");
-  TString RecoLabel        = getValueString("RecoLabel");
+  String GlobalLabel      = getValueString("GlobalLabel");
+  String SpherocityLabel  = getValueString("SpherocityLabel");
+  String PartLabel        = getValueString("PartLabel");
+  String PairLabel        = getValueString("PairLabel");
+  String NuDynLabel       = getValueString("NuDynLabel");
+  String GenLabel         = getValueString("GenLabel");
+  String RecoLabel        = getValueString("RecoLabel");
 
   bool    RunGlobalGen     = getValueBool("GlobalGen");
   bool    RunSpherocityGen = getValueBool("SpherocityGen");
@@ -241,12 +242,12 @@ void RunSubsample::configure()
   bool    RunSubsampleBase     = getValueBool(  "SubsampleBase");
   bool    RunSubsampleDerived  = getValueBool(  "SubsampleDerivedGen");
   bool    RunSubsampleBalFct   = getValueBool(  "SubsampleBalFctGen");
-  TString inputPathName        = getValueString("HistogramInputPath");
-  TString outputPathName       = getValueString("HistogramOutputPath");
+  String inputPathName        = getValueString("HistogramInputPath");
+  String outputPathName       = getValueString("HistogramOutputPath");
   bool    bunched              = getValueBool(  "Bunched");
   int     nBunches             = getValueInt(   "nBunches");
-  TString bunchLabel           = getValueString("BunchLabel");
-  TString subPathLabel         = getValueString("SubPathLabel");
+  String bunchLabel           = getValueString("BunchLabel");
+  String subPathLabel         = getValueString("SubPathLabel");
   int     maximumDepth         = getValueInt(   "MaximumDepth");
 
 

@@ -15,10 +15,11 @@
  */
 #include "TParameter.h"
 #include "HadronGasGeneratorTask.hpp"
+using CAP::HadronGasGeneratorTask;
 
 ClassImp(HadronGasGeneratorTask);
 
-HadronGasGeneratorTask::HadronGasGeneratorTask(const TString  & _name,
+HadronGasGeneratorTask::HadronGasGeneratorTask(const String  & _name,
                                                Configuration  & _configuration)
 :
 Task(_name,_configuration),
@@ -86,7 +87,7 @@ void HadronGasGeneratorTask::initialize()
     stableParticleTypes->printProperties(std::cout);
     }
  
-  TString label = "T";
+  String label = "T";
   label += int(1000*temperature);
   HadronGas * gas = new HadronGas(particleTypes,stableParticleTypes,getSeverity());
   gas->setName(label);
@@ -164,7 +165,7 @@ void HadronGasGeneratorTask::initialize()
 
   vector<double>  & d = hadronGases[0]->particleDensities;
   int nSpeciesConsidered = d.size();
-  TString histoName;
+  String histoName;
   histoName = getName();
   histoName += "_relativeAbundances";
   relativeAbundances = new TH1D(histoName,histoName,nSpeciesConsidered,0.0,double(nSpeciesConsidered));
@@ -260,7 +261,7 @@ void HadronGasGeneratorTask::generate(Particle * parent)
   int multiplicity = minTotalMult + double(rangeTotalMult)*gRandom->Rndm();
   //ParticleFilter & particleFilter = * particleFilters[0];
   Particle * particle;
-  TLorentzVector parentPosition = parent->getPosition();
+  LorentzVector parentPosition = parent->getPosition();
   for (int iPart=0; iPart< multiplicity; iPart++)
     {
     // implement basic no correlation scenario.
@@ -284,7 +285,7 @@ void HadronGasGeneratorTask::generate(Particle * parent)
       exit(1);
       return;
       }
-    TLorentzVector momentum;
+    LorentzVector momentum;
     momentumGenerators[index]->generate(momentum);
     particle = particleFactory->getNextObject();
     particle->setParent(parent);

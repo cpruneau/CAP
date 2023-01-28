@@ -22,6 +22,10 @@
 #include "ParticleTypeCollection.hpp"
 
 using namespace std;
+
+namespace CAP
+{
+
 class ParticleType;
 class ParticleTypeCollection;
 
@@ -58,6 +62,8 @@ public:
 
   ClassDef(ParticleDecayMode,0)
 };
+
+} // namespace CAP
 
 #endif  // CAP__ParticleDecayMode
 

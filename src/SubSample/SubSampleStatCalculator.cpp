@@ -11,11 +11,12 @@
  * *********************************************************************/
 #include "HistogramCollection.hpp"
 #include "SubSampleStatCalculator.hpp"
+using CAP::SubSampleStatCalculator;
 
 ClassImp(SubSampleStatCalculator);
 
 
-SubSampleStatCalculator::SubSampleStatCalculator(const TString & _name,
+SubSampleStatCalculator::SubSampleStatCalculator(const String & _name,
                                                  Configuration & _configuration)
 :
 Task(_name,_configuration),
@@ -31,7 +32,7 @@ sumEventsAccepted(nullptr)
 
 void SubSampleStatCalculator::setDefaultConfiguration()
 {
-  TString none  = "none";
+  String none  = "none";
   addParameter("CreateHistograms",       true);
   addParameter("LoadHistograms",         true);
   addParameter("SaveHistograms",         true);
@@ -50,17 +51,17 @@ void SubSampleStatCalculator::setDefaultConfiguration()
 void SubSampleStatCalculator::execute()
 {
   if (reportInfo(__FUNCTION__)) cout << "Subsample analysis for task of type :" << taskName << endl;
-  TString none  = "none";
+  String none  = "none";
   configuration.printConfiguration(cout);
 
   int defaultGroupSize        = getValueInt(   "DefaultGroupSize");
-  TString appendedString      = getValueString("AppendedString");
-  TString histogramInputPath  = getValueString("HistogramInputPath");
-  TString histogramOutputPath = getValueString("HistogramOutputPath");
+  String appendedString      = getValueString("AppendedString");
+  String histogramInputPath  = getValueString("HistogramInputPath");
+  String histogramOutputPath = getValueString("HistogramOutputPath");
   int  maximumDepth           = getValueInt(   "MaximumDepth");
-  vector<TString> includePatterns = getSelectedValues("IncludedPattern",none);
-  vector<TString> excludePatterns = getSelectedValues("ExcludedPattern",none);
-  TString histogramOutputFile = taskName;
+  VectorString  includePatterns = getSelectedValues("IncludedPattern",none);
+  VectorString  excludePatterns = getSelectedValues("ExcludedPattern",none);
+  String histogramOutputFile = taskName;
   if (includePatterns.size()>0)
     {
     if (includePatterns[0].Contains("Derived")) histogramOutputFile += "Derived";
@@ -83,7 +84,7 @@ void SubSampleStatCalculator::execute()
     }
   bool prependPath = true;
   bool verbose = true;
-  vector<TString> allFilesToSum = listFilesInDir(histogramInputPath,includePatterns,excludePatterns, prependPath, verbose, maximumDepth,0);
+  VectorString  allFilesToSum = listFilesInDir(histogramInputPath,includePatterns,excludePatterns, prependPath, verbose, maximumDepth,0);
   int nFilesToSum = allFilesToSum.size();
   int groupSize = (nFilesToSum>defaultGroupSize) ? defaultGroupSize : nFilesToSum;
   int nGroups   = 1 + double(nFilesToSum-1)/double(groupSize);
@@ -123,7 +124,7 @@ void SubSampleStatCalculator::execute()
     int last  = (iGroup+1)*groupSize;
     if (last>=nFilesToSum) last = nFilesToSum;
     if (reportInfo(__FUNCTION__)) cout << "Summing files w/ index:" << first << " to " << last-1 << endl;
-    TString outputFileName = histogramOutputFile;
+    String outputFileName = histogramOutputFile;
     outputFileName += appendedString;
     outputFileName += first;
     outputFileName += "TO";
@@ -136,12 +137,12 @@ void SubSampleStatCalculator::execute()
 
     HistogramCollection * collectionAvg;
     HistogramCollection * collection;
-    TString parameterName;
+    String parameterName;
 
     int nInputFile = last - first+1;
     for (int iFile=first; iFile<last; iFile++)
       {
-      TString histogramInputFile = allFilesToSum[iFile];
+      String histogramInputFile = allFilesToSum[iFile];
       inputFile = openRootFile("", histogramInputFile, "READ");
       if (!inputFile || !isTaskOk()) return;
 

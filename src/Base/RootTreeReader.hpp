@@ -16,6 +16,9 @@
 #include "TBranch.h"
 #include "Task.hpp"
 
+namespace CAP
+{
+
 //!
 //! Abstract base class defining a ROOT Tree reader. Subclass this class to read any ROOT tree.
 //!
@@ -32,7 +35,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  RootTreeReader(const TString & _name,
+  RootTreeReader(const String & _name,
                  Configuration & _configuration,
                  vector<EventFilter*>&   _eventFilters,
                  vector<ParticleFilter*>&_particleFilters);
@@ -126,9 +129,9 @@ protected:
   //
   // Data members
   //
-  TString dataInputPath;
-  TString dataInputFileName;
-  TString dataInputTreeName;
+  String dataInputPath;
+  String dataInputFileName;
+  String dataInputTreeName;
   int  firstFile;
   int  lastFile;
   int  clonesMaxArraySize;
@@ -145,4 +148,5 @@ protected:
   ClassDef(RootTreeReader,0)
 };
 
+}
 #endif /* CAP_RootTreeReader */

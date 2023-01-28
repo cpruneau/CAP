@@ -6,14 +6,15 @@
 //  Copyright © 2016 Claude Pruneau. All rights reserved.
 //
 #include "HadronGasVsTempHistograms.hpp"
+using CAP::HadronGasVsTempHistograms;
 
 ClassImp(HadronGasVsTempHistograms);
 
 HadronGasVsTempHistograms::HadronGasVsTempHistograms(Task * _parent,
-                                                     const TString & _name,
+                                                     const String & _name,
                                                      Configuration & _config)
 :
-Histograms(_parent,_name,_config),
+HistogramGroup(_parent,_name,_config),
 numberDensityVsT(nullptr),
 energyDensityVsT(nullptr),
 entropyDensityVsT(nullptr),
@@ -31,8 +32,8 @@ void HadronGasVsTempHistograms::createHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString pn = getParentTask()->getName();
-  TString bn = getParentTaskName();
+  String pn = getParentTask()->getName();
+  String bn = getParentTaskName();
   const   Configuration & config   = getConfiguration();
   int     nThermalSpecies       = config.getValueInt(pn,"nThermalSpecies");
   int     nStableSpecies        = config.getValueInt(pn,"nStableSpecies");
@@ -83,27 +84,27 @@ void HadronGasVsTempHistograms::createHistograms()
 
 //  if (minChemicalTemp == maxChemicalTemp) maxChemicalTemp = 1.10*minChemicalTemp;
 
-  numberDensityVsT   = createHistogram(makeName(bn,"numberDensityVsT"),  nT, lowT, highT, "T (GeV)","n (fm^{-3})");
-  energyDensityVsT   = createHistogram(makeName(bn,"energyDensityVsT"),  nT, lowT, highT, "T (GeV)","e (GeV.fm^{-3})");
-  entropyDensityVsT  = createHistogram(makeName(bn,"entropyDensityVsT"), nT, lowT, highT, "T (GeV)","s (fm^{-3})");
-  pressureVsT        = createHistogram(makeName(bn,"pressureVsT"),       nT, lowT, highT, "T (GeV)","p");
+  numberDensityVsT   = createHistogram(createName(bn,"numberDensityVsT"),  nT, lowT, highT, "T (GeV)","n (fm^{-3})");
+  energyDensityVsT   = createHistogram(createName(bn,"energyDensityVsT"),  nT, lowT, highT, "T (GeV)","e (GeV.fm^{-3})");
+  entropyDensityVsT  = createHistogram(createName(bn,"entropyDensityVsT"), nT, lowT, highT, "T (GeV)","s (fm^{-3})");
+  pressureVsT        = createHistogram(createName(bn,"pressureVsT"),       nT, lowT, highT, "T (GeV)","p");
 
   if (plotStableSpeciesVsT && nStableSpecies>0)
     {
-    nStableDensityVsT.push_back(createHistogram(makeName(bn,"nStableVsT"),  nT, lowT, highT, "T (GeV)","n (fm^{-3})"));
+    nStableDensityVsT.push_back(createHistogram(createName(bn,"nStableVsT"),  nT, lowT, highT, "T (GeV)","n (fm^{-3})"));
     }
 
   if (plotThermalSpeciesVsT && nThermalSpecies>0)
     {
     for (int iHadron=0; iHadron<nThermalSpecies; iHadron++)
       {
-      TString bnSpecies = bn;
+      String bnSpecies = bn;
       bnSpecies += "_";
       bnSpecies += iHadron;
-      partialNumberDensityVsT.push_back( createHistogram(makeName(bnSpecies,"nPartialVsT"),  nT, lowT, highT, "T (GeV)","n (fm^{-3})"));
-      partialEnergyDensityVsT.push_back( createHistogram(makeName(bnSpecies,"ePartialVsT"),  nT, lowT, highT, "T (GeV)","e (GeV.fm^{-3})"));
-      partialEntropyDensityVsT.push_back(createHistogram(makeName(bnSpecies,"sPartialVsT"),  nT, lowT, highT, "T (GeV)","s (fm^{-3})"));
-      partialPressureVsT.push_back(      createHistogram(makeName(bnSpecies,"pPartialVsT"),  nT, lowT, highT, "T (GeV)","p (fm^{-2})"));
+      partialNumberDensityVsT.push_back( createHistogram(createName(bnSpecies,"nPartialVsT"),  nT, lowT, highT, "T (GeV)","n (fm^{-3})"));
+      partialEnergyDensityVsT.push_back( createHistogram(createName(bnSpecies,"ePartialVsT"),  nT, lowT, highT, "T (GeV)","e (GeV.fm^{-3})"));
+      partialEntropyDensityVsT.push_back(createHistogram(createName(bnSpecies,"sPartialVsT"),  nT, lowT, highT, "T (GeV)","s (fm^{-3})"));
+      partialPressureVsT.push_back(      createHistogram(createName(bnSpecies,"pPartialVsT"),  nT, lowT, highT, "T (GeV)","p (fm^{-2})"));
       }
     }
   if (reportEnd(__FUNCTION__))
@@ -117,8 +118,8 @@ void HadronGasVsTempHistograms::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  TString pn = getParentTask()->getName();
-  TString bn = getParentTaskName();
+  String pn = getParentTask()->getName();
+  String bn = getParentTaskName();
   const   Configuration & config   = getConfiguration();
   int     nThermalSpecies          = config.getValueInt(pn,"nThermalSpecies");
   int     nStableSpecies           = config.getValueInt(pn,"nStableSpecies");
@@ -134,10 +135,10 @@ void HadronGasVsTempHistograms::loadHistograms(TFile * inputFile)
   double  minMuS                   = configuration.getValueDouble(pn,"MinMuS");
   double  maxMuS                   = configuration.getValueDouble(pn,"MaxMuS");
 
-  numberDensityVsT   = loadH1(inputFile,makeName(bn,"numberyDensityVsT"));
-  energyDensityVsT   = loadH1(inputFile,makeName(bn,"energyDensityVsT"));
-  entropyDensityVsT  = loadH1(inputFile,makeName(bn,"entropyDensityVsT"));
-  pressureVsT        = loadH1(inputFile,makeName(bn,"pressureVsT"));
+  numberDensityVsT   = loadH1(inputFile,createName(bn,"numberyDensityVsT"));
+  energyDensityVsT   = loadH1(inputFile,createName(bn,"energyDensityVsT"));
+  entropyDensityVsT  = loadH1(inputFile,createName(bn,"entropyDensityVsT"));
+  pressureVsT        = loadH1(inputFile,createName(bn,"pressureVsT"));
 
   if (!numberDensityVsT || !energyDensityVsT ||  !entropyDensityVsT || !pressureVsT)
     {
@@ -147,20 +148,20 @@ void HadronGasVsTempHistograms::loadHistograms(TFile * inputFile)
 
   if (plotStableSpeciesVsT && nStableSpecies>0)
     {
-    nStableDensityVsT.push_back(loadH1(inputFile,makeName(bn,"nStableVsT")));
+    nStableDensityVsT.push_back(loadH1(inputFile,createName(bn,"nStableVsT")));
     }
 
   if (plotThermalSpeciesVsT && nThermalSpecies>0)
     {
     for (int iHadron=0; iHadron<nThermalSpecies; iHadron++)
       {
-      TString bnSpecies = bn;
+      String bnSpecies = bn;
       bnSpecies += "_";
       bnSpecies += iHadron;
-      partialNumberDensityVsT.push_back( loadH1(inputFile,makeName(bnSpecies,"nPartialVsT")));
-      partialEnergyDensityVsT.push_back( loadH1(inputFile,makeName(bnSpecies,"ePartialVsT")));
-      partialEntropyDensityVsT.push_back(loadH1(inputFile,makeName(bnSpecies,"sPartialVsT")));
-      partialPressureVsT.push_back(      loadH1(inputFile,makeName(bnSpecies,"pPartialVsT")));
+      partialNumberDensityVsT.push_back( loadH1(inputFile,createName(bnSpecies,"nPartialVsT")));
+      partialEnergyDensityVsT.push_back( loadH1(inputFile,createName(bnSpecies,"ePartialVsT")));
+      partialEntropyDensityVsT.push_back(loadH1(inputFile,createName(bnSpecies,"sPartialVsT")));
+      partialPressureVsT.push_back(      loadH1(inputFile,createName(bnSpecies,"pPartialVsT")));
       }
     }
   if (reportEnd(__FUNCTION__))
@@ -171,7 +172,7 @@ void HadronGasVsTempHistograms::fill(HadronGas & hadronGas)
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString pn = getParentTask()->getName();
+  String pn = getParentTask()->getName();
   Configuration & config = getConfiguration();
   int  nThermalSpecies       = config.getValueInt(pn,"nThermalSpecies");
   int  nStableSpecies        = config.getValueInt(pn,"nStableSpecies");

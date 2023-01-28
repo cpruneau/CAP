@@ -11,13 +11,16 @@
  * *********************************************************************/
 #ifndef CAP__GlobalHistos
 #define CAP__GlobalHistos
-#include "Histograms.hpp"
+#include "HistogramGroup.hpp"
 #include "ParticleFilter.hpp"
 #include "Configuration.hpp"
 
+namespace CAP
+{
+
 //!
 //!
-//! Histograms of "global" observables.
+//! HistogramGroup of "global" observables.
 //!
 //! Observables are computed in the acceptance defined by
 //! particle filters for each of the selected event filters. The particle filters can be set to select narrow
@@ -32,7 +35,7 @@
 //! The fill method of this class must be called at most once per event
 //! otherwise weird multiple counting will happen..
 //!
-class GlobalHistos : public Histograms
+class GlobalHistos : public HistogramGroup
 {
 public:
 
@@ -40,7 +43,7 @@ public:
   //!Generic/standard CTOR
   //!
   GlobalHistos(Task * _parent,
-               const TString & _name,
+               const String & _name,
                Configuration & _configuration,
                vector<ParticleFilter*> _particleFilters);
 
@@ -119,6 +122,8 @@ protected:
   
   ClassDef(GlobalHistos,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP__GlobalHistos  */
 

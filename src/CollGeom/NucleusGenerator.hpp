@@ -14,6 +14,10 @@
 #include "Task.hpp"
 #include "Nucleus.hpp"
 
+namespace CAP
+{
+
+
 //!
 //! # NucleusGenerator
 //!
@@ -45,7 +49,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task -- use this filter to limit the range of particles read into CAP arrays.
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  NucleusGenerator(const TString & _name,
+  NucleusGenerator(const String & _name,
                    Configuration & _configuration);
 
   virtual ~NucleusGenerator();
@@ -90,5 +94,8 @@ protected:
   ClassDef(NucleusGenerator,0)
   
 };
+
+
+}
 
 #endif /* NucleusGenerator_hpp */

@@ -33,6 +33,11 @@
 #include "TRandom.h"
 using namespace std;
 
+
+namespace CAP
+{
+
+
 class RapidityGenerator
 {
 public:
@@ -61,5 +66,6 @@ public:
 
 };
 
+}
 
 #endif /* RapidityGenerator_h */

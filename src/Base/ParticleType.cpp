@@ -21,6 +21,8 @@
 #include "ParticleType.hpp"
 #include "SelectionGenerator.hpp"
 #include "ParticleTypeCollection.hpp"
+using CAP::ParticleType;
+using CAP::ParticleDecayMode;
 
 ClassImp(ParticleType);
 
@@ -49,7 +51,7 @@ decayModes(),
 decayRndmSelector(nullptr)
 {}
 
-ParticleType::ParticleType(int pdgCode_in, const TString & name_in, const TString & title_in, double mass_in,
+ParticleType::ParticleType(int pdgCode_in, const String & name_in, const String & title_in, double mass_in,
                            double width_in, int gSpin_in, int baryon_in, int strange_in,
                            int charm_in, int bottom_in, int gIsospin_in, int charge_in)
 :
@@ -272,7 +274,7 @@ ostream & ParticleType::printProperties(ostream & os)
 
 ostream & ParticleType::printDecayProperties(ostream & os)
 {
-  TString latex;
+  String latex;
   latex = "$";
   latex += title;
   latex += "$";

@@ -12,6 +12,8 @@
 #include <ostream>
 #include "ParticleDigit.hpp"
 #include "Factory.hpp"
+using CAP::Factory;
+using CAP::ParticleDigit;
 
 
 ClassImp(Factory<ParticleDigit>);

@@ -11,10 +11,11 @@
  * *********************************************************************/
 //#include "HistogramCollection.hpp"
 #include "ClosureCalculator.hpp"
+using CAP::ClosureCalculator;
 
 ClassImp(ClosureCalculator);
 
-ClosureCalculator::ClosureCalculator(const TString & _name,
+ClosureCalculator::ClosureCalculator(const String & _name,
                                      Configuration & _configuration)
 :
 Task(_name, _configuration)
@@ -43,11 +44,11 @@ void ClosureCalculator::execute()
   incrementTaskExecuted();
   bool    ForceHistogramsRewrite = configuration.getValueBool("ForceHistogramsRewrite");
   int     selectedMethod         = configuration.getValueInt("SelectedMethod");
-  TString histoInputPath         = getValueString("HistogramInputPath");
-  TString histoGeneratorFileName = getValueString("HistoGeneratorFileName");
-  TString histoDetectorFileName  = getValueString("HistoDetectorFileName");
-  TString HistogramOutputPath    = getValueString("HistogramOutputPath");
-  TString histoClosureFileName   = getValueString("HistoClosureFileName");
+  String histoInputPath         = getValueString("HistogramInputPath");
+  String histoGeneratorFileName = getValueString("HistoGeneratorFileName");
+  String histoDetectorFileName  = getValueString("HistoDetectorFileName");
+  String HistogramOutputPath    = getValueString("HistogramOutputPath");
+  String histoClosureFileName   = getValueString("HistoClosureFileName");
 
   if (reportInfo(__FUNCTION__))
     {

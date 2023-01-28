@@ -6,15 +6,16 @@
 //  Copyright © 2016 Claude Pruneau. All rights reserved.
 //
 #include "HadronGasVsTempHistograms.hpp"
+using CAP::HadronGasVsTempHistograms;
 
 ClassImp(HadronGasVsTempHistograms);
 
 HadronGasVsTempHistograms::HadronGasVsTempHistograms(Task * _parent,
-                                                     const TString & _name,
+                                                     const String & _name,
                                                      Configuration & _config,
                                                      HadronGas * _hadronGas)
 :
-Histograms(_parent,_name,_config),
+HistogramGroup(_parent,_name,_config),
 numberDensityVsT(nullptr),
 energyDensityVsT(nullptr),
 entropyDensityVsT(nullptr),
@@ -29,16 +30,16 @@ sDensityVsT()
 void HadronGasVsTempHistograms::createHistograms()
 {
   Configuration & config = getConfiguration();
-  TString bn = getParentTaskName();
-  TString pn = getParentName();
+  String bn = getParentTaskName();
+  String pn = getParentName();
   int nT      = config.getValueInt(pn,"nChemicalTemp");
   double minT = config.getValueDouble(pn,"MinChemicalTemp");
   double maxT = config.getValueDouble(pn,"MaxChemicalTemp");
 
-  numberDensityVsT   = createHistogram(makeName(bn,"numberyDensityVsT"), nT, minT, maxT, "T (GeV)","n (fm^{-3})");
-  energyDensityVsT   = createHistogram(makeName(bn,"energyDensityVsT"),  nT, minT, maxT, "T (GeV)","e (GeV.fm^{-3})");
-  entropyDensityVsT  = createHistogram(makeName(bn,"entropyDensityVsT"), nT, minT, maxT, "T (GeV)","s (fm^{-3})");
-  pressureVsT        = createHistogram(makeName(bn,"pressureVsT"),       nT, minT, maxT, "T (GeV)","p");
+  numberDensityVsT   = createHistogram(createName(bn,"numberyDensityVsT"), nT, minT, maxT, "T (GeV)","n (fm^{-3})");
+  energyDensityVsT   = createHistogram(createName(bn,"energyDensityVsT"),  nT, minT, maxT, "T (GeV)","e (GeV.fm^{-3})");
+  entropyDensityVsT  = createHistogram(createName(bn,"entropyDensityVsT"), nT, minT, maxT, "T (GeV)","s (fm^{-3})");
+  pressureVsT        = createHistogram(createName(bn,"pressureVsT"),       nT, minT, maxT, "T (GeV)","p");
 
   // FIX ME!!!!!!!!!!!!!!! 
   unsigned int nStableSpecies = 1111; // nStableTypes;
@@ -47,12 +48,12 @@ void HadronGasVsTempHistograms::createHistograms()
   sDensityVsT.clear();
   for (unsigned int iSpecies=0; iSpecies<nStableSpecies; iSpecies++)
   {
-  TString bnSpecies = bn;
+  String bnSpecies = bn;
   bnSpecies += "_";
   bnSpecies += iSpecies;
-  nDensityVsT.push_back(createHistogram(makeName(bnSpecies,"nVsT"),  nT, minT, maxT, "T (GeV)","n (fm^{-3})"));
-  eDensityVsT.push_back(createHistogram(makeName(bnSpecies,"eVsT"),  nT, minT, maxT, "T (GeV)","e (GeV.fm^{-3})"));
-  sDensityVsT.push_back(createHistogram(makeName(bnSpecies,"sVsT"),  nT, minT, maxT, "T (GeV)","s (fm^{-3})"));
+  nDensityVsT.push_back(createHistogram(createName(bnSpecies,"nVsT"),  nT, minT, maxT, "T (GeV)","n (fm^{-3})"));
+  eDensityVsT.push_back(createHistogram(createName(bnSpecies,"eVsT"),  nT, minT, maxT, "T (GeV)","e (GeV.fm^{-3})"));
+  sDensityVsT.push_back(createHistogram(createName(bnSpecies,"sVsT"),  nT, minT, maxT, "T (GeV)","s (fm^{-3})"));
   }
 }
 
@@ -61,14 +62,14 @@ void HadronGasVsTempHistograms::createHistograms()
 void HadronGasVsTempHistograms::loadHistograms(TFile * inputFile)
 {
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  TString bn  = getParentTaskName();
-  numberDensityVsT   = loadH1(inputFile,makeName(bn,"numberyDensityVsT"));
-  energyDensityVsT   = loadH1(inputFile,makeName(bn,"energyDensityVsT"));
-  entropyDensityVsT  = loadH1(inputFile,makeName(bn,"entropyDensityVsT"));
-  pressureVsT        = loadH1(inputFile,makeName(bn,"pressureVsT"));
+  String bn  = getParentTaskName();
+  numberDensityVsT   = loadH1(inputFile,createName(bn,"numberyDensityVsT"));
+  energyDensityVsT   = loadH1(inputFile,createName(bn,"energyDensityVsT"));
+  entropyDensityVsT  = loadH1(inputFile,createName(bn,"entropyDensityVsT"));
+  pressureVsT        = loadH1(inputFile,createName(bn,"pressureVsT"));
   if (!numberDensityVsT)
     {
-    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << makeName(bn,"numberDensityVsT") << endl;
+    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << createName(bn,"numberDensityVsT") << endl;
     return;
     }
 }

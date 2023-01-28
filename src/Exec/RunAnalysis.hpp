@@ -13,11 +13,15 @@
 #define CAP__RunAnalysis
 #include "Task.hpp"
 
+namespace CAP
+{
+
+
 class RunAnalysis : public Task
 {
 public:
   
-  RunAnalysis(const TString & _name,
+  RunAnalysis(const String & _name,
               Configuration & _configuration);
 
   //!
@@ -42,6 +46,8 @@ public:
 
   ClassDef(RunAnalysis,0)
 };
+
+}
 
 #endif /* CAP_RunAnalysis */
 

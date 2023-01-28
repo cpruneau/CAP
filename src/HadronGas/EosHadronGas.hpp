@@ -6,6 +6,10 @@
 #include "TString.h"
 #include "EosHadronGas.hpp"
 
+namespace CAP
+{
+
+
 class EosHadronGas : public Eos
 {
 public:
@@ -25,6 +29,8 @@ public:
 
   ClassDef(EosHadronGas,0)
 };
+
+} // namespace CAP
 
 #endif  // CAP_EosHadronGas
 

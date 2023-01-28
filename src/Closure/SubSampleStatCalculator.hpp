@@ -14,6 +14,10 @@
 #include "Task.hpp"
 using namespace std;
 
+namespace CAP
+{
+
+
 //!\brief Calculation of statistical errors with the subsample technique
 //!
 //!\details
@@ -42,7 +46,7 @@ public:
   //! @param _configuration Configuration used to run this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  SubSampleStatCalculator(const TString & _name,
+  SubSampleStatCalculator(const String & _name,
                           Configuration & _configuration);
   
   //!
@@ -70,5 +74,7 @@ protected:
 
   ClassDef(SubSampleStatCalculator,0)
 };
+
+}
 
 #endif /* CAP__SubSampleStatCalculator */

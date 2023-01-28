@@ -27,6 +27,11 @@
 
 using namespace std;
 
+namespace CAP
+{
+
+
+
 template < class T >
 class Factory : public TObject
 {
@@ -134,5 +139,7 @@ protected:
 
   ClassDef(Factory,0)
 };
+
+} // namespace CAP
 
 #endif /* Factory_hpp */

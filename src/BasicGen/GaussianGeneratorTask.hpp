@@ -14,6 +14,10 @@
 #include <TF2.h>
 #include "Task.hpp"
 
+namespace CAP
+{
+
+
 //!
 //!This class implements a simple weight calculator that can be used to simulate two particle correlations. 
 //!
@@ -28,7 +32,7 @@ public:
   //! @param _configuration Configuration used to run this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  GaussianGeneratorTask(const TString & _name,
+  GaussianGeneratorTask(const String & _name,
                         Configuration & _configuration);
 
   //!
@@ -62,5 +66,6 @@ protected:
 
     ClassDef(GaussianGeneratorTask,0)
 };
+}
 
 #endif /* CAP__GaussianGeneratorTask */

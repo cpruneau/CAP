@@ -15,35 +15,42 @@
 #include "NuDynHistos.hpp"
 #include "NuDynDerivedHistos.hpp"
 
+namespace CAP
+{
+
+
 class NuDynPlotter : public Plotter
 {
 public:
   
   NuDynPlotter();
   virtual ~NuDynPlotter();
-  void makePlots(const TString & canvasNameBase,
+  void makePlots(const String & canvasNameBase,
                  NuDynHistos * nuDynHistosUsed,
                  NuDynDerivedHistos * nuDynDerivedHistosUsed,
                  CanvasConfiguration & canvasConfigurationUsed,
                  GraphConfiguration  ** graphConfigurationsUsed);
 
-  void makeComparisonPlots(const TString & canvasNameBase,
+  void makeComparisonPlots(const String & canvasNameBase,
                            CanvasConfiguration & canvasConfiguration,
                            int nGraphs,
                            NuDynHistos ** nuDynHistos,
                            NuDynDerivedHistos ** nuDynDerivedHistos,
-                           TString ** histLabels,
+                           String ** histLabels,
                            GraphConfiguration  ** graphConfigurations);
 
-  void makeNudynComparisonPlots(const TString & canvasNameBase,
+  void makeNudynComparisonPlots(const String & canvasNameBase,
                                 CanvasConfiguration & canvasConfiguration,
                                 int nGraphs,
                                 NuDynHistos ** nuDynHistos,
                                 NuDynDerivedHistos ** nuDynDerivedHistos,
-                                TString ** histLabels,
+                                String ** histLabels,
                                 GraphConfiguration  ** graphConfigurations);
 
   ClassDef(NuDynPlotter,0)
 };
+
+
+} // namespace CAP
 
 #endif /* CAP__NuDynPlotter */

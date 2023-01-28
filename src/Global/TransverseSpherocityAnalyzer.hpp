@@ -14,6 +14,10 @@
 #include "Task.hpp"
 #include "TransverseSpherocityHistos.hpp"
 
+namespace CAP
+{
+
+
 //!
 //!Task performing a transverse spherocity analysis of events of the incoming event stream.
 //!
@@ -30,7 +34,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  TransverseSpherocityAnalyzer(const TString & _name,
+  TransverseSpherocityAnalyzer(const String & _name,
                                Configuration & _configuration,
                                vector<EventFilter*> & _eventFilters,
                                vector<ParticleFilter*> & _particleFilters);
@@ -79,8 +83,11 @@ protected:
   bool fillS1VsS0; //!< Whether two-dimensional S1 vs S0 histograms should be filled.
   int    nSteps;   //!< Number of azimuthal steps used in the calculation of the transverse spherocity.
   double stepSize; //!< Two-pi/nSteps.
-   
+
   ClassDef(TransverseSpherocityAnalyzer,0)
 };
+
+} //namespace CAP
+
 
 #endif /* CAP__TransverseSpherocityAnalyzer */

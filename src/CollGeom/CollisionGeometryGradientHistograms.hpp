@@ -11,15 +11,17 @@
  * *********************************************************************/
 #ifndef CAP__CollisionGeometryGradientHistograms
 #define CAP__CollisionGeometryGradientHistograms
-#include "Histograms.hpp"
-#include "Configuration.hpp"
+#include "HistogramGroup.hpp"
 
-class CollisionGeometryGradientHistograms : public Histograms
+namespace CAP
+{
+
+class CollisionGeometryGradientHistograms : public HistogramGroup
 {
 public:
 
   CollisionGeometryGradientHistograms(Task * _parent,
-                                      const TString & _name,
+                                      const String & _name,
                                       Configuration & _configuration);
   virtual ~CollisionGeometryGradientHistograms() { }
   virtual void createHistograms();
@@ -37,6 +39,7 @@ protected:
 
 };
 
+}
 #endif /* CAP__CollisionGeometryGradientHistograms  */
 
 

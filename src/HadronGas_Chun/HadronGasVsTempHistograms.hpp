@@ -9,15 +9,19 @@
  **********************************************************************/
 #ifndef WAC_HadronGasVsTempHistograms
 #define WAC_HadronGasVsTempHistograms
-#include "Histograms.hpp"
+#include "HistogramGroup.hpp"
 #include "HadronGas.hpp"
 
-class HadronGasVsTempHistograms : public Histograms
+namespace CAP
+{
+
+
+class HadronGasVsTempHistograms : public HistogramGroup
 {
 public:
 
   HadronGasVsTempHistograms(Task * _parent,
-                            const TString & _name,
+                            const String & _name,
                             Configuration & _config,
                             HadronGas * _hadronGas);
   virtual ~HadronGasVsTempHistograms() {}
@@ -39,6 +43,9 @@ public:
   ClassDef(HadronGasVsTempHistograms,0)
 
 };
+
+
+} // namespace CAP
 
 #endif /* WAC_HadronGasVsTempHistograms  */
 

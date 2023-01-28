@@ -13,8 +13,11 @@
 #define CAP__ClosureIterator
 #include "Task.hpp"
 
+namespace CAP
+{
+
 //!
-//!Task calculates 
+//!Task performs a closure test
 //!
 class ClosureIterator : public Task
 {
@@ -27,7 +30,7 @@ public:
   //! @param _configuration Configuration used to run this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  ClosureIterator(const TString & _name,
+  ClosureIterator(const String & _name,
                   Configuration & _configuration);
   
   //!
@@ -48,5 +51,7 @@ public:
 
   ClassDef(ClosureIterator,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP__ClosureIterator */

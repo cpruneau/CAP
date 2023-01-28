@@ -10,9 +10,11 @@
  *
  * *********************************************************************/
 #include "TaskIterator.hpp"
+using CAP::TaskIterator;
+using CAP::Configuration;
 ClassImp(TaskIterator);
 
-TaskIterator::TaskIterator(const TString & _name,
+TaskIterator::TaskIterator(const String & _name,
                            Configuration & _configuration)
 :
 Task(_name,_configuration),
@@ -80,7 +82,7 @@ void TaskIterator::execute()
   timer.start();
   initialize();
   if (!isTaskOk()) return;
-  TString outputPathBase = getValueString("HistogramOutputPath");
+  String outputPathBase = getValueString("HistogramOutputPath");
 
   for (int iBunch=1; iBunch<=nBunches; iBunch++)
     {
@@ -109,7 +111,7 @@ void TaskIterator::execute()
       if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
       for (unsigned int  iTask=0; iTask<nSubTasks; iTask++)
         {
-        TString outputPath = outputPathBase;
+        String outputPath = outputPathBase;
         if (!isGrid)
           {
           outputPath += "/";
@@ -140,10 +142,10 @@ void TaskIterator::finalize()
     cout << endl;
     cout << "---------------------------------------------------------------------------------------- " <<   endl;
     cout << "---------------------------------------------------------------------------------------- " <<   endl;
-    cout << "                               Task named : " << getName()<< endl;
-    cout << "                    Completed with status : " << StateManager::getStateManager()->getStateName() << endl;
-    cout << "                     Completed iterations : " << getnTaskExecutedTotal() << endl;
-    cout << "  Completed iterations since partial save : " << getnTaskExecuted() << endl;
+    cout << "Task named.................................. : " << getName()<< endl;
+    cout << "Completed with status....................... : " << StateManager::getStateManager()->getStateName() << endl;
+    cout << "Completed iterations........................ : " << getnTaskExecutedTotal() << endl;
+    cout << "Completed iterations since partial save..... : " << getnTaskExecuted() << endl;
     timer.print(cout);
     cout << "---------------------------------------------------------------------------------------- " <<   endl;
     cout << "---------------------------------------------------------------------------------------- " <<   endl;

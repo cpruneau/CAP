@@ -14,10 +14,14 @@
 #include "Task.hpp"
 #include "ParticlePerformanceHistos.hpp"
 
+namespace CAP
+{
+
+
 //!
 //! Task used for the analysis of single particle distributions. As for other tasks classes of this package, use event filters and particle filters to determine the
 //! event selection and particle types and kinematic ranges across which single particle distributions are studied. Single particle distributions are computed
-//! (histogrammed) with instances of the ParticleHistos class. The behavior of the class, i.e., what type and the range of filled histograms are determined by
+//! (histogrammed) with instances of the ParticleSingleHistos class. The behavior of the class, i.e., what type and the range of filled histograms are determined by
 //! class configuration provided at task object construction.
 //!
 //! The following configuration parameters determine what types of histograms are filled (default values in brackets):
@@ -65,7 +69,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  ParticlePerformanceAnalyzer(const TString & _name,
+  ParticlePerformanceAnalyzer(const String & _name,
                               Configuration & _configuration,
                               vector<EventFilter*> & _eventFilters,
                               vector<ParticleFilter*>& _particleFilters);
@@ -103,5 +107,6 @@ protected:
   ClassDef(ParticlePerformanceAnalyzer,0)
 };
 
+} // namespace CAP
 
 #endif /* CAP__ParticlePerformanceAnalyzer */

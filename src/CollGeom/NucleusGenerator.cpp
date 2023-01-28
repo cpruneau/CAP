@@ -10,10 +10,11 @@
  *
  * *********************************************************************/
 #include "NucleusGenerator.hpp"
+using CAP::NucleusGenerator;
 
 ClassImp(NucleusGenerator);
 
-NucleusGenerator::NucleusGenerator(const TString & _name,
+NucleusGenerator::NucleusGenerator(const String & _name,
                                    Configuration & _configuration)
 :
 Task(_name, _configuration),
@@ -85,8 +86,8 @@ void NucleusGenerator::initialize()
   if (rProfile)    delete rProfile;    rProfile    = nullptr;
   if (rProfileGen) delete rProfileGen; rProfileGen = nullptr;
 
-  TString baseName;
-  TString histoName;
+  String baseName;
+  String histoName;
   switch (gType)
     {
       case 0: baseName += "_Uniform";        break;
@@ -146,7 +147,7 @@ void NucleusGenerator::execute()
 void NucleusGenerator::generate(Nucleus & nucleus, double xShift)
 {
   double r, cosTheta, phi;
-  TLorentzVector position(0.0,0.0,0.0,0.0);
+  LorentzVector position(0.0,0.0,0.0,0.0);
   //nucleus.reset(); already handled by the collision geometry
   unsigned int iNucleon = 0;
   unsigned int nNucleons = nucleus.getNNucleons();
@@ -190,7 +191,7 @@ void NucleusGenerator::generate(Nucleus & nucleus, double xShift)
     }
   // center of mass, recenter
   position *= 1.0/double(nNucleons);
-  TLorentzVector shift(xShift -position.X(),-position.Y(),-position.Z(),0.0);
+  LorentzVector shift(xShift -position.X(),-position.Y(),-position.Z(),0.0);
 
   for (unsigned int iNucleon=0; iNucleon<nNucleons; iNucleon++)
     {

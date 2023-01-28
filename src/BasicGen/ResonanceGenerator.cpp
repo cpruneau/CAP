@@ -11,6 +11,7 @@
  * *********************************************************************/
 #include "ResonanceGenerator.hpp"
 #include "ParticleDecayer.hpp"
+using CAP::ResonanceGenerator;
 
 ClassImp(ResonanceGenerator);
 
@@ -18,7 +19,7 @@ ClassImp(ResonanceGenerator);
 //! This is a simplistic particle generator simulating events with an exponential distribution in pT and pair correlations
 //! based on rho-mesons decays.
 //!
-ResonanceGenerator::ResonanceGenerator(const TString  &        _name,
+ResonanceGenerator::ResonanceGenerator(const String  &        _name,
                                        Configuration  &        _configuration,
                                        vector<EventFilter*>&   _eventFilters,
                                        vector<ParticleFilter*>&_particleFilters)
@@ -165,7 +166,7 @@ void ResonanceGenerator::generate(Particle * parentInteraction)
   
   // for now, assume a two body decay exclisively..
   //int nChildren = decayMode.getNChildren();
-  TLorentzVector parentPosition = parentInteraction->getPosition();
+  LorentzVector parentPosition = parentInteraction->getPosition();
   ParticleDecayer decayer;
   Particle * parent = particleFactory->getNextObject();
   double y, phi, pt, mt, px, py, pz, e;
@@ -180,7 +181,7 @@ void ResonanceGenerator::generate(Particle * parentInteraction)
     mt  = sqrt(mass*mass+pt*pt);
     pz  = mt * sinh(y);
     e   = mt * cosh(y);
-    TLorentzVector parentMomentum;
+    LorentzVector parentMomentum;
     parentMomentum.SetPxPyPzE (px,py,pz,e);
     parent->set(parentType,parentMomentum,parentPosition,false);
 
@@ -188,10 +189,10 @@ void ResonanceGenerator::generate(Particle * parentInteraction)
     Particle * child2 = particleFactory->getNextObject();
     ParticleType   & childType1 = decayMode.getChildType(0); child1->setType(&childType1); child1->setLive(true);
     ParticleType   & childType2 = decayMode.getChildType(1); child2->setType(&childType2); child2->setLive(true);
-    TLorentzVector & p1 = child1->getMomentum();
-    TLorentzVector & r1 = child1->getPosition();
-    TLorentzVector & p2 = child2->getMomentum();
-    TLorentzVector & r2 = child2->getPosition();
+    LorentzVector & p1 = child1->getMomentum();
+    LorentzVector & r1 = child1->getPosition();
+    LorentzVector & p2 = child2->getMomentum();
+    LorentzVector & r2 = child2->getPosition();
     decayer.decay2(*parentType,
                    parentMomentum,
                    parentPosition,
@@ -219,8 +220,8 @@ void ResonanceGenerator::generate(Particle * parentInteraction)
   ParticleType * singleType = particleTypeCollection->findPdgCode(211);
   double pionMass = singleType->getMass();
   mult = int( 5.0 +  double(nParticles) * g->Rndm());
-  TLorentzVector singlePosition(0.0,0.0,0.0,0.0);
-  TLorentzVector singleMomentum;
+  LorentzVector singlePosition(0.0,0.0,0.0,0.0);
+  LorentzVector singleMomentum;
   for (int iParticle = 0; iParticle < mult; iParticle++)
     {
     y   = yMinimum + yRange * g->Rndm();

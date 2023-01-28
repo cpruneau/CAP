@@ -18,6 +18,10 @@
 #include "TTree.h"
 #include "Task.hpp"
 
+namespace CAP
+{
+
+
 class PythiaEventGenerator : public Task
 {
 public:
@@ -31,7 +35,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  PythiaEventGenerator(const TString & _name,
+  PythiaEventGenerator(const String & _name,
                        Configuration & _configuration,
                        vector<EventFilter*>&   _eventFilters,
                        vector<ParticleFilter*>&_particleFilters);
@@ -39,7 +43,7 @@ public:
   //!
   //! DTOR
   //!
-  virtual ~PythiaEventGenerator() {} 
+  virtual ~PythiaEventGenerator() {}
   
   //!
   //! Sets the default  values of the configuration parameters used by this task
@@ -87,5 +91,7 @@ protected:
 
   ClassDef(PythiaEventGenerator,0)
 };
+
+}
 
 #endif /* CAP__PythiaEventGenerator */

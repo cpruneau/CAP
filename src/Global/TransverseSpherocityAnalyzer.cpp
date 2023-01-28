@@ -9,12 +9,13 @@
  * Author: Claude Pruneau,   04/01/2022
  *
  * *********************************************************************/
-#include <TLorentzVector.h>
+
 #include "TransverseSpherocityAnalyzer.hpp"
+using CAP::TransverseSpherocityAnalyzer;
 
 ClassImp(TransverseSpherocityAnalyzer);
 
-TransverseSpherocityAnalyzer::TransverseSpherocityAnalyzer(const TString & _name,
+TransverseSpherocityAnalyzer::TransverseSpherocityAnalyzer(const String & _name,
                                                            Configuration & _configuration,
                                                            vector<EventFilter*> & _eventFilters,
                                                            vector<ParticleFilter*> & _particleFilters)
@@ -74,12 +75,12 @@ void TransverseSpherocityAnalyzer::createHistograms()
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString prefixName = getName(); prefixName += "_";
+  String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
   if (reportInfo(__FUNCTION__))
     {
-    cout << " S:Creating Histograms for....: " << prefixName  << endl;
+    cout << " S:Creating HistogramGroup for....: " << prefixName  << endl;
     cout << " S:nEventFilters..............: " << nEventFilters << endl;
     cout << " S:nParticleFilters...........: " << nParticleFilters << endl;
     }
@@ -99,18 +100,18 @@ void TransverseSpherocityAnalyzer::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString prefixName = getName(); prefixName += "_";
+  String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();;
   unsigned int nParticleFilters = particleFilters.size();
   if (reportDebug(__FUNCTION__))
     {
-    cout << "Loading Histograms for " << prefixName  << endl;
+    cout << "Loading HistogramGroup for " << prefixName  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     cout << "    nParticleFilters: " << nParticleFilters << endl;
     }
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    TString evtFilterName = eventFilters[iEventFilter]->getName();
+    String evtFilterName = eventFilters[iEventFilter]->getName();
     TransverseSpherocityHistos * histos = new TransverseSpherocityHistos(this, prefixName+eventFilters[iEventFilter]->getName(),configuration,particleFilters);
     histos->loadHistograms(inputFile);
     histograms.push_back(histos);
@@ -160,7 +161,7 @@ void TransverseSpherocityAnalyzer::execute()
           {
           Particle & particle = * event.getParticleAt(iParticle);
           if (!particleFilters[iParticleFilter]->accept(particle)) continue;
-          TLorentzVector & momentum = particle.getMomentum();
+          LorentzVector & momentum = particle.getMomentum();
           pt = momentum.Pt();
           px = momentum.Px();
           py = momentum.Py();

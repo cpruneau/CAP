@@ -7,14 +7,15 @@
 //
 #include "HadronGas.hpp"
 #include "HadronGasHistograms.hpp"
+using CAP::HadronGasHistograms;
 
 ClassImp(HadronGasHistograms);
 
 HadronGasHistograms::HadronGasHistograms(Task * _parent,
-                                         const TString & _name,
+                                         const String & _name,
                                          Configuration & _config)
 :
-Histograms(_parent,_name,_config),
+HistogramGroup(_parent,_name,_config),
 h_numberDensity(nullptr),
 h_energyDensity(nullptr),
 h_entropyDensity(nullptr),
@@ -45,8 +46,8 @@ void HadronGasHistograms::createHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString pn = getParentTask()->getName();
-  TString bn = getParentTaskName();
+  String pn = getParentTask()->getName();
+  String bn = getParentTaskName();
   const   Configuration & config   = getConfiguration();
   int     nMass                    = config.getValueInt(pn,"nMass");
   double  minMass                  = config.getValueDouble(pn,"MinMass");
@@ -75,74 +76,74 @@ void HadronGasHistograms::createHistograms()
   double dSpecies       = nThermalSpecies;
   double dStableSpecies = nStableSpecies;
 
-  vector<TString> allSpeciesLabels;
-  vector<TString> stableSpeciesLabels;
+  VectorString  allSpeciesLabels;
+  VectorString  stableSpeciesLabels;
   for (int k=0;k<nThermalSpecies; k++)
     {
-    TString key = "Species";
+    String key = "Species";
     key += k;
     allSpeciesLabels.push_back(config.getValueString(pn,key));
     }
   for (int k=0;k<nStableSpecies; k++)
     {
-    TString key = "StableSpecies";
+    String key = "StableSpecies";
     key += k;
     stableSpeciesLabels.push_back(config.getValueString(pn,key));
     }
 
-  h_numberDensity    = createHistogram(makeName(bn,"numberDensity"),  nThermalSpecies,0.0,dSpecies,"Index","n");
-  h_energyDensity    = createHistogram(makeName(bn,"energyDensity"),  nThermalSpecies,0.0,dSpecies,"Index","e");
-  h_entropyDensity   = createHistogram(makeName(bn,"entropyDensity"), nThermalSpecies,0.0,dSpecies,"Index","s");
-  h_pressure         = createHistogram(makeName(bn,"pressure"),       nThermalSpecies,0.0,dSpecies,"Index","p");
+  h_numberDensity    = createHistogram(createName(bn,"numberDensity"),  nThermalSpecies,0.0,dSpecies,"Index","n");
+  h_energyDensity    = createHistogram(createName(bn,"energyDensity"),  nThermalSpecies,0.0,dSpecies,"Index","e");
+  h_entropyDensity   = createHistogram(createName(bn,"entropyDensity"), nThermalSpecies,0.0,dSpecies,"Index","s");
+  h_pressure         = createHistogram(createName(bn,"pressure"),       nThermalSpecies,0.0,dSpecies,"Index","p");
 
-  h_numberDensityVsMass   = createProfile(makeName(bn,"numberDensityVsMass"),  nMass,minMass,maxMass,"Mass (GeV/c^{2})","n");
-  h_energyDensityVsMass   = createProfile(makeName(bn,"energyDensityVsMass"),  nMass,minMass,maxMass,"Mass (GeV/c^{2})","e");
-  h_entropyDensityVsMass  = createProfile(makeName(bn,"entropyDensityVsMass"), nMass,minMass,maxMass,"Mass (GeV/c^{2})","s");
-  h_pressureVsMass        = createProfile(makeName(bn,"pressureVsMass"),       nMass,minMass,maxMass,"Mass (GeV/c^{2})","p");
+  h_numberDensityVsMass   = createProfile(createName(bn,"numberDensityVsMass"),  nMass,minMass,maxMass,"Mass (GeV/c^{2})","n");
+  h_energyDensityVsMass   = createProfile(createName(bn,"energyDensityVsMass"),  nMass,minMass,maxMass,"Mass (GeV/c^{2})","e");
+  h_entropyDensityVsMass  = createProfile(createName(bn,"entropyDensityVsMass"), nMass,minMass,maxMass,"Mass (GeV/c^{2})","s");
+  h_pressureVsMass        = createProfile(createName(bn,"pressureVsMass"),       nMass,minMass,maxMass,"Mass (GeV/c^{2})","p");
 
-  h_rho1ThVsIndex    = createHistogram(makeName(bn,"rho1ThVsIndex"),    nStableSpecies,0.0,dStableSpecies,"Index","n");
-  h_rho1VsIndex      = createHistogram(makeName(bn,"rho1VsIndex"),      nStableSpecies,0.0,dStableSpecies,"Index","n");
-  h_rho1RatioVsIndex = createHistogram(makeName(bn,"rho1RatioVsIndex"), nStableSpecies,0.0,dStableSpecies,"Index","n");
+  h_rho1ThVsIndex    = createHistogram(createName(bn,"rho1ThVsIndex"),    nStableSpecies,0.0,dStableSpecies,"Index","n");
+  h_rho1VsIndex      = createHistogram(createName(bn,"rho1VsIndex"),      nStableSpecies,0.0,dStableSpecies,"Index","n");
+  h_rho1RatioVsIndex = createHistogram(createName(bn,"rho1RatioVsIndex"), nStableSpecies,0.0,dStableSpecies,"Index","n");
 
-  h_rho1ThVsMass     = createHistogram(makeName(bn,"rho1ThVsMass"),     nMass,minMass,maxMass,"Mass (GeV/c^{2})","n");
-  h_rho1VsMass       = createHistogram(makeName(bn,"rho1VsMass"),       nMass,minMass,maxMass,"Mass (GeV/c^{2})","n");
-  h_rho1RatioVsMass  = createHistogram(makeName(bn,"rho1RatioVsMass"),  nMass,minMass,maxMass,"Mass (GeV/c^{2})","n");
+  h_rho1ThVsMass     = createHistogram(createName(bn,"rho1ThVsMass"),     nMass,minMass,maxMass,"Mass (GeV/c^{2})","n");
+  h_rho1VsMass       = createHistogram(createName(bn,"rho1VsMass"),       nMass,minMass,maxMass,"Mass (GeV/c^{2})","n");
+  h_rho1RatioVsMass  = createHistogram(createName(bn,"rho1RatioVsMass"),  nMass,minMass,maxMass,"Mass (GeV/c^{2})","n");
 
-  h_rho1rho1        = createHistogram(makeName(bn,"rho1rho1"),
+  h_rho1rho1        = createHistogram(createName(bn,"rho1rho1"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","#rho_{1}#rho_{1}");
-  h_rho1thrho1th    = createHistogram(makeName(bn,"rho1thrho1th"),
+  h_rho1thrho1th    = createHistogram(createName(bn,"rho1thrho1th"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","#rho_{1}^{Th}#rho_{1}^{Th}");
-  h_rho2Corr        = createHistogram(makeName(bn,"rho2Corr"),
+  h_rho2Corr        = createHistogram(createName(bn,"rho2Corr"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","Correlated Pairs");
-  h_rho2Uncorr      = createHistogram(makeName(bn,"rho2Uncorr"),
+  h_rho2Uncorr      = createHistogram(createName(bn,"rho2Uncorr"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","Uncorrelated Pairs");
-  h_rho2            = createHistogram(makeName(bn,"rho2"),
+  h_rho2            = createHistogram(createName(bn,"rho2"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","#rho_{2}");
-  h_C2              = createHistogram(makeName(bn,"C2"),
+  h_C2              = createHistogram(createName(bn,"C2"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","C_{2}");
-  h_R2              = createHistogram(makeName(bn,"R2"),
+  h_R2              = createHistogram(createName(bn,"R2"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","R_{2}");
-  //h_BF              = createHistogram(makeName(bn,"BF"),18,  0.0, 18.0, "Pairs","BF");
+  //h_BF              = createHistogram(createName(bn,"BF"),18,  0.0, 18.0, "Pairs","BF");
 
   // set labels
   for (int iSpecies=0; iSpecies<nThermalSpecies; iSpecies++)
     {
     int bin = iSpecies+1;
-    TString label = allSpeciesLabels[iSpecies];
+    String label = allSpeciesLabels[iSpecies];
     h_numberDensity  ->GetXaxis()->SetBinLabel(bin,label);
     h_energyDensity  ->GetXaxis()->SetBinLabel(bin,label);
     h_entropyDensity ->GetXaxis()->SetBinLabel(bin,label);
@@ -151,7 +152,7 @@ void HadronGasHistograms::createHistograms()
   for (int iSpecies=0; iSpecies<nStableSpecies; iSpecies++)
     {
     int bin = iSpecies+1;
-    TString label = stableSpeciesLabels[iSpecies];
+    String label = stableSpeciesLabels[iSpecies];
     h_rho1ThVsIndex    ->GetXaxis()->SetBinLabel(bin,label);
     h_rho1VsIndex      ->GetXaxis()->SetBinLabel(bin,label);
     h_rho1RatioVsIndex ->GetXaxis()->SetBinLabel(bin,label);
@@ -172,10 +173,10 @@ void HadronGasHistograms::createHistograms()
     }
   if (plotPtDistHistos)
     {
-    TString histoName;
+    String histoName;
     for (int iSpecies=0; iSpecies<nThermalSpecies; iSpecies++)
       {
-      h_rho1ThVsP.push_back(createHistogram(makeName(bn,allSpeciesLabels[iSpecies],"rho1ThVsP"),nP,minP,maxP,"p (GeV/c)","#rho_{1}^{Th} (c/GeV)"));
+      h_rho1ThVsP.push_back(createHistogram(createName(bn,allSpeciesLabels[iSpecies],"rho1ThVsP"),nP,minP,maxP,"p (GeV/c)","#rho_{1}^{Th} (c/GeV)"));
       }
     }
   if (reportEnd(__FUNCTION__))
@@ -193,7 +194,7 @@ void HadronGasHistograms::fill(HadronGas & hadronGas)
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString pn = getParentTask()->getName();
+  String pn = getParentTask()->getName();
   const   Configuration & config   = getConfiguration();
 //  int     nMass                    = config.getValueInt(pn,"nMass");
 //  double  minMass                  = config.getValueDouble(pn,"MinMass");

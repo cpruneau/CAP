@@ -14,6 +14,9 @@
 #include "ParticleDecayer.hpp"
 #include "Task.hpp"
 
+namespace CAP
+{
+
 //!
 //! Task handles the decay of all decayable particles in the incoming event stream. At execution time, i.e., for each event encountered,
 //! each particle of the input stream is examined to determine whether it should be decayed. Particle deemed decayable are passed to the
@@ -39,7 +42,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  ParticleDecayerTask(const TString & _name,
+  ParticleDecayerTask(const String & _name,
                       Configuration &   _configuration,
                       vector<EventFilter*>    _eventFilters,
                       vector<ParticleFilter*> _particleFilters);
@@ -67,5 +70,6 @@ public:
   ClassDef(ParticleDecayerTask,0)
 };
 
+}
 
 #endif /* CAP__ParticleDecayerTask */

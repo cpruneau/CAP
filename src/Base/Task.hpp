@@ -34,7 +34,6 @@
 #include "TF1.h"
 #include "TF2.h"
 #include "TRandom.h"
-#include "TString.h"
 #include "TLatex.h"
 #include "TLine.h"
 #include "TArrow.h"
@@ -46,13 +45,16 @@
 #include "Event.hpp"
 #include "EventFilter.hpp"
 #include "ParticleFilter.hpp"
-#include "Histograms.hpp"
+#include "HistogramGroup.hpp"
 #include "ParticleTypeCollection.hpp"
 #include "ParticleDigit.hpp"
+#include "Aliases.hpp"
+#include "NameManager.hpp"
 #include "Timer.hpp"
 
+
 using namespace std;
-using namespace CAP;
+
 
 //!
 //!\mainpage Correlation Analysis package
@@ -303,7 +305,7 @@ using namespace CAP;
 //!
 //!Once constructed and initialized with sets of event and particle filters, most task classes currently defined in the WAC framework will automatically test each
 //!event and each particle considered against the several filters they own and the analysis will then be automatically repeated on types of events and for particles
-//!of interest. This feature is currently implemented in the ParticleAnalyzer, ParticlePairAnalyze, NuDynAnalyzer, etc, tasks.
+//!of interest. This feature is currently implemented in the ParticleSingleAnalyzer, ParticlePairAnalyze, NuDynAnalyzer, etc, tasks.
 //!
 //!Given root expects instantiated histograms to be distinct by name or put in different folders, the EventFilter and ParticleFilter classes feature filter name
 //! generators that can be (and in fact used by several tasks) to speficify the name of histigrams. Typically, histogram names are build according to the following
@@ -334,6 +336,8 @@ using namespace CAP;
 #define isTaskEod()           ( StateManager::getStateManager()->isEod()   )
 
 
+namespace CAP
+{
 
 
 class Task : public MessageLogger
@@ -345,7 +349,7 @@ protected:
   //!
   //! Name given to this task instance
   //!
-  TString taskName;
+  String taskName;
 
   //!
   //! True if the task has been configured by a call to configure()
@@ -398,47 +402,40 @@ protected:
   vector<ParticleFilter*>  particleFilters;
 
   //!
-  //! Array of pointers to Histograms objects used on input for initialization or calibration of the activity of this task instance.
+  //! Array of pointers to HistogramGroup objects used on input for initialization or calibration of the activity of this task instance.
   //!
-  vector<Histograms*>      inputHistograms;
+  vector<HistogramGroup*>      inputHistograms;
 
   //!
   //! Array of pointers to generic histogram objects produced on output by this task instance.
   //!
-  vector<Histograms*>      histograms;
+  vector<HistogramGroup*>      histograms;
 
   //!
   //! Array of pointers to single particle histogram objects produced on output by this task instance.
   //!
-  vector<Histograms*>      baseSingleHistograms;
+  vector<HistogramGroup*>      baseSingleHistograms;
   //!
   //! Array of pointers to  particle pair histogram objects produced on output by this task instance.
   //!
-  vector<Histograms*>      basePairHistograms;
+  vector<HistogramGroup*>      basePairHistograms;
 
   //!
   //! Array of pointers to generic histogram objects produced on output by this task instance.
   //!
-  vector<Histograms*>      derivedHistograms;
+  vector<HistogramGroup*>      derivedHistograms;
 
   //!
-  //! Array of pointers to Histograms objects produced on output by this task instance as "derivatives" of those contained in the array "Histograms".
+  //! Array of pointers to HistogramGroup objects produced on output by this task instance as "derivatives" of those contained in the array "HistogramGroup".
   //!
-  vector<Histograms*>      derivedSingleHistograms;
+  vector<HistogramGroup*>      derivedSingleHistograms;
 
   //!
-  //! Array of pointers to Histograms objects produced on output by this task instance as "derivatives" of those contained in the array "Histograms".
+  //! Array of pointers to HistogramGroup objects produced on output by this task instance as "derivatives" of those contained in the array "HistogramGroup".
   //!
-  vector<Histograms*>      derivedPairHistograms;
+  vector<HistogramGroup*>      derivedPairHistograms;
 
-  //!
-  //! Array of pointers to Histograms objects produced on output by this task instance as "combinations" of other histogram groups.
-  //!
-  vector<Histograms*>      combinedHistograms;
-  //!
-  //! Array of  number of events accepted by each of the event filters used by this task instance.
-  //!
-
+ 
 
   //!
   //! Array of filter particles (ParticleDigits).
@@ -517,13 +514,13 @@ public:
   //! Long constructor. It allocates resources but DOES NOT initialize the task. Task initialization can be performed by a call to the initializationTask() and/or
   //!  initialization() methods.
   //!
-  Task(const TString & _name, Configuration & _configuration);
+  Task(const String & _name, Configuration & _configuration);
 
   //!
   //! Longer constructor. It allocates resources but DOES NOT initialize the task. Task initialization can be performed by a call to the initializationTask() and/or
   //!  initialization() methods.
   //!
-  Task(const TString & _name,
+  Task(const String & _name,
        Configuration & _configuration,
        vector<EventFilter*> &   _eventFilters,
        vector<ParticleFilter*>& _particleFilters);
@@ -733,7 +730,7 @@ public:
   //!
   //! Read the given named parameter from the given input file.
   //!
-  virtual long readParameter(TFile * inputFile, const TString & parameterName);
+  virtual long readParameter(TFile * inputFile, const String & parameterName);
 
   //!
   //! Open the root file named "fileName" located on the path "inputPath", using options specified by "ioOption".
@@ -742,7 +739,7 @@ public:
   //! @param ioOption i/o options.
   //! @return Pointer to the file if successfully open or a null pointer if the file could not be opened.
   //!
-  TFile * openRootFile(const TString & inputPath, const TString & fileName, const TString & ioOption);
+  TFile * openRootFile(const String & inputPath, const String & fileName, const String & ioOption);
 
   //!
   //! Returns a pointer to the event stream at the given index. No sanity check is performed in order to keep this call as efficient as possible.
@@ -814,7 +811,7 @@ public:
   //! Return the name of this task instance.
   //! @return name of this task instance.
   //!
-  inline TString getName() const
+  inline String getName() const
   {
   return taskName;
   }
@@ -823,16 +820,16 @@ public:
   //! Return the base name of histograms created or used by  task instance.
   //! @return name of histograms created or used by  task instance.
   //!
-  inline TString getParentTaskName() const
+  inline String getParentTaskName() const
   {
-  TString bn =  getValueString("HistoBaseName");
+  String bn =  getValueString("HistoBaseName");
   return bn;
   }
 
   //!
   //! Set the name of this task instance.
   //!
-  inline void setName(const TString & _name)
+  inline void setName(const String & _name)
   {
   taskName = _name;
   }
@@ -984,7 +981,7 @@ public:
   //!
   //! Save the given (long) value with the given name in the given output file.
   //!
-  void writeParameter(TFile * outputFile, const TString & parameterName, long value);
+  void writeParameter(TFile * outputFile, const String & parameterName, long value);
 
   //!
   //! Clear the event filters used by this task instance.
@@ -1071,60 +1068,32 @@ public:
   inline unsigned int getNBasePairHistograms() const      { return basePairHistograms.size();     }
   inline unsigned int getNDerivedSingleHistograms() const { return derivedSingleHistograms.size();  }
   inline unsigned int getNDerivedPairHistograms() const   { return derivedPairHistograms.size();  }
-  inline unsigned int getNCombinedHistograms() const      { return combinedHistograms.size(); }
+
+  inline vector<HistogramGroup*> & getBaseSingleHistograms()    { return baseSingleHistograms;    }
+  inline vector<HistogramGroup*> & getBasePairHistograms()      { return basePairHistograms;      }
+  inline vector<HistogramGroup*> & getDerivedSingleHistograms() { return derivedSingleHistograms; }
+  inline vector<HistogramGroup*> & getDerivedPairHistograms()   { return derivedPairHistograms;   }
 
 
-  inline vector<Histograms*> & getBaseSingleHistograms()    { return baseSingleHistograms;    }
-  inline vector<Histograms*> & getBasePairHistograms()      { return basePairHistograms;      }
-  inline vector<Histograms*> & getDerivedSingleHistograms() { return derivedSingleHistograms; }
-  inline vector<Histograms*> & getDerivedPairHistograms()   { return derivedPairHistograms;   }
-  inline vector<Histograms*> & getCombinedPairHistograms()  { return combinedHistograms;      }
-
-
-  const TString makeHistoName(const TString & s0,
-                              const TString & s1);
-
-  const TString makeHistoName(const TString & s0,
-                              const TString & s1,
-                              const TString & s2);
-
-  const TString makeHistoName(const TString & s0,
-                              const TString & s1,
-                              const TString & s2,
-                              const TString & s3);
-
-  const TString makeHistoName(const TString & s0,
-                              const TString & s1,
-                              const TString & s2,
-                              const TString & s3,
-                              const TString & s4);
-  
-  const TString makeHistoName(const TString & s0,
-                              const TString & s1,
-                              const TString & s2,
-                              const TString & s3,
-                              const TString & s4,
-                              const TString & s5);
-
-
-  void setHistogramFileNames(const TString inputName, const TString outputName)
+ 
+  void setHistogramFileNames(const String inputName, const String outputName)
   {
   setParameter("fileFromParent", true);
   setParameter("HistogramInputFileName", inputName);
   setParameter("HistogramOuputFileName", outputName);
   }
   
-  vector<TString> listFilesInDir(const TString & pathname,
-                                 const TString & ext,
+  VectorString listFilesInDir(const String & pathname,
+                                 const String & ext,
                                  bool prependPath=true,
                                  bool verbose=false,
                                  int  maximumDepth=1,
                                  int  currentDepth=0);
 
 
-  vector<TString> listFilesInDir(const TString & pathName,
-                                 vector<TString> includePatterns,
-                                 vector<TString> excludePatterns,
+  VectorString listFilesInDir(const String & pathName,
+                                 VectorString includePatterns,
+                                 VectorString excludePatterns,
                                  bool prependPath=true,
                                  bool verbose=false,
                                  int  maximumDepth=1,
@@ -1133,10 +1102,10 @@ public:
   //!
   //!Get selected files in the given directory. The selection is made by means of two sets of configuration parameters
   //!of the form IncludePattern# and ExcludePattern# (where # represents a number between 0 and 20. These include
-  //!and exclude patterns are used to assemble two lists, vector<TString> includePatterns and vector<TString> excludePatterns)
+  //!and exclude patterns are used to assemble two lists, VectorString includePatterns and VectorString excludePatterns)
   //!which are then used to identify all file names of the given folder that match the includePatterns but exclude the excludePatterns.
   //!
-  vector<TString> getSelectedFileNamesFrom(const TString & folder);
+  VectorString getSelectedFileNamesFrom(const String & folder);
   
 
   //!
@@ -1144,7 +1113,7 @@ public:
   //!This function is used in the management of file names for subsampling analyses and
   //!the calculatioin of derived histograms.
   //!
-  TString removeRootExtension(const TString fileName);
+  String removeRootExtension(const String fileName);
 
   //!
   //! Returns true if this task has a parent task.
@@ -1173,12 +1142,12 @@ public:
   //! Returns the name of the parent task (if there is a parent task). If this task has no parent
   //! the call returns a null string.
   //!
-  TString getParentName() const
+  String getParentName() const
   {
   if (parent!=nullptr)
     return parent->taskName;
   else
-    return TString("");
+    return String("");
   }
 
   //!
@@ -1198,87 +1167,87 @@ public:
   //! Returns the ancestor parent to the given depth.
   //! depth ==0 means self.
   //!
-  TString getReverseTaskPath(int depth=0) const;
+  String getReverseTaskPath(int depth=0) const;
 
   //!
   //! Returns path tokens.
   //!
-  vector<TString> getTaskPathTokens() const;
+  VectorString getTaskPathTokens() const;
 
 
   //!
   //! Returns the ancestor parent to the given depth.
   //! depth ==0 means prime ancestor only.
   //!
-  TString getTaskPath(int depth=0) const;
+  String getTaskPath(int depth=0) const;
 
 
   //!
   //! Returns the full task ancestor path.
   //!
-  TString getFullTaskPath() const;
+  String getFullTaskPath() const;
 
   int getNAncestors() const;
 
-  bool getValueBool(const TString & key)   const;
+  bool getValueBool(const String & key)   const;
 
-  int getValueInt(const TString & key)    const;
+  int getValueInt(const String & key)    const;
 
-  long getValueLong(const TString & key)    const;
+  long getValueLong(const String & key)    const;
 
-  double getValueDouble(const TString & key) const;
+  double getValueDouble(const String & key) const;
 
-  TString getValueString(const TString & key) const;
+  String getValueString(const String & key) const;
 
   //!
   //! Add a bool parameter to the configuration with the given name and value
   //!
-  void addParameter(const TString & name, bool value);
+  void addParameter(const String & name, bool value);
 
   //!
   //! Add an int parameter to the configuration with the given name and value
   //!
-  void addParameter(const TString & name, int value);
+  void addParameter(const String & name, int value);
 
   //!
   //! Add an int parameter to the configuration with the given name and value
   //!
-  void addParameter(const TString & name, long value);
+  void addParameter(const String & name, long value);
 
   //!
   //! Add a double parameter to the configuration with the given name and value
   //!
-  void addParameter(const TString & name, double value);
+  void addParameter(const String & name, double value);
 
   //!
   //! Add a string parameter to the configuration with the given name and value
   //!
-  void addParameter(const TString & name, const TString &  value);
+  void addParameter(const String & name, const String &  value);
 
   //!
   //! Set the parameter named 'name'  to the given value
   //!
-  void setParameter(const TString & name, bool value);
+  void setParameter(const String & name, bool value);
 
   //!
   //! Set the parameter named 'name'  to the given value
   //!
-  void setParameter(const TString & name, int value);
+  void setParameter(const String & name, int value);
 
   //!
   //! Set the parameter named 'name'  to the given value
   //!
-  void setParameter(const TString & name, long value);
+  void setParameter(const String & name, long value);
 
   //!
   //! Set the parameter named 'name'  to the given value
   //!
-  void setParameter(const TString & name, double value);
+  void setParameter(const String & name, double value);
 
   //!
   //! Set the parameter named 'name'  to the given value
   //!
-  void setParameter(const TString & name, const TString &  value);
+  void setParameter(const String & name, const String &  value);
 
   //!
   //!Generates and stores in the configuration of this task a list of key,value parameters based on the given parameters.value
@@ -1289,7 +1258,7 @@ public:
   //!@param defaultValue default value given for all key,value pairs
   //!@param nKeysToGenerate number of key,value pairs to generate and add to this task configuration.
   //!
-  void generateKeyValuePairs(const TString keyBaseName, const TString defaultValue, int nKeysToGenerate);
+  void generateKeyValuePairs(const String keyBaseName, const String defaultValue, int nKeysToGenerate);
 
 
   //!
@@ -1298,10 +1267,12 @@ public:
   //!@param keyBaseName base name of the keys
   //!@param defaultValue default value that is selected against
   //!
-  vector<TString> getSelectedValues(const TString keyBaseName, const TString defaultValue) const;
+  VectorString getSelectedValues(const String keyBaseName, const String defaultValue) const;
 
 
   ClassDef(Task,0)
 };
+
+}
 
 #endif /* CAP__Task */

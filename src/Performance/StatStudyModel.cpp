@@ -11,6 +11,7 @@
  * *********************************************************************/
 #include "StatStudyModel.hpp"
 #include "TRandom.h"
+using CAP::StatStudyModel;
 
 ClassImp(StatStudyModel);
 

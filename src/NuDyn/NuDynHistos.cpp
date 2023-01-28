@@ -10,14 +10,16 @@
  *
  * *********************************************************************/
 #include "NuDynHistos.hpp"
+using CAP::NuDynHistos;
+
 ClassImp(NuDynHistos);
 
 
 NuDynHistos::NuDynHistos(Task * _parent,
-                         const TString & _name,
+                         const String & _name,
                          Configuration & _configuration)
 :
-Histograms(_parent,_name,_configuration),
+HistogramGroup(_parent,_name,_configuration),
 h_eventStreams(0),
 nFilters(0),
 multiplicityType(0),
@@ -46,9 +48,9 @@ void NuDynHistos::createHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  const TString & bn  = getName();
-  const TString & ptn = getParentTaskName();
-  const TString & ppn = getParentPathName();
+  const String & bn  = getName();
+  const String & ptn = getParentTaskName();
+  const String & ppn = getParentPathName();
   Configuration & configuration = getConfiguration();
   multiplicityType = configuration.getValueInt(ppn,"multiplicityType");
   int nBins_mult   = configuration.getValueInt(ppn,"nBins_mult");
@@ -81,9 +83,9 @@ void NuDynHistos::createHistograms()
     deltaRapidtyBin.push_back(min_rapidity+double(iEta)*width_rapidity );
     }
 
-  TString suffix = "";
-  TString xTitle = "";
-  TString yTitle = "Rapidity";
+  String suffix = "";
+  String xTitle = "";
+  String yTitle = "Rapidity";
 
   switch (multiplicityType)
     {
@@ -92,40 +94,40 @@ void NuDynHistos::createHistograms()
       case 2: suffix = "vsMult"; xTitle = "mult_{acc}";  break;
     }
   
-  h_eventStreams        = createHistogram(makeName(bn,"NeventStreams"),10,0.0,10, "Streams","n_{Events}");
-  h_eventStreams_vsMult = createHistogram(makeName(bn,"NeventStreams",suffix),nBins_mult,min_mult,  max_mult, "mult",  "n_{Events}");
+  h_eventStreams        = createHistogram(createName(bn,"NeventStreams"),10,0.0,10, "Streams","n_{Events}");
+  h_eventStreams_vsMult = createHistogram(createName(bn,"NeventStreams",suffix),nBins_mult,min_mult,  max_mult, "mult",  "n_{Events}");
 
-//  h_f1.push_back(        createProfile(makeName(bn,"f1_0"), 10,0.0,10, "Streams", "f_{1}^{0}")  );
-//  h_f1.push_back(        createProfile(makeName(bn,"f1_1"), 10,0.0,10, "Streams", "f_{1}^{1}")  );
-  h_f1_vsMult.push_back( createProfile(makeName(bn,"f1_0",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{1}^{0}")  );
-  h_f1_vsMult.push_back( createProfile(makeName(bn,"f1_1",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{1}^{1}")  );
+//  h_f1.push_back(        createProfile(createName(bn,"f1_0"), 10,0.0,10, "Streams", "f_{1}^{0}")  );
+//  h_f1.push_back(        createProfile(createName(bn,"f1_1"), 10,0.0,10, "Streams", "f_{1}^{1}")  );
+  h_f1_vsMult.push_back( createProfile(createName(bn,"f1_0",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{1}^{0}")  );
+  h_f1_vsMult.push_back( createProfile(createName(bn,"f1_1",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{1}^{1}")  );
 
-//  h_f2.push_back(        createProfile(makeName(bn,"f2_00"), 10,0.0,10, "Streams", "f_{2}^{00}") );
-//  h_f2.push_back(        createProfile(makeName(bn,"f2_01"), 10,0.0,10, "Streams", "f_{2}^{01}") );
-//  h_f2.push_back(        createProfile(makeName(bn,"f2_11"), 10,0.0,10, "Streams", "f_{2}^{11}") );
-  h_f2_vsMult.push_back( createProfile(makeName(bn,"f2_00",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{2}^{00}")  );
-  h_f2_vsMult.push_back( createProfile(makeName(bn,"f2_01",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{2}^{01}")  );
-  h_f2_vsMult.push_back( createProfile(makeName(bn,"f2_11",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{2}^{11}")  );
+//  h_f2.push_back(        createProfile(createName(bn,"f2_00"), 10,0.0,10, "Streams", "f_{2}^{00}") );
+//  h_f2.push_back(        createProfile(createName(bn,"f2_01"), 10,0.0,10, "Streams", "f_{2}^{01}") );
+//  h_f2.push_back(        createProfile(createName(bn,"f2_11"), 10,0.0,10, "Streams", "f_{2}^{11}") );
+  h_f2_vsMult.push_back( createProfile(createName(bn,"f2_00",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{2}^{00}")  );
+  h_f2_vsMult.push_back( createProfile(createName(bn,"f2_01",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{2}^{01}")  );
+  h_f2_vsMult.push_back( createProfile(createName(bn,"f2_11",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{2}^{11}")  );
 
-//  h_f3.push_back(        createProfile(makeName(bn,"f3_000"), 10,0.0,10, "Streams", "f_{3}^{000}") );
-//  h_f3.push_back(        createProfile(makeName(bn,"f3_001"), 10,0.0,10, "Streams", "f_{3}^{001}") );
-//  h_f3.push_back(        createProfile(makeName(bn,"f3_011"), 10,0.0,10, "Streams", "f_{3}^{011}") );
-//  h_f3.push_back(        createProfile(makeName(bn,"f3_111"), 10,0.0,10, "Streams", "f_{3}^{111}") );
-  h_f3_vsMult.push_back( createProfile(makeName(bn,"f3_000",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{3}^{000}")  );
-  h_f3_vsMult.push_back( createProfile(makeName(bn,"f3_001",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{3}^{001}")  );
-  h_f3_vsMult.push_back( createProfile(makeName(bn,"f3_011",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{3}^{011}")  );
-  h_f3_vsMult.push_back( createProfile(makeName(bn,"f3_111",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{3}^{111}")  );
+//  h_f3.push_back(        createProfile(createName(bn,"f3_000"), 10,0.0,10, "Streams", "f_{3}^{000}") );
+//  h_f3.push_back(        createProfile(createName(bn,"f3_001"), 10,0.0,10, "Streams", "f_{3}^{001}") );
+//  h_f3.push_back(        createProfile(createName(bn,"f3_011"), 10,0.0,10, "Streams", "f_{3}^{011}") );
+//  h_f3.push_back(        createProfile(createName(bn,"f3_111"), 10,0.0,10, "Streams", "f_{3}^{111}") );
+  h_f3_vsMult.push_back( createProfile(createName(bn,"f3_000",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{3}^{000}")  );
+  h_f3_vsMult.push_back( createProfile(createName(bn,"f3_001",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{3}^{001}")  );
+  h_f3_vsMult.push_back( createProfile(createName(bn,"f3_011",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{3}^{011}")  );
+  h_f3_vsMult.push_back( createProfile(createName(bn,"f3_111",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{3}^{111}")  );
 
-//  h_f4.push_back(        createProfile(makeName(bn,"f4_0000"), 10,0.0,10, "Streams", "f_{4}^{0000}") );
-//  h_f4.push_back(        createProfile(makeName(bn,"f4_0001"), 10,0.0,10, "Streams", "f_{4}^{0001}") );
-//  h_f4.push_back(        createProfile(makeName(bn,"f4_0011"), 10,0.0,10, "Streams", "f_{4}^{0011}") );
-//  h_f4.push_back(        createProfile(makeName(bn,"f4_0111"), 10,0.0,10, "Streams", "f_{4}^{0111}") );
-//  h_f4.push_back(        createProfile(makeName(bn,"f4_1111"), 10,0.0,10, "Streams", "f_{4}^{1111}") );
-  h_f4_vsMult.push_back( createProfile(makeName(bn,"f4_0000",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{4}^{0000}") );
-  h_f4_vsMult.push_back( createProfile(makeName(bn,"f4_0001",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{4}^{0001}") );
-  h_f4_vsMult.push_back( createProfile(makeName(bn,"f4_0011",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{4}^{0011}") );
-  h_f4_vsMult.push_back( createProfile(makeName(bn,"f4_0111",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{4}^{0111}") );
-  h_f4_vsMult.push_back( createProfile(makeName(bn,"f4_1111",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{4}^{1111}") );
+//  h_f4.push_back(        createProfile(createName(bn,"f4_0000"), 10,0.0,10, "Streams", "f_{4}^{0000}") );
+//  h_f4.push_back(        createProfile(createName(bn,"f4_0001"), 10,0.0,10, "Streams", "f_{4}^{0001}") );
+//  h_f4.push_back(        createProfile(createName(bn,"f4_0011"), 10,0.0,10, "Streams", "f_{4}^{0011}") );
+//  h_f4.push_back(        createProfile(createName(bn,"f4_0111"), 10,0.0,10, "Streams", "f_{4}^{0111}") );
+//  h_f4.push_back(        createProfile(createName(bn,"f4_1111"), 10,0.0,10, "Streams", "f_{4}^{1111}") );
+  h_f4_vsMult.push_back( createProfile(createName(bn,"f4_0000",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{4}^{0000}") );
+  h_f4_vsMult.push_back( createProfile(createName(bn,"f4_0001",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{4}^{0001}") );
+  h_f4_vsMult.push_back( createProfile(createName(bn,"f4_0011",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{4}^{0011}") );
+  h_f4_vsMult.push_back( createProfile(createName(bn,"f4_0111",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{4}^{0111}") );
+  h_f4_vsMult.push_back( createProfile(createName(bn,"f4_1111",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{4}^{1111}") );
 
   if (reportEnd(__FUNCTION__))
     ;
@@ -138,9 +140,9 @@ void NuDynHistos::loadHistograms(TFile * inputFile)
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
 
-  const TString & bn  = getName();
-  const TString & ptn = getParentTaskName();
-  const TString & ppn = getParentPathName();
+  const String & bn  = getName();
+  const String & ptn = getParentTaskName();
+  const String & ppn = getParentPathName();
   Configuration & configuration = getConfiguration();
   multiplicityType = configuration.getValueInt(ppn,"multiplicityType");
   int nBins_mult   = configuration.getValueInt(ppn,"nBins_mult");
@@ -161,8 +163,8 @@ void NuDynHistos::loadHistograms(TFile * inputFile)
     cout << "  NuDyn:max_mult............................: " << max_mult << endl;
     }
 
-  TString suffix = "";
-  TString xTitle = "";
+  String suffix = "";
+  String xTitle = "";
 
   switch (multiplicityType)
     {
@@ -171,40 +173,40 @@ void NuDynHistos::loadHistograms(TFile * inputFile)
       case 2: suffix = "vsMult"; xTitle = "mult_{acc}";  break;
     }
 
-  h_eventStreams        = loadProfile2D(inputFile, makeName(bn,"NeventStreams"));
-  h_eventStreams_vsMult = loadProfile2D(inputFile, makeName(bn,"NeventStreams"));
+  h_eventStreams        = loadProfile2D(inputFile, createName(bn,"NeventStreams"));
+  h_eventStreams_vsMult = loadProfile2D(inputFile, createName(bn,"NeventStreams"));
 
-//  h_f1.push_back(        loadProfile2D(inputFile,makeName(bn,"f1_0"));
-//  h_f1.push_back(        loadProfile2D(inputFile,makeName(bn,"f1_1"));
-  h_f1_vsMult.push_back( loadProfile2D(inputFile,makeName(bn,"f1_0",suffix)));
-  h_f1_vsMult.push_back( loadProfile2D(inputFile,makeName(bn,"f1_1",suffix)));
+//  h_f1.push_back(        loadProfile2D(inputFile,createName(bn,"f1_0"));
+//  h_f1.push_back(        loadProfile2D(inputFile,createName(bn,"f1_1"));
+  h_f1_vsMult.push_back( loadProfile2D(inputFile,createName(bn,"f1_0",suffix)));
+  h_f1_vsMult.push_back( loadProfile2D(inputFile,createName(bn,"f1_1",suffix)));
 
-//  h_f2.push_back(        loadProfile2D(inputFile,makeName(bn,"f2_00")));
-//  h_f2.push_back(        loadProfile2D(inputFile,makeName(bn,"f2_01")));
-//  h_f2.push_back(        loadProfile2D(inputFile,makeName(bn,"f2_11")));
-  h_f2_vsMult.push_back( loadProfile2D(inputFile,makeName(bn,"f2_00",suffix)));
-  h_f2_vsMult.push_back( loadProfile2D(inputFile,makeName(bn,"f2_01",suffix)));
-  h_f2_vsMult.push_back( loadProfile2D(inputFile,makeName(bn,"f2_11",suffix)));
+//  h_f2.push_back(        loadProfile2D(inputFile,createName(bn,"f2_00")));
+//  h_f2.push_back(        loadProfile2D(inputFile,createName(bn,"f2_01")));
+//  h_f2.push_back(        loadProfile2D(inputFile,createName(bn,"f2_11")));
+  h_f2_vsMult.push_back( loadProfile2D(inputFile,createName(bn,"f2_00",suffix)));
+  h_f2_vsMult.push_back( loadProfile2D(inputFile,createName(bn,"f2_01",suffix)));
+  h_f2_vsMult.push_back( loadProfile2D(inputFile,createName(bn,"f2_11",suffix)));
 
-//  h_f3.push_back(        loadProfile2D(inputFile,makeName(bn,"f3_000")));
-//  h_f3.push_back(        loadProfile2D(inputFile,makeName(bn,"f3_001")));
-//  h_f3.push_back(        loadProfile2D(inputFile,makeName(bn,"f3_011")));
-//  h_f3.push_back(        loadProfile2D(inputFile,makeName(bn,"f3_111")));
-  h_f3_vsMult.push_back( loadProfile2D(inputFile,makeName(bn,"f3_000",suffix)));
-  h_f3_vsMult.push_back( loadProfile2D(inputFile,makeName(bn,"f3_001",suffix)));
-  h_f3_vsMult.push_back( loadProfile2D(inputFile,makeName(bn,"f3_011",suffix)));
-  h_f3_vsMult.push_back( loadProfile2D(inputFile,makeName(bn,"f3_111",suffix)));
+//  h_f3.push_back(        loadProfile2D(inputFile,createName(bn,"f3_000")));
+//  h_f3.push_back(        loadProfile2D(inputFile,createName(bn,"f3_001")));
+//  h_f3.push_back(        loadProfile2D(inputFile,createName(bn,"f3_011")));
+//  h_f3.push_back(        loadProfile2D(inputFile,createName(bn,"f3_111")));
+  h_f3_vsMult.push_back( loadProfile2D(inputFile,createName(bn,"f3_000",suffix)));
+  h_f3_vsMult.push_back( loadProfile2D(inputFile,createName(bn,"f3_001",suffix)));
+  h_f3_vsMult.push_back( loadProfile2D(inputFile,createName(bn,"f3_011",suffix)));
+  h_f3_vsMult.push_back( loadProfile2D(inputFile,createName(bn,"f3_111",suffix)));
 
-//  h_f4.push_back(        loadProfile2D(inputFile,makeName(bn,"f4_0000")));
-//  h_f4.push_back(        loadProfile2D(inputFile,makeName(bn,"f4_0001")));
-//  h_f4.push_back(        loadProfile2D(inputFile,makeName(bn,"f4_0011")));
-//  h_f4.push_back(        loadProfile2D(inputFile,makeName(bn,"f4_0111")));
-//  h_f4.push_back(        loadProfile2D(inputFile,makeName(bn,"f4_1111")));
-  h_f4_vsMult.push_back( loadProfile2D(inputFile,makeName(bn,"f4_0000",suffix)));
-  h_f4_vsMult.push_back( loadProfile2D(inputFile,makeName(bn,"f4_0001",suffix)));
-  h_f4_vsMult.push_back( loadProfile2D(inputFile,makeName(bn,"f4_0011",suffix)));
-  h_f4_vsMult.push_back( loadProfile2D(inputFile,makeName(bn,"f4_0111",suffix)));
-  h_f4_vsMult.push_back( loadProfile2D(inputFile,makeName(bn,"f4_1111",suffix)));
+//  h_f4.push_back(        loadProfile2D(inputFile,createName(bn,"f4_0000")));
+//  h_f4.push_back(        loadProfile2D(inputFile,createName(bn,"f4_0001")));
+//  h_f4.push_back(        loadProfile2D(inputFile,createName(bn,"f4_0011")));
+//  h_f4.push_back(        loadProfile2D(inputFile,createName(bn,"f4_0111")));
+//  h_f4.push_back(        loadProfile2D(inputFile,createName(bn,"f4_1111")));
+  h_f4_vsMult.push_back( loadProfile2D(inputFile,createName(bn,"f4_0000",suffix)));
+  h_f4_vsMult.push_back( loadProfile2D(inputFile,createName(bn,"f4_0001",suffix)));
+  h_f4_vsMult.push_back( loadProfile2D(inputFile,createName(bn,"f4_0011",suffix)));
+  h_f4_vsMult.push_back( loadProfile2D(inputFile,createName(bn,"f4_0111",suffix)));
+  h_f4_vsMult.push_back( loadProfile2D(inputFile,createName(bn,"f4_1111",suffix)));
 
   if (reportEnd(__FUNCTION__))
     ;

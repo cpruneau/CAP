@@ -10,10 +10,11 @@
  *
  * *********************************************************************/
 #include "EventVertexRandomizerTask.hpp"
+using CAP::EventVertexRandomizerTask;
 
 ClassImp(EventVertexRandomizerTask);
 
-EventVertexRandomizerTask::EventVertexRandomizerTask(const TString & _name,
+EventVertexRandomizerTask::EventVertexRandomizerTask(const String & _name,
                                                      Configuration & _configuration,
                                                      vector<EventFilter*> & _eventFilters,
                                                      vector<ParticleFilter*>& _particleFilters)

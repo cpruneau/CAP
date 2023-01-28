@@ -13,6 +13,11 @@
 #define CAP__FileTaskIterator
 #include "TaskIterator.hpp"
 
+namespace CAP
+{
+
+
+
 //!
 //! Task Iterator designed to repeat the same series of tasks on many files/directories
 //!
@@ -27,7 +32,7 @@ public:
   //! @param _configuration Configuration used to run this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  FileTaskIterator(const TString & _name,
+  FileTaskIterator(const String & _name,
                    const Configuration & _configuration);
 
   //!
@@ -61,12 +66,12 @@ public:
   //!
   //! Add a  file  templates for use by this task iterator
   //!
-  void addFileNames(const TString name);
+  void addFileNames(const String name);
 
   //!
   //! Add several  file  templates for use by this task iterator
   //!
-  void addFileNames(vector<TString> names);
+  void addFileNames(VectorString  names);
 
   //!
   //! Add several  file  templates for use by this task iterator
@@ -79,14 +84,14 @@ public:
   //! must include all of the patterns in includePatterns
   //! must exclude all of the partterns in excludePartterns
   //!
-  void addFileNames(const TString pathName,
-                            vector<TString> includePatterns,
-                            vector<TString> excludePatterns);
+  void addFileNames(const String pathName,
+                            VectorString  includePatterns,
+                            VectorString  excludePatterns);
 
   //!
   //!Get the index of the file currently being processed (in the file list submited to this task)
   //!
-  inline const TString getCurrentFileIndex() const
+  inline const String getCurrentFileIndex() const
   {
   return currentFileIndex;
   }
@@ -94,7 +99,7 @@ public:
   //!
   //! Get array of file names to be processes by this iterator task.
   //!
-  inline const vector<TString> & getSelectedFileNames() const
+  inline const VectorString  & getSelectedFileNames() const
   {
   return selectedFileNames;
   }
@@ -104,12 +109,12 @@ protected:
   //!
   //! Array of file names to be processes by this iterator task.
   //!
-  vector<TString> selectedFileNames;
+  VectorString  selectedFileNames;
 
   //!
   //! Character string or name to be added to the file name (on output) being processed.
   //!
-  TString appendedString;
+  String appendedString;
   
   //!
   //! Index of the file being processes.
@@ -118,5 +123,7 @@ protected:
 
   ClassDef(FileTaskIterator,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP__FileTaskIterator */

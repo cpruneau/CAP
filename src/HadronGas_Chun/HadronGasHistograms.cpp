@@ -6,14 +6,16 @@
 //  Copyright © 2016 Claude Pruneau. All rights reserved.
 //
 #include "HadronGasHistograms.hpp"
+using CAP::HadronGasHistograms;
+
 ClassImp(HadronGasHistograms);
 
 HadronGasHistograms::HadronGasHistograms(Task * _parent,
-                                         const TString & _name,
+                                         const String & _name,
                                          Configuration & _config,
                                          HadronGas * _hadronGas)
 :
-Histograms(_parent,_name,_config),
+HistogramGroup(_parent,_name,_config),
 hadronGas(_hadronGas)
 {
   // no ops
@@ -23,8 +25,8 @@ void HadronGasHistograms::createHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString bn = getParentTaskName();
-  TString pn = getParentName();
+  String bn = getParentTaskName();
+  String pn = getParentName();
   Configuration & config = getConfiguration();
   int nMass      = config.getValueInt(pn,"nMass");
   double minMass = config.getValueDouble(pn,"MinMass");
@@ -39,55 +41,55 @@ void HadronGasHistograms::createHistograms()
   double dSpecies = nSpecies;
   double dStableSpecies = nStableSpecies;
   
-  h_rho1ThVsMass    = createProfile(makeName(bn,"rho1ThVsMass"), nMass,minMass,maxMass,"Mass (GeV)","#rho_{1}");
-  h_rho1AllVsMass   = createProfile(makeName(bn,"rho1AllVsMass"),nMass,minMass,maxMass,"Mass (GeV)","#rho_{1}");
-  h_rho1VsMass      = createProfile(makeName(bn,"rho1VsMass"),   nMass,minMass,maxMass,"Mass (GeV)","#rho_{1}");
+  h_rho1ThVsMass    = createProfile(createName(bn,"rho1ThVsMass"), nMass,minMass,maxMass,"Mass (GeV)","#rho_{1}");
+  h_rho1AllVsMass   = createProfile(createName(bn,"rho1AllVsMass"),nMass,minMass,maxMass,"Mass (GeV)","#rho_{1}");
+  h_rho1VsMass      = createProfile(createName(bn,"rho1VsMass"),   nMass,minMass,maxMass,"Mass (GeV)","#rho_{1}");
 
-  h_rho1All         = createHistogram(makeName(bn,"rho1All"),nSpecies,        0.0, dSpecies,       "Species","#rho_{1}");
-  h_rho1Th          = createHistogram(makeName(bn,"rho1Th"), nStableSpecies,  0.0, dStableSpecies, "Species","#rho1_{1}^{Th}");
-  h_rho1            = createHistogram(makeName(bn,"rho1"),   nStableSpecies,  0.0, dStableSpecies, "Species","#rho_{1}");
-  h_rho1ToRho1Th    = createHistogram(makeName(bn,"rho1ToRho1Th"),nStableSpecies,  0.0, dStableSpecies, "Species","#rho_{1}");
-  h_rho1rho1        = createHistogram(makeName(bn,"rho1rho1"),
+  h_rho1All         = createHistogram(createName(bn,"rho1All"),nSpecies,        0.0, dSpecies,       "Species","#rho_{1}");
+  h_rho1Th          = createHistogram(createName(bn,"rho1Th"), nStableSpecies,  0.0, dStableSpecies, "Species","#rho1_{1}^{Th}");
+  h_rho1            = createHistogram(createName(bn,"rho1"),   nStableSpecies,  0.0, dStableSpecies, "Species","#rho_{1}");
+  h_rho1ToRho1Th    = createHistogram(createName(bn,"rho1ToRho1Th"),nStableSpecies,  0.0, dStableSpecies, "Species","#rho_{1}");
+  h_rho1rho1        = createHistogram(createName(bn,"rho1rho1"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","Pairs");
-  h_rho1thrho1th    = createHistogram(makeName(bn,"rho1thrho1th"),
+  h_rho1thrho1th    = createHistogram(createName(bn,"rho1thrho1th"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","#rho_{1}^{Th}#rho_{1}^{Th}");
-  h_rho2Corr        = createHistogram(makeName(bn,"rho2Corr"),
+  h_rho2Corr        = createHistogram(createName(bn,"rho2Corr"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","Correlated Pairs");
-  h_rho2Uncorr      = createHistogram(makeName(bn,"rho2Uncorr"),
+  h_rho2Uncorr      = createHistogram(createName(bn,"rho2Uncorr"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","Uncorrelated Pairs");
 
-  h_rho2            = createHistogram(makeName(bn,"rho2"),
+  h_rho2            = createHistogram(createName(bn,"rho2"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","#rho_{2}");
 
-  h_C2              = createHistogram(makeName(bn,"C2"),
+  h_C2              = createHistogram(createName(bn,"C2"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","C_{2}");
-  h_R2              = createHistogram(makeName(bn,"R2"),
+  h_R2              = createHistogram(createName(bn,"R2"),
                                       nStableSpecies,  0.0, dStableSpecies,
                                       nStableSpecies,  0.0, dStableSpecies,
                                       "Species","Species","R_{2}");
-  h_BF              = createHistogram(makeName(bn,"BF"),18,  0.0, 18.0, "Pairs","BF");
+  h_BF              = createHistogram(createName(bn,"BF"),18,  0.0, 18.0, "Pairs","BF");
 
   // set labels
   for (int iSpecies=1; iSpecies<=nSpecies; iSpecies++)
     {
-    TString label = hadronGas->particleTypes->getParticleType(iSpecies-1)->getTitle();
+    String label = hadronGas->particleTypes->getParticleType(iSpecies-1)->getTitle();
     h_rho1All->GetXaxis()->SetBinLabel(iSpecies,label);
     }
   for (int iSpecies=1; iSpecies<=nStableSpecies; iSpecies++)
     {
-    TString label = hadronGas->stableParticleTypes->getParticleType(iSpecies-1)->getTitle();
+    String label = hadronGas->stableParticleTypes->getParticleType(iSpecies-1)->getTitle();
     h_rho1Th->GetXaxis()->SetBinLabel(iSpecies,label);
     h_rho1->GetXaxis()->SetBinLabel(iSpecies,label);
     h_rho1ToRho1Th->GetXaxis()->SetBinLabel(iSpecies,label);
@@ -132,11 +134,11 @@ void HadronGasHistograms::createHistograms()
   h_BF->GetXaxis()->SetBinLabel(18,"p | #bar{p}");
 
 
-  TString histoName;
+  String histoName;
   h_rho1ThVsP = new TH1*[nSpecies];
   for (int iSpecies=0; iSpecies<nSpecies; iSpecies++)
     {
-    histoName = makeName(bn,"rho1ThVsP_S");
+    histoName = createName(bn,"rho1ThVsP_S");
     histoName += iSpecies; //hadronGas->getParticleType(iSpecies)->getName();
     h_rho1ThVsP[iSpecies] = createHistogram(histoName,nP,minP,maxP,"p (GeV/c)","#rho_{1}^{Th} (c/GeV)");
     }
@@ -287,28 +289,28 @@ void HadronGasHistograms::loadHistograms(TFile * inputFile)
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
   //HadronGasConfiguration & ac = *(HadronGasConfiguration*) getConfiguration();
-  TString bn  = getParentTaskName();
-  h_rho1All   = loadH1(inputFile,makeName(bn,"rho1All"));
+  String bn  = getParentTaskName();
+  h_rho1All   = loadH1(inputFile,createName(bn,"rho1All"));
   if (!h_rho1All)
     {
-    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << makeName(bn,"allYields") << endl;
+    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << createName(bn,"allYields") << endl;
     return;
     }
-  h_rho1AllVsMass = loadProfile(inputFile,makeName(bn,"rho1AllVsMass"));
-  h_rho1ThVsMass  = loadProfile(inputFile,makeName(bn,"rho1ThVsMass"));
-  h_rho1VsMass    = loadProfile(inputFile,makeName(bn,"rho1VsMass"));
+  h_rho1AllVsMass = loadProfile(inputFile,createName(bn,"rho1AllVsMass"));
+  h_rho1ThVsMass  = loadProfile(inputFile,createName(bn,"rho1ThVsMass"));
+  h_rho1VsMass    = loadProfile(inputFile,createName(bn,"rho1VsMass"));
 
-  h_rho1Th        = loadH1(inputFile,makeName(bn,"rho1Th"));
-  h_rho1          = loadH1(inputFile,makeName(bn,"rho1"));
-  h_rho2Uncorr    = loadH2(inputFile,makeName(bn,"rho2Uncorr"));
-  h_rho2Corr      = loadH2(inputFile,makeName(bn,"rho2Corr"));
+  h_rho1Th        = loadH1(inputFile,createName(bn,"rho1Th"));
+  h_rho1          = loadH1(inputFile,createName(bn,"rho1"));
+  h_rho2Uncorr    = loadH2(inputFile,createName(bn,"rho2Uncorr"));
+  h_rho2Corr      = loadH2(inputFile,createName(bn,"rho2Corr"));
 
-  h_rho2          = loadH2(inputFile,makeName(bn,"rho2"));
-  h_rho1rho1      = loadH2(inputFile,makeName(bn,"rho1rho1"));
-  h_rho1thrho1th  = loadH2(inputFile,makeName(bn,"rho1thrho1th"));
-  h_C2            = loadH2(inputFile,makeName(bn,"C2"));
-  h_R2            = loadH2(inputFile,makeName(bn,"R2"));
-  h_BF            = loadH1(inputFile,makeName(bn,"BF"));
+  h_rho2          = loadH2(inputFile,createName(bn,"rho2"));
+  h_rho1rho1      = loadH2(inputFile,createName(bn,"rho1rho1"));
+  h_rho1thrho1th  = loadH2(inputFile,createName(bn,"rho1thrho1th"));
+  h_C2            = loadH2(inputFile,createName(bn,"C2"));
+  h_R2            = loadH2(inputFile,createName(bn,"R2"));
+  h_BF            = loadH1(inputFile,createName(bn,"BF"));
 }
 
 void HadronGasHistograms::fill(HadronGas & hadronGas)

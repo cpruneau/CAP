@@ -12,10 +12,11 @@
 #include "NuDynAnalyzer.hpp"
 #include "NuDynHistos.hpp"
 #include "NuDynDerivedHistos.hpp"
+using CAP::NuDynAnalyzer;
 
 ClassImp(NuDynAnalyzer);
 
-NuDynAnalyzer::NuDynAnalyzer(const TString & _name,
+NuDynAnalyzer::NuDynAnalyzer(const String & _name,
                              Configuration & _configuration,
                              vector<EventFilter*> & _eventFilters,
                              vector<ParticleFilter*> & _particleFilters)
@@ -73,13 +74,13 @@ void NuDynAnalyzer::createHistograms()
 {
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
-  TString prefixName = getName(); prefixName += "_";
-  TString evtFilterName;
-  TString histoName;
-  TString partFilterName;
+  String prefixName = getName(); prefixName += "_";
+  String evtFilterName;
+  String histoName;
+  String partFilterName;
   if (reportInfo(__FUNCTION__))
     {
-    cout << " NuDyn:Creating Histograms for......: "  << endl;
+    cout << " NuDyn:Creating HistogramGroup for......: "  << endl;
     cout << " NuDyn:nEventFilters................: " << nEventFilters << endl;
     cout << " NuDyn:nParticleFilters.............: " << nParticleFilters << endl;
     }
@@ -107,14 +108,14 @@ void NuDynAnalyzer::loadHistograms(TFile * inputFile)
     ;
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
-  TString prefixName = getName(); prefixName += "_";
-  TString evtFilterName;
-  TString histoName;
-  TString partFilterName;
+  String prefixName = getName(); prefixName += "_";
+  String evtFilterName;
+  String histoName;
+  String partFilterName;
   
   if (reportInfo(__FUNCTION__))
     {
-    cout << " Creating Histograms for......"  << endl;
+    cout << " Creating HistogramGroup for......"  << endl;
     cout << " nEventFilters................: " << nEventFilters << endl;
     cout << " nParticleFilters.............: " << nParticleFilters << endl;
     }
@@ -190,23 +191,23 @@ void NuDynAnalyzer::createDerivedHistograms()
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString prefixName = getName(); prefixName += "_";
+  String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
   if (reportInfo(__FUNCTION__))
     {
-    cout << " Creating Histograms for......"  << endl;
+    cout << " Creating HistogramGroup for......"  << endl;
     cout << " nEventFilters................: " << nEventFilters << endl;
     cout << " nParticleFilters.............: " << nParticleFilters << endl;
     }
   NuDynDerivedHistos * histos;
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    TString evtFilterName = eventFilters[iEventFilter]->getName();
+    String evtFilterName = eventFilters[iEventFilter]->getName();
     for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
       {
-      TString partFilterName = particleFilters[iParticleFilter]->getName();
-      TString histoName  = prefixName;
+      String partFilterName = particleFilters[iParticleFilter]->getName();
+      String histoName  = prefixName;
       histoName += evtFilterName;
       histoName += "_";
       histoName += partFilterName;

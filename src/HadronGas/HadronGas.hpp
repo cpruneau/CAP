@@ -20,6 +20,9 @@
 
 using namespace std;
 
+namespace CAP
+{
+
 class HadronGas : public Task
 {
 protected:
@@ -27,7 +30,7 @@ protected:
   //!
   //!Name given to this hadron gas instance 
   //!
-  TString name;
+  String name;
 
   //!
   //!Collection of particles used in the Hadron Gas calculations
@@ -123,7 +126,7 @@ public:
   //!@param _stableParticles Pointer to "stable" particle collection.
   //!@param _debugLevel debug level to be used by this task
   //!
-  HadronGas(const TString & _name,
+  HadronGas(const String & _name,
             Configuration &    _configuration,
             ParticleTypeCollection * _particles,
             ParticleTypeCollection * _stableParticles);
@@ -241,6 +244,7 @@ public:
   ClassDef(HadronGas,0)
 };
 
+} // namespace CAP
 
 #endif  // CAP_HadronGas
 

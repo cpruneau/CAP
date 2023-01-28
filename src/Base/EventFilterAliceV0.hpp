@@ -13,6 +13,10 @@
 #define CAP__EventFilterAliceV0
 #include "EventFilter.hpp"
 
+namespace CAP
+{
+
+
 //!
 //! Class encapsulating an event filter replicating the conditions used in ALICE to trigger on events
 //!  The filtering is based on the number of particles counters and stored in the structure
@@ -33,11 +37,11 @@ public:
   virtual ~EventFilterAliceV0();
   virtual bool accept(Event & event);
 
-//  TString getName();
-//  const TString  & getUserName() const { return userName; }
-//  TString getTitle();
-//  TString getLongName();
-//  TString getLongTitle();
+//  String getName();
+//  const String  & getUserName() const { return userName; }
+//  String getTitle();
+//  String getLongName();
+//  String getLongTitle();
 
   //static vector<EventFilter*> createEventFilterAliceV0Set(vector<double> limits);
 
@@ -49,5 +53,7 @@ protected:
 
   ClassDef(EventFilterAliceV0,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP__EventFilterAliceV0 */

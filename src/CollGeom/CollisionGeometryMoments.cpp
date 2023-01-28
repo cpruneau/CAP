@@ -11,6 +11,7 @@
  * *********************************************************************/
 
 #include "CollisionGeometryMoments.hpp"
+using CAP::CollisionGeometryMoments;
 ClassImp(CollisionGeometryMoments);
 
 CollisionGeometryMoments::CollisionGeometryMoments()

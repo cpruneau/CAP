@@ -11,10 +11,11 @@
  * *********************************************************************/
 #include "HerwigEventReader.hpp"
 #include "TMath.h"
+using CAP::HerwigEventReader;
 
 ClassImp(HerwigEventReader);
 
-HerwigEventReader::HerwigEventReader(const TString &          _name,
+HerwigEventReader::HerwigEventReader(const String &          _name,
                                      Configuration &          _configuration,
                                      vector<EventFilter*>   & _eventFilters,
                                      vector<ParticleFilter*>& _particleFilters)

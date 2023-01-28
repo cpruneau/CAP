@@ -11,6 +11,10 @@
  * *********************************************************************/
 #include <TMath.h>
 #include "ParticleFilter.hpp"
+using CAP::Filter;
+using CAP::Particle;
+using CAP::ParticleFilter;
+using namespace std;
 
 ClassImp(Filter<Particle>);
 
@@ -259,7 +263,7 @@ vector<ParticleFilter*> ParticleFilter::createChargedHadronFilters(bool filterin
 
 
 
-ParticleFilter *  ParticleFilter::createHadronFilter(int pdg, const TString & name, const TString  & title,
+ParticleFilter *  ParticleFilter::createHadronFilter(int pdg, const String & name, const String  & title,
                                                      bool filteringOnPt,  double minPt,  double maxPt,
                                                      bool filteringOnEta, double minEta, double maxEta,
                                                      bool filteringOnY,   double minY,   double maxY)
@@ -490,7 +494,7 @@ bool ParticleFilter::accept(const Particle & particle)
         break;
 
         case 5: // kinematic selection/filtering
-        const TLorentzVector & momentum = particle.getMomentum();
+        const LorentzVector & momentum = particle.getMomentum();
         switch (filterSubType)
           {
             case 0: value = momentum.P(); break;    // momentum

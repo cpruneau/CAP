@@ -19,6 +19,8 @@ using std::cout;
 using std::endl;
 using std::ofstream;
 
+namespace CAP
+{
 
 double  DeltaPhiWidth2DFitFunction(double  *x, double  *par);
 double  CentralPeak2DFitFunction(double  *x, double  *par);
@@ -27,7 +29,7 @@ double  Global2DFitFunction(double  *x, double  *par);
 class BidimGaussFitter : public Plotter
 {
   public:
-  BidimGaussFitter(const TString & _name,
+  BidimGaussFitter(const String & _name,
                    Configuration &     _configuration,
                    Severity                  _requiredLevel);
   BidimGaussFitter(const BidimGaussFitter& source);
@@ -66,7 +68,7 @@ class BidimGaussFitter : public Plotter
                           double yLow,
                           double yHigh,
                           const BidimGaussFitConfiguration & fitConfig,
-                          const TString  & label);
+                          const String  & label);
   
   void projectFlowComponents(TH2 *dataHist,
                              TF2 *f,
@@ -75,21 +77,21 @@ class BidimGaussFitter : public Plotter
                              double yLow,
                              double yHigh,
                              const BidimGaussFitConfiguration & fitConfig,
-                             const TString  & label);
+                             const String  & label);
 
 
 
   TH2* subtractEtaSides(TH2* dataHist,
                         TF2 *flowFitFct,
                         const BidimGaussFitConfiguration & fitConfig);
-  TH1* cloneAndReset(const TH1* h, const TString  & hName);
-  TH1* cloneAndSetWithFct(const TH1* h,  TF1* f, const TString  & hName);
-  TH2* cloneAndReset(const TH2* h, const TString  & hName);
-  TH2* cloneAndSetWithFct(const TH2* h,  TF2* f, const TString  & hName);
+  TH1* cloneAndReset(const TH1* h, const String  & hName);
+  TH1* cloneAndSetWithFct(const TH1* h,  TF1* f, const String  & hName);
+  TH2* cloneAndReset(const TH2* h, const String  & hName);
+  TH2* cloneAndSetWithFct(const TH2* h,  TF2* f, const String  & hName);
   void divideByHistoErrors(const TH2* numerator, const TH2* denominator, TH2* target);
 
-  void calculateResidualHistos(const TString  & baseName,
-                               const TString  & baseTitle,
+  void calculateResidualHistos(const String  & baseName,
+                               const String  & baseTitle,
                                TH2* data,
                                TH2* fit,
                                TH2*& residuals,
@@ -104,8 +106,8 @@ class BidimGaussFitter : public Plotter
                      double & chi2,
                      double & ndf);
 
-  TString histBaseTitle;
-  TString histBaseName;
+  String histBaseTitle;
+  String histBaseName;
   BidimGaussFitResult  flowFitResult;
   BidimGaussFitResult  fullFitResult;
   BidimGaussFitResult  peakFitResult;
@@ -137,10 +139,10 @@ class BidimGaussFitter : public Plotter
   TF2 * peakFitFct;
 
 
-  TString ** flowLegends;
-  TString ** flowLegends2;
-  TString ** fullLegends;
-  TString ** peakLegends;
+  String ** flowLegends;
+  String ** flowLegends2;
+  String ** fullLegends;
+  String ** peakLegends;
   TH1 ** flowEtaProj;
   TH1 ** flowPhiProj;
   TH1 ** flowEtaProj2;
@@ -152,8 +154,8 @@ class BidimGaussFitter : public Plotter
 
   int   nEtaProjections;
   int   nPhiProjections;
-  TString etaProjectName;
-  TString phiProjectName;
+  String etaProjectName;
+  String phiProjectName;
   TH1 * etaProjections[10];
   TH1 * phiProjections[10];
 
@@ -163,14 +165,16 @@ class BidimGaussFitter : public Plotter
   GraphConfiguration  ** graphConfigs1D;
   GraphConfiguration  ** graphConfigs2D;
   TH1     ** histograms;
-  TString ** legends;
-  TString ** options;
-  TString * lineOption;
-  TString * pointOption;
+  String ** legends;
+  String ** options;
+  String * lineOption;
+  String * pointOption;
 
 
 
   ClassDef(BidimGaussFitter,0)
   };
+
+} // namespace CAP
 
 #endif /* CAP__BidimGaussFitFunction */

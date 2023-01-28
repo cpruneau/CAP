@@ -11,8 +11,12 @@
  * *********************************************************************/
 #ifndef CAP__NuDynHistos
 #define CAP__NuDynHistos
-#include "Histograms.hpp"
+#include "HistogramGroup.hpp"
 #include "Configuration.hpp"
+
+namespace CAP
+{
+
 
 //!
 //! Calculate lowest moments up to order 4
@@ -45,12 +49,12 @@
 // h_r2_12 = <n1(n2-1)>/<n1><n2>
 // h_nudyn_12 = h_r2_11 + h_r2_22 -2*h_r2_12
 // etc
-class NuDynHistos : public Histograms
+class NuDynHistos : public HistogramGroup
 {
 public:
 
   NuDynHistos(Task * _parent,
-              const TString & _name,
+              const String & _name,
               Configuration & _configuration);
   virtual ~NuDynHistos();
   virtual void createHistograms();
@@ -58,7 +62,7 @@ public:
   virtual void fill(double mult, vector<double> & nAccepted0, vector<double> & nAccepted1,  double weight);
 
   ////////////////////////////////////////////////////////////////////////////
-  // Data Members - Histograms
+  // Data Members - HistogramGroup
   ////////////////////////////////////////////////////////////////////////////
   // n1 number of particles satisfying filter 1
   // n2 number of particles satisfying filter 2
@@ -102,6 +106,8 @@ public:
  
   ClassDef(NuDynHistos,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP__NuDynHistos  */
 

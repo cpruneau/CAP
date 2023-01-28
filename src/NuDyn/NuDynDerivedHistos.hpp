@@ -11,16 +11,18 @@
  * *********************************************************************/
 #ifndef CAP__NuDynDerivedHistos
 #define CAP__NuDynDerivedHistos
-#include "Histograms.hpp"
+#include "HistogramGroup.hpp"
 #include "NuDynHistos.hpp"
 
+namespace CAP
+{
 
-class NuDynDerivedHistos : public Histograms
+class NuDynDerivedHistos : public HistogramGroup
 {
 public:
 
   NuDynDerivedHistos(Task * _parent,
-                     const TString & _name,
+                     const String & _name,
                      Configuration & _configuration);
   virtual ~NuDynDerivedHistos() {} 
   void createHistograms();
@@ -28,7 +30,7 @@ public:
   virtual void calculateDerivedHistograms(NuDynHistos* baseHistos);
 
   ////////////////////////////////////////////////////////////////////////////
-  // Data Members - Histograms
+  // Data Members - HistogramGroup
   ////////////////////////////////////////////////////////////////////////////
   // n1 number of particles satisfying filter 1
   // n2 number of particles satisfying filter 2
@@ -57,6 +59,8 @@ public:
 
   ClassDef(NuDynDerivedHistos,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP__NuDynDerivedHistos  */
 

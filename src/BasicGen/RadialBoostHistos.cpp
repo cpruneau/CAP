@@ -10,14 +10,15 @@
  *
  * *********************************************************************/
 #include "RadialBoostHistos.hpp"
+using CAP::RadialBoostHistos;
 
 ClassImp(RadialBoostHistos);
 
 RadialBoostHistos::RadialBoostHistos(Task * _partial,
-                                     const TString & _name,
+                                     const String & _name,
                                      Configuration & _configuration)
 :
-Histograms(_partial,_name,_configuration)
+HistogramGroup(_partial,_name,_configuration)
 {
   appendClassName("RadialBoostHistos");
 }
@@ -35,22 +36,22 @@ void RadialBoostHistos::createHistograms()
   double min_beta = configuration.getValueDouble("Min_beta");
   double max_beta = configuration.getValueDouble("Max_beta");
   
-  TString bn = getParentTaskName();
-  h_phi  = createHistogram(makeName(bn,"ns_phi"),   nBins_phi,  min_phi,  max_phi,  "#phi",      "N_{s}");
-  h_r    = createHistogram(makeName(bn,"ns_r"),     nBins_r,    min_r,    max_r,    "r",         "N_{s}");
-  h_beta = createHistogram(makeName(bn,"ns_beta"),  nBins_beta, min_beta, max_beta, "#beta_{s}", "N_{s}");
-  h_xy   = createHistogram(makeName(bn,"ns_xy"),    40, -10.0, 10.0,  40, -10.0, 10.0,       "x",    "y", "N_{s}");
+  String bn = getParentTaskName();
+  h_phi  = createHistogram(createName(bn,"ns_phi"),   nBins_phi,  min_phi,  max_phi,  "#phi",      "N_{s}");
+  h_r    = createHistogram(createName(bn,"ns_r"),     nBins_r,    min_r,    max_r,    "r",         "N_{s}");
+  h_beta = createHistogram(createName(bn,"ns_beta"),  nBins_beta, min_beta, max_beta, "#beta_{s}", "N_{s}");
+  h_xy   = createHistogram(createName(bn,"ns_xy"),    40, -10.0, 10.0,  40, -10.0, 10.0,       "x",    "y", "N_{s}");
 }
 
 //________________________________________________________________________
 void RadialBoostHistos::loadHistograms(TFile * inputFile)
 {
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  TString bn = getParentTaskName();
-  h_phi  = loadH1(inputFile,makeName(bn,"ns_phi")  );
-  h_r    = loadH1(inputFile,makeName(bn,"ns_r")    );
-  h_beta = loadH1(inputFile,makeName(bn,"ns_beta") );
-  h_xy   = loadH2(inputFile,makeName(bn,"ns_xy") );
+  String bn = getParentTaskName();
+  h_phi  = loadH1(inputFile,createName(bn,"ns_phi")  );
+  h_r    = loadH1(inputFile,createName(bn,"ns_r")    );
+  h_beta = loadH1(inputFile,createName(bn,"ns_beta") );
+  h_xy   = loadH2(inputFile,createName(bn,"ns_xy") );
   return;
 }
 

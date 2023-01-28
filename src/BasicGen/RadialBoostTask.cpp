@@ -11,10 +11,11 @@
  * *********************************************************************/
 #include "RadialBoostTask.hpp"
 #include "CollisionGeometryGradientHistograms.hpp"
+using CAP::RadialBoostTask;
 
 ClassImp(RadialBoostTask);
 
-RadialBoostTask::RadialBoostTask(const TString & _name,
+RadialBoostTask::RadialBoostTask(const String & _name,
                                  Configuration & _configuration,
                                  vector<EventFilter*>&    _eventFilters,
                                  vector<ParticleFilter*>& _particleFilters)
@@ -112,7 +113,7 @@ void RadialBoostTask::execute()
         {
         if (reportDebug(__FUNCTION__)) cout << "       iParticle: " << iParticle <<  "  loop" << endl;
 
-        TLorentzVector & position = particle.getPosition();
+        LorentzVector & position = particle.getPosition();
         rx  = position.X(); // units are fm
         ry  = position.Y();
         if (reportDebug(__FUNCTION__))

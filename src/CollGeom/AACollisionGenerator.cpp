@@ -11,10 +11,11 @@
  * *********************************************************************/
 #include "AACollisionGenerator.hpp"
 #include "TDatabasePDG.h"
+using CAP::AACollisionGenerator;
 
 ClassImp(AACollisionGenerator);
 
-AACollisionGenerator::AACollisionGenerator(const TString * _name,
+AACollisionGenerator::AACollisionGenerator(const String * _name,
                                            Configuration & _configuration,
                                            vector<EventFilter*> & _eventFilters,
                                            vector<ParticleFilter*>& _particleFilters)

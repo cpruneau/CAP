@@ -4,9 +4,9 @@
 #pragma link off all classes;
 #pragma link off all functions;
 
-#pragma link C++ class HadronGas+;
-#pragma link C++ class HadronGasParticle+;
-#pragma link C++ class HadronGasGeneratorTask+;
-#pragma link C++ class HadronGasVsTempHistograms+;
-#pragma link C++ class HadronGasHistograms+;
+#pragma link C++ class CAP::HadronGas+;
+#pragma link C++ class CAP::HadronGasParticle+;
+#pragma link C++ class CAP::HadronGasGeneratorTask+;
+#pragma link C++ class CAP::HadronGasVsTempHistograms+;
+#pragma link C++ class CAP::HadronGasHistograms+;
 #endif

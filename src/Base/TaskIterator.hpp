@@ -13,6 +13,8 @@
 #define CAP__TaskIterator
 #include "Task.hpp"
 
+namespace CAP {
+
 //!
 //! This class implements a task iterator task, i.e., a task that repeated calls other tasks (subtasks) to carry out the same operation(s) on a sequence of events (event stream).
 //!  Use the 'run' method to execute the job on all selected events. Internally, 'run' calls the 'execute' method repeatedly on each event in the event stream.
@@ -31,7 +33,7 @@ public:
   //! @param _configuration Configuration used to run this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  TaskIterator(const TString & _name, Configuration & _configuration);
+  TaskIterator(const String & _name, Configuration & _configuration);
 
   //!
   //! DTOR
@@ -65,10 +67,11 @@ protected:
   long    nEventsPerSubbunch;
   int     nSubbunchesPerBunch;
   int     nBunches;
-  TString bunchLabel;
-  TString subbunchLabel;
+  String bunchLabel;
+  String subbunchLabel;
 
   ClassDef(TaskIterator,0)
 };
 
+}
 #endif /* CAP__TaskIterator */

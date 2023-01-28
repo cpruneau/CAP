@@ -11,9 +11,12 @@
  * *********************************************************************/
 #include "TDatabasePDG.h"
 #include "RootTreeReader.hpp"
+using CAP::RootTreeReader;
+using CAP::Configuration;
+
 ClassImp(RootTreeReader);
 
-RootTreeReader::RootTreeReader(const TString & _name,
+RootTreeReader::RootTreeReader(const String & _name,
                                Configuration & _configuration,
                                vector<EventFilter*> & _eventFilters,
                                vector<ParticleFilter*> &_particleFilters)
@@ -89,7 +92,7 @@ void RootTreeReader::initialize()
   // the data be read from the folder identified by the dataInputPath parameter
   // and using IncludePattern and ExcludePattern to extract the data files to be
   // used in this particular analysis.
-  vector<TString> selectedFileNames;
+  VectorString  selectedFileNames;
   if (dataInputFileName.Contains("FOLDER"))
     {
     selectedFileNames = getSelectedFileNamesFrom(dataInputPath);
@@ -112,7 +115,7 @@ void RootTreeReader::initialize()
   if (lastFile > int(selectedFileNames.size())) lastFile  = selectedFileNames.size();
   for(int iFile=firstFile; iFile<lastFile; iFile++)
     {
-    TString fileName = selectedFileNames[iFile];
+    String fileName = selectedFileNames[iFile];
     if (!fileName.EndsWith(".root")) fileName += ".root";
     if (reportInfo(__FUNCTION__)) cout << "Adding input file:" << fileName << endl;
     inputRootChain->Add(fileName);

@@ -12,11 +12,12 @@
 #include "HistogramCollection.hpp"
 #include "ClosureIterator.hpp"
 #include "ClosureCalculator.hpp"
+using CAP::ClosureIterator;
 
 ClassImp(ClosureIterator);
 
 
-ClosureIterator::ClosureIterator(const TString & _name,
+ClosureIterator::ClosureIterator(const String & _name,
                                  Configuration & _configuration)
 :
 Task(_name,_configuration)
@@ -27,7 +28,7 @@ Task(_name,_configuration)
 void ClosureIterator::setDefaultConfiguration()
 {
   Task::setDefaultConfiguration();
-  TString none  = "none";
+  String none  = "none";
   setParameter("CreateHistograms",        true);
   setParameter("LoadHistograms",          true);
   setParameter("SaveHistograms",          true);
@@ -39,9 +40,9 @@ void ClosureIterator::setDefaultConfiguration()
 }
 
 
-TString  substitute(const TString inputString, const TString subString, const TString newSubString)
+String  substitute(const String inputString, const String subString, const String newSubString)
 {
-  TString outputString(inputString);
+  String outputString(inputString);
   outputString.ReplaceAll(subString,newSubString);
   return outputString;
 }
@@ -49,10 +50,10 @@ TString  substitute(const TString inputString, const TString subString, const TS
 
 void ClosureIterator::execute()
 {
-  TString none  = "none";
-  TString appendedString      = getValueString("AppendedString");
-  TString HistogramInputPath      = getValueString("HistogramInputPath");
-  TString HistogramOutputPath = getValueString("HistogramOutputPath");
+  String none  = "none";
+  String appendedString      = getValueString("AppendedString");
+  String HistogramInputPath      = getValueString("HistogramInputPath");
+  String HistogramOutputPath = getValueString("HistogramOutputPath");
   bool ForceHistogramsRewrite = getValueBool(  "ForceHistogramsRewrite");
   int selectedMethod          = getValueInt(   "SelectedMethod");
 
@@ -61,9 +62,9 @@ void ClosureIterator::execute()
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++)
     {
     Task & subTask   = *subTasks[iTask];
-    TString taskName = subTask.getName();
-    vector<TString> includedPatterns = getSelectedValues("IncludedPattern",none);
-    vector<TString> excludedPatterns = getSelectedValues("ExcludedPattern",none);
+    String taskName = subTask.getName();
+    VectorString  includedPatterns = getSelectedValues("IncludedPattern",none);
+    VectorString  excludedPatterns = getSelectedValues("ExcludedPattern",none);
     includedPatterns.push_back("XXXXX");
     includedPatterns.push_back("XXXXY");
     excludedPatterns.push_back("Reco");
@@ -79,7 +80,7 @@ void ClosureIterator::execute()
         cout << " k:" << k << "  Exclude: " << excludedPatterns[k] << endl;
         }
       }
-    vector<TString> allFilesToProcess = listFilesInDir(HistogramInputPath,includedPatterns,excludedPatterns);
+    VectorString  allFilesToProcess = listFilesInDir(HistogramInputPath,includedPatterns,excludedPatterns);
     int nFilesToProcess = allFilesToProcess.size();
     if (nFilesToProcess<1)
       {
@@ -112,9 +113,9 @@ void ClosureIterator::execute()
 
     for (int iFile=0; iFile<nFilesToProcess; iFile++)
       {
-      TString histoGeneratorFileName = removeRootExtension(allFilesToProcess[iFile]);
-      TString histoDetectorFileName  = substitute(histoGeneratorFileName, "_Gen", "_Reco");
-      TString histoClosureFileName   = substitute(histoGeneratorFileName, "_Gen", "_Closure");
+      String histoGeneratorFileName = removeRootExtension(allFilesToProcess[iFile]);
+      String histoDetectorFileName  = substitute(histoGeneratorFileName, "_Gen", "_Reco");
+      String histoClosureFileName   = substitute(histoGeneratorFileName, "_Gen", "_Closure");
 
       if (reportInfo(__FUNCTION__))
         {

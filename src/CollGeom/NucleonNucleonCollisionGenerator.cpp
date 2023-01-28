@@ -11,10 +11,11 @@
  * *********************************************************************/
 #include "NucleonNucleonCollisionGenerator.hpp"
 #include "TDatabasePDG.h"
+using CAP::NucleonNucleonCollisionGenerator;
 
 ClassImp(NucleonNucleonCollisionGenerator);
 
-NucleonNucleonCollisionGenerator::NucleonNucleonCollisionGenerator(const TString & _name,
+NucleonNucleonCollisionGenerator::NucleonNucleonCollisionGenerator(const String & _name,
                                                                    Configuration & _configuration,
                                                                    vector<EventFilter*>& _eventFilters,
                                                                    vector<ParticleFilter*>&_particleFilters)

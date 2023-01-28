@@ -10,14 +10,16 @@
  *
  * *********************************************************************/
 #include "GlobalDerivedHistos.hpp"
+using CAP::GlobalDerivedHistos;
+
 ClassImp(GlobalDerivedHistos);
 
 GlobalDerivedHistos::GlobalDerivedHistos(Task * _parent,
-                                         const TString & _name,
+                                         const String & _name,
                                          Configuration & _configuration,
                                          vector<ParticleFilter*> _particleFilters)
 :
-Histograms(_parent,_name,_configuration),
+HistogramGroup(_parent,_name,_configuration),
 particleFilters(_particleFilters),
 h_ptAvgInc(),
 h_ptAvgIncVsN()
@@ -31,9 +33,9 @@ void GlobalDerivedHistos::createHistograms()
   if ( reportStart(__FUNCTION__))
     { }
   Configuration & configuration = getConfiguration();
-  const TString & bn  = getName();
-  const TString & ptn = getParentTaskName();
-  const TString & ppn = getParentPathName();
+  const String & bn  = getName();
+  const String & ptn = getParentTaskName();
+  const String & ppn = getParentPathName();
   int nBins_n  = configuration.getValueInt(ppn,"nBins_n");
   double min_n = configuration.getValueDouble(ppn,"Min_n");
   double max_n = configuration.getValueDouble(ppn,"Max_n");
@@ -52,9 +54,9 @@ void GlobalDerivedHistos::createHistograms()
 
   for (unsigned int k1=0; k1<nParticleFilters; k1++)
     {
-    TString pfName1 = particleFilters[k1]->getName();
-    h_ptAvgInc.push_back(    createHistogram(makeName(bn,pfName1,"nWB",pfName1,"ptAvgIncl"),  1,       min_n,  max_n,"n","ptAvgIncl")  );
-    h_ptAvgIncVsN.push_back( createHistogram(makeName(bn,pfName1,"n",  pfName1,"ptAvgIncl"),  nBins_n, min_n,  max_n,"n","ptAvgIncl") );
+    String pfName1 = particleFilters[k1]->getName();
+    h_ptAvgInc.push_back(    createHistogram(createName(bn,pfName1,"nWB",pfName1,"ptAvgIncl"),  1,       min_n,  max_n,"n","ptAvgIncl")  );
+    h_ptAvgIncVsN.push_back( createHistogram(createName(bn,pfName1,"n",  pfName1,"ptAvgIncl"),  nBins_n, min_n,  max_n,"n","ptAvgIncl") );
     }
   if ( reportEnd(__FUNCTION__))
     { }
@@ -65,9 +67,9 @@ void GlobalDerivedHistos::loadHistograms(TFile * inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  const TString & bn  = getName();
-  const TString & ptn = getParentTaskName();
-  const TString & ppn = getParentPathName();
+  const String & bn  = getName();
+  const String & ptn = getParentTaskName();
+  const String & ppn = getParentPathName();
   unsigned int nParticleFilters = particleFilters.size();
   if (reportInfo(__FUNCTION__))
     {
@@ -79,9 +81,9 @@ void GlobalDerivedHistos::loadHistograms(TFile * inputFile)
 
   for (unsigned int k1=0; k1<nParticleFilters; k1++)
     {
-    TString pfName1 = particleFilters[k1]->getName();
-    h_ptAvgInc.push_back(    loadH1(inputFile, makeName(bn,pfName1,"nWB",pfName1,"ptAvgIncl")));
-    h_ptAvgIncVsN.push_back( loadH1(inputFile, makeName(bn,pfName1,"n",  pfName1,"ptAvgIncl")));
+    String pfName1 = particleFilters[k1]->getName();
+    h_ptAvgInc.push_back(    loadH1(inputFile, createName(bn,pfName1,"nWB",pfName1,"ptAvgIncl")));
+    h_ptAvgIncVsN.push_back( loadH1(inputFile, createName(bn,pfName1,"n",  pfName1,"ptAvgIncl")));
     }
   if ( reportEnd(__FUNCTION__))
     ;

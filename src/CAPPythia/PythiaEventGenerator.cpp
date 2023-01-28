@@ -11,10 +11,11 @@
  * *********************************************************************/
 
 #include "PythiaEventGenerator.hpp"
+using CAP::PythiaEventGenerator;
 
 ClassImp(PythiaEventGenerator);
 
-PythiaEventGenerator::PythiaEventGenerator(const TString & _name,
+PythiaEventGenerator::PythiaEventGenerator(const String & _name,
                                            Configuration & _configuration,
                                            vector<EventFilter*>&   _eventFilters,
                                            vector<ParticleFilter*>&_particleFilters)
@@ -103,7 +104,7 @@ void PythiaEventGenerator::initialize()
 
   if (setSeed)
     {
-    TString  seedValueString = "Random:seed = ";
+    String  seedValueString = "Random:seed = ";
     seedValueString += seedValue;
     pythia8->ReadString("Random:setSeed = on");
     pythia8->ReadString(seedValueString);
@@ -113,8 +114,8 @@ void PythiaEventGenerator::initialize()
     }
   for (int k=0; k<30; k++)
     {
-    TString key = "Option"; key += k;
-    TString  value = getValueString(key);
+    String key = "Option"; key += k;
+    String  value = getValueString(key);
     if (key.Contains("Option") && !value.Contains("none") )
       {
       cout << "  Pythia::" << key << "......: " << value << endl;
@@ -196,7 +197,7 @@ void PythiaEventGenerator::initialize()
     }
   if (dataOutputUsed )
     {
-    TString outputFileName = getValueString("DataOutputPath");
+    String outputFileName = getValueString("DataOutputPath");
     outputFileName += "/";
     outputFileName += getValueString("dataOutputFileName");
     outputFile = TFile::Open(outputFileName,"recreate");
@@ -313,7 +314,7 @@ void PythiaEventGenerator::generate(Particle * parentInteraction)
     }
   if (DataConversionToWac)
     {
-    TLorentzVector sourcePosition = parentInteraction->getPosition();
+    LorentzVector sourcePosition = parentInteraction->getPosition();
     double sourceX = sourcePosition.X();
     double sourceY = sourcePosition.Y();
     double sourceZ = sourcePosition.Z();

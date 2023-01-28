@@ -10,6 +10,7 @@
  *
  * *********************************************************************/
 #include "RapidityGenerator.hpp"
+using CAP::RapidityGenerator;
 
 ClassImp(RapidityGenerator);
 

@@ -10,10 +10,12 @@
  *
  * *********************************************************************/
 #include "ParticleDecayerTask.hpp"
+using CAP::ParticleDecayerTask;
+using CAP::String;
 
 ClassImp(ParticleDecayerTask);
 
-ParticleDecayerTask::ParticleDecayerTask(const TString & _name,
+ParticleDecayerTask::ParticleDecayerTask(const String & _name,
                                          Configuration &   _configuration,
                                          vector<EventFilter*>    _eventFilters,
                                          vector<ParticleFilter*> _particleFilters)
@@ -60,8 +62,8 @@ void ParticleDecayerTask::execute()
     if (parent.isLive() &&  !parent.isStable() && !parent.isInteraction() )
       {
       ParticleType   &    parentType      = parent.getType();
-      TLorentzVector &    parentMomentum  = parent.getMomentum();
-      TLorentzVector &    parentPosition  = parent.getPosition();
+      LorentzVector &    parentMomentum  = parent.getMomentum();
+      LorentzVector &    parentPosition  = parent.getPosition();
       ParticleDecayMode & decayMode       = parentType.generateDecayMode();
       int nChildren = decayMode.getNChildren();
       switch (nChildren)
@@ -75,10 +77,10 @@ void ParticleDecayerTask::execute()
           Particle * child2 = particleFactory->getNextObject();
           ParticleType   & childType1 = decayMode.getChildType(0); child1->setType(&childType1); child1->setLive(true);
           ParticleType   & childType2 = decayMode.getChildType(1); child2->setType(&childType2); child2->setLive(true);
-          TLorentzVector & p1 = child1->getMomentum();
-          TLorentzVector & r1 = child1->getPosition();
-          TLorentzVector & p2 = child2->getMomentum();
-          TLorentzVector & r2 = child2->getPosition();
+          LorentzVector & p1 = child1->getMomentum();
+          LorentzVector & r1 = child1->getPosition();
+          LorentzVector & p2 = child2->getMomentum();
+          LorentzVector & r2 = child2->getPosition();
           decayer.decay2(parentType,
                          parentMomentum,
                          parentPosition,
@@ -99,12 +101,12 @@ void ParticleDecayerTask::execute()
           ParticleType   & childType1 = decayMode.getChildType(0); child1->setType(&childType1); child1->setLive(true);
           ParticleType   & childType2 = decayMode.getChildType(1); child2->setType(&childType2); child2->setLive(true);
           ParticleType   & childType3 = decayMode.getChildType(2); child3->setType(&childType3); child3->setLive(true);
-          TLorentzVector & p1 = child1->getMomentum();
-          TLorentzVector & r1 = child1->getPosition();
-          TLorentzVector & p2 = child2->getMomentum();
-          TLorentzVector & r2 = child2->getPosition();
-          TLorentzVector & p3 = child3->getMomentum();
-          TLorentzVector & r3 = child3->getPosition();
+          LorentzVector & p1 = child1->getMomentum();
+          LorentzVector & r1 = child1->getPosition();
+          LorentzVector & p2 = child2->getMomentum();
+          LorentzVector & r2 = child2->getPosition();
+          LorentzVector & p3 = child3->getMomentum();
+          LorentzVector & r3 = child3->getPosition();
           decayer.decay3(parentType,
                          parentMomentum,
                          parentPosition,
@@ -128,14 +130,14 @@ void ParticleDecayerTask::execute()
 //  //        ParticleType   & childType2 = decayMode.getChildType(1); child2->setType(&childType2); child2->setLive(true);
 //  //        ParticleType   & childType3 = decayMode.getChildType(2); child3->setType(&childType3); child3->setLive(true);
 //  //        ParticleType   & childType4 = decayMode.getChildType(3); child4->setType(&childType4); child4->setLive(true);
-//  //        TLorentzVector & p1 = child1->getMomentum();
-//  //        TLorentzVector & r1 = child1->getPosition();
-//  //        TLorentzVector & p2 = child2->getMomentum();
-//  //        TLorentzVector & r2 = child2->getPosition();
-//  //        TLorentzVector & p3 = child3->getMomentum();
-//  //        TLorentzVector & r3 = child3->getPosition();
-//  //        TLorentzVector & p4 = child4->getMomentum();
-//  //        TLorentzVector & r4 = child4->getPosition();
+//  //        LorentzVector & p1 = child1->getMomentum();
+//  //        LorentzVector & r1 = child1->getPosition();
+//  //        LorentzVector & p2 = child2->getMomentum();
+//  //        LorentzVector & r2 = child2->getPosition();
+//  //        LorentzVector & p3 = child3->getMomentum();
+//  //        LorentzVector & r3 = child3->getPosition();
+//  //        LorentzVector & p4 = child4->getMomentum();
+//  //        LorentzVector & r4 = child4->getPosition();
 //  //        decayer.decay4(parentType,
 //  //                       parentMomentum,
 //  //                       parentPosition,

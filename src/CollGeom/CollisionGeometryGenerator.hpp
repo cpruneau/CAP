@@ -15,6 +15,10 @@
 #include "Configuration.hpp"
 #include "NucleusGenerator.hpp"
 
+namespace CAP
+{
+
+
 //!
 //!This class implements a simple heavy-ion collision geometry generator. The geometry of the nuclei is randomized and can be set to follow various density profile (see class NucleusGenerator).
 //!This collisions generator assumes the elementary objects (either partons or nucleons) travel on straight line trajectories parallel to the z-axis (the beam axis).
@@ -33,7 +37,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  CollisionGeometryGenerator(const TString & _name,
+  CollisionGeometryGenerator(const String & _name,
                              Configuration & _configuration,
                              vector<EventFilter*> & _eventFilters,
                              vector<ParticleFilter*>& _particleFilters);
@@ -117,5 +121,8 @@ protected:
 
   ClassDef(CollisionGeometryGenerator,0)
 };
+
+}
+
 
 #endif /* CAP__CollisionGeometryGenerator */

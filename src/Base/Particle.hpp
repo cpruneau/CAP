@@ -12,13 +12,16 @@
 
 #ifndef CAP__Particle
 #define CAP__Particle
-#include "TLorentzVector.h"
+
+#include "Aliases.hpp"
 #include "Factory.hpp"
 #include "ParticleType.hpp"
 #include "ParticleTypeCollection.hpp"
 
 using namespace std;
 
+namespace CAP
+{
 
 //!
 //!This class encapsualtes the notion of particles as encounted in particle and nuclear physics simulations of
@@ -131,8 +134,8 @@ public:
   //! @param live: whether the particle is considered "live" or "dead" (decayed)
   //!
   void set(ParticleType * type,
-           TLorentzVector & momentum,
-           TLorentzVector & position,
+           LorentzVector & momentum,
+           LorentzVector & position,
            bool live=true);
 
   //!
@@ -146,7 +149,7 @@ public:
   //! @param live: whether the particle is considered "live" or "dead" (decayed)
   //!
   void set(ParticleType * type,
-           TLorentzVector & momentum,
+           LorentzVector & momentum,
            vector<Particle*> parents,
            bool live=true);
 
@@ -162,14 +165,14 @@ public:
   void setPidPxPyPzE(long _Pid, double p_x, double p_y, double p_z, double p_e);
 
   //!
-  //! Get the 4-momentum of this particle (as a TLorentzVector reference)
+  //! Get the 4-momentum of this particle (as a LorentzVector reference)
   //!
-  const TLorentzVector & getMomentum() const { return momentum;  }
+  const LorentzVector & getMomentum() const { return momentum;  }
 
   //!
-  //! Get a changeable reference to the  4-momentum vector of this particle (as a TLorentzVector reference)
+  //! Get a changeable reference to the  4-momentum vector of this particle (as a LorentzVector reference)
   //!
-  TLorentzVector & getMomentum() { return momentum;  }
+  LorentzVector & getMomentum() { return momentum;  }
   
   //!
   //! Set the  4-momentum vector of this particle based on its four components.
@@ -178,24 +181,24 @@ public:
   {  momentum.SetPxPyPzE(p_x,p_y,p_z,p_e);  }
 
   //!
-  //! Set the  4-momentum vector of this particle based on a TLorentzVector object
+  //! Set the  4-momentum vector of this particle based on a LorentzVector object
   //!
-  void setPxPyPzE(const TLorentzVector & _momentum)           { momentum = _momentum;  }
+  void setPxPyPzE(const LorentzVector & _momentum)           { momentum = _momentum;  }
   
   //!
-  //! Set the  4-momentum vector of this particle based on a TLorentzVector object
+  //! Set the  4-momentum vector of this particle based on a LorentzVector object
   //!
-  void setMomentum(const TLorentzVector & _momentum)          { momentum = _momentum;  }
+  void setMomentum(const LorentzVector & _momentum)          { momentum = _momentum;  }
 
   //!
-  //! Get the  4-position  vector of this particle as a changeable TLorentzVector object
+  //! Get the  4-position  vector of this particle as a changeable LorentzVector object
   //!
-  TLorentzVector & getPosition()     { return position;  }
+  LorentzVector & getPosition()     { return position;  }
 
   //!
-  //! Get the  4-position  vector of this particle as a read only TLorentzVector object
+  //! Get the  4-position  vector of this particle as a read only LorentzVector object
   //!
-  const TLorentzVector & getPosition() const{ return position;  }
+  const LorentzVector & getPosition() const{ return position;  }
 
   //!
   //! Set the  4-position  vector of this particle based on its components x, y, z, and t.
@@ -203,14 +206,14 @@ public:
   void setXYZT(double x, double y, double z, double t)  { position.SetPxPyPzE(x,y,z,t); }
 
   //!
-  //! Set the  4-position  vector of this particle based on the given TLorentzVector.
+  //! Set the  4-position  vector of this particle based on the given LorentzVector.
   //!
-  void setXYZT(const TLorentzVector & _position)        { position = _position; }
+  void setXYZT(const LorentzVector & _position)        { position = _position; }
 
   //!
-  //! Set the  4-position  vector of this particle based on the given TLorentzVector.
+  //! Set the  4-position  vector of this particle based on the given LorentzVector.
   //!
-  void setPosition(const TLorentzVector & _position)    { position = _position; }
+  void setPosition(const LorentzVector & _position)    { position = _position; }
 
   //!
   //! Set the  4-position  vector of this particle based on the given radius (distance from origin), polar angle
@@ -225,16 +228,16 @@ public:
   void setRCosThetaPhiT(double _r, double _cosTheta, double _phi,double _t);
 
   //!
-  //! Shift the 4-position coordinates of origin of this particle by the given (TLorentzVector) vector.
+  //! Shift the 4-position coordinates of origin of this particle by the given (LorentzVector) vector.
   //!
-  void shift(const TLorentzVector & dX)                 { position += dX;}
+  void shift(const LorentzVector & dX)                 { position += dX;}
 
   //!
   //! Shift the 4-position coordinates of origin of this particle by the four given components.
   //!
   void shift(double dx, double dy, double dz, double dt)
   {
-  TLorentzVector dX(dx,dy,dz,dt);
+  LorentzVector dX(dx,dy,dz,dt);
   position += dX;
   }
 
@@ -411,7 +414,7 @@ public:
   //!
   //!Get the name of this particle (object)
   //!
-  TString getName()
+  String getName()
   {
   if (type)
     return type->getName();
@@ -561,8 +564,8 @@ public:
 
 protected:
 
-  TLorentzVector momentum;  //!< 4-momentum of the particle
-  TLorentzVector position;  //!< 4-position of the particle
+  LorentzVector momentum;  //!< 4-momentum of the particle
+  LorentzVector position;  //!< 4-position of the particle
   ParticleType * type;      //!< type of this particle
   vector<Particle*> parents;  //!< array containing the parents of this particle.
   vector<Particle*> children; //!< array containing the children of this particle.
@@ -599,5 +602,6 @@ public:
 
 };
 
+} // namespace CAP
 
 #endif /* CAP__Particle */

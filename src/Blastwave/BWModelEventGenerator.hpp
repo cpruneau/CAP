@@ -9,11 +9,15 @@
 #include "Task.hpp"
 #include "Configuration.hpp"
 
+namespace CAP
+{
+
+
 class BWModelEventGenerator : public Task
 {
 public:
 
-  BWModelEventGenerator(const TString & _name
+  BWModelEventGenerator(const String & _name
                         Configuration & _configuration);
   virtual ~BWModelEventGenerator();
   virtual void setDefaultConfiguration();
@@ -56,6 +60,8 @@ public:
 
     ClassDef(BWModelEventGenerator,0)
 };
+
+}
 
 #endif /* CAP_BWModelEventGenerator */
 

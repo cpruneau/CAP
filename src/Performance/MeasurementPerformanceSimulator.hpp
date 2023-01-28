@@ -12,8 +12,12 @@
 #ifndef CAP__MeasurementPerformanceSimulator
 #define CAP__MeasurementPerformanceSimulator
 #include "Task.hpp"
-#include "ParticleHistos.hpp"
+#include "ParticleSingleHistos.hpp"
 #include "ParticlePerformanceSimulator.hpp"
+
+namespace CAP
+{
+
 
 //!
 //! Task used to (fast) simulate the performance of measurement devices.
@@ -44,7 +48,7 @@ public:
   //! @param _particleFilters Array of particle efficiency  filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  MeasurementPerformanceSimulator(const TString & _name,
+  MeasurementPerformanceSimulator(const String & _name,
                                   Configuration & _configuration,
                                   vector<EventFilter*> & _eventFilters,
                                   vector<ParticleFilter*>& _particleFilters);
@@ -83,6 +87,8 @@ protected:
   unsigned int nParticleFilters;
   ClassDef(MeasurementPerformanceSimulator,0)
 };
+
+} // namespace CAP
 
 
 #endif /* CAP__MeasurementPerformanceSimulator */

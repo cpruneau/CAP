@@ -15,6 +15,7 @@
  */
 #include "TStyle.h"
 #include "BidimGaussFitter.hpp"
+using CAP::BidimGaussFitter;
 ClassImp(BidimGaussFitter);
 
 
@@ -149,7 +150,7 @@ double Global2DFitFunction(double *x, double *par)
 }
 
 
-BidimGaussFitter::BidimGaussFitter(const TString & _name,
+BidimGaussFitter::BidimGaussFitter(const String & _name,
                                    Configuration &     _configuration,
                                    Severity                  _requiredLevel)
 :
@@ -338,7 +339,7 @@ void BidimGaussFitter::projectHistoAndFit(TH2 *dataHist,
                                           const BidimGaussFitConfiguration & fitConfig,
                                           Configuration & label)
 {
-  TString baseName = dataHist->GetName();
+  String baseName = dataHist->GetName();
   baseName += label;
 
 //  int xLowBin  = dataHist->GetXaxis()->FindBin( xLow);
@@ -353,7 +354,7 @@ void BidimGaussFitter::projectHistoAndFit(TH2 *dataHist,
 //  double yScalingFactor = 1.0/double(xHighBin-xLowBin+1);
 //  double xScalingFactor = 1.0/double(yHighBin-yLowBin+1);
 //  vector<TH1*>    histograms;
-//  vector<TString> legends;
+//  VectorString  legends;
 //  legends.push_back(TString("Data"));
 //  legends.push_back(TString("Fit"));
 //  //legends.push_back(TString("Data/Fit"));
@@ -415,7 +416,7 @@ void BidimGaussFitter::projectFlowComponents(TH2 *dataHist,
   // save/cache the flow parameters
   double * flowParsCache = new double[11];
   for (int iPar=0; iPar<11; iPar++) flowParsCache[iPar] = f->GetParameter(first+iPar);
-  TString baseName = dataHist->GetName();
+  String baseName = dataHist->GetName();
   baseName += label;
   int xLowBin  = dataHist->GetXaxis()->FindBin( xLow);
   int xHighBin = dataHist->GetXaxis()->FindBin( xHigh);
@@ -438,7 +439,7 @@ void BidimGaussFitter::projectFlowComponents(TH2 *dataHist,
   for (int iPar = 0; iPar<7; iPar++)
   {
   setParameters(f, 0, 11, 0.0); f->SetParameter(iPar,flowParsCache[iPar]);
-  TString suffix = "_a";
+  String suffix = "_a";
   suffix += iPar;
   suffix += "_";
   flowFitHist2D[iHist] = cloneAndSetWithFct(dataHist,f,baseName+suffix+"_2D");
@@ -488,7 +489,7 @@ TH2* BidimGaussFitter::subtractEtaSides(TH2* dataHist,
                                         TF2 *flowFitFct,
                                         const BidimGaussFitConfiguration & fitConfig)
 {
-  TString baseName = dataHist->GetName();
+  String baseName = dataHist->GetName();
   int xLowBin  = dataHist->GetXaxis()->FindBin(-fitConfig.deltaEtaOuterLimit);
   int xHighBin = dataHist->GetXaxis()->FindBin( fitConfig.deltaEtaOuterLimit);
   int yLowBin  = dataHist->GetYaxis()->FindBin( fitConfig.deltaPhiLowLimit);
@@ -1307,8 +1308,8 @@ void BidimGaussFitter::divideByHistoErrors(const TH2* numerator, const TH2* deno
 // residualsNorm:  residuals/dataErrors
 // residualsRatio: residuals/data
 // ========================================================================================
-void BidimGaussFitter::calculateResidualHistos(const TString & baseName,
-                                               const TString & baseTitle,
+void BidimGaussFitter::calculateResidualHistos(const String & baseName,
+                                               const String & baseTitle,
                                                TH2* data,
                                                TH2* fit,
                                                TH2*& residuals,
