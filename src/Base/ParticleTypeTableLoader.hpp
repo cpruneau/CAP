@@ -13,6 +13,12 @@
 #define CAP__ParticleTypeTableLoader
 #include "Task.hpp"
 #include "ParticleType.hpp"
+
+namespace CAP
+{
+
+
+
 //!
 //! Task used for the single purpose of loading a particle type table. The particle type and properties are loaded from a specially formatted file.
 //! The task can optionally output a copy or reduced copy of the file to a location and file name to a user specified location.
@@ -39,7 +45,7 @@ public:
   //! @param _configuration Configuration used to run this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  ParticleTypeTableLoader(const TString & _name,
+  ParticleTypeTableLoader(const String & _name,
                           Configuration & _configuration);
   
   //!
@@ -69,5 +75,6 @@ public:
   ClassDef(ParticleTypeTableLoader,0)
 };
 
+}
 
 #endif /* CAP__ParticleTypeTableLoader */

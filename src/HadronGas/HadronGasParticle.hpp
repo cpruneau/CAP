@@ -2,6 +2,10 @@
 #define CAP_HadronGasParticle
 #include "ParticleType.hpp"
 
+namespace CAP
+{
+
+
 //!
 //!Thermodynamic properties (basedon hadron gas model) of the hadron species associated with this instance i.e., particle type pointed at by the variable "type".
 //!The pointer to ParticleType must be set explicitly after instantiation of this class with the setType() method.
@@ -355,6 +359,8 @@ public:
 
   ClassDef(HadronGasParticle,0)
 };
+
+} // namespace CAP
 
 #endif  // SRC_Hadron_H_
 

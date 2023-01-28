@@ -10,6 +10,8 @@
  *
  * *********************************************************************/
 #include "NuDynPlotter.hpp"
+using CAP::NuDynPlotter;
+
 ClassImp(NuDynPlotter);
 
 NuDynPlotter::NuDynPlotter()
@@ -21,17 +23,17 @@ NuDynPlotter::~NuDynPlotter()
 {
 }
 
-void NuDynPlotter::makePlots(const TString & canvasNameBase,
+void NuDynPlotter::makePlots(const String & canvasNameBase,
                              NuDynHistos * nuDynHistos,
                              NuDynDerivedHistos * nuDynDerivedHistos,
                              CanvasConfiguration & canvasConfiguration,
                              GraphConfiguration  ** graphConfigurations)
 {
   TH1 ** histograms = new TH1* [100];
-  TString ** histTitles = new TString * [100];
+  String ** histTitles = new String * [100];
 
-  TString histName;
-  TString histTitle;
+  String histName;
+  String histTitle;
 
   canvasConfiguration->setAxes(CanvasConfiguration::Linear);
   //canvasConfiguration->setAxes(CanvasConfiguration::LogY);
@@ -99,7 +101,7 @@ void NuDynPlotter::makePlots(const TString & canvasNameBase,
       histograms[index12] = nuDynDerivedHistos->h_F2_vsMult[index12]; histTitles[index12] = new TString(histTitle);
       if (!histograms[index12])
         {
-        cout << "<F> Histograms not loaded!!!! ABORT!!!" << endl;
+        cout << "<F> HistogramGroup not loaded!!!! ABORT!!!" << endl;
         return;
         }
       nGraphs++;
@@ -126,7 +128,7 @@ void NuDynPlotter::makePlots(const TString & canvasNameBase,
        histograms[index12] = nuDynDerivedHistos->h_R2_vsMult[index12]; histTitles[index12] = new TString(histTitle);
        if (!histograms[index12])
          {
-         cout << "<F> Histograms not loaded!!!! ABORT!!!" << endl;
+         cout << "<F> HistogramGroup not loaded!!!! ABORT!!!" << endl;
          return;
          }
        nGraphs++;
@@ -158,7 +160,7 @@ void NuDynPlotter::makePlots(const TString & canvasNameBase,
 //        histograms[index123] = nuDynHistos->h_f3_vsMult[index123]; histTitles[index123] = new TString(histTitle);
 //        if (!histograms[index123])
 //          {
-//          cout << "<F> Histograms not loaded!!!! ABORT!!!" << endl;
+//          cout << "<F> HistogramGroup not loaded!!!! ABORT!!!" << endl;
 //          return;
 //          }
 //        nGraphs++;
@@ -190,7 +192,7 @@ void NuDynPlotter::makePlots(const TString & canvasNameBase,
          histograms[index123] = nuDynDerivedHistos->h_F3_vsMult[index123]; histTitles[index123] = new TString(histTitle);
          if (!histograms[index123])
            {
-           cout << "<F> Histograms not loaded!!!! ABORT!!!" << endl;
+           cout << "<F> HistogramGroup not loaded!!!! ABORT!!!" << endl;
            return;
            }
          nGraphs++;
@@ -221,7 +223,7 @@ void NuDynPlotter::makePlots(const TString & canvasNameBase,
           histograms[index123] = nuDynDerivedHistos->h_R3_vsMult[index123]; histTitles[index123] = new TString(histTitle);
           if (!histograms[index123])
             {
-            cout << "<F> Histograms not loaded!!!! ABORT!!!" << endl;
+            cout << "<F> HistogramGroup not loaded!!!! ABORT!!!" << endl;
             return;
             }
           nGraphs++;
@@ -256,7 +258,7 @@ void NuDynPlotter::makePlots(const TString & canvasNameBase,
           histograms[index1234] = nuDynHistos->h_f4_vsMult[index1234]; histTitles[index1234] = new TString(histTitle);
           if (!histograms[index1234])
           {
-          cout << "<F> Histograms not loaded!!!! ABORT!!!" << endl;
+          cout << "<F> HistogramGroup not loaded!!!! ABORT!!!" << endl;
           return;
           }
           nGraphs++;
@@ -292,7 +294,7 @@ void NuDynPlotter::makePlots(const TString & canvasNameBase,
           histograms[index1234] = nuDynDerivedHistos->h_F4_vsMult[index1234]; histTitles[index1234] = new TString(histTitle);
           if (!histograms[index1234])
           {
-          cout << "<F> Histograms not loaded!!!! ABORT!!!" << endl;
+          cout << "<F> HistogramGroup not loaded!!!! ABORT!!!" << endl;
           return;
           }
           nGraphs++;
@@ -328,7 +330,7 @@ void NuDynPlotter::makePlots(const TString & canvasNameBase,
           histograms[index1234] = nuDynDerivedHistos->h_R4_vsMult[index1234]; histTitles[index1234] = new TString(histTitle);
           if (!histograms[index1234])
           {
-          cout << "<F> Histograms not loaded!!!! ABORT!!!" << endl;
+          cout << "<F> HistogramGroup not loaded!!!! ABORT!!!" << endl;
           return;
           }
           nGraphs++;
@@ -346,20 +348,20 @@ void NuDynPlotter::makePlots(const TString & canvasNameBase,
 
 }
 
-void NuDynPlotter::makeComparisonPlots(const TString & canvasNameBase,
+void NuDynPlotter::makeComparisonPlots(const String & canvasNameBase,
                                        CanvasConfiguration & canvasConfiguration,
                                        int nGraphs,
                                        NuDynHistos ** nuDynHistos,
                                        NuDynDerivedHistos ** nuDynDerivedHistos,
-                                       TString ** histLabels,
+                                       String ** histLabels,
                                        GraphConfiguration  ** graphConfigurations)
 {
   TH1 ** histograms = new TH1* [100];
-  TString ** histTitles = new TString * [100];
+  String ** histTitles = new String * [100];
 
-  TString histName;
-  TString histTitleBase;
-  TString histTitle;
+  String histName;
+  String histTitleBase;
+  String histTitle;
 
   canvasConfiguration->setAxes(CanvasConfiguration::Linear);
   //canvasConfiguration->setAxes(CanvasConfiguration::LogY);
@@ -373,7 +375,7 @@ int index1234 = nuDynHistos[0]->index4(0,1,2,3);
     histograms[i1] = nuDynHistos[i1]->h_f4_vsMult[index1234];
     if (!histograms[i1])
         {
-        cout << "<F> Histograms not loaded!!!! ABORT!!!" << endl;
+        cout << "<F> HistogramGroup not loaded!!!! ABORT!!!" << endl;
         return;
         }
     histTitles[i1] = new TString(histTitle);
@@ -394,7 +396,7 @@ int index1234 = nuDynHistos[0]->index4(0,1,2,3);
      histograms[i1] = nuDynDerivedHistos[i1]->h_F4_vsMult[index1234]; histTitles[i1] = new TString(histTitle);
      if (!histograms[i1])
        {
-       cout << "<F> Histograms not loaded!!!! ABORT!!!" << endl;
+       cout << "<F> HistogramGroup not loaded!!!! ABORT!!!" << endl;
        return;
        }
      }
@@ -412,7 +414,7 @@ int index1234 = nuDynHistos[0]->index4(0,1,2,3);
     histograms[i1] = nuDynDerivedHistos[i1]->h_R4_vsMult[index1234]; histTitles[i1] = new TString(histTitle);
     if (!histograms[i1])
       {
-      cout << "<F> Histograms not loaded!!!! ABORT!!!" << endl;
+      cout << "<F> HistogramGroup not loaded!!!! ABORT!!!" << endl;
       return;
       }
     }
@@ -426,20 +428,20 @@ int index1234 = nuDynHistos[0]->index4(0,1,2,3);
 
 }
 
-void NuDynPlotter::makeNudynComparisonPlots(const TString & canvasNameBase,
+void NuDynPlotter::makeNudynComparisonPlots(const String & canvasNameBase,
                                             CanvasConfiguration & canvasConfiguration,
                                             int nGraphs,
                                             NuDynHistos ** nuDynHistos,
                                             NuDynDerivedHistos ** nuDynDerivedHistos,
-                                            TString ** histLabels,
+                                            String ** histLabels,
                                             GraphConfiguration  ** graphConfigurations)
 {
   TH1 ** histograms = new TH1* [100];
-  TString ** histTitles = new TString * [100];
+  String ** histTitles = new String * [100];
 
-  TString histName;
-  TString histTitleBase;
-  TString histTitle;
+  String histName;
+  String histTitleBase;
+  String histTitle;
 
   canvasConfiguration->setAxes(CanvasConfiguration::Linear);
   //canvasConfiguration->setAxes(CanvasConfiguration::LogY);
@@ -453,7 +455,7 @@ int index12= nuDynHistos[0]->index2(0,1);
     histograms[i1] = nuDynDerivedHistos[i1]->h_nudyn_vsMult[index12];
     if (!histograms[i1])
         {
-        cout << "<F> Histograms not loaded!!!! ABORT!!!" << endl;
+        cout << "<F> HistogramGroup not loaded!!!! ABORT!!!" << endl;
         return;
         }
     histTitles[i1] = new TString(histTitle);

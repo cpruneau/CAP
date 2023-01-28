@@ -6,10 +6,12 @@
 #include "BWModelEventGenerator.hpp"
 #include <TParticle.h>
 #include "Particle.hpp"
+using CAP::BWModelEventGenerator;
+
 ClassImp(BWModelEventGenerator);
 
 
-BWModelEventGenerator::BWModelEventGenerator(const TString & _name
+BWModelEventGenerator::BWModelEventGenerator(const String & _name
                                              Configuration & _configuration)
 :
 Task(),

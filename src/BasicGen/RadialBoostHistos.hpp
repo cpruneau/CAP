@@ -11,16 +11,18 @@
  * *********************************************************************/
 #ifndef CAP__RadialBoostHistos
 #define CAP__RadialBoostHistos
-#include "Histograms.hpp"
+#include "HistogramGroup.hpp"
 #include "Configuration.hpp"
 
+namespace CAP
+{
 
-class RadialBoostHistos : public Histograms
+class RadialBoostHistos : public HistogramGroup
 {
 public:
 
   RadialBoostHistos(Task * _partial,
-                    const TString & _name,
+                    const String & _name,
                     Configuration & _configuration);
   virtual ~RadialBoostHistos() {}
   virtual void createHistograms();
@@ -28,7 +30,7 @@ public:
   virtual void fill(double x, double y, double r, double phi, double beta, double weight);
 
   ////////////////////////////////////////////////////////////////////////////
-  // Data Members - Histograms
+  // Data Members - HistogramGroup
   ////////////////////////////////////////////////////////////////////////////
   TH1 * h_phi;
   TH1 * h_r;
@@ -38,6 +40,8 @@ public:
   ClassDef(RadialBoostHistos,0)
 
 };
+
+}
 
 #endif /* CAP__RadialBoostHistos  */
 

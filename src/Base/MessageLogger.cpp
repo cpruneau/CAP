@@ -10,20 +10,22 @@
  *
  * *********************************************************************/
 #include "MessageLogger.hpp"
+using CAP::MessageLogger;
+using CAP::String;
 
 ClassImp(MessageLogger);
 
-TString MessageLogger::unknownSeverityName   = "<Unknown>";
-TString MessageLogger::traceSeverityName     = "<Trace>";;
-TString MessageLogger::startSeverityString   = "<Start>";
-TString MessageLogger::endSeverityString     = "<End>";
-TString MessageLogger::debugSeverityName     = "<Debug>";
-TString MessageLogger::infoSeverityName      = "<Info>";
-TString MessageLogger::warningSeverityName   = "<Warning>";
-TString MessageLogger::errorSeverityName     = "<Error>";
-TString MessageLogger::fatalSeverityName     = "<Fatal>";
+String MessageLogger::unknownSeverityName   = "<Unknown>";
+String MessageLogger::traceSeverityName     = "<Trace>";;
+String MessageLogger::startSeverityString   = "<Start>";
+String MessageLogger::endSeverityString     = "<End>";
+String MessageLogger::debugSeverityName     = "<Debug>";
+String MessageLogger::infoSeverityName      = "<Info>";
+String MessageLogger::warningSeverityName   = "<Warning>";
+String MessageLogger::errorSeverityName     = "<Error>";
+String MessageLogger::fatalSeverityName     = "<Fatal>";
 
-bool MessageLogger::report(Severity severity, const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output) const
+bool MessageLogger::report(Severity severity, const String &  className, const String &  instanceName, const String &  fctName, std::ostream & output) const
 {
   if (reportLevel<=severity)
     {
@@ -38,7 +40,7 @@ bool MessageLogger::report(Severity severity, const TString &  className, const 
         case Error:    output << errorSeverityName; break;
         case Fatal:    output << fatalSeverityName; break;
       }
-    cout << "  " << className << "[" << instanceName << "]::" << fctName << ": ";
+    std::cout << "  " << className << "[" << instanceName << "]::" << fctName << ": ";
     return true;
     }
   else

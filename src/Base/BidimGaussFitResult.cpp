@@ -13,8 +13,8 @@
  *************************************************************************/
 
 #include "BidimGaussFitResult.hpp"
+using CAP::BidimGaussFitResult;
 ClassImp(BidimGaussFitResult);
-
 
 BidimGaussFitResult::BidimGaussFitResult()
 :

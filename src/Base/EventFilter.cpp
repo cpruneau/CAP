@@ -10,6 +10,9 @@
  *
  * *********************************************************************/
 #include "EventFilter.hpp"
+using CAP::Filter;
+using CAP::Event;
+using CAP::EventFilter;
 
 ClassImp(Filter<Event>);
 
@@ -144,11 +147,11 @@ vector<EventFilter*> EventFilter::createImpactParameterFilters(vector<double> & 
     {
     double low  = bounds[k];
     double high = bounds[k+1];
-    TString name = "b";
+    String name = "b";
     name += int(1000*low);
     name +="To";
     name += int(1000*high);
-    TString title;
+    String title;
     title = low;
     title += "#LT b <";
     title += high;
@@ -172,11 +175,11 @@ vector<EventFilter*> EventFilter::createV0MultiplicityFilters(vector<double> & b
     {
     double low  = bounds[k];
     double high = bounds[k+1];
-    TString name = "b";
+    String name = "b";
     name += int(1000*low);
     name +="To";
     name += int(1000*high);
-    TString title;
+    String title;
     title = low;
     title += "#LT b <";
     title += high;
@@ -201,11 +204,11 @@ vector<EventFilter*> EventFilter::createTpcMultiplicityFilters(vector<double> & 
     {
     double low  = bounds[k];
     double high = bounds[k+1];
-    TString name = "b";
+    String name = "b";
     name += int(1000*low);
     name +="To";
     name += int(1000*high);
-    TString title;
+    String title;
     title = low;
     title += "#LT b <";
     title += high;

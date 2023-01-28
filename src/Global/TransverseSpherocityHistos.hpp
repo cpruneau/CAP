@@ -12,15 +12,17 @@
 
 #ifndef CAP__TransverseSpherocityHistos
 #define CAP__TransverseSpherocityHistos
-#include "Histograms.hpp"
-#include "Configuration.hpp"
+#include "HistogramGroup.hpp"
 #include "ParticleFilter.hpp"
 
-class TransverseSpherocityHistos: public Histograms
+namespace CAP
+{
+
+class TransverseSpherocityHistos: public HistogramGroup
 {
 public:
   TransverseSpherocityHistos(Task * _parent,
-                             const TString & _name,
+                             const String & _name,
                              Configuration & _configuration,
                              vector<ParticleFilter*> & _particleFilters);
   ~TransverseSpherocityHistos() {}
@@ -42,5 +44,8 @@ protected:
   
   ClassDef(TransverseSpherocityHistos, 1);
 };
+
+} // namespace CAP
+
 
 #endif

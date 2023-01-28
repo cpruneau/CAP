@@ -10,9 +10,11 @@
  *
  * *********************************************************************/
 #include "UrqmdEventReader.hpp"
+using CAP::UrqmdEventReader;
+
 ClassImp(UrqmdEventReader);
 
-UrqmdEventReader::UrqmdEventReader(const TString & _name,
+UrqmdEventReader::UrqmdEventReader(const String & _name,
                                    Configuration & _configuration,
                                    vector<EventFilter*> & _eventFilters,
                                    vector<ParticleFilter*> & _particleFilters)

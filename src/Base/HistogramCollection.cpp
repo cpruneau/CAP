@@ -10,14 +10,17 @@
  *
  * *********************************************************************/
 #include "HistogramCollection.hpp"
-#include "TLorentzVector.h"
+
 #include "TKey.h"
 
-ClassImp(Collection<TH1>);
+using CAP::HistogramCollection;
+using CAP::String;
+
+ClassImp(CAP::Collection<TH1>);
 
 ClassImp(HistogramCollection);
 
-HistogramCollection::HistogramCollection(const TString & _name,
+HistogramCollection::HistogramCollection(const String & _name,
                                          Severity  _debugLevel)
 :
 Collection(_name, true, _debugLevel),
@@ -70,26 +73,6 @@ HistogramCollection::~HistogramCollection()
 {   }
 
 
-//!
-// Set Default Style for Plots
-//!
-void HistogramCollection::setDefaultOptions(bool color)
-{
-
-  if (reportStart(__FUNCTION__))
-    ;
-  if (color)
-    gStyle->SetPalette(1,0);
-  else
-    gStyle->SetPalette(7,0);
-  gStyle->SetOptStat(0);
-  gStyle->SetOptFit(0);
-  gStyle->SetOptDate(0);
-  gStyle->SetOptTitle(0);
-  gStyle->SetPadBorderMode(0);
-  if (reportEnd(__FUNCTION__))
-    ;
-}
 
 //!
 //! Reset all histograms of this collection
@@ -107,10 +90,10 @@ void HistogramCollection::reset()
 //!
 //! Create 1D histogram
 //!
-TH1 * HistogramCollection::createHistogram(const TString & name,
+TH1 * HistogramCollection::createHistogram(const String & name,
                                            int n, double min_x, double max_x,
-                                           const TString & title_x,
-                                           const TString & title_y)
+                                           const String & title_x,
+                                           const String & title_y)
 {
 
   if (reportDebug(__FUNCTION__))
@@ -126,10 +109,10 @@ TH1 * HistogramCollection::createHistogram(const TString & name,
 //!
 //! Create 1D histogram
 //!
-TH1 * HistogramCollection::createHistogram(const TString & name,
+TH1 * HistogramCollection::createHistogram(const String & name,
                                            int n, double * bins,
-                                           const TString & title_x,
-                                           const TString & title_y)
+                                           const String & title_x,
+                                           const String & title_y)
 {
 
   if (reportDebug(__FUNCTION__)) cout << "Creating  1D histo " << name << " with " << n << " non uniform nBins:" << endl;
@@ -145,12 +128,12 @@ TH1 * HistogramCollection::createHistogram(const TString & name,
 // Create 2D histogram
 //!
 
-TH2 * HistogramCollection::createHistogram(const TString & name,
+TH2 * HistogramCollection::createHistogram(const String & name,
                                            int n_x, double min_x, double max_x,
                                            int n_y, double min_y, double max_y,
-                                           const TString & title_x,
-                                           const TString & title_y,
-                                           const TString & title_z )
+                                           const String & title_x,
+                                           const String & title_y,
+                                           const String & title_z )
 {
 
   if (reportDebug(__FUNCTION__))
@@ -167,11 +150,11 @@ TH2 * HistogramCollection::createHistogram(const TString & name,
 //!
 // Create 2D histogram
 //!
-TH2 * HistogramCollection::createHistogram(const TString & name,
+TH2 * HistogramCollection::createHistogram(const String & name,
                                            int n_x, double* xbins, int n_y, double min_y, double max_y,
-                                           const TString & title_x,
-                                           const TString & title_y,
-                                           const TString & title_z)
+                                           const String & title_x,
+                                           const String & title_y,
+                                           const String & title_z)
 
 {
 
@@ -190,14 +173,14 @@ TH2 * HistogramCollection::createHistogram(const TString & name,
 //!
 // Create 3D histogram
 //!
-TH3 * HistogramCollection::createHistogram(const TString & name,
+TH3 * HistogramCollection::createHistogram(const String & name,
                                            int n_x, double min_x, double max_x,
                                            int n_y, double min_y, double max_y,
                                            int n_z, double min_z, double max_z,
-                                           const TString & title_x,
-                                           const TString & title_y,
-                                           const TString & title_z,
-                                           const TString & title_w = "w")
+                                           const String & title_x,
+                                           const String & title_y,
+                                           const String & title_z,
+                                           const String & title_w = "w")
 
 {
 
@@ -220,10 +203,10 @@ TH3 * HistogramCollection::createHistogram(const TString & name,
 //!
 // Create 1D profile histogram
 //!
-TProfile * HistogramCollection::createProfile(const TString & name,
+TProfile * HistogramCollection::createProfile(const String & name,
                                               int n_x,double min_x,double max_x,
-                                              const TString & title_x,
-                                              const TString & title_y)
+                                              const String & title_x,
+                                              const String & title_y)
 {
 
   if (reportDebug(__FUNCTION__)) cout << "Creating  1D profile " << name << " n_x:" << n_x << " min_x:" << min_x << " max_x:" << max_x << endl;
@@ -237,10 +220,10 @@ TProfile * HistogramCollection::createProfile(const TString & name,
 //!
 // Create 1D profile histogram
 //!
-TProfile * HistogramCollection::createProfile(const TString & name,
+TProfile * HistogramCollection::createProfile(const String & name,
                                               int n_x,  double* bins,
-                                              const TString & title_x,
-                                              const TString & title_y)
+                                              const String & title_x,
+                                              const String & title_y)
 {
 
   if (reportDebug(__FUNCTION__))
@@ -255,12 +238,12 @@ TProfile * HistogramCollection::createProfile(const TString & name,
 //!
 // Create 2D profile histogram
 //!
-TProfile2D * HistogramCollection::createProfile(const TString & name,
+TProfile2D * HistogramCollection::createProfile(const String & name,
                                                 int n_x, double min_x, double max_x,
                                                 int n_y, double min_y, double max_y,
-                                                const TString & title_x,
-                                                const TString & title_y,
-                                                const TString & title_z)
+                                                const String & title_x,
+                                                const String & title_y,
+                                                const String & title_z)
 {
 
   if (reportDebug(__FUNCTION__))
@@ -277,7 +260,7 @@ TProfile2D * HistogramCollection::createProfile(const TString & name,
 }
 
 //!
-// Add Histograms to an external list
+// Add HistogramGroup to an external list
 //!
 void HistogramCollection::addHistogramsToExtList(TList *list)
 {
@@ -292,7 +275,7 @@ void HistogramCollection::addHistogramsToExtList(TList *list)
 }
 
 //!
-// Save Histograms to file
+// Save HistogramGroup to file
 //!
 void HistogramCollection::saveHistograms(TFile * outputFile)
 {
@@ -329,128 +312,6 @@ void HistogramCollection::scale(double factor)
     }
   if (reportEnd(__FUNCTION__))
     { }
-}
-
-void HistogramCollection::setHistoProperties(TH1 * h, const GraphConfiguration & graphConfiguration)
-{
-  if (reportDebug(__FUNCTION__))
-    cout << "Setting properties of histo: " << h->GetTitle() << endl;
-  h->SetLineColor(graphConfiguration .getValueInt(getName(),"lineColor"));
-  h->SetLineStyle(graphConfiguration.getValueInt(getName(),"lineStyle"));
-  h->SetLineWidth(graphConfiguration.getValueInt(getName(),"lineWidth"));
-  TAxis * xAxis = (TAxis *) h->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.getValueDouble(getName(),"nXDivisions"));
-  xAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"xTitleSize"));
-  xAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"xTitleOffset"));
-  //xAxis->SetTitle(graphConfiguration.xTitle);
-  xAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"xLabelSize"));
-  xAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"xLabelOffset"));
-  TAxis * yAxis = (TAxis *) h->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nYDivisions"));
-  yAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"yTitleSize"));
-  yAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"yTitleOffset"));
-  yAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"yLabelSize"));
-  yAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"yLabelOffset"));
-  //yAxis->SetTitle(graphConfiguration.yTitle);
-  if (h->IsA() == TH2::Class()  || h->IsA() == TH2F::Class() || h->IsA() == TH2F::Class() )
-    {
-    if (reportDebug(__FUNCTION__)) cout << "Setting options as 2D histo: " << h->GetTitle() << endl;
-    TAxis * zAxis = (TAxis *) h->GetZaxis();
-    zAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nZDivisions"));
-    zAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"zTitleSize"));
-    zAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"zTitleOffset"));
-    zAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"zLabelSize"));
-    zAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"zLabelOffset"));
-    }
-  if (reportEnd(__FUNCTION__))
-    ;
-}
-
-void HistogramCollection::setHistoProperties(TH2 * h, const GraphConfiguration & graphConfiguration)
-{
-  if (reportDebug(__FUNCTION__))
-    cout << endl << "Setting options of 2D histo: " << h->GetTitle() << endl;
-  h->SetLineColor(graphConfiguration .getValueInt(getName(),"lineColor"));
-  h->SetLineStyle(graphConfiguration.getValueInt(getName(),"lineStyle"));
-  h->SetLineWidth(graphConfiguration.getValueInt(getName(),"lineWidth"));
-  TAxis * xAxis = (TAxis *) h->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.getValueDouble(getName(),"nXDivisions"));
-  xAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"xTitleSize"));
-  xAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"xTitleOffset"));
-  xAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"xLabelSize"));
-  xAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"xLabelOffset"));
-  TAxis * yAxis = (TAxis *) h->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nYDivisions"));
-  yAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"yTitleSize"));
-  yAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"yTitleOffset"));
-  yAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"yLabelSize"));
-  yAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"yLabelOffset"));
-
-  if (h->IsA() == TH2::Class() || h->IsA() == TH2F::Class() || h->IsA() == TH2D::Class())
-    {
-    TAxis * zAxis = (TAxis *) h->GetZaxis();
-    zAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nZDivisions"));
-    zAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"zTitleSize"));
-    zAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"zTitleOffset"));
-    zAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"zLabelSize"));
-    zAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"zLabelOffset"));
-    }
-  if (reportEnd(__FUNCTION__))
-    ;
-}
-
-void HistogramCollection::setHistoProperties(TH1 * h, const GraphConfiguration & graphConfiguration, const TString & xTitle, const TString & yTitle)
-{
-  if (reportDebug(__FUNCTION__))
-    cout << endl << "Setting options of histo: " << h->GetTitle() << endl;
-  h->SetLineColor(graphConfiguration .getValueInt(getName(),"lineColor"));
-  h->SetLineStyle(graphConfiguration.getValueInt(getName(),"lineStyle"));
-  h->SetLineWidth(graphConfiguration.getValueInt(getName(),"lineWidth"));
-  TAxis * xAxis = (TAxis *) h->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.getValueDouble(getName(),"nXDivisions"));
-  xAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"xTitleSize"));
-  xAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"xTitleOffset"));
-  xAxis->SetTitle(xTitle);
-  xAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"xLabelSize"));
-  xAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"xLabelOffset"));
-  TAxis * yAxis = (TAxis *) h->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nYDivisions"));
-  yAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"yTitleSize"));
-  yAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"yTitleOffset"));
-  yAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"yLabelSize"));
-  yAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"yLabelOffset"));
-  yAxis->SetTitle(yTitle);
-  if (reportEnd(__FUNCTION__))
-    ;
-}
-
-void HistogramCollection::setHistoProperties(TH2 * h, const GraphConfiguration & graphConfiguration, const TString & xTitle, const TString & yTitle, const TString & zTitle)
-{
-  if (reportDebug(__FUNCTION__))
-    cout << endl << "Setting options of histo: " << h->GetTitle() << endl;
-  TAxis * xAxis = (TAxis *) h->GetXaxis();
-  xAxis->SetNdivisions(graphConfiguration.getValueDouble(getName(),"nXDivisions"));
-  xAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"xTitleSize"));
-  xAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"xTitleOffset"));
-  xAxis->SetTitle(xTitle);
-  xAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"xLabelSize"));
-  xAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"xLabelOffset"));
-  TAxis * yAxis = (TAxis *) h->GetYaxis();
-  yAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nYDivisions"));
-  yAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"yTitleSize"));
-  yAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"yTitleOffset"));
-  yAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"yLabelSize"));
-  yAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"yLabelOffset"));
-  yAxis->SetTitle(yTitle);
-  TAxis * zAxis = (TAxis *) h->GetZaxis();
-  zAxis->SetNdivisions(graphConfiguration.getValueInt(getName(),"nZDivisions"));
-  zAxis->SetTitleSize(graphConfiguration.getValueDouble(getName(),"zTitleSize"));
-  zAxis->SetTitleOffset(graphConfiguration.getValueDouble(getName(),"zTitleOffset"));
-  zAxis->SetLabelSize(graphConfiguration.getValueDouble(getName(),"zLabelSize"));
-  zAxis->SetLabelOffset(graphConfiguration.getValueDouble(getName(),"zLabelOffset"));
-  zAxis->SetTitle(zTitle);
-  if (reportEnd(__FUNCTION__))
-    ;
 }
 
 int  HistogramCollection::loadCollection(TFile * inputFile)
@@ -866,7 +727,7 @@ void HistogramCollection::differenceCollection(const HistogramCollection & colle
     if (!ptrExist(__FUNCTION__,h,hRef)) return;
     if (!sameDimensions(__FUNCTION__,h,hRef)) return;
     TH1* hDiff = (TH1*) h->Clone();
-    TString name = hDiff->GetName();
+    String name = hDiff->GetName();
     name.ReplaceAll("Reco","Ratio");
     hDiff->SetName(name);
     hDiff->SetTitle(name);
@@ -917,7 +778,7 @@ void HistogramCollection::ratioCollection(const HistogramCollection & collection
     if (!ptrExist(__FUNCTION__,h,hRef)) return;
     if (!sameDimensions(__FUNCTION__,h,hRef)) return;
     TH1* hRatio = (TH1*)  h->Clone();
-    TString name = hRatio->GetName();
+    String name = hRatio->GetName();
     name.ReplaceAll("Reco","Ratio");
     hRatio->SetName(name);
     hRatio->SetTitle(name);
@@ -1776,7 +1637,7 @@ int   HistogramCollection::getDimension(const TH1* h) const
 //!
 //! Check whether the given histograms have the same dimension and size.
 //!
-bool  HistogramCollection::sameDimensions(const TString & caller, const TH1* h1, const TH1* h2)  const
+bool  HistogramCollection::sameDimensions(const String & caller, const TH1* h1, const TH1* h2)  const
 {
   if (!ptrExist(caller,h1,h2)) return false;
   int nDim1 =  getDimension(h1);
@@ -1828,7 +1689,7 @@ bool  HistogramCollection::sameDimensions(const TString & caller, const TH1* h1,
 //!
 //! Check whether the given histograms have the same dimension and size.
 //!
-bool  HistogramCollection::sameDimensions(const TString & caller, const TH1* h1, const TH1* h2, const TH1* h3)  const
+bool  HistogramCollection::sameDimensions(const String & caller, const TH1* h1, const TH1* h2, const TH1* h3)  const
 {
   if (!ptrExist(caller,h1,h2,h3)) return false;
   int nDim1 =  getDimension(h1);
@@ -1885,7 +1746,7 @@ bool  HistogramCollection::sameDimensions(const TString & caller, const TH1* h1,
 //!
 //! Check whether the given histograms have the same dimension and size.
 //!
-bool  HistogramCollection::sameDimensions(const TString & caller, const TH1* h1, const TH1* h2, const TH1* h3, const TH1* h4) const
+bool  HistogramCollection::sameDimensions(const String & caller, const TH1* h1, const TH1* h2, const TH1* h3, const TH1* h4) const
 {
   if (!ptrExist(caller,h1,h2,h3,h4)) return false;
   int nDim1 =  getDimension(h1);
@@ -1946,7 +1807,7 @@ bool  HistogramCollection::sameDimensions(const TString & caller, const TH1* h1,
 //!
 //! Check whether the given histograms have the same dimension and size.
 //!
-bool  HistogramCollection::sameDimensions(const TString & caller, const TH1* h1, const TH1* h2, const TH1* h3, const TH1* h4, const TH1* h5)  const
+bool  HistogramCollection::sameDimensions(const String & caller, const TH1* h1, const TH1* h2, const TH1* h3, const TH1* h4, const TH1* h5)  const
 {
   if (!ptrExist(caller,h1,h2,h3,h4,h5)) return false;
   int nDim1 =  getDimension(h1);
@@ -2334,8 +2195,8 @@ int  HistogramCollection::calculateQ3DwPtPhiEta(double pt1, double phi1, double 
 
   if (reportStart(__FUNCTION__))
     ;
-  TLorentzVector p1;
-  TLorentzVector p2;
+  LorentzVector p1;
+  LorentzVector p2;
   p1.SetPtEtaPhiM(pt1,eta1,phi1,0.13957);
   p2.SetPtEtaPhiM(pt2,eta2,phi2,0.13957);
   if (p1.P()>p1.E()) return 1;
@@ -2394,16 +2255,16 @@ int  HistogramCollection::calculateQ3DwPtPhiY(double pt1, double phi1, double y1
 
   if (reportStart(__FUNCTION__))
     ;
-  TLorentzVector p1;
-  TLorentzVector p2;
+  LorentzVector p1;
+  LorentzVector p2;
   double mPart = 0.13957;
   double mSq   = mPart*mPart;
   double mt1   = sqrt(mSq + pt1*pt1);
   double p1z   = mt1 * sinh(y1);
   double mt2   = sqrt(mSq + pt2*pt2);
   double p2z   = mt2 * sinh(y2);
-  p1.SetXYZM(pt1*cos(phi1),pt1*sin(phi1),p1z,mPart);
-  p2.SetXYZM(pt2*cos(phi2),pt2*sin(phi2),p2z,mPart);
+  p1.SetPtEtaPhiM(pt1*cos(phi1),pt1*sin(phi1),p1z,mPart);
+  p2.SetPtEtaPhiM(pt2*cos(phi2),pt2*sin(phi2),p2z,mPart);
 
   if (p1.P()>p1.E()) return 1;
   if (p2.P()>p2.E()) return 2;
@@ -2797,7 +2658,7 @@ void HistogramCollection::setHistogram(TH3 * h, double v, double ev)
     }
 }
 
-TH1 * HistogramCollection::loadH1(TFile * inputFile,const TString & histoName)
+TH1 * HistogramCollection::loadH1(TFile * inputFile,const String & histoName)
 {
 
   if (!ptrFileExist(inputFile)) return nullptr;
@@ -2818,7 +2679,7 @@ TH1 * HistogramCollection::loadH1(TFile * inputFile,const TString & histoName)
 ///Load the given 1D histogram (name) from the given TFile
 ///No test is //done to verify that the file is properly opened.
 
-TH2 * HistogramCollection::loadH2(TFile * inputFile,const TString & histoName)
+TH2 * HistogramCollection::loadH2(TFile * inputFile,const String & histoName)
 {
 
   if (!ptrFileExist(inputFile)) return nullptr;
@@ -2838,7 +2699,7 @@ TH2 * HistogramCollection::loadH2(TFile * inputFile,const TString & histoName)
 
 ///Load the given 3D histogram (name) from the given TFile
 ///No test is //done to verify that the file is properly opened.
-TH3 * HistogramCollection::loadH3(TFile * inputFile, const TString & histoName)
+TH3 * HistogramCollection::loadH3(TFile * inputFile, const String & histoName)
 {
 
   if (!ptrFileExist(inputFile)) return nullptr;
@@ -2858,7 +2719,7 @@ TH3 * HistogramCollection::loadH3(TFile * inputFile, const TString & histoName)
 
 ///Load the given 3D histogram (name) from the given TFile
 ///No test is //done to verify that the file is properly opened.
-TProfile * HistogramCollection::loadProfile(TFile * inputFile, const TString & histoName)
+TProfile * HistogramCollection::loadProfile(TFile * inputFile, const String & histoName)
 {
 
   if (!ptrFileExist(inputFile)) return nullptr;
@@ -2876,7 +2737,7 @@ TProfile * HistogramCollection::loadProfile(TFile * inputFile, const TString & h
   return h;
 }
 
-TProfile2D * HistogramCollection::loadProfile2D(TFile * inputFile, const TString & histoName)
+TProfile2D * HistogramCollection::loadProfile2D(TFile * inputFile, const String & histoName)
 {
 
   if (!ptrFileExist(inputFile)) return nullptr;
@@ -2902,7 +2763,7 @@ void HistogramCollection::loadHistosInList(TFile * inputFile, HistogramCollectio
 
   if (!ptrFileExist(inputFile)) return;
   int nHistos = collection->getNHistograms();
-  TString histoName;
+  String histoName;
   for (int iHisto=0; iHisto<nHistos; iHisto++)
     {
     histoName = collection->getObjectAt(iHisto)->GetName();
@@ -2923,7 +2784,7 @@ void HistogramCollection::loadHistosInList(TFile * inputFile, HistogramCollectio
 
 ///Clone the given histogram, and set the clone's name to the given name.
 /////throws a HistogramException if the histogram does not exist (null pointer).
-TH1 * HistogramCollection::clone(const TH1 * h1, const TString & histoName)
+TH1 * HistogramCollection::clone(const TH1 * h1, const String & histoName)
 {
 
   if (!ptrExist(__FUNCTION__,h1)) return nullptr;
@@ -4199,7 +4060,7 @@ void HistogramCollection::reduce_n2xEtaPhi_n2DetaDphi(const TH2 * source, TH2 * 
     denominator[k]  = 0;
     }
 
-  TString name = target->GetName();
+  String name = target->GetName();
 
   i=1;
   for (iEta=0;iEta<nEtaBins; ++iEta)
@@ -5258,7 +5119,7 @@ void HistogramCollection::calculateNudyn(double r2_11,double er2_11,double r2_12
 
 // sanity check functions
 
-bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1) const
+bool HistogramCollection::ptrExist(const String &  caller, const TH1 * h1) const
 {
   bool allGood = true;
   if (!h1)
@@ -5269,7 +5130,7 @@ bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1) cons
   return allGood;
 }
 
-bool HistogramCollection::ptrFileExist(const TString &  caller, const TFile * f) const
+bool HistogramCollection::ptrFileExist(const String &  caller, const TFile * f) const
 {
   bool allGood = true;
   if (!f)
@@ -5280,7 +5141,7 @@ bool HistogramCollection::ptrFileExist(const TString &  caller, const TFile * f)
   return allGood;
 }
 
-bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2) const
+bool HistogramCollection::ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2) const
 {
   bool allGood = true;
   if (!h1)
@@ -5296,7 +5157,7 @@ bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, cons
   return allGood;
 }
 
-bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3) const
+bool HistogramCollection::ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3) const
 {
   bool allGood = true;
   if (!h1)
@@ -5317,7 +5178,7 @@ bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, cons
   return allGood;
 }
 
-bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4) const
+bool HistogramCollection::ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4) const
 {
   bool allGood = true;
   if (!h1)
@@ -5343,7 +5204,7 @@ bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, cons
   return allGood;
 }
 
-bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5) const
+bool HistogramCollection::ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5) const
 {
   bool allGood = true;
   if (!h1)
@@ -5374,7 +5235,7 @@ bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, cons
   return allGood;
 }
 
-bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6) const
+bool HistogramCollection::ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6) const
 {
   bool allGood = true;
   if (!h1)
@@ -5410,7 +5271,7 @@ bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, cons
   return allGood;
 }
 
-bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7) const
+bool HistogramCollection::ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7) const
 {
   bool allGood = true;
   if (!h1)
@@ -5451,7 +5312,7 @@ bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, cons
   return allGood;
 }
 
-bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
+bool HistogramCollection::ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
               const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8) const
 {
   bool allGood = true;
@@ -5498,7 +5359,7 @@ bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, cons
   return allGood;
 }
 
-bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
+bool HistogramCollection::ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
               const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7,
               const TH1 * h8, const TH1 * h9) const
 {
@@ -5551,7 +5412,7 @@ bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, cons
   return allGood;
 }
 
-bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
+bool HistogramCollection::ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
               const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7,
               const TH1 * h8, const TH1 * h9, const TH1 * h10) const
 {
@@ -5609,7 +5470,7 @@ bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, cons
   return allGood;
 }
 
-bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
+bool HistogramCollection::ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
               const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7,
               const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11) const
 {
@@ -5672,7 +5533,7 @@ bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, cons
   return allGood;
 }
 
-bool HistogramCollection::ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
+bool HistogramCollection::ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3,
               const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7,
               const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11, const TH1 * h12) const
 {

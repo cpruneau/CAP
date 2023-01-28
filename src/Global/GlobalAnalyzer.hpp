@@ -13,6 +13,8 @@
 #ifndef CAP__GlobalAnalyzer
 #define CAP__GlobalAnalyzer
 #include "Task.hpp"
+namespace CAP
+{
 
 //!
 //! This class implements a basic analyzer of the multiplicity, energy, net charge, net strangeness, and net baryon number of the particles composing an event.
@@ -38,7 +40,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  GlobalAnalyzer(const TString & _name,
+  GlobalAnalyzer(const String & _name,
                  Configuration & _configuration,
                  vector<EventFilter*> & _eventFilters,
                  vector<ParticleFilter*> & _particleFilters);
@@ -93,5 +95,6 @@ protected:
   ClassDef(GlobalAnalyzer,0)
 };
 
+}
 
 #endif /* CAP__GlobalAnalyzer */

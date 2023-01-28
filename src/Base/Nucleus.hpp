@@ -12,6 +12,10 @@
 #ifndef CAP__Nucleus
 #define CAP__Nucleus
 #include "Particle.hpp"
+
+namespace CAP
+{
+
 // ***************************************************************************
 // Nucleus
 //
@@ -67,5 +71,7 @@ protected:
   ClassDef(Nucleus,0)
   
 };
+
+} // namespace CAP
 
 #endif /* Nucleus_hpp */

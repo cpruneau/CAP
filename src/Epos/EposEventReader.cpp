@@ -10,9 +10,11 @@
  *
  * *********************************************************************/
 #include "EposEventReader.hpp"
+using CAP::EposEventReader;
+
 ClassImp(EposEventReader);
 
-EposEventReader::EposEventReader(const TString & _name,
+EposEventReader::EposEventReader(const String & _name,
                                  Configuration & _configuration,
                                  vector<EventFilter*> & _eventFilters,
                                  vector<ParticleFilter*> & _particleFilters)
@@ -68,7 +70,7 @@ void EposEventReader::execute()
     sinPhi = sin(eventPhi);
     }
   
-  TLorentzVector & sourcePosition = parentInteraction->getPosition();
+  LorentzVector & sourcePosition = parentInteraction->getPosition();
   double r_x = sourcePosition.X();
   double r_y = sourcePosition.Y();
   double r_z = sourcePosition.Z();

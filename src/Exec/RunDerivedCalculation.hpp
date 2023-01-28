@@ -13,11 +13,15 @@
 #define CAP__RunDerivedCalculation
 #include "Task.hpp"
 
+namespace CAP
+{
+
+
 class RunDerivedCalculation : public Task
 {
 public:
   
-  RunDerivedCalculation(const TString & _name,
+  RunDerivedCalculation(const String & _name,
                         Configuration & _configuration);
 
   //!
@@ -42,6 +46,8 @@ public:
 
   ClassDef(RunDerivedCalculation,0)
 };
+
+}
 
 #endif /* CAP_RunDerivedCalculation */
 

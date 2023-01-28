@@ -11,16 +11,18 @@
  * *********************************************************************/
 #ifndef CAP__CollisionGeometryHistograms
 #define CAP__CollisionGeometryHistograms
-#include "Histograms.hpp"
+#include "HistogramGroup.hpp"
 #include "Event.hpp"
-#include "Configuration.hpp"
 
-class CollisionGeometryHistograms : public Histograms
+namespace CAP
+{
+
+class CollisionGeometryHistograms : public HistogramGroup
 {
 public:
 
   CollisionGeometryHistograms(Task * _parent,
-                              const TString & _name,
+                              const String & _name,
                               Configuration & _configuration);
   virtual ~CollisionGeometryHistograms() { }
 
@@ -64,7 +66,7 @@ protected:
   TH2      * h_xyDistInteractions;
   TH2      * h_xyDistNucleons;
 
-  // Derived Histograms
+  // Derived HistogramGroup
   TH1      * h_nPartRmsVsB;
   TH1      * h_nPartOmegaVsB;
   TH1      * h_nPartR2VsB;
@@ -112,6 +114,7 @@ protected:
 
 };
 
+}
 #endif /* CAP__CollisionGeometryHistograms  */
 
 

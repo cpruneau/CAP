@@ -11,22 +11,22 @@
  * *********************************************************************/
 #ifndef CAP__EventCountHistos
 #define CAP__EventCountHistos
-#include "Histograms.hpp"
+#include "HistogramGroup.hpp"
 #include "Particle.hpp"
 #include "Configuration.hpp"
-#include "TLorentzVector.h"
 
+namespace CAP
+{
 
-class EventCountHistos : public Histograms
+class EventCountHistos : public HistogramGroup
 {
 public:
 
   EventCountHistos(Task *          _parent,
-                   const TString & _name,
+                   const String & _name,
                    Configuration & _configuration,
                    int             _nEventFilters,
-                   int             _nParticleFilters,
-                   Severity        _debugLevel);
+                   int             _nParticleFilters);
   virtual ~EventCountHistos(){}
   virtual void createHistograms();
   virtual void loadHistograms(TFile * inputFile);
@@ -46,6 +46,8 @@ protected:
   ClassDef(EventCountHistos,0)
 
 };
+
+} // namespace CAP
 
 #endif /* CAP__EventCountHistos  */
 

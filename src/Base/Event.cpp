@@ -10,6 +10,9 @@
  *
  * *********************************************************************/
 #include "Event.hpp"
+using CAP::Event;
+using CAP::Particle;
+
 ClassImp(Event);
 
 Event::Event()

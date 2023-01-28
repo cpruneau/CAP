@@ -10,13 +10,15 @@
  *
  * *********************************************************************/
 #include "NuDynDerivedHistos.hpp"
+using CAP::NuDynDerivedHistos;
+
 ClassImp(NuDynDerivedHistos);
 
 NuDynDerivedHistos::NuDynDerivedHistos(Task * _parent,
-                                       const TString & _name,
+                                       const String & _name,
                                        Configuration & _configuration)
 :
-Histograms(_parent,_name,_configuration),
+HistogramGroup(_parent,_name,_configuration),
 h_F2(),
 h_F3(),
 h_F4(),
@@ -80,32 +82,62 @@ void NuDynDerivedHistos::createHistograms()
     cout << "  NuDyn:width_rapidity......................: " << width_rapidity << endl;
     }
 
-  
+  String name;
+  String title;
+
   for (int i1=0; i1<nFilters; i1++)
     {
     for (int i2=i1; i2<nFilters; i2++)
       {
-      h_F2.push_back(         createHistogram(makeName(bn,"F2",i1,i2), 1,min_mult,max_mult,xTitle, makeName("F_{2}^{",i1,i2,"}")));
-      h_R2.push_back(         createHistogram(makeName(bn,"R2",i1,i2), 1,min_mult,max_mult,xTitle,makeName("R_{2}^{",i1,i2,"}")));
-      h_nudyn.push_back(      createHistogram(makeName(bn,"nudyn",i1,i2), 1,min_mult,max_mult,xTitle, makeName("#nu_{dyn}^{",i1,i2,"}")));
-      h_F2_vsMult.push_back(  createHistogram(makeName(bn,"F2",i1,i2,suffix),nBins_mult,min_mult,  max_mult, xTitle,makeName("F_{2}^{",i1,i2,"}")));
-      h_R2_vsMult.push_back(  createHistogram(makeName(bn,"R2",i1,i2,suffix),nBins_mult,min_mult,  max_mult, xTitle,makeName("R_{2}^{",i1,i2,"}")));
-      h_nudyn_vsMult.push_back(createHistogram(makeName(bn,"nudyn",i1,i2,suffix),nBins_mult,min_mult,max_mult,xTitle,makeName("#nu_{dyn}^{",i1,i2,"}")));
+      name = bn; name += "_"; name += "F2"; name += "_"; name += i1; name += i2;
+      title = "F_{2}^{"; title += i1; title += i2; title += "}";
+      h_F2.push_back(createHistogram(name, 1,min_mult,max_mult,xTitle, title));
+      name = bn; name += "_"; name += "R2"; name += "_"; name += i1; name += i2;
+      title = "R_{2}^{"; title += i1; title += i2; title += "}";
+      h_R2.push_back(createHistogram(name, 1,min_mult,max_mult,xTitle,title));
+      name = bn; name += "_"; name += "nudyn"; name += "_"; name += i1; name += i2;
+      title = "#nu_{#rm dyn}^{"; title += i1; title += i2; title += "}";
+      h_nudyn.push_back(createHistogram(name, 1,min_mult,max_mult,xTitle, title));
+      name = bn; name += "_"; name += "F2"; name += "_"; name += i1; name += i2;
+      title = "F_{2}^{"; title += i1; title += i2; title += "}";
+      h_F2_vsMult.push_back(createHistogram(name,nBins_mult,min_mult,  max_mult, xTitle,title));
+      name = bn; name += "_"; name += "R2"; name += "_"; name += i1; name += i2;
+      title = "R_{2}^{"; title += i1; title += i2; title += "}";
+      h_R2_vsMult.push_back(createHistogram(name,nBins_mult,min_mult,  max_mult, xTitle,title));
+      name = bn; name += "_"; name += "nudyn"; name += "_"; name += i1; name += i2;
+      title = "#nu_{#rm dyn}^{"; title += i1; title += i2; title += "}";
+      h_nudyn_vsMult.push_back(createHistogram(name,nBins_mult,min_mult,max_mult,xTitle,title));
        
       if (pairOnly) continue;
       for (int i3=i2; i3<nFilters; i3++)
         {
-        h_F3.push_back(        createHistogram(makeName(bn,"F3",i1,i2,i3), 1,min_mult,max_mult,xTitle,makeName("F_{3}^{",i1,i2,i3,"}")));
-        h_R3.push_back(        createHistogram(makeName(bn,"R3",i1,i2,i3), 1,min_mult,max_mult,xTitle,makeName("R_{3}^{",i1,i2,i3,"}")));
-        h_F3_vsMult.push_back( createHistogram(makeName(bn,"F3",i1,i2,i3,suffix),nBins_mult,min_mult,  max_mult,xTitle,makeName("F_{3}^{",i1,i2,i3,"}")));
-        h_R3_vsMult.push_back( createHistogram(makeName(bn,"R3",i1,i2,i3,suffix),nBins_mult,min_mult,  max_mult,xTitle,makeName("R_{3}^{",i1,i2,i3,"}")));
+        name = bn; name += "_"; name += "F3"; name += "_"; name += i1; name += i2; name += i3;
+        title = "F_{3}^{"; title += i1; title += i2; title += i3; title += "}";
+        h_F3.push_back(createHistogram(name, 1,min_mult,max_mult,xTitle,title));
+        name = bn; name += "_"; name += "R3"; name += "_"; name += i1; name += i2; name += i3;
+        title = "R_{3}^{"; title += i1; title += i2; title += i3;  title += "}";
+        h_R3.push_back(createHistogram(name, 1,min_mult,max_mult,xTitle,title));
+        name = bn; name += "_"; name += "F3"; name += "_"; name += i1; name += i2; name += i3;
+        title = "F_{3}^{"; title += i1; title += i2; title += i3;  title += "}";
+        h_F3_vsMult.push_back( createHistogram(name,nBins_mult,min_mult,  max_mult,xTitle,title));
+        name = bn; name += "_"; name += "R3"; name += "_"; name += i1; name += i2; name += i3;
+        title = "R_{3}^{"; title += i1; title += i2; title += i3;  title += "}";
+        h_R3_vsMult.push_back( createHistogram(name,nBins_mult,min_mult,  max_mult,xTitle,title));
         
         for (int i4=i3; i4<nFilters; i4++)
           {
-          h_F4.push_back( createHistogram(makeName(bn,"F4",i1,i2,i3,i4), 1,min_mult,max_mult,xTitle,makeName("F_{4}^{",i1,i2,i3,i4,"}")));
-          h_R4.push_back( createHistogram(makeName(bn,"R4",i1,i2,i3,i4), 1,min_mult,max_mult,xTitle,makeName("R_{4}^{",i1,i2,i3,i4,"}")));
-          h_F4_vsMult.push_back( createHistogram(makeName(bn,"F4",i1,i2,i3,i4,suffix),nBins_mult,min_mult,  max_mult,xTitle,makeName("F_{4}^{",i1,i2,i3,i4,"}")));
-          h_R4_vsMult.push_back( createHistogram(makeName(bn,"R4",i1,i2,i3,i4,suffix),nBins_mult,min_mult,  max_mult,xTitle,makeName("R_{4}^{",i1,i2,i3,i4,"}")));
+          name = bn; name += "_"; name += "F4"; name += "_"; name += i1; name += i2; name += i3;name += i4;
+          title = "F_{4}^{"; title += i1; title += i2; title += i3; title += i4; title += "}";
+          h_F4.push_back( createHistogram(name, 1,min_mult,max_mult,xTitle,title));
+          name = bn; name += "_"; name += "R4"; name += "_"; name += i1; name += i2; name += i3;name += i4;
+          title = "R_{4}^{"; title += i1; title += i2; title += i3; title += i4; title += "}";
+          h_R4.push_back( createHistogram(name, 1,min_mult,max_mult,xTitle,title));
+          name = bn; name += "_"; name += "F4"; name += "_"; name += i1; name += i2; name += i3;name += i4;
+          title = "F_{4}^{"; title += i1; title += i2; title += i3; title += i4; title += "}";
+          h_F4_vsMult.push_back( createHistogram(name,nBins_mult,min_mult,  max_mult,xTitle,title));
+          name = bn; name += "_"; name += "R4"; name += "_"; name += i1; name += i2; name += i3;name += i4;
+          title = "R_{4}^{"; title += i1; title += i2; title += i3; title += i4; title += "}";
+          h_R4_vsMult.push_back( createHistogram(name,nBins_mult,min_mult,  max_mult,xTitle,title));
           }
         }
       }
@@ -118,14 +150,14 @@ void NuDynDerivedHistos::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  const TString & bn  = getName();
-  const TString & ptn = getParentTaskName();
-  const TString & ppn = getParentPathName();  nFilters         = configuration.getValueInt(ppn,"nFilters");
+  const String & bn  = getName();
+  const String & ptn = getParentTaskName();
+  const String & ppn = getParentPathName();  nFilters         = configuration.getValueInt(ppn,"nFilters");
   multiplicityType = configuration.getValueInt(ppn,"multiplicityType");
   pairOnly         = configuration.getValueBool(ppn,"PairOnly");
 
-  TString suffix = "";
-  TString xTitle = "";
+  String suffix = "";
+  String xTitle = "";
   switch ( multiplicityType )
     {
       case 0: suffix = "_vsCent"; xTitle = "%"; break;
@@ -144,30 +176,45 @@ void NuDynDerivedHistos::loadHistograms(TFile * inputFile)
     cout << "  NuDyn:pairOnly............................: " << pairOnly << endl;
     }
 
-
+  String name;
+  String title;
   for (int i1=0; i1<nFilters; i1++)
     {
     for (int i2=i1; i2<nFilters; i2++)
       {
-      h_F2.push_back(loadH1(inputFile,makeName(bn,"F2",i1,i2)));
-      h_R2.push_back(loadH1(inputFile,makeName(bn,"R2",i1,i2)));
-      h_nudyn.push_back(loadH1(inputFile,makeName(bn,"nudyn",i1,i2)));
-      h_F2_vsMult.push_back(loadH1(inputFile,makeName(bn,"F2",i1,i2,suffix)));
-      h_R2_vsMult.push_back(loadH1(inputFile,makeName(bn,"R2",i1,i2,suffix)));
-      h_nudyn_vsMult.push_back(loadH1(inputFile,makeName(bn,"nudyn",i1,i2,suffix)));
+      name = bn; name += "_"; name += "F2"; name += "_"; name += i1; name += i2;
+      h_F2.push_back(loadH1(inputFile,name));
+      name = bn; name += "_"; name += "R2"; name += "_"; name += i1; name += i2;
+      h_R2.push_back(loadH1(inputFile,name));
+      name = bn; name += "_"; name += "nudyn"; name += "_"; name += i1; name += i2;
+      h_nudyn.push_back(loadH1(inputFile,name));
+      name = bn; name += "_"; name += "F2"; name += "_"; name += i1; name += i2;
+      h_F2_vsMult.push_back(loadH1(inputFile,name));
+      name = bn; name += "_"; name += "R2"; name += "_"; name += i1; name += i2;
+      h_R2_vsMult.push_back(loadH1(inputFile,name));
+      name = bn; name += "_"; name += "nudyn"; name += "_"; name += i1; name += i2;
+      h_nudyn_vsMult.push_back(loadH1(inputFile,name));
       if (pairOnly) continue;
       for (int i3=i2; i3<nFilters; i3++)
         {
-        h_F3.push_back(loadH1(inputFile,makeName(bn,"F3",i1,i2,i3)));
-        h_R3.push_back(loadH1(inputFile,makeName(bn,"R3",i1,i2,i3)));
-        h_F3_vsMult.push_back(loadH1(inputFile,makeName(bn,"F3",i1,i2,i3,suffix)));
-        h_R3_vsMult.push_back(loadH1(inputFile,makeName(bn,"R3",i1,i2,i3,suffix)));
+        name = bn; name += "_"; name += "F3"; name += "_"; name += i1; name += i2; name += i3;
+        h_F3.push_back(loadH1(inputFile,name));
+        name = bn; name += "_"; name += "R3"; name += "_"; name += i1; name += i2; name += i3;
+        h_R3.push_back(loadH1(inputFile,name));
+        name = bn; name += "_"; name += "F3"; name += "_"; name += i1; name += i2; name += i3;
+        h_F3_vsMult.push_back(loadH1(inputFile,name));
+        name = bn; name += "_"; name += "R3"; name += "_"; name += i1; name += i2; name += i3;
+        h_R3_vsMult.push_back(loadH1(inputFile,name));
         for (int i4=i3; i4<nFilters; i4++)
           {
-          h_F4.push_back(loadH1(inputFile,makeName(bn,"F4",i1,i2,i3,i4)));
-          h_R4.push_back(loadH1(inputFile,makeName(bn,"R4",i1,i2,i3,i4)));
-          h_F4_vsMult.push_back(loadH1(inputFile,makeName(bn,"F4",i1,i2,i3,i4,suffix)));
-          h_R4_vsMult.push_back(loadH1(inputFile,makeName(bn,"R4",i1,i2,i3,i4,suffix)));
+          name = bn; name += "_"; name += "F4"; name += "_"; name += i1; name += i2; name += i3;name += i4;
+          h_F4.push_back(loadH1(inputFile,name));
+          name = bn; name += "_"; name += "R4"; name += "_"; name += i1; name += i2; name += i3;name += i4;
+          h_R4.push_back(loadH1(inputFile,name));
+          name = bn; name += "_"; name += "F4"; name += "_"; name += i1; name += i2; name += i3;name += i4;
+          h_F4_vsMult.push_back(loadH1(inputFile,name));
+          name = bn; name += "_"; name += "R4"; name += "_"; name += i1; name += i2; name += i3;name += i4;
+          h_R4_vsMult.push_back(loadH1(inputFile,name));
           }
         }
       }

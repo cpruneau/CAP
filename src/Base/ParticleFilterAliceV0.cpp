@@ -11,6 +11,7 @@
  * *********************************************************************/
 #include <TMath.h>
 #include "ParticleFilterAliceV0.hpp"
+using CAP::ParticleFilterAliceV0;
 
 ClassImp(ParticleFilterAliceV0);
 

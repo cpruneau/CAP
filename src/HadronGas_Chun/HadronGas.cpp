@@ -9,6 +9,9 @@
 #include <TMath.h>
 #include "HadronGas.hpp"
 #include "Math/SpecFunc.h"
+using CAP::HadronGas;
+using CAP::ParticleType;
+using CAP::ParticleTypeCollection;
 
 ClassImp(HadronGas);
 

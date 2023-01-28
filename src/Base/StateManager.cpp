@@ -10,6 +10,13 @@
  *
  * *********************************************************************/
 #include "StateManager.hpp"
+#include <iostream>
+using namespace std;
+using std::cout;
+using std::endl;
+
+using CAP::StateManager;
+using CAP::String;
 
 ClassImp(StateManager);
 
@@ -19,9 +26,9 @@ StateManager::StateManager()
 state(OK)
 {   }
 
-TString StateManager::getStateName() const
+String StateManager::getStateName() const
  {
-  TString statusName;
+  String statusName;
   switch (state)
     {
       case UNKNOWN:      statusName = "Unknown"; break;

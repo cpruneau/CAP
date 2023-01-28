@@ -13,13 +13,15 @@
 #ifndef CAP_HadronGasGeneratorTask
 #define CAP_HadronGasGeneratorTask
 #include "HadronGas.hpp"
-//#include "MomentumGenerator.hpp"
+
+namespace CAP
+{
 
 class HadronGasGeneratorTask : public Task
 {
 public:
 
-  HadronGasGeneratorTask(const TString & _name,
+  HadronGasGeneratorTask(const String & _name,
                          Configuration & _configuration);
   virtual ~HadronGasGeneratorTask() {}
   virtual void setDefaultConfiguration();
@@ -34,7 +36,7 @@ protected:
   int nThermalSpecies;
   int nStableSpecies;
 
-  TString modelName;
+  String modelName;
   int     nChemicalTemp;
   double  minChemicalTemp;
   double  maxChemicalTemp;
@@ -50,5 +52,7 @@ protected:
 
   ClassDef(HadronGasGeneratorTask,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP_HadronGasGeneratorTask */

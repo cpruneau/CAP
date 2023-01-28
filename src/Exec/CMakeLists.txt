@@ -9,11 +9,8 @@ ROOT_GENERATE_DICTIONARY(G__Exec RunAnalysis.hpp RunDerivedCalculation.hpp RunSu
 ################################################################################################
 add_library(Exec SHARED RunAnalysis.cpp RunDerivedCalculation.cpp RunSubsample.cpp G__Exec.cxx)
 
-target_link_libraries(Exec Base Global Particle  Pair NuDyn Performance SubSample CAPPythia Herwig Hijing BasicGen  Ampt Epos HadronGas Urqmd ${ROOT_LIBRARIES} ${EXTRA_LIBS} )
-target_include_directories(Exec  PUBLIC Base Exec Global Particle  Pair NuDyn Performance SubSample CAPPythia Herwig Hijing BasicGen  Ampt Epos HadronGas Urqmd ${EXTRA_INCLUDES})
-
-##target_link_libraries(Exec Base Global Particle  Pair NuDyn Performance SubSample Herwig Hijing BasicGen  Ampt Epos HadronGas Urqmd ${ROOT_LIBRARIES} ${EXTRA_LIBS} )
-##target_include_directories(Exec  PUBLIC Base Exec Global Particle  Pair NuDyn Performance SubSample Herwig Hijing BasicGen  Ampt Epos HadronGas Urqmd ${EXTRA_INCLUDES})
+target_link_libraries(Exec Base Global ParticleSingle  ParticlePair NuDyn Performance SubSample CAPPythia Herwig Hijing BasicGen  Ampt Epos HadronGas Urqmd ${ROOT_LIBRARIES} ${EXTRA_LIBS} )
+target_include_directories(Exec  PUBLIC Base Exec Global ParticleSingle  ParticlePair NuDyn Performance SubSample CAPPythia Herwig Hijing BasicGen  Ampt Epos HadronGas Urqmd ${EXTRA_INCLUDES})
 
 
 install(FILES  "${CMAKE_CURRENT_BINARY_DIR}/libExec.rootmap" "${CMAKE_CURRENT_BINARY_DIR}/libExec_rdict.pcm" DESTINATION "$ENV{CAP_LIB}")

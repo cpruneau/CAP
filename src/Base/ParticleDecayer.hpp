@@ -14,10 +14,12 @@
 #include <iostream>
 #include <iomanip>
 #include "TRandom3.h"
-#include "TLorentzVector.h"
 #include "Particle.hpp"
 
 using namespace std;
+
+namespace CAP
+{
 
 class ParticleDecayer
 {
@@ -28,43 +30,43 @@ public:
   TRandom * getRandomGenerator() { return random; }
 
   void decay2(ParticleType   & parentType,
-              TLorentzVector & parentMomentum,
-              TLorentzVector & parentPosition,
+              LorentzVector & parentMomentum,
+              LorentzVector & parentPosition,
               ParticleType   & childType1,
-              TLorentzVector & p1,
-              TLorentzVector & r1,
+              LorentzVector & p1,
+              LorentzVector & r1,
               ParticleType   & childType2,
-              TLorentzVector & p2,
-              TLorentzVector & r2);
+              LorentzVector & p2,
+              LorentzVector & r2);
 
   void decay3(ParticleType   & parentType,
-              TLorentzVector & parentMomentum,
-              TLorentzVector & parentPosition,
+              LorentzVector & parentMomentum,
+              LorentzVector & parentPosition,
               ParticleType   & childType1,
-              TLorentzVector & p1,
-              TLorentzVector & r1,
+              LorentzVector & p1,
+              LorentzVector & r1,
               ParticleType   & childType2,
-              TLorentzVector & p2,
-              TLorentzVector & r2,
+              LorentzVector & p2,
+              LorentzVector & r2,
               ParticleType   & childType3,
-              TLorentzVector & p3,
-              TLorentzVector & r3);
+              LorentzVector & p3,
+              LorentzVector & r3);
 
   void decay4(ParticleType   & parentType,
-              TLorentzVector & parentMomentum,
-              TLorentzVector & parentPosition,
+              LorentzVector & parentMomentum,
+              LorentzVector & parentPosition,
               ParticleType   & childType1,
-              TLorentzVector & p1,
-              TLorentzVector & r1,
+              LorentzVector & p1,
+              LorentzVector & r1,
               ParticleType   & childType2,
-              TLorentzVector & p2,
-              TLorentzVector & r2,
+              LorentzVector & p2,
+              LorentzVector & r2,
               ParticleType   & childType3,
-              TLorentzVector & p3,
-              TLorentzVector & r3,
+              LorentzVector & p3,
+              LorentzVector & r3,
               ParticleType   & childType4,
-              TLorentzVector & p4,
-              TLorentzVector & r4
+              LorentzVector & p4,
+              LorentzVector & r4
               );
 
   void  decay2(Particle & parent,
@@ -90,6 +92,8 @@ protected:
 
   ClassDef(ParticleDecayer,0)
 };
+
+}
 
 #endif  // ParticleDecayer
 

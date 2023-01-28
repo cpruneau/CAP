@@ -11,17 +11,10 @@
  * *********************************************************************/
 #ifndef CAP__StateManager
 #define CAP__StateManager
-#include "TClass.h"
-#include "TString.h"
-#include "TFile.h"
-#include "TH1.h"
-#include <iostream>
-using namespace std;
-using std::cout;
-using std::endl;
+#include "Aliases.hpp"
 
-
-
+namespace CAP
+{
 
 class StateManager
 {
@@ -56,7 +49,7 @@ public:
   //!
   //! Returns a string corresponding to the current status of all ongoing tasks in this job.
   //!
-  TString getStateName() const;
+  String getStateName() const;
 
   //!
   //! Set the  state of this job
@@ -86,7 +79,7 @@ public:
   ClassDef(StateManager,0)
 };
 
-
+}
 
 
 

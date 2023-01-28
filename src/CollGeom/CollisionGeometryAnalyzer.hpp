@@ -15,6 +15,10 @@
 #include "CollisionGeometry.hpp"
 #include "CollisionGeometryHistograms.hpp"
 
+namespace CAP
+{
+
+
 //!
 //! Task to carry out the analysis of the geometry of MC collisions
 //!
@@ -31,7 +35,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  CollisionGeometryAnalyzer(const TString & _name,
+  CollisionGeometryAnalyzer(const String & _name,
                             Configuration & _configuration,
                             vector<EventFilter*> &   _eventFilters,
                             vector<ParticleFilter*>  _particleFilters);
@@ -76,4 +80,5 @@ protected:
   ClassDef(CollisionGeometryAnalyzer,0)
 };
 
+}
 #endif /* CAP__CollisionGeometryAnalyzer */

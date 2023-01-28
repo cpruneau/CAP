@@ -5,6 +5,10 @@
 #include <vector>
 using namespace std;
 
+namespace CAP
+{
+
+
 class Table2D
 {
   private:
@@ -33,6 +37,9 @@ class Table2D
     void setTbdata(int idx, int idy, double value) {(*(*data)[idy])[idx]=value;}
     void outputTableToFile(string filename);
 };
+
+
+} // namespace CAP
 
 #endif
 

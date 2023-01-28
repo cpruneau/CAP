@@ -13,6 +13,9 @@
 #define CAP__StatStudyModel
 #include "TString.h"
 
+namespace CAP
+{
+
 class StatStudyModel
 {
 public:
@@ -43,5 +46,7 @@ public:
 
   ClassDef(StatStudyModel,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP__StatStudyModel */

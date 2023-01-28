@@ -56,7 +56,7 @@ TF1 * TotalXsection::getFunctionTotalXsectionVsSqrtS(TotalXsectionSystem selecte
                                                      double maxSqrtS)
 {
   TF1 * function;
-  TString functionName;
+  String functionName;
 
   switch (selectedModel)
     {

@@ -10,6 +10,8 @@
  *
  * *********************************************************************/
 #include "EventProperties.hpp"
+using CAP::EventProperties;
+
 ClassImp(EventProperties);
 
 

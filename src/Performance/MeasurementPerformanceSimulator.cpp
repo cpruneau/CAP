@@ -10,10 +10,11 @@
  *
  * *********************************************************************/
 #include "MeasurementPerformanceSimulator.hpp"
+using CAP::MeasurementPerformanceSimulator;
 
 ClassImp(MeasurementPerformanceSimulator);
 
-MeasurementPerformanceSimulator::MeasurementPerformanceSimulator(const TString & _name,
+MeasurementPerformanceSimulator::MeasurementPerformanceSimulator(const String & _name,
                                                                  Configuration & _configuration,
                                                                  vector<EventFilter*> & _eventFilters,
                                                                  vector<ParticleFilter*>& _particleFilters)
@@ -38,7 +39,7 @@ void MeasurementPerformanceSimulator::setDefaultConfiguration()
   
   for (int k=0; k<10; k++)
     {
-    TString baseName = "Filter";
+    String baseName = "Filter";
     baseName += k;
     addParameter(baseName+"_PtBiasAinv",0.0);
     addParameter(baseName+"_PtBiasA0",0.0);
@@ -120,7 +121,7 @@ void MeasurementPerformanceSimulator::initialize()
       {
       for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++)
         {
-        TString name = "Filter_";
+        String name = "Filter_";
         name += iEventFilter;
         name += "_";
         name += iParticleFilter;
@@ -139,15 +140,15 @@ void MeasurementPerformanceSimulator::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString prefixName = getName(); prefixName += "_";
+  String prefixName = getName(); prefixName += "_";
 
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    TString evtFilterName = * eventFilters[iEventFilter]->getName();
+    String evtFilterName = * eventFilters[iEventFilter]->getName();
     for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
       {
-      TString partFilterName = * particleFilters[iParticleFilter]->getName();
-      TString histoName  = prefixName;
+      String partFilterName = * particleFilters[iParticleFilter]->getName();
+      String histoName  = prefixName;
       histoName += evtFilterName;
       histoName += "_";
       histoName += partFilterName;
@@ -188,7 +189,7 @@ void MeasurementPerformanceSimulator::execute()
   unsigned int nParticles = genEvent.getNParticles();
   unsigned int firstPartFilter;
   unsigned int lastPartFilter;
-  TLorentzVector recoMomentum;
+  LorentzVector recoMomentum;
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     if (!eventFilters[iEventFilter]->accept(genEvent)) continue;
@@ -214,10 +215,10 @@ void MeasurementPerformanceSimulator::execute()
         Particle * genParticle = genEvent.getParticleAt(iParticle);
         if (particleFilter->accept(*genParticle))
           {
-          TLorentzVector & genMomentum = genParticle->getMomentum();
+          LorentzVector & genMomentum = genParticle->getMomentum();
           if (!simulator->accept(genMomentum)) continue;
           ParticleType * type = genParticle->getTypePtr();
-          TLorentzVector & genPosition = genParticle->getPosition();
+          LorentzVector & genPosition = genParticle->getPosition();
           simulator->smearMomentum(genMomentum,recoMomentum);
           Particle * recoParticle = particleFactory->getNextObject();
           // we dont smear the position for now..

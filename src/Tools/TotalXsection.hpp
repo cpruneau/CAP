@@ -15,6 +15,10 @@
 #include "TF1.h"
 #include "TMath.h"
 
+namespace CAP
+{
+
+
 double GauronModelF1(double *xx, double *pp);
 double GauronGammaModelF1(double *xx, double *pp);
 
@@ -49,5 +53,7 @@ public:
   ClassDef(TotalXsection,0)
   
 };
+
+} // namespace CAP
 
 #endif /* TotalXsection_hpp */

@@ -23,6 +23,9 @@
 #include <vector>
 #include "TRandom.h"
 
+namespace CAP
+{
+
 class SelectionGenerator
 {
 public:
@@ -39,5 +42,7 @@ protected:
   std::vector<double> cProbs;
   ClassDef(SelectionGenerator,0)
 };
+
+}
 
 #endif /* SelectionGenerator_hpp */

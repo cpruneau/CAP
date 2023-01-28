@@ -14,6 +14,9 @@
 
 using namespace std;
 
+namespace CAP
+{
+
 class HadronGas : public MessageLogger
 {
 public:
@@ -42,7 +45,7 @@ public:
   vector< vector<double> > stableParticlePairCorrelatedDensities;
   vector< vector<double> > stableParticlePairUncorrelatedDensities;
   SelectionGenerator * hadronRndmSelector;
-  TString name;
+  String name;
   
 public:
   HadronGas(ParticleTypeCollection * _particles,
@@ -69,7 +72,7 @@ public:
   return name;
   }
 
-  void  setName(TString & _name)
+  void  setName(String & _name)
   {
   name = _name;
   }
@@ -93,6 +96,7 @@ public:
   ClassDef(HadronGas,0)
 };
 
+} // namespace CAP
 
 #endif  // WAC_HadronGas
 

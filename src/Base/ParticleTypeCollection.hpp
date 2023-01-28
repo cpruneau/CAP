@@ -23,17 +23,22 @@
 #include "ParticleType.hpp"
 
 using namespace std;
+
+
+namespace CAP
+{
+
 class ParticleType;
 
 class ParticleTypeCollection : public Collection<ParticleType>
 {
 public:
 
-  // const TString& _name, bool _ownership, Severity logLevel
+  // const String& _name, bool _ownership, Severity logLevel
   ParticleTypeCollection();
   virtual ~ParticleTypeCollection() {} 
-  void readFromFile(const TString & inputFileName);
-  void writeToFile(const TString &  outputFileName, bool printDecayProperties=true);
+  void readFromFile(const String & inputFileName);
+  void writeToFile(const String &  outputFileName, bool printDecayProperties=true);
   void sortByMass();
   ParticleTypeCollection * extractCollection(int option);
    int findIndexForType(ParticleType * type);
@@ -65,6 +70,7 @@ public:
   ClassDef(ParticleTypeCollection,0)
 };
 
+} //namespace CAP
 
 #endif  // CAP__ParticleTypeCollection
 

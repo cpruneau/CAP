@@ -15,10 +15,11 @@
  */
 #include "TParameter.h"
 #include "HadronGasGeneratorTask.hpp"
+using CAP::HadronGasGeneratorTask;
 
 ClassImp(HadronGasGeneratorTask);
 
-HadronGasGeneratorTask::HadronGasGeneratorTask(const TString & _name,
+HadronGasGeneratorTask::HadronGasGeneratorTask(const String & _name,
                                                Configuration & _configuration)
 :
 Task(_name,_configuration),
@@ -29,7 +30,7 @@ Task(_name,_configuration),
 void HadronGasGeneratorTask::setDefaultConfiguration()
 {
   //Task::setDefaultConfiguration();
-  TString hg = "HG"
+  String hg = "HG"
   addParameter(""UseParticles",         false);
   addParameter(""UseEventStream0",      false);
   addParameter(""StandaloneMode",       true);
@@ -79,7 +80,7 @@ void HadronGasGeneratorTask::initialize()
     stableParticleTypes->printProperties(std::cout);
     }
  
-  TString label = "T";
+  String label = "T";
   label += int(1000*temperature);
   HadronGas * gas = new HadronGas(particleTypes,stableParticleTypes,getSeverity());
   gas->setName(label);
@@ -157,7 +158,7 @@ void HadronGasGeneratorTask::initialize()
 
   vector<double>  & d = hadronGases[0]->particleDensities;
   int nSpeciesConsidered = d.size();
-  TString histoName;
+  String histoName;
   histoName = getName();
   histoName += "_relativeAbundances";
   relativeAbundances = new TH1D(histoName,histoName,nSpeciesConsidered,0.0,double(nSpeciesConsidered));
@@ -185,9 +186,9 @@ void HadronGasGeneratorTask::createHistograms()
   basePairHistograms.clear();
   Configuration & configuration = getConfiguration();
   Severity debugLevel = getSeverityLevel();
-  TString & name = getName();
+  String & name = getName();
 
-  TString bn                    = configuration.getValueString(name,"HistoBaseName");
+  String bn                    = configuration.getValueString(name,"HistoBaseName");
   bool    doTempDependentHistos = configuration.getValueBool(name,"DoTempDependentHistos");
   int     nChemicalTemp         = configuration.getValueInt(name,"nChemicalTemp");
   double  minChemicalTemp       = configuration.getValueDouble(name,"MinChemicalTemp");
@@ -208,12 +209,12 @@ void HadronGasGeneratorTask::createHistograms()
   double  maxMuS                = configuration.getValueDouble(name,"MaxMuS");
   double  stepMuS               = (maxMuS - minMuS)/double(nMuS);
 
-  TString histoBaseName;
-  TString tempLabel;
-  TString muBLabel;
-  TString muSLabel;
+  String histoBaseName;
+  String tempLabel;
+  String muBLabel;
+  String muSLabel;
 
-  Histograms * histos;
+  HistogramGroup * histos;
   for (int iTemp=0; iTemp<nChemicalTemp; iTemp++ )
     {
     tempLabel = "T";
@@ -260,7 +261,7 @@ void HadronGasGeneratorTask::loadHistograms(TFile * inputFile)
   Configuration & configuration = getConfiguration();
   Severity debugLevel = getSeverityLevel();
 
-  TString bn                    = configuration.getValueString(name,"HistoBaseName");
+  String bn                    = configuration.getValueString(name,"HistoBaseName");
   bool    doTempDependentHistos = configuration.getValueBool(name,"DoTempDependentHistos");
   int     nChemicalTemp         = configuration.getValueInt(name,"nChemicalTemp");
   double  minChemicalTemp       = configuration.getValueDouble(name,"MinChemicalTemp");
@@ -281,12 +282,12 @@ void HadronGasGeneratorTask::loadHistograms(TFile * inputFile)
   double  maxMuS                = configuration.getValueDouble(name,"MaxMuS");
   double  stepMuS               = (maxMuS - minMuS)/double(nMuS);
 
-  TString histoBaseName;
-  TString tempLabel;
-  TString muBLabel;
-  TString muSLabel;
+  String histoBaseName;
+  String tempLabel;
+  String muBLabel;
+  String muSLabel;
 
-  Histograms * histos;
+  HistogramGroup * histos;
   for (int iTemp=0; iTemp<nChemicalTemp; iTemp++ )
     {
     tempLabel = "T";
@@ -440,7 +441,7 @@ void HadronGasGeneratorTask::generate(Particle * parent)
   int multiplicity = minTotalMult + double(rangeTotalMult)*gRandom->Rndm();
   //ParticleFilter & particleFilter = * particleFilters[0];
   Particle * particle;
-  TLorentzVector parentPosition = parent->getPosition();
+  LorentzVector parentPosition = parent->getPosition();
   for (int iPart=0; iPart< multiplicity; iPart++)
     {
     // implement basic no correlation scenario.
@@ -464,7 +465,7 @@ void HadronGasGeneratorTask::generate(Particle * parent)
       exit(1);
       return;
       }
-    TLorentzVector momentum;
+    LorentzVector momentum;
     momentumGenerators[index]->generate(momentum);
     particle = particleFactory->getNextObject();
     particle->setParent(parent);

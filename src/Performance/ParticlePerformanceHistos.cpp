@@ -9,15 +9,17 @@
  * Author: Claude Pruneau,   04/01/2022
  *
  * *********************************************************************/
-#include "TLorentzVector.h"
+
 #include "ParticlePerformanceHistos.hpp"
+using CAP::ParticlePerformanceHistos;
+
 ClassImp(ParticlePerformanceHistos);
 
 ParticlePerformanceHistos::ParticlePerformanceHistos(Task * _parent,
-                                                     const TString & _name,
+                                                     const String & _name,
                                                      Configuration & _configuration)
 :
-Histograms(_parent,_name,_configuration),
+HistogramGroup(_parent,_name,_configuration),
 fillEta(0),
 fillY(0),
 nBins_pt(0),
@@ -50,7 +52,7 @@ void ParticlePerformanceHistos::createHistograms()
 {
   if ( reportStart(__FUNCTION__))
     ;
-  TString bn = getParentTaskName();
+  String bn = getParentTaskName();
   Configuration & configuration = getConfiguration();
   
   fillEta    = configuration.getValueBool(getParentTaskName(),"FillEta");
@@ -88,21 +90,21 @@ void ParticlePerformanceHistos::createHistograms()
   min_dy   = configuration.getValueDouble(getParentTaskName(),"Min_dy");
   max_dy   = configuration.getValueDouble(getParentTaskName(),"Max_dy");
   
-  h_n1_dPt        = createHistogram(makeName(bn,"n1_dPt"),  nBins_dpt,  min_dpt,  max_dpt,  "#Delta p_{T}","N");
-  h_n1_dPhi       = createHistogram(makeName(bn,"n1_dPhi"), nBins_dphi, min_dphi, max_dphi, "#Delta #varphi","N");
-  h_n1_dPtVsPt    = createHistogram(makeName(bn,"n1_dPtVsPt"), nBins_pt,min_pt,   max_pt,   nBins_dpt,  min_dpt,  max_dpt, "p_{T}", "#Delta p_{T}","N");
-  h_n1_dPhiVsPt   = createHistogram(makeName(bn,"n1_dPhiVsPt"),nBins_pt,min_pt,   max_pt,   nBins_dphi, min_dphi, max_dphi,"p_{T}", "#Delta #phi","N");
+  h_n1_dPt        = createHistogram(createName(bn,"n1_dPt"),  nBins_dpt,  min_dpt,  max_dpt,  "#Delta p_{T}","N");
+  h_n1_dPhi       = createHistogram(createName(bn,"n1_dPhi"), nBins_dphi, min_dphi, max_dphi, "#Delta #varphi","N");
+  h_n1_dPtVsPt    = createHistogram(createName(bn,"n1_dPtVsPt"), nBins_pt,min_pt,   max_pt,   nBins_dpt,  min_dpt,  max_dpt, "p_{T}", "#Delta p_{T}","N");
+  h_n1_dPhiVsPt   = createHistogram(createName(bn,"n1_dPhiVsPt"),nBins_pt,min_pt,   max_pt,   nBins_dphi, min_dphi, max_dphi,"p_{T}", "#Delta #phi","N");
   
   if (fillEta)
     {
-    h_n1_dEta       = createHistogram(makeName(bn,"n1_dEta"),      nBins_deta,  min_deta,  max_deta,  "#Delta#eta","N");
-    h_n1_dEtaVsEta  = createHistogram(makeName(bn,"n1_dEtaVsEta"), nBins_eta,   min_eta,   max_eta,   nBins_deta,  min_deta,  max_deta, "#eta", "#Delta#eta","N");
+    h_n1_dEta       = createHistogram(createName(bn,"n1_dEta"),      nBins_deta,  min_deta,  max_deta,  "#Delta#eta","N");
+    h_n1_dEtaVsEta  = createHistogram(createName(bn,"n1_dEtaVsEta"), nBins_eta,   min_eta,   max_eta,   nBins_deta,  min_deta,  max_deta, "#eta", "#Delta#eta","N");
     }
   
   if (fillY)
     {
-    h_n1_dY       = createHistogram(makeName(bn,"n1_dY"),      nBins_dy,   min_dy,  max_dy,  "#Delta y","N");
-    h_n1_dYVsY    = createHistogram(makeName(bn,"n1_dYVsY"),   nBins_y,    min_y,   max_y,   nBins_dy,  min_dy,  max_dy, "y", "#Delta y","N");
+    h_n1_dY       = createHistogram(createName(bn,"n1_dY"),      nBins_dy,   min_dy,  max_dy,  "#Delta y","N");
+    h_n1_dYVsY    = createHistogram(createName(bn,"n1_dYVsY"),   nBins_y,    min_y,   max_y,   nBins_dy,  min_dy,  max_dy, "y", "#Delta y","N");
     }
   if ( reportEnd(__FUNCTION__))
     { }
@@ -114,27 +116,27 @@ void ParticlePerformanceHistos::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(__FUNCTION__,inputFile)) return;
-  TString bn = getParentTaskName();
+  String bn = getParentTaskName();
 
   Configuration & configuration = getConfiguration();
   fillEta    = configuration.getValueBool(getParentTaskName(),"FillEta");
   fillY      = configuration.getValueBool(getParentTaskName(),"FillY");
   
-  h_n1_dPt        = loadH1(inputFile, makeName(bn,"n1_dpt"));
-  h_n1_dPhi       = loadH1(inputFile, makeName(bn,"n1_dPhi"));
-  h_n1_dPtVsPt    = loadH2(inputFile, makeName(bn,"n1_dpt"));
-  h_n1_dPhiVsPt   = loadH2(inputFile, makeName(bn,"n1_dpt"));
+  h_n1_dPt        = loadH1(inputFile, createName(bn,"n1_dpt"));
+  h_n1_dPhi       = loadH1(inputFile, createName(bn,"n1_dPhi"));
+  h_n1_dPtVsPt    = loadH2(inputFile, createName(bn,"n1_dpt"));
+  h_n1_dPhiVsPt   = loadH2(inputFile, createName(bn,"n1_dpt"));
   
   if (fillEta)
     {
-    h_n1_dEta       = loadH1(inputFile, makeName(bn,"n1_deta"));
-    h_n1_dEtaVsEta  = loadH2(inputFile, makeName(bn,"n1_dEtaVsEta"));
+    h_n1_dEta       = loadH1(inputFile, createName(bn,"n1_deta"));
+    h_n1_dEtaVsEta  = loadH2(inputFile, createName(bn,"n1_dEtaVsEta"));
     }
   
   if (fillY)
     {
-    h_n1_dY       = loadH1(inputFile, makeName(bn,"n1_dY"));
-    h_n1_dYVsY    = loadH2(inputFile, makeName(bn,"n1_dYVsY"));
+    h_n1_dY       = loadH1(inputFile, createName(bn,"n1_dY"));
+    h_n1_dYVsY    = loadH2(inputFile, createName(bn,"n1_dYVsY"));
     }
   
   if (reportEnd(__FUNCTION__))
@@ -150,8 +152,8 @@ void ParticlePerformanceHistos::fill(Particle & recoParticle, double weight)
 
   //if (reportInfo(__FUNCTION__)) cout << "got genParticle" << endl;
 
-  TLorentzVector & recoMomentum = recoParticle.getMomentum();
-  TLorentzVector & genMomentum  = genParticle.getMomentum();
+  LorentzVector & recoMomentum = recoParticle.getMomentum();
+  LorentzVector & genMomentum  = genParticle.getMomentum();
 
 //  if (reportInfo(__FUNCTION__)) cout << "got genMomentum" << endl;
 

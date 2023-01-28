@@ -10,6 +10,7 @@
  *
  * *********************************************************************/
 #include "EventFilterAliceV0.hpp"
+using CAP::EventFilterAliceV0;
 
 ClassImp(EventFilterAliceV0);
 
@@ -54,27 +55,27 @@ bool EventFilterAliceV0::accept(Event & event)
   return (nV0 >= minimum) && (nV0 < maximum) && (nTPC>=nMinimumTPC) && (nTPC<nMaximumTPC);
 }
 
-TString EventFilterAliceV0::getName()
+String EventFilterAliceV0::getName()
 {
-  TString name = Form("Alice_V0MGeq%gLt%g_TPCGeq%gLt%g",minimum,maximum,nMinimumTPC,nMaximumTPC);
+  String name = Form("Alice_V0MGeq%gLt%g_TPCGeq%gLt%g",minimum,maximum,nMinimumTPC,nMaximumTPC);
   return name;
 }
 
 
 
-TString EventFilterAliceV0::getTitle()
+String EventFilterAliceV0::getTitle()
 {
-  TString name = Form("Alice: %g#le V0<%g; %g#le TPC<%g",minimum,maximum,nMinimumTPC,nMaximumTPC);
+  String name = Form("Alice: %g#le V0<%g; %g#le TPC<%g",minimum,maximum,nMinimumTPC,nMaximumTPC);
   return name;
 }
 
 
-TString EventFilterAliceV0::getLongName()
+String EventFilterAliceV0::getLongName()
 {
   return getName();
 }
 
-TString EventFilterAliceV0::getLongTitle()
+String EventFilterAliceV0::getLongTitle()
 {
   return getTitle();
 }

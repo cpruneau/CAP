@@ -11,8 +11,13 @@
  * *********************************************************************/
 #ifndef CAP__Filter
 #define CAP__Filter
-#include "TString.h"
+#include "Aliases.hpp"
 #include <ostream>
+using CAP::String;
+
+namespace CAP
+{
+
 
 class Condition
 {
@@ -127,8 +132,6 @@ public:
   }
 };
 
-
-
 //!
 //! Abstract and templated filter
 //!
@@ -172,12 +175,12 @@ public:
   //!
   virtual bool accept(const T & object __attribute__((unused)))
   {
-     return true;
+  return true;
   }
 
   virtual bool accept(const T & object1 __attribute__((unused)), const T & object2 __attribute__((unused)))
   {
-     return true;
+  return true;
   }
 
 
@@ -186,7 +189,7 @@ public:
   //! Call the initialize() method to automatically set names and titles of this filter
   //! or call the corresponding set methods directly to set them manually
   //!
-  TString getName() const
+  String getName() const
   {
   return name;
   }
@@ -196,7 +199,7 @@ public:
   //! Call the initialize() method to automatically set names and titles of this filter
   //! or call the corresponding set methods directly to set them manually
   //!
-  TString getTitle() const
+  String getTitle() const
   {
   return title;
   }
@@ -206,7 +209,7 @@ public:
   //! Call the initialize() method to automatically set names and titles of this filter
   //! or call the corresponding set methods directly to set them manually
   //!
-  TString getLongName() const
+  String getLongName() const
   {
   return longName;
   }
@@ -216,7 +219,7 @@ public:
   //! Call the initialize() method to automatically set names and titles of this filter
   //! or call the corresponding set methods directly to set them manually
   //!
-  TString getLongTitle() const
+  String getLongTitle() const
   {
   return longTitle;
   }
@@ -241,7 +244,7 @@ public:
   //!
   //! Set the short name of this filter
   //!
-  void setName(const TString  & newName)
+  void setName(const String  & newName)
   {
   name = newName;
   }
@@ -249,7 +252,7 @@ public:
   //!
   //! Set the short title of this filter
   //!
-  void setTitle(const TString  & newTitle)
+  void setTitle(const String  & newTitle)
   {
   title = newTitle;
   }
@@ -257,7 +260,7 @@ public:
   //!
   //! Set the long name of this filter
   //!
-  void setLongName(const TString  & newLongName)
+  void setLongName(const String  & newLongName)
   {
   longName = newLongName;
   }
@@ -265,7 +268,7 @@ public:
   //!
   //! Set the long title of this filter
   //!
-  void setLongTitle(const TString  & newLongTitle)
+  void setLongTitle(const String  & newLongTitle)
   {
   longTitle = newLongTitle;
   }
@@ -295,14 +298,17 @@ public:
 
 protected:
 
-  TString name;
-  TString longName;
-  TString title;
-  TString longTitle;
+  String name;
+  String longName;
+  String title;
+  String longTitle;
   std::vector<Condition*> conditions;
 
   ClassDef(Filter,0)
 };
+
+
+} // namespace CAP
 
 
 #endif /* CAP__Filter  */

@@ -10,9 +10,11 @@
  *
  * *********************************************************************/
 #include "FileTaskIterator.hpp"
+using CAP::FileTaskIterator;
+
 ClassImp(FileTaskIterator);
 
-FileTaskIterator::FileTaskIterator(const TString & _name,
+FileTaskIterator::FileTaskIterator(const String & _name,
                                    Configuration & _configuration)
 :
 TaskIterator(_name,_configuration),
@@ -35,14 +37,14 @@ void FileTaskIterator::execute()
     ;
   timer.start();
   incrementTaskExecuted();
-  TString fct = "execute()";
+  String fct = "execute()";
   unsigned int nSelectedFiles = selectedFileNames.size();
 
   if (nSelectedFiles==0)
     {
     // no file selected, get the list from the designated folder
     // with the included and excluded patterns.
-    TString histoInputPath = getValueString("HistogramInputPath");
+    String histoInputPath = getValueString("HistogramInputPath");
     selectedFileNames = getSelectedFileNamesFrom(histoInputPath);
     }
   nSelectedFiles = selectedFileNames.size();
@@ -130,7 +132,7 @@ void FileTaskIterator::execute()
 //!
 //! Add several  file  templates for use by this task iterator
 //!
-void FileTaskIterator::addFileNames(vector<TString> names)
+void FileTaskIterator::addFileNames(VectorString  names)
 {
   
   if (reportStart(__FUNCTION__))
@@ -139,14 +141,14 @@ void FileTaskIterator::addFileNames(vector<TString> names)
     {
     if (reportWarning(__FUNCTION__))
       {
-      cout << "Given vector<TString> names is empty." << endl;
+      cout << "Given VectorString  names is empty." << endl;
       cout << "Check your code!!!!!" << endl << endl;
       }
     return;
     }
   for (unsigned int k=0; k<names.size(); k++)
     {
-    if (reportInfo("FileTaskIterator",getName(),"addFilenameTemplate(const TString name)"))
+    if (reportInfo("FileTaskIterator",getName(),"addFilenameTemplate(const String name)"))
       {
       cout << "Adding template:" << names[k] << endl;
       }
@@ -181,14 +183,14 @@ void FileTaskIterator::addFileNames(unsigned int nNames, TString** names)
 //!
 //! Add several  file  templates for use by this task iterator
 //!
-void FileTaskIterator::addFileNames(const TString pathName,
-                                            vector<TString> includePatterns,
-                                            vector<TString> excludePatterns)
+void FileTaskIterator::addFileNames(const String pathName,
+                                            VectorString  includePatterns,
+                                            VectorString  excludePatterns)
 {
   
   if (reportStart(__FUNCTION__))
     ;
-  vector<TString> fileList = listFilesInDir(pathName,".root");
+  VectorString  fileList = listFilesInDir(pathName,".root");
   unsigned int nNames = fileList.size();
   if (reportDebug(__FUNCTION__))
     {
@@ -200,11 +202,11 @@ void FileTaskIterator::addFileNames(const TString pathName,
 
   for (unsigned int k=0; k<fileList.size(); k++)
     {
-    TString name = fileList[k];
+    String name = fileList[k];
     bool include = true;
     for (unsigned int kInclude=0; kInclude<includePatterns.size(); kInclude++)
       {
-      TString pattern = includePatterns[kInclude];
+      String pattern = includePatterns[kInclude];
       if (!name.Contains(pattern)) { include = false; break;}
       }
     if (!include)
@@ -213,7 +215,7 @@ void FileTaskIterator::addFileNames(const TString pathName,
       }
     for (unsigned int kExclude=0; kExclude<excludePatterns.size(); kExclude++)
       {
-      TString pattern = excludePatterns[kExclude];
+      String pattern = excludePatterns[kExclude];
       if (name.Contains(pattern))
         {
         include = false;
@@ -229,7 +231,7 @@ void FileTaskIterator::addFileNames(const TString pathName,
           if (dot==len-5 )
           name.Remove(dot,len-dot);
           }
-      TString check = pathName+name;
+      String check = pathName+name;
       //cout << " CHECK:::::: " << check << endl;
         selectedFileNames.push_back(pathName+name);
       }
@@ -253,7 +255,7 @@ void FileTaskIterator::initializeSubTasks()
       Task * subTask = getSubTaskAt(iTask);
       if (!isTaskOk()) break;
       if (reportDebug(__FUNCTION__))  cout << "Initializing task:" << subTask->getName() << endl;
-      TString name = removeRootExtension(selectedFileNames[currentFileIndex]);
+      String name = removeRootExtension(selectedFileNames[currentFileIndex]);
       subTask->setHistogramFileNames(name,name+appendedString);
       subTask->initialize();
       }

@@ -10,6 +10,8 @@
  *
  * *********************************************************************/
 #include "BidimGaussFitConfiguration.hpp"
+using CAP::BidimGaussFitConfiguration;
+
 ClassImp(BidimGaussFitConfiguration);
 
 

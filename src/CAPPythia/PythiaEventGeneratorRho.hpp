@@ -18,6 +18,10 @@
 #include "TTree.h"
 #include "Task.hpp"
 
+namespace CAP
+{
+
+
 class PythiaEventGeneratorRho : public Task
 {
 public:
@@ -31,7 +35,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  PythiaEventGeneratorRho(const TString & _name,
+  PythiaEventGeneratorRho(const String & _name,
                        Configuration & _configuration,
                        vector<EventFilter*>&   _eventFilters,
                        vector<ParticleFilter*>&_particleFilters);
@@ -87,5 +91,8 @@ protected:
 
   ClassDef(PythiaEventGeneratorRho,0)
 };
+
+
+}
 
 #endif /* CAP__PythiaEventGeneratorRho */

@@ -15,6 +15,10 @@
 #include "ParticleFilter.hpp"
 #include "CollisionGeometry.hpp"
 
+namespace CAP
+{
+
+
 //!
 //! Generic and abstract task used for the generation of NN collisions
 //!
@@ -31,7 +35,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  NucleonNucleonCollisionGenerator(const TString & _name,
+  NucleonNucleonCollisionGenerator(const String & _name,
                                    Configuration & _configuration,
                                    vector<EventFilter*>& _eventFilters,
                                    vector<ParticleFilter*>&_particleFilters);
@@ -48,5 +52,6 @@ public:
   ClassDef(NucleonNucleonCollisionGenerator,0)
 };
 
+}
 
 #endif /*CAP__NucleonNucleonCollisionGenerator */

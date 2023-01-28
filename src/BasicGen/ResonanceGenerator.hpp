@@ -13,6 +13,10 @@
 #define CAP__ResonanceGenerator
 #include "Task.hpp"
 
+namespace CAP
+{
+
+
 //!
 //!Task generates particles with a simple gaussian spectrum
 //!
@@ -29,7 +33,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  ResonanceGenerator(const TString  &        _name,
+  ResonanceGenerator(const String  &        _name,
                      Configuration  &        _configuration,
                      vector<EventFilter*>&   _eventFilters,
                      vector<ParticleFilter*>&_particleFilters);
@@ -77,5 +81,7 @@ protected:
 
   ClassDef(ResonanceGenerator,0)
 };
+
+}
 
 #endif /* CAP__ResonanceGenerator */

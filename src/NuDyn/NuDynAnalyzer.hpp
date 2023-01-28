@@ -13,6 +13,10 @@
 #define CAP__NuDynAnalyzer
 #include "Task.hpp"
 
+namespace CAP
+{
+
+
 //!
 //!Task used for the determination of multiplicity moments of second, third, and fourth order. These moments
 //!can then be used, in a "derived" stage, to compute cumulants of 2nd, 3rd, and 4th order, as well as other
@@ -37,7 +41,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  NuDynAnalyzer(const TString & _name,
+  NuDynAnalyzer(const String & _name,
                 Configuration & _configuration,
                 vector<EventFilter*> & _eventFilters,
                 vector<ParticleFilter*> & _particleFilters);
@@ -86,5 +90,6 @@ protected:
   ClassDef(NuDynAnalyzer,0)
 };
 
+} // namespace CAP
 
 #endif /* CAP__NuDynAnalyzer */

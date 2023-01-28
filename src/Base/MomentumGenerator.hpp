@@ -17,12 +17,16 @@
 #include <TF1.h>
 #include <TH1.h>
 #include <TRandom.h>
-#include <TLorentzVector.h>
+
 #include "ParticleType.hpp"
 
 using std::vector;
 using std::cout;
 using std::endl;
+
+namespace CAP
+{
+
 
 class MomentumGenerator
 {
@@ -38,7 +42,7 @@ public:
   //!     -1 : bose einstein
   MomentumGenerator(int _generatorType, ParticleType * _particleType, vector<double> _parameters, TRandom * _selectedRandom=gRandom);
   virtual ~MomentumGenerator() {}
-  virtual void   generate(TLorentzVector & momentum);
+  virtual void   generate(LorentzVector & momentum);
 
 protected:
   int            generatorType;
@@ -51,6 +55,8 @@ protected:
 
   ClassDef(MomentumGenerator,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP__MomentumGenerator */
 

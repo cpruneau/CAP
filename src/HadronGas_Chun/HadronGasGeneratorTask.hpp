@@ -15,11 +15,13 @@
 #include "HadronGasHistograms.hpp"
 #include "MomentumGenerator.hpp"
 
+namespace CAP
+{
 class HadronGasGeneratorTask : public Task
 {
 public:
 
-  HadronGasGeneratorTask(const TString  & _name,
+  HadronGasGeneratorTask(const String  & _name,
                          Configuration  & _configuration);
   virtual ~HadronGasGeneratorTask() {}
   virtual void setDefaultConfiguration();
@@ -44,5 +46,7 @@ protected:
   double  rangeY;
   ClassDef(HadronGasGeneratorTask,0)
 };
+
+} //namespace CAP
 
 #endif /* WAC_HadronGasGeneratorTask */

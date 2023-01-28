@@ -11,14 +11,11 @@
  * *********************************************************************/
 #ifndef CAP__MessageLogger
 #define CAP__MessageLogger
-#include "TClass.h"
-#include "TString.h"
-#include "TFile.h"
-#include "TH1.h"
 #include <iostream>
-using namespace std;
-using std::cout;
-using std::endl;
+#include "Aliases.hpp"
+
+namespace CAP
+{
 
 #define  ReportStart(function)   ( getMessageLogger()->reportStart((function) )
 #define  ReportEnd(function)     ( getMessageLogger()->reportEnd((function) )
@@ -40,21 +37,21 @@ public:
 
   Severity  reportLevel;      //!< Minimal error level reported by object instances inheriting from this class.
   Severity  holdReportLevel;  //!< Internal variable used internally to set/reset the nominal report level selected by the user.
-  TString   className;          //!< name of the class of this object instance
-  TString   instanceName;       //!< name given to this object instance
-  TString   fctName;            //!< name of the function initiating messages.
+  CAP::String   className;          //!< name of the class of this object instance
+  CAP::String   instanceName;       //!< name given to this object instance
+  CAP::String   fctName;            //!< name of the function initiating messages.
 
 protected:
 
-  static TString unknownSeverityName;
-  static TString traceSeverityName;
-  static TString startSeverityString;
-  static TString endSeverityString;
-  static TString debugSeverityName;
-  static TString infoSeverityName;
-  static TString warningSeverityName;
-  static TString errorSeverityName;
-  static TString fatalSeverityName;
+  static CAP::String unknownSeverityName;
+  static CAP::String traceSeverityName;
+  static CAP::String startSeverityString;
+  static CAP::String endSeverityString;
+  static CAP::String debugSeverityName;
+  static CAP::String infoSeverityName;
+  static CAP::String warningSeverityName;
+  static CAP::String errorSeverityName;
+  static CAP::String fatalSeverityName;
 
 public:
 
@@ -108,7 +105,7 @@ public:
   //!
   //!Append the given string to the class name sequence of this object instance.
   //!
-  inline void appendClassName(const TString &  _className)
+  inline void appendClassName(const CAP::String &  _className)
   {
   className += "/";
   className += _className;
@@ -117,7 +114,7 @@ public:
   //!
   //!Set the class name  of this object.
   //!
-  inline void setClassName(const TString &  _className)
+  inline void setClassName(const CAP::String &  _className)
   {
   className = _className;
   }
@@ -125,32 +122,32 @@ public:
   //!
   //!Set the  name  of this object .
   //!
-  inline void setInstanceName(const TString &  _instanceName) { instanceName = _instanceName;  }
+  inline void setInstanceName(const CAP::String &  _instanceName) { instanceName = _instanceName;  }
 
   //!
   //!Set the  name  of the function to report as message emitter.
   //!
-  inline void setFunctionName(const TString &  _fctName) { fctName = _fctName;   }
+  inline void setFunctionName(const CAP::String &  _fctName) { fctName = _fctName;   }
 
   //!
   //!Get the class name  of this object.
   //!
-  inline const TString &  getClassName()     const    { return className; }
+  inline const CAP::String &  getClassName()     const    { return className; }
 
   //!
   //!Get the  name  of this object.
   //!
-  inline const TString &  getInstanceName()  const    { return instanceName; }
+  inline const CAP::String &  getInstanceName()  const    { return instanceName; }
 
   //!
   //!Get the  name  of the function reporting messages.
   //!
-  inline const TString &  getFunctionName() const    { return fctName; }
+  inline const CAP::String &  getFunctionName() const    { return fctName; }
 
   //!
   //!Issue a debug message if the severity level is not below Debug.
   //!
-  inline bool reportDebug(const TString &  fctName, ostream & output=cout) const
+  inline bool reportDebug(const CAP::String &  fctName, std::ostream & output=std::cout) const
   {
     return report(Debug,className,instanceName,fctName,output);
   }
@@ -158,7 +155,7 @@ public:
   //!
   //!Issue a debug message if the severity level is not below Trace.
   //!
-  bool reportTrace(const TString &  fctName, ostream & output=cout) const
+  bool reportTrace(const CAP::String &  fctName, std::ostream & output=std::cout) const
   {
   return report(Trace,className,instanceName,fctName,output);
   }
@@ -166,7 +163,7 @@ public:
   //!
   //!Issue a function start message if the severity level is not below Trace.
   //!
-  bool reportStart(const TString &  fctName, ostream & output=cout) const
+  bool reportStart(const CAP::String &  fctName, std::ostream & output=std::cout) const
   {
   return report(Trace,className,instanceName,fctName,output);
   }
@@ -174,7 +171,7 @@ public:
   //!
   //!Issue a debug message if the severity level is not below Trace.
   //!
-  bool reportEnd(const TString &  fctName, ostream & output=cout) const
+  bool reportEnd(const CAP::String &  fctName, std::ostream & output=std::cout) const
   {
   return report(Trace,className,instanceName,fctName,output);
   }
@@ -182,7 +179,7 @@ public:
   //!
   //!Issue a debug message if the severity level is not below Info.
   //!
-  bool reportInfo(const TString &  fctName, ostream & output=cout) const
+  bool reportInfo(const CAP::String &  fctName, std::ostream & output=std::cout) const
   {
   return report(Info,className,instanceName,fctName,output);
   }
@@ -190,7 +187,7 @@ public:
   //!
   //!Issue a debug message if the severity level is not below Warning.
   //!
-  bool reportWarning(const TString &  fctName, ostream & output=cout) const
+  bool reportWarning(const CAP::String &  fctName, std::ostream & output=std::cout) const
   {
   return report(Warning,className,instanceName,fctName,output);
   }
@@ -198,7 +195,7 @@ public:
   //!
   //!Issue a debug message if the severity level is not below Error.
   //!
-  bool reportError(const TString &  fctName, ostream & output=cout) const
+  bool reportError(const CAP::String &  fctName, std::ostream & output=std::cout) const
   {
   return report(Error,className,instanceName,fctName,output);
   }
@@ -206,14 +203,16 @@ public:
   //!
   //!Issue a debug message if the severity level is not below Fatal.
   //!
-  bool reportFatal(const TString &  fctName, ostream & output=cout) const
+  bool reportFatal(const CAP::String &  fctName, std::ostream & output=std::cout) const
   {
   return report(Fatal,className,instanceName,fctName,output);
   }
 
-  bool report(Severity severity, const TString &  className, const TString &  instanceName, const TString &  fctName, ostream & output) const;
+  bool report(Severity severity, const CAP::String &  className, const CAP::String &  instanceName, const CAP::String &  fctName, std::ostream & output) const;
 
   ClassDef(MessageLogger,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP__MessageLogger */

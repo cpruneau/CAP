@@ -10,10 +10,11 @@
  *
  * *********************************************************************/
 #include "ParticlePerformanceAnalyzer.hpp"
+using CAP::ParticlePerformanceAnalyzer;
 
 ClassImp(ParticlePerformanceAnalyzer);
 
-ParticlePerformanceAnalyzer::ParticlePerformanceAnalyzer(const TString & _name,
+ParticlePerformanceAnalyzer::ParticlePerformanceAnalyzer(const String & _name,
                                                          Configuration & _configuration,
                                                          vector<EventFilter*> & _eventFilters,
                                                          vector<ParticleFilter*>& _particleFilters)
@@ -67,7 +68,7 @@ void ParticlePerformanceAnalyzer::createHistograms()
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString prefixName = getName(); //prefixName += "_";
+  String prefixName = getName(); //prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
   
@@ -83,11 +84,11 @@ void ParticlePerformanceAnalyzer::createHistograms()
     }
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    TString evtFilterName = eventFilters[iEventFilter]->getName();
+    String evtFilterName = eventFilters[iEventFilter]->getName();
     for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
       {
-      TString partFilterName = particleFilters[iParticleFilter]->getName();
-      TString histoName  = prefixName;
+      String partFilterName = particleFilters[iParticleFilter]->getName();
+      String histoName  = prefixName;
       histoName += "_";
       histoName += evtFilterName;
       histoName += "_";
@@ -108,7 +109,7 @@ void ParticlePerformanceAnalyzer::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString prefixName = getName(); prefixName += "_";
+  String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
   fillEta = getValueBool("FillEta");
@@ -123,11 +124,11 @@ void ParticlePerformanceAnalyzer::loadHistograms(TFile * inputFile)
     }
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    TString evtFilterName = * eventFilters[iEventFilter]->getName();
+    String evtFilterName = * eventFilters[iEventFilter]->getName();
     for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
       {
-      TString partFilterName = * particleFilters[iParticleFilter]->getName();
-      TString histoName  = prefixName;
+      String partFilterName = * particleFilters[iParticleFilter]->getName();
+      String histoName  = prefixName;
       histoName += evtFilterName;
       histoName += "_";
       histoName += partFilterName;

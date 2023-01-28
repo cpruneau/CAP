@@ -9,8 +9,12 @@
  **********************************************************************/
 #ifndef CAP_HadronGasVsTempHistograms
 #define CAP_HadronGasVsTempHistograms
-#include "Histograms.hpp"
+#include "HistogramGroup.hpp"
 #include "HadronGas.hpp"
+
+namespace CAP
+{
+
 
 //!
 //!Histograming class designed to make plots of the global hadron gas (HG) and particle species partial quantities as
@@ -31,12 +35,12 @@
 //!plotThermalSpeciesVsT and plotStableSpeciesVsT are toggle switches allowing to turn on/off the plotting of the
 //!histograms for thermal particle and stable particles respsectively.
 //!
-class HadronGasVsTempHistograms : public Histograms
+class HadronGasVsTempHistograms : public HistogramGroup
 {
 public:
 
   HadronGasVsTempHistograms(Task * _parent,
-                            const TString & _name,
+                            const String & _name,
                             Configuration & _config);
   virtual ~HadronGasVsTempHistograms() {}
   void createHistograms();
@@ -97,6 +101,8 @@ public:
   ClassDef(HadronGasVsTempHistograms,0)
 
 };
+
+} // namespace CAP
 
 #endif /* CAP_HadronGasVsTempHistograms  */
 

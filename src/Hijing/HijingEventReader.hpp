@@ -13,6 +13,10 @@
 #define CAP__HijingEventReader
 #include "RootTreeReader.hpp"
 
+namespace CAP
+{
+
+
 //!
 //! This class defines tasks capable of reading Hijing data file.
 //!
@@ -30,7 +34,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  HijingEventReader(const TString &          _name,
+  HijingEventReader(const String &          _name,
                     Configuration &          _configuration,
                     vector<EventFilter*>   & _eventFilters,
                     vector<ParticleFilter*>& _particleFilters);
@@ -93,5 +97,8 @@ protected:
 
   ClassDef(HijingEventReader,0)
 };
+
+
+} // namespace CAP
 
 #endif /* CAP_HijingEventReader */

@@ -9,12 +9,13 @@
  * Author: Claude Pruneau,   04/01/2022
  *
  * *********************************************************************/
-#include "ParticleDerivedHistos.hpp"
+#include "ParticleSingleDerivedHistos.hpp"
 #include "DerivedHistogramCalculator.hpp"
+using CAP::DerivedHistogramCalculator;
 
 ClassImp(DerivedHistogramCalculator);
 
-DerivedHistogramCalculator::DerivedHistogramCalculator(const TString & _name,
+DerivedHistogramCalculator::DerivedHistogramCalculator(const String & _name,
                                                        Configuration & _configuration,
                                                        vector<EventFilter*> & _eventFilters,
                                                        vector<ParticleFilter*>& _particleFilters)
@@ -29,8 +30,8 @@ void DerivedHistogramCalculator::saveHistograms()
   if (reportEnd(__FUNCTION__))
     ;
   bool forceHistogramsRewrite     = getValueBool("ForceHistogramsRewrite");
-  TString histogramOutputPath     = getValueString("HistogramOutputPath");
-  TString histogramOutputFile     = getValueString("HistogramOutputFile");
+  String histogramOutputPath     = getValueString("HistogramOutputPath");
+  String histogramOutputFile     = getValueString("HistogramOutputFile");
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;

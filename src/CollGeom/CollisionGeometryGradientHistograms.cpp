@@ -10,13 +10,13 @@
  *
  * *********************************************************************/
 #include "CollisionGeometryGradientHistograms.hpp"
-
+using CAP::CollisionGeometryGradientHistograms;
 
 CollisionGeometryGradientHistograms::CollisionGeometryGradientHistograms(Task * _parent,
-                                                                         const TString & _name,
+                                                                         const String & _name,
                                                                          Configuration & _configuration)
 :
-Histograms(_parent,_name,_configuration),
+HistogramGroup(_parent,_name,_configuration),
 h_edge(0),
 h_radius(0),
 h_gx(0),
@@ -29,11 +29,11 @@ void CollisionGeometryGradientHistograms::createHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString bn = getParentTaskName();
-  h_edge     = createHistogram(makeName(bn,"edge"),   200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "Edge");
-  h_radius   = createHistogram(makeName(bn,"radius"), 200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "r/r_{max}");
-  h_gx       = createHistogram(makeName(bn,"gx"),     200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "g_{x}");
-  h_gy       = createHistogram(makeName(bn,"gy"),     200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "g_{y}");
+  String bn = getParentTaskName();
+  h_edge     = createHistogram(createName(bn,"edge"),   200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "Edge");
+  h_radius   = createHistogram(createName(bn,"radius"), 200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "r/r_{max}");
+  h_gx       = createHistogram(createName(bn,"gx"),     200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "g_{x}");
+  h_gy       = createHistogram(createName(bn,"gy"),     200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "g_{y}");
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -44,11 +44,11 @@ void CollisionGeometryGradientHistograms::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  TString bn = getParentTaskName();
-  h_edge   = loadH2(inputFile,makeName(bn,"edge"));
-  h_radius = loadH2(inputFile,makeName(bn,"radius"));
-  h_gx     = loadH2(inputFile,makeName(bn,"gx"));
-  h_gy     = loadH2(inputFile,makeName(bn,"gy"));
+  String bn = getParentTaskName();
+  h_edge   = loadH2(inputFile,createName(bn,"edge"));
+  h_radius = loadH2(inputFile,createName(bn,"radius"));
+  h_gx     = loadH2(inputFile,createName(bn,"gx"));
+  h_gy     = loadH2(inputFile,createName(bn,"gy"));
   if (reportEnd(__FUNCTION__))
     ;
 }

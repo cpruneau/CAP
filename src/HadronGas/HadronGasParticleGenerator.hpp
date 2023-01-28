@@ -15,11 +15,15 @@
 #include "HadronGasHistograms.hpp"
 #include "MomentumGenerator.hpp"
 
+namespace CAP
+{
+
+
 class HadronGasGeneratorTask : public Task
 {
 public:
 
-  HadronGasGeneratorTask(const TString & _name,
+  HadronGasGeneratorTask(const String & _name,
                          Configuration & _configuration);
   virtual ~HadronGasGeneratorTask() {}
   virtual void setDefaultConfiguration();
@@ -31,5 +35,8 @@ protected:
   ParticleTypeCollection *   stableParticleTypes;
   ClassDef(HadronGasGeneratorTask,0)
 };
+
+} // namespace CAP
+
 
 #endif /* CAP_HadronGasGeneratorTask */

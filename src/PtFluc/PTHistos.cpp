@@ -10,17 +10,17 @@
  *
  * *********************************************************************/
 #include "PTHistos.hpp"
-#include "TH1.h"
+using CAP::PTHistos;
 
 ClassImp(PTHistos);
 
 PTHistos::PTHistos(Task *          _parent,
-                   const TString & _name,
+                   const String & _name,
                    Configuration & _configuration,
                    Severity        _debugLevel,
                    int             _ord)
 :
-Histograms(_parent,_name,_configuration),
+HistogramGroup(_parent,_name,_configuration),
 maxOrder(ord),
 histoIndex(0),
 size(0),
@@ -39,7 +39,7 @@ void PTHistos::createHistograms()
 {
 //	if (reportDebug(__FUNCTION__))  cout << "PTHistos::createHistograms(..) started"<< endl;
 //	HeavyIonConfiguration & ac = (HeavyIonConfiguration&)( *getConfiguration());
-//	TString bn = getParentTaskName();
+//	String bn = getParentTaskName();
 //	TH1::SetDefaultBufferSize(ac.totEvents);
 //	totEvents =ac.totEvents;
 //
@@ -64,9 +64,9 @@ void PTHistos::createHistograms()
 //	hC_vsCent = new TH1 ** [numFunc];
 //
 //	names = new TString* [numFunc];
-//	titles = new TString *[numFunc];
+//	titles = new String *[numFunc];
 //	names2 = new TString* [numFunc];
-//	titles2 = new TString *[numFunc];
+//	titles2 = new String *[numFunc];
 //
 //	for(int i = 0; i < numFunc; i++)
 //	{
@@ -78,10 +78,10 @@ void PTHistos::createHistograms()
 //		hC_vsMult[i] = new TH1 * [size];
 //		hC_vsCent[i] = new TH1 * [size];
 //
-//		names[i] = new TString [size];
-//		titles[i] = new TString [size];
-//		names2[i] = new TString [size];
-//		titles2[i] = new TString [size];
+//		names[i] = new String [size];
+//		titles[i] = new String [size];
+//		names2[i] = new String [size];
+//		titles2[i] = new String [size];
 //	}
 //
 //	h_counts = new TProfile*  [size];
@@ -91,11 +91,11 @@ void PTHistos::createHistograms()
 //
 //	orders = new int [size];
 //
-//	h_eventStreams   = createHistogram(makeName(bn,"NeventStreams"),1, 0.0, 0.0,  "mult","n_{Events}");
-//	if (ac.ptCorrelatorVsMult) h_eventStreams_vsMult = createHistogram(makeName(bn,"NeventStreams_vsMult"),ac.nBins_mult, 0.0, 0.0,  "mult","n_{Events}");
-//	if (ac.ptCorrelatorVsCent) h_eventStreams_vsCent = createHistogram(makeName(bn,"NeventStreams_vsCent"),ac.nBins_cent, 0.0, 0.0,  "cent","n_{Events}");
+//	h_eventStreams   = createHistogram(createName(bn,"NeventStreams"),1, 0.0, 0.0,  "mult","n_{Events}");
+//	if (ac.ptCorrelatorVsMult) h_eventStreams_vsMult = createHistogram(createName(bn,"NeventStreams_vsMult"),ac.nBins_mult, 0.0, 0.0,  "mult","n_{Events}");
+//	if (ac.ptCorrelatorVsCent) h_eventStreams_vsCent = createHistogram(createName(bn,"NeventStreams_vsCent"),ac.nBins_cent, 0.0, 0.0,  "cent","n_{Events}");
 //
-//	TString * baseName = new TString[2 * numFunc + 1];
+//	String * baseName = new TString[2 * numFunc + 1];
 //	baseName[0] = bn + "S_";
 //	baseName[1] = bn + "s_";
 //	baseName[2] = bn + "s*_";
@@ -104,7 +104,7 @@ void PTHistos::createHistograms()
 //	baseName[5] = bn + "c*_";
 //	baseName[6] = bn + "Counts_";
 //
-//	TString * baseTitle = new TString[2 * numFunc + 1];
+//	String * baseTitle = new TString[2 * numFunc + 1];
 //	baseTitle[0] = "S_{";
 //	baseTitle[1] = "s_{";
 //	baseTitle[2] = "s*_{";
@@ -148,7 +148,7 @@ void PTHistos::loadHistograms(TFile * inputFile)
 //	}
 //	Configuration & ac = *(Configuration*) getConfiguration();
 //
-//	TString  bn = getParentTaskName();
+//	String  bn = getParentTaskName();
 //
 //	size = (TMath::Factorial(2 * maxOrder)) / (TMath::Factorial(maxOrder ) * TMath::Factorial(maxOrder )) - 1;
 //
@@ -178,11 +178,11 @@ void PTHistos::loadHistograms(TFile * inputFile)
 //
 //	orders = new int [size];
 //
-//	h_eventStreams   = loadH1(inputFile, makeName(bn,"NeventStreams"));
-//	if (ac.ptCorrelatorVsMult) h_eventStreams_vsMult = loadH1(inputFile, makeName(bn,"NeventStreams_vsMult"));
-//	if (ac.ptCorrelatorVsCent) h_eventStreams_vsCent = loadH1(inputFile, makeName(bn,"NeventStreams_vsCent"));
+//	h_eventStreams   = loadH1(inputFile, createName(bn,"NeventStreams"));
+//	if (ac.ptCorrelatorVsMult) h_eventStreams_vsMult = loadH1(inputFile, createName(bn,"NeventStreams_vsMult"));
+//	if (ac.ptCorrelatorVsCent) h_eventStreams_vsCent = loadH1(inputFile, createName(bn,"NeventStreams_vsCent"));
 //
-//	TString * baseName = new TString[numFunc + 1];
+//	String * baseName = new TString[numFunc + 1];
 //	baseName[0] = bn + "S_";
 //	baseName[1] = bn + "s_";
 //	baseName[2] = bn + "s*_";
@@ -191,7 +191,7 @@ void PTHistos::loadHistograms(TFile * inputFile)
 //	baseName[5] = bn + "c*_";
 //	baseName[6] = bn + "Counts_";
 //
-//	TString * baseTitle = new TString[numFunc + 1];
+//	String * baseTitle = new TString[numFunc + 1];
 //	baseTitle[0] = "S_{";
 //	baseTitle[1] = "s_{";
 //	baseTitle[2] = "s*_{";
@@ -269,12 +269,12 @@ void PTHistos::fillEventHistos(double mult, double cent, double weight)
 
 // recursively create histograms for correlation functions of order 1 - maxOrder
 // Note: these histograms are not in sequence of lowest order to highest order. The reording occurs when the histograms are saved with the saveHistograms function.
-void PTHistos::createHistogramRec(TString * baseName, TString * baseTitle, int depth, int partIndex)
+void PTHistos::createHistogramRec(String * baseName, String * baseTitle, int depth, int partIndex)
 {
 //	if (reportDebug(__FUNCTION__))  cout << "PTHistos::createHistogramsRec(..) started"<< endl;
 //	Configuration & ac = *(Configuration*) getConfiguration();
-//	TString *histoName = new TString[2 * numFunc +1];
-//	TString *histoTitle= new TString[2 * numFunc +1];
+//	String *histoName = new TString[2 * numFunc +1];
+//	String *histoTitle= new TString[2 * numFunc +1];
 //
 //
 //	for(int i = partIndex; i < maxOrder; i++)
@@ -325,12 +325,12 @@ void PTHistos::createHistogramRec(TString * baseName, TString * baseTitle, int d
 //////////////////////////////////////////////
 // need to fix
 //////////////////////////////////////////////
-void PTHistos::loadHistogramRec(TString * baseName, int depth, int partIndex, TFile * inputFile)
+void PTHistos::loadHistogramRec(String * baseName, int depth, int partIndex, TFile * inputFile)
 {
 
 //	if (reportDebug(__FUNCTION__))  cout << "PTHistos::loadHistogramRec(..) Starting." << endl;
 //	Configuration & ac = *(Configuration*) getConfiguration();
-//	TString *histoName = new TString[2 * numFunc +1];
+//	String *histoName = new TString[2 * numFunc +1];
 //
 //
 //	for(int i = partIndex; i < maxOrder; i++)
@@ -629,7 +629,7 @@ void PTHistos::calculateCumulants(TProfile ** SHistos, TH1 **CHistos, int nBins,
 //
 //			calcRecSum( CHistos, iBin, absESq, 0, ind, set, len, set, len, 1, used, curInd, 1, sum );
 //
-//			TString name = nBins * size + iHisto;
+//			String name = nBins * size + iHisto;
 //
 //			if(iBin == 1) CHistos[iHisto] = new TH1F(name, name, nBins, min, max);
 //

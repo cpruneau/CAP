@@ -25,8 +25,8 @@ MessageLogger(Info),
 timer(),
 taskName                ( "Task" ),
 configured              (false),
-requestedConfiguration  (*new Configuration()),
 configuration           (),
+requestedConfiguration  (*new Configuration()),
 parent                  (nullptr),
 particleFactory         (nullptr),
 eventStreams            (),
@@ -41,7 +41,6 @@ basePairHistograms      (),
 derivedHistograms       (),
 derivedSingleHistograms (),
 derivedPairHistograms   (),
-combinedHistograms      (),
 filteredParticles       (),
 useEventStream0         (false),
 useEventStream1         (false),
@@ -65,15 +64,15 @@ subSampleIndex(0)
   setInstanceName(taskName);
 }
 
-Task::Task(const TString & _name,
+Task::Task(const String & _name,
            Configuration & _configuration)
 :
 MessageLogger(Severity::Info),
 timer(),
 taskName                (_name),
 configured              (false),
-requestedConfiguration  (_configuration),
 configuration           (),
+requestedConfiguration  (_configuration),
 parent                  (nullptr),
 particleFactory         (nullptr),
 eventStreams            (),
@@ -87,7 +86,6 @@ basePairHistograms      (),
 derivedHistograms       (),
 derivedSingleHistograms (),
 derivedPairHistograms   (),
-combinedHistograms      (),
 filteredParticles       (),
 useEventStream0         (false),
 useEventStream1         (false),
@@ -111,7 +109,7 @@ subSampleIndex(0)
   setInstanceName(_name);
 }
 
-Task::Task(const TString & _name,
+Task::Task(const String & _name,
            Configuration & _configuration,
            vector<EventFilter*> & _eventFilters,
            vector<ParticleFilter*>& _particleFilters)
@@ -120,8 +118,8 @@ MessageLogger(Severity::Info),
 timer(),
 taskName                (_name),
 configured              (false),
-requestedConfiguration  (_configuration),
 configuration           (),
+requestedConfiguration  (_configuration),
 parent                  (nullptr),
 particleFactory         (nullptr),
 eventStreams            (),
@@ -135,7 +133,6 @@ basePairHistograms      (),
 derivedHistograms       (),
 derivedSingleHistograms (),
 derivedPairHistograms   (),
-combinedHistograms      (),
 filteredParticles       (),
 useEventStream0         (false),
 useEventStream1         (false),
@@ -162,11 +159,11 @@ subSampleIndex(0)
 
 void Task::setDefaultConfiguration()
 {
-  TString nullString("none");
-  TString none("none");
-  TString treeName("tree");
+  String nullString("none");
+  String none("none");
+  String treeName("tree");
   configuration.clear();
-  addParameter("Severity",                TString("Debug"));
+  addParameter("Severity",                String("Debug"));
   addParameter("UseEvents",               useEvents);
   addParameter("UseParticles",            useParticles);
   addParameter("UseEventStream0",         useEventStream0);
@@ -214,7 +211,7 @@ void Task::setConfiguration(Configuration & _configuration)
   saveHistos      = getValueBool("SaveHistograms");
   forceHistogramsRewrite = getValueBool("ForceHistogramsRewrite");
   MessageLogger::Severity selectedLevel;
-  TString logOption = getValueString("Severity");
+  String logOption = getValueString("Severity");
   if (logOption.Contains("Debug"))        selectedLevel = MessageLogger::Debug;
   else if (logOption.Contains("Info"))    selectedLevel = MessageLogger::Info;
   else if (logOption.Contains("Warning")) selectedLevel = MessageLogger::Warning;
@@ -365,8 +362,8 @@ void Task::loadHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString histogramInputPath = getValueString("HistogramInputPath");
-  TString histogramInputFile = getValueString("HistogramInputFile");
+  String histogramInputPath = getValueString("HistogramInputPath");
+  String histogramInputFile = getValueString("HistogramInputFile");
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;
@@ -387,8 +384,8 @@ void Task::loadDerivedHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString histogramInputPath = getValueString("HistogramInputPath");
-  TString histogramInputFile = getValueString("HistogramInputFile");
+  String histogramInputPath = getValueString("HistogramInputPath");
+  String histogramInputFile = getValueString("HistogramInputFile");
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;
@@ -416,7 +413,6 @@ void Task::resetHistograms()
   for (unsigned int iHisto=0; iHisto<derivedHistograms.size();      iHisto++) derivedHistograms[iHisto]->reset();
   for (unsigned int iHisto=0; iHisto<derivedSingleHistograms.size();iHisto++) derivedSingleHistograms[iHisto]->reset();
   for (unsigned int iHisto=0; iHisto<derivedPairHistograms.size();  iHisto++) derivedPairHistograms[iHisto]->reset();
-  for (unsigned int iHisto=0; iHisto<combinedHistograms.size();     iHisto++) combinedHistograms[iHisto]->reset();
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -432,7 +428,6 @@ void Task::clearHistograms()
   for (unsigned int iHisto=0; iHisto<derivedHistograms.size();      iHisto++) delete derivedHistograms[iHisto];
   for (unsigned int iHisto=0; iHisto<derivedSingleHistograms.size();iHisto++) delete derivedSingleHistograms[iHisto];
   for (unsigned int iHisto=0; iHisto<derivedPairHistograms.size();  iHisto++) delete derivedPairHistograms[iHisto];
-  for (unsigned int iHisto=0; iHisto<combinedHistograms.size();     iHisto++) delete combinedHistograms[iHisto];
   inputHistograms.clear();
   histograms.clear();
   baseSingleHistograms.clear();
@@ -440,7 +435,6 @@ void Task::clearHistograms()
   derivedHistograms.clear();
   derivedSingleHistograms.clear();
   derivedPairHistograms.clear();
-  combinedHistograms.clear();
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -527,7 +521,6 @@ void Task::saveHistograms(TFile * outputFile)
     cout << "Derived global histogram(s).....:"  << derivedHistograms.size() << endl;
     cout << "Derived single histogram(s).....:"  << derivedSingleHistograms.size() << endl;
     cout << "Derived pair histogram(s).......:"  << derivedPairHistograms.size() << endl;
-    cout << "Combined histogram(s)...........:"  << combinedHistograms.size() << endl;
     }
   for (unsigned int iHisto=0; iHisto<histograms.size(); iHisto++)
     {
@@ -559,11 +552,6 @@ void Task::saveHistograms(TFile * outputFile)
     if (reportDebug(__FUNCTION__)) cout << "Saving derived pair histogram(s) group:" << iHisto  << endl;
     derivedPairHistograms[iHisto]->saveHistograms(outputFile);
     }
-  for (unsigned int iHisto=0; iHisto<combinedHistograms.size(); iHisto++)
-    {
-    if (reportDebug(__FUNCTION__)) cout << "Saving combined histogram(s) group:" <<  iHisto << endl;
-    combinedHistograms[iHisto]->saveHistograms(outputFile);
-    }
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -572,8 +560,8 @@ void Task::saveHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString histogramOutputPath     = getValueString("HistogramOutputPath");
-  TString histogramOutputFile     = getValueString("HistogramOutputFile");
+  String histogramOutputPath     = getValueString("HistogramOutputPath");
+  String histogramOutputFile     = getValueString("HistogramOutputFile");
   if (histogramOutputPath.Contains("null") || histogramOutputPath.Contains("none")) histogramOutputPath = "";
   if (histogramOutputFile.Contains("null") || histogramOutputFile.Contains("none")) histogramOutputFile = taskName;
   if (reportInfo(__FUNCTION__))
@@ -611,7 +599,7 @@ void Task::writeNEexecutedTask(TFile * outputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString name = "nTaskExecuted";
+  String name = "nTaskExecuted";
   writeParameter(outputFile,name,nTaskExecuted);
   if (reportEnd(__FUNCTION__))
     ;
@@ -621,7 +609,7 @@ long Task::loadNEexecutedTask(TFile * inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString name = "nTaskExecuted";
+  String name = "nTaskExecuted";
   nTaskExecuted = readParameter(inputFile,name);
   if (reportEnd(__FUNCTION__))
     ;
@@ -632,7 +620,7 @@ void Task::writeNEventsAccepted(TFile * outputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString parameterName = "nEventFilters";
+  String parameterName = "nEventFilters";
   writeParameter(outputFile,parameterName,nEventFilters);
 
   for (int iFilter=0; iFilter<nEventFilters; iFilter++)
@@ -649,7 +637,7 @@ void Task::loadNEventsAccepted(TFile * inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString parameterName = "nEventFilters";
+  String parameterName = "nEventFilters";
   nEventFilters = readParameter(inputFile,parameterName);
   if (nEventsAccepted.size()<1) nEventsAccepted.assign(nEventFilters,0);
   for (int iFilter=0; iFilter<nEventFilters; iFilter++)
@@ -662,7 +650,7 @@ void Task::loadNEventsAccepted(TFile * inputFile)
     ;
 }
 
-void Task::writeParameter(TFile * outputFile, const TString & parameterName, long value)
+void Task::writeParameter(TFile * outputFile, const String & parameterName, long value)
 {
 
   if (reportStart(__FUNCTION__))
@@ -671,7 +659,7 @@ void Task::writeParameter(TFile * outputFile, const TString & parameterName, lon
   TParameter<Long64_t>(parameterName,value,'+').Write();
 }
 
-long Task::readParameter(TFile * inputFile, const TString & parameterName)
+long Task::readParameter(TFile * inputFile, const String & parameterName)
 {
   if (reportStart(__FUNCTION__))
     ;
@@ -688,11 +676,11 @@ long Task::readParameter(TFile * inputFile, const TString & parameterName)
   return value;
 }
 
-TFile *  Task::openRootFile(const TString & inputPath, const TString & fileName, const TString & ioOption)
+TFile *  Task::openRootFile(const String & inputPath, const String & fileName, const String & ioOption)
 {
   if (reportStart(__FUNCTION__))
     ;
-  TString inputFileName = inputPath;
+  String inputFileName = inputPath;
   
   // make sure that if an inputPath is given, it ends with '/'
   int slash = inputFileName.First('/');
@@ -861,91 +849,15 @@ void Task::addHistogramsToExtList(TList *list __attribute__((unused)) )
 {
 }
 
-const TString Task::makeHistoName(const TString & s0,
-                                  const TString & s1)
-{
-  TString histoName = s0;
-  histoName += "_";
-  histoName += s1;
-  return histoName;
-}
 
-const TString Task::makeHistoName(const TString & s0,
-                                  const TString & s1,
-                                  const TString & s2)
-{
-  TString histoName = s0;
-  histoName += "_";
-  histoName += s1;
-  histoName += "_";
-  histoName += s2;
-  return histoName;
-}
-
-const TString Task::makeHistoName(const TString & s0,
-                                        const TString & s1,
-                                        const TString & s2,
-                                        const TString & s3)
-{
-  TString histoName = s0;
-  histoName += "_";
-  histoName += s1;
-  histoName += "_";
-  histoName += s2;
-  histoName += "_";
-  histoName += s3;
-  return histoName;
-}
-
-
-const TString Task::makeHistoName(const TString & s0,
-                                        const TString & s1,
-                                        const TString & s2,
-                                        const TString & s3,
-                                        const TString & s4)
-{
-  TString histoName = s0;
-  histoName += "_";
-  histoName += s1;
-  histoName += "_";
-  histoName += s2;
-  histoName += "_";
-  histoName += s3;
-  histoName += "_";
-  histoName += s4;
-  return histoName;
-}
-
-const TString Task::makeHistoName(const TString & s0,
-                                            const TString & s1,
-                                            const TString & s2,
-                                            const TString & s3,
-                                            const TString & s4,
-                                            const TString & s5)
-{
-  TString histoName  = s0;
-  histoName += "_";
-  histoName += s1;
-  histoName += "_";
-  histoName += s2;
-  histoName += "_";
-  histoName += s3;
-  histoName += "_";
-  histoName += s4;
-  histoName += "_";
-  histoName += s5;
-  return histoName;
-}
-
-
-vector<TString> Task::listFilesInDir(const TString & pathname,
-                               const TString & ext,
+vector<String> Task::listFilesInDir(const String & pathname,
+                               const String & ext,
                                bool prependPath,
                                bool verbose,
                                int  maximumDepth,
                                int  currentDepth)
 {
-  TString dirname = pathname;
+  String dirname = pathname;
   int depth = currentDepth;
   if (!dirname.EndsWith("/")) dirname += "/";
   if (verbose) cout << " Searching................: " << dirname << endl;
@@ -953,13 +865,13 @@ vector<TString> Task::listFilesInDir(const TString & pathname,
   if (verbose) cout << " currentDepth.............: " << depth << endl;
   TSystemDirectory dir(dirname, dirname);
   TList *files = dir.GetListOfFiles();
-  vector<TString>  fileNames;
-  vector<TString>  subdirs;
+  vector<String>  fileNames;
+  vector<String>  subdirs;
 
   if (files)
     {
     TSystemFile *file;
-    TString fname;
+    String fname;
     TIter next(files);
     while ((file=(TSystemFile*)next()))
       {
@@ -988,8 +900,8 @@ vector<TString> Task::listFilesInDir(const TString & pathname,
 
     for (int iDir=0; iDir<nSubdirs; iDir++)
       {
-      vector<TString> additionalFiles;
-      TString  subdirname = dirname;
+      vector<String> additionalFiles;
+      String  subdirname = dirname;
       subdirname += "/";
       subdirname += subdirs[iDir];
       subdirname += "/";
@@ -1008,9 +920,9 @@ vector<TString> Task::listFilesInDir(const TString & pathname,
 //!
 //! Get file  names at the given location that match all  patterns in includePatterns and exclude patterns in excludePatterns
 //!
-vector<TString>  Task::listFilesInDir(const TString & pathName,
-                                      vector<TString> includePatterns,
-                                      vector<TString> excludePatterns,
+vector<String>  Task::listFilesInDir(const String & pathName,
+                                      vector<String> includePatterns,
+                                      vector<String> excludePatterns,
                                       bool prependPath,
                                       bool verbose,
                                       int  maximumDepth,
@@ -1019,8 +931,8 @@ vector<TString>  Task::listFilesInDir(const TString & pathName,
 
   if (reportStart(__FUNCTION__))
     ;
-  vector<TString> outputList;
-  vector<TString> fileList = listFilesInDir(pathName,".root",prependPath,verbose,maximumDepth,currentDepth);
+  vector<String> outputList;
+  vector<String> fileList = listFilesInDir(pathName,".root",prependPath,verbose,maximumDepth,currentDepth);
   unsigned int nNames = fileList.size();
   if (reportDebug(__FUNCTION__))
     {
@@ -1030,11 +942,11 @@ vector<TString>  Task::listFilesInDir(const TString & pathName,
     }
   for (unsigned int k=0; k<fileList.size(); k++)
     {
-    TString name = fileList[k];
+    String name = fileList[k];
     bool include = true;
     for (unsigned int kInclude=0; kInclude<includePatterns.size(); kInclude++)
       {
-      TString pattern = includePatterns[kInclude];
+      String pattern = includePatterns[kInclude];
       if (!name.Contains(pattern)) { include = false; break;}
       }
     if (!include)
@@ -1043,7 +955,7 @@ vector<TString>  Task::listFilesInDir(const TString & pathName,
       }
     for (unsigned int kExclude=0; kExclude<excludePatterns.size(); kExclude++)
       {
-      TString pattern = excludePatterns[kExclude];
+      String pattern = excludePatterns[kExclude];
       if (name.Contains(pattern))
         {
         include = false;
@@ -1059,7 +971,7 @@ vector<TString>  Task::listFilesInDir(const TString & pathName,
           if (dot==len-5 )
           name.Remove(dot,len-dot);
           }
-      //TString check = pathName+name;
+      //String check = pathName+name;
       //cout << " CHECK:::::: " << check << endl;
       outputList.push_back(name);
       }
@@ -1067,32 +979,32 @@ vector<TString>  Task::listFilesInDir(const TString & pathName,
   return outputList;
 }
 
-vector<TString> Task::getSelectedFileNamesFrom(const TString & folder)
+vector<String> Task::getSelectedFileNamesFrom(const String & folder)
 {
 
   if (reportStart(__FUNCTION__))
     ;
-  vector<TString> includePatterns;
-  vector<TString> excludePatterns;
-  vector<TString> selectedNames;
+  vector<String> includePatterns;
+  vector<String> excludePatterns;
+  vector<String> selectedNames;
   for (int k=0; k<20; k++)
     {
-    TString key = "IncludedPattern"; key += k;
-    TString  value = getValueString(key);
+    String key = "IncludedPattern"; key += k;
+    String  value = getValueString(key);
     if (!value.Contains("none")) includePatterns.push_back(value);
     }
   for (int k=0; k<20; k++)
     {
-    TString key = "ExcludedPattern"; key += k;
-    TString  value = getValueString(key);
+    String key = "ExcludedPattern"; key += k;
+    String  value = getValueString(key);
     if (!value.Contains("none")) excludePatterns.push_back(value);
     }
   return listFilesInDir(folder,includePatterns,excludePatterns);
 }
 
-TString Task::removeRootExtension(const TString fileName)
+String Task::removeRootExtension(const String fileName)
 {
-  TString name = fileName;
+  String name = fileName;
   int dot = name.Last('.');
   int len = name.Length();
   //  cout << dot << endl;
@@ -1132,11 +1044,11 @@ const Task * Task::getTaskAt(int depth) const
   return task;
   }
 
-TString Task::getReverseTaskPath(int depth) const
+String Task::getReverseTaskPath(int depth) const
 {
-  TString result;
-  TString work;
-  TString colon = TString(":");
+  String result;
+  String work;
+  String colon = String(":");
   for (int k=0; k<=depth; k++)
     {
     const Task * task = getTaskAt(k);
@@ -1157,9 +1069,9 @@ TString Task::getReverseTaskPath(int depth) const
   return result;
 }
 
-vector<TString> Task::getTaskPathTokens() const
+vector<String> Task::getTaskPathTokens() const
 {
-  vector<TString> paths;
+  vector<String> paths;
   int n = getNAncestors();
   for (int k=n; k>=0; k--)
     {
@@ -1178,10 +1090,10 @@ vector<TString> Task::getTaskPathTokens() const
 }
 
 
-TString Task::getTaskPath(int depth) const
+String Task::getTaskPath(int depth) const
 {
-  TString path = "";
-  vector<TString> paths = getTaskPathTokens();
+  String path = "";
+  vector<String> paths = getTaskPathTokens();
   for (int k=0; k<=depth; k++)
     {
     path += paths[k];
@@ -1191,9 +1103,9 @@ TString Task::getTaskPath(int depth) const
 }
 
 
-TString Task::getFullTaskPath() const
+String Task::getFullTaskPath() const
 {
-  TString path;
+  String path;
   //cout << "getFullTaskPath() -- 1" << endl;
   int n = getNAncestors();
   //cout << "getFullTaskPath() -- 2" << endl;
@@ -1219,11 +1131,11 @@ int Task::getNAncestors() const
   return count;
 }
 
-bool Task::getValueBool(const TString & key)   const
+bool Task::getValueBool(const String & key)   const
 {
   int n = getNAncestors();
-  TString path;
-  TString extKey;
+  String path;
+  String extKey;
   bool result = false;
   for (int k=n; k>=0; k--)
     {
@@ -1254,11 +1166,11 @@ bool Task::getValueBool(const TString & key)   const
   return result;
 }
 
-int Task::getValueInt(const TString & key)    const
+int Task::getValueInt(const String & key)    const
 {
   int n = getNAncestors();
-  TString path;
-  TString extKey;
+  String path;
+  String extKey;
   for (int k=n; k>=0; k--)
     {
     path   = getTaskPath(k);
@@ -1275,11 +1187,11 @@ int Task::getValueInt(const TString & key)    const
 //!
 //! Get the value of the parameter named 'name'
 //!
-long Task::getValueLong(const TString & key)    const
+long Task::getValueLong(const String & key)    const
 {
   int n = getNAncestors();
-  TString path;
-  TString extKey;
+  String path;
+  String extKey;
   for (int k=n; k>=0; k--)
     {
     path   = getTaskPath(k);
@@ -1295,11 +1207,11 @@ long Task::getValueLong(const TString & key)    const
 //!
 //! Get the value of the parameter named 'name'
 //!
-double Task::getValueDouble(const TString & key) const
+double Task::getValueDouble(const String & key) const
 {
   int n = getNAncestors();
-  TString path;
-  TString extKey;
+  String path;
+  String extKey;
   for (int k=n; k>=0; k--)
     {
     path   = getTaskPath(k);
@@ -1320,11 +1232,11 @@ double Task::getValueDouble(const TString & key) const
   return -99999.0;
 }
 
-TString Task::getValueString(const TString & key) const
+String Task::getValueString(const String & key) const
 {
   int n = getNAncestors();
-  TString path;
-  TString extKey;
+  String path;
+  String extKey;
   for (int k=n; k>=0; k--)
     {
     path   = getTaskPath(k);
@@ -1334,104 +1246,104 @@ TString Task::getValueString(const TString & key) const
     bool found = configuration.isString(extKey);
     if (found) return configuration.getValueString(extKey);
     }
-  return TString("none");
+  return String("none");
   }
 
 
-void Task::addParameter(const TString & name, bool value)
+void Task::addParameter(const String & name, bool value)
 {
-  TString path = getFullTaskPath();
-  if (reportDebug("addParameter(const TString & name, bool value)"))
+  String path = getFullTaskPath();
+  if (reportDebug("addParameter(const String & name, bool value)"))
     cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.addParameter(path,name,value);
 }
 
-void Task::addParameter(const TString & name, int value)
+void Task::addParameter(const String & name, int value)
 {
-  TString path = getFullTaskPath();
-  if (reportDebug("addParameter(const TString & name, int value)"))
-    cout << " path: " << path << " name: " << name << " value: " << value << endl;
-  configuration.addParameter(path,name,value);
-}
-
-
-void Task::addParameter(const TString & name, long value)
-{
-  TString path = getFullTaskPath();
-  if (reportDebug("addParameter(const TString & name, long value)"))
+  String path = getFullTaskPath();
+  if (reportDebug("addParameter(const String & name, int value)"))
     cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.addParameter(path,name,value);
 }
 
 
-void Task::addParameter(const TString & name, double value)
+void Task::addParameter(const String & name, long value)
 {
-  TString path = getFullTaskPath();
-  if (reportDebug("addParameter(const TString & name, double value)"))
+  String path = getFullTaskPath();
+  if (reportDebug("addParameter(const String & name, long value)"))
     cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.addParameter(path,name,value);
 }
 
 
-void Task::addParameter(const TString & name, const TString &  value)
+void Task::addParameter(const String & name, double value)
 {
-  TString path = getFullTaskPath();
-  if (reportDebug("addParameter(const TString & name, string value)"))
+  String path = getFullTaskPath();
+  if (reportDebug("addParameter(const String & name, double value)"))
+    cout << " path: " << path << " name: " << name << " value: " << value << endl;
+  configuration.addParameter(path,name,value);
+}
+
+
+void Task::addParameter(const String & name, const String &  value)
+{
+  String path = getFullTaskPath();
+  if (reportDebug("addParameter(const String & name, string value)"))
     cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.addParameter(path,name,value);
 }
 
 
 
-void Task::setParameter(const TString & name, bool value)
+void Task::setParameter(const String & name, bool value)
 {
-  TString path = getFullTaskPath();
-  if (reportDebug("setParameter(const TString & name, bool value)"))
+  String path = getFullTaskPath();
+  if (reportDebug("setParameter(const String & name, bool value)"))
     cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.setParameter(path,name,value);
 }
 
-void Task::setParameter(const TString & name, int value)
+void Task::setParameter(const String & name, int value)
 {
-  TString path = getFullTaskPath();
-  if (reportDebug("setParameter(const TString & name, int value)"))
+  String path = getFullTaskPath();
+  if (reportDebug("setParameter(const String & name, int value)"))
     cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.setParameter(path,name,value);
 }
 
 
-void Task::setParameter(const TString & name, long value)
+void Task::setParameter(const String & name, long value)
 {
-  TString path = getFullTaskPath();
-  if (reportDebug("setParameter(const TString & name, long value)"))
+  String path = getFullTaskPath();
+  if (reportDebug("setParameter(const String & name, long value)"))
     cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.setParameter(path,name,value);
 }
 
-void Task::setParameter(const TString & name, double value)
+void Task::setParameter(const String & name, double value)
 {
-  TString path = getFullTaskPath();
-  if (reportDebug("setParameter(const TString & name, double value)"))
+  String path = getFullTaskPath();
+  if (reportDebug("setParameter(const String & name, double value)"))
     cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.setParameter(path,name,value);
 }
 
-void Task::setParameter(const TString & name, const TString &  value)
+void Task::setParameter(const String & name, const String &  value)
 {
-  TString path = getFullTaskPath();
-  if (reportDebug("setParameter(const TString & name, TString value)"))
+  String path = getFullTaskPath();
+  if (reportDebug("setParameter(const String & name, String value)"))
     cout << " path: " << path << " name: " << name << " value: " << value << endl;
   configuration.setParameter(path,name,value);
 }
 
-void Task::generateKeyValuePairs(const TString keyBaseName, const TString defaultValue, int nKeysToGenerate)
+void Task::generateKeyValuePairs(const String keyBaseName, const String defaultValue, int nKeysToGenerate)
 {
-  TString path = getFullTaskPath();
+  String path = getFullTaskPath();
   configuration.generateKeyValuePairs(path,keyBaseName,defaultValue,nKeysToGenerate);
 }
 
-vector<TString> Task::getSelectedValues(const TString keyBaseName, const TString defaultValue) const
+vector<String> Task::getSelectedValues(const String keyBaseName, const String defaultValue) const
 {
-  TString path = getFullTaskPath();
+  String path = getFullTaskPath();
   return configuration.getSelectedValues(path,keyBaseName,defaultValue);
 }

@@ -11,6 +11,7 @@
  * *********************************************************************/
 #include <iostream>
 #include "CollisionGeometry.hpp"
+using CAP::CollisionGeometry;
 
 using namespace std;
 
@@ -87,17 +88,17 @@ void CollisionGeometry::addNNCollision(Particle* nucleonA,
 
   if (!nucleonA->isWounded())
     {
-    TLorentzVector & positionA = nucleonA->getPosition();
+    LorentzVector & positionA = nucleonA->getPosition();
     participantMoments.fill(positionA.X() ,positionA.Y());
     nucleonA->setWounded(true);
     }
   if (!nucleonB->isWounded())
     {
-    TLorentzVector & positionB = nucleonB->getPosition();
+    LorentzVector & positionB = nucleonB->getPosition();
     participantMoments.fill(positionB.X() ,positionB.Y());
     nucleonB->setWounded(true);
     }
-  TLorentzVector & positionInt = interaction.getPosition();
+  LorentzVector & positionInt = interaction.getPosition();
   binaryMoments.fill(positionInt.X(),positionInt.Y());
 }
 

@@ -13,11 +13,14 @@
 #define CAP__RunSubsample
 #include "Task.hpp"
 
+namespace CAP
+{
+
 class RunSubsample : public Task
 {
 public:
   
-  RunSubsample(const TString & _name,
+  RunSubsample(const String & _name,
               Configuration & _configuration);
 
   //!
@@ -40,30 +43,32 @@ public:
   //!
   void execute();
 
-  void addBaseSubSampleTask(const TString & basePath,
-                            const TString & bunchLabel,
+  void addBaseSubSampleTask(const String & basePath,
+                            const String & bunchLabel,
                             int   nBunches,
-                            const TString & subPath,
+                            const String & subPath,
                             int   maximumDepth,
-                            const TString & taskType);
+                            const String & taskType);
 
-  void addDerivedSubSampleTask(const TString & basePath,
-                               const TString & bunchLabel,
+  void addDerivedSubSampleTask(const String & basePath,
+                               const String & bunchLabel,
                                int   nBunches,
-                               const TString & subPath,
+                               const String & subPath,
                                int   maximumDepth,
-                               const TString & taskType);
+                               const String & taskType);
 
-  void addBalFctSubSampleTask(const TString & basePath,
-                              const TString & bunchLabel,
+  void addBalFctSubSampleTask(const String & basePath,
+                              const String & bunchLabel,
                               int   nBunches,
-                              const TString & subPath,
+                              const String & subPath,
                               int   maximumDepth,
-                              const TString & taskType);
+                              const String & taskType);
 
 
   ClassDef(RunSubsample,0)
 };
+
+}
 
 #endif /* CAP_RunAnalysis */
 

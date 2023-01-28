@@ -25,6 +25,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////
 
 
+namespace CAP
+{
 
 class ParticleFilterAliceV0 : public ParticleFilter
 {
@@ -64,10 +66,10 @@ public:
   return accepting; //(min_eta<eta) && (eta<= max_eta);
   }
 
-  virtual TString getName() const ;
-  virtual TString getTitle() const ;
-  virtual TString getLongName() const ;
-  virtual TString getLongTitle() const ;
+  virtual String getName() const ;
+  virtual String getTitle() const ;
+  virtual String getLongName() const ;
+  virtual String getLongTitle() const ;
 
   virtual void printProperties(  ostream & os);
 
@@ -84,5 +86,7 @@ protected:
 
   ClassDef(ParticleFilterAliceV0,0)
 };
+
+}
 
 #endif /* CAP__ParticleFilterAliceV0 */

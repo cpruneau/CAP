@@ -15,6 +15,7 @@
 #include <TMath.h>
 #include "Math/SpecFunc.h"
 #include "HadronGasParticle.hpp"
+using CAP::HadronGasParticle;
 
 ClassImp(HadronGasParticle);
 

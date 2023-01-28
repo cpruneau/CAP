@@ -12,6 +12,8 @@
 #include <ostream>
 #include "Factory.hpp"
 #include "Particle.hpp"
+using CAP::Factory;
+using CAP::Particle;
 
 ClassImp(Factory<Particle>);
 
@@ -109,8 +111,8 @@ void Particle::set(ParticleType * _type,
 }
 
 void Particle::set(ParticleType * _type,
-                   TLorentzVector & _momentum,
-                   TLorentzVector & _position,
+                   LorentzVector & _momentum,
+                   LorentzVector & _position,
                    bool _live)
 {
   clear();
@@ -121,7 +123,7 @@ void Particle::set(ParticleType * _type,
 }
 
 void Particle::set(ParticleType * _type,
-                   TLorentzVector & _momentum,
+                   LorentzVector & _momentum,
                    vector<Particle*> _parents,
                    bool _live)
 {

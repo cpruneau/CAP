@@ -11,15 +11,19 @@
  * *********************************************************************/
 #ifndef CAP__StatStudyHistograms
 #define CAP__StatStudyHistograms
-#include "Histograms.hpp"
+#include "HistogramGroup.hpp"
 #include "TString.h"
 
-class StatStudyHistograms : public Histograms
+namespace CAP
+{
+
+
+class StatStudyHistograms : public HistogramGroup
 {
 public:
 
   StatStudyHistograms(Task * _parent,
-                      const TString & _name
+                      const String & _name
                       Configuration & _configuration);
   virtual ~StatStudyHistograms();
   virtual void createHistograms();
@@ -144,5 +148,8 @@ public:
 
  ClassDef(StatStudyHistograms,0)
 };
+
+
+} // namespace CAP
 
 #endif //CAP__StatStudyHistograms

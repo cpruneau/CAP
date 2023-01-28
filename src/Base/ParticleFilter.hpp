@@ -11,9 +11,11 @@
  * *********************************************************************/
 #ifndef CAP__ParticleFilter
 #define CAP__ParticleFilter
-#include "TString.h"
 #include "Particle.hpp"
 #include "Filter.hpp"
+
+namespace CAP
+{
 
 class ParticleFilter : public Filter<Particle>
 {
@@ -40,34 +42,34 @@ public:
   //!  Create a filter accepting all neutral particles
   //!
   static vector<ParticleFilter*> createNeutralParticleFilter(bool filteringOnPt,  double minPt,  double maxPt,
-                                                      bool filteringOnEta, double minEta, double maxEta,
-                                                      bool filteringOnY,   double minY,   double maxY);
+                                                             bool filteringOnEta, double minEta, double maxEta,
+                                                             bool filteringOnY,   double minY,   double maxY);
 
   //!
   //!  Create a filter accepting all charged particles
   //!
   static vector<ParticleFilter*> createChargedParticleFilter(bool filteringOnPt,  double minPt,  double maxPt,
-                                                      bool filteringOnEta, double minEta, double maxEta,
-                                                      bool filteringOnY,   double minY,   double maxY);
+                                                             bool filteringOnEta, double minEta, double maxEta,
+                                                             bool filteringOnY,   double minY,   double maxY);
 
   //!
   //!  Create a filter accepting all negative particles
   //!
   static vector<ParticleFilter*> createNegativeParticleFilter(bool filteringOnPt,  double minPt,  double maxPt,
-                                                       bool filteringOnEta, double minEta, double maxEta,
-                                                       bool filteringOnY,   double minY,   double maxY);
+                                                              bool filteringOnEta, double minEta, double maxEta,
+                                                              bool filteringOnY,   double minY,   double maxY);
 
   //!
   //!  Create a filter accepting all positive particles
   //!
   static vector<ParticleFilter*> createPositiveParticleFilter(bool filteringOnPt,  double minPt,  double maxPt,
-                                                       bool filteringOnEta, double minEta, double maxEta,
-                                                       bool filteringOnY,   double minY,   double maxY);
+                                                              bool filteringOnEta, double minEta, double maxEta,
+                                                              bool filteringOnY,   double minY,   double maxY);
 
   //!
   //!  Create a filter accepting only the given pdg code with the given kinematical parameters
   //!
-  static  ParticleFilter * createHadronFilter(int pdg, const TString & _name, const TString  & title,
+  static  ParticleFilter * createHadronFilter(int pdg, const String & _name, const String  & title,
                                               bool filteringOnPt,  double minPt,  double maxPt,
                                               bool filteringOnEta, double minEta, double maxEta,
                                               bool filteringOnY,   double minY,   double maxY);
@@ -109,6 +111,8 @@ public:
 
   ClassDef(ParticleFilter,0)
 };
+
+}
 
 #endif /* CAP__ParticleFilter */
 

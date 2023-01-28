@@ -13,6 +13,10 @@
 #define CAP__EposEventReader
 #include "RootTreeReader.hpp"
 
+namespace CAP
+{
+
+
 //!
 //! Task to compute to read EPOS events and make them available for analysis in CAP. .
 //!
@@ -30,7 +34,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task -- use this filter to limit the range of particles read into CAP arrays.
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  EposEventReader(const TString & _name,
+  EposEventReader(const String & _name,
                   Configuration & _configuration,
                   vector<EventFilter*> & _eventFilters,
                   vector<ParticleFilter*> & _particleFilters);
@@ -82,5 +86,8 @@ protected:
  
   ClassDef(EposEventReader,0)
 };
+
+}
+
 
 #endif /* CAP__EposEventReader */

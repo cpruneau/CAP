@@ -14,6 +14,10 @@
 #include "Task.hpp"
 #include "CollisionGeometry.hpp"
 
+namespace CAP
+{
+
+
 //!
 //! \brief MC generator producing AA collisions as superpositions of nBinary nucleon-nucleon collisions
 //! \details <h1> AACollisionGenerator </h1>
@@ -41,7 +45,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  AACollisionGenerator(const TString * _name,
+  AACollisionGenerator(const String * _name,
                        Configuration & _configuration,
                        vector<EventFilter*> & _eventFilters,
                        vector<ParticleFilter*>& _particleFilters);
@@ -93,6 +97,8 @@ protected:
   
   ClassDef(AACollisionGenerator,0)
 };
+
+}
 
 
 #endif /*CAP__AACollisionGenerator*/

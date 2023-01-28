@@ -26,28 +26,28 @@
 #include "TList.h"
 #include "TAxis.h"
 #include "TSystem.h"
-#include "TStyle.h"
+//#include "TStyle.h"
 #include "TString.h"
 #include "TMath.h"
-#include "TPad.h"
-#include "TF1.h"
-#include "TF2.h"
+//#include "TPad.h"
+//#include "TF1.h"
+//#include "TF2.h"
 #include "TRandom.h"
-#include "TString.h"
-#include "TLatex.h"
-#include "TLine.h"
-#include "TArrow.h"
-#include "TLegend.h"
-#include "GraphConfiguration.hpp"
-#include "CanvasConfiguration.hpp"
-#include "CanvasCollection.hpp"
+//#include "TLatex.h"
+//#include "TLine.h"
+//#include "TArrow.h"
+#include "Collection.hpp"
 #include "MessageLogger.hpp"
+
+namespace CAP
+{
+
 
 class HistogramCollection : public Collection<TH1>
 {
 public:
 
-  HistogramCollection(const TString & _name,Severity  debugLevel=Severity::Info);
+  HistogramCollection(const String & _name,Severity  debugLevel=Severity::Info);
   HistogramCollection(const HistogramCollection & source);
   virtual ~HistogramCollection();
 
@@ -67,59 +67,53 @@ public:
 
   virtual void reset();
 
-  void setDefaultOptions(bool color=0);
-  TH1 * createHistogram(const TString & name,
+  TH1 * createHistogram(const String & name,
                         int n, double min_x, double max_x,
-                        const TString & title_x,
-                        const TString & title_y);
-  TH1 * createHistogram(const TString & name,
+                        const String & title_x,
+                        const String & title_y);
+  TH1 * createHistogram(const String & name,
                         int n, double * bins,
-                        const TString & title_x,
-                        const TString & title_y);
-  TH2 * createHistogram(const TString & name,
+                        const String & title_x,
+                        const String & title_y);
+  TH2 * createHistogram(const String & name,
                         int n_x, double min_x, double max_x,
                         int n_y, double min_y, double max_y,
-                        const TString & title_x,
-                        const TString & title_y,
-                        const TString & title_z);
-  TH2 * createHistogram(const TString & name,
+                        const String & title_x,
+                        const String & title_y,
+                        const String & title_z);
+  TH2 * createHistogram(const String & name,
                         int n_x, double* xbins, int n_y, double min_y, double max_y,
-                        const TString & title_x,
-                        const TString & title_y,
-                        const TString & title_z);
-  TH3 * createHistogram(const TString & name,
+                        const String & title_x,
+                        const String & title_y,
+                        const String & title_z);
+  TH3 * createHistogram(const String & name,
                         int n_x, double min_x, double max_x,
                         int n_y, double min_y, double max_y,
                         int n_z, double min_z, double max_z,
-                        const TString & title_x,
-                        const TString & title_y,
-                        const TString & title_z,
-                        const TString & title_w);
-  TProfile * createProfile(const TString & _name,
+                        const String & title_x,
+                        const String & title_y,
+                        const String & title_z,
+                        const String & title_w);
+  TProfile * createProfile(const String & _name,
                            int n_x,double min_x,double max_x,
-                           const TString & title_x,
-                           const TString & title_y);
+                           const String & title_x,
+                           const String & title_y);
 
-  TProfile * createProfile(const TString & name,
+  TProfile * createProfile(const String & name,
                            int n_x,  double* bins,
-                           const TString & title_x,
-                           const TString & title_y);
+                           const String & title_x,
+                           const String & title_y);
 
-  TProfile2D * createProfile(const TString & title,
+  TProfile2D * createProfile(const String & title,
                              int n_x, double min_x, double max_x,
                              int n_y, double min_y, double max_y,
-                             const TString & title_x,
-                             const TString & title_y,
-                             const TString & title_z);
+                             const String & title_x,
+                             const String & title_y,
+                             const String & title_z);
 
   void addHistogramsToExtList(TList *list);
   void saveHistograms(TFile * outputFile);
   void scale(double factor);
-
-  void setHistoProperties(TH1 * h, const GraphConfiguration & graphConfiguration);
-  void setHistoProperties(TH2 * h, const GraphConfiguration & graphConfiguration);
-  void setHistoProperties(TH1 * h, const GraphConfiguration & graphConfiguration, const TString & xTitle, const TString & yTitle);
-  void setHistoProperties(TH2 * h, const GraphConfiguration & graphConfiguration, const TString & xTitle, const TString & yTitle, const TString & zTitle);
 
   void add(const HistogramCollection & c1, double a1);
   void add(const HistogramCollection & c1, const HistogramCollection & c2, double a1, double a2);
@@ -168,13 +162,13 @@ public:
 
   int  loadCollection(TFile * inputFile);
 
-  TH1 * loadH1(TFile * inputFile,const TString & histoName);
-  TH2 * loadH2(TFile * inputFile,const TString & histoName);
-  TH3 * loadH3(TFile * inputFile,const TString & histoName);
-  TProfile * loadProfile(TFile * inputFile,const TString & histoName);
-  TProfile2D * loadProfile2D(TFile * inputFile,const TString & histoName);
+  TH1 * loadH1(TFile * inputFile,const String & histoName);
+  TH2 * loadH2(TFile * inputFile,const String & histoName);
+  TH3 * loadH3(TFile * inputFile,const String & histoName);
+  TProfile * loadProfile(TFile * inputFile,const String & histoName);
+  TProfile2D * loadProfile2D(TFile * inputFile,const String & histoName);
   void loadHistosInList(TFile * inputFile, HistogramCollection * collection);
-  TH1 * clone(const TH1 * h1, const TString & histoName);
+  TH1 * clone(const TH1 * h1, const String & histoName);
 
   void findMaximum(TH1 * h, int xFirstBin, int xLastBin, int & xMaxValueBin, double & xMaxValue);
   void findMinimum(TH1 * h, int xFirstBin, int xLastBin, int & xMinValueBin, double  & xMinValue);
@@ -250,7 +244,7 @@ public:
 
   //!
   //! Span all histograms of the two given collections and span each of their histograms bin by bin to compute differences and store the content difference in this
-  //! collection.  The collections must exactly the same number of histograms, in the same order, and with the same exact dimensions.  Histograms may be profiles.
+  //! collection.  The collections must exactly the same number of histograms, in the same order, and with the same exact dimensions.  HistogramGroup may be profiles.
   //! Uncertainties on the differences are computed as sum of square of uncertainties if correlatedUncertainties==0 and
   //! as a difference of square of uncertainties if correlatedUncertainties==1.
   //!
@@ -262,7 +256,7 @@ public:
 
   //!
   //! Span all histograms of the two given collections and span each of their histograms bin by bin to compute ratios and store the content ratio in this
-  //! collection.  The collections must exactly the same number of histograms, in the same order, and with the same exact dimensions.  Histograms may be profiles.
+  //! collection.  The collections must exactly the same number of histograms, in the same order, and with the same exact dimensions.  HistogramGroup may be profiles.
   //! Uncertainties on the differences are computed as sum of square of uncertainties if correlatedUncertainties==0 and
   //! as a difference of square of uncertainties if correlatedUncertainties==1.
   //!
@@ -276,7 +270,7 @@ public:
 
   //!
   //! Span all bins of hAvg and h and  compute the difference between histo "h" and the reference "havg", and increment the value
-  //! havg accordingly. Histograms must have the same exact dimensions. The histograms may be profiles.
+  //! havg accordingly. HistogramGroup must have the same exact dimensions. The histograms may be profiles.
   //!
   //!@param hAvg Histogram containing the running average
   //!@param h  Histogram to be compared to hAvg and use to update the average and the uncertainties.
@@ -313,24 +307,24 @@ public:
   void ratioHistos(TH1 *h, TH1 *hRef, TH1 *hDiff, bool correlatedUncertainties);
 
   int  getDimension(const TH1* h) const;
-  bool sameDimensions(const TString & caller, const TH1* h1, const TH1* h2) const;
-  bool sameDimensions(const TString & caller, const TH1* h1, const TH1* h2, const TH1* h3) const;
-  bool sameDimensions(const TString & caller, const TH1* h1, const TH1* h2, const TH1* h3, const TH1* h4) const;
-  bool sameDimensions(const TString & caller, const TH1* h1, const TH1* h2, const TH1* h3, const TH1* h4, const TH1* h5) const;
+  bool sameDimensions(const String & caller, const TH1* h1, const TH1* h2) const;
+  bool sameDimensions(const String & caller, const TH1* h1, const TH1* h2, const TH1* h3) const;
+  bool sameDimensions(const String & caller, const TH1* h1, const TH1* h2, const TH1* h3, const TH1* h4) const;
+  bool sameDimensions(const String & caller, const TH1* h1, const TH1* h2, const TH1* h3, const TH1* h4, const TH1* h5) const;
 
-  bool ptrFileExist(const TString &  caller, const TFile * f) const;
-  bool ptrExist(const TString &  caller, const TH1 * h1) const ;
-  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2) const;
-  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3) const;
-  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4) const;
-  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5) const;
-  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6) const;
-  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7) const;
-  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8) const;
-  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9) const;
-  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10) const;
-  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11) const;
-  bool ptrExist(const TString &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11, const TH1 * h12) const;
+  bool ptrFileExist(const String &  caller, const TFile * f) const;
+  bool ptrExist(const String &  caller, const TH1 * h1) const ;
+  bool ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2) const;
+  bool ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3) const;
+  bool ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4) const;
+  bool ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5) const;
+  bool ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6) const;
+  bool ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7) const;
+  bool ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8) const;
+  bool ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9) const;
+  bool ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10) const;
+  bool ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11) const;
+  bool ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4, const TH1 * h5, const TH1 * h6, const TH1 * h7, const TH1 * h8, const TH1 * h9, const TH1 * h10, const TH1 * h11, const TH1 * h12) const;
 
   bool ptrFileExist(const TFile * f) const;
   bool ptrExist(const TH1 * h1)  const;
@@ -357,6 +351,6 @@ public:
 
 }; // HistogramCollection
 
-
+} // namespace CAP
 
 #endif /* CAP__HistogramCollection */

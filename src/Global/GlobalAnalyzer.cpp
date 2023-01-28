@@ -9,14 +9,17 @@
  * Author: Claude Pruneau,   04/01/2022
  *
  * *********************************************************************/
-#include <TLorentzVector.h>
+
 #include "GlobalAnalyzer.hpp"
 #include "GlobalHistos.hpp"
 #include "GlobalDerivedHistos.hpp"
+using CAP::GlobalAnalyzer;
+using CAP::GlobalHistos;
+using CAP::GlobalDerivedHistos;
 
 ClassImp(GlobalAnalyzer);
 
-GlobalAnalyzer::GlobalAnalyzer(const TString & _name,
+GlobalAnalyzer::GlobalAnalyzer(const String & _name,
                                Configuration & _configuration,
                                vector<EventFilter*> & _eventFilters,
                                vector<ParticleFilter*> & _particleFilters)
@@ -96,17 +99,17 @@ void GlobalAnalyzer::createHistograms()
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString bn  = getParentTaskName();
+  String bn  = getParentTaskName();
   if (reportInfo(__FUNCTION__))
     {
-    cout << "  G:Creating Histograms for.......: " << bn  << endl;
+    cout << "  G:Creating HistogramGroup for.......: " << bn  << endl;
     cout << "  G:nEventFilters................ : " << nEventFilters << endl;
     cout << "  G:nParticleFilters............. : " << nParticleFilters << endl;
     }
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    TString efn = eventFilters[iEventFilter]->getName();
-    GlobalHistos * histos = new GlobalHistos(this,makeHistoName(bn,efn),configuration,particleFilters);
+    String efn = eventFilters[iEventFilter]->getName();
+    GlobalHistos * histos = new GlobalHistos(this,createName(bn,efn),configuration,particleFilters);
     histos->createHistograms();
     histograms.push_back(histos);
     }
@@ -119,17 +122,17 @@ void GlobalAnalyzer::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString bn  = getParentTaskName();
+  String bn  = getParentTaskName();
   if (reportDebug(__FUNCTION__))
     {
-    cout << "Loading Histograms for " << bn  << endl;
+    cout << "Loading HistogramGroup for " << bn  << endl;
     cout << "nEventFilters................ : " << nEventFilters << endl;
     cout << "nParticleFilters............. : " << nParticleFilters << endl;
     }
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    TString efn = eventFilters[iEventFilter]->getName();
-    GlobalHistos * histos = new GlobalHistos(this,makeHistoName(bn,efn),configuration,particleFilters);
+    String efn = eventFilters[iEventFilter]->getName();
+    GlobalHistos * histos = new GlobalHistos(this,createName(bn,efn),configuration,particleFilters);
     histos->loadHistograms(inputFile);
     histograms.push_back(histos);
     }
@@ -173,7 +176,7 @@ void GlobalAnalyzer::execute()
           incrementNParticlesAccepted(iEventFilter,iParticleFilter);
           // // incrementParticlesAccepted();
           ParticleType & type = particle.getType();
-          TLorentzVector & momentum = particle.getMomentum();
+          LorentzVector & momentum = particle.getMomentum();
           n[iParticleFilter]++;
           e[iParticleFilter] += momentum.E();
           q[iParticleFilter] += type.getCharge();
@@ -198,7 +201,7 @@ void GlobalAnalyzer::createDerivedHistograms()
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString bn  = getName();
+  String bn  = getName();
   if (reportInfo(__FUNCTION__))
     {
     cout << "Creating histograms for " << bn << endl;
@@ -207,8 +210,8 @@ void GlobalAnalyzer::createDerivedHistograms()
     }
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    TString efn = eventFilters[iEventFilter]->getName();
-    GlobalDerivedHistos * histos = new GlobalDerivedHistos(this,makeHistoName(bn,efn),configuration,particleFilters);
+    String efn = eventFilters[iEventFilter]->getName();
+    GlobalDerivedHistos * histos = new GlobalDerivedHistos(this,createName(bn,efn),configuration,particleFilters);
     histos->createHistograms();
     derivedHistograms.push_back(histos);
     }

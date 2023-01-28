@@ -13,6 +13,10 @@
 #define CAP__HerwigEventReader
 #include "RootTreeReader.hpp"
 
+namespace CAP
+{
+
+
 //!
 //! This class defines tasks capable of reading Herwig data file.
 //!
@@ -30,7 +34,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  HerwigEventReader(const TString &          _name,
+  HerwigEventReader(const String &          _name,
                   Configuration &          _configuration,
                   vector<EventFilter*>   & _eventFilters,
                   vector<ParticleFilter*>& _particleFilters);
@@ -102,5 +106,7 @@ protected:
 
   ClassDef(HerwigEventReader,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP_HerwigEventReader */

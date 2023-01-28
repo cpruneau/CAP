@@ -9,18 +9,21 @@
  * Author: Claude Pruneau,   04/01/2022
  *
  * *********************************************************************/
-#include "TLorentzVector.h"
 #include "EventCountHistos.hpp"
+#include "NameManager.hpp"
+using CAP::EventCountHistos;
+using CAP::String;
+using CAP::Configuration;
+
 ClassImp(EventCountHistos);
 
 EventCountHistos::EventCountHistos(Task *          _parent,
-                                   const TString & _name,
+                                   const String & _name,
                                    Configuration & _configuration,
                                    int             _nEventFilters,
-                                   int             _nParticleFilters,
-                                   Severity        _debugLevel)
+                                   int             _nParticleFilters)
 :
-Histograms(_parent,_name,_configuration),
+HistogramGroup(_parent,_name,_configuration),
 nEventFilters(_nEventFilters),
 nParticleFilters(_nParticleFilters),
 h_taskExecuted(nullptr),
@@ -38,10 +41,10 @@ void EventCountHistos::createHistograms()
     ;
   setOwnership(true);
   int n = nEventFilters*nParticleFilters;
-  TString bn = getParentTaskName();
-  h_taskExecuted     = createHistogram(makeName(bn,"nTaskExecuted"),1,-0.5, 0.5, "nTaskExecuted", "Count") ;
-  h_eventAccepted    = createHistogram(makeName(bn,"nEventAccepted"),nEventFilters,-0.5, -0.5+double(nEventFilters), "event filter", "Count");
-  h_particleAccepted = createHistogram(makeName(bn,"nParticleAccepted"),n,-0.5, -0.5+double(n), "event x particle filter", "Count");
+  String bn = getParentTaskName();
+  h_taskExecuted     = createHistogram(createName(bn,"nTaskExecuted"),1,-0.5, 0.5, "nTaskExecuted", "Count") ;
+  h_eventAccepted    = createHistogram(createName(bn,"nEventAccepted"),nEventFilters,-0.5, -0.5+double(nEventFilters), "event filter", "Count");
+  h_particleAccepted = createHistogram(createName(bn,"nParticleAccepted"),n,-0.5, -0.5+double(n), "event x particle filter", "Count");
   if (reportEnd(__FUNCTION__))
     ;
  }
@@ -52,10 +55,10 @@ void EventCountHistos::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  TString bn = getParentTaskName();
-  h_taskExecuted     = loadH1(inputFile,makeName(bn,"nTaskExecuted"));
-  h_eventAccepted    = loadH1(inputFile,makeName(bn,"nEventAccepted"));
-  h_particleAccepted = loadH1(inputFile,makeName(bn,"nParticleAccepted"));
+  String bn = getParentTaskName();
+  h_taskExecuted     = loadH1(inputFile,createName(bn,"nTaskExecuted"));
+  h_eventAccepted    = loadH1(inputFile,createName(bn,"nEventAccepted"));
+  h_particleAccepted = loadH1(inputFile,createName(bn,"nParticleAccepted"));
   if (reportEnd(__FUNCTION__))
     ;
 }

@@ -11,8 +11,10 @@
  * *********************************************************************/
 #ifndef CAP__ParticlePerformanceSimulator
 #define CAP__ParticlePerformanceSimulator
-#include "Histograms.hpp"
-#include "TLorentzVector.h"
+#include "HistogramGroup.hpp"
+
+namespace CAP
+{
 
 class EfficiencyFunction;
 class ResolutionFunction;
@@ -26,20 +28,20 @@ class ResolutionFunction;
 //!particle types as needed. 
 //!
 //!
-class ParticlePerformanceSimulator : public Histograms
+class ParticlePerformanceSimulator : public HistogramGroup
 {
 public:
   
   ParticlePerformanceSimulator(Task * _parent,
                                int _filterIndex,
-                               const TString & _name,
+                               const String & _name,
                                Configuration & _configuration);
   virtual ~ParticlePerformanceSimulator(){}
   
   virtual void initialize();
   virtual void loadHistograms(TFile * inputFile);
 
-  virtual void smearMomentum(const TLorentzVector &in, TLorentzVector & out);
+  virtual void smearMomentum(const LorentzVector &in, LorentzVector & out);
   virtual void smearMomentum(double pt, double eta, double phi,
                              double &smearedPt, double &smearedEta, double &smearedPhi);
   virtual void smearFromHisto(double pt, double eta, double phi,
@@ -49,7 +51,7 @@ public:
                                  ResolutionFunction* f,
                                  double & bias, double & rms);
   
-  bool accept(const TLorentzVector& momentum);
+  bool accept(const LorentzVector& momentum);
   bool accept(double pt, double eta, double phi);
   bool acceptFromHisto(double pt, double eta, double phi);
   bool acceptFromFunction(double pt, double eta, double phi);
@@ -205,5 +207,7 @@ protected:
   double a2Rms;
   
 };
+
+} // namespace CAP
 
 #endif /* CAP__ParticlePerformanceSimulator */

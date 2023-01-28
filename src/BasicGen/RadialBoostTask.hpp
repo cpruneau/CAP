@@ -18,6 +18,10 @@
 #include "CollisionGeometry.hpp"
 #include "RadialBoostHistos.hpp"
 
+namespace CAP
+{
+
+
 //!
 //!Task operates a radial boost on all the particles in its incoming data stream.
 //!
@@ -33,7 +37,7 @@ public:
   //! @param _eventFilters Array of event filters to be used by this task
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
-  RadialBoostTask(const TString & _name,
+  RadialBoostTask(const String & _name,
                   Configuration & _configuration,
                   vector<EventFilter*>&    _eventFilters,
                   vector<ParticleFilter*>& _particleFilters);
@@ -73,5 +77,6 @@ protected:
   ClassDef(RadialBoostTask,0)
 };
 
+}
 
 #endif /* CAP__RadialBoostTask */

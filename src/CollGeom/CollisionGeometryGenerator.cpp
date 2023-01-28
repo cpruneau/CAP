@@ -10,6 +10,8 @@
  *
  * *********************************************************************/
 #include "CollisionGeometryGenerator.hpp"
+using CAP::CollisionGeometryGenerator;
+
 ClassImp(CollisionGeometryGenerator);
 
 //!
@@ -18,7 +20,7 @@ ClassImp(CollisionGeometryGenerator);
 //! @param _configuration Configuration to be used by this task instance
 //! @param _eventFilters  Vector of event filters to be used by this task instance
 //! @param _requiredLevel Debug/report level to be used by this task instance
-CollisionGeometryGenerator::CollisionGeometryGenerator(const TString & _name,
+CollisionGeometryGenerator::CollisionGeometryGenerator(const String & _name,
                                                        Configuration & _configuration,
                                                        vector<EventFilter*> & _eventFilters,
                                                        vector<ParticleFilter*>& _particleFilters)
@@ -170,17 +172,17 @@ void CollisionGeometryGenerator::execute()
         interaction = event.addInteraction(nucleonA,nucleonB);
         if (!nucleonA->isWounded())
           {
-          TLorentzVector & positionA = nucleonA->getPosition();
+          LorentzVector & positionA = nucleonA->getPosition();
         //  event.getParticipantMoments().fill(positionA.X() ,positionA.Y());
           nucleonA->setWounded(true);
           }
         if (!nucleonB->isWounded())
           {
-          TLorentzVector & positionB = nucleonA->getPosition();
+          LorentzVector & positionB = nucleonA->getPosition();
         //  event.getParticipantMoments().fill(positionB.X() ,positionB.Y());
           nucleonB->setWounded(true);
           }
-        TLorentzVector & positionInt = interaction->getPosition();
+        LorentzVector & positionInt = interaction->getPosition();
        // event.getBinaryMoments().fill(positionInt.X(),positionInt.Y());
         }
       }

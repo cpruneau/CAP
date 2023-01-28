@@ -14,6 +14,7 @@
  * *********************************************************************/
 #include "ParticleDecayMode.hpp"
 #include "SelectionGenerator.hpp"
+using CAP::ParticleDecayMode;
 
 ClassImp(ParticleDecayMode);
 

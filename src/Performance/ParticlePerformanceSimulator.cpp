@@ -11,15 +11,16 @@
  * *********************************************************************/
 #include <TMath.h>
 #include "ParticlePerformanceSimulator.hpp"
+using CAP::ParticlePerformanceSimulator;
 
 ClassImp(ParticlePerformanceSimulator);
 
 ParticlePerformanceSimulator::ParticlePerformanceSimulator(Task * _parent,
                                                            int _filterIndex,
-                                                           const TString & _name,
+                                                           const String & _name,
                                                            Configuration & _configuration)
 :
-Histograms(_parent,_name,_configuration),
+HistogramGroup(_parent,_name,_configuration),
 filterIndex(_filterIndex),
 useSameSetForAll(true),
 resolutionOption(0),
@@ -61,7 +62,7 @@ void ParticlePerformanceSimulator::initialize()
   double rmsA0;
   double rmsA1;
   double rmsA2;
-  TString baseName = "Filter";
+  String baseName = "Filter";
   baseName += filterIndex;
   
   switch (resolutionOption)
@@ -197,7 +198,7 @@ void ParticlePerformanceSimulator::loadHistograms(TFile * inputFile)
     cout << "efficiencyOption..........: " << efficiencyOption << endl;
     }
   
-  TString baseName = "Filter";
+  String baseName = "Filter";
   baseName += filterIndex;
   
   switch (resolutionOption)
@@ -230,7 +231,7 @@ void ParticlePerformanceSimulator::loadHistograms(TFile * inputFile)
     ;
 }
 
-void ParticlePerformanceSimulator::smearMomentum(const TLorentzVector &in, TLorentzVector & out)
+void ParticlePerformanceSimulator::smearMomentum(const LorentzVector &in, LorentzVector & out)
 {
   double smearedPt  = 0.0;
   double smearedEta = 0.0;
@@ -331,7 +332,7 @@ void ParticlePerformanceSimulator::smearFromFunction(double pt, double eta, doub
 }
 
 
-bool ParticlePerformanceSimulator::accept(const TLorentzVector& momentum)
+bool ParticlePerformanceSimulator::accept(const LorentzVector& momentum)
 {
   bool accepting = false;
   double pt  = momentum.Pt();

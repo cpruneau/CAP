@@ -29,18 +29,19 @@
 #include "ParticlePerformanceAnalyzer.hpp"
 #include "GlobalAnalyzer.hpp"
 #include "TransverseSpherocityAnalyzer.hpp"
-#include "ParticleAnalyzer.hpp"
+#include "ParticleSingleAnalyzer.hpp"
 #include "ParticlePairAnalyzer.hpp"
 #include "NuDynAnalyzer.hpp"
+using CAP::RunAnalysis;
 
 ClassImp(RunAnalysis);
 
-RunAnalysis::RunAnalysis(const TString & _name,
+RunAnalysis::RunAnalysis(const String & _name,
                          Configuration & _configuration)
 :
 Task(_name, _configuration)
 {
-  //  TString includeBasePath = getenv("CAP_SRC");
+  //  String includeBasePath = getenv("CAP_SRC");
   appendClassName("RunAnalysis");
   setInstanceName(_name);
   setDefaultConfiguration();
@@ -210,30 +211,30 @@ void RunAnalysis::configure()
   Task                      * task                  = nullptr;
 
   MessageLogger::Severity selectedLevel = MessageLogger::Debug;
-  TString reportLevel                   = getValueBool("Severity");
+  String reportLevel                   = getValueBool("Severity");
   if (reportLevel.EqualTo("Debug")) selectedLevel = MessageLogger::Debug;
   if (reportLevel.EqualTo("Info"))  selectedLevel = MessageLogger::Info;
-  TString GlobalLabel      = getValueString("GlobalLabel");
-  TString SpherocityLabel  = getValueString("SpherocityLabel");
-  TString PartLabel        = getValueString("PartLabel");
-  TString PairLabel        = getValueString("PairLabel");
-  TString NuDynLabel       = getValueString("NuDynLabel");
-  TString SimAnaLabel      = getValueString("SimAnaLabel");
-  TString RootExt          = getValueString("RootExt");
-  TString DerivedLabel     = getValueString("DerivedLabel");
-  TString SumLabel         = getValueString("SumLabel");
-  TString BalFctLabel      = getValueString("BalFctLabel");
-  TString ClosureLabel     = getValueString("ClosureLabel");
-  TString GenLabel         = getValueString("GenLabel");
-  TString RecoLabel        = getValueString("RecoLabel");
-  TString PythiaLabel      = getValueString("PythiaLabel");
-  TString HerwigLabel      = getValueString("HerwigLabel");
-  TString HijingLabel      = getValueString("HijingLabel");
-  TString AmptLabel        = getValueString("AmptLabel");
-  TString EposLabel        = getValueString("EposLabel");
-  TString UrqmdLabel       = getValueString("UrqmdLabel");
-  TString ResoLabel        = getValueString("ResoLabel");
-  TString PerformLabel     = getValueString("PerformLabel");
+  String GlobalLabel      = getValueString("GlobalLabel");
+  String SpherocityLabel  = getValueString("SpherocityLabel");
+  String PartLabel        = getValueString("PartLabel");
+  String PairLabel        = getValueString("PairLabel");
+  String NuDynLabel       = getValueString("NuDynLabel");
+  String SimAnaLabel      = getValueString("SimAnaLabel");
+  String RootExt          = getValueString("RootExt");
+  String DerivedLabel     = getValueString("DerivedLabel");
+  String SumLabel         = getValueString("SumLabel");
+  String BalFctLabel      = getValueString("BalFctLabel");
+  String ClosureLabel     = getValueString("ClosureLabel");
+  String GenLabel         = getValueString("GenLabel");
+  String RecoLabel        = getValueString("RecoLabel");
+  String PythiaLabel      = getValueString("PythiaLabel");
+  String HerwigLabel      = getValueString("HerwigLabel");
+  String HijingLabel      = getValueString("HijingLabel");
+  String AmptLabel        = getValueString("AmptLabel");
+  String EposLabel        = getValueString("EposLabel");
+  String UrqmdLabel       = getValueString("UrqmdLabel");
+  String ResoLabel        = getValueString("ResoLabel");
+  String PerformLabel     = getValueString("PerformLabel");
   bool    RunEventAnalysis        = getValueBool("EventAnalysis");
   bool    RunEventAnalysisGen     = getValueBool("EventAnalysisGen");
   bool    RunEventAnalysisReco    = getValueBool("EventAnalysisReco");
@@ -279,9 +280,9 @@ void RunAnalysis::configure()
   bool    RunFillEta              = getValueBool("FillEta");
   bool    RunFillY                = getValueBool("FillY");
   bool    PdgLoadTable            = getValueBool("Pdg:LoadTable");
-  TString inputPathName           = getValueString("HistogramInputPath");
-  TString outputPathName          = getValueString("HistogramOutputPath");
-  TString modelPartFilterOption   = getValueString("ModelPartFilterOption");
+  String inputPathName           = getValueString("HistogramInputPath");
+  String outputPathName          = getValueString("HistogramOutputPath");
+  String modelPartFilterOption   = getValueString("ModelPartFilterOption");
   double modelPartFilterPt        = getValueBool(  "ModelPartFilterPt");
   double modelPartMinPt           = getValueDouble("ModelPartMinPt");
   double modelPartMaxPt           = getValueDouble("ModelPartMaxPt");
@@ -291,7 +292,7 @@ void RunAnalysis::configure()
   bool   modelPartFilterY         = getValueBool(  "ModelPartFilterY");
   double modelPartMinY            = getValueDouble("ModelPartMinY");
   double modelPartMaxY            = getValueDouble("ModelPartMaxY");
-  TString anaPartFilterOption     = getValueString("AnaPartFilterOption");
+  String anaPartFilterOption     = getValueString("AnaPartFilterOption");
   double anaPartFilterPt          = getValueBool(  "AnaPartFilterPt");
   double anaPartMinPt             = getValueDouble("AnaPartMinPt");
   double anaPartMaxPt             = getValueDouble("AnaPartMaxPt");
@@ -406,11 +407,11 @@ void RunAnalysis::configure()
   // Setup all event filters
   // =========================================
   vector<double> modelBounds;
-  TString modelEventFilterOption = getValueString("ModelEventFilterOption");
+  String modelEventFilterOption = getValueString("ModelEventFilterOption");
   int n = getValueInt("ModelEventFilterNValues");
   for (int k=0; k<n; k++)
     {
-    TString key = "ModelEventFilterValue";
+    String key = "ModelEventFilterValue";
     key += k;
     modelBounds.push_back( getValueBool(key));
     }
@@ -421,11 +422,11 @@ void RunAnalysis::configure()
   else if (modelEventFilterOption.EqualTo("TpcMult"))          modelEventFilters = EventFilter::createTpcMultiplicityFilters(modelBounds);
 
   vector<double> anaBounds;
-  TString anaEventFilterOption = getValueString("AnaEventFilterOption");
+  String anaEventFilterOption = getValueString("AnaEventFilterOption");
   n = getValueInt("AnaEventFilterNValues");
   for (int k=0; k<n; k++)
     {
-    TString key = "AnaEventFilterValue";
+    String key = "AnaEventFilterValue";
     key += k;
     anaBounds.push_back( getValueBool(key));
     }
@@ -532,13 +533,13 @@ void RunAnalysis::configure()
 
     if (RunGlobalGen)          eventAnalysis->addSubTask(new GlobalAnalyzer(GlobalLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
     if (RunSpherocityGen)      eventAnalysis->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunPartGen)            eventAnalysis->addSubTask(new ParticleAnalyzer(PartLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunPartGen)            eventAnalysis->addSubTask(new ParticleSingleAnalyzer(PartLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
     if (RunPairGen)            eventAnalysis->addSubTask(new ParticlePairAnalyzer(PairLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
     if (RunNuDynGen)           eventAnalysis->addSubTask(new NuDynAnalyzer(NuDynLabel+GenLabel,configuration,analysisEventFilters,analysisParticleFilters));
 
     if (RunGlobalReco)         eventAnalysis->addSubTask(new GlobalAnalyzer(GlobalLabel+RecoLabel,configuration,analysisEventFilters, analysisParticleFilters));
     if (RunSpherocityReco)     eventAnalysis->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunPartReco)           eventAnalysis->addSubTask(new ParticleAnalyzer(PartLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunPartReco)           eventAnalysis->addSubTask(new ParticleSingleAnalyzer(PartLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
     if (RunPairReco)           eventAnalysis->addSubTask(new ParticlePairAnalyzer(PairLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
     if (RunNuDynReco)          eventAnalysis->addSubTask(new NuDynAnalyzer(NuDynLabel+RecoLabel,configuration,analysisEventFilters,analysisParticleFilters));
     if (RunPerformanceAna)     eventAnalysis->addSubTask(new ParticlePerformanceAnalyzer(SimAnaLabel,configuration,analysisEventFilters, analysisParticleFilters));

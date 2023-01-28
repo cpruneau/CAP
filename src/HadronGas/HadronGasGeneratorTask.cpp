@@ -14,10 +14,11 @@
 #include "HadronGasGeneratorTask.hpp"
 #include "HadronGasHistograms.hpp"
 #include "HadronGasVsTempHistograms.hpp"
+using CAP::HadronGasGeneratorTask;
 
 ClassImp(HadronGasGeneratorTask);
 
-HadronGasGeneratorTask::HadronGasGeneratorTask(const TString & _name,
+HadronGasGeneratorTask::HadronGasGeneratorTask(const String & _name,
                                                Configuration & _configuration)
 :
 Task(_name,_configuration),
@@ -88,13 +89,13 @@ void HadronGasGeneratorTask::initialize()
 
   for (int k=0;k<nThermalSpecies; k++)
     {
-    TString key = "Species";
+    String key = "Species";
     key += k;
     addParameter(key,particleTypes->getParticleType(k)->getTitle());
     }
   for (int k=0;k<nStableSpecies; k++)
     {
-    TString key = "StableSpecies";
+    String key = "StableSpecies";
     key += k;
     addParameter(key,stableParticleTypes->getParticleType(k)->getTitle());
     }
@@ -166,19 +167,19 @@ void HadronGasGeneratorTask::execute()
   for (int iTemp=0; iTemp<nChemicalTemp; iTemp++ )
     {
     temperature = minChemicalTemp+stepTemp*double(iTemp);
-    TString tempLabel = "T";
+    String tempLabel = "T";
     tempLabel += int(0.5+1000*temperature);
     for (int iMuB=0; iMuB<nMuB; iMuB++ )
       {
       muB = minMuB+stepMuB*double(iMuB);
-      TString muBLabel = "B";
+      String muBLabel = "B";
       muBLabel += int(0.5+1000*muB);
       for (int iMuS=0; iMuS<nMuS; iMuS++ )
         {
         muS = minMuS+stepMuS*double(iMuS);
-        TString muSLabel = "S";
+        String muSLabel = "S";
         muSLabel += int(0.5+1000*muB);
-        TString name = makeHistoName(modelName,tempLabel,muBLabel,muSLabel);
+        String name = createName(modelName,tempLabel,muBLabel,muSLabel);
         Configuration gasConfig(name);
         gasConfig.addParameter("Temperature", temperature);
         gasConfig.addParameter("MuB",         muB);
@@ -213,22 +214,22 @@ void HadronGasGeneratorTask::createHistograms()
   basePairHistograms.clear();
   Configuration & configuration = getConfiguration();
   Severity debugLevel = getSeverityLevel();
-  TString bn = getValueString("HistoBaseName");
+  String bn = getValueString("HistoBaseName");
   bool    doTempDependentHistos = getValueBool("DoTempDependentHistos");
-  Histograms * histos;
+  HistogramGroup * histos;
   for (int iTemp=0; iTemp<nChemicalTemp; iTemp++ )
     {
-    TString tempLabel = "T";
+    String tempLabel = "T";
     tempLabel += int(0.5+1000*(minChemicalTemp+stepTemp*double(iTemp)));
     for (int iMuB=0; iMuB<nMuB; iMuB++ )
       {
-      TString muBLabel = "B";
+      String muBLabel = "B";
       muBLabel += int(0.5+1000*(minMuB+stepMuB*double(iMuB)));
       for (int iMuS=0; iMuS<nMuS; iMuS++ )
         {
-        TString muSLabel = "S";
+        String muSLabel = "S";
         muSLabel += int(0.5+1000*(minMuS+stepMuS*double(iMuS)));
-        histos = new HadronGasHistograms(this,makeHistoName(bn,tempLabel,muBLabel,muSLabel),configuration);
+        histos = new HadronGasHistograms(this,createName(bn,tempLabel,muBLabel,muSLabel),configuration);
         histos->createHistograms();
         baseSingleHistograms.push_back(histos);
         }
@@ -254,23 +255,23 @@ void HadronGasGeneratorTask::loadHistograms(TFile * inputFile)
   Configuration & configuration = getConfiguration();
   Severity debugLevel = getSeverityLevel();
 
-  TString bn                    = getValueString("HistoBaseName");
+  String bn                    = getValueString("HistoBaseName");
   bool    doTempDependentHistos = getValueBool("DoTempDependentHistos");
 
-  Histograms * histos;
+  HistogramGroup * histos;
   for (int iTemp=0; iTemp<nChemicalTemp; iTemp++ )
     {
-    TString tempLabel = "T";
+    String tempLabel = "T";
     tempLabel += int(0.5+1000*(minChemicalTemp+stepTemp*double(iTemp)));
     for (int iMuB=0; iMuB<nMuB; iMuB++ )
       {
-      TString muBLabel = "B";
+      String muBLabel = "B";
       muBLabel += int(0.5+1000*(minMuB+stepMuB*double(iMuB)));
       for (int iMuS=0; iMuS<nMuS; iMuS++ )
         {
-        TString muSLabel = "S";
+        String muSLabel = "S";
         muSLabel += int(0.5+1000*(minMuS+stepMuS*double(iMuS)));
-        histos = new HadronGasHistograms(this,makeHistoName(bn,tempLabel,muBLabel,muSLabel),configuration);
+        histos = new HadronGasHistograms(this,createName(bn,tempLabel,muBLabel,muSLabel),configuration);
         histos->loadHistograms(inputFile);
         baseSingleHistograms.push_back(histos);
         }

@@ -19,12 +19,15 @@
 #include <cmath>
 #include <iomanip>
 #include "ParticleTypeCollection.hpp"
+using CAP::Collection;
+using CAP::ParticleType;
+using CAP::ParticleTypeCollection;
+using namespace std;
 
 ClassImp(Collection<ParticleType>);
 
 ClassImp(ParticleTypeCollection);
 
-using namespace std;
 
 ParticleTypeCollection::ParticleTypeCollection()
 :
@@ -35,7 +38,7 @@ Collection<ParticleType>()
 // ================================================================================================
 // read in ParticleType information from pdg data file
 // ================================================================================================
-void ParticleTypeCollection::readFromFile(const TString & inputFileName)
+void ParticleTypeCollection::readFromFile(const String & inputFileName)
 {
   cout << "<I> ParticleTypeCollection::readFromFile() Reading particle list from file:" <<  inputFileName << endl;
   ifstream inputFile(inputFileName.Data());
@@ -56,10 +59,10 @@ void ParticleTypeCollection::readFromFile(const TString & inputFileName)
   ParticleType * particleType;
   ParticleType * antiParticleType;
   int dummy_int;
-  TString theName;
-  TString theAntiName;
-  TString theTitle;
-  TString theAntiTitle;
+  String theName;
+  String theAntiName;
+  String theTitle;
+  String theAntiTitle;
   while (1)
     {
     //cout << "Reading in ParticleType resonance decay table.. - 2 -" << endl;
@@ -143,10 +146,10 @@ void ParticleTypeCollection::readFromFile(const TString & inputFileName)
     objects[k]->setupDecayGenerator();
     }
 
-  cout << "ParticleTypeCollection::readFromFile(const TString  & inputFileName) Completed." << endl;
+  cout << "ParticleTypeCollection::readFromFile(const String  & inputFileName) Completed." << endl;
 }
 
-void ParticleTypeCollection::writeToFile(const TString & outputFileName, bool printDecayProperties)
+void ParticleTypeCollection::writeToFile(const String & outputFileName, bool printDecayProperties)
 {
   cout << "<I> ParticleTypeCollection::readFromFile() Writing particle list to file:" <<  outputFileName << endl;
   ofstream outputFile(outputFileName.Data());
@@ -161,7 +164,7 @@ void ParticleTypeCollection::writeToFile(const TString & outputFileName, bool pr
       }
     }
   outputFile.close();
-  cout << "ParticleTypeCollection::readFromFile(const TString  & inputFileName) Completed." << endl;
+  cout << "ParticleTypeCollection::readFromFile(const String  & inputFileName) Completed." << endl;
 }
 
 void ParticleTypeCollection::sortByMass()

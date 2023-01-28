@@ -13,6 +13,10 @@
 #define CAP__EventVertexRandomizerTask
 #include "Task.hpp"
 
+namespace CAP
+{
+
+
 //!
 //! \class Task
 //! \ingroup CAP
@@ -37,7 +41,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  EventVertexRandomizerTask(const TString & _name,
+  EventVertexRandomizerTask(const String & _name,
                             Configuration & _configuration,
                             vector<EventFilter*> & _eventFilters,
                             vector<ParticleFilter*>& _particleFilters);
@@ -78,5 +82,7 @@ protected:
   
   ClassDef(EventVertexRandomizerTask,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP__EventVertexRandomizerTask */

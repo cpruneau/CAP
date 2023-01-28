@@ -12,6 +12,7 @@
  * *********************************************************************/
 
 #include "NucleusType.hpp"
+using CAP::NucleusType;
 
 ClassImp(NucleusType);
 
@@ -25,8 +26,8 @@ beta(0)
 {}
 
 NucleusType::NucleusType(int _z, int _a,
-                         const TString & _name,
-                         const TString & _title,
+                         const String & _name,
+                         const String & _title,
                          double _mass,
                          int _gSpin,
                          int _gIsospin)
@@ -40,8 +41,8 @@ beta(0.0)
 }
 
 NucleusType::NucleusType(int _z, int _a, int _s,
-                         const TString & _name,
-                         const TString & _title,
+                         const String & _name,
+                         const String & _title,
                          double _mass,
                          int _gSpin,
                          int _gIsospin)

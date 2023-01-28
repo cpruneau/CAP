@@ -19,6 +19,10 @@
 #include "TString.h"
 using namespace std;
 
+namespace CAP
+{
+
+
 class PartitionCalculator
 {
 public:
@@ -29,5 +33,7 @@ public:
 
   ClassDef(PartitionCalculator,0)
 };
+
+} // namespace CAP
 
 #endif /* CAP__PartitionCalculator */

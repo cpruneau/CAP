@@ -15,14 +15,15 @@
 #include "Factory.hpp"
 
 using namespace std;
-
+namespace CAP
+{
 //!
 //!Class ParticleDigit
 //!
 class ParticleDigit
 {
 public:
-  
+
   ParticleDigit();
   ParticleDigit(unsigned int _iY,
                 unsigned int _iEta,
@@ -56,6 +57,8 @@ public:
 
   ClassDef(ParticleDigit,0)
 };
+}
+
 
 
 #endif /* CAP__ParticleDigit */

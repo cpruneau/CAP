@@ -17,6 +17,9 @@
 #include "EventProperties.hpp"
 #include "CollisionGeometryMoments.hpp"
 
+namespace CAP
+{
+
 //!
 //! Class encupsalting all components of events (real data or monte carlo)
 //!
@@ -182,8 +185,7 @@ protected:
 
 };
 
-
-
+} //namespace CAP
 
 #endif /* Event_hpp */
 //  //!

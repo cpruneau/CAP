@@ -26,7 +26,8 @@ using std::endl;
 using std::ostream;
 using std::ofstream;
 
-
+namespace CAP
+{
 
 class BidimGaussFitConfiguration : public Configuration
 {
@@ -79,9 +80,9 @@ class BidimGaussFitConfiguration : public Configuration
   virtual void printConfiguration(ostream & out);
 
   int        maxIterations; //(15000);
-  TString    defaultFitter; //("Minuit2");
+  String    defaultFitter; //("Minuit2");
 
-  TString    collisionSystemName;
+  String    collisionSystemName;
   CollisionSystem collisionSystem;
   int        iCent;
   bool       useFlowInFit;
@@ -99,10 +100,10 @@ class BidimGaussFitConfiguration : public Configuration
 //  double     a0LowerLimit,    a0UpperLimit;
 //  double     anLowerLimit,    anUpperLimit;
 
-  TString    fitOption;
+  String    fitOption;
   int        nFitLoops;
   int        nFitParameters;
-  TString ** parameterNames;
+  String ** parameterNames;
   bool    *  fixedParameters;
   double  *  initialValues;
   double  *  fixedValues;
@@ -157,11 +158,11 @@ class BidimGaussFitConfiguration : public Configuration
   double yMaxPhiPeakFitLegend;
   double phiPeakFitLegendSize;
 
-  TString xTitle;
-  TString yTitle;
-  TString zTitle;
+  String xTitle;
+  String yTitle;
+  String zTitle;
 
-  TString outputPath;
+  String outputPath;
 
 // Configuration for different systems..
   // Number of bins to be excluded relative to the central bin
@@ -204,5 +205,7 @@ class BidimGaussFitConfiguration : public Configuration
 
   ClassDef(BidimGaussFitConfiguration,0)
   };
+
+} // namespace CAP
 
 #endif /* CAP__BidimGaussFitConfiguration &/

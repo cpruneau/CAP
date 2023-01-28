@@ -2,6 +2,10 @@
 #define WAC_ChemicalPotential
 #include "Table2D.hpp"
 
+namespace CAP
+{
+
+
 class ChemicalPotential
 {
    private: 
@@ -32,5 +36,6 @@ class ChemicalPotential
 
 };
 
+} //namespace CAP
 
 #endif

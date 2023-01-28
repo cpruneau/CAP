@@ -21,10 +21,15 @@
 #include <iomanip>
 #include "TObject.h"
 #include "TString.h"
+
+#include "Aliases.hpp"
 using std::ostream;
 using std::endl;
 using std::vector;
 using namespace std;
+
+namespace CAP
+{
 
 //!
 //!Configuration of a given object or task
@@ -41,7 +46,7 @@ public:
   //!
   //! Constructor
   //!
-  Configuration(const TString & _name);
+  Configuration(const String & _name);
 
   //!
   //! Copy Constructor
@@ -66,102 +71,102 @@ public:
   //!
   //! Add a bool parameter to the configuration with the given name and value
   //!
-  void addParameter(const TString & _name, bool value);
+  void addParameter(const String & _name, bool value);
 
   //!
   //! Add an int parameter to the configuration with the given name and value
   //!
-  void addParameter(const TString & _name, int value);
+  void addParameter(const String & _name, int value);
 
   //!
   //! Add an int parameter to the configuration with the given name and value
   //!
-  void addParameter(const TString & _name, long value);
+  void addParameter(const String & _name, long value);
 
   //!
   //! Add a double parameter to the configuration with the given name and value
   //!
-  void addParameter(const TString & _name, double value);
+  void addParameter(const String & _name, double value);
 
   //!
   //! Add a string parameter to the configuration with the given name and value
   //!
-  void addParameter(const TString & _name, const TString & value);
+  void addParameter(const String & _name, const String & value);
 
   //!
   //! Add a bool parameter to the configuration with the given name and value
   //!
-  void addParameter(const TString & path, const TString & _name, bool value);
+  void addParameter(const String & path, const String & _name, bool value);
 
   //!
   //! Add an int parameter to the configuration with the given name and value
   //!
-  void addParameter(const TString & path, const TString & _name, int value);
+  void addParameter(const String & path, const String & _name, int value);
 
   //!
   //! Add an int parameter to the configuration with the given name and value
   //!
-  void addParameter(const TString & path, const TString & _name, long value);
+  void addParameter(const String & path, const String & _name, long value);
 
   //!
   //! Add a double parameter to the configuration with the given name and value
   //!
-  void addParameter(const TString & path, const TString & _name, double value);
+  void addParameter(const String & path, const String & _name, double value);
 
   //!
   //! Add a string parameter to the configuration with the given name and value
   //!
-  void addParameter(const TString & path, const TString & _name, const TString & value);
+  void addParameter(const String & path, const String & _name, const String & value);
 
   //!
   //! Set the parameter named 'name'  to the given value
   //!
-  void setParameter(const TString & _name, bool value);
+  void setParameter(const String & _name, bool value);
 
   //!
   //! Set the parameter named 'name'  to the given value
   //!
-  void setParameter(const TString & _name, int value);
+  void setParameter(const String & _name, int value);
 
   //!
   //! Set the parameter named 'name'  to the given value
   //!
-  void setParameter(const TString & _name, long value);
+  void setParameter(const String & _name, long value);
 
   //!
   //! Set the parameter named 'name'  to the given value
   //!
-  void setParameter(const TString & _name, double value);
+  void setParameter(const String & _name, double value);
 
   //!
   //! Set the parameter named 'name'  to the given value
   //!
-  void setParameter(const TString & _name, const TString & value);
+  void setParameter(const String & _name, const String & value);
 
   //!
   //! Set the parameter named 'name'  to the given value
   //!
-  void setParameter(const TString & path, const TString & _name, bool value);
+  void setParameter(const String & path, const String & _name, bool value);
 
   //!
   //! Set the parameter named 'name'  to the given value
   //!
-  void setParameter(const TString & path, const TString & _name, int value);
+  void setParameter(const String & path, const String & _name, int value);
 
   //!
   //! Set the parameter named 'name'  to the given value
   //!
-  void setParameter(const TString & path, const TString & _name, long value);
+  void setParameter(const String & path, const String & _name, long value);
 
   //!
   //! Set the parameter named 'name'  to the given value
   //!
-  void setParameter(const TString & path, const TString & _name, double value);
+  void setParameter(const String & path, const String & _name, double value);
 
   //!
   //! Set the parameter named 'name'  to the given value
   //!
-  void setParameter(const TString & path, const TString & _name, const TString & value);
+  void setParameter(const String & path, const String & _name, const String & value);
 
   //!
   //! Set the parameters to values supplied in the given configuration
@@ -171,63 +176,63 @@ public:
   //!
   //! Get the value of the parameter named 'name'
   //!
-  bool     getValueBool(const TString & _name)   const;
+  bool     getValueBool(const String & _name)   const;
 
   //!
   //! Get the value of the parameter named 'name'
   //!
-  int      getValueInt(const TString & _name)    const;
+  int      getValueInt(const String & _name)    const;
 
   //!
   //! Get the value of the parameter named 'name'
   //!
-  long     getValueLong(const TString & _name)    const;
+  long     getValueLong(const String & _name)    const;
 
   
   //!
   //! Get the value of the parameter named 'name'
   //!
-  double   getValueDouble(const TString & _name) const;
+  double   getValueDouble(const String & _name) const;
 
   //!
   //! Get the value of the parameter named 'name'
   //!
-  TString  getValueString(const TString & _name) const;
+  String  getValueString(const String & _name) const;
 
   //!
   //! Get the value of the parameter named 'name'
   //!
-  bool     getValueBool(const TString & path, const TString & _name)   const;
+  bool     getValueBool(const String & path, const String & _name)   const;
 
   //!
   //! Get the value of the parameter named 'name'
   //!
-  int      getValueInt(const TString & path, const TString & _name)    const;
+  int      getValueInt(const String & path, const String & _name)    const;
 
   //!
   //! Get the value of the parameter named 'name'
   //!
-  long     getValueLong(const TString & path, const TString & _name)    const;
+  long     getValueLong(const String & path, const String & _name)    const;
 
   //!
   //! Get the value of the parameter named 'name'
   //!
-  double   getValueDouble(const TString & path, const TString & _name) const;
+  double   getValueDouble(const String & path, const String & _name) const;
 
   //!
   //! Get the value of the parameter named 'name'
   //!
-  TString  getValueString(const TString & path, const TString & _name) const;
+  String  getValueString(const String & path, const String & _name) const;
 
   //!
   //! Get the value of the parameter named 'name'
   //!
-  inline void setName(const TString & _name) {  name = _name;  }
+  inline void setName(const String & _name) {  name = _name;  }
 
   //!
   //! Get the value of the parameter named 'name'
   //!
-  inline TString getName() const { return name;  }
+  inline String getName() const { return name;  }
 
   //!
   //! Get the value of the parameter named 'name'
@@ -243,9 +248,9 @@ public:
   //!@param defaultValue default value given for all key,value pairs
   //!@param nKeysToGenerate number of key,value pairs to generate and add to this task configuration.
   //!
-  void generateKeyValuePairs(const TString & keyBaseName, const TString & defaultValue, int nKeysToGenerate);
+  void generateKeyValuePairs(const String & keyBaseName, const String & defaultValue, int nKeysToGenerate);
 
-  void generateKeyValuePairs(const TString & path, const TString & keyBaseName, const TString & defaultValue, int nKeysToGenerate);
+  void generateKeyValuePairs(const String & path, const String & keyBaseName, const String & defaultValue, int nKeysToGenerate);
 
   //!
   //!Parse the configuration associated with task to find the key,value pairs that DO NOT feature the defaultValue
@@ -253,9 +258,9 @@ public:
   //!@param keyBaseName base name of the keys
   //!@param defaultValue default value that is selected against
   //!
-  vector<TString> getSelectedValues(const TString & keyBaseName, const TString & defaultValue) const;
+  VectorString  getSelectedValues(const String & keyBaseName, const String & defaultValue) const;
 
-  vector<TString> getSelectedValues(const TString & path, const TString & keyBaseName, const TString & defaultValue) const;
+  VectorString  getSelectedValues(const String & path, const String & keyBaseName, const String & defaultValue) const;
 
   //!
   //!Get  the number of key,value pairs with the given key base name  that DO NOT feature the defaultValue
@@ -263,16 +268,16 @@ public:
   //!@param keyBaseName base name of the keys to be tested against.
   //!@param defaultValue default value that is selected against
   //!
-  int getNSelectedValues(const TString & keyBaseName, const TString & defaultValue)  const;
+  int getNSelectedValues(const String & keyBaseName, const String & defaultValue)  const;
 
-  int getNSelectedValues(const TString & path, const TString & keyBaseName, const TString & defaultValue) const
+  int getNSelectedValues(const String & path, const String & keyBaseName, const String & defaultValue) const
   {
   return getNSelectedValues(path+TString(":")+keyBaseName, defaultValue);
   }
 
-  int getNPossibleValues(const TString & keyBaseName) const;
+  int getNPossibleValues(const String & keyBaseName) const;
 
-  int getNPossibleValues(const TString & path, const TString & keyBaseName) const
+  int getNPossibleValues(const String & path, const String & keyBaseName) const
   {
   return getNPossibleValues(path+TString(":")+keyBaseName);
   }
@@ -284,29 +289,29 @@ public:
   //!@param defaultValue default value that is selected against
   //!@param selectedValues  number of key,value pairs to be checked
   //!
-  void addSelectedValues(const TString & keyBaseName, const TString & defaultValue, const vector<TString> & selectedValues);
+  void addSelectedValues(const String & keyBaseName, const String & defaultValue, const VectorString  & selectedValues);
 
-  void addSelectedValues(const TString & path, const TString & keyBaseName, const TString & defaultValue, const vector<TString> & selectedValues)
+  void addSelectedValues(const String & path, const String & keyBaseName, const String & defaultValue, const VectorString  & selectedValues)
   {
   addSelectedValues(path+TString(":")+keyBaseName, defaultValue, selectedValues);
   }
 
-  bool isBool(const TString & _name) const;
-  bool isInt(const TString & _name) const;
-  bool isLong(const TString & _name) const;
-  bool isDouble(const TString & _name) const;
-  bool isString(const TString & _name) const;
-  bool isFound(const TString & _name) const;
+  bool isBool(const String & _name) const;
+  bool isInt(const String & _name) const;
+  bool isLong(const String & _name) const;
+  bool isDouble(const String & _name) const;
+  bool isString(const String & _name) const;
+  bool isFound(const String & _name) const;
   //!
   //! Get the value of the parameter named 'name'
   //!
   virtual void printConfiguration(ostream & os);
 
-  void readFromFile(const TString & inputFileName);
+  void readFromFile(const String & inputFileName);
 
-  void writeToFile(const TString & outputFileName);
+  void writeToFile(const String & outputFileName);
 
-  bool hasEndColon(const TString & path) const;
+  bool hasEndColon(const String & path) const;
   
 
   protected:
@@ -314,7 +319,7 @@ public:
   //!
   //! Name of this configuration
   //!
-  TString name;
+  String name;
   std::map<TString,bool>    boolMap;
   std::map<TString,int>     intMap;
   std::map<TString,long>    longMap;
@@ -324,5 +329,7 @@ public:
   ClassDef(Configuration,0)
   
 };
+
+} // namespace CAP
 
 #endif /* Configuration_hpp */

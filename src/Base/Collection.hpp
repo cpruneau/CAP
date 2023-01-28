@@ -21,10 +21,13 @@
 //
 // ====================================================
 #include <iostream>
-#include "TString.h"
+#include "Aliases.hpp"
 #include "MessageLogger.hpp"
 
 using namespace std;
+
+namespace CAP
+{
 
 template < class T >
 class Collection : public MessageLogger
@@ -32,7 +35,7 @@ class Collection : public MessageLogger
 protected:
   std::vector<T*> objects;
   bool            ownership;
-  TString         name;
+  String         name;
 
 public:
 
@@ -44,7 +47,7 @@ public:
   name("Unnamed")
   {  }
 
-  Collection(const TString& _name, bool _ownership, Severity logLevel)
+  Collection(const String& _name, bool _ownership, Severity logLevel)
   :
   MessageLogger(logLevel),
   objects(),
@@ -87,12 +90,12 @@ public:
     ownership = owns;
   }
 
-  void setName(const TString& _name)
+  void setName(const String& _name)
   {
   name = _name;
   }
 
-  const TString& getName() const
+  const String& getName() const
   {
   return name;
   }
@@ -180,5 +183,7 @@ public:
 
   ClassDef(Collection,1)
 };
+
+} // namespace CAP
 
 #endif /* CAP__Collection */

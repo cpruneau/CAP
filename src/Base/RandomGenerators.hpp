@@ -15,6 +15,12 @@
 #include "TH1.h"
 #include "TH2.h"
 
+namespace CAP
+{
+
+using Random = TRandom;
+
+
 class RandomGenerator
 {
 public:
@@ -30,9 +36,6 @@ public:
 
   ClassDef(RandomGenerator,0)
 };
-
-
-
 
 class ScalarIntRandomGenerator : public RandomGenerator
 {
@@ -203,5 +206,7 @@ public:
 
   ClassDef(VectorRandomGenerator,0)
 };
+
+} // namespace CAP
 
 #endif /* RandomGenerators_hpp */

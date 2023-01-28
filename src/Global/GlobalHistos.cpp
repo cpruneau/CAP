@@ -10,14 +10,16 @@
  *
  * *********************************************************************/
 #include "GlobalHistos.hpp"
+using CAP::GlobalHistos;
+
 ClassImp(GlobalHistos);
 
 GlobalHistos::GlobalHistos(Task * _parent,
-                           const TString & _name,
+                           const String & _name,
                            Configuration & _configuration,
                            vector<ParticleFilter*> _particleFilters)
 :
-Histograms(_parent,_name,_configuration),
+HistogramGroup(_parent,_name,_configuration),
 particleFilters(_particleFilters),
 h_n(),
 h_e(),
@@ -53,9 +55,9 @@ void GlobalHistos::createHistograms()
     ;
   unsigned int nParticleFilters = particleFilters.size();
   Configuration & configuration = getConfiguration();
-  const TString & bn  = getName();
-  const TString & ptn = getParentTaskName();
-  const TString & ppn = getParentPathName();
+  const String & bn  = getName();
+  const String & ptn = getParentTaskName();
+  const String & ppn = getParentPathName();
   fillCorrelationHistos = configuration.getValueBool(ppn,"FillCorrelationHistos");
   fill2D                = configuration.getValueBool(ppn,"Fill2D");
   int nBins_n           = configuration.getValueInt(ppn,"nBins_n");
@@ -122,47 +124,47 @@ void GlobalHistos::createHistograms()
 
   for (unsigned int k1=0; k1<nParticleFilters; k1++)
   {
-  TString name;
-  TString pfName1 = particleFilters[k1]->getName();
-  h_n.push_back(     createHistogram(makeName(bn,pfName1,"n"), nBins_n, min_n,  max_n, "n","N") );
-  h_e.push_back(     createHistogram(makeName(bn,pfName1,"e"), nBins_e, min_e,  max_e, "e","N") );
-  h_q.push_back(     createHistogram(makeName(bn,pfName1,"q"), nBins_q, min_q,  max_q, "q","N") );
-  h_s.push_back(     createHistogram(makeName(bn,pfName1,"s"), nBins_b, min_b,  max_b, "s","N") );
-  h_b.push_back(     createHistogram(makeName(bn,pfName1,"b"), nBins_b, min_b,  max_b, "b","N") );
-  h_ptSum.push_back( createHistogram(makeName(bn,pfName1,"ptSum"), nBins_ptSum, min_ptSum,  max_ptSum, "ptSum","N") );
-  h_ptAvg.push_back( createHistogram(makeName(bn,pfName1,"ptAvg"), nBins_ptAvg, min_ptAvg,  max_ptAvg, "ptAvg","N") );
-  p_eVsN.push_back(  createProfile(makeName(bn,pfName1,TString("n"),pfName1,TString("eProf")),nBins_n, min_n, max_n, "n", "e"));
-  p_qVsN.push_back(  createProfile(makeName(bn,pfName1,TString("n"),pfName1,TString("qProf")),nBins_n, min_n, max_n, "n", "q"));
-  p_sVsN.push_back(  createProfile(makeName(bn,pfName1,TString("n"),pfName1,TString("sProf")),nBins_n, min_n, max_n, "n", "s"));
-  p_bVsN.push_back(  createProfile(makeName(bn,pfName1,TString("n"),pfName1,TString("bProf")),nBins_n, min_n, max_n, "n", "b"));
-  p_ptSumVsN.push_back( createProfile(makeName(bn,pfName1,TString("n"),pfName1,TString("ptSumProf")),nBins_n, min_n, max_n, "n", "ptSum"));
-  p_ptAvgVsN.push_back( createProfile(makeName(bn,pfName1,TString("n"),pfName1,TString("ptAvgProf")),nBins_n, min_n, max_n, "n", "ptAvg"));
+  String name;
+  String pfName1 = particleFilters[k1]->getName();
+  h_n.push_back(     createHistogram(createName(bn,pfName1,"n"), nBins_n, min_n,  max_n, "n","N") );
+  h_e.push_back(     createHistogram(createName(bn,pfName1,"e"), nBins_e, min_e,  max_e, "e","N") );
+  h_q.push_back(     createHistogram(createName(bn,pfName1,"q"), nBins_q, min_q,  max_q, "q","N") );
+  h_s.push_back(     createHistogram(createName(bn,pfName1,"s"), nBins_b, min_b,  max_b, "s","N") );
+  h_b.push_back(     createHistogram(createName(bn,pfName1,"b"), nBins_b, min_b,  max_b, "b","N") );
+  h_ptSum.push_back( createHistogram(createName(bn,pfName1,"ptSum"), nBins_ptSum, min_ptSum,  max_ptSum, "ptSum","N") );
+  h_ptAvg.push_back( createHistogram(createName(bn,pfName1,"ptAvg"), nBins_ptAvg, min_ptAvg,  max_ptAvg, "ptAvg","N") );
+  p_eVsN.push_back(  createProfile(createName(bn,pfName1,TString("n"),pfName1,TString("eProf")),nBins_n, min_n, max_n, "n", "e"));
+  p_qVsN.push_back(  createProfile(createName(bn,pfName1,TString("n"),pfName1,TString("qProf")),nBins_n, min_n, max_n, "n", "q"));
+  p_sVsN.push_back(  createProfile(createName(bn,pfName1,TString("n"),pfName1,TString("sProf")),nBins_n, min_n, max_n, "n", "s"));
+  p_bVsN.push_back(  createProfile(createName(bn,pfName1,TString("n"),pfName1,TString("bProf")),nBins_n, min_n, max_n, "n", "b"));
+  p_ptSumVsN.push_back( createProfile(createName(bn,pfName1,TString("n"),pfName1,TString("ptSumProf")),nBins_n, min_n, max_n, "n", "ptSum"));
+  p_ptAvgVsN.push_back( createProfile(createName(bn,pfName1,TString("n"),pfName1,TString("ptAvgProf")),nBins_n, min_n, max_n, "n", "ptAvg"));
   if ( fill2D )
     {
-    h_ptSumVsN.push_back( createHistogram(makeName(bn,pfName1,TString("n"),pfName1,TString("ptSum")), nBins_n2, min_n, max_n, nBins_ptSum2, min_ptSum,  max_ptSum, "n", "ptSum", "N") );
-    h_ptAvgVsN.push_back( createHistogram(makeName(bn,pfName1,TString("n"),pfName1,TString("ptAvg")), nBins_n2, min_n, max_n, nBins_ptAvg2, min_ptAvg,  max_ptAvg, "n", "ptAvg", "N") );
-    h_eVsN.push_back(     createHistogram(makeName(bn,pfName1,TString("n"),pfName1,TString("e")),     nBins_n2, min_n, max_n, nBins_e2, min_e,  max_e, "n", "e", "N") );
-    h_qVsN.push_back(     createHistogram(makeName(bn,pfName1,TString("n"),pfName1,TString("q")),     nBins_n2, min_n, max_n, nBins_q2, min_q,  max_q, "n", "q", "N") );
-    h_bVsN.push_back(     createHistogram(makeName(bn,pfName1,TString("n"),pfName1,TString("b")),     nBins_n2, min_n, max_n, nBins_b2, min_b,  max_b, "n", "b", "N") );
+    h_ptSumVsN.push_back( createHistogram(createName(bn,pfName1,TString("n"),pfName1,TString("ptSum")), nBins_n2, min_n, max_n, nBins_ptSum2, min_ptSum,  max_ptSum, "n", "ptSum", "N") );
+    h_ptAvgVsN.push_back( createHistogram(createName(bn,pfName1,TString("n"),pfName1,TString("ptAvg")), nBins_n2, min_n, max_n, nBins_ptAvg2, min_ptAvg,  max_ptAvg, "n", "ptAvg", "N") );
+    h_eVsN.push_back(     createHistogram(createName(bn,pfName1,TString("n"),pfName1,TString("e")),     nBins_n2, min_n, max_n, nBins_e2, min_e,  max_e, "n", "e", "N") );
+    h_qVsN.push_back(     createHistogram(createName(bn,pfName1,TString("n"),pfName1,TString("q")),     nBins_n2, min_n, max_n, nBins_q2, min_q,  max_q, "n", "q", "N") );
+    h_bVsN.push_back(     createHistogram(createName(bn,pfName1,TString("n"),pfName1,TString("b")),     nBins_n2, min_n, max_n, nBins_b2, min_b,  max_b, "n", "b", "N") );
     }
 
   if ( fillCorrelationHistos )
     {
     for (unsigned int k2=k1; k2<nParticleFilters; k2++)
       {
-      TString pfName2 = particleFilters[k2]->getName();
+      String pfName2 = particleFilters[k2]->getName();
       if (k1!=k2)
         {
-        h_nVsN.push_back( createHistogram(makeName(bn,pfName1,"n",pfName2,"n"), nBins_n2, min_n, max_n, nBins_n2, min_n,  max_n, "n", "n", "N") );
-        h_eVsE.push_back( createHistogram(makeName(bn,pfName1,"e",pfName2,"e"), nBins_e2, min_e, max_e, nBins_e2, min_e,  max_e, "e", "e", "N") );
-        h_qVsQ.push_back( createHistogram(makeName(bn,pfName1,"q",pfName2,"q"), nBins_q2, min_q, max_q, nBins_q2, min_q,  max_q, "q", "q", "N") );
-        h_bVsB.push_back( createHistogram(makeName(bn,pfName1,"b",pfName2,"b"), nBins_b2, min_b, max_b, nBins_b2, min_b,  max_b, "b", "b", "N") );
-        h_eVsN.push_back( createHistogram(makeName(bn,pfName1,"n",pfName2,"e"), nBins_n2, min_n, max_n, nBins_e2, min_e,  max_e, "n", "e", "N") );
-        h_qVsN.push_back( createHistogram(makeName(bn,pfName1,"n",pfName2,"q"), nBins_n2, min_n, max_n, nBins_q2, min_q,  max_q, "n", "q", "N") );
-        h_bVsN.push_back( createHistogram(makeName(bn,pfName1,"n",pfName2,"b"), nBins_n2, min_n, max_n, nBins_b2, min_b,  max_b, "n", "b", "N") );
-        h_qVsE.push_back( createHistogram(makeName(bn,pfName1,"e",pfName2,"q"), nBins_e2, min_e, max_e, nBins_q2, min_q,  max_q, "e", "q", "N") );
-        h_bVsE.push_back( createHistogram(makeName(bn,pfName1,"e",pfName2,"b"), nBins_e2, min_e, max_e, nBins_b2, min_b,  max_b, "e", "b", "N") );
-        h_bVsQ.push_back( createHistogram(makeName(bn,pfName1,"q",pfName2,"b"), nBins_q2, min_q, max_q, nBins_b2, min_b,  max_b, "q", "b", "N") );
+        h_nVsN.push_back( createHistogram(createName(bn,pfName1,"n",pfName2,"n"), nBins_n2, min_n, max_n, nBins_n2, min_n,  max_n, "n", "n", "N") );
+        h_eVsE.push_back( createHistogram(createName(bn,pfName1,"e",pfName2,"e"), nBins_e2, min_e, max_e, nBins_e2, min_e,  max_e, "e", "e", "N") );
+        h_qVsQ.push_back( createHistogram(createName(bn,pfName1,"q",pfName2,"q"), nBins_q2, min_q, max_q, nBins_q2, min_q,  max_q, "q", "q", "N") );
+        h_bVsB.push_back( createHistogram(createName(bn,pfName1,"b",pfName2,"b"), nBins_b2, min_b, max_b, nBins_b2, min_b,  max_b, "b", "b", "N") );
+        h_eVsN.push_back( createHistogram(createName(bn,pfName1,"n",pfName2,"e"), nBins_n2, min_n, max_n, nBins_e2, min_e,  max_e, "n", "e", "N") );
+        h_qVsN.push_back( createHistogram(createName(bn,pfName1,"n",pfName2,"q"), nBins_n2, min_n, max_n, nBins_q2, min_q,  max_q, "n", "q", "N") );
+        h_bVsN.push_back( createHistogram(createName(bn,pfName1,"n",pfName2,"b"), nBins_n2, min_n, max_n, nBins_b2, min_b,  max_b, "n", "b", "N") );
+        h_qVsE.push_back( createHistogram(createName(bn,pfName1,"e",pfName2,"q"), nBins_e2, min_e, max_e, nBins_q2, min_q,  max_q, "e", "q", "N") );
+        h_bVsE.push_back( createHistogram(createName(bn,pfName1,"e",pfName2,"b"), nBins_e2, min_e, max_e, nBins_b2, min_b,  max_b, "e", "b", "N") );
+        h_bVsQ.push_back( createHistogram(createName(bn,pfName1,"q",pfName2,"b"), nBins_q2, min_q, max_q, nBins_b2, min_b,  max_b, "q", "b", "N") );
         }
       }
     }
@@ -179,9 +181,9 @@ void GlobalHistos::loadHistograms(TFile * inputFile)
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
   Configuration & configuration = getConfiguration();
-  const TString & bn  = getName();
-  const TString & ptn = getParentTaskName();
-  const TString & ppn = getParentPathName();
+  const String & bn  = getName();
+  const String & ptn = getParentTaskName();
+  const String & ppn = getParentPathName();
   fillCorrelationHistos = configuration.getValueBool(ppn,"FillCorrelationHistos");
   fill2D                = configuration.getValueBool(ppn,"Fill2D");
   unsigned int nParticleFilters = particleFilters.size();
@@ -198,48 +200,48 @@ void GlobalHistos::loadHistograms(TFile * inputFile)
 
   for (unsigned int k1=0; k1<nParticleFilters; k1++)
   {
-  TString pfName1 = particleFilters[k1]->getName();
-  h_n.push_back( loadH1(inputFile, makeName(bn,pfName1,"n")) );
-  h_e.push_back( loadH1(inputFile, makeName(bn,pfName1,"e")) );
-  h_q.push_back( loadH1(inputFile, makeName(bn,pfName1,"q")) );
-  h_s.push_back( loadH1(inputFile, makeName(bn,pfName1,"s")) );
-  h_b.push_back( loadH1(inputFile, makeName(bn,pfName1,"b")) );
-  h_ptSum.push_back( loadH1(inputFile, makeName(bn,pfName1,"ptSum")));
-  h_ptAvg.push_back( loadH1(inputFile, makeName(bn,pfName1,"ptAvg")));
+  String pfName1 = particleFilters[k1]->getName();
+  h_n.push_back( loadH1(inputFile, createName(bn,pfName1,"n")) );
+  h_e.push_back( loadH1(inputFile, createName(bn,pfName1,"e")) );
+  h_q.push_back( loadH1(inputFile, createName(bn,pfName1,"q")) );
+  h_s.push_back( loadH1(inputFile, createName(bn,pfName1,"s")) );
+  h_b.push_back( loadH1(inputFile, createName(bn,pfName1,"b")) );
+  h_ptSum.push_back( loadH1(inputFile, createName(bn,pfName1,"ptSum")));
+  h_ptAvg.push_back( loadH1(inputFile, createName(bn,pfName1,"ptAvg")));
 
-  p_eVsN.push_back(     loadProfile(inputFile, makeName(bn,pfName1,"n",pfName1,"eProf")));
-  p_qVsN.push_back(     loadProfile(inputFile, makeName(bn,pfName1,"n",pfName1,"qProf")));
-  p_sVsN.push_back(     loadProfile(inputFile, makeName(bn,pfName1,"n",pfName1,"sProf")));
-  p_bVsN.push_back(     loadProfile(inputFile, makeName(bn,pfName1,"n",pfName1,"bProf")));
-  p_ptSumVsN.push_back( loadProfile(inputFile, makeName(bn,pfName1,"n",pfName1,"ptSumProf")));
-  p_ptAvgVsN.push_back( loadProfile(inputFile, makeName(bn,pfName1,"n",pfName1,"ptAvgProf")));
+  p_eVsN.push_back(     loadProfile(inputFile, createName(bn,pfName1,"n",pfName1,"eProf")));
+  p_qVsN.push_back(     loadProfile(inputFile, createName(bn,pfName1,"n",pfName1,"qProf")));
+  p_sVsN.push_back(     loadProfile(inputFile, createName(bn,pfName1,"n",pfName1,"sProf")));
+  p_bVsN.push_back(     loadProfile(inputFile, createName(bn,pfName1,"n",pfName1,"bProf")));
+  p_ptSumVsN.push_back( loadProfile(inputFile, createName(bn,pfName1,"n",pfName1,"ptSumProf")));
+  p_ptAvgVsN.push_back( loadProfile(inputFile, createName(bn,pfName1,"n",pfName1,"ptAvgProf")));
 
   if ( fill2D )
     {
-    h_ptSumVsN.push_back( loadH2(inputFile, makeName(bn,pfName1,"n",pfName1,"ptSum")));
-    h_ptAvgVsN.push_back( loadH2(inputFile, makeName(bn,pfName1,"n",pfName1,"ptAvg")));
-    h_eVsN.push_back(     loadH2(inputFile, makeName(bn,pfName1,"n",pfName1,"e")));
-    h_qVsN.push_back(     loadH2(inputFile, makeName(bn,pfName1,"n",pfName1,"q")));
-    h_bVsN.push_back(     loadH2(inputFile, makeName(bn,pfName1,"n",pfName1,"b")));
+    h_ptSumVsN.push_back( loadH2(inputFile, createName(bn,pfName1,"n",pfName1,"ptSum")));
+    h_ptAvgVsN.push_back( loadH2(inputFile, createName(bn,pfName1,"n",pfName1,"ptAvg")));
+    h_eVsN.push_back(     loadH2(inputFile, createName(bn,pfName1,"n",pfName1,"e")));
+    h_qVsN.push_back(     loadH2(inputFile, createName(bn,pfName1,"n",pfName1,"q")));
+    h_bVsN.push_back(     loadH2(inputFile, createName(bn,pfName1,"n",pfName1,"b")));
     }
 
   if ( fillCorrelationHistos )
     {
     for (unsigned int k2=k1; k2<nParticleFilters; k2++)
       {
-      TString pfName2 = particleFilters[k2]->getName();
+      String pfName2 = particleFilters[k2]->getName();
       if (k1!=k2)
         {
-        h_nVsN.push_back( loadH2(inputFile, makeName(bn,pfName1,"n",pfName2,"n")) );
-        h_eVsE.push_back( loadH2(inputFile, makeName(bn,pfName1,"e",pfName2,"e")) );
-        h_qVsQ.push_back( loadH2(inputFile, makeName(bn,pfName1,"q",pfName2,"q")) );
-        h_bVsB.push_back( loadH2(inputFile, makeName(bn,pfName1,"b",pfName2,"b")) );
-        h_eVsN.push_back( loadH2(inputFile, makeName(bn,pfName1,"n",pfName2,"e")) );
-        h_qVsN.push_back( loadH2(inputFile, makeName(bn,pfName1,"n",pfName2,"q")) );
-        h_bVsN.push_back( loadH2(inputFile, makeName(bn,pfName1,"n",pfName2,"b")) );
-        h_qVsE.push_back( loadH2(inputFile, makeName(bn,pfName1,"e",pfName2,"q")) );
-        h_bVsE.push_back( loadH2(inputFile, makeName(bn,pfName1,"e",pfName2,"b")) );
-        h_bVsQ.push_back( loadH2(inputFile, makeName(bn,pfName1,"q",pfName2,"b")) );
+        h_nVsN.push_back( loadH2(inputFile, createName(bn,pfName1,"n",pfName2,"n")) );
+        h_eVsE.push_back( loadH2(inputFile, createName(bn,pfName1,"e",pfName2,"e")) );
+        h_qVsQ.push_back( loadH2(inputFile, createName(bn,pfName1,"q",pfName2,"q")) );
+        h_bVsB.push_back( loadH2(inputFile, createName(bn,pfName1,"b",pfName2,"b")) );
+        h_eVsN.push_back( loadH2(inputFile, createName(bn,pfName1,"n",pfName2,"e")) );
+        h_qVsN.push_back( loadH2(inputFile, createName(bn,pfName1,"n",pfName2,"q")) );
+        h_bVsN.push_back( loadH2(inputFile, createName(bn,pfName1,"n",pfName2,"b")) );
+        h_qVsE.push_back( loadH2(inputFile, createName(bn,pfName1,"e",pfName2,"q")) );
+        h_bVsE.push_back( loadH2(inputFile, createName(bn,pfName1,"e",pfName2,"b")) );
+        h_bVsQ.push_back( loadH2(inputFile, createName(bn,pfName1,"q",pfName2,"b")) );
         }
       }
     }

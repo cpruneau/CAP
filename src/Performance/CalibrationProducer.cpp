@@ -10,10 +10,11 @@
  *
  * *********************************************************************/
 #include "CalibrationProducer.hpp"
+using CAP::CalibrationProducer;
 
 ClassImp(CalibrationProducer);
 
-CalibrationProducer::CalibrationProducer(const TString & _name,
+CalibrationProducer::CalibrationProducer(const String & _name,
                                          Configuration & _configuration)
 :
 Task(_name, _configuration, _reportLevel)
@@ -41,10 +42,10 @@ void CalibrationProducer::execute()
   incrementTaskExecuted();
   bool    ForceHistogramsRewrite = configuration.getValueBool(  getName(),"ForceHistogramsRewrite");
   int     efficiencyOpt          = configuration.getValueInt(   getName(),"efficiencyOpt");
-  TString histoInputPath         = getValueString("HistogramInputPath");
-  TString histoRatioFileName     = getValueString("HistoRatioFileName");
-  TString HistogramOutputPath        = getValueString("HistogramOutputPath");
-  TString histoEffFileName       = getValueString("HistoEffFileName");
+  String histoInputPath         = getValueString("HistogramInputPath");
+  String histoRatioFileName     = getValueString("HistoRatioFileName");
+  String HistogramOutputPath        = getValueString("HistogramOutputPath");
+  String histoEffFileName       = getValueString("HistoEffFileName");
     
   if (reportInfo(__FUNCTION__))
     {

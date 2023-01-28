@@ -9,18 +9,22 @@
  **********************************************************************/
 #ifndef WAC_HadronGasParticlesHistograms
 #define WAC_HadronGasParticlesHistograms
-#include "Histograms.hpp"
+#include "HistogramGroup.hpp"
 #include "HadronGas.hpp"
+
+namespace CAP
+{
+
 
 // ===================================================
 // Particle abundance at a specific temperature or beam
 // energy or etc..
-class HadronGasHistograms : public Histograms
+class HadronGasHistograms : public HistogramGroup
 {
 public:
 
   HadronGasHistograms(Task * _parent,
-                      const TString & _name,
+                      const String & _name,
                       Configuration & _config,
                       HadronGas * _hadronGas);
   virtual ~HadronGasHistograms() {}
@@ -32,7 +36,7 @@ public:
   void calculateDerivedHistograms();
 
   ////////////////////////////////////////////////////////////////////////////
-  // Data Members - Histograms
+  // Data Members - HistogramGroup
   ////////////////////////////////////////////////////////////////////////////
   HadronGas * hadronGas;
   TProfile * h_rho1AllVsMass;
@@ -57,6 +61,8 @@ public:
   ClassDef(HadronGasHistograms,0)
 
 };
+
+} // namespace CAP
 
 #endif /* WAC_HadronGasVsTempHistograms  */
 

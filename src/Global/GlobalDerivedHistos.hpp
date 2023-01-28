@@ -11,15 +11,20 @@
  * *********************************************************************/
 #ifndef CAP__GlobalDerivedHistos
 #define CAP__GlobalDerivedHistos
+#include "HistogramGroup.hpp"
+#include "ParticleFilter.hpp"
 #include "GlobalHistos.hpp"
-#include "Configuration.hpp"
 
-class GlobalDerivedHistos : public Histograms
+namespace CAP
+{
+
+
+class GlobalDerivedHistos : public HistogramGroup
 {
 public:
 
   GlobalDerivedHistos(Task * _parent,
-                      const TString & _name,
+                      const String & _name,
                       Configuration & _configuration,
                       vector<ParticleFilter*> _particleFilters);
   virtual ~GlobalDerivedHistos() {} 
@@ -37,6 +42,8 @@ protected:
   ClassDef(GlobalDerivedHistos,0)
 
 };
+
+}
 
 #endif /* CAP__GlobalDerivedHistos  */
 

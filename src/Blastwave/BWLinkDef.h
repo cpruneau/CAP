@@ -4,6 +4,6 @@
 #pragma link off all classes;
 #pragma link off all functions;
 
-#pragma link C++ class BWModelEventGenerator+;
+#pragma link C++ class CAP::BWModelEventGenerator+;
 
 #endif

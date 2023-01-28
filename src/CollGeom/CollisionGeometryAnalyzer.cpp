@@ -10,9 +10,11 @@
  *
  * *********************************************************************/
 #include "CollisionGeometryAnalyzer.hpp"
+using CAP::CollisionGeometryAnalyzer;
+
 ClassImp(CollisionGeometryAnalyzer);
 
-CollisionGeometryAnalyzer::CollisionGeometryAnalyzer(const TString & _name,
+CollisionGeometryAnalyzer::CollisionGeometryAnalyzer(const String & _name,
                                                      Configuration &   _configuration,
                                                      vector<EventFilter*> &   _eventFilters,
                                                      vector<ParticleFilter*>  _particleFilters)
@@ -79,20 +81,20 @@ void CollisionGeometryAnalyzer::createHistograms()
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString prefixName = getName(); prefixName += "_";
+  String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
 
   if (reportInfo(__FUNCTION__))
     {
-    cout << "Creating Histograms for.."  << endl;
+    cout << "Creating HistogramGroup for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     }
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     cout << " iEventFilter:"  << iEventFilter << endl;
-    TString evtFilterName = eventFilters[iEventFilter]->getName();
+    String evtFilterName = eventFilters[iEventFilter]->getName();
     cout << " evtFilterName:"  << evtFilterName << endl;
-    TString histoName     = prefixName;
+    String histoName     = prefixName;
     histoName += evtFilterName;
     cout << " histoName:"  << histoName << endl;
     CollisionGeometryHistograms * histos = new CollisionGeometryHistograms(this,histoName, configuration);
@@ -109,17 +111,17 @@ void CollisionGeometryAnalyzer::loadHistograms(TFile * inputFile)
   if (reportStart(__FUNCTION__))
     ;
   Configuration & configuration = getConfiguration();
-  TString prefixName = getName(); prefixName += "_";
+  String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   if (reportInfo(__FUNCTION__))
     {
-    cout << "Loading Histograms for.."  << endl;
+    cout << "Loading HistogramGroup for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     }
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    TString evtFilterName = eventFilters[iEventFilter]->getName();
-    TString histoName     = prefixName;
+    String evtFilterName = eventFilters[iEventFilter]->getName();
+    String histoName     = prefixName;
     histoName += evtFilterName;
     CollisionGeometryHistograms * histos = new CollisionGeometryHistograms(this,histoName, configuration);
     histos->loadHistograms(inputFile);

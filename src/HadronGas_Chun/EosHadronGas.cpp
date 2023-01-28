@@ -12,6 +12,7 @@
 #include <TMath.h>
 #include "Math/SpecFunc.h"
 #include "EosHadronGas.hpp"
+using CAP::EosHadronGas;
 
 ClassImp(EosHadronGas);
 

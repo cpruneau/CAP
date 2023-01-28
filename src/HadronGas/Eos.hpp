@@ -7,13 +7,15 @@
 
 using namespace std;
 
+namespace CAP
+{
 class Eos
 {
 private:
   static double hbarC;     // GeV*fm
   static int    trunOrder; // truncated order in the summation
 
-  TString modelName;
+  String modelName;
   double gSpin; // degeneracy
   double mu;    // chemical potentials
   double mass;
@@ -32,7 +34,7 @@ private:
   double deltaN_qmu_term2;
 
 public:
-  Eos(const TString & _name, double gSpin, double _mass);
+  Eos(const String & _name, double gSpin, double _mass);
   Eos(const Eos & source);
   virtual ~Eos();
   Eos & operator=(const Eos & source);
@@ -50,6 +52,7 @@ public:
 
   ClassDef(Eos,0)
 };
+} // namespace CAP
 
 #endif  // CAP_Eos
 

@@ -10,9 +10,11 @@
  *
  * *********************************************************************/
 #include "Configuration.hpp"
-ClassImp(Configuration);
+using CAP::Configuration;
 
-Configuration::Configuration()
+ClassImp(CAP::Configuration);
+
+CAP::Configuration::Configuration()
 :
 name(""),
 boolMap(),
@@ -24,7 +26,7 @@ stringMap()
   
 }
 
-Configuration::Configuration(const TString & _name)
+CAP::Configuration::Configuration(const CAP::String & _name)
 :
 name(_name),
 boolMap(),
@@ -36,7 +38,7 @@ stringMap()
   
 }
 
-Configuration::Configuration(const Configuration & _configuration)
+CAP::Configuration::Configuration(const CAP::Configuration & _configuration)
 :
 name(_configuration.name),
 boolMap(),
@@ -49,7 +51,7 @@ stringMap()
 }
 
 
-Configuration & Configuration::operator=(const Configuration & _configuration)
+CAP::Configuration & CAP::Configuration::operator=(const CAP::Configuration & _configuration)
 {
   if (this!=&_configuration)
     {
@@ -60,7 +62,7 @@ Configuration & Configuration::operator=(const Configuration & _configuration)
   return *this;
 }
 
-void Configuration::clear()
+void CAP::Configuration::clear()
 {
   name = "";
   boolMap.clear();
@@ -70,9 +72,9 @@ void Configuration::clear()
   stringMap.clear();
 }
 
-void Configuration::addParameter(const TString & name, bool value)
+void CAP::Configuration::addParameter(const CAP::String & name, bool value)
 {
-  std::map<TString,bool>::iterator it;
+  std::map<CAP::String,bool>::iterator it;
   it = boolMap.find(name);
   if (it != boolMap.end())
     {
@@ -84,9 +86,9 @@ void Configuration::addParameter(const TString & name, bool value)
     }
 }
 
-void Configuration::addParameter(const TString & name, int value)
+void CAP::Configuration::addParameter(const CAP::String & name, int value)
 {
-  std::map<TString,int>::iterator it;
+  std::map<CAP::String,int>::iterator it;
   it = intMap.find(name);
   if (it != intMap.end())
     {
@@ -98,9 +100,9 @@ void Configuration::addParameter(const TString & name, int value)
     }
 }
 
-void Configuration::addParameter(const TString & name, long value)
+void CAP::Configuration::addParameter(const CAP::String & name, long value)
 {
-  std::map<TString,long>::iterator it;
+  std::map<CAP::String,long>::iterator it;
   it = longMap.find(name);
   if (it != longMap.end())
     {
@@ -113,9 +115,9 @@ void Configuration::addParameter(const TString & name, long value)
 }
 
 
-void Configuration::addParameter(const TString & name, double value)
+void CAP::Configuration::addParameter(const CAP::String & name, double value)
 {
-  std::map<TString,double>::iterator it;
+  std::map<CAP::String,double>::iterator it;
   it = doubleMap.find(name);
   if (it != doubleMap.end())
     {
@@ -127,9 +129,9 @@ void Configuration::addParameter(const TString & name, double value)
     }
 }
 
-void Configuration::addParameter(const TString & name, const TString & value)
+void CAP::Configuration::addParameter(const CAP::String & name, const CAP::String & value)
 {
-  std::map<TString,TString>::iterator it;
+  std::map<CAP::String,CAP::String>::iterator it;
   it = stringMap.find(name);
   if (it != stringMap.end())
     {
@@ -141,9 +143,9 @@ void Configuration::addParameter(const TString & name, const TString & value)
     }
 }
 
-void Configuration::setParameter(const TString & name, bool value)
+void CAP::Configuration::setParameter(const CAP::String & name, bool value)
 {
-  std::map<TString,bool>::iterator it;
+  std::map<CAP::String,bool>::iterator it;
   it = boolMap.find(name);
   if (it != boolMap.end())
     {
@@ -155,9 +157,9 @@ void Configuration::setParameter(const TString & name, bool value)
     }
 }
 
-void Configuration::setParameter(const TString & name, int value)
+void CAP::Configuration::setParameter(const CAP::String & name, int value)
 {
-  std::map<TString,int>::iterator it;
+  std::map<CAP::String,int>::iterator it;
   it = intMap.find(name);
   if (it != intMap.end())
     {
@@ -169,9 +171,9 @@ void Configuration::setParameter(const TString & name, int value)
     }
 }
 
-void Configuration::setParameter(const TString & name, long value)
+void CAP::Configuration::setParameter(const CAP::String & name, long value)
 {
-  std::map<TString,long>::iterator it;
+  std::map<CAP::String,long>::iterator it;
   it = longMap.find(name);
   if (it != longMap.end())
     {
@@ -184,9 +186,9 @@ void Configuration::setParameter(const TString & name, long value)
 }
 
 
-void Configuration::setParameter(const TString & name, double value)
+void CAP::Configuration::setParameter(const CAP::String & name, double value)
 {
-  std::map<TString,double>::iterator it;
+  std::map<CAP::String,double>::iterator it;
   it = doubleMap.find(name);
   if (it != doubleMap.end())
     {
@@ -198,9 +200,9 @@ void Configuration::setParameter(const TString & name, double value)
     }
 }
 
-void Configuration::setParameter(const TString & name, const TString & value)
+void CAP::Configuration::setParameter(const CAP::String & name, const CAP::String & value)
 {
-  std::map<TString,TString>::iterator it;
+  std::map<CAP::String,CAP::String>::iterator it;
   it = stringMap.find(name);
   if (it != stringMap.end())
     {
@@ -212,43 +214,43 @@ void Configuration::setParameter(const TString & name, const TString & value)
     }
 }
 
-bool Configuration::isBool(const TString & name) const
+bool CAP::Configuration::isBool(const CAP::String & name) const
 {
-  std::map<TString,bool>::const_iterator it;
+  std::map<CAP::String,bool>::const_iterator it;
   it = boolMap.find(name);
   return it != boolMap.cend();
 }
 
-bool Configuration::isInt(const TString & name) const
+bool CAP::Configuration::isInt(const CAP::String & name) const
 {
-  std::map<TString,int>::const_iterator it;
+  std::map<CAP::String,int>::const_iterator it;
   it = intMap.find(name);
   return it != intMap.cend();
 }
 
-bool Configuration::isLong(const TString & name) const
+bool CAP::Configuration::isLong(const CAP::String & name) const
 {
-  std::map<TString,long>::const_iterator it;
+  std::map<CAP::String,long>::const_iterator it;
   it = longMap.find(name);
   return it != longMap.cend();
 }
 
-bool Configuration::isDouble(const TString & name) const
+bool CAP::Configuration::isDouble(const CAP::String & name) const
 {
-  std::map<TString,double>::const_iterator it;
+  std::map<CAP::String,double>::const_iterator it;
   it = doubleMap.find(name);
   return it != doubleMap.cend();
 }
 
 
-bool Configuration::isString(const TString & name) const
+bool CAP::Configuration::isString(const CAP::String & name) const
 {
-  std::map<TString,TString>::const_iterator it;
+  std::map<CAP::String,CAP::String>::const_iterator it;
   it = stringMap.find(name);
   return it != stringMap.cend();
 }
 
-bool Configuration::isFound(const TString & name) const
+bool CAP::Configuration::isFound(const CAP::String & name) const
 {
   if (isBool(name)) return true;
   if (isInt(name)) return true;
@@ -260,10 +262,10 @@ bool Configuration::isFound(const TString & name) const
 
 
 
-bool Configuration::getValueBool(const TString & name) const
+bool CAP::Configuration::getValueBool(const CAP::String & name) const
 {
   bool value = false;
-  std::map<TString,bool>::const_iterator it;
+  std::map<CAP::String,bool>::const_iterator it;
   it = boolMap.find(name);
   if (it != boolMap.cend())
     {
@@ -278,18 +280,18 @@ bool Configuration::getValueBool(const TString & name) const
     else if (isDouble(name))
       std::cout  << " Key:" <<  name << " not a 'bool' but a 'double'. Use 'getValueDouble(key)' to retrieve it" <<  std::endl;
     else if (isString(name))
-      std::cout  << " Key:" <<  name << " not a 'bool' but a 'string'. Use 'getValueString(key)' to retrieve it" <<  std::endl;
+      std::cout  << " Key:" <<  name << " not a 'bool' but a 'CAP::String'. Use 'getValueString(key)' to retrieve it" <<  std::endl;
     else
-      std::cout  << "<W> Configuration::getValueBool(): Did not find key:" << name << std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueBool(): Did not find key:" << name << std::endl;
     value = false;
     }
   return value;
 }
 
-int Configuration::getValueInt(const TString & name) const
+int CAP::Configuration::getValueInt(const CAP::String & name) const
 {
   int value = -99999;
-  std::map<TString,int>::const_iterator it;
+  std::map<CAP::String,int>::const_iterator it;
   it = intMap.find(name);
   if (it != intMap.cend())
     {
@@ -299,23 +301,23 @@ int Configuration::getValueInt(const TString & name) const
   else
     {
     if (isBool(name))
-      std::cout  << "<W> Configuration::getValueInt(): Key:" <<  name << " not an 'int' but a 'bool'. Use 'getValueBool(key)' to retrieve it" <<  std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueInt(): Key:" <<  name << " not an 'int' but a 'bool'. Use 'getValueBool(key)' to retrieve it" <<  std::endl;
     else if (isLong(name))
-      std::cout  << "<W> Configuration::getValueInt(): Key:" <<  name << " not an 'int' but a 'long'. Use 'getValueLong(key)' to retrieve it" <<  std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueInt(): Key:" <<  name << " not an 'int' but a 'long'. Use 'getValueLong(key)' to retrieve it" <<  std::endl;
     else if (isDouble(name))
-      std::cout  << "<W> Configuration::getValueInt(): Key:" <<  name << " not an 'int' but a 'double'. Use 'getValueDouble(key)' to retrieve it" <<  std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueInt(): Key:" <<  name << " not an 'int' but a 'double'. Use 'getValueDouble(key)' to retrieve it" <<  std::endl;
     else if (isString(name))
-      std::cout  << "<W> Configuration::getValueInt(): Key:" <<  name << " not an 'int' but a 'string'. Use 'getValueString(key)' to retrieve it" <<  std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueInt(): Key:" <<  name << " not an 'int' but a 'CAP::String'. Use 'getValueString(key)' to retrieve it" <<  std::endl;
     else
-      std::cout  << "<W> Configuration::getValueInt(): Did not find key:" << name << std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueInt(): Did not find key:" << name << std::endl;
     }
   return value;
 }
 
-long Configuration::getValueLong(const TString & name) const
+long CAP::Configuration::getValueLong(const CAP::String & name) const
 {
   long value = -99999;
-  std::map<TString,long>::const_iterator it;
+  std::map<CAP::String,long>::const_iterator it;
   it = longMap.find(name);
   if (it != longMap.cend())
     {
@@ -325,24 +327,24 @@ long Configuration::getValueLong(const TString & name) const
   else
     {
     if (isBool(name))
-      std::cout  << "<W> Configuration::getValueLong(): Key:" <<  name << " not a 'long' but a 'bool'. Use 'getValueBool(key)' to retrieve it" <<  std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueLong(): Key:" <<  name << " not a 'long' but a 'bool'. Use 'getValueBool(key)' to retrieve it" <<  std::endl;
     else if (isInt(name))
-      std::cout  << "<W> Configuration::getValueLong(): Key:" <<  name << " not a 'long' but an 'int'. Use 'getValueInt(key)' to retrieve it" <<  std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueLong(): Key:" <<  name << " not a 'long' but an 'int'. Use 'getValueInt(key)' to retrieve it" <<  std::endl;
     else if (isDouble(name))
-      std::cout  << "<W> Configuration::getValueLong(): Key:" <<  name << " not a 'long' but a 'double'. Use 'getValueDouble(key)' to retrieve it" <<  std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueLong(): Key:" <<  name << " not a 'long' but a 'double'. Use 'getValueDouble(key)' to retrieve it" <<  std::endl;
     else if (isString(name))
-      std::cout  << "<W> Configuration::getValueLong(): Key:" <<  name << " not a 'long' but a 'string'. Use 'getValueString(key)' to retrieve it" <<  std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueLong(): Key:" <<  name << " not a 'long' but a 'CAP::String'. Use 'getValueString(key)' to retrieve it" <<  std::endl;
     else
-      std::cout  << "<W> Configuration::getValueLong(): Did not find key:" << name << std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueLong(): Did not find key:" << name << std::endl;
     }
   return value;
 }
 
 
-double Configuration::getValueDouble(const TString & name)  const
+double CAP::Configuration::getValueDouble(const CAP::String & name)  const
 {
   double value = 0.0;
-  std::map<TString,double>::const_iterator it;
+  std::map<CAP::String,double>::const_iterator it;
   it = doubleMap.find(name);
   if (it != doubleMap.cend())
     {
@@ -352,23 +354,23 @@ double Configuration::getValueDouble(const TString & name)  const
   else
     {
     if (isBool(name))
-      std::cout  << "<W> Configuration::getValueDouble(): Key:" <<  name << " not a 'double' but a 'bool'. Use 'getValueBool(key)' to retrieve it" <<  std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueDouble(): Key:" <<  name << " not a 'double' but a 'bool'. Use 'getValueBool(key)' to retrieve it" <<  std::endl;
     else if (isInt(name))
-      std::cout  << "<W> Configuration::getValueDouble(): Key:" <<  name << " not a 'double' but an 'int'. Use 'getValueInt(key)' to retrieve it" <<  std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueDouble(): Key:" <<  name << " not a 'double' but an 'int'. Use 'getValueInt(key)' to retrieve it" <<  std::endl;
     else if (isLong(name))
-      std::cout  << "<W> Configuration::getValueDouble(): Key:" <<  name << " not a 'double' but a 'long'. Use 'getValueLong(key)' to retrieve it" <<  std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueDouble(): Key:" <<  name << " not a 'double' but a 'long'. Use 'getValueLong(key)' to retrieve it" <<  std::endl;
     else if (isString(name))
-      std::cout  << "<W> Configuration::getValueDouble(): Key:" <<  name << " not a 'double' but a 'string'. Use 'getValueString(key)' to retrieve it" <<  std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueDouble(): Key:" <<  name << " not a 'double' but a 'CAP::String'. Use 'getValueString(key)' to retrieve it" <<  std::endl;
     else
-      std::cout  << "<W> Configuration::getValueDouble(): Did not find key:" << name << std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueDouble(): Did not find key:" << name << std::endl;
     }
   return value;
 }
 
-TString  Configuration::getValueString(const TString & name) const
+CAP::String  CAP::Configuration::getValueString(const CAP::String & name) const
 {
-  TString value = "notFound";
-  std::map<TString,TString>::const_iterator it;
+  CAP::String value = "notFound";
+  std::map<CAP::String,CAP::String>::const_iterator it;
   it = stringMap.find(name);
   if (it != stringMap.cend())
     {
@@ -378,59 +380,58 @@ TString  Configuration::getValueString(const TString & name) const
   else
     {
     if (isBool(name))
-      std::cout  << "<W> Configuration::getValueString(): Key:" <<  name << " not a 'string' but a 'bool'. Use 'getValueBool(key)' to retrieve it" <<  std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueString(): Key:" <<  name << " not a 'CAP::String' but a 'bool'. Use 'getValueBool(key)' to retrieve it" <<  std::endl;
     else if (isInt(name))
-      std::cout  << "<W> Configuration::getValueString(): Key:" <<  name << " not a 'string' but an 'int'. Use 'getValueInt(key)' to retrieve it" <<  std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueString(): Key:" <<  name << " not a 'CAP::String' but an 'int'. Use 'getValueInt(key)' to retrieve it" <<  std::endl;
     else if (isLong(name))
-      std::cout  << "<W> Configuration::getValueString(): Key:" <<  name << " not a 'string' but a 'long'. Use 'getValueLong(key)' to retrieve it" <<  std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueString(): Key:" <<  name << " not a 'CAP::String' but a 'long'. Use 'getValueLong(key)' to retrieve it" <<  std::endl;
     else if (isDouble(name))
-      std::cout  << "<W> Configuration::getValueString(): Key:" <<  name << " not a 'string' but a 'double'. Use 'getValueDouble(key)' to retrieve it" <<  std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueString(): Key:" <<  name << " not a 'CAP::String' but a 'double'. Use 'getValueDouble(key)' to retrieve it" <<  std::endl;
     else
-      std::cout  << "<W> Configuration::getValueString(): Did not find key:" << name << std::endl;
+      std::cout  << "<W> CAP::Configuration::getValueString(): Did not find key:" << name << std::endl;
     }
   return value;
 }
 
-void Configuration::setParameters(const Configuration &  configuration)
+void CAP::Configuration::setParameters(const Configuration &  configuration)
 {
-  //cout << "Configuration::setParameters(const Configuration &  configuration)" << endl;
+  //cout << "CAP::Configuration::setParameters(const Configuration &  configuration)" << endl;
   //cout << " Size bool: "  << configuration.boolMap.size() << endl;
-  for (std::map<TString,bool>::const_iterator it=configuration.boolMap.cbegin(); it!=configuration.boolMap.cend(); ++it)
+  for (std::map<CAP::String,bool>::const_iterator it=configuration.boolMap.cbegin(); it!=configuration.boolMap.cend(); ++it)
     {
     setParameter(it->first, it->second);
     }
   //cout << " Size int: "  << configuration.intMap.size() << endl;
 
-  for (std::map<TString,int>::const_iterator it=configuration.intMap.cbegin(); it!=configuration.intMap.cend(); ++it)
+  for (std::map<CAP::String,int>::const_iterator it=configuration.intMap.cbegin(); it!=configuration.intMap.cend(); ++it)
     {
     setParameter(it->first, it->second);
     }
   //cout << " Size long: "  << configuration.longMap.size() << endl;
 
-  for (std::map<TString,long>::const_iterator it=configuration.longMap.cbegin(); it!=configuration.longMap.cend(); ++it)
+  for (std::map<CAP::String,long>::const_iterator it=configuration.longMap.cbegin(); it!=configuration.longMap.cend(); ++it)
     {
     setParameter(it->first, it->second);
     }
   //cout << " Size double: "  << configuration.doubleMap.size() << endl;
 
-  for (std::map<TString,double>::const_iterator it=configuration.doubleMap.cbegin(); it!=configuration.doubleMap.cend(); ++it)
+  for (std::map<CAP::String,double>::const_iterator it=configuration.doubleMap.cbegin(); it!=configuration.doubleMap.cend(); ++it)
     {
     setParameter(it->first, it->second);
     }
-  //cout << " Size string: "  << configuration.stringMap.size() << endl;
+  //cout << " Size CAP::String: "  << configuration.stringMap.size() << endl;
 
-  int k =0;
-  for (std::map<TString,TString>::const_iterator it=configuration.stringMap.cbegin(); it!=configuration.stringMap.cend(); ++it)
+  for (std::map<CAP::String,CAP::String>::const_iterator it=configuration.stringMap.cbegin(); it!=configuration.stringMap.cend(); ++it)
     {
 //    cout << "WTF  " << k++ << endl;
 //    cout << "  first:" << it->first << endl;
 //    cout << " second:" << it->second << endl;
     setParameter(it->first, it->second);
     }
-  //cout << "Configuration::setParameters(const Configuration &  configuration) complted OK" << endl;
+  //cout << "CAP::Configuration::setParameters(const Configuration &  configuration) complted OK" << endl;
 }
 
-int Configuration::getNParameters()
+int CAP::Configuration::getNParameters()
 {
   int nParameters = 0;
   nParameters += boolMap.size();
@@ -442,9 +443,9 @@ int Configuration::getNParameters()
 }
 
 
-void Configuration::generateKeyValuePairs(const TString & keyBaseName, const TString & defaultValue, int nKeysToGenerate)
+void CAP::Configuration::generateKeyValuePairs(const CAP::String & keyBaseName, const CAP::String & defaultValue, int nKeysToGenerate)
 {
-  TString key;
+  CAP::String key;
   for (int k=0; k<nKeysToGenerate; k++)
     {
     key = keyBaseName; key += k;
@@ -452,47 +453,47 @@ void Configuration::generateKeyValuePairs(const TString & keyBaseName, const TSt
     }
 }
 
-void Configuration::generateKeyValuePairs(const TString & path, const TString & keyBaseName, const TString & defaultValue, int nKeysToGenerate)
+void CAP::Configuration::generateKeyValuePairs(const CAP::String & path, const CAP::String & keyBaseName, const CAP::String & defaultValue, int nKeysToGenerate)
 {
   if (path.EndsWith(":"))
     generateKeyValuePairs(path+keyBaseName, defaultValue, nKeysToGenerate);
   else
-    generateKeyValuePairs(path+TString(":")+keyBaseName, defaultValue, nKeysToGenerate);
+    generateKeyValuePairs(path+CAP::String(":")+keyBaseName, defaultValue, nKeysToGenerate);
 }
 
-vector<TString> Configuration::getSelectedValues(const TString & keyBaseName, const TString & defaultValue) const
+vector<CAP::String> CAP::Configuration::getSelectedValues(const CAP::String & keyBaseName, const CAP::String & defaultValue) const
 {
-  vector<TString> selectedValues;
-  for (std::map<TString,TString>::const_iterator it=stringMap.cbegin(); it!=stringMap.cend(); ++it)
+  vector<CAP::String> selectedValues;
+  for (std::map<CAP::String,CAP::String>::const_iterator it=stringMap.cbegin(); it!=stringMap.cend(); ++it)
     {
     if (it->first.Contains(keyBaseName) && !it->second.Contains(defaultValue) ) selectedValues.push_back(it->second);
     }
   return selectedValues;
 }
 
-vector<TString> Configuration::getSelectedValues(const TString & path, const TString & keyBaseName, const TString & defaultValue) const
+vector<CAP::String> CAP::Configuration::getSelectedValues(const CAP::String & path, const CAP::String & keyBaseName, const CAP::String & defaultValue) const
 {
   if (path.EndsWith(":"))
     return getSelectedValues(path+keyBaseName, defaultValue);
   else
-    return getSelectedValues(path+TString(":")+keyBaseName, defaultValue);
+    return getSelectedValues(path+CAP::String(":")+keyBaseName, defaultValue);
 }
 
 
-int Configuration::getNPossibleValues(const TString & keyBaseName)  const
+int CAP::Configuration::getNPossibleValues(const CAP::String & keyBaseName)  const
 {
   int nPossible = 0;
-  for (std::map<TString,TString>::const_iterator it=stringMap.cbegin(); it!=stringMap.cend(); ++it)
+  for (std::map<CAP::String,CAP::String>::const_iterator it=stringMap.cbegin(); it!=stringMap.cend(); ++it)
     {
     if (it->first.Contains(keyBaseName)) nPossible++;
     }
   return nPossible;
 }
 
-int Configuration::getNSelectedValues(const TString & keyBaseName, const TString & defaultValue)  const
+int CAP::Configuration::getNSelectedValues(const CAP::String & keyBaseName, const CAP::String & defaultValue)  const
 {
   int nSelected = 0;
-  for (std::map<TString,TString>::const_iterator it=stringMap.cbegin(); it!=stringMap.cend(); ++it)
+  for (std::map<CAP::String,CAP::String>::const_iterator it=stringMap.cbegin(); it!=stringMap.cend(); ++it)
     {
     if (it->first.Contains(keyBaseName) && !it->second.Contains(defaultValue) ) nSelected++;
     }
@@ -500,18 +501,18 @@ int Configuration::getNSelectedValues(const TString & keyBaseName, const TString
 }
 
 
-void Configuration::addSelectedValues(const TString & keyBaseName, const TString & defaultValue, const vector<TString> & selectedValues)
+void CAP::Configuration::addSelectedValues(const CAP::String & keyBaseName, const CAP::String & defaultValue, const vector<CAP::String> & selectedValues)
 {
-  TString key;
+  CAP::String key;
   int nSelected = getNSelectedValues(keyBaseName,defaultValue);
   for (unsigned int k=0; k<selectedValues.size(); k++)
     {
-    TString key = keyBaseName+(int(nSelected)+k);
+    CAP::String key = keyBaseName+(int(nSelected)+k);
     setParameter(key,selectedValues[k]);
     }
 }
 
-void Configuration::printConfiguration(ostream & os)
+void CAP::Configuration::printConfiguration(ostream & os)
 {
   os
   << endl
@@ -519,43 +520,43 @@ void Configuration::printConfiguration(ostream & os)
   << " name: " << name << std::endl
   << " ------------------------------------------------------------" << std::endl;
   
-  for (std::map<TString,bool>::const_iterator it=boolMap.cbegin(); it!=boolMap.cend(); ++it)
+  for (std::map<CAP::String,bool>::const_iterator it=boolMap.cbegin(); it!=boolMap.cend(); ++it)
     {
     std::cout << "     " << it->first << " == " << it->second << endl;
     }
   
-  for (std::map<TString,int>::const_iterator it=intMap.cbegin(); it!=intMap.cend(); ++it)
+  for (std::map<CAP::String,int>::const_iterator it=intMap.cbegin(); it!=intMap.cend(); ++it)
     {
     std::cout << "     " << it->first << " == " << it->second << endl;
     }
 
-  for (std::map<TString,long>::const_iterator it=longMap.cbegin(); it!=longMap.cend(); ++it)
+  for (std::map<CAP::String,long>::const_iterator it=longMap.cbegin(); it!=longMap.cend(); ++it)
     {
     std::cout << "     " << it->first << " == " << it->second << endl;
     }
 
-  for (std::map<TString,double>::const_iterator it=doubleMap.cbegin(); it!=doubleMap.cend(); ++it)
+  for (std::map<CAP::String,double>::const_iterator it=doubleMap.cbegin(); it!=doubleMap.cend(); ++it)
     {
     std::cout << "     " << it->first << " == " << it->second << endl;
     }
   
-  for (std::map<TString,TString>::const_iterator it=stringMap.cbegin(); it!=stringMap.cend(); ++it)
+  for (std::map<CAP::String,CAP::String>::const_iterator it=stringMap.cbegin(); it!=stringMap.cend(); ++it)
     {
     std::cout << "     " << it->first << " == " << it->second << endl;
     }
 }
 
-void Configuration::readFromFile(const TString & inputFileName)
+void CAP::Configuration::readFromFile(const CAP::String & inputFileName)
 {
-  cout << "<I> Configuration::readFromFile() Reading parameter list from file:" <<  inputFileName << endl;
+  cout << "<I> CAP::Configuration::readFromFile() Reading parameter list from file:" <<  inputFileName << endl;
   ifstream inputFile(inputFileName.Data());
-  TString key;
-  TString type;
+  CAP::String key;
+  CAP::String type;
   bool    bValue;
   int     iValue;
   long    lValue;
   double  dValue;
-  TString sValue;
+  CAP::String sValue;
   bool debug = true;
   
   while (1)
@@ -591,7 +592,7 @@ void Configuration::readFromFile(const TString & inputFileName)
       addParameter(key,dValue);
       if (debug) cout << key << " : " <<  type <<   " : " <<  dValue << endl;
       }
-    else if (type.Contains("string") || type.Contains("String"))
+    else if (type.Contains("CAP::String") || type.Contains("CAP::String"))
       {
       inputFile >> sValue;
       addParameter(key,sValue);
@@ -606,206 +607,206 @@ void Configuration::readFromFile(const TString & inputFileName)
     }
   //cout << "Reading in ParticleType resonance decay table.. - 5- " << endl;
   inputFile.close();
-  cout << "Configuration::readFromFile(Configuration & inputFileName) Completed." << endl;
+  cout << "CAP::Configuration::readFromFile(Configuration & inputFileName) Completed." << endl;
 }
 
 
-void Configuration::writeToFile(const TString & outputFileName)
+void CAP::Configuration::writeToFile(const CAP::String & outputFileName)
 {
-  cout << "<I> Configuration::printToFile() Writing parameter list to file:" <<  outputFileName << endl;
+  cout << "<I> CAP::Configuration::printToFile() Writing parameter list to file:" <<  outputFileName << endl;
   ofstream outputFile(outputFileName.Data());
 
-  for (std::map<TString,bool>::const_iterator it=boolMap.cbegin(); it!=boolMap.cend(); ++it)
+  for (std::map<CAP::String,bool>::const_iterator it=boolMap.cbegin(); it!=boolMap.cend(); ++it)
     {
     outputFile <<  it->first << " bool " << it->second << endl;
     }
 
-  for (std::map<TString,int>::const_iterator it=intMap.cbegin(); it!=intMap.cend(); ++it)
+  for (std::map<CAP::String,int>::const_iterator it=intMap.cbegin(); it!=intMap.cend(); ++it)
     {
     outputFile <<  it->first << " int " << it->second << endl;
     }
 
-  for (std::map<TString,long>::const_iterator it=longMap.cbegin(); it!=longMap.cend(); ++it)
+  for (std::map<CAP::String,long>::const_iterator it=longMap.cbegin(); it!=longMap.cend(); ++it)
     {
     outputFile <<  it->first << " long " << it->second << endl;
     }
 
-  for (std::map<TString,double>::const_iterator it=doubleMap.cbegin(); it!=doubleMap.cend(); ++it)
+  for (std::map<CAP::String,double>::const_iterator it=doubleMap.cbegin(); it!=doubleMap.cend(); ++it)
     {
     outputFile <<  it->first << " double " << it->second << endl;
     }
 
-  for (std::map<TString,TString>::const_iterator it=stringMap.cbegin(); it!=stringMap.cend(); ++it)
+  for (std::map<CAP::String,CAP::String>::const_iterator it=stringMap.cbegin(); it!=stringMap.cend(); ++it)
     {
-    outputFile <<  it->first << " string " << it->second << endl;
+    outputFile <<  it->first << " CAP::String " << it->second << endl;
     }
 
   //cout << "Reading in ParticleType resonance decay table.. - 5- " << endl;
   outputFile.close();
-  cout << "<I> Configuration::printToFile() Completed." << endl;
+  cout << "<I> CAP::Configuration::printToFile() Completed." << endl;
 }
 
 
 //!
 //! Get the value of the parameter named 'name'
 //!
-bool Configuration::getValueBool(const TString & path, const TString & name)   const
+bool CAP::Configuration::getValueBool(const CAP::String & path, const CAP::String & name)   const
 {
   if (hasEndColon(path))
     return getValueBool(path+name);
   else
-    return getValueBool(path+TString(":")+name);
+    return getValueBool(path+CAP::String(":")+name);
 }
 
 //!
 //! Get the value of the parameter named 'name'
 //!
-int Configuration::getValueInt(const TString & path, const TString & name)    const
+int CAP::Configuration::getValueInt(const CAP::String & path, const CAP::String & name)    const
 {
   if (hasEndColon(path))
     return getValueInt(path+name);
   else
-    return getValueInt(path+TString(":")+name);
+    return getValueInt(path+CAP::String(":")+name);
 }
 
 //!
 //! Get the value of the parameter named 'name'
 //!
-long Configuration::getValueLong(const TString & path, const TString & name)    const
+long CAP::Configuration::getValueLong(const CAP::String & path, const CAP::String & name)    const
 {
   if (hasEndColon(path))
     return getValueLong(path+name);
   else
-    return getValueLong(path+TString(":")+name);
+    return getValueLong(path+CAP::String(":")+name);
 }
 
 //!
 //! Get the value of the parameter named 'name'
 //!
-double Configuration::getValueDouble(const TString & path, const TString & name) const
+double CAP::Configuration::getValueDouble(const CAP::String & path, const CAP::String & name) const
 {
   if (hasEndColon(path))
     return getValueDouble(path+name);
   else
-    return getValueDouble(path+TString(":")+name);
+    return getValueDouble(path+CAP::String(":")+name);
 }
 
 //!
 //! Get the value of the parameter named 'name'
 //!
-TString Configuration::getValueString(const TString & path, const TString & name) const
+CAP::String CAP::Configuration::getValueString(const CAP::String & path, const CAP::String & name) const
 {
   if (hasEndColon(path))
     return getValueString(path+name);
   else
-    return getValueString(path+TString(":")+name);
+    return getValueString(path+CAP::String(":")+name);
   }
 
-void Configuration::addParameter(const TString & path, const TString & name, bool value)
+void CAP::Configuration::addParameter(const CAP::String & path, const CAP::String & name, bool value)
 {
   if (hasEndColon(path))
     addParameter(path+name,value);
   else
-    addParameter(path+TString(":")+name,value);
+    addParameter(path+CAP::String(":")+name,value);
 }
 
 //!
 //! Add an int parameter to the configuration with the given name and value
 //!
-void Configuration::addParameter(const TString & path, const TString & name, int value)
+void CAP::Configuration::addParameter(const CAP::String & path, const CAP::String & name, int value)
 {
   if (hasEndColon(path))
     addParameter(path+name,value);
   else
-    addParameter(path+TString(":")+name,value);
+    addParameter(path+CAP::String(":")+name,value);
 }
 
 //!
 //! Add an int parameter to the configuration with the given name and value
 //!
-void Configuration::addParameter(const TString & path, const TString & name, long value)
+void CAP::Configuration::addParameter(const CAP::String & path, const CAP::String & name, long value)
 {
   if (hasEndColon(path))
     addParameter(path+name,value);
   else
-    addParameter(path+TString(":")+name,value);
+    addParameter(path+CAP::String(":")+name,value);
 }
 
 //!
 //! Add a double parameter to the configuration with the given name and value
 //!
-void Configuration::addParameter(const TString & path, const TString & name, double value)
+void CAP::Configuration::addParameter(const CAP::String & path, const CAP::String & name, double value)
 {
   if (hasEndColon(path))
     addParameter(path+name,value);
   else
-    addParameter(path+TString(":")+name,value);
+    addParameter(path+CAP::String(":")+name,value);
 }
 
 //!
-//! Add a string parameter to the configuration with the given name and value
+//! Add a CAP::String parameter to the configuration with the given name and value
 //!
-void Configuration::addParameter(const TString & path, const TString & name, const TString & value)
+void CAP::Configuration::addParameter(const CAP::String & path, const CAP::String & name, const CAP::String & value)
 {
   if (hasEndColon(path))
     addParameter(path+name,value);
   else
-    addParameter(path+TString(":")+name,value);
+    addParameter(path+CAP::String(":")+name,value);
 }
 
-void Configuration::setParameter(const TString & path, const TString & name, bool value)
+void CAP::Configuration::setParameter(const CAP::String & path, const CAP::String & name, bool value)
 {
   if (hasEndColon(path))
     setParameter(path+name,value);
   else
-    setParameter(path+TString(":")+name,value);
+    setParameter(path+CAP::String(":")+name,value);
 }
 
 //!
 //! Set the parameter named 'name'  to the given value
 //!
-void Configuration::setParameter(const TString & path, const TString & name, int value)
+void CAP::Configuration::setParameter(const CAP::String & path, const CAP::String & name, int value)
 {
   if (hasEndColon(path))
     setParameter(path+name,value);
   else
-    setParameter(path+TString(":")+name,value);
+    setParameter(path+CAP::String(":")+name,value);
 }
 
 //!
 //! Set the parameter named 'name'  to the given value
 //!
-void Configuration::setParameter(const TString & path, const TString & name, long value)
+void CAP::Configuration::setParameter(const CAP::String & path, const CAP::String & name, long value)
 {
   if (hasEndColon(path))
     setParameter(path+name,value);
   else
-    setParameter(path+TString(":")+name,value);
+    setParameter(path+CAP::String(":")+name,value);
 }
 
 //!
 //! Set the parameter named 'name'  to the given value
 //!
-void Configuration::setParameter(const TString & path, const TString & name, double value)
+void CAP::Configuration::setParameter(const CAP::String & path, const CAP::String & name, double value)
 {
   if (hasEndColon(path))
     setParameter(path+name,value);
   else
-    setParameter(path+TString(":")+name,value);
+    setParameter(path+CAP::String(":")+name,value);
 }
 
 //!
 //! Set the parameter named 'name'  to the given value
 //!
-void Configuration::setParameter(const TString & path, const TString & name, const TString & value)
+void CAP::Configuration::setParameter(const CAP::String & path, const CAP::String & name, const CAP::String & value)
 {
   if (hasEndColon(path))
     setParameter(path+name,value);
   else
-    setParameter(path+TString(":")+name,value);
+    setParameter(path+CAP::String(":")+name,value);
 }
 
-bool Configuration::hasEndColon(const TString & path) const
+bool CAP::Configuration::hasEndColon(const CAP::String & path) const
 {
   int last = path.Last(':');
   int size = path.Length() - 1;

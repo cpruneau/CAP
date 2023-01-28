@@ -26,13 +26,14 @@
 #include "ParticlePerformanceAnalyzer.hpp"
 #include "GlobalAnalyzer.hpp"
 #include "TransverseSpherocityAnalyzer.hpp"
-#include "ParticleAnalyzer.hpp"
+#include "ParticleSingleAnalyzer.hpp"
 #include "ParticlePairAnalyzer.hpp"
 #include "NuDynAnalyzer.hpp"
+using CAP::RunDerivedCalculation;
 
 ClassImp(RunDerivedCalculation);
 
-RunDerivedCalculation::RunDerivedCalculation(const TString & _name,
+RunDerivedCalculation::RunDerivedCalculation(const String & _name,
                                              Configuration & _configuration)
 :
 Task(_name, _configuration)
@@ -148,20 +149,20 @@ void RunDerivedCalculation::configure()
   DerivedHistoIterator      * derived   = nullptr;
   BalanceFunctionCalculator * balFct    = nullptr;
   MessageLogger::Severity selectedLevel = MessageLogger::Debug;
-  TString reportLevel                   = getValueBool("Severity");
+  String reportLevel                   = getValueBool("Severity");
   if (reportLevel.EqualTo("Debug")) selectedLevel = MessageLogger::Debug;
   if (reportLevel.EqualTo("Info"))  selectedLevel = MessageLogger::Info;
-  TString GlobalLabel      = getValueString("GlobalLabel");
-  TString SpherocityLabel  = getValueString("SpherocityLabel");
-  TString PartLabel        = getValueString("PartLabel");
-  TString PairLabel        = getValueString("PairLabel");
-  TString NuDynLabel       = getValueString("NuDynLabel");
-  TString SimAnaLabel      = getValueString("SimAnaLabel");
-  TString DerivedLabel     = getValueString("DerivedLabel");
-  TString SumLabel         = getValueString("SumLabel");
-  TString BalFctLabel      = getValueString("BalFctLabel");
-  TString GenLabel         = getValueString("GenLabel");
-  TString RecoLabel        = getValueString("RecoLabel");
+  String GlobalLabel      = getValueString("GlobalLabel");
+  String SpherocityLabel  = getValueString("SpherocityLabel");
+  String PartLabel        = getValueString("PartLabel");
+  String PairLabel        = getValueString("PairLabel");
+  String NuDynLabel       = getValueString("NuDynLabel");
+  String SimAnaLabel      = getValueString("SimAnaLabel");
+  String DerivedLabel     = getValueString("DerivedLabel");
+  String SumLabel         = getValueString("SumLabel");
+  String BalFctLabel      = getValueString("BalFctLabel");
+  String GenLabel         = getValueString("GenLabel");
+  String RecoLabel        = getValueString("RecoLabel");
   bool    RunDerived              = getValueBool("Derived");
   bool    RunBalFct               = getValueBool("BalFct");
   bool    RunGlobalGen            = getValueBool("GlobalGen");
@@ -176,9 +177,9 @@ void RunDerivedCalculation::configure()
   bool    RunNuDynReco            = getValueBool("NuDynReco");
   bool    RunFillEta              = getValueBool("FillEta");
   bool    RunFillY                = getValueBool("FillY");
-  TString inputPathName           = getValueString("HistogramInputPath");
-  TString outputPathName          = getValueString("HistogramOutputPath");
-  TString modelPartFilterOption   = getValueString("ModelPartFilterOption");
+  String inputPathName           = getValueString("HistogramInputPath");
+  String outputPathName          = getValueString("HistogramOutputPath");
+  String modelPartFilterOption   = getValueString("ModelPartFilterOption");
   double modelPartFilterPt        = getValueBool(  "ModelPartFilterPt");
   double modelPartMinPt           = getValueDouble("ModelPartMinPt");
   double modelPartMaxPt           = getValueDouble("ModelPartMaxPt");
@@ -188,7 +189,7 @@ void RunDerivedCalculation::configure()
   bool   modelPartFilterY         = getValueBool(  "ModelPartFilterY");
   double modelPartMinY            = getValueDouble("ModelPartMinY");
   double modelPartMaxY            = getValueDouble("ModelPartMaxY");
-  TString anaPartFilterOption     = getValueString("AnaPartFilterOption");
+  String anaPartFilterOption     = getValueString("AnaPartFilterOption");
   double anaPartFilterPt          = getValueBool(  "AnaPartFilterPt");
   double anaPartMinPt             = getValueDouble("AnaPartMinPt");
   double anaPartMaxPt             = getValueDouble("AnaPartMaxPt");
@@ -261,11 +262,11 @@ void RunDerivedCalculation::configure()
   // Setup all event filters
   // =========================================
   vector<double> modelBounds;
-  TString modelEventFilterOption = getValueString("ModelEventFilterOption");
+  String modelEventFilterOption = getValueString("ModelEventFilterOption");
   int n = getValueInt("ModelEventFilterNValues");
   for (int k=0; k<n; k++)
     {
-    TString key = "ModelEventFilterValue";
+    String key = "ModelEventFilterValue";
     key += k;
     modelBounds.push_back( getValueBool(key));
     }
@@ -276,11 +277,11 @@ void RunDerivedCalculation::configure()
   else if (modelEventFilterOption.EqualTo("TpcMult"))          modelEventFilters = EventFilter::createTpcMultiplicityFilters(modelBounds);
 
   vector<double> anaBounds;
-  TString anaEventFilterOption = getValueString("AnaEventFilterOption");
+  String anaEventFilterOption = getValueString("AnaEventFilterOption");
   n = getValueInt("AnaEventFilterNValues");
   for (int k=0; k<n; k++)
     {
-    TString key = "AnaEventFilterValue";
+    String key = "AnaEventFilterValue";
     key += k;
     anaBounds.push_back( getValueBool(key));
     }
@@ -366,13 +367,13 @@ void RunDerivedCalculation::configure()
     addSubTask(derived);
     if (RunGlobalGen)          derived->addSubTask(new GlobalAnalyzer(GlobalLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
     if (RunSpherocityGen)      derived->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunPartGen)            derived->addSubTask(new ParticleAnalyzer(PartLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunPartGen)            derived->addSubTask(new ParticleSingleAnalyzer(PartLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
     if (RunPairGen)            derived->addSubTask(new ParticlePairAnalyzer(PairLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
     if (RunNuDynGen)           derived->addSubTask(new NuDynAnalyzer(NuDynLabel+GenLabel,configuration,analysisEventFilters,analysisParticleFilters));
 
     if (RunGlobalReco)         derived->addSubTask(new GlobalAnalyzer(GlobalLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
     if (RunSpherocityReco)     derived->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunPartReco)           derived->addSubTask(new ParticleAnalyzer(PartLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (RunPartReco)           derived->addSubTask(new ParticleSingleAnalyzer(PartLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
     if (RunPairReco)           derived->addSubTask(new ParticlePairAnalyzer(PairLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
     if (RunNuDynReco)          derived->addSubTask(new NuDynAnalyzer(NuDynLabel+RecoLabel,configuration,analysisEventFilters,analysisParticleFilters));
     }

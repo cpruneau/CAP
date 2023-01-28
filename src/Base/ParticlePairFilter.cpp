@@ -10,6 +10,9 @@
  *
  * *********************************************************************/
 #include "ParticlePairFilter.hpp"
+#include "Aliases.hpp"
+using CAP::ParticlePairFilter;
+
 ClassImp(ParticlePairFilter);
 
 //!

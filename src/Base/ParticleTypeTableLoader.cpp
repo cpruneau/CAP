@@ -10,10 +10,12 @@
  *
  * *********************************************************************/
 #include "ParticleTypeTableLoader.hpp"
+using CAP::ParticleTypeTableLoader;
+using namespace std;
 
 ClassImp(ParticleTypeTableLoader);
 
-ParticleTypeTableLoader:: ParticleTypeTableLoader(const TString & _name,
+ParticleTypeTableLoader:: ParticleTypeTableLoader(const String & _name,
                                                   Configuration & _configuration)
 :
 Task(_name,_configuration)
@@ -39,12 +41,12 @@ void ParticleTypeTableLoader::execute()
     ;
   incrementTaskExecuted();
   bool    loadTable          = getValueBool(  "LoadTable");
-  TString inputPathName      = getValueString("PathName");
-  TString inputTableName     = getValueString("TableName");
+  String inputPathName      = getValueString("PathName");
+  String inputTableName     = getValueString("TableName");
   bool    saveTable          = getValueBool(  "SaveTable");
-  TString outputPathName     = getValueString("OutputPathName");
-  TString outputTableName    = getValueString("OutputTableName");
-  TString pdgDataFileName;
+  String outputPathName     = getValueString("OutputPathName");
+  String outputTableName    = getValueString("OutputTableName");
+  String pdgDataFileName;
   if (loadTable)
     {
     pdgDataFileName =  inputPathName;

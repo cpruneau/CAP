@@ -10,9 +10,12 @@
  *
  * *********************************************************************/
 #include "PythiaEventReader.hpp"
+using CAP::PythiaEventReader;
+
 ClassImp(PythiaEventReader);
 
-PythiaEventReader::PythiaEventReader(const TString & _name,
+
+PythiaEventReader::PythiaEventReader(const String & _name,
                                      Configuration &   _configuration,
                                      vector<EventFilter*>&   _eventFilters,
                                      vector<ParticleFilter*>&_particleFilters)

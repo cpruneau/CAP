@@ -13,6 +13,10 @@
 #define CAP__CollisionGeometryMoments
 #include "TString.h"
 
+namespace CAP
+{
+
+
 // ***************************************************************************
 // CollisionGeometryMoments
 //
@@ -55,5 +59,8 @@ public:
 
   ClassDef(CollisionGeometryMoments,0)
 };
+
+}
+
 
 #endif /* CollisionGeometryMoments_hpp */

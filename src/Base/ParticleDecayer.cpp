@@ -15,30 +15,30 @@
 #include <cstdlib>
 #include <cmath>
 #include <TMath.h>
-#include "Particle.hpp"
 #include "ParticleDecayer.hpp"
+
+using CAP::ParticleDecayer;
+using CAP::LorentzVector;
 
 ClassImp(ParticleDecayer);
 
 double ParticleDecayer::twoPi = 2.0*3.1415927;
 
-
 ParticleDecayer::ParticleDecayer()
 :
 random(gRandom)
 {
-
 }
 
 void  ParticleDecayer::decay2(ParticleType   & parentType,
-                              TLorentzVector & parentMomentum,
-                              TLorentzVector & parentPosition,
+                              LorentzVector & parentMomentum,
+                              LorentzVector & parentPosition,
                               ParticleType   & childType1,
-                              TLorentzVector & p1,
-                              TLorentzVector & r1,
+                              LorentzVector & p1,
+                              LorentzVector & r1,
                               ParticleType   & childType2,
-                              TLorentzVector & p2,
-                              TLorentzVector & r2)
+                              LorentzVector & p2,
+                              LorentzVector & r2)
 {
   double e, vx, vy, vz, mp, mWidth;
   double m1, m2, minMass,tau, taup, gamma, lifeTime;
@@ -62,7 +62,7 @@ void  ParticleDecayer::decay2(ParticleType   & parentType,
   lifeTime = -3.0E23 * taup * log(random->Rndm()); // fm
   r1 = parentPosition;
   r2 = parentPosition;
-  TLorentzVector shift;
+  LorentzVector shift;
   shift.SetXYZT(vx*lifeTime,vy*lifeTime,vz*lifeTime,lifeTime);
   r1 += shift;
   r2 += shift;
@@ -110,17 +110,17 @@ void  ParticleDecayer::decay2(ParticleType   & parentType,
 }
 
 void  ParticleDecayer::decay3(ParticleType & parentType,
-                              TLorentzVector & parentMomentum,
-                              TLorentzVector & parentPosition,
+                              LorentzVector & parentMomentum,
+                              LorentzVector & parentPosition,
                               ParticleType   & childType1,
-                              TLorentzVector & p1,
-                              TLorentzVector & r1,
+                              LorentzVector & p1,
+                              LorentzVector & r1,
                               ParticleType   & childType2,
-                              TLorentzVector & p2,
-                              TLorentzVector & r2,
+                              LorentzVector & p2,
+                              LorentzVector & r2,
                               ParticleType   & childType3,
-                              TLorentzVector & p3,
-                              TLorentzVector & r3)
+                              LorentzVector & p3,
+                              LorentzVector & r3)
 {
   double e, vx, vy, vz, mp, mWidth;
   double m1, m2, m3, minMass,tau, taup, gamma, lifeTime;
@@ -150,7 +150,7 @@ void  ParticleDecayer::decay3(ParticleType & parentType,
   r1 = parentPosition;
   r2 = parentPosition;
   r3 = parentPosition;
-  TLorentzVector shift;
+  LorentzVector shift;
   shift.SetXYZT(vx*lifeTime,vy*lifeTime,vz*lifeTime,lifeTime);
   r1 += shift;
   r2 += shift;
@@ -217,20 +217,20 @@ void  ParticleDecayer::decay3(ParticleType & parentType,
 
 
 void ParticleDecayer::decay4(ParticleType & parentType,
-                             TLorentzVector & parentMomentum,
-                             TLorentzVector & parentPosition,
+                             LorentzVector & parentMomentum,
+                             LorentzVector & parentPosition,
                              ParticleType   & childType1,
-                             TLorentzVector & p1,
-                             TLorentzVector & r1,
+                             LorentzVector & p1,
+                             LorentzVector & r1,
                              ParticleType   & childType2,
-                             TLorentzVector & p2,
-                             TLorentzVector & r2,
+                             LorentzVector & p2,
+                             LorentzVector & r2,
                              ParticleType   & childType3,
-                             TLorentzVector & p3,
-                             TLorentzVector & r3,
+                             LorentzVector & p3,
+                             LorentzVector & r3,
                              ParticleType   & childType4,
-                             TLorentzVector & p4,
-                             TLorentzVector & r4
+                             LorentzVector & p4,
+                             LorentzVector & r4
                              )
 {
   double e, vx, vy, vz, mp, mWidth;
@@ -261,7 +261,7 @@ void ParticleDecayer::decay4(ParticleType & parentType,
   r1 = parentPosition;
   r2 = parentPosition;
   r3 = parentPosition;
-  TLorentzVector shift;
+  LorentzVector shift;
   shift.SetXYZT(vx*lifeTime,vy*lifeTime,vz*lifeTime,lifeTime);
   r1 += shift;
   r2 += shift;
@@ -296,14 +296,14 @@ void  ParticleDecayer::decay2(Particle & parent,
                               Particle & child2)
 {
   ParticleType   & parentType     = parent.getType();
-  TLorentzVector & parentMomentum = parent.getMomentum();
-  TLorentzVector & parentPosition = parent.getPosition();
+  LorentzVector & parentMomentum = parent.getMomentum();
+  LorentzVector & parentPosition = parent.getPosition();
   ParticleType   & childType1     = child1.getType();
-  TLorentzVector & p1             = child1.getMomentum();
-  TLorentzVector & r1             = child1.getPosition();
+  LorentzVector & p1             = child1.getMomentum();
+  LorentzVector & r1             = child1.getPosition();
   ParticleType   & childType2     = child2.getType();
-  TLorentzVector & p2             = child2.getMomentum();
-  TLorentzVector & r2             = child2.getPosition();
+  LorentzVector & p2             = child2.getMomentum();
+  LorentzVector & r2             = child2.getPosition();
   decay2(parentType,parentMomentum,parentPosition,
          childType1,p1,r1,
          childType2,p2,r2);
@@ -315,17 +315,17 @@ void  ParticleDecayer::decay3(Particle & parent,
                               Particle & child3)
 {
   ParticleType   & parentType     = parent.getType();
-  TLorentzVector & parentMomentum = parent.getMomentum();
-  TLorentzVector & parentPosition = parent.getPosition();
+  LorentzVector & parentMomentum = parent.getMomentum();
+  LorentzVector & parentPosition = parent.getPosition();
   ParticleType   & childType1     = child1.getType();
-  TLorentzVector & p1             = child1.getMomentum();
-  TLorentzVector & r1             = child1.getPosition();
+  LorentzVector & p1             = child1.getMomentum();
+  LorentzVector & r1             = child1.getPosition();
   ParticleType   & childType2     = child2.getType();
-  TLorentzVector & p2             = child2.getMomentum();
-  TLorentzVector & r2             = child2.getPosition();
+  LorentzVector & p2             = child2.getMomentum();
+  LorentzVector & r2             = child2.getPosition();
   ParticleType   & childType3     = child3.getType();
-  TLorentzVector & p3             = child3.getMomentum();
-  TLorentzVector & r3             = child3.getPosition();
+  LorentzVector & p3             = child3.getMomentum();
+  LorentzVector & r3             = child3.getPosition();
   decay3(parentType,parentMomentum,parentPosition,
          childType1,p1,r1,
          childType2,p2,r2,
@@ -339,20 +339,20 @@ void  ParticleDecayer::decay4(Particle & parent,
                               Particle & child4)
 {
   ParticleType   & parentType     = parent.getType();
-  TLorentzVector & parentMomentum = parent.getMomentum();
-  TLorentzVector & parentPosition = parent.getPosition();
+  LorentzVector & parentMomentum = parent.getMomentum();
+  LorentzVector & parentPosition = parent.getPosition();
   ParticleType   & childType1     = child1.getType();
-  TLorentzVector & p1             = child1.getMomentum();
-  TLorentzVector & r1             = child1.getPosition();
+  LorentzVector & p1             = child1.getMomentum();
+  LorentzVector & r1             = child1.getPosition();
   ParticleType   & childType2     = child2.getType();
-  TLorentzVector & p2             = child2.getMomentum();
-  TLorentzVector & r2             = child2.getPosition();
+  LorentzVector & p2             = child2.getMomentum();
+  LorentzVector & r2             = child2.getPosition();
   ParticleType   & childType3     = child3.getType();
-  TLorentzVector & p3             = child3.getMomentum();
-  TLorentzVector & r3             = child3.getPosition();
+  LorentzVector & p3             = child3.getMomentum();
+  LorentzVector & r3             = child3.getPosition();
   ParticleType   & childType4     = child4.getType();
-  TLorentzVector & p4             = child4.getMomentum();
-  TLorentzVector & r4             = child4.getPosition();
+  LorentzVector & p4             = child4.getMomentum();
+  LorentzVector & r4             = child4.getPosition();
   decay4(parentType,parentMomentum,parentPosition,
          childType1,p1,r1,
          childType2,p2,r2,

@@ -23,12 +23,15 @@
 #include "HadronGasHistograms.hpp"
 #include "Math/SpecFunc.h"
 #include "SelectionGenerator.hpp"
+using CAP::HadronGas;
+using CAP::ParticleType;
+using CAP::ParticleTypeCollection;
 
 ClassImp(HadronGas);
 
 using namespace std;
 
-HadronGas::HadronGas(const TString & _name,
+HadronGas::HadronGas(const String & _name,
                      Configuration &    _configuration,
                      ParticleTypeCollection * _particles,
                      ParticleTypeCollection * _stableParticles)

@@ -15,6 +15,10 @@
 #include "NucleusGenerator.hpp"
 #include "CollisionGeometryMoments.hpp"
 
+namespace CAP
+{
+
+
 // ***************************************************************************
 // CollisionGeometry
 //
@@ -85,5 +89,8 @@ public:
   ClassDef(CollisionGeometry,0)
   
 };
+
+}
+
 
 #endif /* CollisionGeometry_hpp */

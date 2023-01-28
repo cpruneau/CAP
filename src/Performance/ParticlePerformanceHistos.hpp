@@ -11,18 +11,21 @@
  * *********************************************************************/
 #ifndef CAP__ParticlePerformanceHistos
 #define CAP__ParticlePerformanceHistos
-#include "Histograms.hpp"
+#include "HistogramGroup.hpp"
 #include "Particle.hpp"
 #include "ParticleDigit.hpp"
 #include "Configuration.hpp"
-#include "TLorentzVector.h"
 
-class ParticlePerformanceHistos : public Histograms
+namespace CAP
+{
+
+
+class ParticlePerformanceHistos : public HistogramGroup
 {
 public:
   
   ParticlePerformanceHistos(Task * _parent,
-                            const TString & _name,
+                            const String & _name,
                             Configuration & _configuration);
   virtual ~ParticlePerformanceHistos() {}
   virtual void createHistograms();
@@ -33,7 +36,7 @@ public:
 protected:
 
   ////////////////////////////////////////////////////////////////////////////
-  // Data Members - Histograms
+  // Data Members - HistogramGroup
   ////////////////////////////////////////////////////////////////////////////
   bool fillEta;
   bool fillY;
@@ -86,6 +89,8 @@ protected:
   ClassDef(ParticlePerformanceHistos,0)
 
 };
+
+} // namespace CAP
 
 #endif /* CAP__ParticlePerformanceHistos  */
 

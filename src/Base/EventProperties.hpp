@@ -16,6 +16,13 @@
 #include "Particle.hpp"
 #include "ParticleType.hpp"
 
+using std::vector;
+
+namespace CAP
+{
+
+
+
 class EventProperties
 {
 public:
@@ -78,7 +85,6 @@ public:
 
 };
 
-
-
+} // namespace CAP
 
 #endif /* EventProperties_hpp */

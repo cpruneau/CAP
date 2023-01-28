@@ -10,10 +10,11 @@
  *
  * *********************************************************************/
 #include "EventPlaneRandomizerTask.hpp"
+using CAP::EventPlaneRandomizerTask;
 
 ClassImp(EventPlaneRandomizerTask);
 
-EventPlaneRandomizerTask::EventPlaneRandomizerTask(const TString & _name,
+EventPlaneRandomizerTask::EventPlaneRandomizerTask(const String & _name,
                                                    Configuration & _configuration,
                                                    vector<EventFilter*> & _eventFilters,
                                                    vector<ParticleFilter*>& _particleFilters)
