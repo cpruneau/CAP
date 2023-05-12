@@ -44,8 +44,8 @@ public:
   }
 
   void createDirectory(const String & dirName);
-  TCanvas * createCanvas(const String & canvasName, const CanvasConfiguration & canvasConfig, int inc=200);
-  TCanvas * createCanvasXX(int nx, int ny, const String & canvasName, const CanvasConfiguration & canvasConfig, int inc=30);
+  TCanvas * createCanvas(const String & canvasName, const Configuration & canvasConfig, int inc=200);
+  TCanvas * createCanvasXX(int nx, int ny, const String & canvasName, const Configuration & canvasConfig, int inc=30);
 
   void printCanvas(TCanvas * canvas, const String & directoryName="./", bool printGif=0, bool printPdf=1, bool printSvg=0, bool printPng=0, bool printC=0);
   void printAllCanvas(const String & outputPath, bool printGif=0, bool printPdf=1, bool printSvg=0, bool printPng=0, bool printC=0);

@@ -47,7 +47,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   SubSampleStatCalculator(const String & _name,
-                          Configuration & _configuration);
+                          const Configuration & _configuration);
   
   //!
   //! DTOR
@@ -59,6 +59,8 @@ public:
   //! The configuration stipulates the input and output paths, the file template names and the output file append string.
   //!
   virtual void setDefaultConfiguration();
+
+  virtual void configure();
 
   //!
   //! Execute the calculation for one set of files

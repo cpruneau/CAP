@@ -14,8 +14,8 @@ ROOT_GENERATE_DICTIONARY(G__ParticlePair ParticlePairHistos.hpp ParticlePairDeri
 add_compile_options(-Wall -Wextra -pedantic)
 add_library(ParticlePair SHARED ParticlePairDerivedHistos.cpp ParticlePairHistos.cpp ParticlePairAnalyzer.cpp   BalanceFunctionCalculator.cpp G__ParticlePair.cxx)
 
-target_link_libraries(ParticlePair Base ParticleSingle ${ROOT_LIBRARIES} ${EXTRA_LIBS} )
-target_include_directories(ParticlePair  PUBLIC Base ParticleSingle ParticlePair ${EXTRA_INCLUDES} )
+target_link_libraries(ParticlePair Base Particles ParticleSingle ${ROOT_LIBRARIES} ${EXTRA_LIBS} )
+target_include_directories(ParticlePair  PUBLIC Base Particles ParticleSingle ParticlePair ${EXTRA_INCLUDES} )
 
 # optimization for big histogram access within the pair inner loop
 # WARNING: the sumw2 structure is not used -> estimate uncertainties using sub-samples

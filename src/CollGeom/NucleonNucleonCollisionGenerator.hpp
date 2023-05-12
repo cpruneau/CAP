@@ -11,7 +11,10 @@
  * *********************************************************************/
 #ifndef CAP__NucleonNucleonCollisionGenerator
 #define CAP__NucleonNucleonCollisionGenerator
-#include "Task.hpp"
+#include "EventTask.hpp"
+#include "Event.hpp"
+#include "Particle.hpp"
+#include "ParticleType.hpp"
 #include "ParticleFilter.hpp"
 #include "CollisionGeometry.hpp"
 
@@ -22,7 +25,7 @@ namespace CAP
 //!
 //! Generic and abstract task used for the generation of NN collisions
 //!
-class NucleonNucleonCollisionGenerator : public Task
+class NucleonNucleonCollisionGenerator : public EventTask
 {
 public:
   
@@ -36,7 +39,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   NucleonNucleonCollisionGenerator(const String & _name,
-                                   Configuration & _configuration,
+                                   const Configuration & _configuration,
                                    vector<EventFilter*>& _eventFilters,
                                    vector<ParticleFilter*>&_particleFilters);
   //!

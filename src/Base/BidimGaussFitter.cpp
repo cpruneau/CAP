@@ -34,10 +34,10 @@ ClassImp(BidimGaussFitter);
 // 9  : a4       : fourth harmonic coefficient
 // 10  : a5       : fift harmonic coefficient
 // 11 : a6       : sixth harmonic coefficient
-// 12 : a2LinEta : secong harmonic coefficient * fabs(eta)
-// 13 : a3LinEta : third harmonic coefficient * fabs(eta)
-// 14 : a2SqEta  : second harmonic coefficient * square(fabs(eta))
-// 15 : a3SqEta  : third harmonic coefficient * square(fabs(eta))
+// 12 : a2LinEta : secong harmonic coefficient * fabsolute(eta)
+// 13 : a3LinEta : third harmonic coefficient * fabsolute(eta)
+// 14 : a2SqEta  : second harmonic coefficient * square(fabsolute(eta))
+// 15 : a3SqEta  : third harmonic coefficient * square(fabsolute(eta))
 // ============================================================================================================
 double FlowPlusGen2DGaussianFunction(double *x, double *par)
 {
@@ -45,20 +45,20 @@ double FlowPlusGen2DGaussianFunction(double *x, double *par)
   double etaSq = eta*eta;
   double phi   = x[1];
   // harmonic components
-  double cos1Phi = TMath::Cos(phi);
-  double cos2Phi = TMath::Cos(2.0*phi);
-  double cos3Phi = TMath::Cos(3.0*phi);
-  double cos4Phi = TMath::Cos(4.0*phi);
-  double cos5Phi = TMath::Cos(5.0*phi);
-  double cos6Phi = TMath::Cos(6.0*phi);
+  double cos1Phi = cos(phi);
+  double cos2Phi = cos(2.0*phi);
+  double cos3Phi = cos(3.0*phi);
+  double cos4Phi = cos(4.0*phi);
+  double cos5Phi = cos(5.0*phi);
+  double cos6Phi = cos(6.0*phi);
   // generalized gaussian peak
   double norm1  = par[3]/2.0/par[1]/TMath::Gamma(1.0/par[3]);
   double norm2  = par[4]/2.0/par[2]/TMath::Gamma(1.0/par[4]);
-  double arg1   = TMath::Abs(eta/par[1]);
-  double arg2a  = TMath::Abs(phi/par[2]);
-  double arg2b  = TMath::Abs((phi-TMath::TwoPi())/par[2]);
-  double peakX  = norm1 * TMath::Exp(-(TMath::Power(arg1,par[3]) ));
-  double peakY  = norm2 * ( TMath::Exp(-(TMath::Power(arg2a,par[4]))) + TMath::Exp(-(TMath::Power(arg2b,par[4]))));
+  double arg1   = absolute(eta/par[1]);
+  double arg2a  = absolute(phi/par[2]);
+  double arg2b  = absolute((phi-twoPi())/par[2]);
+  double peakX  = norm1 * exp(-(power(arg1,par[3]) ));
+  double peakY  = norm2 * ( exp(-(power(arg2a,par[4]))) + exp(-(power(arg2b,par[4]))));
   double result = par[0]*peakX*peakY;
   result += par[5];
   result += par[6]*cos1Phi;
@@ -85,22 +85,22 @@ double FlowPlusGen2DGaussianFunction(double *x, double *par)
 // 4  : a4        : fourth harmonic coefficient
 // 5  : a5        : fift harmonic coefficient
 // 6  : a6        : sixth harmonic coefficient
-// 7  : a2LinEta  : secong harmonic coefficient * fabs(eta)
-// 8  : a3LinEta  : third harmonic coefficient * fabs(eta)
-// 9  : a2SqEta   : second harmonic coefficient * square(fabs(eta))
-// 10 : a3SqEta   : third harmonic coefficient * square(fabs(eta))
+// 7  : a2LinEta  : secong harmonic coefficient * fabsolute(eta)
+// 8  : a3LinEta  : third harmonic coefficient * fabsolute(eta)
+// 9  : a2SqEta   : second harmonic coefficient * square(fabsolute(eta))
+// 10 : a3SqEta   : third harmonic coefficient * square(fabsolute(eta))
 // ============================================================================================================
 double Flow2DFunction(double *x, double *par)
 {
-  double eta   = TMath::Abs(x[0]);
+  double eta   = absolute(x[0]);
   double etaSq = eta*eta;
   double phi   = x[1];
-  double cos1Phi = TMath::Cos(phi);
-  double cos2Phi = TMath::Cos(2.0*phi);
-  double cos3Phi = TMath::Cos(3.0*phi);
-  double cos4Phi = TMath::Cos(4.0*phi);
-  double cos5Phi = TMath::Cos(5.0*phi);
-  double cos6Phi = TMath::Cos(6.0*phi);
+  double cos1Phi = cos(phi);
+  double cos2Phi = cos(2.0*phi);
+  double cos3Phi = cos(3.0*phi);
+  double cos4Phi = cos(4.0*phi);
+  double cos5Phi = cos(5.0*phi);
+  double cos6Phi = cos(6.0*phi);
   double result;
   /* the flow part */
   result =  par[0];
@@ -133,11 +133,11 @@ double Gen2DGaussianFunction(double *x, double *par)
   double phi = x[1];
   double norm1  = par[3]/2.0/par[1]/TMath::Gamma(1.0/par[3]);
   double norm2  = par[4]/2.0/par[2]/TMath::Gamma(1.0/par[4]);
-  double arg1   = TMath::Abs(eta/par[1]);
-  double arg2a  = TMath::Abs(phi/par[2]);
-  double arg2b  = TMath::Abs((phi-TMath::TwoPi())/par[2]);
-  double peakX   = norm1 * TMath::Exp(-(TMath::Power(arg1,par[3]) ));
-  double peakY   = norm2 * ( TMath::Exp(-(TMath::Power(arg2a,par[4]))) + TMath::Exp(-(TMath::Power(arg2b,par[4]))));
+  double arg1   = absolute(eta/par[1]);
+  double arg2a  = absolute(phi/par[2]);
+  double arg2b  = absolute((phi-twoPi())/par[2]);
+  double peakX   = norm1 * exp(-(power(arg1,par[3]) ));
+  double peakY   = norm2 * ( exp(-(power(arg2a,par[4]))) + exp(-(power(arg2b,par[4]))));
   double result = par[0]*peakX*peakY;
   result += par[5];  // allow for a residual offset
   return result;
@@ -151,7 +151,7 @@ double Global2DFitFunction(double *x, double *par)
 
 
 BidimGaussFitter::BidimGaussFitter(const String & _name,
-                                   Configuration &     _configuration,
+                                   const Configuration &     _configuration,
                                    Severity                  _requiredLevel)
 :
 Plotter(_name,_configuration,_requiredLevel),
@@ -336,8 +336,8 @@ void BidimGaussFitter::projectHistoAndFit(TH2 *dataHist,
                                           double xHigh,
                                           double yLow,
                                           double yHigh,
-                                          const BidimGaussFitConfiguration & fitConfig,
-                                          Configuration & label)
+                                          const BidimGaussFitconst Configuration & fitConfig,
+                                          const Configuration & label)
 {
   String baseName = dataHist->GetName();
   baseName += label;
@@ -401,8 +401,8 @@ void BidimGaussFitter::projectFlowComponents(TH2 *dataHist,
                                              double xHigh,
                                              double yLow,
                                              double yHigh,
-                                             const BidimGaussFitConfiguration & fitConfig,
-                                             Configuration & label)
+                                             const BidimGaussFitconst Configuration & fitConfig,
+                                             const Configuration & label)
 {
   int nPar = f->GetNpar();
   int first;
@@ -438,7 +438,7 @@ void BidimGaussFitter::projectFlowComponents(TH2 *dataHist,
   iHist++;
   for (int iPar = 0; iPar<7; iPar++)
   {
-  setParameters(f, 0, 11, 0.0); f->SetParameter(iPar,flowParsCache[iPar]);
+  addParameters(f, 0, 11, 0.0); f->addParameter(iPar,flowParsCache[iPar]);
   String suffix = "_a";
   suffix += iPar;
   suffix += "_";
@@ -481,13 +481,13 @@ void BidimGaussFitter::projectFlowComponents(TH2 *dataHist,
          flowPhiProj2+3, flowLegends2+3, 0.2, 0.2, 0.4, 0.4, 0.03);
     }
   // restore flow parameters from local cache
-  for (int iPar=0; iPar<11; iPar++) flowFitFct->SetParameter(first+iPar,flowParsCache[iPar]);
+  for (int iPar=0; iPar<11; iPar++) flowFitFct->addParameter(first+iPar,flowParsCache[iPar]);
   delete[] flowParsCache;
 }
 
 TH2* BidimGaussFitter::subtractEtaSides(TH2* dataHist,
                                         TF2 *flowFitFct,
-                                        const BidimGaussFitConfiguration & fitConfig)
+                                        const BidimGaussFitconst Configuration & fitConfig)
 {
   String baseName = dataHist->GetName();
   int xLowBin  = dataHist->GetXaxis()->FindBin(-fitConfig.deltaEtaOuterLimit);
@@ -521,7 +521,7 @@ TH2* BidimGaussFitter::subtractEtaSides(TH2* dataHist,
 // =========================================================================================================
 // Carry out a 2D fit of the given data at large delta-eta where flow (if present) should dominate
 // =========================================================================================================
-void BidimGaussFitter::flowFit(TH2 *dataHist, BidimGaussFitConfiguration & fitConfig)
+void BidimGaussFitter::flowFit(TH2 *dataHist, BidimGaussFitconst Configuration & fitConfig)
 {
   flowFitResult.reset();
   initializeFlowFitParameters(flowFitFct,fitConfig,1.0);
@@ -561,11 +561,11 @@ void BidimGaussFitter::flowFit(TH2 *dataHist, BidimGaussFitConfiguration & fitCo
 /* for different behavior see fitfunction.H for the different sys values and the excludeCentralBins.. structures and */
 /* the excludedEtaBins, excludedPhiBins and excludeCentralRegion routines, all of them in the beginning of this source file, for */
 /* its processing */
-void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig)
+void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitconst Configuration & fitConfig)
 {
    if (!data)
     {
-    if (reportError("BidimGaussFitter","2D Gauss Fit","fullFit(const TH2 *data, const BidimGaussFitConfiguration & fitConfig)"))
+    if (reportError("BidimGaussFitter","2D Gauss Fit","fullFit(const TH2 *data, const BidimGaussFitconst Configuration & fitConfig)"))
       {
       cout << "Input histogram 'data' is a null pointer. Abort.." << endl;
       }
@@ -718,16 +718,16 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
       if (true)
         {
         // fixing flow parameters
-        fullFitFct->SetParameter(5+iPar, value);
+        fullFitFct->addParameter(5+iPar, value);
         fullFitFct->FixParameter(5+iPar, 0.0);
         }
       else
         {
-        fullFitFct->SetParameter(5+iPar, value);
+        fullFitFct->addParameter(5+iPar, value);
         fullFitFct->SetParLimits(5+iPar, 0.8*value, 1.2*value);
         if (iPar>=nFlowParUsed) // if not using eta dependent coefficients.
           {
-          fullFitFct->SetParameter(5+iPar, 0.0);
+          fullFitFct->addParameter(5+iPar, 0.0);
           fullFitFct->FixParameter(5+iPar, 0.0);
           }
         }
@@ -743,12 +743,12 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
       cout << "=====================================================================" << endl;
       }
     //double offset = flowFitFct->GetParameter(0);
-    fullFitFct->SetParameter(5, 0.0);  // flow is now removed, so is the offset
+    fullFitFct->addParameter(5, 0.0);  // flow is now removed, so is the offset
     //fullFitFct->FixParameter(5, offset);
     fullFitFct->SetParLimits(5, -0.001, 0.001);
     for (int iPar=1; iPar<nFlowPar; iPar++)  // allow for constant background.
       {
-      fullFitFct->SetParameter(5+iPar, 0.0);
+      fullFitFct->addParameter(5+iPar, 0.0);
       fullFitFct->FixParameter(5+iPar, 0.0);
       }
     //for (int iPar=0; iPar<10; iPar++) fullFitFct->FixParameter(5+iPar, flowFitFct->GetParameter(iPar));
@@ -832,7 +832,7 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
 
 //  for (int iPar=0; iPar<nFlowPar;iPar++)
 //  {
-//  flowFitFct->SetParameter(iPar, fullFitFct->GetParameter(iPar+5));
+//  flowFitFct->addParameter(iPar, fullFitFct->GetParameter(iPar+5));
 //  }
 //  flowFitOnlyHist = cloneAndReset(dataHist, histBaseName+"_flowOnlyHist");
 //  flowFitOnlyHist->GetXaxis()->SetRange(xLowBin,xHighBin);
@@ -858,10 +858,10 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
 //  for (int iPar=0; iPar<5;iPar++)
 //  {
 //  double initialValue = fullFitFct->GetParameter(iPar);
-//  peakFitFct->SetParameter(iPar, initialValue);
+//  peakFitFct->addParameter(iPar, initialValue);
 //  peakFitFct->SetParLimits(iPar, initialValue/2.0, 2.0*initialValue);
 //  }
-//  peakFitFct->SetParameter(5,0.00001);
+//  peakFitFct->addParameter(5,0.00001);
 //  peakFitFct->SetParLimits(5,-0.001,0.001);
 //
 //  peakFitResult.reset();
@@ -1010,28 +1010,28 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
 ////    for (int   i=0;  i<11; i++) fullFitFct->FixParameter(i,flowFitFct->GetParameter(i));
 ////    for (int   i=11; i<11; i++)
 ////      {
-////      fullFitFct->SetParameter(i,0);
+////      fullFitFct->addParameter(i,0);
 ////      fullFitFct->FixParameter(i,0);
 ////      }
 ////    for (int   i=11; i<15; i++) fullFitFct->FixParameter(i,flowFitFct->GetParameter(i));
 ////    for (int   i=15; i<peakIndexBase; i++)
 ////      {
-////      fullFitFct->SetParameter(i,0);
+////      fullFitFct->addParameter(i,0);
 ////      fullFitFct->FixParameter(i,0);
 ////      }
 //
 //    //Info("FitFunction","Height of the spike: %f\n", peakheight);
 //    if (peakheight < 0) peakheight = dataHist->GetBinContent(xAxisHist->FindBin(0.0), yAxisHist->FindBin(0.0));
-//    fullFitFct->SetParameter(peakIndexBase,    peakheight*0.2);
+//    fullFitFct->addParameter(peakIndexBase,    peakheight*0.2);
 //    fullFitFct->SetParLimits(peakIndexBase,0,  peakheight);
-//    fullFitFct->SetParameter(peakIndexBase+1,  deltaEtaExclusionRegion*0.1);
+//    fullFitFct->addParameter(peakIndexBase+1,  deltaEtaExclusionRegion*0.1);
 //    fullFitFct->SetParLimits(peakIndexBase+1,  0.01,deltaEtaExclusionRegion*0.75);
-//    fullFitFct->SetParameter(peakIndexBase+2,  deltaEtaExclusionRegion*0.1);
+//    fullFitFct->addParameter(peakIndexBase+2,  deltaEtaExclusionRegion*0.1);
 //    fullFitFct->SetParLimits(peakIndexBase+2,  0.01,deltaEtaExclusionRegion*0.65);
 //    /* let's fix pure gaussian for the time being */
-//    fullFitFct->SetParameter(peakIndexBase+3, 2.0);
+//    fullFitFct->addParameter(peakIndexBase+3, 2.0);
 //    fullFitFct->SetParLimits(peakIndexBase+3, 2.0, 2.0);
-//    fullFitFct->SetParameter(peakIndexBase+4, 2.0);
+//    fullFitFct->addParameter(peakIndexBase+4, 2.0);
 //    fullFitFct->SetParLimits(peakIndexBase+4, 2.0, 2.0);
 //    delete func;
 //    func = fullFitFct;
@@ -1070,7 +1070,7 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
 //    for (int   iPar=11; iPar<15; iPar++)
 //      {
 //      fullFitFct->ReleaseParameter(iPar);
-//      fullFitFct->SetParameter(iPar,-1.0E-3);
+//      fullFitFct->addParameter(iPar,-1.0E-3);
 //      fullFitFct->SetParLimits(iPar,-1.0E-2,0.0);
 //      }
 //    fixUserParameters(fullFitFct);
@@ -1217,11 +1217,11 @@ void BidimGaussFitter::fullFit(TH2 *data, BidimGaussFitConfiguration & fitConfig
 bool BidimGaussFitter::isFlowPresent(BidimGaussFitResult & fitResult)
 {
   bool result = false;
-  double a0 = TMath::Abs(fitResult.a0);
-  double a1 = TMath::Abs(fitResult.a1);
-  double a2 = TMath::Abs(fitResult.a2);
-  double a3 = TMath::Abs(fitResult.a3);
-  double a4 = TMath::Abs(fitResult.a4);
+  double a0 = absolute(fitResult.a0);
+  double a1 = absolute(fitResult.a1);
+  double a2 = absolute(fitResult.a2);
+  double a3 = absolute(fitResult.a3);
+  double a4 = absolute(fitResult.a4);
   if (a0>1.0E-6)
     {
     double a1a0 = a1/a0;
@@ -1237,22 +1237,22 @@ bool BidimGaussFitter::isFlowPresent(BidimGaussFitResult & fitResult)
   return result;
 }
 
-void BidimGaussFitter::setOuterRangeByBin(TH2* h, const BidimGaussFitConfiguration & fitConfig)
+void BidimGaussFitter::setOuterRangeByBin(TH2* h, const BidimGaussFitconst Configuration & fitConfig)
 {
   h->GetXaxis()->SetRange(fitConfig.bwdDeltaEtaOuterLimitBin,    fitConfig.fwdDeltaEtaOuterLimitBin);
   h->GetYaxis()->SetRange(fitConfig.deltaPhiLowLimitBin, fitConfig.deltaPhiHighLimitBin);
-  h->SetStats(kFALSE);
+  h->SetStats(false);
 }
 
 
-TH1* BidimGaussFitter::cloneAndReset(const TH1* h, Configuration & hName)
+TH1* BidimGaussFitter::cloneAndReset(const TH1* h, const Configuration & hName)
 {
   TH1 * clone = (TH1*) h->Clone(hName);
   clone->Reset();
   return clone;
 }
 
-TH1* BidimGaussFitter::cloneAndSetWithFct(const TH1* h,   TF1* f, Configuration & hName)
+TH1* BidimGaussFitter::cloneAndSetWithFct(const TH1* h,   TF1* f, const Configuration & hName)
 {
   TH1 * clone = (TH1*) h->Clone(hName);
   clone->Reset();
@@ -1260,14 +1260,14 @@ TH1* BidimGaussFitter::cloneAndSetWithFct(const TH1* h,   TF1* f, Configuration 
   return clone;
 }
 
-TH2* BidimGaussFitter::cloneAndReset(const TH2* h, Configuration & hName)
+TH2* BidimGaussFitter::cloneAndReset(const TH2* h, const Configuration & hName)
 {
   TH2 * clone = (TH2*) h->Clone(hName);
   clone->Reset();
   return clone;
 }
 
-TH2* BidimGaussFitter::cloneAndSetWithFct(const TH2* h,   TF2* f, Configuration & hName)
+TH2* BidimGaussFitter::cloneAndSetWithFct(const TH2* h,   TF2* f, const Configuration & hName)
 {
   TH2 * clone = (TH2*) h->Clone(hName);
   clone->Reset();
@@ -1369,7 +1369,7 @@ void  BidimGaussFitter::calculateChi2(TH2*h,
 // Use this function to set the name of the parameters of full fit function
 // Parameters are named: a, wEta, wPhi, gammaEta, gammaPhi, a0, a2, a3, a4, a5, a6, lina2, lina3, sqa2, sqa3
 // =========================================================================================================
-void BidimGaussFitter::setFunctionParameterNames(TF2* f, const BidimGaussFitConfiguration & fitConfig)
+void BidimGaussFitter::setFunctionParameterNames(TF2* f, const BidimGaussFitconst Configuration & fitConfig)
 {
   cout << "BidimGaussFitter::setFunctionParameterNames() " << endl;
   int nPar  = f->GetNpar();
@@ -1385,7 +1385,7 @@ void BidimGaussFitter::setFunctionParameterNames(TF2* f, const BidimGaussFitConf
   for (int iPar=0; iPar<nPar; iPar++)
   {
   f->SetParName(iPar,  *fitConfig.parameterNames[first+iPar]);
-  f->SetParameter(iPar,fitConfig.initialValues [first+iPar]);
+  f->addParameter(iPar,fitConfig.initialValues [first+iPar]);
   }
 }
 
@@ -1405,7 +1405,7 @@ void BidimGaussFitter::releaseParameters(TF2* f, int first, int last)
 // ====================================================================================
 // Use this function to fix the user parameters to values selected by the user.
 // ====================================================================================
-void BidimGaussFitter::fixUserParameters(TF1 *f, const BidimGaussFitConfiguration & fitConfig)
+void BidimGaussFitter::fixUserParameters(TF1 *f, const BidimGaussFitconst Configuration & fitConfig)
 {
   int nPar =  f->GetNpar();
   int first;
@@ -1420,7 +1420,7 @@ void BidimGaussFitter::fixUserParameters(TF1 *f, const BidimGaussFitConfiguratio
   {
   if (fitConfig.fixedParameters[first+iPar])
     {
-    f->SetParameter(iPar,fitConfig.fixedValues[first+iPar]);
+    f->addParameter(iPar,fitConfig.fixedValues[first+iPar]);
     f->FixParameter(iPar,fitConfig.fixedValues[first+iPar]);
     }
   }
@@ -1432,11 +1432,11 @@ void BidimGaussFitter::fixUserParameters(TF1 *f, const BidimGaussFitConfiguratio
 void BidimGaussFitter::fixPeakParameters(TF2* f, double a, double sigmaEta, double sigmaPhi, double gammaEta, double gammaPhi)
 {
   int iPar = 0;
-  f->SetParameter(iPar,a);        f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
-  f->SetParameter(iPar,sigmaEta); f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
-  f->SetParameter(iPar,sigmaPhi); f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
-  f->SetParameter(iPar,gammaEta); f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
-  f->SetParameter(iPar,gammaPhi); f->FixParameter(iPar, f->GetParameter(iPar));
+  f->addParameter(iPar,a);        f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
+  f->addParameter(iPar,sigmaEta); f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
+  f->addParameter(iPar,sigmaPhi); f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
+  f->addParameter(iPar,gammaEta); f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
+  f->addParameter(iPar,gammaPhi); f->FixParameter(iPar, f->GetParameter(iPar));
 }
 
 // ==============================================================================================
@@ -1446,20 +1446,20 @@ void BidimGaussFitter::fixFlowParameters(TF2* f, double a0, double a1, double a2
                                          double a2eta, double a3eta, double a2eta2, double a3eta2)
 {
   int iPar = 5;
-  f->SetParameter(iPar,a0);     f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
-  f->SetParameter(iPar,a1);     f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
-  f->SetParameter(iPar,a2);     f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
-  f->SetParameter(iPar,a3);     f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
-  f->SetParameter(iPar,a4);     f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
-  f->SetParameter(iPar,a5);     f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
-  f->SetParameter(iPar,a6);     f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
-  f->SetParameter(iPar,a2eta);  f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
-  f->SetParameter(iPar,a3eta);  f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
-  f->SetParameter(iPar,a2eta2); f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
-  f->SetParameter(iPar,a3eta2); f->FixParameter(iPar, f->GetParameter(iPar));
+  f->addParameter(iPar,a0);     f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
+  f->addParameter(iPar,a1);     f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
+  f->addParameter(iPar,a2);     f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
+  f->addParameter(iPar,a3);     f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
+  f->addParameter(iPar,a4);     f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
+  f->addParameter(iPar,a5);     f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
+  f->addParameter(iPar,a6);     f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
+  f->addParameter(iPar,a2eta);  f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
+  f->addParameter(iPar,a3eta);  f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
+  f->addParameter(iPar,a2eta2); f->FixParameter(iPar, f->GetParameter(iPar)); iPar++;
+  f->addParameter(iPar,a3eta2); f->FixParameter(iPar, f->GetParameter(iPar));
 }
 
-void BidimGaussFitter::initializeFlowFitParameters(TF2 * f, const BidimGaussFitConfiguration & fitConfig, double scale)
+void BidimGaussFitter::initializeFlowFitParameters(TF2 * f, const BidimGaussFitconst Configuration & fitConfig, double scale)
 {
   int nPar  = f->GetNpar();
   int first = 0;
@@ -1474,12 +1474,12 @@ void BidimGaussFitter::initializeFlowFitParameters(TF2 * f, const BidimGaussFitC
   {
   if (fitConfig.fixedParameters[5+iPar])
     {
-    f->SetParameter(first+iPar, fitConfig.fixedValues[5+iPar]);
+    f->addParameter(first+iPar, fitConfig.fixedValues[5+iPar]);
     f->FixParameter(first+iPar, fitConfig.fixedValues[5+iPar]);
     }
   else
     {
-    f->SetParameter(first+iPar, fitConfig.initialValues[5+iPar]);
+    f->addParameter(first+iPar, fitConfig.initialValues[5+iPar]);
     double min = fitConfig.lowerLimit[5+iPar]; // if min >= max, do not set limites
     double max = fitConfig.upperLimit[5+iPar];
     if (min < max ) // limits are to be set
@@ -1490,7 +1490,7 @@ void BidimGaussFitter::initializeFlowFitParameters(TF2 * f, const BidimGaussFitC
   }
 }
 
-void BidimGaussFitter::initializePeakFitParameters(TF2 * f, const BidimGaussFitConfiguration & fitConfig, double scale)
+void BidimGaussFitter::initializePeakFitParameters(TF2 * f, const BidimGaussFitconst Configuration & fitConfig, double scale)
 {
   int nPar  = f->GetNpar();
   if (nPar==11)  return; // Do NOT want to initialize flow parameters here..
@@ -1500,12 +1500,12 @@ void BidimGaussFitter::initializePeakFitParameters(TF2 * f, const BidimGaussFitC
   {
   if (fitConfig.fixedParameters[iPar])
     {
-    f->SetParameter(iPar, fitConfig.fixedValues[iPar]);
+    f->addParameter(iPar, fitConfig.fixedValues[iPar]);
     f->FixParameter(iPar, fitConfig.fixedParameters[iPar]);
     }
   else
     {
-    f->SetParameter(iPar, fitConfig.initialValues[iPar]);
+    f->addParameter(iPar, fitConfig.initialValues[iPar]);
     double min = fitConfig.lowerLimit[iPar]; // if min >= max, do not set limites
     double max = fitConfig.upperLimit[iPar];
     if (min < max ) // limits are to be set
@@ -1519,7 +1519,7 @@ void BidimGaussFitter::initializePeakFitParameters(TF2 * f, const BidimGaussFitC
 
 
 
-void BidimGaussFitter::initializeAllFitParameters(TF2 * f, const BidimGaussFitConfiguration & fitConfig, double scale)
+void BidimGaussFitter::initializeAllFitParameters(TF2 * f, const BidimGaussFitconst Configuration & fitConfig, double scale)
 {
   int nPar  = f->GetNpar();
   int first = 0;
@@ -1535,12 +1535,12 @@ void BidimGaussFitter::initializeAllFitParameters(TF2 * f, const BidimGaussFitCo
   {
   if (fitConfig.fixedParameters[first+iPar])
     {
-    f->SetParameter(iPar, fitConfig.fixedValues[first+iPar]);
+    f->addParameter(iPar, fitConfig.fixedValues[first+iPar]);
     f->FixParameter(iPar, fitConfig.fixedParameters[first+iPar]);
     }
   else
     {
-    f->SetParameter(iPar, fitConfig.initialValues[first+iPar]);
+    f->addParameter(iPar, fitConfig.initialValues[first+iPar]);
     double min = fitConfig.lowerLimit[first+iPar]; // if min >= max, do not set limites
     double max = fitConfig.upperLimit[first+iPar];
     if (min < max ) // limits are to be set
@@ -1551,15 +1551,15 @@ void BidimGaussFitter::initializeAllFitParameters(TF2 * f, const BidimGaussFitCo
   }
 }
 
-void BidimGaussFitter::setParameters(TF2* f, int first, int last, double value)
+void BidimGaussFitter::addParameters(TF2* f, int first, int last, double value)
 {
   for (int iPar=first; iPar<=last; iPar++)
   {
-  f->SetParameter(iPar,value);
+  f->addParameter(iPar,value);
   }
 }
 
-void BidimGaussFitter::setParameterLimits(TF2* f, const BidimGaussFitConfiguration & fitConfig, int first, int last, double scale)
+void BidimGaussFitter::addParameterLimits(TF2* f, const BidimGaussFitconst Configuration & fitConfig, int first, int last, double scale)
 {
   double min, max;
   for (int iPar=first; iPar<=last; iPar++)
@@ -1579,7 +1579,7 @@ void BidimGaussFitter::fixFlowParametersToZero(TF2* f)
 {
   for (int iPar=5; iPar<=15; iPar++)
   {
-  f->SetParameter(iPar, 0.0);
+  f->addParameter(iPar, 0.0);
   f->FixParameter(iPar, 0.0);
   }
 }

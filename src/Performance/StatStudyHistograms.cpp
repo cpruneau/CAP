@@ -16,7 +16,7 @@ ClassImp(StatStudyHistograms);
 
 StatStudyHistograms::StatStudyHistograms(Task * _parent,
                                          const String & _name
-                                         Configuration & _configuration)
+                                         const Configuration & _configuration)
 :
 HistogramGroup(_parent,_name,_configuration),
 nSubSamples(10)
@@ -29,7 +29,7 @@ StatStudyHistograms::~StatStudyHistograms()
 
 }
 
-void StatStudyHistograms::createHistograms()
+void StatStudyHistograms::HistogramsCreate()
 {
   int    nBins  = 400;
   double f1_min = 0.0;
@@ -37,7 +37,7 @@ void StatStudyHistograms::createHistograms()
   int    nBins2 = 400;
   double f2_min = 0.0;
   double f2_max = f1_max*f1_max;
-  Configuration & configuration = getConfiguration();
+  const Configuration & configuration = getConfiguration();
   nSubSamples = configuration->getValueInt(getParentTaskName(),"nSubSamples");
 
   String bn = getParentTaskName();
@@ -150,7 +150,7 @@ void StatStudyHistograms::createHistograms()
 
 }
 
-void StatStudyHistograms::loadHistograms(TFile * inputFile)
+void StatStudyHistograms::HistogramsImport(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
@@ -257,7 +257,7 @@ void StatStudyHistograms::loadHistograms(TFile * inputFile)
     ;
 }
 
-void StatStudyHistograms::saveHistograms(TFile * outputFile)
+void StatStudyHistograms::exportHistograms(TFile & outputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
@@ -473,7 +473,7 @@ void StatStudyHistograms::computeDerivedHistograms()
   fillMeanErrStd(nudyn_12Ratio_vsSub, enudyn_12Ratio_vsSub, nSubSamples);
 }
 
-void StatStudyHistograms::scaleHistograms(double scalingFactor1,double scalingFactor2)
+void StatStudyHistograms::HistogramsScale(double scalingFactor1,double scalingFactor2)
 {
   f1_1->Scale(scalingFactor1);
   f1_2->Scale(scalingFactor1);

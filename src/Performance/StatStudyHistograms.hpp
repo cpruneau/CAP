@@ -24,14 +24,14 @@ public:
 
   StatStudyHistograms(Task * _parent,
                       const String & _name
-                      Configuration & _configuration);
+                      const Configuration & _configuration);
   virtual ~StatStudyHistograms();
   virtual void createHistograms();
-  virtual void loadHistograms(TFile * inputFile);
-  virtual void saveHistograms(TFile * outputFile);
+  virtual void importHistograms(TFile & inputFile);
+  virtual void exportHistograms(TFile & outputFile);
   virtual void computeDerivedHistograms();
   virtual void fill(double syb, double nPlus, double nMinus, double nPlusEff,  double nMinusEff);
-  virtual void scaleHistograms(double scalingFactor1,double scalingFactor2);
+  virtual void HistogramsScale(double scalingFactor1,double scalingFactor2);
 
   // r = f1/f2
   void calculateRatio(double f1,double ef1,double f2,double ef2,double & r,double & er);

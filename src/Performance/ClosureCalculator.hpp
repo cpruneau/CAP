@@ -30,7 +30,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   ClosureCalculator(const String & _name,
-                    Configuration & _configuration);
+                    const Configuration & _configuration);
   
   //!
   //! DTOR
@@ -46,7 +46,11 @@ public:
   //! Execute this task based on the configuration and class variable specified at construction
   //!
   virtual void execute();
+
+protected:
+
   
+
   ClassDef(ClosureCalculator,0)
 };
 

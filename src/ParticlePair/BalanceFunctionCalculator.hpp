@@ -11,14 +11,22 @@
  * *********************************************************************/
 #ifndef CAP__BalanceFunctionCalculator
 #define CAP__BalanceFunctionCalculator
-#include "Task.hpp"
-using namespace std;
+#include "EventTask.hpp"
+
 
 namespace CAP
 {
 
+using CAP::EventTask;
+using CAP::Configuration;
+using CAP::EventFilter;
+using CAP::ParticleFilter;
+using CAP::HistogramGroup;
+using CAP::StateManager;
 
-class BalanceFunctionCalculator : public Task
+using namespace std;
+
+class BalanceFunctionCalculator : public EventTask
 {
 public:
 
@@ -33,8 +41,8 @@ public:
   //! @param _pObservableNames Array containing the names of the pair  observables involved in the balance function calculation
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  BalanceFunctionCalculator(const String & _name,
-                            Configuration & _configuration,
+  BalanceFunctionCalculator(const TString & _name,
+                            const Configuration & _configuration,
                             vector<EventFilter*> & _eventFilters,
                             vector<ParticleFilter*> & _particleFilters);
   //!
@@ -70,12 +78,15 @@ public:
   //!@param obs_1_2Bar Pointer to histogram of the observable of interest for particle 1 and 2Bar
   //!@param obs_1Bar_2Bar Pointer to histogram of the observable of interest for particle 1Bar and 2Bar
   //!
-  virtual TH2* calculate_CI(const String & histoBaseName,
-                            const String & eventClassName,
-                            const String & particleName1,
-                            const String & particleName2,
-                            const String & obsName,
-                            TH2* obs_1_2, TH2* obs_1Bar_2, TH2* obs_1_2Bar, TH2* obs_1Bar_2Bar);
+  virtual TH2* calculate_CI(const TString & histoBaseName,
+                            const TString & eventClassName,
+                            const TString & particleName1,
+                            const TString & particleName2,
+                            const TString & obsName,
+                            TH2* obs_1_2, TH2* obs_1Bar_2,
+                            TH2* obs_1_2Bar,
+                            TH2* obs_1Bar_2Bar,
+                            HistogramGroup * histogramGroup);
 
   //!
   //!Calculate the "charge dependent" combination of the given observable defined as
@@ -94,15 +105,16 @@ public:
   //!@param obs_1_2Bar Pointer to histogram of the observable of interest for particle 1 and 2Bar
   //!@param obs_1Bar_2Bar Pointer to histogram of the observable of interest for particle 1Bar and 2Bar
   //!
-  virtual TH2* calculate_CD(const String & histoBaseName,
-                            const String & eventClassName,
-                            const String & particleName1,
-                            const String & particleName2,
-                            const String & obsName,
+  virtual TH2* calculate_CD(const TString & histoBaseName,
+                            const TString & eventClassName,
+                            const TString & particleName1,
+                            const TString & particleName2,
+                            const TString & obsName,
                             TH2* obs_1_2,
                             TH2* obs_1Bar_2,
                             TH2* obs_1_2Bar,
-                            TH2* obs_1Bar_2Bar);
+                            TH2* obs_1Bar_2Bar,
+                            HistogramGroup * histogramGroup);
 
   //!
   //!Calculate the "balance function" combination of the given observable defined as
@@ -120,45 +132,49 @@ public:
   //!@param obs_US  Pointer to histogram of the observable of interest for a US pair
   //!@param obs_LS Pointer to histogram of the observable of interest for LS pair
   //!
-  virtual TH2* calculate_BalFct(const String & histoBaseName,
-                                const String & eventClassName,
-                                const String & particleName1,
-                                const String & particleName2,
-                                const String & obsName,
-                                const String & comboName,
+  virtual TH2* calculate_BalFct(const TString & histoBaseName,
+                                const TString & eventClassName,
+                                const TString & particleName1,
+                                const TString & particleName2,
+                                const TString & obsName,
+                                const TString & comboName,
                                 TH1* rho1_2,
                                 TH2* obs_US,
-                                TH2* obs_LS);
+                                TH2* obs_LS,
+                                HistogramGroup * histogramGroup);
 
-  virtual TH2* calculate_BalFct2(const String & histoBaseName,
-                                 const String & eventClassName,
-                                 const String & particleName1,
-                                 const String & particleName2,
-                                 const String & obsName,
-                                 const String & comboName,
+  virtual TH2* calculate_BalFct2(const TString & histoBaseName,
+                                 const TString & eventClassName,
+                                 const TString & particleName1,
+                                 const TString & particleName2,
+                                 const TString & obsName,
+                                 const TString & comboName,
                                  TH1* rho1_1,
                                  TH1* rho1_2,
                                  TH2* obs_US,
-                                 TH2* obs_LS);
+                                 TH2* obs_LS,
+                                 HistogramGroup * histogramGroup);
 
-  virtual TH2* calculate_BalFct3(const String & histoBaseName,
-                                 const String & eventClassName,
-                                 const String & particleName1,
-                                 const String & particleName2,
-                                 const String & obsName,
-                                 const String & comboName,
+  virtual TH2* calculate_BalFct3(const TString & histoBaseName,
+                                 const TString & eventClassName,
+                                 const TString & particleName1,
+                                 const TString & particleName2,
+                                 const TString & obsName,
+                                 const TString & comboName,
                                  TH1* rho1_2,
                                  TH2* obs_US,
-                                 TH2* obs_LS);
+                                 TH2* obs_LS,
+                                 HistogramGroup * histogramGroup);
 
-  virtual TH2* calculate_BalFctSum(const String & histoBaseName,
-                                   const String & eventClassName,
-                                   const String & particleName1,
-                                   const String & particleName2,
-                                   const String & obsName,
-                                   const String & comboName,
-                                   TH2* obs_12Bar,
-                                   TH2* obs_1Bar2);
+  virtual TH2* calculate_BalFctSum(const TString & histoBaseName,
+                                    const TString & eventClassName,
+                                    const TString & particleName1,
+                                    const TString & particleName2,
+                                    const TString & obsName,
+                                    const TString & comboName,
+                                    TH2* obs_12Bar,
+                                   TH2* obs_1Bar2,
+                                   HistogramGroup * histogramGroup);
 
   //!
   //!Calculate the "difference" combination of the given observable defined as
@@ -178,14 +194,15 @@ public:
   //!@param obs_first  Pointer to histogram of the observable of the first pair
   //!@param obs_second Pointer to histogram of the observable of the second pair
   //!
-  virtual TH2* calculate_Diff(const String & histoBaseName,
-                              const String & eventClassName,
-                              const String & particleName1,
-                              const String & particleName2,
-                              const String & obsName,
-                              const String & comboName,
+  virtual TH2* calculate_Diff(const TString & histoBaseName,
+                              const TString & eventClassName,
+                              const TString & particleName1,
+                              const TString & particleName2,
+                              const TString & obsName,
+                              const TString & comboName,
                               TH2* obs_first,
-                              TH2* obs_second);
+                              TH2* obs_second,
+                              HistogramGroup * histogramGroup);
 
 
 protected:
@@ -193,12 +210,12 @@ protected:
   //!
   //! Array containing the names of the single particle  observables involved in the balance function calculation
   //!
-  VectorString  sObservableNames;
+  vector<TString> sObservableNames;
 
   //!
   //! Array containing the names of the pair observables involved in the balance function calculation
   //!
-  VectorString  pObservableNames;
+  vector<TString> pObservableNames;
 
   ClassDef(BalanceFunctionCalculator,0)
 };

@@ -11,7 +11,10 @@
  * *********************************************************************/
 #ifndef CAP__NuDynAnalyzer
 #define CAP__NuDynAnalyzer
-#include "Task.hpp"
+#include "EventTask.hpp"
+#include "Event.hpp"
+#include "Particle.hpp"
+#include "ParticleType.hpp"
 
 namespace CAP
 {
@@ -28,7 +31,7 @@ namespace CAP
 //!property used as independent variable to compute (and eventually plot) the moments, cumulants, etc, is selected based on the  inputType
 //!parameter selected at construction of an instance of this class.
 //!
-class NuDynAnalyzer : public Task
+class NuDynAnalyzer : public EventTask
 {
 public:
 
@@ -42,7 +45,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   NuDynAnalyzer(const String & _name,
-                Configuration & _configuration,
+                const Configuration & _configuration,
                 vector<EventFilter*> & _eventFilters,
                 vector<ParticleFilter*> & _particleFilters);
   //!
@@ -54,7 +57,9 @@ public:
   //! Sets the default  values of the configuration parameters used by this task
   //!
   virtual void setDefaultConfiguration();
-  
+
+  virtual void configure();
+
   //!
   //!Initialize this task.
   //!
@@ -63,7 +68,7 @@ public:
   //!
   //! Execute this task based on the configuration and class variables specified at construction
   //!
-  virtual void execute();
+  virtual void analyzeEvent();
   
   //!
   //! Creates the histograms  filled by this task at execution
@@ -73,17 +78,20 @@ public:
   //!
   //! Loads the histograms retquired by this task at execution
   //!
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
 
   virtual void createDerivedHistograms();
 
-  virtual void loadDerivedHistograms(TFile * inputFile __attribute__((unused)));
+  virtual void importDerivedHistograms(TFile & inputFile __attribute__((unused)));
 
   virtual void calculateDerivedHistograms();
 
 protected:
-  int multiplicityType; //!< variable used to select which event property is used to differential studies of the moments. This variable is set the class parameter "inputType".
-
+  int    multiplicityType; //!< variable used to select which event property is used to differential studies of the moments. This variable is set the class parameter "inputType".
+  int    nBins_rapidity;
+  double min_rapidity;
+  double max_rapidity;
+  double width_rapidity;
   vector<double> deltaRapidtyBin;
 
 

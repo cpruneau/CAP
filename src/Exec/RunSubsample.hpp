@@ -21,7 +21,7 @@ class RunSubsample : public Task
 public:
   
   RunSubsample(const String & _name,
-              Configuration & _configuration);
+              const Configuration & _configuration);
 
   //!
   //! dtor

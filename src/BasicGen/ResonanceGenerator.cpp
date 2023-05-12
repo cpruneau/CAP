@@ -19,12 +19,12 @@ ClassImp(ResonanceGenerator);
 //! This is a simplistic particle generator simulating events with an exponential distribution in pT and pair correlations
 //! based on rho-mesons decays.
 //!
-ResonanceGenerator::ResonanceGenerator(const String  &        _name,
-                                       Configuration  &        _configuration,
-                                       vector<EventFilter*>&   _eventFilters,
-                                       vector<ParticleFilter*>&_particleFilters)
+ResonanceGenerator::ResonanceGenerator(const String & _name,
+                                       const Configuration & _configuration,
+                                       vector<EventFilter*>& _eventFilters,
+                                       vector<ParticleFilter*> & _particleFilters)
 :
-Task(_name,_configuration,_eventFilters,_particleFilters),
+EventTask(_name,_configuration,_eventFilters,_particleFilters),
 standaloneMode(0),
 nPartMinimum(1),
 nPartMaximum(1),
@@ -42,12 +42,8 @@ pTslope(0.4)
 
 void ResonanceGenerator::setDefaultConfiguration()
 {
-  setParameter("UseParticles",      true);
-  setParameter("UseEventStream0",   true);
+  EventTask::setDefaultConfiguration();
   addParameter("StandaloneMode",    true);
-  addParameter("SaveHistograms",    false);
-  addParameter("LoadHistograms",    false);
-  addParameter("ScaleHistograms",   false);
   addParameter("nParticlesMinimum", 10);
   addParameter("nParticlesMaximum", 40);
   addParameter("yMinimum",   -1.0);
@@ -56,9 +52,9 @@ void ResonanceGenerator::setDefaultConfiguration()
   addParameter("mass",        0.4);
 }
 
-void ResonanceGenerator::initialize()
+void ResonanceGenerator::configure()
 {
-  Task::initialize();
+  EventTask::configure();
   standaloneMode = getValueBool("StandaloneMode");
   nPartMinimum   = getValueInt("nParticlesMinimum");
   nPartMaximum   = getValueInt("nParticlesMaximum");
@@ -83,7 +79,7 @@ void ResonanceGenerator::initialize()
     }
 }
 
-void ResonanceGenerator::execute()
+void ResonanceGenerator::createEvent()
 {
   if (reportStart(__FUNCTION__))
     ;
@@ -139,7 +135,7 @@ void ResonanceGenerator::execute()
     vector<Particle*> interactions = event.getNucleonNucleonInteractions();
 
     unsigned int n = interactions.size();
-    //    if (reportWarning("ResonanceGenerator",getName(),"execute()"))
+    //    if (reportWarning("ResonanceGenerator",getName(),"createEvent()"))
     //      cout << "Size of interactions:" <<  n << endl;
     for (unsigned int kInter=0; kInter<n; kInter++)
       {
@@ -161,7 +157,7 @@ void ResonanceGenerator::generate(Particle * parentInteraction)
   //ParticleFilter & particleFilter = * particleFilters[0];
 
   // generate neutral rho-meson and decay them..
-  ParticleType * parentType = particleTypeCollection->findPdgCode(113);  // rho-meson only
+  ParticleType * parentType = ParticleDb::getDefaultParticleDb()->findPdgCode(113);  // rho-meson only
   ParticleDecayMode & decayMode = parentType->generateDecayMode(); // pi+ and pi- only
   
   // for now, assume a two body decay exclisively..
@@ -217,7 +213,7 @@ void ResonanceGenerator::generate(Particle * parentInteraction)
   
 /*
   // generate some independent particles
-  ParticleType * singleType = particleTypeCollection->findPdgCode(211);
+  ParticleType * singleType = ParticleDb->findPdgCode(211);
   double pionMass = singleType->getMass();
   mult = int( 5.0 +  double(nParticles) * g->Rndm());
   LorentzVector singlePosition(0.0,0.0,0.0,0.0);
@@ -238,7 +234,7 @@ void ResonanceGenerator::generate(Particle * parentInteraction)
     event.add(single);
     }
 
-  singleType = particleTypeCollection->findPdgCode(-211);
+  singleType = ParticleDb->findPdgCode(-211);
   for (int iParticle = 0; iParticle < mult; iParticle++)
     {
     y   = yMinimum + yRange * g->Rndm();

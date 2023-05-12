@@ -57,7 +57,7 @@ void CanvasCollection::createDirectory(const String & dirName)
 // =================================================
 // Create a canvas
 // =================================================
-TCanvas * CanvasCollection::createCanvas(const String & canvasName, const CanvasConfiguration & configuration, int inc)
+TCanvas * CanvasCollection::createCanvas(const String & canvasName, const Configuration & configuration, int inc)
 {
   int xInc = inc*getCollectionSize();
   TCanvas * canvas = new TCanvas(canvasName,
@@ -88,7 +88,7 @@ TCanvas * CanvasCollection::createCanvas(const String & canvasName, const Canvas
 ////////////////////////////////////////////////////
 // Create a canvas
 ////////////////////////////////////////////////////
-TCanvas * CanvasCollection::createCanvasXX(int nx, int ny, const String & canvasName, const CanvasConfiguration & configuration, int inc)
+TCanvas * CanvasCollection::createCanvasXX(int nx, int ny, const String & canvasName, const Configuration & configuration, int inc)
 {
   int xInc = inc*getCollectionSize();
   TCanvas * canvas = new TCanvas(canvasName,

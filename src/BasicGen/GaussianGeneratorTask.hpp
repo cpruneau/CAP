@@ -12,7 +12,10 @@
 #ifndef CAP__GaussianGeneratorTask
 #define CAP__GaussianGeneratorTask
 #include <TF2.h>
-#include "Task.hpp"
+#include "EventTask.hpp"
+#include "Event.hpp"
+#include "Particle.hpp"
+#include "ParticleType.hpp"
 
 namespace CAP
 {
@@ -21,7 +24,7 @@ namespace CAP
 //!
 //!This class implements a simple weight calculator that can be used to simulate two particle correlations. 
 //!
-class GaussianGeneratorTask : public Task
+class GaussianGeneratorTask : public  EventTask
 {
 public:
   
@@ -33,7 +36,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   GaussianGeneratorTask(const String & _name,
-                        Configuration & _configuration);
+                        const Configuration & _configuration);
 
   //!
   //! DTOR
@@ -53,7 +56,7 @@ public:
   //!
   //! Execute this task based on the configuration and class variable specified at construction
   //!
-  virtual void execute();
+  virtual void createEvent();
   
   //!
   //!Get a pointer to the profile function used by this task.

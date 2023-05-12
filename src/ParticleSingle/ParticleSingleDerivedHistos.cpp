@@ -16,7 +16,7 @@ ClassImp(ParticleSingleDerivedHistos);
 
 ParticleSingleDerivedHistos::ParticleSingleDerivedHistos(Task * _parent,
                                              const String & _name,
-                                             Configuration & _configuration)
+                                             const Configuration & _configuration)
 :
 HistogramGroup(_parent,_name,_configuration),
 fillEta(false),
@@ -61,9 +61,9 @@ void ParticleSingleDerivedHistos::createHistograms()
   if ( reportStart(__FUNCTION__))
     { }
   const String & bn  = getName();
-  const String & ptn = getParentTaskName();
+  const String & ptn = getParentName();
   const String & ppn = getParentPathName();
-  Configuration & configuration = getConfiguration();
+  const Configuration & configuration = getConfiguration();
   fillEta   = configuration.getValueBool(ppn,"FillEta");
   fillY     = configuration.getValueBool(ppn,"FillY");
   fillP2    = configuration.getValueBool(ppn,"FillP2");
@@ -135,14 +135,11 @@ void ParticleSingleDerivedHistos::createHistograms()
 }
 
 //________________________________________________________________________
-void ParticleSingleDerivedHistos::loadHistograms(TFile * inputFile)
+void ParticleSingleDerivedHistos::importHistograms(TFile & inputFile)
 {
-  if (!ptrFileExist(__FUNCTION__,inputFile)) return;
   const String & bn  = getName();
-  const String & ptn = getParentTaskName();
+  const String & ptn = getParentName();
   const String & ppn = getParentPathName();
-  Configuration & configuration = getConfiguration();
-
   fillEta  = configuration.getValueBool(ppn,"FillEta");
   fillY    = configuration.getValueBool(ppn,"FillY");
   fillP2   = configuration.getValueBool(ppn,"FillP2");
@@ -188,7 +185,7 @@ void ParticleSingleDerivedHistos::calculateDerivedHistograms(ParticleSingleHisto
 {
   if (reportStart(__FUNCTION__))
     ;
-  String bn = getParentTaskName();
+  String bn = getParentName();
   TH1* hTemp;
 
   if (baseHistos->h_n1_phiEta)

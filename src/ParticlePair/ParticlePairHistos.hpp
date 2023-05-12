@@ -26,10 +26,10 @@ public:
 
   ParticlePairHistos(Task * _parent,
                      const String & _name,
-                     Configuration & _configuration);
+                     const Configuration & _configuration);
   virtual ~ParticlePairHistos() {}
   virtual void createHistograms();
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
 
   virtual void fill(vector<ParticleDigit*> & particle1, vector<ParticleDigit*> & particle2, bool same, double weight);
   virtual void fill(Particle & particle1, Particle & particle2, double weight);

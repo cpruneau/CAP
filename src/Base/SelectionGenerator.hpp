@@ -29,17 +29,19 @@ namespace CAP
 class SelectionGenerator
 {
 public:
-  SelectionGenerator(std::vector<double> probabilities);
+  SelectionGenerator();
+  SelectionGenerator(std::vector<double> & probabilities);
   virtual ~SelectionGenerator(){}
+  virtual void initializeWith(std::vector<double> & probabilities);
   virtual int generate();
   int nPartitions() const
   {
-    return cProbs.size();
+    return cumulativeProbability.size();
   }
 
 protected:
 
-  std::vector<double> cProbs;
+  std::vector<double> cumulativeProbability;
   ClassDef(SelectionGenerator,0)
 };
 

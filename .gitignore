@@ -3,9 +3,13 @@
 ##################
 bin
 lib
+bin*
+lib*
 build
+build*
 publishedData
 CMakeFiles
+src/Archive
 src/Book2
 src/Cluster
 src/LambdaAnalysis

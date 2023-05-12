@@ -11,7 +11,10 @@
  * *********************************************************************/
 #ifndef CAP__TransverseSpherocityAnalyzer
 #define CAP__TransverseSpherocityAnalyzer
-#include "Task.hpp"
+#include "EventTask.hpp"
+#include "Event.hpp"
+#include "Particle.hpp"
+#include "ParticleType.hpp"
 #include "TransverseSpherocityHistos.hpp"
 
 namespace CAP
@@ -21,7 +24,7 @@ namespace CAP
 //!
 //!Task performing a transverse spherocity analysis of events of the incoming event stream.
 //!
-class TransverseSpherocityAnalyzer : public Task
+class TransverseSpherocityAnalyzer : public EventTask
 {
 public:
   
@@ -35,7 +38,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   TransverseSpherocityAnalyzer(const String & _name,
-                               Configuration & _configuration,
+                               const Configuration & _configuration,
                                vector<EventFilter*> & _eventFilters,
                                vector<ParticleFilter*> & _particleFilters);
   
@@ -48,7 +51,9 @@ public:
   //! Sets the default  values of the configuration parameters used by this task
   //!
   virtual void setDefaultConfiguration();
-  
+
+  virtual void configure();
+
   //!
   //! Initialize this task
   //!
@@ -57,7 +62,7 @@ public:
   //!
   //! Execute the spherocity analysis on one event of the incoming event stream. Optionally set the EventProperty of the event for analysis by other tasks.
   //!
-  virtual void execute();
+  virtual void analyzeEvent();
   
   //!
   //! Creates the histograms  filled by this task at execution
@@ -67,11 +72,11 @@ public:
   //!
   //! Loads the histograms retquired by this task at execution
   //!
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
 
   virtual void createDerivedHistograms();
 
-  virtual void loadDerivedHistograms(TFile * inputFile __attribute__((unused)));
+  virtual void importDerivedHistograms(TFile & inputFile __attribute__((unused)));
 
   virtual void calculateDerivedHistograms();
 

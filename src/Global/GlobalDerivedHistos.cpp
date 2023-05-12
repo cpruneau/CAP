@@ -16,7 +16,7 @@ ClassImp(GlobalDerivedHistos);
 
 GlobalDerivedHistos::GlobalDerivedHistos(Task * _parent,
                                          const String & _name,
-                                         Configuration & _configuration,
+                                         const Configuration & _configuration,
                                          vector<ParticleFilter*> _particleFilters)
 :
 HistogramGroup(_parent,_name,_configuration),
@@ -32,9 +32,9 @@ void GlobalDerivedHistos::createHistograms()
 {
   if ( reportStart(__FUNCTION__))
     { }
-  Configuration & configuration = getConfiguration();
+  const Configuration & configuration = getConfiguration();
   const String & bn  = getName();
-  const String & ptn = getParentTaskName();
+  const String & ptn = getParentName( );
   const String & ppn = getParentPathName();
   int nBins_n  = configuration.getValueInt(ppn,"nBins_n");
   double min_n = configuration.getValueDouble(ppn,"Min_n");
@@ -63,12 +63,12 @@ void GlobalDerivedHistos::createHistograms()
 }
 
 //________________________________________________________________________
-void GlobalDerivedHistos::loadHistograms(TFile * inputFile)
+void GlobalDerivedHistos::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
   const String & bn  = getName();
-  const String & ptn = getParentTaskName();
+  const String & ptn = getParentName();
   const String & ppn = getParentPathName();
   unsigned int nParticleFilters = particleFilters.size();
   if (reportInfo(__FUNCTION__))

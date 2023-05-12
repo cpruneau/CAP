@@ -21,11 +21,11 @@ ClassImp(CollisionGeometryGenerator);
 //! @param _eventFilters  Vector of event filters to be used by this task instance
 //! @param _requiredLevel Debug/report level to be used by this task instance
 CollisionGeometryGenerator::CollisionGeometryGenerator(const String & _name,
-                                                       Configuration & _configuration,
+                                                       const Configuration & _configuration,
                                                        vector<EventFilter*> & _eventFilters,
                                                        vector<ParticleFilter*>& _particleFilters)
 :
-Task(_name,_configuration,_eventFilters, _particleFilters),
+EventTask(_name,_configuration,_eventFilters, _particleFilters),
 minB(0), minBSq(0.0), maxB(10.0), maxBSq(100.0),
 nnCrossSection(0.0),
 maxNNDistanceSq(0.)
@@ -65,10 +65,10 @@ void CollisionGeometryGenerator::setDefaultConfiguration()
   addParameter("nBins_bxSect", 100);
   addParameter("useRecentering",      true);
   addParameter("useNucleonExclusion", false);
-  setParameter("UseParticles",        true);
-  addParameter("CreateHistograms",    true);
-  addParameter("SaveHistograms",      true);
-  addParameter("UseEventStream0",     true);
+  addParameter("UseParticles",        true);
+  addParameter("HistogramsCreate",    true);
+  addParameter("HistogramsExport",      true);
+  addParameter("EventsUseStream0",     true);
 }
 
 
@@ -144,7 +144,7 @@ void CollisionGeometryGenerator::reset()
   eventStreams[0]->reset();
 }
 
-void CollisionGeometryGenerator::execute()
+void CollisionGeometryGenerator::createEvent()
 {
   
   if (reportStart(__FUNCTION__))
@@ -189,7 +189,7 @@ void CollisionGeometryGenerator::execute()
     }
   //event.getBinaryMoments().calculate();
   //event.getBinaryMoments().calculate();
-//  if (reportInfo("CollisionGeometryGenerator",getName(),"execute()"))
+//  if (reportInfo("CollisionGeometryGenerator",getName(),"createEvent()"))
 //   {
 //   cout << "Nuclei after generation" << endl;
 //   cout << "             b:" << b << endl;

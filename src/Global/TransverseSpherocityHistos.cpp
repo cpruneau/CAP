@@ -18,7 +18,7 @@ ClassImp(TransverseSpherocityHistos);
 
 TransverseSpherocityHistos::TransverseSpherocityHistos(Task * _parent,
                                                        const String & _name,
-                                                       Configuration & _configuration,
+                                                       const Configuration & _configuration,
                                                        vector<ParticleFilter*> & _particleFilters)
 :
 HistogramGroup(_parent,_name,_configuration),
@@ -41,9 +41,9 @@ void TransverseSpherocityHistos::createHistograms()
   if ( reportStart(__FUNCTION__))
     { }
   const String & bn  = getName();
-  const String & ptn = getParentTaskName();
+  const String & ptn = getParentName();
   const String & ppn = getParentPathName();
-  Configuration & configuration = getConfiguration();
+  const Configuration & configuration = getConfiguration();
   fillS0     = configuration.getValueBool(ppn,"FillS0");
   fillS1     = configuration.getValueBool(ppn,"FillS1");
   fillS1VsS0 = configuration.getValueBool(ppn,"FillS1VsS0");
@@ -97,14 +97,14 @@ void TransverseSpherocityHistos::createHistograms()
     { }
 }
 
-void TransverseSpherocityHistos::loadHistograms(TFile * inputFile)
+void TransverseSpherocityHistos::importHistograms(TFile & inputFile)
 {
   if ( reportStart(__FUNCTION__))
     { }
   const String & bn  = getName();
-  const String & ptn = getParentTaskName();
+  const String & ptn = getParentName();
   const String & ppn = getParentPathName();
-  Configuration & configuration = getConfiguration();
+  const Configuration & configuration = getConfiguration();
   fillS0     = configuration.getValueBool(ppn,"FillS0");
   fillS1     = configuration.getValueBool(ppn,"FillS1");
   fillS1VsS0 = configuration.getValueBool(ppn,"FillS1VsS0");

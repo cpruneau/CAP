@@ -13,6 +13,7 @@
 #define CAP__MessageLogger
 #include <iostream>
 #include "Aliases.hpp"
+#include "Exceptions.hpp"
 
 namespace CAP
 {
@@ -84,6 +85,28 @@ public:
   {
     return reportLevel;
   }
+
+  //!
+  //! Get the desired reported level used by instances (objects) of this class or subclasses.
+  //!
+  String  getSeverityName() const
+  {
+  String s;
+  switch (reportLevel)
+    {
+      default:
+      case Unknown:  s = traceSeverityName; break;
+      case Trace:    s = traceSeverityName; break;
+      case Debug:    s = debugSeverityName; break;
+      case Info:     s = infoSeverityName; break;
+      case Warning:  s = warningSeverityName; break;
+      case Error:    s = errorSeverityName; break;
+      case Fatal:    s = fatalSeverityName; break;
+    }
+  return s;
+  }
+
+
 
   //!
   //! Set the hold level .

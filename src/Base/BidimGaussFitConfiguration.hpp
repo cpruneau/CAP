@@ -59,7 +59,7 @@ class BidimGaussFitConfiguration : public Configuration
   BidimGaussFitConfiguration();
   BidimGaussFitConfiguration(const BidimGaussFitConfiguration& source);
   virtual ~BidimGaussFitConfiguration();
-  const BidimGaussFitConfiguration & operator=(const BidimGaussFitConfiguration & source);
+  const BidimGaussFitconst Configuration & operator=(const BidimGaussFitconst Configuration & source);
   void setExtraConfigParams(TH2 * h);
 
   void excludedEtaBins(double deltaEtaExclusionRegion,
@@ -208,4 +208,4 @@ class BidimGaussFitConfiguration : public Configuration
 
 } // namespace CAP
 
-#endif /* CAP__BidimGaussFitConfiguration &/
+#endif /* CAP__BidimGaussFitconst Configuration &/

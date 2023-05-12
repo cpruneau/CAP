@@ -11,13 +11,12 @@
  * *********************************************************************/
 #ifndef CAP__ParticlePair3DAnalyzer
 #define CAP__ParticlePair3DAnalyzer
-#include "Task.hpp"
-#include "ParticleSingleHistos.hpp"
+#include "EventTask.hpp"
+#include "Event.hpp"
+#include "Particle.hpp"
+#include "ParticleType.hpp"
+#include "ParticleHistos.hpp"
 #include "ParticlePair3DHistos.hpp"
-
-namespace CAP
-{
-
 
 //! Task used for the analysis of particle  pair distributions and correlations. As for other tasks classes of this package, use event filters and particle filters to determine the
 //! event selection and particle types and kinematic ranges across which  particle pair  distributions are studied. Particle particle distributions are computed
@@ -52,7 +51,7 @@ namespace CAP
 //!  + min_phi [0.0]: Minimum value
 //!  + max_phi [2pi]: Maximum value
 //!
-class ParticlePair3DAnalyzer : public Task
+class ParticlePair3DAnalyzer : public EventTask
 {
 public:
 
@@ -65,8 +64,8 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  ParticlePair3DAnalyzer(const String & _name,
-                         Configuration & _configuration,
+  ParticlePair3DAnalyzer(const TString & _name,
+                         const Configuration & _configuration,
                          vector<EventFilter*> & _eventFilters,
                          vector<ParticleFilter*> &_particleFilters);
   
@@ -83,7 +82,7 @@ public:
   //!
   //! Executes this task based on the configuration and class variable specified at construction
   //!
-  virtual void execute();
+  virtual void analyzeEvent();
   
   //!
   //! Creates the histograms  filled by this task at execution
@@ -93,7 +92,7 @@ public:
   //!
   //! Loads the histograms required by this task at execution
   //!
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
   
   //!
   //! Scales the pair histograms by the number of events accepted in each event filter category.
@@ -102,7 +101,7 @@ public:
 
   virtual void createDerivedHistograms();
 
-  virtual void loadDerivedHistograms(TFile * inputFile __attribute__((unused)));
+  virtual void importDerivedHistograms(TFile & inputFile __attribute__((unused)));
 
   virtual void calculateDerivedHistograms();
 
@@ -118,6 +117,5 @@ protected:
    ClassDef(ParticlePair3DAnalyzer,0)
 };
 
-} // namespace CAP
 
 #endif /* CAP__ParticlePair3DAnalyzer */

@@ -18,7 +18,7 @@ ClassImp(ParticlePerformanceSimulator);
 ParticlePerformanceSimulator::ParticlePerformanceSimulator(Task * _parent,
                                                            int _filterIndex,
                                                            const String & _name,
-                                                           Configuration & _configuration)
+                                                           const Configuration & _configuration)
 :
 HistogramGroup(_parent,_name,_configuration),
 filterIndex(_filterIndex),
@@ -42,10 +42,10 @@ void ParticlePerformanceSimulator::initialize()
 {
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & config = getConfiguration();
-  useSameSetForAll = config.getValueBool(getParentTaskName(),"useSameSetForAll");
-  resolutionOption = config.getValueInt(getParentTaskName(),"resolutionOption");
-  efficiencyOption = config.getValueInt(getParentTaskName(),"efficiencyOption");
+  const Configuration & config = getConfiguration();
+  useSameSetForAll = config.getValueBool(getParentName(),"useSameSetForAll");
+  resolutionOption = config.getValueInt(getParentName(),"resolutionOption");
+  efficiencyOption = config.getValueInt(getParentName(),"efficiencyOption");
   
   if (reportDebug(__FUNCTION__))
     {
@@ -74,14 +74,14 @@ void ParticlePerformanceSimulator::initialize()
       break;
       
       case 1:
-      biasAinv = config.getValueDouble(getParentTaskName(),baseName+"_PtBiasAinv");
-      biasA0   = config.getValueDouble(getParentTaskName(),baseName+"_PtBiasA0");
-      biasA1   = config.getValueDouble(getParentTaskName(),baseName+"_PtBiasA1");
-      biasA2   = config.getValueDouble(getParentTaskName(),baseName+"_PtBiasA2");
-      rmsAinv  = config.getValueDouble(getParentTaskName(),baseName+"_PtRmsAinv");
-      rmsA0    = config.getValueDouble(getParentTaskName(),baseName+"_PtRmsA0");
-      rmsA1    = config.getValueDouble(getParentTaskName(),baseName+"_PtRmsA1");
-      rmsA2    = config.getValueDouble(getParentTaskName(),baseName+"_PtRmsA2");
+      biasAinv = config.getValueDouble(getParentName(),baseName+"_PtBiasAinv");
+      biasA0   = config.getValueDouble(getParentName(),baseName+"_PtBiasA0");
+      biasA1   = config.getValueDouble(getParentName(),baseName+"_PtBiasA1");
+      biasA2   = config.getValueDouble(getParentName(),baseName+"_PtBiasA2");
+      rmsAinv  = config.getValueDouble(getParentName(),baseName+"_PtRmsAinv");
+      rmsA0    = config.getValueDouble(getParentName(),baseName+"_PtRmsA0");
+      rmsA1    = config.getValueDouble(getParentName(),baseName+"_PtRmsA1");
+      rmsA2    = config.getValueDouble(getParentName(),baseName+"_PtRmsA2");
       if (reportDebug(__FUNCTION__))
         {
         cout << " pT smearer:" << endl;
@@ -96,14 +96,14 @@ void ParticlePerformanceSimulator::initialize()
         }
       ptFunction = new ResolutionFunction(0,biasAinv,biasA0,biasA1,biasA2,rmsAinv,rmsA0,rmsA1,rmsA2);
       
-      biasAinv = config.getValueDouble(getParentTaskName(),baseName+"_EtaBiasAinv");
-      biasA0   = config.getValueDouble(getParentTaskName(),baseName+"_EtaBiasA0");
-      biasA1   = config.getValueDouble(getParentTaskName(),baseName+"_EtaBiasA1");
-      biasA2   = config.getValueDouble(getParentTaskName(),baseName+"_EtaBiasA2");
-      rmsAinv  = config.getValueDouble(getParentTaskName(),baseName+"_EtaRmsAinv");
-      rmsA0    = config.getValueDouble(getParentTaskName(),baseName+"_EtaRmsA0");
-      rmsA1    = config.getValueDouble(getParentTaskName(),baseName+"_EtaRmsA1");
-      rmsA2    = config.getValueDouble(getParentTaskName(),baseName+"_EtaRmsA2");
+      biasAinv = config.getValueDouble(getParentName(),baseName+"_EtaBiasAinv");
+      biasA0   = config.getValueDouble(getParentName(),baseName+"_EtaBiasA0");
+      biasA1   = config.getValueDouble(getParentName(),baseName+"_EtaBiasA1");
+      biasA2   = config.getValueDouble(getParentName(),baseName+"_EtaBiasA2");
+      rmsAinv  = config.getValueDouble(getParentName(),baseName+"_EtaRmsAinv");
+      rmsA0    = config.getValueDouble(getParentName(),baseName+"_EtaRmsA0");
+      rmsA1    = config.getValueDouble(getParentName(),baseName+"_EtaRmsA1");
+      rmsA2    = config.getValueDouble(getParentName(),baseName+"_EtaRmsA2");
       if (reportDebug(__FUNCTION__))
         {
         cout << " eta smearer:"<< endl;
@@ -118,14 +118,14 @@ void ParticlePerformanceSimulator::initialize()
         }
       etaFunction = new ResolutionFunction(1,biasAinv,biasA0,biasA1,biasA2,rmsAinv,rmsA0,rmsA1,rmsA2);
       
-      biasAinv = config.getValueDouble(getParentTaskName(),baseName+"_PhiBiasAinv");
-      biasA0   = config.getValueDouble(getParentTaskName(),baseName+"_PhiBiasA0");
-      biasA1   = config.getValueDouble(getParentTaskName(),baseName+"_PhiBiasA1");
-      biasA2   = config.getValueDouble(getParentTaskName(),baseName+"_PhiBiasA2");
-      rmsAinv  = config.getValueDouble(getParentTaskName(),baseName+"_PhiRmsAinv");
-      rmsA0    = config.getValueDouble(getParentTaskName(),baseName+"_PhiRmsA0");
-      rmsA1    = config.getValueDouble(getParentTaskName(),baseName+"_PhiRmsA1");
-      rmsA2    = config.getValueDouble(getParentTaskName(),baseName+"_PhiRmsA2");
+      biasAinv = config.getValueDouble(getParentName(),baseName+"_PhiBiasAinv");
+      biasA0   = config.getValueDouble(getParentName(),baseName+"_PhiBiasA0");
+      biasA1   = config.getValueDouble(getParentName(),baseName+"_PhiBiasA1");
+      biasA2   = config.getValueDouble(getParentName(),baseName+"_PhiBiasA2");
+      rmsAinv  = config.getValueDouble(getParentName(),baseName+"_PhiRmsAinv");
+      rmsA0    = config.getValueDouble(getParentName(),baseName+"_PhiRmsA0");
+      rmsA1    = config.getValueDouble(getParentName(),baseName+"_PhiRmsA1");
+      rmsA2    = config.getValueDouble(getParentName(),baseName+"_PhiRmsA2");
       if (reportDebug(__FUNCTION__))
         {
         cout << " phi smearer:"<< endl;
@@ -156,11 +156,11 @@ void ParticlePerformanceSimulator::initialize()
       
       case 1:
       {
-      double effPeakAmp = config.getValueDouble(getParentTaskName(),baseName+"_EffPeakAmp");
-      double effPeakPt  = config.getValueDouble(getParentTaskName(),baseName+"_EffPeakPt");
-      double effPeakRms = config.getValueDouble(getParentTaskName(),baseName+"_EffPeakRms");
-      double effA1      = config.getValueDouble(getParentTaskName(),baseName+"_EffA1");
-      double effA2      = config.getValueDouble(getParentTaskName(),baseName+"_EffA2");
+      double effPeakAmp = config.getValueDouble(getParentName(),baseName+"_EffPeakAmp");
+      double effPeakPt  = config.getValueDouble(getParentName(),baseName+"_EffPeakPt");
+      double effPeakRms = config.getValueDouble(getParentName(),baseName+"_EffPeakRms");
+      double effA1      = config.getValueDouble(getParentName(),baseName+"_EffA1");
+      double effA2      = config.getValueDouble(getParentName(),baseName+"_EffA2");
       if (reportDebug(__FUNCTION__))
         {
         cout << " efficiency:"  << endl;
@@ -182,14 +182,14 @@ void ParticlePerformanceSimulator::initialize()
     }
 }
 
-void ParticlePerformanceSimulator::loadHistograms(TFile * inputFile)
+void ParticlePerformanceSimulator::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & config = getConfiguration();
-  useSameSetForAll = config.getValueBool(getParentTaskName(),"useSameSetForAll");
-  resolutionOption = config.getValueInt(getParentTaskName(),"resolutionOption");
-  efficiencyOption = config.getValueInt(getParentTaskName(),"efficiencyOption");
+  const Configuration & config = getConfiguration();
+  useSameSetForAll = config.getValueBool(getParentName(),"useSameSetForAll");
+  resolutionOption = config.getValueInt(getParentName(),"resolutionOption");
+  efficiencyOption = config.getValueInt(getParentName(),"efficiencyOption");
 
   if (reportDebug(__FUNCTION__))
     {

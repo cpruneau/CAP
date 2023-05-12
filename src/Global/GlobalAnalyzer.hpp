@@ -12,7 +12,11 @@
 
 #ifndef CAP__GlobalAnalyzer
 #define CAP__GlobalAnalyzer
-#include "Task.hpp"
+#include "EventTask.hpp"
+//#include "Event.hpp"
+//#include "Particle.hpp"
+//#include "ParticleType.hpp"
+
 namespace CAP
 {
 
@@ -23,11 +27,11 @@ namespace CAP
 //! operated with several event filters and it is then possible to determine the distribution of multiplicity, energy, net charge, etc, based on specific event filters
 //! (e.g., multiplicity or collision centrality classes). The task can  be operated with one or more particle filters. It is then possible to determine the multiplicity of
 //! specific types of particles or the yield in specific pseudorapidity, transverse momentum ranges (etc).  When several event filters are used, only the first (index zero)
-//! is used to set the event property record of an event. Note that the createHistograms parameter must be set to YES (true) to fill histograms of this class.
+//! is used to set the event property record of an event. Note that the HistogramsCreate parameter must be set to YES (true) to fill histograms of this class.
 //! This means that an instance of this class can be used to analyze the multiplicity (energy, etc) of events with or without filling corresponding histograms. It is
 //! then possible to set the event property record only (base on event filter index 0), fill histograms only, or both set the record and fill histograms.
 //!
-class GlobalAnalyzer : public Task
+class GlobalAnalyzer : public EventTask
 {
 public:
 
@@ -41,7 +45,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   GlobalAnalyzer(const String & _name,
-                 Configuration & _configuration,
+                 const Configuration & _configuration,
                  vector<EventFilter*> & _eventFilters,
                  vector<ParticleFilter*> & _particleFilters);
   
@@ -54,7 +58,9 @@ public:
   //! Sets the default  values of the configuration parameters used by this task
   //!
   virtual void setDefaultConfiguration();
-  
+
+  virtual void configure();
+
   //!
   //! Initialize  this task. Effectively, this entails the initialization of the arrays used to contain the multiplicity, energy, net charge, etc corresponding to the different particle filters used by this task.
   //!
@@ -64,7 +70,7 @@ public:
   //! Execute this task based on the configuration and class variable specified at construction. This involves the determination of multiplicities, total energies, etc based on the event filters
   //! and particle filters operated by this task. It is also involves the filling of corresponding histograms.
   //!
-  virtual void execute();
+  virtual void analyzeEvent();
   
   //!
   //!Create required histograms to be filled at run time.
@@ -74,11 +80,11 @@ public:
   //!
   //!Load histograms previously produced by this task.
   //!
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
 
   virtual void createDerivedHistograms();
 
-  virtual void loadDerivedHistograms(TFile * inputFile __attribute__((unused)));
+  virtual void importDerivedHistograms(TFile & inputFile __attribute__((unused)));
 
   virtual void calculateDerivedHistograms();
 

@@ -11,18 +11,20 @@
  * *********************************************************************/
 #ifndef CAP__PythiaEventGenerator
 #define CAP__PythiaEventGenerator
-#include "TParticle.h"
-#include "TClonesArray.h"
-#include "TPythia8.h"
-#include "TFile.h"
-#include "TTree.h"
-#include "Task.hpp"
+//#include "TTree.h"
+//#include "TParticle.h"
+//#include "TClonesArray.h"
+#include "Pythia.h"
+#include "EventTask.hpp"
+//#include "Event.hpp"
+//#include "Particle.hpp"
+//#include "ParticleType.hpp"
 
 namespace CAP
 {
 
 
-class PythiaEventGenerator : public Task
+class PythiaEventGenerator : public EventTask
 {
 public:
 
@@ -36,7 +38,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   PythiaEventGenerator(const String & _name,
-                       Configuration & _configuration,
+                       const Configuration & _configuration,
                        vector<EventFilter*>&   _eventFilters,
                        vector<ParticleFilter*>&_particleFilters);
   
@@ -49,6 +51,8 @@ public:
   //! Sets the default  values of the configuration parameters used by this task
   //!
   virtual void setDefaultConfiguration();
+
+  virtual void configure();
 
   //!
   //! Initialize this task
@@ -64,30 +68,37 @@ public:
   //! Execute this task. This involves the generation of one PYTHIA event copied to CAP event stream OR output to
   //! a root tree.
   //!
-  virtual void execute();
-  
-  //!
-  //!Generate one interaction.
-  //!
-  virtual void generate(Particle * parent);
+  virtual void createEvent();
+
 
 protected:
   
-  TPythia8* pythia8; // = new TPythia8();
-
-  // For WAC analyses
-  int nMaxClonesArray; //  = 10000;
-  TClonesArray* particles; // = new TClonesArray("TParticle", nMax);
+  Pythia8::Pythia * pythia;
 
   // For TTree file output
   // Set up the ROOT TFile and TTree.
   TFile *outputFile;
-  Pythia8::Event *outputEvent;
-  TTree *outputTree;
+//  Pythia8::Event *outputEvent;
+//  TTree *outputTree;
 
-  bool DataConversionToWac;
-  bool dataOutputUsed;
-  bool standaloneMode;
+  bool   standaloneMode;
+  bool   printBanner;
+  bool   printStatistics;
+  int    printNEvents;
+  int    beamsPdgA;
+  int    beamsPdgB;
+  int    beamsFrameType;
+  double beamsECMS;
+  double beamsEA;
+  double beamsEB;
+  bool   setSeed;
+  long   seedValue;
+  bool   useQCDCR;
+  bool   useRopes;
+  bool   useShoving;
+  String xmlInputPath;
+  int    nEventsPrinted;
+
 
   ClassDef(PythiaEventGenerator,0)
 };

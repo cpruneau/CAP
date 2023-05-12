@@ -23,10 +23,10 @@ public:
 
   RadialBoostHistos(Task * _partial,
                     const String & _name,
-                    Configuration & _configuration);
+                    const Configuration & _configuration);
   virtual ~RadialBoostHistos() {}
   virtual void createHistograms();
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
   virtual void fill(double x, double y, double r, double phi, double beta, double weight);
 
   ////////////////////////////////////////////////////////////////////////////

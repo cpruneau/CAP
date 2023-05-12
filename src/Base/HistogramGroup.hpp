@@ -26,17 +26,17 @@ public:
   
   HistogramGroup(Task * _parent,
              const String & _name,
-             Configuration & _configuration);
+             const Configuration & _configuration);
 
   ~HistogramGroup() {}
 
   virtual void createHistograms();
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
   
   //!
   //! Returns the configuration of this histogram set
   //!
-  Configuration & getConfiguration() const
+  const Configuration & getConfiguration() const
   {
     return configuration;
   }
@@ -44,7 +44,7 @@ public:
   //!
   //! Returns the configuration of this histogram set
   //!
-  Configuration & getConfiguration()
+  const Configuration & getConfiguration()
   {
     return configuration;
   }
@@ -52,19 +52,19 @@ public:
   //!
   //! Sets the configuration of this task instance.
   //!
-  void setConfiguration(Configuration & config)
+  void setConfiguration(const Configuration & config)
   {
-    configuration = config;
+    configuration.addParameters(config);
   }
   
   Task * getParentTask() const;
-  const String getParentTaskName() const;
+  const String getParentName() const;
   const String getParentPathName() const;
 
 protected:
 
   Task * parent;
-  Configuration & configuration;
+  Configuration configuration;
 
   ClassDef(HistogramGroup,0)
 };

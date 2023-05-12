@@ -33,7 +33,7 @@ public:
   //! @param _configuration Configuration used to run this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  TaskIterator(const String & _name, Configuration & _configuration);
+  TaskIterator(const String & _name, const Configuration & _configuration);
 
   //!
   //! DTOR
@@ -48,9 +48,9 @@ public:
   //!
   //! Initialize the subtasks
   //!
-  virtual void initialize();
+  virtual void configure();
 
-
+  virtual void partial(const String & outputPathBase);
   //!
   //! Execute the subtasks
   //!
@@ -67,8 +67,12 @@ protected:
   long    nEventsPerSubbunch;
   int     nSubbunchesPerBunch;
   int     nBunches;
-  String bunchLabel;
-  String subbunchLabel;
+  long    nEventsRequested;
+  String  bunchLabel;
+  String  subbunchLabel;
+  long    iEvent;
+  int     iSubBunch;
+  int     iBunch;
 
   ClassDef(TaskIterator,0)
 };

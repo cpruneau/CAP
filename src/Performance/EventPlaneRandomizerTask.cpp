@@ -15,23 +15,22 @@ using CAP::EventPlaneRandomizerTask;
 ClassImp(EventPlaneRandomizerTask);
 
 EventPlaneRandomizerTask::EventPlaneRandomizerTask(const String & _name,
-                                                   Configuration & _configuration,
+                                                   const Configuration & _configuration,
                                                    vector<EventFilter*> & _eventFilters,
                                                    vector<ParticleFilter*>& _particleFilters)
 :
-Task(_name,_configuration,_eventFilters,_particleFilters)
+EventTask(_name,_configuration,_eventFilters,_particleFilters)
 {
   appendClassName("EventPlaneRandomizerTask");
 }
 
 void EventPlaneRandomizerTask::setDefaultConfiguration()
 {
-  Task::setDefaultConfiguration();
-  setParameter("UseParticles",    true);
-  setParameter("UseEventStream0", true);
+  EventTask::setDefaultConfiguration();
+  addParameter("EventsUseStream0", true);
 }
 
-void EventPlaneRandomizerTask::execute()
+void EventPlaneRandomizerTask::createEvent()
 {
   incrementTaskExecuted();
   double eventAngle= TMath::TwoPi() * gRandom->Rndm();

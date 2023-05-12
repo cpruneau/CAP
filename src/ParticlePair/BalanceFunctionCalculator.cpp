@@ -9,6 +9,7 @@
  * Author: Claude Pruneau,   04/01/2022
  *
  * *********************************************************************/
+#include "TString.h"
 #include "TRandom.h"
 #include "TFile.h"
 #include "TH1.h"
@@ -16,14 +17,18 @@
 #include <string>
 #include <stdio.h>
 #include "BalanceFunctionCalculator.hpp"
+using CAP::createName;
 using CAP::BalanceFunctionCalculator;
 
-BalanceFunctionCalculator::BalanceFunctionCalculator(const String & _name,
-                                                     Configuration & _configuration,
+ClassImp(BalanceFunctionCalculator)
+
+
+BalanceFunctionCalculator::BalanceFunctionCalculator(const TString & _name,
+                                                     const Configuration & _configuration,
                                                      vector<EventFilter*> & _eventFilters,
                                                      vector<ParticleFilter*> & _particleFilters)
 :
-Task(_name,_configuration,_eventFilters, _particleFilters),
+EventTask(_name,_configuration,_eventFilters, _particleFilters),
 sObservableNames(),
 pObservableNames()
 {
@@ -32,18 +37,18 @@ pObservableNames()
 
 void BalanceFunctionCalculator::setDefaultConfiguration()
 {
-  Task::setDefaultConfiguration();
-  setParameter("UseParticles",           false);
-  setParameter("CreateHistograms",       true);
-  setParameter("LoadHistograms",         true);
-  setParameter("SaveHistograms",         true);
-  setParameter("ForceHistogramsRewrite", true);
-  setParameter("AppendedString",         TString("BalFct"));
-  setParameter("calculateCI",            true);
-  setParameter("calculateCD",            true);
-  setParameter("calculateBFv1",          true);
-  setParameter("calculateDiffs",         true);
-  setParameter("calculateBFv2",          true);
+  EventTask::setDefaultConfiguration();
+  addParameter("UseParticles",           false);
+  addParameter("HistogramsCreate",       true);
+  addParameter("HistogramsImport",         true);
+  addParameter("HistogramsExport",         true);
+  addParameter("HistogramsForceRewrite", true);
+  addParameter("AppendedString",         TString("BalFct"));
+  addParameter("calculateCI",            true);
+  addParameter("calculateCD",            true);
+  addParameter("calculateBFv1",          true);
+  addParameter("calculateDiffs",         true);
+  addParameter("calculateBFv2",          true);
   addParameter("FillEta",                true);
   addParameter("FillY",                  false);
   addParameter("FillP2",                 false);
@@ -101,14 +106,18 @@ void BalanceFunctionCalculator::setDefaultConfiguration()
 }
 
 
-TH2* BalanceFunctionCalculator::calculate_CI(const String & taskName,
-                                             const String & eventClassName,
-                                             const String & particleName1,
-                                             const String & particleName2,
-                                             const String & obsName,
-                                             TH2* obs_1_2, TH2* obs_1Bar_2, TH2* obs_1_2Bar, TH2* obs_1Bar_2Bar)
+TH2* BalanceFunctionCalculator::calculate_CI(const TString & histoBaseName,
+                                             const TString & eventClassName,
+                                             const TString & particleName1,
+                                             const TString & particleName2,
+                                             const TString & obsName,
+                                             TH2* obs_1_2,
+                                             TH2* obs_1Bar_2,
+                                             TH2* obs_1_2Bar,
+                                             TH2* obs_1Bar_2Bar,
+                                             HistogramGroup * histogramGroup)
 {
-  String name = createName(taskName,eventClassName,particleName1,particleName2,obsName, "CI" );
+  TString name = CAP::createName(getName(),eventClassName,particleName1,particleName2,obsName, "CI" );
   TH2 * obs;
   TH1 * obs_x;
   TH1 * obs_y;
@@ -119,34 +128,35 @@ TH2* BalanceFunctionCalculator::calculate_CI(const String & taskName,
   obs->Add(obs_1_2);
   obs->Add(obs_1Bar_2Bar);
   obs->Scale(0.25);
-  histograms[0]->append(obs);
+  histogramGroup->push_back(obs);
 
-  name = createName(taskName,eventClassName,particleName1,particleName2,obsName,"CI_x");
+  name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,"CI_x");
   obs_x = obs->ProjectionX();
   obs_x->SetName(name);
   obs_x->SetTitle(name);
-  histograms[0]->append(obs_x);
+  histogramGroup->push_back(obs_x);
 
-  name = createName(taskName,eventClassName,particleName1,particleName2,obsName,"CI_y");
+  name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,"CI_y");
   obs_y = obs->ProjectionY();
   obs_y->SetName(name);
   obs_y->SetTitle(name);
-  histograms[0]->append(obs_y);
+  histogramGroup->push_back(obs_y);
 
   return obs;
 }
 
-TH2* BalanceFunctionCalculator::calculate_CD(const String & taskName,
-                                             const String & eventClassName,
-                                             const String & particleName1,
-                                             const String & particleName2,
-                                             const String & obsName,
+TH2* BalanceFunctionCalculator::calculate_CD(const TString & histoBaseName,
+                                             const TString & eventClassName,
+                                             const TString & particleName1,
+                                             const TString & particleName2,
+                                             const TString & obsName,
                                              TH2* obs_1_2,
                                              TH2* obs_1Bar_2,
                                              TH2* obs_1_2Bar,
-                                             TH2* obs_1Bar_2Bar)
+                                             TH2* obs_1Bar_2Bar,
+                                             HistogramGroup * histogramGroup)
 {
-  String name = createName(taskName,eventClassName,particleName1,particleName2,obsName, "CD" );
+  TString name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName, "CD" );
   TH2 * obs;
   TH1 * obs_x;
   TH1 * obs_y;
@@ -157,34 +167,35 @@ TH2* BalanceFunctionCalculator::calculate_CD(const String & taskName,
   obs->Add(obs_1_2, -1.0);
   obs->Add(obs_1Bar_2Bar, -1.0);
   obs->Scale(0.5);
-  histograms[0]->append(obs);
+  histogramGroup->push_back(obs);
 
-  name = createName(taskName,eventClassName,particleName1,particleName2,obsName,"CD_x");
+  name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,"CD_x");
   obs_x = obs->ProjectionX();
   obs_x->SetName(name);
   obs_x->SetTitle(name);
-  histograms[0]->append(obs_x);
+  histogramGroup->push_back(obs_x);
 
-  name = createName(taskName,eventClassName,particleName1,particleName2,obsName,"CD_y");
+  name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,"CD_y");
   obs_y = obs->ProjectionY();
   obs_y->SetName(name);
   obs_y->SetTitle(name);
-  histograms[0]->append(obs_y);
+  histogramGroup->push_back(obs_y);
 
   return obs;
 }
 
-TH2* BalanceFunctionCalculator::calculate_BalFct(const String & taskName,
-                                                 const String & eventClassName,
-                                                 const String & particleName1,
-                                                 const String & particleName2,
-                                                 const String & obsName,
-                                                 const String & comboName,
+TH2* BalanceFunctionCalculator::calculate_BalFct(const TString & histoBaseName,
+                                                 const TString & eventClassName,
+                                                 const TString & particleName1,
+                                                 const TString & particleName2,
+                                                 const TString & obsName,
+                                                 const TString & comboName,
                                                  TH1* rho1_2,
                                                  TH2* obs_US,
-                                                 TH2* obs_LS)
+                                                 TH2* obs_LS,
+                                                 HistogramGroup * histogramGroup)
 {
-  String name = createName(taskName,eventClassName,particleName1,particleName2,obsName,comboName);
+  TString name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName);
   TH2 * obs;
   TH1 * obs_x;
   TH1 * obs_y;
@@ -198,33 +209,34 @@ TH2* BalanceFunctionCalculator::calculate_BalFct(const String & taskName,
   obs->Scale(1.0/wx); // make this a function of delta y
   //double rho1Integral = rho1_2->Integral();
   //obs->Scale(1.0/rho1Integral);
-  histograms[0]->append(obs);
+  histogramGroup->push_back(obs);
 
-  name = createName(taskName,eventClassName,particleName1,particleName2,obsName,comboName+"_x");
+  name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_x");
   obs_x = obs->ProjectionX();
   obs_x->SetName(name);
   obs_x->SetTitle(name);
-  histograms[0]->append(obs_x);
+  histogramGroup->push_back(obs_x);
 
-  name = createName(taskName,eventClassName,particleName1,particleName2,obsName,comboName+"_y");
+  name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_y");
   obs_y = obs->ProjectionY();
   obs_y->SetName(name);
   obs_y->SetTitle(name);
-  histograms[0]->append(obs_y);
+  histogramGroup->push_back(obs_y);
 
   return obs;
 }
 
-TH2* BalanceFunctionCalculator::calculate_BalFctSum(const String & taskName,
-                                                    const String & eventClassName,
-                                                    const String & particleName1,
-                                                    const String & particleName2,
-                                                    const String & obsName,
-                                                    const String & comboName,
+TH2* BalanceFunctionCalculator::calculate_BalFctSum(const TString & histoBaseName,
+                                                    const TString & eventClassName,
+                                                    const TString & particleName1,
+                                                    const TString & particleName2,
+                                                    const TString & obsName,
+                                                    const TString & comboName,
                                                     TH2* obs_12Bar,
-                                                    TH2* obs_1Bar2)
+                                                    TH2* obs_1Bar2,
+                                                    HistogramGroup * histogramGroup)
 {
-  String name = createName(taskName,eventClassName,particleName1,particleName2,obsName,comboName);
+  TString name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName);
   TH2 * obs;
   TH1 * obs_x;
   TH1 * obs_y;
@@ -236,35 +248,36 @@ TH2* BalanceFunctionCalculator::calculate_BalFctSum(const String & taskName,
   //double rho1Integral = rho1_2->Integral();
   //obs->Scale(0.5/wx);
   obs->Scale(0.5);
-  histograms[0]->append(obs);
+  histogramGroup->push_back(obs);
 
-  name = createName(taskName,eventClassName,particleName1,particleName2,obsName,comboName+"_x");
+  name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_x");
   obs_x = obs->ProjectionX();
   obs_x->SetName(name);
   obs_x->SetTitle(name);
-  histograms[0]->append(obs_x);
+  histogramGroup->push_back(obs_x);
 
-  name = createName(taskName,eventClassName,particleName1,particleName2,obsName,comboName+"_y");
+  name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_y");
   obs_y = obs->ProjectionY();
   obs_y->SetName(name);
   obs_y->SetTitle(name);
-  histograms[0]->append(obs_y);
+  histogramGroup->push_back(obs_y);
 
   return obs;
 }
 
-TH2* BalanceFunctionCalculator::calculate_BalFct2(const String & taskName,
-                                                  const String & eventClassName,
-                                                  const String & particleName1,
-                                                  const String & particleName2,
-                                                  const String & obsName,
-                                                  const String & comboName,
+TH2* BalanceFunctionCalculator::calculate_BalFct2(const TString & histoBaseName,
+                                                  const TString & eventClassName,
+                                                  const TString & particleName1,
+                                                  const TString & particleName2,
+                                                  const TString & obsName,
+                                                  const TString & comboName,
                                                   TH1* rho1_1,
                                                   TH1* rho1_2,
                                                   TH2* obs_US,
-                                                  TH2* obs_LS)
+                                                  TH2* obs_LS,
+                                                  HistogramGroup * histogramGroup)
 {
-  String name = createName(taskName,eventClassName,particleName1,particleName2,obsName,comboName);
+  TString name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName);
   TH2 * obs;
   TH1 * obs_x;
   TH1 * obs_y;
@@ -282,34 +295,35 @@ TH2* BalanceFunctionCalculator::calculate_BalFct2(const String & taskName,
   obs->SetTitle(name);
   obs->Add(obs_LS, -1.0);
   obs->Scale(rho1_1_Integral);
-  histograms[0]->append(obs);
+  histogramGroup->push_back(obs);
 
-  name = createName(taskName,eventClassName,particleName1,particleName2,obsName,comboName+"_x");
+  name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_x");
   obs_x = obs->ProjectionX();
   obs_x->SetName(name);
   obs_x->SetTitle(name);
-  histograms[0]->append(obs_x);
+  histogramGroup->push_back(obs_x);
 
-  name = createName(taskName,eventClassName,particleName1,particleName2,obsName,comboName+"_y");
+  name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_y");
   obs_y = obs->ProjectionY();
   obs_y->SetName(name);
   obs_y->SetTitle(name);
-  histograms[0]->append(obs_y);
+  histogramGroup->push_back(obs_y);
 
   return obs;
 }
 
-TH2* BalanceFunctionCalculator::calculate_BalFct3(const String & taskName,
-                                                  const String & eventClassName,
-                                                  const String & particleName1,
-                                                  const String & particleName2,
-                                                  const String & obsName,
-                                                  const String & comboName,
+TH2* BalanceFunctionCalculator::calculate_BalFct3(const TString & histoBaseName,
+                                                  const TString & eventClassName,
+                                                  const TString & particleName1,
+                                                  const TString & particleName2,
+                                                  const TString & obsName,
+                                                  const TString & comboName,
                                                   TH1* rho1_2 __attribute__((unused)),
                                                   TH2* obs_US,
-                                                  TH2* obs_LS)
+                                                  TH2* obs_LS,
+                                                  HistogramGroup * histogramGroup)
 {
-  String name = createName(taskName,eventClassName,particleName1,particleName2,obsName,comboName);
+  TString name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName);
   TH2 * obs;
   TH1 * obs_x;
   TH1 * obs_y;
@@ -319,35 +333,36 @@ TH2* BalanceFunctionCalculator::calculate_BalFct3(const String & taskName,
   obs->Add(obs_LS, -1.0);
 //  double rho1Integral = rho1_2->Integral("Width");
 //  obs->Scale(rho1Integral);
-  histograms[0]->append(obs);
+  histogramGroup->push_back(obs);
 
-  name = createName(taskName,eventClassName,particleName1,particleName2,obsName,comboName+"_x");
+  name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_x");
   obs_x = obs->ProjectionX();
   obs_x->SetName(name);
   obs_x->SetTitle(name);
-  histograms[0]->append(obs_x);
+  histogramGroup->push_back(obs_x);
 
-  name = createName(taskName,eventClassName,particleName1,particleName2,obsName,comboName+"_y");
+  name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_y");
   obs_y = obs->ProjectionY();
   obs_y->SetName(name);
   obs_y->SetTitle(name);
-  histograms[0]->append(obs_y);
+  histogramGroup->push_back(obs_y);
 
   return obs;
 }
 
 
 
-TH2* BalanceFunctionCalculator::calculate_Diff(const String & taskName,
-                                                 const String & eventClassName,
-                                                 const String & particleName1,
-                                                 const String & particleName2,
-                                                 const String & obsName,
-                                                 const String & comboName,
+TH2* BalanceFunctionCalculator::calculate_Diff(const TString & histoBaseName,
+                                                 const TString & eventClassName,
+                                                 const TString & particleName1,
+                                                 const TString & particleName2,
+                                                 const TString & obsName,
+                                                 const TString & comboName,
                                                  TH2* obs_first,
-                                                 TH2* obs_second)
+                                               TH2* obs_second,
+                                               HistogramGroup * histogramGroup)
 {
-  String name = createName(taskName,eventClassName,particleName1,particleName2,obsName,comboName);
+  TString name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName);
   TH2 * obs;
   TH1 * obs_x;
   TH1 * obs_y;
@@ -355,19 +370,19 @@ TH2* BalanceFunctionCalculator::calculate_Diff(const String & taskName,
   obs->SetName(name);
   obs->SetTitle(name);
   obs->Add(obs_second, -1.0);
-  histograms[0]->append(obs);
+  histogramGroup->push_back(obs);
 
-  name = createName(taskName,eventClassName,particleName1,particleName2,obsName,comboName+"_x");
+  name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_x");
   obs_x = obs->ProjectionX();
   obs_x->SetName(name);
   obs_x->SetTitle(name);
-  histograms[0]->append(obs_x);
+  histogramGroup->push_back(obs_x);
 
-  name = createName(taskName,eventClassName,particleName1,particleName2,obsName,comboName+"_y");
+  name = CAP::createName(histoBaseName,eventClassName,particleName1,particleName2,obsName,comboName+"_y");
   obs_y = obs->ProjectionY();
   obs_y->SetName(name);
   obs_y->SetTitle(name);
-  histograms[0]->append(obs_y);
+  histogramGroup->push_back(obs_y);
 
   return obs;
 }
@@ -381,46 +396,46 @@ void BalanceFunctionCalculator::execute()
   
   if (reportStart(__FUNCTION__))
     ;
-  String histogramInputPath  = getValueString("HistogramInputPath");
-  String histogramInputFile  = getValueString("HistogramInputFile");
-  String histogramOutputPath = getValueString("HistogramOutputPath");
-  String histogramOutputFile = getValueString("HistogramOutputFile");
-  String appendedString      = getValueString("AppendedString");
-  bool forceHistogramsRewrite = getValueBool("ForceHistogramsRewrite" );
-  bool calculateCI            = getValueBool("calculateCI" );
-  bool calculateCD            = getValueBool("calculateCD" );
-  bool calculateBFv1          = getValueBool("calculateBFv1" );
-  bool calculateDiffs         = getValueBool("calculateDiffs" );
-  bool calculateBFv2          = getValueBool("calculateBFv2" );
-  VectorString  allFilesToAnalyze;
+  TString histogramsImportPath  = getValueString("HistogramsImportPath");
+  TString histogramsImportFile  = getValueString("HistogramsImportFile");
+  TString histosExportPath      = getValueString("HistogramsExportPath");
+  TString histosExportFile      = getValueString("HistogramsExportFile");
+  TString appendedString        = getValueString("AppendedString");
+  bool histosForceRewrite       = getValueBool("HistogramsForceRewrite" );
+  bool calculateCI              = getValueBool("calculateCI" );
+  bool calculateCD              = getValueBool("calculateCD" );
+  bool calculateBFv1            = getValueBool("calculateBFv1" );
+  bool calculateDiffs           = getValueBool("calculateDiffs" );
+  bool calculateBFv2            = getValueBool("calculateBFv2" );
+  vector<TString> allFilesToAnalyze;
 
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;
     cout << " ===========================================================" << endl;
-    cout << " Task name.....................: " << taskName << endl;
-    cout << " HistogramInputPath............: " << histogramInputPath << endl;
-    cout << " HistogramInputFile............: " << histogramInputFile << endl;
-    cout << " HistogramOutputPath...........: " << histogramOutputPath << endl;
-    cout << " HistogramOutputFile...........: " << histogramOutputFile << endl;
+    cout << " Task name.......................: " << getName() << endl;
+    cout << " HistogramsImportPath............: " << histogramsImportPath << endl;
+    cout << " HistogramsImportFile............: " << histogramsImportFile << endl;
+    cout << " HistogramsExportPath............: " << histosExportPath << endl;
+    cout << " HistogramsExportFile............: " << histosExportFile << endl;
     cout << " ===========================================================" << endl;
     }
 
-  if (histogramInputFile.Contains("none") || histogramInputFile.Contains("null") || histogramInputFile.IsNull() )
+  if (histogramsImportFile.Contains("none") || histogramsImportFile.Contains("null") || histogramsImportFile.IsNull() )
     {
-    VectorString  includePatterns = getSelectedValues("IncludedPattern", "none");
-    VectorString  excludePatterns = getSelectedValues("ExcludedPattern", "none");
+    vector<TString> includePatterns = getSelectedValues("IncludedPattern", "none");
+    vector<TString> excludePatterns = getSelectedValues("ExcludedPattern", "none");
     for (unsigned int k=0;k<includePatterns.size();k++) cout << " k:" << k << "  Include: " << includePatterns[k] << endl;
     for (unsigned int k=0;k<excludePatterns.size();k++) cout << " k:" << k << "  Exclude: " << excludePatterns[k] << endl;
     cout << " ===========================================================" << endl;
     bool prependPath = true;
     bool verbose     = true;
     int  maximumDepth = 2;
-    allFilesToAnalyze = listFilesInDir(histogramInputPath,includePatterns,excludePatterns,prependPath, verbose, maximumDepth);
+    allFilesToAnalyze = listFilesInDir(histogramsImportPath,includePatterns,excludePatterns,prependPath, verbose, maximumDepth);
     }
   else
     {
-    allFilesToAnalyze.push_back(histogramInputPath+histogramInputFile);
+    allFilesToAnalyze.push_back(histogramsImportPath+histogramsImportFile);
     }
 
 
@@ -443,56 +458,48 @@ void BalanceFunctionCalculator::execute()
     {
     cout << endl;
     cout << " ===========================================================" << endl;
-    cout << " Task name.....................: " << taskName << endl;
-    cout << " HistogramInputPath............: " << histogramInputPath << endl;
-    cout << " HistogramInputFile............: " << histogramInputFile << endl;
-    cout << " HistogramOutputPath...........: " << histogramOutputPath << endl;
-    cout << " HistogramOutputFile...........: " << histogramOutputFile << endl;
-    cout << " n files to analyze............: " << nFilesToAnalyze     << endl;
-    cout << " appendedString................: " << appendedString      << endl;
-    cout << " calculateCI...................: " << calculateCI         << endl;
-    cout << " calculateCD...................: " << calculateCD         << endl;
-    cout << " calculateBFv1.................: " << calculateBFv1       << endl;
-    cout << " calculateDiffs................: " << calculateDiffs      << endl;
-    cout << " calculateBFv2.................: " << calculateBFv2       << endl;
+    cout << " Task name.......................: " << getName() << endl;
+    cout << " HistogramsImportPath............: " << histogramsImportPath << endl;
+    cout << " HistogramsImportFile............: " << histogramsImportFile << endl;
+    cout << " HistogramsExportPath............: " << histosExportPath << endl;
+    cout << " HistogramsExportFile............: " << histosExportFile << endl;
+    cout << " n files to analyze..............: " << nFilesToAnalyze     << endl;
+    cout << " appendedString..................: " << appendedString      << endl;
+    cout << " calculateCI.....................: " << calculateCI         << endl;
+    cout << " calculateCD.....................: " << calculateCD         << endl;
+    cout << " calculateBFv1...................: " << calculateBFv1       << endl;
+    cout << " calculateDiffs..................: " << calculateDiffs      << endl;
+    cout << " calculateBFv2...................: " << calculateBFv2       << endl;
     cout << " ===========================================================" << endl;
     }
   postTaskOk();
 
 
-
   for (int iFile =0; iFile<nFilesToAnalyze; iFile++)
     {
-    histogramInputFile  = allFilesToAnalyze[iFile];
-    histogramOutputFile = removeRootExtension(histogramInputFile);
-    histogramOutputFile.ReplaceAll(TString("Derived"),appendedString);
-    TFile * inputFile  = nullptr;
-    TFile * outputFile = nullptr;
-    inputFile = openRootFile("",histogramInputFile,"OLD");
-    if (!inputFile) return;
-    if (forceHistogramsRewrite)
-      outputFile = openRootFile("",histogramOutputFile, "RECREATE");
-    else
-      outputFile = openRootFile("",histogramOutputFile, "NEW");
-    if (!outputFile) return;
+    histogramsImportFile  = allFilesToAnalyze[iFile];
+    histosExportFile      = removeRootExtension(histogramsImportFile);
+    histosExportFile.ReplaceAll(TString("Derived"),appendedString);
+    TFile & inputFile = openRootFile("",histogramsImportFile,"OLD");
+    String option = "NEW";
+    if (histosForceRewrite) option = "RECREATE";
+    TFile & outputFile = openRootFile("",histosExportFile,option);
     if (reportInfo(__FUNCTION__))
       {
       cout << endl;
       cout << " CalculateBF...................: "  << calculateBFv2       << endl;
-      cout << " From..........................: "  << histogramInputFile << endl;
-      cout << " Saved to:.....................: "  << histogramOutputFile << endl;
+      cout << " From..........................: "  << histogramsImportFile << endl;
+      cout << " Saved to:.....................: "  << histosExportFile << endl;
       }
-
-    // Use hh as helper to load and calculate histograms, etc.
-    HistogramGroup * hh = new HistogramGroup(this,taskName, getConfiguration());
-    hh->setOwnership(false);
-    histograms.push_back(hh); // enables handling in functions.
+    // Use histogramGroup  as helper to load and calculate histograms, etc.
+    HistogramGroup * histogramGroup  = new HistogramGroup(this,getName(), configuration);
+    histogramGroup ->setOwnership(false);
     loadNEexecutedTask(inputFile);
     loadNEventsAccepted(inputFile);
 
     unsigned int nSpecies = particleFilters.size()/2;
-    VectorString   sObservableNames;
-    VectorString   pObservableNames;
+    vector<TString>  sObservableNames;
+    vector<TString>  pObservableNames;
     int observableSelection = 5;
     switch (observableSelection)
       {
@@ -555,10 +562,10 @@ void BalanceFunctionCalculator::execute()
       cout << endl;
       cout << " nSpecies.........................: "  << nSpecies  << endl;
       cout << " sObservableNames.size()..........: "  << sObservableNames.size()  << endl;
-      for (int k=0; k<sObservableNames.size(); k++)
+      for (unsigned int k=0; k<sObservableNames.size(); k++)
         cout << "   " << k << "    " << sObservableNames[k] << endl;
       cout << " pObservableNames.size()..........: "  << pObservableNames.size()  << endl;
-      for (int k=0; k<pObservableNames.size(); k++)
+      for (unsigned int k=0; k<pObservableNames.size(); k++)
         cout << "   " << k << "    " << pObservableNames[k] << endl;
       }
 
@@ -571,57 +578,56 @@ void BalanceFunctionCalculator::execute()
           for (unsigned int iEventClass = 0; iEventClass<eventFilters.size();iEventClass++)
             {
             // load histogram and compute derived files.
-            String eventClassName   = eventFilters[iEventClass]->getName();
-            String particleName1    = particleFilters[iPart1]->getName();
-            String particleName1Bar = particleFilters[iPart1+nSpecies]->getName();
-            String particleName2    = particleFilters[iPart2]->getName();
-            String particleName2Bar   = particleFilters[iPart2+nSpecies]->getName();
-            TH1 * rho1_1    = hh->loadH1(inputFile,createName(taskName,eventClassName,particleName1,   sObservableNames[0]));
-            TH1 * rho1_1Bar = hh->loadH1(inputFile,createName(taskName,eventClassName,particleName1Bar,sObservableNames[0]));
-            TH1 * rho1_2    = hh->loadH1(inputFile,createName(taskName,eventClassName,particleName2,   sObservableNames[0]));
-            TH1 * rho1_2Bar = hh->loadH1(inputFile,createName(taskName,eventClassName,particleName2Bar,sObservableNames[0]));
+            TString eventClassName   = eventFilters[iEventClass]->getName();
+            TString particleName1    = particleFilters[iPart1]->getName();
+            TString particleName1Bar = particleFilters[iPart1+nSpecies]->getName();
+            TString particleName2    = particleFilters[iPart2]->getName();
+            TString particleName2Bar   = particleFilters[iPart2+nSpecies]->getName();
+            TH1 * rho1_1    = histogramGroup ->loadH1(inputFile,createName(getName(),eventClassName,particleName1,   sObservableNames[0]));
+            TH1 * rho1_1Bar = histogramGroup ->loadH1(inputFile,createName(getName(),eventClassName,particleName1Bar,sObservableNames[0]));
+            TH1 * rho1_2    = histogramGroup ->loadH1(inputFile,createName(getName(),eventClassName,particleName2,   sObservableNames[0]));
+            TH1 * rho1_2Bar = histogramGroup ->loadH1(inputFile,createName(getName(),eventClassName,particleName2Bar,sObservableNames[0]));
             if (!rho1_1 || !rho1_1Bar || !rho1_2 || !rho1_2Bar)
               {
               if (reportError(__FUNCTION__)) cout << "Cannot load one or more histograms. ABORT" << endl;
               exit(1);
               }
-            TH2 * obs_1_2       = hh->loadH2(inputFile,createName(taskName,eventClassName,particleName1,    particleName2,    pObservableNames[iObservable]));
-            TH2 * obs_1Bar_2    = hh->loadH2(inputFile,createName(taskName,eventClassName,particleName1Bar, particleName2,    pObservableNames[iObservable]));
-            TH2 * obs_1_2Bar    = hh->loadH2(inputFile,createName(taskName,eventClassName,particleName1,    particleName2Bar, pObservableNames[iObservable]));
-            TH2 * obs_1Bar_2Bar = hh->loadH2(inputFile,createName(taskName,eventClassName,particleName1Bar, particleName2Bar, pObservableNames[iObservable]));
+            TH2 * obs_1_2       = histogramGroup ->loadH2(inputFile,createName(getName(),eventClassName,particleName1,    particleName2,    pObservableNames[iObservable]));
+            TH2 * obs_1Bar_2    = histogramGroup ->loadH2(inputFile,createName(getName(),eventClassName,particleName1Bar, particleName2,    pObservableNames[iObservable]));
+            TH2 * obs_1_2Bar    = histogramGroup ->loadH2(inputFile,createName(getName(),eventClassName,particleName1,    particleName2Bar, pObservableNames[iObservable]));
+            TH2 * obs_1Bar_2Bar = histogramGroup ->loadH2(inputFile,createName(getName(),eventClassName,particleName1Bar, particleName2Bar, pObservableNames[iObservable]));
             if (!obs_1_2 || !obs_1Bar_2 || !obs_1_2Bar || !obs_1Bar_2Bar) return;
 
             if (calculateCI)
-              calculate_CI(taskName,eventClassName,particleName1,particleName2, pObservableNames[iObservable],obs_1_2,obs_1Bar_2,obs_1_2Bar,obs_1Bar_2Bar);
+              calculate_CI(getName(),eventClassName,particleName1,particleName2, pObservableNames[iObservable],obs_1_2,obs_1Bar_2,obs_1_2Bar,obs_1Bar_2Bar,histogramGroup );
 
             if (calculateCD)
-              calculate_CD(taskName,eventClassName,particleName1,particleName2, pObservableNames[iObservable],obs_1_2,obs_1Bar_2,obs_1_2Bar,obs_1Bar_2Bar);
+              calculate_CD(getName(),eventClassName,particleName1,particleName2, pObservableNames[iObservable],obs_1_2,obs_1Bar_2,obs_1_2Bar,obs_1Bar_2Bar,histogramGroup );
 
             if (calculateBFv1)
               {
-              TH2* bfa = calculate_BalFct(taskName,eventClassName,particleName1,particleName2, pObservableNames[iObservable], "B2_1_2Bar",rho1_2Bar, obs_1_2Bar, obs_1Bar_2Bar);
-              TH2* bfb = calculate_BalFct(taskName,eventClassName,particleName1,particleName2, pObservableNames[iObservable], "B2_1Bar_2",rho1_2,    obs_1Bar_2, obs_1_2);
-              calculate_BalFctSum(taskName,eventClassName,particleName1,particleName2, pObservableNames[iObservable], "B2_12Sum",bfa,bfb);
+              TH2* bfa = calculate_BalFct(getName(),eventClassName,particleName1,particleName2, pObservableNames[iObservable], "B2_1_2Bar",rho1_2Bar, obs_1_2Bar, obs_1Bar_2Bar,histogramGroup );
+              TH2* bfb = calculate_BalFct(getName(),eventClassName,particleName1,particleName2, pObservableNames[iObservable], "B2_1Bar_2",rho1_2,    obs_1Bar_2, obs_1_2,histogramGroup );
+              calculate_BalFctSum(getName(),eventClassName,particleName1,particleName2, pObservableNames[iObservable], "B2_12Sum",bfa,bfb,histogramGroup );
               }
             if (calculateDiffs)
               {
-              calculate_Diff(taskName,eventClassName,particleName1,particleName2, pObservableNames[iObservable], "Diff_US",   obs_1Bar_2,    obs_1_2Bar);
-              calculate_Diff(taskName,eventClassName,particleName1,particleName2, pObservableNames[iObservable], "Diff_LS",   obs_1Bar_2Bar, obs_1_2);
+              calculate_Diff(getName(),eventClassName,particleName1,particleName2, pObservableNames[iObservable], "Diff_US",   obs_1Bar_2,    obs_1_2Bar,histogramGroup );
+              calculate_Diff(getName(),eventClassName,particleName1,particleName2, pObservableNames[iObservable], "Diff_LS",   obs_1Bar_2Bar, obs_1_2,histogramGroup );
               }
             }
           }
         }
       }
-    outputFile->cd();
-    hh->saveHistograms(outputFile);
+    outputFile.cd();
+    histogramGroup->exportHistograms(outputFile);
     writeNEventsAccepted(outputFile);
     writeNEexecutedTask(outputFile);
 
-    outputFile->Close();
-    inputFile->Close();
-    hh->clear();
-    delete hh;
-    histograms.clear();
+    inputFile.Close();
+    outputFile.Close();
+    histogramGroup->clear();
+    delete histogramGroup ;
     }
   if (reportEnd(__FUNCTION__))
     ;

@@ -18,9 +18,9 @@ using CAP::GaussianGeneratorTask;
 ClassImp(GaussianGeneratorTask);
 
 GaussianGeneratorTask::GaussianGeneratorTask(const String & _name,
-                                             Configuration & _configuration)
+                                             const Configuration & _configuration)
 :
-Task(_name, _configuration),
+EventTask(_name, _configuration),
 profile(nullptr)
 {
   appendClassName("GaussianGeneratorTask");
@@ -30,14 +30,14 @@ profile(nullptr)
 //!
 void GaussianGeneratorTask::setDefaultConfiguration()
 {
-  //Task::setDefaultConfiguration();
-  setParameter("UseParticles", true);
-  setParameter("UseEventStream0", true);
-  setParameter("amplitude", 1.0);
-  setParameter("gammaeta",  1.0);
-  setParameter("gammaphi",  1.0);
-  setParameter("omegaeta",  1.0);
-  setParameter("omegaphi",  1.0);
+  EventTask::setDefaultConfiguration();
+  addParameter("UseParticles", true);
+  addParameter("EventsUseStream0", true);
+  addParameter("amplitude", 1.0);
+  addParameter("gammaeta",  1.0);
+  addParameter("gammaphi",  1.0);
+  addParameter("omegaeta",  1.0);
+  addParameter("omegaphi",  1.0);
 }
 
 void GaussianGeneratorTask::initialize()
@@ -49,6 +49,7 @@ void GaussianGeneratorTask::initialize()
   double gammaphi  = getValueDouble("gammaphi");
   double omegaeta  = getValueDouble("omegaeta");
   double omegaphi  = getValueDouble("omegaphi");
+  if (reportDebug(__FUNCTION__)) printConfiguration(cout);
   profile = new TF2("2DGenGauss","[0]*[1]*[2]/4.0/[3]/[4]/TMath::Gamma(1.0/[1])/TMath::Gamma(1.0/[2])*"
                     "TMath::Exp(-1.0*(TMath::Power(TMath::Abs(x/[3]),[1])+TMath::Power(TMath::Abs(y/[4]),[2])))");
   profile->SetParameters(amplitude,gammaeta,gammaphi,omegaeta,omegaphi);
@@ -62,21 +63,22 @@ GaussianGeneratorTask::~GaussianGeneratorTask()
   if (profile != nullptr) delete profile;
 }
 
-void GaussianGeneratorTask::execute()
+// needs to be reimplemented.
+void GaussianGeneratorTask::createEvent()
 {
-  incrementTaskExecuted();
-  Event & event = * eventStreams[0];
-
-  int nParticles = event.getNParticles();
-  for (int itrack = 0; itrack < nParticles; itrack++)
-    {
-    Particle *particle1 = event.getParticleAt(itrack);
-    for (int jtrack = itrack+1; jtrack < nParticles; jtrack++)
-      {
-      Particle *particle2 = event.getParticleAt(jtrack);
-      double deltaeta = particle1->getMomentum().Eta() - particle2->getMomentum().Eta();
-      double deltaphi = TVector2::Phi_mpi_pi(particle1->getMomentum().Phi() - particle2->getMomentum().Phi());
-      double weight; weight= profile->Eval(deltaeta,deltaphi) + 1.0;
-      }
-    }
+//  incrementTaskExecuted();
+//  Event & event = * eventStreams[0];
+//
+//  int nParticles = event.getNParticles();
+//  for (int itrack = 0; itrack < nParticles; itrack++)
+//    {
+//    Particle *particle1 = event.getParticleAt(itrack);
+//    for (int jtrack = itrack+1; jtrack < nParticles; jtrack++)
+//      {
+//      Particle *particle2 = event.getParticleAt(jtrack);
+//      double deltaeta = particle1->getMomentum().Eta() - particle2->getMomentum().Eta();
+//      double deltaphi = TVector2::Phi_mpi_pi(particle1->getMomentum().Phi() - particle2->getMomentum().Phi());
+//      double weight; weight= profile->Eval(deltaeta,deltaphi) + 1.0;
+//      }
+//    }
 }

@@ -67,7 +67,7 @@ void FunctionCollection::setDefaultOptions(bool color)
 ////////////////////////////////////////////////////////////////////////
 
 
-void FunctionCollection::setFunctionProperties(TF1 * f, const GraphConfiguration & graphConfiguration)
+void FunctionCollection::setFunctionProperties(TF1 * f, GraphConfiguration & graphConfiguration)
 {
   if (reportDebug(__FUNCTION__))
     {

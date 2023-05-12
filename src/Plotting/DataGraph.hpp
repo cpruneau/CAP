@@ -147,7 +147,7 @@ public:
 
   void draw(bool same);
   void setMinMax(double minY, double maxY);
-  void setProperties(const GraphConfiguration & graphConfig);
+  void setProperties(GraphConfiguration & graphConfig);
   void printToFile(ostream & output);
 
   static DataGraph * loadGraph(const String graphName,

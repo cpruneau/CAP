@@ -17,7 +17,7 @@ ClassImp(ParticleSingleHistos);
 
 ParticleSingleHistos::ParticleSingleHistos(Task * _parent,
                                const String & _name,
-                               Configuration & _configuration)
+                               const Configuration & _configuration)
 :
 HistogramGroup(_parent,_name,_configuration),
 fillEta(0),
@@ -68,9 +68,8 @@ void ParticleSingleHistos::createHistograms()
   if ( reportStart(__FUNCTION__))
     ;
   const String & bn  = getName();
-  const String & ptn = getParentTaskName();
+  const String & ptn = getParentName();
   const String & ppn = getParentPathName();
-  Configuration & configuration = getConfiguration();
   nBins_n1 = configuration.getValueInt(ppn,"nBins_n1");
   min_n1   = configuration.getValueDouble(ppn,"Min_n1");
   max_n1   = configuration.getValueDouble(ppn,"Max_n1");
@@ -164,18 +163,14 @@ void ParticleSingleHistos::createHistograms()
 
 
 //________________________________________________________________________
-void ParticleSingleHistos::loadHistograms(TFile * inputFile)
+void ParticleSingleHistos::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (!ptrFileExist(__FUNCTION__,inputFile)) return;
   const String & bn  = getName();
-  const String & ptn = getParentTaskName();
+  const String & ptn = getParentName();
   const String & ppn = getParentPathName();
-  Configuration & configuration = getConfiguration();
-
   setSeverityLevel(MessageLogger::Debug);
-
   if (reportDebug(__FUNCTION__))
     {
     cout << endl;
@@ -218,16 +213,13 @@ void ParticleSingleHistos::loadHistograms(TFile * inputFile)
     ;
 }
 
-void ParticleSingleHistos::loadCalibration(TFile * inputFile)
+void ParticleSingleHistos::loadCalibration(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (!ptrFileExist(__FUNCTION__,inputFile)) return;
-
   const String & bn  = getName();
-  const String & ptn = getParentTaskName();
+  const String & ptn = getParentName();
   const String & ppn = getParentPathName();
-  Configuration & configuration = getConfiguration();
   useEffCorrection = true;
   efficiencyOpt    = configuration.getValueInt(ppn,"efficientOpt");
   if (reportDebug(__FUNCTION__))
@@ -429,7 +421,7 @@ void ParticleSingleHistos::fill(Particle & particle, double weight)
     if (fillP2) h_spt_phiY->Fill(rapidity,phi,weight*pt);
     }
 
-  double pdgIndex = ParticleTypeCollection::getMasterParticleCollection()->findIndexForType(particle.getTypePtr());
+  double pdgIndex = ParticleDb::getDefaultParticleDb()->findIndexForType(particle.getTypePtr());
   h_pdgId->Fill(pdgIndex);
 }
 

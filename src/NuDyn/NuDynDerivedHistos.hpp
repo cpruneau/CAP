@@ -23,10 +23,10 @@ public:
 
   NuDynDerivedHistos(Task * _parent,
                      const String & _name,
-                     Configuration & _configuration);
+                     const Configuration & _configuration);
   virtual ~NuDynDerivedHistos() {} 
   void createHistograms();
-  void loadHistograms(TFile * inputFile);
+  void importHistograms(TFile & inputFile);
   virtual void calculateDerivedHistograms(NuDynHistos* baseHistos);
 
   ////////////////////////////////////////////////////////////////////////////

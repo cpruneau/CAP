@@ -13,8 +13,8 @@ add_compile_options(-Wall -Wextra -pedantic)
 add_library(Performance SHARED MeasurementPerformanceSimulator.cpp  ParticlePerformanceSimulator.cpp ParticlePerformanceAnalyzer.cpp ParticlePerformanceHistos.cpp ClosureCalculator.cpp ClosureIterator.cpp 
 EventPlaneRandomizerTask.cpp EventVertexRandomizerTask.cpp G__Performance.cxx)
 
-target_link_libraries(Performance Base ${ROOT_LIBRARIES} ${EXTRA_LIBS} )
-target_include_directories(Performance  PUBLIC Base Performance ${EXTRA_INCLUDES} ) 
+target_link_libraries(Performance Base  Particles  ${ROOT_LIBRARIES} ${EXTRA_LIBS} )
+target_include_directories(Performance  PUBLIC Base  Particles Performance ${EXTRA_INCLUDES} ) 
 
 # optimization for big histogram access within the pair inner loop
 add_definitions(-DOPTIMIZEADDBINCONTENT)

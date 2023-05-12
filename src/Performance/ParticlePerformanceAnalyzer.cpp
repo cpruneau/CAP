@@ -15,11 +15,11 @@ using CAP::ParticlePerformanceAnalyzer;
 ClassImp(ParticlePerformanceAnalyzer);
 
 ParticlePerformanceAnalyzer::ParticlePerformanceAnalyzer(const String & _name,
-                                                         Configuration & _configuration,
+                                                         const Configuration & _configuration,
                                                          vector<EventFilter*> & _eventFilters,
                                                          vector<ParticleFilter*>& _particleFilters)
 :
-Task(_name,_configuration,_eventFilters,_particleFilters),
+EventTask(_name,_configuration,_eventFilters,_particleFilters),
 fillEta(true),
 fillY(false)
 {
@@ -30,10 +30,10 @@ void ParticlePerformanceAnalyzer::setDefaultConfiguration()
 {
   Task::setDefaultConfiguration();
   addParameter("UseParticles",     true);
-  addParameter("UseEventStream0",  true);
-  addParameter("UseEventStream1",  true);
-  addParameter("CreateHistograms", true);
-  addParameter("SaveHistograms",   true);
+  addParameter("EventsUseStream0",  true);
+  addParameter("EventsUseStream1",  true);
+  addParameter("HistogramsCreate", true);
+  addParameter("HistogramsExport",   true);
   addParameter("nBins_pt",100);
   addParameter("Min_pt", 0.0);
   addParameter("Max_pt", 5.0);
@@ -67,7 +67,6 @@ void ParticlePerformanceAnalyzer::createHistograms()
   
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & configuration = getConfiguration();
   String prefixName = getName(); //prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
@@ -82,6 +81,7 @@ void ParticlePerformanceAnalyzer::createHistograms()
     cout << "       nEventFilters: " << nEventFilters << endl;
     cout << "    nParticleFilters: " << nParticleFilters << endl;
     }
+  histogramManager.addSet("Performance");
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     String evtFilterName = eventFilters[iEventFilter]->getName();
@@ -95,7 +95,7 @@ void ParticlePerformanceAnalyzer::createHistograms()
       histoName += partFilterName;
       ParticlePerformanceHistos * histos = new ParticlePerformanceHistos(this,histoName,configuration);
       histos->createHistograms();
-      baseSingleHistograms.push_back(histos);
+      histogramManager.addGroupInSet(0,histos);
       }
     }
   if (reportEnd(__FUNCTION__))
@@ -103,12 +103,11 @@ void ParticlePerformanceAnalyzer::createHistograms()
 }
 
 
-void ParticlePerformanceAnalyzer::loadHistograms(TFile * inputFile)
+void ParticlePerformanceAnalyzer::importHistograms(TFile & inputFile)
 {
   
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & configuration = getConfiguration();
   String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
@@ -122,6 +121,7 @@ void ParticlePerformanceAnalyzer::loadHistograms(TFile * inputFile)
     cout << "       nEventFilters: " << nEventFilters << endl;
     cout << "    nParticleFilters: " << nParticleFilters << endl;
     }
+  histogramManager.addSet("Performance");
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     String evtFilterName = * eventFilters[iEventFilter]->getName();
@@ -133,15 +133,15 @@ void ParticlePerformanceAnalyzer::loadHistograms(TFile * inputFile)
       histoName += "_";
       histoName += partFilterName;
       ParticlePerformanceHistos * histos = new ParticlePerformanceHistos(this,histoName,configuration);
-      histos->loadHistograms(inputFile);
-      baseSingleHistograms.push_back(histos);
+      histos->importHistograms(inputFile);
+      histogramManager.addGroupInSet(0,histos);
       }
     }
   if (reportEnd(__FUNCTION__))
     ;
 }
 
-void ParticlePerformanceAnalyzer::execute()
+void ParticlePerformanceAnalyzer::analyzeEvent()
 {
   
   if (reportStart(__FUNCTION__))
@@ -155,21 +155,21 @@ void ParticlePerformanceAnalyzer::execute()
 
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    //cout<< "ParticlePerformanceAnalyzer::execute() -- 4 --" << endl;
+    //cout<< "ParticlePerformanceAnalyzer::analyzeEvent() -- 4 --" << endl;
     if (!eventFilters[iEventFilter]->accept(recoEvent)) continue;
-    //cout<< "ParticlePerformanceAnalyzer::execute() -- 5 --" << endl;
+    //cout<< "ParticlePerformanceAnalyzer::analyzeEvent() -- 5 --" << endl;
     incrementNEventsAccepted(iEventFilter);
-    ParticlePerformanceHistos * histos = (ParticlePerformanceHistos *) baseSingleHistograms[0];
+    ParticlePerformanceHistos * histos = (ParticlePerformanceHistos *) histogramManager.getGroup(0,0);
     for (unsigned int iParticle=0; iParticle<nParticles; iParticle++)
       {
-      //cout<< "ParticlePerformanceAnalyzer::execute() -- 6 --" << endl;
+      //cout<< "ParticlePerformanceAnalyzer::analyzeEvent() -- 6 --" << endl;
       Particle & recoParticle = * recoEvent.getParticleAt(iParticle);
       for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
         {
-        //cout<< "ParticlePerformanceAnalyzer::execute() -- 7 --" << endl;
+        //cout<< "ParticlePerformanceAnalyzer::analyzeEvent() -- 7 --" << endl;
         if (particleFilters[iParticleFilter]->accept(recoParticle))
           {
-          //cout<< "ParticlePerformanceAnalyzer::execute() -- 8 --" << endl;
+          //cout<< "ParticlePerformanceAnalyzer::analyzeEvent() -- 8 --" << endl;
           histos->fill(recoParticle,1.0);
           } // particle accepted by filter
         } // filter loop

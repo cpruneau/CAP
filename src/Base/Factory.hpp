@@ -24,13 +24,12 @@
 //!
 #include <iostream>
 #include "TObject.h"
+#include "Exceptions.hpp"
 
 using namespace std;
 
 namespace CAP
 {
-
-
 
 template < class T >
 class Factory : public TObject
@@ -96,7 +95,7 @@ protected:
   return index-1;
   }
 
-  T * getNextObject()
+  T * getNextObject() throw (FactoryException)
   {
   if (index<capacity)
     {
@@ -111,9 +110,7 @@ protected:
     objects = new T*[newCapacity];
     if (!objects)
       {
-      cout << "<F> Factory::getObject() Unable to allocate new capacity : " << newCapacity << endl;
-      cout << "<F> Factory::getObject() Abort. " << newCapacity << endl;
-      exit(1);
+      throw FactoryException(capacity, newCapacity, "Unable to allocate new capacity","Factory::getNextObject()");
       }
     for (long k=0; k<capacity; k++) objects[k] = keep[k];
     for (long k=capacity; k<newCapacity; k++) objects[k] = new T();

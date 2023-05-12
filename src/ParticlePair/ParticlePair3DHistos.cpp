@@ -10,13 +10,12 @@
  *
  * *********************************************************************/
 #include "ParticlePair3DHistos.hpp"
-using CAP::ParticlePair3DHistos;
 
 ClassImp(ParticlePair3DHistos);
 
 ParticlePair3DHistos::ParticlePair3DHistos(Task * _parent,
-                                           const String & _name,
-                                           Configuration & _configuration)
+                                           const TString & _name,
+                                           const Configuration & _configuration)
 :
 HistogramGroup(_parent,_name,_configuration),
 nBins_n1(0),
@@ -81,27 +80,27 @@ void ParticlePair3DHistos::createHistograms()
 {
   if ( reportStart(__FUNCTION__))
     { }
-  String bn = getParentTaskName();
+  TString bn = getParentName();
   
-  Configuration & configuration = getConfiguration();
+  const Configuration & configuration = getConfiguration();
  
-  nBins_n2  = configuration.getValueInt(getParentTaskName(),"nBins_n2");
-  min_n2    = configuration.getValueDouble(getParentTaskName(),"Min_n2");
-  max_n2    = configuration.getValueDouble(getParentTaskName(),"Max_n2");
+  nBins_n2  = configuration.getValueInt(getParentName(),"nBins_n2");
+  min_n2    = configuration.getValueDouble(getParentName(),"Min_n2");
+  max_n2    = configuration.getValueDouble(getParentName(),"Max_n2");
   
-  nBins_n2  = configuration.getValueInt(getParentTaskName(),"nBins_n2");
-  min_n2    = configuration.getValueDouble(getParentTaskName(),"Min_n2");
-  max_n2    = configuration.getValueDouble(getParentTaskName(),"Max_n2");
+  nBins_n2  = configuration.getValueInt(getParentName(),"nBins_n2");
+  min_n2    = configuration.getValueDouble(getParentName(),"Min_n2");
+  max_n2    = configuration.getValueDouble(getParentName(),"Max_n2");
  
-  nBins_pt = configuration.getValueInt(getParentTaskName(),"nBins_pt");
-  min_pt   = configuration.getValueDouble(getParentTaskName(),"Min_pt");
-  max_pt   = configuration.getValueDouble(getParentTaskName(),"Max_pt");
+  nBins_pt = configuration.getValueInt(getParentName(),"nBins_pt");
+  min_pt   = configuration.getValueDouble(getParentName(),"Min_pt");
+  max_pt   = configuration.getValueDouble(getParentName(),"Max_pt");
   range_pt = max_pt - min_pt;
   scale_pt = double(nBins_pt)/range_pt;
 
-  nBins_phi   = configuration.getValueInt(getParentTaskName(),"nBins_phi");
-  min_phi     = configuration.getValueDouble(getParentTaskName(),"Min_phi");
-  max_phi     = configuration.getValueDouble(getParentTaskName(),"Max_phi");
+  nBins_phi   = configuration.getValueInt(getParentName(),"nBins_phi");
+  min_phi     = configuration.getValueDouble(getParentName(),"Min_phi");
+  max_phi     = configuration.getValueDouble(getParentName(),"Max_phi");
   range_phi   = max_phi - min_phi;
   scale_phi   = double(nBins_phi)/range_phi;
   width_Dphi  = range_phi/double(nBins_phi);
@@ -113,9 +112,9 @@ void ParticlePair3DHistos::createHistograms()
   min_Dphi_shft    = min_Dphi - width_Dphi*double(nBins_Dphi_shft);
   max_Dphi_shft    = max_Dphi - width_Dphi*double(nBins_Dphi_shft);
 
-  nBins_eta = configuration.getValueInt(getParentTaskName(),"nBins_eta");
-  min_eta   = configuration.getValueDouble(getParentTaskName(),"Min_eta");
-  max_eta   = configuration.getValueDouble(getParentTaskName(),"Max_eta");
+  nBins_eta = configuration.getValueInt(getParentName(),"nBins_eta");
+  min_eta   = configuration.getValueDouble(getParentName(),"Min_eta");
+  max_eta   = configuration.getValueDouble(getParentName(),"Max_eta");
   range_eta = max_eta - min_eta;
   scale_eta = double(nBins_eta)/range_eta;
 
@@ -124,107 +123,107 @@ void ParticlePair3DHistos::createHistograms()
   max_Deta  = range_eta;
 
 
-  nBins_y = configuration.getValueInt(getParentTaskName(),"nBins_y");
-  min_y   = configuration.getValueDouble(getParentTaskName(),"Min_y");
-  max_y   = configuration.getValueDouble(getParentTaskName(),"Max_y");
+  nBins_y = configuration.getValueInt(getParentName(),"nBins_y");
+  min_y   = configuration.getValueDouble(getParentName(),"Min_y");
+  max_y   = configuration.getValueDouble(getParentName(),"Max_y");
   range_y = max_y - min_y;
   scale_y = double(nBins_y)/range_y;
 
-  nBins_DeltaP  = configuration.getValueInt(getParentTaskName(),"nBins_DeltaP");
-  min_DeltaP    = configuration.getValueDouble(getParentTaskName(),"Min_DeltaP");
-  max_DeltaP    = configuration.getValueDouble(getParentTaskName(),"Max_DeltaP");
+  nBins_DeltaP  = configuration.getValueInt(getParentName(),"nBins_DeltaP");
+  min_DeltaP    = configuration.getValueDouble(getParentName(),"Min_DeltaP");
+  max_DeltaP    = configuration.getValueDouble(getParentName(),"Max_DeltaP");
 
   nBins_Dy  = 2*nBins_y-1;
   min_Dy    = -range_y;
   max_Dy    = range_y;
 
-  fillEta    = configuration.getValueBool(getParentTaskName(),"FillEta");
-  fillY      = configuration.getValueBool(getParentTaskName(),"FillY");
-  fillP2     = configuration.getValueBool(getParentTaskName(),"FillP2");
-  fill3D     = configuration.getValueBool(getParentTaskName(),"Fill3D");
+  fillEta    = configuration.getValueBool(getParentName(),"FillEta");
+  fillY      = configuration.getValueBool(getParentName(),"FillY");
+  fillP2     = configuration.getValueBool(getParentName(),"FillP2");
+  fill3D     = configuration.getValueBool(getParentName(),"Fill3D");
 
-  h_n2          = createHistogram(createName(bn,"n2"),         nBins_n2,  min_n2, max_n2, "n_{2}", "Yield");
-  h_n2_ptpt     = createHistogram(createName(bn,"n2_ptpt"),    nBins_pt,  min_pt, max_pt, nBins_pt, min_pt, max_pt,   "p_{T,1}",  "p_{T,2}", "N_{2}");
-  h_n2_phiPhi   = createHistogram(createName(bn,"n2_phiPhi"),  nBins_phi, min_phi, max_phi, nBins_phi, min_phi, max_phi, "#varphi_{1}", "#varphi_{2}", "N_{2}");
+  h_n2          = createHistogram(makeName(bn,"n2"),         nBins_n2,  min_n2, max_n2, "n_{2}", "Yield");
+  h_n2_ptpt     = createHistogram(makeName(bn,"n2_ptpt"),    nBins_pt,  min_pt, max_pt, nBins_pt, min_pt, max_pt,   "p_{T,1}",  "p_{T,2}", "N_{2}");
+  h_n2_phiPhi   = createHistogram(makeName(bn,"n2_phiPhi"),  nBins_phi, min_phi, max_phi, nBins_phi, min_phi, max_phi, "#varphi_{1}", "#varphi_{2}", "N_{2}");
 
   if (fillP2)
     {
-    h_DptDpt_phiPhi = createHistogram(createName(bn,"ptpt_phiPhi"),   nBins_phi, min_phi, max_phi, nBins_phi, min_phi, max_phi, "#varphi_{1}", "#varphi_{2}", "p_{T}xp_{T}");
+    h_DptDpt_phiPhi = createHistogram(makeName(bn,"ptpt_phiPhi"),   nBins_phi, min_phi, max_phi, nBins_phi, min_phi, max_phi, "#varphi_{1}", "#varphi_{2}", "p_{T}xp_{T}");
     }
 
   if (fillEta)
     {
-    h_n2_etaEta   = createHistogram(createName(bn,"n2_etaEta"),   nBins_eta,  min_eta, max_eta, nBins_eta, min_eta, max_eta, "#eta_{1}", "#eta_{2}", "N_{2}");
-    h_n2_DetaDphi = createHistogram(createName(bn,"n2_DetaDphi"), nBins_Deta, min_Deta, max_Deta, nBins_Dphi, min_Dphi, max_Dphi, "#Delta#eta", "#Delta#phi", "N_{2}");
+    h_n2_etaEta   = createHistogram(makeName(bn,"n2_etaEta"),   nBins_eta,  min_eta, max_eta, nBins_eta, min_eta, max_eta, "#eta_{1}", "#eta_{2}", "N_{2}");
+    h_n2_DetaDphi = createHistogram(makeName(bn,"n2_DetaDphi"), nBins_Deta, min_Deta, max_Deta, nBins_Dphi, min_Dphi, max_Dphi, "#Delta#eta", "#Delta#phi", "N_{2}");
     if (fillP2)
       {
-      h_DptDpt_etaEta = createHistogram(createName(bn,"ptpt_etaEta"), nBins_eta, min_eta, max_eta, nBins_eta, min_eta, max_eta, "#eta_{1}", "#eta_{2}", "p_{T}xp_{T}");
-      h_DptDpt_DetaDphi = createHistogram(createName(bn,"ptpt_DetaDphi"),nBins_Deta, min_Deta, max_Deta, nBins_Dphi, min_Dphi, max_Dphi, "#Delta#eta", "#Delta#phi", "ptpt");
+      h_DptDpt_etaEta = createHistogram(makeName(bn,"ptpt_etaEta"), nBins_eta, min_eta, max_eta, nBins_eta, min_eta, max_eta, "#eta_{1}", "#eta_{2}", "p_{T}xp_{T}");
+      h_DptDpt_DetaDphi = createHistogram(makeName(bn,"ptpt_DetaDphi"),nBins_Deta, min_Deta, max_Deta, nBins_Dphi, min_Dphi, max_Dphi, "#Delta#eta", "#Delta#phi", "ptpt");
       }
     }
 
   if (fillY)
     {
-    h_n2_yY     = createHistogram(createName(bn,"n2_yY"),     nBins_y,  min_y,  max_y,  nBins_y, min_y, max_y, "y_{1}","y_{2}", "N_{2}");
-    h_n2_DyDphi = createHistogram(createName(bn,"n2_DyDphi"), nBins_Dy, min_Dy, max_Dy, nBins_Dphi, min_Dphi, max_Dphi, "#Delta#y", "#Delta#phi", "N_{2}");
+    h_n2_yY     = createHistogram(makeName(bn,"n2_yY"),     nBins_y,  min_y,  max_y,  nBins_y, min_y, max_y, "y_{1}","y_{2}", "N_{2}");
+    h_n2_DyDphi = createHistogram(makeName(bn,"n2_DyDphi"), nBins_Dy, min_Dy, max_Dy, nBins_Dphi, min_Dphi, max_Dphi, "#Delta#y", "#Delta#phi", "N_{2}");
     if (fillP2)
       {
-      h_DptDpt_yY    = createHistogram(createName(bn,"ptpt_yY"),  nBins_y,  min_y, max_y, nBins_y, min_y, max_y, "y_{1}","y_{2}", "p_{T}xp_{T}");
-      h_DptDpt_DyDphi = createHistogram(createName(bn,"ptpt_DyDphi"),nBins_Dy, min_Dy, max_Dy, nBins_Dphi, min_Dphi, max_Dphi, "#Delta#y", "#Delta#phi", "ptpt");
+      h_DptDpt_yY    = createHistogram(makeName(bn,"ptpt_yY"),  nBins_y,  min_y, max_y, nBins_y, min_y, max_y, "y_{1}","y_{2}", "p_{T}xp_{T}");
+      h_DptDpt_DyDphi = createHistogram(makeName(bn,"ptpt_DyDphi"),nBins_Dy, min_Dy, max_Dy, nBins_Dphi, min_Dphi, max_Dphi, "#Delta#y", "#Delta#phi", "ptpt");
       }
     }
 
   if (fill3D)
     {
-    h_n2_DeltaP    = createHistogram(createName(bn,"n2_DeltaP"),
+    h_n2_DeltaP    = createHistogram(makeName(bn,"n2_DeltaP"),
                                      nBins_DeltaP,  min_DeltaP, max_DeltaP,
                                      nBins_DeltaP,  min_DeltaP, max_DeltaP,
                                      nBins_DeltaP,  min_DeltaP, max_DeltaP,
                                      "p_{s}","p_{o}", "p_{l}","n_{2}");
     }
 
-  if ( reportEnd("ParticlePair3DHistos",getParentTaskName(),"createHistograms()"))
+  if ( reportEnd("ParticlePair3DHistos",getParentName(),"createHistograms()"))
     { }
 }
 
 //________________________________________________________________________
-void ParticlePair3DHistos::loadHistograms(TFile * inputFile)
+void ParticlePair3DHistos::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  String bn = getParentTaskName();
-  Configuration & configuration = getConfiguration();
-  fillEta    = configuration.getValueBool(getParentTaskName(),"FillEta");
-  fillY      = configuration.getValueBool(getParentTaskName(),"FillY");
-  fillP2     = configuration.getValueBool(getParentTaskName(),"FillP2");
-  h_n2          = loadH1(inputFile, createName(bn,"n2"));
-  h_n2_ptpt     = loadH2(inputFile, createName(bn,"n2_ptpt"));
-  h_n2_phiPhi   = loadH2(inputFile, createName(bn,"n2_phiPhi"));
+  TString bn = getParentName();
+  const Configuration & configuration = getConfiguration();
+  fillEta    = configuration.getValueBool(getParentName(),"FillEta");
+  fillY      = configuration.getValueBool(getParentName(),"FillY");
+  fillP2     = configuration.getValueBool(getParentName(),"FillP2");
+  h_n2          = loadH1(inputFile, makeName(bn,"n2"));
+  h_n2_ptpt     = loadH2(inputFile, makeName(bn,"n2_ptpt"));
+  h_n2_phiPhi   = loadH2(inputFile, makeName(bn,"n2_phiPhi"));
 
   if (fillP2)
     {
-    h_DptDpt_phiPhi = loadH2(inputFile, createName(bn,"ptpt_phiPhi"));
+    h_DptDpt_phiPhi = loadH2(inputFile, makeName(bn,"ptpt_phiPhi"));
     }
 
   if (fillEta)
     {
-    h_n2_etaEta   = loadH2(inputFile, createName(bn,"n2_etaEta"));
-    h_n2_DetaDphi = loadH2(inputFile, createName(bn,"n2_DetaDphi"));
+    h_n2_etaEta   = loadH2(inputFile, makeName(bn,"n2_etaEta"));
+    h_n2_DetaDphi = loadH2(inputFile, makeName(bn,"n2_DetaDphi"));
     if (fillP2)
       {
-      h_DptDpt_etaEta   = loadH2(inputFile, createName(bn,"ptpt_etaEta"));
-      h_DptDpt_DetaDphi = loadH2(inputFile, createName(bn,"ptpt_DetaDphi"));
+      h_DptDpt_etaEta   = loadH2(inputFile, makeName(bn,"ptpt_etaEta"));
+      h_DptDpt_DetaDphi = loadH2(inputFile, makeName(bn,"ptpt_DetaDphi"));
       }
     }
   if (fillY)
     {
-    h_n2_yY     = loadH2(inputFile, createName(bn,"n2_yY"));
-    h_n2_DyDphi = loadH2(inputFile, createName(bn,"n2_DyDphi"));
+    h_n2_yY     = loadH2(inputFile, makeName(bn,"n2_yY"));
+    h_n2_DyDphi = loadH2(inputFile, makeName(bn,"n2_DyDphi"));
     if (fillP2)
       {
-      h_DptDpt_yY     = loadH2(inputFile, createName(bn,"ptpt_yY"));
-      h_DptDpt_DyDphi = loadH2(inputFile, createName(bn,"ptpt_DyDphi"));
+      h_DptDpt_yY     = loadH2(inputFile, makeName(bn,"ptpt_yY"));
+      h_DptDpt_DyDphi = loadH2(inputFile, makeName(bn,"ptpt_DyDphi"));
       }
     }
   if (reportEnd(__FUNCTION__))

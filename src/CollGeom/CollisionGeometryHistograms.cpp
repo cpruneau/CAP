@@ -18,7 +18,7 @@ ClassImp(CollisionGeometryHistograms);
 
 CollisionGeometryHistograms::CollisionGeometryHistograms(Task * _parent,
                                                          const String & _name,
-                                                         Configuration & _configuration)
+                                                         const Configuration & _configuration)
 :
 HistogramGroup(_parent,_name,_configuration),
 h_nProcessedVsB(nullptr),
@@ -89,7 +89,7 @@ void CollisionGeometryHistograms::createHistograms()
   if (reportStart(__FUNCTION__))
     ;
 
-  Configuration & configuration = getConfiguration();
+  const Configuration & configuration = getConfiguration();
   int nBins_b        = configuration.getValueInt(getName(),"nBins_b");
   double min_b       = configuration.getValueDouble(getName(),"Min_b");
   double max_b       = configuration.getValueDouble(getName(),"Max_b");
@@ -104,7 +104,7 @@ void CollisionGeometryHistograms::createHistograms()
   String nParticipants  = "N_{Part}";
   String nBin   = "N_{Bin}";
 
-  String bn = getParentTaskName();
+  String bn = getParentName( );
   h_nProcessedVsB     = createHistogram(createName(bn,"nProcessedVsB"),    nBins_b, min_b,  max_b,    impact,   counts);
   h_nAcceptedVsB      = createHistogram(createName(bn,"nAcceptedVsB"),     nBins_b, min_b,  max_b,    impact,   counts);
   h_nPartVsB          = createHistogram(createName(bn,"nPartVsB"),         nBins_b, min_b,  max_b,    nBins_nPart,   min_nPart,   max_nPart,   impact, nParticipants, counts);
@@ -199,11 +199,100 @@ void CollisionGeometryHistograms::createHistograms()
 }
 
 //________________________________________________________________________
-void CollisionGeometryHistograms::loadHistograms(TFile * inputFile)
+void CollisionGeometryHistograms::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (!ptrFileExist(__FUNCTION__, inputFile)) return;
+  String bn = getParentName( );
+  h_nProcessedVsB     = loadH1(inputFile,createName(bn,"nProcessedVsB"));
+  h_nAcceptedVsB      = loadH1(inputFile,createName(bn,"nAcceptedVsB"));
+  h_nPartVsB          = loadH2(inputFile,createName(bn,"nPartVsB"));
+  h_nBinaryVsB        = loadH2(inputFile,createName(bn,"nBinaryVsB"));
+  h_nPartVsB_Prof     = loadProfile(inputFile,createName(bn,"nPartVsB_Prof"));
+  h_nPartSqVsB_Prof   = loadProfile(inputFile,createName(bn,"nPartSqVsB_Prof"));
+  h_nBinaryVsB_Prof   = loadProfile(inputFile,createName(bn,"nBinaryVsB_Prof"));
+  h_nBinarySqVsB_Prof = loadProfile(inputFile,createName(bn,"nBinarySqVsB_Prof"));
+
+  h_nPart                 = loadH1(inputFile,createName(bn,"nParticipants"));
+  h_nBinaryVsNPart_Prof   = loadProfile(inputFile,createName(bn,"nBinaryVsNPart_Prof"));
+  h_nBinarySqVsNPart_Prof = loadProfile(inputFile,createName(bn,"nBinarySqVsNPart_Prof"));
+  h_bVsNPart_Prof         = loadProfile(inputFile,createName(bn,"bVsNPart_Prof"));
+  h_bSqVsNPart_Prof       = loadProfile(inputFile,createName(bn,"bSqVsNPart_Proff"));
+
+  h_nBinary                = loadH1(inputFile,createName(bn,"nBinary"));
+  h_nPartVsNBinary_Prof    = loadProfile(inputFile,createName(bn,"nPartVsNBinary_Prof"));
+  h_nPartSqVsNBinary_Prof  = loadProfile(inputFile,createName(bn,"nPartSqVsNBinary_Prof"));
+  h_bVsNBinary_Prof        = loadProfile(inputFile,createName(bn,"bVsNBinary_Prof"));
+  h_bSqVsNBinary_Prof      = loadProfile(inputFile,createName(bn,"bSqVsNBinary_Prof"));
+
+  h_crossSection           = loadH1(inputFile,createName(bn,"Xsect"));
+  h_nPartVsXsect_Prof      = loadProfile(inputFile,createName(bn,"nPartVsXsect_Prof"));
+  h_nPartSqVsXsect_Prof    = loadProfile(inputFile,createName(bn,"nPartSqVsXsect_Prof"));
+  h_nBinaryVsXsect_Prof    = loadProfile(inputFile,createName(bn,"nBinaryVsXsect_Prof"));
+  h_nBinarySqVsXsect_Prof  = loadProfile(inputFile,createName(bn,"nBinarySqVsXsect_Prof"));
+  h_bVsXsect_Prof          = loadProfile(inputFile,createName(bn,"bVsXsect_Prof"));
+  h_bSqVsXsect_Prof        = loadProfile(inputFile,createName(bn,"bSqVsXsect_Prof"));
+
+  h_xyDistInteractions     = loadH2(inputFile,createName(bn,"xyDistInteractions"));
+  h_xyDistNucleons         = loadH2(inputFile,createName(bn,"xyDistNucleons"));
+  // Derived HistogramGroup
+  h_nPartRmsVsB            = loadH1(inputFile,createName(bn,"nPartRmsVsB"));
+  h_nPartOmegaVsB          = loadH1(inputFile,createName(bn,"nPartOmegaVsB"));
+  h_nPartR2VsB             = loadH1(inputFile,createName(bn,"nPartR2VsB"));
+  h_nBinaryRmsVsB          = loadH1(inputFile,createName(bn,"nBinaryRmsVsB"));
+  h_nBinaryOmegaVsB        = loadH1(inputFile,createName(bn,"nBinaryOmegaVsB"));
+  h_nBinaryR2VsB           = loadH1(inputFile,createName(bn,"nBinaryR2VsB"));
+
+  h_nBinaryRmsVsNPart      = loadH1(inputFile,createName(bn,"nBinaryRmsVsNPart"));
+  h_nBinaryOmegaVsNPart    = loadH1(inputFile,createName(bn,"nBinaryOmegaVsNPart"));
+  h_nBinaryR2VsNPart       = loadH1(inputFile,createName(bn,"nBinaryR2VsNPart"));
+  h_bRmsVsNPart            = loadH1(inputFile,createName(bn,"bRmsVsNPart"));
+  h_bOmegaVsNPart          = loadH1(inputFile,createName(bn,"bOmegaVsNPart"));
+  h_bR2VsNPart             = loadH1(inputFile,createName(bn,"bR2VsNPart"));
+
+  h_nPartRmsVsNBinary      = loadH1(inputFile,createName(bn,"nPartRmsVsNBinary"));
+  h_nPartOmegaVsNBinary    = loadH1(inputFile,createName(bn,"nPartOmegaVsNBinary"));
+  h_nPartR2VsNBinary       = loadH1(inputFile,createName(bn,"nPartR2VsNBinary"));
+  h_bRmsVsNBinary          = loadH1(inputFile,createName(bn,"bRmsVsNBinary"));
+  h_bOmegaVsNBinary        = loadH1(inputFile,createName(bn,"bOmegaVsNBinary"));
+  h_bR2VsNBinary           = loadH1(inputFile,createName(bn,"bR2VsNBinary"));
+
+  h_nPartRmsVsXsect        = loadH1(inputFile,createName(bn,"nPartRmsVsXsect"));
+  h_nPartOmegaVsXsect      = loadH1(inputFile,createName(bn,"nPartOmegaVsXsect"));
+  h_nPartR2VsXsect         = loadH1(inputFile,createName(bn,"nPartR2VsXsect"));
+
+  h_nBinaryRmsVsXsect      = loadH1(inputFile,createName(bn,"nNBinaryRmsVsXsect"));
+  h_nBinaryOmegaVsXsect    = loadH1(inputFile,createName(bn,"nBinaryOmegaVsXsect"));
+  h_nBinaryR2VsXsect       = loadH1(inputFile,createName(bn,"nBinaryR2VsXsect"));
+
+  h_bRmsVsXsect            = loadH1(inputFile,createName(bn,"bRmsVsXsect"));
+  h_bOmegaVsXsect          = loadH1(inputFile,createName(bn,"bOmegaVsXsect"));
+  h_bR2VsXsect             = loadH1(inputFile,createName(bn,"bR2VsXsect"));
+
+  //  bValues10[0] = 0.0;
+  //  bValues10[1] = 3.39927;
+  //  bValues10[2] = 4.79929;
+  //  bValues10[3] = 6.79951;
+  //  bValues10[4] = 8.39898;
+  //  bValues10[5] = 9.79733;
+  //  bValues10[6] = 10.9965;
+  //  bValues10[7] = 11.9972;
+  //  bValues10[8] = 12.9963;
+  //  bValues10[9] = 13.7987;
+  //  bValues10[10] = 14.7986;
+  //  bValues10[11] = 20.0;
+
+  //  h_xyNNIntVsB         = loadH1(bn+"xyNNIntVsB");
+  //  h_varXVsB_Prof       = loadProfile(bn+"varXVsB_Prof");
+  //  h_varYVsB_Prof       = loadProfile(bn+"varYVsB_Prof");
+  //  h_covXYVsB_Prof      = loadProfile(bn+"covXYVsB_Prof");
+  //  h_epsilonXVsB_Prof   = loadProfile(bn+"epsilonXVsB_Prof");
+  //  h_epsilonYVsB_Prof   = loadProfile(bn+"epsilonYVsB_Prof");
+  //  h_epsilonXYVsB_Prof  = loadProfile(bn+"epsilonXYVsB_Prof");
+  //  h_epsilonXYVsB       = loadH1(createName(bn,"epsilonXYVsB"));;
+  //  h_psi2VsB_Prof       = loadProfile(bn+"psi2VsB_Prof");
+  //  h_psi2VsB            = loadH1(createName(bn,"psi2VsB"));
+
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -216,7 +305,7 @@ void CollisionGeometryHistograms::fill(Event & event, double weight)
   double nBinary       = ep.nBinaryTotal;
   double xSect         = ep.fractionalXSection;
 
-//  if (reportInfo("CollisionGeometryHistograms",getName(),"loadHistograms(TFile * inputFile)"))
+//  if (reportInfo("CollisionGeometryHistograms",getName(),"importHistograms(TFile & inputFile)"))
 //    {
 //    cout<< " impactPar :" << impactPar << endl;
 //    cout<< "     nParticipants :" << nParticipants << endl;

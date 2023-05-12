@@ -15,9 +15,9 @@ using CAP::NucleusGenerator;
 ClassImp(NucleusGenerator);
 
 NucleusGenerator::NucleusGenerator(const String & _name,
-                                   Configuration & _configuration)
+                                   const Configuration & _configuration)
 :
-Task(_name, _configuration),
+EventTask(_name, _configuration),
 gType(0),
 nR(0),
 minR(0),
@@ -46,8 +46,8 @@ NucleusGenerator::~NucleusGenerator()
 void NucleusGenerator::setDefaultConfiguration()
 {
   Task::setDefaultConfiguration();
-  setParameter("UseParticles",    true);
-  setParameter("UseEventStream0", true);
+  addParameter("UseParticles",    true);
+  addParameter("EventsUseStream0", true);
   addParameter("generatorType",    0);
   addParameter("nRadiusBins",    100);
   addParameter("MinimumRadius",  0.0);
@@ -139,7 +139,7 @@ void NucleusGenerator::initialize()
     ;
 }
 
-void NucleusGenerator::execute()
+void NucleusGenerator::createEvent()
 {
 // this should generate the nucleus. 
 }
@@ -209,7 +209,7 @@ void NucleusGenerator::generate(double & r, double & cosTheta, double & phi)
   rProfileGen->Fill(r);
 }
 
-void NucleusGenerator::saveHistograms()
+void NucleusGenerator::exportHistograms()
 {
   rDensity->Write();
   rProfile->Write();

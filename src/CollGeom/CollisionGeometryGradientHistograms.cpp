@@ -14,7 +14,7 @@ using CAP::CollisionGeometryGradientHistograms;
 
 CollisionGeometryGradientHistograms::CollisionGeometryGradientHistograms(Task * _parent,
                                                                          const String & _name,
-                                                                         Configuration & _configuration)
+                                                                         const Configuration & _configuration)
 :
 HistogramGroup(_parent,_name,_configuration),
 h_edge(0),
@@ -29,7 +29,7 @@ void CollisionGeometryGradientHistograms::createHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  String bn = getParentTaskName();
+  String bn = getParentName( );
   h_edge     = createHistogram(createName(bn,"edge"),   200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "Edge");
   h_radius   = createHistogram(createName(bn,"radius"), 200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "r/r_{max}");
   h_gx       = createHistogram(createName(bn,"gx"),     200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "g_{x}");
@@ -39,12 +39,11 @@ void CollisionGeometryGradientHistograms::createHistograms()
 }
 
 //________________________________________________________________________
-void CollisionGeometryGradientHistograms::loadHistograms(TFile * inputFile)
+void CollisionGeometryGradientHistograms::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  String bn = getParentTaskName();
+  String bn = getParentName( );
   h_edge   = loadH2(inputFile,createName(bn,"edge"));
   h_radius = loadH2(inputFile,createName(bn,"radius"));
   h_gx     = loadH2(inputFile,createName(bn,"gx"));

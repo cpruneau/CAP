@@ -11,18 +11,21 @@
  * *********************************************************************/
 #ifndef CAP__RunDerivedCalculation
 #define CAP__RunDerivedCalculation
-#include "Task.hpp"
+#include "EventTask.hpp"
+#include "Event.hpp"
+#include "Particle.hpp"
+#include "ParticleType.hpp"
 
 namespace CAP
 {
 
 
-class RunDerivedCalculation : public Task
+class RunDerivedCalculation : public EventTask
 {
 public:
   
   RunDerivedCalculation(const String & _name,
-                        Configuration & _configuration);
+                        const Configuration & _configuration);
 
   //!
   //! dtor

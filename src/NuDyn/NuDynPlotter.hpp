@@ -32,7 +32,7 @@ public:
                  GraphConfiguration  ** graphConfigurationsUsed);
 
   void makeComparisonPlots(const String & canvasNameBase,
-                           CanvasConfiguration & canvasConfiguration,
+                           Configuration & canvasConfiguration,
                            int nGraphs,
                            NuDynHistos ** nuDynHistos,
                            NuDynDerivedHistos ** nuDynDerivedHistos,
@@ -40,7 +40,7 @@ public:
                            GraphConfiguration  ** graphConfigurations);
 
   void makeNudynComparisonPlots(const String & canvasNameBase,
-                                CanvasConfiguration & canvasConfiguration,
+                                Configuration & canvasConfiguration,
                                 int nGraphs,
                                 NuDynHistos ** nuDynHistos,
                                 NuDynDerivedHistos ** nuDynDerivedHistos,

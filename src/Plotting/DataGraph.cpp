@@ -223,7 +223,7 @@ void DataGraph::setMinMax(double minY, double maxY)
   SetMaximum(maxY);
 }
 
-void DataGraph::setProperties(const GraphConfiguration & graphConfig)
+void DataGraph::setProperties(GraphConfiguration & graphConfig)
 {
   //cout << "<I> DataGraph::setProperties() Setting properties of graph: " << graphs[0]->GetName() << endl;
   graphs[0]->SetLineColor(  graphConfig.getValueInt(getName(),"lineColor"));

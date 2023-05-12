@@ -25,11 +25,11 @@ public:
 
   ParticleSingleHistos(Task * _parent,
                  const String & _name,
-                 Configuration & _configuration);
+                 const Configuration & _configuration);
   virtual ~ParticleSingleHistos();
   virtual void createHistograms();
-  virtual void loadHistograms(TFile * inputFile);
-  virtual void loadCalibration(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
+  virtual void loadCalibration(TFile & inputFile);
   virtual void fill(vector<ParticleDigit*> & particles, double weight);
   virtual void fill(Particle & particle, double weight);
   virtual void fillMultiplicity(double nAccepted, double totalEnergy, double weight);

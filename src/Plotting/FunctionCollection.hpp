@@ -56,7 +56,7 @@ public:
   }
 
   void setDefaultOptions(bool color=0);
-  void setFunctionProperties(TF1 * f, const GraphConfiguration & graphConfiguration);
+  void setFunctionProperties(TF1 * f, GraphConfiguration & graphConfiguration);
   void plotAllFunctions(const String & outputPath, bool doPrint=false);
 
   ClassDef(FunctionCollection,0)

@@ -48,7 +48,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   CalibrationProducer(const String & _name,
-                      Configuration & _configuration);
+                      const Configuration & _configuration);
   
   //!
   //! DTOR

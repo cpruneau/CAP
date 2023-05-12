@@ -11,7 +11,7 @@
  * *********************************************************************/
 #ifndef CAP__EventVertexRandomizerTask
 #define CAP__EventVertexRandomizerTask
-#include "Task.hpp"
+#include "EventTask.hpp"
 
 namespace CAP
 {
@@ -28,7 +28,7 @@ namespace CAP
 //! of a class instance.
 //!
 
-class EventVertexRandomizerTask : public Task
+class EventVertexRandomizerTask : public EventTask
 {
 public:
   
@@ -42,7 +42,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   EventVertexRandomizerTask(const String & _name,
-                            Configuration & _configuration,
+                            const Configuration & _configuration,
                             vector<EventFilter*> & _eventFilters,
                             vector<ParticleFilter*>& _particleFilters);
   
@@ -64,7 +64,7 @@ public:
   //!
   //! Execute this task based on the configuration and class variable specified at construction
   //!
-  virtual void execute();
+  virtual void createEvent();
   
 protected:
   

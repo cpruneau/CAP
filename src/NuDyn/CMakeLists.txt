@@ -11,8 +11,8 @@ ROOT_GENERATE_DICTIONARY(G__NuDyn NuDynAnalyzer.hpp NuDynDerivedHistos.hpp NuDyn
 add_compile_options(-Wall -Wextra -pedantic)
 add_library(NuDyn SHARED NuDynAnalyzer.cpp NuDynDerivedHistos.cpp NuDynHistos.cpp G__NuDyn.cxx)
 
-target_link_libraries(NuDyn Base ${ROOT_LIBRARIES} ${EXTRA_LIBS} )
-target_include_directories(NuDyn  PUBLIC Base NuDyn ${EXTRA_INCLUDES} ) 
+target_link_libraries(NuDyn Base  Particles  ${ROOT_LIBRARIES} ${EXTRA_LIBS} )
+target_include_directories(NuDyn  PUBLIC Base  Particles  NuDyn ${EXTRA_INCLUDES} ) 
 
 # optimization for big histogram access within the pair inner loop
 add_definitions(-DOPTIMIZEADDBINCONTENT)

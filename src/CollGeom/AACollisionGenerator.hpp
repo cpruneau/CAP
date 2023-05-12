@@ -11,7 +11,10 @@
  * *********************************************************************/
 #ifndef CAP__AACollisionGenerator
 #define CAP__AACollisionGenerator
-#include "Task.hpp"
+#include "EventTask.hpp"
+#include "Event.hpp"
+#include "Particle.hpp"
+#include "ParticleType.hpp"
 #include "CollisionGeometry.hpp"
 
 namespace CAP
@@ -32,7 +35,7 @@ namespace CAP
 //! \warning Improper use can crash your application
 //! \copyright Claude A. Pruneau, All rights reserved.
 //!
-class AACollisionGenerator : public Task
+class AACollisionGenerator : public EventTask
 {
 public:
 
@@ -46,7 +49,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   AACollisionGenerator(const String * _name,
-                       Configuration & _configuration,
+                       const Configuration & _configuration,
                        vector<EventFilter*> & _eventFilters,
                        vector<ParticleFilter*>& _particleFilters);
 
@@ -73,7 +76,7 @@ public:
   //!
   //! Execute this task based on the configuration and class variable specified at construction
   //!
-  virtual void execute();
+  virtual void createEvent();
 
   //!
   //! Get the collision generator object used by this task

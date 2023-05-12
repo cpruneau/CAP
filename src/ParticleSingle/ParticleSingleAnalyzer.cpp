@@ -17,11 +17,11 @@ using CAP::ParticleSingleAnalyzer;
 ClassImp(ParticleSingleAnalyzer);
 
 ParticleSingleAnalyzer::ParticleSingleAnalyzer(const String & _name,
-                                   Configuration & _configuration,
+                                   const Configuration & _configuration,
                                    vector<EventFilter*> & _eventFilters,
                                    vector<ParticleFilter*> & _particleFilters)
 :
-Task(_name,_configuration,_eventFilters,_particleFilters),
+EventTask(_name,_configuration,_eventFilters,_particleFilters),
 fillEta(true),
 fillY(false),
 fillP2(false)
@@ -36,11 +36,12 @@ fillP2(false)
 
 void ParticleSingleAnalyzer::setDefaultConfiguration()
 {
-  setParameter( "UseParticles",      true);
-  setParameter( "CreateHistograms",  true);
-  setParameter( "SaveHistograms",    true);
-  setParameter( "UseEventStream0",   true);
-  setParameter( "UseEventStream1",   false);
+  EventTask::setDefaultConfiguration();
+  addParameter( "UseParticles",      true);
+  addParameter( "HistogramsCreate",  true);
+  addParameter( "HistogramsExport",  true);
+  addParameter( "EventsUseStream0",  true);
+  addParameter( "EventsUseStream1",  false);
   addParameter( "nBins_n1",  100);
   addParameter( "Min_n1",    0.0);
   addParameter( "Max_n1",  100.0);
@@ -74,21 +75,62 @@ void ParticleSingleAnalyzer::setDefaultConfiguration()
   addParameter( "FillP2",   fillP2);
 }
 
-void ParticleSingleAnalyzer::createHistograms()
+void ParticleSingleAnalyzer::configure()
 {
-  if (reportStart(__FUNCTION__))
-    ;
-  Configuration & configuration = getConfiguration();
+  EventTask::configure();
   fillEta = getValueBool("FillEta");
   fillY   = getValueBool("FillY");
   fillP2  = getValueBool("FillP2");
-  
-  if (reportDebug(__FUNCTION__))
+  //configuration.sanityCheck("EventsAnalyze");
+  if (reportInfo(__FUNCTION__))
     {
-    cout << "Creating Histogram(s) for.."  << endl;
-    cout << "       nEventFilters: " << nEventFilters << endl;
-    cout << "    nParticleFilters: " << nParticleFilters << endl;
+    cout << endl;
+    printItem("EventsAnalyze");
+    printItem("EventsUseStream0");
+    printItem("EventsUseStream1");
+    printItem("EventsUseStream2");
+    printItem("EventsUseStream3");
+    printItem("HistogramsCreate");
+    printItem("HistogramsExport");
+    printItem("EventsUseStream0");
+    printItem("EventsUseStream1");
+    printItem("nBins_n1");
+    printItem("Min_n1");
+    printItem("Max_n1");
+    printItem("nBins_eTot");
+    printItem("Min_eTot");
+    printItem("Max_eTot");
+    printItem("nBins_pt");
+    printItem("Min_pt");
+    printItem("Max_pt");
+    printItem("nBins_eta");
+    printItem("Min_eta");
+    printItem("Max_eta");
+    printItem("nBins_y");
+    printItem("Min_y");
+    printItem("Max_y");
+    printItem("nBins_phi");
+    printItem("Min_phi");
+    printItem("Max_phi");
+    printItem("FillEta",fillEta);
+    printItem("FillY",fillY);
+    printItem("FillP2",fillP2);
+    cout << endl;
     }
+}
+
+void ParticleSingleAnalyzer::createHistograms()
+{
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    printItem("Creating Histogram(s)", "");
+    printItem("nEventFilters",   int(nEventFilters));
+    printItem("nParticleFilters",int(nParticleFilters));
+    cout << endl;
+    }
+
+  histogramManager.addSet("Single");
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     String efn = eventFilters[iEventFilter]->getName();
@@ -97,7 +139,7 @@ void ParticleSingleAnalyzer::createHistograms()
       String pfn = particleFilters[iParticleFilter]->getName();
       ParticleSingleHistos * histos = new ParticleSingleHistos(this,createName(getName(),efn,pfn),configuration);
       histos->createHistograms();
-      baseSingleHistograms.push_back(histos);
+      histogramManager.addGroupInSet(0,histos);
       }
     }
   if (reportEnd(__FUNCTION__))
@@ -105,16 +147,19 @@ void ParticleSingleAnalyzer::createHistograms()
 }
 
 
-void ParticleSingleAnalyzer::loadHistograms(TFile * inputFile)
+void ParticleSingleAnalyzer::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (reportDebug(__FUNCTION__))
+  if (reportInfo(__FUNCTION__))
     {
-    cout << endl <<  "Loading Histogram(s) for.."  << endl;
-    cout << "       nEventFilters: " << nEventFilters << endl;
-    cout << "    nParticleFilters: " << nParticleFilters << endl;
+    cout << endl;
+    printItem("Loading Histogram(s)", "");
+    printItem("nEventFilters",   int(nEventFilters));
+    printItem("nParticleFilters",int(nParticleFilters));
+    cout << endl;
     }
+  histogramManager.addSet("Single");
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     String efn = * eventFilters[iEventFilter]->getName();
@@ -122,17 +167,16 @@ void ParticleSingleAnalyzer::loadHistograms(TFile * inputFile)
       {
       String pfn = * particleFilters[iParticleFilter]->getName();
       ParticleSingleHistos * histos = new ParticleSingleHistos(this,createName(getName(),efn,pfn),configuration);
-      histos->loadHistograms(inputFile);
-      baseSingleHistograms.push_back(histos);
+      histos->importHistograms(inputFile);
+      histogramManager.addGroupInSet(0,histos);
       }
     }
   if (reportEnd(__FUNCTION__))
     ;
 }
 
-void ParticleSingleAnalyzer::execute()
+void ParticleSingleAnalyzer::analyzeEvent()
 {
-  incrementTaskExecuted();
   Event & event = *eventStreams[0];
   //Is this event accepted by this task's event filters?
   bool analyzeThisEvent = false;
@@ -146,12 +190,12 @@ void ParticleSingleAnalyzer::execute()
     analyzeThisEvent = true;
     }
   if (!analyzeThisEvent) return;
-
   // The event is accepted at least one event filter
   // but it may not have  pairs. If so skip out.
   // Doing the checks in this order guarantees the accepted
   // event count is correct for normalization purposes.
   unsigned int nParticles = event.getNParticles();
+  // cout << "ParticleSingleAnalyzer::analyzeEvent() nParticles:" << nParticles << endl;
   if (nParticles<1) return;
 
   vector<double> nAccepted(nParticleFilters,0.0);
@@ -163,14 +207,13 @@ void ParticleSingleAnalyzer::execute()
     // let us first reduce the number of particles to look at
     // and generate sublists for each particle filter
     // and use them to do the histo filling.
-
     Factory<ParticleDigit> * factory = ParticleDigit::getFactory();
     factory->reset();
     int index;
     int iEventFilter = 0;
 //    float pt,e;
 //    int iPt, iPhi, iEta, iY;
-    ParticleSingleHistos * histos = (ParticleSingleHistos *) baseSingleHistograms[0];
+    ParticleSingleHistos * histos = (ParticleSingleHistos *) histogramManager.getGroup(0,iEventFilter);
     for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ ) filteredParticles[iParticleFilter].clear();
 
     resetNParticlesAcceptedEvent();
@@ -221,7 +264,7 @@ void ParticleSingleAnalyzer::execute()
       for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
         {
         index = iParticleFilter+iEventFilter*nParticleFilters;
-        ParticleSingleHistos * histos = (ParticleSingleHistos *) baseSingleHistograms[index];
+        ParticleSingleHistos * histos = (ParticleSingleHistos *)  histogramManager.getGroup(0,index);
         histos->fill(filteredParticles[iParticleFilter],1.0);
         } // iParticleFilter loop
       } // jEventFilter loop
@@ -233,15 +276,14 @@ void ParticleSingleAnalyzer::execute()
     int iParticleFilter = 0;
     int iEventFilter = eventFilterPassed[0];
     int index = iParticleFilter+iEventFilter*nParticleFilters;
-    ParticleSingleHistos * histos = (ParticleSingleHistos *) baseSingleHistograms[index];
+    ParticleSingleHistos * histos = (ParticleSingleHistos *) histogramManager.getGroup(0,index);
     for (unsigned int iParticle=0; iParticle<nParticles; iParticle++)
       {
       Particle & particle = * event.getParticleAt(iParticle);
-      //LorentzVector & momentum = particle.getMomentum();
+      //particle.printProperties();
       if (particleFilters[iParticleFilter]->accept(particle))
         {
         incrementNParticlesAccepted(0,0);
-        //cout << "ParticlePairAnalyzer::execute() accepted:" << endl;
         nAccepted[iParticleFilter]++;
         totalEnergy[iParticleFilter] += particle.getMomentum().E();
         histos->fill(particle,1.0);
@@ -249,7 +291,6 @@ void ParticleSingleAnalyzer::execute()
       }
     histos->fillMultiplicity(nAccepted[iParticleFilter],totalEnergy[iParticleFilter],1.0);
     }
-  
 // all done with this event..
 }
 
@@ -257,16 +298,17 @@ void ParticleSingleAnalyzer::createDerivedHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & configuration = getConfiguration();
   String bn  = getName();
   if (reportDebug(__FUNCTION__))
     {
     cout << endl;
-    cout << "Creating Histogram(s) for........."  << endl;
-    cout << "nEventFilters.....................: " << nEventFilters << endl;
-    cout << "nParticleFilters..................: " << nParticleFilters << endl;
+    printItem("Creatting derived Histogram(s)", "");
+    printItem("nEventFilters",   int(nEventFilters));
+    printItem("nParticleFilters",int(nParticleFilters));
+    cout << endl;
     }
   ParticleSingleDerivedHistos * histos;
+  histogramManager.addSet("SingleDerived");
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     String efn = eventFilters[iEventFilter]->getName();
@@ -275,7 +317,7 @@ void ParticleSingleAnalyzer::createDerivedHistograms()
       String pfn = particleFilters[iParticleFilter]->getName();
       histos = new ParticleSingleDerivedHistos(this,createName(bn,efn,pfn),configuration);
       histos->createHistograms();
-      derivedSingleHistograms.push_back(histos);
+      histogramManager.addGroupInSet(1,histos);
       }
     }
   if (reportEnd(__FUNCTION__))
@@ -283,7 +325,7 @@ void ParticleSingleAnalyzer::createDerivedHistograms()
 }
 
 
-void ParticleSingleAnalyzer::loadDerivedHistograms(TFile * inputFile __attribute__((unused)))
+void ParticleSingleAnalyzer::importDerivedHistograms(TFile & inputFile __attribute__((unused)))
 {
 
 }
@@ -298,9 +340,10 @@ void ParticleSingleAnalyzer::calculateDerivedHistograms()
   if (reportDebug(__FUNCTION__))
     {
     cout << endl;
-    cout << "Creating Histogram(s) for........."  << endl;
-    cout << "nEventFilters.....................: " << nEventFilters << endl;
-    cout << "nParticleFilters..................: " << nParticleFilters << endl;
+    printItem("Calculating derived Histogram(s)", "");
+    printItem("nEventFilters",   int(nEventFilters));
+    printItem("nParticleFilters",int(nParticleFilters));
+    cout << endl;
     }
   ParticleSingleHistos        * baseHistos;
   ParticleSingleDerivedHistos * derivedHistos;
@@ -313,13 +356,42 @@ void ParticleSingleAnalyzer::calculateDerivedHistograms()
     for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
       {
       index = iEventFilter*nParticleFilters + iParticleFilter;
-      baseHistos    = (ParticleSingleHistos *) baseSingleHistograms[index];
-      derivedHistos = (ParticleSingleDerivedHistos *) derivedSingleHistograms[index];
+      baseHistos    = (ParticleSingleHistos *)  histogramManager.getGroup(0,index);
+      derivedHistos = (ParticleSingleDerivedHistos *)  histogramManager.getGroup(1,index);
       derivedHistos->calculateDerivedHistograms(baseHistos);
       }
     }
   if (reportEnd(__FUNCTION__))
     { }
+}
 
-
+//!
+//! Scale (all) the histograms held in all the histogram groups owned by this Task instance. This operation is executed automatically within the finalize() method call if
+//! and only if the HistogramsScale parameter of the Configuration instance controlling this Task is set to "true".
+//!
+void ParticleSingleAnalyzer::scaleHistograms()
+{
+  if (reportStart(__FUNCTION__))
+    ;
+  //double scalingFactor;
+  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+    {
+    long nEvents = nEventsAccepted[iEventFilter];
+    if (reportInfo(__FUNCTION__))
+      {
+      cout << endl;
+      printItem("iEventFilter",iEventFilter);
+      printItem("nEventsAccepted[iEventFilter]",nEvents);
+      }
+    if (nEvents<2) continue;
+    double scalingFactor = 1.0/double(nEvents);
+    for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
+      {
+      int groupIndex = iEventFilter*nParticleFilters + iParticleFilter;
+      ParticleSingleHistos * group = (ParticleSingleHistos*) histogramManager.getGroup(0,groupIndex);
+      group->scale(scalingFactor);
+      }
+    }
+  if (reportEnd(__FUNCTION__))
+    ;
 }
