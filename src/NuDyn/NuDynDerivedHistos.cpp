@@ -148,7 +148,7 @@ void NuDynDerivedHistos::createHistograms()
 void NuDynDerivedHistos::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   const String & bn  = getName();
   const String & ptn = getParentName();
   const String & ppn = getParentPathName();  nFilters         = configuration.getValueInt(ppn,"nFilters");
@@ -219,7 +219,7 @@ void NuDynDerivedHistos::importHistograms(TFile & inputFile)
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void NuDynDerivedHistos::calculateDerivedHistograms(NuDynHistos* baseHistos)

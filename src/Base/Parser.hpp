@@ -51,11 +51,11 @@ public:
   ifstream & openInputFile(const String  & inputPath,
                            const String  & fileName,
                            const String  & extension,
-                           const String  & ioOption="") throw (FileException);
+                           const String  & ioOption="");
   ofstream & openOutputFile(const String  & outputPath,
                             const String  & fileName,
                             const String  & extension,
-                            const String  & ioOption="") throw (FileException);
+                            const String  & ioOption="");
 
   String makeFileName(const String & inputPath,
                       const String & fileName,

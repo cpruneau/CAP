@@ -10,7 +10,7 @@ namespace Math
 //! Integration of a function based on values obtained from that function and computed at regular
 //! intervals of size 'stepSize'.
 //!
-double integrationSimpsonRule(double* values, int nValues, double stepSize) throw (MathException)
+double integrationSimpsonRule(double* values, int nValues, double stepSize)
 {
   if (!values)     throw MathException("First argument is a null pointer","integrationSimpsonRule()");
   if (nValues<3)   throw MathException("nValues<3","integrationSimpsonRule()");
@@ -26,7 +26,7 @@ double integrationSimpsonRule(double* values, int nValues, double stepSize) thro
 //! Integration of a function based on values obtained from that function and computed at regular
 //! intervals of size 'stepSize'.
 //!
-double integrationSimpsonRule(const vector<double> & values, double stepSize) throw (MathException)
+double integrationSimpsonRule(const vector<double> & values, double stepSize)
 {
   int nValues = values.size();
   if (nValues<3)   throw MathException("values.size()<3","integrationSimpsonRule()");

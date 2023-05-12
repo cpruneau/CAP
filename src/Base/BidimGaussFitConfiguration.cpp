@@ -343,7 +343,7 @@ void BidimGaussFitConfiguration::printConfiguration(ostream & out)
 //      out << "\tExcluded delta phi bins on each delta phi = 0 side: " << nBinsExcludedPhi << endl;
 //  }
 
-  out << "        nBinsExcludedEta: " << nBinsExcludedEta << endl;         ;
+  out << "        nBinsExcludedEta: " << nBinsExcludedEta << endl;   
   out << "        nBinsExcludedPhi: " << nBinsExcludedPhi << endl;
   out << " deltaEtaExclusionRegion: " << deltaEtaExclusionRegion << endl;
   out << "           deltaEtaLimit: " << deltaEtaLimit << endl;

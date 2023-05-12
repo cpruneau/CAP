@@ -47,7 +47,7 @@ public:
   virtual ~Configuration();
   Configuration & operator=(const Configuration & _configuration);
 
-  String  getParameter(const char* aKeyword)  const throw(String);
+  String  getParameter(const char* aKeyword)  const;
   int     getNParameters() const;
   bool    getValueBool(const char* aKeyword) const;
   int     getValueInt(const char* aKeyword) const;

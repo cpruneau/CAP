@@ -24,54 +24,54 @@ namespace Math
 #define kMAXSTIR  108.116855767857671821730036754
 #define kMAXLGM 2.556348e305
 
-double binomial(int  n,int  k) throw (MathException);
+double binomial(int  n,int  k);
 double binomialI(double p, int  n, int  k);
-double binomialPdf(unsigned int k, double p, unsigned int n) throw (MathException);
-double binomialCdf(unsigned int k, double p, unsigned int n) throw (MathException);
-double binomialCdfC(unsigned int k, double p, unsigned int n) throw (MathException);
+double binomialPdf(unsigned int k, double p, unsigned int n);
+double binomialCdf(unsigned int k, double p, unsigned int n);
+double binomialCdfC(unsigned int k, double p, unsigned int n);
 
-double negativeBinomialPdf(unsigned int k, double p, double n)  throw (MathException);
-double negativeBinomialCdf(unsigned int k, double p, double n)  throw (MathException);
-double negativeBinomialCdfC(unsigned int k, double p, double n)  throw (MathException);
+double negativeBinomialPdf(unsigned int k, double p, double n);
+double negativeBinomialCdf(unsigned int k, double p, double n);
+double negativeBinomialCdfC(unsigned int k, double p, double n);
 
 
-double betaIncomplete(double  x, double  a, double  b) throw (MathException);
-double betaCf(double  x, double  a, double  b)   throw (MathException);
-double betaPdf(double x, double a, double b)     throw (MathException);
-double betaCdf(double x, double a, double b )    throw (MathException);
-double betaCdfC(double x, double a, double b )   throw (MathException);
+double betaIncomplete(double  x, double  a, double  b);
+double betaCf(double  x, double  a, double  b);
+double betaPdf(double x, double a, double b);
+double betaCdf(double x, double a, double b );
+double betaCdfC(double x, double a, double b );
 
-double Gamma(double  z) throw (MathException);
-double lnGamma(double  z) throw (MathException);
-double gammaStirling(double  z) throw (MathException);
-double gammaIncomplete(double alpha, double x) throw (MathException);
-double gammaIncompleteC(double alpha, double x) throw (MathException);
-double gammaPdf(double x, double alpha, double beta) throw (MathException);
-double gammaCdf(double x, double alpha, double beta)   throw (MathException);
-double gammaCdfC(double x, double alpha, double beta)   throw (MathException);
+double Gamma(double  z);
+double lnGamma(double  z);
+double gammaStirling(double  z);
+double gammaIncomplete(double alpha, double x);
+double gammaIncompleteC(double alpha, double x);
+double gammaPdf(double x, double alpha, double beta);
+double gammaCdf(double x, double alpha, double beta);
+double gammaCdfC(double x, double alpha, double beta);
 
-double uniformPdf(double x, double a=0, double b=1, double x0=0) throw (MathException);
-double uniformCdf(double x, double a=0, double b=1, double x0=0) throw (MathException);
-double uniformCdfC(double x, double a=0, double b=1, double x0=0) throw (MathException);
+double uniformPdf(double x, double a=0, double b=1, double x0=0);
+double uniformCdf(double x, double a=0, double b=1, double x0=0);
+double uniformCdfC(double x, double a=0, double b=1, double x0=0);
 
-double exponentialPdf(double x, double lambda, double x0 = 0)   throw (MathException)
-double exponentialCdf(double x, double lambda, double x0 = 0)   throw (MathException)
-double exponentialCdfC(double x, double lambda, double x0 = 0)   throw (MathException)
+double exponentialPdf(double x, double lambda, double x0 = 0);
+double exponentialCdf(double x, double lambda, double x0 = 0);
+double exponentialCdfC(double x, double lambda, double x0 = 0);
 
-double erfInverse(double x) throw (MathException);
-double erfcInverse(double x) throw (MathException);
+double erfInverse(double x);
+double erfcInverse(double x);
 double standardNormalPdf(double x);
 double standardNormalCdf(double x);
 double standardNormalCdfC(double x);
-double normalPdf(double x, double mean, double sigma) throw (MathException);
-double normalCdf(double x, double mean, double sigma) throw (MathException);
-double normalCdfC(double x, double mean, double sigma) throw (MathException);
-double normQuantile(double p) throw (MathException);
+double normalPdf(double x, double mean, double sigma);
+double normalCdf(double x, double mean, double sigma);
+double normalCdfC(double x, double mean, double sigma);
+double normQuantile(double p);
 using  gaussianPDF = normalPdf;
 
-double logNormalPdf(double x, double sigma, double theta=0, double m=1) throw (MathException);
-double logNormalCdf(double x, double sigma, double theta=0, double m=1) throw (MathException);
-double logNormalCdfC(double x, double sigma, double theta=0, double m=1) throw (MathException);
+double logNormalPdf(double x, double sigma, double theta=0, double m=1);
+double logNormalCdf(double x, double sigma, double theta=0, double m=1);
+double logNormalCdfC(double x, double sigma, double theta=0, double m=1);
 
 double breitWignerPdf(double x, double mean=0, double gamma=1);
 double breitWignerCdf(double x, double mean=0, double gamma=1);
@@ -81,37 +81,37 @@ using  cauchyPdf  = breitWignerPdf;
 using  cauchyCdf  = breitWignerCdf;
 using  cauchyCdfC = breitWignerCdfC;
 
-double chiSquarePdf(double x, double r, double x0 = 0) throw (MathException);
-double chiSquareCdf(double x, double r, double x0 = 0) throw (MathException);
-double chiSquareCdfC(double x, double r, double x0 = 0) throw (MathException);
+double chiSquarePdf(double x, double r, double x0 = 0);
+double chiSquareCdf(double x, double r, double x0 = 0);
+double chiSquareCdfC(double x, double r, double x0 = 0);
 double chiSquareQuantile(double p, double ndf);
 
-double landauPdf(double x, double xi=1.0, double x0=0.0) throw (MathException);
+double landauPdf(double x, double xi=1.0, double x0=0.0);
 double landauCdf(double x, double xi, double x0);
 double landauXm1(double x, double xi, double x0);
 double landauXm2(double x, double xi, double x0);
 
-double poissonPdf(double x, double par) throw (MathException);
-double poissonI(double x, double par)  throw (MathException);
-double poissonCdf(unsigned int n, double mu) throw (MathException);
-double poissonCdfC(unsigned int n, double mu) throw (MathException);
+double poissonPdf(double x, double par);
+double poissonI(double x, double par);
+double poissonCdf(unsigned int n, double mu);
+double poissonCdfC(unsigned int n, double mu);
 
-double fDistributionPdf(double x, double n, double m, double x0)  throw (MathException);
-double fDistributionCdf(double x, double n, double m, double x0)  throw (MathException);
-double fDistributionCdfC(double x, double n, double m, double x0)  throw (MathException);
+double fDistributionPdf(double x, double n, double m, double x0);
+double fDistributionCdf(double x, double n, double m, double x0);
+double fDistributionCdfC(double x, double n, double m, double x0);
 
 double KolmogorovProb(double z);
 double KolmogorovTest(int  na, const double *a, int  nb, const double *b, const char *option);
 
-double laplacePdf(double x, double alpha=0, double beta=1)  throw (MathException);
-double laplaceCdf(double x, double alpha=0, double beta=1)  throw (MathException);
-double laplaceCdfC(double x, double alpha=0, double beta=1)  throw (MathException);
-double laplaceQuantile(double F, double alpha=0, double beta=1)  throw (MathException);
+double laplacePdf(double x, double alpha=0, double beta=1);
+double laplaceCdf(double x, double alpha=0, double beta=1);
+double laplaceCdfC(double x, double alpha=0, double beta=1);
+double laplaceQuantile(double F, double alpha=0, double beta=1);
 
-double studentPdf(double T, double ndf)  throw (MathException);
-double studentCdf(double x, double r, double x0)  throw (MathException);
-double studentCdfC(double x, double r, double x0)  throw (MathException);
-double studentQuantile(double p, double ndf, bool lower_tail=true)  throw (MathException);
+double studentPdf(double T, double ndf);
+double studentCdf(double x, double r, double x0);
+double studentCdfC(double x, double r, double x0);
+double studentQuantile(double p, double ndf, bool lower_tail=true);
 
 double vavilovPdf(double x, double kappa, double beta2);
 double vavilovDenEval(double  rlam, double  *AC, double  *HC, int  itype);
@@ -121,8 +121,8 @@ double voigtPdf(double x, double sigma, double lg, int  r = 4);
 
 void quantiles(int  n, int  nprob, double  *x, double  *quantiles, double  *prob, bool isSorted, int  *index, int  type);
 
-double crystalBallFct(double x, double alpha, double n, double sigma, double mean = 0) throw (MathException)
-double crystalBallPdf(double x, double alpha, double n, double sigma, double mean = 0)     throw (MathException)
+double crystalBallFct(double x, double alpha, double n, double sigma, double mean = 0);
+double crystalBallPdf(double x, double alpha, double n, double sigma, double mean = 0); 
 
 
 
@@ -139,7 +139,7 @@ double crystalBallPdf(double x, double alpha, double n, double sigma, double mea
 //! <A HREF="http://mathworld.wolfram.com/F-Distribution.html">
 //! Mathworld</A>.
 //!
-inline double fDistributionPdf(double x, double n, double m, double x0 = 0)   throw (MathException)
+inline double fDistributionPdf(double x, double n, double m, double x0 = 0)
 {
   // function is defined only for both n and m > 0
   if (n < 0 || m < 0)   throw MathException("fDistributionPdf() called with n < 0 || m < 0");
@@ -158,7 +158,7 @@ inline double fDistributionPdf(double x, double n, double m, double x0 = 0)   th
 //! <A HREF="http://mathworld.wolfram.com/GammaDistribution.html">
 //! Mathworld</A>.
 //!
-inline double gammaPdf(double x, double alpha, double theta, double x0 = 0)  throw (MathException)
+inline double gammaPdf(double x, double alpha, double theta, double x0 = 0)
 {
   // Inlined to enable clad-auto-derivation for this function.
 
@@ -250,7 +250,7 @@ double landauPdf(double x, double xi = 1, double x0 = 0);
 //! @param s scale parameter (not the sigma of the distribution which is not even defined)
 //! @param x0  location parameter, corresponds approximately to the most probable value. For x0 = 0, sigma = 1, the x_mpv = -0.22278
 //!
-inline double logNormalPdf(double x, double m, double s, double x0 = 0)  throw (MathException)
+inline double logNormalPdf(double x, double m, double s, double x0 = 0)
 {
   // Inlined to enable clad-auto-derivation for this function.
   if ((x-x0) <= 0) MathException("logNormalPdf() (x-x0) <= 0 ")
@@ -269,7 +269,7 @@ inline double logNormalPdf(double x, double m, double s, double x0 = 0)  throw (
 //! <A HREF="http://mathworld.wolfram.com/PoissonDistribution.html">
 //! Mathworld</A>.
 //!
-inline double poissonPdf(unsigned int n, double mu)   throw (MathException)
+inline double poissonPdf(unsigned int n, double mu)
 {
   if (mu < 0)  throw MathException("poissonPdf() mu < 0");
   if (n > 0 && mu >= 0) return std::exp (n*std::log(mu) - lgamma(n+1) - mu);
@@ -302,7 +302,7 @@ inline double tDistributionPdf(double x, double r, double x0 = 0)
 //! <A HREF="http://mathworld.wolfram.com/UniformDistribution.html">
 //! Mathworld</A>.
 //!
-inline double uniformPdf(double x, double a, double b, double x0 = 0)   throw (MathException)
+inline double uniformPdf(double x, double a, double b, double x0 = 0)
 {
   if (a==b) throw MathException("uniformPdf() a==b");
   double arg = x-x0;

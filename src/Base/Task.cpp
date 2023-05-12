@@ -137,7 +137,7 @@ void Task::setDefaultConfiguration()
 void Task::configure()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
 
   ConfigurationManager::configure();
   histosCreate              = getValueBool("HistogramsCreate");
@@ -167,7 +167,7 @@ void Task::configure()
     }
   configured = true;
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 
@@ -188,7 +188,7 @@ void Task::configure()
 void Task::initialize()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   initializeTaskExecuted();
   if (histosImport)  importHistograms();
   if (histosCreate)  createHistograms();
@@ -196,50 +196,50 @@ void Task::initialize()
 //  if (calibsCreate)  createCalibrations();
   if (hasSubTasks())  initializeSubTasks();
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void Task::execute()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   incrementTaskExecuted();
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 
 void Task::finalize()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (histosExport)  exportHistograms();
   if (histosPlot)    plotHistograms();
   if (histosPrint)   printHistograms();
   if (hasSubTasks()) finalizeSubTasks();
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void Task::reset()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   resetTaskExecuted();
   if (histosCreate)  resetHistograms();
   if (hasSubTasks()) resetSubTasks();
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void Task::clear()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (histosCreate)  clearHistograms();
   if (hasSubTasks()) clearSubTasks();
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void Task::printConfiguration(ostream & output)
@@ -258,7 +258,7 @@ void Task::printConfiguration(ostream & output)
 void Task::importHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String importPath = getValueString("HistogramsImportPath");
   String importFile = getValueString("HistogramsImportFile");
   if (reportDebug(__FUNCTION__))
@@ -273,14 +273,14 @@ void Task::importHistograms()
   loadNEexecutedTask(inputFile);
   importHistograms(inputFile);
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 
 void Task::importDerivedHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String importPath = getValueString("HistogramsImportPath");
   String importFile = getValueString("HistogramsImportFile");
   if (reportDebug(__FUNCTION__))
@@ -295,34 +295,34 @@ void Task::importDerivedHistograms()
   loadNEexecutedTask(inputFile);
   importDerivedHistograms(inputFile);
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 
 void Task::resetHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   histogramManager.reset();
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void Task::clearHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   histogramManager.clear();
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void Task::scaleHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void Task::plotHistograms()
@@ -338,28 +338,28 @@ void Task::printHistograms()
 void Task::exportHistograms(TFile & outputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   outputFile.cd();
   writeNEventsAccepted(outputFile);
   writeNEexecutedTask(outputFile);
   histogramManager.save(outputFile);
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void Task::exportHistograms(ofstream & outputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   histogramManager.save(outputFile);
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void Task::exportHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String histosExportPath     = getValueString("HistogramsExportPath");
   String histosExportFile     = getValueString("HistogramsExportFile");
   if (histosExportPath.Contains("null") || histosExportPath.Contains("none")) histosExportPath = "";
@@ -397,34 +397,34 @@ void Task::exportHistograms()
 //    outputFile->close();
 //  }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void Task::writeNEexecutedTask(TFile & outputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String name = "taskExecuted";
   writeParameter(outputFile,name,taskExecuted);
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 long Task::loadNEexecutedTask(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String name = "taskExecuted";
   taskExecuted = readParameter(inputFile,name);
   if (reportEnd(__FUNCTION__))
-    ;
+;
   return taskExecuted;
 }
 
 void Task::writeParameter(TFile & outputFile, const String & parameterName, long value)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   outputFile.cd();
   TParameter<Long64_t>(parameterName,value,'+').Write();
 }
@@ -432,7 +432,7 @@ void Task::writeParameter(TFile & outputFile, const String & parameterName, long
 long Task::readParameter(TFile & inputFile, const String & parameterName)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   TParameter<Long64_t> *par = (TParameter<Long64_t> *) inputFile.Get(parameterName);
   if (!par)
   {
@@ -446,10 +446,10 @@ long Task::readParameter(TFile & inputFile, const String & parameterName)
   return value;
 }
 
-TFile &  Task::openRootFile(const String & inputPath, const String & fileName, const String & ioOption)  throw (FileException)
+TFile &  Task::openRootFile(const String & inputPath, const String & fileName, const String & ioOption)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String inputFileName = inputPath;
   // make sure that if an inputPath is given, it ends with '/'
   int slash = inputFileName.First('/');
@@ -465,10 +465,10 @@ TFile &  Task::openRootFile(const String & inputPath, const String & fileName, c
   return *inputFile;
 }
 
-ifstream & Task::openInputAsciiFile(const String & inputPath, const String & fileName, const String & extension, const String & ioOption)  throw (FileException)
+ifstream & Task::openInputAsciiFile(const String & inputPath, const String & fileName, const String & extension, const String & ioOption)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String inputFileName = inputPath;
   // make sure that if an inputPath is given, it ends with '/'
   int slash = inputFileName.First('/');
@@ -488,10 +488,10 @@ ifstream & Task::openInputAsciiFile(const String & inputPath, const String & fil
   return *inputFile;
 }
 
-ofstream & Task::openOutputAsciiFile(const String & outputPath, const String & fileName, const String & extension, const String & ioOption)  throw (FileException)
+ofstream & Task::openOutputAsciiFile(const String & outputPath, const String & fileName, const String & extension, const String & ioOption)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String outputFileName = outputPath;
   // make sure that if an outputPath is given, it ends with '/'
   int slash = outputFileName.First('/');
@@ -509,10 +509,10 @@ ofstream & Task::openOutputAsciiFile(const String & outputPath, const String & f
 }
 
 
-ifstream & Task::openInputBinaryFile(const String & inputPath, const String & fileName, const String & extension, const String & ioOption) throw (FileException)
+ifstream & Task::openInputBinaryFile(const String & inputPath, const String & fileName, const String & extension, const String & ioOption)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String inputFileName = inputPath;
   // make sure that if an inputPath is given, it ends with '/'
   int slash = inputFileName.First('/');
@@ -533,10 +533,10 @@ ifstream & Task::openInputBinaryFile(const String & inputPath, const String & fi
 
 
 
-ofstream & Task::openOutputBinaryFile(const String & outputPath, const String & fileName, const String & extension, const String & ioOption)  throw (FileException)
+ofstream & Task::openOutputBinaryFile(const String & outputPath, const String & fileName, const String & extension, const String & ioOption)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String outputFileName = outputPath;
   // make sure that if an outputPath is given, it ends with '/'
   int slash = outputFileName.First('/');
@@ -572,7 +572,7 @@ void Task::copyFile(const String & inputPath,  const String & inputFileName, con
 void Task::initializeSubTasks()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   unsigned int nSubTasks = subTasks.size();
   if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->initialize();
@@ -589,18 +589,18 @@ void Task::executeSubTasks()
 void Task::finalizeSubTasks()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   unsigned int nSubTasks = subTasks.size();
   if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->finalize();
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void Task::resetSubTasks()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   unsigned int nSubTasks = subTasks.size();
   if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->reset();
@@ -611,7 +611,7 @@ void Task::resetSubTasks()
 void Task::clearSubTasks()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   unsigned int nSubTasks = subTasks.size();
   if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->clear();
@@ -721,7 +721,7 @@ vector<String>  Task::listFilesInDir(const String & pathName,
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   vector<String> outputList;
   vector<String> fileList = listFilesInDir(pathName,".root",prependPath,verbose,maximumDepth,currentDepth);
   unsigned int nNames = fileList.size();
@@ -774,7 +774,7 @@ vector<String> Task::getSelectedFileNamesFrom(const String & folder)
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   vector<String> includePatterns;
   vector<String> excludePatterns;
   vector<String> selectedNames;

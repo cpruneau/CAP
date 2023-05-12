@@ -237,6 +237,6 @@ void SubSampleStatCalculator::execute()
     delete collectionAvg;
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 

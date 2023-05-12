@@ -190,7 +190,7 @@ void ParticlePair3DHistos::createHistograms()
 void ParticlePair3DHistos::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
   TString bn = getParentName();
   const Configuration & configuration = getConfiguration();
@@ -227,7 +227,7 @@ void ParticlePair3DHistos::importHistograms(TFile & inputFile)
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void ParticlePair3DHistos::fill(vector<ParticleDigit*> & particle1, vector<ParticleDigit*> & particle2, bool same, double weight)

@@ -7,7 +7,7 @@ namespace CAP
 namespace Math
 {
 
-void interpolation1DLlinear(double* Tb_x, double* Tb_y, double* xval, double* yval, int nTblength) throw (MathException)
+void interpolation1DLlinear(double* Tb_x, double* Tb_y, double* xval, double* yval, int nTblength)
 {
   double Xmin = Tb_x[0];
   double Xmax = Tb_x[nTblength-1];
@@ -86,7 +86,7 @@ void interpolation1DLlinear(double* Tb_x, double* Tb_y, double* xval, double* yv
 //}
 
 
-double interpolationCubicDirect(const vector<double> &x, const vector<double> &y, double x0)  throw (MathException)
+double interpolationCubicDirect(const vector<double> &x, const vector<double> &y, double x0)
 // Returns the interpreted value of y=y(x) at x=x0 using cubic polynomial interpolation method.
 // -- x,y: the independent and dependent double x0ables; x is assumed to be equal spaced and increasing
 // -- x0: where the interpolation should be performed
@@ -131,7 +131,7 @@ double interpolationCubicDirect(const vector<double> &x, const vector<double> &y
 }
 
 
-double interpolationLinearDirect(const vector<double> &x, const vector<double> &y, double x0)  throw (MathException)
+double interpolationLinearDirect(const vector<double> &x, const vector<double> &y, double x0)
 // Returns the interpreted value of y=y(x) at x=x0 using linear interpolation method.
 // -- x,y: the independent and dependent double x0ables; x is assumed to be equal spaced and increasing
 // -- x0: where the interpolation should be performed
@@ -150,7 +150,7 @@ double interpolationLinearDirect(const vector<double> &x, const vector<double> &
 
 }
 
-double interpolationNearestDirect(const vector<double> &x, const vector<double> &y, double x0) throw (MathException)
+double interpolationNearestDirect(const vector<double> &x, const vector<double> &y, double x0) 
 // Returns the interpreted value of y=y(x) at x=x0 using nearest interpolation method.
 // -- x,y: the independent and dependent double x0ables; x is assumed to be equal spaced and increasing
 // -- x0: where the interpolation should be performed
@@ -167,7 +167,7 @@ double interpolationNearestDirect(const vector<double> &x, const vector<double> 
 }
 
 
-double interpolationCubicMono(const vector<double> &x, const vector<double> &y, double xx) throw (MathException)
+double interpolationCubicMono(const vector<double> &x, const vector<double> &y, double xx)
 // Returns the interpreted value of y=y(x) at x=x0 using cubic polynomial interpolation method.
 // -- x,y: the independent and dependent double x0ables; x is *NOT* assumed to be equal spaced but it has to be increasing
 // -- xx: where the interpolation should be performed
@@ -236,7 +236,7 @@ double interpolationCubicMono(const vector<double> &x, const vector<double> &y, 
     }
 }
 
-double interpolationLinearMono(const vector<double> &x, const vector<double> &y, double xx) throw (MathException)
+double interpolationLinearMono(const vector<double> &x, const vector<double> &y, double xx)
 // Returns the interpreted value of y=y(x) at x=x0 using linear interpolation method.
 // -- x,y: the independent and dependent double x0ables; x is *NOT* assumed to be equal spaced but it has to be increasing
 // -- xx: where the interpolation should be performed
@@ -251,7 +251,7 @@ double interpolationLinearMono(const vector<double> &x, const vector<double> &y,
   return y[idx] + ( y[idx+1]-y[idx] )/( x[idx+1]-x[idx] )*( xx-x[idx] );
 }
 
-double interpolationNearestMono(const vector<double> &x, const vector<double> &y, double xx) throw (MathException)
+double interpolationNearestMono(const vector<double> &x, const vector<double> &y, double xx)
 // Returns the interpreted value of y=y(x) at x=x0 using nearest interpolation method.
 // -- x,y: the independent and dependent double x0ables; x is *NOT* assumed to be equal spaced but it has to be increasing
 // -- xx: where the interpolation should be performed

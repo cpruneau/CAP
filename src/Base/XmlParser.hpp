@@ -49,7 +49,7 @@ public:
 
   virtual void read(XmlDocument   & _xmlDocument,
                     const String & _inputPath,
-                    const String & _inputFileName)  throw (FileException);
+                    const String & _inputFileName);
   XmlTag* createTag(String& aBuff);
 
   ClassDef(XmlParser,0)

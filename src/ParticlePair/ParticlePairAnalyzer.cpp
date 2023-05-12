@@ -157,7 +157,7 @@ void ParticlePairAnalyzer::configure()
 void ParticlePairAnalyzer::createHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String bn  = getName();
 
   HistogramGroup * histos;
@@ -203,13 +203,13 @@ void ParticlePairAnalyzer::createHistograms()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void ParticlePairAnalyzer::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String bn  = getName();
   HistogramGroup * histos;
   histogramManager.addSet("Pair-1");
@@ -258,7 +258,7 @@ void ParticlePairAnalyzer::importHistograms(TFile & inputFile)
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 
@@ -418,7 +418,7 @@ void ParticlePairAnalyzer::scaleHistograms()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   double scalingFactor;
   if (reportInfo(__FUNCTION__)) printEventStatistics();
   int index = 0;
@@ -455,13 +455,13 @@ void ParticlePairAnalyzer::scaleHistograms()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void ParticlePairAnalyzer::createDerivedHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String bn  = getName();
   HistogramGroup * histos;
   histogramManager.addSet("PairDerived");
@@ -502,7 +502,7 @@ void ParticlePairAnalyzer::createDerivedHistograms()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void ParticlePairAnalyzer::importDerivedHistograms(TFile & inputFile __attribute__((unused)))
@@ -513,7 +513,7 @@ void ParticlePairAnalyzer::importDerivedHistograms(TFile & inputFile __attribute
 void ParticlePairAnalyzer::calculateDerivedHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   bool binCorrPP = getValueDouble("binCorrPP");
 
   if (reportInfo(__FUNCTION__))
@@ -588,5 +588,5 @@ void ParticlePairAnalyzer::calculateDerivedHistograms()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }

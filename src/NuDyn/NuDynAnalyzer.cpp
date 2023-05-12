@@ -121,7 +121,7 @@ void NuDynAnalyzer::importHistograms(TFile & inputFile)
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
   String prefixName = getName(); prefixName += "_";
@@ -153,7 +153,7 @@ void NuDynAnalyzer::importHistograms(TFile & inputFile)
     histogramManager.addGroupInSet(0,nuDynHistos);
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void NuDynAnalyzer::analyzeEvent()
@@ -208,7 +208,7 @@ void NuDynAnalyzer::analyzeEvent()
 void NuDynAnalyzer::createDerivedHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
@@ -238,7 +238,7 @@ void NuDynAnalyzer::createDerivedHistograms()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void NuDynAnalyzer::importDerivedHistograms(TFile & inputFile __attribute__((unused)))
@@ -249,7 +249,7 @@ void NuDynAnalyzer::importDerivedHistograms(TFile & inputFile __attribute__((unu
 void NuDynAnalyzer::calculateDerivedHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   //incrementTaskExecuted();
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();

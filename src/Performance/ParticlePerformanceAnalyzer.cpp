@@ -66,7 +66,7 @@ void ParticlePerformanceAnalyzer::createHistograms()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   String prefixName = getName(); //prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
@@ -99,7 +99,7 @@ void ParticlePerformanceAnalyzer::createHistograms()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 
@@ -107,7 +107,7 @@ void ParticlePerformanceAnalyzer::importHistograms(TFile & inputFile)
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
@@ -138,14 +138,14 @@ void ParticlePerformanceAnalyzer::importHistograms(TFile & inputFile)
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void ParticlePerformanceAnalyzer::analyzeEvent()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   incrementTaskExecuted();
 
   Event & recoEvent = *eventStreams[1];

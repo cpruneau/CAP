@@ -34,7 +34,7 @@ void FileTaskIterator::execute()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   timer.start();
   incrementTaskExecuted();
   String fct = "execute()";
@@ -136,7 +136,7 @@ void FileTaskIterator::addFileNames(VectorString  names)
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (names.size()<1)
     {
     if (reportWarning(__FUNCTION__))
@@ -155,7 +155,7 @@ void FileTaskIterator::addFileNames(VectorString  names)
     selectedFileNames.push_back(names[k]);
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 //!
@@ -165,7 +165,7 @@ void FileTaskIterator::addFileNames(unsigned int nNames, TString** names)
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (nNames<1)
     {
     if (reportWarning(__FUNCTION__))
@@ -177,7 +177,7 @@ void FileTaskIterator::addFileNames(unsigned int nNames, TString** names)
     }
   for (unsigned int k=0; k<nNames; k++)  selectedFileNames.push_back(*(names[k]));
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 //!
@@ -189,7 +189,7 @@ void FileTaskIterator::addFileNames(const String pathName,
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   VectorString  fileList = listFilesInDir(pathName,".root");
   unsigned int nNames = fileList.size();
   if (reportDebug(__FUNCTION__))
@@ -237,14 +237,14 @@ void FileTaskIterator::addFileNames(const String pathName,
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void FileTaskIterator::initializeSubTasks()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   unsigned int nSubtasks = getNSubTasks();
   if (nSubtasks>0)
     {
@@ -265,6 +265,6 @@ void FileTaskIterator::initializeSubTasks()
     if (reportDebug(__FUNCTION__)) cout << "No subtask to initialize. " <<   endl;
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 

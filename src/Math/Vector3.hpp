@@ -56,34 +56,34 @@ public:
 
 
   virtual ~Vector3() {};
-  virtual T  operator() (unsigned int index) const throw (MathException);
-  virtual T  operator[] (unsigned int index) const throw (MathException);
-  virtual T  x()  const throw (MathException);
-  virtual T  y()  const throw (MathException);
-  virtual T  z()  const throw (MathException);
+  virtual T  operator() (unsigned int index) const;
+  virtual T  operator[] (unsigned int index) const;
+  virtual T  x()  const;
+  virtual T  y()  const;
+  virtual T  z()  const;
 
-  void setXYZ(const T * values)  throw (MathException);
+  void setXYZ(const T * values);
 
-  void setXYZ(const std::vector<T> & values)  throw (MathException);
+  void setXYZ(const std::vector<T> & values);
 
-  void setXYZ(const T & x, const T & y, const T & z)  throw (MathException);
+  void setXYZ(const T & x, const T & y, const T & z);
 
-  void setFromXYZ(const T & x, const T & y, const T & z)  throw (MathException);
+  void setFromXYZ(const T & x, const T & y, const T & z);
 
-  void setPhiThetaR(const T & phi, const T & theta, const T & r)  throw (MathException);
+  void setPhiThetaR(const T & phi, const T & theta, const T & r);
 
-  void setPhiRhoZ(const T & phi, const T & rho, const T & z)  throw (MathException);
+  void setPhiRhoZ(const T & phi, const T & rho, const T & z);
 
-  T  phi() const  throw (MathException);
-  T  cosPhi() const  throw (MathException);
-  T  sinPhi() const  throw (MathException);
-  T  theta() const  throw (MathException);
-  T  cosTheta() const  throw (MathException);
-  T  sinTheta() const  throw (MathException);
-  T  modulus() const  throw (MathException);
-  T  modulusSquare() const  throw (MathException);
-  T  perp() const  throw (MathException);
-  T  perpSquare() const  throw (MathException);
+  T  phi() const;
+  T  cosPhi() const;
+  T  sinPhi() const;
+  T  theta() const;
+  T  cosTheta() const;
+  T  sinTheta() const;
+  T  modulus() const;
+  T  modulusSquare() const;
+  T  perp() const;
+  T  perpSquare() const; 
 
   //! The angle w.r.t. another 3-Vector3.
   template <typename Q>
@@ -144,15 +144,15 @@ public:
   }
 
   //! Unary minus.
-  Vector3 operator - () const throw (MathException);
+  Vector3 operator - () const;
 
   Vector3 & operator *= (const T & scaleFactor);
 
-  Vector3 & normalize() throw (MathException);
+  Vector3 & normalize();
 
 
   //! unit Vector3 parallel to this vecotr.
-  Vector3 unit() const  throw (MathException);
+  Vector3 unit() const;
 
   // Scalar product.
   template <typename Q>
@@ -190,7 +190,7 @@ public:
   Vector3 projectOntoYZ() const;
   Vector3 projectOntoXZ() const;
 
-  virtual void print() const throw (MathException);
+  virtual void print() const;
 
   ClassDef(Vector3,1)
 
@@ -297,7 +297,7 @@ storageType(source.storageType)
 //! Returns the value stored at the give index.
 //!
 template <typename T>
-T Vector3<T>::operator() (unsigned int index) const throw (MathException)
+T Vector3<T>::operator() (unsigned int index) const
 {
   switch (index)
     {
@@ -310,7 +310,7 @@ T Vector3<T>::operator() (unsigned int index) const throw (MathException)
 
 
 template <typename T>
-T Vector3<T>::operator[] (unsigned int index) const throw (MathException)
+T Vector3<T>::operator[] (unsigned int index) const
 {
   switch (storageType)
     {
@@ -348,7 +348,7 @@ T Vector3<T>::operator[] (unsigned int index) const throw (MathException)
 
 
 template <typename T>
-T   Vector3<T>::x()  const throw (MathException)
+T   Vector3<T>::x()  const
 {
   switch (storageType)
     {
@@ -360,7 +360,7 @@ T   Vector3<T>::x()  const throw (MathException)
 }
 
 template <typename T>
-T   Vector3<T>::y()  const throw (MathException)
+T   Vector3<T>::y()  const
 {
   switch (storageType)
     {
@@ -373,7 +373,7 @@ T   Vector3<T>::y()  const throw (MathException)
 
 
 template <typename T>
-T   Vector3<T>::z()  const throw (MathException)
+T   Vector3<T>::z()  const
 {
   switch (storageType)
     {
@@ -385,7 +385,7 @@ T   Vector3<T>::z()  const throw (MathException)
 }
 
 template <typename T>
-void Vector3<T>::setXYZ(const T * values) throw (MathException)
+void Vector3<T>::setXYZ(const T * values)
 {
   v1 = values[0];
   v2 = values[1];
@@ -394,7 +394,7 @@ void Vector3<T>::setXYZ(const T * values) throw (MathException)
 }
 
 template <typename T>
-void Vector3<T>::setXYZ(const std::vector<T> & values) throw (MathException)
+void Vector3<T>::setXYZ(const std::vector<T> & values)
 {
   v1 = values.x();
   v2 = values.y();
@@ -403,7 +403,7 @@ void Vector3<T>::setXYZ(const std::vector<T> & values) throw (MathException)
 }
 
 template <typename T>
-void Vector3<T>::setXYZ(const T & x, const T & y, const T & z) throw (MathException)
+void Vector3<T>::setXYZ(const T & x, const T & y, const T & z)
 {
   v1 = x;
   v2 = y;
@@ -412,7 +412,7 @@ void Vector3<T>::setXYZ(const T & x, const T & y, const T & z) throw (MathExcept
 }
 
 template <typename T>
-void Vector3<T>::setFromXYZ(const T & x, const T & y, const T & z) throw (MathException)
+void Vector3<T>::setFromXYZ(const T & x, const T & y, const T & z)
 {
   switch (storageType)
     {
@@ -444,7 +444,7 @@ void Vector3<T>::setFromXYZ(const T & x, const T & y, const T & z) throw (MathEx
 
 
 template <typename T>
-void Vector3<T>::setPhiThetaR(const T & phi, const T & theta, const T & r) throw (MathException)
+void Vector3<T>::setPhiThetaR(const T & phi, const T & theta, const T & r)
 {
   v1 = phi;
   v2 = theta;
@@ -454,7 +454,7 @@ void Vector3<T>::setPhiThetaR(const T & phi, const T & theta, const T & r) throw
 
 
 template <typename T>
-void Vector3<T>::setPhiRhoZ(const T & phi, const T & rho, const T & z) throw (MathException)
+void Vector3<T>::setPhiRhoZ(const T & phi, const T & rho, const T & z)
 {
   v1 = phi;
   v2 = rho;
@@ -463,7 +463,7 @@ void Vector3<T>::setPhiRhoZ(const T & phi, const T & rho, const T & z) throw (Ma
 }
 
 template <typename T>
-T  Vector3<T>::phi() const throw (MathException)
+T  Vector3<T>::phi() const
 {
   switch (storageType)
     {
@@ -475,7 +475,7 @@ T  Vector3<T>::phi() const throw (MathException)
 }
 
 template <typename T>
-T  Vector3<T>::cosPhi() const  throw (MathException)
+T  Vector3<T>::cosPhi() const
 {
   switch (storageType)
     {
@@ -487,7 +487,7 @@ T  Vector3<T>::cosPhi() const  throw (MathException)
 }
 
 template <typename T>
-T  Vector3<T>::sinPhi() const throw (MathException)
+T  Vector3<T>::sinPhi() const
 {
   switch (storageType)
     {
@@ -500,7 +500,7 @@ T  Vector3<T>::sinPhi() const throw (MathException)
 
 
 template <typename T>
-T  Vector3<T>::theta() const throw (MathException)
+T  Vector3<T>::theta() const
 {
   switch (storageType)
     {
@@ -512,7 +512,7 @@ T  Vector3<T>::theta() const throw (MathException)
 }
 
 template <typename T>
-T  Vector3<T>::cosTheta() const throw (MathException)
+T  Vector3<T>::cosTheta() const
 {
   switch (storageType)
     {
@@ -524,7 +524,7 @@ T  Vector3<T>::cosTheta() const throw (MathException)
 }
 
 template <typename T>
-T  Vector3<T>::sinTheta() const throw (MathException)
+T  Vector3<T>::sinTheta() const
 {
   switch (storageType)
     {
@@ -536,7 +536,7 @@ T  Vector3<T>::sinTheta() const throw (MathException)
 }
 
 template <typename T>
-T  Vector3<T>::modulus() const throw (MathException)
+T  Vector3<T>::modulus() const
 {
   switch (storageType)
     {
@@ -548,7 +548,7 @@ T  Vector3<T>::modulus() const throw (MathException)
 }
 
 template <typename T>
-T  Vector3<T>::modulusSquare() const throw (MathException)
+T  Vector3<T>::modulusSquare() const
 {
   switch (storageType)
     {
@@ -560,7 +560,7 @@ T  Vector3<T>::modulusSquare() const throw (MathException)
 }
 
 template <typename T>
-T  Vector3<T>::perp() const  throw (MathException)
+T  Vector3<T>::perp() const 
 {
   switch (storageType)
     {
@@ -572,7 +572,7 @@ T  Vector3<T>::perp() const  throw (MathException)
 }
 
 template <typename T>
-T  Vector3<T>::perpSquare() const   throw (MathException)
+T  Vector3<T>::perpSquare() const
 {
   switch (storageType)
     {
@@ -600,7 +600,7 @@ T  Vector3<T>::perpSquare() const   throw (MathException)
 
 //! Unary minus.
 template <typename T>
-Vector3<T> Vector3<T>::operator- () const throw (MathException)
+Vector3<T> Vector3<T>::operator- () const
 {
   Vector3 v(0,0,0,storageType);
   switch (storageType)
@@ -659,7 +659,7 @@ Vector3<T> & Vector3<T>::operator *= (const T & scaleFactor)
 
 //! Normalize this vector to be a unitvector
 template <typename T>
-Vector3<T>& Vector3<T>::normalize() throw (MathException)
+Vector3<T>& Vector3<T>::normalize()
 {
   switch (storageType)
     {
@@ -693,7 +693,7 @@ Vector3<T>& Vector3<T>::normalize() throw (MathException)
 
 //! unit Vector3 parallel to this vecotr.
 template <typename T>
-Vector3<T> Vector3<T>::unit() const throw (MathException)
+Vector3<T> Vector3<T>::unit() const
 {
   switch (storageType)
     {
@@ -793,7 +793,7 @@ Vector3<T> Vector3<T>::projectOntoXZ() const
 
 
 template <typename T>
-void Vector3<T>::print() const  throw (MathException)
+void Vector3<T>::print() const
 {
   switch (storageType)
     {
@@ -810,7 +810,7 @@ void Vector3<T>::print() const  throw (MathException)
 template <typename T>
 std::ostream& operator<<(std::ostream& out, const CAP::Math::Vector3<T>& v)
 {
-  out << "(" << v.x()  << "," << v.y() << "," << v.z() << ")" ;
+  out << "(" << v.x()  << "," << v.y() << "," << v.z() << ")";
   return out;
 }
 

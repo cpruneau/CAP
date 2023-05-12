@@ -29,14 +29,14 @@ public:
   virtual ~XmlDocument();
 
   virtual void  read(const String  & _inputPath,
-                    const String  & _inputFileName) throw (FileException);
-  virtual void  read() throw (FileException);
+                    const String  & _inputFileName);
+  virtual void  read();
 
-  XmlDocument* getXmlTag(const char * aTagName, const char * aAttName, const char * aAttVal) throw(String);
-  String   getXmlAttribute(const XmlTag & tag, const char* aAttName) const throw(String);
-  String   getXmlAttribute(const char* aAttName) const throw(String);
-  String   getXmlContent(const XmlTag & tag) const throw(String);
-  String   getXmlContent() const throw(String);
+  XmlDocument* getXmlTag(const char * aTagName, const char * aAttName, const char * aAttVal);
+  String   getXmlAttribute(const XmlTag & tag, const char* aAttName) const;
+  String   getXmlAttribute(const char* aAttName) const;
+  String   getXmlContent(const XmlTag & tag) const;
+  String   getXmlContent() const;
   String   getXmlTagDescription();
   //void      getXmlVector3D();
   //VectorField* getXmlVector3D();

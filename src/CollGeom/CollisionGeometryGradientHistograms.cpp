@@ -28,28 +28,28 @@ h_gy(0)
 void CollisionGeometryGradientHistograms::createHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String bn = getParentName( );
   h_edge     = createHistogram(createName(bn,"edge"),   200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "Edge");
   h_radius   = createHistogram(createName(bn,"radius"), 200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "r/r_{max}");
   h_gx       = createHistogram(createName(bn,"gx"),     200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "g_{x}");
   h_gy       = createHistogram(createName(bn,"gy"),     200,-20.0, 20.0, 200,-20.0, 20.0,    "x (fm)", "y (fm)",  "g_{y}");
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 //________________________________________________________________________
 void CollisionGeometryGradientHistograms::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String bn = getParentName( );
   h_edge   = loadH2(inputFile,createName(bn,"edge"));
   h_radius = loadH2(inputFile,createName(bn,"radius"));
   h_gx     = loadH2(inputFile,createName(bn,"gx"));
   h_gy     = loadH2(inputFile,createName(bn,"gy"));
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void CollisionGeometryGradientHistograms::getRadiusAndGradient(double x, double y, double & radius, double & gx, double & gy)

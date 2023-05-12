@@ -79,7 +79,7 @@ void CollisionGeometryAnalyzer::createHistograms()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
 
@@ -102,14 +102,14 @@ void CollisionGeometryAnalyzer::createHistograms()
     histogramManager.addGroupInSet(0,histos);
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void CollisionGeometryAnalyzer::importHistograms(TFile & inputFile)
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   if (reportInfo(__FUNCTION__))
@@ -128,14 +128,14 @@ void CollisionGeometryAnalyzer::importHistograms(TFile & inputFile)
     histogramManager.addGroupInSet(0,histos);
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void CollisionGeometryAnalyzer::analyzeEvent()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   incrementTaskExecuted();
   Event & event = *eventStreams[0];
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
@@ -153,5 +153,5 @@ void CollisionGeometryAnalyzer::analyzeEvent()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }

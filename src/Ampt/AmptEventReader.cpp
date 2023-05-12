@@ -128,7 +128,7 @@ void AmptEventReader::initInputTreeMapping()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   TTree * tree = rootInputTreeChain();
   tree->SetMakeClass(1);
   tree->SetBranchAddress("eventNo", &eventNo, &b_eventNo);
@@ -145,6 +145,6 @@ void AmptEventReader::initInputTreeMapping()
   tree->SetBranchAddress("Nx", Nx, &b_Nx);
   tree->SetBranchAddress("Ny", Ny, &b_Ny);
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 

@@ -113,7 +113,7 @@ h_DptDpt_DyDphi(nullptr)
 void ParticlePair3DDerivedHistos::HistogramsCreate()
 {
   if (reportStart("ParticlePair3DDerivedHistos","HistogramsCreate()"))
-    ;
+;
   TString bn = getParentTaskName();
   nBins_n2  = getValueInt("nBins_n2");
   min_n2    = getValueDouble("Min_n2");
@@ -249,7 +249,7 @@ void ParticlePair3DDerivedHistos::HistogramsImport(TFile & inputFile)
 {
   TString fct = "HistogramsImport(TFile & inputFile)";
   if (reportDebug(__FUNCTION__))
-    ;
+;
   if (ptrFileExist(fct,inputFile)) return;
   
   TString bn = getParentTaskName();
@@ -375,7 +375,7 @@ void ParticlePair3DDerivedHistos::calculatePairDerivedHistograms(ParticleHistos 
 {
   TString fct = "calculatePairDerivedHistograms(..)";
   if (reportStart(__FUNCTION__))
-    ;
+;
   MessageLogger::Severity store = getSeverityLevel();
   //getSeverityLevel(MessageLogger::Debug);
   
@@ -555,6 +555,6 @@ void ParticlePair3DDerivedHistos::calculatePairDerivedHistograms(ParticleHistos 
   
   
   if (reportEnd(__FUNCTION__))
-    ;
+;
   getSeverityLevel(store);
 }

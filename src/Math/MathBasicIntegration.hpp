@@ -19,8 +19,8 @@ namespace CAP
 namespace Math
 {
 
-double integrationSimpsonRule(double* , int, double) throw (MathException);
-double integrationSimpsonRule(const vector<double> &, double) throw (MathException);
+double integrationSimpsonRule(double* , int, double);
+double integrationSimpsonRule(const vector<double> &, double);
 
 
 } // namespace Math

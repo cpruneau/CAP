@@ -14,7 +14,7 @@ namespace CAP
 namespace Math
 {
 
-long binarySearch(const vector<double> array, double value) throw (MathException);
+long binarySearch(const vector<double> array, double value);
 
 } // namespace Math
 

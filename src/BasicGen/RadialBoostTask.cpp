@@ -52,7 +52,7 @@ void RadialBoostTask::createHistograms()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   param_a     = getValueDouble("param_a");
   param_b     = getValueDouble("param_b"); // exponent of order 1
   betaMaximum = getValueDouble("betaMaximum");;
@@ -62,20 +62,20 @@ void RadialBoostTask::createHistograms()
   histogramManager.addGroupInSet(0,histos);
   //histograms.push_back(histos);
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void RadialBoostTask::importHistograms(TFile & inputFile)
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   RadialBoostHistos * histos = new RadialBoostHistos(this,getName(),configuration);
   histos->importHistograms(inputFile);
   histogramManager.addSet("Boost");
   histogramManager.addGroupInSet(0,histos);
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 // this function is not correct -- needs to be fixed.
@@ -83,7 +83,7 @@ void RadialBoostTask::createEvent()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   incrementTaskExecuted();
   double beta, betax, betay;
   double rx=0;
@@ -142,5 +142,5 @@ void RadialBoostTask::createEvent()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }

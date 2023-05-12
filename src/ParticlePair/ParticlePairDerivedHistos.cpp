@@ -131,7 +131,7 @@ h_DptDpt_DyDphi(nullptr)
 void ParticlePairDerivedHistos::createHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   const String & bn  = getName();
   const String & ptn = getParentTask()->getName();
   const String & ppn = getParentPathName();
@@ -332,13 +332,13 @@ void ParticlePairDerivedHistos::createHistograms()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void ParticlePairDerivedHistos::importHistograms(TFile & inputFile)
 {
   if (reportDebug(__FUNCTION__))
-    ;
+;
   const String & bn  = getName();
   const String & ptn = getParentTask()->getName();
   const String & ppn = getParentPathName();
@@ -497,7 +497,7 @@ void ParticlePairDerivedHistos::calculatePairDerivedHistograms(ParticleSingleHis
                                                                double bincorrection)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   //double yield1;
   double yield2;
   double avgPt1Phi;
@@ -695,7 +695,7 @@ void ParticlePairDerivedHistos::calculatePairDerivedHistograms(ParticleSingleHis
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 

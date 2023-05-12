@@ -43,7 +43,7 @@ void GaussianGeneratorTask::setDefaultConfiguration()
 void GaussianGeneratorTask::initialize()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   double amplitude = getValueDouble("amplitude");
   double gammaeta  = getValueDouble("gammaeta");
   double gammaphi  = getValueDouble("gammaphi");
@@ -55,7 +55,7 @@ void GaussianGeneratorTask::initialize()
   profile->SetParameters(amplitude,gammaeta,gammaphi,omegaeta,omegaphi);
   profile->SetRange(-4.0,-TMath::PiOver2(),4.0,TMath::PiOver2());
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 GaussianGeneratorTask::~GaussianGeneratorTask()

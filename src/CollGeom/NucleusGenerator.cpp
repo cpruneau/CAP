@@ -65,7 +65,7 @@ void NucleusGenerator::initialize()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   gType = configuration.getValueInt(getName(),"generatorType");
   nR    = configuration.getValueInt(getName(),"nRadiusBins");
   minR  = configuration.getValueDouble(getName(),"MinimumRadius");
@@ -136,7 +136,7 @@ void NucleusGenerator::initialize()
     r += dr;
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void NucleusGenerator::createEvent()

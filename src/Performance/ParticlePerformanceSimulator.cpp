@@ -41,7 +41,7 @@ phiFunction()
 void ParticlePerformanceSimulator::initialize()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   const Configuration & config = getConfiguration();
   useSameSetForAll = config.getValueBool(getParentName(),"useSameSetForAll");
   resolutionOption = config.getValueInt(getParentName(),"resolutionOption");
@@ -185,7 +185,7 @@ void ParticlePerformanceSimulator::initialize()
 void ParticlePerformanceSimulator::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   const Configuration & config = getConfiguration();
   useSameSetForAll = config.getValueBool(getParentName(),"useSameSetForAll");
   resolutionOption = config.getValueInt(getParentName(),"resolutionOption");
@@ -228,7 +228,7 @@ void ParticlePerformanceSimulator::importHistograms(TFile & inputFile)
       break;
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void ParticlePerformanceSimulator::smearMomentum(const LorentzVector &in, LorentzVector & out)

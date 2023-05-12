@@ -54,7 +54,7 @@ HistogramCollection & HistogramCollection::operator=(const HistogramCollection &
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (this!=&source)
     {
     Collection<TH1>::operator=(source);
@@ -80,10 +80,10 @@ void HistogramCollection::reset()
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   for (unsigned int iObject=0; iObject<size(); iObject++) objects[iObject]->Reset();
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 //!
@@ -279,7 +279,7 @@ void HistogramCollection::addHistogramsToExtList(TList *list)
 void HistogramCollection::exportHistograms(TFile & outputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (reportDebug(__FUNCTION__)) cout << "    Saving histograms to file: " << outputFile.GetName()  << endl;
   if (reportDebug(__FUNCTION__)) cout << " Number of histograms to save: " <<  size() << endl;
   outputFile.cd();
@@ -289,7 +289,7 @@ void HistogramCollection::exportHistograms(TFile & outputFile)
     objects[iObject]->Write();
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 //!
@@ -298,7 +298,7 @@ void HistogramCollection::exportHistograms(TFile & outputFile)
 void HistogramCollection::exportHistograms(ofstream & outputFile __attribute__((unused)) )
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (reportDebug(__FUNCTION__)) cout << " Number of histograms to save: " <<  size() << endl;
 
   if (reportWarning(__FUNCTION__)) cout << "Function not implemented yet." << endl;
@@ -310,7 +310,7 @@ void HistogramCollection::exportHistograms(ofstream & outputFile __attribute__((
 //    objects[iObject]->Write();
 //    }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 
@@ -334,10 +334,10 @@ void HistogramCollection::scale(double factor)
     { }
 }
 
-int  HistogramCollection::loadCollection(TFile & inputFile) throw (HistogramException)  
+int  HistogramCollection::loadCollection(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   TIter keyList(inputFile.GetListOfKeys());
   TKey *key;
   while ((key = (TKey*)keyList()))
@@ -349,7 +349,7 @@ int  HistogramCollection::loadCollection(TFile & inputFile) throw (HistogramExce
     append(h);
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
   return 0;
 }
 
@@ -360,7 +360,7 @@ int  HistogramCollection::loadCollection(TFile & inputFile) throw (HistogramExce
 HistogramCollection * HistogramCollection::clone() const
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   HistogramCollection * newCollection = new HistogramCollection(getInstanceName(), getSeverityLevel());
   for (unsigned int iObject=0; iObject<size(); iObject++)
     {
@@ -380,7 +380,7 @@ void HistogramCollection::add(const HistogramCollection & c1, double a1)
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!sameSizeAs(c1))
     {
     if (reportError(__FUNCTION__) )
@@ -432,7 +432,7 @@ void HistogramCollection::add(const HistogramCollection & c1, const HistogramCol
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!sameSizeAs(c1) || !sameSizeAs(c2))
     {
     if (reportError(__FUNCTION__) )
@@ -488,7 +488,7 @@ void HistogramCollection::add(const HistogramCollection & c1,
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!sameSizeAs(c1) || !sameSizeAs(c2) || !sameSizeAs(c3))
     {
     if (reportError(__FUNCTION__) )
@@ -555,7 +555,7 @@ void HistogramCollection::add(const HistogramCollection & c1,
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!sameSizeAs(c1) || !sameSizeAs(c2) || !sameSizeAs(c3) || !sameSizeAs(c4))
     {
     if (reportError(__FUNCTION__) )
@@ -622,7 +622,7 @@ void HistogramCollection::divide(const HistogramCollection & c1)
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!sameSizeAs(c1))
     {
     if (reportError(__FUNCTION__) )
@@ -677,7 +677,7 @@ void HistogramCollection::divide(const HistogramCollection & c1,
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!sameSizeAs(c1) || !sameSizeAs(c2))
     {
     if (reportError(__FUNCTION__))
@@ -725,7 +725,7 @@ void HistogramCollection::differenceCollection(const HistogramCollection & colle
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!collection.sameSizeAs(refCollection))
     {
     if (reportError(__FUNCTION__) )
@@ -760,14 +760,14 @@ void HistogramCollection::differenceCollection(const HistogramCollection & colle
     append(hDiff);
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void HistogramCollection::ratioCollection(const HistogramCollection & collection, const HistogramCollection & refCollection, bool correlatedUncertainties)
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!collection.sameSizeAs(refCollection))
     {
     if (reportError(__FUNCTION__))
@@ -811,7 +811,7 @@ void HistogramCollection::ratioCollection(const HistogramCollection & collection
     append(hRatio);
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 //!
@@ -828,7 +828,7 @@ void HistogramCollection::squareDifferenceCollection(const HistogramCollection &
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!sameSizeAs(collection))
     {
     if (reportError(__FUNCTION__) )
@@ -857,7 +857,7 @@ void HistogramCollection::squareDifferenceCollection(const HistogramCollection &
     squareDifferenceHistos(hAvg, h, sumWeights, weight, n);
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 
@@ -865,7 +865,7 @@ void HistogramCollection::squareDifferenceHistos(TH1 *hAvg, TH1 *h, double sumWe
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,hAvg,h)) return;
   double vAvg, evAvg, evSqAvg;
   double v,  dv;
@@ -978,7 +978,7 @@ void HistogramCollection::squareDifferenceHistos(TH1 *hAvg, TH1 *h, double sumWe
       }
     }
   if (reportEnd(__FUNCTION__) )
-    ;
+;
 }
 
 
@@ -986,7 +986,7 @@ void HistogramCollection::differenceHistos(TH1 *h, TH1 *hRef, TH1 *hDiff, bool c
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h,hRef,hDiff)) return;
   
   double v,  ev;
@@ -1092,7 +1092,7 @@ void HistogramCollection::differenceHistos(TH1 *h, TH1 *hRef, TH1 *hDiff, bool c
       }
     }
   if (reportEnd(__FUNCTION__) )
-    ;
+;
 }
 
 
@@ -1243,7 +1243,7 @@ double HistogramCollection::calculateN1N1(const TH1 * h_1, const TH1 * h_2, TH1 
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h_1,h_2,h_12)) return -1.0;
   int n1  = h_1->GetNbinsX();
   int n2  = h_2->GetNbinsX();
@@ -1297,7 +1297,7 @@ double HistogramCollection::calculateN1N1_H1H1H2(const TH1 * h_1, const TH1 * h_
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h_1,h_2,h_12)) return -1.0;
   int n1   = h_1->GetNbinsX();
   int n2   = h_2->GetNbinsX();
@@ -1351,7 +1351,7 @@ double HistogramCollection::calculateN1N1_H2H2H2(const TH2 *h_1, const TH2 * h_2
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h_1,h_2,h_12)) return -1.0;
   int n1x = h_1->GetNbinsX();
   int n1y = h_1->GetNbinsY();
@@ -1415,7 +1415,7 @@ double HistogramCollection::calculateN1N1N1(const TH1 * h_1, const TH1 * h_2, co
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h_1,h_2,h_3,h_123)) return -1.0;
   int n = h_1->GetNbinsX();
   double v1,ev1,v2,ev2,v3,ev3,v,ev,r1,r2,r3;
@@ -1460,7 +1460,7 @@ double HistogramCollection::calculateN1N1N1(const TH1 * h_1, const TH1 * h_2, co
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h_1,h_2,h_3,h_123)) return -1.0;
   int n = h_1->GetNbinsX();
   double v1,ev1,v2,ev2,v3,ev3,v,ev,r1,r2,r3;
@@ -1501,7 +1501,7 @@ void HistogramCollection::calculateN2N1(const TH2 * s2, const TH1* s1, TH2 * tar
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,s2,s1,target)) return;
   int n = s2->GetNbinsX();
   double v1,v2,v3,ev1,ev2,ev3,v,ev,r1,r2;
@@ -1561,7 +1561,7 @@ void HistogramCollection::calculateN2N1x(const TH2 * s2, const TH1* s1, TH3 * ta
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,s2,s1,target)) return;
   int n = s2->GetNbinsX();
   double v1,v2,v3,ev1,ev2,ev3,v,ev,r1,r2;
@@ -1900,7 +1900,7 @@ void HistogramCollection::calculateDptDpt(const TH2 * spp, const TH2 * spn, cons
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,spp,spn,snp,snn,avgp1,avgp2,s2dptdpt,dptdpt)) return;
 
   if (!sameDimensions(__FUNCTION__,spp,spn) || !sameDimensions(__FUNCTION__,spp,snp) || !sameDimensions(__FUNCTION__,spp,snn)) return;
@@ -1964,8 +1964,8 @@ void HistogramCollection::calculateDptDpt(const TH2 * spp, const TH2 * spn, cons
             {
             v5 = v6 = ev5 = ev6 = 0;
             }
-          if (s2dptdpt)
-            ;
+//          if (s2dptdpt)
+//       ;
           //s2dptdpt->SetBinContent(k,v5); s2dptdpt->SetBinError(k,ev5);
           //dptdpt->SetBinContent(k,  v6); dptdpt->SetBinError(k,  ev6);
           //s2dptdpt->SetBinContent(k1, k2, v5); s2dptdpt->SetBinError(k1, k2, ev5);
@@ -1987,7 +1987,7 @@ void HistogramCollection::calculateDptDpt(const TH2 * spp, const TH2 * spn, cons
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,spp,spn,snp,snn,avgp1,avgp2,dptdpt)) return;
 
   if (!sameDimensions(__FUNCTION__,spp,spn) || !sameDimensions(__FUNCTION__,spp,snp) || !sameDimensions(__FUNCTION__,spp,snn)) return;
@@ -2037,7 +2037,7 @@ void HistogramCollection::calculateSc(const TH1 * spp, const TH1 * n1n1, const T
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,spp,n1n1,pt1pt1,g2)) return;
 
   if (!sameDimensions(__FUNCTION__,spp,n1n1) || !sameDimensions(__FUNCTION__,spp,pt1pt1) || !sameDimensions(__FUNCTION__,spp,g2)) return;
@@ -2069,7 +2069,7 @@ void HistogramCollection::calculateG2_H2H2H2H2(const TH2 * spp, const TH2 * n1n1
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,spp,n1n1,pt1pt1,g2)) return;
   if (!sameDimensions(__FUNCTION__,spp,n1n1,pt1pt1,g2)) return;
 
@@ -2107,7 +2107,7 @@ void HistogramCollection::calculateBf(const TH2 *n2, const TH2 *n1_1, const TH2 
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,n2,n1_1,n1_2,bf_12,bf_21)) return;
   if (!sameDimensions(__FUNCTION__,n1_1,n1_2)) return;
   if (!sameDimensions(__FUNCTION__,n2,bf_12,bf_21)) return;
@@ -2150,7 +2150,7 @@ void HistogramCollection::calculateSean_H1H2H2H2(const TH1 * spp, const TH2 * n1
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,spp,n1n1,pt1pt1,g2)) return;
   if (!sameDimensions(__FUNCTION__,n1n1,pt1pt1,g2)) return;
   int n1  = spp->GetNbinsX();
@@ -2204,7 +2204,7 @@ void HistogramCollection::calculateSean_H1H2H2H2(const TH1 * spp, const TH2 * n1
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 
@@ -2214,7 +2214,7 @@ int  HistogramCollection::calculateQ3DwPtPhiEta(double pt1, double phi1, double 
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   LorentzVector p1;
   LorentzVector p2;
   p1.SetPtEtaPhiM(pt1,eta1,phi1,0.13957);
@@ -2274,7 +2274,7 @@ int  HistogramCollection::calculateQ3DwPtPhiY(double pt1, double phi1, double y1
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   LorentzVector p1;
   LorentzVector p2;
   double mPart = 0.13957;
@@ -2341,7 +2341,7 @@ void HistogramCollection::calculateN1N1H2H2_Q3D_MCY(TH2 * n1_1, TH2 * n1_2, TH3 
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,n1_1,n1_2,n1n1_Q3D)) return;
   if (!sameDimensions(__FUNCTION__,n1_1,n1_2)) return;
 
@@ -2383,7 +2383,7 @@ void HistogramCollection::calculateN1N1H2H2_Q3D_MCEta(TH2 * n1_1, TH2 * n1_2, TH
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,n1_1,n1_2,n1n1_Q3D)) return;
   if (!sameDimensions(__FUNCTION__,n1_1,n1_2)) return;
 
@@ -2421,7 +2421,7 @@ void HistogramCollection::calculateN1N1H2H2_Q3D(const TH2 * n1_1, const TH2 * n1
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,n1_1,n1_2,n1n1_Q3D)) return;
   if (!sameDimensions(__FUNCTION__,n1_1,n1_2)) return;
   int nx = n1_1->GetNbinsX();
@@ -2474,7 +2474,7 @@ void HistogramCollection::calculateN1N1H3H3_Q3D(const TH3 * n1_1, const TH3 * n1
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,n1_1,n1_2,n1n1_Q3D)) return;
   if (!sameDimensions(__FUNCTION__,n1_1,n1_2)) return;
   int nx = n1_1->GetNbinsX();
@@ -2537,7 +2537,7 @@ void HistogramCollection::calculateR2_Q3D(const TH3 * n2_Q3D, const TH3 * n1n1_Q
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,n2_Q3D,n1n1_Q3D,R2_Q3D)) return;
   if (!sameDimensions(__FUNCTION__,n2_Q3D,n1n1_Q3D)) return;
   int nx = n2_Q3D->GetNbinsX();
@@ -2593,7 +2593,7 @@ double HistogramCollection::avgValue(TH1 * h)
 
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h)) return -1;
 
   int nx = h->GetNbinsX();
@@ -2622,7 +2622,7 @@ void HistogramCollection::setHistogram(TH1 * h, double v, double ev)
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h)) return;
   int n = h->GetNbinsX();
   for (int i1=1;i1<=n;++i1)
@@ -2639,7 +2639,7 @@ void HistogramCollection::setHistogram(TH2 * h, double v, double ev)
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h)) return;
   int n_x = h->GetNbinsX();
   int n_y = h->GetNbinsY();
@@ -2660,7 +2660,7 @@ void HistogramCollection::setHistogram(TH3 * h, double v, double ev)
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h)) return;
   int n_x = h->GetNbinsX();
   int n_y = h->GetNbinsY();
@@ -2678,7 +2678,7 @@ void HistogramCollection::setHistogram(TH3 * h, double v, double ev)
     }
 }
 
-TH1 * HistogramCollection::loadH1(TFile & inputFile,const String & histoName) throw (HistogramException)
+TH1 * HistogramCollection::loadH1(TFile & inputFile,const String & histoName)
 {
   TH1* h = (TH1*) inputFile.Get(histoName);
   if (!h) throw HistogramException(histoName,"Histogram not found/loaded","HistogramCollection::loadH1");
@@ -2689,7 +2689,7 @@ TH1 * HistogramCollection::loadH1(TFile & inputFile,const String & histoName) th
 ///Load the given 1D histogram (name) from the given TFile
 ///No test is //done to verify that the file is properly opened.
 
-TH2 * HistogramCollection::loadH2(TFile & inputFile,const String & histoName) throw (HistogramException)
+TH2 * HistogramCollection::loadH2(TFile & inputFile,const String & histoName)
 {
   TH2* h = (TH2*) inputFile.Get(histoName);
   if (!h) throw HistogramException(histoName,"Histogram not found/loaded","HistogramCollection::loadH2");
@@ -2699,7 +2699,7 @@ TH2 * HistogramCollection::loadH2(TFile & inputFile,const String & histoName) th
 
 ///Load the given 3D histogram (name) from the given TFile
 ///No test is //done to verify that the file is properly opened.
-TH3 * HistogramCollection::loadH3(TFile & inputFile, const String & histoName) throw (HistogramException)
+TH3 * HistogramCollection::loadH3(TFile & inputFile, const String & histoName)
 {
   TH3* h = (TH3*) inputFile.Get(histoName);
   if (!h) throw HistogramException(histoName,"Histogram not found/loaded","HistogramCollection::loadH3");
@@ -2709,7 +2709,7 @@ TH3 * HistogramCollection::loadH3(TFile & inputFile, const String & histoName) t
 
 ///Load the given 3D histogram (name) from the given TFile
 ///No test is //done to verify that the file is properly opened.
-TProfile * HistogramCollection::loadProfile(TFile & inputFile, const String & histoName) throw (HistogramException)
+TProfile * HistogramCollection::loadProfile(TFile & inputFile, const String & histoName)
 {
   TProfile* h = (TProfile*) inputFile.Get(histoName);
   if (!h) throw HistogramException(histoName,"Histogram not found/loaded","HistogramCollection::loadProfile");
@@ -2717,7 +2717,7 @@ TProfile * HistogramCollection::loadProfile(TFile & inputFile, const String & hi
   return h;
 }
 
-TProfile2D * HistogramCollection::loadProfile2D(TFile & inputFile, const String & histoName) throw (HistogramException)
+TProfile2D * HistogramCollection::loadProfile2D(TFile & inputFile, const String & histoName)
 {
   TProfile2D* h = (TProfile2D*) inputFile.Get(histoName);
   if (!h) throw HistogramException(histoName,"Histogram not found/loaded","HistogramCollection::loadProfile2D");
@@ -2725,7 +2725,7 @@ TProfile2D * HistogramCollection::loadProfile2D(TFile & inputFile, const String 
   return h;
 }
 
-void HistogramCollection::histosImportInList(TFile & inputFile, HistogramCollection * collection)  throw (HistogramException)
+void HistogramCollection::histosImportInList(TFile & inputFile, HistogramCollection * collection)
 {
   int nHistos = collection->getNHistograms();
   for (int iHisto=0; iHisto<nHistos; iHisto++)
@@ -2740,7 +2740,7 @@ void HistogramCollection::histosImportInList(TFile & inputFile, HistogramCollect
 
 ///Clone the given histogram, and set the clone's name to the given name.
 /////throws a HistogramException if the histogram does not exist (null pointer).
-TH1 * HistogramCollection::clone(const TH1 * h1, const String & histoName)  throw (HistogramException)
+TH1 * HistogramCollection::clone(const TH1 * h1, const String & histoName)
 {
   if (!ptrExist(__FUNCTION__,h1)) return nullptr;
   TH1 * h = (TH1*) h1->Clone();
@@ -2976,7 +2976,7 @@ void HistogramCollection::unpack_vsXY_to_vsXVsY(const TH1 * source, TH2 * target
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
 
   if (!ptrExist(__FUNCTION__,source)) return;
 
@@ -3017,7 +3017,7 @@ void HistogramCollection::correctMerging(TH1 * h, int nEta, int nPhi, bool rever
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h)) return;
 
   double v, ev;
@@ -3103,7 +3103,7 @@ void HistogramCollection::calculateAvgH2H2(const TH2 * source, TH2 * target, dou
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,source,target)) return;
   if (!sameDimensions(__FUNCTION__,source,target)) return;
   int nDeta = source->GetNbinsX();
@@ -3139,7 +3139,7 @@ void HistogramCollection::calculateR2_H1H1H1(const TH1 * n2_12, const TH1 * n1n1
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,n2_12,n1n1_12,r2_12)) return;
 
   int n2_12_n_x    = n2_12->GetNbinsX();
@@ -3231,7 +3231,7 @@ void HistogramCollection::calculateR2_H2H2H2(const TH2 * n2_12, const TH2 * n1n1
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
 
   if (!ptrExist(__FUNCTION__,n2_12,n1n1_12,r2_12)) return;
   if (!sameDimensions(__FUNCTION__,n2_12,n1n1_12,r2_12)) return;
@@ -3271,7 +3271,7 @@ void HistogramCollection::calculateR2_H1H2H2(const TH1 * n2_12, const TH2 * n1n1
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,n2_12,n1n1_12,r2_12)) return;
 
   int n2_12_n_x    = n2_12->GetNbinsX();
@@ -3329,7 +3329,7 @@ void HistogramCollection::calculateR2VsM(const TProfile * h1, const TProfile * h
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h1,h2,h12,r2VsM,intR2)) return;
 
   int n1, n2, n3, n4, n5;
@@ -3390,7 +3390,7 @@ void HistogramCollection::calculateBinCorr(const TProfile * h1, const TProfile *
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h1,h2,intBinCorrVsM1)) return;
 
   int n1, n2, n3;
@@ -3445,7 +3445,7 @@ void HistogramCollection::calculateAverage(TH1* h, double & avgDensity, double &
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   int n = h->GetNbinsX();
   double v, ev, width, sum, esum, avgValue;
   sum  = 0.0;
@@ -3475,7 +3475,7 @@ void HistogramCollection::calculateAverage(TH1* h, double & avgDensity, double &
 void HistogramCollection::calculateIntegral(TH1 * h, double xMin, double xMax, double  & result, double & resultError, int option)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   int xFirst = h->GetXaxis()->FindBin(xMin);
   int xLast  = h->GetXaxis()->FindBin(xMax);
 
@@ -3500,7 +3500,7 @@ void HistogramCollection::calculateIntegral(TH2 * h, double xMin, double xMax, d
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   int xFirst = h->GetXaxis()->FindBin(xMin);
   int xLast  = h->GetXaxis()->FindBin(xMax);
   int yFirst = h->GetYaxis()->FindBin(yMin);
@@ -3531,7 +3531,7 @@ void HistogramCollection::calculateAveragePt(const TH1 * h1, const TH1 * h2, TH1
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h1,h2,h3)) return;
   if (!sameDimensions(__FUNCTION__,h1,h2,h3)) return;
 
@@ -3563,7 +3563,7 @@ void HistogramCollection::calculateAveragePtH2(const TH2 * h1, const TH2 * h2, T
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h1,h2,h3)) return;
   if (!sameDimensions(__FUNCTION__,h1,h2,h3)) return;
 
@@ -3598,7 +3598,7 @@ void HistogramCollection::calculateAveragePtH1H2(const TH1 * h1, const TH1 * h2,
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h1,h2,h3)) return;
   if (!sameDimensions(__FUNCTION__,h1,h2)) return;
 
@@ -3635,7 +3635,7 @@ void HistogramCollection::calculateAveragePt(const TProfile * h1, const TProfile
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h1,h2,h3)) return;
   if (!sameDimensions(__FUNCTION__,h1,h2,h3)) return;
   double v1,ev1,v2,ev2,v,ev, re1,re2;
@@ -3664,7 +3664,7 @@ void HistogramCollection::symmetrize3D(TH3* h)
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h)) return;
   int n = h->GetNbinsX();
   int nc = n/2;
@@ -3722,7 +3722,7 @@ void HistogramCollection::symmetrizeDeltaEtaDeltaPhi(TH2 * h, bool ijNormalizati
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h)) return;
 
   double v1, v2, v3, v4;
@@ -3867,7 +3867,7 @@ void HistogramCollection::symmetrizeXX(TH2 * h, bool ijNormalization)
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h)) return;
 
   double v1, v2;
@@ -3986,7 +3986,7 @@ void HistogramCollection::reduce_n2xEtaPhi_n2DetaDphi(const TH2 * source, TH2 * 
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,source,target)) return;
 
   //if (reportDebug(__FUNCTION__)) cout << "reduce_n2xEtaPhi_n2DetaDphi() ==============  New Version From TH2" << endl;
@@ -4072,7 +4072,7 @@ void HistogramCollection::reduce_n1EtaPhiN1EtaPhiOntoN1N1DetaDphi(const TH2 * h_
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h_1,h_2,h_12)) return;
   if (!sameDimensions(__FUNCTION__,h_1,h_2)) return;
 
@@ -4146,7 +4146,7 @@ void HistogramCollection::reduce_n1EtaPhiN1EtaPhiOntoN1N1DetaDphi(const TH2 * h_
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 
@@ -4154,7 +4154,7 @@ void HistogramCollection::reduce_n2xEtaPhi_n2EtaEta(const TH1 * source, TH2 * ta
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,source,target)) return;
 
   double v1,v2,ev1,ev2,v,ev;
@@ -4215,7 +4215,7 @@ void HistogramCollection::project_n2XYXY_n2XX(const TH2 * source, TH2 * target,i
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,source,target)) return;
 
   double v1,v2,ev1,ev2,v,ev;
@@ -4263,7 +4263,7 @@ void HistogramCollection::project_n2XYXY_n2YY(const TH2 * source, TH2 * target,i
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,source,target)) return;
 
   double v1,v2,ev1,ev2,v,ev;
@@ -4311,7 +4311,7 @@ TH2* HistogramCollection::symmetrize(TH2* h)
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h)) return nullptr;
   return h;
 }
@@ -4321,7 +4321,7 @@ void HistogramCollection::shiftY(const TH2 & source, TH2 & target, int nbins)
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
 
   int i_x, i_y;
   int n_x = source.GetNbinsX();
@@ -4799,7 +4799,7 @@ void HistogramCollection::calculateF2R2(TH1* h_f1_1, TH1* h_f1_2, TH1* h_f2_12, 
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h_f1_1, h_f1_2, h_f2_12, h_F2_12, h_R2_12)) return;
 
   double f1_1, ef1_1, f1_2, ef1_2;
@@ -4823,7 +4823,7 @@ void HistogramCollection::calculateNudyn(TH1* h_R2_11, TH1* h_R2_12, TH1* h_R2_2
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h_R2_11, h_R2_12, h_R2_22, h_nudyn_12)) return;
 
   double R2_11, eR2_11, R2_12, eR2_12, R2_22, eR2_22, nudyn, enudyn;
@@ -4847,7 +4847,7 @@ void HistogramCollection::calculateF3R3(TH1* h_f1_1, TH1* h_f1_2, TH1* h_f1_3,
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h_f1_1, h_f1_2, h_f1_3, h_f2_12, h_f2_13, h_f2_23, h_f3_123, h_F3_123, h_R3_123)) return;
 
   double f1_1, ef1_1, f1_2, ef1_2, f1_3, ef1_3;
@@ -4884,7 +4884,7 @@ void HistogramCollection::calculateF4R4(TH1* h_f1_1, TH1* h_f1_2, TH1* h_f1_3, T
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrExist(__FUNCTION__,h_f1_1, h_f1_2, h_f1_3, h_f1_4, h_f2_12,  h_f2_13,  h_f2_14)) return;
   if (!ptrExist(__FUNCTION__,h_f2_23,h_f2_24,h_f2_34,h_f3_123,h_f3_124,h_f3_134,h_f3_234)) return;
   if (!ptrExist(__FUNCTION__,h_f4_1234,h_F4_1234,h_R4_1234)) return;
@@ -4931,7 +4931,7 @@ void HistogramCollection::calculateF2R2(double f1_1,double ef1_1,double f1_2,dou
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   double ref1_1, ref1_2, ref2_12;
   if (f1_1<1E-20 || f1_2<1E-20)
     {
@@ -4960,7 +4960,7 @@ void HistogramCollection::calculateF3R3(double f1_1,double ef1_1,double f1_2,dou
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   double ref1_1, ref1_2, ref1_3, ref2_12, ref2_13, ref2_23, reF3_123;
   if (f1_1<1E-20 || f1_2<1E-20 || f1_3<1E-20)
     {
@@ -4999,7 +4999,7 @@ void HistogramCollection::calculateF4R4(double f1_1,double ef1_1,double f1_2,dou
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
 
   double ref1_1,  ref1_2,  ref1_3; //,  ref1_4;
   double ref2_12, ref2_13, ref2_14;
@@ -5057,7 +5057,7 @@ void HistogramCollection::calculateNudyn(double r2_11,double er2_11,double r2_12
 {
 
   if (reportStart(__FUNCTION__))
-    ;
+;
   nudyn = r2_11 + r2_22 - 2.0*r2_12;
   enudyn = sqrt(er2_11*er2_11 + er2_22*er2_22 + 4.0*er2_12*er2_12);
 }

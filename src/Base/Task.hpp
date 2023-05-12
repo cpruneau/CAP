@@ -311,7 +311,7 @@ public:
   //! @param ioOption i/o options.
   //! @return Pointer to the file if successfully open or a null pointer if the file could not be opened.
   //!
-  TFile & openRootFile(const String & inputPath, const String & fileName, const String & ioOption) throw (FileException);
+  TFile & openRootFile(const String & inputPath, const String & fileName, const String & ioOption);
 
   //!
   //! Open the root file named "fileName" located on the path "inputPath", using options specified by "ioOption".
@@ -320,11 +320,11 @@ public:
   //! @param ioOption i/o options.
   //! @return Pointer to the file if successfully open or a null pointer if the file could not be opened.
   //!
-  ifstream & openInputAsciiFile(const String & inputPath, const String & fileName, const String & extension, const String & ioOption="") throw (FileException);
-  ofstream & openOutputAsciiFile(const String & outputPath, const String & fileName, const String & extension, const String & ioOption="") throw (FileException);
+  ifstream & openInputAsciiFile(const String & inputPath, const String & fileName, const String & extension, const String & ioOption="");
+  ofstream & openOutputAsciiFile(const String & outputPath, const String & fileName, const String & extension, const String & ioOption="");
 
-  ifstream & openInputBinaryFile(const String & inputPath, const String & fileName, const String & extension, const String & ioOption="") throw (FileException);
-  ofstream & openOutputBinaryFile(const String & outputPath, const String & fileName, const String & extension, const String & ioOption="") throw (FileException);
+  ifstream & openInputBinaryFile(const String & inputPath, const String & fileName, const String & extension, const String & ioOption="");
+  ofstream & openOutputBinaryFile(const String & outputPath, const String & fileName, const String & extension, const String & ioOption="");
 
   void copyFile(const String & inputPath,  const String & inputFileName, const String & inExtension,
                 const String & outputPath, const String & outputFileName, const String & outExtension);

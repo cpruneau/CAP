@@ -27,10 +27,10 @@ MessageLogger(_severity)
 ifstream & Parser::openInputFile(const String & inputPath,
                                  const String & fileName,
                                  const String & extension,
-                                 const String & ioOption)  throw (FileException)
+                                 const String & ioOption)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String inputFileName = makeFileName(inputPath,fileName,extension);
   if (reportTrace(__FUNCTION__))
     cout << "Attempting to open output file named: " << inputFileName << " in mode: " << ioOption << endl;
@@ -53,10 +53,10 @@ ifstream & Parser::openInputFile(const String & inputPath,
 ofstream & Parser::openOutputFile(const String & outputPath,
                                   const String & fileName,
                                   const String & extension,
-                                  const String & ioOption)  throw (FileException)
+                                  const String & ioOption)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String outputFileName = makeFileName(outputPath,fileName,extension);
   if (reportTrace(__FUNCTION__))
     cout << "Attempting to open output file named: " << outputFileName << " in mode: " << ioOption << endl;

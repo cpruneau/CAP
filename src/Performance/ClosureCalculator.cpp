@@ -34,7 +34,7 @@ void ClosureCalculator::setDefaultConfiguration()
 void ClosureCalculator::execute()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
 
   incrementTaskExecuted();
 

@@ -50,7 +50,7 @@ void SubSampleStatCalculator::configure()
 void SubSampleStatCalculator::execute()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   int defaultGroupSize          = getValueInt("DefaultGroupSize");
   String appendedString         = getValueString("AppendedString");
   String HistogramsImportPath   = getValueString("HistogramsImportPath");
@@ -161,6 +161,6 @@ void SubSampleStatCalculator::execute()
     delete firstInputFile;
     }  // end of group
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 

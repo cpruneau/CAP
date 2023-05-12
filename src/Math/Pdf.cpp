@@ -13,7 +13,7 @@ namespace Math
 //!
 //! Calculates the binomial coefficient n over k.
 //!
-double  binomial(int  n,int  k)  throw (MathException)
+double  binomial(int  n,int  k)
 {
   if (n<0 || k<0 || n<k) throw MathException("n<0 || k<0 || n<k","binomial(int n,int k) ");
   if (k==0 || n==k) return 1;
@@ -56,14 +56,14 @@ double  binomialI(double  p, int  n, int  k)
 //! <A HREF="http://mathworld.wolfram.com/BinomialDistribution.html">
 //! Mathworld</A>.
 //!
-double binomialPdf(unsigned int k, double p, unsigned int n) throw (MathException)
+double binomialPdf(unsigned int k, double p, unsigned int n)
 {
   if (k > n) throw MathException("k>n","binomialPdf()");
   double coeff = lgamma(n+1) - lgamma(k+1) - lgamma(n-k+1);
   return std::exp(coeff + k * std::log(p) + (n - k) * log1p(-p));
 }
 
-double binomialCdf(unsigned int k, double p, unsigned int n) throw (MathException)
+double binomialCdf(unsigned int k, double p, unsigned int n)
 {
   if ( k >= n) return 1.0;
   double a = (double) k + 1.0;
@@ -71,7 +71,7 @@ double binomialCdf(unsigned int k, double p, unsigned int n) throw (MathExceptio
   return ROOT::Math::beta_cdf_c(p, a, b);
 }
 
-double binomialCdfC(unsigned int k, double p, unsigned int n) throw (MathException)
+double binomialCdfC(unsigned int k, double p, unsigned int n)
 {
   if ( k >= n)   return 0;
   double a = (double) k + 1.0;
@@ -91,7 +91,7 @@ double binomialCdfC(unsigned int k, double p, unsigned int n) throw (MathExcepti
 //! The distribution in <A HREF="http://en.wikipedia.org/wiki/Negative_binomial_distribution">
 //! Wikipedia</A> is defined with a \f$p\f$ corresponding to \f$1-p\f$ in this case.
 //!
-double negativeBinomialPdf(unsigned int k, double p, double n)  throw (MathException)
+double negativeBinomialPdf(unsigned int k, double p, double n)
 {
   if (n < 0)  throw MathException("n<0","negativeBinomialPdf()");
   if (p < 0 || p > 1.0)  throw MathException("p < 0 || p > 1.0","negativeBinomialPdf()");
@@ -99,7 +99,7 @@ double negativeBinomialPdf(unsigned int k, double p, double n)  throw (MathExcep
   return std::exp(coeff + n * std::log(p) + double(k) * log1p(-p));
 }
 
-double negativeBinomialCdf(unsigned int k, double p, double n)  throw (MathException)
+double negativeBinomialCdf(unsigned int k, double p, double n)
 {
   if (n < 0)  throw MathException("n<0","negativeBinomialCdf()");
   if (p < 0 || p > 1.0)  throw MathException("p < 0 || p > 1.0","negativeBinomialCdf()");
@@ -107,7 +107,7 @@ double negativeBinomialCdf(unsigned int k, double p, double n)  throw (MathExcep
 }
 
 
-double negativeBinomialCdfC(unsigned int k, double p, double n)  throw (MathException)
+double negativeBinomialCdfC(unsigned int k, double p, double n)
 {
   if (n < 0)  throw MathException("n<0","negativeBinomialCdf()");
   if (p < 0 || p > 1.0)  throw MathException("p < 0 || p > 1.0","negativeBinomialCdf()");
@@ -127,7 +127,7 @@ double  betaIncomplete(double  x, double  a, double  b)
 //! Continued fraction evaluation by modified Lentz's method
 //! used in calculation of incomplete beta function.
 //!
-double  betaCf(double  x, double  a, double  b) throw (MathException)
+double  betaCf(double  x, double  a, double  b)
 {
   int     itmax = 500;
   double  eps = 3.e-14;
@@ -177,7 +177,7 @@ double  betaCf(double  x, double  a, double  b) throw (MathException)
 //! used to represent processes with natural lower and upper limits.
 //! https://en.wikipedia.org/wiki/Beta_distribution
 //!
-double  betaPdf(double  x, double  p, double  q)  throw (MathException)
+double  betaPdf(double  x, double  p, double  q)
 {
   if ((x<0) || (x>1) || (p<=0) || (q<=0)) throw MathException("(x<0) || (x>1) || (p<=0) || (q<=0)","betaDist()");
   double  beta = beta(p,q);
@@ -213,13 +213,13 @@ double  betaPdf(double  x, double  p, double  q)  throw (MathException)
 
 
 
-double betaCdf(double x, double a, double b )  throw (MathException)
+double betaCdf(double x, double a, double b )
 {
   return betaIncomplete(x, a, b);
 }
 
 
-double betaCdfC(double x, double a, double b) throw (MathException)
+double betaCdfC(double x, double a, double b)
 {
   // use the fact that I(x,a,b) = 1. - I(1-x,b,a)
   return betaIncomplete(1-x, b, a);
@@ -261,7 +261,7 @@ static double kBig    =  4.503599627370496e15;
 static double kBiginv =  2.22044604925031308085e-16;
 static double LS2PI   =  0.91893853320467274178;
 
-double gammaIncomplete(double a, double x) throw (MathException)
+double gammaIncomplete(double a, double x)
 {
   double ans, ax, c, r;
 
@@ -289,7 +289,7 @@ double gammaIncomplete(double a, double x) throw (MathException)
   return( ans * ax/a );
 }
 
-double gammaIncompleteC(double a, double x) throw (MathException)
+double gammaIncompleteC(double a, double x)
 {
   double ans, ax, c, yc, r, t, y, z;
   double pk, pkm1, pkm2, qk, qkm1, qkm2;
@@ -493,7 +493,7 @@ static double STIR[5] = {
 //!
 //! Stirling formula for the gamma function
 //!
-static double gammaStirling(double x)  throw (MathException)
+static double gammaStirling(double x)
 {
   double y, w, v;
   w = 1.0/x;
@@ -525,19 +525,19 @@ static double gammaStirling(double x)  throw (MathException)
 //! The gamma density function (PDF) is computed in terms of share parameter alpha and rate parameter beta.
 //!See e.g., https://en.wikipedia.org/wiki/Gamma_distribution
 //!
-double gammaPdf(double x, double alpha, double beta)    throw (MathException)
+double gammaPdf(double x, double alpha, double beta)
 {
   if (alpha<=0.0 || beta<=0.0) throw MathException("gammaPdf() alpha<=0.0 || beta<=0.0");
   double arg =  alpha*std::log(beta) + (alpha-1)*std::log(x) - beta*x - lnGamma(alpha);
   return exp(arg);
 }
 
-double gammaCdf(double x, double alpha, double beta)   throw (MathException)
+double gammaCdf(double x, double alpha, double beta)
 {
   return gammaIncomplete(alpha, beta*x);
 }
 
-double gammaCdfC(double x, double alpha, double theta, double x0)   throw (MathException)
+double gammaCdfC(double x, double alpha, double theta, double x0)
 {
   return 1.0-gammaIncomplete(alpha, beta*x);
 }
@@ -609,7 +609,7 @@ double  GamSer(double  a,double  x)
 
 
 
-double uniformPdf(double x, double a, double b, double x0)  throw (MathException)
+double uniformPdf(double x, double a, double b, double x0)
 {
   if ((b-a)<=0.0) throw MathException("uniformPdf() (b-a)<=0.0");
   double arg = x - x0;
@@ -619,7 +619,7 @@ double uniformPdf(double x, double a, double b, double x0)  throw (MathException
 }
 
 
-double uniformCdf(double x, double a, double b, double x0)  throw (MathException)
+double uniformCdf(double x, double a, double b, double x0)
 {
   if ((b-a)<=0.0) throw MathException("uniformCdf() (b-a)<=0.0");
   double arg = x - x0;
@@ -628,7 +628,7 @@ double uniformCdf(double x, double a, double b, double x0)  throw (MathException
   else   return (arg-a)/(b-a);
 }
 
-double uniformCdfC(double x, double a, double b, double x0)  throw (MathException)
+double uniformCdfC(double x, double a, double b, double x0)
 {
   if ((b-a)<=0.0) throw MathException("uniformCdfC() (b-a)<=0.0");
   double arg = x - x0;
@@ -646,7 +646,7 @@ double uniformCdfC(double x, double a, double b, double x0)  throw (MathExceptio
 //! <A HREF="http://mathworld.wolfram.com/ExponentialDistribution.html">
 //! Mathworld</A>.
 //!
-double exponentialPdf(double x, double lambda, double x0 = 0)   throw (MathException)
+double exponentialPdf(double x, double lambda, double x0 = 0)
 {
   double arg = x-x0;
   if (arg<0)  throw MathException("exponentialPdf() called with (x-x0) < 0.");
@@ -656,7 +656,7 @@ double exponentialPdf(double x, double lambda, double x0 = 0)   throw (MathExcep
 //!
 //! Cumulative  density function (CDF) of the exponential distribution.
 //!
-double exponentialCdf(double x, double lambda, double x0 = 0)   throw (MathException)
+double exponentialCdf(double x, double lambda, double x0 = 0)
 {
   double arg = x-x0;
   if (arg<0)  throw MathException("exponentialPdf() called with (x-x0) < 0.");
@@ -666,7 +666,7 @@ double exponentialCdf(double x, double lambda, double x0 = 0)   throw (MathExcep
 //!
 //! Complement of the cumulative  density function (CDF) of the exponential distribution.
 //!
-double exponentialCdfC(double x, double lambda, double x0 = 0)   throw (MathException)
+double exponentialCdfC(double x, double lambda, double x0 = 0)
 {
   double arg = x-x0;
   if (arg<0)  throw MathException("exponentialPdf() called with (x-x0) < 0.");
@@ -677,7 +677,7 @@ double exponentialCdfC(double x, double lambda, double x0 = 0)   throw (MathExce
 //! Returns the inverse error function.
 //! x must be  <-1<x<1
 //!
-double  erfInverse(double  x) throw (MathException)
+double  erfInverse(double  x)
 {
   int     kMaxit    = 50;
   double  kEps   = 1e-14;
@@ -711,7 +711,7 @@ double  erfInverse(double  x) throw (MathException)
 //! implement using  the quantile of the normal distribution
 //! instead of erfInverse for better numerical precision for large x
 //!
-double  erfcInverse(double  x)  throw (MathException)
+double  erfcInverse(double  x)
 {
   // erfc-1(x) = - 1/sqrt(2) * normal_quantile( 0.5 * x)
   return - 0.70710678118654752440 * normQuantile( 0.5 * x);
@@ -751,7 +751,7 @@ double standardNormalCdfC(double x);
 //! If norm=true (default is false) the result is divided
 //! by sqrt(2*Pi)*sigma.
 //!
-double  normalPdf(double  x, double  mean, double  sigma) throw (MathException)
+double  normalPdf(double  x, double  mean, double  sigma)
 {
   if (sigma <= 0) throw MathException("normalPdf() sigma <= 0");
   return standardNormalPdf( (x-mean)/sigma );
@@ -761,7 +761,7 @@ double  normalPdf(double  x, double  mean, double  sigma) throw (MathException)
 //! Computation of the CDF of the normal  PDF
 //! i.e.,  (1/sqrt(2pi) sigma) Integral(exp(- (x-mean)^2/(2sigma^2))dx between -infinity and x.
 ///
-double normalCdf(double  x) throw (MathException)
+double normalCdf(double  x)
 {
   if (sigma <= 0) throw MathException("normalCdf() sigma <= 0");
   return standardNormalCdf( (x-mean)/sigma );
@@ -771,7 +771,7 @@ double normalCdf(double  x) throw (MathException)
 //! Computation of the complement of the  CDF of the normal  PDF
 //! i.e.,  (1/sqrt(2pi) sigma) Integral(exp(- (x-mean)^2/(2sigma^2))dx between -infinity and x.
 ///
-double normalCdf(double  x) throw (MathException)
+double normalCdf(double  x)
 {
   if (sigma <= 0) throw MathException("normalCdf() sigma <= 0");
   return standardNormalCdfC( (x-mean)/sigma );
@@ -783,7 +783,7 @@ double normalCdf(double  x) throw (MathException)
 ///
 //! ALGORITHM AS241  APPL. STATIST. (1988) VOL. 37, NO. 3, 477-484.
 //!
-double  normQuantile(double  p)  throw (MathException)
+double  normQuantile(double  p)
 {
   if ((p<=0)||(p>=1)) throw MathException("normQuantile() probability outside (0, 1)");
   double   a0 = 3.3871328727963666080e0;
@@ -885,13 +885,13 @@ double  normQuantile(double  p)  throw (MathException)
 //! The formula was taken from "Engineering Statistics Handbook" on site
 //! http://www.itl.nist.gov/div898/handbook/eda/section3/eda3669.htm
 //!
-double logNormalPdf(double  x, double  sigma, double  theta, double  m)  throw (MathException)
+double logNormalPdf(double  x, double  sigma, double  theta, double  m)
 {
   if ((x<theta) || (sigma<=0) || (m<=0)) throw MathException("logNormalPdf() illegal parameter values");
   return logNormalPdf_pdf(x, log(m), sigma, theta);
 }
 
-double logNormalCdf(double x, double sigma, double theta=0, double m=1) throw (MathException)
+double logNormalCdf(double x, double sigma, double theta=0, double m=1)
 {
   double z = (std::log((x-x0))-m)/(s*sqrtTwo());
   if (z < -1.)
@@ -900,7 +900,7 @@ double logNormalCdf(double x, double sigma, double theta=0, double m=1) throw (M
     return 0.5*(1.0 + erf(z));
 }
 
-double logNormalCdfC(double x, double sigma, double theta=0, double m=1) throw (MathException)
+double logNormalCdfC(double x, double sigma, double theta=0, double m=1)
 {
   double z = (std::log((x-x0))-m)/(s*sqrtTwo());
   if (z > 1.)  return 0.5*erfc(z);
@@ -973,7 +973,7 @@ double  breitWignerRelativisticPdf(double  x, double  median, double  gamma)
 //! \param[in] x : dof
 //! \param[in] x : location parameter
 //!
-double chiSquarePdf(double x, double r, double x0)   throw (MathException)
+double chiSquarePdf(double x, double r, double x0)
 {
   double arg = x - x0;
   if (arg<0)  throw MathException("chiSquarePdf() (x-x0) <  0");
@@ -989,7 +989,7 @@ double chiSquarePdf(double x, double r, double x0)   throw (MathException)
 //! \param[in] x : dof
 //! \param[in] x : location parameter
 //!
-double chiSquarCdf(double x, double ndf, double x0) throw (MathException)
+double chiSquarCdf(double x, double ndf, double x0)
 {
   double arg = x - x0;
   if (arg<0)  throw MathException("chiSquarePdf() (x-x0) <  0");
@@ -1010,7 +1010,7 @@ double chiSquarCdf(double x, double ndf, double x0) throw (MathException)
 ///
 //! \author NvE 14-nov-1998 UU-SAP Utrecht
 //!
-double  chiSquareCdfC(double x, double ndf, double x0) throw (MathException)
+double  chiSquareCdfC(double x, double ndf, double x0)
 {
   double arg = x - x0;
   if (arg<0)    throw MathException("chiSquarePdf() (x-x0) <  0");
@@ -1031,7 +1031,7 @@ double  chiSquareCdfC(double x, double ndf, double x0) throw (MathException)
 ///
 //! \author Anna Kreshuk
 //!
-double  chiSquareQuantile(double  p, double  ndf) throw (MathException)
+double  chiSquareQuantile(double  p, double  ndf)
 {
   double  c[]={0, 0.01, 0.222222, 0.32, 0.4, 1.24, 2.2,
     4.67, 6.66, 6.73, 13.32, 60.0, 70.0,
@@ -1105,7 +1105,7 @@ double  chiSquareQuantile(double  p, double  ndf) throw (MathException)
 //! \param[in] xi   width parameter
 //! \param[in] x0   optional  location  parameter
 //!
-double landauPdf(double x, double xi, double x0) throw (MathException)
+double landauPdf(double x, double xi, double x0)
 {
   static double p1[5] = {0.4259894875,-0.1249762550, 0.03984243700, -0.006298287635,   0.001511162253};
   static double q1[5] = {1.0         ,-0.3388260629, 0.09594393323, -0.01608042283,    0.003778942063};
@@ -1481,7 +1481,7 @@ double poissonCdfC(unsigned int n, double mu)
 //! where each chi-square is first divided by it's number of degrees
 //! of freedom.
 //!
-double  fDistributionPdf(double x, double n, double m, double x0)   throw (MathException)
+double  fDistributionPdf(double x, double n, double m, double x0)
 {
   return fdistribution_pdf(F,N,M);
 }
@@ -1498,7 +1498,7 @@ double  fDistributionPdf(double x, double n, double m, double x0)   throw (MathE
 //! rejection, in turn implying high confidence in the hypothesis
 //! "1 has variance greater than 2".
 //!
-double  fDistributionCdf(double x, double n, double m, double x0)  throw (MathException)
+double  fDistributionCdf(double x, double n, double m, double x0)
 {
   // f distribution  is defined only for both n and m > 0
   if (n < 0 || m < 0) throw MathException("fDistributionCdf() n < 0 || m < 0");
@@ -1507,7 +1507,7 @@ double  fDistributionCdf(double x, double n, double m, double x0)  throw (MathEx
   return inc_beta(z, 0.5*n, 0.5*m);
 }
 
-double fDistributionCdfC(double x, double n, double m, double x0)   throw (MathException)
+double fDistributionCdfC(double x, double n, double m, double x0)
 {
   // f distribution  is defined only for both n and m > 0
   if (n < 0 || m < 0) throw MathException("fDistributionCdfC() n < 0 || m < 0");
@@ -1626,7 +1626,7 @@ double  KolmogorovProb(double  z)
 //!   A good description of the Kolmogorov test can be found  at:
 //!    http://www.itl.nist.gov/div898/handbook/eda/section3/eda35g.htm
 //!
-double  KolmogorovTest(int  na, const double  *a, int  nb, const double  *b, const char *option) throw (MathException)
+double  KolmogorovTest(int  na, const double  *a, int  nb, const double  *b, const char *option)
 {
 //  TString opt = option;
 //  opt.ToUpper();
@@ -1695,7 +1695,7 @@ double  KolmogorovTest(int  na, const double  *a, int  nb, const double  *b, con
 //! double exponential distribution, but it also known as
 //! two-tailed exponential or the bilateral exponential distribution.
 //!
-double  laplacePdf(double  x, double  alpha, double  beta)  throw (MathException)
+double  laplacePdf(double  x, double  alpha, double  beta)
 {
   if (beta<=0.0) throw MathException("laplacePdf() beta<=0.0");
   double arg = x-alpha;
@@ -1707,7 +1707,7 @@ double  laplacePdf(double  x, double  alpha, double  beta)  throw (MathException
 //! at point x, with location parameter alpha and shape parameter beta.
 //! By default, alpha=0, beta=1.
 //!
-double  laplaceCdf(double  x, double  alpha, double  beta)  throw (MathException)
+double  laplaceCdf(double  x, double  alpha, double  beta)
 {
   if (beta<=0.0) throw MathException("laplaceCdf() beta<=0.0");
   double arg = x-alpha;
@@ -1722,7 +1722,7 @@ double  laplaceCdf(double  x, double  alpha, double  beta)  throw (MathException
 //! at point x, with location parameter alpha and shape parameter beta.
 //! By default, alpha=0, beta=1.
 //!
-double  laplaceCdfC(double  x, double  alpha, double  beta)  throw (MathException)
+double  laplaceCdfC(double  x, double  alpha, double  beta)
 {
   if (beta<=0.0) throw MathException("laplaceCdfC() beta<=0.0");
   double arg = x-alpha;
@@ -1732,7 +1732,7 @@ double  laplaceCdfC(double  x, double  alpha, double  beta)  throw (MathExceptio
     return 0.5*exp(-arg/beta);
 }
 
-double laplaceQuantile(double F, double alpha=0, double beta=1)  throw (MathException);
+double laplaceQuantile(double F, double alpha=0, double beta=1)
 {
   if (F<=0.0 || F>1.0) throw MathException("laplaceQuantile() F<=0.0  || F>1.0");
   if (beta<=0.0) throw MathException("laplaceQuantile() beta<=0.0");
@@ -1769,7 +1769,7 @@ double laplaceQuantile(double F, double alpha=0, double beta=1)  throw (MathExce
 //! As the number of degrees of freedom grows, t-distribution approaches
 //! Normal(0,1) distribution.
 //!
-double studentPdf(double  T, double  ndf)   throw (MathException);
+double studentPdf(double  T, double  ndf)
 {
   if (ndf < 1) throw MathException("studentPdf() ndf < 1");
   double  r   = ndf;
@@ -1786,14 +1786,14 @@ double studentPdf(double  T, double  ndf)   throw (MathException);
 //! if x has Student's t-distribution, the function returns the probability of
 //! x being less than T.
 //!
-double studentCdf(double x, double r, double x0)  throw (MathException)
+double studentCdf(double x, double r, double x0)
 {
   double p    = x-x0;
   double sign = (p>0) ? 1.0 : -1.0;
   return 0.5 + 0.5*betaIncomplete(p*p/(r + p*p), 0.5, 0.5*r )*sign;
 }
 
-double studentCdfC(double x, double r, double x0)  throw (MathException)
+double studentCdfC(double x, double r, double x0)
 {
   double p    = x-x0;
   double sign = (p>0) ? 1.0 : -1.0;
@@ -2479,7 +2479,7 @@ double  voigtPdf(double  xx, double  sigma, double  lg, int  r)
     }
     if ( abx <= xlim4 ) {                      // Humlicek CPF12 Region I
       for (j = 0; j <= 5; j++) {
-        k = k + c[j]*(ym[j]+yp[j]) - s[j]*(xm[j]-xp[j]) ;
+        k = k + c[j]*(ym[j]+yp[j]) - s[j]*(xm[j]-xp[j]);
       }
     } else {                                   // Humlicek CPF12 Region II
       yf = y + y0py0;
@@ -2640,7 +2640,7 @@ void quantiles(int  n, int  nprob, double  *x, double  *quantiles, double  *prob
 //!
 //! It is not really a pdf since it is not normalized
 //!
-double crystalBallFct(double x, double alpha, double n, double sigma, double mean = 0)    throw (MathException)
+double crystalBallFct(double x, double alpha, double n, double sigma, double mean = 0)
 {
   // evaluate the crystal ball function
   if (sigma < 0.)  throw MathException("crystalBallPdf() sigma < 0.");
@@ -2662,7 +2662,7 @@ double crystalBallFct(double x, double alpha, double n, double sigma, double mea
 //! See the definition at
 //! <A HREF="http://en.wikipedia.org/wiki/Crystal_Ball_function"> Wikipedia</A>.
 //!
-double crystalBallPdf(double x, double alpha, double n, double sigma, double mean = 0)     throw (MathException)
+double crystalBallPdf(double x, double alpha, double n, double sigma, double mean = 0)
 {
   if (sigma < 0.)  throw MathException("crystalBallPdf() sigma < 0.");
   if ( n <= 1) return std::numeric_limits<double>::quiet_NaN();  // pdf is not normalized for n <=1

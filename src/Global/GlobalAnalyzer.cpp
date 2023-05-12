@@ -132,7 +132,7 @@ void GlobalAnalyzer::configure()
 void GlobalAnalyzer::initialize()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   EventTask::initialize();
   int nParticleFilters = particleFilters.size();
   setEvent = true;//getValueBool("SetEvent");
@@ -148,7 +148,7 @@ void GlobalAnalyzer::initialize()
 void GlobalAnalyzer::createHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String bn  = getParentName( );
   if (reportInfo(__FUNCTION__))
     {
@@ -168,7 +168,7 @@ void GlobalAnalyzer::createHistograms()
     histogramManager.addGroupInSet(0,histos);
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 //Task * _parent,
@@ -179,7 +179,7 @@ void GlobalAnalyzer::createHistograms()
 void GlobalAnalyzer::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String bn  = getParentName( );
   if (reportDebug(__FUNCTION__))
     {
@@ -199,14 +199,14 @@ void GlobalAnalyzer::importHistograms(TFile & inputFile)
     histogramManager.addGroupInSet(0,histos);
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void GlobalAnalyzer::analyzeEvent()
 {
 //  
 //  if (reportStart(__FUNCTION__))
-//    ;
+//;
   incrementTaskExecuted();
   Event & event = * getEventStream(0);
   // count eventStreams used to fill histograms and for scaling at the end..
@@ -262,7 +262,7 @@ void GlobalAnalyzer::analyzeEvent()
 void GlobalAnalyzer::createDerivedHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String bn  = getName();
   if (reportInfo(__FUNCTION__))
     {
@@ -282,15 +282,15 @@ void GlobalAnalyzer::createDerivedHistograms()
     histogramManager.addGroupInSet(1,histos);
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void GlobalAnalyzer::importDerivedHistograms(TFile & inputFile __attribute__((unused)))
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void GlobalAnalyzer::calculateDerivedHistograms()
@@ -314,5 +314,5 @@ void GlobalAnalyzer::calculateDerivedHistograms()
     derivedHistos->calculateDerivedHistograms(baseHistos);
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }

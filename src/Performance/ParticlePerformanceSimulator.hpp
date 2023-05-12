@@ -117,7 +117,7 @@ public:
     {
     eff = peakAmp + a1*arg1 + a2*arg1*arg1;
     }
-  return (eff<1)? eff : 1.0 ;
+  return (eff<1)? eff : 1.0;
   }
   
   

@@ -50,7 +50,7 @@ void ParticlePair3DAnalyzer::HistogramsCreate()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   baseSingleHistograms.clear();
   basePairHistograms.clear();
   const Configuration & configuration = getConfiguration();
@@ -95,14 +95,14 @@ void ParticlePair3DAnalyzer::HistogramsCreate()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void ParticlePair3DAnalyzer::HistogramsImport(TFile & inputFile)
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrFileExist(inputFile)) return;
   baseSingleHistograms.clear();
   basePairHistograms.clear();
@@ -146,7 +146,7 @@ void ParticlePair3DAnalyzer::HistogramsImport(TFile & inputFile)
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 
@@ -154,7 +154,7 @@ void ParticlePair3DAnalyzer::analyzeEvent()
 {
   //
   //  if (reportStart(__FUNCTION__))
-  //    ;
+  //;
   incrementTaskExecuted();
   Event & event = *eventStreams[0];
 
@@ -228,7 +228,7 @@ void ParticlePair3DAnalyzer::analyzeEvent()
       }
     }
   //  if (reportEnd(__FUNCTION__))
-  //    ;
+  //;
 }
 
 
@@ -236,7 +236,7 @@ void ParticlePair3DAnalyzer::scaleHistograms()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   double scalingFactor;
   if (reportInfo(__FUNCTION__)) printEventStatistics();
   int index = 0;
@@ -273,13 +273,13 @@ void ParticlePair3DAnalyzer::scaleHistograms()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 Task * ParticlePair3DAnalyzer::getDerivedCalculator()
 {
   if (reportDebug(__FUNCTION__))
-    ;
+;
   TString nameD = getName();
   if (reportDebug(__FUNCTION__)) cout << "Name of this task is:" << nameD  << endl;
   Configuration derivedCalcConfiguration;

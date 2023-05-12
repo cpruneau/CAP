@@ -100,7 +100,7 @@ void PTHistos::HistogramsCreate()
 //	baseName[1] = bn + "s_";
 //	baseName[2] = bn + "s*_";
 //	baseName[3] = bn + "C_";
-//	baseName[4] = bn + "c_" ;
+//	baseName[4] = bn + "c_";
 //	baseName[5] = bn + "c*_";
 //	baseName[6] = bn + "Counts_";
 //
@@ -187,7 +187,7 @@ void PTHistos::HistogramsImport(TFile & inputFile)
 //	baseName[1] = bn + "s_";
 //	baseName[2] = bn + "s*_";
 //	baseName[3] = bn + "C_";
-//	baseName[4] = bn + "c_" ;
+//	baseName[4] = bn + "c_";
 //	baseName[5] = bn + "c*_";
 //	baseName[6] = bn + "Counts_";
 //
@@ -280,9 +280,9 @@ void PTHistos::createHistogramRec(String * baseName, String * baseTitle, int dep
 //	for(int i = partIndex; i < maxOrder; i++)
 //	{
 //
-//		for(int iFunc = 0; iFunc < numFunc ; iFunc++)
+//		for(int iFunc = 0; iFunc < numFunc; iFunc++)
 //		{
-//			histoName[iFunc]  = baseName[iFunc] + (i + 1) ;
+//			histoName[iFunc]  = baseName[iFunc] + (i + 1);
 //			histoTitle[iFunc] = (depth == maxOrder - 1) ? baseTitle[iFunc] + (i + 1) : baseTitle[iFunc] + ", " + (i + 1);
 //			histoName[iFunc + numFunc]  = baseName[iFunc + numFunc] + (i + 1);
 //			histoTitle[iFunc + numFunc] = (depth == maxOrder - 1) ? baseTitle[iFunc + numFunc] + (i + 1) : baseTitle[iFunc + numFunc] + ", " + (i + 1);
@@ -336,9 +336,9 @@ void PTHistos::loadHistogramRec(String * baseName, int depth, int partIndex, TFi
 //	for(int i = partIndex; i < maxOrder; i++)
 //	{
 //
-//		for(int iFunc = 0; iFunc < numFunc ; iFunc++)
+//		for(int iFunc = 0; iFunc < numFunc; iFunc++)
 //		{
-//			histoName[iFunc]  = baseName[iFunc] + (i + 1) ;
+//			histoName[iFunc]  = baseName[iFunc] + (i + 1);
 //			histoName[iFunc + numFunc]  = baseName[iFunc + numFunc] + (i + 1);
 //
 //
@@ -1017,11 +1017,11 @@ int * PTHistos::convert(int num, int & len)
 //	if (reportDebug(__FUNCTION__))  cout << "PTHistos::convert(..) started." << endl;
 //	for(len = 2; len <=maxOrder + 1; len++)
 //	{
-//		int temp = (TMath::Factorial( maxOrder + len - 1)) / (TMath::Factorial(maxOrder ) * TMath::Factorial(len - 1 )) - 1 ;
+//		int temp = (TMath::Factorial( maxOrder + len - 1)) / (TMath::Factorial(maxOrder ) * TMath::Factorial(len - 1 )) - 1;
 //		if(num < temp)
 //		{
 //			len--;
-//			num -= (TMath::Factorial( maxOrder + len - 1)) / (TMath::Factorial(maxOrder ) * TMath::Factorial(len - 1 )) - 1 ;
+//			num -= (TMath::Factorial( maxOrder + len - 1)) / (TMath::Factorial(maxOrder ) * TMath::Factorial(len - 1 )) - 1;
 //			break;
 //		}
 //	}
@@ -1031,7 +1031,7 @@ int * PTHistos::convert(int num, int & len)
 //	for(int i = 0; i <len; i++)
 //	{
 //		int temp = 0;
-//		for(convert[i] = (i == 0)? 1: convert[i - 1] ; convert[i] <= maxOrder; convert[i]++)
+//		for(convert[i] = (i == 0)? 1: convert[i - 1]; convert[i] <= maxOrder; convert[i]++)
 //		{
 //			int temp2 = (TMath::Factorial( maxOrder + len - (convert[i] - 1) - i - 2)) / (TMath::Factorial(maxOrder - (convert[i] - 1) - 1 ) * TMath::Factorial(len - i - 1 ));
 //			temp += temp2;
@@ -1130,5 +1130,5 @@ int PTHistos::getSubsetNumber(int * subset, int lenSub, int * mainset, int lenSe
 			if(subset[lenSub - 1] == mainset[i]) num += pow(2, lenSet - i - 1);
 		}
 	}
-	return num ;
+	return num;
 }

@@ -66,7 +66,7 @@ ParticleSingleHistos::~ParticleSingleHistos()
 void ParticleSingleHistos::createHistograms()
 {
   if ( reportStart(__FUNCTION__))
-    ;
+;
   const String & bn  = getName();
   const String & ptn = getParentName();
   const String & ppn = getParentPathName();
@@ -166,7 +166,7 @@ void ParticleSingleHistos::createHistograms()
 void ParticleSingleHistos::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   const String & bn  = getName();
   const String & ptn = getParentName();
   const String & ppn = getParentPathName();
@@ -210,13 +210,13 @@ void ParticleSingleHistos::importHistograms(TFile & inputFile)
   h_pdgId  = loadH2(inputFile,  createName(bn,"n1_indexId"));
 
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void ParticleSingleHistos::loadCalibration(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   const String & bn  = getName();
   const String & ptn = getParentName();
   const String & ppn = getParentPathName();
@@ -255,7 +255,7 @@ void ParticleSingleHistos::loadCalibration(TFile & inputFile)
 
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 

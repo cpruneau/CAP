@@ -598,7 +598,7 @@ TLegend * Plotter::createLegend(vector<DataGraph*> graphs,const LegendConfigurat
 TLine * Plotter::createLine(float x1, float y1, float x2, float y2, int style, int color, int width, bool doDraw)
 {
   if (reportDebug(__FUNCTION__))
-    ;
+;
   TLine *line = new TLine(x1,y1,x2,y2);
   line->SetLineStyle(style);
   line->SetLineColor(color);
@@ -613,7 +613,7 @@ TLine * Plotter::createLine(float x1, float y1, float x2, float y2, int style, i
 TArrow * Plotter::createArrow(float x1, float y1, float x2, float y2, float arrowSize, Option_t* option, int style, int color, int width, bool doDraw)
 {
   if (reportDebug(__FUNCTION__))
-    ;
+;
   TArrow *line = new TArrow(x1,y1,x2,y2,arrowSize,option);
   line->SetLineStyle(style);
   line->SetLineColor(color);

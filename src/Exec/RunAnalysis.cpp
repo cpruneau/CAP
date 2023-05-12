@@ -181,7 +181,7 @@ void RunAnalysis::setDefaultConfiguration()
 void RunAnalysis::configure()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   EventTask::configure();
   setSeverity();
   // assemble the task from here...
@@ -532,7 +532,7 @@ void RunAnalysis::configure()
       subTasks[iTask]->configure();
       }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void RunAnalysis::execute()

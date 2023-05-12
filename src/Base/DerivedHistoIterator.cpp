@@ -138,6 +138,6 @@ void DerivedHistoIterator::execute()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 

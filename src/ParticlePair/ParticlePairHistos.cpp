@@ -242,7 +242,7 @@ void ParticlePairHistos::createHistograms()
 void ParticlePairHistos::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
    const String & bn  = getName();
   const String & ptn = getParentName();
   const String & ppn = getParentPathName();
@@ -289,7 +289,7 @@ void ParticlePairHistos::importHistograms(TFile & inputFile)
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void ParticlePairHistos::fill(vector<ParticleDigit*> & particle1, vector<ParticleDigit*> & particle2, bool same, double weight)
@@ -491,7 +491,7 @@ void ParticlePairHistos::fill(vector<ParticleDigit*> & particle1, vector<Particl
 void ParticlePairHistos::fill(Particle & particle1, Particle & particle2, double weight)
 {
 //  if (reportInfo(__FUNCTION__))
-//    ;
+//;
   LorentzVector & momentum1 = particle1.getMomentum();
   double pt1   = momentum1.Pt();
   //double e1    = momentum1.E();
@@ -537,6 +537,6 @@ void ParticlePairHistos::fill(Particle & particle1, Particle & particle2, double
       }
     }
 //  if (reportInfo(__FUNCTION__))
-//    ;
+//;
 }
 

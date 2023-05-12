@@ -142,6 +142,6 @@ void ClosureIterator::execute()
       } // iFile loop
     } // iTask loop
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 

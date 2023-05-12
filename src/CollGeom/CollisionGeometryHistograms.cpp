@@ -87,7 +87,7 @@ h_bR2VsXsect(nullptr)
 void CollisionGeometryHistograms::createHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
 
   const Configuration & configuration = getConfiguration();
   int nBins_b        = configuration.getValueInt(getName(),"nBins_b");
@@ -195,14 +195,14 @@ void CollisionGeometryHistograms::createHistograms()
 //  h_psi2VsB            = createHistogram(createName(bn,"psi2VsB"), nBins_b,  min_b,  max_b,  40, -TMath::Pi(), TMath::Pi(), "b", "#psi_2", counts,0,1);
 
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 //________________________________________________________________________
 void CollisionGeometryHistograms::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String bn = getParentName( );
   h_nProcessedVsB     = loadH1(inputFile,createName(bn,"nProcessedVsB"));
   h_nAcceptedVsB      = loadH1(inputFile,createName(bn,"nAcceptedVsB"));
@@ -294,7 +294,7 @@ void CollisionGeometryHistograms::importHistograms(TFile & inputFile)
   //  h_psi2VsB            = loadH1(createName(bn,"psi2VsB"));
 
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void CollisionGeometryHistograms::fill(Event & event, double weight)
@@ -381,7 +381,7 @@ void CollisionGeometryHistograms::noFill(Event & event, double weight)
 //void CollisionGeometryHistograms::create Derived HistogramGroup()
 //{
 //  if (reportStart(__FUNCTION__))
-//    ;
+//;
 ////  double area    = 1.0; //h_crossSection->GetBinContent(4);
 ////  double ratio1  = nEvents>0      ? nEventsWColl/nEvents : 1.0e-30;
 ////  double eRatio1 = nEvents>0      ? eNEventWColl/nEvents : 1.0e-30;
@@ -418,13 +418,13 @@ void CollisionGeometryHistograms::noFill(Event & event, double weight)
 //  calculateRms(h_bVsXsect_Prof,       h_bSqVsXsect_Prof,       h_bRmsVsXsect,       h_bOmegaVsXsect,       h_bR2VsXsect);
 //
 //  if (reportEnd(__FUNCTION__))
-//    ;
+//;
 //}
 
 void CollisionGeometryHistograms::calculateRms(TProfile * h1, TProfile * h1Sq,   TH1* h1Rms, TH1* h1Omega, TH1* h1R2)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   double v, vSq, rms, erms, omega, eomega, R2, eR2;
   int nBins = h1->GetNbinsX();
   for (int iBin=1; iBin<nBins; iBin++)
@@ -462,5 +462,5 @@ void CollisionGeometryHistograms::calculateRms(TProfile * h1, TProfile * h1Sq,  
     h1R2->SetBinError(iBin, eR2);
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }

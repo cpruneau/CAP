@@ -163,15 +163,15 @@ public:
   void setHistogram(TH2 * h, double v, double ev);
   void setHistogram(TH3 * h, double v, double ev);
 
-  int  loadCollection(TFile & inputFile) throw (HistogramException);
+  int  loadCollection(TFile & inputFile);
 
-  TH1 * loadH1(TFile & inputFile,const String & histoName) throw (HistogramException);
-  TH2 * loadH2(TFile & inputFile,const String & histoName) throw (HistogramException);
-  TH3 * loadH3(TFile & inputFile,const String & histoName) throw (HistogramException);
-  TProfile * loadProfile(TFile & inputFile,const String & histoName) throw (HistogramException);
-  TProfile2D * loadProfile2D(TFile & inputFile,const String & histoName) throw (HistogramException);
-  void histosImportInList(TFile & inputFile, HistogramCollection * collection) throw (HistogramException);
-  TH1 * clone(const TH1 * h1, const String & histoName)  throw (HistogramException);
+  TH1 * loadH1(TFile & inputFile,const String & histoName);
+  TH2 * loadH2(TFile & inputFile,const String & histoName);
+  TH3 * loadH3(TFile & inputFile,const String & histoName);
+  TProfile * loadProfile(TFile & inputFile,const String & histoName);
+  TProfile2D * loadProfile2D(TFile & inputFile,const String & histoName);
+  void histosImportInList(TFile & inputFile, HistogramCollection * collection);
+  TH1 * clone(const TH1 * h1, const String & histoName);
 
   void findMaximum(TH1 * h, int xFirstBin, int xLastBin, int & xMaxValueBin, double & xMaxValue);
   void findMinimum(TH1 * h, int xFirstBin, int xLastBin, int & xMinValueBin, double  & xMinValue);
@@ -316,7 +316,7 @@ public:
   bool sameDimensions(const String & caller, const TH1* h1, const TH1* h2, const TH1* h3, const TH1* h4, const TH1* h5) const;
 
   bool ptrFileExist(const String &  caller, const TFile * f) const;
-  bool ptrExist(const String &  caller, const TH1 * h1) const ;
+  bool ptrExist(const String &  caller, const TH1 * h1) const;
   bool ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2) const;
   bool ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3) const;
   bool ptrExist(const String &  caller, const TH1 * h1, const TH1 * h2, const TH1 * h3, const TH1 * h4) const;

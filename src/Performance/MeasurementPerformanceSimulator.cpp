@@ -79,7 +79,7 @@ void MeasurementPerformanceSimulator::setDefaultConfiguration()
 void MeasurementPerformanceSimulator::initialize()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   EventTask::initialize();
   allEventsUseSameFilters = getValueBool("allEventsUseSameFilters");
   bool useSameSetForAll   = getValueBool("useSameSetForAll");
@@ -138,7 +138,7 @@ void MeasurementPerformanceSimulator::initialize()
 void MeasurementPerformanceSimulator::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String prefixName = getName(); prefixName += "_";
 
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
@@ -157,7 +157,7 @@ void MeasurementPerformanceSimulator::importHistograms(TFile & inputFile)
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 //!
@@ -171,7 +171,7 @@ void MeasurementPerformanceSimulator::createEvent()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   incrementTaskExecuted();
   Event & genEvent  = *eventStreams[0];
   Event & recoEvent = *eventStreams[1];

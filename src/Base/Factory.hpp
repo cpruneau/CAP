@@ -95,7 +95,7 @@ protected:
   return index-1;
   }
 
-  T * getNextObject() throw (FactoryException)
+  T * getNextObject() 
   {
   if (index<capacity)
     {

@@ -51,7 +51,7 @@ h_n1_dPhiVsPt(nullptr)
 void ParticlePerformanceHistos::createHistograms()
 {
   if ( reportStart(__FUNCTION__))
-    ;
+;
   String bn = getParentName();
   const Configuration & configuration = getConfiguration();
   
@@ -114,7 +114,7 @@ void ParticlePerformanceHistos::createHistograms()
 void ParticlePerformanceHistos::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
    String bn = getParentName();
 
   const Configuration & configuration = getConfiguration();
@@ -139,7 +139,7 @@ void ParticlePerformanceHistos::importHistograms(TFile & inputFile)
     }
   
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 //!

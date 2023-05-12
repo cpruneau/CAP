@@ -43,7 +43,7 @@ double  besselI0(double  x)
 ///
 //! \author NvE 12-mar-2000 UU-SAP Utrecht
 
-double  besselK0(double  x)  throw (MathException)
+double  besselK0(double  x)
 {
   // Parameters of the polynomial approximation
   const double  p1=-0.57721566,  p2=0.42278420,   p3=0.23069756,
@@ -106,7 +106,7 @@ double  besselI1(double  x)
 ///
 //! \author NvE 12-mar-2000 UU-SAP Utrecht
 
-double  besselK1(double  x)  throw (MathException)
+double  besselK1(double  x)
 {
   // Parameters of the polynomial approximation
   const double  p1= 1.,          p2= 0.15443144,  p3=-0.67278579,
@@ -133,7 +133,7 @@ double  besselK1(double  x)  throw (MathException)
 ///
 //! \author NvE 12-mar-2000 UU-SAP Utrecht
 
-double  besselK(int  n,double  x)  throw (MathException)
+double  besselK(int  n,double  x)
 {
   if (x <= 0 || n < 0) throw MathException("Invalid argument x <= 0 || n < 0","besselK()");
   if (n==0) return besselK0(x);
@@ -158,7 +158,7 @@ double  besselK(int  n,double  x)  throw (MathException)
 ///
 //! \author NvE 12-mar-2000 UU-SAP Utrecht
 
-double  besselI(int  n,double  x)  throw (MathException)
+double  besselI(int  n,double  x)
 {
   int  iacc = 40; // Increase to enhance accuracy
   const double  kBigPositive = 1.e10;

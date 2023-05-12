@@ -52,7 +52,7 @@ fillCorrelationHistos(false)
 void GlobalHistos::createHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   unsigned int nParticleFilters = particleFilters.size();
   const Configuration & configuration = getConfiguration();
   const String & bn  = getName();
@@ -172,13 +172,13 @@ void GlobalHistos::createHistograms()
 
   }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void GlobalHistos::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   const Configuration & configuration = getConfiguration();
   const String & bn  = getName();
   const String & ptn = getParentName();
@@ -246,7 +246,7 @@ void GlobalHistos::importHistograms(TFile & inputFile)
     }
   }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void GlobalHistos::fill(vector<double> & n, vector<double> & ptSum, vector<double> & e, vector<double> & q, vector<double> & s, vector<double> & b, double weight)

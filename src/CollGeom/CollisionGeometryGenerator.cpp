@@ -75,7 +75,7 @@ void CollisionGeometryGenerator::setDefaultConfiguration()
 void CollisionGeometryGenerator::initialize()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   Task::initialize();
   Event & event = * eventStreams[0];
   event.setNucleusA(configuration.getValueInt(getName(),"aNucleusZ"), configuration.getValueInt(getName(),"aNucleusA") );
@@ -131,7 +131,7 @@ void CollisionGeometryGenerator::initialize()
     cout << "================================================================" << endl;
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void CollisionGeometryGenerator::clear()
@@ -148,7 +148,7 @@ void CollisionGeometryGenerator::createEvent()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   incrementTaskExecuted();
   Event & event = *eventStreams[0];
   //event.reset();

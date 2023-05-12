@@ -212,7 +212,7 @@ void RunSubsample::addBalFctSubSampleTask(const String & basePath,
 void RunSubsample::configure()
 {
   if (reportEnd(__FUNCTION__))
-    ;
+;
   Task::configure();
   String GlobalLabel      = getValueString("GlobalLabel");
   String SpherocityLabel  = getValueString("SpherocityLabel");
@@ -292,7 +292,7 @@ void RunSubsample::configure()
       subTasks[iTask]->configure();
       }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void RunSubsample::execute()

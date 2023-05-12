@@ -17,7 +17,7 @@ namespace Math
 //! I.e., the regular mean of data sample
 //!
 template <typename T, typename Iterator> T arithmeticMean(Iterator first, Iterator last);
-template <typename T, typename Iterator, typename WeightIterator> T arithmeticMean(Iterator first, Iterator last, WeightIterator wfirst)   throw (MathException);
+template <typename T, typename Iterator, typename WeightIterator> T arithmeticMean(Iterator first, Iterator last, WeightIterator wfirst);
 template <typename T> T arithmeticMean(long n, const T *a, const double *w=0);
 template <typename T> T arithmeticMean(std::vector<T> values);
 template <typename T> T arithmeticMean(std::vector<T> values, std::vector<T> weights);
@@ -60,7 +60,7 @@ template <typename T, typename Iterator> T arithmeticMean(Iterator first, Iterat
 }
 
 
-template <typename T, typename Iterator, typename WeightIterator> T arithmeticMean(Iterator first, Iterator last, WeightIterator wfirst)   throw (MathException)
+template <typename T, typename Iterator, typename WeightIterator> T arithmeticMean(Iterator first, Iterator last, WeightIterator wfirst)
 {
   T sum    = 0;
   T sumw   = 0;

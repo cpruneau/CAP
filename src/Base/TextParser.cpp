@@ -32,7 +32,7 @@ Parser(_severity)
 int  TextParser::read(Configuration & _configuration,
                       const String  & _inputPath,
                       const String  & _inputFileName,
-                      const String  & _extension)  throw (FileException)
+                      const String  & _extension)
 {
   std::ifstream & inputFile = openInputFile(_inputPath,_inputFileName,_extension,"");;
   if (reportInfo(__FUNCTION__))

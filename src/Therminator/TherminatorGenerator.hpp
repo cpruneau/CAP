@@ -70,12 +70,12 @@ public:
 
   virtual  ~TherminatorGenerator(){};
 
-  virtual void initializeEventGenerator() throw (TaskException);
+  virtual void initializeEventGenerator();
   virtual void finalizeEventGenerator();
   virtual void setDefaultConfiguration();
   virtual void configure();
 
-  virtual void importMultiplicities()  throw (FileException);
+  virtual void importMultiplicities();
   virtual void calculateMultiplicities();
   virtual void exportMultiplicities();
   virtual void printMultiplicities();

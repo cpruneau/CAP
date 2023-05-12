@@ -29,7 +29,7 @@ public:
   virtual int  read(Configuration & _configuration,
                     const String  & _inputPath,
                     const String  & _inputFileName,
-                    const String  & _extension = ".ini") throw (FileException);
+                    const String  & _extension = ".ini");
 
   ClassDef(TextParser,0)
 

@@ -66,7 +66,7 @@ void GlobalDerivedHistos::createHistograms()
 void GlobalDerivedHistos::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   const String & bn  = getName();
   const String & ptn = getParentName();
   const String & ppn = getParentPathName();
@@ -86,7 +86,7 @@ void GlobalDerivedHistos::importHistograms(TFile & inputFile)
     h_ptAvgIncVsN.push_back( loadH1(inputFile, createName(bn,pfName1,"n",  pfName1,"ptAvgIncl")));
     }
   if ( reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 //!
@@ -95,11 +95,11 @@ void GlobalDerivedHistos::importHistograms(TFile & inputFile)
 void GlobalDerivedHistos::calculateDerivedHistograms(GlobalHistos * baseHistos __attribute__((unused)))
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
 
   //p_ptSumVsN
 
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 

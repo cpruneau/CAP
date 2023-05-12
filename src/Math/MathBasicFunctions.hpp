@@ -86,7 +86,7 @@ inline T NumericalLimits<T>::epsilon()
 inline bool areEqualAbs(double af, double bf, double epsilon=1.0E-25)
 {
   return absolute(af-bf) < epsilon ||
-  absolute(af - bf) < NumericalLimits<double>::minimum() ; //! handle 0 < 0 case
+  absolute(af - bf) < NumericalLimits<double>::minimum(); //! handle 0 < 0 case
 }
 //! Comparing floating points.
 //! Returns `true` if the relative difference between `af` and `bf` is less than `relPrec`.
@@ -126,7 +126,7 @@ template <typename T> T *normalToPlane(const T v1[3],const T v2[3],const T v3[3]
 //!
 //! Arithmetic mean
 template <typename Iterator> double mean(Iterator first, Iterator last);
-template <typename Iterator, typename WeightIterator> double mean(Iterator first, Iterator last, WeightIterator wfirst)   throw (MathException);
+template <typename Iterator, typename WeightIterator> double mean(Iterator first, Iterator last, WeightIterator wfirst);
 template <typename T> double mean(long n, const T *a, const double *w=0);
 template <typename T> double mean(std::vector<T> values);
 template <typename T> double mean(std::vector<T> values, std::vector<T> weights);
@@ -145,7 +145,7 @@ template <typename Iterator> double mean(Iterator first, Iterator last)
 }
 
 template <typename Iterator, typename WeightIterator>
-double mean(Iterator first, Iterator last, WeightIterator w)  throw (MathException)
+double mean(Iterator first, Iterator last, WeightIterator w)
 {
   double sum = 0;
   double sumw = 0;
@@ -153,7 +153,7 @@ double mean(Iterator first, Iterator last, WeightIterator w)  throw (MathExcepti
     {
     if ( *w < 0) throw MathException("negative weight","mean()");
     sum  += (*w) * (*first);
-    sumw += (*w) ;
+    sumw += (*w);
     ++w;
     ++first;
     }

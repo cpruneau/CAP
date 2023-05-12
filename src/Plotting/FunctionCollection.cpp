@@ -105,7 +105,7 @@ void FunctionCollection::setFunctionProperties(TF1 * f, GraphConfiguration & gra
 void FunctionCollection::plotAllFunctions(const String & outputPath, bool doPrint)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   GraphConfiguration  * gc1D = new GraphConfiguration(1,0);
   GraphConfiguration  * gc2D = new GraphConfiguration(2,0);
   CanvasConfiguration * cc1D = new CanvasConfiguration();
@@ -115,7 +115,7 @@ void FunctionCollection::plotAllFunctions(const String & outputPath, bool doPrin
   String name;
   //cout << "-INFO- plotAllHistos(..) getNFunction() :" << getNFunction()  << " with capacity:" << nFunctionCapacity << endl;
 
-  for (int iFunc=0; iFunc<getNFunction() ; iFunc++)
+  for (int iFunc=0; iFunc<getNFunction(); iFunc++)
     {
     TF1* f = getObjectAt(iFunc);
     name = f->GetName();

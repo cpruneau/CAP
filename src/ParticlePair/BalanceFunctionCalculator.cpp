@@ -395,7 +395,7 @@ void BalanceFunctionCalculator::execute()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   TString histogramsImportPath  = getValueString("HistogramsImportPath");
   TString histogramsImportFile  = getValueString("HistogramsImportFile");
   TString histosExportPath      = getValueString("HistogramsExportPath");
@@ -627,8 +627,8 @@ void BalanceFunctionCalculator::execute()
     inputFile.Close();
     outputFile.Close();
     histogramGroup->clear();
-    delete histogramGroup ;
+    delete histogramGroup;
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }

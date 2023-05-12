@@ -42,7 +42,7 @@ CAP::Configuration::~Configuration()
 }
 
 
-CAP::String CAP::Configuration::getParameter(const char* aKeyword)  const throw(String)
+CAP::String CAP::Configuration::getParameter(const char* aKeyword)  const
 {
   vector<Parameter>::const_iterator iter;
   for (iter = parameters.begin(); iter != parameters.end(); iter++)

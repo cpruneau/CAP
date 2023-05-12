@@ -37,7 +37,7 @@ void CalibrationProducer::setDefaultConfiguration()
 void CalibrationProducer::execute()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   incrementTaskExecuted();
   bool   histosForceRewrite     = getValueBool(  "HistogramsForceRewrite");
   int    efficiencyOpt          = getValueInt(   "EfficiencyOpt");

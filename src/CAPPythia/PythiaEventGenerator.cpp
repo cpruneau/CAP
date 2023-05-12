@@ -125,7 +125,7 @@ void PythiaEventGenerator::configure()
 //!
 void PythiaEventGenerator::initialize()
 {
-  ;
+;
   EventTask::initialize();
 
   if (reportInfo(__FUNCTION__))
@@ -263,13 +263,13 @@ void PythiaEventGenerator::initialize()
 //    outputTree->Branch("event",&outputEvent);
 //    }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void PythiaEventGenerator::createEvent()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   incrementTaskExecuted();
   Event & event = *eventStreams[0];
   EventProperties & eventProperties = * event.getEventProperties();
@@ -367,5 +367,5 @@ void PythiaEventGenerator::finalize()
 //    delete outputFile;
 //    }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }

@@ -86,7 +86,7 @@ void TransverseSpherocityAnalyzer::configure()
 void TransverseSpherocityAnalyzer::initialize()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   EventTask::initialize();
 
   if (reportInfo(__FUNCTION__))
@@ -103,7 +103,7 @@ void TransverseSpherocityAnalyzer::initialize()
 void TransverseSpherocityAnalyzer::createHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
@@ -121,14 +121,14 @@ void TransverseSpherocityAnalyzer::createHistograms()
     histogramManager.addGroupInSet(0,histos);
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void TransverseSpherocityAnalyzer::importHistograms(TFile & inputFile)
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();;
   unsigned int nParticleFilters = particleFilters.size();
@@ -147,14 +147,14 @@ void TransverseSpherocityAnalyzer::importHistograms(TFile & inputFile)
     histogramManager.addGroupInSet(0,histos);
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void TransverseSpherocityAnalyzer::analyzeEvent()
 {
 //  
 //  if (reportStart(__FUNCTION__))
-//    ;
+//;
   incrementTaskExecuted();
   static double factor = TMath::Pi()*TMath::Pi()/4.0;
   incrementTaskExecuted();

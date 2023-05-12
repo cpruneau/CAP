@@ -71,8 +71,8 @@ public:
   //!
   virtual void execute();
   virtual void importParticleDb();
-  virtual void importParticleDbCAP()  throw (FileException);
-  virtual void importParticleDbNative() throw (FileException);
+  virtual void importParticleDbCAP();
+  virtual void importParticleDbNative();
   virtual void initializeParticleDb();
   virtual void initializeParticleDbCAP();
   virtual void initializeParticleDbNative();

@@ -32,7 +32,7 @@ void HijingEventReader::setDefaultConfiguration()
 void HijingEventReader::importEvent()
 {
   //  if (reportDebug(__FUNCTION__))
-  //    ;
+  //;
   incrementTaskExecuted();
   //EventFilter & eventFilter = * eventFilters[0];
   ParticleFilter & particleFilter = * particleFilters[0];
@@ -129,7 +129,7 @@ void HijingEventReader::initInputTreeMapping()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   TTree * tree = rootInputTreeChain();
   tree->SetMakeClass(1);
   tree->SetBranchAddress("eventNo", &eventNo, &b_eventNo);
@@ -146,6 +146,6 @@ void HijingEventReader::initInputTreeMapping()
   tree->SetBranchAddress("Nx", Nx, &b_Nx);
   tree->SetBranchAddress("Ny", Ny, &b_Ny);
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 

@@ -153,7 +153,7 @@ void StatStudyHistograms::HistogramsCreate()
 void StatStudyHistograms::HistogramsImport(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
   String bn = getParentTaskName();
   f1_1     = loadH1(inputFile,  createName(bn,"f1_1"));
@@ -254,13 +254,13 @@ void StatStudyHistograms::HistogramsImport(TFile & inputFile)
   er2_22Ratio_vsSub     = loadH1(inputFile,  createName(bn,"er2_22Ratio_vsSub"));
   enudyn_12Ratio_vsSub  = loadH1(inputFile,  createName(bn,"enudyn_12Ratio_vsSub"));
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void StatStudyHistograms::exportHistograms(TFile & outputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrFileExist(__FUNCTION__, inputFile)) return;
   outputFile->cd();
 
@@ -364,7 +364,7 @@ void StatStudyHistograms::exportHistograms(TFile & outputFile)
   er2_22Ratio_vsSub->Write();
   enudyn_12Ratio_vsSub->Write();
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void StatStudyHistograms::fill(double sub, double nPlus, double nMinus, double nPlusEff,  double nMinusEff)

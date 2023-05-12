@@ -73,7 +73,7 @@ XmlDocument::~XmlDocument()
 
 
 void  XmlDocument::read(const String  & _inputPath,
-                       const String  & _inputFileName)  throw (FileException)
+                       const String  & _inputFileName)
 {
   inputPath = _inputPath;
   inputFileName = _inputFileName;
@@ -81,7 +81,7 @@ void  XmlDocument::read(const String  & _inputPath,
   parser.read(*this,inputPath,inputFileName);
 }
 
-void  XmlDocument::read()  throw (FileException)
+void  XmlDocument::read()
 {
   XmlParser parser;
   parser.read(*this,inputPath,inputFileName);
@@ -89,7 +89,7 @@ void  XmlDocument::read()  throw (FileException)
 
 XmlDocument* XmlDocument::getXmlTag(const char* aTagName,
                                     const char* aAttName,
-                                    const char* aAttVal) throw(String)
+                                    const char* aAttVal)
 {
   if(!topTag) throw (String("Document is empty"));
 
@@ -141,7 +141,7 @@ XmlDocument* XmlDocument::getXmlTag(const char* aTagName,
 }
 
 // Get the attribute name attributeName from the given tag
-String XmlDocument::getXmlAttribute(const XmlTag & tag, const char* attributeName) const  throw (String)
+String XmlDocument::getXmlAttribute(const XmlTag & tag, const char* attributeName) const
 {
   list<XmlAttribute>::const_iterator iter;
   for(iter=tag.attributes.begin(); iter!=tag.attributes.end(); iter++)
@@ -151,13 +151,13 @@ String XmlDocument::getXmlAttribute(const XmlTag & tag, const char* attributeNam
   throw (String("Attribute Not Found:")+attributeName);
 }
 
-String XmlDocument::getXmlAttribute(const char* attributeName) const  throw (String)
+String XmlDocument::getXmlAttribute(const char* attributeName) const
 {
   if(!currentTag) throw (String("Attempting to get attribute of a null tag (currentTag)"));
   return getXmlAttribute(*currentTag,attributeName);
 }
 
-String XmlDocument::getXmlContent(const XmlTag & tag) const throw(String)
+String XmlDocument::getXmlContent(const XmlTag & tag) const
 {
   XmlParser parser;
   std::ifstream & inputFile = parser.openInputFile(inputPath,inputFileName,".xml","");
@@ -174,7 +174,7 @@ String XmlDocument::getXmlContent(const XmlTag & tag) const throw(String)
 }
 
 
-String XmlDocument::getXmlContent()  const throw(String)
+String XmlDocument::getXmlContent()  const
 {
   if(!currentTag) throw (String("Attempting to get content of a null tag (currentTag)"));
   return getXmlContent(*currentTag);

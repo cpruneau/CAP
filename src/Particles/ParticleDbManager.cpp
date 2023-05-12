@@ -100,7 +100,7 @@ void ParticleDbManager::configure()
 void ParticleDbManager::execute()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   incrementTaskExecuted();
   if (particleDbImport)  importParticleDb();
   if (particleDbExport)  initializeParticleDb();
@@ -110,7 +110,7 @@ void ParticleDbManager::execute()
     initializeParticleDb();
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void ParticleDbManager::importParticleDb()
@@ -121,7 +121,7 @@ void ParticleDbManager::importParticleDb()
     importParticleDbNative();
 }
 
-void ParticleDbManager::importParticleDbCAP() throw (FileException)
+void ParticleDbManager::importParticleDbCAP()
 {
   ifstream & inputFile = openInputAsciiFile(particleDbImportPath,particleDbImportFile,".dat");
   string name, title;
@@ -230,7 +230,7 @@ void ParticleDbManager::importParticleDbCAP() throw (FileException)
   particleDb->sortByMass();
 }
 
-void ParticleDbManager::importParticleDbNative()  throw (FileException)
+void ParticleDbManager::importParticleDbNative()
 {
   ifstream & inputFile = openInputAsciiFile(particleDbImportPath,particleDbImportFile,".data");
   ParticleDb * particleDb = new ParticleDb();
@@ -467,7 +467,7 @@ void ParticleDbManager::exportParticleDbCAP()
     }
   outputFile.close();
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void ParticleDbManager::exportParticleDbNative()

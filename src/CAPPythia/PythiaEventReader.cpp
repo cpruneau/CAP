@@ -37,7 +37,7 @@ void PythiaEventReader::setDefaultConfiguration()
 void PythiaEventReader::importEvent()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   
   //cout << "eventStreams.size() : " << eventStreams.size() << endl;
   incrementTaskExecuted();

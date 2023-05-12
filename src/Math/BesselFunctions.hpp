@@ -15,12 +15,12 @@ namespace Math
 {
 
 //! bessel functions
-double besselI(int n,double x) throw (MathException);
-double besselK(int n,double x) throw (MathException);
+double besselI(int n,double x);
+double besselK(int n,double x);
 double besselI0(double x);
-double besselK0(double x) throw (MathException);
+double besselK0(double x);
 double besselI1(double x);
-double besselK1(double x) throw (MathException);
+double besselK1(double x);
 double besselJ0(double x);
 double besselJ1(double x);
 double besselY0(double x);

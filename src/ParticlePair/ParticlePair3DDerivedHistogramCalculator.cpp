@@ -91,7 +91,7 @@ void ParticlePair3DDerivedHistogramCalculator::HistogramsCreate()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   derivedSingleHistograms.clear();
   derivedPairHistograms.clear();
   const Configuration & configuration = getConfiguration();
@@ -134,14 +134,14 @@ void ParticlePair3DDerivedHistogramCalculator::HistogramsCreate()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void ParticlePair3DDerivedHistogramCalculator::HistogramsImport(TFile & inputFile)
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (!ptrFileExist(inputFile)) return;
   
   baseSingleHistograms.clear();
@@ -187,7 +187,7 @@ void ParticlePair3DDerivedHistogramCalculator::HistogramsImport(TFile & inputFil
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 //!
@@ -198,7 +198,7 @@ void ParticlePair3DDerivedHistogramCalculator::execute()
 {
   
   if (reportStart(__FUNCTION__))
-    ;
+;
   //incrementTaskExecuted();
   //const Configuration & config  = getConfiguration();
    if (reportDebug(__FUNCTION__))
@@ -266,5 +266,5 @@ void ParticlePair3DDerivedHistogramCalculator::execute()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }

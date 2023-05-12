@@ -143,14 +143,14 @@ void ParticleSingleAnalyzer::createHistograms()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 
 void ParticleSingleAnalyzer::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;
@@ -172,7 +172,7 @@ void ParticleSingleAnalyzer::importHistograms(TFile & inputFile)
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void ParticleSingleAnalyzer::analyzeEvent()
@@ -297,7 +297,7 @@ void ParticleSingleAnalyzer::analyzeEvent()
 void ParticleSingleAnalyzer::createDerivedHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String bn  = getName();
   if (reportDebug(__FUNCTION__))
     {
@@ -321,7 +321,7 @@ void ParticleSingleAnalyzer::createDerivedHistograms()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 
@@ -333,7 +333,7 @@ void ParticleSingleAnalyzer::importDerivedHistograms(TFile & inputFile __attribu
 void ParticleSingleAnalyzer::calculateDerivedHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   //incrementTaskExecuted();
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
@@ -372,7 +372,7 @@ void ParticleSingleAnalyzer::calculateDerivedHistograms()
 void ParticleSingleAnalyzer::scaleHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   //double scalingFactor;
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
@@ -393,5 +393,5 @@ void ParticleSingleAnalyzer::scaleHistograms()
       }
     }
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }

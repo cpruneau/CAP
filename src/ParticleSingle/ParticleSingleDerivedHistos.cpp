@@ -131,7 +131,7 @@ void ParticleSingleDerivedHistos::createHistograms()
       }
     }
   if ( reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 //________________________________________________________________________
@@ -175,7 +175,7 @@ void ParticleSingleDerivedHistos::importHistograms(TFile & inputFile)
       }
     }
   if ( reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 //!
@@ -184,7 +184,7 @@ void ParticleSingleDerivedHistos::importHistograms(TFile & inputFile)
 void ParticleSingleDerivedHistos::calculateDerivedHistograms(ParticleSingleHistos * baseHistos)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   String bn = getParentName();
   TH1* hTemp;
 

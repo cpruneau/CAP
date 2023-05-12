@@ -430,7 +430,7 @@ void TherminatorGenerator::createEvent()
 
 void TherminatorGenerator::printIntroMessage(const TString & option __attribute__ (( unused)) )  const
 {
-  cout << endl << endl << endl << endl<< endl << endl ;
+  cout << endl << endl << endl << endl<< endl << endl;
   cout << " ***********************************************************************" << endl;
   cout << " *\t\tTHERMINATOR 2 EVENTS version "<<_THERMINATOR2_VERSION_ << endl;
   cout << " *" << endl;
@@ -438,12 +438,12 @@ void TherminatorGenerator::printIntroMessage(const TString & option __attribute_
   cout << " * Cite as: arXiv:1102.0273" << endl;
   cout << " * webpage: http://therminator2.ifj.edu.pl/\t\t\t\t*"<< endl;
   cout << " ***********************************************************************" << endl;
-  cout << endl << endl << endl << endl<< endl << endl ;
+  cout << endl << endl << endl << endl<< endl << endl;
 }
 
 void TherminatorGenerator::printHelp(const TString & option __attribute__ (( unused)) ) const
 {
-  cout << endl << endl << endl << endl<< endl << endl ;
+  cout << endl << endl << endl << endl<< endl << endl;
   cout << "Usage:" << endl;
   cout << "therm2_events [EVENTS_INI] [PPID] [HYPER_XML]" << endl;
   cout << "therm2_events [OPTION]" << endl;
@@ -453,7 +453,7 @@ void TherminatorGenerator::printHelp(const TString & option __attribute__ (( unu
   cout << "  [OPTION]" << endl;
   cout << "    -h | --help\t\tthis screen" << endl;
   cout << "    -v | --version\tversion inforamption" << endl;
-  cout << endl << endl << endl << endl<< endl << endl ;
+  cout << endl << endl << endl << endl<< endl << endl;
 }
 
 void TherminatorGenerator::printVersion(const TString & option __attribute__ (( unused)) ) const
@@ -465,7 +465,7 @@ void TherminatorGenerator::printVersion(const TString & option __attribute__ (( 
 }
 
 
-void TherminatorGenerator::initializeEventGenerator() throw (TaskException)
+void TherminatorGenerator::initializeEventGenerator()
 {
   if (reportInfo(__FUNCTION__)) printIntroMessage();
   particleDb = ParticleDb::getDefaultParticleDb();
@@ -525,7 +525,7 @@ void TherminatorGenerator::finalizeEventGenerator()
   eventMultiplicities.clear();
 }
 
-void TherminatorGenerator::importMultiplicities() throw (FileException)
+void TherminatorGenerator::importMultiplicities()
 {
   if (reportInfo(__FUNCTION__))
     {

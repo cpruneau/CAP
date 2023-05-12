@@ -30,7 +30,7 @@ Parser(_severity)
 
 void XmlParser::read(XmlDocument  & _xmlDocument,
                      const String & _inputPath,
-                     const String & _inputFileName)  throw (FileException)
+                     const String & _inputFileName)
 {
   long int filePosition;
   XmlTag* newTag;

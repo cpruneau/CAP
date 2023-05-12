@@ -47,7 +47,7 @@ NuDynHistos::~NuDynHistos()
 void NuDynHistos::createHistograms()
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   const String & bn  = getName();
   const String & ptn = getParentName();
   const String & ppn = getParentPathName();
@@ -129,14 +129,14 @@ void NuDynHistos::createHistograms()
   h_f4_vsMult.push_back( createProfile(createName(bn,"f4_1111",suffix),nBins_mult,min_mult,max_mult,nBins_rapidity,min_rapidity,max_rapidity,xTitle, yTitle,"f_{4}^{1111}") );
 
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 //________________________________________________________________________
 void NuDynHistos::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
-    ;
+;
   const String & bn  = getName();
   const String & ptn = getParentName();
   const String & ppn = getParentPathName();
@@ -206,7 +206,7 @@ void NuDynHistos::importHistograms(TFile & inputFile)
   h_f4_vsMult.push_back( loadProfile2D(inputFile,createName(bn,"f4_1111",suffix)));
 
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 

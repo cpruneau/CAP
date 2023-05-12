@@ -139,7 +139,7 @@ void RunDerivedCalculation::setDefaultConfiguration()
 void RunDerivedCalculation::configure()
 {
   if (reportEnd(__FUNCTION__))
-    ;
+;
   EventTask::configure();
 
   // assemble the task from here...
@@ -417,7 +417,7 @@ void RunDerivedCalculation::configure()
       }
 
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
 
 void RunDerivedCalculation::execute()

@@ -28,7 +28,7 @@ EventTask(_name, _configuration, _eventFilters, _particleFilters)
 void DerivedHistogramCalculator::exportHistograms()
 {
   if (reportEnd(__FUNCTION__))
-    ;
+;
   bool histosForceRewrite     = getValueBool("HistogramsForceRewrite");
   String histosExportPath     = getValueString("HistogramsExportPath");
   String histosExportFile     = getValueString("HistogramsExportFile");
@@ -49,5 +49,5 @@ void DerivedHistogramCalculator::exportHistograms()
   Task::exportHistograms(outputFile);
   outputFile->Close();
   if (reportEnd(__FUNCTION__))
-    ;
+;
 }
