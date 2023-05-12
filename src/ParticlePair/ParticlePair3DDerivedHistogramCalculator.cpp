@@ -10,12 +10,11 @@
  *
  * *********************************************************************/
 #include "ParticlePair3DDerivedHistogramCalculator.hpp"
-using CAP::ParticlePair3DDerivedHistogramCalculator;
 
 ClassImp(ParticlePair3DDerivedHistogramCalculator);
 
-ParticlePair3DDerivedHistogramCalculator::ParticlePair3DDerivedHistogramCalculator(const String & _name,
-                                                                                   Configuration & _configuration,
+ParticlePair3DDerivedHistogramCalculator::ParticlePair3DDerivedHistogramCalculator(const TString & _name,
+                                                                                   const Configuration & _configuration,
                                                                                    vector<EventFilter*> & _eventFilters,
                                                                                    vector<ParticleFilter*> &_particleFilters)
 :
@@ -27,94 +26,77 @@ DerivedHistogramCalculator(_name, _configuration, _eventFilters, _particleFilter
 void ParticlePair3DDerivedHistogramCalculator::setDefaultConfiguration()
 {
   Task::setDefaultConfiguration();
-  setParameter("UseParticles",     true);
-  setParameter("CreateHistograms", true);
-  setParameter("LoadHistograms",   true);
-  setParameter("SaveHistograms",   true);
-  setParameter("binCorrPP", 1.0);
-    
-  addParameter(fillEta",  true);
-  addParameter(fillY",    false);
-  addParameter(fillP2",   false);
-  
-  addParameter(nBins_n1",  100);
-  addParameter(min_n1",    0.0);
-  addParameter(max_n1",  100.0);
-  
-  addParameter(nBins_eTot",  100);
-  addParameter(min_eTot",    0.0);
-  addParameter(max_eTot",  100.0);
-  
-  addParameter(nBins_pt",   18);
-  addParameter(min_pt",   0.20);
-  addParameter(max_pt",   2.00);
-  
-  addParameter(nBins_phi",  72);
-  addParameter(min_phi",   0.0);
-  addParameter(max_phi", TMath::TwoPi());
-  
-  addParameter(nBins_eta",   20);
-  addParameter(min_eta",   -1.0);
-  addParameter(max_eta",    1.0);
-  
-  addParameter(nBins_y",     20);
-  addParameter(min_y",     -1.0);
-  addParameter(max_y",      1.0);
-  
-  addParameter(nBins_phiEta",    720);
-  addParameter(nBins_phiEtaPt",  7200);
-  addParameter(nBins_phiY",      720);
-  addParameter(nBins_phiYPt",    7200);
-  
-  addParameter(nBins_n2",          100);
-  addParameter(min_n2",            0.0);
-  addParameter(max_n2",         1000.0);
-  
-  addParameter(nBins_DeltaPlong",   10);
-  addParameter(min_DeltaPlong",   -1.0);
-  addParameter(max_DeltaPlong",    1.0);
-  
-  addParameter(nBins_DeltaPside",   10);
-  addParameter(min_DeltaPside",   -1.0);
-  addParameter(max_DeltaPside",    1.0);
-  addParameter(range_DeltaPside",  2.0);
-  addParameter(nBins_DeltaPout",    10);
-  addParameter(min_DeltaPout",    -1.0);
-  addParameter(max_DeltaPout",     1.0);
-  addParameter(range_DeltaPout",   2.0);
-  
-  addParameter(nBins_Dphi",         36);
-  addParameter(min_Dphi",          0.0);
-  addParameter(max_Dphi",TMath::TwoPi());
-  addParameter(width_Dphi",TMath::TwoPi());
-  
-  addParameter(nBins_Dphi_shft",    36);
-  addParameter(min_Dphi_shft",     0.0);
-  addParameter(max_Dphi_shft",     0.0);
-  
-  addParameter(nBins_Deta",         39);
-  addParameter(min_Deta",         -2.0);
-  addParameter(max_Deta",          2.0);
-  addParameter(width_Deta",   4.0/39.0);
-  
-  addParameter(nBins_Dy",           39);
-  addParameter(min_Dy",           -2.0);
-  addParameter(max_Dy",            2.0);
-  addParameter(width_Dy",     4.0/39.0);
-  
-  // if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  addParameter("UseParticles",     true);
+  addParameter("HistogramsCreate", true);
+  addParameter("HistogramsImport",   true);
+  addParameter("HistogramsExport",   true);
+  addParameter("binCorrPP", 1.0);
+  addParameter("fillEta",  true);
+  addParameter("fillY",    false);
+  addParameter("fillP2",   false);
+  addParameter("nBins_n1",  100);
+  addParameter("min_n1",    0.0);
+  addParameter("max_n1",  100.0);
+  addParameter("nBins_eTot",  100);
+  addParameter("min_eTot",    0.0);
+  addParameter("max_eTot",  100.0);
+  addParameter("nBins_pt",   18);
+  addParameter("min_pt",   0.20);
+  addParameter("max_pt",   2.00);
+  addParameter("nBins_phi",  72);
+  addParameter("min_phi",   0.0);
+  addParameter("max_phi", TMath::TwoPi());
+  addParameter("nBins_eta",   20);
+  addParameter("min_eta",   -1.0);
+  addParameter("max_eta",    1.0);
+  addParameter("nBins_y",     20);
+  addParameter("min_y",     -1.0);
+  addParameter("max_y",      1.0);
+  addParameter("nBins_phiEta",    720);
+  addParameter("nBins_phiEtaPt",  7200);
+  addParameter("nBins_phiY",      720);
+  addParameter("nBins_phiYPt",    7200);
+  addParameter("nBins_n2",          100);
+  addParameter("min_n2",            0.0);
+  addParameter("max_n2",         1000.0);
+  addParameter("nBins_DeltaPlong",   10);
+  addParameter("min_DeltaPlong",   -1.0);
+  addParameter("max_DeltaPlong",    1.0);
+  addParameter("nBins_DeltaPside",   10);
+  addParameter("min_DeltaPside",   -1.0);
+  addParameter("max_DeltaPside",    1.0);
+  addParameter("range_DeltaPside",  2.0);
+  addParameter("nBins_DeltaPout",    10);
+  addParameter("min_DeltaPout",    -1.0);
+  addParameter("max_DeltaPout",     1.0);
+  addParameter("range_DeltaPout",   2.0);
+  addParameter("nBins_Dphi",         36);
+  addParameter("min_Dphi",          0.0);
+  addParameter("max_Dphi",TMath::TwoPi());
+  addParameter("width_Dphi",TMath::TwoPi());
+  addParameter("nBins_Dphi_shft",    36);
+  addParameter("min_Dphi_shft",     0.0);
+  addParameter("max_Dphi_shft",     0.0);
+  addParameter("nBins_Deta",         39);
+  addParameter("min_Deta",         -2.0);
+  addParameter("max_Deta",          2.0);
+  addParameter("width_Deta",   4.0/39.0);
+  addParameter("nBins_Dy",           39);
+  addParameter("min_Dy",           -2.0);
+  addParameter("max_Dy",            2.0);
+  addParameter("width_Dy",     4.0/39.0);
 }
 
-void ParticlePair3DDerivedHistogramCalculator::createHistograms()
+void ParticlePair3DDerivedHistogramCalculator::HistogramsCreate()
 {
   
   if (reportStart(__FUNCTION__))
     ;
   derivedSingleHistograms.clear();
   derivedPairHistograms.clear();
-  Configuration & configuration = getConfiguration();
+  const Configuration & configuration = getConfiguration();
   Severity debugLevel = getSeverityLevel();
-  String bn  = getName();
+  TString bn  = getName();
   HistogramGroup * histos;
   if (reportDebug(__FUNCTION__))
     {
@@ -126,27 +108,27 @@ void ParticlePair3DDerivedHistogramCalculator::createHistograms()
     }
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    String efn = eventFilters[iEventFilter]->getName();
+    TString efn = eventFilters[iEventFilter]->getName();
     if (reportDebug(__FUNCTION__)) cout << "Event filter:" << efn << endl;
     // singles
     for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
       {
-      String pfn1 = particleFilters[iParticleFilter1]->getName();
+      TString pfn1 = particleFilters[iParticleFilter1]->getName();
       if (reportDebug(__FUNCTION__)) cout << "Particle with filter: " << pfn1 << endl;
-      histos = new ParticleSingleDerivedHistos(createName(bn,efn,pfn1),configuration);
-      histos->createHistograms();
+      histos = new ParticleDerivedHistos(createName(bn,efn,pfn1),configuration);
+      histos->HistogramsCreate();
       derivedSingleHistograms.push_back(histos);
       }
     // pairs
     for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
       {
-      String pfn1 = particleFilters[iParticleFilter1]->getName();
+      TString pfn1 = particleFilters[iParticleFilter1]->getName();
       for (int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
         {
-        String pfn2 = particleFilters[iParticleFilter2]->getName();
+        TString pfn2 = particleFilters[iParticleFilter2]->getName();
         if (reportDebug(__FUNCTION__)) cout << "Particle pairs with filter: " << pfn1 << " & " << pfn2 << endl;
         histos = new ParticlePair3DDerivedHistos(createName(bn,efn,pfn1,pfn2),configuration);
-        histos->createHistograms();
+        histos->HistogramsCreate();
         derivedPairHistograms.push_back(histos);
         }
       }
@@ -155,7 +137,7 @@ void ParticlePair3DDerivedHistogramCalculator::createHistograms()
     ;
 }
 
-void ParticlePair3DDerivedHistogramCalculator::loadHistograms(TFile * inputFile)
+void ParticlePair3DDerivedHistogramCalculator::HistogramsImport(TFile & inputFile)
 {
   
   if (reportStart(__FUNCTION__))
@@ -164,9 +146,9 @@ void ParticlePair3DDerivedHistogramCalculator::loadHistograms(TFile * inputFile)
   
   baseSingleHistograms.clear();
   basePairHistograms.clear();
-  Configuration & configuration = getConfiguration();
+  const Configuration & configuration = getConfiguration();
   Severity debugLevel = getSeverityLevel();
-  String bn  = getName();
+  TString bn  = getName();
    if (reportDebug(__FUNCTION__))
     {
     cout << endl;
@@ -179,27 +161,27 @@ void ParticlePair3DDerivedHistogramCalculator::loadHistograms(TFile * inputFile)
   basePairHistograms.clear();
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    String efn = eventFilters[iEventFilter]->getName();
+    TString efn = eventFilters[iEventFilter]->getName();
     if (reportDebug(__FUNCTION__)) cout << "Event filter:" << efn << endl;
     // singles
     for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
       {
-      String pfn1 = particleFilters[iParticleFilter1]->getName();
+      TString pfn1 = particleFilters[iParticleFilter1]->getName();
       if (reportDebug(__FUNCTION__)) cout << "Particle with filter: " << pfn1 << endl;
-      ParticleSingleHistos * histos = new ParticleSingleHistos(createName(bn,efn,pfn1),configuration);
-      histos->loadHistograms(inputFile);
+      ParticleHistos * histos = new ParticleHistos(createName(bn,efn,pfn1),configuration);
+      histos->HistogramsImport(inputFile);
       baseSingleHistograms.push_back(histos);
       }
     // pairs
     for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
       {
-      String pfn1 = particleFilters[iParticleFilter1]->getName();
+      TString pfn1 = particleFilters[iParticleFilter1]->getName();
       for (int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
         {
-        String pfn2 = particleFilters[iParticleFilter2]->getName();
+        TString pfn2 = particleFilters[iParticleFilter2]->getName();
         if (reportDebug(__FUNCTION__)) cout << "Particle pairs with filter: " << pfn1 << " & " << pfn2 << endl;
         ParticlePair3DHistos * histos = new ParticlePair3DHistos(createName(bn,efn,pfn1,pfn2),configuration);
-        histos->loadHistograms(inputFile);
+        histos->HistogramsImport(inputFile);
         basePairHistograms.push_back(histos);
         }
       }
@@ -218,7 +200,7 @@ void ParticlePair3DDerivedHistogramCalculator::execute()
   if (reportStart(__FUNCTION__))
     ;
   //incrementTaskExecuted();
-  //Configuration & config  = getConfiguration();
+  //const Configuration & config  = getConfiguration();
    if (reportDebug(__FUNCTION__))
     {
     cout << endl;
@@ -229,11 +211,11 @@ void ParticlePair3DDerivedHistogramCalculator::execute()
     cout << "                     nPairHistos: " << getNBasePairHistograms() << endl;
     cout << "                  nDerivedHistos: " << getNDerivedPairHistograms() << endl;
     }
-  ParticleSingleHistos        * bSingleHistos1;
-  ParticleSingleHistos        * bSingleHistos2;
+  ParticleHistos        * bSingleHistos1;
+  ParticleHistos        * bSingleHistos2;
   ParticlePair3DHistos    * bPairHistos;
-  ParticleSingleDerivedHistos * dSingleHistos1;
-  ParticleSingleDerivedHistos * dSingleHistos2;
+  ParticleDerivedHistos * dSingleHistos1;
+  ParticleDerivedHistos * dSingleHistos2;
   ParticlePair3DDerivedHistos * dPairHistos;
   
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
@@ -247,12 +229,12 @@ void ParticlePair3DDerivedHistogramCalculator::execute()
     //! Calculate derived spectra of singles
     for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++)
       {
-      String pfn1 = particleFilters[iParticleFilter1]->getName();
+      TString pfn1 = particleFilters[iParticleFilter1]->getName();
       index = baseSingle+iParticleFilter1;
       //if (reportDebug(__FUNCTION__))   cout << " (1) iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << " with index:" << index << endl;
-      bSingleHistos1 = (ParticleSingleHistos *) baseSingleHistograms[index];
+      bSingleHistos1 = (ParticleHistos *) baseSingleHistograms[index];
       //if (reportDebug(__FUNCTION__))   cout << " (1a) iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << " with index:" << index << endl;
-      dSingleHistos1 = (ParticleSingleDerivedHistos *) derivedSingleHistograms[index];
+      dSingleHistos1 = (ParticleDerivedHistos *) derivedSingleHistograms[index];
       //if (reportDebug(__FUNCTION__))   cout << " (2) iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << " with index:" << index << endl;
       dSingleHistos1->calculateDerivedHistograms(bSingleHistos1);
       //if (reportDebug(__FUNCTION__))   cout << " (3) iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << " with index:" << index << endl;
@@ -261,19 +243,19 @@ void ParticlePair3DDerivedHistogramCalculator::execute()
     //! Calculate derived spectra of pairs
     for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++)
       {
-      String pfn1 = particleFilters[iParticleFilter1]->getName();
+      TString pfn1 = particleFilters[iParticleFilter1]->getName();
       index = baseSingle+iParticleFilter1;
-      bSingleHistos1 = (ParticleSingleHistos *) baseSingleHistograms[index];
-      dSingleHistos1 = (ParticleSingleDerivedHistos *) derivedSingleHistograms[index];
+      bSingleHistos1 = (ParticleHistos *) baseSingleHistograms[index];
+      dSingleHistos1 = (ParticleDerivedHistos *) derivedSingleHistograms[index];
       
       for (int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++)
         {
-        String pfn2 = particleFilters[iParticleFilter2]->getName();
+        TString pfn2 = particleFilters[iParticleFilter2]->getName();
 //        if (reportDebug(__FUNCTION__))
 //          cout << "  iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << ";  iParticleFilter2:" << iParticleFilter2<< " named " << pfn2  << endl;
         index = baseSingle+iParticleFilter2;
-        bSingleHistos2 = (ParticleSingleHistos *) baseSingleHistograms[index];
-        dSingleHistos2 = (ParticleSingleDerivedHistos *) derivedSingleHistograms[index];
+        bSingleHistos2 = (ParticleHistos *) baseSingleHistograms[index];
+        dSingleHistos2 = (ParticleDerivedHistos *) derivedSingleHistograms[index];
         
         index = basePair+iParticleFilter1*nParticleFilters+iParticleFilter2;
         bPairHistos = (ParticlePair3DHistos *) basePairHistograms[index];

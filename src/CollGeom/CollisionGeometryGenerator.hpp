@@ -11,8 +11,10 @@
  * *********************************************************************/
 #ifndef CAP__CollisionGeometryGenerator
 #define CAP__CollisionGeometryGenerator
-#include "Task.hpp"
-#include "Configuration.hpp"
+#include "EventTask.hpp"
+#include "Event.hpp"
+#include "Particle.hpp"
+#include "ParticleType.hpp"
 #include "NucleusGenerator.hpp"
 
 namespace CAP
@@ -24,7 +26,7 @@ namespace CAP
 //!This collisions generator assumes the elementary objects (either partons or nucleons) travel on straight line trajectories parallel to the z-axis (the beam axis).
 //!Use the configuration file to set values required at run time.
 //!
-class CollisionGeometryGenerator : public Task
+class CollisionGeometryGenerator : public EventTask
 {
 public:
 
@@ -38,7 +40,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   CollisionGeometryGenerator(const String & _name,
-                             Configuration & _configuration,
+                             const Configuration & _configuration,
                              vector<EventFilter*> & _eventFilters,
                              vector<ParticleFilter*>& _particleFilters);
   
@@ -70,7 +72,7 @@ public:
   //!
   //! Execute this task
   //!
-  virtual void execute();
+  virtual void createEvent();
 
   //!
   //! Get nucleus A generated (produced) by this task. Nucleus A changes event by event

@@ -30,33 +30,33 @@ class BidimGaussFitter : public Plotter
 {
   public:
   BidimGaussFitter(const String & _name,
-                   Configuration &     _configuration,
+                   const Configuration &     _configuration,
                    Severity                  _requiredLevel);
   BidimGaussFitter(const BidimGaussFitter& source);
   virtual ~BidimGaussFitter();
   const BidimGaussFitter & operator=(const BidimGaussFitter & source);
 
   void initialize();
-  void flowFit(TH2 *data,  BidimGaussFitConfiguration & fitConfig);
-  void fullFit(TH2 *data,  BidimGaussFitConfiguration & fitConfig);
+  void flowFit(TH2 *data,  BidimGaussFitconst Configuration & fitConfig);
+  void fullFit(TH2 *data,  BidimGaussFitconst Configuration & fitConfig);
 
-  void setParameters(TF2* f, int first, int last, double value=0.0);
-  void setParameterLimits(TF2* f, const BidimGaussFitConfiguration & fitConfig, int first, int last, double scale);
+  void addParameters(TF2* f, int first, int last, double value=0.0);
+  void addParameterLimits(TF2* f, const BidimGaussFitconst Configuration & fitConfig, int first, int last, double scale);
   void releaseAllParameters(TF2* f);
   void releaseParameters(TF2* f, int first, int last);
-  void fixUserParameters(TF1 *f, const BidimGaussFitConfiguration & fitConfig);
+  void fixUserParameters(TF1 *f, const BidimGaussFitconst Configuration & fitConfig);
   void fixPeakParameters(TF2* f, double a,  double sigmaEta, double sigmaPhi, double gammaEta, double gammaPhi);
   void fixFlowParameters(TF2* f,
                          double a0, double a1, double a2, double a3, double a4, double a5, double a6,
                          double a2eta, double a3eta, double a2eta2, double a3eta2);
   void fixFlowParametersToZero(TF2* f);
-  void setFunctionParameterNames(TF2* f, const BidimGaussFitConfiguration & fitConfig);
-  void setFunctionParameterNamesFlowOnly(TF2* f, const BidimGaussFitConfiguration & fitConfig, double initialValue=1.0E-2);
-  void initializePeakFitParameters(TF2 * f, const BidimGaussFitConfiguration & fitConfig, double scale);
-  void initializeFlowFitParameters(TF2 * f, const BidimGaussFitConfiguration & fitConfig, double scale);
-  void initializeAllFitParameters(TF2 * f, const BidimGaussFitConfiguration & fitConfig, double scale);
+  void setFunctionParameterNames(TF2* f, const BidimGaussFitconst Configuration & fitConfig);
+  void setFunctionParameterNamesFlowOnly(TF2* f, const BidimGaussFitconst Configuration & fitConfig, double initialValue=1.0E-2);
+  void initializePeakFitParameters(TF2 * f, const BidimGaussFitconst Configuration & fitConfig, double scale);
+  void initializeFlowFitParameters(TF2 * f, const BidimGaussFitconst Configuration & fitConfig, double scale);
+  void initializeAllFitParameters(TF2 * f, const BidimGaussFitconst Configuration & fitConfig, double scale);
 
-  void setOuterRangeByBin(TH2* h, const BidimGaussFitConfiguration & fitConfig);
+  void setOuterRangeByBin(TH2* h, const BidimGaussFitconst Configuration & fitConfig);
   bool isFlowPresent(BidimGaussFitResult & fitResult);
 
   //TH2 *injectErrors(TH2 *h2, Float_t sigma);
@@ -67,7 +67,7 @@ class BidimGaussFitter : public Plotter
                           double xHigh,
                           double yLow,
                           double yHigh,
-                          const BidimGaussFitConfiguration & fitConfig,
+                          const BidimGaussFitconst Configuration & fitConfig,
                           const String  & label);
   
   void projectFlowComponents(TH2 *dataHist,
@@ -76,14 +76,14 @@ class BidimGaussFitter : public Plotter
                              double xHigh,
                              double yLow,
                              double yHigh,
-                             const BidimGaussFitConfiguration & fitConfig,
+                             const BidimGaussFitconst Configuration & fitConfig,
                              const String  & label);
 
 
 
   TH2* subtractEtaSides(TH2* dataHist,
                         TF2 *flowFitFct,
-                        const BidimGaussFitConfiguration & fitConfig);
+                        const BidimGaussFitconst Configuration & fitConfig);
   TH1* cloneAndReset(const TH1* h, const String  & hName);
   TH1* cloneAndSetWithFct(const TH1* h,  TF1* f, const String  & hName);
   TH2* cloneAndReset(const TH2* h, const String  & hName);
@@ -160,8 +160,8 @@ class BidimGaussFitter : public Plotter
   TH1 * phiProjections[10];
 
  
-  CanvasConfiguration &  canvasConfig1DLinear;
-  CanvasConfiguration &  canvasConfig2DLinear;
+  Configuration &  canvasConfig1DLinear;
+  Configuration &  canvasConfig2DLinear;
   GraphConfiguration  ** graphConfigs1D;
   GraphConfiguration  ** graphConfigs2D;
   TH1     ** histograms;

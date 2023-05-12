@@ -15,7 +15,7 @@ using CAP::Plotter;
 ClassImp(Plotter);
 
 Plotter::Plotter(const String & _name,
-                 Configuration & _configuration)
+                 const Configuration & _configuration)
 :
 Task(_name,_configuration),
 canvasCollection(),
@@ -42,19 +42,13 @@ void Plotter::setDefaultConfiguration()
 //!
 void Plotter::configure()
 {
-  setDefaultConfiguration();
-  setConfiguration(requestedConfiguration);
-  //configuration.printConfiguration(cout);
-  MessageLogger::Severity selectedLevel = MessageLogger::Debug;
-  String reportLevel                   = getValueBool("Severity");
-  if (reportLevel.EqualTo("Debug")) selectedLevel = MessageLogger::Debug;
-  if (reportLevel.EqualTo("Info"))  selectedLevel = MessageLogger::Info;
+  Task::configure();
 }
 
 
 TCanvas *  Plotter::plot(TH1 * h,
                          const String & canvasName,
-                         const CanvasConfiguration & cc,
+                         const Configuration & cc,
                          const GraphConfiguration  & gc,
                          const String & xTitle,  double xMin, double xMax,
                          const String & yTitle,  double yMin, double yMax,
@@ -81,7 +75,7 @@ TCanvas *  Plotter::plot(TH1 * h,
 
 TCanvas *  Plotter::plot(TH2 * h,
                          const String & canvasName,
-                         const CanvasConfiguration & cc,
+                         const Configuration & cc,
                          const GraphConfiguration  & gc,
                          const String & xTitle,  double xMin, double xMax,
                          const String & yTitle,  double yMin, double yMax,
@@ -113,7 +107,7 @@ TCanvas *  Plotter::plot(vector<TH1*> histograms,
                          const vector<GraphConfiguration*> & graphConfigurations,
                          const VectorString   &  legendTexts,
                          const String & canvasName,
-                         const CanvasConfiguration & canvasConfiguration,
+                         const Configuration & canvasConfiguration,
                          const String & xTitle,  double xMin, double xMax,
                          const String & yTitle,  double yMin, double yMax,
                          double xMinLeg, double yMinLeg, double xMaxLeg, double yMaxLeg,
@@ -184,7 +178,7 @@ TCanvas *  Plotter::plot(vector<TGraph*> graphs,
                          const vector<GraphConfiguration*> & graphConfigurations,
                          const VectorString   &  legendTexts,
                          const String & canvasName,
-                         const CanvasConfiguration & canvasConfiguration,
+                         const Configuration & canvasConfiguration,
                          const String & xTitle,  double xMin, double xMax,
                          const String & yTitle,  double yMin, double yMax,
                          double xMinLeg, double yMinLeg, double xMaxLeg, double yMaxLeg,

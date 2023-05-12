@@ -15,12 +15,12 @@
 #include "BalanceFunctionCalculator.hpp"
 #include "SubSampleStatCalculator.hpp"
 #include "ClosureIterator.hpp"
-#include "ParticleTypeTableLoader.hpp"
-#include "HerwigEventReader.hpp"
+#include "ParticleDbManager.hpp"
+//#include "HerwigEventReader.hpp"
 #include "AmptEventReader.hpp"
-#include "EposEventReader.hpp"
-#include "UrqmdEventReader.hpp"
-#include "HijingEventReader.hpp"
+//#include "EposEventReader.hpp"
+//#include "UrqmdEventReader.hpp"
+//#include "HijingEventReader.hpp"
 #include "ResonanceGenerator.hpp"
 #include "MeasurementPerformanceSimulator.hpp"
 #include "ParticlePerformanceAnalyzer.hpp"
@@ -34,9 +34,9 @@ using CAP::RunDerivedCalculation;
 ClassImp(RunDerivedCalculation);
 
 RunDerivedCalculation::RunDerivedCalculation(const String & _name,
-                                             Configuration & _configuration)
+                                             const Configuration & _configuration)
 :
-Task(_name, _configuration)
+EventTask(_name, _configuration)
 {
   appendClassName("RunDerivedCalculation");
   setInstanceName(_name);
@@ -47,7 +47,7 @@ Task(_name, _configuration)
 
 void RunDerivedCalculation::setDefaultConfiguration()
 {
-  Task::setDefaultConfiguration();
+  EventTask::setDefaultConfiguration();
   bool YES = true;
   bool NO  = false;
   addParameter("GlobalLabel",     TString("G"));
@@ -64,21 +64,21 @@ void RunDerivedCalculation::setDefaultConfiguration()
   addParameter("Severity",                TString("Info"));
   addParameter("Derived",                 YES);
   addParameter("BalFct",                  YES);
-  addParameter("GlobalGen",               NO);
-  addParameter("GlobalReco",              NO);
-  addParameter("SpherocityGen",           NO);
-  addParameter("SpherocityReco",          NO);
-  addParameter("PartGen",                 NO);
-  addParameter("PartReco",                NO);
-  addParameter("PairGen",                 NO);
-  addParameter("PairReco",                NO);
-  addParameter("NuDynGen",                NO);
-  addParameter("NuDynReco",               NO);
-  addParameter("FillEta",                 NO);
-  addParameter("FillY",                   YES);
-  addParameter("ForceHistogramsRewrite",  YES);
-  addParameter("HistogramInputPath",      TString("Input"));
-  addParameter("HistogramOutputPath",     TString("Output"));
+  addParameter("RunGlobalAnalysisGen",               NO);
+  addParameter("RunGlobalAnalysisReco",              NO);
+  addParameter("RunSpherocityAnalysisGen",           NO);
+  addParameter("RunSpherocityAnalysisReco",          NO);
+  addParameter("RunPartSingleAnalysisGen",                 NO);
+  addParameter("RunPartSingleAnalysisReco",                NO);
+  addParameter("RunPartPairAnalysisReco",       NO);
+  addParameter("RunPartPairAnalysisReco",       NO);
+  addParameter("RunNuDynAnalysisGen",           NO);
+  addParameter("RunNuDynAnalysisReco",          NO);
+  addParameter("RunFillEta",                     NO);
+  addParameter("RunFillY",                   YES);
+  addParameter("HistogramsForceRewrite",  YES);
+  addParameter("HistogramsImportPath",      TString("Input"));
+  addParameter("HistogramsExportPath",     TString("Output"));
 
   addParameter("ModelEventFilterOption",     TString("All"));
   addParameter("ModelEventFilterNValues",    0);
@@ -140,18 +140,12 @@ void RunDerivedCalculation::configure()
 {
   if (reportEnd(__FUNCTION__))
     ;
-  setDefaultConfiguration();
-  setConfiguration(requestedConfiguration);
-  configuration.printConfiguration(cout);
-  //exit(1);
+  EventTask::configure();
 
   // assemble the task from here...
   DerivedHistoIterator      * derived   = nullptr;
-  BalanceFunctionCalculator * balFct    = nullptr;
-  MessageLogger::Severity selectedLevel = MessageLogger::Debug;
-  String reportLevel                   = getValueBool("Severity");
-  if (reportLevel.EqualTo("Debug")) selectedLevel = MessageLogger::Debug;
-  if (reportLevel.EqualTo("Info"))  selectedLevel = MessageLogger::Info;
+  //BalanceFunctionCalculator * balFct    = nullptr;
+  //MessageLogger::Severity selectedLevel = MessageLogger::Debug;
   String GlobalLabel      = getValueString("GlobalLabel");
   String SpherocityLabel  = getValueString("SpherocityLabel");
   String PartLabel        = getValueString("PartLabel");
@@ -163,96 +157,98 @@ void RunDerivedCalculation::configure()
   String BalFctLabel      = getValueString("BalFctLabel");
   String GenLabel         = getValueString("GenLabel");
   String RecoLabel        = getValueString("RecoLabel");
-  bool    RunDerived              = getValueBool("Derived");
-  bool    RunBalFct               = getValueBool("BalFct");
-  bool    RunGlobalGen            = getValueBool("GlobalGen");
-  bool    RunGlobalReco           = getValueBool("GlobalReco");
-  bool    RunSpherocityGen        = getValueBool("SpherocityGen");
-  bool    RunSpherocityReco       = getValueBool("SpherocityReco");
-  bool    RunPartGen              = getValueBool("PartGen");
-  bool    RunPartReco             = getValueBool("PartReco");
-  bool    RunPairGen              = getValueBool("PairGen");
-  bool    RunPairReco             = getValueBool("PairReco");
-  bool    RunNuDynGen             = getValueBool("NuDynGen");
-  bool    RunNuDynReco            = getValueBool("NuDynReco");
-  bool    RunFillEta              = getValueBool("FillEta");
-  bool    RunFillY                = getValueBool("FillY");
-  String inputPathName           = getValueString("HistogramInputPath");
-  String outputPathName          = getValueString("HistogramOutputPath");
-  String modelPartFilterOption   = getValueString("ModelPartFilterOption");
-  double modelPartFilterPt        = getValueBool(  "ModelPartFilterPt");
-  double modelPartMinPt           = getValueDouble("ModelPartMinPt");
-  double modelPartMaxPt           = getValueDouble("ModelPartMaxPt");
-  bool   modelPartFilterEta       = getValueBool(  "ModelPartFilterEta");
-  double modelPartMinEta          = getValueDouble("ModelPartMinEta");
-  double modelPartMaxEta          = getValueDouble("ModelPartMaxEta");
-  bool   modelPartFilterY         = getValueBool(  "ModelPartFilterY");
-  double modelPartMinY            = getValueDouble("ModelPartMinY");
-  double modelPartMaxY            = getValueDouble("ModelPartMaxY");
-  String anaPartFilterOption     = getValueString("AnaPartFilterOption");
-  double anaPartFilterPt          = getValueBool(  "AnaPartFilterPt");
-  double anaPartMinPt             = getValueDouble("AnaPartMinPt");
-  double anaPartMaxPt             = getValueDouble("AnaPartMaxPt");
-  bool   anaPartFilterEta         = getValueBool(  "AnaPartFilterEta");
-  double anaPartMinEta            = getValueDouble("AnaPartMinEta");
-  double anaPartMaxEta            = getValueDouble("AnaPartMaxEta");
-  bool   anaPartFilterY           = getValueBool(  "AnaPartFilterY");
-  double anaPartMinY              = getValueDouble("AnaPartMinY");
-  double anaPartMaxY              = getValueDouble("AnaPartMaxY");
+  bool    runDerived                      = getValueBool("Derived");
+  bool    runBalFct                       = getValueBool("RunBalFct");
+  bool    runGlobalAnalysisGen            = getValueBool("RunGlobalAnalysisGen");
+  bool    runGlobalAnalysisReco           = getValueBool("RunGlobalAnalysisReco");
+  bool    runSpherocityAnalysisGen        = getValueBool("RunSpherocityAnalysisGen");
+  bool    runSpherocityAnalysisReco       = getValueBool("RunSpherocityAnalysisReco");
+  bool    runPartSingleAnalysisGen        = getValueBool("RunPartSingleAnalysisGen");
+  bool    runPartSingleAnalysisReco       = getValueBool("RunPartSingleAnalysisReco");
+  bool    runPartPairAnalysisGen          = getValueBool("RunPartPairAnalysisGen");
+  bool    runPartPairAnalysisReco         = getValueBool("RunPartPairAnalysisReco");
+  bool    runNuDynAnalysisGen             = getValueBool("RunNuDynAnalysisGen");
+  bool    runNuDynAnalysisReco            = getValueBool("RunNuDynAnalysisReco");
+  bool    runFillEta                      = getValueBool("RunFillEta");
+  bool    runFillY                        = getValueBool("RunFillY");
+  String inputPathName                    = getValueString("HistogramsImportPath");
+  String outputPathName                   = getValueString("HistogramsExportPath");
+  String modelPartFilterOption            = getValueString("ModelPartFilterOption");
+  double modelPartFilterPt                = getValueBool(  "ModelPartFilterPt");
+  double modelPartMinPt                   = getValueDouble("ModelPartMinPt");
+  double modelPartMaxPt                   = getValueDouble("ModelPartMaxPt");
+  bool   modelPartFilterEta               = getValueBool(  "ModelPartFilterEta");
+  double modelPartMinEta                  = getValueDouble("ModelPartMinEta");
+  double modelPartMaxEta                  = getValueDouble("ModelPartMaxEta");
+  bool   modelPartFilterY                 = getValueBool(  "ModelPartFilterY");
+  double modelPartMinY                    = getValueDouble("ModelPartMinY");
+  double modelPartMaxY                    = getValueDouble("ModelPartMaxY");
+  String anaPartFilterOption              = getValueString("AnaPartFilterOption");
+  double anaPartFilterPt                  = getValueBool(  "AnaPartFilterPt");
+  double anaPartMinPt                     = getValueDouble("AnaPartMinPt");
+  double anaPartMaxPt                     = getValueDouble("AnaPartMaxPt");
+  bool   anaPartFilterEta                 = getValueBool(  "AnaPartFilterEta");
+  double anaPartMinEta                    = getValueDouble("AnaPartMinEta");
+  double anaPartMaxEta                    = getValueDouble("AnaPartMaxEta");
+  bool   anaPartFilterY                   = getValueBool(  "AnaPartFilterY");
+  double anaPartMinY                      = getValueDouble("AnaPartMinY");
+  double anaPartMaxY                      = getValueDouble("AnaPartMaxY");
 
-  if (reportInfo(__FUNCTION__))
-    {
-    cout << endl;
-    cout << "GlobalLabel................:" << GlobalLabel      << endl;
-    cout << "SpherocityLabel............:" << SpherocityLabel  << endl;
-    cout << "PartLabel..................:" << PartLabel        << endl;
-    cout << "PairLabel..................:" << PairLabel        << endl;
-    cout << "NuDynLabel.................:" << NuDynLabel       << endl;
-    cout << "SimAnaLabel................:" << SimAnaLabel      << endl;
-    cout << "DerivedLabel...............:" << DerivedLabel     << endl;
-    cout << "SumLabel...................:" << SumLabel         << endl;
-    cout << "BalFctLabel................:" << BalFctLabel      << endl;
-    cout << "GenLabel...................:" << GenLabel         << endl;
-    cout << "RecoLabel..................:" << RecoLabel        << endl;
-    cout << "Derived....................:" << RunDerived       << endl;
-    cout << "BalFct.....................:" << RunBalFct             << endl;
-    cout << "GlobalGen..................:" << RunGlobalGen          << endl;
-    cout << "GlobalReco.................:" << RunGlobalReco         << endl;
-    cout << "SpherocityGen..............:" << RunSpherocityGen      << endl;
-    cout << "SpherocityReco.............:" << RunSpherocityGen      << endl;
-    cout << "PartGen....................:" << RunPartGen            << endl;
-    cout << "PartReco...................:" << RunPartReco           << endl;
-    cout << "PairGen....................:" << RunPairGen            << endl;
-    cout << "PairReco...................:" << RunPairReco           << endl;
-    cout << "NuDynGen...................:" << RunNuDynGen           << endl;
-    cout << "NuDynReco..................:" << RunNuDynReco          << endl;
-    cout << "FillEta....................:" << RunFillEta            << endl;
-    cout << "FillY......................:" << RunFillY              << endl;
-    cout << "HistogramInputPath.........:" << inputPathName         << endl;
-    cout << "HistogramOutputPath........:" << outputPathName        << endl;
-    cout << "ModelPartMinY..............:" << modelPartMinY         << endl;
-    cout << "ModelPartMaxY..............:" << modelPartMaxY         << endl;
-    cout << "ModelPartFilterOption......:" << modelPartFilterOption << endl;
-    cout << "ModelPartFilterPt..........:" << modelPartFilterPt   << endl;
-    cout << "ModelPartMinPt.............:" << modelPartMinPt      << endl;
-    cout << "ModelPartMaxPt.............:" << modelPartMaxPt      << endl;
-    cout << "ModelPartFilterEta.........:" << modelPartFilterEta  << endl;
-    cout << "ModelPartMinEta............:" << modelPartMinEta     << endl;
-    cout << "ModelPartMaxEta............:" << modelPartMaxEta     << endl;
-    cout << "ModelPartFilterY...........:" << modelPartFilterY    << endl;
-    cout << "ModelPartMinY..............:" << modelPartMinY       << endl;
-    cout << "ModelPartMaxY..............:" << modelPartMaxY       << endl;
-    cout << "AnaPartFilterOption........:" << anaPartFilterOption << endl;
-    cout << "AnaPartFilterPt............:" << anaPartFilterPt     << endl;
-    cout << "AnaPartMinPt...............:" << anaPartMinPt        << endl;
-    cout << "AnaPartMaxPt...............:" << anaPartMaxPt        << endl;
-    cout << "AnaPartFilterEta...........:" << anaPartFilterEta    << endl;
-    cout << "AnaPartMinEta..............:" << anaPartMinEta       << endl;
-    cout << "AnaPartMaxEta..............:" << anaPartMaxEta       << endl;
-    cout << "AnaPartFilterY.............:" << anaPartFilterY      << endl;
-    cout << "AnaPartMinY................:" << anaPartMinY         << endl;
-    cout << "AnaPartMaxY................:" << anaPartMaxY         << endl;
-    }
+  if (reportDebug(__FUNCTION__)) printConfiguration(cout);
+
+//  if (reportInfo(__FUNCTION__))
+//    {
+//    cout << endl;
+//    cout << "GlobalLabel..................................:" << GlobalLabel      << endl;
+//    cout << "SpherocityLabel..............................:" << SpherocityLabel  << endl;
+//    cout << "PartLabel....................................:" << PartLabel        << endl;
+//    cout << "PairLabel....................................:" << PairLabel        << endl;
+//    cout << "NuDynLabel...................................:" << NuDynLabel       << endl;
+//    cout << "SimAnaLabel..................................:" << SimAnaLabel      << endl;
+//    cout << "DerivedLabel.................................:" << DerivedLabel     << endl;
+//    cout << "SumLabel.....................................:" << SumLabel         << endl;
+//    cout << "BalFctLabel..................................:" << BalFctLabel      << endl;
+//    cout << "GenLabel.....................................:" << GenLabel         << endl;
+//    cout << "RecoLabel....................................:" << RecoLabel        << endl;
+//    cout << "Derived......................................:" << runDerived       << endl;
+//    cout << "BalFct.......................................:" << runBalFct        << endl;
+//    cout << "RunGlobalAnalysisGen.........................:" << runGlobalAnalysisGen         << endl;
+//    cout << "RunGlobalAnalysisReco........................:" << runGlobalAnalysisReco        << endl;
+//    cout << "RunSpherocityAnalysisGen.....................:" << runSpherocityAnalysisGen     << endl;
+//    cout << "RunSpherocityAnalysisReco....................:" << runSpherocityAnalysisGen     << endl;
+//    cout << "RunPartSingleAnalysisGen.....................:" << runPartSingleAnalysisGen     << endl;
+//    cout << "RunPartSingleAnalysisReco....................:" << runPartSingleAnalysisReco    << endl;
+//    cout << "RunPartPairAnalysisGen.......................:" << runPartPairAnalysisGen       << endl;
+//    cout << "RunPartPairAnalysisReco......................:" << runPartPairAnalysisReco      << endl;
+//    cout << "RunNuDynAnalysisGen..........................:" << runNuDynAnalysisGen          << endl;
+//    cout << "RunNuDynAnalysisReco.........................:" << runNuDynAnalysisReco         << endl;
+//    cout << "FillEta......................................:" << runFillEta            << endl;
+//    cout << "FillY........................................:" << runFillY              << endl;
+//    cout << "HistogramsImportPath.........................:" << inputPathName         << endl;
+//    cout << "HistogramsExportPath.........................:" << outputPathName        << endl;
+//    cout << "ModelPartMinY................................:" << modelPartMinY         << endl;
+//    cout << "ModelPartMaxY................................:" << modelPartMaxY         << endl;
+//    cout << "ModelPartFilterOption........................:" << modelPartFilterOption << endl;
+//    cout << "ModelPartFilterPt............................:" << modelPartFilterPt   << endl;
+//    cout << "ModelPartMinPt...............................:" << modelPartMinPt      << endl;
+//    cout << "ModelPartMaxPt...............................:" << modelPartMaxPt      << endl;
+//    cout << "ModelPartFilterEta...........................:" << modelPartFilterEta  << endl;
+//    cout << "ModelPartMinEta..............................:" << modelPartMinEta     << endl;
+//    cout << "ModelPartMaxEta..............................:" << modelPartMaxEta     << endl;
+//    cout << "ModelPartFilterY.............................:" << modelPartFilterY    << endl;
+//    cout << "ModelPartMinY................................:" << modelPartMinY       << endl;
+//    cout << "ModelPartMaxY................................:" << modelPartMaxY       << endl;
+//    cout << "AnaPartFilterOption..........................:" << anaPartFilterOption << endl;
+//    cout << "AnaPartFilterPt..............................:" << anaPartFilterPt     << endl;
+//    cout << "AnaPartMinPt.................................:" << anaPartMinPt        << endl;
+//    cout << "AnaPartMaxPt.................................:" << anaPartMaxPt        << endl;
+//    cout << "AnaPartFilterEta.............................:" << anaPartFilterEta    << endl;
+//    cout << "AnaPartMinEta................................:" << anaPartMinEta       << endl;
+//    cout << "AnaPartMaxEta................................:" << anaPartMaxEta       << endl;
+//    cout << "AnaPartFilterY...............................:" << anaPartFilterY      << endl;
+//    cout << "AnaPartMinY..................................:" << anaPartMinY         << endl;
+//    cout << "AnaPartMaxY..................................:" << anaPartMaxY         << endl;
+//    }
   vector<EventFilter*> modelEventFilters;
   vector<EventFilter*> analysisEventFilters;
   vector<ParticleFilter*>  modelParticleFilters;
@@ -345,63 +341,63 @@ void RunDerivedCalculation::configure()
     cout << endl;
     cout << "  RunDerivedCalculation:Filters" << endl;
     cout << "  modelEventFilters.size().............: " << modelEventFilters.size() << endl;
-    for (int k=0; k<modelEventFilters.size(); k++)
+    for (unsigned int k=0; k<modelEventFilters.size(); k++)
       cout << "    " << k << "   " << modelEventFilters[k]->getName() << endl;
     cout << "  modelParticleFilters.size()..........: " << modelParticleFilters.size() << endl;
-    for (int k=0; k<modelParticleFilters.size(); k++)
+    for (unsigned int k=0; k<modelParticleFilters.size(); k++)
       cout << "    " << k << "   " << modelParticleFilters[k]->getName() << endl;
     cout << "  analysisEventFilters.size()..........: " << analysisEventFilters.size() << endl;
-    for (int k=0; k<analysisEventFilters.size(); k++)
+    for (unsigned int k=0; k<analysisEventFilters.size(); k++)
       cout << "    " << k << "   " << analysisEventFilters[k]->getName() << endl;
     cout << "  analysisParticleFilters.size().......: " << analysisParticleFilters.size() << endl;
-    for (int k=0; k<analysisParticleFilters.size(); k++)
+    for (unsigned int k=0; k<analysisParticleFilters.size(); k++)
       cout << "    " << k << "   " << analysisParticleFilters[k]->getName() << endl;
     cout << "==================================================================================" << std::endl;
     cout << "Configuration Completed - Proceed with loading analysis" << std::endl;
     cout << "==================================================================================" << std::endl;
     }
 
-  if (RunDerived)
+  if (runDerived)
     {
     derived = new DerivedHistoIterator("Analysis", configuration);
     addSubTask(derived);
-    if (RunGlobalGen)          derived->addSubTask(new GlobalAnalyzer(GlobalLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunSpherocityGen)      derived->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunPartGen)            derived->addSubTask(new ParticleSingleAnalyzer(PartLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunPairGen)            derived->addSubTask(new ParticlePairAnalyzer(PairLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunNuDynGen)           derived->addSubTask(new NuDynAnalyzer(NuDynLabel+GenLabel,configuration,analysisEventFilters,analysisParticleFilters));
+    if (runGlobalAnalysisGen)          derived->addSubTask(new GlobalAnalyzer(GlobalLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (runSpherocityAnalysisGen)      derived->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (runPartSingleAnalysisGen)      derived->addSubTask(new ParticleSingleAnalyzer(PartLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (runPartPairAnalysisGen)        derived->addSubTask(new ParticlePairAnalyzer(PairLabel+GenLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (runNuDynAnalysisGen)           derived->addSubTask(new NuDynAnalyzer(NuDynLabel+GenLabel,configuration,analysisEventFilters,analysisParticleFilters));
 
-    if (RunGlobalReco)         derived->addSubTask(new GlobalAnalyzer(GlobalLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunSpherocityReco)     derived->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunPartReco)           derived->addSubTask(new ParticleSingleAnalyzer(PartLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunPairReco)           derived->addSubTask(new ParticlePairAnalyzer(PairLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
-    if (RunNuDynReco)          derived->addSubTask(new NuDynAnalyzer(NuDynLabel+RecoLabel,configuration,analysisEventFilters,analysisParticleFilters));
+    if (runGlobalAnalysisReco)         derived->addSubTask(new GlobalAnalyzer(GlobalLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (runSpherocityAnalysisReco)     derived->addSubTask(new TransverseSpherocityAnalyzer(SpherocityLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (runPartSingleAnalysisReco)     derived->addSubTask(new ParticleSingleAnalyzer(PartLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (runPartPairAnalysisReco)       derived->addSubTask(new ParticlePairAnalyzer(PairLabel+RecoLabel, configuration,analysisEventFilters, analysisParticleFilters));
+    if (runNuDynAnalysisReco)          derived->addSubTask(new NuDynAnalyzer(NuDynLabel+RecoLabel,configuration,analysisEventFilters,analysisParticleFilters));
     }
 
-  if (RunBalFct && RunPairGen)
+  if (runBalFct && runPartPairAnalysisGen)
     {
     Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":HistogramOutputPath"),outputPathName);
+    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":HistogramsImportPath"),inputPathName);
+    subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":HistogramsExportPath"),outputPathName);
     subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":IncludedPattern0"),TString("Derived"));
     subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":IncludedPattern1"),TString("Pair"));
     subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern1"),TString("Reco"));
     subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern2"),TString("BalFct"));
     subConfig.addParameter(TString("Run:")+PairLabel+GenLabel+TString(":ExcludedPattern3"),TString("Part"));
-    addSubTask(new BalanceFunctionCalculator("PairGen",subConfig,analysisEventFilters, analysisParticleFilters));
+    addSubTask(new BalanceFunctionCalculator("RunPartPairAnalysisReco",subConfig,analysisEventFilters, analysisParticleFilters));
     }
 
-  if (RunBalFct && RunPairReco)
+  if (runBalFct && runPartPairAnalysisReco)
     {
     Configuration & subConfig = * new Configuration();
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":HistogramInputPath"),inputPathName);
-    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":HistogramOutputPath"),outputPathName);
+    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":HistogramsImportPath"),inputPathName);
+    subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":HistogramsExportPath"),outputPathName);
     subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":IncludedPattern0"),TString("Derived"));
     subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":IncludedPattern1"),TString("Pair"));
     subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern1"),TString("Gen"));
     subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern2"),TString("BalFct"));
     subConfig.addParameter(TString("Run:")+PairLabel+RecoLabel+TString(":ExcludedPattern3"),TString("Part"));
-    addSubTask(new BalanceFunctionCalculator("PairReco",subConfig,analysisEventFilters, analysisParticleFilters));
+    addSubTask(new BalanceFunctionCalculator("RunPartPairAnalysisReco",subConfig,analysisEventFilters, analysisParticleFilters));
     }
 
   if (reportInfo(__FUNCTION__))
@@ -414,7 +410,12 @@ void RunDerivedCalculation::configure()
   gSystem->mkdir(outputPathName,1);
 
 
-  if (hasSubTasks() && isTaskOk()) configureSubTasks();
+  if (hasSubTasks() && isTaskOk())
+    for (unsigned int  iTask=0; iTask<subTasks.size(); iTask++)
+      {
+      subTasks[iTask]->configure();
+      }
+
   if (reportEnd(__FUNCTION__))
     ;
 }

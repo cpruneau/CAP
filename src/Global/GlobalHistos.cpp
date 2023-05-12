@@ -16,7 +16,7 @@ ClassImp(GlobalHistos);
 
 GlobalHistos::GlobalHistos(Task * _parent,
                            const String & _name,
-                           Configuration & _configuration,
+                           const Configuration & _configuration,
                            vector<ParticleFilter*> _particleFilters)
 :
 HistogramGroup(_parent,_name,_configuration),
@@ -54,9 +54,9 @@ void GlobalHistos::createHistograms()
   if (reportStart(__FUNCTION__))
     ;
   unsigned int nParticleFilters = particleFilters.size();
-  Configuration & configuration = getConfiguration();
+  const Configuration & configuration = getConfiguration();
   const String & bn  = getName();
-  const String & ptn = getParentTaskName();
+  const String & ptn = getParentName();
   const String & ppn = getParentPathName();
   fillCorrelationHistos = configuration.getValueBool(ppn,"FillCorrelationHistos");
   fill2D                = configuration.getValueBool(ppn,"Fill2D");
@@ -175,14 +175,13 @@ void GlobalHistos::createHistograms()
     ;
 }
 
-void GlobalHistos::loadHistograms(TFile * inputFile)
+void GlobalHistos::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  Configuration & configuration = getConfiguration();
+  const Configuration & configuration = getConfiguration();
   const String & bn  = getName();
-  const String & ptn = getParentTaskName();
+  const String & ptn = getParentName();
   const String & ppn = getParentPathName();
   fillCorrelationHistos = configuration.getValueBool(ppn,"FillCorrelationHistos");
   fill2D                = configuration.getValueBool(ppn,"Fill2D");

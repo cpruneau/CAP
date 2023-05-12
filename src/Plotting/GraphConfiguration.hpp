@@ -60,7 +60,7 @@ public:
   //!
   //!Copy CTOR
   //!
-  GraphConfiguration(const GraphConfiguration & source);
+  GraphConfiguration(GraphConfiguration & source);
 
   //!
   //!DTOR
@@ -70,7 +70,7 @@ public:
   //!
   //!Assignment operator (COPY)
   //!
-  GraphConfiguration & operator=(const GraphConfiguration & source);
+  GraphConfiguration & operator=(GraphConfiguration & source);
   
   //!
   //! Set the default graph configuration
@@ -80,7 +80,7 @@ public:
   //!
   //! Set the graph parameter for dim =1 or  =2 and according to the type.
   //!
-  void setParametersWith(int dim, int type);
+  void addParametersWith(int dim, int type);
 
   //!
   //! Create a graph configuration palette.

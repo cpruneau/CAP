@@ -13,15 +13,11 @@
 #ifndef CAP__ParticlePair3DDerivedHistogramCalculator
 #define CAP__ParticlePair3DDerivedHistogramCalculator
 #include "DerivedHistogramCalculator.hpp"
-#include "ParticleSingleHistos.hpp"
-#include "ParticleSingleDerivedHistos.hpp"
+#include "ParticleHistos.hpp"
+#include "ParticleDerivedHistos.hpp"
 #include "ParticlePair3DHistos.hpp"
 #include "ParticlePair3DDerivedHistos.hpp"
 #include "ParticlePair3DAnalyzer.hpp"
-
-namespace CAP
-{
-
 
 //!
 //! Task to compute derived particle pair histograms and correlation functions base on basic pair histograms.
@@ -42,8 +38,8 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  ParticlePair3DDerivedHistogramCalculator(const String & _name,
-                                           Configuration & _configuration,
+  ParticlePair3DDerivedHistogramCalculator(const TString & _name,
+                                           const Configuration & _configuration,
                                            vector<EventFilter*> & _eventFilters,
                                            vector<ParticleFilter*> &_particleFilters);
   
@@ -59,7 +55,7 @@ public:
   
   //!
   //! Execute this task based on the configuration and class variable specified at construction
-  //! This involves the calculation of the dereived histogram by calls to objects of the class ParticleSingleDerivedHistos for each
+  //! This involves the calculation of the dereived histogram by calls to objects of the class ParticleDerivedHistos for each
   //! set of historgrams corresponding to event filters and particle filters identified at construction.
   //!
   virtual void execute();
@@ -72,12 +68,10 @@ public:
   //!
   //! Loads the histograms retquired by this task at execution
   //!
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
 
   ClassDef(ParticlePair3DDerivedHistogramCalculator,0)
 };
-
-} // namespace CAP
 
 
 #endif /* CAP__ParticlePair3DDerivedHistogramCalculator */

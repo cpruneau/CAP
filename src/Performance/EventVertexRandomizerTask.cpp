@@ -15,11 +15,11 @@ using CAP::EventVertexRandomizerTask;
 ClassImp(EventVertexRandomizerTask);
 
 EventVertexRandomizerTask::EventVertexRandomizerTask(const String & _name,
-                                                     Configuration & _configuration,
+                                                     const Configuration & _configuration,
                                                      vector<EventFilter*> & _eventFilters,
                                                      vector<ParticleFilter*>& _particleFilters)
   :
-Task(_name,_configuration,_eventFilters,_particleFilters),
+EventTask(_name,_configuration,_eventFilters,_particleFilters),
 rConversion(0), tConversion(0),
 xAvg(0), yAvg(0), zAvg(0), tAvg(0),
 xRms(0), yRms(0), zRms(0), tRms(0)
@@ -34,11 +34,11 @@ xRms(0), yRms(0), zRms(0), tRms(0)
 //!
 void EventVertexRandomizerTask::setDefaultConfiguration()
 {
-  Task::setDefaultConfiguration();
-  setParameter("UseParticles", true);
-  setParameter("UseEventStream0", true);
-  addParameter("rConversion", 1.0E9);
-  addParameter("tConversion", 1.0E9);
+  EventTask::setDefaultConfiguration();
+  addParameter("UseParticles",     true);
+  addParameter("EventsUseStream0", true);
+  addParameter("rConversion",      1.0E9);
+  addParameter("tConversion",      1.0E9);
   addParameter("xAvg", 0.0);
   addParameter("yAvg", 0.0);
   addParameter("zAvg", 0.0);
@@ -63,7 +63,7 @@ void EventVertexRandomizerTask::initialize()
   tRms = configuration.getValueDouble(getName(),"tRms");
 }
 
-void EventVertexRandomizerTask::execute()
+void EventVertexRandomizerTask::createEvent()
 {
   incrementTaskExecuted();
   double eventX = gRandom->Gaus(rConversion*xAvg, rConversion*xRms);

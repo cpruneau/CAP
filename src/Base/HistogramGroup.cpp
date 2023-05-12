@@ -22,7 +22,7 @@ ClassImp(HistogramGroup);
 
 HistogramGroup::HistogramGroup(Task * _parent,
                                const String & _name,
-                               Configuration & _configuration)
+                               const Configuration & _configuration)
 :
 HistogramCollection(_name),
 parent(_parent),
@@ -43,7 +43,7 @@ void HistogramGroup::createHistograms()
 //!
 //! Overload this class to load histograms.
 //!
-void HistogramGroup::loadHistograms(TFile * inputFile __attribute__((unused)))
+void HistogramGroup::importHistograms(TFile & inputFile __attribute__((unused)))
 {
   
   if (reportWarning(__FUNCTION__)) cout << "Implement derived class to load histograms." << endl;
@@ -55,7 +55,7 @@ Task * HistogramGroup::getParentTask() const
   return parent;
 }
 
-const String HistogramGroup::getParentTaskName() const
+const String HistogramGroup::getParentName() const
 {
   return parent->getName();
 }

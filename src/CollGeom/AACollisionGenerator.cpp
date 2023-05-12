@@ -16,11 +16,11 @@ using CAP::AACollisionGenerator;
 ClassImp(AACollisionGenerator);
 
 AACollisionGenerator::AACollisionGenerator(const String * _name,
-                                           Configuration & _configuration,
+                                           const Configuration & _configuration,
                                            vector<EventFilter*> & _eventFilters,
                                            vector<ParticleFilter*>& _particleFilters)
 :
-Task(_name, _configuration, eventFilters, particleFilters, _reportLevel),
+EventTask(_name, _configuration, eventFilters, particleFilters, _reportLevel),
 nnCollisionGenerator(NucleonNucleonCollisionGenerator::getDefaultNNCollisionGenerator() )
 {
   nnCollisionGenerator = new NucleonNucleonCollisionGenerator("NN",_configuration,_eventFilters,_particleFilters);
@@ -29,8 +29,8 @@ nnCollisionGenerator(NucleonNucleonCollisionGenerator::getDefaultNNCollisionGene
 
 void AACollisionGenerator::setDefaultConfiguration()
 {
-  setParameter("UseParticles",    true);
-  setParameter("UseEventStream0", true);
+  addParameter("UseParticles",    true);
+  addParameter("EventsUseStream0", true);
 }
 
 void AACollisionGenerator::initialize()
@@ -42,7 +42,7 @@ void AACollisionGenerator::initialize()
   nnCollisionGenerator->initialize();
 }
 
-void AACollisionGenerator::execute()
+void AACollisionGenerator::createEvent()
 {
   
   if (reportStart(__FUNCTION__))

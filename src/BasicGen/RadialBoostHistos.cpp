@@ -16,7 +16,7 @@ ClassImp(RadialBoostHistos);
 
 RadialBoostHistos::RadialBoostHistos(Task * _partial,
                                      const String & _name,
-                                     Configuration & _configuration)
+                                     const Configuration & _configuration)
 :
 HistogramGroup(_partial,_name,_configuration)
 {
@@ -36,7 +36,7 @@ void RadialBoostHistos::createHistograms()
   double min_beta = configuration.getValueDouble("Min_beta");
   double max_beta = configuration.getValueDouble("Max_beta");
   
-  String bn = getParentTaskName();
+  String bn = getParentName();
   h_phi  = createHistogram(createName(bn,"ns_phi"),   nBins_phi,  min_phi,  max_phi,  "#phi",      "N_{s}");
   h_r    = createHistogram(createName(bn,"ns_r"),     nBins_r,    min_r,    max_r,    "r",         "N_{s}");
   h_beta = createHistogram(createName(bn,"ns_beta"),  nBins_beta, min_beta, max_beta, "#beta_{s}", "N_{s}");
@@ -44,10 +44,9 @@ void RadialBoostHistos::createHistograms()
 }
 
 //________________________________________________________________________
-void RadialBoostHistos::loadHistograms(TFile * inputFile)
+void RadialBoostHistos::importHistograms(TFile & inputFile)
 {
-  if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  String bn = getParentTaskName();
+  String bn = getParentName( );
   h_phi  = loadH1(inputFile,createName(bn,"ns_phi")  );
   h_r    = loadH1(inputFile,createName(bn,"ns_r")    );
   h_beta = loadH1(inputFile,createName(bn,"ns_beta") );

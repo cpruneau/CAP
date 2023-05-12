@@ -231,7 +231,7 @@ BidimGaussFitConfiguration::~BidimGaussFitConfiguration()
   delete[] upperLimit;
 }
 
-const BidimGaussFitConfiguration & BidimGaussFitConfiguration::operator=(const BidimGaussFitConfiguration & source)
+const BidimGaussFitconst Configuration & BidimGaussFitConfiguration::operator=(const BidimGaussFitconst Configuration & source)
 {
   if (this!=&source)
     {
@@ -553,7 +553,7 @@ double BidimGaussFitConfiguration::excludeCentralRegion(double deltaEtaExclusion
 {
   const TAxis * xAxisHist = hist->GetXaxis();
   const TAxis * yAxisHist = hist->GetYaxis();
-  bool  usedRegion = kTRUE;
+  bool  usedRegion = true;
 
   // work variables - at the end, we save these into in patch variables..
   int lowBinEta;
@@ -628,7 +628,7 @@ double BidimGaussFitConfiguration::excludeCentralRegion(double deltaEtaExclusion
       excludedPhiBins(deltaEtaExclusionRegion,hist,excludeCentralBinsPhiLS,iCent,lowBinPhi,highBinPhi);
       break;
       default:
-      usedRegion = kFALSE;
+      usedRegion = false;
       break;
     }
 
@@ -649,11 +649,11 @@ double BidimGaussFitConfiguration::excludeCentralRegion(double deltaEtaExclusion
       {
       for (int   biny = lowBinPhi; biny <= highBinPhi; biny++)
         {
-        float x = float(abs(binx-xzero));
-        float y = float(abs(biny-yzero));
+        float x = float(absolute(binx-xzero));
+        float y = float(absolute(biny-yzero));
         float a = float(xzero-lowBinEta);
         float b = float(yzero-lowBinPhi);
-        bool bwithin = TMath::Sqrt(x*x/a/a+y*y/b/b) <= 1.0;
+        bool bwithin = sqrt(x*x/a/a+y*y/b/b) <= 1.0;
         if (bwithin)
           {
           hist->SetBinError(binx, biny, 1e6);

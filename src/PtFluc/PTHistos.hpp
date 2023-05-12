@@ -28,15 +28,15 @@ public:
 
   PTHistos(Task *          _parent,
            const String & _name,
-           Configuration & _configuration,
+           const Configuration & _configuration,
            Severity        _debugLevel,
            int             _ord);
   virtual ~PTHistos();
 
   virtual void createHistograms();
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
   virtual void fillDerivedHistos(bool *** acceptances, double * mults, double * cents, int * numParticles, double ** pT);
-  virtual void saveHistograms(TFile * outputFile, bool saveAll=false);
+  virtual void exportHistograms(TFile & outputFile, bool saveAll=false);
   virtual void createHistogramRec(String * baseName, String * baseTitle, int depth, int partIndex);
   virtual void loadHistogramRec(String * baseName, int depth, int partIndex, TFile * inputFile);
   virtual void fillEventHistos(double mult, double cent, double weight);

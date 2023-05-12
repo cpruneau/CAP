@@ -13,8 +13,10 @@
 #define CAP__RadialBoostTask
 #include <TParameter.h>
 #include "TFile.h"
-#include "Task.hpp"
+#include "EventTask.hpp"
 #include "Event.hpp"
+#include "Particle.hpp"
+#include "ParticleType.hpp"
 #include "CollisionGeometry.hpp"
 #include "RadialBoostHistos.hpp"
 
@@ -25,7 +27,7 @@ namespace CAP
 //!
 //!Task operates a radial boost on all the particles in its incoming data stream.
 //!
-class RadialBoostTask : public Task
+class RadialBoostTask : public EventTask
 {
 public:
 
@@ -38,7 +40,7 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   RadialBoostTask(const String & _name,
-                  Configuration & _configuration,
+                  const Configuration & _configuration,
                   vector<EventFilter*>&    _eventFilters,
                   vector<ParticleFilter*>& _particleFilters);
   
@@ -55,7 +57,7 @@ public:
   //!
   //! Execute this task based on the configuration and class variable specified at construction
   //!
-  virtual void execute();
+  virtual void createEvent();
   
   //!
   //! Creates the histograms  filled by this task at execution
@@ -65,7 +67,7 @@ public:
   //!
   //! Loads the histograms retquired by this task at execution
   //!
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
   
 
 protected:

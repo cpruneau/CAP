@@ -22,10 +22,10 @@ public:
 
   CollisionGeometryGradientHistograms(Task * _parent,
                                       const String & _name,
-                                      Configuration & _configuration);
+                                      const Configuration & _configuration);
   virtual ~CollisionGeometryGradientHistograms() { }
   virtual void createHistograms();
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
   virtual void getRadiusAndGradient(double x, double y, double & radius, double & gx, double & gy);
 
 protected:

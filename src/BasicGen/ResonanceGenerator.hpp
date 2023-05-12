@@ -11,7 +11,10 @@
  * *********************************************************************/
 #ifndef CAP__ResonanceGenerator
 #define CAP__ResonanceGenerator
-#include "Task.hpp"
+#include "EventTask.hpp"
+#include "Event.hpp"
+#include "Particle.hpp"
+#include "ParticleType.hpp"
 
 namespace CAP
 {
@@ -20,7 +23,7 @@ namespace CAP
 //!
 //!Task generates particles with a simple gaussian spectrum
 //!
-class ResonanceGenerator : public Task
+class ResonanceGenerator : public EventTask
 {
 public:
 
@@ -33,10 +36,10 @@ public:
   //! @param _particleFilters Array of particle filters to be used by this task
   //! @param _reportLevel Message log level to be used by this task.
   //!
-  ResonanceGenerator(const String  &        _name,
-                     Configuration  &        _configuration,
-                     vector<EventFilter*>&   _eventFilters,
-                     vector<ParticleFilter*>&_particleFilters);
+  ResonanceGenerator(const String & _name,
+                     const Configuration & _configuration,
+                     vector<EventFilter*>& _eventFilters,
+                     vector<ParticleFilter*> & _particleFilters);
   
   //!
   //! DTOR
@@ -51,12 +54,12 @@ public:
   //!
   //! Initialize the random generators used by this task
   //!
-  virtual void initialize();
+  virtual void configure();
 
   //!
   //! Executes this task. This generates one or several particles.
   //!
-  virtual void execute();
+  virtual void createEvent();
   
   //!
   //! Generate and fill the given particle
@@ -69,7 +72,6 @@ protected:
   //! Whether this task is operated in 'standalone' mode or as slave to another particle generator task.
   //!
   bool  standaloneMode;
-  
   int   nPartMinimum; //!< Minimum number of generated particles per event
   int   nPartMaximum; //!< Maximum number of generated particles per event
   int   nPartRange;  //!<  Convenience variable set to: nPartMaximum - nPartMinimum.

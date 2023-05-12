@@ -16,7 +16,7 @@ ClassImp(ParticlePairHistos);
 
 ParticlePairHistos::ParticlePairHistos(Task * _parent,
                                        const String & _name,
-                                       Configuration & _configuration)
+                                       const Configuration & _configuration)
 :
 HistogramGroup(_parent,_name,_configuration),
 nBins_n1(0),
@@ -83,9 +83,9 @@ void ParticlePairHistos::createHistograms()
     { }
 
   const String & bn  = getName();
-  const String & ptn = getParentTaskName();
+  const String & ptn = getParentName();
   const String & ppn = getParentPathName();
-  Configuration & configuration = getConfiguration();
+  const Configuration & configuration = getConfiguration();
 
   nBins_n2  = configuration.getValueInt(ppn,   "nBins_n2");
   min_n2    = configuration.getValueDouble(ppn,"Min_n2");
@@ -239,15 +239,13 @@ void ParticlePairHistos::createHistograms()
 }
 
 //________________________________________________________________________
-void ParticlePairHistos::loadHistograms(TFile * inputFile)
+void ParticlePairHistos::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-  const String & bn  = getName();
-  const String & ptn = getParentTaskName();
+   const String & bn  = getName();
+  const String & ptn = getParentName();
   const String & ppn = getParentPathName();
-  Configuration & configuration = getConfiguration();
   fillEta       = configuration.getValueBool(ppn,"FillEta");
   fillY         = configuration.getValueBool(ppn,"FillY");
   fillP2        = configuration.getValueBool(ppn,"FillP2");
@@ -261,33 +259,33 @@ void ParticlePairHistos::loadHistograms(TFile * inputFile)
     cout << "  Pair:FillY...............................: " << fillY       << endl;
     cout << "  Pair:FillP2..............................: " << fillP2      << endl;
     }
-  h_n2          = loadH1(inputFile, createName(bn,"n2"));
-  h_n2_ptpt     = loadH2(inputFile, createName(bn,"n2_ptpt"));
-  h_n2_phiPhi   = loadH2(inputFile, createName(bn,"n2_phiPhi"));
+  h_n2          = loadH1(inputFile, CAP::createName(bn,"n2"));
+  h_n2_ptpt     = loadH2(inputFile, CAP::createName(bn,"n2_ptpt"));
+  h_n2_phiPhi   = loadH2(inputFile, CAP::createName(bn,"n2_phiPhi"));
 
   if (fillP2)
     {
-    h_DptDpt_phiPhi = loadH2(inputFile, createName(bn,"ptpt_phiPhi"));
+    h_DptDpt_phiPhi = loadH2(inputFile, CAP::createName(bn,"ptpt_phiPhi"));
     }
 
   if (fillEta)
     {
-    h_n2_etaEta   = loadH2(inputFile, createName(bn,"n2_etaEta"));
-    h_n2_DetaDphi = loadH2(inputFile, createName(bn,"n2_DetaDphi"));
+    h_n2_etaEta   = loadH2(inputFile, CAP::createName(bn,"n2_etaEta"));
+    h_n2_DetaDphi = loadH2(inputFile, CAP::createName(bn,"n2_DetaDphi"));
     if (fillP2)
       {
-      h_DptDpt_etaEta   = loadH2(inputFile, createName(bn,"ptpt_etaEta"));
-      h_DptDpt_DetaDphi = loadH2(inputFile, createName(bn,"ptpt_DetaDphi"));
+      h_DptDpt_etaEta   = loadH2(inputFile, CAP::createName(bn,"ptpt_etaEta"));
+      h_DptDpt_DetaDphi = loadH2(inputFile, CAP::createName(bn,"ptpt_DetaDphi"));
       }
     }
   if (fillY)
     {
-    h_n2_yY     = loadH2(inputFile, createName(bn,"n2_yY"));
-    h_n2_DyDphi = loadH2(inputFile, createName(bn,"n2_DyDphi"));
+    h_n2_yY     = loadH2(inputFile, CAP::createName(bn,"n2_yY"));
+    h_n2_DyDphi = loadH2(inputFile, CAP::createName(bn,"n2_DyDphi"));
     if (fillP2)
       {
-      h_DptDpt_yY     = loadH2(inputFile, createName(bn,"ptpt_yY"));
-      h_DptDpt_DyDphi = loadH2(inputFile, createName(bn,"ptpt_DyDphi"));
+      h_DptDpt_yY     = loadH2(inputFile, CAP::createName(bn,"ptpt_yY"));
+      h_DptDpt_DyDphi = loadH2(inputFile, CAP::createName(bn,"ptpt_DyDphi"));
       }
     }
   if (reportEnd(__FUNCTION__))

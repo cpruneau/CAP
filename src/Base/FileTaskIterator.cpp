@@ -15,7 +15,7 @@ using CAP::FileTaskIterator;
 ClassImp(FileTaskIterator);
 
 FileTaskIterator::FileTaskIterator(const String & _name,
-                                   Configuration & _configuration)
+                                   const Configuration & _configuration)
 :
 TaskIterator(_name,_configuration),
 selectedFileNames(),
@@ -44,7 +44,7 @@ void FileTaskIterator::execute()
     {
     // no file selected, get the list from the designated folder
     // with the included and excluded patterns.
-    String histoInputPath = getValueString("HistogramInputPath");
+    String histoInputPath = getValueString("HistogramsImportPath");
     selectedFileNames = getSelectedFileNamesFrom(histoInputPath);
     }
   nSelectedFiles = selectedFileNames.size();

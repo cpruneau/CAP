@@ -21,232 +21,180 @@ ClassImp(Task);
 
 Task::Task()
 :
-MessageLogger(Info),
-timer(),
-taskName                ( "Task" ),
-configured              (false),
-configuration           (),
-requestedConfiguration  (*new Configuration()),
-parent                  (nullptr),
-particleFactory         (nullptr),
-eventStreams            (),
-nEventFilters           (0),
-nParticleFilters        (0),
-eventFilters            (),
-particleFilters         (),
-inputHistograms         (),
-histograms              (),
-baseSingleHistograms    (),
-basePairHistograms      (),
-derivedHistograms       (),
-derivedSingleHistograms (),
-derivedPairHistograms   (),
-filteredParticles       (),
-useEventStream0         (false),
-useEventStream1         (false),
-useEventStream2         (false),
-useEventStream3         (false),
-useEvents               (false),
-useParticles            (false),
-scaleHistos             (false),
-createHistos            (false),
-loadHistos              (false),
-saveHistos              (false),
-nTaskExecutedTotal      (0),
-nTaskExecuted           (0),
-nParticlesAcceptedEvent (),
-nParticlesAcceptedTotal (),
-subTasks                (),
-particleTypeCollection  (nullptr),
-subSampleIndex(0)
+ConfigurationManager     (),
+IdentifiedObject         (),
+//MessageLogger            (Info),
+timer                    (),
+histogramManager         (),
+parent                   (nullptr),
+histosCreate             (false),
+histosReset              (false),
+histosClear              (false),
+histosScale              (false),
+histosPlot               (false),
+histosPrint              (false),
+histosForceRewrite       (false),
+histosImport             (false),
+histosImportPath         (""),
+histosImportFile         (""),
+histosExport             (false),
+histosExportAsRoot       (false),
+histosExportAsText       (false),
+histosExportPartial      (false),
+histosExportPartialCount (false),
+histosExportMaxPerPartial(false),
+histosExportPath         (""),
+histosExportFile         (""),
+taskExecutedTotal        (0),
+taskExecuted             (0),
+subTasks                 ()
 {
   setClassName("Task");
-  setInstanceName(taskName);
+  setInstanceName(getName());
 }
 
 Task::Task(const String & _name,
-           Configuration & _configuration)
+           const Configuration & _configuration)
 :
-MessageLogger(Severity::Info),
-timer(),
-taskName                (_name),
-configured              (false),
-configuration           (),
-requestedConfiguration  (_configuration),
-parent                  (nullptr),
-particleFactory         (nullptr),
-eventStreams            (),
-nEventFilters           (0),
-nParticleFilters        (0),
-eventFilters            (),
-particleFilters         (),
-inputHistograms         (),
-baseSingleHistograms    (),
-basePairHistograms      (),
-derivedHistograms       (),
-derivedSingleHistograms (),
-derivedPairHistograms   (),
-filteredParticles       (),
-useEventStream0         (false),
-useEventStream1         (false),
-useEventStream2         (false),
-useEventStream3         (false),
-useEvents               (false),
-useParticles            (false),
-scaleHistos             (false),
-createHistos            (false),
-loadHistos              (false),
-saveHistos              (false),
-nTaskExecutedTotal      (0),
-nTaskExecuted           (0),
-nParticlesAcceptedEvent (),
-nParticlesAcceptedTotal (),
-subTasks                (),
-particleTypeCollection  (nullptr),
-subSampleIndex(0)
+ConfigurationManager     (_configuration),
+IdentifiedObject         (_name,_name,"1.0",_name,_name,0),
+timer                    (),
+histogramManager         (),
+parent                   (nullptr),
+histosCreate             (false),
+histosReset              (false),
+histosClear              (false),
+histosScale              (false),
+histosPlot               (false),
+histosPrint              (false),
+histosForceRewrite       (false),
+histosImport             (false),
+histosImportPath         (""),
+histosImportFile         (""),
+histosExport             (false),
+histosExportAsRoot       (false),
+histosExportAsText       (false),
+histosExportPartial      (false),
+histosExportPartialCount (false),
+histosExportMaxPerPartial(false),
+histosExportPath         (""),
+histosExportFile         (""),
+taskExecutedTotal        (0),
+taskExecuted             (0),
+subTasks                 ()
 {
   setClassName("Task");
-  setInstanceName(_name);
+  setInstanceName(getName());
 }
 
-Task::Task(const String & _name,
-           Configuration & _configuration,
-           vector<EventFilter*> & _eventFilters,
-           vector<ParticleFilter*>& _particleFilters)
-:
-MessageLogger(Severity::Info),
-timer(),
-taskName                (_name),
-configured              (false),
-configuration           (),
-requestedConfiguration  (_configuration),
-parent                  (nullptr),
-particleFactory         (nullptr),
-eventStreams            (),
-nEventFilters           (_eventFilters.size()),
-nParticleFilters        (_particleFilters.size()),
-eventFilters            (_eventFilters),
-particleFilters         (_particleFilters),
-inputHistograms         (),
-baseSingleHistograms    (),
-basePairHistograms      (),
-derivedHistograms       (),
-derivedSingleHistograms (),
-derivedPairHistograms   (),
-filteredParticles       (),
-useEventStream0         (false),
-useEventStream1         (false),
-useEventStream2         (false),
-useEventStream3         (false),
-useEvents               (false),
-useParticles            (false),
-scaleHistos             (false),
-createHistos            (false),
-loadHistos              (false),
-saveHistos              (false),
-forceHistogramsRewrite  (true),
-nTaskExecutedTotal      (0),
-nTaskExecuted           (0),
-nParticlesAcceptedEvent (),
-nParticlesAcceptedTotal (),
-subTasks                (),
-particleTypeCollection  (nullptr),
-subSampleIndex(0)
-{
-  setClassName("Task");
-  setInstanceName(_name);
-}
+
 
 void Task::setDefaultConfiguration()
 {
-  String nullString("none");
+//  String fullTaskPath = getFullTaskPath();
+//  String taskName     = getName();
+//  String configName   = fullTaskPath;
+//  configName += taskName;
+  setConfigurationPath(getFullTaskPath());
+//  String path = getConfigurationPath();
+//  cout << "==================================================" << endl;
+//  cout << "==================================================" << endl;
+//  cout << "==================================================" << endl;
+//  cout << "=== Task::setDefaultConfiguration() ==============" << endl;
+//  cout << " fullTaskPath...........: " << fullTaskPath << endl;
+//  cout << " taskName...............: " << taskName << endl;
+//  cout << " configName requested...: " << configName << endl;
+//  cout << " configName set.........: " << path << endl;
+//  cout << "==================================================" << endl;
+//  cout << "==================================================" << endl;
+//  cout << "==================================================" << endl;
+//
+
+
   String none("none");
-  String treeName("tree");
-  configuration.clear();
-  addParameter("Severity",                String("Debug"));
-  addParameter("UseEvents",               useEvents);
-  addParameter("UseParticles",            useParticles);
-  addParameter("UseEventStream0",         useEventStream0);
-  addParameter("UseEventStream1",         useEventStream1);
-  addParameter("UseEventStream2",         useEventStream2);
-  addParameter("UseEventStream3",         useEventStream3);
-  addParameter("CreateHistograms",        createHistos);
-  addParameter("LoadHistograms",          loadHistos);
-  addParameter("SaveHistograms",          saveHistos);
-  addParameter("ResetHistograms",         false);
-  addParameter("ClearHistograms",         false);
-  addParameter("ScaleHistograms",         scaleHistos);
-  addParameter("ForceHistogramsRewrite",  forceHistogramsRewrite);
-  addParameter("HistogramInputPath",      none);
-  addParameter("HistogramInputFile",      none);
-  addParameter("HistogramOutputPath",     none);
-  addParameter("HistogramOutputFile",     none);
-  addParameter("DataInputUsed",           false);
-  addParameter("DataInputPath",           nullString);
-  addParameter("DataInputFile",           nullString);
-  addParameter("DataInputTree",           treeName);
-  addParameter("DataInputFileMinIndex",   -1);
-  addParameter("DataInputFileMaxIndex",   -1);
-  addParameter("DataOutputUsed",          false);
-  addParameter("DataOutputPath",          nullString);
-  addParameter("DataOutputFileName",      nullString);
-  addParameter("DataOutputTreeName",      treeName);
-  addParameter("DataConversionToWac",     true);
-  generateKeyValuePairs("IncludedPattern", none, 20);
-  generateKeyValuePairs("ExcludedPattern", none, 20);
+  String debug("Debug");
+  addParameter("Severity",                      debug);
+  addParameter("HistogramsCreate",              histosCreate);
+  addParameter("HistogramsReset",               histosReset);
+  addParameter("HistogramsClear",               histosClear);
+  addParameter("HistogramsScale",               histosScale);
+  addParameter("HistogramsPlot",                histosPlot);
+  addParameter("HistogramsPrint",               histosPrint);
+  addParameter("HistogramsForceRewrite",        histosForceRewrite);
+  addParameter("HistogramsImport",              histosImport);
+  addParameter("HistogramsImportPath",          histosImportPath);
+  addParameter("HistogramsImportFile",          histosImportFile);
+  addParameter("HistogramsExport",              histosExport);
+  addParameter("HistogramsExportAsRoot",        histosExportAsRoot);
+  addParameter("HistogramsExportAsText",        histosExportAsText);
+  addParameter("HistogramsExportPartial",       histosExportPartial);
+  addParameter("HistogramsExportPartialCount",  histosExportPartialCount);
+  addParameter("HistogramsExportMaxPerPartial", histosExportMaxPerPartial);
+  addParameter("HistogramsExportPath",          histosExportPath);
+  addParameter("HistogramsExportFile",          histosExportFile);
 }
 
-void Task::setConfiguration(Configuration & _configuration)
+void Task::configure()
 {
-  configuration.setParameters(_configuration);
-  useEventStream0 = getValueBool("UseEventStream0");
-  useEventStream1 = getValueBool("UseEventStream1");
-  useEventStream2 = getValueBool("UseEventStream2");
-  useEventStream3 = getValueBool("UseEventStream3");
-  useEvents       = getValueBool("UseEvents");
-  useParticles    = getValueBool("UseParticles");
-  scaleHistos     = getValueBool("ScaleHistograms");
-  createHistos    = getValueBool("CreateHistograms");
-  loadHistos      = getValueBool("LoadHistograms");
-  saveHistos      = getValueBool("SaveHistograms");
-  forceHistogramsRewrite = getValueBool("ForceHistogramsRewrite");
-  MessageLogger::Severity selectedLevel;
-  String logOption = getValueString("Severity");
-  if (logOption.Contains("Debug"))        selectedLevel = MessageLogger::Debug;
-  else if (logOption.Contains("Info"))    selectedLevel = MessageLogger::Info;
-  else if (logOption.Contains("Warning")) selectedLevel = MessageLogger::Warning;
-  else selectedLevel = MessageLogger::Info;
-  setSeverityLevel(selectedLevel);
-  if (reportDebug(__FUNCTION__)) configuration.printConfiguration(cout);
+  if (reportStart(__FUNCTION__))
+    ;
+
+  ConfigurationManager::configure();
+  histosCreate              = getValueBool("HistogramsCreate");
+  histosReset               = getValueBool("HistogramsReset");
+  histosClear               = getValueBool("HistogramsClear");
+  histosScale               = getValueBool("HistogramsScale");
+  histosPlot                = getValueBool("HistogramsPlot");
+  histosPrint               = getValueBool("HistogramsPrint");
+  histosForceRewrite        = getValueBool("HistogramsForceRewrite");
+  histosImport              = getValueBool("HistogramsImport");
+  histosImportPath          = getValueString("HistogramsImportPath");
+  histosImportFile          = getValueString("HistogramsImportFile");
+  histosExport              = getValueBool("HistogramsExport");
+  histosExportAsRoot        = getValueBool("HistogramsExportAsRoot");
+  histosExportAsText        = getValueBool("HistogramsExportAsText");
+  histosExportPartial       = getValueBool("HistogramsExportPartial");
+  histosExportPartialCount  = getValueInt("HistogramsExportPartialCount");
+  histosExportMaxPerPartial = getValueInt("HistogramsExportMaxPerPartial");
+  histosExportPath          = getValueString("HistogramsExportPath");
+  histosExportFile          = getValueString("HistogramsExportFile");
+  if (hasSubTasks())
+    {
+    for (unsigned int  iTask=0; iTask<subTasks.size(); iTask++)
+      {
+      subTasks[iTask]->configure();
+      }
+    }
+  configured = true;
+  if (reportEnd(__FUNCTION__))
+    ;
 }
+
+
+
+//
+//void Task::setSeverity()
+//{
+//  MessageLogger::Severity selectedLevel;
+//  String  logOption = getValueString("Severity");
+//  if (logOption.Contains("Debug"))        selectedLevel = MessageLogger::Debug;
+//  else if (logOption.Contains("Info"))    selectedLevel = MessageLogger::Info;
+//  else if (logOption.Contains("Warning")) selectedLevel = MessageLogger::Warning;
+//  else selectedLevel = MessageLogger::Info;
+//  setSeverityLevel(selectedLevel);
+//}
+//
 
 void Task::initialize()
 {
   if (reportStart(__FUNCTION__))
     ;
   initializeTaskExecuted();
-  if (useParticles)
-    {
-    particleFactory        = Particle::getFactory();
-    particleTypeCollection = ParticleTypeCollection::getMasterParticleCollection();
-    if (nParticleFilters>0 && nEventFilters>0)
-      {
-      initializeNEventsAccepted();
-      initializeNParticlesAccepted();
-      }
-    else
-      {
-      if (reportWarning(__FUNCTION__)) cout << "UseParticles==true but nParticleFilters=0 or nEventFilters==0." << endl;
-      }
-    }
-  if (useEventStream0)  addEventStream(Event::getEventStream(0));
-  if (useEventStream1)  addEventStream(Event::getEventStream(1));
-  if (useEventStream2)  addEventStream(Event::getEventStream(2));
-  if (useEventStream3)  addEventStream(Event::getEventStream(3));
-  if (reportDebug(__FUNCTION__)) cout << " #event added streams: "  << getNEventStreams() << endl;
-  if (loadHistos    && isTaskOk())  loadHistograms();
-  if (createHistos  && isTaskOk())  createHistograms();
-  if (hasSubTasks() && isTaskOk())  initializeSubTasks();
+  if (histosImport)  importHistograms();
+  if (histosCreate)  createHistograms();
+//  if (calibsImport)  importCalibrations();
+//  if (calibsCreate)  createCalibrations();
+  if (hasSubTasks())  initializeSubTasks();
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -260,62 +208,15 @@ void Task::execute()
     ;
 }
 
-void Task::savePartial()
-{
-  if (reportStart(__FUNCTION__))
-    ;
-  if (useParticles  && reportInfo(__FUNCTION__)) printEventStatistics();
-  if (scaleHistos)   scaleHistograms();
-  if (saveHistos)    saveHistograms();
-  if (hasSubTasks()) savePartialSubTasks();
-  if (reportEnd(__FUNCTION__))
-    ;
-}
 
 void Task::finalize()
 {
   if (reportStart(__FUNCTION__))
     ;
-  // if a partial Save has been done and there are no additional
-  // new data, no point in saving again..
-  if (useParticles)
-    {
-    if (getnTaskExecuted()>0)
-      {
-      if (reportDebug(__FUNCTION__)) printEventStatistics();
-      if (scaleHistos)   scaleHistograms();
-      if (saveHistos)    saveHistograms();
-      if (hasSubTasks()) finalizeSubTasks();
-      }
-    }
-  else
-    {
-    if (saveHistos)    saveHistograms();
-    if (hasSubTasks()) finalizeSubTasks();
-    }
-  if (reportEnd(__FUNCTION__))
-    ;
-}
-
-void Task::printEventStatistics() const
-{
-  if (reportStart(__FUNCTION__))
-    ;
-  cout << endl;
-  cout << " Event Statistics.....: " << getName() <<  "/"  << getClassName()
-  << "       #calls after Reset/total: " << nTaskExecuted << "/" << nTaskExecutedTotal << " #EventFilters : " << nEventFilters << " #ParticleFilters : " << nParticleFilters << endl;
-  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++)
-    {
-    cout << "Event filter:" << iEventFilter << " " << eventFilters[iEventFilter]->getName() << " #events : " << getNEventsAcceptedReset(iEventFilter) << endl;
-    for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++)
-      {
-      cout
-      << "Particle filter: "  << iParticleFilter
-      << " " << particleFilters[iParticleFilter]->getName()
-      << " (event): " << getNParticlesAccepted(iEventFilter,iParticleFilter)
-      << " (total): " << getNParticlesAcceptedTotal(iEventFilter,iParticleFilter) << endl;
-      }
-    }
+  if (histosExport)  exportHistograms();
+  if (histosPlot)    plotHistograms();
+  if (histosPrint)   printHistograms();
+  if (hasSubTasks()) finalizeSubTasks();
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -325,9 +226,7 @@ void Task::reset()
   if (reportStart(__FUNCTION__))
     ;
   resetTaskExecuted();
-  if (useParticles)  resetNEventsAccepted();
-  if (useParticles)  resetNParticlesAccepted();
-  if (createHistos)  resetHistograms();
+  if (histosCreate)  resetHistograms();
   if (hasSubTasks()) resetSubTasks();
   if (reportEnd(__FUNCTION__))
     ;
@@ -337,9 +236,7 @@ void Task::clear()
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (useParticles)  clearNEventsAccepted();
-  if (useParticles)  clearNParticlesAccepted();
-  if (createHistos)  clearHistograms();
+  if (histosCreate)  clearHistograms();
   if (hasSubTasks()) clearSubTasks();
   if (reportEnd(__FUNCTION__))
     ;
@@ -347,56 +244,56 @@ void Task::clear()
 
 void Task::printConfiguration(ostream & output)
 {
-  output << "--------------------------------------------------------" << endl;
-  output << "--------------------------------------------------------" << endl;
-  output << "Task Name : " << taskName <<  endl;
-  configuration.printConfiguration(output);
-  if (hasSubTasks()) printConfigurationSubTasks(output);
-  output << "--------------------------------------------------------" << endl;
-  output << "--------------------------------------------------------" << endl;
+  output << "============================================================" << endl;
+  output << "============================================================" << endl;
+  output << "Task Name : " << getName() <<  endl;
+  ConfigurationManager::printConfiguration(output);
+  unsigned int nSubTasks = subTasks.size();
+  //if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
+  //for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->printConfiguration(output);
+  output << "============================================================" << endl;
+  output << "============================================================" << endl;
 }
 
-
-
-void Task::loadHistograms()
+void Task::importHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  String histogramInputPath = getValueString("HistogramInputPath");
-  String histogramInputFile = getValueString("HistogramInputFile");
-  if (reportInfo(__FUNCTION__))
+  String importPath = getValueString("HistogramsImportPath");
+  String importFile = getValueString("HistogramsImportFile");
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
-    cout << "HistogramInputPath..........: " << histogramInputPath << endl;
-    cout << "HistogramInputFile..........: " << histogramInputFile << endl;
-    }
-  TFile * inputFile = openRootFile(histogramInputPath,histogramInputFile,"READ");
-  if (!inputFile) return;
-  if (useParticles)  loadNEventsAccepted(inputFile);
-  if (useParticles)  loadNEexecutedTask(inputFile);
-  loadHistograms(inputFile);
+    printItem("HistogramsImportPath",importPath);
+    printItem("HistogramsImportFile",importFile);
+    cout << endl;
+  }
+  TFile & inputFile = openRootFile(importPath,importFile,"READ");
+  loadNEventsAccepted(inputFile);
+  loadNEexecutedTask(inputFile);
+  importHistograms(inputFile);
   if (reportEnd(__FUNCTION__))
     ;
 }
 
 
-void Task::loadDerivedHistograms()
+void Task::importDerivedHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  String histogramInputPath = getValueString("HistogramInputPath");
-  String histogramInputFile = getValueString("HistogramInputFile");
-  if (reportInfo(__FUNCTION__))
+  String importPath = getValueString("HistogramsImportPath");
+  String importFile = getValueString("HistogramsImportFile");
+  if (reportDebug(__FUNCTION__))
     {
     cout << endl;
-    cout << "HistogramInputPath..........: " << histogramInputPath << endl;
-    cout << "HistogramInputFile..........: " << histogramInputFile << endl;
+    printItem("HistogramsImportPath",importPath);
+    printItem("HistogramsImportFile",importFile);
+    cout << endl;
     }
-  TFile * inputFile = openRootFile(histogramInputPath,histogramInputFile,"READ");
-  if (!inputFile) return;
-  if (useParticles)  loadNEventsAccepted(inputFile);
-  if (useParticles)  loadNEexecutedTask(inputFile);
-  loadDerivedHistograms(inputFile);
+  TFile & inputFile = openRootFile(importPath,importFile,"READ");
+  loadNEventsAccepted(inputFile);
+  loadNEexecutedTask(inputFile);
+  importDerivedHistograms(inputFile);
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -406,13 +303,7 @@ void Task::resetHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  for (unsigned int iHisto=0; iHisto<inputHistograms.size();        iHisto++) inputHistograms[iHisto]->reset();
-  for (unsigned int iHisto=0; iHisto<histograms.size();             iHisto++) histograms[iHisto]->reset();
-  for (unsigned int iHisto=0; iHisto<baseSingleHistograms.size();   iHisto++) baseSingleHistograms[iHisto]->reset();
-  for (unsigned int iHisto=0; iHisto<basePairHistograms.size();     iHisto++) basePairHistograms[iHisto]->reset();
-  for (unsigned int iHisto=0; iHisto<derivedHistograms.size();      iHisto++) derivedHistograms[iHisto]->reset();
-  for (unsigned int iHisto=0; iHisto<derivedSingleHistograms.size();iHisto++) derivedSingleHistograms[iHisto]->reset();
-  for (unsigned int iHisto=0; iHisto<derivedPairHistograms.size();  iHisto++) derivedPairHistograms[iHisto]->reset();
+  histogramManager.reset();
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -421,20 +312,7 @@ void Task::clearHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  for (unsigned int iHisto=0; iHisto<inputHistograms.size();        iHisto++) delete inputHistograms[iHisto];
-  for (unsigned int iHisto=0; iHisto<histograms.size();             iHisto++) delete histograms[iHisto];
-  for (unsigned int iHisto=0; iHisto<baseSingleHistograms.size();   iHisto++) delete baseSingleHistograms[iHisto];
-  for (unsigned int iHisto=0; iHisto<basePairHistograms.size();     iHisto++) delete basePairHistograms[iHisto];
-  for (unsigned int iHisto=0; iHisto<derivedHistograms.size();      iHisto++) delete derivedHistograms[iHisto];
-  for (unsigned int iHisto=0; iHisto<derivedSingleHistograms.size();iHisto++) delete derivedSingleHistograms[iHisto];
-  for (unsigned int iHisto=0; iHisto<derivedPairHistograms.size();  iHisto++) delete derivedPairHistograms[iHisto];
-  inputHistograms.clear();
-  histograms.clear();
-  baseSingleHistograms.clear();
-  basePairHistograms.clear();
-  derivedHistograms.clear();
-  derivedSingleHistograms.clear();
-  derivedPairHistograms.clear();
+  histogramManager.clear();
   if (reportEnd(__FUNCTION__))
     ;
 }
@@ -443,311 +321,250 @@ void Task::scaleHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  double scalingFactor;
-  int index;
-  for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
-    {
-    long nEvents = nEventsAccepted[iEventFilter];
-    if (nEvents>1)
-      {
-      scalingFactor = 1.0/double(nEvents);
-      if (reportInfo(__FUNCTION__))
-        {
-        cout << endl;
-        cout << "iEventFilter.............................: " <<  iEventFilter<< endl;
-        cout << "nEventsAcceptedTotal[iEventFilter].......: " <<  nEvents<< endl;
-        cout << "scalingFactor............................: " <<  scalingFactor << endl;
-        }
-      if (histograms.size()>0)
-        {
-          if (reportInfo(__FUNCTION__)) cout <<  "Scaling group named " <<  histograms[iEventFilter]->getName() << endl;
-          histograms[iEventFilter]->scale(scalingFactor);
-        }
-      if (baseSingleHistograms.size()>0)
-        {
-        for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
-          {
-          index = iEventFilter*nParticleFilters + iParticleFilter1;
-          if (reportInfo(__FUNCTION__))cout <<  "Scaling group index:" << index << " named " <<  baseSingleHistograms[index]->getName() << endl;
-          baseSingleHistograms[index]->scale(scalingFactor);
-          }
-        }
-      if (basePairHistograms.size()>0)
-        {
-        for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
-          {
-          for (int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
-            {
-            index = iEventFilter*nParticleFilters*nParticleFilters+iParticleFilter1*nParticleFilters+iParticleFilter2;
-            if (reportInfo(__FUNCTION__))cout <<  "Scaling group index:" << index << " named " <<  baseSingleHistograms[index]->getName() << endl;
-            basePairHistograms[index]->scale(scalingFactor);
-            }
-          }
-        }
-      }
-    else
-      {
-      if (reportWarning(__FUNCTION__))
-        {
-        cout << endl;
-        cout << "                            iEventFilter: " <<  iEventFilter<< endl;
-        cout << "      nEventsAccepted[iEventFilter]: " <<  nEventsAccepted[iEventFilter]<< endl;
-        cout << "                    no scaling performed: " <<  endl;
-        }
-      }
-    }
   if (reportEnd(__FUNCTION__))
     ;
 }
 
+void Task::plotHistograms()
+{
 
-void Task::saveHistograms(TFile * outputFile)
+}
+
+void Task::printHistograms()
+{
+
+}
+
+void Task::exportHistograms(TFile & outputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (!outputFile)
-    {
-    if (reportError(__FUNCTION__)) cout << "Given file pointer is null" << endl;
-    postTaskError();
-    return;
-    }
-  outputFile->cd();
+  outputFile.cd();
+  writeNEventsAccepted(outputFile);
+  writeNEexecutedTask(outputFile);
+  histogramManager.save(outputFile);
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
+void Task::exportHistograms(ofstream & outputFile)
+{
+  if (reportStart(__FUNCTION__))
+    ;
+  histogramManager.save(outputFile);
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
+void Task::exportHistograms()
+{
+  if (reportStart(__FUNCTION__))
+    ;
+  String histosExportPath     = getValueString("HistogramsExportPath");
+  String histosExportFile     = getValueString("HistogramsExportFile");
+  if (histosExportPath.Contains("null") || histosExportPath.Contains("none")) histosExportPath = "";
+  if (histosExportFile.Contains("null") || histosExportFile.Contains("none")) histosExportFile = getName();
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;
-    cout << "Global histogram(s).............:"  << histograms.size() << endl;
-    cout << "Base single histogram(s)........:"  << baseSingleHistograms.size() << endl;
-    cout << "Base pair histogram(s)..........:"  << basePairHistograms.size() << endl;
-    cout << "Derived global histogram(s).....:"  << derivedHistograms.size() << endl;
-    cout << "Derived single histogram(s).....:"  << derivedSingleHistograms.size() << endl;
-    cout << "Derived pair histogram(s).......:"  << derivedPairHistograms.size() << endl;
-    }
-  for (unsigned int iHisto=0; iHisto<histograms.size(); iHisto++)
-    {
-    if (reportDebug(__FUNCTION__)) cout << "Saving global histogram(s) group:" << iHisto << endl;
-    histograms[iHisto]->saveHistograms(outputFile);
-    }
-  for (unsigned int iHisto=0; iHisto<baseSingleHistograms.size(); iHisto++)
-    {
-    if (reportDebug(__FUNCTION__)) cout << "Saving single histogram(s) group:" << iHisto << endl;
-    baseSingleHistograms[iHisto]->saveHistograms(outputFile);
-    }
-  for (unsigned int iHisto=0; iHisto<basePairHistograms.size(); iHisto++)
-    {
-    if (reportDebug(__FUNCTION__)) cout << "Saving pair histogram(s) group:" << iHisto << endl;
-    basePairHistograms[iHisto]->saveHistograms(outputFile);
-    }
-  for (unsigned int iHisto=0; iHisto<derivedHistograms.size(); iHisto++)
-    {
-    if (reportDebug(__FUNCTION__)) cout << "Saving global histogram(s) group:" << iHisto << endl;
-    derivedHistograms[iHisto]->saveHistograms(outputFile);
-    }
-  for (unsigned int iHisto=0; iHisto<derivedSingleHistograms.size(); iHisto++)
-    {
-    if (reportDebug(__FUNCTION__)) cout << "Saving derived single histogram(s) group:" << iHisto  << endl;
-    derivedSingleHistograms[iHisto]->saveHistograms(outputFile);
-    }
-  for (unsigned int iHisto=0; iHisto<derivedPairHistograms.size(); iHisto++)
-    {
-    if (reportDebug(__FUNCTION__)) cout << "Saving derived pair histogram(s) group:" << iHisto  << endl;
-    derivedPairHistograms[iHisto]->saveHistograms(outputFile);
-    }
-  if (reportEnd(__FUNCTION__))
-    ;
-}
-
-void Task::saveHistograms()
-{
-  if (reportStart(__FUNCTION__))
-    ;
-  String histogramOutputPath     = getValueString("HistogramOutputPath");
-  String histogramOutputFile     = getValueString("HistogramOutputFile");
-  if (histogramOutputPath.Contains("null") || histogramOutputPath.Contains("none")) histogramOutputPath = "";
-  if (histogramOutputFile.Contains("null") || histogramOutputFile.Contains("none")) histogramOutputFile = taskName;
-  if (reportInfo(__FUNCTION__))
-    {
+    printItem("HistogramsExportPath",histosExportPath);
+    printItem("HistogramsExportFile",histosExportFile);
     cout << endl;
-    cout << "nTaskExecuted.............: " << nTaskExecuted  << endl;
-    cout << "nTaskExecutedTotal........: " << nTaskExecutedTotal  << endl;
-    cout << "HistogramOutputPath.......: " << histogramOutputPath  << endl;
-    cout << "HistogramOutputFile.......: " << histogramOutputFile  << endl;
-    cout << "Saving....................: " << histogramOutputPath << "/" << histogramOutputFile << endl;
     }
-  gSystem->mkdir(histogramOutputPath,1);
-  TFile * outputFile;
-  if (forceHistogramsRewrite)
-    outputFile = openRootFile(histogramOutputPath,histogramOutputFile,"RECREATE");
-  else
-    outputFile = openRootFile(histogramOutputPath,histogramOutputFile,"NEW");
-  if (!outputFile)
-    {
-    postTaskError();
-    return;
-    }
-  if (useParticles)
-    {
-    writeNEventsAccepted(outputFile);
-    writeNEexecutedTask(outputFile);
-    }
-  saveHistograms(outputFile);
-  outputFile->Close();
- if (reportEnd(__FUNCTION__))
-    ;
-}
+  gSystem->mkdir(histosExportPath,1);
 
-void Task::writeNEexecutedTask(TFile * outputFile)
-{
-  if (reportStart(__FUNCTION__))
-    ;
-  String name = "nTaskExecuted";
-  writeParameter(outputFile,name,nTaskExecuted);
+//  if (histosExportAsRoot)
+//  {
+  String option = "NEW";
+  if (histosForceRewrite) option = "RECREATE";
+  TFile & outputFile = openRootFile(histosExportPath,histosExportFile,option);
+  exportHistograms(outputFile);
+  outputFile.Close();
+//  }
+//  if (histosExportAsText)
+//  {
+//    ofstream * outputFile;
+//    if (histosForceRewrite)
+//      outputFile = openOutputAsciiFile(histosExportPath,histosExportFile,".dat","RECREATE");
+//    else
+//      outputFile = openOutputAsciiFile(histosExportPath,histosExportFile,".dat","NEW");
+//    if (!outputFile)
+//    {
+//      postTaskError();
+//      return;
+//    }
+//    exportHistograms(*outputFile);
+//    outputFile->close();
+//  }
   if (reportEnd(__FUNCTION__))
     ;
 }
 
-long Task::loadNEexecutedTask(TFile * inputFile)
+void Task::writeNEexecutedTask(TFile & outputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  String name = "nTaskExecuted";
-  nTaskExecuted = readParameter(inputFile,name);
-  if (reportEnd(__FUNCTION__))
-    ;
-  return nTaskExecuted;
-}
-
-void Task::writeNEventsAccepted(TFile * outputFile)
-{
-  if (reportStart(__FUNCTION__))
-    ;
-  String parameterName = "nEventFilters";
-  writeParameter(outputFile,parameterName,nEventFilters);
-
-  for (int iFilter=0; iFilter<nEventFilters; iFilter++)
-    {
-    parameterName = "EventFilter";
-    parameterName += iFilter;
-    writeParameter(outputFile,parameterName,nEventsAccepted[iFilter]);
-    }
+  String name = "taskExecuted";
+  writeParameter(outputFile,name,taskExecuted);
   if (reportEnd(__FUNCTION__))
     ;
 }
 
-void Task::loadNEventsAccepted(TFile * inputFile)
+long Task::loadNEexecutedTask(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  String parameterName = "nEventFilters";
-  nEventFilters = readParameter(inputFile,parameterName);
-  if (nEventsAccepted.size()<1) nEventsAccepted.assign(nEventFilters,0);
-  for (int iFilter=0; iFilter<nEventFilters; iFilter++)
-    {
-    parameterName = "EventFilter";
-    parameterName += iFilter;
-    nEventsAccepted[iFilter] = readParameter(inputFile,parameterName);
-    }
+  String name = "taskExecuted";
+  taskExecuted = readParameter(inputFile,name);
   if (reportEnd(__FUNCTION__))
     ;
+  return taskExecuted;
 }
 
-void Task::writeParameter(TFile * outputFile, const String & parameterName, long value)
+void Task::writeParameter(TFile & outputFile, const String & parameterName, long value)
 {
-
   if (reportStart(__FUNCTION__))
     ;
-  outputFile->cd();
+  outputFile.cd();
   TParameter<Long64_t>(parameterName,value,'+').Write();
 }
 
-long Task::readParameter(TFile * inputFile, const String & parameterName)
+long Task::readParameter(TFile & inputFile, const String & parameterName)
 {
   if (reportStart(__FUNCTION__))
     ;
-  TParameter<Long64_t> *par = (TParameter<Long64_t> *) inputFile->Get(parameterName);
+  TParameter<Long64_t> *par = (TParameter<Long64_t> *) inputFile.Get(parameterName);
   if (!par)
-    {
+  {
     if (reportError(__FUNCTION__)) cout << "Parameter not found:" <<  parameterName << endl;
     postTaskError();
     return 1.0;
-    }
+  }
   double value = par->GetVal();
   delete par;
   if (reportDebug(__FUNCTION__)) cout << "Parameter named " << parameterName << " has value : " << value << endl;
   return value;
 }
 
-TFile *  Task::openRootFile(const String & inputPath, const String & fileName, const String & ioOption)
+TFile &  Task::openRootFile(const String & inputPath, const String & fileName, const String & ioOption)  throw (FileException)
 {
   if (reportStart(__FUNCTION__))
     ;
   String inputFileName = inputPath;
-  
+  // make sure that if an inputPath is given, it ends with '/'
+  int slash = inputFileName.First('/');
+  int len = inputFileName.Length();
+  if (len>0 && (len-1)!=slash) inputFileName += "/";
+  inputFileName += fileName;
+  if (!inputFileName.EndsWith(".root")) inputFileName += ".root";
+  if (reportDebug (__FUNCTION__))  cout << "Opening file: " << inputFileName << " with option: " << ioOption << endl;
+  TFile * inputFile = new TFile(inputFileName,ioOption);
+  if (!inputFile) throw  FileException(inputFileName,"File not found","Task::openRootFile()");
+  if (!inputFile->IsOpen())  throw  FileException(inputFileName,"File not found/opened","Task::openRootFile()");
+  if (reportDebug(__FUNCTION__)) cout << "File opened successfully." << endl;
+  return *inputFile;
+}
+
+ifstream & Task::openInputAsciiFile(const String & inputPath, const String & fileName, const String & extension, const String & ioOption)  throw (FileException)
+{
+  if (reportStart(__FUNCTION__))
+    ;
+  String inputFileName = inputPath;
   // make sure that if an inputPath is given, it ends with '/'
   int slash = inputFileName.First('/');
   int len = inputFileName.Length();
   //  cout << slash << endl;
   //  cout << len << endl;
-  if (len>0 && (len-1)!=slash)
-    inputFileName += "/";
-  
+  if (len>0 && (len-1)!=slash) inputFileName += "/";
   inputFileName += fileName;
-  if (!inputFileName.Contains(".root")) inputFileName += ".root";
-  
+  if (!inputFileName.EndsWith(extension)) inputFileName += extension;
+  if (reportTrace(__FUNCTION__))
+    cout << "Attempting to open output file named: " << inputFileName << " in mode: " << ioOption << endl;
+  ios_base::openmode mode = ios_base::in;
   if (reportDebug (__FUNCTION__))  cout << "Opening file: " << inputFileName << " with option: " << ioOption << endl;
-  TFile * inputFile = new TFile(inputFileName,ioOption);
-  if (!inputFile)
-    {
-    if (reportError(__FUNCTION__)) cout << "File named " << inputFileName << " not found." << endl;
-    postTaskError();
-    return nullptr;
-    }
-  else
-    {
-    if (!inputFile->IsOpen())
-      {
-      if (reportError(__FUNCTION__)) cout << "File named " << inputFileName << " not found." << endl;
-      postTaskError();
-      return nullptr;
-      }
-    else
-      {
-      if (reportDebug(__FUNCTION__)) cout << "File opened successfully." << endl;
-      }
-    }
-  return inputFile;
+  ifstream * inputFile = new ifstream(inputFileName.Data(),mode);
+  if (!inputFile || !inputFile->is_open()) throw  FileException(inputFileName,"File not found","Task::openInputAsciiFile()");
+  if (reportDebug (__FUNCTION__)) cout << "File: " << inputFileName << " successfully opened." << endl;
+  return *inputFile;
 }
 
-void Task::configure()
+ofstream & Task::openOutputAsciiFile(const String & outputPath, const String & fileName, const String & extension, const String & ioOption)  throw (FileException)
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (configured)
-    {
-    if (reportInfo(__FUNCTION__)) cout << "Task " << taskName << " already configured. Skip." << endl;
-    }
-  else
-    {
-    setDefaultConfiguration();
-    setConfiguration(requestedConfiguration);
-    if (hasSubTasks()) configureSubTasks();
-    configured = true;
-    }
-  if (reportEnd(__FUNCTION__))
-    ;
+  String outputFileName = outputPath;
+  // make sure that if an outputPath is given, it ends with '/'
+  int slash = outputFileName.First('/');
+  int len = outputFileName.Length();
+  if (len>0 && (len-1)!=slash) outputFileName += "/";
+  outputFileName += fileName;
+  if (!outputFileName.EndsWith(extension)) outputFileName += extension;
+  if (reportTrace(__FUNCTION__)) cout << "Attempting to open output file named: " << outputFileName << " in mode: " << ioOption << endl;
+  ios_base::openmode mode = ios_base::out|ios_base::app;
+  if (reportDebug (__FUNCTION__))  cout << "Opening file: " << outputFileName << " with option: " << ioOption << endl;
+  ofstream * outputFile = new ofstream(outputFileName.Data(),mode);
+  if (!outputFile || !outputFile->is_open())  throw  FileException(outputFileName,"File not found","Task::openOutputAsciiFile()");
+  if (reportDebug (__FUNCTION__)) cout << "File: " << outputFileName << " successfully opened." << endl;
+  return *outputFile;
 }
 
-void Task::configureSubTasks()
+
+ifstream & Task::openInputBinaryFile(const String & inputPath, const String & fileName, const String & extension, const String & ioOption) throw (FileException)
 {
   if (reportStart(__FUNCTION__))
     ;
-  unsigned int nSubTasks = subTasks.size();
-  if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
-  for (unsigned int  iTask=0; iTask<nSubTasks; iTask++)
-    {
-    subTasks[iTask]->configure();
-    }
-  if (reportEnd(__FUNCTION__))
+  String inputFileName = inputPath;
+  // make sure that if an inputPath is given, it ends with '/'
+  int slash = inputFileName.First('/');
+  int len = inputFileName.Length();
+  if (len>0 && (len-1)!=slash) inputFileName += "/";
+  inputFileName += fileName;
+  if (!inputFileName.EndsWith(extension)) inputFileName += extension;
+  if (reportTrace(__FUNCTION__))
+    cout << "Attempting to open output file named: " << inputFileName << " in mode: " << ioOption << endl;
+
+  ios_base::openmode mode = ios_base::in|std::ios::binary;
+  if (reportDebug (__FUNCTION__))  cout << "Opening file: " << inputFileName << " with option: " << ioOption << endl;
+  ifstream * inputFile = new ifstream(inputFileName.Data(),mode);
+  if (!inputFile ||  !inputFile->is_open())  throw  FileException(inputFileName,"File not found","Task::openInputBinaryFile()");
+  if (reportDebug (__FUNCTION__)) cout << "File: " << inputFileName << " successfully opened." << endl;
+  return *inputFile;
+}
+
+
+
+ofstream & Task::openOutputBinaryFile(const String & outputPath, const String & fileName, const String & extension, const String & ioOption)  throw (FileException)
+{
+  if (reportStart(__FUNCTION__))
     ;
+  String outputFileName = outputPath;
+  // make sure that if an outputPath is given, it ends with '/'
+  int slash = outputFileName.First('/');
+  int len = outputFileName.Length();
+  if (len>0 && (len-1)!=slash) outputFileName += "/";
+  outputFileName += fileName;
+  if (!outputFileName.EndsWith(extension)) outputFileName += extension;
+  if (reportTrace(__FUNCTION__)) cout << "Attempting to open output file named: " << outputFileName << " in mode: " << ioOption << endl;
+  ios_base::openmode mode = ios_base::out|std::ios::binary;
+  if (reportDebug (__FUNCTION__))  cout << "Opening file: " << outputFileName << " with option: " << ioOption << endl;
+  ofstream * outputFile = new ofstream(outputFileName.Data(),mode);
+  if (!outputFile || !outputFile->is_open()) throw  FileException(outputFileName,"File not found","Task::openOutputBinaryFile()");
+  if (reportDebug (__FUNCTION__)) cout << "File: " << outputFileName << " successfully opened." << endl;
+  return *outputFile;
+}
+
+void Task::copyFile(const String & inputPath,  const String & inputFileName, const String & inExtension,
+                    const String & outputPath, const String & outputFileName, const String & outExtension)
+{
+  ifstream & inputFile  = openInputBinaryFile(inputPath,inputFileName,inExtension,"");
+  ofstream & outputFile = openOutputBinaryFile(outputPath,outputFileName,outExtension,"");
+  if (reportDebug(__FUNCTION__))
+    cout << "Attempting to copy file " << inputPath+inputFileName << " to " << outputPath+outputFileName << endl;
+  // do a binary buffer copy
+  outputFile << inputFile.rdbuf();
+  inputFile.close();
+  outputFile.close();
+  if (reportDebug(__FUNCTION__)) cout << " Successfully completed!" << endl;
 }
 
 
@@ -760,7 +577,7 @@ void Task::initializeSubTasks()
   if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->initialize();
   if (reportEnd(__FUNCTION__))
-    { }
+  { }
 }
 
 void Task::executeSubTasks()
@@ -788,7 +605,7 @@ void Task::resetSubTasks()
   if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->reset();
   if (reportEnd(__FUNCTION__))
-    { }
+  { }
 }
 
 void Task::clearSubTasks()
@@ -799,45 +616,24 @@ void Task::clearSubTasks()
   if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->clear();
   if (reportEnd(__FUNCTION__))
-    { }
-}
-
-
-void Task::savePartialSubTasks()
-{
-   if (reportStart(__FUNCTION__))
-    ;
-  unsigned int nSubTasks = subTasks.size();
-  if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
-  for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->savePartial();
-  if (reportEnd(__FUNCTION__))
-    { }
-}
-
-void Task::printConfigurationSubTasks(ostream & output)
-{
-  if (reportStart(__FUNCTION__))
-    ;
-  unsigned int nSubTasks = subTasks.size();
-  if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
-  for (unsigned int  iTask=0; iTask<nSubTasks; iTask++) subTasks[iTask]->printConfiguration(output);
+  { }
 }
 
 
 Task * Task::addSubTask(Task * task)
 {
   if (!task)
-    {
+  {
     if (reportFatal(__FUNCTION__)) cout << "Given task pointer is null. Abort." << endl;
     postTaskFatal();
     return task;
-    }
+  }
   if (task==this)
-    {
+  {
     if (reportFatal(__FUNCTION__)) cout << "Given task pointer is self. Abort." << endl;
     postTaskFatal();
     return task;
-    }
+  }
 
   subTasks.push_back( task );
   if (task->parent == nullptr)  task->setParent(this);
@@ -845,17 +641,12 @@ Task * Task::addSubTask(Task * task)
   return task;
 }
 
-void Task::addHistogramsToExtList(TList *list __attribute__((unused)) )
-{
-}
-
-
 vector<String> Task::listFilesInDir(const String & pathname,
-                               const String & ext,
-                               bool prependPath,
-                               bool verbose,
-                               int  maximumDepth,
-                               int  currentDepth)
+                                    const String & ext,
+                                    bool prependPath,
+                                    bool verbose,
+                                    int  maximumDepth,
+                                    int  currentDepth)
 {
   String dirname = pathname;
   int depth = currentDepth;
@@ -869,37 +660,37 @@ vector<String> Task::listFilesInDir(const String & pathname,
   vector<String>  subdirs;
 
   if (files)
-    {
+  {
     TSystemFile *file;
     String fname;
     TIter next(files);
     while ((file=(TSystemFile*)next()))
-      {
+    {
       fname = file->GetName();
       if (file->IsDirectory() &&  !fname.BeginsWith(".") )
-        {
+      {
         subdirs.push_back(fname);
-        }
+      }
       else if (fname.EndsWith(ext))
-        {
+      {
         if (prependPath)
           fileNames.push_back(dirname+fname);
         else
           fileNames.push_back(fname);
         //cout << fname.Data() << endl;
         if (verbose) cout << fname << endl;
-        }
       }
     }
+  }
   int nSubdirs = subdirs.size();
   if (verbose) cout << " Number of subdir found...: " << nSubdirs << endl;
   ++depth;
 
   if (nSubdirs>0 && depth<=maximumDepth)
-    {
+  {
 
     for (int iDir=0; iDir<nSubdirs; iDir++)
-      {
+    {
       vector<String> additionalFiles;
       String  subdirname = dirname;
       subdirname += "/";
@@ -909,8 +700,8 @@ vector<String> Task::listFilesInDir(const String & pathname,
       int nAdditionalfiles = additionalFiles.size();
       for (int iFile=0;iFile<nAdditionalfiles;iFile++)
         fileNames.push_back(additionalFiles[iFile]);
-      }
     }
+  }
   if (verbose) cout << " Number of files  found...: " << fileNames.size() << endl;
   if (verbose) cout << " Returning up one level.... " <<  endl;
 
@@ -921,12 +712,12 @@ vector<String> Task::listFilesInDir(const String & pathname,
 //! Get file  names at the given location that match all  patterns in includePatterns and exclude patterns in excludePatterns
 //!
 vector<String>  Task::listFilesInDir(const String & pathName,
-                                      vector<String> includePatterns,
-                                      vector<String> excludePatterns,
-                                      bool prependPath,
-                                      bool verbose,
-                                      int  maximumDepth,
-                                      int  currentDepth)
+                                     vector<String> includePatterns,
+                                     vector<String> excludePatterns,
+                                     bool prependPath,
+                                     bool verbose,
+                                     int  maximumDepth,
+                                     int  currentDepth)
 {
 
   if (reportStart(__FUNCTION__))
@@ -935,47 +726,47 @@ vector<String>  Task::listFilesInDir(const String & pathName,
   vector<String> fileList = listFilesInDir(pathName,".root",prependPath,verbose,maximumDepth,currentDepth);
   unsigned int nNames = fileList.size();
   if (reportDebug(__FUNCTION__))
-    {
+  {
     cout << "      nNames:" << nNames << endl;
     cout << "   nIncludes:" << includePatterns.size() << endl;
     cout << "   nExcludes:" << excludePatterns.size() << endl;
-    }
+  }
   for (unsigned int k=0; k<fileList.size(); k++)
-    {
+  {
     String name = fileList[k];
     bool include = true;
     for (unsigned int kInclude=0; kInclude<includePatterns.size(); kInclude++)
-      {
+    {
       String pattern = includePatterns[kInclude];
       if (!name.Contains(pattern)) { include = false; break;}
-      }
+    }
     if (!include)
-      {
+    {
       continue;
-      }
+    }
     for (unsigned int kExclude=0; kExclude<excludePatterns.size(); kExclude++)
-      {
+    {
       String pattern = excludePatterns[kExclude];
       if (name.Contains(pattern))
-        {
+      {
         include = false;
         break;
-        }
       }
+    }
     if (include)
+    {
+      if (name.Contains(".root"))
       {
-        if (name.Contains(".root"))
-          {
-          int dot = name.First('.');
-          int len = name.Length();
-          if (dot==len-5 )
+        int dot = name.First('.');
+        int len = name.Length();
+        if (dot==len-5 )
           name.Remove(dot,len-dot);
-          }
+      }
       //String check = pathName+name;
       //cout << " CHECK:::::: " << check << endl;
       outputList.push_back(name);
-      }
     }
+  }
   return outputList;
 }
 
@@ -988,17 +779,17 @@ vector<String> Task::getSelectedFileNamesFrom(const String & folder)
   vector<String> excludePatterns;
   vector<String> selectedNames;
   for (int k=0; k<20; k++)
-    {
+  {
     String key = "IncludedPattern"; key += k;
     String  value = getValueString(key);
     if (!value.Contains("none")) includePatterns.push_back(value);
-    }
+  }
   for (int k=0; k<20; k++)
-    {
+  {
     String key = "ExcludedPattern"; key += k;
     String  value = getValueString(key);
     if (!value.Contains("none")) excludePatterns.push_back(value);
-    }
+  }
   return listFilesInDir(folder,includePatterns,excludePatterns);
 }
 
@@ -1019,11 +810,11 @@ Task * Task::getTaskAt(int depth)
   Task * task = this;
   Task * parentTask = task->getParent();
   for (int k=0; k<depth; k++)
-    {
+  {
     task = parentTask;
     if (task==nullptr) break;
     parentTask = task->getParent();
-    }
+  }
   return task;
 }
 
@@ -1035,14 +826,14 @@ const Task * Task::getTaskAt(int depth) const
   const Task * parentTask = task->getParent();
   //cout <<  "0 : name: " << task->getName();
   for (int k=0; k<depth; k++)
-    {
+  {
     task = parentTask;
     if (task==nullptr) break;
     //cout << k <<  " : name: " << task->getName();
     parentTask = task->getParent();
-    }
-  return task;
   }
+  return task;
+}
 
 String Task::getReverseTaskPath(int depth) const
 {
@@ -1050,22 +841,22 @@ String Task::getReverseTaskPath(int depth) const
   String work;
   String colon = String(":");
   for (int k=0; k<=depth; k++)
-    {
+  {
     const Task * task = getTaskAt(k);
     if (task!=nullptr)
-      {
+    {
       work = task->getName();
       work += colon;
       if (result.Length()>0)
-        {
+      {
         result = work + result;
-        }
+      }
       else
-        {
+      {
         result = work;
-        }
       }
     }
+  }
   return result;
 }
 
@@ -1074,18 +865,18 @@ vector<String> Task::getTaskPathTokens() const
   vector<String> paths;
   int n = getNAncestors();
   for (int k=n; k>=0; k--)
-    {
+  {
     const Task * task= getTaskAt(k);
     if (task==nullptr)
-      {
+    {
       cout << "<F> getTaskPathTokens()  Logic error." << endl;
       exit(1);
-      }
-    else
-      {
-      paths.push_back(task->getName());
-      }
     }
+    else
+    {
+      paths.push_back(task->getName());
+    }
+  }
   return paths;
 }
 
@@ -1095,10 +886,10 @@ String Task::getTaskPath(int depth) const
   String path = "";
   vector<String> paths = getTaskPathTokens();
   for (int k=0; k<=depth; k++)
-    {
+  {
     path += paths[k];
     path += ":";
-    }
+  }
   return path;
 }
 
@@ -1121,229 +912,40 @@ int Task::getNAncestors() const
   if (parent==nullptr) return count;
   Task * parentTask = parent;
   while (parentTask!=nullptr)
-    {
+  {
     count++;
     if (parentTask!=nullptr)
       parentTask = parentTask->getParent();
     else
       break;
-    }
+  }
   return count;
 }
 
-bool Task::getValueBool(const String & key)   const
+
+void Task::printIntroMessage(const TString & option __attribute__ (( unused )) ) const
 {
-  int n = getNAncestors();
-  String path;
-  String extKey;
-  bool result = false;
-  for (int k=n; k>=0; k--)
+  if (reportInfo(__FUNCTION__))
     {
-    path   = getTaskPath(k);
-    extKey = path + key;
-    bool found = configuration.isBool(extKey);
-    if (key.Contains("PairGen"))
-      {
-      cout << "Searching for PairGen" << endl;
-      cout << "getValueBool()   path:" << path << endl;
-      cout << "getValueBool() extKey:" << extKey << endl;
-      cout << "getValueBool()  found:" << found << endl;
-      }
-//    if (key.Contains("forceHistogramsRewrite"))
-//      {
-//      cout << "Searching for ForceHistogramsRewrite" << endl;
-//      cout << "getValueBool()   path:" << path << endl;
-//      cout << "getValueBool() extKey:" << extKey << endl;
-//      cout << "getValueBool()  found:" << found << endl;
-//      }
-    if (found)
-      {
-      result = configuration.getValueBool(extKey);
-      break;
-      }
+    cout << "No intro message available for this task. Sorry!" << endl;
     }
-//    if (key.Contains("ForceHistogramsRewrite")) exit(1);
-  return result;
 }
 
-int Task::getValueInt(const String & key)    const
+void Task::printHelp(const TString & option __attribute__ (( unused )) ) const
 {
-  int n = getNAncestors();
-  String path;
-  String extKey;
-  for (int k=n; k>=0; k--)
+  if (reportInfo(__FUNCTION__))
     {
-    path   = getTaskPath(k);
-    //cout << "getValueInt()   path:" << path << endl;
-    extKey = path + key;
-    //cout << "getValueInt() extKey:" << extKey << endl;
-    bool found = configuration.isInt(extKey);
-    //cout << "getValueInt()  found:" << found << endl;
-    if (found) return configuration.getValueInt(extKey);
+    cout << "No help message available for this task. Sorry!" << endl;
     }
-  return -99999;
 }
 
-//!
-//! Get the value of the parameter named 'name'
-//!
-long Task::getValueLong(const String & key)    const
+void Task::printVersion(const TString & option __attribute__ (( unused )) ) const
 {
-  int n = getNAncestors();
-  String path;
-  String extKey;
-  for (int k=n; k>=0; k--)
+  if (reportInfo(__FUNCTION__))
     {
-    path   = getTaskPath(k);
-    //cout << "getValueLong()   path:" << path << endl;
-    extKey = path + key;
-    //cout << "getValueLong() extKey:" << extKey << endl;
-    bool found = configuration.isLong(extKey);
-    if (found) return configuration.getValueLong(extKey);
+    cout << "Version:" << getVersion() << endl;
     }
-  return -99999;
-}
-
-//!
-//! Get the value of the parameter named 'name'
-//!
-double Task::getValueDouble(const String & key) const
-{
-  int n = getNAncestors();
-  String path;
-  String extKey;
-  for (int k=n; k>=0; k--)
-    {
-    path   = getTaskPath(k);
-    //cout << "getValueDouble()   path:" << path << endl;
-    extKey = path + key;
-    //cout << "getValueDouble() extKey:" << extKey << endl;
-    bool found = configuration.isDouble(extKey);
-    if (key.Contains("Energy"))
-      {
-      cout << "Searching for Energy" << endl;
-      cout << "getValueBool()   path:" << path << endl;
-      cout << "getValueBool() extKey:" << extKey << endl;
-      cout << "getValueBool()  found:" << found << endl;
-      }
-
-    if (found) return configuration.getValueDouble(extKey);
-    }
-  return -99999.0;
-}
-
-String Task::getValueString(const String & key) const
-{
-  int n = getNAncestors();
-  String path;
-  String extKey;
-  for (int k=n; k>=0; k--)
-    {
-    path   = getTaskPath(k);
-    //cout << "getValueString()   path:" << path << endl;
-    extKey = path + key;
-    //cout << "getValueString() extKey:" << extKey << endl;
-    bool found = configuration.isString(extKey);
-    if (found) return configuration.getValueString(extKey);
-    }
-  return String("none");
-  }
-
-
-void Task::addParameter(const String & name, bool value)
-{
-  String path = getFullTaskPath();
-  if (reportDebug("addParameter(const String & name, bool value)"))
-    cout << " path: " << path << " name: " << name << " value: " << value << endl;
-  configuration.addParameter(path,name,value);
-}
-
-void Task::addParameter(const String & name, int value)
-{
-  String path = getFullTaskPath();
-  if (reportDebug("addParameter(const String & name, int value)"))
-    cout << " path: " << path << " name: " << name << " value: " << value << endl;
-  configuration.addParameter(path,name,value);
-}
-
-
-void Task::addParameter(const String & name, long value)
-{
-  String path = getFullTaskPath();
-  if (reportDebug("addParameter(const String & name, long value)"))
-    cout << " path: " << path << " name: " << name << " value: " << value << endl;
-  configuration.addParameter(path,name,value);
-}
-
-
-void Task::addParameter(const String & name, double value)
-{
-  String path = getFullTaskPath();
-  if (reportDebug("addParameter(const String & name, double value)"))
-    cout << " path: " << path << " name: " << name << " value: " << value << endl;
-  configuration.addParameter(path,name,value);
-}
-
-
-void Task::addParameter(const String & name, const String &  value)
-{
-  String path = getFullTaskPath();
-  if (reportDebug("addParameter(const String & name, string value)"))
-    cout << " path: " << path << " name: " << name << " value: " << value << endl;
-  configuration.addParameter(path,name,value);
 }
 
 
 
-void Task::setParameter(const String & name, bool value)
-{
-  String path = getFullTaskPath();
-  if (reportDebug("setParameter(const String & name, bool value)"))
-    cout << " path: " << path << " name: " << name << " value: " << value << endl;
-  configuration.setParameter(path,name,value);
-}
-
-void Task::setParameter(const String & name, int value)
-{
-  String path = getFullTaskPath();
-  if (reportDebug("setParameter(const String & name, int value)"))
-    cout << " path: " << path << " name: " << name << " value: " << value << endl;
-  configuration.setParameter(path,name,value);
-}
-
-
-void Task::setParameter(const String & name, long value)
-{
-  String path = getFullTaskPath();
-  if (reportDebug("setParameter(const String & name, long value)"))
-    cout << " path: " << path << " name: " << name << " value: " << value << endl;
-  configuration.setParameter(path,name,value);
-}
-
-void Task::setParameter(const String & name, double value)
-{
-  String path = getFullTaskPath();
-  if (reportDebug("setParameter(const String & name, double value)"))
-    cout << " path: " << path << " name: " << name << " value: " << value << endl;
-  configuration.setParameter(path,name,value);
-}
-
-void Task::setParameter(const String & name, const String &  value)
-{
-  String path = getFullTaskPath();
-  if (reportDebug("setParameter(const String & name, String value)"))
-    cout << " path: " << path << " name: " << name << " value: " << value << endl;
-  configuration.setParameter(path,name,value);
-}
-
-void Task::generateKeyValuePairs(const String keyBaseName, const String defaultValue, int nKeysToGenerate)
-{
-  String path = getFullTaskPath();
-  configuration.generateKeyValuePairs(path,keyBaseName,defaultValue,nKeysToGenerate);
-}
-
-vector<String> Task::getSelectedValues(const String keyBaseName, const String defaultValue) const
-{
-  String path = getFullTaskPath();
-  return configuration.getSelectedValues(path,keyBaseName,defaultValue);
-}

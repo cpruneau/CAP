@@ -23,11 +23,11 @@ public:
 
   CollisionGeometryHistograms(Task * _parent,
                               const String & _name,
-                              Configuration & _configuration);
+                              const Configuration & _configuration);
   virtual ~CollisionGeometryHistograms() { }
 
   virtual void createHistograms();
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
   virtual void fill(Event & event, double weight);
   virtual void noFill(Event & event, double weight);
   virtual void calculateRms(TProfile * h1, TProfile * h1Sq, TH1* h1Rms, TH1* h1Omega, TH1* h1R2);

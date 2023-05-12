@@ -10,20 +10,28 @@
  *
  * *********************************************************************/
 #include "TaskIterator.hpp"
-using CAP::TaskIterator;
-using CAP::Configuration;
+//using CAP::Task;
+//using CAP::TaskIterator;
+//using CAP::Configuration;
+using namespace CAP;
+
+
 ClassImp(TaskIterator);
 
 TaskIterator::TaskIterator(const String & _name,
-                           Configuration & _configuration)
+                           const Configuration & _configuration)
 :
-Task(_name,_configuration),
+Task::Task(_name,_configuration),
 isGrid(false),
-nEventsPerSubbunch(100),
-nSubbunchesPerBunch(10),
-nBunches(10),
+nEventsPerSubbunch(1),
+nSubbunchesPerBunch(1),
+nBunches(1),
+nEventsRequested(1),
 bunchLabel("BUNCH"),
-subbunchLabel("")
+subbunchLabel(""),
+iEvent(0),
+iSubBunch(0),
+iBunch(0)
 {
   appendClassName("TaskIterator");
 }
@@ -31,103 +39,106 @@ subbunchLabel("")
 void TaskIterator::setDefaultConfiguration()
 {
   Task::setDefaultConfiguration();
+
   addParameter("isGrid",                  isGrid);
   addParameter("nEventsPerSubbunch",      nEventsPerSubbunch);
   addParameter("nSubbunchesPerBunch",     nSubbunchesPerBunch);
   addParameter("nBunches",                nBunches);
+  addParameter("nEventsRequested",        nEventsRequested);
   addParameter("BunchLabel",              bunchLabel);
   addParameter("SubbunchLabel",           subbunchLabel);
 }
 
-void TaskIterator::initialize()
+void TaskIterator::configure()
 {
-  if (reportStart(__FUNCTION__))
-    ;
-  Task::initialize();
+  Task::configure();
   isGrid                 = getValueBool(  "isGrid");
-  nEventsPerSubbunch     = getValueLong(  "nEventsPerSubbunch");
+  nEventsPerSubbunch     = getValueInt(   "nEventsPerSubbunch");
   nSubbunchesPerBunch    = getValueInt(   "nSubbunchesPerBunch");
   nBunches               = getValueInt(   "nBunches");
+  nEventsRequested       = getValueLong(  "nEventsRequested");
   bunchLabel             = getValueString("BunchLabel");
   subbunchLabel          = getValueString("SubbunchLabel");
+
+  if (reportInfo(__FUNCTION__))
+    {
+    cout <<  endl;
+    printItem("isGrid" ,isGrid);
+    printItem("nEventsPerSubbunch" ,nEventsPerSubbunch);
+    printItem("nSubbunchesPerBunch" ,nSubbunchesPerBunch);
+    printItem("nBunches" ,nBunches);
+    printItem("nEventsRequested" ,nEventsRequested);
+    printItem("bunchLabel" ,bunchLabel);
+    printItem("subbunchLabel" ,subbunchLabel);
+    }
+}
+
+void TaskIterator::partial(const String & outputPathBase)
+{
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;
-    cout << endl;
-    cout << "---------------------------------------------------------------------------------------- " <<   endl;
-    cout << "---------------------------------------------------------------------------------------- " <<   endl;
-    cout << "  Task named.......................: " << getName()           << endl;
-    cout << "  isGrid...........................: " << isGrid              << endl;
-    cout << "  nEventsPerSubbunch...............: " << nEventsPerSubbunch  << endl;
-    cout << "  nSubbunchesPerBunch..............: " << nSubbunchesPerBunch << endl;
-    cout << "  nBunches.........................: " << nBunches            << endl;
-    cout << "  BunchLabel.......................: " << bunchLabel          << endl;
-    cout << "  SubbunchLabel....................: " << subbunchLabel       << endl;
-    cout << "---------------------------------------------------------------------------------------- " <<   endl;
-    cout << "---------------------------------------------------------------------------------------- " <<   endl;
-    cout << endl;
-    cout << endl;
+    cout << "Partial save of histograms" << endl;
     }
-  if (!isTaskOk())
+  String outputPath = outputPathBase;
+  if (!isGrid)
     {
-    if (reportWarning(__FUNCTION__)) cout << "Initialization failed. Abort." << endl;
-    return;
+    outputPath += "/";
+    outputPath += bunchLabel;
+    outputPath += Form("%02d",iBunch);
+    outputPath += "/";
+    outputPath += subbunchLabel;
+    outputPath +=  Form("%02d",iSubBunch);
+    outputPath += "/";
     }
-  if (reportEnd(__FUNCTION__))
-    { }
+  for (unsigned int  iTask=0; iTask<getNSubTasks(); iTask++)  subTasks[iTask]->partial(outputPath);
 }
 
 void TaskIterator::execute()
 {
   timer.start();
   initialize();
-  if (!isTaskOk()) return;
-  String outputPathBase = getValueString("HistogramOutputPath");
-
-  for (int iBunch=1; iBunch<=nBunches; iBunch++)
+  iEvent           = 0;
+  iSubBunch        = 0;
+  iBunch           = 0;
+  bool working     = true;
+  while (working)
     {
-    if (reportInfo(__FUNCTION__))  cout << " Beginning bunch index: " << iBunch << endl;
-    for (int iSubbunch=0; iSubbunch<nSubbunchesPerBunch; iSubbunch++)
+    for (unsigned int  iTask=0; iTask<getNSubTasks(); iTask++)  subTasks[iTask]->execute();
+    iEvent++;
+    if (isTaskEod())
       {
-      if (reportInfo(__FUNCTION__))  cout << " Beginning subbunch index: " << iSubbunch << endl;
-      long iEvent=0;
-      while (iEvent<nEventsPerSubbunch)
+      working = false; break;
+      }
+    if (iEvent>=nEventsRequested)
+      {
+      if (reportInfo(__FUNCTION__))
         {
-        if (reportDebug(__FUNCTION__)) cout << " Beginning event index: " << iEvent << endl;
-        if (useParticles)
-          {
-          Particle::resetFactory();
-          Event::resetEventStreams();
-          }
-        unsigned int nSubTasks = subTasks.size();
-        for (unsigned int  iTask=0; iTask<nSubTasks; iTask++)  subTasks[iTask]->execute();
-        if (isTaskEod()) break;
-        incrementTaskExecuted();
-        if (reportDebug(__FUNCTION__))  cout << " Completed event index: " << iEvent << endl;
-        iEvent++;
+        cout << endl;
+        printItem("iEvent",iEvent);
+        printItem("nEventsRequested",nEventsRequested);
+        cout << endl;
         }
+      working = false; break;
+      }
 
-      unsigned int nSubTasks = subTasks.size();
-      if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
-      for (unsigned int  iTask=0; iTask<nSubTasks; iTask++)
+    if (iEvent%nEventsPerSubbunch==0)
+      {
+      // subbunch is completed
+      if (histosExportPartial) partial(getValueString("HistogramsExportPath"));
+      iSubBunch++;
+      if (iSubBunch==nSubbunchesPerBunch)
         {
-        String outputPath = outputPathBase;
-        if (!isGrid)
-          {
-          outputPath += "/";
-          outputPath += bunchLabel;
-          outputPath += Form("%02d",iBunch);
-          outputPath += "/";
-          outputPath += subbunchLabel;
-          outputPath +=  Form("%02d",iSubbunch);
-          outputPath += "/";
-          }
-        subTasks[iTask]->setParameter("HistogramOutputPath",outputPath);
-        subTasks[iTask]->savePartial();
+        // bunch is completed
+        iSubBunch=0;
+        iBunch++;
+        if (iBunch==nBunches) working = false;
         }
-      reset();
       }
     }
+  if (histosExportPartial && (iEvent%(nBunches*nSubbunchesPerBunch*nEventsPerSubbunch)!=0))
+    partial(getValueString("HistogramsExportPath"));
+
   timer.stop();
   finalize();
   clear(); // should delete everything..
@@ -137,22 +148,29 @@ void TaskIterator::execute()
 void TaskIterator::finalize()
 {
   finalizeSubTasks();
+
   if (reportInfo(__FUNCTION__))
     {
-    cout << endl;
+    cout <<  endl<<  endl<<  endl<<  endl;
     cout << "---------------------------------------------------------------------------------------- " <<   endl;
     cout << "---------------------------------------------------------------------------------------- " <<   endl;
-    cout << "Task named.................................. : " << getName()<< endl;
-    cout << "Completed with status....................... : " << StateManager::getStateManager()->getStateName() << endl;
-    cout << "Completed iterations........................ : " << getnTaskExecutedTotal() << endl;
-    cout << "Completed iterations since partial save..... : " << getnTaskExecuted() << endl;
+    printItem("Task named" ,getName());
+    printItem("Completed with status" ,StateManager::getStateManager()->getStateName());
+    printItem("isGrid" ,isGrid);
+    printItem("nEventsPerSubbunch" ,nEventsPerSubbunch);
+    printItem("nSubbunchesPerBunch" ,nSubbunchesPerBunch);
+    printItem("nBunches" ,nBunches);
+    printItem("nEventsRequested" ,nEventsRequested);
+    printItem("bunchLabel" ,bunchLabel);
+    printItem("subbunchLabel" ,subbunchLabel);
+    printItem("event completed" ,iEvent);
+    printItem("subBunches completed" ,iSubBunch);
+    printItem("bunches completed" ,iBunch);
     timer.print(cout);
     cout << "---------------------------------------------------------------------------------------- " <<   endl;
     cout << "---------------------------------------------------------------------------------------- " <<   endl;
     cout << endl << endl<< endl << endl;
     }
-  if (reportEnd(__FUNCTION__))
-    { }
-}
 
+}
 

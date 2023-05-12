@@ -11,6 +11,8 @@
  * *********************************************************************/
 #ifndef CAP__Plotter
 #define CAP__Plotter
+#include "TSystem.h"
+#include "TStyle.h"
 #include "HistogramCollection.hpp"
 #include "CanvasCollection.hpp"
 #include "CanvasConfiguration.hpp"
@@ -28,7 +30,7 @@ class Plotter : public Task
 public:
 
   Plotter(const String & _name,
-          Configuration & _configuration);
+          const Configuration & _configuration);
   
   virtual ~Plotter() {} 
 
@@ -36,8 +38,6 @@ public:
   //! Initialize the configuration parameter of the task to their default value;
   //!
   virtual void setDefaultConfiguration();
-
- 
 
   //!
   //! Configure  this analysis task
@@ -67,7 +67,7 @@ public:
   //!
   TCanvas *  plot(TH1 * h,
                   const String & canvasName,
-                  const CanvasConfiguration & cc,
+                  const Configuration & cc,
                   const GraphConfiguration  & gc,
                   const String & xTitle,  double xMin, double xMax,
                   const String & yTitle,  double yMin, double yMax,
@@ -101,7 +101,7 @@ public:
   //!
   TCanvas *  plot(TH2 * h,
                   const String & canvasName,
-                  const CanvasConfiguration & cc,
+                  const Configuration & cc,
                   const GraphConfiguration  & gc,
                   const String & xTitle,  double xMin, double xMax,
                   const String & yTitle,  double yMin, double yMax,
@@ -111,7 +111,7 @@ public:
                   const vector<GraphConfiguration*> & graphConfigurations,
                   const VectorString   &  legendTexts,
                   const String & canvasName,
-                  const CanvasConfiguration & canvasConfiguration,
+                  const Configuration & canvasConfiguration,
                   const String & xTitle,  double xMin, double xMax,
                   const String & yTitle,  double yMin, double yMax,
                   double xMinLeg, double yMinLeg, double xMaxLeg, double yMaxLeg,
@@ -121,7 +121,7 @@ public:
                   const vector<GraphConfiguration*> & graphConfigurations,
                   const VectorString   &  legendTexts,
                   const String & canvasName,
-                  const CanvasConfiguration & canvasConfiguration,
+                  const Configuration & canvasConfiguration,
                   const String & xTitle,  double xMin, double xMax,
                   const String & yTitle,  double yMin, double yMax,
                   double xMinLeg, double yMinLeg, double xMaxLeg, double yMaxLeg,
@@ -165,7 +165,7 @@ public:
   //  // h       : vector of nHists pointers to histograms
   //  // legends : vector of nHists pointers to labels used as legends in the body of the plot
   //  // ================================================================================================
-  //  TCanvas *  plot(String  canvasName, CanvasConfiguration & cc, vector<GraphConfiguration*> gc,
+  //  TCanvas *  plot(String  canvasName, Configuration & cc, vector<GraphConfiguration*> gc,
   //                  String  xTitle,  double xMin, double xMax,
   //                  String  yTitle,  double yMin, double yMax,
   //                  vector<TH1*> histograms,
@@ -174,7 +174,7 @@ public:
   //                  bool label1=0, String text1="", double x1=0.0, double y1=0.0, int color1=1,  double fontSize1=0.05,
   //                  bool label2=0, String text2="", double x2=0.0, double y2=0.0, int color2=1,  double fontSize2=0.05);
   //
-  //  TCanvas * plot(String  canvasName, CanvasConfiguration & cc,
+  //  TCanvas * plot(String  canvasName, Configuration & cc,
   //                 String  xTitle,  double xMin, double xMax,
   //                 String  yTitle,  double yMin, double yMax,
   //                 vector<DataGraph*> graphs,

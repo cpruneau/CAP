@@ -15,11 +15,11 @@ using CAP::MeasurementPerformanceSimulator;
 ClassImp(MeasurementPerformanceSimulator);
 
 MeasurementPerformanceSimulator::MeasurementPerformanceSimulator(const String & _name,
-                                                                 Configuration & _configuration,
+                                                                 const Configuration & _configuration,
                                                                  vector<EventFilter*> & _eventFilters,
                                                                  vector<ParticleFilter*>& _particleFilters)
 :
-Task(_name,_configuration,_eventFilters,_particleFilters),
+EventTask(_name,_configuration,_eventFilters,_particleFilters),
 allEventsUseSameFilters(true)
 {
   appendClassName("MeasurementPerformanceSimulator");
@@ -27,11 +27,11 @@ allEventsUseSameFilters(true)
 
 void MeasurementPerformanceSimulator::setDefaultConfiguration()
 {
-  Task::setDefaultConfiguration();
-  setParameter("UseParticles",    true);
-  setParameter("UseEventStream0", true);
-  setParameter("UseEventStream1", true);
-  setParameter("LoadHistograms",  false);
+  EventTask::setDefaultConfiguration();
+  addParameter("UseParticles",    true);
+  addParameter("EventsUseStream0", true);
+  addParameter("EventsUseStream1", true);
+  addParameter("HistogramsImport",  false);
   addParameter("allEventsUseSameFilters", allEventsUseSameFilters);
   addParameter("useSameSetForAll",  true);
   addParameter("resolutionOption",  0);
@@ -80,12 +80,11 @@ void MeasurementPerformanceSimulator::initialize()
 {
   if (reportStart(__FUNCTION__))
     ;
-  Task::initialize();
-  Configuration & configuration = getConfiguration();
+  EventTask::initialize();
   allEventsUseSameFilters = getValueBool("allEventsUseSameFilters");
-  bool useSameSetForAll = getValueBool("useSameSetForAll");
-  int  resolutionOption = configuration.getValueInt(getName(),"resolutionOption");
-  int  efficiencyOption = configuration.getValueInt(getName(),"efficiencyOption");
+  bool useSameSetForAll   = getValueBool("useSameSetForAll");
+  int  resolutionOption   = configuration.getValueInt(getName(),"resolutionOption");
+  int  efficiencyOption   = configuration.getValueInt(getName(),"efficiencyOption");
 
   nEventFilters    = eventFilters.size();
   nParticleFilters = particleFilters.size();
@@ -117,6 +116,8 @@ void MeasurementPerformanceSimulator::initialize()
       cout << "resolutionOption.............: " << resolutionOption << endl;
       cout << "efficiencyOption.............: " << efficiencyOption << endl;
       }
+
+    histogramManager.addSet("Performance");
     for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++)
       {
       for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++)
@@ -125,21 +126,19 @@ void MeasurementPerformanceSimulator::initialize()
         name += iEventFilter;
         name += "_";
         name += iParticleFilter;
-        ParticlePerformanceSimulator * sim = new ParticlePerformanceSimulator(this,iParticleFilter,name, getConfiguration());
+        ParticlePerformanceSimulator * sim = new ParticlePerformanceSimulator(this,iParticleFilter,name, configuration);
         sim->initialize();
-        baseSingleHistograms.push_back(sim);
+        histogramManager.addGroupInSet(0,sim);
         }
       }
     }
 }
 
 
-void MeasurementPerformanceSimulator::loadHistograms(TFile * inputFile)
+void MeasurementPerformanceSimulator::importHistograms(TFile & inputFile)
 {
-  
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & configuration = getConfiguration();
   String prefixName = getName(); prefixName += "_";
 
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
@@ -153,8 +152,8 @@ void MeasurementPerformanceSimulator::loadHistograms(TFile * inputFile)
       histoName += "_";
       histoName += partFilterName;
       ParticlePerformanceSimulator * histos = new ParticlePerformanceSimulator(this,iParticleFilter, histoName,configuration);
-      histos->loadHistograms(inputFile);
-      baseSingleHistograms.push_back(histos);
+      histos->importHistograms(inputFile);
+      histogramManager.addGroupInSet(0,histos);
       }
     }
   if (reportEnd(__FUNCTION__))
@@ -168,7 +167,7 @@ void MeasurementPerformanceSimulator::loadHistograms(TFile * inputFile)
 //! of such particle filters is nEventFilters times the actual number. If you wish to use the same particle filters/smearers,
 //! set the configuration parameter "allEventsUseSameFilters" to true.
 //!
-void MeasurementPerformanceSimulator::execute()
+void MeasurementPerformanceSimulator::createEvent()
 {
   
   if (reportStart(__FUNCTION__))
@@ -176,13 +175,13 @@ void MeasurementPerformanceSimulator::execute()
   incrementTaskExecuted();
   Event & genEvent  = *eventStreams[0];
   Event & recoEvent = *eventStreams[1];
-  unsigned long nPartGen   = genEvent.getParticleCount();
-  unsigned long nPartReco  = recoEvent.getParticleCount();
-  //if (reportInfo(__FUNCTION__)) cout << " BEFORE PERFORM SIM: GEN EVENT Particle Count: " << nPartGen << endl;
-  //if (reportInfo(__FUNCTION__)) cout << " BEFORE PERFORM SIM: RECO EVENT Particle Count: " << nPartReco << endl;
-  if (nPartReco>nPartGen)
+  unsigned long nRunPartSingleAnalysisGen   = genEvent.getParticleCount();
+  unsigned long nRunPartSingleAnalysisReco  = recoEvent.getParticleCount();
+  //if (reportInfo(__FUNCTION__)) cout << " BEFORE PERFORM SIM: GEN EVENT Particle Count: " << nRunPartSingleAnalysisGen << endl;
+  //if (reportInfo(__FUNCTION__)) cout << " BEFORE PERFORM SIM: RECO EVENT Particle Count: " << nRunPartSingleAnalysisReco << endl;
+  if (nRunPartSingleAnalysisReco>nRunPartSingleAnalysisGen)
     {
-    if (reportInfo(__FUNCTION__))cout << " nParticles>nPartGen   ABORT NOW!!!!!" << endl;
+    if (reportInfo(__FUNCTION__))cout << " nParticles>nRunPartSingleAnalysisGen   ABORT NOW!!!!!" << endl;
     exit(1);
     }
 
@@ -209,7 +208,7 @@ void MeasurementPerformanceSimulator::execute()
     for (unsigned int iParticleFilter=firstPartFilter; iParticleFilter<lastPartFilter; iParticleFilter++ )
       {
       ParticleFilter  * particleFilter  = particleFilters[iParticleFilter];
-      ParticlePerformanceSimulator * simulator = (ParticlePerformanceSimulator *) baseSingleHistograms[iParticleFilter];
+      ParticlePerformanceSimulator * simulator = (ParticlePerformanceSimulator *) histogramManager.getGroup(0,iParticleFilter);
       for (unsigned int iParticle=0; iParticle<nParticles; iParticle++)
         {
         Particle * genParticle = genEvent.getParticleAt(iParticle);
@@ -230,13 +229,13 @@ void MeasurementPerformanceSimulator::execute()
       } // particle filter loop
     } // event filter loop
 
-  nPartGen   = genEvent.getParticleCount();
-  nPartReco  = recoEvent.getParticleCount();
-  //if (reportInfo(__FUNCTION__)) cout << " AFTER PERFORM SIM:   GEN EVENT Particle Count: " << nPartGen << endl;
-  //if (reportInfo(__FUNCTION__)) cout << " AFTER PERFORM SIM:  RECO EVENT Particle Count: " << nPartReco << endl;
-  if (nPartReco>nPartGen)
+  nRunPartSingleAnalysisGen   = genEvent.getParticleCount();
+  nRunPartSingleAnalysisReco  = recoEvent.getParticleCount();
+  //if (reportInfo(__FUNCTION__)) cout << " AFTER PERFORM SIM:   GEN EVENT Particle Count: " << nRunPartSingleAnalysisGen << endl;
+  //if (reportInfo(__FUNCTION__)) cout << " AFTER PERFORM SIM:  RECO EVENT Particle Count: " << nRunPartSingleAnalysisReco << endl;
+  if (nRunPartSingleAnalysisReco>nRunPartSingleAnalysisGen)
     {
-    if (reportInfo(__FUNCTION__))cout << " nParticles>nPartGen   ABORT NOW!!!!!" << endl;
+    if (reportInfo(__FUNCTION__))cout << " nParticles>nRunPartSingleAnalysisGen   ABORT NOW!!!!!" << endl;
     exit(1);
     }
 

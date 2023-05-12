@@ -15,11 +15,11 @@ using CAP::CollisionGeometryAnalyzer;
 ClassImp(CollisionGeometryAnalyzer);
 
 CollisionGeometryAnalyzer::CollisionGeometryAnalyzer(const String & _name,
-                                                     Configuration &   _configuration,
+                                                     const Configuration &   _configuration,
                                                      vector<EventFilter*> &   _eventFilters,
                                                      vector<ParticleFilter*>  _particleFilters)
 :
-Task(_name,_configuration,_eventFilters, _particleFilters),
+EventTask(_name,_configuration,_eventFilters, _particleFilters),
 collisionGeometry(nullptr)
 {
   appendClassName("CollisionGeometryAnalyzer");
@@ -70,9 +70,9 @@ void CollisionGeometryAnalyzer::setDefaultConfiguration()
   addParameter("useRecentering",      true);
   addParameter("useNucleonExclusion", false);
   addParameter("UseParticles",        true);
-  addParameter("CreateHistograms",    true);
-  addParameter("SaveHistograms",      true);
-  addParameter("UseEventStream0",     true);
+  addParameter("HistogramsCreate",    true);
+  addParameter("HistogramsExport",      true);
+  addParameter("EventsUseStream0",     true);
 }
 
 void CollisionGeometryAnalyzer::createHistograms()
@@ -80,7 +80,6 @@ void CollisionGeometryAnalyzer::createHistograms()
   
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & configuration = getConfiguration();
   String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
 
@@ -89,6 +88,7 @@ void CollisionGeometryAnalyzer::createHistograms()
     cout << "Creating HistogramGroup for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     }
+  histogramManager.addSet("CollisionGeometry");
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     cout << " iEventFilter:"  << iEventFilter << endl;
@@ -99,18 +99,17 @@ void CollisionGeometryAnalyzer::createHistograms()
     cout << " histoName:"  << histoName << endl;
     CollisionGeometryHistograms * histos = new CollisionGeometryHistograms(this,histoName, configuration);
     histos->createHistograms();
-    histograms.push_back( histos);
+    histogramManager.addGroupInSet(0,histos);
     }
   if (reportEnd(__FUNCTION__))
     ;
 }
 
-void CollisionGeometryAnalyzer::loadHistograms(TFile * inputFile)
+void CollisionGeometryAnalyzer::importHistograms(TFile & inputFile)
 {
   
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & configuration = getConfiguration();
   String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   if (reportInfo(__FUNCTION__))
@@ -118,20 +117,21 @@ void CollisionGeometryAnalyzer::loadHistograms(TFile * inputFile)
     cout << "Loading HistogramGroup for.."  << endl;
     cout << "       nEventFilters: " << nEventFilters << endl;
     }
+  histogramManager.addSet("CollisionGeometry");
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     String evtFilterName = eventFilters[iEventFilter]->getName();
     String histoName     = prefixName;
     histoName += evtFilterName;
     CollisionGeometryHistograms * histos = new CollisionGeometryHistograms(this,histoName, configuration);
-    histos->loadHistograms(inputFile);
-    histograms.push_back( histos);
+    histos->importHistograms(inputFile);
+    histogramManager.addGroupInSet(0,histos);
     }
   if (reportEnd(__FUNCTION__))
     ;
 }
 
-void CollisionGeometryAnalyzer::execute()
+void CollisionGeometryAnalyzer::analyzeEvent()
 {
   
   if (reportStart(__FUNCTION__))
@@ -143,12 +143,12 @@ void CollisionGeometryAnalyzer::execute()
     if (eventFilters[iEventFilter]->accept(event))
       {
       incrementNEventsAccepted(iEventFilter); // count eventStreams used to fill histograms and for scaling at the end..
-      CollisionGeometryHistograms * histos = (CollisionGeometryHistograms *) histograms[iEventFilter];
+      CollisionGeometryHistograms * histos = (CollisionGeometryHistograms *)  histogramManager.getGroup(0,iEventFilter);
       histos->fill(event,1.0);
       }
     else
       {
-      CollisionGeometryHistograms * histos = (CollisionGeometryHistograms *) histograms[iEventFilter];
+      CollisionGeometryHistograms * histos = (CollisionGeometryHistograms *) histogramManager.getGroup(0,iEventFilter);
       histos->noFill(event,1.0);
       }
     }

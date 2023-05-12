@@ -25,11 +25,11 @@ public:
 
   GlobalDerivedHistos(Task * _parent,
                       const String & _name,
-                      Configuration & _configuration,
+                      const Configuration & _configuration,
                       vector<ParticleFilter*> _particleFilters);
   virtual ~GlobalDerivedHistos() {} 
   virtual void createHistograms();
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
   virtual void calculateDerivedHistograms(GlobalHistos* baseHistos);
 
 protected:

@@ -35,11 +35,11 @@ public:
   ParticlePerformanceSimulator(Task * _parent,
                                int _filterIndex,
                                const String & _name,
-                               Configuration & _configuration);
+                               const Configuration & _configuration);
   virtual ~ParticlePerformanceSimulator(){}
   
   virtual void initialize();
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
 
   virtual void smearMomentum(const LorentzVector &in, LorentzVector & out);
   virtual void smearMomentum(double pt, double eta, double phi,

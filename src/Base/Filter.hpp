@@ -133,7 +133,7 @@ public:
 };
 
 //!
-//! Abstract and templated filter
+//! absolutetract and templated filter
 //!
 
 template < class T >

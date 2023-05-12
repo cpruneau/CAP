@@ -16,7 +16,7 @@ ClassImp(PythiaEventReader);
 
 
 PythiaEventReader::PythiaEventReader(const String & _name,
-                                     Configuration &   _configuration,
+                                     const Configuration &   _configuration,
                                      vector<EventFilter*>&   _eventFilters,
                                      vector<ParticleFilter*>&_particleFilters)
 :
@@ -34,7 +34,7 @@ void PythiaEventReader::setDefaultConfiguration()
 //! Read a PYTHIA  event from file
 //! Copy the event into Event for convenience..
 //!
-void PythiaEventReader::execute()
+void PythiaEventReader::importEvent()
 {
   if (reportStart(__FUNCTION__))
     ;
@@ -45,13 +45,13 @@ void PythiaEventReader::execute()
   event.reset();
   particleFactory->reset();
   bool seekingEvent = true;
-  //if (reportDebug("PythiaEventReader",getName(),"execute()")) cout << "Start seek loop" << endl;
+  //if (reportDebug("PythiaEventReader",getName(),"importEvent()")) cout << "Start seek loop" << endl;
   while (seekingEvent)
     {
-    //if (reportDebug("PythiaEventReader",getName(),"execute()")) cout << "jentry:" << entryIndex << endl;
+    //if (reportDebug("PythiaEventReader",getName(),"importEvent()")) cout << "jentry:" << entryIndex << endl;
     // load another event from the root file/TTree
     Long64_t ientry = LoadTree(entryIndex++);
-    //if (reportDebug("PythiaEventReader",getName(),"execute()")) cout << "ientry:" << ientry << endl;
+    //if (reportDebug("PythiaEventReader",getName(),"importEvent()")) cout << "ientry:" << ientry << endl;
     // returning a null point is an indication that
     // there are no more events in the file or stack of files.
     if (ientry < 0)
@@ -64,25 +64,28 @@ void PythiaEventReader::execute()
     if (nParticles>2) seekingEvent = false;
     }
   
-  int thePid;
-  double charge, baryon, mass, p_x, p_y, p_z, p_e;
+//  int thePid;
+//  double charge;
+//  double baryonNumber;
+  double mass;
+//  double p_x, p_y, p_z, p_e;
   ParticleType * type;
   Particle * particle;
-  int particleAccepted = 0;
-  int particleCounted = 0;
+//  int particleAccepted = 0;
+//  int particleCounted = 0;
   
   for (int iParticle = 0; iParticle < nParticles; iParticle++)
     {
-    //  if (reportDebug("PythiaEventReader",getName(),"execute()")) cout << "iParticle: " << iParticle << endl;
+    //  if (reportDebug("PythiaEventReader",getName(),"importEvent()")) cout << "iParticle: " << iParticle << endl;
     
     int ist = tracks_fStatusCode[iParticle];
     if (ist <= 0) continue;
     int pdg = tracks_fPdgCode[iParticle];
-    type = particleTypeCollection->findPdgCode(pdg);
+    type = ParticleDb::getDefaultParticleDb()->findPdgCode(pdg);
     if (type==nullptr) continue;
     mass = type->getMass();
     if (mass<0.002) continue;  // no photons, electrons..
-    charge = type->getCharge();
+    //charge = type->getCharge();
     double px = tracks_fPx[iParticle];
     double py = tracks_fPy[iParticle];
     double pz = tracks_fPz[iParticle];

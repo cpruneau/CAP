@@ -35,7 +35,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   EposEventReader(const String & _name,
-                  Configuration & _configuration,
+                  const Configuration & _configuration,
                   vector<EventFilter*> & _eventFilters,
                   vector<ParticleFilter*> & _particleFilters);
   
@@ -52,7 +52,7 @@ public:
   //!
   //! Read one AMPT event and insert it in the CAP event stream.
   //!
-  void execute();
+  void importEvent();
   
   //!
   //! Initialize the mapping between the branches and the storage variables

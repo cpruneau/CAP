@@ -11,18 +11,21 @@
  * *********************************************************************/
 #ifndef CAP__RunAnalysis
 #define CAP__RunAnalysis
-#include "Task.hpp"
+#include "EventTask.hpp"
+#include "Event.hpp"
+#include "Particle.hpp"
+#include "ParticleType.hpp"
 
 namespace CAP
 {
 
 
-class RunAnalysis : public Task
+class RunAnalysis : public EventTask
 {
 public:
   
   RunAnalysis(const String & _name,
-              Configuration & _configuration);
+              const Configuration & _configuration);
 
   //!
   //! dtor

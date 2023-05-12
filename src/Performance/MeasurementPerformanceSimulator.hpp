@@ -11,7 +11,7 @@
  * *********************************************************************/
 #ifndef CAP__MeasurementPerformanceSimulator
 #define CAP__MeasurementPerformanceSimulator
-#include "Task.hpp"
+#include "EventTask.hpp"
 #include "ParticleSingleHistos.hpp"
 #include "ParticlePerformanceSimulator.hpp"
 
@@ -35,7 +35,7 @@ namespace CAP
 //!
 //!
 //!
-class MeasurementPerformanceSimulator : public Task
+class MeasurementPerformanceSimulator : public EventTask
 {
 public:
   
@@ -49,7 +49,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   MeasurementPerformanceSimulator(const String & _name,
-                                  Configuration & _configuration,
+                                  const Configuration & _configuration,
                                   vector<EventFilter*> & _eventFilters,
                                   vector<ParticleFilter*>& _particleFilters);
   
@@ -68,7 +68,7 @@ public:
   //! and smears the momenta using the smearers associated with each of the particle filters. Smeared particles
   //! and events are inserted into event stream 2 for subsequent analysis by other tasks. 
   //!
-  virtual void execute();
+  virtual void createEvent();
 
   //!
   //! Initialize this task
@@ -78,7 +78,7 @@ public:
   //!
   //! Loads the histograms retquired by this task at execution
   //!
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
 
 protected:
   

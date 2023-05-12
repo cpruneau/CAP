@@ -11,7 +11,13 @@
  * *********************************************************************/
 #ifndef CAP__ParticlePairAnalyzer
 #define CAP__ParticlePairAnalyzer
-#include "Task.hpp"
+#include "EventTask.hpp"
+#include "ParticleDigit.hpp"
+using CAP::EventTask;
+using CAP::Configuration;
+using CAP::EventFilter;
+using CAP::ParticleFilter;
+using CAP::ParticleDigit;
 
 namespace CAP
 {
@@ -50,7 +56,7 @@ namespace CAP
 //!  + min_phi [0.0]: Minimum value
 //!  + max_phi [2pi]: Maximum value
 //!
-class ParticlePairAnalyzer : public Task
+class ParticlePairAnalyzer : public EventTask
 {
 public:
 
@@ -64,7 +70,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   ParticlePairAnalyzer(const String & _name,
-                       Configuration & _configuration,
+                       const Configuration & _configuration,
                        vector<EventFilter*> & _eventFilters,
                        vector<ParticleFilter*> & _particleFilters);
   
@@ -77,11 +83,13 @@ public:
   //! Sets the default  values of the configuration parameters used by this task
   //!
   virtual void setDefaultConfiguration();
+
+  virtual void configure();
   
   //!
   //! Executes this task based on the configuration and class variable specified at construction
   //!
-  virtual void execute();
+  virtual void analyzeEvent();
   
   //!
   //! Creates the histograms  filled by this task at execution
@@ -91,7 +99,7 @@ public:
   //!
   //! Loads the histograms required by this task at execution
   //!
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
   
   //!
   //! Scales the pair histograms by the number of events accepted in each event filter category.
@@ -100,7 +108,7 @@ public:
 
   virtual void createDerivedHistograms();
 
-  virtual void loadDerivedHistograms(TFile * inputFile __attribute__((unused)));
+  virtual void importDerivedHistograms(TFile & inputFile __attribute__((unused)));
 
   virtual void calculateDerivedHistograms();
 
@@ -110,6 +118,7 @@ protected:
   bool fillY;   //!< whether to fill rapidity histograms (set from configuration at initialization)
   bool fillP2;  //!< whether to fill P2 and G2 related histograms  (set from configuration at initialization)
   
+  vector< vector<ParticleDigit*> > filteredParticles;
 
    ClassDef(ParticlePairAnalyzer,0)
 };

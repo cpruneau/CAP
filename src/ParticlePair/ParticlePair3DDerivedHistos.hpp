@@ -11,14 +11,10 @@
  * *********************************************************************/
 #ifndef CAP__ParticlePair3DDerivedHistos
 #define CAP__ParticlePair3DDerivedHistos
-#include "ParticleSingleHistos.hpp"
-#include "ParticleSingleDerivedHistos.hpp"
+#include "ParticleHistos.hpp"
+#include "ParticleDerivedHistos.hpp"
 #include "ParticlePair3DHistos.hpp"
 #include "HistogramGroup.hpp"
-
-namespace CAP
-{
-
 
 //!
 //! Two-Particle Correlation Function HistogramGroup
@@ -28,15 +24,15 @@ class ParticlePair3DDerivedHistos : public  HistogramGroup
 public:
 
   ParticlePair3DDerivedHistos(Task * _parent,
-                              const String & _name,
-                              Configuration & _configuration);
+                              const TString & _name,
+                              const Configuration & _configuration);
   virtual ~ParticlePair3DDerivedHistos(){} 
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
   virtual void createHistograms();
-  virtual void calculatePairDerivedHistograms(ParticleSingleHistos         & part1BaseHistos,
-                                              ParticleSingleHistos         & part2BaseHistos,
-                                              ParticleSingleDerivedHistos  & part1DerivedHistos,
-                                              ParticleSingleDerivedHistos  & part2DerivedHistos,
+  virtual void calculatePairDerivedHistograms(ParticleHistos         & part1BaseHistos,
+                                              ParticleHistos         & part2BaseHistos,
+                                              ParticleDerivedHistos  & part1DerivedHistos,
+                                              ParticleDerivedHistos  & part2DerivedHistos,
                                               ParticlePair3DHistos     & pairHistos,
                                               double bincorrection);
 
@@ -141,7 +137,5 @@ public:
   ClassDef(ParticlePair3DDerivedHistos,1)
 
 };
-
-} // namespace CAP
 
 #endif /* CAP__ParticlePair3DDerivedHistos */

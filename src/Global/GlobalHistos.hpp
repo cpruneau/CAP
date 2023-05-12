@@ -44,7 +44,7 @@ public:
   //!
   GlobalHistos(Task * _parent,
                const String & _name,
-               Configuration & _configuration,
+               const Configuration & _configuration,
                vector<ParticleFilter*> _particleFilters);
 
   //!
@@ -63,7 +63,7 @@ public:
   //!
   //!Load histograms corresponding to the selected event and particle filters from the given file.
   //!
-  void loadHistograms(TFile * inputFile);
+  void importHistograms(TFile & inputFile);
 
   //!
   //!Fill eventswise observables for the selected event filters and particle filters

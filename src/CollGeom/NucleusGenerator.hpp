@@ -11,7 +11,10 @@
  * *********************************************************************/
 #ifndef CAP__NucleusGenerator
 #define CAP__NucleusGenerator
-#include "Task.hpp"
+#include "EventTask.hpp"
+#include "Event.hpp"
+#include "Particle.hpp"
+#include "ParticleType.hpp"
 #include "Nucleus.hpp"
 
 namespace CAP
@@ -35,7 +38,7 @@ namespace CAP
 //! - 3 : Gaussian
 //! - 4 : DoubleGaussian
 //!
-class NucleusGenerator  : public  Task
+class NucleusGenerator  : public  EventTask
 {
 
 public:
@@ -50,7 +53,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   NucleusGenerator(const String & _name,
-                   Configuration & _configuration);
+                   const Configuration & _configuration);
 
   virtual ~NucleusGenerator();
 
@@ -66,11 +69,11 @@ public:
   //!
   virtual void initialize();
 
-  virtual void execute();
+  virtual void createEvent();
 
   virtual void generate(Nucleus & nucleus, double xShift);
   virtual void generate(double & r, double & cosTheta, double & phi);
-  virtual void saveHistograms();
+  virtual void exportHistograms();
 
 protected:
 

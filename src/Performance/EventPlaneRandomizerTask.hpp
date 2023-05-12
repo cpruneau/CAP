@@ -11,7 +11,7 @@
  * *********************************************************************/
 #ifndef CAP__EventPlaneRandomizerTask
 #define CAP__EventPlaneRandomizerTask
-#include "Task.hpp"
+#include "EventTask.hpp"
 
 namespace CAP
 {
@@ -21,7 +21,7 @@ namespace CAP
 //! This class implements a generic event plane randomizer. All particles composing an event are azimuthally rotated by a randome angle $\varphi$ generated event by event in the range $[0,2\pi]$.
 //!  Event filters and particles filters may be used to tailor the bahvior of this randomizer.
 //!
-class EventPlaneRandomizerTask : public Task
+class EventPlaneRandomizerTask : public EventTask
 {
 public:
 
@@ -35,7 +35,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   EventPlaneRandomizerTask(const String & _name,
-                           Configuration & _configuration,
+                           const Configuration & _configuration,
                            vector<EventFilter*> & _eventFilters,
                            vector<ParticleFilter*> & _particleFilters);
   
@@ -52,7 +52,7 @@ public:
   //!
   //! Execute this task based on the configuration and class variable specified at construction
   //!
-  virtual void execute();
+  virtual void createEvent();
 
   ClassDef(EventPlaneRandomizerTask,0)
 };

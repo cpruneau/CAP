@@ -19,7 +19,7 @@ ClassImp(DerivedHistoIterator);
 
 
 DerivedHistoIterator::DerivedHistoIterator(const String & _name,
-                                           Configuration & _configuration)
+                                           const Configuration & _configuration)
 :
 Task(_name,_configuration)
 {
@@ -29,10 +29,10 @@ Task(_name,_configuration)
 void DerivedHistoIterator::setDefaultConfiguration()
 {
   String none  = "none";
-  setParameter("CreateHistograms",         true);
-  setParameter("LoadHistograms",           true);
-  setParameter("SaveHistograms",           true);
-  setParameter("AppendedString",           TString("_Derived"));
+  addParameter("HistogramsCreate",         true);
+  addParameter("HistogramsImport",           true);
+  addParameter("HistogramsExport",           true);
+  addParameter("AppendedString",           TString("_Derived"));
   generateKeyValuePairs("IncludedPattern", none,20);
   generateKeyValuePairs("ExcludedPattern", none,20);
 }
@@ -41,10 +41,10 @@ void DerivedHistoIterator::execute()
 {
   String none("none");
   String analyzerName;
-  String appendedString           = getValueString("AppendedString");
-  bool    forceHistogramsRewrite   = getValueString("ForceHistogramsRewrite");
-  String histogramInputPath       = getValueString("HistogramInputPath");
-  String histogramOutputPath      = getValueString("HistogramOutputPath");
+  String appendedString = getValueString("AppendedString");
+  histosForceRewrite    = getValueString("HistogramsForceRewrite");
+  histosImportPath      = getValueString("HistogramsImportPath");
+  histosExportPath      = getValueString("HistogramsExportPath");
   VectorString  includedPatterns = getSelectedValues("IncludedPattern",none);
   VectorString  excludedPatterns = getSelectedValues("ExcludedPattern",none);
   unsigned int nSubTasks = subTasks.size();
@@ -52,11 +52,11 @@ void DerivedHistoIterator::execute()
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;
-    cout << " SubTasks Count...................: " << nSubTasks              << endl;
-    cout << " AppendedString...................: " << appendedString         << endl;
-    cout << " ForceHistogramsRewrite...........: " << forceHistogramsRewrite << endl;
-    cout << " HistogramInputPath...............: " << histogramInputPath     << endl;
-    cout << " HistogramOutputPath..............: " << histogramOutputPath    << endl;
+    cout << " SubTasks Count....................: " << nSubTasks            << endl;
+    cout << " AppendedString....................: " << appendedString       << endl;
+    cout << " HistogramsForceRewrite............: " << histosForceRewrite   << endl;
+    cout << " HistogramsImportPath..............: " << histosImportPath     << endl;
+    cout << " HistogramsExportPath..............: " << histosExportPath     << endl;
     for (unsigned int k=0; k<includedPatterns.size(); k++)
       {
       cout << " Included.................: " << includedPatterns[k]     << endl;
@@ -89,7 +89,7 @@ void DerivedHistoIterator::execute()
     bool prependPath = true;
     bool verbose = false;
     int  maximumDepth = 1;
-    VectorString  allFilesToProcess = listFilesInDir(histogramInputPath,includePatterns,excludePatterns, prependPath, verbose, maximumDepth,0);
+    VectorString  allFilesToProcess = listFilesInDir(histosImportPath,includePatterns,excludePatterns, prependPath, verbose, maximumDepth,0);
     
     int nFiles = allFilesToProcess.size();
     if (nFiles<1)
@@ -113,28 +113,28 @@ void DerivedHistoIterator::execute()
       }
     for (int iFile=0; iFile<nFiles; iFile++)
       {
-      String histogramInputFile  = allFilesToProcess[iFile];
-      String histogramOutputFile = removeRootExtension(histogramInputFile);
-      histogramOutputFile += appendedString;
+      String HistogramsImportFile  = allFilesToProcess[iFile];
+      String histosExportFile = removeRootExtension(HistogramsImportFile);
+      histosExportFile += appendedString;
       if (reportInfo(__FUNCTION__))
         {
         cout << endl;
         cout << " nFiles................: " << nFiles << endl;
         cout << " iFile.................: " << iFile  << endl;
-        cout << " Input file............: " << histogramInputFile << endl;
-        cout << " Output file...........: " << histogramOutputFile << endl;
+        cout << " Input file............: " << HistogramsImportFile << endl;
+        cout << " Output file...........: " << histosExportFile << endl;
         }
       String nullString = "";
-      subTask.setParameter("HistogramInputPath",nullString);
-      subTask.setParameter("HistogramOutputPath",nullString);
-      subTask.setParameter("HistogramInputFile",histogramInputFile);
-      subTask.setParameter("HistogramOutputFile",histogramOutputFile);
-      subTask.loadHistograms();
+      subTask.addParameter("HistogramsImportPath",nullString);
+      subTask.addParameter("HistogramsExportPath",nullString);
+      subTask.addParameter("HistogramsImportFile",HistogramsImportFile);
+      subTask.addParameter("HistogramsExportFile",histosExportFile);
+      subTask.importHistograms();
       subTask.createDerivedHistograms();
       if (!isTaskOk()) break;
       subTask.calculateDerivedHistograms();
       if (!isTaskOk()) break;
-      subTask.saveHistograms();
+      subTask.exportHistograms();
       }
     }
   if (reportEnd(__FUNCTION__))

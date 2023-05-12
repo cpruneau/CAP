@@ -20,11 +20,11 @@ using CAP::GlobalDerivedHistos;
 ClassImp(GlobalAnalyzer);
 
 GlobalAnalyzer::GlobalAnalyzer(const String & _name,
-                               Configuration & _configuration,
+                               const Configuration & _configuration,
                                vector<EventFilter*> & _eventFilters,
                                vector<ParticleFilter*> & _particleFilters)
 :
-Task(_name,_configuration,_eventFilters,_particleFilters),
+EventTask(_name,_configuration,_eventFilters,_particleFilters),
 setEvent(false),
 n(),
 e(),
@@ -40,11 +40,10 @@ ptSum()
 //!
 void GlobalAnalyzer::setDefaultConfiguration()
 {
-  setParameter("UseParticles",      true);
-  setParameter("CreateHistograms",  true);
-  setParameter("SaveHistograms",    true);
-  setParameter("UseEventStream0",   true);
-  setParameter("UseEventStream1",   false);
+  addParameter("HistogramsCreate",  true);
+  addParameter("HistogramsExport",    true);
+  addParameter("EventsUseStream0",   true);
+  addParameter("EventsUseStream1",   false);
   addParameter("SetEvent",             true);
   addParameter("FillCorrelationHistos",false);
   addParameter("Fill2D",               false);
@@ -78,13 +77,65 @@ void GlobalAnalyzer::setDefaultConfiguration()
   addParameter("Max_ptAvg",            2.0);
 }
 
+void GlobalAnalyzer::configure()
+{
+  EventTask::configure();
+  setEvent = getValueBool("SetEvent");
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    printItem("EventsAnalyze");
+    printItem("EventsUseStream0");
+    printItem("EventsUseStream1");
+    printItem("EventsUseStream2");
+    printItem("EventsUseStream3");
+    printItem("HistogramsCreate");
+    printItem("HistogramsExport");
+    printItem("EventsUseStream0");
+    printItem("EventsUseStream1");
+    printItem("SetEvent");
+    printItem("FillCorrelationHistos");
+    printItem("Fill2D");
+    printItem("nBins_n");
+    printItem("nBins_n2");
+    printItem("Min_n");
+    printItem("Max_n");
+    printItem("range_n");
+    printItem("nBins_e");
+    printItem("nBins_e2");
+    printItem("Min_e");
+    printItem("Max_e");
+    printItem("range_e");
+    printItem("nBins_q");
+    printItem("nBins_q2");
+    printItem("Min_q");
+    printItem("Max_q");
+    printItem("range_n");
+    printItem("nBins_b");
+    printItem("nBins_b2");
+    printItem("Min_b");
+    printItem("Max_b");
+    printItem("range_b");
+    printItem("nBins_ptSum");
+    printItem("nBins_ptSum2");
+    printItem("Min_ptSum");
+    printItem("Max_ptSum");
+    printItem("nBins_ptAvg");
+    printItem("nBins_ptAvg2");
+    printItem("Min_ptAvg");
+    printItem("Max_ptAvg");
+    cout << endl;
+    }
+}
+
+
 void GlobalAnalyzer::initialize()
 {
   if (reportStart(__FUNCTION__))
     ;
-  Task::initialize();
+  EventTask::initialize();
   int nParticleFilters = particleFilters.size();
-  setEvent = getValueBool("SetEvent");
+  setEvent = true;//getValueBool("SetEvent");
   n.assign(nParticleFilters,0.0);
   ptSum.assign(nParticleFilters,0.0);
   e.assign(nParticleFilters,0.0);
@@ -98,49 +149,60 @@ void GlobalAnalyzer::createHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & configuration = getConfiguration();
-  String bn  = getParentTaskName();
+  String bn  = getParentName( );
   if (reportInfo(__FUNCTION__))
     {
-    cout << "  G:Creating HistogramGroup for.......: " << bn  << endl;
-    cout << "  G:nEventFilters................ : " << nEventFilters << endl;
-    cout << "  G:nParticleFilters............. : " << nParticleFilters << endl;
+    printItem("Creating HistogramGroup for",bn);
+    printItem("nEventFilters"              ,nEventFilters);
+    printItem("nParticleFilters"           ,nParticleFilters);
     }
+  histogramManager.addSet("Global");
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     String efn = eventFilters[iEventFilter]->getName();
-    GlobalHistos * histos = new GlobalHistos(this,createName(bn,efn),configuration,particleFilters);
+    String name = bn;
+    name += "_";
+    name += efn;
+    GlobalHistos * histos = new GlobalHistos(this,name,configuration,particleFilters);
     histos->createHistograms();
-    histograms.push_back(histos);
+    histogramManager.addGroupInSet(0,histos);
     }
   if (reportEnd(__FUNCTION__))
     ;
 }
 
-void GlobalAnalyzer::loadHistograms(TFile * inputFile)
+//Task * _parent,
+//const String & _name,
+//const Configuration & _configuration,
+//vector<ParticleFilter*> _particleFilters
+
+void GlobalAnalyzer::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & configuration = getConfiguration();
-  String bn  = getParentTaskName();
+  String bn  = getParentName( );
   if (reportDebug(__FUNCTION__))
     {
     cout << "Loading HistogramGroup for " << bn  << endl;
     cout << "nEventFilters................ : " << nEventFilters << endl;
     cout << "nParticleFilters............. : " << nParticleFilters << endl;
     }
+  histogramManager.addSet("Global");
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     String efn = eventFilters[iEventFilter]->getName();
-    GlobalHistos * histos = new GlobalHistos(this,createName(bn,efn),configuration,particleFilters);
-    histos->loadHistograms(inputFile);
-    histograms.push_back(histos);
+    String name = bn;
+    name += "_";
+    name += efn;
+    GlobalHistos * histos = new GlobalHistos(this,name,configuration,particleFilters);
+    histos->importHistograms(inputFile);
+    histogramManager.addGroupInSet(0,histos);
     }
   if (reportEnd(__FUNCTION__))
     ;
 }
 
-void GlobalAnalyzer::execute()
+void GlobalAnalyzer::analyzeEvent()
 {
 //  
 //  if (reportStart(__FUNCTION__))
@@ -180,8 +242,8 @@ void GlobalAnalyzer::execute()
           n[iParticleFilter]++;
           e[iParticleFilter] += momentum.E();
           q[iParticleFilter] += type.getCharge();
-          s[iParticleFilter] += type.getStrange();
-          b[iParticleFilter] += type.getBaryon();
+          s[iParticleFilter] += type.getNetStrangeness();
+          b[iParticleFilter] += type.getBaryonNumber();
           ptSum[iParticleFilter] += momentum.Pt();
           }
         }
@@ -191,7 +253,8 @@ void GlobalAnalyzer::execute()
       EventProperties * ep = event.getEventProperties();
       ep->fill(n,ptSum, e,q,s,b);
       }
-    GlobalHistos * globalHistos = (GlobalHistos * ) histograms[iEventFilter];
+
+    GlobalHistos * globalHistos = (GlobalHistos * ) histogramManager.getGroup(0,iEventFilter);
     globalHistos->fill(n,ptSum,e,q,s,b,1.0);
     }
 }
@@ -200,7 +263,6 @@ void GlobalAnalyzer::createDerivedHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & configuration = getConfiguration();
   String bn  = getName();
   if (reportInfo(__FUNCTION__))
     {
@@ -208,18 +270,22 @@ void GlobalAnalyzer::createDerivedHistograms()
     cout << "nEventFilters............... : " << nEventFilters << endl;
     cout << "nParticleFilters............ : " << nParticleFilters << endl;
     }
+  histogramManager.addSet("GlobalDerived");
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     String efn = eventFilters[iEventFilter]->getName();
-    GlobalDerivedHistos * histos = new GlobalDerivedHistos(this,createName(bn,efn),configuration,particleFilters);
+    String name = bn;
+    name += "_";
+    name += efn;
+    GlobalDerivedHistos * histos = new GlobalDerivedHistos(this,name,configuration,particleFilters);
     histos->createHistograms();
-    derivedHistograms.push_back(histos);
+    histogramManager.addGroupInSet(1,histos);
     }
   if (reportEnd(__FUNCTION__))
     ;
 }
 
-void GlobalAnalyzer::loadDerivedHistograms(TFile * inputFile)
+void GlobalAnalyzer::importDerivedHistograms(TFile & inputFile __attribute__((unused)))
 {
   if (reportStart(__FUNCTION__))
     ;
@@ -241,10 +307,10 @@ void GlobalAnalyzer::calculateDerivedHistograms()
 
   //!Mode 1: Running rigth after Analysis: base histograms pointers  are copied from analyzer to baseSingleHistograms
   //!Mode 2: Running as standalone: base histograms are loaded from file.
-  for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
+  for (int iEventFilter=0; iEventFilter< nEventFilters; iEventFilter++ )
     {
-    baseHistos    = (GlobalHistos *) histograms[iEventFilter];
-    derivedHistos = (GlobalDerivedHistos *) derivedHistograms[iEventFilter];
+    baseHistos    = (GlobalHistos *) histogramManager.getGroup(0,iEventFilter);
+    derivedHistos = (GlobalDerivedHistos *) histogramManager.getGroup(0,iEventFilter);
     derivedHistos->calculateDerivedHistograms(baseHistos);
     }
   if (reportEnd(__FUNCTION__))

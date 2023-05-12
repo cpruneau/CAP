@@ -16,7 +16,7 @@ ClassImp(NuDynDerivedHistos);
 
 NuDynDerivedHistos::NuDynDerivedHistos(Task * _parent,
                                        const String & _name,
-                                       Configuration & _configuration)
+                                       const Configuration & _configuration)
 :
 HistogramGroup(_parent,_name,_configuration),
 h_F2(),
@@ -41,9 +41,9 @@ h_nudyn_vsMult()
 void NuDynDerivedHistos::createHistograms()
 {
   const TString & bn  = getName();
-  const TString & ptn = getParentTaskName();
+  const TString & ptn = getParentName();
   const TString & ppn = getParentPathName();
-  Configuration & configuration = getConfiguration();
+  const Configuration & configuration = getConfiguration();
   nFilters         = configuration.getValueInt(ppn,"nFilters");
   multiplicityType = configuration.getValueInt(ppn,"multiplicityType");
   pairOnly         = configuration.getValueBool(ppn,"PairOnly");
@@ -145,13 +145,12 @@ void NuDynDerivedHistos::createHistograms()
 }
 
 //________________________________________________________________________
-void NuDynDerivedHistos::loadHistograms(TFile * inputFile)
+void NuDynDerivedHistos::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (!ptrFileExist(__FUNCTION__, inputFile)) return;
   const String & bn  = getName();
-  const String & ptn = getParentTaskName();
+  const String & ptn = getParentName();
   const String & ppn = getParentPathName();  nFilters         = configuration.getValueInt(ppn,"nFilters");
   multiplicityType = configuration.getValueInt(ppn,"multiplicityType");
   pairOnly         = configuration.getValueBool(ppn,"PairOnly");

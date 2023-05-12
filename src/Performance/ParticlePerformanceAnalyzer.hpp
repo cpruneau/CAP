@@ -11,7 +11,7 @@
  * *********************************************************************/
 #ifndef CAP__ParticlePerformanceAnalyzer
 #define CAP__ParticlePerformanceAnalyzer
-#include "Task.hpp"
+#include "EventTask.hpp"
 #include "ParticlePerformanceHistos.hpp"
 
 namespace CAP
@@ -56,7 +56,7 @@ namespace CAP
 //!  + min_phi [0.0]: Minimum value
 //!  + max_phi [2pi]: Maximum value
 //!
-class ParticlePerformanceAnalyzer : public Task
+class ParticlePerformanceAnalyzer : public EventTask
 {
 public:
   
@@ -70,7 +70,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   ParticlePerformanceAnalyzer(const String & _name,
-                              Configuration & _configuration,
+                              const Configuration & _configuration,
                               vector<EventFilter*> & _eventFilters,
                               vector<ParticleFilter*>& _particleFilters);
   
@@ -87,7 +87,7 @@ public:
   //!
   //! Execute ..
   //!
-  virtual void execute();
+  virtual void analyzeEvent();
   
   //!
   //! Creates the histograms  filled by this task at execution
@@ -97,7 +97,7 @@ public:
   //!
   //! Loads the histograms retquired by this task at execution
   //!
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
 
 protected:
   

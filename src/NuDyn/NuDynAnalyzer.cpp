@@ -17,11 +17,11 @@ using CAP::NuDynAnalyzer;
 ClassImp(NuDynAnalyzer);
 
 NuDynAnalyzer::NuDynAnalyzer(const String & _name,
-                             Configuration & _configuration,
+                             const Configuration & _configuration,
                              vector<EventFilter*> & _eventFilters,
                              vector<ParticleFilter*> & _particleFilters)
 :
-Task(_name, _configuration, _eventFilters, _particleFilters),
+EventTask(_name, _configuration, _eventFilters, _particleFilters),
 multiplicityType(1)
 {
   appendClassName("NuDynAnalyzer");
@@ -29,11 +29,12 @@ multiplicityType(1)
 
 void NuDynAnalyzer::setDefaultConfiguration()
 {
-  setParameter("UseParticles",      true);
-  setParameter("CreateHistograms",  true);
-  setParameter("SaveHistograms",    true);
-  setParameter("UseEventStream0",   true);
-  setParameter("UseEventStream1",   false);
+  EventTask::setDefaultConfiguration();
+  addParameter("EventsAnalyze",     true);
+  addParameter("HistogramsCreate",  true);
+  addParameter("HistogramsExport",  true);
+  addParameter("EventsUseStream0",  true);
+  addParameter("EventsUseStream1",  false);
   addParameter("InputType",         1);
   addParameter("PairOnly",          true);
   addParameter("nBins_mult",        200);
@@ -44,25 +45,36 @@ void NuDynAnalyzer::setDefaultConfiguration()
   addParameter("Max_rapidity",      10.00);
 }
 
-void NuDynAnalyzer::initialize()
+void NuDynAnalyzer::configure()
 {
-  Task::initialize();
+  EventTask::configure();
   multiplicityType = getValueInt("InputType");
-
-  int    nBins_rapidity = configuration.getValueInt("nBins_rapidity");
-  double min_rapidity   = configuration.getValueDouble("Min_rapidity");
-  double max_rapidity   = configuration.getValueDouble("Max_rapidity");
-  double width_rapidity = (max_rapidity-min_rapidity)/double(nBins_rapidity);
+  nBins_rapidity   = getValueInt("nBins_rapidity");
+  min_rapidity     = getValueDouble("Min_rapidity");
+  max_rapidity     = getValueDouble("Max_rapidity");
+  width_rapidity   = (max_rapidity-min_rapidity)/double(nBins_rapidity);
 
   if (reportInfo(__FUNCTION__))
     {
-    cout << " NuDyn:multiplicityType....................: " << multiplicityType  << endl;
-    cout << " NuDyn:nBins_rapidity......................: " << nBins_rapidity    << endl;
-    cout << " NuDyn:min_rapidity........................: " << min_rapidity      << endl;
-    cout << " NuDyn:max_rapidity........................: " << max_rapidity      << endl;
-    cout << " NuDyn:width_rapidity......................: " << width_rapidity    << endl;
+    cout << endl;
+    printItem("EventsAnalyze");
+    printItem("EventsUseStream0");
+    printItem("EventsUseStream1");
+    printItem("EventsUseStream2");
+    printItem("EventsUseStream3");
+    printItem("HistogramsCreate");
+    printItem("HistogramsExport");
+    printItem("InputType",     multiplicityType);
+    printItem("nBins_rapidity",nBins_rapidity);
+    printItem("min_rapidity",  min_rapidity);
+    printItem("max_rapidity",  max_rapidity);
+    printItem("width_rapidity",width_rapidity);
     }
+}
 
+void NuDynAnalyzer::initialize()
+{
+  EventTask::initialize();
   for (int iEta=0; iEta<nBins_rapidity; iEta++)
     {
     deltaRapidtyBin.push_back(min_rapidity+double(iEta)*width_rapidity );
@@ -80,12 +92,16 @@ void NuDynAnalyzer::createHistograms()
   String partFilterName;
   if (reportInfo(__FUNCTION__))
     {
-    cout << " NuDyn:Creating HistogramGroup for......: "  << endl;
-    cout << " NuDyn:nEventFilters................: " << nEventFilters << endl;
-    cout << " NuDyn:nParticleFilters.............: " << nParticleFilters << endl;
+    cout << endl;
+    printItem("Creating HistogramGroup","");
+    printItem("nEventFilters",    int(nEventFilters));
+    printItem("nParticleFilters", int(nParticleFilters));
+    cout << endl;
     }
   partFilterName = particleFilters[0]->getName();
   partFilterName += particleFilters[1]->getName();
+  histogramManager.addSet("NuDyn");
+
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     evtFilterName  = eventFilters[iEventFilter]->getName();
@@ -93,15 +109,15 @@ void NuDynAnalyzer::createHistograms()
     histoName      += evtFilterName;
     histoName      += "_";
     histoName      += partFilterName;
-    NuDynHistos * nuDynHistos = new NuDynHistos(this,histoName,getConfiguration());
+    NuDynHistos * nuDynHistos = new NuDynHistos(this,histoName,configuration);
     nuDynHistos->createHistograms();
-    histograms.push_back(nuDynHistos);
+    histogramManager.addGroupInSet(0,nuDynHistos);
     }
   if (reportEnd(__FUNCTION__))
     { }
 }
 
-void NuDynAnalyzer::loadHistograms(TFile * inputFile)
+void NuDynAnalyzer::importHistograms(TFile & inputFile)
 {
   
   if (reportStart(__FUNCTION__))
@@ -115,12 +131,15 @@ void NuDynAnalyzer::loadHistograms(TFile * inputFile)
   
   if (reportInfo(__FUNCTION__))
     {
-    cout << " Creating HistogramGroup for......"  << endl;
-    cout << " nEventFilters................: " << nEventFilters << endl;
-    cout << " nParticleFilters.............: " << nParticleFilters << endl;
+    cout << endl;
+    printItem("Loading HistogramGroup","");
+    printItem("nEventFilters",    int(nEventFilters));
+    printItem("nParticleFilters", int(nParticleFilters));
+    cout << endl;
     }
   partFilterName = particleFilters[0]->getName();
   partFilterName += particleFilters[1]->getName();
+  histogramManager.addSet("NuDyn");
 
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
@@ -129,19 +148,19 @@ void NuDynAnalyzer::loadHistograms(TFile * inputFile)
     histoName      += evtFilterName;
     histoName      += "_";
     histoName      += partFilterName;
-    NuDynHistos * nuDynHistos = new NuDynHistos(this,histoName,getConfiguration());
-    nuDynHistos->loadHistograms(inputFile);
-    histograms.push_back(nuDynHistos);
+    NuDynHistos * nuDynHistos = new NuDynHistos(this,histoName,configuration);
+    nuDynHistos->importHistograms(inputFile);
+    histogramManager.addGroupInSet(0,nuDynHistos);
     }
   if (reportEnd(__FUNCTION__))
     ;
 }
 
-void NuDynAnalyzer::execute()
+void NuDynAnalyzer::analyzeEvent()
 {
   incrementTaskExecuted();
   unsigned int nEventFilters    = eventFilters.size();
-  unsigned int nParticleFilters = particleFilters.size();
+  //unsigned int nParticleFilters = particleFilters.size();
   Event * event = eventStreams[0];
   resetNParticlesAcceptedEvent();
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
@@ -160,7 +179,7 @@ void NuDynAnalyzer::execute()
         {
         incrementNParticlesAccepted(iEventFilter,0);
         rapidity = fabs(particle.getMomentum().Rapidity());
-        for (int iY; iY<nBins_rapidity; iY++)
+        for (int iY=0; iY<nBins_rapidity; iY++)
           {
           if (rapidity<deltaRapidtyBin[iY]) nAccepted0[iY]++;
           }
@@ -169,14 +188,14 @@ void NuDynAnalyzer::execute()
         {
         incrementNParticlesAccepted(iEventFilter,1);
         rapidity = fabs(particle.getMomentum().Rapidity());
-        for (int iY; iY<nBins_rapidity; iY++)
+        for (int iY=0; iY<nBins_rapidity; iY++)
           {
           if (rapidity<deltaRapidtyBin[iY]) nAccepted1[iY]++;
           }
         }
       }
     EventProperties ep = * event->getEventProperties();
-    NuDynHistos * nuDynHistos = (NuDynHistos *) histograms[iEventFilter];
+    NuDynHistos * nuDynHistos = (NuDynHistos *)  histogramManager.getGroup(0,iEventFilter);
     switch ( multiplicityType )
       {
         case 0: nuDynHistos->fill(ep.fractionalXSection, nAccepted0, nAccepted1, 1.0); break;
@@ -190,16 +209,18 @@ void NuDynAnalyzer::createDerivedHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & configuration = getConfiguration();
   String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
   if (reportInfo(__FUNCTION__))
     {
-    cout << " Creating HistogramGroup for......"  << endl;
-    cout << " nEventFilters................: " << nEventFilters << endl;
-    cout << " nParticleFilters.............: " << nParticleFilters << endl;
+    cout << endl;
+    printItem("Create Derived HistogramGroup","");
+    printItem("nEventFilters",    int(nEventFilters));
+    printItem("nParticleFilters", int(nParticleFilters));
+    cout << endl;
     }
+  histogramManager.addSet("NuDynDerived");
   NuDynDerivedHistos * histos;
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
@@ -213,14 +234,14 @@ void NuDynAnalyzer::createDerivedHistograms()
       histoName += partFilterName;
       histos = new NuDynDerivedHistos(this,histoName,configuration);
       histos->createHistograms();
-      derivedPairHistograms.push_back(histos);
+      histogramManager.addGroupInSet(1,histos);
       }
     }
   if (reportEnd(__FUNCTION__))
     ;
 }
 
-void NuDynAnalyzer::loadDerivedHistograms(TFile * inputFile __attribute__((unused)))
+void NuDynAnalyzer::importDerivedHistograms(TFile & inputFile __attribute__((unused)))
 {
 
 }
@@ -235,9 +256,10 @@ void NuDynAnalyzer::calculateDerivedHistograms()
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;
-    cout << "Computing derived histograms for: " << endl;
-    cout << "                   nEventFilters: " << nEventFilters << endl;
-    cout << "                nParticleFilters: " << nParticleFilters << endl;
+    printItem("Calculate Derived Histograms","");
+    printItem("nEventFilters",    int(nEventFilters));
+    printItem("nParticleFilters", int(nParticleFilters));
+    cout << endl;
     }
   NuDynHistos        * baseHistos;
   NuDynDerivedHistos * derivedHistos;
@@ -250,8 +272,8 @@ void NuDynAnalyzer::calculateDerivedHistograms()
     for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
       {
       index = iEventFilter*nParticleFilters + iParticleFilter;
-      baseHistos    = (NuDynHistos *) baseSingleHistograms[index];
-      derivedHistos = (NuDynDerivedHistos *) derivedSingleHistograms[index];
+      baseHistos    = (NuDynHistos *) histogramManager.getGroup(0,index);
+      derivedHistos = (NuDynDerivedHistos *) histogramManager.getGroup(1,index);
       derivedHistos->calculateDerivedHistograms(baseHistos);
       }
     }

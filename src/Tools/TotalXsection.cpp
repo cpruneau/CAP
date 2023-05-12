@@ -73,62 +73,62 @@ TF1 * TotalXsection::getFunctionTotalXsectionVsSqrtS(TotalXsectionSystem selecte
           case PPCollisions:
           functionName = "GauronPPCollisions";
           function = new TF1(functionName,GauronModelF1, minSqrtS, maxSqrtS, 6);
-          function->SetParameter(0,20.251); // Z
-          function->SetParameter(1,7.572); // X
-          function->SetParameter(2,0.132); // eps
-          function->SetParameter(3,74.811); // Y1
-          function->SetParameter(4,29.918); // Y2
-          function->SetParameter(5,0.48); // alpha0
+          function->addParameter(0,20.251); // Z
+          function->addParameter(1,7.572); // X
+          function->addParameter(2,0.132); // eps
+          function->addParameter(3,74.811); // Y1
+          function->addParameter(4,29.918); // Y2
+          function->addParameter(5,0.48); // alpha0
           break;
           case PPbarCollisions:
           functionName = "GauronPPbarCollisions";
           function = new TF1(functionName,GauronModelF1, minSqrtS, maxSqrtS, 6);
-          function->SetParameter(0,20.251); // Z
-          function->SetParameter(1,7.572); // X
-          function->SetParameter(2,0.132); // eps
-          function->SetParameter(3,74.811); // Y1
-          function->SetParameter(4,-29.918); // Y2
-          function->SetParameter(5,0.48); // alpha0
+          function->addParameter(0,20.251); // Z
+          function->addParameter(1,7.572); // X
+          function->addParameter(2,0.132); // eps
+          function->addParameter(3,74.811); // Y1
+          function->addParameter(4,-29.918); // Y2
+          function->addParameter(5,0.48); // alpha0
           break;
           case PiPlusPCollisions:
           functionName = "GauronPiPlusPCollisions";
           function = new TF1(functionName,GauronModelF1, minSqrtS, maxSqrtS, 6);
-          function->SetParameter(0,5.283); // Z
-          function->SetParameter(1,7.572); // X
-          function->SetParameter(2,0.132); // eps
-          function->SetParameter(3,48.972); // Y1
-          function->SetParameter(4,6.028); // Y2
-          function->SetParameter(5,0.48); // alpha0
+          function->addParameter(0,5.283); // Z
+          function->addParameter(1,7.572); // X
+          function->addParameter(2,0.132); // eps
+          function->addParameter(3,48.972); // Y1
+          function->addParameter(4,6.028); // Y2
+          function->addParameter(5,0.48); // alpha0
           break;
           case PiMinusPCollisions:
           functionName = "GauronPiMinusPCollisions";
           function = new TF1(functionName,GauronModelF1, minSqrtS, maxSqrtS, 6);
-          function->SetParameter(0,5.283); // Z
-          function->SetParameter(1,7.572); // X
-          function->SetParameter(2,0.132); // eps
-          function->SetParameter(3,48.972); // Y1
-          function->SetParameter(4,-6.028); // Y2
-          function->SetParameter(5,0.48); // alpha0
+          function->addParameter(0,5.283); // Z
+          function->addParameter(1,7.572); // X
+          function->addParameter(2,0.132); // eps
+          function->addParameter(3,48.972); // Y1
+          function->addParameter(4,-6.028); // Y2
+          function->addParameter(5,0.48); // alpha0
           break;
           case KPlusPCollisions:
           functionName = "GauronKPlusPCollisions";
           function = new TF1(functionName,GauronModelF1, minSqrtS, maxSqrtS, 6);
-          function->SetParameter(0,2.208); // Z
-          function->SetParameter(1,7.572); // X
-          function->SetParameter(2,0.132); // eps
-          function->SetParameter(3,34.483); // Y1
-          function->SetParameter(4,11.935); // Y2
-          function->SetParameter(5,0.48); // alpha0
+          function->addParameter(0,2.208); // Z
+          function->addParameter(1,7.572); // X
+          function->addParameter(2,0.132); // eps
+          function->addParameter(3,34.483); // Y1
+          function->addParameter(4,11.935); // Y2
+          function->addParameter(5,0.48); // alpha0
           break;
           case KMinusPCollisions:
           functionName = "GauronKMinusPCollisions";
           function = new TF1(functionName,GauronModelF1, minSqrtS, maxSqrtS, 6);
-          function->SetParameter(0,2.208); // Z
-          function->SetParameter(1,7.572); // X
-          function->SetParameter(2,0.132); // eps
-          function->SetParameter(3,34.483); // Y1
-          function->SetParameter(4,-11.935); // Y2
-          function->SetParameter(5,0.48); // alpha0
+          function->addParameter(0,2.208); // Z
+          function->addParameter(1,7.572); // X
+          function->addParameter(2,0.132); // eps
+          function->addParameter(3,34.483); // Y1
+          function->addParameter(4,-11.935); // Y2
+          function->addParameter(5,0.48); // alpha0
           break;
           case GammaPCollisions:
           //          double delta = pp[0];
@@ -139,22 +139,22 @@ TF1 * TotalXsection::getFunctionTotalXsectionVsSqrtS(TotalXsectionSystem selecte
           //          double alpha = pp[5]-1;
           functionName = "GauronGammaPCollisions";
           function = new TF1(functionName,GauronGammaModelF1, minSqrtS, maxSqrtS, 6);
-          function->SetParameter(0,0.303E-2); // delta
-          function->SetParameter(1,20.251);    // Z
-          function->SetParameter(2,7.572);    // X
-          function->SetParameter(3,0.132);   // eps
-          function->SetParameter(4,0.121);   // Y1
-          function->SetParameter(5,0.48);   // alpha0
+          function->addParameter(0,0.303E-2); // delta
+          function->addParameter(1,20.251);    // Z
+          function->addParameter(2,7.572);    // X
+          function->addParameter(3,0.132);   // eps
+          function->addParameter(4,0.121);   // Y1
+          function->addParameter(5,0.48);   // alpha0
           break;
           case GammaGammaCollisions:
           functionName = "GauronGammaGammaCollisions";
           function = new TF1(functionName,GauronGammaModelF1, minSqrtS, maxSqrtS, 6);
-          function->SetParameter(0,0.303E-2*0.303E-2); // delta^2
-          function->SetParameter(1,20.251);    // Z
-          function->SetParameter(2,7.572);    // X
-          function->SetParameter(3,0.132);   // eps
-          function->SetParameter(4,0.0);   // Y1
-          function->SetParameter(5,0.48);   // alpha0
+          function->addParameter(0,0.303E-2*0.303E-2); // delta^2
+          function->addParameter(1,20.251);    // Z
+          function->addParameter(2,7.572);    // X
+          function->addParameter(3,0.132);   // eps
+          function->addParameter(4,0.0);   // Y1
+          function->addParameter(5,0.48);   // alpha0
           break;
         }
       break;

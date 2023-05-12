@@ -6,22 +6,19 @@
 #include_directories(${CMAKE_SOURCE_DIR} ${ROOT_INCLUDE_DIRS})
 #add_definitions(${ROOT_CXX_FLAGS})
 
-ROOT_GENERATE_DICTIONARY(G__Base Timer.hpp Configuration.hpp  Factory.hpp Filter.hpp Collection.hpp   HistogramCollection.hpp HistogramGroup.hpp RandomGenerators.hpp Task.hpp TaskIterator.hpp RootTreeReader.hpp MessageLogger.hpp StateManager.hpp Event.hpp EventProperties.hpp EventFilter.hpp EventCountHistos.hpp     Particle.hpp ParticleDecayMode.hpp ParticleDecayer.hpp ParticleDecayerTask.hpp  ParticleType.hpp  ParticleTypeCollection.hpp ParticleTypeTableLoader.hpp ParticleFilter.hpp   ParticlePairFilter.hpp     Nucleus.hpp  NucleusType.hpp   MomentumGenerator.hpp SelectionGenerator.hpp  ParticleDigit.hpp  DerivedHistoIterator.hpp DerivedHistogramCalculator.hpp
+ROOT_GENERATE_DICTIONARY(G__Base Timer.hpp IdentifiedObject.hpp  Configuration.hpp ConfigurationManager.hpp VectorField.hpp Parser.hpp TextParser.hpp XmlParser.hpp XmlDocument.hpp XmlVectorField.hpp Factory.hpp Filter.hpp Collection.hpp   HistogramCollection.hpp HistogramGroup.hpp HistogramManager.hpp RandomGenerators.hpp Task.hpp TaskIterator.hpp  MessageLogger.hpp StateManager.hpp    SelectionGenerator.hpp   DerivedHistoIterator.hpp
 LINKDEF BaseLinkDef.h)  
-
-### tempo: BidimGaussFitResult.hpp BidimGaussFitConfiguration.hpp BidimGaussFitter.hpp
 
 ################################################################################################
 # Create a shared library with geneated dictionary
 ################################################################################################
 add_compile_options(-Wall -Wextra -pedantic)
-add_library(Base SHARED Timer.cpp NameManager.cpp Configuration.cpp Factory.cpp HistogramCollection.cpp  HistogramGroup.cpp RandomGenerators.cpp  Task.cpp TaskIterator.cpp RootTreeReader.cpp  MessageLogger.cpp StateManager.cpp  Event.cpp EventProperties.cpp EventFilter.cpp   EventCountHistos.cpp      Particle.cpp  ParticleDecayMode.cpp ParticleDecayer.cpp ParticleDecayerTask.cpp   ParticleType.cpp ParticleTypeCollection.cpp ParticleTypeTableLoader.cpp  ParticleFilter.cpp  ParticlePairFilter.cpp   Nucleus.cpp   NucleusType.cpp     MomentumGenerator.cpp  SelectionGenerator.cpp    ParticleDigit.cpp DerivedHistoIterator.cpp  DerivedHistogramCalculator.cpp
+add_library(Base SHARED Exceptions.cpp PhysicsConstants.cpp Timer.cpp Crc32.cpp IdentifiedObject.cpp NameManager.cpp Configuration.cpp ConfigurationManager.cpp VectorField.cpp  Parser.cpp  TextParser.cpp XmlParser.cpp XmlDocument.cpp  XmlVectorField.cpp  Factory.cpp HistogramCollection.cpp  HistogramGroup.cpp  HistogramManager.cpp  RandomGenerators.cpp  Task.cpp TaskIterator.cpp MessageLogger.cpp StateManager.cpp     SelectionGenerator.cpp     DerivedHistoIterator.cpp
  G__Base.cxx)
-
 #BidimGaussFitResult.cpp BidimGaussFitConfiguration.cpp BidimGaussFitter.cpp
 
 target_link_libraries(Base ${ROOT_LIBRARIES} ${EXTRA_LIBS} )
-target_include_directories(Base  PUBLIC Base ${EXTRA_INCLUDES} ) 
+target_include_directories(Base  PUBLIC Base Math ${EXTRA_INCLUDES} )
 
 # optimization for big histogram access within the pair inner loop
 # WARNING: the sumw2 structure is not used -> estimate uncertainties using sub-samples

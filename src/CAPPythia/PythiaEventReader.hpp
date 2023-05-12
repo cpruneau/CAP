@@ -36,7 +36,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   PythiaEventReader(const String & _name,
-                    Configuration & _configuration,
+                    const Configuration & _configuration,
                     vector<EventFilter*>&   _eventFilters,
                     vector<ParticleFilter*>&_particleFilters);
   
@@ -53,7 +53,7 @@ public:
   //!
   //! Read in one PYTHIA event from file.
   //!
-  virtual void execute();
+  virtual void importEvent();
   
   //!
   //! Initialize the mapping of Root Tree Branches onto local variables.

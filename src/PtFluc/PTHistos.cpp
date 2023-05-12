@@ -16,7 +16,7 @@ ClassImp(PTHistos);
 
 PTHistos::PTHistos(Task *          _parent,
                    const String & _name,
-                   Configuration & _configuration,
+                   const Configuration & _configuration,
                    Severity        _debugLevel,
                    int             _ord)
 :
@@ -35,10 +35,10 @@ PTHistos::~PTHistos()
 }
 
 // for now use the same boundaries for eta and y histogram
-void PTHistos::createHistograms()
+void PTHistos::HistogramsCreate()
 {
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::createHistograms(..) started"<< endl;
-//	HeavyIonConfiguration & ac = (HeavyIonConfiguration&)( *getConfiguration());
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::HistogramsCreate(..) started"<< endl;
+//	HeavyIonconst Configuration & ac = (HeavyIonConfiguration&)( *getConfiguration());
 //	String bn = getParentTaskName();
 //	TH1::SetDefaultBufferSize(ac.totEvents);
 //	totEvents =ac.totEvents;
@@ -132,21 +132,21 @@ void PTHistos::createHistograms()
 //	}
 //
 //	histoIndex = 0;
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::createHistograms(..) ended"<< endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::HistogramsCreate(..) ended"<< endl;
 //	//h_c123vsMultTest = createProfile("c123Test", ac.nBins_mult,ac.min_mult,ac.max_mult,"mult", "c123Test" );
 }
 
 /////////////////////////////////////////////////////////
 // needs to be fixed
 ////////////////////////////////////////////////////////
-void PTHistos::loadHistograms(TFile * inputFile)
+void PTHistos::HistogramsImport(TFile & inputFile)
 {
 //	if (!inputFile)
 //	{
 //		if (reportFatal()) cout << "-Fatal- Attempting to load NuDynHistos from an invalid file pointer" << endl;
 //		return;
 //	}
-//	Configuration & ac = *(Configuration*) getConfiguration();
+//	const Configuration & ac = *(Configuration*) getConfiguration();
 //
 //	String  bn = getParentTaskName();
 //
@@ -206,14 +206,14 @@ void PTHistos::loadHistograms(TFile * inputFile)
 //	histoIndex = 0;
 }
 
-//overloaded saveHistograms to save histograms in sequence of lowest order to highest order
-void PTHistos::saveHistograms(TFile * outputFile, bool saveAll)
+//overloaded HistogramsExport to save histograms in sequence of lowest order to highest order
+void PTHistos::exportHistograms(TFile & outputFile, bool saveAll)
 {
 //
-//	if (reportDebug(__FUNCTION__)) cout << "HistogramCollection::saveHistograms(TFile * outputFile) started."  << endl;
+//	if (reportDebug(__FUNCTION__)) cout << "HistogramCollection::exportHistograms(TFile & outputFile) started."  << endl;
 //	outputFile->cd();
 //
-//	Configuration & ac = *(Configuration*) getConfiguration();
+//	const Configuration & ac = *(Configuration*) getConfiguration();
 //
 //	int numTypes = 1;
 //	if (ac.ptCorrelatorVsMult) numTypes++;
@@ -254,13 +254,13 @@ void PTHistos::saveHistograms(TFile * outputFile, bool saveAll)
 //		}
 //	}
 //
-//	if (reportDebug(__FUNCTION__)) cout << "HistogramCollection::saveHistograms(TFile * outputFile) completed."  << endl;
+//	if (reportDebug(__FUNCTION__)) cout << "HistogramCollection::exportHistograms(TFile & outputFile) completed."  << endl;
 }
 
 
 void PTHistos::fillEventHistos(double mult, double cent, double weight)
 {
-//	Configuration & ac1 = *(Configuration*) getConfiguration();
+//	const Configuration & ac1 = *(Configuration*) getConfiguration();
 //	h_eventStreams->Fill(mult,weight);
 //	if (ac1.ptCorrelatorVsMult) h_eventStreams_vsMult->Fill(mult,weight);
 //	if (ac1.ptCorrelatorVsCent) h_eventStreams_vsCent->Fill(cent,weight);
@@ -268,11 +268,11 @@ void PTHistos::fillEventHistos(double mult, double cent, double weight)
 
 
 // recursively create histograms for correlation functions of order 1 - maxOrder
-// Note: these histograms are not in sequence of lowest order to highest order. The reording occurs when the histograms are saved with the saveHistograms function.
+// Note: these histograms are not in sequence of lowest order to highest order. The reording occurs when the histograms are saved with the HistogramsExport function.
 void PTHistos::createHistogramRec(String * baseName, String * baseTitle, int depth, int partIndex)
 {
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::createHistogramsRec(..) started"<< endl;
-//	Configuration & ac = *(Configuration*) getConfiguration();
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::HistogramsCreateRec(..) started"<< endl;
+//	const Configuration & ac = *(Configuration*) getConfiguration();
 //	String *histoName = new TString[2 * numFunc +1];
 //	String *histoTitle= new TString[2 * numFunc +1];
 //
@@ -318,7 +318,7 @@ void PTHistos::createHistogramRec(String * baseName, String * baseTitle, int dep
 //
 //	delete [] histoName;
 //	delete [] histoTitle;
-//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::createHistogramsRec(..) ended"<< endl;
+//	if (reportDebug(__FUNCTION__))  cout << "PTHistos::HistogramsCreateRec(..) ended"<< endl;
 //	return;
 }
 
@@ -329,7 +329,7 @@ void PTHistos::loadHistogramRec(String * baseName, int depth, int partIndex, TFi
 {
 
 //	if (reportDebug(__FUNCTION__))  cout << "PTHistos::loadHistogramRec(..) Starting." << endl;
-//	Configuration & ac = *(Configuration*) getConfiguration();
+//	const Configuration & ac = *(Configuration*) getConfiguration();
 //	String *histoName = new TString[2 * numFunc +1];
 //
 //
@@ -375,7 +375,7 @@ void PTHistos::fillDerivedHistos(bool *** acceptances, double * mults, double * 
 {
 //	if (reportDebug(__FUNCTION__))  cout << "PTHistos::fillDerivedHistos(..) Starting." << endl;
 //	auto start = chrono::high_resolution_clock::now();
-//	HeavyIonConfiguration & ac = (HeavyIonConfiguration&)*getConfiguration();
+//	HeavyIonconst Configuration & ac = (HeavyIonConfiguration&)*getConfiguration();
 //	//double max = ac.nCollisionsMax;
 //	h_eventStreams->BufferEmpty();
 //	ac.min_mult = h_eventStreams->GetXaxis()->GetXmin();
@@ -513,7 +513,7 @@ void PTHistos::fillDerivedHistos(bool *** acceptances, double * mults, double * 
 void PTHistos::fillNormalizedPTValues( int depth, int partIndex, double product, double * values, double  mult, double  cent)
 {
 //	if (reportDebug(__FUNCTION__))  cout << "PTHistos::fillNormalizedPTValues(..) Starting." << endl;
-//	Configuration & ac = *(Configuration*)  getConfiguration();
+//	const Configuration & ac = *(Configuration*)  getConfiguration();
 //
 //	for(int i = partIndex; i < maxOrder; i++)
 //	{
@@ -535,7 +535,7 @@ void PTHistos::fillNormalizedPTValues( int depth, int partIndex, double product,
 void PTHistos::fillNormalizedPTValues( int depth, int partIndex, double product, TH1 *** values, int* reorder, int*  nBin)
 {
 //	if (reportDebug(__FUNCTION__))  cout << "PTHistos::fillNormalizedPTValues(..) Starting." << endl;
-//	Configuration & ac = *(Configuration*) getConfiguration();
+//	const Configuration & ac = *(Configuration*) getConfiguration();
 //
 //	for(int i = partIndex; i < maxOrder; i++)
 //	{
@@ -591,7 +591,7 @@ void PTHistos::calculateCumulants(TProfile ** SHistos, TH1 **CHistos, int nBins,
 {	
 //	if (reportDebug(__FUNCTION__))  cout << "PTHistos::calculateCumulants(..) Starting." << endl;
 //
-//	//HeavyIonConfiguration & ac = (HeavyIonConfiguration&)( *getConfiguration());
+//	//HeavyIonconst Configuration & ac = (HeavyIonConfiguration&)( *getConfiguration());
 //
 //	TProfile ** newSHistos = new TProfile *[size];
 //	int counter = 0;

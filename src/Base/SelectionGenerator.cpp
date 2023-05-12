@@ -15,31 +15,42 @@ using CAP::SelectionGenerator;
 
 ClassImp(SelectionGenerator);
 
-SelectionGenerator::SelectionGenerator(std::vector<double> probabilities)
+SelectionGenerator::SelectionGenerator()
 :
-cProbs()
+cumulativeProbability()
+{    }
+
+SelectionGenerator::SelectionGenerator(std::vector<double> & probabilities)
+:
+cumulativeProbability()
+{
+  initializeWith(probabilities);
+}
+
+void SelectionGenerator::initializeWith(std::vector<double> & probabilities)
 {
   int n = probabilities.size();
   double sum = 0.0;
   for (int k=0; k<n; k++)
-  {
-  sum += probabilities[k];
-  }
+    {
+    sum += probabilities[k];
+    }
   double prob = 0.0;
   for (int k=0; k<n; k++)
-  {
-  prob += probabilities[k]/sum;
-  cProbs.push_back(prob);
-  }
+    {
+    prob += probabilities[k]/sum;
+    cumulativeProbability.push_back(prob);
+    }
 }
+
 
 int SelectionGenerator::generate()
 {
   double v = gRandom->Rndm();
-  int n = cProbs.size();
+  int n = cumulativeProbability.size();
   for (int k=0; k<n; k++)
   {
-  if (v <= cProbs[k]) return k;
+  if (v <= cumulativeProbability[k]) return k;
   }
   return n-1;
 }

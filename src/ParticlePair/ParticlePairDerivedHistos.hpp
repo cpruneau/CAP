@@ -29,9 +29,9 @@ public:
 
   ParticlePairDerivedHistos(Task * _parent,
                             const String & _name,
-                            Configuration & _configuration);
+                            const Configuration & _configuration);
   virtual ~ParticlePairDerivedHistos() {}
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
   virtual void createHistograms();
   virtual void calculatePairDerivedHistograms(ParticleSingleHistos         & part1BaseHistos,
                                               ParticleSingleHistos         & part2BaseHistos,

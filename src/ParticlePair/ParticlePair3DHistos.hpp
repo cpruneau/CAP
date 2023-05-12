@@ -15,21 +15,17 @@
 #include "HistogramGroup.hpp"
 #include "Particle.hpp"
 
-namespace CAP
-{
-
-
 class ParticlePair3DHistos : public HistogramGroup
 {
 public:
 
   ParticlePair3DHistos(Task * _parent,
-                       const String & _name,
-                       Configuration & _configuration);
+                       const TString & _name,
+                       const Configuration & _configuration);
   virtual ~ParticlePair3DHistos() {}
   virtual void createHistograms();
   virtual void fill(vector<Particle*> & particle1, vector<Particle*> & particle2, bool same, double weight);
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
 
   ////////////////////////////////////////////////////////////////////////////
   // Data Members - HistogramGroup
@@ -112,6 +108,5 @@ public:
   ClassDef(ParticlePair3DHistos,0)
 };
 
-} // namespace CAP
 
 #endif /* CAP__ParticlePair3DHistos  */

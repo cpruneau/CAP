@@ -16,11 +16,11 @@ using CAP::TransverseSpherocityAnalyzer;
 ClassImp(TransverseSpherocityAnalyzer);
 
 TransverseSpherocityAnalyzer::TransverseSpherocityAnalyzer(const String & _name,
-                                                           Configuration & _configuration,
+                                                           const Configuration & _configuration,
                                                            vector<EventFilter*> & _eventFilters,
                                                            vector<ParticleFilter*> & _particleFilters)
 :
-Task(_name,_configuration,_eventFilters,_particleFilters),
+EventTask(_name,_configuration,_eventFilters,_particleFilters),
 setEvent(true),
 fillS0(true),
 fillS1(false),
@@ -34,12 +34,12 @@ stepSize(TMath::TwoPi()/360.0)
 //!
 void TransverseSpherocityAnalyzer::setDefaultConfiguration()
 {
-  setParameter("UseParticles",      true);
-  setParameter("CreateHistograms",  true);
-  setParameter("SaveHistograms",    true);
-  setParameter("UseEventStream0",   true);
-  setParameter("UseEventStream1",   false);
-  addParameter("SetEvent",         true);
+  addParameter("HistogramsCreate",    true);
+  addParameter("HistogramsExport",    true);
+  addParameter("EventsAnalyze",       true);
+  addParameter("EventsUseStream0",    true);
+  addParameter("EventsUseStream1",    false);
+  addParameter("SetEvent",            true);
   addParameter("FillCorrelationHistos",false);
   addParameter("nSteps", 1000);
   addParameter("FillS0", true);
@@ -50,15 +50,45 @@ void TransverseSpherocityAnalyzer::setDefaultConfiguration()
   addParameter("Max_spherocity",   1.0);
 }
 
-void TransverseSpherocityAnalyzer::initialize()
+void TransverseSpherocityAnalyzer::configure()
 {
-  if (reportStart(__FUNCTION__))
-    ;
-  Task::initialize();
+  EventTask::configure();
   setEvent   = getValueBool("SetEvent");
   fillS0     = getValueBool("FillS0");
   fillS1     = getValueBool("FillS1");
   fillS1VsS0 = getValueBool("FillS1VsS0");
+
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    printItem("EventsAnalyze");
+    printItem("EventsUseStream0");
+    printItem("EventsUseStream1");
+    printItem("EventsUseStream2");
+    printItem("EventsUseStream3");
+    printItem("HistogramsCreate");
+    printItem("HistogramsExport");
+    printItem("SetEvent");
+    printItem("FillCorrelationHistos");
+    printItem("nSteps");
+    printItem("FillS0");
+    printItem("FillS1");
+    printItem("FillS1VsS0");
+    printItem("nBins_spherocity");
+    printItem("Min_spherocity");
+    printItem("Max_spherocity");
+    cout << endl;
+    }
+}
+
+
+
+void TransverseSpherocityAnalyzer::initialize()
+{
+  if (reportStart(__FUNCTION__))
+    ;
+  EventTask::initialize();
+
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;
@@ -74,7 +104,6 @@ void TransverseSpherocityAnalyzer::createHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & configuration = getConfiguration();
   String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();
   unsigned int nParticleFilters = particleFilters.size();
@@ -84,22 +113,22 @@ void TransverseSpherocityAnalyzer::createHistograms()
     cout << " S:nEventFilters..............: " << nEventFilters << endl;
     cout << " S:nParticleFilters...........: " << nParticleFilters << endl;
     }
+  histogramManager.addSet("Spherocity");
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     TransverseSpherocityHistos * histos = new TransverseSpherocityHistos(this,prefixName+eventFilters[iEventFilter]->getName(),configuration,particleFilters);
     histos->createHistograms();
-    histograms.push_back(histos);
+    histogramManager.addGroupInSet(0,histos);
     }
   if (reportEnd(__FUNCTION__))
     ;
 }
 
-void TransverseSpherocityAnalyzer::loadHistograms(TFile * inputFile)
+void TransverseSpherocityAnalyzer::importHistograms(TFile & inputFile)
 {
   
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & configuration = getConfiguration();
   String prefixName = getName(); prefixName += "_";
   unsigned int nEventFilters    = eventFilters.size();;
   unsigned int nParticleFilters = particleFilters.size();
@@ -109,18 +138,19 @@ void TransverseSpherocityAnalyzer::loadHistograms(TFile * inputFile)
     cout << "       nEventFilters: " << nEventFilters << endl;
     cout << "    nParticleFilters: " << nParticleFilters << endl;
     }
+  histogramManager.addSet("Spherocity");
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     String evtFilterName = eventFilters[iEventFilter]->getName();
     TransverseSpherocityHistos * histos = new TransverseSpherocityHistos(this, prefixName+eventFilters[iEventFilter]->getName(),configuration,particleFilters);
-    histos->loadHistograms(inputFile);
-    histograms.push_back(histos);
+    histos->importHistograms(inputFile);
+    histogramManager.addGroupInSet(0,histos);
     }
   if (reportEnd(__FUNCTION__))
     ;
 }
 
-void TransverseSpherocityAnalyzer::execute()
+void TransverseSpherocityAnalyzer::analyzeEvent()
 {
 //  
 //  if (reportStart(__FUNCTION__))
@@ -153,8 +183,8 @@ void TransverseSpherocityAnalyzer::execute()
       for(int k = 0; k < nSteps; k++)
         {
         //double  phiparam = ((TMath::Pi()) * i * stepSize) / 180;
-        nx = TMath::Cos(refPhi); // x component of a unitary vector n
-        ny = TMath::Sin(refPhi); // y component of a unitary vector n
+        nx = cos(refPhi); // x component of a unitary vector n
+        ny = sin(refPhi); // y component of a unitary vector n
         num0 = 0;
         num1 = 0;
         for (unsigned int iParticle=0; iParticle<nParticles; iParticle++)
@@ -200,7 +230,7 @@ void TransverseSpherocityAnalyzer::execute()
         EventProperties * ep = event.getEventProperties();
         ep->fillSpherocity(s0Filtered,s1Filtered);
         }
-    TransverseSpherocityHistos * histos = (TransverseSpherocityHistos * ) histograms[iEventFilter];
+    TransverseSpherocityHistos * histos = (TransverseSpherocityHistos * ) histogramManager.getGroup(0,iEventFilter);
     histos->fill(s0Filtered,s1Filtered,1.0);
   }
 }
@@ -210,7 +240,7 @@ void TransverseSpherocityAnalyzer::createDerivedHistograms()
 
 }
 
-void TransverseSpherocityAnalyzer::loadDerivedHistograms(TFile * inputFile __attribute__((unused)))
+void TransverseSpherocityAnalyzer::importDerivedHistograms(TFile & inputFile __attribute__((unused)))
 {
 
 }

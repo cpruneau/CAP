@@ -17,7 +17,7 @@ ClassImp(NuDynHistos);
 
 NuDynHistos::NuDynHistos(Task * _parent,
                          const String & _name,
-                         Configuration & _configuration)
+                         const Configuration & _configuration)
 :
 HistogramGroup(_parent,_name,_configuration),
 h_eventStreams(0),
@@ -49,9 +49,8 @@ void NuDynHistos::createHistograms()
   if (reportStart(__FUNCTION__))
     ;
   const String & bn  = getName();
-  const String & ptn = getParentTaskName();
+  const String & ptn = getParentName();
   const String & ppn = getParentPathName();
-  Configuration & configuration = getConfiguration();
   multiplicityType = configuration.getValueInt(ppn,"multiplicityType");
   int nBins_mult   = configuration.getValueInt(ppn,"nBins_mult");
   double min_mult  = configuration.getValueInt(ppn,"Min_mult");
@@ -134,16 +133,14 @@ void NuDynHistos::createHistograms()
 }
 
 //________________________________________________________________________
-void NuDynHistos::loadHistograms(TFile * inputFile)
+void NuDynHistos::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (!ptrFileExist(__FUNCTION__, inputFile)) return;
-
   const String & bn  = getName();
-  const String & ptn = getParentTaskName();
+  const String & ptn = getParentName();
   const String & ppn = getParentPathName();
-  Configuration & configuration = getConfiguration();
+  const Configuration & configuration = getConfiguration();
   multiplicityType = configuration.getValueInt(ppn,"multiplicityType");
   int nBins_mult   = configuration.getValueInt(ppn,"nBins_mult");
   double min_mult  = configuration.getValueInt(ppn,"Min_mult");
@@ -213,19 +210,17 @@ void NuDynHistos::loadHistograms(TFile * inputFile)
 }
 
 
-void NuDynHistos::fill(double mult, vector<double> & nAccepted0, vector<double> & nAccepted1,  double weight)
+void NuDynHistos::fill(double mult, vector<double> & nAccepted0, vector<double> & nAccepted1,  double weight __attribute__((unused)))
 {
   h_eventStreams->Fill(mult);
   h_eventStreams_vsMult->Fill(mult);
-  double fill;
-
   double n1_0, n1_1;
   double n2_00, n2_01, n2_11;
   double n3_000, n3_001, n3_011, n3_111;
   double n4_0000, n4_0001, n4_0011, n4_0111, n4_1111;
   double deltaY;
 
-  for (int iY=0; iY<nAccepted0.size(); iY++)
+  for (unsigned int iY=0; iY<nAccepted0.size(); iY++)
     {
     if (iY>0)
       {

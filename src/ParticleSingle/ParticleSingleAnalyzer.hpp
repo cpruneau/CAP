@@ -11,7 +11,8 @@
  * *********************************************************************/
 #ifndef CAP__ParticleSingleAnalyzer
 #define CAP__ParticleSingleAnalyzer
-#include "Task.hpp"
+#include "EventTask.hpp"
+#include "ParticleDigit.hpp"
 
 namespace CAP
 {
@@ -55,7 +56,7 @@ namespace CAP
 //!  + min_phi [0.0]: Minimum value
 //!  + max_phi [2pi]: Maximum value
 //!
-class ParticleSingleAnalyzer : public Task
+class ParticleSingleAnalyzer : public EventTask
 {
 public:
   
@@ -69,7 +70,7 @@ public:
   //! @param _reportLevel Message log level to be used by this task.
   //!
   ParticleSingleAnalyzer(const String & _name,
-                   Configuration & _configuration,
+                   const Configuration & _configuration,
                    vector<EventFilter*> & _eventFilters,
                    vector<ParticleFilter*> & _particleFilters);
   
@@ -82,7 +83,8 @@ public:
   //! Sets the default  values of the configuration parameters used by this task
   //!
   virtual void setDefaultConfiguration();
-  
+
+  virtual void configure();
   //!
   //! Execute a single particle analysis  based on event and particle fileter operated with this task instance.
   //! Two options are implemented and chosen automatically by the code. 
@@ -93,7 +95,7 @@ public:
   //! Note that in the case that many reduced lists are used, they are constituted (currently) of vectors or ParticleDigit objects which
   //! are essentially structs containing predigitized information about the momentum, the azimuth, the rapidity, and the pseudorapidity.
   //!
-  virtual void execute();
+  virtual void analyzeEvent();
   
   //!
   //! Creates the histograms  filled by this task at execution
@@ -102,12 +104,15 @@ public:
 
   //!
   //! Loads the histograms retquired by this task at execution
+  //! Loads the histograms retquired by this task at execution
   //!
-  virtual void loadHistograms(TFile * inputFile);
+  virtual void importHistograms(TFile & inputFile);
+
+  virtual void scaleHistograms();
 
   virtual void createDerivedHistograms();
 
-  virtual void loadDerivedHistograms(TFile * inputFile __attribute__((unused)));
+  virtual void importDerivedHistograms(TFile & inputFile __attribute__((unused)));
 
   virtual void calculateDerivedHistograms();
 
@@ -116,7 +121,9 @@ protected:
   bool fillEta; //!< whether to fill pseudorapidity histograms (set from configuration at initialization)
   bool fillY;   //!< whether to fill rapidity histograms (set from configuration at initialization)
   bool fillP2;  //!< whether to fill P2 and G2 related histograms  (set from configuration at initialization)
-  
+
+  vector< vector<ParticleDigit*> > filteredParticles;
+
   ClassDef(ParticleSingleAnalyzer,0)
 };
 

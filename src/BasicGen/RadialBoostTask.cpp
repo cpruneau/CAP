@@ -16,11 +16,11 @@ using CAP::RadialBoostTask;
 ClassImp(RadialBoostTask);
 
 RadialBoostTask::RadialBoostTask(const String & _name,
-                                 Configuration & _configuration,
+                                 const Configuration & _configuration,
                                  vector<EventFilter*>&    _eventFilters,
                                  vector<ParticleFilter*>& _particleFilters)
 :
-Task(_name, _configuration, _eventFilters, _particleFilters),
+EventTask(_name, _configuration, _eventFilters, _particleFilters),
 param_b(0),
 param_a(0),
 betaMaximum(0)
@@ -30,11 +30,11 @@ betaMaximum(0)
 
 void RadialBoostTask::setDefaultConfiguration()
 {
-  setParameter("UseParticles",      true);
-  setParameter("CreateHistograms",  true);
-  setParameter("SaveHistograms",    true);
-  setParameter("UseEventStream0",   true);
-  setParameter("UseEventStream1",   false);
+  addParameter("UseParticles",      true);
+  addParameter("HistogramsCreate",  true);
+  addParameter("HistogramsExport",    true);
+  addParameter("EventsUseStream0",   true);
+  addParameter("EventsUseStream1",   false);
   addParameter("param_a", 0.9);
   addParameter("param_b", 1.0);
   addParameter("betaMaximum", 0.999);
@@ -53,37 +53,45 @@ void RadialBoostTask::createHistograms()
   
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & configuration = getConfiguration();
-  param_a     = configuration.getValueDouble(getName(),"param_a");
-  param_b     = configuration.getValueDouble(getName(),"param_b"); // exponent of order 1
-  betaMaximum = configuration.getValueDouble(getName(),"betaMaximum");;
+  param_a     = getValueDouble("param_a");
+  param_b     = getValueDouble("param_b"); // exponent of order 1
+  betaMaximum = getValueDouble("betaMaximum");;
   RadialBoostHistos * histos = new RadialBoostHistos(this,getName(),configuration);
   histos->createHistograms();
-  histograms.push_back(histos);
+  histogramManager.addSet("Boost");
+  histogramManager.addGroupInSet(0,histos);
+  //histograms.push_back(histos);
   if (reportEnd(__FUNCTION__))
     ;
 }
 
-void RadialBoostTask::loadHistograms(TFile * inputFile)
+void RadialBoostTask::importHistograms(TFile & inputFile)
 {
   
   if (reportStart(__FUNCTION__))
     ;
   RadialBoostHistos * histos = new RadialBoostHistos(this,getName(),configuration);
-  histos->loadHistograms(inputFile);
-  histograms.push_back(histos);
+  histos->importHistograms(inputFile);
+  histogramManager.addSet("Boost");
+  histogramManager.addGroupInSet(0,histos);
   if (reportEnd(__FUNCTION__))
     ;
 }
 
-void RadialBoostTask::execute()
+// this function is not correct -- needs to be fixed.
+void RadialBoostTask::createEvent()
 {
   
   if (reportStart(__FUNCTION__))
     ;
   incrementTaskExecuted();
   double beta, betax, betay;
-  double rx, ry, r, gx,gy, phi;
+  double rx=0;
+  double ry=0;
+  double r=0;
+  double gx=0;
+  double gy=0;
+  double phi=0;
   unsigned int nEventFilters    = eventFilters.size();
  // unsigned int nParticleFilters = particleFilters.size();
   Event & event = * eventStreams[0];
@@ -93,16 +101,11 @@ void RadialBoostTask::execute()
   for (unsigned int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     if (reportDebug(__FUNCTION__)) cout << "       iEventFilter: " << iEventFilter << endl;
-
     if (!eventFilters[iEventFilter]->accept(event)) continue;
     if (reportDebug(__FUNCTION__)) cout << "       iEventFilter: " << iEventFilter << " accepted event" << endl;
-
     incrementNEventsAccepted(iEventFilter);
-    CollisionGeometryGradientHistograms * cggh = (CollisionGeometryGradientHistograms *) inputHistograms[iEventFilter];
-
-    if (reportDebug(__FUNCTION__)) cout << "       cggh: " << cggh <<  endl;
-
-
+  //  CollisionGeometryGradientHistograms * cggh = (CollisionGeometryGradientHistograms *) inputHistograms[iEventFilter];
+  //  if (reportDebug(__FUNCTION__)) cout << "       cggh: " << cggh <<  endl;
     unsigned int nParticles = event.getNParticles();
     for (unsigned int iParticle=0; iParticle<nParticles; iParticle++)
       {
@@ -120,7 +123,7 @@ void RadialBoostTask::execute()
           cout << "       iParticle: " << iParticle <<  "  loop2" << endl
           << "              rx: " << rx << endl
           << "              ry: " << ry << endl;
-        cggh->getRadiusAndGradient(rx,ry, r,gx,gy);
+       // cggh->getRadiusAndGradient(rx,ry, r,gx,gy);
         if (reportDebug(__FUNCTION__))
           cout << "       iParticle: " << iParticle <<  "  loop3" << endl;
 //        phi = 0.0;
@@ -132,8 +135,8 @@ void RadialBoostTask::execute()
         double g = sqrt(gx*gx+gy*gy);
         betax = beta * gx/g;
         betay = beta * gy/g;
-        RadialBoostHistos * histos = (RadialBoostHistos *) histograms[0];
-        histos->fill(rx,ry,r,phi,beta,1.0);
+        //RadialBoostHistos * histos; // = (RadialBoostHistos *) histograms[0];
+        //histos->fill(rx,ry,r,phi,beta,1.0);
         particle.boost(betax,betay,0.0);
         }
       }

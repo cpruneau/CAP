@@ -18,8 +18,8 @@ add_library(CollGeom SHARED CollisionGeometry.cpp CollisionGeometryAnalyzer.cpp 
  CollisionGeometryMoments.cpp NucleusGenerator.cpp NucleonNucleonCollisionGenerator.cpp 
  G__CollGeom.cxx)
 
-target_link_libraries(CollGeom Base ${ROOT_LIBRARIES} ${EXTRA_LIBS} )
-target_include_directories(CollGeom  PUBLIC Base CollGeom ${EXTRA_INCLUDES} ) 
+target_link_libraries(CollGeom Base Particles ${ROOT_LIBRARIES} ${EXTRA_LIBS} )
+target_include_directories(CollGeom  PUBLIC Base  Particles  CollGeom ${EXTRA_INCLUDES} )
 
 # optimization for big histogram access within the pair inner loop
 # WARNING: the sumw2 structure is not used -> estimate uncertainties using sub-samples

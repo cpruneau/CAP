@@ -15,7 +15,7 @@ using CAP::CalibrationProducer;
 ClassImp(CalibrationProducer);
 
 CalibrationProducer::CalibrationProducer(const String & _name,
-                                         Configuration & _configuration)
+                                         const Configuration & _configuration)
 :
 Task(_name, _configuration, _reportLevel)
 {
@@ -25,13 +25,12 @@ Task(_name, _configuration, _reportLevel)
 void CalibrationProducer::setDefaultConfiguration()
 {
   Task::setDefaultConfiguration();
-  setParameter("CreateHistograms",        true);
-  setParameter("SaveHistograms",          true);
-  //setParameter("ForceHistogramsRewrite",  true);
-  addParameter("efficiencyOpt",           0);
-  addParameter("HistogramInputPath",          TString("./"));
+  addParameter("HistogramsCreate",        true);
+  addParameter("HistogramsExport",        true);
+  addParameter("EfficiencyOpt",           0);
+  addParameter("HistogramsImportPath",    TString("./"));
   addParameter("HistoRatioFileName",      TString("none"));
-  addParameter("HistogramOutputPath",         TString("./"));
+  addParameter("HistogramsExportPath",         TString("./"));
   addParameter("HistoEffFileName",        TString("none"));
 }
 
@@ -40,11 +39,11 @@ void CalibrationProducer::execute()
   if (reportStart(__FUNCTION__))
     ;
   incrementTaskExecuted();
-  bool    ForceHistogramsRewrite = configuration.getValueBool(  getName(),"ForceHistogramsRewrite");
-  int     efficiencyOpt          = configuration.getValueInt(   getName(),"efficiencyOpt");
-  String histoInputPath         = getValueString("HistogramInputPath");
+  bool   histosForceRewrite     = getValueBool(  "HistogramsForceRewrite");
+  int    efficiencyOpt          = getValueInt(   "EfficiencyOpt");
+  String histoInputPath         = getValueString("HistogramsImportPath");
   String histoRatioFileName     = getValueString("HistoRatioFileName");
-  String HistogramOutputPath        = getValueString("HistogramOutputPath");
+  String HistogramsExportPath   = getValueString("HistogramsExportPath");
   String histoEffFileName       = getValueString("HistoEffFileName");
     
   if (reportInfo(__FUNCTION__))
@@ -55,7 +54,7 @@ void CalibrationProducer::execute()
     << "           histoInputPath: " << histoInputPath  << endl
     << "       histoRatioFileName: " << histoRatioFileName << endl
     << "    histoDetectorFileName: " << histoDetectorFileName << endl
-    << "          HistogramOutputPath: " << HistogramOutputPath  << endl
+    << "          HistogramsExportPath: " << HistogramsExportPath  << endl
     << "         histoEffFileName: " << histoEffFileName  << endl;
     switch (efficiencyOpt)
       {
@@ -69,10 +68,10 @@ void CalibrationProducer::execute()
 
   TFile * inputFile = openRootFile(histoInputPath, histoRatioFileName, "READ");
   TFile * outputFile;
-  if (ForceHistogramsRewrite)
-    outputFile   = openRootFile(HistogramOutputPath,histoEffFileName,"RECREATE");
+  if (HistogramsForceRewrite)
+    outputFile   = openRootFile(HistogramsExportPath,histoEffFileName,"RECREATE");
   else
-    outputFile   = openRootFile(HistogramOutputPath,histoEffFileName,"NEW");
+    outputFile   = openRootFile(HistogramsExportPath,histoEffFileName,"NEW");
 
   if (!inputFile || !outputFile) return;
   
@@ -90,7 +89,7 @@ void CalibrationProducer::execute()
   }
 
   //if (!isTaskOk()) return;
-  outputCollection->saveHistograms(closureFile);
+  outputCollection->exportHistograms(closureFile);
   generatorFile->Close();
   detectorFile->Close();
   closureFile->Close();

@@ -18,11 +18,11 @@ using CAP::ParticlePairAnalyzer;
 ClassImp(ParticlePairAnalyzer);
 
 ParticlePairAnalyzer::ParticlePairAnalyzer(const String & _name,
-                                           Configuration & _configuration,
+                                           const Configuration & _configuration,
                                            vector<EventFilter*> & _eventFilters,
                                            vector<ParticleFilter*> & _particleFilters)
 :
-Task(_name, _configuration, _eventFilters, _particleFilters),
+EventTask(_name, _configuration, _eventFilters, _particleFilters),
 fillEta(true),
 fillY(false),
 fillP2(false)
@@ -37,12 +37,11 @@ fillP2(false)
 
 void ParticlePairAnalyzer::setDefaultConfiguration()
 {
-  //Task::setDefaultConfiguration();
-  setParameter("UseParticles",      true);
-  setParameter("CreateHistograms",  true);
-  setParameter("SaveHistograms",    true);
-  setParameter("UseEventStream0",   true);
-  setParameter("UseEventStream1",   false);
+  EventTask::setDefaultConfiguration();
+  addParameter("HistogramsCreate",  true);
+  addParameter("HistogramsExport",  true);
+  addParameter("EventsUseStream0",  true);
+  addParameter("EventsUseStream1",  false);
   addParameter("FillEta",           fillEta);
   addParameter("FillY",             fillY);
   addParameter("FillP2",            fillP2);
@@ -52,12 +51,12 @@ void ParticlePairAnalyzer::setDefaultConfiguration()
   addParameter("nBins_eTot",        100);
   addParameter("Min_eTot",          0.0);
   addParameter("Max_eTot",          100.0);
-  addParameter("nBins_pt",           18);
-  addParameter("Min_pt",           0.20);
-  addParameter("Max_pt",           2.00);
+  addParameter("nBins_pt",          18);
+  addParameter("Min_pt",            0.20);
+  addParameter("Max_pt",            2.00);
   addParameter("nBins_phi",          72);
   addParameter("Min_phi",           0.0);
-  addParameter("Max_phi",         TMath::TwoPi());
+  addParameter("Max_phi",           TMath::TwoPi());
   addParameter("nBins_eta",           20);
   addParameter("Min_eta",           -1.0);
   addParameter("Max_eta",            1.0);
@@ -91,19 +90,76 @@ void ParticlePairAnalyzer::setDefaultConfiguration()
   addParameter("Max_DeltaP",    4.0);
 }
 
+void ParticlePairAnalyzer::configure()
+{
+  EventTask::configure();
+  fillEta = getValueBool("FillEta");
+  fillY   = getValueBool("FillY");
+  fillP2  = getValueBool("FillP2");
+
+
+  if (reportInfo(__FUNCTION__))
+    {
+    cout << endl;
+    printItem("EventsAnalyze");
+    printItem("EventsUseStream0");
+    printItem("EventsUseStream1");
+    printItem("EventsUseStream2");
+    printItem("EventsUseStream3");
+    printItem("HistogramsCreate");
+    printItem("HistogramsExport");
+    printItem("fillEta",fillEta);
+    printItem("fillY",fillY);
+    printItem("fillP2",fillP2);
+    printItem("nBins_n1");
+    printItem("Min_n1");
+    printItem("Max_n1");
+    printItem("nBins_eTot");
+    printItem("Min_eTot");
+    printItem("Max_eTot");
+    printItem("nBins_pt");
+    printItem("Min_pt");
+    printItem("Max_pt");
+    printItem("nBins_eta");
+    printItem("Min_eta");
+    printItem("Max_eta");
+    printItem("nBins_y");
+    printItem("Min_y");
+    printItem("Max_y");
+    printItem("nBins_phi");
+    printItem("Min_phi");
+    printItem("Max_phi");
+    printItem("nBins_n2");
+    printItem("Min_n2");
+    printItem("Max_n2");
+    printItem("nBins_Dphi");
+    printItem("Min_Dphi");
+    printItem("Max_Dphi");
+    printItem("Width_Dphi");
+    printItem("nBins_Dphi_shft");
+    printItem("Min_Dphi_shft");
+    printItem("Max_Dphi_shft");
+    printItem("nBins_Deta");
+    printItem("Min_Deta");
+    printItem("Max_Deta");
+    printItem("Width_Deta");
+    printItem("nBins_Dy");
+    printItem("Min_Dy");
+    printItem("Max_Dy");
+    printItem("Width_Dy");
+    printItem("nBins_DeltaP");
+    printItem("Min_DeltaP");
+    printItem("Max_DeltaP");
+    cout << endl;
+    }
+}
+
 void ParticlePairAnalyzer::createHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  baseSingleHistograms.clear();
-  basePairHistograms.clear();
-  Configuration & configuration = getConfiguration();
-  Severity debugLevel = getSeverityLevel();
   String bn  = getName();
-  fillEta = getValueBool("FillEta");
-  fillY   = getValueBool("FillY");
-  fillP2  = getValueBool("FillP2");
-  
+
   HistogramGroup * histos;
   if (reportInfo(__FUNCTION__))
     {
@@ -116,6 +172,9 @@ void ParticlePairAnalyzer::createHistograms()
     cout << "fillP2........................: " << fillP2   << endl;
     cout << endl;
     }
+  histogramManager.addSet("Pair-1");
+  histogramManager.addSet("Pair-2");
+
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
     String efn = eventFilters[iEventFilter]->getName();
@@ -126,7 +185,7 @@ void ParticlePairAnalyzer::createHistograms()
       if (reportDebug(__FUNCTION__)) cout << "Particle filter (Singles):" << pfn << endl;
       histos = new ParticleSingleHistos(this,createName(bn,efn,pfn),configuration);
       histos->createHistograms();
-      baseSingleHistograms.push_back(histos);
+      histogramManager.addGroupInSet(0,histos);
       }
 
     // pairs
@@ -139,7 +198,7 @@ void ParticlePairAnalyzer::createHistograms()
         if (reportDebug(__FUNCTION__)) cout << "Particle pairs with filter: " << pfn1 << " & " << pfn2 << endl;
         histos = new ParticlePairHistos(this,createName(bn,efn,pfn1,pfn2),configuration);
         histos->createHistograms();
-        basePairHistograms.push_back(histos);
+        histogramManager.addGroupInSet(1,histos);
         }
       }
     }
@@ -147,21 +206,14 @@ void ParticlePairAnalyzer::createHistograms()
     ;
 }
 
-void ParticlePairAnalyzer::loadHistograms(TFile * inputFile)
+void ParticlePairAnalyzer::importHistograms(TFile & inputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (!inputFile)
-    {
-    if (reportError(__FUNCTION__)) cout << "Given inputFile pointer is null" << endl;
-    postTaskError();
-    return;
-    }
-  baseSingleHistograms.clear();
-  basePairHistograms.clear();
-  Configuration & configuration = getConfiguration();
   String bn  = getName();
   HistogramGroup * histos;
+  histogramManager.addSet("Pair-1");
+  histogramManager.addSet("Pair-2");
 
   fillEta = getValueBool("FillEta");
   fillY   = getValueBool("FillY");
@@ -187,8 +239,8 @@ void ParticlePairAnalyzer::loadHistograms(TFile * inputFile)
       String pfn = particleFilters[iParticleFilter]->getName();
       if (reportDebug(__FUNCTION__)) cout << "Particle filter (Singles):" << pfn << endl;
       histos = new ParticleSingleHistos(this,createName(bn,efn,pfn),configuration);
-      histos->loadHistograms(inputFile);
-      baseSingleHistograms.push_back(histos);
+      histos->importHistograms(inputFile);
+      histogramManager.addGroupInSet(0,histos);
       }
 
     // pairs
@@ -200,8 +252,8 @@ void ParticlePairAnalyzer::loadHistograms(TFile * inputFile)
         String pfn2 = particleFilters[iParticleFilter2]->getName();
         if (reportDebug(__FUNCTION__)) cout << "Particle pairs with filter: " << pfn1 << " & " << pfn2 << endl;
         histos = new ParticlePairHistos(this,createName(bn,efn,pfn1,pfn2),configuration);
-        histos->loadHistograms(inputFile);
-        basePairHistograms.push_back(histos);
+        histos->importHistograms(inputFile);
+        histogramManager.addGroupInSet(1,histos);
         }
       }
     }
@@ -210,7 +262,7 @@ void ParticlePairAnalyzer::loadHistograms(TFile * inputFile)
 }
 
 
-void ParticlePairAnalyzer::execute()
+void ParticlePairAnalyzer::analyzeEvent()
 {
   incrementTaskExecuted();
   Event & event = *eventStreams[0];
@@ -232,7 +284,7 @@ void ParticlePairAnalyzer::execute()
       eventFilterPassed.push_back(iEventFilter);
       analyzeThisEvent = true;
       }
-    //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 2 --" << endl;
+    //if (reportInfo("ParticlePairAnalyzer",getName(),"HistogramsCreate()")) cout << " -- 2 --" << endl;
     if (!analyzeThisEvent) return;
     if (nParticles<2) return;
 
@@ -240,13 +292,13 @@ void ParticlePairAnalyzer::execute()
     Factory<ParticleDigit> * factory = ParticleDigit::getFactory();
     factory->reset();
 
-    //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 4 --" << endl;
+    //if (reportInfo("ParticlePairAnalyzer",getName(),"HistogramsCreate()")) cout << " -- 4 --" << endl;
 
     // produce sublists with ParticleDigits so we do not have to digitize too many
     // times..
     // The histo instance fetched here is used for digitization only. So
     // we use instance [0];
-    ParticlePairHistos * histos = (ParticlePairHistos *) basePairHistograms[0];
+    ParticlePairHistos * histos = (ParticlePairHistos *) histogramManager.getGroup(0,0);
     unsigned int nParticleFilters = particleFilters.size();
     for (unsigned int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ ) filteredParticles[iParticleFilter].clear();
     for (unsigned int iParticle=0; iParticle<nParticles; iParticle++)
@@ -284,15 +336,15 @@ void ParticlePairAnalyzer::execute()
             digitized = true; // so no need to digitize this particle again..
             }
           filteredParticles[iParticleFilter].push_back(pd);
-          //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 7 --" << endl;
+          //if (reportInfo("ParticlePairAnalyzer",getName(),"HistogramsCreate()")) cout << " -- 7 --" << endl;
           } // particle accepted by filter
         } //particle loop
       } // particle filter loop
-    //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 8 --" << endl;
+    //if (reportInfo("ParticlePairAnalyzer",getName(),"HistogramsCreate()")) cout << " -- 8 --" << endl;
     // use the filtered particles to fill the histos for the accepted event filters
     for (unsigned int jEventFilter=0; jEventFilter<eventFilterPassed.size(); jEventFilter++ )
       {
-      //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 9 --" << endl;
+      //if (reportInfo("ParticlePairAnalyzer",getName(),"HistogramsCreate()")) cout << " -- 9 --" << endl;
       unsigned int  iEventFilter = eventFilterPassed[jEventFilter];
       unsigned int  baseSingle   = iEventFilter*nParticleFilters;
       unsigned int  basePair     = iEventFilter*nParticleFilters*nParticleFilters;
@@ -300,17 +352,17 @@ void ParticlePairAnalyzer::execute()
       for (unsigned int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
         {
         incrementNParticlesAccepted(iEventFilter,iParticleFilter1);
-        //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 10 --" << endl;
+        //if (reportInfo("ParticlePairAnalyzer",getName(),"HistogramsCreate()")) cout << " -- 10 --" << endl;
         index = baseSingle + iParticleFilter1;
-        ParticleSingleHistos * histos = (ParticleSingleHistos *) baseSingleHistograms[index];
+        ParticleSingleHistos * histos = (ParticleSingleHistos *) histogramManager.getGroup(0,index);
         histos->fill(filteredParticles[iParticleFilter1],1.0);
         for (unsigned int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
           {
-          //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 11 --" << endl;
+          //if (reportInfo("ParticlePairAnalyzer",getName(),"HistogramsCreate()")) cout << " -- 11 --" << endl;
           index = basePair + iParticleFilter1*nParticleFilters + iParticleFilter2;
-          ParticlePairHistos * histos = (ParticlePairHistos *) basePairHistograms[index];
+          ParticlePairHistos * histos = (ParticlePairHistos *)  histogramManager.getGroup(1,index);
           histos->fill(filteredParticles[iParticleFilter1],filteredParticles[iParticleFilter2],iParticleFilter1==iParticleFilter2,1.0);
-          //if (reportInfo("ParticlePairAnalyzer",getName(),"createHistograms()")) cout << " -- 13 --" << endl;
+          //if (reportInfo("ParticlePairAnalyzer",getName(),"HistogramsCreate()")) cout << " -- 13 --" << endl;
           }
         }
       }
@@ -333,7 +385,7 @@ void ParticlePairAnalyzer::execute()
             {
             incrementNParticlesAccepted(iEventFilter,iParticleFilter1);
             index = baseSingle + iParticleFilter1;
-            ParticleSingleHistos * histos = (ParticleSingleHistos *) baseSingleHistograms[index];
+            ParticleSingleHistos * histos = (ParticleSingleHistos *)  histogramManager.getGroup(0,index);
             histos->fill(particle1,1.0);
             }
           }
@@ -350,7 +402,7 @@ void ParticlePairAnalyzer::execute()
               if (accept1 & accept2)
                 {
                 index = basePair + iParticleFilter1*nParticleFilters + iParticleFilter2;
-                ParticlePairHistos * histos = (ParticlePairHistos *) basePairHistograms[index];
+                ParticlePairHistos * histos = (ParticlePairHistos *)  histogramManager.getGroup(1,index);
                 histos->fill(particle1, particle2,1.0);
                 }
               }
@@ -372,7 +424,7 @@ void ParticlePairAnalyzer::scaleHistograms()
   int index = 0;
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
-    long nAccepted = getNEventsAcceptedReset();
+    long nAccepted = getAcceptedEventCount();
     if (nAccepted>1)
       {
 
@@ -380,14 +432,14 @@ void ParticlePairAnalyzer::scaleHistograms()
       for (int iParticleFilter=0; iParticleFilter<nParticleFilters; iParticleFilter++ )
         {
         index = iEventFilter*nParticleFilters + iParticleFilter;
-        baseSingleHistograms[index]->scale(scalingFactor);
+        histogramManager.getGroup(0,index)->scale(scalingFactor);
         }
       for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
         {
         for (int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++ )
           {
           index = iEventFilter*nParticleFilters*nParticleFilters + iParticleFilter1*nParticleFilters + iParticleFilter2;
-          basePairHistograms[index]->scale(scalingFactor);
+          histogramManager.getGroup(1,index)->scale(scalingFactor);
           }
         }
       }
@@ -410,11 +462,10 @@ void ParticlePairAnalyzer::createDerivedHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  derivedSingleHistograms.clear();
-  derivedPairHistograms.clear();
-  Configuration & configuration = getConfiguration();
   String bn  = getName();
   HistogramGroup * histos;
+  histogramManager.addSet("PairDerived");
+
   if (reportInfo(__FUNCTION__))
     {
     cout << endl;
@@ -434,7 +485,7 @@ void ParticlePairAnalyzer::createDerivedHistograms()
       if (reportDebug(__FUNCTION__)) cout << "Particle with filter: " << pfn1 << endl;
       histos = new ParticleSingleDerivedHistos(this,createName(bn,efn,pfn1),configuration);
       histos->createHistograms();
-      derivedSingleHistograms.push_back(histos);
+      histogramManager.addGroupInSet(2,histos);
       }
     // pairs
     for (int iParticleFilter1=0; iParticleFilter1<nParticleFilters; iParticleFilter1++ )
@@ -446,7 +497,7 @@ void ParticlePairAnalyzer::createDerivedHistograms()
         if (reportDebug(__FUNCTION__)) cout << "Particle pairs with filter: " << pfn1 << " & " << pfn2 << endl;
         histos = new ParticlePairDerivedHistos(this,createName(bn,efn,pfn1,pfn2),configuration);
         histos->createHistograms();
-        derivedPairHistograms.push_back(histos);
+        histogramManager.addGroupInSet(3,histos);
         }
       }
     }
@@ -454,7 +505,7 @@ void ParticlePairAnalyzer::createDerivedHistograms()
     ;
 }
 
-void ParticlePairAnalyzer::loadDerivedHistograms(TFile * inputFile __attribute__((unused)))
+void ParticlePairAnalyzer::importDerivedHistograms(TFile & inputFile __attribute__((unused)))
 {
 
 }
@@ -463,7 +514,6 @@ void ParticlePairAnalyzer::calculateDerivedHistograms()
 {
   if (reportStart(__FUNCTION__))
     ;
-  Configuration & configuration = getConfiguration();
   bool binCorrPP = getValueDouble("binCorrPP");
 
   if (reportInfo(__FUNCTION__))
@@ -472,16 +522,13 @@ void ParticlePairAnalyzer::calculateDerivedHistograms()
     cout << "Computing derived histograms for.......: " << endl;
     cout << "nEventFilters..........................: " << nEventFilters << endl;
     cout << "nParticleFilters.......................: " << nParticleFilters << endl;
-    cout << "nSingleHistos..........................: " << getNBaseSingleHistograms() << endl;
-    cout << "nPairHistos............................: " << getNBasePairHistograms() << endl;
-    cout << "nDerivedHistos.........................: " << getNDerivedPairHistograms() << endl;
     }
   ParticleSingleHistos        * bSingleHistos1;
   ParticleSingleHistos        * bSingleHistos2;
-  ParticlePairHistos    * bPairHistos;
+  ParticlePairHistos          * bPairHistos;
   ParticleSingleDerivedHistos * dSingleHistos1;
   ParticleSingleDerivedHistos * dSingleHistos2;
-  ParticlePairDerivedHistos * dPairHistos;
+  ParticlePairDerivedHistos   * dPairHistos;
 
   for (int iEventFilter=0; iEventFilter<nEventFilters; iEventFilter++ )
     {
@@ -498,9 +545,9 @@ void ParticlePairAnalyzer::calculateDerivedHistograms()
       if (reportDebug(__FUNCTION__)) cout << "  Single: iParticleFilter1:" << iParticleFilter1 << " named:" << pfn1 << endl;
       index = baseSingle+iParticleFilter1;
       //if (reportDebug(__FUNCTION__))   cout << " (1) iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << " with index:" << index << endl;
-      bSingleHistos1 = (ParticleSingleHistos *) baseSingleHistograms[index];
+      bSingleHistos1 = (ParticleSingleHistos *) histogramManager.getGroup(0,index);
       //if (reportDebug(__FUNCTION__))   cout << " (1a) iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << " with index:" << index << endl;
-      dSingleHistos1 = (ParticleSingleDerivedHistos *) derivedSingleHistograms[index];
+      dSingleHistos1 = (ParticleSingleDerivedHistos *) histogramManager.getGroup(2,index);
       //if (reportDebug(__FUNCTION__))   cout << " (2) iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << " with index:" << index << endl;
       dSingleHistos1->calculateDerivedHistograms(bSingleHistos1);
       //if (reportDebug(__FUNCTION__))   cout << " (3) iParticleFilter1:" << iParticleFilter1 << " named " << pfn1 << " with index:" << index << endl;
@@ -512,19 +559,19 @@ void ParticlePairAnalyzer::calculateDerivedHistograms()
       String pfn1 = particleFilters[iParticleFilter1]->getName();
       if (reportDebug(__FUNCTION__)) cout << "  Pair: iParticleFilter1:" << iParticleFilter1 << " named:" << pfn1 << endl;
       index = baseSingle+iParticleFilter1;
-      bSingleHistos1 = (ParticleSingleHistos *) baseSingleHistograms[index];
-      dSingleHistos1 = (ParticleSingleDerivedHistos *) derivedSingleHistograms[index];
+      bSingleHistos1 = (ParticleSingleHistos *) histogramManager.getGroup(0,index);
+      dSingleHistos1 = (ParticleSingleDerivedHistos *) histogramManager.getGroup(2,index);
 
       for (int iParticleFilter2=0; iParticleFilter2<nParticleFilters; iParticleFilter2++)
         {
         String pfn2 = particleFilters[iParticleFilter2]->getName();
         if (reportDebug(__FUNCTION__)) cout << "  Pair: iParticleFilter2:" << iParticleFilter2 << " named:" << pfn2 << endl;
         index = baseSingle+iParticleFilter2;
-        bSingleHistos2 = (ParticleSingleHistos *) baseSingleHistograms[index];
-        dSingleHistos2 = (ParticleSingleDerivedHistos *) derivedSingleHistograms[index];
+        bSingleHistos2 = (ParticleSingleHistos *) histogramManager.getGroup(0,index);
+        dSingleHistos2 = (ParticleSingleDerivedHistos *) histogramManager.getGroup(2,index);
         index = basePair+iParticleFilter1*nParticleFilters+iParticleFilter2;
-        bPairHistos = (ParticlePairHistos *) basePairHistograms[index];
-        dPairHistos = (ParticlePairDerivedHistos *) derivedPairHistograms[index];
+        bPairHistos = (ParticlePairHistos *) histogramManager.getGroup(1,index);
+        dPairHistos = (ParticlePairDerivedHistos *) histogramManager.getGroup(3,index);
         if (reportDebug(__FUNCTION__))
           {
           cout << endl;

@@ -9,16 +9,17 @@
  * Author: Claude Pruneau,   04/01/2022
  *
  * *********************************************************************/
-#include "HistogramCollection.hpp"
+//#include "HistogramCollection.hpp"
 #include "ClosureIterator.hpp"
 #include "ClosureCalculator.hpp"
 using CAP::ClosureIterator;
+using CAP::String;
 
 ClassImp(ClosureIterator);
 
 
 ClosureIterator::ClosureIterator(const String & _name,
-                                 Configuration & _configuration)
+                                 const Configuration & _configuration)
 :
 Task(_name,_configuration)
 {
@@ -29,12 +30,11 @@ void ClosureIterator::setDefaultConfiguration()
 {
   Task::setDefaultConfiguration();
   String none  = "none";
-  setParameter("CreateHistograms",        true);
-  setParameter("LoadHistograms",          true);
-  setParameter("SaveHistograms",          true);
-  setParameter("AppendedString",          TString("Closure"));
-  //setParameter("ForceHistogramsRewrite",  true);
-  setParameter("SelectedMethod",          1);
+  addParameter("HistogramsCreate",        true);
+  addParameter("HistogramsImport",          true);
+  addParameter("HistogramsExport",          true);
+  addParameter("AppendedString",          TString("Closure"));
+  addParameter("SelectedMethod",          1);
   generateKeyValuePairs("IncludedPattern",none,20);
   generateKeyValuePairs("ExcludedPattern",none,20);
 }
@@ -51,18 +51,18 @@ String  substitute(const String inputString, const String subString, const Strin
 void ClosureIterator::execute()
 {
   String none  = "none";
-  String appendedString      = getValueString("AppendedString");
-  String HistogramInputPath      = getValueString("HistogramInputPath");
-  String HistogramOutputPath = getValueString("HistogramOutputPath");
-  bool ForceHistogramsRewrite = getValueBool(  "ForceHistogramsRewrite");
-  int selectedMethod          = getValueInt(   "SelectedMethod");
+  String appendedString        = getValueString("AppendedString");
+  String histogramsImportPath  = getValueString("HistogramsImportPath");
+  String histogramsExportPath  = getValueString("HistogramsExportPath");
+  bool histosForceRewrite      = getValueBool(  "HistogramsForceRewrite");
+  int selectedMethod           = getValueInt(   "SelectedMethod");
 
   unsigned int nSubTasks = subTasks.size();
   if (reportDebug(__FUNCTION__))  cout << "SubTasks Count: " << nSubTasks  << endl;
   for (unsigned int  iTask=0; iTask<nSubTasks; iTask++)
     {
-    Task & subTask   = *subTasks[iTask];
-    String taskName = subTask.getName();
+    Task & subTask     = *subTasks[iTask];
+    String subTaskName = subTask.getName();
     VectorString  includedPatterns = getSelectedValues("IncludedPattern",none);
     VectorString  excludedPatterns = getSelectedValues("ExcludedPattern",none);
     includedPatterns.push_back("XXXXX");
@@ -80,7 +80,7 @@ void ClosureIterator::execute()
         cout << " k:" << k << "  Exclude: " << excludedPatterns[k] << endl;
         }
       }
-    VectorString  allFilesToProcess = listFilesInDir(HistogramInputPath,includedPatterns,excludedPatterns);
+    VectorString  allFilesToProcess = listFilesInDir(histogramsImportPath,includedPatterns,excludedPatterns);
     int nFilesToProcess = allFilesToProcess.size();
     if (nFilesToProcess<1)
       {
@@ -101,11 +101,11 @@ void ClosureIterator::execute()
       cout << endl;
       cout << " ===========================================================" << endl;
       cout << " ===========================================================" << endl;
-      cout << "             SubTask Name: " << taskName  << endl;
-      cout << "           HistogramInputPath: " << HistogramInputPath  << endl;
-      cout << "      HistogramOutputPath: " << HistogramOutputPath  << endl;
-      cout << "          nFilesToProcess: " << nFilesToProcess << endl;
-      cout << "           appendedString: " << appendedString << endl;
+      cout << " SubTask Name................: " << getName()  << endl;
+      cout << " HistogramsImportPath........: " << histogramsImportPath  << endl;
+      cout << " HistogramsExportPath........: " << histogramsExportPath  << endl;
+      cout << " nFilesToProcess.............: " << nFilesToProcess << endl;
+      cout << " appendedString..............: " << appendedString << endl;
       cout << " ===========================================================" << endl;
       cout << " ===========================================================" << endl;
       }
@@ -127,16 +127,16 @@ void ClosureIterator::execute()
         cout << "    Closure File Name: " << histoClosureFileName << endl;
         }
       Configuration closureConfig;
-      closureConfig.setParameter("HistogramInputPath",     HistogramInputPath);
-      closureConfig.setParameter("HistogramOutputPath",    HistogramOutputPath);
-//      closureConfig.setParameter("HistoModelDataName",     histoModelDataName);
-//      closureConfig.setParameter("HistoAnalyzerName",      histoAnalyzerName);
-      closureConfig.setParameter("AppendedString",         appendedString);
-      closureConfig.setParameter("ForceHistogramsRewrite", ForceHistogramsRewrite);
-      closureConfig.setParameter("SelectedMethod",         selectedMethod);
-      closureConfig.setParameter("HistoGeneratorFileName", histoGeneratorFileName);
-      closureConfig.setParameter("HistoDetectorFileName",  histoDetectorFileName);
-      closureConfig.setParameter("HistoClosureFileName",   histoClosureFileName);
+      closureConfig.addParameter("HistogramsImportPath",   histogramsImportPath);
+      closureConfig.addParameter("HistogramsExportPath",   histogramsExportPath);
+//      closureConfig.addParameter("HistoModelDataName",   histoModelDataName);
+//      closureConfig.addParameter("HistoAnalyzerName",    histoAnalyzerName);
+      closureConfig.addParameter("AppendedString",         appendedString);
+      closureConfig.addParameter("HistogramsForceRewrite", histosForceRewrite);
+      closureConfig.addParameter("SelectedMethod",         selectedMethod);
+      closureConfig.addParameter("HistoGeneratorFileName", histoGeneratorFileName);
+      closureConfig.addParameter("HistoDetectorFileName",  histoDetectorFileName);
+      closureConfig.addParameter("HistoClosureFileName",   histoClosureFileName);
       ClosureCalculator calculator("Closure", closureConfig);
       calculator.execute();
       } // iFile loop

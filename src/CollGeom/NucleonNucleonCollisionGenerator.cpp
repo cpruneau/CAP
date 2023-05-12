@@ -16,11 +16,11 @@ using CAP::NucleonNucleonCollisionGenerator;
 ClassImp(NucleonNucleonCollisionGenerator);
 
 NucleonNucleonCollisionGenerator::NucleonNucleonCollisionGenerator(const String & _name,
-                                                                   Configuration & _configuration,
+                                                                   const Configuration & _configuration,
                                                                    vector<EventFilter*>& _eventFilters,
                                                                    vector<ParticleFilter*>&_particleFilters)
 :
-Task(_name, _configuration, _eventFilters, _particleFilters)
+EventTask(_name, _configuration, _eventFilters, _particleFilters)
 {
   appendClassName("NucleonNucleonCollisionGenerator");
 }

@@ -10,7 +10,6 @@
  *
  * *********************************************************************/
 #include "HistogramCollection.hpp"
-
 #include "TKey.h"
 
 using CAP::HistogramCollection;
@@ -277,14 +276,13 @@ void HistogramCollection::addHistogramsToExtList(TList *list)
 //!
 // Save HistogramGroup to file
 //!
-void HistogramCollection::saveHistograms(TFile * outputFile)
+void HistogramCollection::exportHistograms(TFile & outputFile)
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (!ptrFileExist(__FUNCTION__, outputFile)) return;
-  if (reportDebug(__FUNCTION__)) cout << "    Saving histograms to file: " << outputFile->GetName()  << endl;
+  if (reportDebug(__FUNCTION__)) cout << "    Saving histograms to file: " << outputFile.GetName()  << endl;
   if (reportDebug(__FUNCTION__)) cout << " Number of histograms to save: " <<  size() << endl;
-  outputFile->cd();
+  outputFile.cd();
   for (unsigned int iObject=0; iObject<size(); iObject++)
     {
     if (reportDebug(__FUNCTION__)) cout << " Saving iObject: " << iObject << " named: " <<  objects[iObject]->GetName() << endl;
@@ -293,6 +291,28 @@ void HistogramCollection::saveHistograms(TFile * outputFile)
   if (reportEnd(__FUNCTION__))
     ;
 }
+
+//!
+// Save HistogramGroup to file
+//!
+void HistogramCollection::exportHistograms(ofstream & outputFile __attribute__((unused)) )
+{
+  if (reportStart(__FUNCTION__))
+    ;
+  if (reportDebug(__FUNCTION__)) cout << " Number of histograms to save: " <<  size() << endl;
+
+  if (reportWarning(__FUNCTION__)) cout << "Function not implemented yet." << endl;
+
+
+//  for (unsigned int iObject=0; iObject<size(); iObject++)
+//    {
+//    if (reportDebug(__FUNCTION__)) cout << " Saving iObject: " << iObject << " named: " <<  objects[iObject]->GetName() << endl;
+//    objects[iObject]->Write();
+//    }
+  if (reportEnd(__FUNCTION__))
+    ;
+}
+
 
 //!
 //! Scale selected histograms by the given factor
@@ -314,18 +334,18 @@ void HistogramCollection::scale(double factor)
     { }
 }
 
-int  HistogramCollection::loadCollection(TFile * inputFile)
+int  HistogramCollection::loadCollection(TFile & inputFile) throw (HistogramException)  
 {
   if (reportStart(__FUNCTION__))
     ;
-  if (!ptrFileExist(inputFile)) return -1;
-  TIter keyList(inputFile->GetListOfKeys());
+  TIter keyList(inputFile.GetListOfKeys());
   TKey *key;
   while ((key = (TKey*)keyList()))
     {
     TClass *cl = gROOT->GetClass(key->GetClassName());
     if (!cl->InheritsFrom("TH1")) continue;
     TH1 *h = (TH1*)key->ReadObj();
+    if (!h) throw HistogramException("Object","Object not read","HistogramCollection::loadCollection()");
     append(h);
     }
   if (reportEnd(__FUNCTION__))
@@ -983,8 +1003,8 @@ void HistogramCollection::differenceHistos(TH1 *h, TH1 *hRef, TH1 *hDiff, bool c
       vRef     = hRef->GetBinContent(ix);
       evRef    = hRef->GetBinError(ix);
       vDiff    = v - vRef;
-      evDiffSq = correlatedUncertainties ?  TMath::Abs(ev*ev - evRef*evRef) : ev*ev + evRef*evRef;
-      evDiff   = TMath::Sqrt(evDiffSq);
+      evDiffSq = correlatedUncertainties ?  Math::absolute(ev*ev - evRef*evRef) : ev*ev + evRef*evRef;
+      evDiff   = sqrt(evDiffSq);
       hDiff->SetBinContent(ix, vDiff);
       hDiff->SetBinError(ix, evDiff);
       }
@@ -1002,8 +1022,8 @@ void HistogramCollection::differenceHistos(TH1 *h, TH1 *hRef, TH1 *hDiff, bool c
         vRef     = hRef->GetBinContent(ix,iy);
         evRef    = hRef->GetBinError(ix,iy);
         vDiff    = v - vRef;
-        evDiffSq = correlatedUncertainties ?  TMath::Abs(ev*ev - evRef*evRef) : ev*ev + evRef*evRef;
-        evDiff   = TMath::Sqrt(evDiffSq);
+        evDiffSq = correlatedUncertainties ?  Math::absolute(ev*ev - evRef*evRef) : ev*ev + evRef*evRef;
+        evDiff   = sqrt(evDiffSq);
         hDiff->SetBinContent(ix,iy, vDiff);
         hDiff->SetBinError(ix,iy, evDiff);
         }
@@ -1025,8 +1045,8 @@ void HistogramCollection::differenceHistos(TH1 *h, TH1 *hRef, TH1 *hDiff, bool c
           vRef     = hRef->GetBinContent(ix,iy,iz);
           evRef    = hRef->GetBinError(ix,iy,iz);
           vDiff    = v - vRef;
-          evDiffSq = correlatedUncertainties ?  TMath::Abs(ev*ev - evRef*evRef) : ev*ev + evRef*evRef;
-          evDiff   = TMath::Sqrt(evDiffSq);
+          evDiffSq = correlatedUncertainties ?  Math::absolute(ev*ev - evRef*evRef) : ev*ev + evRef*evRef;
+          evDiff   = sqrt(evDiffSq);
           hDiff->SetBinContent(ix,iy,iz, vDiff);
           hDiff->SetBinError(ix,iy,iz, evDiff);
           }
@@ -1043,8 +1063,8 @@ void HistogramCollection::differenceHistos(TH1 *h, TH1 *hRef, TH1 *hDiff, bool c
       vRef     = hRef->GetBinContent(ix);
       evRef    = hRef->GetBinError(ix);
       vDiff    = v - vRef;
-      evDiffSq = correlatedUncertainties ?  TMath::Abs(ev*ev - evRef*evRef) : ev*ev + evRef*evRef;
-      evDiff   = TMath::Sqrt(evDiffSq);
+      evDiffSq = correlatedUncertainties ?  Math::absolute(ev*ev - evRef*evRef) : ev*ev + evRef*evRef;
+      evDiff   = sqrt(evDiffSq);
       hDiff->SetBinContent(ix, vDiff);
       hDiff->SetBinError(ix, evDiff);
       ((TProfile*)hDiff)->SetBinEntries(ix, 1.0);
@@ -1063,8 +1083,8 @@ void HistogramCollection::differenceHistos(TH1 *h, TH1 *hRef, TH1 *hDiff, bool c
         vRef     = hRef->GetBinContent(ix,iy);
         evRef    = hRef->GetBinError(ix,iy);
         vDiff    = v - vRef;
-        evDiffSq = correlatedUncertainties ?  TMath::Abs(ev*ev - evRef*evRef) : ev*ev + evRef*evRef;
-        evDiff   = TMath::Sqrt(evDiffSq);
+        evDiffSq = correlatedUncertainties ?  Math::absolute(ev*ev - evRef*evRef) : ev*ev + evRef*evRef;
+        evDiff   = sqrt(evDiffSq);
         hDiff->SetBinContent(ix,iy, vDiff);
         hDiff->SetBinError(ix,iy, evDiff);
         //((TProfile*)hDiff)->SetBinEntries(ix,iy, 1.0);
@@ -1099,8 +1119,8 @@ void HistogramCollection::ratioHistos(TH1 *h, TH1 *hRef, TH1 *hRatio, bool corre
       if (vRef)
         {
         vRatio     = v/vRef;
-        revRatioSq = correlatedUncertainties ? TMath::Abs(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
-        revRatio   = TMath::Sqrt(revRatioSq);
+        revRatioSq = correlatedUncertainties ? Math::absolute(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
+        revRatio   = sqrt(revRatioSq);
         evRatio    = revRatio*vRatio;
         hRatio->SetBinContent(ix, vRatio);
         hRatio->SetBinError(ix, evRatio);
@@ -1124,8 +1144,8 @@ void HistogramCollection::ratioHistos(TH1 *h, TH1 *hRef, TH1 *hRatio, bool corre
         if (vRef)
           {
           vRatio     = v/vRef;
-          revRatioSq = correlatedUncertainties ? TMath::Abs(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
-          revRatio   = TMath::Sqrt(revRatioSq);
+          revRatioSq = correlatedUncertainties ? Math::absolute(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
+          revRatio   = sqrt(revRatioSq);
           evRatio    = revRatio*vRatio;
           hRatio->SetBinContent(ix,iy, vRatio);
           hRatio->SetBinError(ix,iy, evRatio);
@@ -1153,8 +1173,8 @@ void HistogramCollection::ratioHistos(TH1 *h, TH1 *hRef, TH1 *hRatio, bool corre
           if (vRef)
             {
             vRatio     = v/vRef;
-            revRatioSq = correlatedUncertainties ? TMath::Abs(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
-            revRatio   = TMath::Sqrt(revRatioSq);
+            revRatioSq = correlatedUncertainties ? Math::absolute(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
+            revRatio   = sqrt(revRatioSq);
             evRatio    = revRatio*vRatio;
             hRatio->SetBinContent(ix,iy,iz, vRatio);
             hRatio->SetBinError(ix,iy,iz, evRatio);
@@ -1177,8 +1197,8 @@ void HistogramCollection::ratioHistos(TH1 *h, TH1 *hRef, TH1 *hRatio, bool corre
       if (vRef)
         {
         vRatio     = v/vRef;
-        revRatioSq = correlatedUncertainties ? TMath::Abs(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
-        revRatio   = TMath::Sqrt(revRatioSq);
+        revRatioSq = correlatedUncertainties ? Math::absolute(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
+        revRatio   = sqrt(revRatioSq);
         evRatio    = revRatio*vRatio;
         hRatio->SetBinContent(ix, vRatio);
         hRatio->SetBinError(ix, evRatio);
@@ -1203,8 +1223,8 @@ void HistogramCollection::ratioHistos(TH1 *h, TH1 *hRef, TH1 *hRatio, bool corre
         if (vRef)
           {
           vRatio     = v/vRef;
-          revRatioSq = correlatedUncertainties ? TMath::Abs(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
-          revRatio   = TMath::Sqrt(revRatioSq);
+          revRatioSq = correlatedUncertainties ? Math::absolute(rev*rev - revRef*revRef) : rev*rev + revRef*revRef;
+          revRatio   = sqrt(revRatioSq);
           evRatio    = revRatio*vRatio;
           hRatio->SetBinContent(ix, vRatio);
           hRatio->SetBinError(ix, evRatio);
@@ -2112,9 +2132,9 @@ void HistogramCollection::calculateBf(const TH2 *n2, const TH2 *n1_1, const TH2 
       double ve = n2->GetBinError(ix+1,iy+1);
 
       double v12 = v/n12_int;
-      double v12e = v12*TMath::Sqrt(ve/v*ve/v+n12_inter*n12_inter);
+      double v12e = v12*sqrt(ve/v*ve/v+n12_inter*n12_inter);
       double v21 = v/n11_int;
-      double v21e = v21*TMath::Sqrt(ve/v*ve/v+n11_inter*n11_inter);
+      double v21e = v21*sqrt(ve/v*ve/v+n11_inter*n11_inter);
 
       bf_12->SetBinContent(ix+1,iy+1,v12);
       bf_12->SetBinError(ix+1,iy+1,v12e);
@@ -2658,20 +2678,10 @@ void HistogramCollection::setHistogram(TH3 * h, double v, double ev)
     }
 }
 
-TH1 * HistogramCollection::loadH1(TFile * inputFile,const String & histoName)
+TH1 * HistogramCollection::loadH1(TFile & inputFile,const String & histoName) throw (HistogramException)
 {
-
-  if (!ptrFileExist(inputFile)) return nullptr;
-  TH1* h = (TH1*) inputFile->Get(histoName);
-  if (!h)
-    {
-    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << histoName << endl;
-    return nullptr;
-    }
-  else
-    {
-    if (reportDebug(__FUNCTION__)) cout << "Loaded histogram named: "  << histoName << endl;
-    }
+  TH1* h = (TH1*) inputFile.Get(histoName);
+  if (!h) throw HistogramException(histoName,"Histogram not found/loaded","HistogramCollection::loadH1");
   append(h);
   return h;
 }
@@ -2679,104 +2689,50 @@ TH1 * HistogramCollection::loadH1(TFile * inputFile,const String & histoName)
 ///Load the given 1D histogram (name) from the given TFile
 ///No test is //done to verify that the file is properly opened.
 
-TH2 * HistogramCollection::loadH2(TFile * inputFile,const String & histoName)
+TH2 * HistogramCollection::loadH2(TFile & inputFile,const String & histoName) throw (HistogramException)
 {
-
-  if (!ptrFileExist(inputFile)) return nullptr;
-  TH2* h = (TH2*) inputFile->Get(histoName);
-  if (!h)
-    {
-    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << histoName << endl;
-    return nullptr;
-    }
-  else
-    {
-    if (reportDebug(__FUNCTION__)) cout << "Loaded histogram named: "  << histoName << endl;
-    }
+  TH2* h = (TH2*) inputFile.Get(histoName);
+  if (!h) throw HistogramException(histoName,"Histogram not found/loaded","HistogramCollection::loadH2");
   append(h);
   return h;
 }
 
 ///Load the given 3D histogram (name) from the given TFile
 ///No test is //done to verify that the file is properly opened.
-TH3 * HistogramCollection::loadH3(TFile * inputFile, const String & histoName)
+TH3 * HistogramCollection::loadH3(TFile & inputFile, const String & histoName) throw (HistogramException)
 {
-
-  if (!ptrFileExist(inputFile)) return nullptr;
-  TH3* h = (TH3*) inputFile->Get(histoName);
-  if (!h)
-    {
-    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << histoName << endl;
-    return nullptr;
-    }
-  else
-    {
-    if (reportDebug(__FUNCTION__)) cout << "Loaded histogram named: "  << histoName << endl;
-    }
+  TH3* h = (TH3*) inputFile.Get(histoName);
+  if (!h) throw HistogramException(histoName,"Histogram not found/loaded","HistogramCollection::loadH3");
   append(h);
   return h;
 }
 
 ///Load the given 3D histogram (name) from the given TFile
 ///No test is //done to verify that the file is properly opened.
-TProfile * HistogramCollection::loadProfile(TFile * inputFile, const String & histoName)
+TProfile * HistogramCollection::loadProfile(TFile & inputFile, const String & histoName) throw (HistogramException)
 {
-
-  if (!ptrFileExist(inputFile)) return nullptr;
-  TProfile* h = (TProfile*) inputFile->Get(histoName);
-  if (!h)
-    {
-    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << histoName << endl;
-    return nullptr;
-    }
-  else
-    {
-    if (reportDebug(__FUNCTION__)) cout << "Loaded histogram named: "  << histoName << endl;
-    }
+  TProfile* h = (TProfile*) inputFile.Get(histoName);
+  if (!h) throw HistogramException(histoName,"Histogram not found/loaded","HistogramCollection::loadProfile");
   append(h);
   return h;
 }
 
-TProfile2D * HistogramCollection::loadProfile2D(TFile * inputFile, const String & histoName)
+TProfile2D * HistogramCollection::loadProfile2D(TFile & inputFile, const String & histoName) throw (HistogramException)
 {
-
-  if (!ptrFileExist(inputFile)) return nullptr;
-  TProfile2D* h = (TProfile2D*) inputFile->Get(histoName);
-  if (!h)
-    {
-    if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << histoName << endl;
-    return nullptr;
-    }
-  else
-    {
-    if (reportDebug(__FUNCTION__)) cout << "Loaded histogram named: "  << histoName << endl;
-    }
+  TProfile2D* h = (TProfile2D*) inputFile.Get(histoName);
+  if (!h) throw HistogramException(histoName,"Histogram not found/loaded","HistogramCollection::loadProfile2D");
   append(h);
   return h;
 }
 
-
-
-
-void HistogramCollection::loadHistosInList(TFile * inputFile, HistogramCollection * collection)
+void HistogramCollection::histosImportInList(TFile & inputFile, HistogramCollection * collection)  throw (HistogramException)
 {
-
-  if (!ptrFileExist(inputFile)) return;
   int nHistos = collection->getNHistograms();
-  String histoName;
   for (int iHisto=0; iHisto<nHistos; iHisto++)
     {
-    histoName = collection->getObjectAt(iHisto)->GetName();
-    TH1 * h = (TH1*) inputFile->Get(histoName);
-    if (!h)
-      {
-      if (reportError(__FUNCTION__)) cout << "Could not load histogram: " << histoName << endl;
-      return;
-      }
-    else
-      {
-      if (reportDebug(__FUNCTION__)) cout << "Loaded histogram named: "  << histoName << endl;
-      }
+    String histoName = collection->getObjectAt(iHisto)->GetName();
+    TH1 * h = (TH1*) inputFile.Get(histoName);
+    if (!h) throw HistogramException(histoName,"Histogram not found/loaded","HistogramCollection::histosImportInList");
     append(h);
     }
 }
@@ -2784,27 +2740,17 @@ void HistogramCollection::loadHistosInList(TFile * inputFile, HistogramCollectio
 
 ///Clone the given histogram, and set the clone's name to the given name.
 /////throws a HistogramException if the histogram does not exist (null pointer).
-TH1 * HistogramCollection::clone(const TH1 * h1, const String & histoName)
+TH1 * HistogramCollection::clone(const TH1 * h1, const String & histoName)  throw (HistogramException)
 {
-
   if (!ptrExist(__FUNCTION__,h1)) return nullptr;
   TH1 * h = (TH1*) h1->Clone();
-  if (!h)
-    {
-    if (reportError(__FUNCTION__)) cout << "Could not clone histogram "<< h1->GetName() << endl;
-    return nullptr;
-    }
-  else
-    {
-    if (reportDebug(__FUNCTION__)) cout << "Successfully cloned histogram named: "  << histoName << endl;
-    }
+  if (!h) throw HistogramException(histoName,"Histogram could not clone","HistogramCollection::clone");
   h->SetName(histoName);
   return h;
 }
 
 void HistogramCollection::findMaximum(TH1 * h, int xFirstBin, int xLastBin, int & xMaxValueBin, double & xMaxValue)
 {
-
   if (!ptrExist(__FUNCTION__,h)) return;
   int    n   = h->GetNbinsX();
   if (xFirstBin<1) xFirstBin = 1;
@@ -2826,7 +2772,6 @@ void HistogramCollection::findMaximum(TH1 * h, int xFirstBin, int xLastBin, int 
 
 void HistogramCollection::findMinimum(TH1 * h, int xFirstBin, int xLastBin, int & xMinValueBin, double  & xMinValue)
 {
-
   if (!ptrExist(__FUNCTION__,h)) return;
   int    n   = h->GetNbinsX();
   if (xFirstBin<1) xFirstBin = 1;
@@ -3398,12 +3343,12 @@ void HistogramCollection::calculateR2VsM(const TProfile * h1, const TProfile * h
     if (reportError(__FUNCTION__)) cout << endl << "Incompatible histogram dimensions" << endl;
     return;
     }
-  double n, nSum, vSum, v1,ev1,v2,v12,ev12, r, er;
+  double n, nSum, vSum, v1,v2,v12,ev12, r, er;
   nSum = vSum = 0;
   for (int i=1;i<=n1;++i)
     {
     n    = h1->GetBinEntries(i);
-    v1   = h1->GetBinContent(i);  ev1  = h1->GetBinError(i);
+    v1   = h1->GetBinContent(i);  //ev1  = h1->GetBinError(i);
     if (sameFilter)
       {
       v2   = v1;  //ev2  = ev1;
@@ -3519,8 +3464,8 @@ void HistogramCollection::calculateAverage(TH1* h, double & avgDensity, double &
     esum += ev*ev/width/width;
     }
   avgValue    = sum/norm;
-  avgDensity  = avgValue/TMath::TwoPi();
-  eAvgDensity = sqrt(esum)/norm/TMath::TwoPi();
+  avgDensity  = avgValue/Math::twoPi();
+  eAvgDensity = sqrt(esum)/norm/Math::twoPi();
   if ( reportDebug(__FUNCTION__))
     {
     cout << "     Name: " << h->GetName() << "  avgValue: " << avgValue   << "  density: " << avgDensity  <<  " +- " << eAvgDensity << endl;
@@ -5057,7 +5002,7 @@ void HistogramCollection::calculateF4R4(double f1_1,double ef1_1,double f1_2,dou
     ;
 
   double ref1_1,  ref1_2,  ref1_3; //,  ref1_4;
-  double ref2_12, ref2_13, ref2_14, ref2_24, ref2_34;
+  double ref2_12, ref2_13, ref2_14;
   double ref3_123, ref3_124, ref3_134, ref3_234;
   //double ref4_1234;
   //double reF4_1234;
@@ -5084,8 +5029,8 @@ void HistogramCollection::calculateF4R4(double f1_1,double ef1_1,double f1_2,dou
     ref2_13   = ef2_13/f2_13;
     ref2_14   = ef2_14/f2_14;
     //ref2_23   = ef2_23/f2_23;
-    ref2_24   = ef2_24/f2_24;
-    ref2_34   = ef2_34/f2_34;
+    //ref2_24   = ef2_24/f2_24;
+    //ref2_34   = ef2_34/f2_34;
     ref3_123  = ef3_123/f3_123;
     ref3_124  = ef3_124/f3_124;
     ref3_134  = ef3_134/f3_134;

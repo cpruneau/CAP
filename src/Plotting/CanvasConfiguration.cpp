@@ -38,7 +38,7 @@ Configuration()
 //!
 //! Copy CTOR
 //!
-CanvasConfiguration::CanvasConfiguration(const CanvasConfiguration & config)
+CanvasConfiguration::CanvasConfiguration(const Configuration & config)
 :
 Configuration(config)
 {}
@@ -46,7 +46,7 @@ Configuration(config)
 ////////////////////////////////////////////////////
 // Assignment operator
 ////////////////////////////////////////////////////
-CanvasConfiguration & CanvasConfiguration::operator=(const CanvasConfiguration & config)
+CanvasConfiguration & CanvasConfiguration::operator=(const Configuration & config)
 {
   if (this!=&config) Configuration::operator=(config);
   return *this;
@@ -84,113 +84,113 @@ void CanvasConfiguration::setFormat(CanvasFormat format)
   switch (format)
     {
       case PortraitTight:
-      setParameter("windowXPosition",     20);
-      setParameter("windowYPosition",     20);
-      setParameter("windowWidth",        500);
-      setParameter("windowHeight",       800);
-      setParameter("windowLeftMargin",  0.10);
-      setParameter("windowTopMargin",   0.03);
-      setParameter("windowRightMargin", 0.03);
-      setParameter("windowBottomMargin",0.10);
+      addParameter("windowXPosition",     20);
+      addParameter("windowYPosition",     20);
+      addParameter("windowWidth",        500);
+      addParameter("windowHeight",       800);
+      addParameter("windowLeftMargin",  0.10);
+      addParameter("windowTopMargin",   0.03);
+      addParameter("windowRightMargin", 0.03);
+      addParameter("windowBottomMargin",0.10);
       break;
     
       case Portrait:
-      setParameter("windowXPosition",     20);
-      setParameter("windowYPosition",     20);
-      setParameter("windowWidth",        500);
-      setParameter("windowHeight",       800);
-      setParameter("windowLeftMargin",  0.15);
-      setParameter("windowTopMargin",   0.05);
-      setParameter("windowRightMargin", 0.05);
-      setParameter("windowBottomMargin",0.15);
+      addParameter("windowXPosition",     20);
+      addParameter("windowYPosition",     20);
+      addParameter("windowWidth",        500);
+      addParameter("windowHeight",       800);
+      addParameter("windowLeftMargin",  0.15);
+      addParameter("windowTopMargin",   0.05);
+      addParameter("windowRightMargin", 0.05);
+      addParameter("windowBottomMargin",0.15);
       break;
 
       case PortraitWide:
-      setParameter("windowXPosition",     20);
-      setParameter("windowYPosition",     20);
-      setParameter("windowWidth",        500);
-      setParameter("windowHeight",       800);
-      setParameter("windowLeftMargin",  0.20);
-      setParameter("windowTopMargin",   0.10);
-      setParameter("windowRightMargin", 0.10);
-      setParameter("windowBottomMargin",0.20);
+      addParameter("windowXPosition",     20);
+      addParameter("windowYPosition",     20);
+      addParameter("windowWidth",        500);
+      addParameter("windowHeight",       800);
+      addParameter("windowLeftMargin",  0.20);
+      addParameter("windowTopMargin",   0.10);
+      addParameter("windowRightMargin", 0.10);
+      addParameter("windowBottomMargin",0.20);
       break;
 
       case SquareTight:
-      setParameter("windowXPosition",     20);
-      setParameter("windowYPosition",     20);
-      setParameter("windowWidth",        700);
-      setParameter("windowHeight",       700);
-      setParameter("windowLeftMargin",  0.10);
-      setParameter("windowTopMargin",   0.03);
-      setParameter("windowRightMargin", 0.03);
-      setParameter("windowBottomMargin",0.10);
+      addParameter("windowXPosition",     20);
+      addParameter("windowYPosition",     20);
+      addParameter("windowWidth",        700);
+      addParameter("windowHeight",       700);
+      addParameter("windowLeftMargin",  0.10);
+      addParameter("windowTopMargin",   0.03);
+      addParameter("windowRightMargin", 0.03);
+      addParameter("windowBottomMargin",0.10);
       break;
 
       case Square:
-      setParameter("windowXPosition",     20);
-      setParameter("windowYPosition",     20);
-      setParameter("windowWidth",        700);
-      setParameter("windowHeight",       700);
-      setParameter("windowLeftMargin",  0.15);
-      setParameter("windowTopMargin",   0.05);
-      setParameter("windowRightMargin", 0.05);
-      setParameter("windowBottomMargin",0.15);
+      addParameter("windowXPosition",     20);
+      addParameter("windowYPosition",     20);
+      addParameter("windowWidth",        700);
+      addParameter("windowHeight",       700);
+      addParameter("windowLeftMargin",  0.15);
+      addParameter("windowTopMargin",   0.05);
+      addParameter("windowRightMargin", 0.05);
+      addParameter("windowBottomMargin",0.15);
       break;
 
       case SquareWide:
-      setParameter("windowXPosition",     20);
-      setParameter("windowYPosition",     20);
-      setParameter("windowWidth",        700);
-      setParameter("windowHeight",       700);
-      setParameter("windowLeftMargin",  0.20);
-      setParameter("windowTopMargin",   0.05);
-      setParameter("windowRightMargin", 0.10);
-      setParameter("windowBottomMargin",0.20);
+      addParameter("windowXPosition",     20);
+      addParameter("windowYPosition",     20);
+      addParameter("windowWidth",        700);
+      addParameter("windowHeight",       700);
+      addParameter("windowLeftMargin",  0.20);
+      addParameter("windowTopMargin",   0.05);
+      addParameter("windowRightMargin", 0.10);
+      addParameter("windowBottomMargin",0.20);
       break;
 
       case LandscapeTight:
-      setParameter("windowXPosition",     20);
-      setParameter("windowYPosition",     20);
-      setParameter("windowWidth",        800);
-      setParameter("windowHeight",       500);
-      setParameter("windowLeftMargin",  0.10);
-      setParameter("windowTopMargin",   0.03);
-      setParameter("windowRightMargin", 0.03);
-      setParameter("windowBottomMargin",0.10);
+      addParameter("windowXPosition",     20);
+      addParameter("windowYPosition",     20);
+      addParameter("windowWidth",        800);
+      addParameter("windowHeight",       500);
+      addParameter("windowLeftMargin",  0.10);
+      addParameter("windowTopMargin",   0.03);
+      addParameter("windowRightMargin", 0.03);
+      addParameter("windowBottomMargin",0.10);
       break;
 
       case Landscape:
-      setParameter("windowXPosition",     20);
-      setParameter("windowYPosition",     20);
-      setParameter("windowWidth",        800);
-      setParameter("windowHeight",       500);
-      setParameter("windowLeftMargin",  0.15);
-      setParameter("windowTopMargin",   0.05);
-      setParameter("windowRightMargin", 0.10);
-      setParameter("windowBottomMargin",0.15);
+      addParameter("windowXPosition",     20);
+      addParameter("windowYPosition",     20);
+      addParameter("windowWidth",        800);
+      addParameter("windowHeight",       500);
+      addParameter("windowLeftMargin",  0.15);
+      addParameter("windowTopMargin",   0.05);
+      addParameter("windowRightMargin", 0.10);
+      addParameter("windowBottomMargin",0.15);
       break;
       
       case LandscapeWide:
-      setParameter("windowXPosition",     20);
-      setParameter("windowYPosition",     20);
-      setParameter("windowWidth",        800);
-      setParameter("windowHeight",       500);
-      setParameter("windowLeftMargin",  0.20);
-      setParameter("windowTopMargin",   0.05);
-      setParameter("windowRightMargin", 0.15);
-      setParameter("windowBottomMargin",0.15);
+      addParameter("windowXPosition",     20);
+      addParameter("windowYPosition",     20);
+      addParameter("windowWidth",        800);
+      addParameter("windowHeight",       500);
+      addParameter("windowLeftMargin",  0.20);
+      addParameter("windowTopMargin",   0.05);
+      addParameter("windowRightMargin", 0.15);
+      addParameter("windowBottomMargin",0.15);
       break;
 
       case LandscapeXtop:
-      setParameter("windowXPosition",     20);
-      setParameter("windowYPosition",     20);
-      setParameter("windowWidth",        800);
-      setParameter("windowHeight",       600);
-      setParameter("windowLeftMargin",  0.20);
-      setParameter("windowTopMargin",   0.20);
-      setParameter("windowRightMargin", 0.05);
-      setParameter("windowBottomMargin",0.15);
+      addParameter("windowXPosition",     20);
+      addParameter("windowYPosition",     20);
+      addParameter("windowWidth",        800);
+      addParameter("windowHeight",       600);
+      addParameter("windowLeftMargin",  0.20);
+      addParameter("windowTopMargin",   0.20);
+      addParameter("windowRightMargin", 0.05);
+      addParameter("windowBottomMargin",0.15);
       break;
 
     };
@@ -202,71 +202,71 @@ void CanvasConfiguration::setAxes(CanvasAxes axes)
   switch (axes)
     {
       case Linear:
-      setParameter("windowLogX", false);
-      setParameter("windowLogY", false);
-      setParameter("windowLogZ", false);
+      addParameter("windowLogX", false);
+      addParameter("windowLogY", false);
+      addParameter("windowLogZ", false);
       break;
      
       case LogX:
-      setParameter("windowLogX", true);
-      setParameter("windowLogY", false);
-      setParameter("windowLogZ", false);
+      addParameter("windowLogX", true);
+      addParameter("windowLogY", false);
+      addParameter("windowLogZ", false);
       break;
       
       case LogY:
-      setParameter("windowLogX", false);
-      setParameter("windowLogY", true);
-      setParameter("windowLogZ", false);
+      addParameter("windowLogX", false);
+      addParameter("windowLogY", true);
+      addParameter("windowLogZ", false);
       break;
 
       case LogZ:
-      setParameter("windowLogX", false);
-      setParameter("windowLogY", false);
-      setParameter("windowLogZ", true);
+      addParameter("windowLogX", false);
+      addParameter("windowLogY", false);
+      addParameter("windowLogZ", true);
       break;
       
       case LogXY:
-      setParameter("windowLogX", true);
-      setParameter("windowLogY", true);
-      setParameter("windowLogZ", false);
+      addParameter("windowLogX", true);
+      addParameter("windowLogY", true);
+      addParameter("windowLogZ", false);
       break;
       
       case LogXZ:
-      setParameter("windowLogX", true);
-      setParameter("windowLogY", false);
-      setParameter("windowLogZ", true);
+      addParameter("windowLogX", true);
+      addParameter("windowLogY", false);
+      addParameter("windowLogZ", true);
       break;
       
       case LogYZ:
-      setParameter("windowLogX", false);
-      setParameter("windowLogY", true);
-      setParameter("windowLogZ", true);
+      addParameter("windowLogX", false);
+      addParameter("windowLogY", true);
+      addParameter("windowLogZ", true);
       break;
       
       case LogXYZ:
-      setParameter("windowLogX", true);
-      setParameter("windowLogY", true);
-      setParameter("windowLogZ", true);
+      addParameter("windowLogX", true);
+      addParameter("windowLogY", true);
+      addParameter("windowLogZ", true);
       break;
     };
 }
 
 void CanvasConfiguration::setMargins(float left, float top, float right, float bottom)
 {
-  setParameter("windowLeftMargin",  left);
-  setParameter("windowTopMargin",   top);
-  setParameter("windowRightMargin", right);
-  setParameter("windowBottomMargin",bottom);
+  addParameter("windowLeftMargin",  left);
+  addParameter("windowTopMargin",   top);
+  addParameter("windowRightMargin", right);
+  addParameter("windowBottomMargin",bottom);
 }
 
 void CanvasConfiguration::setSize(int width, int heigh)
 {
-  setParameter("windowWidth",        width);
-  setParameter("windowHeight",       heigh);
+  addParameter("windowWidth",        width);
+  addParameter("windowHeight",       heigh);
 }
 
 void CanvasConfiguration::setPosition(int x, int y)
 {
-  setParameter("windowXPosition",x);
-  setParameter("windowYPosition",y);
+  addParameter("windowXPosition",x);
+  addParameter("windowYPosition",y);
 }

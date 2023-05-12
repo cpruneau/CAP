@@ -15,7 +15,7 @@ using CAP::HijingEventReader;
 ClassImp(HijingEventReader);
 
 HijingEventReader::HijingEventReader(const String &          _name,
-                                     Configuration &          _configuration,
+                                     const Configuration &          _configuration,
                                      vector<EventFilter*>   & _eventFilters,
                                      vector<ParticleFilter*>& _particleFilters)
 :
@@ -29,12 +29,12 @@ void HijingEventReader::setDefaultConfiguration()
   RootTreeReader::setDefaultConfiguration();
 }
 
-void HijingEventReader::execute()
+void HijingEventReader::importEvent()
 {
   //  if (reportDebug(__FUNCTION__))
   //    ;
   incrementTaskExecuted();
-  EventFilter & eventFilter = * eventFilters[0];
+  //EventFilter & eventFilter = * eventFilters[0];
   ParticleFilter & particleFilter = * particleFilters[0];
   incrementTaskExecuted();
   Event & event = * eventStreams[0];
@@ -81,7 +81,7 @@ void HijingEventReader::execute()
   for (int iParticle=0; iParticle<nParticles; iParticle++)
     {
     int pdgCode = pid[iParticle];
-    type = particleTypeCollection->findPdgCode(pdgCode);
+    type = ParticleDb::getDefaultParticleDb()->findPdgCode(pdgCode);
     if (type==nullptr)
       {
       if (reportWarning(__FUNCTION__)) cout << "Encountered unknown pdgCode: " << pdgCode << " Particle not added to event." << endl;

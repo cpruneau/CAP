@@ -68,7 +68,7 @@ rmsEta(0.0),
 rmsEtaErr(0.0),
 rmsPhi(0.0),
 rmsPhiErr(0.0),
-success(kFALSE),
+success(false),
 resultPtr(nullptr)
 {
   // no ops
@@ -125,7 +125,7 @@ rmsEta(source.rmsEta),
 rmsEtaErr(source.rmsEtaErr),
 rmsPhi(source.rmsPhi),
 rmsPhiErr(source.rmsPhiErr),
-success(kFALSE),
+success(false),
 resultPtr(source.resultPtr)
 {
   // no ops
@@ -383,7 +383,7 @@ std::tuple<double,double> BidimGaussFitResult::extractGeneralizedRMSError(TH1 *h
     sumwx2  += w*point2[ip];
     }
   double _rms = (sumw != 0) ? TMath::Max(sumwx2/sumw - sumwx/sumw*sumwx/sumw,0.0) : 0.0;
-  rms   += TMath::Sqrt(_rms);
+  rms   += sqrt(_rms);
   rms2  += _rms;
   }
   delete [] vale;
@@ -392,7 +392,7 @@ std::tuple<double,double> BidimGaussFitResult::extractGeneralizedRMSError(TH1 *h
   delete [] point;
   rms  /= norm;
   rms2 /= norm;
-  rms2 = (rms2>0) ? TMath::Sqrt(rms2-rms*rms) : 0.0;
+  rms2 = (rms2>0) ? sqrt(rms2-rms*rms) : 0.0;
   return std::make_tuple(rms,rms2);
 }
 
@@ -430,22 +430,22 @@ double BidimGaussFitResult::extractGeneralizedRMS(TF1* f, int sigmaIndex, int be
 {
   double sigma = f->GetParameter(sigmaIndex);
   double beta  = f->GetParameter(betaIndex);
-  return TMath::Sqrt(sigma*sigma*TMath::Gamma(3.0/beta)/TMath::Gamma(1.0/beta));
+  return sqrt(sigma*sigma*TMath::Gamma(3.0/beta)/TMath::Gamma(1.0/beta));
 }
 
 double BidimGaussFitResult::extractGeneralizedRMSError(TF1* f, TMatrixDSym& cov, int   sigmaIndex, int   betaIndex)
 {
   double sigma    = f->GetParameter(sigmaIndex);
   double beta     = f->GetParameter(betaIndex);
-  double sigmaDer = TMath::Sqrt(TMath::Gamma(3./beta)/TMath::Gamma(1./beta));
-  TF1* tmp        = new TF1("tmp","TMath::Sqrt(TMath::Gamma(3./x)/TMath::Gamma(1./x))",1,2);
+  double sigmaDer = sqrt(TMath::Gamma(3./beta)/TMath::Gamma(1./beta));
+  TF1* tmp        = new TF1("tmp","sqrt(TMath::Gamma(3./x)/TMath::Gamma(1./x))",1,2);
   double betaDer  = sigma*tmp->Derivative(beta);
   double rmsError =
-  TMath::Power(sigmaDer * f->GetParError(sigmaIndex), 2) +
-  TMath::Power(betaDer *  f->GetParError(betaIndex),  2) +
+  power(sigmaDer * f->GetParError(sigmaIndex), 2) +
+  power(betaDer *  f->GetParError(betaIndex),  2) +
   2.0 * sigmaDer * betaDer * cov(sigmaIndex, betaIndex);
   delete tmp;
-  return TMath::Sqrt(rmsError);
+  return sqrt(rmsError);
 }
 
 

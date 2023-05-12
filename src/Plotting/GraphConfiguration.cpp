@@ -25,7 +25,7 @@ GraphConfiguration::GraphConfiguration(int dim, int type)
 Configuration()
 {
   setDefaultConfiguration();
-  setParametersWith(dim,type);
+  addParametersWith(dim,type);
 }
 
 void GraphConfiguration::setDefaultConfiguration()
@@ -67,7 +67,7 @@ void GraphConfiguration::setDefaultConfiguration()
   addParameter("systsWidth",1);
 }
 
-void GraphConfiguration::setParametersWith(int dim, int type)
+void GraphConfiguration::addParametersWith(int dim, int type)
 {
   if (dim==1 || dim==0)
     {
@@ -77,364 +77,364 @@ void GraphConfiguration::setParametersWith(int dim, int type)
         default:
 
         case  0:
-        setParameter("lineColor",   kBlack);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kBlack);
-        setParameter("markerStyle", kFullSquare);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kBlack);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kBlack);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kBlack);
+        addParameter("markerStyle", kFullSquare);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kBlack);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  1:
-        setParameter("lineColor",   kRed);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kRed);
-        setParameter("markerStyle", kFullSquare);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kRed);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kRed);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kRed);
+        addParameter("markerStyle", kFullSquare);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kRed);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  2:
-        setParameter("lineColor",   kGreen);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kGreen);
-        setParameter("markerStyle", kFullSquare);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kGreen);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kGreen);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kGreen);
+        addParameter("markerStyle", kFullSquare);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kGreen);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  3:
-        setParameter("lineColor",   kMagenta);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kMagenta);
-        setParameter("markerStyle", kFullSquare);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kMagenta);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kMagenta);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kMagenta);
+        addParameter("markerStyle", kFullSquare);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kMagenta);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  4:
-        setParameter("lineColor",   kBlue);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kBlue);
-        setParameter("markerStyle", kFullSquare);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kBlue);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kBlue);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kBlue);
+        addParameter("markerStyle", kFullSquare);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kBlue);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  5:
-        setParameter("lineColor",   kYellow);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kYellow);
-        setParameter("markerStyle", kFullSquare);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kYellow);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kYellow);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kYellow);
+        addParameter("markerStyle", kFullSquare);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kYellow);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  6:
-        setParameter("lineColor",   kPink);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kPink);
-        setParameter("markerStyle", kFullSquare);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kPink);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kPink);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kPink);
+        addParameter("markerStyle", kFullSquare);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kPink);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  7:
-        setParameter("lineColor",   kBlue+2);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kBlue+2);
-        setParameter("markerStyle", kFullSquare);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kBlue+2);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kBlue+2);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kBlue+2);
+        addParameter("markerStyle", kFullSquare);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kBlue+2);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  8:
-        setParameter("lineColor",   kRed+2);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kRed+2);
-        setParameter("markerStyle", kFullSquare);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kRed+2);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kRed+2);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kRed+2);
+        addParameter("markerStyle", kFullSquare);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kRed+2);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  9:
-        setParameter("lineColor",   kGreen+2);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kGreen+2);
-        setParameter("markerStyle", kFullSquare);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kGreen+2);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kGreen+2);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kGreen+2);
+        addParameter("markerStyle", kFullSquare);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kGreen+2);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
 
         case  10:
-        setParameter("lineColor",   kBlack);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kBlack);
-        setParameter("markerStyle", kFullCircle);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kBlack);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kBlack);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kBlack);
+        addParameter("markerStyle", kFullCircle);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kBlack);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  11:
-        setParameter("lineColor",   kRed);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kRed);
-        setParameter("markerStyle", kFullCircle);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kRed);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kRed);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kRed);
+        addParameter("markerStyle", kFullCircle);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kRed);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  12:
-        setParameter("lineColor",   kGreen);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kGreen);
-        setParameter("markerStyle", kFullCircle);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kGreen);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kGreen);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kGreen);
+        addParameter("markerStyle", kFullCircle);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kGreen);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  13:
-        setParameter("lineColor",   kMagenta);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kMagenta);
-        setParameter("markerStyle", kFullCircle);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kMagenta);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kMagenta);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kMagenta);
+        addParameter("markerStyle", kFullCircle);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kMagenta);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  14:
-        setParameter("lineColor",   kBlue);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kBlue);
-        setParameter("markerStyle", kFullCircle);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kBlue);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kBlue);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kBlue);
+        addParameter("markerStyle", kFullCircle);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kBlue);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  15:
-        setParameter("lineColor",   kYellow);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kYellow);
-        setParameter("markerStyle", kFullCircle);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kYellow);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kYellow);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kYellow);
+        addParameter("markerStyle", kFullCircle);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kYellow);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  16:
-        setParameter("lineColor",   kPink);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kPink);
-        setParameter("markerStyle", kFullCircle);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kPink);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kPink);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kPink);
+        addParameter("markerStyle", kFullCircle);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kPink);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  17:
-        setParameter("lineColor",   kBlue+2);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kBlue+2);
-        setParameter("markerStyle", kFullCircle);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kBlue+2);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kBlue+2);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kBlue+2);
+        addParameter("markerStyle", kFullCircle);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kBlue+2);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  18:
-        setParameter("lineColor",   kRed+2);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kRed+2);
-        setParameter("markerStyle", kFullCircle);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kRed+2);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kRed+2);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kRed+2);
+        addParameter("markerStyle", kFullCircle);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kRed+2);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  19:
-        setParameter("lineColor",   kGreen+2);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kGreen+2);
-        setParameter("markerStyle", kFullCircle);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kGreen+2);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kGreen+2);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kGreen+2);
+        addParameter("markerStyle", kFullCircle);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kGreen+2);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  20:
-        setParameter("lineColor",   kBlack);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kBlack);
-        setParameter("markerStyle", kFullDiamond);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kBlack);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kBlack);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kBlack);
+        addParameter("markerStyle", kFullDiamond);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kBlack);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  21:
-        setParameter("lineColor",   kRed);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kRed);
-        setParameter("markerStyle", kFullDiamond);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kRed);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kRed);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kRed);
+        addParameter("markerStyle", kFullDiamond);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kRed);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  22:
-        setParameter("lineColor",   kGreen);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kGreen);
-        setParameter("markerStyle", kFullDiamond);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kGreen);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kGreen);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kGreen);
+        addParameter("markerStyle", kFullDiamond);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kGreen);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  23:
-        setParameter("lineColor",   kMagenta);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kMagenta);
-        setParameter("markerStyle", kFullDiamond);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kMagenta);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kMagenta);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kMagenta);
+        addParameter("markerStyle", kFullDiamond);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kMagenta);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  24:
-        setParameter("lineColor",   kBlue);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kBlue);
-        setParameter("markerStyle", kFullDiamond);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kBlue);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kBlue);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kBlue);
+        addParameter("markerStyle", kFullDiamond);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kBlue);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  25:
-        setParameter("lineColor",   kYellow);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kYellow);
-        setParameter("markerStyle", kFullDiamond);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kYellow);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kYellow);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kYellow);
+        addParameter("markerStyle", kFullDiamond);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kYellow);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  26:
-        setParameter("lineColor",   kPink);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kPink);
-        setParameter("markerStyle", kFullDiamond);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kPink);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kPink);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kPink);
+        addParameter("markerStyle", kFullDiamond);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kPink);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  27:
-        setParameter("lineColor",   kBlue+2);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kBlue+2);
-        setParameter("markerStyle", kFullDiamond);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kBlue+2);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kBlue+2);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kBlue+2);
+        addParameter("markerStyle", kFullDiamond);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kBlue+2);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  28:
-        setParameter("lineColor",   kRed+2);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kRed+2);
-        setParameter("markerStyle", kFullDiamond);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kRed+2);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kRed+2);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kRed+2);
+        addParameter("markerStyle", kFullDiamond);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kRed+2);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         case  29:
-        setParameter("lineColor",   kGreen+2);
-        setParameter("lineStyle",   kSolid);
-        setParameter("lineWidth",   2);
-        setParameter("markerColor", kGreen+2);
-        setParameter("markerStyle", kFullDiamond);
-        setParameter("markerSize",  1.1);
-        setParameter("systsColor",  kGreen+2);
-        setParameter("systsStyle",  3003);
-        setParameter("systsWidth",  1);
+        addParameter("lineColor",   kGreen+2);
+        addParameter("lineStyle",   kSolid);
+        addParameter("lineWidth",   2);
+        addParameter("markerColor", kGreen+2);
+        addParameter("markerStyle", kFullDiamond);
+        addParameter("markerSize",  1.1);
+        addParameter("systsColor",  kGreen+2);
+        addParameter("systsStyle",  3003);
+        addParameter("systsWidth",  1);
         break;
         
         }
@@ -463,7 +463,7 @@ void GraphConfiguration::setParametersWith(int dim, int type)
     }
 }
 
-GraphConfiguration::GraphConfiguration(const GraphConfiguration & source)
+GraphConfiguration::GraphConfiguration(GraphConfiguration & source)
 :
 Configuration(source)
 {
@@ -471,7 +471,7 @@ Configuration(source)
 }
 
 
-GraphConfiguration & GraphConfiguration::operator=(const GraphConfiguration & source)
+GraphConfiguration & GraphConfiguration::operator=(GraphConfiguration & source)
 {
   if (this!=&source)
     {
